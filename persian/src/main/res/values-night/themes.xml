@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Base.V26.Theme.Persian.Dark" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="Base.Theme.Persian.Dark" parent="Base.V26.Theme.Persian.Dark" />
+
+    <style name="Theme.Persian" parent="Base.Theme.Persian.Dark" />
+
+</resources>
