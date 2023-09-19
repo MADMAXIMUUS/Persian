@@ -19,6 +19,7 @@ import androidx.core.view.WindowCompat
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import ru.rabbit.persian.appShowcase.screens.ActionSheet
 import ru.rabbit.persian.appShowcase.screens.Alert
 import ru.rabbit.persian.appShowcase.screens.Avatar
@@ -40,7 +41,6 @@ import ru.rabbit.persian.appShowcase.screens.Snackbar
 import ru.rabbit.persian.appShowcase.screens.Tabs
 import ru.rabbit.persian.appShowcase.screens.TextArea
 import ru.rabbit.persian.appShowcase.screens.TopAppBar
-import ru.rabbit.persian.foundation.PersianTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

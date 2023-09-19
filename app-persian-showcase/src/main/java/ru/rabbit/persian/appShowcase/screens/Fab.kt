@@ -7,11 +7,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import io.github.madmaximuus.persian.fab.PersianFab
+import io.github.madmaximuus.persian.fab.PersianFabColors
+import io.github.madmaximuus.persian.foundation.icons
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
-import ru.rabbit.persian.fab.PersianFab
-import ru.rabbit.persian.fab.PersianFabColors
-import ru.rabbit.persian.foundation.icons
 
 object Fab : Screen {
 

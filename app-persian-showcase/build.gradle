@@ -54,6 +54,7 @@ dependencies {
     implementation libs.composeUi
     implementation libs.composePreview
     implementation libs.material3
+    implementation libs.splash
 
     implementation libs.composeNavigation
     api project(':persian')

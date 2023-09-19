@@ -7,10 +7,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import io.github.madmaximuus.persian.banners.PersianBanner
+import io.github.madmaximuus.persian.foundation.icons
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
-import ru.rabbit.persian.banners.PersianBanner
-import ru.rabbit.persian.foundation.icons
 
 object Banner : Screen {
 

@@ -8,14 +8,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import io.github.madmaximuus.persian.counter.PersianBadge
+import io.github.madmaximuus.persian.counter.PersianCounter
+import io.github.madmaximuus.persian.counter.PersianCounterSizes
+import io.github.madmaximuus.persian.foundation.PersianComponentStyle
+import io.github.madmaximuus.persian.foundation.icons
+import io.github.madmaximuus.persian.iconButtons.PersianIconButton
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
-import ru.rabbit.persian.counter.PersianBadge
-import ru.rabbit.persian.counter.PersianCounter
-import ru.rabbit.persian.counter.PersianCounterSizes
-import ru.rabbit.persian.foundation.PersianComponentStyle
-import ru.rabbit.persian.foundation.icons
-import ru.rabbit.persian.iconButtons.PersianIconButton
 
 object Counter : Screen {
 

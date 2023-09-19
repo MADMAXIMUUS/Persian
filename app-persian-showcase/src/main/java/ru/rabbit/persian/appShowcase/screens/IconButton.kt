@@ -9,11 +9,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import io.github.madmaximuus.persian.foundation.PersianComponentStyle
+import io.github.madmaximuus.persian.foundation.icons
+import io.github.madmaximuus.persian.iconButtons.PersianIconButton
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
-import ru.rabbit.persian.foundation.PersianComponentStyle
-import ru.rabbit.persian.foundation.icons
-import ru.rabbit.persian.iconButtons.PersianIconButton
 
 object IconButton : Screen {
 
@@ -59,28 +59,28 @@ object IconButton : Screen {
                 item {
                     val (checked, onCheckedChange) = remember { mutableStateOf(false) }
                     SampleRow(text = "Toggleable Icon Button", lastItem = true) {
-                        ru.rabbit.persian.iconButtons.toggle.PersianIconButton.Primary(
+                        io.github.madmaximuus.persian.iconButtons.toggle.PersianIconButton.Primary(
                             icon = MaterialTheme.icons.favoriteOutlined,
                             style = PersianComponentStyle.FILL,
                             checkedIcon = MaterialTheme.icons.favoriteFilled,
                             checked = checked,
                             onCheckedChange = onCheckedChange
                         )
-                        ru.rabbit.persian.iconButtons.toggle.PersianIconButton.Primary(
+                        io.github.madmaximuus.persian.iconButtons.toggle.PersianIconButton.Primary(
                             icon = MaterialTheme.icons.favoriteOutlined,
                             style = PersianComponentStyle.OUTLINED,
                             checkedIcon = MaterialTheme.icons.favoriteFilled,
                             checked = checked,
                             onCheckedChange = onCheckedChange
                         )
-                        ru.rabbit.persian.iconButtons.toggle.PersianIconButton.Primary(
+                        io.github.madmaximuus.persian.iconButtons.toggle.PersianIconButton.Primary(
                             icon = MaterialTheme.icons.favoriteOutlined,
                             style = PersianComponentStyle.STANDARD,
                             checkedIcon = MaterialTheme.icons.favoriteFilled,
                             checked = checked,
                             onCheckedChange = onCheckedChange
                         )
-                        ru.rabbit.persian.iconButtons.toggle.PersianIconButton.Primary(
+                        io.github.madmaximuus.persian.iconButtons.toggle.PersianIconButton.Primary(
                             icon = MaterialTheme.icons.favoriteOutlined,
                             style = PersianComponentStyle.TONAL,
                             checkedIcon = MaterialTheme.icons.favoriteFilled,

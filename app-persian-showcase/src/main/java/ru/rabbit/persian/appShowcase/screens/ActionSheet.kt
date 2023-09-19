@@ -13,14 +13,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import ru.rabbit.persian.actionSheet.ActionItem
-import ru.rabbit.persian.actionSheet.PersianActionSheet
+import io.github.madmaximuus.persian.actionSheet.PersianActionSheet
+import io.github.madmaximuus.persian.buttons.PersianButton
+import io.github.madmaximuus.persian.buttons.PersianButtonColors
+import io.github.madmaximuus.persian.buttons.PersianButtonSizes
+import io.github.madmaximuus.persian.foundation.PersianComponentStyle
+import io.github.madmaximuus.persian.foundation.icons
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
-import ru.rabbit.persian.buttons.PersianButton
-import ru.rabbit.persian.buttons.PersianButtonColors
-import ru.rabbit.persian.buttons.PersianButtonSizes
-import ru.rabbit.persian.foundation.PersianComponentStyle
-import ru.rabbit.persian.foundation.icons
 
 object ActionSheet : Screen {
     override val name: String = "Action Sheets"
@@ -64,39 +63,39 @@ object ActionSheet : Screen {
                     )
                 },
                 actions = listOf(
-                    ActionItem(
+                    io.github.madmaximuus.persian.actionSheet.ActionItem(
                         text = "Action 1",
                         leadingIcon = MaterialTheme.icons.edit,
                         onClick = {}),
-                    ActionItem(
+                    io.github.madmaximuus.persian.actionSheet.ActionItem(
                         text = "Action 2",
                         leadingIcon = MaterialTheme.icons.edit,
                         onClick = {}),
-                    ActionItem(
+                    io.github.madmaximuus.persian.actionSheet.ActionItem(
                         text = "Action 3",
                         leadingIcon = MaterialTheme.icons.edit,
                         onClick = {}),
-                    ActionItem(
+                    io.github.madmaximuus.persian.actionSheet.ActionItem(
                         text = "Action 4",
                         leadingIcon = MaterialTheme.icons.edit,
                         onClick = {}),
-                    ActionItem(
+                    io.github.madmaximuus.persian.actionSheet.ActionItem(
                         text = "Action 5",
                         leadingIcon = MaterialTheme.icons.edit,
                         onClick = {}),
-                    ActionItem(
+                    io.github.madmaximuus.persian.actionSheet.ActionItem(
                         text = "Action 6",
                         leadingIcon = MaterialTheme.icons.edit,
                         onClick = {}),
-                    ActionItem(
+                    io.github.madmaximuus.persian.actionSheet.ActionItem(
                         text = "Action 7",
                         leadingIcon = MaterialTheme.icons.edit,
                         onClick = {}),
-                    ActionItem(
+                    io.github.madmaximuus.persian.actionSheet.ActionItem(
                         text = "Action 8",
                         leadingIcon = MaterialTheme.icons.edit,
                         onClick = {}),
-                    ActionItem(
+                    io.github.madmaximuus.persian.actionSheet.ActionItem(
                         text = "Action 9",
                         leadingIcon = MaterialTheme.icons.edit,
                         negative = true,

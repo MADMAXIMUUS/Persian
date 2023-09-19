@@ -22,18 +22,18 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.navigation.NavController
+import io.github.madmaximuus.persian.buttons.IconSide
+import io.github.madmaximuus.persian.buttons.PersianButton
+import io.github.madmaximuus.persian.buttons.PersianButtonColors
+import io.github.madmaximuus.persian.buttons.PersianButtonSizes
+import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
+import io.github.madmaximuus.persian.foundation.PersianComponentStyle
+import io.github.madmaximuus.persian.foundation.icons
+import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.inputs.PersianInputs
+import io.github.madmaximuus.persian.radioButtons.PersianRadioButton
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
-import ru.rabbit.persian.buttons.IconSide
-import ru.rabbit.persian.buttons.PersianButton
-import ru.rabbit.persian.buttons.PersianButtonColors
-import ru.rabbit.persian.buttons.PersianButtonSizes
-import ru.rabbit.persian.checkboxes.PersianCheckbox
-import ru.rabbit.persian.foundation.PersianComponentStyle
-import ru.rabbit.persian.foundation.icons
-import ru.rabbit.persian.foundation.spacing
-import ru.rabbit.persian.inputs.PersianInputs
-import ru.rabbit.persian.radioButtons.PersianRadioButton
 
 object Button : Screen {
     override val name: String = "Buttons"

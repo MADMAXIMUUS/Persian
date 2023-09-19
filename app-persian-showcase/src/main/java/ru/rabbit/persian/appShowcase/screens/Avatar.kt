@@ -6,10 +6,10 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import io.github.madmaximuus.persian.avatars.PersianAvatars
+import io.github.madmaximuus.persian.avatars.PersianAvatarsSizes
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
-import ru.rabbit.persian.avatars.PersianAvatars
-import ru.rabbit.persian.avatars.PersianAvatarsSizes
 
 object Avatar : Screen {
 

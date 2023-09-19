@@ -19,11 +19,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import io.github.madmaximuus.persian.dividers.PersianHorizontalDividers
+import io.github.madmaximuus.persian.dividers.PersianVerticalDividers
+import io.github.madmaximuus.persian.foundation.spacing
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
-import ru.rabbit.persian.dividers.PersianHorizontalDividers
-import ru.rabbit.persian.dividers.PersianVerticalDividers
-import ru.rabbit.persian.foundation.spacing
 
 object Divider : Screen {
 

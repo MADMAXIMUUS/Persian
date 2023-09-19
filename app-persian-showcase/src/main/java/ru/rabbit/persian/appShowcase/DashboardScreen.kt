@@ -26,10 +26,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import io.github.madmaximuus.persian.foundation.icons
+import io.github.madmaximuus.persian.foundation.spacing
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 import ru.rabbit.persian.appShowcase.screens.Screen
-import ru.rabbit.persian.foundation.icons
-import ru.rabbit.persian.foundation.spacing
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

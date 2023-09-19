@@ -6,11 +6,11 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import io.github.madmaximuus.persian.progressBars.PersianCircularProgressBarSize
+import io.github.madmaximuus.persian.progressBars.PersianLinearProgressBarSize
+import io.github.madmaximuus.persian.progressBars.PersianProgressBar
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
-import ru.rabbit.persian.progressBars.PersianCircularProgressBarSize
-import ru.rabbit.persian.progressBars.PersianLinearProgressBarSize
-import ru.rabbit.persian.progressBars.PersianProgressBar
 
 object ProgressBar : Screen {
 

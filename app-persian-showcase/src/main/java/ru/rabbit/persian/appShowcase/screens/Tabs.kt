@@ -9,11 +9,11 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import io.github.madmaximuus.persian.foundation.icons
+import io.github.madmaximuus.persian.tabs.PersianTabs
+import io.github.madmaximuus.persian.tabs.TabItem
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
-import ru.rabbit.persian.foundation.icons
-import ru.rabbit.persian.tabs.PersianTabs
-import ru.rabbit.persian.tabs.TabItem
 
 object Tabs : Screen {
 

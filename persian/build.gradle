@@ -3,6 +3,14 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
+ext{
+    PUBLISH_GROUP_ID = 'io.github.madmaximuus.persian'
+    PUBLISH_VERSION = '1.0.0'
+    PUBLISH_ARTIFACT_ID = 'persian'
+}
+
+apply from: "${rootProject.projectDir}/scripts/publish-module.gradle"
+
 android {
     namespace 'ru.rabbit.persian'
     compileSdk 34
@@ -37,8 +45,6 @@ android {
 }
 
 dependencies {
-    implementation libs.splash
-
     implementation libs.coreKtx
     implementation libs.composeUi
     implementation libs.composePreview

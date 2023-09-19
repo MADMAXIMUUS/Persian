@@ -8,8 +8,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
-import ru.rabbit.persian.checkboxes.PersianCheckbox
 
 object CheckBox : Screen {
 

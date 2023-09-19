@@ -16,14 +16,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import ru.rabbit.persian.alert.AlertAction
-import ru.rabbit.persian.alert.PersianAlerts
+import io.github.madmaximuus.persian.alert.AlertAction
+import io.github.madmaximuus.persian.alert.PersianAlerts
+import io.github.madmaximuus.persian.buttons.PersianButton
+import io.github.madmaximuus.persian.buttons.PersianButtonSizes
+import io.github.madmaximuus.persian.foundation.icons
+import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.radioButtons.PersianRadioButton
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
-import ru.rabbit.persian.buttons.PersianButton
-import ru.rabbit.persian.buttons.PersianButtonSizes
-import ru.rabbit.persian.foundation.icons
-import ru.rabbit.persian.foundation.spacing
-import ru.rabbit.persian.radioButtons.PersianRadioButton
 
 object Alert : Screen {
 

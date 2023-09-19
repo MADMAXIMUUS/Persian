@@ -14,12 +14,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import io.github.madmaximuus.persian.buttons.PersianButton
+import io.github.madmaximuus.persian.buttons.PersianButtonSizes
+import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.modalPage.PersianModalPage
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
-import ru.rabbit.persian.buttons.PersianButton
-import ru.rabbit.persian.buttons.PersianButtonColors
-import ru.rabbit.persian.buttons.PersianButtonSizes
-import ru.rabbit.persian.foundation.spacing
-import ru.rabbit.persian.modalPage.PersianModalPage
 
 object ModalPage : Screen {
 

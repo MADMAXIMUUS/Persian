@@ -10,10 +10,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.navigation.NavController
+import io.github.madmaximuus.persian.foundation.icons
+import io.github.madmaximuus.persian.textAreas.PersianTextAreas
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
-import ru.rabbit.persian.foundation.icons
-import ru.rabbit.persian.textAreas.PersianTextAreas
 
 object TextArea : Screen {
 

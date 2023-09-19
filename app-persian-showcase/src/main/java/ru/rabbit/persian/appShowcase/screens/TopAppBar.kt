@@ -16,11 +16,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import ru.rabbit.persian.buttons.PersianButton
-import ru.rabbit.persian.foundation.icons
-import ru.rabbit.persian.foundation.spacing
-import ru.rabbit.persian.topAppBar.ActionItem
-import ru.rabbit.persian.topAppBar.PersianTopAppBar
+import io.github.madmaximuus.persian.buttons.PersianButton
+import io.github.madmaximuus.persian.foundation.icons
+import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.topAppBar.ActionItem
+import io.github.madmaximuus.persian.topAppBar.PersianTopAppBar
 
 object TopAppBar : Screen {
     override val name: String = "Top App Bar"
@@ -199,28 +199,28 @@ object TopAppBar : Screen {
                     actionIconRight = false
                     actionIconsRight = false
                     actionIconsOverflowRight = false
-                    actionItemCount=1
+                    actionItemCount = 1
                 }
                 PersianButton.Primary(text = "Right Icon") {
                     actionButtonRight = false
                     actionIconRight = true
                     actionIconsRight = false
                     actionIconsOverflowRight = false
-                    actionItemCount=1
+                    actionItemCount = 1
                 }
                 PersianButton.Primary(text = "Right Icons") {
                     actionButtonRight = false
                     actionIconRight = false
                     actionIconsRight = true
                     actionIconsOverflowRight = false
-                    actionItemCount=3
+                    actionItemCount = 3
                 }
                 PersianButton.Primary(text = "Right Icons Overflow") {
                     actionButtonRight = false
                     actionIconRight = false
                     actionIconsRight = false
                     actionIconsOverflowRight = true
-                    actionItemCount=3
+                    actionItemCount = 3
                 }
             }
         }
