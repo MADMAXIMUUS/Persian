@@ -13,9 +13,9 @@ import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import ru.rabbit.persian.snackbar.PersianSnackbar
-import ru.rabbit.persian.snackbar.PersianSnackbarVisuals
-import ru.rabbit.persian.topAppBar.PersianTopAppBar
+import io.github.madmaximuus.persian.snackbar.PersianSnackbar
+import io.github.madmaximuus.persian.snackbar.PersianSnackbarVisuals
+import io.github.madmaximuus.persian.topAppBar.PersianTopAppBar
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

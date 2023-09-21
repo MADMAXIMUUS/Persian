@@ -66,40 +66,66 @@ object ActionSheet : Screen {
                     io.github.madmaximuus.persian.actionSheet.ActionItem(
                         text = "Action 1",
                         leadingIcon = MaterialTheme.icons.edit,
-                        onClick = {}),
+                        onClick = {
+                            it::triggerAnimatedDismiss.invoke()
+                        }),
                     io.github.madmaximuus.persian.actionSheet.ActionItem(
                         text = "Action 2",
                         leadingIcon = MaterialTheme.icons.edit,
-                        onClick = {}),
+                        onClick = {
+                            it::triggerAnimatedDismiss.invoke()
+                        }
+                    ),
                     io.github.madmaximuus.persian.actionSheet.ActionItem(
                         text = "Action 3",
                         leadingIcon = MaterialTheme.icons.edit,
-                        onClick = {}),
+                        onClick = {
+                            it::triggerAnimatedDismiss.invoke()
+                        }
+                    ),
                     io.github.madmaximuus.persian.actionSheet.ActionItem(
                         text = "Action 4",
                         leadingIcon = MaterialTheme.icons.edit,
-                        onClick = {}),
+                        onClick = {
+                            it::triggerAnimatedDismiss.invoke()
+                        }
+                    ),
                     io.github.madmaximuus.persian.actionSheet.ActionItem(
                         text = "Action 5",
                         leadingIcon = MaterialTheme.icons.edit,
-                        onClick = {}),
+                        onClick = {
+                            it::triggerAnimatedDismiss.invoke()
+                        }
+                    ),
                     io.github.madmaximuus.persian.actionSheet.ActionItem(
                         text = "Action 6",
                         leadingIcon = MaterialTheme.icons.edit,
-                        onClick = {}),
+                        onClick = {
+
+                        }
+                    ),
                     io.github.madmaximuus.persian.actionSheet.ActionItem(
                         text = "Action 7",
                         leadingIcon = MaterialTheme.icons.edit,
-                        onClick = {}),
+                        onClick = {
+                            it::triggerAnimatedDismiss.invoke()
+                        }
+                    ),
                     io.github.madmaximuus.persian.actionSheet.ActionItem(
                         text = "Action 8",
                         leadingIcon = MaterialTheme.icons.edit,
-                        onClick = {}),
+                        onClick = {
+                            it::triggerAnimatedDismiss.invoke()
+                        }
+                    ),
                     io.github.madmaximuus.persian.actionSheet.ActionItem(
                         text = "Action 9",
                         leadingIcon = MaterialTheme.icons.edit,
                         negative = true,
-                        onClick = {}),
+                        onClick = {
+                            it::triggerAnimatedDismiss.invoke()
+                        }
+                    ),
                 ),
                 onDismissRequest = { needShow = false }
             )

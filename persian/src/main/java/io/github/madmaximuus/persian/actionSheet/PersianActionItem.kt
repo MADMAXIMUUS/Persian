@@ -26,6 +26,7 @@ object PersianActionItem {
     fun Primary(
         modifier: Modifier = Modifier,
         actionItem: ActionItem,
+        animatedTransitionDialogHelper: AnimatedTransitionDialogHelper,
         iconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
         textColor: Color = MaterialTheme.extendedColorScheme.onSurface
     ) {
@@ -34,7 +35,9 @@ object PersianActionItem {
                 .fillMaxWidth()
                 .clickable(
                     enabled = actionItem.enabled,
-                    onClick = actionItem.onClick,
+                    onClick = {
+                        actionItem.onClick(animatedTransitionDialogHelper)
+                    },
                     role = Role.Button
                 )
                 .padding(
@@ -83,5 +86,5 @@ data class ActionItem(
     val leadingIcon: Painter? = null,
     val enabled: Boolean = true,
     val negative: Boolean = false,
-    val onClick: () -> Unit
+    val onClick: (AnimatedTransitionDialogHelper) -> Unit
 )
