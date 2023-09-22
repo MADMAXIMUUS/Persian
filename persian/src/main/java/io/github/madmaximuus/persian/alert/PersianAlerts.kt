@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -20,7 +22,6 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import io.github.madmaximuus.persian.buttons.PersianButton
 import io.github.madmaximuus.persian.buttons.PersianButtonSizes
-import io.github.madmaximuus.persian.dividers.PersianHorizontalDividers
 import io.github.madmaximuus.persian.foundation.elevation
 import io.github.madmaximuus.persian.foundation.spacing
 
@@ -33,6 +34,7 @@ object PersianAlerts {
         actions: List<AlertAction>,
         onDismiss: () -> Unit
     ) {
+        validateOnlyActionItems(actions)
         Dialog(
             onDismissRequest = onDismiss,
             properties = DialogProperties(
@@ -53,7 +55,8 @@ object PersianAlerts {
                         Column(
                             modifier = modifier
                                 .fillMaxWidth()
-                                .padding(MaterialTheme.spacing.large),
+                                .padding(MaterialTheme.spacing.large)
+                                .verticalScroll(rememberScrollState()),
                             horizontalAlignment = Alignment.CenterHorizontally,
                             content = {
                                 actions.forEach { action ->
@@ -84,6 +87,7 @@ object PersianAlerts {
         onDismiss: () -> Unit,
         content: (@Composable () -> Unit)? = null
     ) {
+        validateActionItems(actions)
         Dialog(
             onDismissRequest = onDismiss,
             properties = DialogProperties(
@@ -114,8 +118,8 @@ object PersianAlerts {
                                         .wrapContentHeight()
                                         .fillMaxWidth()
                                         .padding(
-                                            start = MaterialTheme.spacing.extraExtraLarge,
-                                            end = MaterialTheme.spacing.extraExtraLarge,
+                                            start = MaterialTheme.spacing.extraLarge,
+                                            end = MaterialTheme.spacing.extraLarge,
                                             top = MaterialTheme.spacing.extraExtraLarge,
                                             bottom = MaterialTheme.spacing.extraSmall
                                         ),
@@ -141,11 +145,11 @@ object PersianAlerts {
                                         Text(
                                             text = it,
                                             style = MaterialTheme.typography.bodyMedium,
-                                            color = colors.descriptionColor
+                                            color = colors.descriptionColor,
+                                            textAlign = TextAlign.Justify
                                         )
                                     }
                                 }
-                                if (content != null) PersianHorizontalDividers.Inset()
                                 content?.invoke()
                                 Row(
                                     modifier = Modifier
@@ -172,6 +176,18 @@ object PersianAlerts {
                 )
             }
         )
+    }
+
+    private fun validateActionItems(actions: List<AlertAction>) {
+        if (actions.size > 3)
+            throw IllegalArgumentException("There should be no more than 3 actions")
+        else if (actions.isEmpty())
+            throw IllegalArgumentException("Actions must have at least 1 item")
+    }
+
+    private fun validateOnlyActionItems(actions: List<AlertAction>) {
+        if (actions.size < 2)
+            throw IllegalArgumentException("Actions must have at least 2 items")
     }
 }
 

@@ -28,7 +28,7 @@ object PersianAlertsColors {
         backgroundColor: Color = MaterialTheme.extendedColorScheme
             .surfaceColorAtElevation(MaterialTheme.elevation.small),
         titleColor: Color = MaterialTheme.extendedColorScheme.onSurface,
-        descriptionColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
+        descriptionColor: Color = MaterialTheme.extendedColorScheme.onSurface,
         iconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
         actionColor: ButtonColors = PersianButtonColors
             .primary(style = PersianComponentStyle.STANDARD)
