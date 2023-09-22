@@ -92,6 +92,7 @@ object PersianActionSheet {
         modifier: Modifier = Modifier,
         actions: List<ActionItem>,
         header: @Composable (PersianActionSheetHeader.() -> Unit)? = null,
+        itemColors: ActionItemColors = PersianActionItemColors.primary(),
         onDismissRequest: () -> Unit
     ) {
         val onDismissSharedFlow: MutableSharedFlow<Any> = remember { MutableSharedFlow() }
@@ -135,7 +136,7 @@ object PersianActionSheet {
                             .padding(
                                 start = MaterialTheme.spacing.large,
                                 end = MaterialTheme.spacing.large,
-                                bottom = 0.dp,
+                                bottom = MaterialTheme.spacing.extraSmall,
                                 top = 0.dp
                             ),
                         shape = MaterialTheme.shapes.large,
@@ -154,6 +155,7 @@ object PersianActionSheet {
                                         coroutineScope,
                                         onDismissSharedFlow
                                     ),
+                                    itemColors = itemColors,
                                     actionItem = it,
                                 )
                             }
