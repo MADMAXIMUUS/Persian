@@ -7,15 +7,15 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.iconBox.IconBoxSize
+import io.github.madmaximuus.persian.iconBox.PersianIconBoxSize
 
 @Immutable
 data class BannerSizes(
     val cornerRadius: Shape,
     val textStyle: TextStyle,
-    val iconSize: Dp,
+    val iconSize: IconBoxSize,
     val contentPadding: PaddingValues
 )
 
@@ -25,7 +25,7 @@ object PersianBannerSizes {
     fun large(
         cornerRadius: Shape = MaterialTheme.shapes.large,
         textStyle: TextStyle = MaterialTheme.typography.bodySmall,
-        iconSize: Dp = 24.dp,
+        iconSize: IconBoxSize = PersianIconBoxSize.large(),
         contentPadding: PaddingValues = PaddingValues(
             all = MaterialTheme.spacing.medium
         )
