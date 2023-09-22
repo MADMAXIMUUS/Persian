@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -24,6 +23,8 @@ import io.github.madmaximuus.persian.buttons.PersianButton
 import io.github.madmaximuus.persian.buttons.PersianButtonSizes
 import io.github.madmaximuus.persian.foundation.elevation
 import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.iconBox.PersianIconBox
+import io.github.madmaximuus.persian.iconBox.PersianIconBoxColors
 
 object PersianAlerts {
 
@@ -128,10 +129,11 @@ object PersianAlerts {
                                         .spacedBy(MaterialTheme.spacing.large),
                                 ) {
                                     icon?.let {
-                                        Icon(
-                                            painter = it,
-                                            contentDescription = "",
-                                            tint = colors.iconColor
+                                        PersianIconBox.Primary(
+                                            icon = it,
+                                            colors = PersianIconBoxColors.primary(
+                                                defaultColor = colors.iconColor
+                                            )
                                         )
                                     }
                                     Text(
