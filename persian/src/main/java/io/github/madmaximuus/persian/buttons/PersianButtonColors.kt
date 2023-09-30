@@ -3,266 +3,117 @@ package io.github.madmaximuus.persian.buttons
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.State
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.graphics.Color
-import io.github.madmaximuus.persian.foundation.PersianComponentStyle
-import io.github.madmaximuus.persian.foundation.PersianContentStateDisabled
 import io.github.madmaximuus.persian.foundation.PersianStatesDisabled
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
 
 @Immutable
-data class ButtonColors(
+class ButtonColors(
     val contentColor: Color,
     val containerColor: Color,
     val disabledContentColor: Color,
     val disabledContainerColor: Color
 ) {
-    fun contentColor(enabled: Boolean) = if (enabled) contentColor else disabledContentColor
+    @Composable
+    fun contentColor(enabled: Boolean): State<Color> {
+        val targetValue = when {
+            !enabled -> disabledContentColor
+            else -> contentColor
+        }
 
-    fun containerColor(enabled: Boolean) = if (enabled) containerColor else disabledContainerColor
+        return rememberUpdatedState(targetValue)
+    }
+
+    @Composable
+    fun containerColor(enabled: Boolean): State<Color> {
+        val targetValue = when {
+            !enabled -> disabledContainerColor
+            else -> containerColor
+        }
+
+        return rememberUpdatedState(targetValue)
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || other !is ButtonColors) return false
+
+        if (contentColor != other.contentColor) return false
+        if (containerColor != other.containerColor) return false
+        if (disabledContentColor != other.disabledContentColor) return false
+        if (disabledContainerColor != other.disabledContainerColor) return false
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = contentColor.hashCode()
+        result = 31 * result + containerColor.hashCode()
+        result = 31 * result + disabledContentColor.hashCode()
+        result = 31 * result + disabledContainerColor.hashCode()
+        return result
+    }
 }
 
 object PersianButtonColors {
 
     @Composable
     fun primary(
-        style: PersianComponentStyle,
         containerColor: Color = MaterialTheme.extendedColorScheme.primary,
         contentColor: Color = MaterialTheme.extendedColorScheme.onPrimary,
         disabledContainerColor: Color = MaterialTheme.extendedColorScheme.onSurface
             .copy(alpha = PersianStatesDisabled),
         disabledContentColor: Color = MaterialTheme.extendedColorScheme.onSurface
             .copy(alpha = PersianStatesDisabled),
-    ): ButtonColors = remember(
-        containerColor,
-        contentColor,
-        disabledContainerColor,
-        disabledContentColor
-    ) {
-        when (style) {
-            PersianComponentStyle.FILL -> ButtonColors(
-                containerColor = containerColor,
-                contentColor = contentColor,
-                disabledContainerColor = disabledContainerColor,
-                disabledContentColor = disabledContentColor
-            )
-
-            PersianComponentStyle.OUTLINED -> ButtonColors(
-                containerColor = Color.Transparent,
-                contentColor = containerColor,
-                disabledContainerColor = Color.Transparent,
-                disabledContentColor = disabledContainerColor
-            )
-
-            PersianComponentStyle.STANDARD -> ButtonColors(
-                containerColor = Color.Transparent,
-                contentColor = containerColor,
-                disabledContainerColor = Color.Transparent,
-                disabledContentColor = disabledContainerColor
-            )
-
-            else -> {
-                ButtonColors(
-                    containerColor = containerColor,
-                    contentColor = contentColor,
-                    disabledContainerColor = disabledContainerColor,
-                    disabledContentColor = disabledContentColor
-                )
-            }
-        }
-    }
-
+    ): ButtonColors = ButtonColors(
+        containerColor = containerColor,
+        contentColor = contentColor,
+        disabledContainerColor = disabledContainerColor,
+        disabledContentColor = disabledContentColor
+    )
 
     @Composable
     fun secondary(
-        style: PersianComponentStyle,
-        containerColor: Color = MaterialTheme.extendedColorScheme.secondary,
-        contentColor: Color = MaterialTheme.extendedColorScheme.onSecondary,
+        containerColor: Color = MaterialTheme.extendedColorScheme.primaryContainer,
+        contentColor: Color = MaterialTheme.extendedColorScheme.onPrimaryContainer,
         disabledContainerColor: Color = MaterialTheme.extendedColorScheme.onSurface
             .copy(alpha = PersianStatesDisabled),
         disabledContentColor: Color = MaterialTheme.extendedColorScheme.onSurface
             .copy(alpha = PersianStatesDisabled),
-    ): ButtonColors = remember(
-        containerColor,
-        contentColor,
-        disabledContainerColor,
-        disabledContentColor
-    ) {
-        when (style) {
-            PersianComponentStyle.FILL -> ButtonColors(
-                containerColor = containerColor,
-                contentColor = contentColor,
-                disabledContainerColor = disabledContainerColor,
-                disabledContentColor = disabledContentColor
-            )
-
-            PersianComponentStyle.OUTLINED -> ButtonColors(
-                containerColor = Color.Transparent,
-                contentColor = containerColor,
-                disabledContainerColor = Color.Transparent,
-                disabledContentColor = disabledContainerColor
-            )
-
-            PersianComponentStyle.STANDARD -> ButtonColors(
-                containerColor = Color.Transparent,
-                contentColor = containerColor,
-                disabledContainerColor = Color.Transparent,
-                disabledContentColor = disabledContainerColor
-            )
-
-            else -> {
-                ButtonColors(
-                    containerColor = containerColor,
-                    contentColor = contentColor,
-                    disabledContainerColor = disabledContainerColor,
-                    disabledContentColor = disabledContentColor
-                )
-            }
-        }
-    }
+    ): ButtonColors = ButtonColors(
+        containerColor = containerColor,
+        contentColor = contentColor,
+        disabledContainerColor = disabledContainerColor,
+        disabledContentColor = disabledContentColor
+    )
 
     @Composable
     fun tertiary(
-        style: PersianComponentStyle,
-        containerColor: Color = MaterialTheme.extendedColorScheme.tertiary,
-        contentColor: Color = MaterialTheme.extendedColorScheme.onTertiary,
-        disabledContainerColor: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(alpha = PersianStatesDisabled),
+        containerColor: Color = Color.Transparent,
+        contentColor: Color = MaterialTheme.extendedColorScheme.primary,
+        disabledContainerColor: Color = Color.Transparent,
         disabledContentColor: Color = MaterialTheme.extendedColorScheme.onSurface
             .copy(alpha = PersianStatesDisabled),
-    ): ButtonColors = remember(
-        containerColor,
-        contentColor,
-        disabledContainerColor,
-        disabledContentColor
-    ) {
-        when (style) {
-            PersianComponentStyle.FILL -> ButtonColors(
-                containerColor = containerColor,
-                contentColor = contentColor,
-                disabledContainerColor = disabledContainerColor,
-                disabledContentColor = disabledContentColor
-            )
-
-            PersianComponentStyle.OUTLINED -> ButtonColors(
-                containerColor = Color.Transparent,
-                contentColor = containerColor,
-                disabledContainerColor = Color.Transparent,
-                disabledContentColor = disabledContainerColor
-            )
-
-            PersianComponentStyle.STANDARD -> ButtonColors(
-                containerColor = Color.Transparent,
-                contentColor = containerColor,
-                disabledContainerColor = Color.Transparent,
-                disabledContentColor = disabledContainerColor
-            )
-
-            else -> {
-                ButtonColors(
-                    containerColor = containerColor,
-                    contentColor = contentColor,
-                    disabledContainerColor = disabledContainerColor,
-                    disabledContentColor = disabledContentColor
-                )
-            }
-        }
-    }
+    ): ButtonColors = ButtonColors(
+        containerColor = containerColor,
+        contentColor = contentColor,
+        disabledContainerColor = disabledContainerColor,
+        disabledContentColor = disabledContentColor
+    )
 
     @Composable
-    fun negative(
-        style: PersianComponentStyle,
-        containerColor: Color = MaterialTheme.extendedColorScheme.error,
-        contentColor: Color = MaterialTheme.extendedColorScheme.onError,
+    fun outline(
+        containerColor: Color = Color.Transparent,
+        contentColor: Color = MaterialTheme.extendedColorScheme.primary,
         disabledContainerColor: Color = MaterialTheme.extendedColorScheme.onSurface
             .copy(alpha = PersianStatesDisabled),
         disabledContentColor: Color = MaterialTheme.extendedColorScheme.onSurface
             .copy(alpha = PersianStatesDisabled),
-    ): ButtonColors = remember(
-        containerColor,
-        contentColor,
-        disabledContainerColor,
-        disabledContentColor
-    ) {
-        when (style) {
-            PersianComponentStyle.FILL -> ButtonColors(
-                containerColor = containerColor,
-                contentColor = contentColor,
-                disabledContainerColor = disabledContainerColor,
-                disabledContentColor = disabledContentColor
-            )
-
-            PersianComponentStyle.OUTLINED -> ButtonColors(
-                containerColor = Color.Transparent,
-                contentColor = containerColor,
-                disabledContainerColor = Color.Transparent,
-                disabledContentColor = disabledContainerColor
-            )
-
-            PersianComponentStyle.STANDARD -> ButtonColors(
-                containerColor = Color.Transparent,
-                contentColor = containerColor,
-                disabledContainerColor = Color.Transparent,
-                disabledContentColor = disabledContainerColor
-            )
-
-            else -> {
-                ButtonColors(
-                    containerColor = containerColor,
-                    contentColor = contentColor,
-                    disabledContainerColor = disabledContainerColor,
-                    disabledContentColor = disabledContentColor
-                )
-            }
-        }
-    }
-
-    @Composable
-    fun neutral(
-        style: PersianComponentStyle,
-        containerColor: Color = MaterialTheme.extendedColorScheme.inverseSurface,
-        contentColor: Color = MaterialTheme.extendedColorScheme.inverseOnSurface,
-        disabledContainerColor: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(alpha = PersianStatesDisabled),
-        disabledContentColor: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(alpha = PersianContentStateDisabled),
-    ): ButtonColors = remember(
-        containerColor,
-        contentColor,
-        disabledContainerColor,
-        disabledContentColor
-    ) {
-        when (style) {
-            PersianComponentStyle.FILL -> ButtonColors(
-                containerColor = containerColor,
-                contentColor = contentColor,
-                disabledContainerColor = disabledContainerColor,
-                disabledContentColor = disabledContentColor
-            )
-
-            PersianComponentStyle.OUTLINED -> ButtonColors(
-                containerColor = Color.Transparent,
-                contentColor = containerColor,
-                disabledContainerColor = Color.Transparent,
-                disabledContentColor = disabledContainerColor
-            )
-
-            PersianComponentStyle.STANDARD -> ButtonColors(
-                containerColor = Color.Transparent,
-                contentColor = containerColor,
-                disabledContainerColor = Color.Transparent,
-                disabledContentColor = disabledContainerColor
-            )
-
-            else -> {
-                ButtonColors(
-                    containerColor = containerColor,
-                    contentColor = contentColor,
-                    disabledContainerColor = disabledContainerColor,
-                    disabledContentColor = disabledContentColor
-                )
-            }
-        }
-    }
-
+    ): ButtonColors = ButtonColors(
+        containerColor = containerColor,
+        contentColor = contentColor,
+        disabledContainerColor = disabledContainerColor,
+        disabledContentColor = disabledContentColor
+    )
 }

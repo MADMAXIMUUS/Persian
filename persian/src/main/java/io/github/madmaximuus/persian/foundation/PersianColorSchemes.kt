@@ -257,39 +257,39 @@ class ExtendedColorScheme(
 
     override fun toString(): String {
         return "ColorScheme(" +
-                "primary=$primary" +
-                "onPrimary=$onPrimary" +
-                "primaryContainer=$primaryContainer" +
-                "onPrimaryContainer=$onPrimaryContainer" +
-                "inversePrimary=$inversePrimary" +
-                "secondary=$secondary" +
-                "onSecondary=$onSecondary" +
-                "secondaryContainer=$secondaryContainer" +
-                "onSecondaryContainer=$onSecondaryContainer" +
-                "tertiary=$tertiary" +
-                "onTertiary=$onTertiary" +
-                "tertiaryContainer=$tertiaryContainer" +
-                "onTertiaryContainer=$onTertiaryContainer" +
-                "background=$background" +
-                "onBackground=$onBackground" +
-                "surface=$surface" +
-                "onSurface=$onSurface" +
-                "surfaceVariant=$surfaceVariant" +
-                "onSurfaceVariant=$onSurfaceVariant" +
-                "surfaceTint=$surfaceTint" +
-                "inverseSurface=$inverseSurface" +
-                "inverseOnSurface=$inverseOnSurface" +
-                "error=$error" +
-                "onError=$onError" +
-                "errorContainer=$errorContainer" +
-                "onErrorContainer=$onErrorContainer" +
-                "correct=$correct" +
-                "onCorrect=$onCorrect" +
-                "correctContainer=$correctContainer" +
-                "onCorrectContainer=$onCorrectContainer" +
-                "outline=$outline" +
-                "outlineVariant=$outlineVariant" +
-                "scrim=$scrim" +
+                "\tprimary = $primary\n" +
+                "\tonPrimary = $onPrimary\n" +
+                "\tprimaryContainer = $primaryContainer\n" +
+                "\tonPrimaryContainer = $onPrimaryContainer\n" +
+                "\tinversePrimary = $inversePrimary\n" +
+                "\tsecondary = $secondary\n" +
+                "\tonSecondary = $onSecondary\n" +
+                "\tsecondaryContainer = $secondaryContainer\n" +
+                "\tonSecondaryContainer = $onSecondaryContainer\n" +
+                "\ttertiary = $tertiary\n" +
+                "\tonTertiary = $onTertiary\n" +
+                "\ttertiaryContainer = $tertiaryContainer\n" +
+                "\tonTertiaryContainer = $onTertiaryContainer\n" +
+                "\tbackground = $background\n" +
+                "\tonBackground = $onBackground\n" +
+                "\tsurface = $surface\n" +
+                "\tonSurface = $onSurface\n" +
+                "\tsurfaceVariant = $surfaceVariant\n" +
+                "\tonSurfaceVariant = $onSurfaceVariant\n" +
+                "\tsurfaceTint = $surfaceTint\n" +
+                "\tinverseSurface = $inverseSurface\n" +
+                "\tinverseOnSurface = $inverseOnSurface\n" +
+                "\terror = $error\n" +
+                "\tonError = $onError\n" +
+                "\terrorContainer = $errorContainer\n" +
+                "\tonErrorContainer = $onErrorContainer\n" +
+                "\tcorrect = $correct\n" +
+                "\tonCorrect = $onCorrect\n" +
+                "\tcorrectContainer = $correctContainer\n" +
+                "\tonCorrectContainer = $onCorrectContainer\n" +
+                "\toutline = $outline\n" +
+                "\toutlineVariant = $outlineVariant\n" +
+                "\tscrim=$scrim\n" +
                 ")"
     }
 }

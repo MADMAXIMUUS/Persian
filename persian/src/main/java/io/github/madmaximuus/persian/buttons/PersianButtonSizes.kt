@@ -5,16 +5,23 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.iconBox.IconBoxSize
+import io.github.madmaximuus.persian.iconBox.PersianIconBoxSize
+import io.github.madmaximuus.persian.progressBars.CircularProgressBarSizes
+import io.github.madmaximuus.persian.progressBars.PersianCircularProgressBarSize
 
 @Immutable
 data class ButtonSizes(
     val textStyle: TextStyle,
     val height: Dp,
-    val minWidth: Dp,
-    val iconSize: Dp,
+    val iconSize: IconBoxSize,
+    val loaderSize: CircularProgressBarSizes,
+    val shape: Shape,
     val contentPadding: PaddingValues,
 )
 
@@ -25,24 +32,28 @@ object PersianButtonSizes {
         loading: Boolean = false,
         fontSize: TextStyle = MaterialTheme.typography.titleSmall,
         height: Dp = 36.dp,
-        minWidth: Dp = 90.dp,
-        iconSize: Dp = 18.dp,
-        contentPadding: PaddingValues = if (loading) PaddingValues(
-            horizontal = 16.dp,
-            vertical = 4.dp
-        ) else PaddingValues(horizontal = 16.dp, vertical = 8.dp)
+        loaderSize: CircularProgressBarSizes = PersianCircularProgressBarSize.small(),
+        iconSize: IconBoxSize = PersianIconBoxSize.small(),
+        shape: Shape = MaterialTheme.shapes.medium,
+        contentPadding: PaddingValues = PaddingValues(
+            horizontal = MaterialTheme.spacing.large,
+            vertical = if (!loading) MaterialTheme.spacing.small
+            else 0.dp
+        )
     ): ButtonSizes = remember(
         fontSize,
         height,
-        minWidth,
+        loaderSize,
         iconSize,
+        shape,
         contentPadding
     ) {
         ButtonSizes(
             textStyle = fontSize,
             height = height,
-            minWidth = minWidth,
+            loaderSize = loaderSize,
             iconSize = iconSize,
+            shape = shape,
             contentPadding = contentPadding
         )
     }
@@ -52,24 +63,28 @@ object PersianButtonSizes {
         loading: Boolean = false,
         fontSize: TextStyle = MaterialTheme.typography.labelLarge,
         height: Dp = 44.dp,
-        minWidth: Dp = 98.dp,
-        iconSize: Dp = 20.dp,
-        contentPadding: PaddingValues = if (loading) PaddingValues(
-            horizontal = 20.dp,
-            vertical = 4.dp
-        ) else PaddingValues(horizontal = 20.dp, vertical = 12.dp)
+        loaderSize: CircularProgressBarSizes = PersianCircularProgressBarSize.medium(),
+        iconSize: IconBoxSize = PersianIconBoxSize.medium(),
+        shape: Shape = MaterialTheme.shapes.large,
+        contentPadding: PaddingValues = PaddingValues(
+            horizontal = MaterialTheme.spacing.extraLarge,
+            vertical = if (!loading) MaterialTheme.spacing.medium
+            else 0.dp
+        )
     ): ButtonSizes = remember(
         fontSize,
         height,
-        minWidth,
+        loaderSize,
         iconSize,
+        shape,
         contentPadding
     ) {
         ButtonSizes(
             textStyle = fontSize,
             height = height,
-            minWidth = minWidth,
+            loaderSize = loaderSize,
             iconSize = iconSize,
+            shape = shape,
             contentPadding = contentPadding
         )
     }
@@ -79,24 +94,28 @@ object PersianButtonSizes {
         loading: Boolean = false,
         fontSize: TextStyle = MaterialTheme.typography.titleMedium,
         height: Dp = 52.dp,
-        minWidth: Dp = 112.dp,
-        iconSize: Dp = 24.dp,
-        contentPadding: PaddingValues = if (loading) PaddingValues(
-            horizontal = 24.dp,
-            vertical = 4.dp
-        ) else PaddingValues(horizontal = 24.dp, vertical = 16.dp)
+        loaderSize: CircularProgressBarSizes = PersianCircularProgressBarSize.large(),
+        iconSize: IconBoxSize = PersianIconBoxSize.large(),
+        shape: Shape = MaterialTheme.shapes.large,
+        contentPadding: PaddingValues = PaddingValues(
+            horizontal = MaterialTheme.spacing.extraExtraLarge,
+            vertical = if (!loading) MaterialTheme.spacing.large
+            else 0.dp
+        )
     ): ButtonSizes = remember(
         fontSize,
         height,
-        minWidth,
+        loaderSize,
         iconSize,
+        shape,
         contentPadding
     ) {
         ButtonSizes(
             textStyle = fontSize,
             height = height,
-            minWidth = minWidth,
+            loaderSize = loaderSize,
             iconSize = iconSize,
+            shape = shape,
             contentPadding = contentPadding
         )
     }

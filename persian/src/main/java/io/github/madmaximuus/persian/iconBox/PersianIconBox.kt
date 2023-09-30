@@ -43,8 +43,7 @@ fun IconBoxPreview() {
         Surface {
             PersianIconBox.Primary(
                 icon = MaterialTheme.icons.error,
-                size = PersianIconBoxSize.extraExtraLarge(),
-                isError = true
+                size = PersianIconBoxSize.large(),
             )
         }
     }

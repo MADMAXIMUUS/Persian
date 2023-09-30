@@ -21,7 +21,6 @@ import io.github.madmaximuus.persian.actionSheet.PersianActionSheet
 import io.github.madmaximuus.persian.buttons.PersianButton
 import io.github.madmaximuus.persian.buttons.PersianButtonColors
 import io.github.madmaximuus.persian.buttons.PersianButtonSizes
-import io.github.madmaximuus.persian.foundation.PersianComponentStyle
 import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.foundation.spacing
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
@@ -58,7 +57,7 @@ object ActionSheet : Screen {
                     PersianButton.Primary(
                         text = "Show sheet",
                         size = PersianButtonSizes.large(),
-                        colors = PersianButtonColors.primary(style = PersianComponentStyle.FILL)
+                        colors = PersianButtonColors.primary()
                     ) {
                         needShow = true
                     }
@@ -66,7 +65,7 @@ object ActionSheet : Screen {
                     PersianButton.Primary(
                         text = "Show sheet with title",
                         size = PersianButtonSizes.large(),
-                        colors = PersianButtonColors.primary(style = PersianComponentStyle.FILL)
+                        colors = PersianButtonColors.primary()
                     ) {
                         needShowWithTitle = true
                     }

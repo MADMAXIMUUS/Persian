@@ -1,22 +1,25 @@
 package io.github.madmaximuus.persian.buttons
 
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
@@ -24,11 +27,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.foundation.PersianComponentStyle
+import io.github.madmaximuus.persian.foundation.PersianSubcomposeLayout
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.icons
-import io.github.madmaximuus.persian.foundation.spacing
-import io.github.madmaximuus.persian.progressBars.PersianCircularProgressBarSize
+import io.github.madmaximuus.persian.iconBox.PersianIconBox
+import io.github.madmaximuus.persian.iconBox.PersianIconBoxColors
 import io.github.madmaximuus.persian.progressBars.PersianProgressBar
 import io.github.madmaximuus.persian.progressBars.PersianProgressBarColors
 
@@ -38,321 +41,110 @@ object PersianButton {
     fun Primary(
         text: String,
         modifier: Modifier = Modifier,
-        icon: Painter? = null,
-        iconSide: IconSide = IconSide.LEFT,
+        leadingIcon: Painter? = null,
+        trailingIcon: Painter? = null,
         enabled: Boolean = true,
         loading: Boolean = false,
-        style: PersianComponentStyle = PersianComponentStyle.FILL,
-        colors: ButtonColors = PersianButtonColors.primary(style),
+        colors: ButtonColors = PersianButtonColors.primary(),
         size: ButtonSizes = PersianButtonSizes.medium(loading),
         onClick: () -> Unit
-    ) = when (style) {
-        PersianComponentStyle.FILL -> {
-            PersianFillButtonImpl(
-                modifier = modifier,
-                text = text,
-                enabled = enabled,
-                colors = colors,
-                loading = loading,
-                size = size,
-                icon = icon,
-                iconSide = iconSide,
-                onClick = onClick
-            )
-        }
-
-        PersianComponentStyle.OUTLINED -> {
-            PersianOutlineButtonImpl(
-                modifier = modifier,
-                text = text,
-                enabled = enabled,
-                colors = colors,
-                loading = loading,
-                size = size,
-                icon = icon,
-                iconSide = iconSide,
-                onClick = onClick
-            )
-        }
-
-        PersianComponentStyle.STANDARD -> {
-            PersianTextButtonImpl(
-                modifier = modifier,
-                text = text,
-                enabled = enabled,
-                colors = colors,
-                loading = loading,
-                size = size,
-                icon = icon,
-                iconSide = iconSide,
-                onClick = onClick
-            )
-        }
-
-        else -> {}
-    }
+    ) = PersianFillButtonImpl(
+        modifier = modifier,
+        text = text,
+        enabled = enabled,
+        colors = colors,
+        loading = loading,
+        size = size,
+        leadingIcon = leadingIcon,
+        trailingIcon = trailingIcon,
+        onClick = onClick
+    )
 
     @Composable
     fun Secondary(
         text: String,
         modifier: Modifier = Modifier,
-        icon: Painter? = null,
-        iconSide: IconSide = IconSide.LEFT,
+        leadingIcon: Painter? = null,
+        trailingIcon: Painter? = null,
         enabled: Boolean = true,
         loading: Boolean = false,
-        style: PersianComponentStyle = PersianComponentStyle.FILL,
-        colors: ButtonColors = PersianButtonColors.secondary(style),
+        colors: ButtonColors = PersianButtonColors.secondary(),
         size: ButtonSizes = PersianButtonSizes.medium(loading),
         onClick: () -> Unit
-    ) = when (style) {
-        PersianComponentStyle.FILL -> {
-            PersianFillButtonImpl(
-                modifier = modifier,
-                text = text,
-                enabled = enabled,
-                colors = colors,
-                loading = loading,
-                size = size,
-                icon = icon,
-                iconSide = iconSide,
-                onClick = onClick
-            )
-        }
-
-        PersianComponentStyle.OUTLINED -> {
-            PersianOutlineButtonImpl(
-                modifier = modifier,
-                text = text,
-                enabled = enabled,
-                colors = colors,
-                loading = loading,
-                size = size,
-                icon = icon,
-                iconSide = iconSide,
-                onClick = onClick
-            )
-        }
-
-        PersianComponentStyle.STANDARD -> {
-            PersianTextButtonImpl(
-                modifier = modifier,
-                text = text,
-                enabled = enabled,
-                colors = colors,
-                loading = loading,
-                size = size,
-                icon = icon,
-                iconSide = iconSide,
-                onClick = onClick
-            )
-        }
-
-        else -> {}
-    }
+    ) = PersianFillButtonImpl(
+        modifier = modifier,
+        text = text,
+        enabled = enabled,
+        colors = colors,
+        loading = loading,
+        size = size,
+        leadingIcon = leadingIcon,
+        trailingIcon = trailingIcon,
+        onClick = onClick
+    )
 
     @Composable
     fun Tertiary(
         text: String,
         modifier: Modifier = Modifier,
-        icon: Painter? = null,
-        iconSide: IconSide = IconSide.LEFT,
+        leadingIcon: Painter? = null,
+        trailingIcon: Painter? = null,
         enabled: Boolean = true,
         loading: Boolean = false,
-        style: PersianComponentStyle = PersianComponentStyle.FILL,
-        colors: ButtonColors = PersianButtonColors.tertiary(style),
+        colors: ButtonColors = PersianButtonColors.tertiary(),
         size: ButtonSizes = PersianButtonSizes.medium(loading),
         onClick: () -> Unit
-    ) = when (style) {
-        PersianComponentStyle.FILL -> {
-            PersianFillButtonImpl(
-                modifier = modifier,
-                text = text,
-                enabled = enabled,
-                colors = colors,
-                loading = loading,
-                size = size,
-                icon = icon,
-                iconSide = iconSide,
-                onClick = onClick
-            )
-        }
-
-        PersianComponentStyle.OUTLINED -> {
-            PersianOutlineButtonImpl(
-                modifier = modifier,
-                text = text,
-                enabled = enabled,
-                colors = colors,
-                loading = loading,
-                size = size,
-                icon = icon,
-                iconSide = iconSide,
-                onClick = onClick
-            )
-        }
-
-        PersianComponentStyle.STANDARD -> {
-            PersianTextButtonImpl(
-                modifier = modifier,
-                text = text,
-                enabled = enabled,
-                colors = colors,
-                loading = loading,
-                size = size,
-                icon = icon,
-                iconSide = iconSide,
-                onClick = onClick
-            )
-        }
-
-        else -> {}
-    }
+    ) = PersianTextButtonImpl(
+        modifier = modifier,
+        text = text,
+        enabled = enabled,
+        colors = colors,
+        loading = loading,
+        size = size,
+        leadingIcon = leadingIcon,
+        trailingIcon = trailingIcon,
+        onClick = onClick
+    )
 
     @Composable
-    fun Negative(
+    fun Outline(
         text: String,
         modifier: Modifier = Modifier,
-        icon: Painter? = null,
-        iconSide: IconSide = IconSide.LEFT,
+        leadingIcon: Painter? = null,
+        trailingIcon: Painter? = null,
         enabled: Boolean = true,
         loading: Boolean = false,
-        style: PersianComponentStyle = PersianComponentStyle.FILL,
-        colors: ButtonColors = PersianButtonColors.negative(style),
+        colors: ButtonColors = PersianButtonColors.outline(),
         size: ButtonSizes = PersianButtonSizes.medium(loading),
         onClick: () -> Unit
-    ) = when (style) {
-        PersianComponentStyle.FILL -> {
-            PersianFillButtonImpl(
-                modifier = modifier,
-                text = text,
-                enabled = enabled,
-                colors = colors,
-                loading = loading,
-                size = size,
-                icon = icon,
-                iconSide = iconSide,
-                onClick = onClick
-            )
-        }
-
-        PersianComponentStyle.OUTLINED -> {
-            PersianOutlineButtonImpl(
-                modifier = modifier,
-                text = text,
-                enabled = enabled,
-                colors = colors,
-                loading = loading,
-                size = size,
-                icon = icon,
-                iconSide = iconSide,
-                onClick = onClick
-            )
-        }
-
-        PersianComponentStyle.STANDARD -> {
-            PersianTextButtonImpl(
-                modifier = modifier,
-                text = text,
-                enabled = enabled,
-                colors = colors,
-                loading = loading,
-                size = size,
-                icon = icon,
-                iconSide = iconSide,
-                onClick = onClick
-            )
-        }
-
-        else -> {}
-    }
-
-    @Composable
-    fun Neutral(
-        text: String,
-        modifier: Modifier = Modifier,
-        icon: Painter? = null,
-        iconSide: IconSide = IconSide.LEFT,
-        enabled: Boolean = true,
-        loading: Boolean = false,
-        style: PersianComponentStyle = PersianComponentStyle.FILL,
-        colors: ButtonColors = PersianButtonColors.neutral(style),
-        size: ButtonSizes = PersianButtonSizes.medium(loading),
-        onClick: () -> Unit
-    ) = when (style) {
-        PersianComponentStyle.FILL -> {
-            PersianFillButtonImpl(
-                modifier = modifier,
-                text = text,
-                enabled = enabled,
-                colors = colors,
-                loading = loading,
-                size = size,
-                icon = icon,
-                iconSide = iconSide,
-                onClick = onClick
-            )
-        }
-
-        PersianComponentStyle.OUTLINED -> {
-            PersianOutlineButtonImpl(
-                modifier = modifier,
-                text = text,
-                enabled = enabled,
-                colors = colors,
-                loading = loading,
-                size = size,
-                icon = icon,
-                iconSide = iconSide,
-                onClick = onClick
-            )
-        }
-
-        PersianComponentStyle.STANDARD -> {
-            PersianTextButtonImpl(
-                modifier = modifier,
-                text = text,
-                enabled = enabled,
-                colors = colors,
-                loading = loading,
-                size = size,
-                icon = icon,
-                iconSide = iconSide,
-                onClick = onClick
-            )
-        }
-
-        else -> {}
-    }
+    ) = PersianOutlineButtonImpl(
+        modifier = modifier,
+        text = text,
+        enabled = enabled,
+        colors = colors,
+        loading = loading,
+        size = size,
+        leadingIcon = leadingIcon,
+        trailingIcon = trailingIcon,
+        onClick = onClick
+    )
 }
-
-enum class IconSide { LEFT, RIGHT }
 
 @Composable
 private fun PersianFillButtonImpl(
     text: String,
     modifier: Modifier = Modifier,
-    icon: Painter? = null,
-    iconSide: IconSide? = null,
+    leadingIcon: Painter? = null,
+    trailingIcon: Painter? = null,
     enabled: Boolean,
     colors: ButtonColors,
     loading: Boolean,
     size: ButtonSizes,
     onClick: () -> Unit
 ) {
-    val iconButton = @Composable {
-        icon?.let {
-            Icon(
-                painter = icon,
-                contentDescription = null,
-                modifier = Modifier.size(size.iconSize),
-                tint = colors.contentColor(enabled)
-            )
-        }
-    }
     Button(
         enabled = enabled,
         modifier = modifier
-            .widthIn(min = size.minWidth)
             .height(size.height),
         colors = ButtonDefaults
             .buttonColors(
@@ -361,42 +153,87 @@ private fun PersianFillButtonImpl(
                 disabledContentColor = colors.disabledContentColor,
                 disabledContainerColor = colors.disabledContainerColor
             ),
-        shape = MaterialTheme.shapes.large,
-        contentPadding = size.contentPadding,
+        shape = size.shape,
+        contentPadding = PaddingValues(0.dp),
         onClick = onClick
     ) {
-        if (loading && enabled) {
-            Box {
-                PersianProgressBar.Circular(
+        val textWithIcons = @Composable {
+            Row(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .padding(size.contentPadding),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                leadingIcon?.let {
+                    PersianIconBox.Primary(
+                        icon = it,
+                        colors = PersianIconBoxColors.primary(
+                            defaultColor = colors.contentColor,
+                            disabledColor = colors.disabledContentColor
+                        ),
+                        size = size.iconSize,
+                        enabled = enabled
+                    )
+                }
+                Box(
                     modifier = Modifier
-                        .padding(horizontal = MaterialTheme.spacing.small),
-                    sizes = when (size) {
-                        PersianButtonSizes.small(true) -> PersianCircularProgressBarSize.small()
-                        PersianButtonSizes.medium(true) -> PersianCircularProgressBarSize.medium()
-                        PersianButtonSizes.large(true) -> PersianCircularProgressBarSize.large()
-                        else -> PersianCircularProgressBarSize.small()
-                    },
+                        .padding(horizontal = 8.dp),
+                ) {
+                    Text(
+                        text = text,
+                        style = size.textStyle,
+                        overflow = TextOverflow.Ellipsis,
+                        textAlign = TextAlign.Center,
+                        color = colors.contentColor(enabled).value,
+                        maxLines = 1
+                    )
+                }
+                trailingIcon?.let {
+                    PersianIconBox.Primary(
+                        icon = it,
+                        colors = PersianIconBoxColors.primary(
+                            defaultColor = colors.contentColor,
+                            disabledColor = colors.disabledContentColor
+                        ),
+                        size = size.iconSize,
+                        enabled = enabled
+                    )
+                }
+            }
+        }
+
+        val loader = @Composable {
+            Box(
+                modifier = Modifier
+                    .fillMaxHeight(),
+                contentAlignment = Alignment.Center
+            ) {
+                PersianProgressBar.Circular(
+                    sizes = size.loaderSize,
                     colors = PersianProgressBarColors.primary(
                         backgroundColor = Color.Transparent,
-                        progressColor = colors.contentColor
+                        progressColor = colors.contentColor(true).value
                     )
                 )
             }
-        } else {
-            if (iconSide == IconSide.LEFT) iconButton()
-            Box {
-                Text(
-                    modifier = Modifier
-                        .padding(horizontal = 8.dp, vertical = 0.dp),
-                    text = text,
-                    style = size.textStyle,
-                    overflow = TextOverflow.Ellipsis,
-                    textAlign = TextAlign.Center,
-                    maxLines = 1
-                )
-            }
-            if (iconSide == IconSide.RIGHT) iconButton()
         }
+        PersianSubcomposeLayout(
+            mainContent = {
+                textWithIcons()
+            },
+            dependentContent = {
+                Box(
+                    modifier = Modifier
+                        .size(it),
+                    contentAlignment = Alignment.Center
+                ) {
+                    if (loading && enabled)
+                        loader()
+                    else
+                        textWithIcons()
+                }
+            }
+        )
     }
 }
 
@@ -404,29 +241,18 @@ private fun PersianFillButtonImpl(
 private fun PersianOutlineButtonImpl(
     text: String,
     modifier: Modifier = Modifier,
-    icon: Painter? = null,
-    iconSide: IconSide? = null,
+    leadingIcon: Painter? = null,
+    trailingIcon: Painter? = null,
     enabled: Boolean,
     colors: ButtonColors,
     loading: Boolean,
     size: ButtonSizes,
     onClick: () -> Unit
 ) {
-    val iconButton = @Composable {
-        icon?.let {
-            Icon(
-                painter = icon,
-                contentDescription = null,
-                modifier = Modifier.size(size.iconSize),
-                tint = colors.contentColor(enabled)
-            )
-        }
-    }
     OutlinedButton(
         enabled = enabled,
         modifier = modifier
-            .height(size.height)
-            .widthIn(min = size.minWidth),
+            .height(size.height),
         colors = ButtonDefaults
             .outlinedButtonColors(
                 contentColor = colors.contentColor,
@@ -434,43 +260,88 @@ private fun PersianOutlineButtonImpl(
                 disabledContentColor = colors.disabledContentColor,
                 disabledContainerColor = colors.disabledContainerColor
             ),
-        shape = MaterialTheme.shapes.large,
-        contentPadding = size.contentPadding,
+        shape = size.shape,
+        contentPadding = PaddingValues(0.dp),
         onClick = onClick,
-        border = BorderStroke(1.dp, colors.contentColor(enabled))
+        border = BorderStroke(1.dp, colors.contentColor(enabled).value)
     ) {
-        if (loading && enabled) {
-            Box {
-                PersianProgressBar.Circular(
+        val textWithIcons = @Composable {
+            Row(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .padding(size.contentPadding),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                leadingIcon?.let {
+                    PersianIconBox.Primary(
+                        icon = it,
+                        colors = PersianIconBoxColors.primary(
+                            defaultColor = colors.contentColor,
+                            disabledColor = colors.disabledContentColor
+                        ),
+                        size = size.iconSize,
+                        enabled = enabled
+                    )
+                }
+                Box(
                     modifier = Modifier
-                        .padding(horizontal = MaterialTheme.spacing.small),
-                    sizes = when (size) {
-                        PersianButtonSizes.small(true) -> PersianCircularProgressBarSize.small()
-                        PersianButtonSizes.medium(true) -> PersianCircularProgressBarSize.medium()
-                        PersianButtonSizes.large(true) -> PersianCircularProgressBarSize.large()
-                        else -> PersianCircularProgressBarSize.small()
-                    },
+                        .padding(horizontal = 8.dp),
+                ) {
+                    Text(
+                        text = text,
+                        style = size.textStyle,
+                        overflow = TextOverflow.Ellipsis,
+                        textAlign = TextAlign.Center,
+                        color = colors.contentColor(enabled).value,
+                        maxLines = 1
+                    )
+                }
+                trailingIcon?.let {
+                    PersianIconBox.Primary(
+                        icon = it,
+                        colors = PersianIconBoxColors.primary(
+                            defaultColor = colors.contentColor,
+                            disabledColor = colors.disabledContentColor
+                        ),
+                        size = size.iconSize,
+                        enabled = enabled
+                    )
+                }
+            }
+        }
+
+        val loader = @Composable {
+            Box(
+                modifier = Modifier
+                    .fillMaxHeight(),
+                contentAlignment = Alignment.Center
+            ) {
+                PersianProgressBar.Circular(
+                    sizes = size.loaderSize,
                     colors = PersianProgressBarColors.primary(
                         backgroundColor = Color.Transparent,
-                        progressColor = colors.contentColor
+                        progressColor = colors.contentColor(true).value
                     )
                 )
             }
-        } else {
-            if (iconSide == IconSide.LEFT) iconButton()
-            Box {
-                Text(
-                    modifier = Modifier
-                        .padding(horizontal = 8.dp, vertical = 0.dp),
-                    text = text,
-                    style = size.textStyle,
-                    overflow = TextOverflow.Ellipsis,
-                    textAlign = TextAlign.Center,
-                    maxLines = 1
-                )
-            }
-            if (iconSide == IconSide.RIGHT) iconButton()
         }
+        PersianSubcomposeLayout(
+            mainContent = {
+                textWithIcons()
+            },
+            dependentContent = {
+                Box(
+                    modifier = Modifier
+                        .size(it),
+                    contentAlignment = Alignment.Center
+                ) {
+                    if (loading && enabled)
+                        loader()
+                    else
+                        textWithIcons()
+                }
+            }
+        )
     }
 }
 
@@ -478,28 +349,17 @@ private fun PersianOutlineButtonImpl(
 private fun PersianTextButtonImpl(
     text: String,
     modifier: Modifier = Modifier,
-    icon: Painter? = null,
-    iconSide: IconSide? = null,
+    leadingIcon: Painter? = null,
+    trailingIcon: Painter? = null,
     enabled: Boolean,
     colors: ButtonColors,
     loading: Boolean,
     size: ButtonSizes,
     onClick: () -> Unit
 ) {
-    val iconButton = @Composable {
-        icon?.let {
-            Icon(
-                painter = icon,
-                contentDescription = null,
-                modifier = Modifier.size(size.iconSize),
-                tint = colors.contentColor(enabled)
-            )
-        }
-    }
     TextButton(
         enabled = enabled,
         modifier = modifier
-            .widthIn(min = size.minWidth)
             .height(size.height),
         colors = ButtonDefaults
             .textButtonColors(
@@ -508,113 +368,95 @@ private fun PersianTextButtonImpl(
                 disabledContentColor = colors.disabledContentColor,
                 disabledContainerColor = colors.disabledContainerColor
             ),
-        shape = MaterialTheme.shapes.large,
-        contentPadding = size.contentPadding,
+        shape = size.shape,
+        contentPadding = PaddingValues(0.dp),
         onClick = onClick,
     ) {
-        if (loading && enabled) {
-            Box {
-                PersianProgressBar.Circular(
+        val textWithIcons = @Composable {
+            Row(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .padding(size.contentPadding),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                leadingIcon?.let {
+                    PersianIconBox.Primary(
+                        icon = it,
+                        colors = PersianIconBoxColors.primary(
+                            defaultColor = colors.contentColor,
+                            disabledColor = colors.disabledContentColor
+                        ),
+                        size = size.iconSize,
+                        enabled = enabled
+                    )
+                }
+                Box(
                     modifier = Modifier
-                        .padding(horizontal = MaterialTheme.spacing.small),
-                    sizes = when (size) {
-                        PersianButtonSizes.small(true) -> PersianCircularProgressBarSize.small()
-                        PersianButtonSizes.medium(true) -> PersianCircularProgressBarSize.medium()
-                        PersianButtonSizes.large(true) -> PersianCircularProgressBarSize.large()
-                        else -> PersianCircularProgressBarSize.small()
-                    },
+                        .padding(horizontal = 8.dp),
+                ) {
+                    Text(
+                        text = text,
+                        style = size.textStyle,
+                        overflow = TextOverflow.Ellipsis,
+                        textAlign = TextAlign.Center,
+                        color = colors.contentColor(enabled).value,
+                        maxLines = 1
+                    )
+                }
+                trailingIcon?.let {
+                    PersianIconBox.Primary(
+                        icon = it,
+                        colors = PersianIconBoxColors.primary(
+                            defaultColor = colors.contentColor,
+                            disabledColor = colors.disabledContentColor
+                        ),
+                        size = size.iconSize,
+                        enabled = enabled
+                    )
+                }
+            }
+        }
+
+        val loader = @Composable {
+            Box(
+                modifier = Modifier
+                    .fillMaxHeight(),
+                contentAlignment = Alignment.Center
+            ) {
+                PersianProgressBar.Circular(
+                    sizes = size.loaderSize,
                     colors = PersianProgressBarColors.primary(
                         backgroundColor = Color.Transparent,
-                        progressColor = colors.contentColor
+                        progressColor = colors.contentColor(true).value
                     )
                 )
             }
-        } else {
-            if (iconSide == IconSide.LEFT) iconButton()
-            Box {
-                Text(
+        }
+        PersianSubcomposeLayout(
+            mainContent = {
+                textWithIcons()
+            },
+            dependentContent = {
+                Box(
                     modifier = Modifier
-                        .padding(horizontal = 8.dp, vertical = 0.dp),
-                    text = text,
-                    style = size.textStyle,
-                    overflow = TextOverflow.Ellipsis,
-                    textAlign = TextAlign.Center,
-                    maxLines = 1
-                )
+                        .size(it),
+                    contentAlignment = Alignment.Center
+                ) {
+                    if (loading && enabled)
+                        loader()
+                    else
+                        textWithIcons()
+
+                }
             }
-            if (iconSide == IconSide.RIGHT) iconButton()
-        }
+        )
     }
 }
 
 
 @Preview
 @Composable
-fun PrimaryFillButton() {
-    PersianTheme {
-        val isLoading = true
-        Surface {
-            Column(
-                modifier = Modifier
-                    .padding(10.dp)
-            ) {
-                PersianButton.Primary(
-                    icon = MaterialTheme.icons.appLogo,
-                    iconSide = IconSide.LEFT,
-                    text = "Persian",
-                    loading = isLoading,
-                    size = PersianButtonSizes.large(isLoading),
-                    style = PersianComponentStyle.FILL,
-                    onClick = {}
-                )
-                Spacer(modifier = Modifier.height(10.dp))
-                PersianButton.Secondary(
-                    icon = MaterialTheme.icons.appLogo,
-                    iconSide = IconSide.LEFT,
-                    text = "Persian",
-                    loading = isLoading,
-                    size = PersianButtonSizes.large(isLoading),
-                    style = PersianComponentStyle.FILL,
-                    onClick = {}
-                )
-                Spacer(modifier = Modifier.height(10.dp))
-                PersianButton.Tertiary(
-                    icon = MaterialTheme.icons.appLogo,
-                    iconSide = IconSide.LEFT,
-                    text = "Persian",
-                    loading = isLoading,
-                    size = PersianButtonSizes.large(isLoading),
-                    style = PersianComponentStyle.FILL,
-                    onClick = {}
-                )
-                Spacer(modifier = Modifier.height(10.dp))
-                PersianButton.Negative(
-                    icon = MaterialTheme.icons.appLogo,
-                    iconSide = IconSide.LEFT,
-                    text = "Persian",
-                    loading = isLoading,
-                    size = PersianButtonSizes.large(isLoading),
-                    style = PersianComponentStyle.FILL,
-                    onClick = {}
-                )
-                Spacer(modifier = Modifier.height(10.dp))
-                PersianButton.Neutral(
-                    icon = MaterialTheme.icons.appLogo,
-                    iconSide = IconSide.LEFT,
-                    text = "Persian",
-                    loading = isLoading,
-                    size = PersianButtonSizes.large(isLoading),
-                    style = PersianComponentStyle.FILL,
-                    onClick = {}
-                )
-            }
-        }
-    }
-}
-
-@Preview(name = "Persian Outlined Button")
-@Composable
-fun PrimaryOutlineButton() {
+fun PersianButtonPreview() {
     PersianTheme {
         val isLoading = false
         Surface {
@@ -623,52 +465,38 @@ fun PrimaryOutlineButton() {
                     .padding(10.dp)
             ) {
                 PersianButton.Primary(
-                    icon = MaterialTheme.icons.appLogo,
-                    iconSide = IconSide.LEFT,
+                    leadingIcon = MaterialTheme.icons.appLogo,
+                    trailingIcon = MaterialTheme.icons.chevronRight,
                     text = "Persian",
                     loading = isLoading,
                     size = PersianButtonSizes.large(isLoading),
-                    style = PersianComponentStyle.OUTLINED,
                     onClick = {}
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 PersianButton.Secondary(
-                    icon = MaterialTheme.icons.appLogo,
-                    iconSide = IconSide.LEFT,
+                    leadingIcon = MaterialTheme.icons.appLogo,
+                    trailingIcon = MaterialTheme.icons.chevronRight,
                     text = "Persian",
                     loading = isLoading,
                     size = PersianButtonSizes.large(isLoading),
-                    style = PersianComponentStyle.OUTLINED,
                     onClick = {}
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 PersianButton.Tertiary(
-                    icon = MaterialTheme.icons.appLogo,
-                    iconSide = IconSide.LEFT,
+                    leadingIcon = MaterialTheme.icons.appLogo,
+                    trailingIcon = MaterialTheme.icons.chevronRight,
                     text = "Persian",
                     loading = isLoading,
                     size = PersianButtonSizes.large(isLoading),
-                    style = PersianComponentStyle.OUTLINED,
                     onClick = {}
                 )
                 Spacer(modifier = Modifier.height(10.dp))
-                PersianButton.Negative(
-                    icon = MaterialTheme.icons.appLogo,
-                    iconSide = IconSide.LEFT,
+                PersianButton.Outline(
+                    leadingIcon = MaterialTheme.icons.appLogo,
+                    trailingIcon = MaterialTheme.icons.chevronRight,
                     text = "Persian",
                     loading = isLoading,
                     size = PersianButtonSizes.large(isLoading),
-                    style = PersianComponentStyle.OUTLINED,
-                    onClick = {}
-                )
-                Spacer(modifier = Modifier.height(10.dp))
-                PersianButton.Neutral(
-                    icon = MaterialTheme.icons.appLogo,
-                    iconSide = IconSide.LEFT,
-                    text = "Persian",
-                    loading = isLoading,
-                    size = PersianButtonSizes.large(isLoading),
-                    style = PersianComponentStyle.OUTLINED,
                     onClick = {}
                 )
             }
@@ -676,9 +504,9 @@ fun PrimaryOutlineButton() {
     }
 }
 
-@Preview
+@Preview(uiMode = UI_MODE_NIGHT_YES)
 @Composable
-fun PrimaryTextButton() {
+fun PersianButtonDarkPreview() {
     PersianTheme {
         val isLoading = false
         Surface {
@@ -687,52 +515,38 @@ fun PrimaryTextButton() {
                     .padding(10.dp)
             ) {
                 PersianButton.Primary(
-                    icon = MaterialTheme.icons.appLogo,
-                    iconSide = IconSide.LEFT,
+                    leadingIcon = MaterialTheme.icons.appLogo,
+                    trailingIcon = MaterialTheme.icons.chevronRight,
                     text = "Persian",
                     loading = isLoading,
                     size = PersianButtonSizes.large(isLoading),
-                    style = PersianComponentStyle.STANDARD,
                     onClick = {}
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 PersianButton.Secondary(
-                    icon = MaterialTheme.icons.appLogo,
-                    iconSide = IconSide.LEFT,
+                    leadingIcon = MaterialTheme.icons.appLogo,
+                    trailingIcon = MaterialTheme.icons.chevronRight,
                     text = "Persian",
                     loading = isLoading,
                     size = PersianButtonSizes.large(isLoading),
-                    style = PersianComponentStyle.STANDARD,
                     onClick = {}
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 PersianButton.Tertiary(
-                    icon = MaterialTheme.icons.appLogo,
-                    iconSide = IconSide.LEFT,
+                    leadingIcon = MaterialTheme.icons.appLogo,
+                    trailingIcon = MaterialTheme.icons.chevronRight,
                     text = "Persian",
                     loading = isLoading,
                     size = PersianButtonSizes.large(isLoading),
-                    style = PersianComponentStyle.STANDARD,
                     onClick = {}
                 )
                 Spacer(modifier = Modifier.height(10.dp))
-                PersianButton.Negative(
-                    icon = MaterialTheme.icons.appLogo,
-                    iconSide = IconSide.LEFT,
+                PersianButton.Outline(
+                    leadingIcon = MaterialTheme.icons.appLogo,
+                    trailingIcon = MaterialTheme.icons.chevronRight,
                     text = "Persian",
                     loading = isLoading,
                     size = PersianButtonSizes.large(isLoading),
-                    style = PersianComponentStyle.STANDARD,
-                    onClick = {}
-                )
-                Spacer(modifier = Modifier.height(10.dp))
-                PersianButton.Neutral(
-                    icon = MaterialTheme.icons.appLogo,
-                    iconSide = IconSide.LEFT,
-                    text = "Persian",
-                    loading = isLoading,
-                    size = PersianButtonSizes.large(isLoading),
-                    style = PersianComponentStyle.STANDARD,
                     onClick = {}
                 )
             }
