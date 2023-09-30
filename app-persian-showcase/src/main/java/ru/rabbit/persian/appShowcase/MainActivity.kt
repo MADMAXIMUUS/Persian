@@ -26,6 +26,7 @@ import ru.rabbit.persian.appShowcase.screens.Avatar
 import ru.rabbit.persian.appShowcase.screens.Banner
 import ru.rabbit.persian.appShowcase.screens.Button
 import ru.rabbit.persian.appShowcase.screens.CheckBox
+import ru.rabbit.persian.appShowcase.screens.CodeInput
 import ru.rabbit.persian.appShowcase.screens.Counter
 import ru.rabbit.persian.appShowcase.screens.Divider
 import ru.rabbit.persian.appShowcase.screens.Fab
@@ -73,7 +74,8 @@ class MainActivity : ComponentActivity() {
                         Snackbar,
                         Tabs,
                         TextArea,
-                        TopAppBar
+                        TopAppBar,
+                        CodeInput
                     )
                 }
                 NavHost(
