@@ -37,7 +37,7 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-const val ANIMATION_TIME = 400L
+const val ANIMATION_TIME = 200L
 const val DIALOG_BUILD_TIME = 20L
 
 class AnimatedTransitionDialogHelper(
