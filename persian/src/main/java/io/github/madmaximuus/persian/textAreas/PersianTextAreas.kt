@@ -15,13 +15,11 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.selection.LocalTextSelectionColors
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -43,6 +41,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.iconBox.PersianIconBox
+import io.github.madmaximuus.persian.iconBox.PersianIconBoxColors
 
 object PersianTextAreas {
 
@@ -119,18 +119,17 @@ object PersianTextAreas {
                             .height(120.dp),
                         verticalAlignment = Alignment.Top
                     ) {
-                        if (leadingIcon != null) {
-                            Icon(
-                                modifier = Modifier
-                                    .size(24.dp),
-                                painter = leadingIcon,
-                                tint = colors.leadingIconColor(
-                                    enabled = enabled,
-                                    isSuccess = isSuccess,
-                                    isError = isError,
-                                    interactionSource = interactionSource
-                                ).value,
-                                contentDescription = ""
+                        leadingIcon?.let { icon ->
+                            PersianIconBox.Primary(
+                                icon = icon,
+                                colors = PersianIconBoxColors.primary(
+                                    defaultColor = colors.leadingIconColor(
+                                        enabled = enabled,
+                                        isSuccess = isSuccess,
+                                        isError = isError,
+                                        interactionSource = interactionSource
+                                    ).value
+                                )
                             )
                         }
                         Box(
@@ -157,18 +156,18 @@ object PersianTextAreas {
                             enabled = enabled,
                             isError = isError,
                             isSuccess = isSuccess
-                        ).value?.let {
+                        ).value?.let { icon ->
                             Spacer(modifier = Modifier.width(MaterialTheme.spacing.small))
-                            Icon(
-                                modifier = Modifier
-                                    .size(24.dp),
-                                painter = it,
+                            PersianIconBox.Primary(
+                                icon = icon,
                                 contentDescription = "",
-                                tint = colors.stateIconColor(
-                                    enabled = enabled,
-                                    isSuccess = isSuccess,
-                                    isError = isError
-                                ).value
+                                colors = PersianIconBoxColors.primary(
+                                    defaultColor = colors.stateIconColor(
+                                        enabled = enabled,
+                                        isSuccess = isSuccess,
+                                        isError = isError
+                                    ).value
+                                )
                             )
                         }
                     }
