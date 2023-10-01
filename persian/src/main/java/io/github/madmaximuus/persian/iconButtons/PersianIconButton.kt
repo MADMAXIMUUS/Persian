@@ -3,7 +3,6 @@ package io.github.madmaximuus.persian.iconButtons
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.material3.FilledIconButton
 import androidx.compose.material3.FilledTonalIconButton
-import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
@@ -18,6 +17,8 @@ import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.PersianComponentStyle
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.icons
+import io.github.madmaximuus.persian.iconBox.PersianIconBox
+import io.github.madmaximuus.persian.iconBox.PersianIconBoxColors
 
 object PersianIconButton {
 
@@ -92,9 +93,11 @@ private fun PersianFilledIconButtonImpl(
         enabled = enabled,
         onClick = onClick
     ) {
-        Icon(
-            painter = icon,
-            contentDescription = ""
+        PersianIconBox.Primary(
+            icon = icon,
+            colors = PersianIconBoxColors.primary(
+                defaultColor = colors.contentColor
+            )
         )
     }
 }
@@ -121,9 +124,11 @@ private fun PersianOutlinedIconButtonImpl(
         enabled = enabled,
         onClick = onClick
     ) {
-        Icon(
-            painter = icon,
-            contentDescription = ""
+        PersianIconBox.Primary(
+            icon = icon,
+            colors = PersianIconBoxColors.primary(
+                defaultColor = colors.contentColor
+            )
         )
     }
 }
@@ -149,9 +154,11 @@ private fun PersianIconButtonImpl(
         enabled = enabled,
         onClick = onClick
     ) {
-        Icon(
-            painter = icon,
-            contentDescription = ""
+        PersianIconBox.Primary(
+            icon = icon,
+            colors = PersianIconBoxColors.primary(
+                defaultColor = colors.contentColor
+            )
         )
     }
 }
@@ -177,9 +184,11 @@ private fun PersianTonalIconButtonImpl(
         enabled = enabled,
         onClick = onClick
     ) {
-        Icon(
-            painter = icon,
-            contentDescription = ""
+        PersianIconBox.Primary(
+            icon = icon,
+            colors = PersianIconBoxColors.primary(
+                defaultColor = colors.tonalContentColor
+            )
         )
     }
 }
