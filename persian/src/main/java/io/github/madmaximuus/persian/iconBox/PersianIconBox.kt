@@ -16,6 +16,7 @@ object PersianIconBox {
 
     @Composable
     fun Primary(
+        modifier: Modifier = Modifier,
         icon: Painter,
         size: IconBoxSize = PersianIconBoxSize.large(),
         colors: IconBoxColors = PersianIconBoxColors.primary(),
@@ -25,7 +26,7 @@ object PersianIconBox {
     ) {
         val tint = colors.iconColor(enabled = enabled, isError = isError).value
         Icon(
-            modifier = Modifier
+            modifier = modifier
                 .size(size.width),
             painter = icon,
             contentDescription = contentDescription,
