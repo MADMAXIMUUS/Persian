@@ -10,11 +10,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.selection.LocalTextSelectionColors
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -37,6 +35,8 @@ import io.github.madmaximuus.persian.foundation.PersianComponentStyle
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.iconBox.PersianIconBox
+import io.github.madmaximuus.persian.iconBox.PersianIconBoxColors
 import io.github.madmaximuus.persian.iconButtons.PersianIconButton
 import io.github.madmaximuus.persian.iconButtons.PersianIconButtonColors
 
@@ -91,7 +91,7 @@ object PersianSearch {
             val mergedTextStyle = MaterialTheme.typography.bodyLarge.merge(
                 TextStyle(
                     color = textColor,
-                    baselineShift = BaselineShift.Superscript
+                    baselineShift = BaselineShift.None
                 )
             )
 
@@ -127,15 +127,14 @@ object PersianSearch {
                                 .height(24.dp),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            Icon(
-                                modifier = Modifier
-                                    .size(24.dp),
-                                painter = leadingIcon,
-                                tint = colors.leadingIconColor(
-                                    enabled = enabled,
-                                    interactionSource = interactionSource
-                                ).value,
-                                contentDescription = ""
+                            PersianIconBox.Primary(
+                                icon = leadingIcon,
+                                colors = PersianIconBoxColors.primary(
+                                    defaultColor = colors.leadingIconColor(
+                                        enabled = enabled,
+                                        interactionSource = interactionSource
+                                    ).value
+                                )
                             )
                             Box(
                                 modifier = Modifier
@@ -157,20 +156,20 @@ object PersianSearch {
                                 innerTextField()
                             }
                             if (value.isNotEmpty()) {
-                                Icon(
+                                PersianIconBox.Primary(
                                     modifier = Modifier
-                                        .size(24.dp)
                                         .clickable(
                                             enabled = enabled,
                                             onClick = { onClearClick?.invoke() },
                                             role = Role.Button
                                         ),
-                                    painter = clearIcon,
-                                    tint = colors.clearIconColor(
-                                        enabled = enabled,
-                                        interactionSource = interactionSource
-                                    ).value,
-                                    contentDescription = ""
+                                    icon = clearIcon,
+                                    colors = PersianIconBoxColors.primary(
+                                        defaultColor = colors.clearIconColor(
+                                            enabled = enabled,
+                                            interactionSource = interactionSource
+                                        ).value
+                                    )
                                 )
                             }
                         }
