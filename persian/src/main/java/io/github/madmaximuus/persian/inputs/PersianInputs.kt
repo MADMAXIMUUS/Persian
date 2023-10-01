@@ -79,6 +79,7 @@ object PersianInputs {
             textStyle.merge(TextStyle(color = textColor, baselineShift = BaselineShift.None))
 
         val borderThickness = if (enabled && (isFocused || isError || isSuccess)) 2.dp else 1.dp
+
         val borderColor = colors.indicatorColor(
             enabled = enabled,
             isSuccess = isSuccess,
@@ -210,11 +211,10 @@ object PersianInputs {
                             PersianIconBox.Primary(
                                 icon = icon,
                                 colors = PersianIconBoxColors.primary(
-                                    defaultColor = colors.trailingIconColor(
+                                    defaultColor = colors.stateIconColor(
                                         enabled = enabled,
                                         isSuccess = isSuccess,
                                         isError = isError,
-                                        interactionSource = interactionSource
                                     ).value
                                 )
                             )
