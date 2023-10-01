@@ -2,7 +2,6 @@ package io.github.madmaximuus.persian.navigationBar
 
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.material3.BottomAppBarDefaults
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -16,6 +15,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.elevation
 import io.github.madmaximuus.persian.foundation.icons
+import io.github.madmaximuus.persian.iconBox.PersianIconBox
+import io.github.madmaximuus.persian.iconBox.PersianIconBoxColors
 
 data class NavigationBarItem(
     val selected: Boolean = false,
@@ -55,14 +56,18 @@ object PersianNavigationBar {
                     ),
                     icon = {
                         if (item.selected) {
-                            Icon(
-                                painter = item.selectedIcon,
-                                contentDescription = ""
+                            PersianIconBox.Primary(
+                                icon = item.selectedIcon,
+                                colors = PersianIconBoxColors.primary(
+                                    defaultColor = colors.itemColors.selectedIconColor
+                                )
                             )
                         } else {
-                            Icon(
-                                painter = item.icon,
-                                contentDescription = ""
+                            PersianIconBox.Primary(
+                                icon = item.icon,
+                                colors = PersianIconBoxColors.primary(
+                                    defaultColor = colors.itemColors.iconColor
+                                )
                             )
                         }
                     },
