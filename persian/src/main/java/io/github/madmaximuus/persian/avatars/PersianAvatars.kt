@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -25,6 +24,8 @@ import io.github.madmaximuus.persian.foundation.elevation
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.foundation.surfaceColorAtElevation
+import io.github.madmaximuus.persian.iconBox.PersianIconBox
+import io.github.madmaximuus.persian.iconBox.PersianIconBoxColors
 
 object PersianAvatars {
 
@@ -63,12 +64,12 @@ object PersianAvatars {
                         modifier = Modifier.fillMaxSize(),
                         contentAlignment = Alignment.Center
                     ) {
-                        Icon(
-                            modifier = Modifier
-                                .size(size.placeholderSize.width),
-                            painter = MaterialTheme.icons.personOutlined,
-                            tint = MaterialTheme.extendedColorScheme.onPrimaryContainer,
-                            contentDescription = ""
+                        PersianIconBox.Primary(
+                            icon = MaterialTheme.icons.personOutlined,
+                            size = size.placeholderSize,
+                            colors = PersianIconBoxColors.primary(
+                                defaultColor = MaterialTheme.extendedColorScheme.onPrimaryContainer
+                            )
                         )
                     }
                 },
@@ -77,12 +78,12 @@ object PersianAvatars {
                         modifier = Modifier.fillMaxSize(),
                         contentAlignment = Alignment.Center
                     ) {
-                        Icon(
-                            modifier = Modifier
-                                .size(size.placeholderSize.width),
-                            painter = MaterialTheme.icons.personOutlined,
-                            tint = MaterialTheme.extendedColorScheme.onPrimaryContainer,
-                            contentDescription = ""
+                        PersianIconBox.Primary(
+                            icon = MaterialTheme.icons.personOutlined,
+                            size = size.placeholderSize,
+                            colors = PersianIconBoxColors.primary(
+                                defaultColor = MaterialTheme.extendedColorScheme.onPrimaryContainer
+                            )
                         )
                     }
                 },
@@ -96,9 +97,12 @@ object PersianAvatars {
                         .background(MaterialTheme.extendedColorScheme.surface.copy(alpha = 0.8f)),
                     contentAlignment = Alignment.Center
                 ) {
-                    Icon(
-                        modifier = Modifier.size(size.editIconBoxSize.width),
-                        painter = MaterialTheme.icons.add, contentDescription = ""
+                    PersianIconBox.Primary(
+                        icon = MaterialTheme.icons.add,
+                        size = size.editIconBoxSize,
+                        colors = PersianIconBoxColors.primary(
+                            defaultColor = MaterialTheme.extendedColorScheme.primary
+                        )
                     )
                 }
             }
@@ -139,12 +143,12 @@ object PersianAvatars {
                     contentDescription = ""
                 )
             } else {
-                Icon(
-                    modifier = Modifier
-                        .size(size.placeholderSize.width),
-                    painter = MaterialTheme.icons.personOutlined,
-                    tint = MaterialTheme.extendedColorScheme.onPrimaryContainer,
-                    contentDescription = ""
+                PersianIconBox.Primary(
+                    icon = MaterialTheme.icons.personOutlined,
+                    size = size.placeholderSize,
+                    colors = PersianIconBoxColors.primary(
+                        defaultColor = MaterialTheme.extendedColorScheme.onPrimaryContainer
+                    )
                 )
             }
             if (isEdit) {
@@ -154,9 +158,12 @@ object PersianAvatars {
                         .background(MaterialTheme.extendedColorScheme.surface.copy(alpha = 0.8f)),
                     contentAlignment = Alignment.Center
                 ) {
-                    Icon(
-                        modifier = Modifier.size(size.editIconBoxSize.width),
-                        painter = MaterialTheme.icons.add, contentDescription = ""
+                    PersianIconBox.Primary(
+                        icon = MaterialTheme.icons.add,
+                        size = size.editIconBoxSize,
+                        colors = PersianIconBoxColors.primary(
+                            defaultColor = MaterialTheme.extendedColorScheme.primary
+                        )
                     )
                 }
             }
