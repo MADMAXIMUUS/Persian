@@ -34,7 +34,7 @@ object PersianTabs {
                     it, indexOfSelectedTab, colors.indicatorColor
                 )
             },
-            modifier = modifier.height(getTabHeight(tabItems))
+            modifier = modifier.height(getTabHeight())
         ) {
             tabItems.forEachIndexed { index, tabItem ->
                 PersianTab(
@@ -76,7 +76,7 @@ object PersianTabs {
                         colors.indicatorColor
                     )
                 },
-                modifier = Modifier.height(getTabHeight(tabItems))
+                modifier = Modifier.height(getTabHeight())
             ) {
                 tabItems.forEachIndexed { index, tabItem ->
                     PersianTab(
@@ -94,8 +94,7 @@ object PersianTabs {
         }
     }
 
-    private fun getTabHeight(list: List<TabItem>) =
-        if (list.any { it.topIcon }) 64.dp else 48.dp
+    private fun getTabHeight() = 64.dp
 
     private fun validateTabItems(tabItems: List<TabItem>) {
         if (tabItems.size < 2) {
