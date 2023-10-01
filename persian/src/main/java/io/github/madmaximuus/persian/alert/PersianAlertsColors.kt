@@ -7,9 +7,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import io.github.madmaximuus.persian.buttons.ButtonColors
 import io.github.madmaximuus.persian.buttons.PersianButtonColors
-import io.github.madmaximuus.persian.foundation.elevation
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
-import io.github.madmaximuus.persian.foundation.surfaceColorAtElevation
 
 @Immutable
 data class AlertsColors(
@@ -24,12 +22,11 @@ object PersianAlertsColors {
 
     @Composable
     fun primary(
-        backgroundColor: Color = MaterialTheme.extendedColorScheme
-            .surfaceColorAtElevation(MaterialTheme.elevation.small),
+        backgroundColor: Color = MaterialTheme.extendedColorScheme.surface,
         titleColor: Color = MaterialTheme.extendedColorScheme.onSurface,
         descriptionColor: Color = MaterialTheme.extendedColorScheme.onSurface,
         iconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        actionColor: ButtonColors = PersianButtonColors.primary()
+        actionColor: ButtonColors = PersianButtonColors.tertiary()
     ) = remember(
         backgroundColor,
         titleColor,

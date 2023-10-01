@@ -61,7 +61,7 @@ object PersianAlerts {
                             horizontalAlignment = Alignment.CenterHorizontally,
                             content = {
                                 actions.forEach { action ->
-                                    PersianButton.Primary(
+                                    PersianButton.Tertiary(
                                         modifier = Modifier.fillMaxWidth(),
                                         text = action.title,
                                         colors = colors.actionColor,
@@ -163,7 +163,7 @@ object PersianAlerts {
                                     ),
                                     content = {
                                         actions.reversed().forEach { action ->
-                                            PersianButton.Primary(
+                                            PersianButton.Tertiary(
                                                 text = action.title,
                                                 colors = colors.actionColor,
                                                 onClick = action.onClick,
