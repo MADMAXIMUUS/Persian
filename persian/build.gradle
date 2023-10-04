@@ -53,11 +53,4 @@ dependencies {
     implementation libs.accompanistUiController
 
     implementation libs.glide
-
-    testImplementation libs.jUnit
-    androidTestImplementation libs.testExt
-    androidTestImplementation libs.espresso
-    androidTestImplementation libs.uiTestJUnit
-    debugImplementation libs.uiTooling
-    debugImplementation libs.uiTestManifest
 }

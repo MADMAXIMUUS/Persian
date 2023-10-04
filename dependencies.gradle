@@ -1,18 +1,15 @@
 ext.versions = [
-        coreKtx: '1.12.0-rc01',
-        navigation : '2.7.1',
-        compose    : '1.5.0',
-        composeTest: '1.6.0-alpha04',
-        lifecycle  : "2.6.1",
+        coreKtx: '1.12.0',
+        navigation : '2.7.3',
+        compose    : '1.5.2',
+        composeTest: '1.6.0-alpha06',
+        lifecycle  : '2.6.2',
         activityCompose: "1.7.2",
-        material3: '1.1.1',
+        material3: '1.1.2',
         collectionImmutable: "0.3.5",
         accompanistUiController: "0.27.0",
         glide: "1.0.0-alpha.3",
         splash: "1.0.1",
-        jUnit: "4.13.2",
-        testExt: "1.1.5",
-        espresso: "3.5.1",
 ]
 
 ext.libs = [
@@ -31,10 +28,6 @@ ext.libs = [
         composeUi                     : "androidx.compose.ui:ui:${versions.compose}",
         composePreview                : "androidx.compose.ui:ui-tooling-preview:${versions.compose}",
 
-        uiTestJUnit                   : "androidx.compose.ui:ui-test-junit4:${versions.composeTest}",
-        uiTooling                     : "androidx.compose.ui:ui-tooling:${versions.composeTest}",
-        uiTestManifest                : "androidx.compose.ui:ui-test-manifest:${versions.composeTest}",
-
         //Accompanist
         accompanistUiController       : "com.google.accompanist:accompanist-systemuicontroller:${versions.accompanistUiController}",
 
@@ -49,9 +42,4 @@ ext.libs = [
         hiltAndroidCompiler           : "com.google.dagger:hilt-android-compiler:${versions.hilt}",
         hiltCompiler                  : "androidx.hilt:hilt-compiler:${versions.hiltCompiler}",
         hiltNavigation                : "androidx.hilt:hilt-navigation-compose:${versions.hiltNavigation}",
-
-        //Test
-        jUnit                         : "junit:junit:${versions.jUnit}",
-        testExt                       : "androidx.test.ext:junit:${versions.testExt}",
-        espresso                      : "androidx.test.espresso:espresso-core:${versions.espresso}",
 ]
