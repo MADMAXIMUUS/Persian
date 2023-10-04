@@ -33,17 +33,17 @@ object PersianIcons {
         @Composable
         get() = painterResource(id = R.drawable.ic_visibility_off)
 
-    val error: Painter
+    val errorCircleRounded: Painter
         @Composable
-        get() = painterResource(id = R.drawable.ic_error)
+        get() = painterResource(id = R.drawable.ic_error_circle_rounded)
 
     val checkCircle: Painter
         @Composable
         get() = painterResource(id = R.drawable.ic_check_circle)
 
-    val cameraEnhance: Painter
+    val photoCameraBack: Painter
         @Composable
-        get() = painterResource(id = R.drawable.ic_camera_enhance)
+        get() = painterResource(id = R.drawable.ic_photo_camera_back)
 
     val wifiOff: Painter
         @Composable
@@ -69,13 +69,13 @@ object PersianIcons {
         @Composable
         get() = painterResource(id = R.drawable.ic_search_filled)
 
-    val mailOutlined: Painter
+    val chatOutlined: Painter
         @Composable
-        get() = painterResource(id = R.drawable.ic_mail_outlined)
+        get() = painterResource(id = R.drawable.ic_chat_outlined)
 
-    val mailFilled: Painter
+    val chatFilled: Painter
         @Composable
-        get() = painterResource(id = R.drawable.ic_mail_filled)
+        get() = painterResource(id = R.drawable.ic_chat_filled)
 
     val personOutlined: Painter
         @Composable
@@ -173,9 +173,9 @@ object PersianIcons {
         @Composable
         get() = painterResource(id = R.drawable.ic_globe_uk)
 
-    val image: Painter
+    val photoOutlined: Painter
         @Composable
-        get() = painterResource(id = R.drawable.ic_image)
+        get() = painterResource(id = R.drawable.ic_photo_outlined)
 
     val gifBox: Painter
         @Composable
@@ -245,9 +245,89 @@ object PersianIcons {
         @Composable
         get() = painterResource(id = R.drawable.ic_delete)
 
-    val sentimentDissatisfied
+    val sentimentDissatisfied: Painter
         @Composable
         get() = painterResource(id = R.drawable.ic_sentiment_dissatisfied)
+
+    val addAPhoto: Painter
+        @Composable
+        get() = painterResource(id = R.drawable.ic_add_a_photo)
+
+    val addCircle: Painter
+        @Composable
+        get() = painterResource(id = R.drawable.ic_add_circle)
+
+    val arrowUpward: Painter
+        @Composable
+        get() = painterResource(id = R.drawable.ic_arrow_upward)
+
+    val done: Painter
+        @Composable
+        get() = painterResource(id = R.drawable.ic_done)
+
+    val doneAll: Painter
+        @Composable
+        get() = painterResource(id = R.drawable.ic_done_all)
+
+    val editDocument: Painter
+        @Composable
+        get() = painterResource(id = R.drawable.ic_edit_document)
+
+    val info: Painter
+        @Composable
+        get() = painterResource(id = R.drawable.ic_info)
+
+    val keyboardVoice: Painter
+        @Composable
+        get() = painterResource(id = R.drawable.ic_keyboard_voice)
+
+    val link: Painter
+        @Composable
+        get() = painterResource(id = R.drawable.ic_link)
+
+    val manageAccounts: Painter
+        @Composable
+        get() = painterResource(id = R.drawable.ic_manage_accounts)
+
+    val moreHoriz: Painter
+        @Composable
+        get() = painterResource(id = R.drawable.ic_more_horiz)
+
+    val noteOutlined: Painter
+        @Composable
+        get() = painterResource(id = R.drawable.ic_note_outlined)
+
+    val noteFilled: Painter
+        @Composable
+        get() = painterResource(id = R.drawable.ic_note_filled)
+
+    val personAdd: Painter
+        @Composable
+        get() = painterResource(id = R.drawable.ic_person_add)
+
+    val phoneAndroid: Painter
+        @Composable
+        get() = painterResource(id = R.drawable.ic_phone_android)
+
+    val phoneIphone: Painter
+        @Composable
+        get() = painterResource(id = R.drawable.ic_phone_iphone)
+
+    val photoFilled: Painter
+        @Composable
+        get() = painterResource(id = R.drawable.ic_photo_filled)
+
+    val send: Painter
+        @Composable
+        get() = painterResource(id = R.drawable.ic_send)
+
+    val slideshowOutlined: Painter
+        @Composable
+        get() = painterResource(id = R.drawable.ic_slideshow_outlined)
+
+    val slideshowFilled: Painter
+        @Composable
+        get() = painterResource(id = R.drawable.ic_slideshow_filled)
 }
 
 val LocalPersianIcons = staticCompositionLocalOf { PersianIcons }
