@@ -3,6 +3,7 @@ package ru.rabbit.persian.appShowcase
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
@@ -26,7 +27,9 @@ import ru.rabbit.persian.appShowcase.screens.Avatar
 import ru.rabbit.persian.appShowcase.screens.Banner
 import ru.rabbit.persian.appShowcase.screens.Button
 import ru.rabbit.persian.appShowcase.screens.CheckBox
+import ru.rabbit.persian.appShowcase.screens.CodeInput
 import ru.rabbit.persian.appShowcase.screens.Counter
+import ru.rabbit.persian.appShowcase.screens.DatePickerDialog
 import ru.rabbit.persian.appShowcase.screens.Divider
 import ru.rabbit.persian.appShowcase.screens.Fab
 import ru.rabbit.persian.appShowcase.screens.Forms
@@ -37,12 +40,14 @@ import ru.rabbit.persian.appShowcase.screens.NavigationBar
 import ru.rabbit.persian.appShowcase.screens.ProgressBar
 import ru.rabbit.persian.appShowcase.screens.RadioButton
 import ru.rabbit.persian.appShowcase.screens.Search
+import ru.rabbit.persian.appShowcase.screens.Skeleton
 import ru.rabbit.persian.appShowcase.screens.Snackbar
 import ru.rabbit.persian.appShowcase.screens.Tabs
 import ru.rabbit.persian.appShowcase.screens.TextArea
 import ru.rabbit.persian.appShowcase.screens.TopAppBar
 
 class MainActivity : ComponentActivity() {
+    @OptIn(ExperimentalLayoutApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -73,7 +78,10 @@ class MainActivity : ComponentActivity() {
                         Snackbar,
                         Tabs,
                         TextArea,
-                        TopAppBar
+                        TopAppBar,
+                        CodeInput,
+                        DatePickerDialog,
+                        Skeleton
                     )
                 }
                 NavHost(

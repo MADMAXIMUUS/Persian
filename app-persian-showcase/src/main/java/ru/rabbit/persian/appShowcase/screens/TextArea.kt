@@ -136,7 +136,7 @@ object TextArea : Screen {
                         PersianTextAreas.Primary(
                             value = "Some input",
                             onValueChange = {},
-                            leadingIcon = MaterialTheme.icons.mailOutlined
+                            leadingIcon = MaterialTheme.icons.chatOutlined
                         )
                     }
                 }
@@ -146,7 +146,7 @@ object TextArea : Screen {
                             value = "Some input",
                             onValueChange = {},
                             isError = true,
-                            leadingIcon = MaterialTheme.icons.mailOutlined
+                            leadingIcon = MaterialTheme.icons.chatOutlined
                         )
                     }
                 }
@@ -156,7 +156,7 @@ object TextArea : Screen {
                             value = "Some input",
                             onValueChange = {},
                             isSuccess = true,
-                            leadingIcon = MaterialTheme.icons.mailOutlined
+                            leadingIcon = MaterialTheme.icons.chatOutlined
                         )
                     }
                 }
@@ -169,7 +169,7 @@ object TextArea : Screen {
                             value = "Some input",
                             onValueChange = {},
                             enabled = false,
-                            leadingIcon = MaterialTheme.icons.mailOutlined
+                            leadingIcon = MaterialTheme.icons.chatOutlined
                         )
                     }
                 }

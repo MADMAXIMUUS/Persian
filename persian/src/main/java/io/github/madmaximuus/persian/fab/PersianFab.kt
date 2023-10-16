@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SmallFloatingActionButton
@@ -19,6 +18,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.tooling.preview.Preview
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.icons
+import io.github.madmaximuus.persian.iconBox.PersianIconBox
 import io.github.madmaximuus.persian.navigationBar.NavigationBarItem
 import io.github.madmaximuus.persian.navigationBar.PersianNavigationBar
 
@@ -42,11 +42,9 @@ object PersianFab {
             interactionSource = interactionSource,
             onClick = onClick
         ) {
-            Icon(
-                modifier = Modifier
-                    .size(sizes.iconSize),
-                painter = icon,
-                contentDescription = ""
+            PersianIconBox.Primary(
+                icon = icon,
+                size = sizes.iconSize
             )
         }
     }
@@ -72,11 +70,9 @@ object PersianFab {
                 interactionSource = interactionSource,
                 onClick = onClick,
                 content = {
-                    Icon(
-                        modifier = Modifier
-                            .size(sizes.iconSize),
-                        painter = icon,
-                        contentDescription = ""
+                    PersianIconBox.Primary(
+                        icon = icon,
+                        size = sizes.iconSize
                     )
                 }
             )
@@ -91,11 +87,9 @@ object PersianFab {
                 interactionSource = interactionSource,
                 onClick = onClick,
                 icon = {
-                    Icon(
-                        modifier = Modifier
-                            .size(sizes.iconSize),
-                        painter = icon,
-                        contentDescription = ""
+                    PersianIconBox.Primary(
+                        icon = icon,
+                        size = sizes.iconSize
                     )
                 },
                 text = {
@@ -142,8 +136,8 @@ fun FabPreview() {
                     ),
                     NavigationBarItem(
                         selected = false,
-                        selectedIcon = MaterialTheme.icons.mailFilled,
-                        icon = MaterialTheme.icons.mailOutlined,
+                        selectedIcon = MaterialTheme.icons.chatFilled,
+                        icon = MaterialTheme.icons.chatOutlined,
                         text = "Messages",
                         onClick = {}
                     ),

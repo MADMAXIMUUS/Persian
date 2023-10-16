@@ -8,11 +8,13 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import io.github.madmaximuus.persian.iconBox.IconBoxSize
+import io.github.madmaximuus.persian.iconBox.PersianIconBoxSize
 
 @Immutable
 data class FabSizes(
     val boxSize: Dp,
-    val iconSize: Dp,
+    val iconSize: IconBoxSize,
     val textStyle: TextStyle,
     val cornerShape: Shape
 )
@@ -22,7 +24,7 @@ object PersianFabSizes {
     @Composable
     fun small(
         boxSize: Dp = 40.dp,
-        iconSize: Dp = 20.dp,
+        iconSize: IconBoxSize = PersianIconBoxSize.medium(),
         textStyle: TextStyle = MaterialTheme.typography.labelLarge,
         cornerShape: Shape = MaterialTheme.shapes.large
     ) = remember(
@@ -42,7 +44,7 @@ object PersianFabSizes {
     @Composable
     fun medium(
         boxSize: Dp = 56.dp,
-        iconSize: Dp = 24.dp,
+        iconSize: IconBoxSize = PersianIconBoxSize.large(),
         textStyle: TextStyle = MaterialTheme.typography.labelLarge,
         cornerShape: Shape = MaterialTheme.shapes.large
     ) = remember(

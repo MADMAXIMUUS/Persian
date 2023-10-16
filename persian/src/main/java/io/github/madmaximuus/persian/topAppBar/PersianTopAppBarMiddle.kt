@@ -1,12 +1,13 @@
 package io.github.madmaximuus.persian.topAppBar
 
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.TextStyle
+import io.github.madmaximuus.persian.iconBox.PersianIconBox
+import io.github.madmaximuus.persian.iconBox.PersianIconBoxColors
 
 object PersianTopAppBarMiddle {
 
@@ -32,12 +33,12 @@ object PersianTopAppBarMiddle {
         modifier: Modifier = Modifier
     ) {
         val colors = LocalPersianTopAppBarColors.current
-        Icon(
+        PersianIconBox.Primary(
             modifier = modifier,
-            painter = icon,
-            contentDescription = "",
-            tint = colors.contentColor
+            icon = icon,
+            colors = PersianIconBoxColors.primary(
+                defaultColor = colors.contentColor
+            )
         )
-
     }
 }

@@ -4,7 +4,6 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material3.DropdownMenuItem
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -14,6 +13,8 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.iconBox.PersianIconBox
+import io.github.madmaximuus.persian.iconBox.PersianIconBoxColors
 
 object PersianMenuItem {
 
@@ -41,10 +42,14 @@ object PersianMenuItem {
                 )
             },
             leadingIcon = {
-                Icon(
-                    painter = leadingIcon,
-                    contentDescription = "",
-                    tint = colors.leadingIconColor(enabled = enabled, isNegative = isNegative).value
+                PersianIconBox.Primary(
+                    icon = leadingIcon,
+                    colors = PersianIconBoxColors.primary(
+                        defaultColor = colors.leadingIconColor(
+                            enabled = enabled,
+                            isNegative = isNegative
+                        ).value
+                    )
                 )
             },
             contentPadding = PaddingValues(horizontal = MaterialTheme.spacing.large),

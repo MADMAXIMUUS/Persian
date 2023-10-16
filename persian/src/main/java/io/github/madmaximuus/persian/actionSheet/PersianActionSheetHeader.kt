@@ -1,7 +1,9 @@
 package io.github.madmaximuus.persian.actionSheet
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -22,8 +24,10 @@ object PersianActionSheetHeader {
             modifier = modifier
                 .fillMaxWidth()
                 .padding(
-                    horizontal = MaterialTheme.spacing.extraExtraLarge,
-                    vertical = MaterialTheme.spacing.extraExtraSmall
+                    start = MaterialTheme.spacing.extraExtraLarge,
+                    end = MaterialTheme.spacing.extraExtraLarge,
+                    top = MaterialTheme.spacing.small,
+                    bottom = MaterialTheme.spacing.extraSmall
                 )
         ) {
             Text(
@@ -32,6 +36,7 @@ object PersianActionSheetHeader {
                 color = MaterialTheme.extendedColorScheme.onSurface
             )
             if (subtitle != null) {
+                Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraSmall))
                 Text(
                     text = subtitle,
                     style = MaterialTheme.typography.bodyLarge,

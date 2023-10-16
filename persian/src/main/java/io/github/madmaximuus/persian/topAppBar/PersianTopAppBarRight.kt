@@ -75,11 +75,10 @@ object PersianTopAppBarRight {
         text: String,
         onClick: () -> Unit
     ) {
-        PersianButton.Primary(
+        PersianButton.Tertiary(
             modifier = modifier,
             text = text,
             onClick = onClick,
-            style = PersianComponentStyle.STANDARD
         )
     }
 

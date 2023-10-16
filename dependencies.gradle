@@ -1,57 +1,45 @@
 ext.versions = [
-        coreKtx: '1.12.0-rc01',
-        navigation : '2.7.1',
-        compose    : '1.5.0',
-        composeTest: '1.6.0-alpha04',
-        lifecycle  : "2.6.1",
-        activityCompose: "1.7.2",
-        material3: '1.1.1',
-        collectionImmutable: "0.3.5",
+        coreKtx                : '1.12.0',
+        navigation             : '2.7.4',
+        compose                : '1.5.3',
+        lifecycle              : '2.6.2',
+        activityCompose        : '1.8.0',
+        material3              : '1.1.2',
+        collectionImmutable    : "0.3.5",
         accompanistUiController: "0.27.0",
-        glide: "1.0.0-alpha.3",
-        splash: "1.0.1",
-        jUnit: "4.13.2",
-        testExt: "1.1.5",
-        espresso: "3.5.1",
+        glide                  : "1.0.0-alpha.3",
+        splash                 : "1.0.1",
 ]
 
 ext.libs = [
-        coreKtx                       : "androidx.core:core-ktx:${versions.coreKtx}",
-        lifecycleRuntimeKtx           : "androidx.lifecycle:lifecycle-runtime-ktx:${versions.lifecycle}",
-        lifecycleRuntimeCompose       : "androidx.lifecycle:lifecycle-runtime-compose:${versions.lifecycle}",
-        lifecycleCompose              : "androidx.lifecycle:lifecycle-viewmodel-compose:${versions.lifecycle}",
-        viewModelSavedState           : "androidx.lifecycle:lifecycle-viewmodel-savedstate:${versions.lifecycle}",
-        activityCompose               : "androidx.activity:activity-compose:${versions.activityCompose}",
-        material3                     : "androidx.compose.material3:material3:${versions.material3}",
+        coreKtx                : "androidx.core:core-ktx:${versions.coreKtx}",
+        lifecycleRuntimeKtx    : "androidx.lifecycle:lifecycle-runtime-ktx:${versions.lifecycle}",
+        lifecycleRuntimeCompose: "androidx.lifecycle:lifecycle-runtime-compose:${versions.lifecycle}",
+        lifecycleCompose       : "androidx.lifecycle:lifecycle-viewmodel-compose:${versions.lifecycle}",
+        viewModelSavedState    : "androidx.lifecycle:lifecycle-viewmodel-savedstate:${versions.lifecycle}",
+        activityCompose        : "androidx.activity:activity-compose:${versions.activityCompose}",
+        material3              : "androidx.compose.material3:material3:${versions.material3}",
 
         //Compose
-        composeFoundation             : "androidx.compose.foundation:foundation:${versions.compose}",
-        composeFoundationLayout       : "androidx.compose.foundation:foundation-layout:${versions.compose}",
-        composeNavigation             : "androidx.navigation:navigation-compose:${versions.navigation}",
-        composeUi                     : "androidx.compose.ui:ui:${versions.compose}",
-        composePreview                : "androidx.compose.ui:ui-tooling-preview:${versions.compose}",
-
-        uiTestJUnit                   : "androidx.compose.ui:ui-test-junit4:${versions.composeTest}",
-        uiTooling                     : "androidx.compose.ui:ui-tooling:${versions.composeTest}",
-        uiTestManifest                : "androidx.compose.ui:ui-test-manifest:${versions.composeTest}",
+        composeFoundation      : "androidx.compose.foundation:foundation:${versions.compose}",
+        composeFoundationLayout: "androidx.compose.foundation:foundation-layout:${versions.compose}",
+        composeNavigation      : "androidx.navigation:navigation-compose:${versions.navigation}",
+        composeUi              : "androidx.compose.ui:ui:${versions.compose}",
+        composePreview         : "androidx.compose.ui:ui-tooling-preview:${versions.compose}",
+        uiTooling             : "androidx.compose.ui:ui-tooling:${versions.compose}",
 
         //Accompanist
-        accompanistUiController       : "com.google.accompanist:accompanist-systemuicontroller:${versions.accompanistUiController}",
+        accompanistUiController: "com.google.accompanist:accompanist-systemuicontroller:${versions.accompanistUiController}",
 
         //Glide
-        glide                         : "com.github.bumptech.glide:compose:${versions.glide}",
+        glide                  : "com.github.bumptech.glide:compose:${versions.glide}",
 
         //Splash
-        splash                        : "androidx.core:core-splashscreen:${versions.splash}",
+        splash                 : "androidx.core:core-splashscreen:${versions.splash}",
 
         //Dagger - Hilt
-        hilt                          : "com.google.dagger:hilt-android:${versions.hilt}",
-        hiltAndroidCompiler           : "com.google.dagger:hilt-android-compiler:${versions.hilt}",
-        hiltCompiler                  : "androidx.hilt:hilt-compiler:${versions.hiltCompiler}",
-        hiltNavigation                : "androidx.hilt:hilt-navigation-compose:${versions.hiltNavigation}",
-
-        //Test
-        jUnit                         : "junit:junit:${versions.jUnit}",
-        testExt                       : "androidx.test.ext:junit:${versions.testExt}",
-        espresso                      : "androidx.test.espresso:espresso-core:${versions.espresso}",
+        hilt                   : "com.google.dagger:hilt-android:${versions.hilt}",
+        hiltAndroidCompiler    : "com.google.dagger:hilt-android-compiler:${versions.hilt}",
+        hiltCompiler           : "androidx.hilt:hilt-compiler:${versions.hiltCompiler}",
+        hiltNavigation         : "androidx.hilt:hilt-navigation-compose:${versions.hiltNavigation}",
 ]

@@ -44,16 +44,16 @@ object ModalPage : Screen {
             ) {
                 PersianButton.Primary(
                     text = "Half Expended",
-                    size = PersianButtonSizes.large()
+                    sizes = PersianButtonSizes.large()
                 ) {
                     showHalfExpanded = true
                 }
-                PersianButton.Primary(text = "Expanded", size = PersianButtonSizes.large()) {
+                PersianButton.Primary(text = "Expanded", sizes = PersianButtonSizes.large()) {
                     showExpanded = true
                 }
                 PersianButton.Primary(
                     text = "Full Screen",
-                    size = PersianButtonSizes.large()
+                    sizes = PersianButtonSizes.large()
                 ) {
                     showFullScreen = true
                 }

@@ -28,10 +28,9 @@ object PersianSnackbarRight {
         text: String,
         onClick: () -> Unit
     ) {
-        PersianButton.Primary(
+        PersianButton.Tertiary(
             text = text,
-            style = PersianComponentStyle.STANDARD,
-            size = PersianButtonSizes.small(),
+            sizes = PersianButtonSizes.small(),
             onClick = onClick
         )
     }

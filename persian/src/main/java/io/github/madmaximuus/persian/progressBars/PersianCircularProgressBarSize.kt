@@ -16,9 +16,9 @@ data class CircularProgressBarSizes(
 object PersianCircularProgressBarSize {
     @Composable
     fun large(
-        boxSize: Dp = 42.dp,
+        boxSize: Dp = 44.dp,
         strokeSize: Dp = 2.dp,
-        contentPadding: Dp = 5.dp
+        contentPadding: Dp = 8.dp
     ) = remember(boxSize, strokeSize, contentPadding) {
         CircularProgressBarSizes(
             boxSize = boxSize,
@@ -29,9 +29,9 @@ object PersianCircularProgressBarSize {
 
     @Composable
     fun medium(
-        boxSize: Dp = 34.dp,
+        boxSize: Dp = 36.dp,
         strokeSize: Dp = 2.dp,
-        contentPadding: Dp = 4.dp
+        contentPadding: Dp = 6.dp
     ) = remember(boxSize, strokeSize, contentPadding) {
         CircularProgressBarSizes(
             boxSize = boxSize,
@@ -42,9 +42,9 @@ object PersianCircularProgressBarSize {
 
     @Composable
     fun small(
-        boxSize: Dp = 24.dp,
+        boxSize: Dp = 28.dp,
         strokeSize: Dp = 2.dp,
-        contentPadding: Dp = 3.dp
+        contentPadding: Dp = 4.dp
     ) = remember(boxSize, strokeSize, contentPadding) {
         CircularProgressBarSizes(
             boxSize = boxSize,

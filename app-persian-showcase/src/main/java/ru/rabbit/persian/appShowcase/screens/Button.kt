@@ -19,15 +19,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.buttons.IconSide
 import io.github.madmaximuus.persian.buttons.PersianButton
-import io.github.madmaximuus.persian.buttons.PersianButtonColors
 import io.github.madmaximuus.persian.buttons.PersianButtonSizes
 import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
-import io.github.madmaximuus.persian.foundation.PersianComponentStyle
 import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.foundation.spacing
 import io.github.madmaximuus.persian.inputs.PersianInputs
@@ -50,16 +48,13 @@ object Button : Screen {
             onBackClick = { navController?.navigateUp() },
             topAppBarScrollBehavior = topAppBarScrollBehavior,
         ) {
-            var style by remember { mutableStateOf(PersianComponentStyle.FILL) }
             var text by remember { mutableStateOf("Button") }
-            var iconSide by remember { mutableStateOf(IconSide.LEFT) }
-            var showIcon by remember { mutableStateOf(false) }
+            var showLeadingIcon by remember { mutableStateOf(false) }
+            var showTrailingIcon by remember { mutableStateOf(false) }
             val size = PersianButtonSizes.large()
             var sizeState by remember { mutableStateOf(size) }
             var enabled by remember { mutableStateOf(true) }
             var loading by remember { mutableStateOf(false) }
-            val colors = PersianButtonColors.primary(style = style)
-            var colorState by remember { mutableStateOf(colors) }
             Column(
                 Modifier
                     .fillMaxSize()
@@ -71,76 +66,48 @@ object Button : Screen {
                     text = "Sample Button",
                     firstItem = true
                 ) {
-                    when (colorState) {
-                        PersianButtonColors.primary(style = style) -> {
-                            PersianButton.Primary(
-                                text = text,
-                                size = sizeState,
-                                style = style,
-                                iconSide = iconSide,
-                                colors = colorState,
-                                enabled = enabled,
-                                loading = loading,
-                                icon = if (showIcon) MaterialTheme.icons.add else null,
-                                onClick = {}
-                            )
-                        }
-
-                        PersianButtonColors.secondary(style = style) -> {
-                            PersianButton.Secondary(
-                                text = text,
-                                size = sizeState,
-                                style = style,
-                                iconSide = iconSide,
-                                colors = colorState,
-                                enabled = enabled,
-                                loading = loading,
-                                icon = if (showIcon) MaterialTheme.icons.add else null,
-                                onClick = {}
-                            )
-                        }
-
-                        PersianButtonColors.tertiary(style = style) -> {
-                            PersianButton.Tertiary(
-                                text = text,
-                                size = sizeState,
-                                style = style,
-                                iconSide = iconSide,
-                                enabled = enabled,
-                                colors = colorState,
-                                loading = loading,
-                                icon = if (showIcon) MaterialTheme.icons.add else null,
-                                onClick = {}
-                            )
-                        }
-
-                        PersianButtonColors.negative(style = style) -> {
-                            PersianButton.Negative(
-                                text = text,
-                                size = sizeState,
-                                style = style,
-                                iconSide = iconSide,
-                                colors = colorState,
-                                enabled = enabled,
-                                loading = loading,
-                                icon = if (showIcon) MaterialTheme.icons.add else null,
-                                onClick = {}
-                            )
-                        }
-
-                        PersianButtonColors.neutral(style = style) -> {
-                            PersianButton.Neutral(
-                                text = text,
-                                size = sizeState,
-                                style = style,
-                                iconSide = iconSide,
-                                colors = colorState,
-                                enabled = enabled,
-                                loading = loading,
-                                icon = if (showIcon) MaterialTheme.icons.add else null,
-                                onClick = {}
-                            )
-                        }
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        PersianButton.Primary(
+                            text = text,
+                            sizes = sizeState,
+                            enabled = enabled,
+                            loading = loading,
+                            leadingIcon = if (showLeadingIcon) MaterialTheme.icons.add else null,
+                            trailingIcon = if (showTrailingIcon) MaterialTheme.icons.chevronRight else null,
+                            onClick = {}
+                        )
+                        Spacer(modifier = Modifier.height(MaterialTheme.spacing.large))
+                        PersianButton.Secondary(
+                            text = text,
+                            sizes = sizeState,
+                            enabled = enabled,
+                            loading = loading,
+                            leadingIcon = if (showLeadingIcon) MaterialTheme.icons.add else null,
+                            trailingIcon = if (showTrailingIcon) MaterialTheme.icons.chevronRight else null,
+                            onClick = {}
+                        )
+                        Spacer(modifier = Modifier.height(MaterialTheme.spacing.large))
+                        PersianButton.Tertiary(
+                            text = text,
+                            sizes = sizeState,
+                            enabled = enabled,
+                            loading = loading,
+                            leadingIcon = if (showLeadingIcon) MaterialTheme.icons.add else null,
+                            trailingIcon = if (showTrailingIcon) MaterialTheme.icons.chevronRight else null,
+                            onClick = {}
+                        )
+                        Spacer(modifier = Modifier.height(MaterialTheme.spacing.large))
+                        PersianButton.Outline(
+                            text = text,
+                            sizes = sizeState,
+                            enabled = enabled,
+                            loading = loading,
+                            leadingIcon = if (showLeadingIcon) MaterialTheme.icons.add else null,
+                            trailingIcon = if (showTrailingIcon) MaterialTheme.icons.chevronRight else null,
+                            onClick = {}
+                        )
                     }
                 }
                 SampleRow(text = "Label") {
@@ -150,69 +117,6 @@ object Button : Screen {
                             text = value
                         }
                     )
-                }
-                val styleStates = remember {
-                    listOf(
-                        mutableStateOf(true),
-                        mutableStateOf(false),
-                        mutableStateOf(false)
-                    )
-                }
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(
-                            top = MaterialTheme.spacing.small,
-                            bottom = MaterialTheme.spacing.small,
-                            start = MaterialTheme.spacing.medium,
-                            end = MaterialTheme.spacing.medium
-                        ),
-                ) {
-                    Text(
-                        text = "Style",
-                        style = MaterialTheme.typography.titleMedium,
-                        color = MaterialTheme.colorScheme.onSurface
-                    )
-                    Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraSmall))
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .selectableGroup()
-                    ) {
-                        PersianRadioButton.Primary(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Fill",
-                            checked = styleStates[0].value,
-                            onCheckedChange = {
-                                styleStates.forEachIndexed { index, mutableState ->
-                                    mutableState.value = index == 0
-                                }
-                                style = PersianComponentStyle.FILL
-                            }
-                        )
-                        PersianRadioButton.Primary(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Outline",
-                            checked = styleStates[1].value,
-                            onCheckedChange = {
-                                styleStates.forEachIndexed { index, mutableState ->
-                                    mutableState.value = index == 1
-                                }
-                                style = PersianComponentStyle.OUTLINED
-                            }
-                        )
-                        PersianRadioButton.Primary(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Standard",
-                            checked = styleStates[2].value,
-                            onCheckedChange = {
-                                styleStates.forEachIndexed { index, mutableState ->
-                                    mutableState.value = index == 2
-                                }
-                                style = PersianComponentStyle.STANDARD
-                            }
-                        )
-                    }
                 }
                 val sizeStates = remember {
                     listOf(
@@ -280,195 +184,6 @@ object Button : Screen {
                         )
                     }
                 }
-                val colorStates = remember {
-                    listOf(
-                        mutableStateOf(true),
-                        mutableStateOf(false),
-                        mutableStateOf(false),
-                        mutableStateOf(false),
-                        mutableStateOf(false),
-                    )
-                }
-                val primaryFill = PersianButtonColors.primary(style = PersianComponentStyle.FILL)
-                val primaryOutlined =
-                    PersianButtonColors.primary(style = PersianComponentStyle.OUTLINED)
-                val primaryStandard =
-                    PersianButtonColors.primary(style = PersianComponentStyle.STANDARD)
-                val secondaryFill =
-                    PersianButtonColors.secondary(style = PersianComponentStyle.FILL)
-                val secondaryOutlined =
-                    PersianButtonColors.secondary(style = PersianComponentStyle.OUTLINED)
-                val secondaryStandard =
-                    PersianButtonColors.secondary(style = PersianComponentStyle.STANDARD)
-                val tertiaryFill = PersianButtonColors.tertiary(style = PersianComponentStyle.FILL)
-                val tertiaryOutlined =
-                    PersianButtonColors.tertiary(style = PersianComponentStyle.OUTLINED)
-                val tertiaryStandard =
-                    PersianButtonColors.tertiary(style = PersianComponentStyle.STANDARD)
-                val negativeFill = PersianButtonColors.negative(style = PersianComponentStyle.FILL)
-                val negativeOutlined =
-                    PersianButtonColors.negative(style = PersianComponentStyle.OUTLINED)
-                val negativeStandard =
-                    PersianButtonColors.negative(style = PersianComponentStyle.STANDARD)
-                val neutralFill = PersianButtonColors.neutral(style = PersianComponentStyle.FILL)
-                val neutralOutlined =
-                    PersianButtonColors.neutral(style = PersianComponentStyle.OUTLINED)
-                val neutralStandard =
-                    PersianButtonColors.neutral(style = PersianComponentStyle.STANDARD)
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(
-                            top = MaterialTheme.spacing.small,
-                            bottom = MaterialTheme.spacing.small,
-                            start = MaterialTheme.spacing.medium,
-                            end = MaterialTheme.spacing.medium
-                        ),
-                ) {
-                    Text(
-                        text = "Color",
-                        style = MaterialTheme.typography.titleMedium,
-                        color = MaterialTheme.colorScheme.onSurface
-                    )
-                    Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraSmall))
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .selectableGroup()
-                    ) {
-                        PersianRadioButton.Primary(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Primary",
-                            checked = colorStates[0].value,
-                            onCheckedChange = {
-                                colorStates.forEachIndexed { index, mutableState ->
-                                    mutableState.value = index == 0
-                                }
-                                colorState = when (style) {
-                                    PersianComponentStyle.FILL -> primaryFill
-                                    PersianComponentStyle.STANDARD -> primaryStandard
-                                    PersianComponentStyle.OUTLINED -> primaryOutlined
-                                    else -> primaryFill
-                                }
-                            }
-                        )
-                        PersianRadioButton.Primary(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Secondary",
-                            checked = colorStates[1].value,
-                            onCheckedChange = {
-                                colorStates.forEachIndexed { index, mutableState ->
-                                    mutableState.value = index == 1
-                                }
-                                colorState = when (style) {
-                                    PersianComponentStyle.FILL -> secondaryFill
-                                    PersianComponentStyle.STANDARD -> secondaryStandard
-                                    PersianComponentStyle.OUTLINED -> secondaryOutlined
-                                    else -> secondaryFill
-                                }
-                            }
-                        )
-                        PersianRadioButton.Primary(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Tertiary",
-                            checked = colorStates[2].value,
-                            onCheckedChange = {
-                                colorStates.forEachIndexed { index, mutableState ->
-                                    mutableState.value = index == 2
-                                }
-                                colorState = when (style) {
-                                    PersianComponentStyle.FILL -> tertiaryFill
-                                    PersianComponentStyle.STANDARD -> tertiaryStandard
-                                    PersianComponentStyle.OUTLINED -> tertiaryOutlined
-                                    else -> tertiaryFill
-                                }
-                            }
-                        )
-                        PersianRadioButton.Primary(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Negative",
-                            checked = colorStates[3].value,
-                            onCheckedChange = {
-                                colorStates.forEachIndexed { index, mutableState ->
-                                    mutableState.value = index == 3
-                                }
-                                colorState = when (style) {
-                                    PersianComponentStyle.FILL -> negativeFill
-                                    PersianComponentStyle.STANDARD -> negativeStandard
-                                    PersianComponentStyle.OUTLINED -> negativeOutlined
-                                    else -> negativeFill
-                                }
-                            }
-                        )
-                        PersianRadioButton.Primary(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Neutral",
-                            checked = colorStates[4].value,
-                            onCheckedChange = {
-                                colorStates.forEachIndexed { index, mutableState ->
-                                    mutableState.value = index == 4
-                                }
-                                colorState = when (style) {
-                                    PersianComponentStyle.FILL -> neutralFill
-                                    PersianComponentStyle.STANDARD -> neutralStandard
-                                    PersianComponentStyle.OUTLINED -> neutralOutlined
-                                    else -> neutralFill
-                                }
-                            }
-                        )
-                    }
-                }
-                val iconSideStates = remember {
-                    listOf(
-                        mutableStateOf(true),
-                        mutableStateOf(false),
-                    )
-                }
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(
-                            top = MaterialTheme.spacing.small,
-                            bottom = MaterialTheme.spacing.small,
-                            start = MaterialTheme.spacing.medium,
-                            end = MaterialTheme.spacing.medium
-                        ),
-                ) {
-                    Text(
-                        text = "Icon side",
-                        style = MaterialTheme.typography.titleMedium,
-                        color = MaterialTheme.colorScheme.onSurface
-                    )
-                    Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraSmall))
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .selectableGroup()
-                    ) {
-                        PersianRadioButton.Primary(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Left",
-                            checked = iconSideStates[0].value,
-                            onCheckedChange = {
-                                iconSideStates.forEachIndexed { index, mutableState ->
-                                    mutableState.value = index == 0
-                                }
-                                iconSide = IconSide.LEFT
-                            }
-                        )
-                        PersianRadioButton.Primary(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Right",
-                            checked = iconSideStates[1].value,
-                            onCheckedChange = {
-                                iconSideStates.forEachIndexed { index, mutableState ->
-                                    mutableState.value = index == 1
-                                }
-                                iconSide = IconSide.RIGHT
-                            }
-                        )
-                    }
-                }
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -491,10 +206,18 @@ object Button : Screen {
                     ) {
                         PersianCheckbox.Primary(
                             modifier = Modifier.fillMaxWidth(),
-                            text = "Show icon",
-                            checked = showIcon,
+                            text = "Show Leading icon",
+                            checked = showLeadingIcon,
                             onCheckedChange = {
-                                showIcon = !showIcon
+                                showLeadingIcon = !showLeadingIcon
+                            }
+                        )
+                        PersianCheckbox.Primary(
+                            modifier = Modifier.fillMaxWidth(),
+                            text = "Show Trailing icon",
+                            checked = showTrailingIcon,
+                            onCheckedChange = {
+                                showTrailingIcon = !showTrailingIcon
                             }
                         )
                         PersianCheckbox.Primary(

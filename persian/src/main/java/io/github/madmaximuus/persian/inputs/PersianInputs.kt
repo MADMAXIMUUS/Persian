@@ -16,14 +16,12 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.selection.LocalTextSelectionColors
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -49,6 +47,8 @@ import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.iconBox.PersianIconBox
+import io.github.madmaximuus.persian.iconBox.PersianIconBoxColors
 
 object PersianInputs {
 
@@ -79,6 +79,7 @@ object PersianInputs {
             textStyle.merge(TextStyle(color = textColor, baselineShift = BaselineShift.None))
 
         val borderThickness = if (enabled && (isFocused || isError || isSuccess)) 2.dp else 1.dp
+
         val borderColor = colors.indicatorColor(
             enabled = enabled,
             isSuccess = isSuccess,
@@ -129,18 +130,17 @@ object PersianInputs {
                             .height(24.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        if (leadingIcon != null) {
-                            Icon(
-                                modifier = Modifier
-                                    .size(24.dp),
-                                painter = leadingIcon,
-                                tint = colors.leadingIconColor(
-                                    enabled = enabled,
-                                    isSuccess = isSuccess,
-                                    isError = isError,
-                                    interactionSource = interactionSource
-                                ).value,
-                                contentDescription = ""
+                        leadingIcon?.let { icon ->
+                            PersianIconBox.Primary(
+                                icon = icon,
+                                colors = PersianIconBoxColors.primary(
+                                    defaultColor = colors.leadingIconColor(
+                                        enabled = enabled,
+                                        isSuccess = isSuccess,
+                                        isError = isError,
+                                        interactionSource = interactionSource
+                                    ).value
+                                )
                             )
                         }
                         Row(
@@ -182,42 +182,41 @@ object PersianInputs {
                                 )
                             }
                         }
-                        if (trailingIcon != null) {
-                            Icon(
+                        trailingIcon?.let { icon ->
+                            PersianIconBox.Primary(
                                 modifier = Modifier
-                                    .size(24.dp)
                                     .clip(MaterialTheme.shapes.small)
                                     .clickable(
                                         enabled = onTrailingIconClick != null,
                                         onClick = { onTrailingIconClick?.invoke() },
                                         role = Role.Button
                                     ),
-                                painter = trailingIcon,
-                                tint = colors.trailingIconColor(
-                                    enabled = enabled,
-                                    isSuccess = isSuccess,
-                                    isError = isError,
-                                    interactionSource = interactionSource
-                                ).value,
-                                contentDescription = ""
+                                icon = icon,
+                                colors = PersianIconBoxColors.primary(
+                                    defaultColor = colors.trailingIconColor(
+                                        enabled = enabled,
+                                        isSuccess = isSuccess,
+                                        isError = isError,
+                                        interactionSource = interactionSource
+                                    ).value
+                                )
                             )
                         }
                         colors.stateIcon(
                             enabled = enabled,
                             isError = isError,
                             isSuccess = isSuccess
-                        ).value?.let {
+                        ).value?.let { icon ->
                             Spacer(modifier = Modifier.width(MaterialTheme.spacing.small))
-                            Icon(
-                                modifier = Modifier
-                                    .size(24.dp),
-                                painter = it,
-                                contentDescription = "",
-                                tint = colors.stateIconColor(
-                                    enabled = enabled,
-                                    isSuccess = isSuccess,
-                                    isError = isError
-                                ).value
+                            PersianIconBox.Primary(
+                                icon = icon,
+                                colors = PersianIconBoxColors.primary(
+                                    defaultColor = colors.stateIconColor(
+                                        enabled = enabled,
+                                        isSuccess = isSuccess,
+                                        isError = isError,
+                                    ).value
+                                )
                             )
                         }
                     }

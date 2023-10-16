@@ -2,7 +2,6 @@ package io.github.madmaximuus.persian.iconButtons.toggle
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.material3.FilledIconToggleButton
-import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.IconToggleButton
 import androidx.compose.material3.MaterialTheme
@@ -17,6 +16,8 @@ import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.PersianComponentStyle
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.icons
+import io.github.madmaximuus.persian.iconBox.PersianIconBox
+import io.github.madmaximuus.persian.iconBox.PersianIconBoxColors
 import io.github.madmaximuus.persian.iconButtons.IconButtonSizes
 import io.github.madmaximuus.persian.iconButtons.PersianIconButtonSizes
 
@@ -107,14 +108,18 @@ private fun PersianFilledToggleIconButtonImpl(
         onCheckedChange = onCheckedChange
     ) {
         if (checked) {
-            Icon(
-                painter = checkedIcon,
-                contentDescription = ""
+            PersianIconBox.Primary(
+                icon = checkedIcon,
+                colors = PersianIconBoxColors.primary(
+                    defaultColor = colors.contentColor
+                )
             )
         } else {
-            Icon(
-                painter = icon,
-                contentDescription = ""
+            PersianIconBox.Primary(
+                icon = icon,
+                colors = PersianIconBoxColors.primary(
+                    defaultColor = colors.contentColor
+                )
             )
         }
     }
@@ -148,14 +153,18 @@ private fun PersianOutlinedToggleIconButtonImpl(
         onCheckedChange = onCheckedChange
     ) {
         if (checked) {
-            Icon(
-                painter = checkedIcon,
-                contentDescription = ""
+            PersianIconBox.Primary(
+                icon = checkedIcon,
+                colors = PersianIconBoxColors.primary(
+                    defaultColor = colors.contentColor
+                )
             )
         } else {
-            Icon(
-                painter = icon,
-                contentDescription = ""
+            PersianIconBox.Primary(
+                icon = icon,
+                colors = PersianIconBoxColors.primary(
+                    defaultColor = colors.contentColor
+                )
             )
         }
     }
@@ -186,14 +195,18 @@ private fun PersianToggleIconButtonImpl(
         onCheckedChange = onCheckedChange
     ) {
         if (checked) {
-            Icon(
-                painter = checkedIcon,
-                contentDescription = ""
+            PersianIconBox.Primary(
+                icon = checkedIcon,
+                colors = PersianIconBoxColors.primary(
+                    defaultColor = colors.contentColor
+                )
             )
         } else {
-            Icon(
-                painter = icon,
-                contentDescription = ""
+            PersianIconBox.Primary(
+                icon = icon,
+                colors = PersianIconBoxColors.primary(
+                    defaultColor = colors.contentColor
+                )
             )
         }
     }

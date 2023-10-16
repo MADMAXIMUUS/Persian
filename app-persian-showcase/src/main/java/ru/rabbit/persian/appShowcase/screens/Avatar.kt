@@ -27,28 +27,86 @@ object Avatar : Screen {
                 contentPadding = it
             ) {
                 item {
-                    SampleRow(text = "Round Avatar", firstItem = true) {
+                    SampleRow(text = "Placeholder", firstItem = true) {
+                        PersianAvatars.Round(imageUrl = "", size = PersianAvatarsSizes.profile())
                         PersianAvatars.Round(imageUrl = "", size = PersianAvatarsSizes.large())
                         PersianAvatars.Round(imageUrl = "", size = PersianAvatarsSizes.medium())
                         PersianAvatars.Round(imageUrl = "", size = PersianAvatarsSizes.small())
                     }
                 }
                 item {
-                    SampleRow(text = "Round Avatar Edit") {
+                    SampleRow(text = "Placeholder edit") {
+                        PersianAvatars.Round(
+                            imageUrl = "",
+                            size = PersianAvatarsSizes.profile(),
+                            isEdit = true,
+                            onClick = {}
+                        )
+                        PersianAvatars.Round(
+                            imageUrl = "",
+                            size = PersianAvatarsSizes.large(),
+                            isEdit = true,
+                            onClick = {}
+                        )
+                        PersianAvatars.Round(
+                            imageUrl = "",
+                            size = PersianAvatarsSizes.medium(),
+                            isEdit = true,
+                            onClick = {}
+                        )
+                        PersianAvatars.Round(
+                            imageUrl = "",
+                            size = PersianAvatarsSizes.small(),
+                            isEdit = true,
+                            onClick = {}
+                        )
+                    }
+                }
+                item {
+                    SampleRow(text = "Avatar") {
+                        PersianAvatars.Round(
+                            imageUrl = "https://loremflickr.com/320/240",
+                            size = PersianAvatarsSizes.profile(),
+                        )
                         PersianAvatars.Round(
                             imageUrl = "https://loremflickr.com/320/240",
                             size = PersianAvatarsSizes.large(),
-                            isEdit = true
+                        )
+                        PersianAvatars.Round(
+                            imageUrl = "https://loremflickr.com/320/240",
+                            size = PersianAvatarsSizes.medium()
+                        )
+                        PersianAvatars.Round(
+                            imageUrl = "https://loremflickr.com/320/240",
+                            size = PersianAvatarsSizes.small()
+                        )
+                    }
+                }
+                item {
+                    SampleRow(text = "Avatar edit") {
+                        PersianAvatars.Round(
+                            imageUrl = "https://loremflickr.com/320/240",
+                            size = PersianAvatarsSizes.profile(),
+                            isEdit = true,
+                            onClick = {}
+                        )
+                        PersianAvatars.Round(
+                            imageUrl = "https://loremflickr.com/320/240",
+                            size = PersianAvatarsSizes.large(),
+                            isEdit = true,
+                            onClick = {}
                         )
                         PersianAvatars.Round(
                             imageUrl = "https://loremflickr.com/320/240",
                             size = PersianAvatarsSizes.medium(),
-                            isEdit = true
+                            isEdit = true,
+                            onClick = {}
                         )
                         PersianAvatars.Round(
                             imageUrl = "https://loremflickr.com/320/240",
                             size = PersianAvatarsSizes.small(),
-                            isEdit = true
+                            isEdit = true,
+                            onClick = {}
                         )
                     }
                 }

@@ -3,7 +3,6 @@ package io.github.madmaximuus.persian.snackbar
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -18,6 +17,8 @@ import io.github.madmaximuus.persian.avatars.PersianAvatars
 import io.github.madmaximuus.persian.avatars.PersianAvatarsSizes
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.iconBox.PersianIconBox
+import io.github.madmaximuus.persian.iconBox.PersianIconBoxColors
 import io.github.madmaximuus.persian.progressBars.PersianCircularProgressBarSize
 import io.github.madmaximuus.persian.progressBars.PersianProgressBar
 
@@ -33,18 +34,19 @@ object PersianSnackbarLeft {
         Box(
             modifier = modifier,
         ) {
-            Icon(
+            PersianIconBox.Primary(
                 modifier = Modifier
                     .padding(
                         start = MaterialTheme.spacing.large,
                         end = 0.dp,
                         top = MaterialTheme.spacing.medium,
                         bottom = MaterialTheme.spacing.medium
-                    )
-                    .size(24.dp),
-                painter = icon,
-                contentDescription = contentDescription,
-                tint = color
+                    ),
+                icon = icon,
+                colors = PersianIconBoxColors.primary(
+                    defaultColor = color
+                ),
+                contentDescription = contentDescription
             )
         }
     }

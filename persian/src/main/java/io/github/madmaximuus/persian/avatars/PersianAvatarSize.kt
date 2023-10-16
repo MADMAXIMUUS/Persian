@@ -1,40 +1,53 @@
 package io.github.madmaximuus.persian.avatars
 
-import androidx.compose.foundation.shape.CornerBasedShape
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import io.github.madmaximuus.persian.iconBox.IconBoxSize
+import io.github.madmaximuus.persian.iconBox.PersianIconBoxSize
 
 data class AvatarSize(
     val boxSizes: Dp,
-    val cornerShape: CornerBasedShape
+    val placeholderSize: IconBoxSize,
+    val editIconBoxSize: IconBoxSize
 )
 
 object PersianAvatarsSizes {
 
     @Composable
+    fun profile(
+        boxSizes: Dp = 96.dp,
+        placeholderSize: IconBoxSize = PersianIconBoxSize.extraExtraLarge(),
+        editIconBoxSize: IconBoxSize = PersianIconBoxSize.extraLarge()
+    ) = remember(boxSizes, placeholderSize, editIconBoxSize) {
+        AvatarSize(boxSizes, placeholderSize, editIconBoxSize)
+    }
+
+    @Composable
     fun large(
         boxSizes: Dp = 48.dp,
-        cornerShape: CornerBasedShape = MaterialTheme.shapes.large
-    ) = remember(boxSizes, cornerShape) {
-        AvatarSize(boxSizes, cornerShape)
+        placeholderSize: IconBoxSize = PersianIconBoxSize.large(),
+        editIconBoxSize: IconBoxSize = PersianIconBoxSize.large()
+    ) = remember(boxSizes, placeholderSize, editIconBoxSize) {
+        AvatarSize(boxSizes, placeholderSize, editIconBoxSize)
     }
 
     @Composable
     fun medium(
         boxSizes: Dp = 32.dp,
-        cornerShape: CornerBasedShape = MaterialTheme.shapes.medium
-    ) = remember(boxSizes, cornerShape) {
-        AvatarSize(boxSizes, cornerShape)
+        placeholderSize: IconBoxSize = PersianIconBoxSize.medium(),
+        editIconBoxSize: IconBoxSize = PersianIconBoxSize.medium()
+    ) = remember(boxSizes, placeholderSize, editIconBoxSize) {
+        AvatarSize(boxSizes, placeholderSize, editIconBoxSize)
     }
 
     @Composable
     fun small(
         boxSizes: Dp = 24.dp,
-        cornerShape: CornerBasedShape = MaterialTheme.shapes.small
-    ) = remember(boxSizes, cornerShape) {
-        AvatarSize(boxSizes, cornerShape)
+        placeholderSize: IconBoxSize = PersianIconBoxSize.small(),
+        editIconBoxSize: IconBoxSize = PersianIconBoxSize.small()
+    ) = remember(boxSizes, placeholderSize, editIconBoxSize) {
+        AvatarSize(boxSizes, placeholderSize, editIconBoxSize)
     }
 }

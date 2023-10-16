@@ -37,7 +37,6 @@ object Alert : Screen {
         var showOnlyActionAlert by remember { mutableStateOf(false) }
         var showAlert by remember { mutableStateOf(false) }
         var showAlertWithIcon by remember { mutableStateOf(false) }
-        var showAlertWithDescription by remember { mutableStateOf(false) }
         var showAlertWithContent by remember { mutableStateOf(false) }
         SampleScaffold(title = name, onBackClick = { navController?.navigateUp() }) {
             Column(
@@ -49,28 +48,22 @@ object Alert : Screen {
             ) {
                 PersianButton.Primary(
                     text = "Only Action Alert",
-                    size = PersianButtonSizes.large()
+                    sizes = PersianButtonSizes.large()
                 ) {
                     showOnlyActionAlert = true
                 }
-                PersianButton.Primary(text = "Primary Alert", size = PersianButtonSizes.large()) {
+                PersianButton.Primary(text = "Primary Alert", sizes = PersianButtonSizes.large()) {
                     showAlert = true
                 }
                 PersianButton.Primary(
                     text = "Primary Alert With Icon",
-                    size = PersianButtonSizes.large()
+                    sizes = PersianButtonSizes.large()
                 ) {
                     showAlertWithIcon = true
                 }
                 PersianButton.Primary(
-                    text = "Primary Alert With Description",
-                    size = PersianButtonSizes.large()
-                ) {
-                    showAlertWithDescription = true
-                }
-                PersianButton.Primary(
                     text = "Primary Alert With Content",
-                    size = PersianButtonSizes.large()
+                    sizes = PersianButtonSizes.large()
                 ) {
                     showAlertWithContent = true
                 }
@@ -79,8 +72,17 @@ object Alert : Screen {
         if (showOnlyActionAlert) {
             PersianAlerts.OnlyAction(
                 actions = listOf(
-                    AlertAction("Action 1", onClick = {}),
-                    AlertAction("Action 1", onClick = {}),
+                    AlertAction("Action 1", onClick = { showOnlyActionAlert = false }),
+                    AlertAction("Action 2", onClick = { showOnlyActionAlert = false }),
+                    AlertAction("Action 3", onClick = { showOnlyActionAlert = false }),
+                    AlertAction("Action 4", onClick = { showOnlyActionAlert = false }),
+                    AlertAction("Action 5", onClick = { showOnlyActionAlert = false }),
+                    AlertAction("Action 6", onClick = { showOnlyActionAlert = false }),
+                    AlertAction("Action 7", onClick = { showOnlyActionAlert = false }),
+                    AlertAction("Action 8", onClick = { showOnlyActionAlert = false }),
+                    AlertAction("Action 9", onClick = { showOnlyActionAlert = false }),
+                    AlertAction("Action 10", onClick = { showOnlyActionAlert = false }),
+                    AlertAction("Action 11", onClick = { showOnlyActionAlert = false }),
                 )
             ) {
                 showOnlyActionAlert = false
@@ -90,9 +92,10 @@ object Alert : Screen {
             PersianAlerts.Primary(
                 title = "Alert",
                 actions = listOf(
-                    AlertAction("Action 1", onClick = {}),
-                    AlertAction("Action 1", onClick = {}),
+                    AlertAction("OK", onClick = { showAlert = false }),
+                    AlertAction("Cancel", onClick = { showAlert = false }),
                 ),
+                description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi malesuada, felis sit amet maximus scelerisque, ligula risus volutpat leo, vitae maximus nisi velit eu ante. Cras bibendum arcu non ultricies.",
                 onDismiss = { showAlert = false }
             )
         }
@@ -101,30 +104,21 @@ object Alert : Screen {
                 title = "Alert",
                 icon = MaterialTheme.icons.appLogo,
                 actions = listOf(
-                    AlertAction("Action 1", onClick = {}),
-                    AlertAction("Action 1", onClick = {}),
+                    AlertAction("OK", onClick = { showAlertWithIcon = false }),
+                    AlertAction("Cancel", onClick = { showAlertWithIcon = false }),
                 ),
+                description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi malesuada, felis sit amet maximus scelerisque, ligula risus volutpat leo, vitae maximus nisi velit eu ante. Cras bibendum arcu non ultricies.",
                 onDismiss = { showAlertWithIcon = false }
-            )
-        }
-        if (showAlertWithDescription) {
-            PersianAlerts.Primary(
-                title = "Alert",
-                description = "s;oifudsikfgjgj`;klsxfhjgdjkl;fhg;udfhgjkdfhgjkehruioghdriuoghderio;gjhdeir;ohgio;dsrhg;ls`jgl;ishjg;jldhgj;odrhgdrhgerhguerioguhoihjg",
-                actions = listOf(
-                    AlertAction("Action 1", onClick = {}),
-                    AlertAction("Action 1", onClick = {}),
-                ),
-                onDismiss = { showAlertWithDescription = false }
             )
         }
         if (showAlertWithContent) {
             PersianAlerts.Primary(
                 title = "Alert",
                 actions = listOf(
-                    AlertAction("Action 1", onClick = {}),
-                    AlertAction("Action 1", onClick = {}),
+                    AlertAction("OK", onClick = { showAlertWithContent = false }),
+                    AlertAction("Cancel", onClick = { showAlertWithContent = false }),
                 ),
+                description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi malesuada, felis sit amet maximus scelerisque, ligula risus volutpat leo, vitae maximus nisi velit eu ante. Cras bibendum arcu non ultricies.",
                 onDismiss = { showAlertWithContent = false },
                 content = {
                     Column(
@@ -140,12 +134,12 @@ object Alert : Screen {
                             onCheckedChange = {})
                         PersianRadioButton.Primary(
                             modifier = Modifier.fillMaxWidth(),
-                            text = "Radio Button 1",
-                            checked = false,
+                            text = "Radio Button 2",
+                            checked = true,
                             onCheckedChange = {})
                         PersianRadioButton.Primary(
                             modifier = Modifier.fillMaxWidth(),
-                            text = "Radio Button 1",
+                            text = "Radio Button 3",
                             checked = false,
                             onCheckedChange = {})
                     }
