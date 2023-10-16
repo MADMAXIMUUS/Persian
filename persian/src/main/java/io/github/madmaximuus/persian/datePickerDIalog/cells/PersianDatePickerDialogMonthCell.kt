@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import io.github.madmaximuus.persian.foundation.spacing
 
-object PersianDatePickerDialogMonthCell {
+internal object PersianDatePickerDialogMonthCell {
 
     @Composable
     fun Primary(

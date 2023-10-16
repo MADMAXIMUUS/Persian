@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import io.github.madmaximuus.persian.foundation.spacing
 
-object PersianDatePickerDialogWeekLabelCell {
+internal object PersianDatePickerDialogWeekLabelCell {
 
     @Composable
     fun Primary(
