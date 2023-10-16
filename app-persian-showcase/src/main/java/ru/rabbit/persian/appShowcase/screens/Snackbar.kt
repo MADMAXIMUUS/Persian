@@ -49,7 +49,7 @@ object Snackbar : Screen {
             ) {
                 PersianButton.Primary(
                     text = "Only text",
-                    size = PersianButtonSizes.large()
+                    sizes = PersianButtonSizes.large()
                 ) {
                     coroutineScope.launch {
                         snackbarHostState.currentSnackbarData?.dismiss()
@@ -63,7 +63,7 @@ object Snackbar : Screen {
                 }
                 PersianButton.Primary(
                     text = "With Action Button",
-                    size = PersianButtonSizes.large()
+                    sizes = PersianButtonSizes.large()
                 ) {
                     coroutineScope.launch {
                         snackbarHostState.currentSnackbarData?.dismiss()
@@ -83,7 +83,7 @@ object Snackbar : Screen {
                 }
                 PersianButton.Primary(
                     text = "With Close Button",
-                    size = PersianButtonSizes.large()
+                    sizes = PersianButtonSizes.large()
                 ) {
                     coroutineScope.launch {
                         snackbarHostState.currentSnackbarData?.dismiss()
@@ -100,7 +100,7 @@ object Snackbar : Screen {
                 }
                 PersianButton.Primary(
                     text = "With icon",
-                    size = PersianButtonSizes.large()
+                    sizes = PersianButtonSizes.large()
                 ) {
                     coroutineScope.launch {
                         snackbarHostState.currentSnackbarData?.dismiss()
@@ -120,7 +120,7 @@ object Snackbar : Screen {
                 }
                 PersianButton.Primary(
                     text = "With image",
-                    size = PersianButtonSizes.large()
+                    sizes = PersianButtonSizes.large()
                 ) {
                     coroutineScope.launch {
                         snackbarHostState.currentSnackbarData?.dismiss()
@@ -140,7 +140,7 @@ object Snackbar : Screen {
                 }
                 PersianButton.Primary(
                     text = "With counter",
-                    size = PersianButtonSizes.large()
+                    sizes = PersianButtonSizes.large()
                 ) {
                     coroutineScope.launch {
                         snackbarHostState.currentSnackbarData?.dismiss()
@@ -159,7 +159,7 @@ object Snackbar : Screen {
                 }
                 PersianButton.Primary(
                     text = "Show on top",
-                    size = PersianButtonSizes.large()
+                    sizes = PersianButtonSizes.large()
                 ) {
                     coroutineScope.launch {
                         snackbarHostState.currentSnackbarData?.dismiss()

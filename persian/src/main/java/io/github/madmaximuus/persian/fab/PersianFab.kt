@@ -136,8 +136,8 @@ fun FabPreview() {
                     ),
                     NavigationBarItem(
                         selected = false,
-                        selectedIcon = MaterialTheme.icons.mailFilled,
-                        icon = MaterialTheme.icons.mailOutlined,
+                        selectedIcon = MaterialTheme.icons.chatFilled,
+                        icon = MaterialTheme.icons.chatOutlined,
                         text = "Messages",
                         onClick = {}
                     ),

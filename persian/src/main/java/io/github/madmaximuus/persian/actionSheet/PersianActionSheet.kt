@@ -53,7 +53,7 @@ class AnimatedTransitionDialogHelper(
 }
 
 @Composable
-internal fun AnimatedSlideInTransition(
+private fun AnimatedSlideInTransition(
     visible: Boolean,
     screenHeight: Int,
     content: @Composable AnimatedVisibilityScope.() -> Unit
@@ -76,7 +76,7 @@ internal fun AnimatedSlideInTransition(
     )
 }
 
-suspend fun startDismissWithExitAnimation(
+private suspend fun startDismissWithExitAnimation(
     animateTrigger: MutableState<Boolean>,
     onDismissRequest: () -> Unit
 ) {
@@ -87,6 +87,14 @@ suspend fun startDismissWithExitAnimation(
 
 object PersianActionSheet {
 
+    /**
+     * The action sheet
+     * @param modifier The [Modifier] to be applied to the component
+     * @param actions The [ActionItem] actions of your action sheet.
+     * [ActionItem] define the look and the event associated to an item in the action sheet
+     * @param header The optional icon to be displayed at the end of the button container
+     * @param itemColors The colors of the background and the content elements in enabled and disabled mode
+     */
     @Composable
     fun Primary(
         modifier: Modifier = Modifier,

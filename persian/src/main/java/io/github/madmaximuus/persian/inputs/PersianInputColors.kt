@@ -356,7 +356,7 @@ object PersianInputColors {
     @Composable
     fun primary(
         //State Icon
-        errorStateIcon: Painter = MaterialTheme.icons.error,
+        errorStateIcon: Painter = MaterialTheme.icons.errorCircleRounded,
         successStateIcon: Painter = MaterialTheme.icons.checkCircle,
 
         //State Icon Colors

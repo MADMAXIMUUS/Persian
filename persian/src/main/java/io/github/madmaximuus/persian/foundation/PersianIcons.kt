@@ -7,7 +7,7 @@ import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
-import ru.rabbit.persian.R
+import io.github.madmaximuus.persian.R
 
 @Suppress("UNUSED")
 @Immutable

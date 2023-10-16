@@ -49,14 +49,14 @@ object ActionSheet : Screen {
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(it),
-                contentAlignment = Alignment.Center
+                contentAlignment = Alignment.TopCenter
             ) {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     PersianButton.Primary(
                         text = "Show sheet",
-                        size = PersianButtonSizes.large(),
+                        sizes = PersianButtonSizes.large(),
                         colors = PersianButtonColors.primary()
                     ) {
                         needShow = true
@@ -64,7 +64,7 @@ object ActionSheet : Screen {
                     Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraExtraLarge))
                     PersianButton.Primary(
                         text = "Show sheet with title",
-                        size = PersianButtonSizes.large(),
+                        sizes = PersianButtonSizes.large(),
                         colors = PersianButtonColors.primary()
                     ) {
                         needShowWithTitle = true

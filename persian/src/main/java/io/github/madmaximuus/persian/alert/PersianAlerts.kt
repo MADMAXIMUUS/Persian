@@ -66,7 +66,7 @@ object PersianAlerts {
                                         text = action.title,
                                         colors = colors.actionColor,
                                         onClick = action.onClick,
-                                        size = PersianButtonSizes.large()
+                                        sizes = PersianButtonSizes.large()
                                     )
                                 }
                             }
@@ -167,7 +167,7 @@ object PersianAlerts {
                                                 text = action.title,
                                                 colors = colors.actionColor,
                                                 onClick = action.onClick,
-                                                size = PersianButtonSizes.small()
+                                                sizes = PersianButtonSizes.small()
                                             )
                                         }
                                     }

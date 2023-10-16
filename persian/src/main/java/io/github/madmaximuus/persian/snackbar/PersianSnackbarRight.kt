@@ -30,7 +30,7 @@ object PersianSnackbarRight {
     ) {
         PersianButton.Tertiary(
             text = text,
-            size = PersianButtonSizes.small(),
+            sizes = PersianButtonSizes.small(),
             onClick = onClick
         )
     }

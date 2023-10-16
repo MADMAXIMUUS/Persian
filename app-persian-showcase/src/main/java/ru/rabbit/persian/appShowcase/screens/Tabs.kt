@@ -64,7 +64,6 @@ object Tabs : Screen {
                                 TabItem(
                                     label = "Label $i",
                                     icon = MaterialTheme.icons.globeUk,
-                                    topIcon = true,
                                     selected = i == 0
                                 )
                             )
@@ -129,7 +128,6 @@ object Tabs : Screen {
                                 TabItem(
                                     label = "Label $i",
                                     icon = MaterialTheme.icons.globeUk,
-                                    topIcon = true,
                                     selected = i == 0
                                 )
                             )

@@ -23,6 +23,7 @@ import com.bumptech.glide.integration.compose.placeholder
 import io.github.madmaximuus.persian.foundation.elevation
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import io.github.madmaximuus.persian.foundation.icons
+import io.github.madmaximuus.persian.foundation.shimmer
 import io.github.madmaximuus.persian.foundation.surfaceColorAtElevation
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
 import io.github.madmaximuus.persian.iconBox.PersianIconBoxColors
@@ -61,16 +62,12 @@ object PersianAvatars {
                 contentScale = ContentScale.Crop,
                 loading = placeholder {
                     Box(
-                        modifier = Modifier.fillMaxSize(),
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .shimmer(true),
                         contentAlignment = Alignment.Center
                     ) {
-                        PersianIconBox.Primary(
-                            icon = MaterialTheme.icons.personOutlined,
-                            size = size.placeholderSize,
-                            colors = PersianIconBoxColors.primary(
-                                defaultColor = MaterialTheme.extendedColorScheme.onPrimaryContainer
-                            )
-                        )
+
                     }
                 },
                 failure = placeholder {

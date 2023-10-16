@@ -71,7 +71,7 @@ object Button : Screen {
                     ) {
                         PersianButton.Primary(
                             text = text,
-                            size = sizeState,
+                            sizes = sizeState,
                             enabled = enabled,
                             loading = loading,
                             leadingIcon = if (showLeadingIcon) MaterialTheme.icons.add else null,
@@ -81,7 +81,7 @@ object Button : Screen {
                         Spacer(modifier = Modifier.height(MaterialTheme.spacing.large))
                         PersianButton.Secondary(
                             text = text,
-                            size = sizeState,
+                            sizes = sizeState,
                             enabled = enabled,
                             loading = loading,
                             leadingIcon = if (showLeadingIcon) MaterialTheme.icons.add else null,
@@ -91,7 +91,7 @@ object Button : Screen {
                         Spacer(modifier = Modifier.height(MaterialTheme.spacing.large))
                         PersianButton.Tertiary(
                             text = text,
-                            size = sizeState,
+                            sizes = sizeState,
                             enabled = enabled,
                             loading = loading,
                             leadingIcon = if (showLeadingIcon) MaterialTheme.icons.add else null,
@@ -101,7 +101,7 @@ object Button : Screen {
                         Spacer(modifier = Modifier.height(MaterialTheme.spacing.large))
                         PersianButton.Outline(
                             text = text,
-                            size = sizeState,
+                            sizes = sizeState,
                             enabled = enabled,
                             loading = loading,
                             leadingIcon = if (showLeadingIcon) MaterialTheme.icons.add else null,

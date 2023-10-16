@@ -108,8 +108,8 @@ fun BottomNavigationPreview() {
                     ),
                     NavigationBarItem(
                         selected = false,
-                        icon = MaterialTheme.icons.mailOutlined,
-                        selectedIcon = MaterialTheme.icons.mailFilled,
+                        icon = MaterialTheme.icons.chatOutlined,
+                        selectedIcon = MaterialTheme.icons.chatFilled,
                         text = "Messages",
                         onClick = {}
                     ),

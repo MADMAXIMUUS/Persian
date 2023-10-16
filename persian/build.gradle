@@ -5,14 +5,14 @@ plugins {
 
 ext{
     PUBLISH_GROUP_ID = 'io.github.madmaximuus.persian'
-    PUBLISH_VERSION = '1.0.0'
+    PUBLISH_VERSION = '2.0.0'
     PUBLISH_ARTIFACT_ID = 'persian'
 }
 
 apply from: "${rootProject.projectDir}/scripts/publish-module.gradle"
 
 android {
-    namespace 'ru.rabbit.persian'
+    namespace 'io.github.madmaximuus.persian'
     compileSdk 34
 
     defaultConfig {
@@ -33,14 +33,14 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion '1.5.2'
+        kotlinCompilerExtensionVersion '1.5.3'
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = '17'
+        jvmTarget = '1.8'
     }
 }
 
@@ -51,6 +51,7 @@ dependencies {
     implementation libs.material3
 
     implementation libs.accompanistUiController
+    debugImplementation libs.uiTooling
 
     implementation libs.glide
 }

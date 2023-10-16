@@ -48,22 +48,22 @@ object Alert : Screen {
             ) {
                 PersianButton.Primary(
                     text = "Only Action Alert",
-                    size = PersianButtonSizes.large()
+                    sizes = PersianButtonSizes.large()
                 ) {
                     showOnlyActionAlert = true
                 }
-                PersianButton.Primary(text = "Primary Alert", size = PersianButtonSizes.large()) {
+                PersianButton.Primary(text = "Primary Alert", sizes = PersianButtonSizes.large()) {
                     showAlert = true
                 }
                 PersianButton.Primary(
                     text = "Primary Alert With Icon",
-                    size = PersianButtonSizes.large()
+                    sizes = PersianButtonSizes.large()
                 ) {
                     showAlertWithIcon = true
                 }
                 PersianButton.Primary(
                     text = "Primary Alert With Content",
-                    size = PersianButtonSizes.large()
+                    sizes = PersianButtonSizes.large()
                 ) {
                     showAlertWithContent = true
                 }
