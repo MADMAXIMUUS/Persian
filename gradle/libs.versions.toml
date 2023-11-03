@@ -1,0 +1,34 @@
+[versions]
+coreKtx = "1.12.0"
+kotlinGradlePlugin = "1.9.10"
+navigation = "2.7.5"
+compose = "1.5.4"
+activityCompose = "1.8.0"
+material3 = "1.1.2"
+collectionImmutable = "0.3.5"
+glide = "1.0.0-alpha.3"
+splash = "1.0.1"
+
+[libraries]
+core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlinGradlePlugin" }
+material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "material3" }
+compose-foundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "compose" }
+compose-foundation-layout = { group = "androidx.compose.foundation", name = "foundation-layout", version.ref = "compose" }
+compose-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
+compose-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "compose" }
+compose-ui-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview", version.ref = "compose" }
+ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling", version.ref = "compose" }
+glide = { group = "com.github.bumptech.glide", name = "compose", version.ref = "glide" }
+splash = { group = "androidx.core", name = "core-splashscreen", version.ref = "splash" }
+
+[plugins]
+
+[bundles]
+compose = [
+    "compose-foundation",
+    "compose-foundation-layout",
+    "compose-ui",
+    "compose-ui-preview"
+]
