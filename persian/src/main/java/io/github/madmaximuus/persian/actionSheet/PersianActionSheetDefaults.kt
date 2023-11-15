@@ -6,13 +6,16 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.unit.Dp
 import io.github.madmaximuus.persian.foundation.PersianContentStateDisabled
+import io.github.madmaximuus.persian.foundation.elevation
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import io.github.madmaximuus.persian.iconBox.IconBoxColors
 import io.github.madmaximuus.persian.iconBox.PersianIconBoxColors
 
 @Immutable
-class ActionItemColors(
+class ActionSheetItemColors(
     private val defaultTextColor: Color,
     private val disabledTextColor: Color,
     private val errorTextColor: Color,
@@ -33,7 +36,7 @@ class ActionItemColors(
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (other == null || other !is ActionItemColors) return false
+        if (other == null || other !is ActionSheetItemColors) return false
 
         if (defaultTextColor != other.defaultTextColor) return false
         if (errorTextColor != other.errorTextColor) return false
@@ -51,18 +54,22 @@ class ActionItemColors(
     }
 }
 
-object PersianActionItemColors {
+object PersianActionSheetDefaults {
+
+    val shape: Shape @Composable get() = MaterialTheme.shapes.large
+
+    val tonalElevation: Dp @Composable get() = MaterialTheme.elevation.extraSmall
 
     @Composable
-    fun primary(
+    fun itemColors(
         defaultColor: Color = MaterialTheme.extendedColorScheme.onSurface,
         errorColor: Color = MaterialTheme.extendedColorScheme.error,
         disabledColor: Color = MaterialTheme.extendedColorScheme.onSurface.copy(
             alpha = PersianContentStateDisabled
         ),
         iconColors: IconBoxColors = PersianIconBoxColors.primary()
-    ): ActionItemColors =
-        ActionItemColors(
+    ): ActionSheetItemColors =
+        ActionSheetItemColors(
             defaultTextColor = defaultColor,
             errorTextColor = errorColor,
             disabledTextColor = disabledColor,

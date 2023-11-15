@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import io.github.madmaximuus.persian.foundation.spacing
 
+@Deprecated("Add title and subtitle in PersianActionSheet")
 object PersianActionSheetHeader {
 
     @Composable
@@ -44,5 +45,35 @@ object PersianActionSheetHeader {
                 )
             }
         }
+    }
+}
+
+@Composable
+internal fun PersianActionSheetHeader(
+    modifier: Modifier = Modifier,
+    title: String,
+    subtitle: String,
+) {
+    Column(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(
+                start = MaterialTheme.spacing.extraExtraLarge,
+                end = MaterialTheme.spacing.extraExtraLarge,
+                top = MaterialTheme.spacing.large,
+                bottom = MaterialTheme.spacing.extraSmall
+            )
+    ) {
+        Text(
+            text = title,
+            style = MaterialTheme.typography.titleMedium,
+            color = MaterialTheme.extendedColorScheme.onSurface
+        )
+        Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraSmall))
+        Text(
+            text = subtitle,
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.extendedColorScheme.onSurfaceVariant
+        )
     }
 }

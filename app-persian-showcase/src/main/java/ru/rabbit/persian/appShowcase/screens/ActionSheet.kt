@@ -16,7 +16,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.actionSheet.ActionItem
+import io.github.madmaximuus.persian.actionSheet.ActionSheetItem
 import io.github.madmaximuus.persian.actionSheet.PersianActionSheet
 import io.github.madmaximuus.persian.buttons.PersianButton
 import io.github.madmaximuus.persian.buttons.PersianButtonColors
@@ -73,71 +73,67 @@ object ActionSheet : Screen {
             }
         }
         if (needShowWithTitle) {
-            PersianActionSheet.Primary(
-                header = {
-                    Primary(
-                        title = "Title",
-                        subtitle = "Subtitle"
-                    )
-                },
+            PersianActionSheet(
+                title = "Title",
+                subtitle = "Subtitle",
                 actions = listOf(
-                    ActionItem(
+                    ActionSheetItem(
                         text = "Action 1",
                         leadingIcon = MaterialTheme.icons.edit,
                         onClick = {
                             it::triggerAnimatedDismiss.invoke()
                         }
                     ),
-                    ActionItem(
+                    ActionSheetItem(
                         text = "Action 2",
                         leadingIcon = MaterialTheme.icons.edit,
                         onClick = {
                             it::triggerAnimatedDismiss.invoke()
                         }
                     ),
-                    ActionItem(
+                    ActionSheetItem(
                         text = "Action 3",
                         leadingIcon = MaterialTheme.icons.edit,
                         onClick = {
                             it::triggerAnimatedDismiss.invoke()
                         }
                     ),
-                    ActionItem(
+                    ActionSheetItem(
                         text = "Action 4",
                         leadingIcon = MaterialTheme.icons.edit,
                         onClick = {
                             it::triggerAnimatedDismiss.invoke()
                         }
                     ),
-                    ActionItem(
+                    ActionSheetItem(
                         text = "Action 5",
                         leadingIcon = MaterialTheme.icons.edit,
                         onClick = {
                             it::triggerAnimatedDismiss.invoke()
                         }
                     ),
-                    ActionItem(
+                    ActionSheetItem(
                         text = "Action 6",
                         leadingIcon = MaterialTheme.icons.edit,
                         onClick = {
 
                         }
                     ),
-                    ActionItem(
+                    ActionSheetItem(
                         text = "Action 7",
                         leadingIcon = MaterialTheme.icons.edit,
                         onClick = {
                             it::triggerAnimatedDismiss.invoke()
                         }
                     ),
-                    ActionItem(
+                    ActionSheetItem(
                         text = "Action 8",
                         leadingIcon = MaterialTheme.icons.edit,
                         onClick = {
                             it::triggerAnimatedDismiss.invoke()
                         }
                     ),
-                    ActionItem(
+                    ActionSheetItem(
                         text = "Action 9",
                         leadingIcon = MaterialTheme.icons.edit,
                         negative = true,
@@ -145,71 +141,69 @@ object ActionSheet : Screen {
                             it::triggerAnimatedDismiss.invoke()
                         }
                     ),
-                ),
-
-                onDismissRequest = { needShowWithTitle = false }
+                ), onDismissRequest = { needShowWithTitle = false }
             )
         }
         if (needShow) {
-            PersianActionSheet.Primary(
+            PersianActionSheet(
                 actions = listOf(
-                    ActionItem(
+                    ActionSheetItem(
                         text = "Action 1",
                         leadingIcon = MaterialTheme.icons.edit,
                         onClick = {
                             it::triggerAnimatedDismiss.invoke()
                         }
                     ),
-                    ActionItem(
+                    ActionSheetItem(
                         text = "Action 2",
                         leadingIcon = MaterialTheme.icons.edit,
                         onClick = {
                             it::triggerAnimatedDismiss.invoke()
                         }
                     ),
-                    ActionItem(
+                    ActionSheetItem(
                         text = "Action 3",
                         leadingIcon = MaterialTheme.icons.edit,
                         onClick = {
                             it::triggerAnimatedDismiss.invoke()
                         }
                     ),
-                    ActionItem(
+                    ActionSheetItem(
                         text = "Action 4",
                         leadingIcon = MaterialTheme.icons.edit,
                         onClick = {
                             it::triggerAnimatedDismiss.invoke()
                         }
                     ),
-                    ActionItem(
+                    ActionSheetItem(
                         text = "Action 5",
                         leadingIcon = MaterialTheme.icons.edit,
                         onClick = {
                             it::triggerAnimatedDismiss.invoke()
                         }
                     ),
-                    ActionItem(
+                    ActionSheetItem(
                         text = "Action 6",
                         leadingIcon = MaterialTheme.icons.edit,
                         onClick = {
 
                         }
                     ),
-                    ActionItem(
+                    ActionSheetItem(
                         text = "Action 7",
                         leadingIcon = MaterialTheme.icons.edit,
                         onClick = {
                             it::triggerAnimatedDismiss.invoke()
                         }
                     ),
-                    ActionItem(
+                    ActionSheetItem(
                         text = "Action 8",
                         leadingIcon = MaterialTheme.icons.edit,
                         onClick = {
                             it::triggerAnimatedDismiss.invoke()
                         }
                     ),
-                    ActionItem(
+                    ActionSheetItem(
                         text = "Action 9",
                         leadingIcon = MaterialTheme.icons.edit,
                         negative = true,
