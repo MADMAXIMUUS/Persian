@@ -12,8 +12,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.icons
 
+@Deprecated("Replace with PersianIconBox()")
 object PersianIconBox {
 
+    @Deprecated("Replace with PersianIconBox()")
     @Composable
     fun Primary(
         modifier: Modifier = Modifier,
@@ -34,6 +36,26 @@ object PersianIconBox {
         )
     }
 
+}
+
+@Composable
+fun PersianIconBox(
+    modifier: Modifier = Modifier,
+    icon: Painter,
+    size: IconBoxSize = PersianIconBoxDefaults.large(),
+    colors: IconBoxColors = PersianIconBoxDefaults.colors(),
+    enabled: Boolean = true,
+    isError: Boolean = false,
+    contentDescription: String = ""
+) {
+    val tint = colors.iconColor(enabled = enabled, isError = isError).value
+    Icon(
+        modifier = modifier
+            .size(size.width),
+        painter = icon,
+        contentDescription = contentDescription,
+        tint = tint
+    )
 }
 
 

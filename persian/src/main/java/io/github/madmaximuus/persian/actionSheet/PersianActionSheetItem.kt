@@ -24,7 +24,7 @@ data class ActionSheetItem(
     val onClick: (AnimatedTransitionDialogHelper) -> Unit
 )
 
-@Deprecated("Replace with PersianActionSheetItem()", level = DeprecationLevel.WARNING)
+@Deprecated("Replaced with PersianActionSheetItem()", level = DeprecationLevel.WARNING)
 object PersianActionItem {
 
     @Composable
@@ -103,7 +103,7 @@ internal fun PersianActionSheetItem(
         val textColor = itemColors
             .textColor(enabled = actionSheetItem.enabled, isError = actionSheetItem.negative).value
         actionSheetItem.leadingIcon?.let {
-            PersianIconBox.Primary(
+            PersianIconBox(
                 icon = it,
                 enabled = actionSheetItem.enabled,
                 isError = actionSheetItem.negative,

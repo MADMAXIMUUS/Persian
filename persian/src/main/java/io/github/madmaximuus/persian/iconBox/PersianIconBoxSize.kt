@@ -5,10 +5,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
-data class IconBoxSize(
-    val width: Dp
-)
-
+@Deprecated("Replaced with PersianIconBoxDefaults")
 object PersianIconBoxSize {
     @Composable
     fun extraExtraLarge(
