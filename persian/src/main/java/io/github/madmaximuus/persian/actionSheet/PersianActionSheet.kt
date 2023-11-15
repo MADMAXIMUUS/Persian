@@ -110,7 +110,7 @@ object PersianActionSheet {
         modifier: Modifier = Modifier,
         actions: List<ActionSheetItem>,
         header: @Composable (PersianActionSheetHeader.() -> Unit)? = null,
-        itemColors: ActionSheetItemColors = PersianActionSheetDefaults.itemColors(),
+        itemColors: ActionItemColors = PersianActionItemColors.primary(),
         onDismissRequest: () -> Unit
     ) {
         val onDismissSharedFlow: MutableSharedFlow<Any> = remember { MutableSharedFlow() }

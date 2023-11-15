@@ -32,7 +32,7 @@ object PersianActionItem {
         modifier: Modifier = Modifier,
         actionSheetItem: ActionSheetItem,
         animatedTransitionDialogHelper: AnimatedTransitionDialogHelper,
-        itemColors: ActionSheetItemColors
+        itemColors: ActionItemColors
     ) {
         Row(
             modifier = modifier
