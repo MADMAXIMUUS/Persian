@@ -23,7 +23,7 @@ import androidx.navigation.compose.rememberNavController
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import ru.rabbit.persian.appShowcase.screens.ActionSheet
 import ru.rabbit.persian.appShowcase.screens.Alert
-import ru.rabbit.persian.appShowcase.screens.Avatar
+import ru.rabbit.persian.appShowcase.screens.AvatarAndImage
 import ru.rabbit.persian.appShowcase.screens.Banner
 import ru.rabbit.persian.appShowcase.screens.Button
 import ru.rabbit.persian.appShowcase.screens.CheckBox
@@ -61,7 +61,7 @@ class MainActivity : ComponentActivity() {
                         ActionSheet,
                         Alert,
                         Button,
-                        Avatar,
+                        AvatarAndImage,
                         Banner,
                         CheckBox,
                         Counter,
