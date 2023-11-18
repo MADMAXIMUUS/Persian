@@ -11,6 +11,7 @@ import io.github.madmaximuus.persian.foundation.spacing
 import io.github.madmaximuus.persian.iconBox.IconBoxSize
 import io.github.madmaximuus.persian.iconBox.PersianIconBoxSize
 
+@Deprecated("Replace with new BannerSizes")
 @Immutable
 data class BannerSizes(
     val cornerRadius: Shape,
@@ -19,6 +20,7 @@ data class BannerSizes(
     val contentPadding: PaddingValues
 )
 
+@Deprecated("Replace with PersianBannerDefaults")
 object PersianBannerSizes {
 
     @Composable

@@ -7,13 +7,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
 
+@Deprecated("Replace with new BannerColors")
 @Immutable
 data class BannerColors(
     val background: Color,
     val iconColor: Color,
-    val textColor: Color
+    val textColor: Color,
 )
 
+@Deprecated("Replace with PersianBannerDefaults")
 object PersianBannerColors {
 
     @Composable
