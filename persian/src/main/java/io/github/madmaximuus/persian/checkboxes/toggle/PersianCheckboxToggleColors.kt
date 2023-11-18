@@ -7,6 +7,7 @@ import androidx.compose.ui.graphics.Color
 import io.github.madmaximuus.persian.foundation.PersianStatesDisabled
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
 
+@Deprecated("Replace with PersianCheckboxDefaults")
 object PersianCheckboxToggleColors {
 
     @Composable
