@@ -25,6 +25,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.PathMeasure
 import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.graphics.drawscope.Stroke
@@ -185,7 +186,7 @@ private fun DrawScope.drawCheck(
     strokeWidthPx: Float,
     drawingCache: CheckDrawingCache
 ) {
-    val stroke = Stroke(width = strokeWidthPx, cap = StrokeCap.Round)
+    val stroke = Stroke(width = strokeWidthPx, cap = StrokeCap.Round, join = StrokeJoin.Round)
     val width = size.width
     val checkCrossX = 0.4f
     val checkCrossY = 0.7f

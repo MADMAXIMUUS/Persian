@@ -113,7 +113,7 @@ fun CheckboxPreview() {
         Surface {
             PersianCheckbox(
                 text = "Checkbox",
-                checked = false,
+                checked = true,
                 onCheckedChange = {}
             )
         }
