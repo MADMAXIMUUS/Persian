@@ -18,7 +18,8 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
-import io.github.madmaximuus.persian.codeInput.PersianCodeInput
+import io.github.madmaximuus.persian.codeInput.PersianFourDigitCodeInput
+import io.github.madmaximuus.persian.codeInput.PersianSixDigitCodeInput
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
@@ -67,7 +68,7 @@ object CodeInput : Screen {
                                 .fillMaxWidth(),
                             verticalArrangement = Arrangement.spacedBy(10.dp)
                         ) {
-                            PersianCodeInput.FourDigit(
+                            PersianFourDigitCodeInput(
                                 values = list,
                                 enabled = enabled,
                                 isSuccess = isSuccess,
@@ -80,21 +81,21 @@ object CodeInput : Screen {
                                     }
                                 }
                             )
-                            PersianCheckbox.Primary(
+                            PersianCheckbox(
                                 text = "Enabled",
                                 checked = enabled,
                                 onCheckedChange = { isChecked ->
                                     enabled = isChecked
                                 }
                             )
-                            PersianCheckbox.Primary(
+                            PersianCheckbox(
                                 text = "Success",
                                 checked = isSuccess,
                                 onCheckedChange = { isChecked ->
                                     isSuccess = isChecked
                                 }
                             )
-                            PersianCheckbox.Primary(
+                            PersianCheckbox(
                                 text = "Error",
                                 checked = isError,
                                 onCheckedChange = { isChecked ->
@@ -129,7 +130,7 @@ object CodeInput : Screen {
                                 .fillMaxWidth(),
                             verticalArrangement = Arrangement.spacedBy(10.dp)
                         ) {
-                            PersianCodeInput.SixDigit(
+                            PersianSixDigitCodeInput(
                                 values = list,
                                 enabled = enabled,
                                 isSuccess = isSuccess,
@@ -142,21 +143,21 @@ object CodeInput : Screen {
                                     }
                                 }
                             )
-                            PersianCheckbox.Primary(
+                            PersianCheckbox(
                                 text = "Enabled",
                                 checked = enabled,
                                 onCheckedChange = { isChecked ->
                                     enabled = isChecked
                                 }
                             )
-                            PersianCheckbox.Primary(
+                            PersianCheckbox(
                                 text = "Success",
                                 checked = isSuccess,
                                 onCheckedChange = { isChecked ->
                                     isSuccess = isChecked
                                 }
                             )
-                            PersianCheckbox.Primary(
+                            PersianCheckbox(
                                 text = "Error",
                                 checked = isError,
                                 onCheckedChange = { isChecked ->

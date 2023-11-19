@@ -29,8 +29,11 @@ import androidx.compose.ui.text.style.BaselineShift
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import io.github.madmaximuus.persian.codeInput.CellColors
+import io.github.madmaximuus.persian.codeInput.PersianCodeInputDefaults
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
+@Deprecated("Replace with PersianCodeInputCell()")
 object PersianCell {
 
     @Composable
@@ -119,12 +122,97 @@ object PersianCell {
     }
 }
 
+@Composable
+fun PersianCodeInputCell(
+    modifier: Modifier = Modifier,
+    value: String,
+    onValueChange: (String) -> Unit,
+    enabled: Boolean = true,
+    isSuccess: Boolean = false,
+    isError: Boolean = false,
+    colors: CellColors = PersianCodeInputDefaults.cellColors(),
+    focusRequester: FocusRequester = FocusRequester(),
+    textStyle: TextStyle = MaterialTheme.typography.bodyLarge,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+) {
+    val focused by interactionSource.collectIsFocusedAsState()
+
+    val textColor = colors.textColor(enabled, isSuccess, isError, interactionSource).value
+
+    val mergedTextStyle = textStyle.merge(
+        TextStyle(
+            color = textColor,
+            baselineShift = BaselineShift.None,
+            textAlign = TextAlign.Center
+        )
+    )
+
+    val borderThickness = if (enabled && (focused || isError || isSuccess)) 2.dp else 1.dp
+
+    val containerColor = colors.containerColor(
+        enabled = enabled,
+        isSuccess = isSuccess,
+        isError = isError,
+        interactionSource = interactionSource
+    ).value
+
+    val borderColor = colors.indicatorColor(
+        enabled = enabled,
+        isSuccess = isSuccess,
+        isError = isError,
+        interactionSource = interactionSource
+    ).value
+
+    CompositionLocalProvider(LocalTextSelectionColors provides colors.selectionColors) {
+        BasicTextField(
+            modifier = modifier
+                .focusRequester(focusRequester),
+            value = value,
+            onValueChange = onValueChange,
+            readOnly = false,
+            singleLine = true,
+            minLines = 1,
+            maxLines = 1,
+            textStyle = mergedTextStyle,
+            cursorBrush = SolidColor(
+                colors.cursorColor(
+                    isError = isError,
+                    isSuccess = isSuccess
+                ).value
+            ),
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.NumberPassword
+            ),
+            interactionSource = interactionSource,
+            decorationBox = { innerTextField ->
+                Box(
+                    modifier = Modifier
+                        .width(44.dp)
+                        .height(48.dp)
+                        .border(
+                            borderThickness,
+                            borderColor,
+                            MaterialTheme.shapes.large
+                        )
+                        .background(
+                            containerColor,
+                            MaterialTheme.shapes.large
+                        ),
+                    contentAlignment = Alignment.Center
+                ) {
+                    innerTextField()
+                }
+            }
+        )
+    }
+}
+
 @Preview
 @Composable
 fun CellPreview() {
     PersianTheme {
         Surface {
-            PersianCell.Primary(
+            PersianCodeInputCell(
                 modifier = Modifier.padding(10.dp),
                 value = "1",
                 onValueChange = {}
@@ -138,7 +226,7 @@ fun CellPreview() {
 fun CellDarkPreview() {
     PersianTheme {
         Surface {
-            PersianCell.Primary(
+            PersianCodeInputCell(
                 modifier = Modifier.padding(10.dp),
                 value = "0",
                 onValueChange = {}
