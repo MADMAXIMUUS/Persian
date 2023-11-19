@@ -2,18 +2,22 @@ package io.github.madmaximuus.persian.fab
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.elevation
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import io.github.madmaximuus.persian.foundation.surfaceColorAtElevation
+import io.github.madmaximuus.persian.iconBox.IconBoxSize
+import io.github.madmaximuus.persian.iconBox.PersianIconBoxSize
 
-
-@Deprecated("Replace with PersianFabDefaults")
-object PersianFabColors {
-
+object PersianFabDefaults {
     @Composable
-    fun primary(
+    fun primaryColors(
         backgroundColor: Color = MaterialTheme.extendedColorScheme.primaryContainer,
         content: Color = MaterialTheme.extendedColorScheme.onPrimaryContainer,
     ) = remember(
@@ -27,7 +31,7 @@ object PersianFabColors {
     }
 
     @Composable
-    fun secondary(
+    fun secondaryColors(
         backgroundColor: Color = MaterialTheme.extendedColorScheme.secondaryContainer,
         content: Color = MaterialTheme.extendedColorScheme.onSecondaryContainer,
     ) = remember(
@@ -41,7 +45,7 @@ object PersianFabColors {
     }
 
     @Composable
-    fun tertiary(
+    fun tertiaryColors(
         backgroundColor: Color = MaterialTheme.extendedColorScheme.tertiaryContainer,
         content: Color = MaterialTheme.extendedColorScheme.onTertiaryContainer
     ) = remember(
@@ -55,7 +59,7 @@ object PersianFabColors {
     }
 
     @Composable
-    fun neutral(
+    fun neutralColors(
         backgroundColor: Color = MaterialTheme.extendedColorScheme
             .surfaceColorAtElevation(MaterialTheme.elevation.medium),
         content: Color = MaterialTheme.extendedColorScheme.primary
@@ -68,4 +72,59 @@ object PersianFabColors {
             content = content
         )
     }
+
+    @Composable
+    fun smallSizes(
+        boxSize: Dp = 40.dp,
+        iconSize: IconBoxSize = PersianIconBoxSize.medium(),
+        textStyle: TextStyle = MaterialTheme.typography.labelLarge,
+        cornerShape: Shape = MaterialTheme.shapes.large
+    ) = remember(
+        boxSize,
+        iconSize,
+        textStyle,
+        cornerShape
+    ) {
+        FabSizes(
+            boxSize = boxSize,
+            iconSize = iconSize,
+            textStyle = textStyle,
+            cornerShape = cornerShape
+        )
+    }
+
+    @Composable
+    fun mediumSizes(
+        boxSize: Dp = 56.dp,
+        iconSize: IconBoxSize = PersianIconBoxSize.large(),
+        textStyle: TextStyle = MaterialTheme.typography.labelLarge,
+        cornerShape: Shape = MaterialTheme.shapes.large
+    ) = remember(
+        boxSize,
+        iconSize,
+        textStyle,
+        cornerShape
+    )
+    {
+        FabSizes(
+            boxSize = boxSize,
+            iconSize = iconSize,
+            textStyle = textStyle,
+            cornerShape = cornerShape
+        )
+    }
 }
+
+@Immutable
+data class FabColors(
+    val backgroundColor: Color,
+    val content: Color,
+)
+
+@Immutable
+data class FabSizes(
+    val boxSize: Dp,
+    val iconSize: IconBoxSize,
+    val textStyle: TextStyle,
+    val cornerShape: Shape
+)

@@ -22,6 +22,7 @@ import io.github.madmaximuus.persian.iconBox.PersianIconBox
 import io.github.madmaximuus.persian.navigationBar.NavigationBarItem
 import io.github.madmaximuus.persian.navigationBar.PersianNavigationBar
 
+@Deprecated("Replace with Persian<*>Fab")
 object PersianFab {
 
     @Composable
@@ -103,15 +104,93 @@ object PersianFab {
     }
 }
 
+@Composable
+fun PersianSmallFab(
+    modifier: Modifier = Modifier,
+    icon: Painter,
+    sizes: FabSizes = PersianFabDefaults.smallSizes(),
+    colors: FabColors = PersianFabDefaults.neutralColors(),
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    onClick: () -> Unit
+) {
+    SmallFloatingActionButton(
+        modifier = modifier
+            .size(sizes.boxSize),
+        contentColor = colors.content,
+        containerColor = colors.backgroundColor,
+        shape = sizes.cornerShape,
+        interactionSource = interactionSource,
+        onClick = onClick
+    ) {
+        PersianIconBox(
+            icon = icon,
+            size = sizes.iconSize
+        )
+    }
+}
+
+@Composable
+fun PersianMediumFab(
+    modifier: Modifier = Modifier,
+    icon: Painter,
+    title: String? = null,
+    sizes: FabSizes = PersianFabDefaults.mediumSizes(),
+    expanded: Boolean = true,
+    colors: FabColors = PersianFabDefaults.neutralColors(),
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    onClick: () -> Unit
+) {
+    if (title == null) {
+        FloatingActionButton(
+            modifier = modifier
+                .size(sizes.boxSize),
+            contentColor = colors.content,
+            containerColor = colors.backgroundColor,
+            shape = sizes.cornerShape,
+            interactionSource = interactionSource,
+            onClick = onClick,
+            content = {
+                PersianIconBox(
+                    icon = icon,
+                    size = sizes.iconSize
+                )
+            }
+        )
+    } else {
+        ExtendedFloatingActionButton(
+            modifier = modifier
+                .height(sizes.boxSize),
+            contentColor = colors.content,
+            containerColor = colors.backgroundColor,
+            shape = sizes.cornerShape,
+            expanded = expanded,
+            interactionSource = interactionSource,
+            onClick = onClick,
+            icon = {
+                PersianIconBox(
+                    icon = icon,
+                    size = sizes.iconSize
+                )
+            },
+            text = {
+                Text(
+                    text = title,
+                    style = sizes.textStyle
+                )
+            }
+        )
+    }
+}
+
 @Preview
 @Composable
 fun FabPreview() {
     PersianTheme {
         Scaffold(
             floatingActionButton = {
-                PersianFab.Medium(
+                PersianMediumFab(
                     icon = MaterialTheme.icons.edit,
-                    colors = PersianFabColors.primary(),
+                    colors = PersianFabDefaults.primaryColors(),
                     title = "New Tweet",
                     expanded = true,
                     onClick = {}

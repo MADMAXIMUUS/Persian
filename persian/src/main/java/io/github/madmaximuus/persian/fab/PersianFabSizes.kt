@@ -2,7 +2,6 @@ package io.github.madmaximuus.persian.fab
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
@@ -11,14 +10,7 @@ import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.iconBox.IconBoxSize
 import io.github.madmaximuus.persian.iconBox.PersianIconBoxSize
 
-@Immutable
-data class FabSizes(
-    val boxSize: Dp,
-    val iconSize: IconBoxSize,
-    val textStyle: TextStyle,
-    val cornerShape: Shape
-)
-
+@Deprecated("Replace with PersianFabDefaults")
 object PersianFabSizes {
 
     @Composable
