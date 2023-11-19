@@ -10,7 +10,9 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.counter.PersianBadge
 import io.github.madmaximuus.persian.counter.PersianCounter
-import io.github.madmaximuus.persian.counter.PersianCounterSizes
+import io.github.madmaximuus.persian.counter.PersianCounterDefaults
+import io.github.madmaximuus.persian.counter.PersianTonalCounter
+import io.github.madmaximuus.persian.counter.PersianTransparentCounter
 import io.github.madmaximuus.persian.foundation.PersianComponentStyle
 import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.iconButtons.PersianIconButton
@@ -37,28 +39,28 @@ object Counter : Screen {
             ) {
                 item {
                     SampleRow(text = "Counter Default", firstItem = true) {
-                        PersianCounter.Default(count = 1)
-                        PersianCounter.Default(count = 10)
-                        PersianCounter.Default(count = 100)
+                        PersianCounter(count = 1)
+                        PersianCounter(count = 10)
+                        PersianCounter(count = 100)
                     }
                 }
                 item {
                     SampleRow(text = "Counter Tonal") {
-                        PersianCounter.Tonal(count = 1)
-                        PersianCounter.Tonal(count = 10)
-                        PersianCounter.Tonal(count = 100)
+                        PersianTonalCounter(count = 1)
+                        PersianTonalCounter(count = 10)
+                        PersianTonalCounter(count = 100)
                     }
                 }
                 item {
                     SampleRow(text = "Counter Transparent") {
-                        PersianCounter.Transparent(count = 1)
-                        PersianCounter.Transparent(count = 10)
-                        PersianCounter.Transparent(count = 100)
+                        PersianTransparentCounter(count = 1)
+                        PersianTransparentCounter(count = 10)
+                        PersianTransparentCounter(count = 100)
                     }
                 }
                 item {
                     SampleRow(text = "Badge", lastItem = true) {
-                        PersianBadge.Primary(
+                        PersianBadge(
                             content = {
                                 PersianIconButton.Primary(
                                     icon = MaterialTheme.icons.notifications,
@@ -66,12 +68,12 @@ object Counter : Screen {
                                     onClick = {}
                                 )
                             },
-                            sizes = PersianCounterSizes.medium(
+                            sizes = PersianCounterDefaults.sizes(
                                 badgeHorizontalOffset = (-12).dp,
                                 badgeVerticalOffset = 15.dp
                             )
                         )
-                        PersianBadge.Primary(
+                        PersianBadge(
                             count = 1,
                             content = {
                                 PersianIconButton.Primary(
@@ -80,12 +82,12 @@ object Counter : Screen {
                                     onClick = {}
                                 )
                             },
-                            sizes = PersianCounterSizes.medium(
+                            sizes = PersianCounterDefaults.sizes(
                                 badgeHorizontalOffset = (-12).dp,
                                 badgeVerticalOffset = 15.dp
                             )
                         )
-                        PersianBadge.Primary(
+                        PersianBadge(
                             count = 10,
                             content = {
                                 PersianIconButton.Primary(
@@ -94,12 +96,12 @@ object Counter : Screen {
                                     onClick = {}
                                 )
                             },
-                            sizes = PersianCounterSizes.medium(
+                            sizes = PersianCounterDefaults.sizes(
                                 badgeHorizontalOffset = (-12).dp,
                                 badgeVerticalOffset = 15.dp
                             )
                         )
-                        PersianBadge.Primary(
+                        PersianBadge(
                             count = 100,
                             content = {
                                 PersianIconButton.Primary(
@@ -108,7 +110,7 @@ object Counter : Screen {
                                     onClick = {}
                                 )
                             },
-                            sizes = PersianCounterSizes.medium(
+                            sizes = PersianCounterDefaults.sizes(
                                 badgeHorizontalOffset = (-12).dp,
                                 badgeVerticalOffset = 15.dp
                             )

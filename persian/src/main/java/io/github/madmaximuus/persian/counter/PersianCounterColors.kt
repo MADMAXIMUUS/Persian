@@ -2,17 +2,12 @@ package io.github.madmaximuus.persian.counter
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
 
-@Immutable
-data class CounterColors(
-    val backgroundColor: Color,
-    val textColor: Color
-)
 
+@Deprecated("Replace with PersianCounterDefaults")
 object PersianCounterColors {
 
     @Composable

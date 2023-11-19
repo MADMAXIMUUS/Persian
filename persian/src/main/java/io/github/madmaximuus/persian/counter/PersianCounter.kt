@@ -10,6 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 
+@Deprecated("Replace with PersianCounter()")
 object PersianCounter {
 
     @Composable
@@ -51,6 +52,45 @@ object PersianCounter {
         sizes = sizes
     )
 }
+
+@Composable
+fun PersianCounter(
+    count: Int,
+    modifier: Modifier = Modifier,
+    colors: CounterColors = PersianCounterDefaults.colors(),
+    sizes: CounterSizes = PersianCounterDefaults.sizes()
+) = PersianCounterImpl(
+    modifier = modifier,
+    count = count,
+    colors = colors,
+    sizes = sizes
+)
+
+@Composable
+fun PersianTonalCounter(
+    count: Int,
+    modifier: Modifier = Modifier,
+    colors: CounterColors = PersianCounterDefaults.tonalColors(),
+    sizes: CounterSizes = PersianCounterDefaults.sizes()
+) = PersianCounterImpl(
+    modifier = modifier,
+    count = count,
+    colors = colors,
+    sizes = sizes
+)
+
+@Composable
+fun PersianTransparentCounter(
+    count: Int,
+    modifier: Modifier = Modifier,
+    colors: CounterColors = PersianCounterDefaults.transparentColors(),
+    sizes: CounterSizes = PersianCounterDefaults.sizes()
+) = PersianCounterImpl(
+    modifier = modifier,
+    count = count,
+    colors = colors,
+    sizes = sizes
+)
 
 @Composable
 private fun PersianCounterImpl(

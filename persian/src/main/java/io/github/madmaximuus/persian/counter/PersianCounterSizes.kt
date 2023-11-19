@@ -2,23 +2,14 @@ package io.github.madmaximuus.persian.counter
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
-@Immutable
-data class CounterSizes(
-    val horizontalPadding: Dp,
-    val verticalPadding: Dp,
-    val badgeHorizontalOffset: Dp,
-    val badgeVerticalOffset: Dp,
-    val cornerRadius: Shape,
-    val textStyle: TextStyle
-)
 
+@Deprecated("Replace with PersianCounterDefaults")
 object PersianCounterSizes {
 
     @Composable

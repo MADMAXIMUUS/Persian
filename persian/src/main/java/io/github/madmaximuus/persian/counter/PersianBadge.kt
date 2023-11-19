@@ -3,12 +3,9 @@ package io.github.madmaximuus.persian.counter
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -16,15 +13,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.layoutId
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.counter.utils.LayoutId
 import io.github.madmaximuus.persian.counter.utils.badgeMeasurePolicy
-import io.github.madmaximuus.persian.foundation.PersianComponentStyle
-import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.foundation.icons
-import io.github.madmaximuus.persian.iconButtons.PersianIconButton
 
+@Deprecated("Replace with PersianBadge()")
 object PersianBadge {
 
     @Composable
@@ -58,6 +51,35 @@ object PersianBadge {
 }
 
 @Composable
+fun PersianBadge(
+    modifier: Modifier = Modifier,
+    colors: CounterColors = PersianCounterDefaults.colors(),
+    sizes: CounterSizes = PersianCounterDefaults.sizes(),
+    content: @Composable (BoxScope.() -> Unit)
+) = PersianEmptyBadge(
+    modifier = modifier,
+    backgroundColor = colors.backgroundColor,
+    sizes = sizes,
+    anchor = content
+)
+
+
+@Composable
+fun PersianBadge(
+    count: Int,
+    modifier: Modifier = Modifier,
+    colors: CounterColors = PersianCounterDefaults.colors(),
+    sizes: CounterSizes = PersianCounterDefaults.sizes(),
+    content: @Composable (BoxScope.() -> Unit)
+) = PersianBadgeImpl(
+    modifier = modifier,
+    count = count,
+    colors = colors,
+    sizes = sizes,
+    anchor = content
+)
+
+@Composable
 private fun PersianBadgeImpl(
     count: Int,
     colors: CounterColors,
@@ -72,7 +94,7 @@ private fun PersianBadgeImpl(
                 contentAlignment = Alignment.Center,
                 content = anchor
             )
-            PersianCounter.Default(
+            PersianCounter(
                 modifier = Modifier.layoutId(LayoutId.BADGE),
                 count = count,
                 colors = colors,
@@ -126,41 +148,4 @@ private fun PersianEmptyBadge(
             )
         }
     )
-}
-
-@Preview
-@Composable
-fun BadgePreview() {
-    PersianTheme {
-        Surface(
-            modifier = Modifier
-                .fillMaxSize()
-        ) {
-            PersianBadge.Primary(
-                modifier = Modifier,
-                sizes = PersianCounterSizes.medium(
-                    badgeHorizontalOffset = (-12).dp,
-                    badgeVerticalOffset = 15.dp
-                )
-            ) {
-                PersianIconButton.Primary(
-                    icon = MaterialTheme.icons.share,
-                    style = PersianComponentStyle.STANDARD,
-                    onClick = {}
-                )
-            }
-        }
-    }
-}
-
-@Preview
-@Composable
-fun CounterPreview() {
-    PersianTheme {
-        Surface {
-            PersianCounter.Tonal(
-                count = 100
-            )
-        }
-    }
 }
