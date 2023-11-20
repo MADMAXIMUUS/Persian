@@ -1,5 +1,6 @@
 package io.github.madmaximuus.persian.iconBox
 
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
@@ -77,7 +78,7 @@ class IconBoxColors internal constructor(
         val targetValue = when {
             !enabled -> disabledColor
             isError -> errorColor
-            else -> defaultColor
+            else -> LocalContentColor.current
         }
         return rememberUpdatedState(targetValue)
     }
