@@ -17,39 +17,6 @@ import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.counter.utils.LayoutId
 import io.github.madmaximuus.persian.counter.utils.badgeMeasurePolicy
 
-@Deprecated("Replace with PersianBadge()")
-object PersianBadge {
-
-    @Composable
-    fun Primary(
-        modifier: Modifier = Modifier,
-        colors: CounterColors = PersianCounterColors.default(),
-        sizes: CounterSizes = PersianCounterSizes.medium(),
-        content: @Composable (BoxScope.() -> Unit)
-    ) = PersianEmptyBadge(
-        modifier = modifier,
-        backgroundColor = colors.backgroundColor,
-        sizes = sizes,
-        anchor = content
-    )
-
-
-    @Composable
-    fun Primary(
-        count: Int,
-        modifier: Modifier = Modifier,
-        sizes: CounterSizes = PersianCounterSizes.medium(),
-        colors: CounterColors = PersianCounterColors.default(),
-        content: @Composable (BoxScope.() -> Unit)
-    ) = PersianBadgeImpl(
-        modifier = modifier,
-        count = count,
-        colors = colors,
-        sizes = sizes,
-        anchor = content
-    )
-}
-
 @Composable
 fun PersianBadge(
     modifier: Modifier = Modifier,
