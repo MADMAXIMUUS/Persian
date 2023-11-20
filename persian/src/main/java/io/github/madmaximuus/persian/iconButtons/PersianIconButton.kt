@@ -28,7 +28,7 @@ fun PersianPrimaryIconButton(
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     shape: Shape = PersianIconButtonDefaults.shape,
-    colors: NewIconButtonColors = PersianIconButtonDefaults.primaryIconButtonColors(),
+    colors: IconButtonColors = PersianIconButtonDefaults.primaryIconButtonColors(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
 ) = Surface(
     onClick = onClick,
@@ -54,7 +54,7 @@ fun PersianSecondaryIconButton(
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     shape: Shape = PersianIconButtonDefaults.shape,
-    colors: NewIconButtonColors = PersianIconButtonDefaults.secondaryIconButtonColors(),
+    colors: IconButtonColors = PersianIconButtonDefaults.secondaryIconButtonColors(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
 ) = Surface(
     onClick = onClick,
@@ -80,7 +80,7 @@ fun PersianTertiaryIconButton(
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     shape: Shape = PersianIconButtonDefaults.shape,
-    colors: NewIconButtonColors = PersianIconButtonDefaults.tertiaryIconButtonColors(),
+    colors: IconButtonColors = PersianIconButtonDefaults.tertiaryIconButtonColors(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
 ) = Surface(
     onClick = onClick,
@@ -106,7 +106,7 @@ fun PersianOutlinedIconButton(
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     shape: Shape = PersianIconButtonDefaults.shape,
-    colors: NewIconButtonColors = PersianIconButtonDefaults.outlinedIconButtonColors(),
+    colors: IconButtonColors = PersianIconButtonDefaults.outlinedIconButtonColors(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
 ) = Surface(
     onClick = onClick,

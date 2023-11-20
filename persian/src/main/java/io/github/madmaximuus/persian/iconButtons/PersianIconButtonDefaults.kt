@@ -26,7 +26,7 @@ object PersianIconButtonDefaults {
             .copy(PersianStatesDisabled),
         disabledContentColor: Color = MaterialTheme.extendedColorScheme.onSurface
             .copy(PersianContentStateDisabled)
-    ): NewIconButtonColors = NewIconButtonColors(
+    ): IconButtonColors = IconButtonColors(
         containerColor = containerColor,
         contentColor = contentColor,
         disabledContainerColor = disabledContainerColor,
@@ -41,7 +41,7 @@ object PersianIconButtonDefaults {
             .copy(PersianStatesDisabled),
         disabledContentColor: Color = MaterialTheme.extendedColorScheme.onSurface
             .copy(PersianContentStateDisabled)
-    ): NewIconButtonColors = NewIconButtonColors(
+    ): IconButtonColors = IconButtonColors(
         containerColor = containerColor,
         contentColor = contentColor,
         disabledContainerColor = disabledContainerColor,
@@ -55,7 +55,7 @@ object PersianIconButtonDefaults {
         disabledContainerColor: Color = Color.Transparent,
         disabledContentColor: Color = MaterialTheme.extendedColorScheme.onSurface
             .copy(PersianContentStateDisabled)
-    ): NewIconButtonColors = NewIconButtonColors(
+    ): IconButtonColors = IconButtonColors(
         containerColor = containerColor,
         contentColor = contentColor,
         disabledContainerColor = disabledContainerColor,
@@ -69,7 +69,7 @@ object PersianIconButtonDefaults {
         disabledContainerColor: Color = Color.Transparent,
         disabledContentColor: Color = MaterialTheme.extendedColorScheme.onSurface
             .copy(PersianContentStateDisabled)
-    ): NewIconButtonColors = NewIconButtonColors(
+    ): IconButtonColors = IconButtonColors(
         containerColor = containerColor,
         contentColor = contentColor,
         disabledContainerColor = disabledContainerColor,
@@ -156,7 +156,7 @@ object PersianIconButtonDefaults {
 }
 
 @Immutable
-class NewIconButtonColors internal constructor(
+class IconButtonColors internal constructor(
     private val containerColor: Color,
     private val contentColor: Color,
     private val disabledContainerColor: Color,
@@ -174,7 +174,7 @@ class NewIconButtonColors internal constructor(
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (other == null || other !is NewIconButtonColors) return false
+        if (other == null || other !is IconButtonColors) return false
 
         if (containerColor != other.containerColor) return false
         if (contentColor != other.contentColor) return false
