@@ -51,14 +51,12 @@ object PersianIconBoxDefaults {
 
     @Composable
     fun colors(
-        defaultColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
         errorColor: Color = MaterialTheme.extendedColorScheme.error,
         disabledColor: Color = MaterialTheme.extendedColorScheme.onSurface.copy(
             alpha = PersianContentStateDisabled
         )
     ): IconBoxColors =
         IconBoxColors(
-            defaultColor = defaultColor,
             errorColor = errorColor,
             disabledColor = disabledColor
         )
@@ -66,7 +64,6 @@ object PersianIconBoxDefaults {
 
 @Immutable
 class IconBoxColors internal constructor(
-    private val defaultColor: Color,
     private val disabledColor: Color,
     private val errorColor: Color
 ) {
@@ -87,15 +84,13 @@ class IconBoxColors internal constructor(
         if (this === other) return true
         if (other == null || other !is IconBoxColors) return false
 
-        if (defaultColor != other.defaultColor) return false
         if (errorColor != other.errorColor) return false
         if (disabledColor != other.disabledColor) return false
         return true
     }
 
     override fun hashCode(): Int {
-        var result = defaultColor.hashCode()
-        result = 31 * result + errorColor.hashCode()
+        var result = errorColor.hashCode()
         result = 31 * result + disabledColor.hashCode()
         return result
     }
