@@ -12,61 +12,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
 
-@Deprecated("Replace with Persian<*>VerticalDivider")
-object PersianVerticalDividers {
-
-    @Composable
-    fun FullHeight(
-        modifier: Modifier = Modifier,
-        sizes: DividerSizes = PersianDividerSizes.small(),
-        strokeColor: Color = MaterialTheme.extendedColorScheme.outlineVariant
-    ) {
-        Box(
-            modifier = modifier
-                .fillMaxHeight()
-                .width(sizes.strokeThickness)
-                .background(strokeColor)
-        )
-    }
-
-    @Composable
-    fun MiddleInsets(
-        modifier: Modifier = Modifier,
-        sizes: DividerSizes = PersianDividerSizes.small(),
-        insetSide: InsetSide = InsetSide.TOP,
-        strokeColor: Color = MaterialTheme.extendedColorScheme.outlineVariant
-    ) {
-        val padding = when (insetSide) {
-            InsetSide.TOP -> PaddingValues(top = sizes.inset)
-            InsetSide.BOTTOM -> PaddingValues(bottom = sizes.inset)
-        }
-        Box(
-            modifier = modifier
-                .padding(padding)
-                .fillMaxHeight()
-                .width(sizes.strokeThickness)
-                .background(strokeColor)
-        )
-    }
-
-    @Composable
-    fun Inset(
-        modifier: Modifier = Modifier,
-        sizes: DividerSizes = PersianDividerSizes.small(),
-        strokeColor: Color = MaterialTheme.extendedColorScheme.outlineVariant
-    ) {
-        Box(
-            modifier = modifier
-                .padding(PaddingValues(vertical = sizes.inset))
-                .fillMaxHeight()
-                .width(sizes.strokeThickness)
-                .background(strokeColor)
-        )
-    }
-
-    enum class InsetSide { TOP, BOTTOM }
-}
-
 @Composable
 fun PersianFullHeightVerticalDivider(
     modifier: Modifier = Modifier,
