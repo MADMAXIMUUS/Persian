@@ -37,7 +37,6 @@ import io.github.madmaximuus.persian.checkboxes.PersianCheckboxDefaults
 import kotlin.math.floor
 import kotlin.math.max
 
-
 @Composable
 fun PersianTriStateCheckboxToggle(
     state: ToggleableState,

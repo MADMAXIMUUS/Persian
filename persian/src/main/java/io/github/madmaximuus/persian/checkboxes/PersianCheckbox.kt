@@ -20,51 +20,6 @@ import io.github.madmaximuus.persian.foundation.PersianContentStateDisabled
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
 
-@Deprecated("Replace with PersianCheckbox()")
-object PersianCheckbox {
-
-    @Composable
-    fun Primary(
-        modifier: Modifier = Modifier,
-        text: String,
-        checked: Boolean,
-        enabled: Boolean = true,
-        onCheckedChange: (Boolean) -> Unit,
-        checkboxColors: CheckboxColors = PersianCheckboxColors.primary(),
-        checkboxSizes: CheckboxSizes = PersianCheckboxSizes.small()
-    ) {
-        val textColor = if (enabled) checkboxColors.textColor
-        else MaterialTheme.extendedColorScheme.onSurface.copy(alpha = PersianContentStateDisabled)
-        Row(
-            modifier = modifier
-                .clip(MaterialTheme.shapes.large)
-                .toggleable(
-                    value = checked,
-                    enabled = enabled,
-                    onValueChange = { onCheckedChange(!checked) },
-                    role = Role.Checkbox
-                )
-                .padding(checkboxSizes.contentPadding),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Start
-        ) {
-            PersianCheckboxToggle.Primary(
-                modifier = Modifier
-                    .size(checkboxSizes.toggleSize),
-                checked = checked,
-                enabled = enabled,
-                onCheckedChange = null,
-                colors = checkboxColors.toggleColor
-            )
-            Text(
-                text = text,
-                color = textColor,
-                style = checkboxSizes.textStyle
-            )
-        }
-    }
-}
-
 @Composable
 fun PersianCheckbox(
     modifier: Modifier = Modifier,
