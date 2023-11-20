@@ -3,7 +3,9 @@ package io.github.madmaximuus.persian.banners
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -34,15 +36,15 @@ internal fun PersianBannerLeftIcon(
             .fillMaxHeight(),
         contentAlignment = Alignment.TopCenter
     ) {
-        PersianIconBox(
-            modifier = Modifier
-                .padding(0.dp),
-            icon = icon,
-            colors = PersianIconBoxDefaults.colors(
-                defaultColor = iconColor
-            ),
-            contentDescription = contentDescription
-        )
+        CompositionLocalProvider(LocalContentColor provides iconColor) {
+            PersianIconBox(
+                modifier = Modifier
+                    .padding(0.dp),
+                icon = icon,
+                colors = PersianIconBoxDefaults.colors(),
+                contentDescription = contentDescription
+            )
+        }
     }
 }
 
