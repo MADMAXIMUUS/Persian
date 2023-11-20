@@ -1,206 +1,167 @@
 package io.github.madmaximuus.persian.iconButtons
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.material3.FilledIconButton
-import androidx.compose.material3.FilledTonalIconButton
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.IconButtonDefaults
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedIconButton
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.foundation.PersianComponentStyle
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
-import io.github.madmaximuus.persian.iconBox.PersianIconBoxColors
 
-object PersianIconButton {
-
-    @Composable
-    fun Primary(
-        modifier: Modifier = Modifier,
-        icon: Painter,
-        style: PersianComponentStyle = PersianComponentStyle.FILL,
-        enabled: Boolean = true,
-        sizes: IconButtonSizes = PersianIconButtonSizes.medium(),
-        colors: IconButtonColors = PersianIconButtonColors.primary(style = style),
-        onClick: () -> Unit
+@Composable
+fun PersianPrimaryIconButton(
+    onClick: () -> Unit,
+    icon: Painter,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    shape: Shape = PersianIconButtonDefaults.shape,
+    colors: NewIconButtonColors = PersianIconButtonDefaults.primaryIconButtonColors(),
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
+) = Surface(
+    onClick = onClick,
+    modifier = modifier.semantics { role = Role.Button },
+    enabled = enabled,
+    shape = shape,
+    color = colors.containerColor(enabled).value,
+    contentColor = colors.contentColor(enabled).value,
+    interactionSource = interactionSource
+) {
+    Box(
+        modifier = Modifier.size(40.dp),
+        contentAlignment = Alignment.Center
     ) {
-        when (style) {
-            PersianComponentStyle.FILL -> PersianFilledIconButtonImpl(
-                modifier = modifier,
-                icon = icon,
-                enabled = enabled,
-                sizes = sizes,
-                colors = colors,
-                onClick = onClick
-            )
-
-            PersianComponentStyle.OUTLINED -> PersianOutlinedIconButtonImpl(
-                modifier = modifier,
-                icon = icon,
-                enabled = enabled,
-                sizes = sizes,
-                colors = colors,
-                onClick = onClick
-            )
-
-            PersianComponentStyle.STANDARD -> PersianIconButtonImpl(
-                modifier = modifier,
-                icon = icon,
-                enabled = enabled,
-                sizes = sizes,
-                colors = colors,
-                onClick = onClick
-            )
-
-            PersianComponentStyle.TONAL -> PersianTonalIconButtonImpl(
-                modifier = modifier,
-                icon = icon,
-                enabled = enabled,
-                sizes = sizes,
-                colors = colors,
-                onClick = onClick
-            )
-        }
+        PersianIconBox(icon = icon)
     }
 }
 
 @Composable
-private fun PersianFilledIconButtonImpl(
-    modifier: Modifier = Modifier,
+fun PersianSecondaryIconButton(
+    onClick: () -> Unit,
     icon: Painter,
-    enabled: Boolean,
-    sizes: IconButtonSizes,
-    colors: IconButtonColors,
-    onClick: () -> Unit
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    shape: Shape = PersianIconButtonDefaults.shape,
+    colors: NewIconButtonColors = PersianIconButtonDefaults.secondaryIconButtonColors(),
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
+) = Surface(
+    onClick = onClick,
+    modifier = modifier.semantics { role = Role.Button },
+    enabled = enabled,
+    shape = shape,
+    color = colors.containerColor(enabled).value,
+    contentColor = colors.contentColor(enabled).value,
+    interactionSource = interactionSource
 ) {
-    FilledIconButton(
-        modifier = modifier,
-        colors = IconButtonDefaults.filledIconButtonColors(
-            containerColor = colors.containerColor,
-            contentColor = colors.contentColor,
-            disabledContentColor = colors.disabledContentColor,
-            disabledContainerColor = colors.disabledContainerColor
-        ),
-        shape = sizes.cornerRadius,
-        enabled = enabled,
-        onClick = onClick
+    Box(
+        modifier = Modifier.size(40.dp),
+        contentAlignment = Alignment.Center
     ) {
-        PersianIconBox.Primary(
-            icon = icon,
-            colors = PersianIconBoxColors.primary(
-                defaultColor = colors.contentColor
-            )
-        )
+        PersianIconBox(icon = icon)
     }
 }
 
 @Composable
-private fun PersianOutlinedIconButtonImpl(
-    modifier: Modifier = Modifier,
+fun PersianTertiaryIconButton(
+    onClick: () -> Unit,
     icon: Painter,
-    enabled: Boolean,
-    sizes: IconButtonSizes,
-    colors: IconButtonColors,
-    onClick: () -> Unit
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    shape: Shape = PersianIconButtonDefaults.shape,
+    colors: NewIconButtonColors = PersianIconButtonDefaults.tertiaryIconButtonColors(),
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
+) = Surface(
+    onClick = onClick,
+    modifier = modifier.semantics { role = Role.Button },
+    enabled = enabled,
+    shape = shape,
+    color = colors.containerColor(enabled).value,
+    contentColor = colors.contentColor(enabled).value,
+    interactionSource = interactionSource
 ) {
-    OutlinedIconButton(
-        modifier = modifier,
-        colors = IconButtonDefaults.outlinedIconButtonColors(
-            containerColor = colors.containerColor,
-            contentColor = colors.contentColor,
-            disabledContentColor = colors.disabledContentColor,
-            disabledContainerColor = colors.disabledContainerColor
-        ),
-        shape = sizes.cornerRadius,
-        border = BorderStroke(1.dp, colors.contentColor),
-        enabled = enabled,
-        onClick = onClick
+    Box(
+        modifier = Modifier.size(40.dp),
+        contentAlignment = Alignment.Center
     ) {
-        PersianIconBox.Primary(
-            icon = icon,
-            colors = PersianIconBoxColors.primary(
-                defaultColor = colors.contentColor
-            )
-        )
+        PersianIconBox(icon = icon)
     }
 }
 
 @Composable
-private fun PersianIconButtonImpl(
-    modifier: Modifier = Modifier,
+fun PersianOutlinedIconButton(
+    onClick: () -> Unit,
     icon: Painter,
-    enabled: Boolean,
-    sizes: IconButtonSizes,
-    colors: IconButtonColors,
-    onClick: () -> Unit
-) {
-    IconButton(
-        modifier = modifier
-            .clip(sizes.cornerRadius),
-        colors = IconButtonDefaults.iconButtonColors(
-            containerColor = colors.containerColor,
-            contentColor = colors.contentColor,
-            disabledContentColor = colors.disabledContentColor,
-            disabledContainerColor = colors.disabledContainerColor
-        ),
-        enabled = enabled,
-        onClick = onClick
-    ) {
-        PersianIconBox.Primary(
-            icon = icon,
-            colors = PersianIconBoxColors.primary(
-                defaultColor = colors.contentColor
-            )
-        )
-    }
-}
-
-@Composable
-private fun PersianTonalIconButtonImpl(
     modifier: Modifier = Modifier,
-    icon: Painter,
-    enabled: Boolean,
-    sizes: IconButtonSizes,
-    colors: IconButtonColors,
-    onClick: () -> Unit
+    enabled: Boolean = true,
+    shape: Shape = PersianIconButtonDefaults.shape,
+    colors: NewIconButtonColors = PersianIconButtonDefaults.outlinedIconButtonColors(),
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
+) = Surface(
+    onClick = onClick,
+    modifier = modifier.semantics { role = Role.Button },
+    enabled = enabled,
+    shape = shape,
+    color = colors.containerColor(enabled).value,
+    contentColor = colors.contentColor(enabled).value,
+    border = BorderStroke(
+        1.dp,
+        colors.contentColor(enabled).value
+    ),
+    interactionSource = interactionSource
 ) {
-    FilledTonalIconButton(
-        modifier = modifier,
-        colors = IconButtonDefaults.outlinedIconButtonColors(
-            containerColor = colors.tonalContainerColor,
-            contentColor = colors.tonalContentColor,
-            disabledContentColor = colors.disabledContentColor,
-            disabledContainerColor = colors.disabledContainerColor
-        ),
-        shape = sizes.cornerRadius,
-        enabled = enabled,
-        onClick = onClick
+    Box(
+        modifier = Modifier.size(40.dp),
+        contentAlignment = Alignment.Center
     ) {
-        PersianIconBox.Primary(
-            icon = icon,
-            colors = PersianIconBoxColors.primary(
-                defaultColor = colors.tonalContentColor
-            )
-        )
+        PersianIconBox(icon = icon)
     }
 }
 
 @Preview
 @Composable
-fun FiledIconButtonPreview() {
+fun PrimaryIconButtonPreview() {
     PersianTheme {
         Surface {
-            PersianIconButton.Primary(
+            PersianPrimaryIconButton(
                 icon = MaterialTheme.icons.globeUk,
-                style = PersianComponentStyle.FILL,
+                onClick = {}
+            )
+        }
+    }
+}
+
+@Preview
+@Composable
+fun SecondaryIconButtonPreview() {
+    PersianTheme {
+        Surface {
+            PersianSecondaryIconButton(
+                icon = MaterialTheme.icons.globeUk,
+                onClick = {}
+            )
+        }
+    }
+}
+
+@Preview
+@Composable
+fun TertiaryIconButtonPreview() {
+    PersianTheme {
+        Surface {
+            PersianTertiaryIconButton(
+                icon = MaterialTheme.icons.globeUk,
                 onClick = {}
             )
         }
@@ -212,37 +173,8 @@ fun FiledIconButtonPreview() {
 fun OutlinedIconButtonPreview() {
     PersianTheme {
         Surface {
-            PersianIconButton.Primary(
+            PersianOutlinedIconButton(
                 icon = MaterialTheme.icons.globeUk,
-                style = PersianComponentStyle.OUTLINED,
-                onClick = {}
-            )
-        }
-    }
-}
-
-@Preview
-@Composable
-fun IconButtonPreview() {
-    PersianTheme {
-        Surface {
-            PersianIconButton.Primary(
-                icon = MaterialTheme.icons.globeUk,
-                style = PersianComponentStyle.STANDARD,
-                onClick = {}
-            )
-        }
-    }
-}
-
-@Preview
-@Composable
-fun TonalIconButtonPreview() {
-    PersianTheme {
-        Surface {
-            PersianIconButton.Primary(
-                icon = MaterialTheme.icons.globeUk,
-                style = PersianComponentStyle.TONAL,
                 onClick = {}
             )
         }
