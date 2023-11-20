@@ -13,7 +13,7 @@ import io.github.madmaximuus.persian.foundation.elevation
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import io.github.madmaximuus.persian.foundation.surfaceColorAtElevation
 import io.github.madmaximuus.persian.iconBox.IconBoxSize
-import io.github.madmaximuus.persian.iconBox.PersianIconBoxSize
+import io.github.madmaximuus.persian.iconBox.PersianIconBoxDefaults
 
 object PersianFabDefaults {
     @Composable
@@ -76,7 +76,7 @@ object PersianFabDefaults {
     @Composable
     fun smallSizes(
         boxSize: Dp = 40.dp,
-        iconSize: IconBoxSize = PersianIconBoxSize.medium(),
+        iconSize: IconBoxSize = PersianIconBoxDefaults.medium(),
         textStyle: TextStyle = MaterialTheme.typography.labelLarge,
         cornerShape: Shape = MaterialTheme.shapes.large
     ) = remember(
@@ -96,7 +96,7 @@ object PersianFabDefaults {
     @Composable
     fun mediumSizes(
         boxSize: Dp = 56.dp,
-        iconSize: IconBoxSize = PersianIconBoxSize.large(),
+        iconSize: IconBoxSize = PersianIconBoxDefaults.medium(),
         textStyle: TextStyle = MaterialTheme.typography.labelLarge,
         cornerShape: Shape = MaterialTheme.shapes.large
     ) = remember(
