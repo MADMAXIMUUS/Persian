@@ -24,57 +24,6 @@ data class ActionSheetItem(
     val onClick: (AnimatedTransitionDialogHelper) -> Unit
 )
 
-@Deprecated("Replaced with PersianActionSheetItem()", level = DeprecationLevel.WARNING)
-object PersianActionItem {
-
-    @Composable
-    fun Primary(
-        modifier: Modifier = Modifier,
-        actionSheetItem: ActionSheetItem,
-        animatedTransitionDialogHelper: AnimatedTransitionDialogHelper,
-        itemColors: ActionItemColors
-    ) {
-        Row(
-            modifier = modifier
-                .fillMaxWidth()
-                .clickable(
-                    enabled = actionSheetItem.enabled,
-                    onClick = {
-                        actionSheetItem.onClick(animatedTransitionDialogHelper)
-                    },
-                    role = Role.Button
-                )
-                .padding(
-                    start = MaterialTheme.spacing.medium,
-                    top = MaterialTheme.spacing.medium,
-                    bottom = MaterialTheme.spacing.medium,
-                    end = 0.dp
-                ),
-            horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small)
-        ) {
-            val textColor = itemColors
-                .textColor(
-                    enabled = actionSheetItem.enabled,
-                    isError = actionSheetItem.negative
-                ).value
-            actionSheetItem.leadingIcon?.let {
-                PersianIconBox.Primary(
-                    icon = it,
-                    enabled = actionSheetItem.enabled,
-                    isError = actionSheetItem.negative,
-                    colors = itemColors.iconColors
-                )
-            }
-            Text(
-                modifier = Modifier.height(24.dp),
-                text = actionSheetItem.text,
-                style = MaterialTheme.typography.titleMedium,
-                color = textColor
-            )
-        }
-    }
-}
-
 @Composable
 internal fun PersianActionSheetItem(
     modifier: Modifier = Modifier,
