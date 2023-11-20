@@ -6,8 +6,10 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -67,13 +69,15 @@ fun PersianImage(
                     modifier = Modifier.fillMaxSize(),
                     contentAlignment = Alignment.Center
                 ) {
-                    PersianIconBox(
-                        icon = MaterialTheme.icons.appLogo,
-                        size = size.placeholderSize,
-                        colors = PersianIconBoxDefaults.colors(
-                            defaultColor = MaterialTheme.extendedColorScheme.onPrimaryContainer
+                    CompositionLocalProvider(
+                        LocalContentColor provides MaterialTheme.extendedColorScheme.onPrimaryContainer
+                    ) {
+                        PersianIconBox(
+                            icon = MaterialTheme.icons.appLogo,
+                            size = size.placeholderSize,
+                            colors = PersianIconBoxDefaults.colors()
                         )
-                    )
+                    }
                 }
             },
             model = imageUrl,
@@ -86,13 +90,15 @@ fun PersianImage(
                     .background(MaterialTheme.extendedColorScheme.surface.copy(alpha = 0.8f)),
                 contentAlignment = Alignment.Center
             ) {
-                PersianIconBox(
-                    icon = MaterialTheme.icons.add,
-                    size = size.editIconBoxSize,
-                    colors = PersianIconBoxDefaults.colors(
-                        defaultColor = MaterialTheme.extendedColorScheme.primary
+                CompositionLocalProvider(
+                    LocalContentColor provides MaterialTheme.extendedColorScheme.onPrimaryContainer
+                ) {
+                    PersianIconBox(
+                        icon = MaterialTheme.icons.add,
+                        size = size.editIconBoxSize,
+                        colors = PersianIconBoxDefaults.colors()
                     )
-                )
+                }
             }
         }
     }

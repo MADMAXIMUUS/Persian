@@ -9,7 +9,6 @@ import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.iconBox.IconBoxSize
 import io.github.madmaximuus.persian.iconBox.PersianIconBoxDefaults
 
-
 data class ImageSize(
     val boxSizes: Dp,
     val placeholderSize: IconBoxSize,
