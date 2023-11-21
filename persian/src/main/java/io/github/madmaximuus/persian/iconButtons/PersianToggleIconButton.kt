@@ -20,7 +20,6 @@ import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
-import io.github.madmaximuus.persian.iconBox.PersianIconBoxDefaults
 
 @Composable
 fun PersianPrimaryToggleIconButton(
@@ -48,19 +47,9 @@ fun PersianPrimaryToggleIconButton(
         contentAlignment = Alignment.Center
     ) {
         if (checked) {
-            PersianIconBox(
-                icon = checkedIcon,
-                colors = PersianIconBoxDefaults.colors(
-                    defaultColor = colors.contentColor(enabled, checked).value
-                )
-            )
+            PersianIconBox(icon = checkedIcon)
         } else {
-            PersianIconBox(
-                icon = icon,
-                colors = PersianIconBoxDefaults.colors(
-                    defaultColor = colors.contentColor(enabled, checked).value
-                )
-            )
+            PersianIconBox(icon = icon)
         }
     }
 }
