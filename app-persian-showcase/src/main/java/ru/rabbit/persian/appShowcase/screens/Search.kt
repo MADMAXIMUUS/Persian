@@ -29,7 +29,7 @@ object Search : Screen {
             ) {
                 item {
                     SampleRow(text = "Default", firstItem = true) {
-                        PersianSearch.Primary(
+                        PersianSearch(
                             value = "",
                             onValueChange = {}
                         )
@@ -37,7 +37,7 @@ object Search : Screen {
                 }
                 item {
                     SampleRow(text = "With Placeholder") {
-                        PersianSearch.Primary(
+                        PersianSearch(
                             value = "",
                             onValueChange = {},
                             placeholder = "Search something"
@@ -46,7 +46,7 @@ object Search : Screen {
                 }
                 item {
                     SampleRow(text = "Input") {
-                        PersianSearch.Primary(
+                        PersianSearch(
                             value = "Persian",
                             onValueChange = {},
                             placeholder = "Search something"
@@ -55,7 +55,7 @@ object Search : Screen {
                 }
                 item {
                     SampleRow(text = "With navigation icon", lastItem = true) {
-                        PersianSearch.Primary(
+                        PersianSearch(
                             value = "Persian",
                             onValueChange = {},
                             showNavIcon = true,

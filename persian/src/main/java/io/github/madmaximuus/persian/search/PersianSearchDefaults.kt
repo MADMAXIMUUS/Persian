@@ -177,10 +177,10 @@ class SearchColors internal constructor(
     }
 }
 
-object PersianSearchColors {
+object PersianSearchDefaults {
 
     @Composable
-    fun primary(
+    fun colors(
         //Text Color
         unfocusedTextColor: Color = MaterialTheme.extendedColorScheme.onSurface,
         focusedTextColor: Color = MaterialTheme.extendedColorScheme.onSurface,
