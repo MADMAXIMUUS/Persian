@@ -38,7 +38,7 @@ object RadioButton : Screen {
                     var state by remember { mutableStateOf(false) }
                     SampleRow(text = "Unselected", firstItem = true) {
                         Column(modifier = Modifier.fillMaxWidth()) {
-                            PersianRadioButton.Primary(
+                            PersianRadioButton(
                                 text = "Radio Button",
                                 checked = state,
                                 enabled = false,
@@ -46,7 +46,7 @@ object RadioButton : Screen {
                                     state = !state
                                 }
                             )
-                            PersianRadioButton.Primary(
+                            PersianRadioButton(
                                 text = "Radio Button",
                                 checked = state,
                                 onCheckedChange = {
@@ -60,7 +60,7 @@ object RadioButton : Screen {
                     SampleRow(text = "Selected", firstItem = true) {
                         var state by remember { mutableStateOf(true) }
                         Column(modifier = Modifier.fillMaxWidth()) {
-                            PersianRadioButton.Primary(
+                            PersianRadioButton(
                                 text = "Radio Button",
                                 checked = state,
                                 enabled = false,
@@ -68,7 +68,7 @@ object RadioButton : Screen {
                                     state = !state
                                 }
                             )
-                            PersianRadioButton.Primary(
+                            PersianRadioButton(
                                 text = "Radio Button",
                                 checked = state,
                                 onCheckedChange = {
@@ -92,7 +92,7 @@ object RadioButton : Screen {
                                 .fillMaxWidth()
                                 .selectableGroup()
                         ) {
-                            PersianRadioButton.Primary(
+                            PersianRadioButton(
                                 text = "Radio Button",
                                 checked = states[0].value,
                                 onCheckedChange = {
@@ -101,7 +101,7 @@ object RadioButton : Screen {
                                     }
                                 }
                             )
-                            PersianRadioButton.Primary(
+                            PersianRadioButton(
                                 text = "Radio Button",
                                 checked = states[1].value,
                                 onCheckedChange = {
@@ -110,7 +110,7 @@ object RadioButton : Screen {
                                     }
                                 }
                             )
-                            PersianRadioButton.Primary(
+                            PersianRadioButton(
                                 text = "Radio Button",
                                 checked = states[2].value,
                                 onCheckedChange = {

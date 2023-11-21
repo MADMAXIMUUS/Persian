@@ -17,50 +17,46 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
 import io.github.madmaximuus.persian.foundation.PersianContentStateDisabled
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
-import io.github.madmaximuus.persian.radioButtons.toggle.PersianRadioButtonToggle
 
-object PersianRadioButton {
-
-    @Composable
-    fun Primary(
-        modifier: Modifier = Modifier,
-        text: String,
-        checked: Boolean,
-        enabled: Boolean = true,
-        onCheckedChange: (Boolean) -> Unit,
-        radioButtonColors: RadioButtonColors = PersianRadioButtonColors.primary(),
-        radioButtonSizes: RadioButtonSizes = PersianRadioButtonSizes.small()
-    ) {
-        val textColor = if (enabled) radioButtonColors.textColor
-        else MaterialTheme.extendedColorScheme.onSurface.copy(alpha = PersianContentStateDisabled)
-        Row(
-            modifier = modifier
-                .clip(MaterialTheme.shapes.large)
-                .selectable(
-                    enabled = enabled,
-                    selected = checked,
-                    onClick = { onCheckedChange(!checked) },
-                    role = Role.RadioButton
-                )
-                .padding(radioButtonSizes.contentPadding),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Start
-        ) {
-            PersianRadioButtonToggle.Primary(
-                modifier = Modifier
-                    .size(radioButtonSizes.toggleSize),
-                checked = checked,
+@Composable
+fun PersianRadioButton(
+    modifier: Modifier = Modifier,
+    text: String,
+    checked: Boolean,
+    enabled: Boolean = true,
+    onCheckedChange: (Boolean) -> Unit,
+    radioButtonColors: RadioButtonColors = PersianRadioButtonDefaults.colors(),
+    radioButtonSizes: RadioButtonSizes = PersianRadioButtonDefaults.sizes()
+) {
+    val textColor = if (enabled) radioButtonColors.textColor
+    else MaterialTheme.extendedColorScheme.onSurface.copy(alpha = PersianContentStateDisabled)
+    Row(
+        modifier = modifier
+            .clip(MaterialTheme.shapes.large)
+            .selectable(
                 enabled = enabled,
-                onClick = null,
-                colors = radioButtonColors.toggleColor
+                selected = checked,
+                onClick = { onCheckedChange(!checked) },
+                role = Role.RadioButton
             )
-            Text(
-                modifier = Modifier,
-                text = text,
-                color = textColor,
-                style = radioButtonSizes.textStyle
-            )
-        }
+            .padding(radioButtonSizes.contentPadding),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Start
+    ) {
+        PersianRadioButtonToggle(
+            modifier = Modifier
+                .size(radioButtonSizes.toggleSize),
+            checked = checked,
+            enabled = enabled,
+            onClick = null,
+            colors = radioButtonColors.toggleColor
+        )
+        Text(
+            modifier = Modifier,
+            text = text,
+            color = textColor,
+            style = radioButtonSizes.textStyle
+        )
     }
 }
 
@@ -69,7 +65,7 @@ object PersianRadioButton {
 fun CheckboxPreview() {
     MaterialTheme {
         Surface {
-            PersianRadioButton.Primary(
+            PersianRadioButton(
                 modifier = Modifier.fillMaxWidth(),
                 text = "Radio Button",
                 checked = false,
