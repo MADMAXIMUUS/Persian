@@ -17,9 +17,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.alert.AlertAction
-import io.github.madmaximuus.persian.alert.PersianAlerts
-import io.github.madmaximuus.persian.buttons.PersianButton
-import io.github.madmaximuus.persian.buttons.PersianButtonSizes
+import io.github.madmaximuus.persian.alert.PersianAlert
+import io.github.madmaximuus.persian.alert.PersianOnlyActionAlert
+import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
+import io.github.madmaximuus.persian.buttons.PersianPrimaryButton
 import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.foundation.spacing
 import io.github.madmaximuus.persian.radioButtons.PersianRadioButton
@@ -46,31 +47,34 @@ object Alert : Screen {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.medium)
             ) {
-                PersianButton.Primary(
+                PersianPrimaryButton(
                     text = "Only Action Alert",
-                    sizes = PersianButtonSizes.large()
+                    sizes = PersianButtonDefaults.largeSizes()
                 ) {
                     showOnlyActionAlert = true
                 }
-                PersianButton.Primary(text = "Primary Alert", sizes = PersianButtonSizes.large()) {
+                PersianPrimaryButton(
+                    text = "Primary Alert",
+                    sizes = PersianButtonDefaults.largeSizes()
+                ) {
                     showAlert = true
                 }
-                PersianButton.Primary(
+                PersianPrimaryButton(
                     text = "Primary Alert With Icon",
-                    sizes = PersianButtonSizes.large()
+                    sizes = PersianButtonDefaults.largeSizes()
                 ) {
                     showAlertWithIcon = true
                 }
-                PersianButton.Primary(
+                PersianPrimaryButton(
                     text = "Primary Alert With Content",
-                    sizes = PersianButtonSizes.large()
+                    sizes = PersianButtonDefaults.largeSizes()
                 ) {
                     showAlertWithContent = true
                 }
             }
         }
         if (showOnlyActionAlert) {
-            PersianAlerts.OnlyAction(
+            PersianOnlyActionAlert(
                 actions = listOf(
                     AlertAction("Action 1", onClick = { showOnlyActionAlert = false }),
                     AlertAction("Action 2", onClick = { showOnlyActionAlert = false }),
@@ -89,7 +93,7 @@ object Alert : Screen {
             }
         }
         if (showAlert) {
-            PersianAlerts.Primary(
+            PersianAlert(
                 title = "Alert",
                 actions = listOf(
                     AlertAction("OK", onClick = { showAlert = false }),
@@ -100,7 +104,7 @@ object Alert : Screen {
             )
         }
         if (showAlertWithIcon) {
-            PersianAlerts.Primary(
+            PersianAlert(
                 title = "Alert",
                 icon = MaterialTheme.icons.appLogo,
                 actions = listOf(
@@ -112,7 +116,7 @@ object Alert : Screen {
             )
         }
         if (showAlertWithContent) {
-            PersianAlerts.Primary(
+            PersianAlert(
                 title = "Alert",
                 actions = listOf(
                     AlertAction("OK", onClick = { showAlertWithContent = false }),
@@ -127,17 +131,17 @@ object Alert : Screen {
                             .selectableGroup()
                             .padding(horizontal = MaterialTheme.spacing.medium)
                     ) {
-                        PersianRadioButton.Primary(
+                        PersianRadioButton(
                             modifier = Modifier.fillMaxWidth(),
                             text = "Radio Button 1",
                             checked = false,
                             onCheckedChange = {})
-                        PersianRadioButton.Primary(
+                        PersianRadioButton(
                             modifier = Modifier.fillMaxWidth(),
                             text = "Radio Button 2",
                             checked = true,
                             onCheckedChange = {})
-                        PersianRadioButton.Primary(
+                        PersianRadioButton(
                             modifier = Modifier.fillMaxWidth(),
                             text = "Radio Button 3",
                             checked = false,

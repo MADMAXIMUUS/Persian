@@ -6,27 +6,18 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import io.github.madmaximuus.persian.buttons.ButtonColors
-import io.github.madmaximuus.persian.buttons.PersianButtonColors
+import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
 
-@Immutable
-data class AlertsColors(
-    val backgroundColor: Color,
-    val titleColor: Color,
-    val descriptionColor: Color,
-    val iconColor: Color,
-    val actionColor: ButtonColors
-)
-
-object PersianAlertsColors {
+object PersianAlertsDefaults {
 
     @Composable
-    fun primary(
+    fun colors(
         backgroundColor: Color = MaterialTheme.extendedColorScheme.surface,
         titleColor: Color = MaterialTheme.extendedColorScheme.onSurface,
         descriptionColor: Color = MaterialTheme.extendedColorScheme.onSurface,
         iconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        actionColor: ButtonColors = PersianButtonColors.tertiary()
+        actionColor: ButtonColors = PersianButtonDefaults.tertiaryColors()
     ) = remember(
         backgroundColor,
         titleColor,
@@ -43,3 +34,12 @@ object PersianAlertsColors {
         )
     }
 }
+
+@Immutable
+data class AlertsColors(
+    val backgroundColor: Color,
+    val titleColor: Color,
+    val descriptionColor: Color,
+    val iconColor: Color,
+    val actionColor: ButtonColors
+)
