@@ -116,7 +116,7 @@ fun FabPreview() {
             },
             floatingActionButtonPosition = FabPosition.End,
             bottomBar = {
-                PersianNavigationBar.Primary(actions = listOf(
+                PersianNavigationBar(actions = listOf(
                     NavigationBarItem(
                         selected = true,
                         selectedIcon = MaterialTheme.icons.homeFilled,

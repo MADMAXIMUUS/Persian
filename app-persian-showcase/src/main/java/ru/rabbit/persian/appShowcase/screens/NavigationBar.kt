@@ -34,7 +34,7 @@ object NavigationBar : Screen {
             ) {
                 item {
                     SampleRow(text = "Navigation Bar with 3 items", firstItem = true) {
-                        PersianNavigationBar.Primary(
+                        PersianNavigationBar(
                             actions = listOf(
                                 NavigationBarItem(
                                     selected = true,
@@ -63,7 +63,7 @@ object NavigationBar : Screen {
                 }
                 item {
                     SampleRow(text = "Navigation Bar with 4 items") {
-                        PersianNavigationBar.Primary(
+                        PersianNavigationBar(
                             actions = listOf(
                                 NavigationBarItem(
                                     selected = true,
@@ -99,7 +99,7 @@ object NavigationBar : Screen {
                 }
                 item {
                     SampleRow(text = "Navigation Bar with 5 items", lastItem = true) {
-                        PersianNavigationBar.Primary(
+                        PersianNavigationBar(
                             actions = listOf(
                                 NavigationBarItem(
                                     selected = true,
