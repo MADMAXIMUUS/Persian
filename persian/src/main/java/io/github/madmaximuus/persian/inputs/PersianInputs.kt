@@ -143,7 +143,8 @@ fun PersianInput(
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(horizontal = MaterialTheme.spacing.extraSmall),
+                            .padding(horizontal = MaterialTheme.spacing.extraSmall)
+                            .weight(1f),
                     ) {
                         if (value.isEmpty() && placeholder != null) {
                             Text(
