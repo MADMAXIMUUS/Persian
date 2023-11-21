@@ -351,10 +351,10 @@ class InputColors internal constructor(
     }
 }
 
-object PersianInputColors {
+object PersianInputDefaults {
 
     @Composable
-    fun primary(
+    fun colors(
         //State Icon
         errorStateIcon: Painter = MaterialTheme.icons.errorCircleRounded,
         successStateIcon: Painter = MaterialTheme.icons.checkCircle,
