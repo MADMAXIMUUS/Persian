@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.datePickerDIalog.header
+package io.github.madmaximuus.persian.datePickerDIalog
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -6,32 +6,21 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import io.github.madmaximuus.persian.buttons.ButtonColors
-import io.github.madmaximuus.persian.buttons.PersianButtonColors
-import io.github.madmaximuus.persian.foundation.PersianComponentStyle
+import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import io.github.madmaximuus.persian.iconButtons.IconButtonColors
-import io.github.madmaximuus.persian.iconButtons.PersianIconButtonColors
+import io.github.madmaximuus.persian.iconButtons.PersianIconButtonDefaults
 
-@Immutable
-class DatePickerDialogHeaderColors(
-    val prevButtonColor: IconButtonColors,
-    val nextButtonColor: IconButtonColors,
-    val monthLabelColor: Color,
-    val yearLabelColor: Color,
-    val selectMonthColor: ButtonColors,
-    val selectYearColor: ButtonColors
-)
-
-object PersianDatePickerDialogHeaderColors {
+object PersianDatePickerDialogDefaults {
 
     @Composable
-    fun primary(
-        prevButtonColor: IconButtonColors = PersianIconButtonColors.primary(style = PersianComponentStyle.FILL),
-        nextButtonColor: IconButtonColors = PersianIconButtonColors.primary(style = PersianComponentStyle.FILL),
+    fun headerColors(
+        prevButtonColor: IconButtonColors = PersianIconButtonDefaults.primaryIconButtonColors(),
+        nextButtonColor: IconButtonColors = PersianIconButtonDefaults.primaryIconButtonColors(),
         monthLabelColor: Color = MaterialTheme.extendedColorScheme.primary,
         yearLabelColor: Color = MaterialTheme.extendedColorScheme.primary,
-        selectMonthColor: ButtonColors = PersianButtonColors.tertiary(),
-        selectYearColor: ButtonColors = PersianButtonColors.tertiary(),
+        selectMonthColor: ButtonColors = PersianButtonDefaults.tertiaryColors(),
+        selectYearColor: ButtonColors = PersianButtonDefaults.tertiaryColors(),
     ) = remember(
         prevButtonColor,
         nextButtonColor,
@@ -50,3 +39,13 @@ object PersianDatePickerDialogHeaderColors {
         )
     }
 }
+
+@Immutable
+class DatePickerDialogHeaderColors(
+    val prevButtonColor: IconButtonColors,
+    val nextButtonColor: IconButtonColors,
+    val monthLabelColor: Color,
+    val yearLabelColor: Color,
+    val selectMonthColor: ButtonColors,
+    val selectYearColor: ButtonColors
+)

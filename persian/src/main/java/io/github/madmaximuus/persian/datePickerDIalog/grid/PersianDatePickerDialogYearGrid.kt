@@ -10,31 +10,29 @@ import io.github.madmaximuus.persian.datePickerDIalog.cells.PersianDatePickerDia
 import io.github.madmaximuus.persian.datePickerDIalog.util.Constants
 import io.github.madmaximuus.persian.foundation.spacing
 
-internal object PersianDatePickerDialogYearGrid {
-    @Composable
-    fun Primary(
-        yearsRange: ClosedRange<Int>,
-        yearListState: LazyGridState,
-        currentYear: Int,
-        selectedYear: Int,
-        onYearClick: (Int) -> Unit,
-    ) {
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(Constants.YEAR_MODE_GRID_COLUMNS),
-            verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.extraSmall),
-            horizontalArrangement = Arrangement.SpaceEvenly,
-            state = yearListState,
-            content = {
-                items(yearsRange.endInclusive.minus(yearsRange.start)) {
-                    PersianDatePickerDialogYearCell.Primary(
-                        year = (yearsRange.start + it).toString(),
-                        index = it,
-                        currentYear = currentYear == yearsRange.start + it,
-                        selected = selectedYear == yearsRange.start + it,
-                        onYearClick = onYearClick
-                    )
-                }
+@Composable
+internal fun PersianDatePickerDialogYearGrid(
+    yearsRange: ClosedRange<Int>,
+    yearListState: LazyGridState,
+    currentYear: Int,
+    selectedYear: Int,
+    onYearClick: (Int) -> Unit,
+) {
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(Constants.YEAR_MODE_GRID_COLUMNS),
+        verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.extraSmall),
+        horizontalArrangement = Arrangement.SpaceEvenly,
+        state = yearListState,
+        content = {
+            items(yearsRange.endInclusive.minus(yearsRange.start)) {
+                PersianDatePickerDialogYearCell(
+                    year = (yearsRange.start + it).toString(),
+                    index = it,
+                    currentYear = currentYear == yearsRange.start + it,
+                    selected = selectedYear == yearsRange.start + it,
+                    onYearClick = onYearClick
+                )
             }
-        )
-    }
+        }
+    )
 }

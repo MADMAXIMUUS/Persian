@@ -9,32 +9,29 @@ import io.github.madmaximuus.persian.datePickerDIalog.cells.PersianDatePickerDia
 import io.github.madmaximuus.persian.datePickerDIalog.util.Constants
 import io.github.madmaximuus.persian.foundation.spacing
 
-internal object PersianDatePickerDialogMonthGrid {
-
-    @Composable
-    fun Primary(
-        monthLabels: Array<String>,
-        currentMonth: Int,
-        selectedMonth: Int,
-        onMonthClick: (Int) -> Unit,
-    ) {
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(Constants.MONTH_MODE_GRID_COLUMNS),
-            verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.extraSmall),
-            userScrollEnabled = false,
-            horizontalArrangement = Arrangement.SpaceEvenly,
-            content = {
-                items(monthLabels.size) {
-                    PersianDatePickerDialogMonthCell.Primary(
-                        month = monthLabels[it],
-                        index = it,
-                        enabled = true,
-                        currentMonth = currentMonth == it,
-                        selected = selectedMonth == it,
-                        onMonthClick = onMonthClick
-                    )
-                }
+@Composable
+internal fun PersianDatePickerDialogMonthGrid(
+    monthLabels: Array<String>,
+    currentMonth: Int,
+    selectedMonth: Int,
+    onMonthClick: (Int) -> Unit,
+) {
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(Constants.MONTH_MODE_GRID_COLUMNS),
+        verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.extraSmall),
+        userScrollEnabled = false,
+        horizontalArrangement = Arrangement.SpaceEvenly,
+        content = {
+            items(monthLabels.size) {
+                PersianDatePickerDialogMonthCell(
+                    month = monthLabels[it],
+                    index = it,
+                    enabled = true,
+                    currentMonth = currentMonth == it,
+                    selected = selectedMonth == it,
+                    onMonthClick = onMonthClick
+                )
             }
-        )
-    }
+        }
+    )
 }
