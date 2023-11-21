@@ -13,9 +13,8 @@ import io.github.madmaximuus.persian.counter.PersianCounter
 import io.github.madmaximuus.persian.counter.PersianCounterDefaults
 import io.github.madmaximuus.persian.counter.PersianTonalCounter
 import io.github.madmaximuus.persian.counter.PersianTransparentCounter
-import io.github.madmaximuus.persian.foundation.PersianComponentStyle
 import io.github.madmaximuus.persian.foundation.icons
-import io.github.madmaximuus.persian.iconButtons.PersianIconButton
+import io.github.madmaximuus.persian.iconButtons.PersianTertiaryIconButton
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
@@ -62,9 +61,8 @@ object Counter : Screen {
                     SampleRow(text = "Badge", lastItem = true) {
                         PersianBadge(
                             content = {
-                                PersianIconButton.Primary(
+                                PersianTertiaryIconButton(
                                     icon = MaterialTheme.icons.notifications,
-                                    style = PersianComponentStyle.STANDARD,
                                     onClick = {}
                                 )
                             },
@@ -76,9 +74,8 @@ object Counter : Screen {
                         PersianBadge(
                             count = 1,
                             content = {
-                                PersianIconButton.Primary(
+                                PersianTertiaryIconButton(
                                     icon = MaterialTheme.icons.notifications,
-                                    style = PersianComponentStyle.STANDARD,
                                     onClick = {}
                                 )
                             },
@@ -90,9 +87,8 @@ object Counter : Screen {
                         PersianBadge(
                             count = 10,
                             content = {
-                                PersianIconButton.Primary(
+                                PersianTertiaryIconButton(
                                     icon = MaterialTheme.icons.notifications,
-                                    style = PersianComponentStyle.STANDARD,
                                     onClick = {}
                                 )
                             },
@@ -104,9 +100,8 @@ object Counter : Screen {
                         PersianBadge(
                             count = 100,
                             content = {
-                                PersianIconButton.Primary(
+                                PersianTertiaryIconButton(
                                     icon = MaterialTheme.icons.notifications,
-                                    style = PersianComponentStyle.STANDARD,
                                     onClick = {}
                                 )
                             },
