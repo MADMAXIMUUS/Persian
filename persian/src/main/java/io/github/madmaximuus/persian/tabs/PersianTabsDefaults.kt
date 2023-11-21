@@ -15,10 +15,10 @@ data class TabColors(
     val disabledColor: Color
 )
 
-object PersianTabsColors {
+object PersianTabsDefaults {
 
     @Composable
-    fun primary(
+    fun colors(
         backgroundColor: Color = MaterialTheme.extendedColorScheme.surface,
         indicatorColor: Color = MaterialTheme.extendedColorScheme.primary,
         activeColor: Color = MaterialTheme.extendedColorScheme.primary,
