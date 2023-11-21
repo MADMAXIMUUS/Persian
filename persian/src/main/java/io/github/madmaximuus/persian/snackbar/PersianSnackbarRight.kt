@@ -3,36 +3,43 @@ package io.github.madmaximuus.persian.snackbar
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.painter.Painter
-import io.github.madmaximuus.persian.buttons.PersianButton
-import io.github.madmaximuus.persian.buttons.PersianButtonSizes
-import io.github.madmaximuus.persian.foundation.PersianComponentStyle
+import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
+import io.github.madmaximuus.persian.buttons.PersianTertiaryButton
 import io.github.madmaximuus.persian.foundation.icons
-import io.github.madmaximuus.persian.iconButtons.PersianIconButton
+import io.github.madmaximuus.persian.iconButtons.PersianTertiaryIconButton
 
-object PersianSnackbarRight {
+sealed class PersianSnackbarRight {
 
-    @Composable
-    fun Close(
-        icon: Painter = MaterialTheme.icons.close,
-        onClick: () -> Unit
-    ) {
-        PersianIconButton.Primary(
-            icon = icon,
-            style = PersianComponentStyle.STANDARD,
-            onClick = onClick
-        )
-    }
+    data class Close(
+        val customIcon: Painter? = null,
+        val onClick: () -> Unit
+    ) : PersianSnackbarRight()
 
-    @Composable
-    fun Action(
-        text: String,
-        onClick: () -> Unit
-    ) {
-        PersianButton.Tertiary(
-            text = text,
-            sizes = PersianButtonSizes.small(),
-            onClick = onClick
-        )
-    }
+    data class Action(
+        val text: String,
+        val onClick: () -> Unit
+    ) : PersianSnackbarRight()
+}
 
+@Composable
+internal fun PersianSnackbarRightClose(
+    customIcon: Painter? = null,
+    onClick: () -> Unit
+) {
+    PersianTertiaryIconButton(
+        icon = customIcon ?: MaterialTheme.icons.close,
+        onClick = onClick
+    )
+}
+
+@Composable
+internal fun PersianSnackbarRightAction(
+    text: String,
+    onClick: () -> Unit
+) {
+    PersianTertiaryButton(
+        text = text,
+        sizes = PersianButtonDefaults.smallSizes(),
+        onClick = onClick
+    )
 }

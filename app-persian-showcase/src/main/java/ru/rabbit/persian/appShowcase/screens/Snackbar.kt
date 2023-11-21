@@ -14,10 +14,13 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.buttons.PersianButton
-import io.github.madmaximuus.persian.buttons.PersianButtonSizes
+import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
+import io.github.madmaximuus.persian.buttons.PersianPrimaryButton
+import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.snackbar.PersianSnackbarLeft
+import io.github.madmaximuus.persian.snackbar.PersianSnackbarRight
 import io.github.madmaximuus.persian.snackbar.PersianSnackbarVisuals
 import kotlinx.coroutines.launch
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
@@ -47,9 +50,9 @@ object Snackbar : Screen {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.medium)
             ) {
-                PersianButton.Primary(
+                PersianPrimaryButton(
                     text = "Only text",
-                    sizes = PersianButtonSizes.large()
+                    sizes = PersianButtonDefaults.largeSizes()
                 ) {
                     coroutineScope.launch {
                         snackbarHostState.currentSnackbarData?.dismiss()
@@ -61,9 +64,9 @@ object Snackbar : Screen {
                         )
                     }
                 }
-                PersianButton.Primary(
+                PersianPrimaryButton(
                     text = "With Action Button",
-                    sizes = PersianButtonSizes.large()
+                    sizes = PersianButtonDefaults.largeSizes()
                 ) {
                     coroutineScope.launch {
                         snackbarHostState.currentSnackbarData?.dismiss()
@@ -71,19 +74,17 @@ object Snackbar : Screen {
                             PersianSnackbarVisuals(
                                 message = "Simple Snackbar",
                                 duration = SnackbarDuration.Short,
-                                right = {
-                                    Action(
-                                        text = "Action",
-                                        onClick = {}
-                                    )
-                                }
+                                right = PersianSnackbarRight.Action(
+                                    text = "Action",
+                                    onClick = {}
+                                )
                             )
                         )
                     }
                 }
-                PersianButton.Primary(
+                PersianPrimaryButton(
                     text = "With Close Button",
-                    sizes = PersianButtonSizes.large()
+                    sizes = PersianButtonDefaults.largeSizes()
                 ) {
                     coroutineScope.launch {
                         snackbarHostState.currentSnackbarData?.dismiss()
@@ -91,16 +92,16 @@ object Snackbar : Screen {
                             PersianSnackbarVisuals(
                                 message = "Simple Snackbar",
                                 duration = SnackbarDuration.Short,
-                                right = {
-                                    Close(onClick = {})
-                                }
+                                right = PersianSnackbarRight.Close(onClick = {})
                             )
                         )
                     }
                 }
-                PersianButton.Primary(
+                val icon = MaterialTheme.icons.wifiOff
+                val color = MaterialTheme.extendedColorScheme.primary
+                PersianPrimaryButton(
                     text = "With icon",
-                    sizes = PersianButtonSizes.large()
+                    sizes = PersianButtonDefaults.largeSizes()
                 ) {
                     coroutineScope.launch {
                         snackbarHostState.currentSnackbarData?.dismiss()
@@ -108,19 +109,17 @@ object Snackbar : Screen {
                             PersianSnackbarVisuals(
                                 message = "Simple Snackbar",
                                 duration = SnackbarDuration.Short,
-                                left = {
-                                    Icon24(
-                                        icon = MaterialTheme.icons.wifiOff,
-                                        contentDescription = ""
-                                    )
-                                }
+                                left = PersianSnackbarLeft.Icon(
+                                    icon = icon,
+                                    color = color
+                                )
                             )
                         )
                     }
                 }
-                PersianButton.Primary(
+                PersianPrimaryButton(
                     text = "With image",
-                    sizes = PersianButtonSizes.large()
+                    sizes = PersianButtonDefaults.largeSizes()
                 ) {
                     coroutineScope.launch {
                         snackbarHostState.currentSnackbarData?.dismiss()
@@ -128,19 +127,33 @@ object Snackbar : Screen {
                             PersianSnackbarVisuals(
                                 message = "Simple Snackbar",
                                 duration = SnackbarDuration.Short,
-                                left = {
-                                    Image(
-                                        image = "https://loremflickr.com/320/240",
-                                        contentDescription = ""
-                                    )
-                                }
+                                left = PersianSnackbarLeft.Image(
+                                    imageUrl = "https://loremflickr.com/320/240"
+                                )
                             )
                         )
                     }
                 }
-                PersianButton.Primary(
+                PersianPrimaryButton(
+                    text = "With avatar",
+                    sizes = PersianButtonDefaults.largeSizes()
+                ) {
+                    coroutineScope.launch {
+                        snackbarHostState.currentSnackbarData?.dismiss()
+                        snackbarHostState.showSnackbar(
+                            PersianSnackbarVisuals(
+                                message = "Simple Snackbar",
+                                duration = SnackbarDuration.Short,
+                                left = PersianSnackbarLeft.Avatar(
+                                    avatarUrl = "https://loremflickr.com/320/240"
+                                )
+                            )
+                        )
+                    }
+                }
+                PersianPrimaryButton(
                     text = "With counter",
-                    sizes = PersianButtonSizes.large()
+                    sizes = PersianButtonDefaults.largeSizes()
                 ) {
                     coroutineScope.launch {
                         snackbarHostState.currentSnackbarData?.dismiss()
@@ -148,26 +161,9 @@ object Snackbar : Screen {
                             PersianSnackbarVisuals(
                                 message = "Simple Snackbar",
                                 duration = SnackbarDuration.Short,
-                                left = {
-                                    Progress(
-                                        progress = 0.5f
-                                    )
-                                }
-                            )
-                        )
-                    }
-                }
-                PersianButton.Primary(
-                    text = "Show on top",
-                    sizes = PersianButtonSizes.large()
-                ) {
-                    coroutineScope.launch {
-                        snackbarHostState.currentSnackbarData?.dismiss()
-                        snackbarHostState.showSnackbar(
-                            PersianSnackbarVisuals(
-                                message = "Simple Snackbar",
-                                duration = SnackbarDuration.Short,
-                                showOnTop = true
+                                left = PersianSnackbarLeft.Progress(
+                                    progress = 0.5f
+                                )
                             )
                         )
                     }
