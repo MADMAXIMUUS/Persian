@@ -16,6 +16,8 @@ import androidx.compose.ui.Modifier
 import io.github.madmaximuus.persian.snackbar.PersianSnackbar
 import io.github.madmaximuus.persian.snackbar.PersianSnackbarVisuals
 import io.github.madmaximuus.persian.topAppBar.PersianTopAppBar
+import io.github.madmaximuus.persian.topAppBar.PersianTopAppBarLeft
+import io.github.madmaximuus.persian.topAppBar.PersianTopAppBarMiddle
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -29,17 +31,13 @@ fun SampleScaffold(
 ) {
     Scaffold(
         topBar = {
-            PersianTopAppBar.Primary(
+            PersianTopAppBar(
                 left = onBackClick?.let {
-                    {
-                        Navigation(
-                            onClick = onBackClick
-                        )
-                    }
+                    PersianTopAppBarLeft.Navigation(
+                        onClick = onBackClick
+                    )
                 },
-                middle = {
-                    Title(text = title)
-                },
+                middle = PersianTopAppBarMiddle.Title(text = title),
                 scrollBehavior = topAppBarScrollBehavior,
                 actionItemsCount = 1
             )

@@ -20,10 +20,10 @@ data class TopAppBarColors(
     val disabledIconColor: Color,
 )
 
-object PersianTopAppBarColors {
+object PersianTopAppBarDefaults {
 
     @Composable
-    fun primary(
+    fun colors(
         background: Color = MaterialTheme.extendedColorScheme.surface,
         scrolledBackgroundColor: Color = MaterialTheme.extendedColorScheme
             .surfaceColorAtElevation(MaterialTheme.elevation.small),

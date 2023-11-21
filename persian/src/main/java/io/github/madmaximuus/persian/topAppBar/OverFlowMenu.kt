@@ -9,11 +9,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.unit.DpOffset
-import io.github.madmaximuus.persian.foundation.PersianComponentStyle
 import io.github.madmaximuus.persian.foundation.spacing
-import io.github.madmaximuus.persian.iconButtons.PersianIconButton
-import io.github.madmaximuus.persian.iconButtons.PersianIconButtonColors
-import io.github.madmaximuus.persian.menus.PersianMenus
+import io.github.madmaximuus.persian.iconButtons.PersianIconButtonDefaults
+import io.github.madmaximuus.persian.iconButtons.PersianTertiaryIconButton
+import io.github.madmaximuus.persian.menus.PersianDropdownMenu
+import io.github.madmaximuus.persian.menus.PersianMenuItem
 
 @Composable
 internal fun OverflowMenu(
@@ -25,7 +25,7 @@ internal fun OverflowMenu(
     onDismissRequest: (() -> Unit)? = null,
 ) {
     val colors = LocalPersianTopAppBarColors.current
-    PersianMenus.Dropdown(
+    PersianDropdownMenu(
         expanded = expanded,
         modifier = modifier,
         interactionSource = interactionSource,
@@ -34,12 +34,10 @@ internal fun OverflowMenu(
             onDismissRequest?.let { it() }
         },
         anchor = {
-            PersianIconButton.Primary(
+            PersianTertiaryIconButton(
                 icon = overflowIcon,
-                style = PersianComponentStyle.STANDARD,
-                colors = PersianIconButtonColors.primary(
-                    style = PersianComponentStyle.STANDARD,
-                    containerColor = colors.iconColor
+                colors = PersianIconButtonDefaults.tertiaryIconButtonColors(
+                    contentColor = colors.iconColor
                 ),
                 onClick = {
                     expanded.value = true
@@ -48,7 +46,7 @@ internal fun OverflowMenu(
         },
         children = {
             actions.forEach {
-                Primary(
+                PersianMenuItem(
                     title = it.title,
                     onItemClick = {
                         it.onClick()
