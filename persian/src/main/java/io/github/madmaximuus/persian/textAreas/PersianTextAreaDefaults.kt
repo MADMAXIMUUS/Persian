@@ -283,10 +283,10 @@ class TextAreaColors internal constructor(
     }
 }
 
-object PersianTextAreaColors {
+object PersianTextAreaDefaults {
 
     @Composable
-    fun primary(
+    fun colors(
         //State Icon
         errorStateIcon: Painter = MaterialTheme.icons.errorCircleRounded,
         successStateIcon: Painter = MaterialTheme.icons.checkCircle,
