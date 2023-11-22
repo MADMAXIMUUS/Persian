@@ -2,46 +2,42 @@
      <img alt="Version of library" src="https://img.shields.io/maven-central/v/io.github.madmaximuus.persian/persian.svg?label=Maven%20Central">
    </a>
 
-=======
-<a href="https://search.maven.org/search?q=io.github.madmaximuus.persian:persian">
-     <img alt="Version of library" src="https://img.shields.io/maven-central/v/io.github.madmaximuus.persian/persian.svg?label=Maven%20Central">
-   </a>
+# Integrating the Persian library into the application:
 
-Интеграция библиотеки Persian в приложение:
+## Step 1
 
-## Шаг 1
-
-Добавить репозиторий mavencentral() в build.gradle на уровне проекта
+Add mavencentral() repository to build.gradle at project level
 
 ```groovy
 repositories {
-		mavenCentral()
+    mavenCentral()
 }
 ```
 
-## Шаг 2
+## Step 2
 
-Добавить зависимость на библиотеку в build.gradle на уровне приложения
+Add library dependency in build.gradle at application level
 
 ```groovy
-dependencies{
-		...
+dependencies {
 
-		implementation 'io.github.madmaximuus.persian:persian:1.0.0'
-
-		...
+    //...
+    
+    implementation 'io.github.madmaximuus.persian:persian:<latest_version>'
+    
+    //...
 }
 ```
 
-## Шаг 3
+## Step 3
 
-Обернуть контент приложения в PersianTheme
+Wrap application content in PersianTheme
 
 ```kotlin
 setContent{
 	PersianTheme{
 		Surface{
-			//Контент приложения
+			//Application content
 		}
 	}
 }
