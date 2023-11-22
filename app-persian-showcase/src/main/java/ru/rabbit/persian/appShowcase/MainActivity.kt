@@ -42,6 +42,7 @@ import ru.rabbit.persian.appShowcase.screens.RadioButton
 import ru.rabbit.persian.appShowcase.screens.Search
 import ru.rabbit.persian.appShowcase.screens.Skeleton
 import ru.rabbit.persian.appShowcase.screens.Snackbar
+import ru.rabbit.persian.appShowcase.screens.Switch
 import ru.rabbit.persian.appShowcase.screens.Tabs
 import ru.rabbit.persian.appShowcase.screens.TextArea
 import ru.rabbit.persian.appShowcase.screens.TopAppBar
@@ -81,7 +82,8 @@ class MainActivity : ComponentActivity() {
                         TopAppBar,
                         CodeInput,
                         DatePickerDialog,
-                        Skeleton
+                        Skeleton,
+                        Switch
                     )
                 }
                 NavHost(
