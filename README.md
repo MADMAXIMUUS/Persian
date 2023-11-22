@@ -34,11 +34,11 @@ dependencies {
 Wrap application content in PersianTheme
 
 ```kotlin
-setContent{
-	PersianTheme{
-		Surface{
-			//Application content
-		}
-	}
+setContent {
+    PersianTheme {
+        Surface {
+            //Application content 
+        }
+    }
 }
 ```
