@@ -8,41 +8,47 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import io.github.madmaximuus.persian.foundation.spacing
 
-object PersianFormSubhead {
 
-    @Composable
-    fun Default(
-        modifier: Modifier = Modifier,
-        required: Boolean = false,
-        text: String,
-        textColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        textStyle: TextStyle = MaterialTheme.typography.labelMedium
+data class PersianFormSubheadConfig(
+    val text: String,
+    val required: Boolean = false,
+    val textStyle: TextStyle? = null,
+    val colors: SubheadColors? = null
+)
+
+@Composable
+internal fun PersianFormSubhead(
+    modifier: Modifier = Modifier,
+    required: Boolean = false,
+    enabled: Boolean = true,
+    text: String,
+    colors: SubheadColors? = null,
+    textStyle: TextStyle? = null
+) {
+    val resolvedColors = colors ?: PersianFormDefaults.subheadColors()
+    val resolvedTextStyle = textStyle ?: MaterialTheme.typography.bodySmall
+    Row(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.extraExtraSmall)
     ) {
-        Row(
-            modifier = modifier,
-            horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.extraExtraSmall)
-        ) {
+        Text(
+            text = text,
+            style = resolvedTextStyle,
+            color = resolvedColors.textColor(enabled = enabled).value
+        )
+        if (required) {
             Text(
-                text = text,
-                style = textStyle,
-                color = textColor
+                text = "*",
+                style = resolvedTextStyle,
+                color = resolvedColors.requiredColor(enabled = enabled).value
             )
-            if (required) {
-                Text(
-                    text = "*",
-                    style = textStyle,
-                    color = MaterialTheme.extendedColorScheme.error
-                )
-            }
-            Spacer(modifier = Modifier.weight(1f))
         }
+        Spacer(modifier = Modifier.weight(1f))
     }
 }
 
@@ -51,7 +57,7 @@ object PersianFormSubhead {
 fun SubheadPreview() {
     PersianTheme {
         Surface {
-            PersianFormSubhead.Default(
+            PersianFormSubhead(
                 text = "Subhead",
                 required = true
             )

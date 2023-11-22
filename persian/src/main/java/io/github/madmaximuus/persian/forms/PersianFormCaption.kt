@@ -1,126 +1,83 @@
 package io.github.madmaximuus.persian.forms
 
-import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.tooling.preview.Preview
-import io.github.madmaximuus.persian.foundation.PersianContentStateDisabled
-import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import io.github.madmaximuus.persian.foundation.spacing
 
-object PersianFormCaption {
+data class PersianFormCaptionConfig(
+    val text: String,
+    val errorText: String? = null,
+    val colors: CaptionColors? = null,
+    val counter: Int? = null,
+    val counterMax: Int? = null,
+    val textStyle: TextStyle? = null,
+    val counterTextStyle: TextStyle? = null
+)
 
-    @Composable
-    fun Default(
-        modifier: Modifier = Modifier,
-        text: String,
-        isError: Boolean = false,
-        errorText: String? = null,
-        enabled: Boolean = true,
-        colors: CaptionColors = PersianCaptionColors.primary(),
-        textStyle: TextStyle = MaterialTheme.typography.bodySmall
-    ) {
-        Row(
-            modifier = modifier,
-            horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.extraExtraSmall),
-            verticalAlignment = Alignment.Top
-        ) {
-            if (isError && errorText != null) {
-                Text(
-                    text = errorText,
-                    style = textStyle,
-                    color = colors.errorColor,
-                )
-            } else {
-                Text(
-                    text = text,
-                    style = textStyle,
-                    color = if (enabled) colors.textColor
-                    else MaterialTheme.extendedColorScheme.onSurface
-                        .copy(PersianContentStateDisabled)
-                )
-            }
-            Spacer(modifier = Modifier.weight(1f))
-        }
-    }
-
-    @Composable
-    fun WithCounter(
-        modifier: Modifier = Modifier,
-        text: String,
-        counter: Int,
-        counterMax: Int,
-        isError: Boolean = false,
-        errorText: String? = null,
-        enabled: Boolean = true,
-        colors: CaptionColors = PersianCaptionColors.primary(),
-        textStyle: TextStyle = MaterialTheme.typography.bodySmall
-    ) {
-        Row(
-            modifier = modifier,
-            horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.extraExtraSmall)
-        ) {
-            if (isError && errorText != null) {
-                Text(
-                    text = errorText,
-                    style = textStyle,
-                    color = colors.errorColor,
-                )
-            } else {
-                Text(
-                    text = text,
-                    style = textStyle,
-                    color = if (enabled) colors.textColor
-                    else MaterialTheme.extendedColorScheme.onSurface
-                        .copy(PersianContentStateDisabled)
-                )
-            }
-            Spacer(modifier = Modifier.weight(1f))
-            Text(
-                text = "$counter / $counterMax",
-                style = textStyle,
-                color = colors.counterColor
-            )
-        }
-    }
-
-}
-
-@Preview
 @Composable
-fun CaptionPreview() {
-    PersianTheme {
-        Surface {
-            PersianFormCaption.WithCounter(
-                text = "Caption",
-                counter = 0,
-                isError = true,
-                errorText = "asdadssad",
-                counterMax = 180
-            )
-        }
+internal fun PersianFormCaption(
+    modifier: Modifier = Modifier,
+    text: String,
+    isError: Boolean,
+    errorText: String?,
+    enabled: Boolean,
+    colors: CaptionColors?,
+    textStyle: TextStyle?
+) {
+    val resolvedColors = colors ?: PersianFormDefaults.captionColors()
+    val resolvedTextStyle = textStyle ?: MaterialTheme.typography.bodySmall
+    Row(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.extraExtraSmall),
+        verticalAlignment = Alignment.Top
+    ) {
+        Text(
+            text = if (isError && errorText != null) errorText else text,
+            style = resolvedTextStyle,
+            color = resolvedColors.textColor(enabled = enabled, isError = isError).value,
+        )
+        Spacer(modifier = Modifier.weight(1f))
     }
 }
 
-@Preview(uiMode = UI_MODE_NIGHT_YES)
 @Composable
-fun DarkCaptionPreview() {
-    PersianTheme {
-        Surface {
-            PersianFormCaption.WithCounter(
-                text = "Caption",
-                counter = 0,
-                counterMax = 180
-            )
-        }
+internal fun PersianFormCaption(
+    modifier: Modifier = Modifier,
+    text: String,
+    counter: Int,
+    counterMax: Int,
+    isError: Boolean,
+    errorText: String?,
+    enabled: Boolean,
+    colors: CaptionColors?,
+    textStyle: TextStyle?,
+    counterTextStyle: TextStyle?
+) {
+    val resolvedColors = colors ?: PersianFormDefaults.captionColors()
+    val resolvedTextStyle = textStyle ?: MaterialTheme.typography.bodySmall
+    val resolvedCounterTextStyle = counterTextStyle ?: MaterialTheme.typography.bodySmall
+    Row(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.extraExtraSmall),
+        verticalAlignment = Alignment.Top
+    ) {
+        Text(
+            text = if (isError && errorText != null) errorText else text,
+            style = resolvedTextStyle,
+            color = resolvedColors.textColor(enabled = enabled, isError = isError).value,
+        )
+        Spacer(modifier = Modifier.weight(1f))
+        Text(
+            text = "$counter / $counterMax",
+            style = resolvedCounterTextStyle,
+            color = resolvedColors.counterColor(enabled, isError).value
+        )
     }
 }

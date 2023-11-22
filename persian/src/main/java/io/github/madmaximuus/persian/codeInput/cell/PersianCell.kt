@@ -34,7 +34,7 @@ import io.github.madmaximuus.persian.codeInput.PersianCodeInputDefaults
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
 @Composable
-fun PersianCodeInputCell(
+internal fun PersianCodeInputCell(
     modifier: Modifier = Modifier,
     value: String,
     onValueChange: (String) -> Unit,

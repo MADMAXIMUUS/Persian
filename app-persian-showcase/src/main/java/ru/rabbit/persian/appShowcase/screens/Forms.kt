@@ -1,16 +1,40 @@
 package ru.rabbit.persian.appShowcase.screens
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imeNestedScroll
+import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.selection.selectableGroup
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
 import io.github.madmaximuus.persian.forms.PersianForm
-import ru.rabbit.persian.appShowcase.componets.SampleRow
+import io.github.madmaximuus.persian.forms.PersianFormCaptionConfig
+import io.github.madmaximuus.persian.forms.PersianFormContent
+import io.github.madmaximuus.persian.forms.PersianFormSubheadConfig
+import io.github.madmaximuus.persian.foundation.icons
+import io.github.madmaximuus.persian.inputs.InputsTransformations
+import io.github.madmaximuus.persian.inputs.PersianInput
+import io.github.madmaximuus.persian.radioButtons.PersianRadioButton
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object Forms : Screen {
@@ -19,289 +43,240 @@ object Forms : Screen {
 
     override val navigation: String = "form"
 
-    @OptIn(ExperimentalMaterial3Api::class)
+    @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
     @Composable
     override fun Content(navController: NavController?) {
         val topAppBarScrollBehavior =
             TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
+        val (value, onValueChange) = remember { mutableStateOf("") }
+        var values by remember {
+            mutableStateOf(
+                listOf(
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                )
+            )
+        }
+        val onValuesChange: (String, Int) -> Unit = { code, index ->
+            if (values[index].length != 1 || code.isEmpty()) {
+                val tempList = values.toMutableList()
+                tempList[index] = code
+                values = tempList.toList()
+            }
+        }
+        val (placeholderValue, onPlaceholderValueChange) = remember { mutableStateOf("") }
+        val (enabled, onEnabledChange) = remember { mutableStateOf(true) }
+        val (isError, onIsErrorChange) = remember { mutableStateOf(false) }
+        val (isSuccess, onIsSuccessChange) = remember { mutableStateOf(false) }
+        val (placeholder, onPlaceholderChange) = remember { mutableStateOf(false) }
+        val (password, onPasswordChange) = remember { mutableStateOf(false) }
+        val (leading, onLeadingChange) = remember { mutableStateOf(false) }
+        val (trailing, onTrailingChange) = remember { mutableStateOf(false) }
+
+        val (subhead, onSubheadChange) = remember { mutableStateOf(false) }
+        val (subheadRequired, onSubheadRequiredChange) = remember { mutableStateOf(false) }
+
+        val (caption, onCaptionChange) = remember { mutableStateOf(false) }
+        val (captionCounter, onCaptionCounterChange) = remember { mutableStateOf(false) }
+        var content by remember {
+            mutableStateOf<PersianFormContent>(
+                PersianFormContent.Input(
+                    value = value,
+                    onValueChange = onValueChange
+                )
+            )
+        }
+        val contentState = remember {
+            listOf(
+                mutableStateOf(true),
+                mutableStateOf(false),
+                mutableStateOf(false)
+            )
+        }
+        content = if (contentState[0].value) {
+            PersianFormContent.Input(
+                value = value,
+                onValueChange = onValueChange,
+                placeholder = placeholderValue,
+                leadingIcon = if (leading) MaterialTheme.icons.appLogo else null,
+                transformation = if (password) InputsTransformations.password else InputsTransformations.none,
+                trailingIcon = if (trailing) MaterialTheme.icons.close else null,
+                onTrailingIconClick = {}
+            )
+        } else if (contentState[1].value) {
+            PersianFormContent.TextArea(
+                value = value,
+                onValueChange = onValueChange,
+                placeholder = placeholderValue,
+                leadingIcon = if (leading) MaterialTheme.icons.appLogo else null
+            )
+        } else {
+            PersianFormContent.SixDigitCodeInput(
+                values = values,
+                onValueChange = onValuesChange
+            )
+        }
         SampleScaffold(
             title = name,
             onBackClick = { navController?.navigateUp() },
             topAppBarScrollBehavior = topAppBarScrollBehavior
         ) {
-            LazyColumn(
+            Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .nestedScroll(topAppBarScrollBehavior.nestedScrollConnection),
-                contentPadding = it
+                    .verticalScroll(rememberScrollState())
+                    .nestedScroll(topAppBarScrollBehavior.nestedScrollConnection)
+                    .padding(it)
+                    .navigationBarsPadding()
+                    .imeNestedScroll(),
             ) {
-                item {
-                    SampleRow(text = "Subhead Optional + Input", firstItem = true) {
-                        PersianForm.Primary(
-                            subhead = {
-                                Default(text = "Subhead")
-                            },
-                            content = {
-                                Input(
-                                    value = "Some Input",
-                                    onValueChange = {}
-                                )
+                PersianForm(
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                    enabled = enabled,
+                    isError = isError,
+                    isSuccess = isSuccess,
+                    content = content,
+                    subhead = if (subhead) PersianFormSubheadConfig(
+                        text = "Subhead",
+                        required = subheadRequired
+                    ) else null,
+                    caption = if (caption) PersianFormCaptionConfig(
+                        text = "Caption",
+                        errorText = "Error Message",
+                        counter = if (captionCounter) 10 else null,
+                        counterMax = if (captionCounter) 20 else null
+                    ) else null
+                )
+                Spacer(modifier = Modifier.height(20.dp))
+                Text(
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                    text = "Content"
+                )
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .selectableGroup()
+                        .padding(horizontal = 20.dp)
+                ) {
+                    PersianRadioButton(
+                        text = "Input",
+                        checked = contentState[0].value,
+                        onCheckedChange = {
+                            contentState.forEachIndexed { index, mutableState ->
+                                mutableState.value = index == 0
                             }
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Subhead Required + Input") {
-                        PersianForm.Primary(
-                            subhead = {
-                                Default(text = "Subhead", required = true)
-                            },
-                            content = {
-                                Input(
-                                    value = "Some Input",
-                                    onValueChange = {}
-                                )
+                        }
+                    )
+                    PersianRadioButton(
+                        text = "Text Area",
+                        checked = contentState[1].value,
+                        onCheckedChange = {
+                            contentState.forEachIndexed { index, mutableState ->
+                                mutableState.value = index == 1
                             }
-                        )
-                    }
-                }
-
-                item {
-                    SampleRow(text = "Subhead Required + Input Error") {
-                        PersianForm.Primary(
-                            subhead = {
-                                Default(text = "Subhead", required = true)
-                            },
-                            content = {
-                                Input(
-                                    value = "Some Input",
-                                    isError = true,
-                                    onValueChange = {}
-                                )
+                        }
+                    )
+                    PersianRadioButton(
+                        text = "Code Input",
+                        checked = contentState[2].value,
+                        onCheckedChange = {
+                            contentState.forEachIndexed { index, mutableState ->
+                                mutableState.value = index == 2
                             }
-                        )
-                    }
+                        }
+                    )
                 }
-                item {
-                    SampleRow(text = "Subhead Required + Input Success") {
-                        PersianForm.Primary(
-                            subhead = {
-                                Default(text = "Subhead", required = true)
-                            },
-                            content = {
-                                Input(
-                                    value = "Some Input",
-                                    isSuccess = true,
-                                    onValueChange = {}
-                                )
-                            }
-                        )
-                    }
+                Spacer(modifier = Modifier.height(20.dp))
+                Text(
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                    text = "Settings"
+                )
+                PersianCheckbox(
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                    text = "Enabled",
+                    checked = enabled,
+                    onCheckedChange = onEnabledChange
+                )
+                PersianCheckbox(
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                    text = "Is Error State",
+                    checked = isError,
+                    onCheckedChange = onIsErrorChange
+                )
+                PersianCheckbox(
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                    text = "Is Success State",
+                    checked = isSuccess,
+                    onCheckedChange = onIsSuccessChange
+                )
+                PersianCheckbox(
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                    text = "Placeholder",
+                    checked = placeholder,
+                    onCheckedChange = onPlaceholderChange
+                )
+                if (placeholder) {
+                    PersianInput(
+                        modifier = Modifier.padding(horizontal = 20.dp),
+                        value = placeholderValue,
+                        onValueChange = onPlaceholderValueChange
+                    )
                 }
-                item {
-                    SampleRow(text = "Subhead Required + Input Disabled") {
-                        PersianForm.Primary(
-                            subhead = {
-                                Default(text = "Subhead", required = true)
-                            },
-                            content = {
-                                Input(
-                                    value = "Some Input",
-                                    enabled = false,
-                                    onValueChange = {}
-                                )
-                            }
-                        )
-                    }
-                }
-                /*item {
-                    SampleRow(text = "Caption + Input Error") {
-                        PersianForm.Primary(
-                            content = {
-                                Input(
-                                    value = "Some Input",
-                                    isError = true,
-                                    onValueChange = {}
-                                )
-                            },
-                            caption = "Caption"
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Caption Disabled + Input Disabled") {
-                        PersianForm.Primary(
-                            enabled = false,
-                            content = {
-                                Input(
-                                    value = "Some Input",
-                                    enabled = false,
-                                    onValueChange = {}
-                                )
-                            },
-                            caption = "Caption"
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Subhead + Caption + Input") {
-                        PersianForm.Primary(
-                            subhead = {
-                                Default(text = "Subhead")
-                            },
-                            content = {
-                                Input(
-                                    value = "Some Input",
-                                    onValueChange = {}
-                                )
-                            },
-                            caption = "Caption"
-                        )
-                    }
-                }*/
-                item {
-                    SampleRow(text = "Subhead Optional + TexArea") {
-                        PersianForm.Primary(
-                            subhead = {
-                                Default(text = "Subhead")
-                            },
-                            content = {
-                                TextArea(
-                                    value = "Some Input",
-                                    onValueChange = {}
-                                )
-                            }
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Subhead Required + TextArea") {
-                        PersianForm.Primary(
-                            subhead = {
-                                Default(text = "Subhead", required = true)
-                            },
-                            content = {
-                                TextArea(
-                                    value = "Some Input",
-                                    onValueChange = {}
-                                )
-                            }
-                        )
-                    }
-                }
-                /*item {
-                    SampleRow(text = "Subhead Required With Counter + TextArea") {
-                        PersianForm.Primary(
-                            subhead = {
-                                WithCounter(
-                                    text = "Subhead",
-                                    required = true,
-                                    counter = 10,
-                                    counterMax = 20
-                                )
-                            },
-                            content = {
-                                TextArea(
-                                    value = "Some Input",
-                                    onValueChange = {}
-                                )
-                            }
-                        )
-                    }
-                }*/
-                item {
-                    SampleRow(text = "Subhead Required + TextArea Error") {
-                        PersianForm.Primary(
-                            subhead = {
-                                Default(text = "Subhead", required = true)
-                            },
-                            content = {
-                                TextArea(
-                                    value = "Some Input",
-                                    isError = true,
-                                    onValueChange = {}
-                                )
-                            }
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Subhead Required + TextArea Success") {
-                        PersianForm.Primary(
-                            subhead = {
-                                Default(text = "Subhead", required = true)
-                            },
-                            content = {
-                                TextArea(
-                                    value = "Some Input",
-                                    isSuccess = true,
-                                    onValueChange = {}
-                                )
-                            }
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Subhead Required + TextArea Disabled") {
-                        PersianForm.Primary(
-                            subhead = {
-                                Default(text = "Subhead", required = true)
-                            },
-                            content = {
-                                TextArea(
-                                    value = "Some Input",
-                                    enabled = false,
-                                    onValueChange = {}
-                                )
-                            }
-                        )
-                    }
-                }
-                /*item {
-                    SampleRow(text = "Caption + TextArea Error") {
-                        PersianForm.Primary(
-                            content = {
-                                TextArea(
-                                    value = "Some Input",
-                                    isError = true,
-                                    onValueChange = {}
-                                )
-                            },
-                            caption = "Caption"
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Caption Disabled + TextArea Disabled") {
-                        PersianForm.Primary(
-                            enabled = false,
-                            content = {
-                                TextArea(
-                                    value = "Some Input",
-                                    enabled = false,
-                                    onValueChange = {}
-                                )
-                            },
-                            caption = "Caption"
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Subhead + Caption + TextArea", lastItem = true) {
-                        PersianForm.Primary(
-                            subhead = {
-                                Default(text = "Subhead")
-                            },
-                            content = {
-                                TextArea(
-                                    value = "Some Input",
-                                    onValueChange = {}
-                                )
-                            },
-                            caption = "Caption"
-                        )
-                    }
-                }*/
+                PersianCheckbox(
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                    text = "Password",
+                    checked = password,
+                    onCheckedChange = onPasswordChange
+                )
+                PersianCheckbox(
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                    text = "Leading Icon",
+                    checked = leading,
+                    onCheckedChange = onLeadingChange
+                )
+                PersianCheckbox(
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                    text = "Trailing Icon",
+                    checked = trailing,
+                    onCheckedChange = onTrailingChange
+                )
+                Spacer(modifier = Modifier.height(20.dp))
+                Text(
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                    text = "Subhead"
+                )
+                PersianCheckbox(
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                    text = "Add subhead",
+                    checked = subhead,
+                    onCheckedChange = onSubheadChange
+                )
+                PersianCheckbox(
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                    text = "Required",
+                    checked = subheadRequired,
+                    onCheckedChange = onSubheadRequiredChange
+                )
+                Text(
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                    text = "Caption"
+                )
+                PersianCheckbox(
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                    text = "Add caption",
+                    checked = caption,
+                    onCheckedChange = onCaptionChange
+                )
+                PersianCheckbox(
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                    text = "Counter",
+                    checked = captionCounter,
+                    onCheckedChange = onCaptionCounterChange
+                )
             }
         }
     }

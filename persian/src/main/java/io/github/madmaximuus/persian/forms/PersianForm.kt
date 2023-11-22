@@ -4,50 +4,112 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.State
-import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import io.github.madmaximuus.persian.foundation.PersianContentStateDisabled
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import io.github.madmaximuus.persian.foundation.spacing
 
-object PersianForm {
-
-    @Composable
-    fun Primary(
-        modifier: Modifier = Modifier,
-        subhead: (@Composable PersianFormSubhead.() -> Unit)? = null,
-        content: @Composable PersianFormContent.() -> Unit,
-        caption: (@Composable PersianFormCaption.() -> Unit)? = null,
+@Composable
+fun PersianForm(
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    isError: Boolean = false,
+    isSuccess: Boolean = false,
+    subhead: PersianFormSubheadConfig? = null,
+    content: PersianFormContent,
+    caption: PersianFormCaptionConfig? = null,
+) {
+    Column(
+        modifier = modifier,
+        verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.extraExtraSmall)
     ) {
-        Column(
-            modifier = modifier,
-            verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.extraExtraSmall)
-        ) {
-            if (subhead != null) {
-                PersianFormSubhead.subhead()
+        if (subhead != null) {
+            PersianFormSubhead(
+                text = subhead.text,
+                required = subhead.required,
+                enabled = enabled,
+                colors = subhead.colors,
+                textStyle = subhead.textStyle
+            )
+        }
+        when (content) {
+            is PersianFormContent.FourDigitCodeInput -> {
+                PersianFormContentFourDigitCodeInput(
+                    values = content.values,
+                    onValueChange = content.onValueChange,
+                    isError = isError,
+                    isSuccess = isSuccess,
+                    enabled = enabled
+                )
             }
-            PersianFormContent.content()
-            if (caption != null) {
-                PersianFormCaption.caption()
+
+            is PersianFormContent.SixDigitCodeInput -> {
+                PersianFormContentSixDigitCodeInput(
+                    values = content.values,
+                    onValueChange = content.onValueChange,
+                    isError = isError,
+                    isSuccess = isSuccess,
+                    enabled = enabled
+                )
+            }
+
+            is PersianFormContent.Input -> {
+                PersianFormContentInput(
+                    value = content.value,
+                    onValueChange = content.onValueChange,
+                    isError = isError,
+                    isSuccess = isSuccess,
+                    enabled = enabled,
+                    textStyle = content.textStyle,
+                    colors = content.colors,
+                    keyboardActions = content.keyboardActions,
+                    keyboardOptions = content.keyboardOptions,
+                    leadingIcon = content.leadingIcon,
+                    placeholder = content.placeholder,
+                    trailingIcon = content.trailingIcon,
+                    onTrailingIconClick = content.onTrailingIconClick,
+                    transformation = content.transformation,
+                )
+            }
+
+            is PersianFormContent.TextArea -> {
+                PersianFormContentTextArea(
+                    value = content.value,
+                    onValueChange = content.onValueChange,
+                    isError = isError,
+                    isSuccess = isSuccess,
+                    enabled = enabled,
+                    textStyle = content.textStyle,
+                    colors = content.colors,
+                    keyboardActions = content.keyboardActions,
+                    keyboardOptions = content.keyboardOptions,
+                    leadingIcon = content.leadingIcon,
+                    placeholder = content.placeholder,
+                )
             }
         }
-    }
-}
+        if (caption != null) {
+            if (caption.counter != null && caption.counterMax != null) {
+                PersianFormCaption(
+                    text = caption.text,
+                    isError = isError,
+                    errorText = caption.errorText,
+                    enabled = enabled,
+                    colors = caption.colors,
+                    textStyle = caption.textStyle,
+                    counter = caption.counter,
+                    counterMax = caption.counterMax,
+                    counterTextStyle = caption.counterTextStyle
+                )
+            } else {
+                PersianFormCaption(
+                    text = caption.text,
+                    isError = isError,
+                    errorText = caption.errorText,
+                    enabled = enabled,
+                    colors = caption.colors,
+                    textStyle = caption.textStyle,
+                )
+            }
 
-@Composable
-private fun captionColor(
-    enabled: Boolean,
-    isError: Boolean,
-    captionColor: Color
-): State<Color> {
-    val color = when {
-        isError -> MaterialTheme.extendedColorScheme.error
-        !enabled -> captionColor
-
-        else -> MaterialTheme.extendedColorScheme.onSurface
-            .copy(alpha = PersianContentStateDisabled)
+        }
     }
-    return rememberUpdatedState(newValue = color)
 }
