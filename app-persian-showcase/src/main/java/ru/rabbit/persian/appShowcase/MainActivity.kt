@@ -26,6 +26,7 @@ import ru.rabbit.persian.appShowcase.screens.Alert
 import ru.rabbit.persian.appShowcase.screens.AvatarAndImage
 import ru.rabbit.persian.appShowcase.screens.Banner
 import ru.rabbit.persian.appShowcase.screens.Button
+import ru.rabbit.persian.appShowcase.screens.Charts
 import ru.rabbit.persian.appShowcase.screens.CheckBox
 import ru.rabbit.persian.appShowcase.screens.CodeInput
 import ru.rabbit.persian.appShowcase.screens.Counter
@@ -83,7 +84,8 @@ class MainActivity : ComponentActivity() {
                         CodeInput,
                         DatePickerDialog,
                         Skeleton,
-                        Switch
+                        Switch,
+                        Charts
                     )
                 }
                 NavHost(
