@@ -266,7 +266,7 @@ object Charts : Screen {
                     }
                 }
                 item {
-                    SampleRow(text = "With Gap") {
+                    SampleRow(text = "With Gap", lastItem = true) {
                         PersianDonutChart(
                             modifier = Modifier,
                             title = "Title",
