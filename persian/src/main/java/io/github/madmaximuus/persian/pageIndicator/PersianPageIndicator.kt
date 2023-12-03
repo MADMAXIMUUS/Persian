@@ -91,7 +91,7 @@ fun PersianPageIndicator(
             LazyColumn(
                 modifier = modifier.height(totalWidth),
                 state = listState,
-                contentPadding = PaddingValues(horizontal = space),
+                contentPadding = PaddingValues(horizontal = MaterialTheme.spacing.medium),
                 verticalArrangement = Arrangement.spacedBy(space),
                 userScrollEnabled = false
             ) {
