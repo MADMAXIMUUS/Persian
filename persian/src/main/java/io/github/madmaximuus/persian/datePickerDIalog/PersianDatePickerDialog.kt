@@ -127,7 +127,7 @@ fun PersianDatePickerDialog(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(
-                                    top = MaterialTheme.spacing.medium,
+                                    top = MaterialTheme.spacing.extraExtraLarge,
                                     start = MaterialTheme.spacing.extraExtraLarge,
                                     end = MaterialTheme.spacing.extraExtraLarge
                                 ),
