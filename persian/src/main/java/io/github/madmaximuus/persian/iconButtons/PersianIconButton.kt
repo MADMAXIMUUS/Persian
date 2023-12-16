@@ -4,7 +4,6 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -15,10 +14,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
 
 @Composable
@@ -126,57 +122,5 @@ fun PersianOutlinedIconButton(
         contentAlignment = Alignment.Center
     ) {
         PersianIconBox(icon = icon)
-    }
-}
-
-@Preview
-@Composable
-fun PrimaryIconButtonPreview() {
-    PersianTheme {
-        Surface {
-            PersianPrimaryIconButton(
-                icon = MaterialTheme.icons.globeUk,
-                onClick = {}
-            )
-        }
-    }
-}
-
-@Preview
-@Composable
-fun SecondaryIconButtonPreview() {
-    PersianTheme {
-        Surface {
-            PersianSecondaryIconButton(
-                icon = MaterialTheme.icons.globeUk,
-                onClick = {}
-            )
-        }
-    }
-}
-
-@Preview
-@Composable
-fun TertiaryIconButtonPreview() {
-    PersianTheme {
-        Surface {
-            PersianTertiaryIconButton(
-                icon = MaterialTheme.icons.globeUk,
-                onClick = {}
-            )
-        }
-    }
-}
-
-@Preview
-@Composable
-fun OutlinedIconButtonPreview() {
-    PersianTheme {
-        Surface {
-            PersianOutlinedIconButton(
-                icon = MaterialTheme.icons.globeUk,
-                onClick = {}
-            )
-        }
     }
 }

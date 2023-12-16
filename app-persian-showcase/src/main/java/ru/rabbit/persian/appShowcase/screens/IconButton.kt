@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.iconButtons.PersianOutlinedIconButton
@@ -18,6 +19,7 @@ import io.github.madmaximuus.persian.iconButtons.PersianSecondaryIconButton
 import io.github.madmaximuus.persian.iconButtons.PersianSecondaryToggleIconButton
 import io.github.madmaximuus.persian.iconButtons.PersianTertiaryIconButton
 import io.github.madmaximuus.persian.iconButtons.PersianTertiaryToggleIconButton
+import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
@@ -41,19 +43,19 @@ object IconButton : Screen {
                 item {
                     SampleRow(text = "Icon Button", firstItem = true) {
                         PersianPrimaryIconButton(
-                            icon = MaterialTheme.icons.favoriteOutlined,
+                            icon = MaterialTheme.icons.person,
                             onClick = {}
                         )
                         PersianSecondaryIconButton(
-                            icon = MaterialTheme.icons.favoriteOutlined,
+                            icon = MaterialTheme.icons.person,
                             onClick = {}
                         )
                         PersianTertiaryIconButton(
-                            icon = MaterialTheme.icons.favoriteOutlined,
+                            icon = MaterialTheme.icons.person,
                             onClick = {}
                         )
                         PersianOutlinedIconButton(
-                            icon = MaterialTheme.icons.favoriteOutlined,
+                            icon = MaterialTheme.icons.person,
                             onClick = {}
                         )
                     }
@@ -62,26 +64,26 @@ object IconButton : Screen {
                     val (checked, onCheckedChange) = remember { mutableStateOf(false) }
                     SampleRow(text = "Toggleable Icon Button", lastItem = true) {
                         PersianPrimaryToggleIconButton(
-                            icon = MaterialTheme.icons.favoriteOutlined,
-                            checkedIcon = MaterialTheme.icons.favoriteFilled,
+                            icon = MaterialTheme.icons.person,
+                            checkedIcon = painterResource(id = R.drawable.ic_person_filled),
                             checked = checked,
                             onCheckedChange = onCheckedChange
                         )
                         PersianSecondaryToggleIconButton(
-                            icon = MaterialTheme.icons.favoriteOutlined,
-                            checkedIcon = MaterialTheme.icons.favoriteFilled,
+                            icon = MaterialTheme.icons.person,
+                            checkedIcon = painterResource(id = R.drawable.ic_person_filled),
                             checked = checked,
                             onCheckedChange = onCheckedChange
                         )
                         PersianTertiaryToggleIconButton(
-                            icon = MaterialTheme.icons.favoriteOutlined,
-                            checkedIcon = MaterialTheme.icons.favoriteFilled,
+                            icon = MaterialTheme.icons.person,
+                            checkedIcon = painterResource(id = R.drawable.ic_person_filled),
                             checked = checked,
                             onCheckedChange = onCheckedChange
                         )
                         PersianOutlinedToggleIconButton(
-                            icon = MaterialTheme.icons.favoriteOutlined,
-                            checkedIcon = MaterialTheme.icons.favoriteFilled,
+                            icon = MaterialTheme.icons.person,
+                            checkedIcon = painterResource(id = R.drawable.ic_person_filled),
                             checked = checked,
                             onCheckedChange = onCheckedChange
                         )

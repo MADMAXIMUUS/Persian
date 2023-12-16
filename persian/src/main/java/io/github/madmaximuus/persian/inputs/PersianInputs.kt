@@ -1,6 +1,5 @@
 package io.github.madmaximuus.persian.inputs
 
-import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.BorderStroke
@@ -24,7 +23,6 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.selection.LocalTextSelectionColors
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -42,11 +40,8 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.BaselineShift
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.foundation.spacing
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
 
@@ -77,9 +72,9 @@ fun PersianInput(
 
     CompositionLocalProvider(LocalTextSelectionColors provides colors.selectionColors) {
         BasicTextField(
+            modifier = modifier,
             value = value,
             onValueChange = onValueChange,
-            modifier = modifier,
             enabled = enabled,
             readOnly = readOnly,
             textStyle = mergedTextStyle,
@@ -192,7 +187,9 @@ fun PersianInput(
                                     .clip(MaterialTheme.shapes.small)
                                     .clickable(
                                         enabled = onTrailingIconClick != null,
-                                        onClick = { onTrailingIconClick?.invoke() },
+                                        onClick = {
+                                            onTrailingIconClick?.invoke()
+                                        },
                                         role = Role.Button
                                     ),
                                 icon = icon
@@ -256,39 +253,4 @@ private fun animateBorderStrokeAsState(
     return rememberUpdatedState(
         BorderStroke(animatedThickness.value, SolidColor(indicatorColor.value))
     )
-}
-
-@Preview
-@Composable
-fun InputPreview() {
-    PersianTheme {
-        Surface {
-            PersianInput(
-                modifier = Modifier
-                    .padding(10.dp),
-                value = "",
-                isSuccess = true,
-                placeholder = "Я текст",
-                onValueChange = {}
-            )
-        }
-    }
-}
-
-@Preview(uiMode = UI_MODE_NIGHT_YES)
-@Composable
-fun DarkInputPreview() {
-    PersianTheme {
-        Surface {
-            PersianInput(
-                modifier = Modifier
-                    .padding(10.dp),
-                value = "Я введенный текст",
-                isSuccess = true,
-                placeholder = "Я текст",
-                trailingIcon = MaterialTheme.icons.visibility,
-                onValueChange = {}
-            )
-        }
-    }
 }

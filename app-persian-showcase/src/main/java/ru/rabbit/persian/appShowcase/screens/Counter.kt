@@ -62,7 +62,7 @@ object Counter : Screen {
                         PersianBadge(
                             content = {
                                 PersianTertiaryIconButton(
-                                    icon = MaterialTheme.icons.notifications,
+                                    icon = MaterialTheme.icons.person,
                                     onClick = {}
                                 )
                             },
@@ -75,7 +75,7 @@ object Counter : Screen {
                             count = 1,
                             content = {
                                 PersianTertiaryIconButton(
-                                    icon = MaterialTheme.icons.notifications,
+                                    icon = MaterialTheme.icons.person,
                                     onClick = {}
                                 )
                             },
@@ -88,7 +88,7 @@ object Counter : Screen {
                             count = 10,
                             content = {
                                 PersianTertiaryIconButton(
-                                    icon = MaterialTheme.icons.notifications,
+                                    icon = MaterialTheme.icons.person,
                                     onClick = {}
                                 )
                             },
@@ -101,7 +101,7 @@ object Counter : Screen {
                             count = 100,
                             content = {
                                 PersianTertiaryIconButton(
-                                    icon = MaterialTheme.icons.notifications,
+                                    icon = MaterialTheme.icons.person,
                                     onClick = {}
                                 )
                             },

@@ -313,7 +313,7 @@ fun PersianButtonPreview() {
                     .padding(10.dp)
             ) {
                 PersianPrimaryButton(
-                    leadingIcon = MaterialTheme.icons.appLogo,
+                    leadingIcon = MaterialTheme.icons.add,
                     trailingIcon = MaterialTheme.icons.chevronRight,
                     text = "Persian",
                     loading = isLoading,
@@ -322,7 +322,7 @@ fun PersianButtonPreview() {
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 PersianSecondaryButton(
-                    leadingIcon = MaterialTheme.icons.appLogo,
+                    leadingIcon = MaterialTheme.icons.add,
                     trailingIcon = MaterialTheme.icons.chevronRight,
                     text = "Persian",
                     loading = isLoading,
@@ -331,7 +331,7 @@ fun PersianButtonPreview() {
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 PersianTertiaryButton(
-                    leadingIcon = MaterialTheme.icons.appLogo,
+                    leadingIcon = MaterialTheme.icons.add,
                     trailingIcon = MaterialTheme.icons.chevronRight,
                     text = "Persian",
                     loading = isLoading,
@@ -340,7 +340,7 @@ fun PersianButtonPreview() {
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 PersianOutlinedButton(
-                    leadingIcon = MaterialTheme.icons.appLogo,
+                    leadingIcon = MaterialTheme.icons.add,
                     trailingIcon = MaterialTheme.icons.chevronRight,
                     text = "Persian",
                     loading = isLoading,
@@ -363,7 +363,7 @@ fun PersianButtonDarkPreview() {
                     .padding(10.dp)
             ) {
                 PersianPrimaryButton(
-                    leadingIcon = MaterialTheme.icons.appLogo,
+                    leadingIcon = MaterialTheme.icons.add,
                     trailingIcon = MaterialTheme.icons.chevronRight,
                     text = "Persian",
                     loading = isLoading,
@@ -372,7 +372,7 @@ fun PersianButtonDarkPreview() {
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 PersianSecondaryButton(
-                    leadingIcon = MaterialTheme.icons.appLogo,
+                    leadingIcon = MaterialTheme.icons.add,
                     trailingIcon = MaterialTheme.icons.chevronRight,
                     text = "Persian",
                     loading = isLoading,
@@ -381,7 +381,7 @@ fun PersianButtonDarkPreview() {
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 PersianTertiaryButton(
-                    leadingIcon = MaterialTheme.icons.appLogo,
+                    leadingIcon = MaterialTheme.icons.add,
                     trailingIcon = MaterialTheme.icons.chevronRight,
                     text = "Persian",
                     loading = isLoading,
@@ -390,7 +390,7 @@ fun PersianButtonDarkPreview() {
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 PersianOutlinedButton(
-                    leadingIcon = MaterialTheme.icons.appLogo,
+                    leadingIcon = MaterialTheme.icons.add,
                     trailingIcon = MaterialTheme.icons.chevronRight,
                     text = "Persian",
                     loading = isLoading,

@@ -56,7 +56,7 @@ object Banner : Screen {
                         PersianBanner(
                             title = "Some Text",
                             subtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed laoreet imperdiet consectetur. Nam vitae massa a metus dignissim malesuada. Duis.",
-                            left = PersianBannerLeft.Icon(icon = MaterialTheme.icons.globeUk)
+                            left = PersianBannerLeft.Icon(icon = MaterialTheme.icons.checkCircle)
                         )
                     }
                 }

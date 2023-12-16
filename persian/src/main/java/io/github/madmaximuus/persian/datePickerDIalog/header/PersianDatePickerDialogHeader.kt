@@ -105,16 +105,16 @@ internal fun PersianDatePickerDialogHeader(
             Row {
                 PersianTertiaryButton(
                     text = month,
-                    trailingIcon = if (monthIconDown) MaterialTheme.icons.expandCircleDown
-                    else MaterialTheme.icons.expandCircleUp,
+                    trailingIcon = if (monthIconDown) MaterialTheme.icons.expendMore
+                    else MaterialTheme.icons.expendLess,
                     colors = colors.selectMonthColor,
                     sizes = PersianButtonDefaults.smallSizes(),
                     onClick = onMonthClick
                 )
                 PersianTertiaryButton(
                     text = year,
-                    trailingIcon = if (yearIconDown) MaterialTheme.icons.expandCircleDown
-                    else MaterialTheme.icons.expandCircleUp,
+                    trailingIcon = if (yearIconDown) MaterialTheme.icons.expendMore
+                    else MaterialTheme.icons.expendMore,
                     colors = colors.selectYearColor,
                     sizes = PersianButtonDefaults.smallSizes(),
                     onClick = onYearClick

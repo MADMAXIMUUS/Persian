@@ -35,6 +35,7 @@ import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.inputs.InputsTransformations
 import io.github.madmaximuus.persian.inputs.PersianInput
 import io.github.madmaximuus.persian.radioButtons.PersianRadioButton
+import io.github.madmaximuus.persian.select.ActionItem
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object Forms : Screen {
@@ -68,6 +69,24 @@ object Forms : Screen {
                 values = tempList.toList()
             }
         }
+        val selectValues = listOf<ActionItem>(
+            ActionItem(
+                title = "Option 1"
+            ),
+            ActionItem(
+                title = "Option 2"
+            ),
+            ActionItem(
+                title = "Option 3"
+            ),
+            ActionItem(
+                title = "Option 4"
+            )
+        )
+        var selected by remember {
+            mutableStateOf("")
+        }
+
         val (placeholderValue, onPlaceholderValueChange) = remember { mutableStateOf("") }
         val (enabled, onEnabledChange) = remember { mutableStateOf(true) }
         val (isError, onIsErrorChange) = remember { mutableStateOf(false) }
@@ -94,7 +113,8 @@ object Forms : Screen {
             listOf(
                 mutableStateOf(true),
                 mutableStateOf(false),
-                mutableStateOf(false)
+                mutableStateOf(false),
+                mutableStateOf(false),
             )
         }
         content = if (contentState[0].value) {
@@ -102,7 +122,7 @@ object Forms : Screen {
                 value = value,
                 onValueChange = onValueChange,
                 placeholder = placeholderValue,
-                leadingIcon = if (leading) MaterialTheme.icons.appLogo else null,
+                leadingIcon = if (leading) MaterialTheme.icons.person else null,
                 transformation = if (password) InputsTransformations.password else InputsTransformations.none,
                 trailingIcon = if (trailing) MaterialTheme.icons.close else null,
                 onTrailingIconClick = {}
@@ -112,12 +132,20 @@ object Forms : Screen {
                 value = value,
                 onValueChange = onValueChange,
                 placeholder = placeholderValue,
-                leadingIcon = if (leading) MaterialTheme.icons.appLogo else null
+                leadingIcon = if (leading) MaterialTheme.icons.person else null
             )
-        } else {
+        } else if (contentState[2].value) {
             PersianFormContent.SixDigitCodeInput(
                 values = values,
                 onValueChange = onValuesChange
+            )
+        } else {
+            PersianFormContent.Select(
+                selected = selected,
+                values = selectValues,
+                onSelectedChange = {
+                    selected = it
+                }
             )
         }
         SampleScaffold(
@@ -186,6 +214,15 @@ object Forms : Screen {
                         onCheckedChange = {
                             contentState.forEachIndexed { index, mutableState ->
                                 mutableState.value = index == 2
+                            }
+                        }
+                    )
+                    PersianRadioButton(
+                        text = "Select",
+                        checked = contentState[3].value,
+                        onCheckedChange = {
+                            contentState.forEachIndexed { index, mutableState ->
+                                mutableState.value = index == 3
                             }
                         }
                     )

@@ -28,6 +28,7 @@ import ru.rabbit.persian.appShowcase.screens.Banner
 import ru.rabbit.persian.appShowcase.screens.Button
 import ru.rabbit.persian.appShowcase.screens.Charts
 import ru.rabbit.persian.appShowcase.screens.CheckBox
+import ru.rabbit.persian.appShowcase.screens.Chips
 import ru.rabbit.persian.appShowcase.screens.CodeInput
 import ru.rabbit.persian.appShowcase.screens.Counter
 import ru.rabbit.persian.appShowcase.screens.DatePickerDialog
@@ -39,10 +40,10 @@ import ru.rabbit.persian.appShowcase.screens.Inputs
 import ru.rabbit.persian.appShowcase.screens.ModalPage
 import ru.rabbit.persian.appShowcase.screens.NavigationBar
 import ru.rabbit.persian.appShowcase.screens.PageIndicator
-import ru.rabbit.persian.appShowcase.screens.Pagination
 import ru.rabbit.persian.appShowcase.screens.ProgressBar
 import ru.rabbit.persian.appShowcase.screens.RadioButton
 import ru.rabbit.persian.appShowcase.screens.Search
+import ru.rabbit.persian.appShowcase.screens.Select
 import ru.rabbit.persian.appShowcase.screens.Skeleton
 import ru.rabbit.persian.appShowcase.screens.Snackbar
 import ru.rabbit.persian.appShowcase.screens.Switch
@@ -89,9 +90,10 @@ class MainActivity : ComponentActivity() {
                         Skeleton,
                         Switch,
                         Charts,
-                        Pagination,
                         PageIndicator,
-                        TimePickerDialog
+                        TimePickerDialog,
+                        Chips,
+                        Select
                     )
                 }
                 NavHost(

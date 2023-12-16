@@ -52,7 +52,7 @@ fun PersianSearch(
     onNavIconClick: (() -> Unit)? = null,
     onClearClick: (() -> Unit)? = null,
     clearIcon: Painter = MaterialTheme.icons.close,
-    leadingIcon: Painter = MaterialTheme.icons.searchOutlined
+    leadingIcon: Painter = MaterialTheme.icons.search
 ) {
     val padding = if (showNavIcon) {
         PaddingValues(

@@ -56,7 +56,8 @@ fun PersianAvatar(
     ) {
         GlideImage(
             modifier = Modifier
-                .fillMaxSize(),
+                .fillMaxSize()
+                .shimmer(true),
             contentScale = ContentScale.Crop,
             loading = placeholder {
                 Box(
@@ -77,7 +78,7 @@ fun PersianAvatar(
                         LocalContentColor provides MaterialTheme.extendedColorScheme.onPrimaryContainer
                     ) {
                         PersianIconBox(
-                            icon = MaterialTheme.icons.personOutlined,
+                            icon = MaterialTheme.icons.person,
                             size = size.placeholderSize,
                             colors = PersianIconBoxDefaults.colors()
                         )

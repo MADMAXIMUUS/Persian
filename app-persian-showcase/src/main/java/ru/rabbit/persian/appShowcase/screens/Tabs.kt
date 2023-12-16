@@ -43,7 +43,7 @@ object Tabs : Screen {
                             list.add(
                                 TabItem(
                                     label = "Label $i",
-                                    icon = MaterialTheme.icons.globeUk,
+                                    icon = MaterialTheme.icons.person,
                                     selected = i == 0
                                 )
                             )
@@ -64,7 +64,7 @@ object Tabs : Screen {
                             list.add(
                                 TabItem(
                                     label = "Label $i",
-                                    icon = MaterialTheme.icons.globeUk,
+                                    icon = MaterialTheme.icons.person,
                                     selected = i == 0
                                 )
                             )
@@ -106,7 +106,7 @@ object Tabs : Screen {
                             list.add(
                                 TabItem(
                                     label = "Label $i",
-                                    icon = MaterialTheme.icons.globeUk,
+                                    icon = MaterialTheme.icons.person,
                                     selected = i == 0
                                 )
                             )
@@ -128,7 +128,7 @@ object Tabs : Screen {
                             list.add(
                                 TabItem(
                                     label = "Label $i",
-                                    icon = MaterialTheme.icons.globeUk,
+                                    icon = MaterialTheme.icons.person,
                                     selected = i == 0
                                 )
                             )

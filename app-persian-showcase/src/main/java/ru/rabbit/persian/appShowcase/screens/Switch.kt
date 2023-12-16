@@ -44,7 +44,7 @@ object Switch : Screen {
                         PersianSwitch(
                             checked = checked,
                             onCheckedChange = onCheckedChange,
-                            checkedIcon = MaterialTheme.icons.barChart,
+                            checkedIcon = MaterialTheme.icons.done,
                         )
                     }
                 }
@@ -54,7 +54,7 @@ object Switch : Screen {
                         PersianSwitch(
                             checked = checked,
                             onCheckedChange = onCheckedChange,
-                            checkedIcon = MaterialTheme.icons.barChart,
+                            checkedIcon = MaterialTheme.icons.done,
                             uncheckedIcon = MaterialTheme.icons.close,
                         )
                     }
@@ -66,7 +66,7 @@ object Switch : Screen {
                             checked = checked,
                             onCheckedChange = onCheckedChange,
                             enabled = false,
-                            checkedIcon = MaterialTheme.icons.barChart,
+                            checkedIcon = MaterialTheme.icons.done,
                             uncheckedIcon = MaterialTheme.icons.close,
                         )
                     }

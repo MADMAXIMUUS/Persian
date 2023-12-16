@@ -288,7 +288,7 @@ object PersianTextAreaDefaults {
     @Composable
     fun colors(
         //State Icon
-        errorStateIcon: Painter = MaterialTheme.icons.errorCircleRounded,
+        errorStateIcon: Painter = MaterialTheme.icons.errorCircle,
         successStateIcon: Painter = MaterialTheme.icons.checkCircle,
 
         //State Icon Colors

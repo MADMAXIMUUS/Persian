@@ -68,7 +68,7 @@ object TopAppBar : Screen {
                     } else null,
                     middle =
                     if (middleTitle) PersianTopAppBarMiddle.Title(text = name)
-                    else if (middleIcon) PersianTopAppBarMiddle.Icon(icon = MaterialTheme.icons.appLogo)
+                    else if (middleIcon) PersianTopAppBarMiddle.Icon(icon = MaterialTheme.icons.person)
                     else PersianTopAppBarMiddle.Title(text = name),
                     actionItemsCount = actionItemCount,
                     right = if (actionButtonRight) {
@@ -78,7 +78,7 @@ object TopAppBar : Screen {
                             expanded = remember { mutableStateOf(false) },
                             actionItem = listOf(
                                 ActionItem(
-                                    icon = MaterialTheme.icons.notifications,
+                                    icon = MaterialTheme.icons.person,
                                     title = "notifications",
                                     contentDescription = "",
                                     onClick = {}
@@ -90,19 +90,19 @@ object TopAppBar : Screen {
                             expanded = remember { mutableStateOf(false) },
                             actionItem = listOf(
                                 ActionItem(
-                                    icon = MaterialTheme.icons.notifications,
+                                    icon = MaterialTheme.icons.person,
                                     title = "notifications",
                                     contentDescription = "",
                                     onClick = {}
                                 ),
                                 ActionItem(
-                                    icon = MaterialTheme.icons.notifications,
+                                    icon = MaterialTheme.icons.person,
                                     title = "notifications",
                                     contentDescription = "",
                                     onClick = {}
                                 ),
                                 ActionItem(
-                                    icon = MaterialTheme.icons.notifications,
+                                    icon = MaterialTheme.icons.person,
                                     title = "notifications",
                                     contentDescription = "",
                                     onClick = {}
@@ -114,45 +114,45 @@ object TopAppBar : Screen {
                             expanded = expanded,
                             actionItem = listOf(
                                 ActionItem(
-                                    icon = MaterialTheme.icons.notifications,
+                                    icon = MaterialTheme.icons.person,
                                     title = "notifications",
                                     contentDescription = "",
                                     badgeCount = 10,
                                     onClick = {}
                                 ),
                                 ActionItem(
-                                    icon = MaterialTheme.icons.notifications,
+                                    icon = MaterialTheme.icons.person,
                                     title = "notifications",
                                     contentDescription = "",
                                     badgeCount = 0,
                                     onClick = {}
                                 ),
                                 ActionItem(
-                                    icon = MaterialTheme.icons.notifications,
+                                    icon = MaterialTheme.icons.person,
                                     title = "notifications",
                                     contentDescription = "",
                                     onClick = {}
                                 ),
                                 ActionItem(
-                                    icon = MaterialTheme.icons.notifications,
+                                    icon = MaterialTheme.icons.person,
                                     title = "notifications",
                                     contentDescription = "",
                                     onClick = {}
                                 ),
                                 ActionItem(
-                                    icon = MaterialTheme.icons.notifications,
+                                    icon = MaterialTheme.icons.person,
                                     title = "notifications",
                                     contentDescription = "",
                                     onClick = {}
                                 ),
                                 ActionItem(
-                                    icon = MaterialTheme.icons.notifications,
+                                    icon = MaterialTheme.icons.person,
                                     title = "notifications",
                                     contentDescription = "",
                                     onClick = {}
                                 ),
                                 ActionItem(
-                                    icon = MaterialTheme.icons.notifications,
+                                    icon = MaterialTheme.icons.person,
                                     title = "notifications",
                                     contentDescription = "",
                                     onClick = {}

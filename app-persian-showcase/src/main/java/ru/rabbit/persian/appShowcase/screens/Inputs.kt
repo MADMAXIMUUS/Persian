@@ -15,12 +15,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
 import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.inputs.InputsTransformations
 import io.github.madmaximuus.persian.inputs.PersianInput
+import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object Inputs : Screen {
@@ -63,8 +65,8 @@ object Inputs : Screen {
                     isSuccess = isSuccess,
                     placeholder = if (placeholder) placeholderValue else null,
                     transformation = if (password) InputsTransformations.password else InputsTransformations.none,
-                    leadingIcon = if (leading) MaterialTheme.icons.appLogo else null,
-                    trailingIcon = if (trailing) MaterialTheme.icons.visibility else null,
+                    leadingIcon = if (leading) MaterialTheme.icons.person else null,
+                    trailingIcon = if (trailing) painterResource(id = R.drawable.ic_visibility) else null,
                     suffix = if (suffix) "12" else null,
                     onTrailingIconClick = {}
                 )

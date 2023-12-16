@@ -4,8 +4,12 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.inputs.PersianInputDefaults
+import io.github.madmaximuus.persian.menus.PersianMenuDefaults
 
 @Composable
 fun PersianForm(
@@ -83,6 +87,18 @@ fun PersianForm(
                     keyboardOptions = content.keyboardOptions,
                     leadingIcon = content.leadingIcon,
                     placeholder = content.placeholder,
+                )
+            }
+
+            is PersianFormContent.Select -> {
+                PersianFormContentSelect(
+                    selected = content.selected,
+                    values = content.values,
+                    onSelectedChange = content.onSelectedChange,
+                    expanded = content.expanded ?: remember { mutableStateOf(false) },
+                    leadingIcon = content.leadingIcon,
+                    inputColors = content.inputColors ?: PersianInputDefaults.colors(),
+                    menuColors = content.menuColors ?: PersianMenuDefaults.colors()
                 )
             }
         }

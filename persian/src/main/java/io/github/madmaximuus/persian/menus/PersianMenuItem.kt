@@ -26,7 +26,7 @@ internal fun PersianMenuItem(
     textStyle: TextStyle = MaterialTheme.typography.bodyLarge,
     enabled: Boolean = true,
     isNegative: Boolean = false,
-    leadingIcon: Painter,
+    leadingIcon: Painter? = null,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
 ) {
     DropdownMenuItem(
@@ -40,14 +40,16 @@ internal fun PersianMenuItem(
                 color = colors.titleColor(enabled = enabled, isNegative = isNegative).value
             )
         },
-        leadingIcon = {
-            CompositionLocalProvider(
-                LocalContentColor provides colors.leadingIconColor(
-                    enabled = enabled,
-                    isNegative = isNegative
-                ).value
-            ) {
-                PersianIconBox(icon = leadingIcon)
+        leadingIcon = leadingIcon?.let {
+            {
+                CompositionLocalProvider(
+                    LocalContentColor provides colors.leadingIconColor(
+                        enabled = enabled,
+                        isNegative = isNegative
+                    ).value
+                ) {
+                    PersianIconBox(icon = it)
+                }
             }
         },
         contentPadding = PaddingValues(horizontal = MaterialTheme.spacing.large),

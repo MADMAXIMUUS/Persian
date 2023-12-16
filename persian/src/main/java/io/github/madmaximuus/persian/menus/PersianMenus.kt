@@ -40,7 +40,7 @@ fun PersianDropdownMenu(
         MaterialTheme(shapes = MaterialTheme.shapes.copy(extraSmall = MaterialTheme.shapes.large)) {
             DropdownMenu(
                 modifier = modifier
-                    .background(colors.backgroundColor, MaterialTheme.shapes.extraLarge),
+                    .background(colors.backgroundColor, MaterialTheme.shapes.large),
                 expanded = expanded.value,
                 offset = offset,
                 onDismissRequest = {

@@ -73,7 +73,7 @@ fun PersianImage(
                         LocalContentColor provides MaterialTheme.extendedColorScheme.onPrimaryContainer
                     ) {
                         PersianIconBox(
-                            icon = MaterialTheme.icons.appLogo,
+                            icon = MaterialTheme.icons.image,
                             size = size.placeholderSize,
                             colors = PersianIconBoxDefaults.colors()
                         )

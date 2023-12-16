@@ -78,63 +78,63 @@ object ActionSheet : Screen {
                 actions = listOf(
                     ActionSheetItem(
                         text = "Action 1",
-                        leadingIcon = MaterialTheme.icons.edit,
+                        leadingIcon = MaterialTheme.icons.person,
                         onClick = {
                             it::triggerAnimatedDismiss.invoke()
                         }
                     ),
                     ActionSheetItem(
                         text = "Action 2",
-                        leadingIcon = MaterialTheme.icons.edit,
+                        leadingIcon = MaterialTheme.icons.search,
                         onClick = {
                             it::triggerAnimatedDismiss.invoke()
                         }
                     ),
                     ActionSheetItem(
                         text = "Action 3",
-                        leadingIcon = MaterialTheme.icons.edit,
+                        leadingIcon = MaterialTheme.icons.done,
                         onClick = {
                             it::triggerAnimatedDismiss.invoke()
                         }
                     ),
                     ActionSheetItem(
                         text = "Action 4",
-                        leadingIcon = MaterialTheme.icons.edit,
+                        leadingIcon = MaterialTheme.icons.add,
                         onClick = {
                             it::triggerAnimatedDismiss.invoke()
                         }
                     ),
                     ActionSheetItem(
                         text = "Action 5",
-                        leadingIcon = MaterialTheme.icons.edit,
+                        leadingIcon = MaterialTheme.icons.image,
                         onClick = {
                             it::triggerAnimatedDismiss.invoke()
                         }
                     ),
                     ActionSheetItem(
                         text = "Action 6",
-                        leadingIcon = MaterialTheme.icons.edit,
+                        leadingIcon = MaterialTheme.icons.close,
                         onClick = {
 
                         }
                     ),
                     ActionSheetItem(
                         text = "Action 7",
-                        leadingIcon = MaterialTheme.icons.edit,
+                        leadingIcon = MaterialTheme.icons.expendMore,
                         onClick = {
                             it::triggerAnimatedDismiss.invoke()
                         }
                     ),
                     ActionSheetItem(
                         text = "Action 8",
-                        leadingIcon = MaterialTheme.icons.edit,
+                        leadingIcon = MaterialTheme.icons.expendLess,
                         onClick = {
                             it::triggerAnimatedDismiss.invoke()
                         }
                     ),
                     ActionSheetItem(
                         text = "Action 9",
-                        leadingIcon = MaterialTheme.icons.edit,
+                        leadingIcon = MaterialTheme.icons.checkCircle,
                         negative = true,
                         onClick = {
                             it::triggerAnimatedDismiss.invoke()
@@ -148,63 +148,63 @@ object ActionSheet : Screen {
                 actions = listOf(
                     ActionSheetItem(
                         text = "Action 1",
-                        leadingIcon = MaterialTheme.icons.edit,
+                        leadingIcon = MaterialTheme.icons.person,
                         onClick = {
                             it::triggerAnimatedDismiss.invoke()
                         }
                     ),
                     ActionSheetItem(
                         text = "Action 2",
-                        leadingIcon = MaterialTheme.icons.edit,
+                        leadingIcon = MaterialTheme.icons.search,
                         onClick = {
                             it::triggerAnimatedDismiss.invoke()
                         }
                     ),
                     ActionSheetItem(
                         text = "Action 3",
-                        leadingIcon = MaterialTheme.icons.edit,
+                        leadingIcon = MaterialTheme.icons.done,
                         onClick = {
                             it::triggerAnimatedDismiss.invoke()
                         }
                     ),
                     ActionSheetItem(
                         text = "Action 4",
-                        leadingIcon = MaterialTheme.icons.edit,
+                        leadingIcon = MaterialTheme.icons.add,
                         onClick = {
                             it::triggerAnimatedDismiss.invoke()
                         }
                     ),
                     ActionSheetItem(
                         text = "Action 5",
-                        leadingIcon = MaterialTheme.icons.edit,
+                        leadingIcon = MaterialTheme.icons.image,
                         onClick = {
                             it::triggerAnimatedDismiss.invoke()
                         }
                     ),
                     ActionSheetItem(
                         text = "Action 6",
-                        leadingIcon = MaterialTheme.icons.edit,
+                        leadingIcon = MaterialTheme.icons.close,
                         onClick = {
 
                         }
                     ),
                     ActionSheetItem(
                         text = "Action 7",
-                        leadingIcon = MaterialTheme.icons.edit,
+                        leadingIcon = MaterialTheme.icons.expendMore,
                         onClick = {
                             it::triggerAnimatedDismiss.invoke()
                         }
                     ),
                     ActionSheetItem(
                         text = "Action 8",
-                        leadingIcon = MaterialTheme.icons.edit,
+                        leadingIcon = MaterialTheme.icons.expendLess,
                         onClick = {
                             it::triggerAnimatedDismiss.invoke()
                         }
                     ),
                     ActionSheetItem(
                         text = "Action 9",
-                        leadingIcon = MaterialTheme.icons.edit,
+                        leadingIcon = MaterialTheme.icons.checkCircle,
                         negative = true,
                         onClick = {
                             it::triggerAnimatedDismiss.invoke()

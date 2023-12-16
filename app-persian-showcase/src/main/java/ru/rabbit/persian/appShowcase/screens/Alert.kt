@@ -106,7 +106,7 @@ object Alert : Screen {
         if (showAlertWithIcon) {
             PersianAlert(
                 title = "Alert",
-                icon = MaterialTheme.icons.appLogo,
+                icon = MaterialTheme.icons.errorCircle,
                 actions = listOf(
                     AlertAction("OK", onClick = { showAlertWithIcon = false }),
                     AlertAction("Cancel", onClick = { showAlertWithIcon = false }),

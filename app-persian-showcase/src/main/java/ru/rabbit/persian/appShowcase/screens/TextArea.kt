@@ -65,7 +65,7 @@ object TextArea : Screen {
                         isError = isError,
                         isSuccess = isSuccess,
                         placeholder = if (placeholder) placeholderValue else null,
-                        leadingIcon = if (leading) MaterialTheme.icons.appLogo else null,
+                        leadingIcon = if (leading) MaterialTheme.icons.person else null,
                     )
                     Spacer(modifier = Modifier.height(20.dp))
                     Text(

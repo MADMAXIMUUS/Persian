@@ -97,7 +97,7 @@ object Snackbar : Screen {
                         )
                     }
                 }
-                val icon = MaterialTheme.icons.wifiOff
+                val icon = MaterialTheme.icons.errorCircle
                 val color = MaterialTheme.extendedColorScheme.primary
                 PersianPrimaryButton(
                     text = "With icon",

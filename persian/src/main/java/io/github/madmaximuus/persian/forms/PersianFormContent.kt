@@ -4,6 +4,7 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.TextStyle
@@ -14,6 +15,9 @@ import io.github.madmaximuus.persian.inputs.InputColors
 import io.github.madmaximuus.persian.inputs.InputsTransformations
 import io.github.madmaximuus.persian.inputs.PersianInput
 import io.github.madmaximuus.persian.inputs.PersianInputDefaults
+import io.github.madmaximuus.persian.menus.MenuColors
+import io.github.madmaximuus.persian.select.ActionItem
+import io.github.madmaximuus.persian.select.PersianSelect
 import io.github.madmaximuus.persian.textAreas.PersianTextAreaDefaults
 import io.github.madmaximuus.persian.textAreas.PersianTextAreas
 import io.github.madmaximuus.persian.textAreas.TextAreaColors
@@ -52,6 +56,16 @@ sealed class PersianFormContent {
     data class SixDigitCodeInput(
         val values: List<String>,
         val onValueChange: (value: String, index: Int) -> Unit,
+    ) : PersianFormContent()
+
+    data class Select(
+        val selected: String,
+        val values: List<ActionItem>,
+        val onSelectedChange: (option: String) -> Unit,
+        val expanded: MutableState<Boolean>? = null,
+        val leadingIcon: Painter? = null,
+        val inputColors: InputColors? = null,
+        val menuColors: MenuColors? = null
     ) : PersianFormContent()
 
 }
@@ -166,3 +180,25 @@ internal fun PersianFormContentFourDigitCodeInput(
     )
 }
 
+@Composable
+internal fun PersianFormContentSelect(
+    selected: String,
+    values: List<ActionItem>,
+    onSelectedChange: (option: String) -> Unit,
+    modifier: Modifier = Modifier,
+    expanded: MutableState<Boolean>,
+    leadingIcon: Painter?,
+    inputColors: InputColors,
+    menuColors: MenuColors,
+) {
+    PersianSelect(
+        selected = selected,
+        values = values,
+        onSelectedChange = onSelectedChange,
+        modifier = modifier,
+        expanded = expanded,
+        leadingIcon = leadingIcon,
+        inputColors = inputColors,
+        menuColors = menuColors
+    )
+}
