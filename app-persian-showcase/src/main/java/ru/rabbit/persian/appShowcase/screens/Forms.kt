@@ -145,7 +145,8 @@ object Forms : Screen {
                 values = selectValues,
                 onSelectedChange = {
                     selected = it
-                }
+                },
+                leadingIcon = if (leading) MaterialTheme.icons.person else null
             )
         }
         SampleScaffold(
