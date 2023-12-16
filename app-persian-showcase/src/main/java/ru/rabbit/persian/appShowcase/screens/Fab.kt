@@ -7,8 +7,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.fab.PersianFab
-import io.github.madmaximuus.persian.fab.PersianFabColors
+import io.github.madmaximuus.persian.fab.PersianFabDefaults
+import io.github.madmaximuus.persian.fab.PersianMediumFab
+import io.github.madmaximuus.persian.fab.PersianSmallFab
 import io.github.madmaximuus.persian.foundation.icons
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
@@ -32,84 +33,84 @@ object Fab : Screen {
             ) {
                 item {
                     SampleRow(text = "Small FAB", firstItem = true) {
-                        PersianFab.Small(
-                            icon = MaterialTheme.icons.edit,
-                            colors = PersianFabColors.neutral(),
+                        PersianSmallFab(
+                            icon = MaterialTheme.icons.add,
+                            colors = PersianFabDefaults.neutralColors(),
                             onClick = {}
                         )
-                        PersianFab.Small(
-                            icon = MaterialTheme.icons.edit,
-                            colors = PersianFabColors.primary(),
+                        PersianSmallFab(
+                            icon = MaterialTheme.icons.add,
+                            colors = PersianFabDefaults.primaryColors(),
                             onClick = {}
                         )
-                        PersianFab.Small(
-                            icon = MaterialTheme.icons.edit,
-                            colors = PersianFabColors.secondary(),
+                        PersianSmallFab(
+                            icon = MaterialTheme.icons.add,
+                            colors = PersianFabDefaults.secondaryColors(),
                             onClick = {}
                         )
-                        PersianFab.Small(
-                            icon = MaterialTheme.icons.edit,
-                            colors = PersianFabColors.tertiary(),
+                        PersianSmallFab(
+                            icon = MaterialTheme.icons.add,
+                            colors = PersianFabDefaults.tertiaryColors(),
                             onClick = {}
                         )
                     }
                 }
                 item {
                     SampleRow(text = "Medium FAB") {
-                        PersianFab.Medium(
-                            icon = MaterialTheme.icons.edit,
-                            colors = PersianFabColors.neutral(),
+                        PersianMediumFab(
+                            icon = MaterialTheme.icons.add,
+                            colors = PersianFabDefaults.neutralColors(),
                             onClick = {}
                         )
-                        PersianFab.Medium(
-                            icon = MaterialTheme.icons.edit,
-                            colors = PersianFabColors.primary(),
+                        PersianMediumFab(
+                            icon = MaterialTheme.icons.add,
+                            colors = PersianFabDefaults.primaryColors(),
                             onClick = {}
                         )
-                        PersianFab.Medium(
-                            icon = MaterialTheme.icons.edit,
-                            colors = PersianFabColors.secondary(),
+                        PersianMediumFab(
+                            icon = MaterialTheme.icons.add,
+                            colors = PersianFabDefaults.secondaryColors(),
                             onClick = {}
                         )
-                        PersianFab.Medium(
-                            icon = MaterialTheme.icons.edit,
-                            colors = PersianFabColors.tertiary(),
+                        PersianMediumFab(
+                            icon = MaterialTheme.icons.add,
+                            colors = PersianFabDefaults.tertiaryColors(),
                             onClick = {}
                         )
                     }
                 }
                 item {
                     SampleRow(text = "Medium Expanded FAB") {
-                        PersianFab.Medium(
-                            icon = MaterialTheme.icons.edit,
-                            title = "Edit",
+                        PersianMediumFab(
+                            icon = MaterialTheme.icons.add,
+                            title = "Add",
                             expanded = true,
-                            colors = PersianFabColors.neutral(),
+                            colors = PersianFabDefaults.neutralColors(),
                             onClick = {}
                         )
-                        PersianFab.Medium(
-                            icon = MaterialTheme.icons.edit,
-                            title = "Edit",
+                        PersianMediumFab(
+                            icon = MaterialTheme.icons.add,
+                            title = "Add",
                             expanded = true,
-                            colors = PersianFabColors.primary(),
+                            colors = PersianFabDefaults.primaryColors(),
                             onClick = {}
                         )
                     }
                 }
                 item {
                     SampleRow(text = "Medium Expanded FAB", lastItem = true) {
-                        PersianFab.Medium(
-                            icon = MaterialTheme.icons.edit,
-                            title = "Edit",
+                        PersianMediumFab(
+                            icon = MaterialTheme.icons.add,
+                            title = "Add",
                             expanded = true,
-                            colors = PersianFabColors.secondary(),
+                            colors = PersianFabDefaults.secondaryColors(),
                             onClick = {}
                         )
-                        PersianFab.Medium(
-                            icon = MaterialTheme.icons.edit,
-                            title = "Edit",
+                        PersianMediumFab(
+                            icon = MaterialTheme.icons.add,
+                            title = "Add",
                             expanded = true,
-                            colors = PersianFabColors.tertiary(),
+                            colors = PersianFabDefaults.tertiaryColors(),
                             onClick = {}
                         )
                     }

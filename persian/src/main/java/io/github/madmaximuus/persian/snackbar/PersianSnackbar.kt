@@ -27,8 +27,8 @@ data class PersianSnackbarVisuals(
     override val withDismissAction: Boolean = false,
     override val duration: SnackbarDuration = SnackbarDuration.Indefinite,
     val showOnTop: Boolean = false,
-    val left: (@Composable PersianSnackbarLeft.() -> Unit)? = null,
-    val right: (@Composable PersianSnackbarRight.() -> Unit)? = null,
+    val left: PersianSnackbarLeft? = null,
+    val right: PersianSnackbarRight? = null,
     val onDismiss: (() -> Unit)? = null
 ) : SnackbarVisuals
 
@@ -37,10 +37,10 @@ object PersianSnackbar {
     @Composable
     fun Primary(
         text: String,
-        left: (@Composable PersianSnackbarLeft.() -> Unit)? = null,
-        colors: SnackbarColors = PersianSnackbarColors.primary(),
-        sizes: SnackbarSizes = PersianSnackbarSizes.large(),
-        right: (@Composable PersianSnackbarRight.() -> Unit)? = null,
+        left: PersianSnackbarLeft? = null,
+        colors: SnackbarColors = PersianSnackbarDefaults.colors(),
+        sizes: SnackbarSizes = PersianSnackbarDefaults.sizes(),
+        right: PersianSnackbarRight? = null,
         showOnTop: Boolean = false
     ) {
         val configuration = LocalConfiguration.current
@@ -76,7 +76,29 @@ object PersianSnackbar {
                         .heightIn(min = 52.dp),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    if (left != null) PersianSnackbarLeft.left()
+                    when (left) {
+                        is PersianSnackbarLeft.Avatar -> {
+                            PersianSnackbarLeftAvatar(avatarUrl = left.avatarUrl)
+                        }
+
+                        is PersianSnackbarLeft.Icon -> {
+                            PersianSnackbarLeftIcon(
+                                icon = left.icon,
+                                color = left.color,
+                                contentDescription = ""
+                            )
+                        }
+
+                        is PersianSnackbarLeft.Image -> {
+                            PersianSnackbarLeftImage(imageUrl = left.imageUrl)
+                        }
+
+                        is PersianSnackbarLeft.Progress -> {
+                            PersianSnackbarLeftProgress(progress = left.progress)
+                        }
+
+                        null -> {}
+                    }
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -95,8 +117,22 @@ object PersianSnackbar {
                             color = colors.textColor
                         )
                     }
-                    if (right != null)
-                        PersianSnackbarRight.right()
+                    when (right) {
+                        is PersianSnackbarRight.Action -> {
+                            PersianSnackbarRightAction(
+                                text = right.text,
+                                onClick = right.onClick
+                            )
+                        }
+
+                        is PersianSnackbarRight.Close -> {
+                            PersianSnackbarRightClose(
+                                onClick = right.onClick
+                            )
+                        }
+
+                        null -> {}
+                    }
                 }
             }
         )

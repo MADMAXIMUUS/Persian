@@ -10,70 +10,147 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 
-object PersianTopAppBar {
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun PersianTopAppBar(
+    modifier: Modifier = Modifier,
+    topAppBarColors: TopAppBarColors = PersianTopAppBarDefaults.colors(),
+    windowInsets: WindowInsets = TopAppBarDefaults.windowInsets,
+    left: PersianTopAppBarLeft? = null,
+    middle: PersianTopAppBarMiddle,
+    right: PersianTopAppBarRight? = null,
+    scrollBehavior: TopAppBarScrollBehavior? = null,
+    actionItemsCount: Int
+) {
+    CompositionLocalProvider(LocalPersianTopAppBarColors provides topAppBarColors) {
+        val colors = LocalPersianTopAppBarColors.current
+        if (actionItemsCount < 2) {
+            CenterAlignedTopAppBar(
+                modifier = modifier,
+                title = {
+                    when (middle) {
+                        is PersianTopAppBarMiddle.Icon -> {
+                            PersianTopAppBarMiddleIcon(icon = middle.icon)
+                        }
 
-    @OptIn(ExperimentalMaterial3Api::class)
-    @Composable
-    fun Primary(
-        modifier: Modifier = Modifier,
-        topAppBarColors: TopAppBarColors = PersianTopAppBarColors.primary(),
-        windowInsets: WindowInsets = TopAppBarDefaults.windowInsets,
-        left: (@Composable PersianTopAppBarLeft.() -> Unit)? = null,
-        middle: @Composable PersianTopAppBarMiddle.() -> Unit,
-        right: (@Composable PersianTopAppBarRight.() -> Unit)? = null,
-        scrollBehavior: TopAppBarScrollBehavior? = null,
-        actionItemsCount: Int
-    ) {
-        CompositionLocalProvider(LocalPersianTopAppBarColors provides topAppBarColors) {
-            val colors = LocalPersianTopAppBarColors.current
-            if (actionItemsCount < 2) {
-                CenterAlignedTopAppBar(
-                    modifier = modifier,
-                    title = {
-                        PersianTopAppBarMiddle.middle()
-                    },
-                    navigationIcon = {
-                        if (left != null) {
-                            PersianTopAppBarLeft.left()
+                        is PersianTopAppBarMiddle.Title -> {
+                            PersianTopAppBarMiddleTitle(
+                                text = middle.text
+                            )
                         }
-                    },
-                    actions = {
-                        if (right != null) {
-                            PersianTopAppBarRight.right()
+                    }
+                },
+                navigationIcon = {
+                    when (left) {
+                        is PersianTopAppBarLeft.Close -> {
+                            PersianTopAppBarLeftClose(
+                                onClick = left.onClick
+                            )
                         }
-                    },
-                    scrollBehavior = scrollBehavior,
-                    colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                        containerColor = colors.background,
-                        scrolledContainerColor = colors.scrolledBackgroundColor
-                    ),
-                    windowInsets = windowInsets
-                )
-            } else {
-                TopAppBar(
-                    modifier = modifier,
-                    title = {
-                        PersianTopAppBarMiddle.middle()
-                    },
-                    navigationIcon = {
-                        if (left != null) {
-                            PersianTopAppBarLeft.left()
-                        }
-                    },
-                    actions = {
-                        if (right != null) {
-                            PersianTopAppBarRight.right()
-                        }
-                    },
-                    scrollBehavior = scrollBehavior,
-                    colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                        containerColor = colors.background,
-                        scrolledContainerColor = colors.scrolledBackgroundColor
-                    ),
-                    windowInsets = windowInsets
-                )
 
-            }
+                        is PersianTopAppBarLeft.Navigation -> {
+                            PersianTopAppBarLeftNavigation(
+                                onClick = left.onClick
+                            )
+                        }
+
+                        is PersianTopAppBarLeft.Avatar -> {
+                            PersianTopAppBarLeftAvatar(
+                                image = left.avatarUrl,
+                                onClick = left.onClick
+                            )
+                        }
+
+                        null -> {}
+                    }
+                },
+                actions = {
+                    when (right) {
+                        is PersianTopAppBarRight.Icons -> {
+                            PersianTopAppBarRightIcons(actions = right.actionItem)
+                        }
+
+                        is PersianTopAppBarRight.Action -> {
+                            PersianTopAppBarRightButton(
+                                text = right.text,
+                                onClick = right.onClick
+                            )
+                        }
+
+                        null -> {}
+                    }
+                },
+                scrollBehavior = scrollBehavior,
+                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                    containerColor = colors.background,
+                    scrolledContainerColor = colors.scrolledBackgroundColor
+                ),
+                windowInsets = windowInsets
+            )
+        } else {
+            TopAppBar(
+                modifier = modifier,
+                title = {
+                    when (middle) {
+                        is PersianTopAppBarMiddle.Icon -> {
+                            PersianTopAppBarMiddleIcon(icon = middle.icon)
+                        }
+
+                        is PersianTopAppBarMiddle.Title -> {
+                            PersianTopAppBarMiddleTitle(
+                                text = middle.text
+                            )
+                        }
+                    }
+                },
+                navigationIcon = {
+                    when (left) {
+                        is PersianTopAppBarLeft.Close -> {
+                            PersianTopAppBarLeftClose(
+                                onClick = left.onClick
+                            )
+                        }
+
+                        is PersianTopAppBarLeft.Navigation -> {
+                            PersianTopAppBarLeftNavigation(
+                                onClick = left.onClick
+                            )
+                        }
+
+                        is PersianTopAppBarLeft.Avatar -> {
+                            PersianTopAppBarLeftAvatar(
+                                image = left.avatarUrl,
+                                onClick = left.onClick
+                            )
+                        }
+
+                        null -> {}
+                    }
+                },
+                actions = {
+                    when (right) {
+                        is PersianTopAppBarRight.Icons -> {
+                            PersianTopAppBarRightIcons(actions = right.actionItem)
+                        }
+
+                        is PersianTopAppBarRight.Action -> {
+                            PersianTopAppBarRightButton(
+                                text = right.text,
+                                onClick = right.onClick
+                            )
+                        }
+
+                        null -> {}
+                    }
+                },
+                scrollBehavior = scrollBehavior,
+                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                    containerColor = colors.background,
+                    scrolledContainerColor = colors.scrolledBackgroundColor
+                ),
+                windowInsets = windowInsets
+            )
+
         }
     }
 }

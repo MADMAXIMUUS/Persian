@@ -13,25 +13,21 @@ import androidx.compose.ui.text.TextStyle
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import kotlin.math.roundToInt
 
-object PersianProgressBarContent {
-
-    @Composable
-    fun Text(
-        modifier: Modifier = Modifier,
-        color: Color = MaterialTheme.extendedColorScheme.onSurface,
-        textStyle: TextStyle = MaterialTheme.typography.labelSmall
-    ) = Box(
-        modifier = modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(
-            text = LocalCircularProgress.current?.getProgressInPercent() ?: "∞",
-            color = color,
-            style = textStyle,
-            modifier = Modifier
-        )
-    }
-
+@Composable
+internal fun PersianProgressBarContent(
+    modifier: Modifier = Modifier,
+    color: Color = MaterialTheme.extendedColorScheme.onSurface,
+    textStyle: TextStyle = MaterialTheme.typography.labelSmall
+) = Box(
+    modifier = modifier.fillMaxSize(),
+    contentAlignment = Alignment.Center
+) {
+    Text(
+        text = LocalCircularProgress.current?.getProgressInPercent() ?: "∞",
+        color = color,
+        style = textStyle,
+        modifier = Modifier
+    )
 }
 
 @SuppressWarnings("MagicNumber")

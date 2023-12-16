@@ -2,39 +2,58 @@ package io.github.madmaximuus.persian.snackbar
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
-import com.bumptech.glide.integration.compose.GlideImage
-import io.github.madmaximuus.persian.avatars.PersianAvatars
-import io.github.madmaximuus.persian.avatars.PersianAvatarsSizes
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import io.github.madmaximuus.persian.avatarsAndImages.PersianAvatar
+import io.github.madmaximuus.persian.avatarsAndImages.PersianAvatarDefaults
+import io.github.madmaximuus.persian.avatarsAndImages.PersianImage
+import io.github.madmaximuus.persian.avatarsAndImages.PersianImagesDefaults
 import io.github.madmaximuus.persian.foundation.spacing
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
-import io.github.madmaximuus.persian.iconBox.PersianIconBoxColors
-import io.github.madmaximuus.persian.progressBars.PersianCircularProgressBarSize
-import io.github.madmaximuus.persian.progressBars.PersianProgressBar
+import io.github.madmaximuus.persian.progressBars.PersianCircularProgressBar
+import io.github.madmaximuus.persian.progressBars.PersianProgressBarDefaults
 
-object PersianSnackbarLeft {
+sealed class PersianSnackbarLeft {
 
-    @Composable
-    fun Icon24(
-        modifier: Modifier = Modifier,
-        icon: Painter,
-        contentDescription: String,
-        color: Color = MaterialTheme.extendedColorScheme.primary,
+    data class Icon(
+        val icon: Painter,
+        val color: Color
+    ) : PersianSnackbarLeft()
+
+    data class Image(
+        val imageUrl: String
+    ) : PersianSnackbarLeft()
+
+    data class Avatar(
+        val avatarUrl: String
+    ) : PersianSnackbarLeft()
+
+    data class Progress(
+        val progress: Float
+    ) : PersianSnackbarLeft()
+}
+
+@Composable
+internal fun PersianSnackbarLeftIcon(
+    modifier: Modifier = Modifier,
+    icon: Painter,
+    color: Color,
+    contentDescription: String,
+
     ) {
-        Box(
-            modifier = modifier,
+    Box(
+        modifier = modifier,
+    ) {
+        CompositionLocalProvider(
+            LocalContentColor provides color
         ) {
-            PersianIconBox.Primary(
+            PersianIconBox(
                 modifier = Modifier
                     .padding(
                         start = MaterialTheme.spacing.large,
@@ -43,87 +62,76 @@ object PersianSnackbarLeft {
                         bottom = MaterialTheme.spacing.medium
                     ),
                 icon = icon,
-                colors = PersianIconBoxColors.primary(
-                    defaultColor = color
-                ),
                 contentDescription = contentDescription
             )
         }
     }
+}
 
-    @OptIn(ExperimentalGlideComposeApi::class)
-    @Composable
-    fun Image(
-        modifier: Modifier = Modifier,
-        image: String,
-        contentDescription: String
+@Composable
+internal fun PersianSnackbarLeftImage(
+    modifier: Modifier = Modifier,
+    imageUrl: String,
+) {
+    Box(
+        modifier = modifier,
     ) {
-        Box(
-            modifier = modifier,
-        ) {
-            GlideImage(
-                modifier = Modifier
-                    .padding(
-                        start = MaterialTheme.spacing.extraSmall,
-                        end = 0.dp,
-                        top = MaterialTheme.spacing.extraSmall,
-                        bottom = MaterialTheme.spacing.extraSmall
-                    )
-                    .size(36.dp, 36.dp)
-                    .clip(MaterialTheme.shapes.medium),
-                model = image,
-                contentScale = ContentScale.Crop,
-                contentDescription = contentDescription,
-            )
-        }
+        PersianImage(
+            modifier = Modifier
+                .padding(
+                    start = MaterialTheme.spacing.small,
+                    end = 0.dp,
+                    top = MaterialTheme.spacing.small,
+                    bottom = MaterialTheme.spacing.small
+                ),
+            imageUrl = imageUrl,
+            size = PersianImagesDefaults.largeShapeSize32()
+        )
     }
+}
 
-    @Composable
-    fun Avatar(
-        modifier: Modifier = Modifier,
-        image: String
+@Composable
+internal fun PersianSnackbarLeftAvatar(
+    modifier: Modifier = Modifier,
+    avatarUrl: String
+) {
+    Box(
+        modifier = modifier,
     ) {
-        Box(
-            modifier = modifier,
-        ) {
-            PersianAvatars.Round(
-                modifier = Modifier
-                    .padding(
-                        start = MaterialTheme.spacing.small,
-                        end = 0.dp,
-                        top = MaterialTheme.spacing.small,
-                        bottom = MaterialTheme.spacing.small
-                    ),
-                imageUrl = image,
-                size = PersianAvatarsSizes.medium(),
-                onClick = null
-            )
-        }
+        PersianAvatar(
+            modifier = Modifier
+                .padding(
+                    start = MaterialTheme.spacing.small,
+                    end = 0.dp,
+                    top = MaterialTheme.spacing.small,
+                    bottom = MaterialTheme.spacing.small
+                ),
+            imageUrl = avatarUrl,
+            size = PersianAvatarDefaults.size32(),
+            onClick = null
+        )
     }
+}
 
-    @Composable
-    fun Progress(
-        modifier: Modifier = Modifier,
-        progress: Float,
+@Composable
+internal fun PersianSnackbarLeftProgress(
+    modifier: Modifier = Modifier,
+    progress: Float,
+) {
+    Box(
+        modifier = modifier,
     ) {
-        Box(
-            modifier = modifier,
-        ) {
-            PersianProgressBar.Circular(
-                progress = progress,
-                modifier = Modifier
-                    .padding(
-                        start = MaterialTheme.spacing.extraSmall,
-                        end = 0.dp,
-                        top = MaterialTheme.spacing.small,
-                        bottom = MaterialTheme.spacing.small
-                    ),
-                sizes = PersianCircularProgressBarSize.medium(),
-                content = {
-                    Text()
-                }
-            )
-        }
+        PersianCircularProgressBar(
+            progress = progress,
+            modifier = Modifier
+                .padding(
+                    start = MaterialTheme.spacing.extraSmall,
+                    end = 0.dp,
+                    top = MaterialTheme.spacing.small,
+                    bottom = MaterialTheme.spacing.small
+                ),
+            sizes = PersianProgressBarDefaults.circularMedium(),
+            counter = true
+        )
     }
-
 }

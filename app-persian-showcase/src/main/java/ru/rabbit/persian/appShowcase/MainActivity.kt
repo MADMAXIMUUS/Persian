@@ -23,10 +23,12 @@ import androidx.navigation.compose.rememberNavController
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import ru.rabbit.persian.appShowcase.screens.ActionSheet
 import ru.rabbit.persian.appShowcase.screens.Alert
-import ru.rabbit.persian.appShowcase.screens.Avatar
+import ru.rabbit.persian.appShowcase.screens.AvatarAndImage
 import ru.rabbit.persian.appShowcase.screens.Banner
 import ru.rabbit.persian.appShowcase.screens.Button
+import ru.rabbit.persian.appShowcase.screens.Charts
 import ru.rabbit.persian.appShowcase.screens.CheckBox
+import ru.rabbit.persian.appShowcase.screens.Chips
 import ru.rabbit.persian.appShowcase.screens.CodeInput
 import ru.rabbit.persian.appShowcase.screens.Counter
 import ru.rabbit.persian.appShowcase.screens.DatePickerDialog
@@ -37,13 +39,17 @@ import ru.rabbit.persian.appShowcase.screens.IconButton
 import ru.rabbit.persian.appShowcase.screens.Inputs
 import ru.rabbit.persian.appShowcase.screens.ModalPage
 import ru.rabbit.persian.appShowcase.screens.NavigationBar
+import ru.rabbit.persian.appShowcase.screens.PageIndicator
 import ru.rabbit.persian.appShowcase.screens.ProgressBar
 import ru.rabbit.persian.appShowcase.screens.RadioButton
 import ru.rabbit.persian.appShowcase.screens.Search
+import ru.rabbit.persian.appShowcase.screens.Select
 import ru.rabbit.persian.appShowcase.screens.Skeleton
 import ru.rabbit.persian.appShowcase.screens.Snackbar
+import ru.rabbit.persian.appShowcase.screens.Switch
 import ru.rabbit.persian.appShowcase.screens.Tabs
 import ru.rabbit.persian.appShowcase.screens.TextArea
+import ru.rabbit.persian.appShowcase.screens.TimePickerDialog
 import ru.rabbit.persian.appShowcase.screens.TopAppBar
 
 class MainActivity : ComponentActivity() {
@@ -61,7 +67,7 @@ class MainActivity : ComponentActivity() {
                         ActionSheet,
                         Alert,
                         Button,
-                        Avatar,
+                        AvatarAndImage,
                         Banner,
                         CheckBox,
                         Counter,
@@ -81,7 +87,13 @@ class MainActivity : ComponentActivity() {
                         TopAppBar,
                         CodeInput,
                         DatePickerDialog,
-                        Skeleton
+                        Skeleton,
+                        Switch,
+                        Charts,
+                        PageIndicator,
+                        TimePickerDialog,
+                        Chips,
+                        Select
                     )
                 }
                 NavHost(

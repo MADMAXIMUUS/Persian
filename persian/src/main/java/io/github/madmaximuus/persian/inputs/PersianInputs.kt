@@ -1,6 +1,5 @@
 package io.github.madmaximuus.persian.inputs
 
-import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.BorderStroke
@@ -22,8 +21,8 @@ import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.selection.LocalTextSelectionColors
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -41,188 +40,182 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.BaselineShift
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.foundation.spacing
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
-import io.github.madmaximuus.persian.iconBox.PersianIconBoxColors
 
-object PersianInputs {
+@Composable
+fun PersianInput(
+    value: String,
+    onValueChange: (String) -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    isError: Boolean = false,
+    isSuccess: Boolean = false,
+    readOnly: Boolean = false,
+    textStyle: TextStyle = MaterialTheme.typography.bodyLarge,
+    placeholder: String? = null,
+    transformation: VisualTransformation = InputsTransformations.none,
+    colors: InputColors = PersianInputDefaults.colors(),
+    leadingIcon: Painter? = null,
+    trailingIcon: Painter? = null,
+    suffix: String? = null,
+    keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
+    keyboardActions: KeyboardActions = KeyboardActions.Default,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    onTrailingIconClick: (() -> Unit)? = null
+) {
+    val textColor = colors.textColor(enabled, isSuccess, isError, interactionSource).value
+    val mergedTextStyle =
+        textStyle.merge(TextStyle(color = textColor, baselineShift = BaselineShift.None))
 
-    @Composable
-    fun Primary(
-        value: String,
-        onValueChange: (String) -> Unit,
-        modifier: Modifier = Modifier,
-        enabled: Boolean = true,
-        isError: Boolean = false,
-        isSuccess: Boolean = false,
-        readOnly: Boolean = false,
-        textStyle: TextStyle = MaterialTheme.typography.bodyLarge,
-        placeholder: String? = null,
-        transformation: VisualTransformation = InputsTransformations.none,
-        colors: InputColors = PersianInputColors.primary(),
-        leadingIcon: Painter? = null,
-        trailingIcon: Painter? = null,
-        suffix: String? = null,
-        keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
-        keyboardActions: KeyboardActions = KeyboardActions.Default,
-        interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-        onTrailingIconClick: (() -> Unit)? = null
-    ) {
-        val isFocused = interactionSource.collectIsFocusedAsState().value
-        val textColor = colors.textColor(enabled, isSuccess, isError, interactionSource).value
-        val mergedTextStyle =
-            textStyle.merge(TextStyle(color = textColor, baselineShift = BaselineShift.None))
-
-        val borderThickness = if (enabled && (isFocused || isError || isSuccess)) 2.dp else 1.dp
-
-        val borderColor = colors.indicatorColor(
+    CompositionLocalProvider(LocalTextSelectionColors provides colors.selectionColors) {
+        BasicTextField(
+            modifier = modifier,
+            value = value,
+            onValueChange = onValueChange,
             enabled = enabled,
-            isSuccess = isSuccess,
-            isError = isError,
-            interactionSource = interactionSource
-        ).value
-
-        CompositionLocalProvider(LocalTextSelectionColors provides colors.selectionColors) {
-            BasicTextField(
-                value = value,
-                onValueChange = onValueChange,
-                modifier = modifier,
-                enabled = enabled,
-                readOnly = readOnly,
-                textStyle = mergedTextStyle,
-                keyboardOptions = keyboardOptions,
-                keyboardActions = keyboardActions,
-                singleLine = true,
-                maxLines = 1,
-                minLines = 1,
-                visualTransformation = transformation,
-                interactionSource = interactionSource,
-                cursorBrush = SolidColor(
-                    colors.cursorColor(
-                        isError = isError,
-                        isSuccess = isSuccess
-                    ).value
-                ),
-                decorationBox = { innerTextField ->
-                    Row(
+            readOnly = readOnly,
+            textStyle = mergedTextStyle,
+            keyboardOptions = keyboardOptions,
+            keyboardActions = keyboardActions,
+            singleLine = true,
+            maxLines = 1,
+            minLines = 1,
+            visualTransformation = transformation,
+            interactionSource = interactionSource,
+            cursorBrush = SolidColor(
+                colors.cursorColor(
+                    isError = isError,
+                    isSuccess = isSuccess
+                ).value
+            ),
+            decorationBox = { innerTextField ->
+                val border = animateBorderStrokeAsState(
+                    enabled = enabled,
+                    isError = isError,
+                    isSuccess = isSuccess,
+                    colors = colors,
+                    interactionSource = interactionSource,
+                    unfocusedBorderThickness = 1.dp,
+                    focusedBorderThickness = 2.dp
+                ).value
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(
+                            color = colors.containerColor(
+                                enabled = enabled,
+                                isSuccess = isSuccess,
+                                isError = isError,
+                                interactionSource = interactionSource
+                            ).value,
+                            shape = MaterialTheme.shapes.large
+                        )
+                        .border(
+                            border = border,
+                            shape = MaterialTheme.shapes.large
+                        )
+                        .padding(all = MaterialTheme.spacing.medium)
+                        .height(24.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    leadingIcon?.let { icon ->
+                        CompositionLocalProvider(
+                            LocalContentColor provides colors.leadingIconColor(
+                                enabled = enabled,
+                                isSuccess = isSuccess,
+                                isError = isError,
+                                interactionSource = interactionSource
+                            ).value
+                        ) {
+                            PersianIconBox(
+                                icon = icon,
+                            )
+                        }
+                    }
+                    Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .background(
-                                color = colors.containerColor(
+                            .padding(horizontal = MaterialTheme.spacing.extraSmall)
+                            .weight(1f),
+                    ) {
+                        if (value.isEmpty() && placeholder != null) {
+                            Text(
+                                text = placeholder,
+                                color = colors.placeholderColor(
+                                    enabled = enabled,
+                                    isError = isError,
+                                    interactionSource = interactionSource
+                                ).value,
+                                style = MaterialTheme.typography.bodyLarge
+                                    .copy(baselineShift = BaselineShift.None),
+                            )
+                        }
+                        innerTextField()
+                    }
+                    if (suffix != null && trailingIcon == null) {
+                        Box(
+                            modifier = Modifier
+                                .wrapContentSize()
+                                .padding(horizontal = MaterialTheme.spacing.extraSmall)
+                        ) {
+                            Text(
+                                text = suffix,
+                                color = colors.suffixColor(
                                     enabled = enabled,
                                     isSuccess = isSuccess,
                                     isError = isError,
                                     interactionSource = interactionSource
                                 ).value,
-                                shape = MaterialTheme.shapes.large
-                            )
-                            .border(
-                                width = borderThickness,
-                                color = borderColor,
-                                shape = MaterialTheme.shapes.large
-                            )
-                            .padding(all = MaterialTheme.spacing.medium)
-                            .height(24.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        leadingIcon?.let { icon ->
-                            PersianIconBox.Primary(
-                                icon = icon,
-                                colors = PersianIconBoxColors.primary(
-                                    defaultColor = colors.leadingIconColor(
-                                        enabled = enabled,
-                                        isSuccess = isSuccess,
-                                        isError = isError,
-                                        interactionSource = interactionSource
-                                    ).value
-                                )
+                                style = MaterialTheme.typography.bodyLarge
                             )
                         }
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(horizontal = MaterialTheme.spacing.extraSmall)
-                                .weight(1f),
-                            verticalAlignment = Alignment.CenterVertically
+                    }
+                    trailingIcon?.let { icon ->
+                        CompositionLocalProvider(
+                            LocalContentColor provides colors.trailingIconColor(
+                                enabled = enabled,
+                                isSuccess = isSuccess,
+                                isError = isError,
+                                interactionSource = interactionSource
+                            ).value
                         ) {
-                            if (value.isEmpty() && placeholder != null) {
-                                Text(
-                                    text = placeholder,
-                                    color = colors.placeholderColor(
-                                        enabled = enabled,
-                                        isError = isError,
-                                        interactionSource = interactionSource
-                                    ).value,
-                                    style = MaterialTheme.typography.bodyLarge
-                                        .copy(baselineShift = BaselineShift.None),
-                                )
-                            }
-                            innerTextField()
-                        }
-                        if (suffix != null) {
-                            Box(
-                                modifier = Modifier
-                                    .wrapContentSize()
-                                    .padding(horizontal = MaterialTheme.spacing.extraSmall)
-                            ) {
-                                Text(
-                                    text = suffix,
-                                    color = colors.suffixColor(
-                                        enabled = enabled,
-                                        isSuccess = isSuccess,
-                                        isError = isError,
-                                        interactionSource = interactionSource
-                                    ).value,
-                                    style = MaterialTheme.typography.bodyLarge
-                                )
-                            }
-                        }
-                        trailingIcon?.let { icon ->
-                            PersianIconBox.Primary(
+                            PersianIconBox(
                                 modifier = Modifier
                                     .clip(MaterialTheme.shapes.small)
                                     .clickable(
                                         enabled = onTrailingIconClick != null,
-                                        onClick = { onTrailingIconClick?.invoke() },
+                                        onClick = {
+                                            onTrailingIconClick?.invoke()
+                                        },
                                         role = Role.Button
                                     ),
-                                icon = icon,
-                                colors = PersianIconBoxColors.primary(
-                                    defaultColor = colors.trailingIconColor(
-                                        enabled = enabled,
-                                        isSuccess = isSuccess,
-                                        isError = isError,
-                                        interactionSource = interactionSource
-                                    ).value
-                                )
-                            )
-                        }
-                        colors.stateIcon(
-                            enabled = enabled,
-                            isError = isError,
-                            isSuccess = isSuccess
-                        ).value?.let { icon ->
-                            Spacer(modifier = Modifier.width(MaterialTheme.spacing.small))
-                            PersianIconBox.Primary(
-                                icon = icon,
-                                colors = PersianIconBoxColors.primary(
-                                    defaultColor = colors.stateIconColor(
-                                        enabled = enabled,
-                                        isSuccess = isSuccess,
-                                        isError = isError,
-                                    ).value
-                                )
+                                icon = icon
                             )
                         }
                     }
+                    colors.stateIcon(
+                        enabled = enabled,
+                        isError = isError,
+                        isSuccess = isSuccess
+                    ).value?.let { icon ->
+                        Spacer(modifier = Modifier.width(MaterialTheme.spacing.small))
+                        CompositionLocalProvider(
+                            LocalContentColor provides colors.stateIconColor(
+                                enabled = enabled,
+                                isSuccess = isSuccess,
+                                isError = isError,
+                            ).value
+                        ) {
+                            PersianIconBox(icon = icon)
+                        }
+
+                    }
                 }
-            )
-        }
+            }
+        )
     }
 }
 
@@ -231,8 +224,6 @@ object InputsTransformations {
     val password = PasswordVisualTransformation()
 }
 
-
-@Suppress("UNUSED")
 @Composable
 private fun animateBorderStrokeAsState(
     enabled: Boolean,
@@ -244,7 +235,12 @@ private fun animateBorderStrokeAsState(
     unfocusedBorderThickness: Dp
 ): State<BorderStroke> {
     val focused by interactionSource.collectIsFocusedAsState()
-    val indicatorColor = colors.indicatorColor(enabled, isError, isSuccess, interactionSource)
+    val indicatorColor = colors.indicatorColor(
+        enabled = enabled,
+        isSuccess = isSuccess,
+        isError = isError,
+        interactionSource = interactionSource
+    )
     val targetThickness = if (focused || isError || isSuccess)
         focusedBorderThickness
     else
@@ -257,39 +253,4 @@ private fun animateBorderStrokeAsState(
     return rememberUpdatedState(
         BorderStroke(animatedThickness.value, SolidColor(indicatorColor.value))
     )
-}
-
-@Preview
-@Composable
-fun InputPreview() {
-    PersianTheme {
-        Surface {
-            PersianInputs.Primary(
-                modifier = Modifier
-                    .padding(10.dp),
-                value = "",
-                isSuccess = true,
-                placeholder = "Я текст",
-                onValueChange = {}
-            )
-        }
-    }
-}
-
-@Preview(uiMode = UI_MODE_NIGHT_YES)
-@Composable
-fun DarkInputPreview() {
-    PersianTheme {
-        Surface {
-            PersianInputs.Primary(
-                modifier = Modifier
-                    .padding(10.dp),
-                value = "Я введенный текст",
-                isSuccess = true,
-                placeholder = "Я текст",
-                trailingIcon = MaterialTheme.icons.visibility,
-                onValueChange = {}
-            )
-        }
-    }
 }

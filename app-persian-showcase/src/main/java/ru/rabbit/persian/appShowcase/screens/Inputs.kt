@@ -1,18 +1,28 @@
 package ru.rabbit.persian.appShowcase.screens
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
 import io.github.madmaximuus.persian.foundation.icons
-import io.github.madmaximuus.persian.inputs.PersianInputs
-import ru.rabbit.persian.appShowcase.componets.SampleRow
+import io.github.madmaximuus.persian.inputs.InputsTransformations
+import io.github.madmaximuus.persian.inputs.PersianInput
+import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object Inputs : Screen {
@@ -24,228 +34,102 @@ object Inputs : Screen {
     override fun Content(navController: NavController?) {
         val topAppBarScrollBehavior =
             TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
+        val (value, onValueChange) = remember { mutableStateOf("") }
+        val (placeholderValue, onPlaceholderValueChange) = remember { mutableStateOf("") }
+        val (enabled, onEnabledChange) = remember { mutableStateOf(true) }
+        val (isError, onIsErrorChange) = remember { mutableStateOf(false) }
+        val (isSuccess, onIsSuccessChange) = remember { mutableStateOf(false) }
+        val (placeholder, onPlaceholderChange) = remember { mutableStateOf(false) }
+        val (password, onPasswordChange) = remember { mutableStateOf(false) }
+        val (leading, onLeadingChange) = remember { mutableStateOf(false) }
+        val (trailing, onTrailingChange) = remember { mutableStateOf(false) }
+        val (suffix, onSuffixChange) = remember { mutableStateOf(false) }
         SampleScaffold(
             title = name,
             onBackClick = { navController?.navigateUp() },
             topAppBarScrollBehavior = topAppBarScrollBehavior
         ) {
-            LazyColumn(
+            Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .nestedScroll(topAppBarScrollBehavior.nestedScrollConnection),
-                contentPadding = it
+                    //.scrollable(rememberScrollState(), orientation = Orientation.Vertical)
+                    .nestedScroll(topAppBarScrollBehavior.nestedScrollConnection)
+                    .padding(it),
             ) {
-                item {
-                    SampleRow(text = "Input", firstItem = true) {
-                        PersianInputs.Primary(value = "", onValueChange = {})
-                    }
+                PersianInput(
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                    value = value,
+                    onValueChange = onValueChange,
+                    enabled = enabled,
+                    isError = isError,
+                    isSuccess = isSuccess,
+                    placeholder = if (placeholder) placeholderValue else null,
+                    transformation = if (password) InputsTransformations.password else InputsTransformations.none,
+                    leadingIcon = if (leading) MaterialTheme.icons.person else null,
+                    trailingIcon = if (trailing) painterResource(id = R.drawable.ic_visibility) else null,
+                    suffix = if (suffix) "12" else null,
+                    onTrailingIconClick = {}
+                )
+                Spacer(modifier = Modifier.height(20.dp))
+                Text(
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                    text = "Settings"
+                )
+                PersianCheckbox(
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                    text = "Enabled",
+                    checked = enabled,
+                    onCheckedChange = onEnabledChange
+                )
+                PersianCheckbox(
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                    text = "Is Error State",
+                    checked = isError,
+                    onCheckedChange = onIsErrorChange
+                )
+                PersianCheckbox(
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                    text = "Is Success State",
+                    checked = isSuccess,
+                    onCheckedChange = onIsSuccessChange
+                )
+                PersianCheckbox(
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                    text = "Placeholder",
+                    checked = placeholder,
+                    onCheckedChange = onPlaceholderChange
+                )
+                if (placeholder) {
+                    PersianInput(
+                        modifier = Modifier.padding(horizontal = 20.dp),
+                        value = placeholderValue,
+                        onValueChange = onPlaceholderValueChange
+                    )
                 }
-                item {
-                    SampleRow(text = "Input Error") {
-                        PersianInputs.Primary(value = "", onValueChange = {}, isError = true)
-                    }
-                }
-                item {
-                    SampleRow(text = "Input Success") {
-                        PersianInputs.Primary(value = "", onValueChange = {}, isSuccess = true)
-                    }
-                }
-                item {
-                    SampleRow(text = "Input Disabled") {
-                        PersianInputs.Primary(value = "", onValueChange = {}, enabled = false)
-                    }
-                }
-                item {
-                    SampleRow(text = "Input Placeholder") {
-                        PersianInputs.Primary(
-                            value = "",
-                            onValueChange = {},
-                            placeholder = "Placeholder"
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Input Placeholder Error") {
-                        PersianInputs.Primary(
-                            value = "",
-                            onValueChange = {},
-                            placeholder = "Placeholder",
-                            isError = true
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Input Placeholder Success") {
-                        PersianInputs.Primary(
-                            value = "",
-                            onValueChange = {},
-                            placeholder = "Placeholder",
-                            isSuccess = true
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Input Placeholder Disabled") {
-                        PersianInputs.Primary(
-                            value = "",
-                            onValueChange = {},
-                            placeholder = "Placeholder",
-                            enabled = false
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Input Input Text") {
-                        PersianInputs.Primary(
-                            value = "Some input",
-                            onValueChange = {},
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Input Placeholder Error") {
-                        PersianInputs.Primary(
-                            value = "Some input",
-                            onValueChange = {},
-                            isError = true
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Input Placeholder Success") {
-                        PersianInputs.Primary(
-                            value = "Some input",
-                            onValueChange = {},
-                            isSuccess = true
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Input Placeholder Disabled") {
-                        PersianInputs.Primary(
-                            value = "Some input",
-                            onValueChange = {},
-                            enabled = false
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Input Input Text + Leading Icon") {
-                        PersianInputs.Primary(
-                            value = "Some input",
-                            onValueChange = {},
-                            leadingIcon = MaterialTheme.icons.chatOutlined
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Input Placeholder Error + Leading Icon") {
-                        PersianInputs.Primary(
-                            value = "Some input",
-                            onValueChange = {},
-                            isError = true,
-                            leadingIcon = MaterialTheme.icons.chatOutlined
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Input Placeholder Success + Leading Icon") {
-                        PersianInputs.Primary(
-                            value = "Some input",
-                            onValueChange = {},
-                            isSuccess = true,
-                            leadingIcon = MaterialTheme.icons.chatOutlined
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Input Placeholder Disabled + Leading Icon") {
-                        PersianInputs.Primary(
-                            value = "Some input",
-                            onValueChange = {},
-                            enabled = false,
-                            leadingIcon = MaterialTheme.icons.chatOutlined
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Input Input Text + Trailing Icon") {
-                        PersianInputs.Primary(
-                            value = "Some input",
-                            onValueChange = {},
-                            trailingIcon = MaterialTheme.icons.visibility
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Input Placeholder Error + Trailing Icon") {
-                        PersianInputs.Primary(
-                            value = "Some input",
-                            onValueChange = {},
-                            isError = true,
-                            trailingIcon = MaterialTheme.icons.visibility
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Input Placeholder Success + Trailing Icon") {
-                        PersianInputs.Primary(
-                            value = "Some input",
-                            onValueChange = {},
-                            isSuccess = true,
-                            trailingIcon = MaterialTheme.icons.visibility
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Input Placeholder Disabled + Trailing Icon") {
-                        PersianInputs.Primary(
-                            value = "Some input",
-                            onValueChange = {},
-                            enabled = false,
-                            trailingIcon = MaterialTheme.icons.visibility
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Input Input Text + Suffix") {
-                        PersianInputs.Primary(
-                            value = "Some input",
-                            onValueChange = {},
-                            suffix = "25"
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Input Placeholder Error + Suffix") {
-                        PersianInputs.Primary(
-                            value = "Some input",
-                            onValueChange = {},
-                            isError = true,
-                            suffix = "25"
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Input Placeholder Success + Suffix") {
-                        PersianInputs.Primary(
-                            value = "Some input",
-                            onValueChange = {},
-                            isSuccess = true,
-                            suffix = "25"
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Input Placeholder Disabled + Suffix", lastItem = true) {
-                        PersianInputs.Primary(
-                            value = "Some input",
-                            onValueChange = {},
-                            enabled = false,
-                            suffix = "25"
-                        )
-                    }
-                }
+                PersianCheckbox(
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                    text = "Password",
+                    checked = password,
+                    onCheckedChange = onPasswordChange
+                )
+                PersianCheckbox(
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                    text = "Leading Icon",
+                    checked = leading,
+                    onCheckedChange = onLeadingChange
+                )
+                PersianCheckbox(
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                    text = "Trailing Icon",
+                    checked = trailing,
+                    onCheckedChange = onTrailingChange
+                )
+                PersianCheckbox(
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                    text = "Suffix",
+                    checked = suffix,
+                    onCheckedChange = onSuffixChange
+                )
             }
         }
     }

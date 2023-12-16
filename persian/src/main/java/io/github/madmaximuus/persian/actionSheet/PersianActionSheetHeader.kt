@@ -12,37 +12,32 @@ import androidx.compose.ui.Modifier
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import io.github.madmaximuus.persian.foundation.spacing
 
-object PersianActionSheetHeader {
-
-    @Composable
-    fun Primary(
-        modifier: Modifier = Modifier,
-        title: String,
-        subtitle: String? = null,
-    ) {
-        Column(
-            modifier = modifier
-                .fillMaxWidth()
-                .padding(
-                    start = MaterialTheme.spacing.extraExtraLarge,
-                    end = MaterialTheme.spacing.extraExtraLarge,
-                    top = MaterialTheme.spacing.small,
-                    bottom = MaterialTheme.spacing.extraSmall
-                )
-        ) {
-            Text(
-                text = title,
-                style = MaterialTheme.typography.titleLarge,
-                color = MaterialTheme.extendedColorScheme.onSurface
+@Composable
+internal fun PersianActionSheetHeader(
+    modifier: Modifier = Modifier,
+    title: String,
+    subtitle: String,
+) {
+    Column(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(
+                start = MaterialTheme.spacing.extraExtraLarge,
+                end = MaterialTheme.spacing.extraExtraLarge,
+                top = MaterialTheme.spacing.large,
+                bottom = MaterialTheme.spacing.extraSmall
             )
-            if (subtitle != null) {
-                Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraSmall))
-                Text(
-                    text = subtitle,
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.extendedColorScheme.onSurfaceVariant
-                )
-            }
-        }
+    ) {
+        Text(
+            text = title,
+            style = MaterialTheme.typography.titleMedium,
+            color = MaterialTheme.extendedColorScheme.onSurface
+        )
+        Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraSmall))
+        Text(
+            text = subtitle,
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.extendedColorScheme.onSurfaceVariant
+        )
     }
 }

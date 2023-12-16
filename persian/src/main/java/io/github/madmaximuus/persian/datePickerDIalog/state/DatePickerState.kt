@@ -177,7 +177,7 @@ internal class DatePickerState(
             is DatePickerSelection.Date -> selection.onDateSelected(date.value!!)
             is DatePickerSelection.Dates -> selection.onDatesSelected(dates.sorted())
             is DatePickerSelection.Period -> selection.onRangeSelected(
-                range.startValue!!, range.endValue!!
+                range.startValue ?: Calendar.getInstance(), range.endValue ?: Calendar.getInstance()
             )
         }
     }

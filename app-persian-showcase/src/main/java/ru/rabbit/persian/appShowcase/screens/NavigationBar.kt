@@ -3,13 +3,13 @@ package ru.rabbit.persian.appShowcase.screens
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.navigationBar.NavigationBarItem
 import io.github.madmaximuus.persian.navigationBar.PersianNavigationBar
+import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
@@ -34,26 +34,26 @@ object NavigationBar : Screen {
             ) {
                 item {
                     SampleRow(text = "Navigation Bar with 3 items", firstItem = true) {
-                        PersianNavigationBar.Primary(
+                        PersianNavigationBar(
                             actions = listOf(
                                 NavigationBarItem(
                                     selected = true,
-                                    icon = MaterialTheme.icons.homeOutlined,
-                                    selectedIcon = MaterialTheme.icons.homeFilled,
+                                    icon = painterResource(id = R.drawable.ic_home_outlined),
+                                    selectedIcon = painterResource(id = R.drawable.ic_home_filled),
                                     text = "Feed",
                                     onClick = {}
                                 ),
                                 NavigationBarItem(
                                     selected = false,
-                                    icon = MaterialTheme.icons.homeOutlined,
-                                    selectedIcon = MaterialTheme.icons.homeFilled,
+                                    icon = painterResource(id = R.drawable.ic_home_outlined),
+                                    selectedIcon = painterResource(id = R.drawable.ic_home_filled),
                                     text = "Feed",
                                     onClick = {}
                                 ),
                                 NavigationBarItem(
                                     selected = false,
-                                    icon = MaterialTheme.icons.homeOutlined,
-                                    selectedIcon = MaterialTheme.icons.homeFilled,
+                                    icon = painterResource(id = R.drawable.ic_home_outlined),
+                                    selectedIcon = painterResource(id = R.drawable.ic_home_filled),
                                     text = "Feed",
                                     onClick = {}
                                 ),
@@ -63,33 +63,33 @@ object NavigationBar : Screen {
                 }
                 item {
                     SampleRow(text = "Navigation Bar with 4 items") {
-                        PersianNavigationBar.Primary(
+                        PersianNavigationBar(
                             actions = listOf(
                                 NavigationBarItem(
                                     selected = true,
-                                    icon = MaterialTheme.icons.homeOutlined,
-                                    selectedIcon = MaterialTheme.icons.homeFilled,
+                                    icon = painterResource(id = R.drawable.ic_home_outlined),
+                                    selectedIcon = painterResource(id = R.drawable.ic_home_filled),
                                     text = "Feed",
                                     onClick = {}
                                 ),
                                 NavigationBarItem(
                                     selected = false,
-                                    icon = MaterialTheme.icons.homeOutlined,
-                                    selectedIcon = MaterialTheme.icons.homeFilled,
+                                    icon = painterResource(id = R.drawable.ic_home_outlined),
+                                    selectedIcon = painterResource(id = R.drawable.ic_home_filled),
                                     text = "Feed",
                                     onClick = {}
                                 ),
                                 NavigationBarItem(
                                     selected = false,
-                                    icon = MaterialTheme.icons.homeOutlined,
-                                    selectedIcon = MaterialTheme.icons.homeFilled,
+                                    icon = painterResource(id = R.drawable.ic_home_outlined),
+                                    selectedIcon = painterResource(id = R.drawable.ic_home_filled),
                                     text = "Feed",
                                     onClick = {}
                                 ),
                                 NavigationBarItem(
                                     selected = false,
-                                    icon = MaterialTheme.icons.homeOutlined,
-                                    selectedIcon = MaterialTheme.icons.homeFilled,
+                                    icon = painterResource(id = R.drawable.ic_home_outlined),
+                                    selectedIcon = painterResource(id = R.drawable.ic_home_filled),
                                     text = "Feed",
                                     onClick = {}
                                 ),
@@ -99,40 +99,40 @@ object NavigationBar : Screen {
                 }
                 item {
                     SampleRow(text = "Navigation Bar with 5 items", lastItem = true) {
-                        PersianNavigationBar.Primary(
+                        PersianNavigationBar(
                             actions = listOf(
                                 NavigationBarItem(
                                     selected = true,
-                                    icon = MaterialTheme.icons.homeOutlined,
-                                    selectedIcon = MaterialTheme.icons.homeFilled,
+                                    icon = painterResource(id = R.drawable.ic_home_outlined),
+                                    selectedIcon = painterResource(id = R.drawable.ic_home_filled),
                                     text = "Feed",
                                     onClick = {}
                                 ),
                                 NavigationBarItem(
                                     selected = false,
-                                    icon = MaterialTheme.icons.homeOutlined,
-                                    selectedIcon = MaterialTheme.icons.homeFilled,
+                                    icon = painterResource(id = R.drawable.ic_home_outlined),
+                                    selectedIcon = painterResource(id = R.drawable.ic_home_filled),
                                     text = "Feed",
                                     onClick = {}
                                 ),
                                 NavigationBarItem(
                                     selected = false,
-                                    icon = MaterialTheme.icons.homeOutlined,
-                                    selectedIcon = MaterialTheme.icons.homeFilled,
+                                    icon = painterResource(id = R.drawable.ic_home_outlined),
+                                    selectedIcon = painterResource(id = R.drawable.ic_home_filled),
                                     text = "Feed",
                                     onClick = {}
                                 ),
                                 NavigationBarItem(
                                     selected = false,
-                                    icon = MaterialTheme.icons.homeOutlined,
-                                    selectedIcon = MaterialTheme.icons.homeFilled,
+                                    icon = painterResource(id = R.drawable.ic_home_outlined),
+                                    selectedIcon = painterResource(id = R.drawable.ic_home_filled),
                                     text = "Feed",
                                     onClick = {}
                                 ),
                                 NavigationBarItem(
                                     selected = false,
-                                    icon = MaterialTheme.icons.homeOutlined,
-                                    selectedIcon = MaterialTheme.icons.homeFilled,
+                                    icon = painterResource(id = R.drawable.ic_home_outlined),
+                                    selectedIcon = painterResource(id = R.drawable.ic_home_filled),
                                     text = "Feed",
                                     onClick = {}
                                 ),

@@ -10,26 +10,23 @@ import androidx.compose.ui.Modifier
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import io.github.madmaximuus.persian.foundation.spacing
 
-internal object PersianDatePickerDialogWeekLabelCell {
-
-    @Composable
-    fun Primary(
-        label: String,
-        modifier: Modifier = Modifier,
+@Composable
+internal fun PersianDatePickerDialogWeekLabelCell(
+    label: String,
+    modifier: Modifier = Modifier,
+) {
+    Box(
+        modifier = modifier
+            .padding(
+                horizontal = MaterialTheme.spacing.extraSmall,
+                vertical = MaterialTheme.spacing.extraExtraSmall
+            ),
+        contentAlignment = Alignment.Center
     ) {
-        Box(
-            modifier = modifier
-                .padding(
-                    horizontal = MaterialTheme.spacing.extraSmall,
-                    vertical = MaterialTheme.spacing.extraExtraSmall
-                ),
-            contentAlignment = Alignment.Center
-        ) {
-            Text(
-                text = label,
-                style = MaterialTheme.typography.labelLarge,
-                color = MaterialTheme.extendedColorScheme.onSurfaceVariant
-            )
-        }
+        Text(
+            text = label,
+            style = MaterialTheme.typography.labelLarge,
+            color = MaterialTheme.extendedColorScheme.onSurfaceVariant
+        )
     }
 }

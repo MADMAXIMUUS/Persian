@@ -19,8 +19,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.dividers.PersianHorizontalDividers
-import io.github.madmaximuus.persian.dividers.PersianVerticalDividers
+import io.github.madmaximuus.persian.dividers.HorizontalInsetSide
+import io.github.madmaximuus.persian.dividers.PersianFullHeightVerticalDivider
+import io.github.madmaximuus.persian.dividers.PersianFullWidthHorizontalDivider
+import io.github.madmaximuus.persian.dividers.PersianInsetHorizontalDivider
+import io.github.madmaximuus.persian.dividers.PersianInsetVerticalDivider
+import io.github.madmaximuus.persian.dividers.PersianMiddleInsetsHorizontalDivider
+import io.github.madmaximuus.persian.dividers.PersianMiddleInsetsVerticalDivider
+import io.github.madmaximuus.persian.dividers.VerticalInsetSide
 import io.github.madmaximuus.persian.foundation.spacing
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
@@ -63,7 +69,7 @@ object Divider : Screen {
                                 .background(MaterialTheme.colorScheme.onSurface),
                                 content = {}
                             )
-                            PersianHorizontalDividers.FullWidth()
+                            PersianFullWidthHorizontalDivider()
                         }
                     }
                 }
@@ -83,8 +89,9 @@ object Divider : Screen {
                                 .background(MaterialTheme.colorScheme.onSurface),
                                 content = {}
                             )
-                            PersianHorizontalDividers
-                                .MiddleInsets(insetSide = PersianHorizontalDividers.InsetSide.LEFT)
+                            PersianMiddleInsetsHorizontalDivider(
+                                insetSide = HorizontalInsetSide.LEFT
+                            )
                         }
                     }
                 }
@@ -104,8 +111,9 @@ object Divider : Screen {
                                 .background(MaterialTheme.colorScheme.onSurface),
                                 content = {}
                             )
-                            PersianHorizontalDividers
-                                .MiddleInsets(insetSide = PersianHorizontalDividers.InsetSide.RIGHT)
+                            PersianMiddleInsetsHorizontalDivider(
+                                insetSide = HorizontalInsetSide.RIGHT
+                            )
                         }
                     }
                 }
@@ -125,7 +133,7 @@ object Divider : Screen {
                                 .background(MaterialTheme.colorScheme.onSurface),
                                 content = {}
                             )
-                            PersianHorizontalDividers.Inset()
+                            PersianInsetHorizontalDivider()
                         }
                     }
                 }
@@ -147,7 +155,7 @@ object Divider : Screen {
                                 .background(MaterialTheme.colorScheme.onSurface),
                                 content = {}
                             )
-                            PersianVerticalDividers.FullHeight()
+                            PersianFullHeightVerticalDivider()
                         }
                     }
                 }
@@ -169,7 +177,9 @@ object Divider : Screen {
                                 .background(MaterialTheme.colorScheme.onSurface),
                                 content = {}
                             )
-                            PersianVerticalDividers.MiddleInsets(insetSide = PersianVerticalDividers.InsetSide.TOP)
+                            PersianMiddleInsetsVerticalDivider(
+                                insetSide = VerticalInsetSide.TOP
+                            )
                         }
                     }
                 }
@@ -191,7 +201,9 @@ object Divider : Screen {
                                 .background(MaterialTheme.colorScheme.onSurface),
                                 content = {}
                             )
-                            PersianVerticalDividers.MiddleInsets(insetSide = PersianVerticalDividers.InsetSide.BOTTOM)
+                            PersianMiddleInsetsVerticalDivider(
+                                insetSide = VerticalInsetSide.BOTTOM
+                            )
                         }
                     }
                 }
@@ -213,7 +225,7 @@ object Divider : Screen {
                                 .background(MaterialTheme.colorScheme.onSurface),
                                 content = {}
                             )
-                            PersianVerticalDividers.Inset()
+                            PersianInsetVerticalDivider()
                         }
                     }
                 }

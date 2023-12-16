@@ -16,11 +16,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.buttons.PersianButton
+import io.github.madmaximuus.persian.buttons.PersianPrimaryButton
 import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.foundation.spacing
 import io.github.madmaximuus.persian.topAppBar.ActionItem
 import io.github.madmaximuus.persian.topAppBar.PersianTopAppBar
+import io.github.madmaximuus.persian.topAppBar.PersianTopAppBarLeft
+import io.github.madmaximuus.persian.topAppBar.PersianTopAppBarMiddle
+import io.github.madmaximuus.persian.topAppBar.PersianTopAppBarRight
 
 object TopAppBar : Screen {
     override val name: String = "Top App Bar"
@@ -42,125 +45,121 @@ object TopAppBar : Screen {
         var actionItemCount by remember { mutableIntStateOf(0) }
         Scaffold(
             topBar = {
-                PersianTopAppBar.Primary(
-                    left = {
-                        if (navigationLeft) {
-                            Navigation(
-                                onClick = {
-                                    navController?.navigateUp()
-                                }
-                            )
-                        } else if (closeLeft) {
-                            Close(
-                                onClick = {
-                                    navController?.navigateUp()
-                                }
-                            )
-                        } else if (avatarLeft) {
-                            Avatar(
-                                image = "https://loremflickr.com/320/240",
-                                onClick = {
-                                    navController?.navigateUp()
-                                }
-                            )
-                        }
-                    },
-                    middle = {
-                        if (middleTitle)
-                            Title(text = name)
-                        else if (middleIcon)
-                            Icon24(icon = MaterialTheme.icons.appLogo)
-                    },
+                PersianTopAppBar(
+                    left = if (navigationLeft) {
+                        PersianTopAppBarLeft.Navigation(
+                            onClick = {
+                                navController?.navigateUp()
+                            }
+                        )
+                    } else if (closeLeft) {
+                        PersianTopAppBarLeft.Close(
+                            onClick = {
+                                navController?.navigateUp()
+                            }
+                        )
+                    } else if (avatarLeft) {
+                        PersianTopAppBarLeft.Avatar(
+                            avatarUrl = "https://loremflickr.com/320/240",
+                            onClick = {
+                                navController?.navigateUp()
+                            }
+                        )
+                    } else null,
+                    middle =
+                    if (middleTitle) PersianTopAppBarMiddle.Title(text = name)
+                    else if (middleIcon) PersianTopAppBarMiddle.Icon(icon = MaterialTheme.icons.person)
+                    else PersianTopAppBarMiddle.Title(text = name),
                     actionItemsCount = actionItemCount,
-                    right = {
-                        if (actionButtonRight) {
-                            Button(text = "Action", onClick = {})
-                        } else if (actionIconRight) {
-                            Icons(
-                                actions = listOf(
-                                    ActionItem(
-                                        icon = MaterialTheme.icons.notifications,
-                                        title = "notifications",
-                                        contentDescription = "",
-                                        onClick = {}
-                                    )
+                    right = if (actionButtonRight) {
+                        PersianTopAppBarRight.Action(text = "Action", onClick = {})
+                    } else if (actionIconRight) {
+                        PersianTopAppBarRight.Icons(
+                            expanded = remember { mutableStateOf(false) },
+                            actionItem = listOf(
+                                ActionItem(
+                                    icon = MaterialTheme.icons.person,
+                                    title = "notifications",
+                                    contentDescription = "",
+                                    onClick = {}
                                 )
                             )
-                        } else if (actionIconsRight) {
-                            Icons(
-                                actions = listOf(
-                                    ActionItem(
-                                        icon = MaterialTheme.icons.notifications,
-                                        title = "notifications",
-                                        contentDescription = "",
-                                        onClick = {}
-                                    ),
-                                    ActionItem(
-                                        icon = MaterialTheme.icons.notifications,
-                                        title = "notifications",
-                                        contentDescription = "",
-                                        onClick = {}
-                                    ),
-                                    ActionItem(
-                                        icon = MaterialTheme.icons.notifications,
-                                        title = "notifications",
-                                        contentDescription = "",
-                                        onClick = {}
-                                    )
-                                )
-                            )
-                        } else if (actionIconsOverflowRight) {
-                            Icons(
-                                expanded = expanded,
-                                actions = listOf(
-                                    ActionItem(
-                                        icon = MaterialTheme.icons.notifications,
-                                        title = "notifications",
-                                        contentDescription = "",
-                                        badgeCount = 10,
-                                        onClick = {}
-                                    ),
-                                    ActionItem(
-                                        icon = MaterialTheme.icons.notifications,
-                                        title = "notifications",
-                                        contentDescription = "",
-                                        badgeCount = 0,
-                                        onClick = {}
-                                    ),
-                                    ActionItem(
-                                        icon = MaterialTheme.icons.notifications,
-                                        title = "notifications",
-                                        contentDescription = "",
-                                        onClick = {}
-                                    ),
-                                    ActionItem(
-                                        icon = MaterialTheme.icons.notifications,
-                                        title = "notifications",
-                                        contentDescription = "",
-                                        onClick = {}
-                                    ),
-                                    ActionItem(
-                                        icon = MaterialTheme.icons.notifications,
-                                        title = "notifications",
-                                        contentDescription = "",
-                                        onClick = {}
-                                    ),
-                                    ActionItem(
-                                        icon = MaterialTheme.icons.notifications,
-                                        title = "notifications",
-                                        contentDescription = "",
-                                        onClick = {}
-                                    ),
-                                    ActionItem(
-                                        icon = MaterialTheme.icons.notifications,
-                                        title = "notifications",
-                                        contentDescription = "",
-                                        onClick = {}
-                                    ),
+                        )
+                    } else if (actionIconsRight) {
+                        PersianTopAppBarRight.Icons(
+                            expanded = remember { mutableStateOf(false) },
+                            actionItem = listOf(
+                                ActionItem(
+                                    icon = MaterialTheme.icons.person,
+                                    title = "notifications",
+                                    contentDescription = "",
+                                    onClick = {}
                                 ),
+                                ActionItem(
+                                    icon = MaterialTheme.icons.person,
+                                    title = "notifications",
+                                    contentDescription = "",
+                                    onClick = {}
+                                ),
+                                ActionItem(
+                                    icon = MaterialTheme.icons.person,
+                                    title = "notifications",
+                                    contentDescription = "",
+                                    onClick = {}
+                                )
                             )
-                        }
-                    }
+                        )
+                    } else if (actionIconsOverflowRight) {
+                        PersianTopAppBarRight.Icons(
+                            expanded = expanded,
+                            actionItem = listOf(
+                                ActionItem(
+                                    icon = MaterialTheme.icons.person,
+                                    title = "notifications",
+                                    contentDescription = "",
+                                    badgeCount = 10,
+                                    onClick = {}
+                                ),
+                                ActionItem(
+                                    icon = MaterialTheme.icons.person,
+                                    title = "notifications",
+                                    contentDescription = "",
+                                    badgeCount = 0,
+                                    onClick = {}
+                                ),
+                                ActionItem(
+                                    icon = MaterialTheme.icons.person,
+                                    title = "notifications",
+                                    contentDescription = "",
+                                    onClick = {}
+                                ),
+                                ActionItem(
+                                    icon = MaterialTheme.icons.person,
+                                    title = "notifications",
+                                    contentDescription = "",
+                                    onClick = {}
+                                ),
+                                ActionItem(
+                                    icon = MaterialTheme.icons.person,
+                                    title = "notifications",
+                                    contentDescription = "",
+                                    onClick = {}
+                                ),
+                                ActionItem(
+                                    icon = MaterialTheme.icons.person,
+                                    title = "notifications",
+                                    contentDescription = "",
+                                    onClick = {}
+                                ),
+                                ActionItem(
+                                    icon = MaterialTheme.icons.person,
+                                    title = "notifications",
+                                    contentDescription = "",
+                                    onClick = {}
+                                ),
+                            ),
+                        )
+                    } else null
                 )
             }
         ) {
@@ -171,51 +170,51 @@ object TopAppBar : Screen {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small)
             ) {
-                PersianButton.Primary(text = "Middle Title") {
+                PersianPrimaryButton(text = "Middle Title") {
                     middleTitle = true
                     middleIcon = false
                 }
-                PersianButton.Primary(text = "Middle Icon") {
+                PersianPrimaryButton(text = "Middle Icon") {
                     middleIcon = true
                     middleTitle = false
                 }
-                PersianButton.Primary(text = "Left Navigation") {
+                PersianPrimaryButton(text = "Left Navigation") {
                     navigationLeft = true
                     closeLeft = false
                     avatarLeft = false
                 }
-                PersianButton.Primary(text = "Left Close") {
+                PersianPrimaryButton(text = "Left Close") {
                     navigationLeft = false
                     closeLeft = true
                     avatarLeft = false
                 }
-                PersianButton.Primary(text = "Left Avatar") {
+                PersianPrimaryButton(text = "Left Avatar") {
                     navigationLeft = false
                     closeLeft = false
                     avatarLeft = true
                 }
-                PersianButton.Primary(text = "Right Action") {
+                PersianPrimaryButton(text = "Right Action") {
                     actionButtonRight = true
                     actionIconRight = false
                     actionIconsRight = false
                     actionIconsOverflowRight = false
                     actionItemCount = 1
                 }
-                PersianButton.Primary(text = "Right Icon") {
+                PersianPrimaryButton(text = "Right Icon") {
                     actionButtonRight = false
                     actionIconRight = true
                     actionIconsRight = false
                     actionIconsOverflowRight = false
                     actionItemCount = 1
                 }
-                PersianButton.Primary(text = "Right Icons") {
+                PersianPrimaryButton(text = "Right Icons") {
                     actionButtonRight = false
                     actionIconRight = false
                     actionIconsRight = true
                     actionIconsOverflowRight = false
                     actionItemCount = 3
                 }
-                PersianButton.Primary(text = "Right Icons Overflow") {
+                PersianPrimaryButton(text = "Right Icons Overflow") {
                     actionButtonRight = false
                     actionIconRight = false
                     actionIconsRight = false

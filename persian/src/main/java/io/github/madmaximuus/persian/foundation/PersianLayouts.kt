@@ -50,4 +50,4 @@ internal fun PersianSubcomposeLayout(
 /**
  * Enum class for SubcomposeLayouts with main and dependent Composables
  */
-enum class SlotsEnum { Main, Dependent }
+internal enum class SlotsEnum { Main, Dependent }

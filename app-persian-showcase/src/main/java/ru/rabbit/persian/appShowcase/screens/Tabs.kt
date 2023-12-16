@@ -10,7 +10,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.foundation.icons
-import io.github.madmaximuus.persian.tabs.PersianTabs
+import io.github.madmaximuus.persian.tabs.PersianFixedTabs
+import io.github.madmaximuus.persian.tabs.PersianScrollableTabs
 import io.github.madmaximuus.persian.tabs.TabItem
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
@@ -42,13 +43,13 @@ object Tabs : Screen {
                             list.add(
                                 TabItem(
                                     label = "Label $i",
-                                    icon = MaterialTheme.icons.globeUk,
+                                    icon = MaterialTheme.icons.person,
                                     selected = i == 0
                                 )
                             )
                         }
 
-                        PersianTabs.Scrollable(
+                        PersianScrollableTabs(
                             tabItems = list,
                             onTabClicked = { item ->
                                 selectNewTab(list, item)
@@ -63,13 +64,13 @@ object Tabs : Screen {
                             list.add(
                                 TabItem(
                                     label = "Label $i",
-                                    icon = MaterialTheme.icons.globeUk,
+                                    icon = MaterialTheme.icons.person,
                                     selected = i == 0
                                 )
                             )
                         }
 
-                        PersianTabs.Scrollable(
+                        PersianScrollableTabs(
                             tabItems = list,
                             onTabClicked = { item ->
                                 selectNewTab(list, item)
@@ -89,7 +90,7 @@ object Tabs : Screen {
                             )
                         }
 
-                        PersianTabs.Scrollable(
+                        PersianScrollableTabs(
                             tabItems = list,
                             onTabClicked = { item ->
                                 selectNewTab(list, item)
@@ -105,13 +106,13 @@ object Tabs : Screen {
                             list.add(
                                 TabItem(
                                     label = "Label $i",
-                                    icon = MaterialTheme.icons.globeUk,
+                                    icon = MaterialTheme.icons.person,
                                     selected = i == 0
                                 )
                             )
                         }
 
-                        PersianTabs.Fixed(
+                        PersianFixedTabs(
                             tabItems = list,
                             onTabClicked = { item ->
                                 selectNewTab(list, item)
@@ -127,13 +128,13 @@ object Tabs : Screen {
                             list.add(
                                 TabItem(
                                     label = "Label $i",
-                                    icon = MaterialTheme.icons.globeUk,
+                                    icon = MaterialTheme.icons.person,
                                     selected = i == 0
                                 )
                             )
                         }
 
-                        PersianTabs.Fixed(
+                        PersianFixedTabs(
                             tabItems = list,
                             onTabClicked = { item ->
                                 selectNewTab(list, item)
@@ -154,7 +155,7 @@ object Tabs : Screen {
                             )
                         }
 
-                        PersianTabs.Fixed(
+                        PersianFixedTabs(
                             tabItems = list,
                             onTabClicked = { item ->
                                 selectNewTab(list, item)

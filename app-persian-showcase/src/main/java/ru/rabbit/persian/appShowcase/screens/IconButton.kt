@@ -8,10 +8,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.foundation.PersianComponentStyle
 import io.github.madmaximuus.persian.foundation.icons
-import io.github.madmaximuus.persian.iconButtons.PersianIconButton
+import io.github.madmaximuus.persian.iconButtons.PersianOutlinedIconButton
+import io.github.madmaximuus.persian.iconButtons.PersianOutlinedToggleIconButton
+import io.github.madmaximuus.persian.iconButtons.PersianPrimaryIconButton
+import io.github.madmaximuus.persian.iconButtons.PersianPrimaryToggleIconButton
+import io.github.madmaximuus.persian.iconButtons.PersianSecondaryIconButton
+import io.github.madmaximuus.persian.iconButtons.PersianSecondaryToggleIconButton
+import io.github.madmaximuus.persian.iconButtons.PersianTertiaryIconButton
+import io.github.madmaximuus.persian.iconButtons.PersianTertiaryToggleIconButton
+import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
@@ -34,24 +42,20 @@ object IconButton : Screen {
             ) {
                 item {
                     SampleRow(text = "Icon Button", firstItem = true) {
-                        PersianIconButton.Primary(
-                            icon = MaterialTheme.icons.favoriteOutlined,
-                            style = PersianComponentStyle.FILL,
+                        PersianPrimaryIconButton(
+                            icon = MaterialTheme.icons.person,
                             onClick = {}
                         )
-                        PersianIconButton.Primary(
-                            icon = MaterialTheme.icons.favoriteOutlined,
-                            style = PersianComponentStyle.OUTLINED,
+                        PersianSecondaryIconButton(
+                            icon = MaterialTheme.icons.person,
                             onClick = {}
                         )
-                        PersianIconButton.Primary(
-                            icon = MaterialTheme.icons.favoriteOutlined,
-                            style = PersianComponentStyle.STANDARD,
+                        PersianTertiaryIconButton(
+                            icon = MaterialTheme.icons.person,
                             onClick = {}
                         )
-                        PersianIconButton.Primary(
-                            icon = MaterialTheme.icons.favoriteOutlined,
-                            style = PersianComponentStyle.TONAL,
+                        PersianOutlinedIconButton(
+                            icon = MaterialTheme.icons.person,
                             onClick = {}
                         )
                     }
@@ -59,31 +63,27 @@ object IconButton : Screen {
                 item {
                     val (checked, onCheckedChange) = remember { mutableStateOf(false) }
                     SampleRow(text = "Toggleable Icon Button", lastItem = true) {
-                        io.github.madmaximuus.persian.iconButtons.toggle.PersianIconButton.Primary(
-                            icon = MaterialTheme.icons.favoriteOutlined,
-                            style = PersianComponentStyle.FILL,
-                            checkedIcon = MaterialTheme.icons.favoriteFilled,
+                        PersianPrimaryToggleIconButton(
+                            icon = MaterialTheme.icons.person,
+                            checkedIcon = painterResource(id = R.drawable.ic_person_filled),
                             checked = checked,
                             onCheckedChange = onCheckedChange
                         )
-                        io.github.madmaximuus.persian.iconButtons.toggle.PersianIconButton.Primary(
-                            icon = MaterialTheme.icons.favoriteOutlined,
-                            style = PersianComponentStyle.OUTLINED,
-                            checkedIcon = MaterialTheme.icons.favoriteFilled,
+                        PersianSecondaryToggleIconButton(
+                            icon = MaterialTheme.icons.person,
+                            checkedIcon = painterResource(id = R.drawable.ic_person_filled),
                             checked = checked,
                             onCheckedChange = onCheckedChange
                         )
-                        io.github.madmaximuus.persian.iconButtons.toggle.PersianIconButton.Primary(
-                            icon = MaterialTheme.icons.favoriteOutlined,
-                            style = PersianComponentStyle.STANDARD,
-                            checkedIcon = MaterialTheme.icons.favoriteFilled,
+                        PersianTertiaryToggleIconButton(
+                            icon = MaterialTheme.icons.person,
+                            checkedIcon = painterResource(id = R.drawable.ic_person_filled),
                             checked = checked,
                             onCheckedChange = onCheckedChange
                         )
-                        io.github.madmaximuus.persian.iconButtons.toggle.PersianIconButton.Primary(
-                            icon = MaterialTheme.icons.favoriteOutlined,
-                            style = PersianComponentStyle.TONAL,
-                            checkedIcon = MaterialTheme.icons.favoriteFilled,
+                        PersianOutlinedToggleIconButton(
+                            icon = MaterialTheme.icons.person,
+                            checkedIcon = painterResource(id = R.drawable.ic_person_filled),
                             checked = checked,
                             onCheckedChange = onCheckedChange
                         )

@@ -17,14 +17,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.buttons.PersianButton
+import io.github.madmaximuus.persian.buttons.PersianPrimaryButton
 import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
 import io.github.madmaximuus.persian.datePickerDIalog.PersianDatePickerDialog
 import io.github.madmaximuus.persian.datePickerDIalog.util.DatePickerConfig
 import io.github.madmaximuus.persian.datePickerDIalog.util.DatePickerSelection
 import io.github.madmaximuus.persian.foundation.spacing
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
-import java.lang.StringBuilder
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -87,19 +86,19 @@ object DatePickerDialog : Screen {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.medium)
             ) {
-                PersianButton.Primary(
+                PersianPrimaryButton(
                     text = "Date Picker Selection Date",
                     onClick = {
                         showDialogSelectDate = true
                     }
                 )
-                PersianButton.Primary(
+                PersianPrimaryButton(
                     text = "Date Picker Selection Dates",
                     onClick = {
                         showDialogSelectDates = true
                     }
                 )
-                PersianButton.Primary(
+                PersianPrimaryButton(
                     text = "Date Picker Selection Period",
                     onClick = {
                         showDialogSelectPeriod = true
@@ -121,7 +120,7 @@ object DatePickerDialog : Screen {
                     text = "Period: ${dateFormat.format(startDate.timeInMillis)} - " +
                             dateFormat.format(endDate.timeInMillis)
                 )
-                PersianCheckbox.Primary(
+                PersianCheckbox(
                     modifier = Modifier
                         .fillMaxWidth(),
                     text = "Selectable Month And Year",
@@ -131,7 +130,7 @@ object DatePickerDialog : Screen {
             }
         }
         if (showDialogSelectDate) {
-            PersianDatePickerDialog.Primary(
+            PersianDatePickerDialog(
                 config = DatePickerConfig(
                     selectable = selectable
                 ),
@@ -146,7 +145,7 @@ object DatePickerDialog : Screen {
             )
         }
         if (showDialogSelectDates) {
-            PersianDatePickerDialog.Primary(
+            PersianDatePickerDialog(
                 config = DatePickerConfig(
                     selectable = selectable
                 ),
@@ -161,7 +160,7 @@ object DatePickerDialog : Screen {
             )
         }
         if (showDialogSelectPeriod) {
-            PersianDatePickerDialog.Primary(
+            PersianDatePickerDialog(
                 config = DatePickerConfig(
                     selectable = selectable
                 ),

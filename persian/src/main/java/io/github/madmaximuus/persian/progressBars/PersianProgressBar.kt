@@ -16,96 +16,93 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.tooling.preview.Preview
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
-object PersianProgressBar {
+@Composable
+fun PersianLinearProgressBar(
+    modifier: Modifier = Modifier,
+    colors: ProgressBarColors = PersianProgressBarDefaults.colors(),
+    sizes: LinearProgressBarSizes = PersianProgressBarDefaults.linearMedium(),
+) {
+    LinearProgressIndicator(
+        modifier = modifier.height(sizes.strokeSize),
+        color = colors.progressColor,
+        trackColor = colors.backgroundColor,
+        strokeCap = StrokeCap.Round,
+    )
+}
 
-    @Composable
-    fun Linear(
-        modifier: Modifier = Modifier,
-        colors: ProgressBarColors = PersianProgressBarColors.primary(),
-        sizes: LinearProgressBarSizes = PersianLinearProgressBarSize.medium(),
+@Composable
+fun PersianLinearProgressBar(
+    progress: Float,
+    modifier: Modifier = Modifier,
+    colors: ProgressBarColors = PersianProgressBarDefaults.colors(),
+    sizes: LinearProgressBarSizes = PersianProgressBarDefaults.linearMedium(),
+) {
+    LinearProgressIndicator(
+        progress = progress,
+        modifier = modifier.height(sizes.strokeSize),
+        color = colors.progressColor,
+        trackColor = colors.backgroundColor
+    )
+}
+
+@Composable
+fun PersianCircularProgressBar(
+    modifier: Modifier = Modifier,
+    colors: ProgressBarColors = PersianProgressBarDefaults.colors(),
+    sizes: CircularProgressBarSizes = PersianProgressBarDefaults.circularMedium(),
+) {
+    Box(
+        modifier = modifier
+            .size(size = sizes.boxSize),
     ) {
-        LinearProgressIndicator(
-            modifier = modifier.height(sizes.strokeSize),
+        CircularProgressIndicator(
+            modifier = Modifier
+                .align(Alignment.Center)
+                .fillMaxSize()
+                .padding(sizes.contentPadding),
             color = colors.progressColor,
             trackColor = colors.backgroundColor,
             strokeCap = StrokeCap.Round,
+            strokeWidth = sizes.strokeSize
         )
     }
+}
 
-    @Composable
-    fun Linear(
-        progress: Float,
-        modifier: Modifier = Modifier,
-        colors: ProgressBarColors = PersianProgressBarColors.primary(),
-        sizes: LinearProgressBarSizes = PersianLinearProgressBarSize.medium(),
+@Composable
+fun PersianCircularProgressBar(
+    progress: Float,
+    modifier: Modifier = Modifier,
+    colors: ProgressBarColors = PersianProgressBarDefaults.colors(),
+    sizes: CircularProgressBarSizes = PersianProgressBarDefaults.circularMedium(),
+    counter: Boolean = false
+) {
+    Box(
+        modifier = modifier
+            .size(size = sizes.boxSize),
     ) {
-        LinearProgressIndicator(
-            progress = progress,
-            modifier = modifier.height(sizes.strokeSize),
-            color = colors.progressColor,
-            trackColor = colors.backgroundColor
-        )
-    }
-
-    @Composable
-    fun Circular(
-        modifier: Modifier = Modifier,
-        colors: ProgressBarColors = PersianProgressBarColors.primary(),
-        sizes: CircularProgressBarSizes = PersianCircularProgressBarSize.medium(),
-    ) {
-        Box(
-            modifier = modifier
-                .size(size = sizes.boxSize),
-        ) {
-            CircularProgressIndicator(
-                modifier = Modifier
-                    .align(Alignment.Center)
-                    .fillMaxSize()
-                    .padding(sizes.contentPadding),
-                color = colors.progressColor,
-                trackColor = colors.backgroundColor,
-                strokeCap = StrokeCap.Round,
-                strokeWidth = sizes.strokeSize
-            )
-        }
-    }
-
-    @Composable
-    fun Circular(
-        progress: Float,
-        modifier: Modifier = Modifier,
-        colors: ProgressBarColors = PersianProgressBarColors.primary(),
-        sizes: CircularProgressBarSizes = PersianCircularProgressBarSize.medium(),
-        content: (@Composable PersianProgressBarContent.() -> Unit)? = null
-    ) {
-        Box(
-            modifier = modifier
-                .size(size = sizes.boxSize),
-        ) {
-            if (content != null) {
-                CompositionLocalProvider(
-                    LocalCircularProgress provides progress
+        if (counter) {
+            CompositionLocalProvider(
+                LocalCircularProgress provides progress
+            ) {
+                Box(
+                    modifier = Modifier
+                        .padding(sizes.strokeSize + sizes.contentPadding)
                 ) {
-                    Box(
-                        modifier = Modifier
-                            .padding(sizes.strokeSize + sizes.contentPadding)
-                    ) {
-                        PersianProgressBarContent.content()
-                    }
+                    PersianProgressBarContent()
                 }
             }
-            CircularProgressIndicator(
-                progress = progress,
-                modifier = Modifier
-                    .align(Alignment.Center)
-                    .fillMaxSize()
-                    .padding(sizes.contentPadding),
-                color = colors.progressColor,
-                trackColor = colors.backgroundColor,
-                strokeCap = StrokeCap.Round,
-                strokeWidth = sizes.strokeSize
-            )
         }
+        CircularProgressIndicator(
+            progress = progress,
+            modifier = Modifier
+                .align(Alignment.Center)
+                .fillMaxSize()
+                .padding(sizes.contentPadding),
+            color = colors.progressColor,
+            trackColor = colors.backgroundColor,
+            strokeCap = StrokeCap.Round,
+            strokeWidth = sizes.strokeSize
+        )
     }
 }
 
@@ -114,8 +111,8 @@ object PersianProgressBar {
 fun LinearProgressBarPreview() {
     PersianTheme {
         Surface {
-            PersianProgressBar.Linear(
-                sizes = PersianLinearProgressBarSize.small()
+            PersianLinearProgressBar(
+                sizes = PersianProgressBarDefaults.linearMedium()
             )
         }
     }
@@ -126,9 +123,9 @@ fun LinearProgressBarPreview() {
 fun LinearProgressProgressBarPreview() {
     PersianTheme {
         Surface {
-            PersianProgressBar.Linear(
+            PersianLinearProgressBar(
                 progress = 0.5f,
-                sizes = PersianLinearProgressBarSize.small()
+                sizes = PersianProgressBarDefaults.linearMedium()
             )
         }
     }
@@ -139,8 +136,8 @@ fun LinearProgressProgressBarPreview() {
 fun CircularProgressBarPreview() {
     PersianTheme {
         Surface {
-            PersianProgressBar.Circular(
-                sizes = PersianCircularProgressBarSize.small()
+            PersianCircularProgressBar(
+                sizes = PersianProgressBarDefaults.circularMedium(),
             )
         }
     }
@@ -151,10 +148,10 @@ fun CircularProgressBarPreview() {
 fun CircularProgressProgressBarPreview() {
     PersianTheme {
         Surface {
-            PersianProgressBar.Circular(
+            PersianCircularProgressBar(
                 progress = 0.8f,
-                sizes = PersianCircularProgressBarSize.medium(),
-                content = { Text() }
+                sizes = PersianProgressBarDefaults.circularMedium(),
+                counter = true
             )
         }
     }

@@ -10,47 +10,44 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 
-object PersianCounter {
+@Composable
+fun PersianCounter(
+    count: Int,
+    modifier: Modifier = Modifier,
+    colors: CounterColors = PersianCounterDefaults.colors(),
+    sizes: CounterSizes = PersianCounterDefaults.sizes()
+) = PersianCounterImpl(
+    modifier = modifier,
+    count = count,
+    colors = colors,
+    sizes = sizes
+)
 
-    @Composable
-    fun Default(
-        count: Int,
-        modifier: Modifier = Modifier,
-        colors: CounterColors = PersianCounterColors.default(),
-        sizes: CounterSizes = PersianCounterSizes.medium()
-    ) = PersianCounterImpl(
-        modifier = modifier,
-        count = count,
-        colors = colors,
-        sizes = sizes
-    )
+@Composable
+fun PersianTonalCounter(
+    count: Int,
+    modifier: Modifier = Modifier,
+    colors: CounterColors = PersianCounterDefaults.tonalColors(),
+    sizes: CounterSizes = PersianCounterDefaults.sizes()
+) = PersianCounterImpl(
+    modifier = modifier,
+    count = count,
+    colors = colors,
+    sizes = sizes
+)
 
-    @Composable
-    fun Tonal(
-        count: Int,
-        modifier: Modifier = Modifier,
-        colors: CounterColors = PersianCounterColors.tonal(),
-        sizes: CounterSizes = PersianCounterSizes.medium()
-    ) = PersianCounterImpl(
-        modifier = modifier,
-        count = count,
-        colors = colors,
-        sizes = sizes
-    )
-
-    @Composable
-    fun Transparent(
-        count: Int,
-        modifier: Modifier = Modifier,
-        colors: CounterColors = PersianCounterColors.transparent(),
-        sizes: CounterSizes = PersianCounterSizes.medium()
-    ) = PersianCounterImpl(
-        modifier = modifier,
-        count = count,
-        colors = colors,
-        sizes = sizes
-    )
-}
+@Composable
+fun PersianTransparentCounter(
+    count: Int,
+    modifier: Modifier = Modifier,
+    colors: CounterColors = PersianCounterDefaults.transparentColors(),
+    sizes: CounterSizes = PersianCounterDefaults.sizes()
+) = PersianCounterImpl(
+    modifier = modifier,
+    count = count,
+    colors = colors,
+    sizes = sizes
+)
 
 @Composable
 private fun PersianCounterImpl(

@@ -6,9 +6,9 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.progressBars.PersianCircularProgressBarSize
-import io.github.madmaximuus.persian.progressBars.PersianLinearProgressBarSize
-import io.github.madmaximuus.persian.progressBars.PersianProgressBar
+import io.github.madmaximuus.persian.progressBars.PersianCircularProgressBar
+import io.github.madmaximuus.persian.progressBars.PersianLinearProgressBar
+import io.github.madmaximuus.persian.progressBars.PersianProgressBarDefaults
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
@@ -33,94 +33,94 @@ object ProgressBar : Screen {
             ) {
                 item {
                     SampleRow(text = "Inherit Linear Progress Small", firstItem = true) {
-                        PersianProgressBar.Linear(
-                            sizes = PersianLinearProgressBarSize.small()
+                        PersianLinearProgressBar(
+                            sizes = PersianProgressBarDefaults.linearSmall()
                         )
                     }
                 }
                 item {
                     SampleRow(text = "Inherit Linear Progress Medium") {
-                        PersianProgressBar.Linear(
-                            sizes = PersianLinearProgressBarSize.medium()
+                        PersianLinearProgressBar(
+                            sizes = PersianProgressBarDefaults.linearMedium()
                         )
                     }
                 }
                 item {
                     SampleRow(text = "Inherit Linear Progress Large") {
-                        PersianProgressBar.Linear(
-                            sizes = PersianLinearProgressBarSize.large()
+                        PersianLinearProgressBar(
+                            sizes = PersianProgressBarDefaults.linearLarge()
                         )
                     }
                 }
                 item {
                     SampleRow(text = "Linear Progress small") {
-                        PersianProgressBar.Linear(
+                        PersianLinearProgressBar(
                             progress = 0.5f,
-                            sizes = PersianLinearProgressBarSize.small()
+                            sizes = PersianProgressBarDefaults.linearSmall()
                         )
                     }
                 }
                 item {
                     SampleRow(text = "Linear Progress Medium") {
-                        PersianProgressBar.Linear(
+                        PersianLinearProgressBar(
                             progress = 0.5f,
-                            sizes = PersianLinearProgressBarSize.medium()
+                            sizes = PersianProgressBarDefaults.linearMedium()
                         )
                     }
                 }
                 item {
                     SampleRow(text = "Linear Progress Large") {
-                        PersianProgressBar.Linear(
+                        PersianLinearProgressBar(
                             progress = 0.5f,
-                            sizes = PersianLinearProgressBarSize.large()
+                            sizes = PersianProgressBarDefaults.linearLarge()
                         )
                     }
                 }
                 item {
                     SampleRow(text = "Inherit Circular Progress") {
-                        PersianProgressBar.Circular(
-                            sizes = PersianCircularProgressBarSize.large()
+                        PersianCircularProgressBar(
+                            sizes = PersianProgressBarDefaults.circularLarge()
                         )
-                        PersianProgressBar.Circular(
-                            sizes = PersianCircularProgressBarSize.medium()
+                        PersianCircularProgressBar(
+                            sizes = PersianProgressBarDefaults.circularMedium()
                         )
-                        PersianProgressBar.Circular(
-                            sizes = PersianCircularProgressBarSize.small()
+                        PersianCircularProgressBar(
+                            sizes = PersianProgressBarDefaults.circularSmall()
                         )
                     }
                 }
                 item {
                     SampleRow(text = "Circular Progress") {
-                        PersianProgressBar.Circular(
+                        PersianCircularProgressBar(
                             progress = 0.5f,
-                            sizes = PersianCircularProgressBarSize.large()
+                            sizes = PersianProgressBarDefaults.circularLarge()
                         )
-                        PersianProgressBar.Circular(
+                        PersianCircularProgressBar(
                             progress = 0.5f,
-                            sizes = PersianCircularProgressBarSize.medium()
+                            sizes = PersianProgressBarDefaults.circularMedium()
                         )
-                        PersianProgressBar.Circular(
+                        PersianCircularProgressBar(
                             progress = 0.5f,
-                            sizes = PersianCircularProgressBarSize.small()
+                            sizes = PersianProgressBarDefaults.circularSmall()
                         )
                     }
                 }
                 item {
                     SampleRow(text = "Circular Progress With Content", lastItem = true) {
-                        PersianProgressBar.Circular(
+                        PersianCircularProgressBar(
                             progress = 0.5f,
-                            sizes = PersianCircularProgressBarSize.large(),
-                            content = { Text() }
+                            sizes = PersianProgressBarDefaults.circularLarge(),
+                            counter = true
                         )
-                        PersianProgressBar.Circular(
+                        PersianCircularProgressBar(
                             progress = 0.5f,
-                            sizes = PersianCircularProgressBarSize.medium(),
-                            content = { Text() }
+                            sizes = PersianProgressBarDefaults.circularMedium(),
+                            counter = true
                         )
-                        PersianProgressBar.Circular(
+                        PersianCircularProgressBar(
                             progress = 0.5f,
-                            sizes = PersianCircularProgressBarSize.small(),
-                            content = { Text() }
+                            sizes = PersianProgressBarDefaults.circularSmall(),
+                            counter = true
                         )
                     }
                 }

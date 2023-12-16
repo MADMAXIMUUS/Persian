@@ -16,44 +16,41 @@ import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.window.PopupProperties
 import kotlinx.coroutines.flow.filter
 
-object PersianMenus {
-
-    @Composable
-    fun Dropdown(
-        anchor: @Composable () -> Unit,
-        modifier: Modifier = Modifier,
-        expanded: MutableState<Boolean> = remember { mutableStateOf(false) },
-        interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-        onDismissRequest: () -> Unit = {},
-        colors: MenuColors = PersianMenuColors.primary(),
-        offset: DpOffset = DpOffset.Zero,
-        children: @Composable PersianMenuItem.() -> Unit
-    ) {
-        LaunchedEffect(interactionSource) {
-            interactionSource.interactions
-                .filter { it is PressInteraction.Press }
-                .collect {
-                    expanded.value = !expanded.value
-                }
-        }
-
-        Box {
-            anchor()
-            MaterialTheme(shapes = MaterialTheme.shapes.copy(extraSmall = MaterialTheme.shapes.large)) {
-                DropdownMenu(
-                    modifier = modifier
-                        .background(colors.backgroundColor, MaterialTheme.shapes.extraLarge),
-                    expanded = expanded.value,
-                    offset = offset,
-                    onDismissRequest = {
-                        onDismissRequest()
-                        expanded.value = false
-                    },
-                    properties = PopupProperties(clippingEnabled = false),
-                    content = { PersianMenuItem.children() }
-                )
+@Composable
+fun PersianDropdownMenu(
+    anchor: @Composable () -> Unit,
+    modifier: Modifier = Modifier,
+    expanded: MutableState<Boolean> = remember { mutableStateOf(false) },
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    onDismissRequest: () -> Unit = {},
+    colors: MenuColors = PersianMenuDefaults.colors(),
+    offset: DpOffset = DpOffset.Zero,
+    children: @Composable () -> Unit
+) {
+    LaunchedEffect(interactionSource) {
+        interactionSource.interactions
+            .filter { it is PressInteraction.Press }
+            .collect {
+                expanded.value = !expanded.value
             }
+    }
 
+    Box {
+        anchor()
+        MaterialTheme(shapes = MaterialTheme.shapes.copy(extraSmall = MaterialTheme.shapes.large)) {
+            DropdownMenu(
+                modifier = modifier
+                    .background(colors.backgroundColor, MaterialTheme.shapes.large),
+                expanded = expanded.value,
+                offset = offset,
+                onDismissRequest = {
+                    onDismissRequest()
+                    expanded.value = false
+                },
+                properties = PopupProperties(clippingEnabled = false),
+                content = { children() }
+            )
         }
+
     }
 }

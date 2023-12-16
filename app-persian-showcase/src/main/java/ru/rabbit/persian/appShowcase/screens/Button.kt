@@ -23,12 +23,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.buttons.PersianButton
-import io.github.madmaximuus.persian.buttons.PersianButtonSizes
+import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
+import io.github.madmaximuus.persian.buttons.PersianOutlinedButton
+import io.github.madmaximuus.persian.buttons.PersianPrimaryButton
+import io.github.madmaximuus.persian.buttons.PersianSecondaryButton
+import io.github.madmaximuus.persian.buttons.PersianTertiaryButton
 import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
 import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.foundation.spacing
-import io.github.madmaximuus.persian.inputs.PersianInputs
+import io.github.madmaximuus.persian.inputs.PersianInput
 import io.github.madmaximuus.persian.radioButtons.PersianRadioButton
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
@@ -51,7 +54,7 @@ object Button : Screen {
             var text by remember { mutableStateOf("Button") }
             var showLeadingIcon by remember { mutableStateOf(false) }
             var showTrailingIcon by remember { mutableStateOf(false) }
-            val size = PersianButtonSizes.large()
+            val size = PersianButtonDefaults.largeSizes()
             var sizeState by remember { mutableStateOf(size) }
             var enabled by remember { mutableStateOf(true) }
             var loading by remember { mutableStateOf(false) }
@@ -69,7 +72,7 @@ object Button : Screen {
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        PersianButton.Primary(
+                        PersianPrimaryButton(
                             text = text,
                             sizes = sizeState,
                             enabled = enabled,
@@ -79,7 +82,7 @@ object Button : Screen {
                             onClick = {}
                         )
                         Spacer(modifier = Modifier.height(MaterialTheme.spacing.large))
-                        PersianButton.Secondary(
+                        PersianSecondaryButton(
                             text = text,
                             sizes = sizeState,
                             enabled = enabled,
@@ -89,7 +92,7 @@ object Button : Screen {
                             onClick = {}
                         )
                         Spacer(modifier = Modifier.height(MaterialTheme.spacing.large))
-                        PersianButton.Tertiary(
+                        PersianTertiaryButton(
                             text = text,
                             sizes = sizeState,
                             enabled = enabled,
@@ -99,7 +102,7 @@ object Button : Screen {
                             onClick = {}
                         )
                         Spacer(modifier = Modifier.height(MaterialTheme.spacing.large))
-                        PersianButton.Outline(
+                        PersianOutlinedButton(
                             text = text,
                             sizes = sizeState,
                             enabled = enabled,
@@ -111,7 +114,7 @@ object Button : Screen {
                     }
                 }
                 SampleRow(text = "Label") {
-                    PersianInputs.Primary(
+                    PersianInput(
                         value = text,
                         onValueChange = { value ->
                             text = value
@@ -125,9 +128,9 @@ object Button : Screen {
                         mutableStateOf(false)
                     )
                 }
-                val large = PersianButtonSizes.large()
-                val medium = PersianButtonSizes.medium()
-                val small = PersianButtonSizes.small()
+                val large = PersianButtonDefaults.largeSizes()
+                val medium = PersianButtonDefaults.mediumSizes()
+                val small = PersianButtonDefaults.smallSizes()
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -149,7 +152,7 @@ object Button : Screen {
                             .fillMaxWidth()
                             .selectableGroup()
                     ) {
-                        PersianRadioButton.Primary(
+                        PersianRadioButton(
                             modifier = Modifier.fillMaxWidth(),
                             text = "Large",
                             checked = sizeStates[0].value,
@@ -160,7 +163,7 @@ object Button : Screen {
                                 sizeState = large
                             }
                         )
-                        PersianRadioButton.Primary(
+                        PersianRadioButton(
                             modifier = Modifier.fillMaxWidth(),
                             text = "Medium",
                             checked = sizeStates[1].value,
@@ -171,7 +174,7 @@ object Button : Screen {
                                 sizeState = medium
                             }
                         )
-                        PersianRadioButton.Primary(
+                        PersianRadioButton(
                             modifier = Modifier.fillMaxWidth(),
                             text = "Small",
                             checked = sizeStates[2].value,
@@ -204,7 +207,7 @@ object Button : Screen {
                         modifier = Modifier
                             .fillMaxWidth()
                     ) {
-                        PersianCheckbox.Primary(
+                        PersianCheckbox(
                             modifier = Modifier.fillMaxWidth(),
                             text = "Show Leading icon",
                             checked = showLeadingIcon,
@@ -212,7 +215,7 @@ object Button : Screen {
                                 showLeadingIcon = !showLeadingIcon
                             }
                         )
-                        PersianCheckbox.Primary(
+                        PersianCheckbox(
                             modifier = Modifier.fillMaxWidth(),
                             text = "Show Trailing icon",
                             checked = showTrailingIcon,
@@ -220,7 +223,7 @@ object Button : Screen {
                                 showTrailingIcon = !showTrailingIcon
                             }
                         )
-                        PersianCheckbox.Primary(
+                        PersianCheckbox(
                             modifier = Modifier.fillMaxWidth(),
                             text = "Enabled",
                             checked = enabled,
@@ -228,7 +231,7 @@ object Button : Screen {
                                 enabled = !enabled
                             }
                         )
-                        PersianCheckbox.Primary(
+                        PersianCheckbox(
                             modifier = Modifier.fillMaxWidth(),
                             text = "Loading",
                             checked = loading,

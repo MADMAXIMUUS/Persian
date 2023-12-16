@@ -23,8 +23,6 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.spacing
-import io.github.madmaximuus.persian.iconBox.PersianIconBox
-import io.github.madmaximuus.persian.iconBox.PersianIconBoxColors
 
 data class TabItem(
     val label: String,
@@ -102,12 +100,12 @@ private fun PersianTopIconTab(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         tabItem.icon?.let {
-            PersianIconBox.Primary(
+            /*PersianIconBox.Primary(
                 icon = it,
                 colors = PersianIconBoxColors.primary(
                     defaultColor = color
                 )
-            )
+            )*/
         }
 
         PersianLabelTab(

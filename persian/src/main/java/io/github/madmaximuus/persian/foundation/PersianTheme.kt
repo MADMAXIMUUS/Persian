@@ -19,6 +19,8 @@ import androidx.core.view.WindowCompat
 fun PersianTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     dynamicColor: Boolean = false,
+    lightColors: ExtendedColorScheme = LightColorScheme,
+    darkColors: ExtendedColorScheme = DarkColorScheme,
     content: @Composable () -> Unit
 ) {
     val view = LocalView.current
@@ -35,7 +37,12 @@ fun PersianTheme(
         }
     }
 
-    val colorScheme = resolveDynamicColor(dynamicColor = dynamicColor, darkTheme = darkTheme)
+    val colorScheme = resolveDynamicColor(
+        dynamicColor = dynamicColor,
+        darkTheme = darkTheme,
+        lightColors = lightColors,
+        darkColors = darkColors
+    )
     val defaultColorScheme = when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current
@@ -64,13 +71,18 @@ fun PersianTheme(
 }
 
 @Composable
-private fun resolveDynamicColor(dynamicColor: Boolean, darkTheme: Boolean): ExtendedColorScheme {
+private fun resolveDynamicColor(
+    dynamicColor: Boolean,
+    darkTheme: Boolean,
+    lightColors: ExtendedColorScheme,
+    darkColors: ExtendedColorScheme
+): ExtendedColorScheme {
     return when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current
             if (darkTheme) {
                 val tempColorScheme = dynamicDarkColorScheme(context)
-                DarkColorScheme.copy(
+                darkColors.copy(
                     primary = tempColorScheme.primary,
                     onPrimary = tempColorScheme.onPrimary,
                     primaryContainer = tempColorScheme.primaryContainer,
@@ -103,7 +115,7 @@ private fun resolveDynamicColor(dynamicColor: Boolean, darkTheme: Boolean): Exte
                 )
             } else {
                 val tempColorScheme = dynamicLightColorScheme(context)
-                LightColorScheme.copy(
+                lightColors.copy(
                     primary = tempColorScheme.primary,
                     onPrimary = tempColorScheme.onPrimary,
                     primaryContainer = tempColorScheme.primaryContainer,
@@ -137,7 +149,7 @@ private fun resolveDynamicColor(dynamicColor: Boolean, darkTheme: Boolean): Exte
             }
         }
 
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
+        darkTheme -> darkColors
+        else -> lightColors
     }
 }

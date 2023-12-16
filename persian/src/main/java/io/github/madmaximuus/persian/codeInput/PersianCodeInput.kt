@@ -18,128 +18,125 @@ import androidx.compose.ui.input.key.key
 import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.codeInput.cell.PersianCell
+import io.github.madmaximuus.persian.codeInput.cell.PersianCodeInputCell
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.spacing
 
-object PersianCodeInput {
-
-    @Composable
-    fun FourDigit(
-        modifier: Modifier = Modifier,
-        values: List<String>,
-        enabled: Boolean = true,
-        isError: Boolean = false,
-        isSuccess: Boolean = false,
-        onValueChange: (value: String, index: Int) -> Unit
-    ) {
-        LaunchedEffect(Unit) {
-            if (values.size != 4) {
-                throw IllegalArgumentException("Code input values must have 4 items")
-            }
-        }
-
-        val focusRequesters = listOf(
-            FocusRequester(),
-            FocusRequester(),
-            FocusRequester(),
-            FocusRequester()
-        )
-
-        Row(
-            modifier = modifier,
-            horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.extraSmall)
-        ) {
-            repeat(4) { index ->
-                PersianCell.Primary(
-                    modifier = Modifier
-                        .onKeyEvent {
-                            if (it.key == Key.Backspace && values[index].isEmpty()) {
-                                if (index > 0) {
-                                    focusRequesters[index - 1].requestFocus()
-                                    return@onKeyEvent true
-                                }
-                                return@onKeyEvent false
-                            }
-                            return@onKeyEvent false
-                        },
-                    value = values[index],
-                    focusRequester = focusRequesters[index],
-                    isSuccess = isSuccess,
-                    enabled = enabled,
-                    isError = isError,
-                    onValueChange = { value ->
-                        onValueChange(value, index)
-                        nextFocus(index, value, focusRequesters)
-                    }
-                )
-            }
+@Composable
+fun PersianFourDigitCodeInput(
+    modifier: Modifier = Modifier,
+    values: List<String>,
+    enabled: Boolean = true,
+    isError: Boolean = false,
+    isSuccess: Boolean = false,
+    onValueChange: (value: String, index: Int) -> Unit
+) {
+    LaunchedEffect(Unit) {
+        if (values.size != 4) {
+            throw IllegalArgumentException("Code input values must have 4 items")
         }
     }
 
-    @Composable
-    fun SixDigit(
-        modifier: Modifier = Modifier,
-        values: List<String>,
-        enabled: Boolean = true,
-        isError: Boolean = false,
-        isSuccess: Boolean = false,
-        onValueChange: (value: String, index: Int) -> Unit
+    val focusRequesters = listOf(
+        FocusRequester(),
+        FocusRequester(),
+        FocusRequester(),
+        FocusRequester()
+    )
+
+    Row(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.extraSmall)
     ) {
-        LaunchedEffect(Unit) {
-            if (values.size != 6) {
-                throw IllegalArgumentException("Code input values must have 6 items")
-            }
-        }
-
-        val focusRequesters = listOf(
-            FocusRequester(),
-            FocusRequester(),
-            FocusRequester(),
-            FocusRequester(),
-            FocusRequester(),
-            FocusRequester()
-        )
-
-        Row(
-            modifier = modifier,
-            horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.extraSmall)
-        ) {
-            repeat(6) { index ->
-                PersianCell.Primary(
-                    modifier = Modifier
-                        .onKeyEvent {
-                            if (it.key == Key.Backspace && values[index].isEmpty()) {
-                                if (index > 0) {
-                                    focusRequesters[index - 1].requestFocus()
-                                    return@onKeyEvent true
-                                }
-                                return@onKeyEvent false
+        repeat(4) { index ->
+            PersianCodeInputCell(
+                modifier = Modifier
+                    .onKeyEvent {
+                        if (it.key == Key.Backspace && values[index].isEmpty()) {
+                            if (index > 0) {
+                                focusRequesters[index - 1].requestFocus()
+                                return@onKeyEvent true
                             }
                             return@onKeyEvent false
-                        },
-                    value = values[index],
-                    focusRequester = focusRequesters[index],
-                    isSuccess = isSuccess,
-                    enabled = enabled,
-                    isError = isError,
-                    onValueChange = { value ->
-                        onValueChange(value, index)
-                        nextFocus(index, value, focusRequesters)
-                    }
-                )
-            }
+                        }
+                        return@onKeyEvent false
+                    },
+                value = values[index],
+                focusRequester = focusRequesters[index],
+                isSuccess = isSuccess,
+                enabled = enabled,
+                isError = isError,
+                onValueChange = { value ->
+                    onValueChange(value, index)
+                    nextFocus(index, value, focusRequesters)
+                }
+            )
+        }
+    }
+}
+
+@Composable
+fun PersianSixDigitCodeInput(
+    modifier: Modifier = Modifier,
+    values: List<String>,
+    enabled: Boolean = true,
+    isError: Boolean = false,
+    isSuccess: Boolean = false,
+    onValueChange: (value: String, index: Int) -> Unit
+) {
+    LaunchedEffect(Unit) {
+        if (values.size != 6) {
+            throw IllegalArgumentException("Code input values must have 6 items")
         }
     }
 
-    private fun nextFocus(
-        index: Int,
-        value: String,
-        focusRequesters: List<FocusRequester>
+    val focusRequesters = listOf(
+        FocusRequester(),
+        FocusRequester(),
+        FocusRequester(),
+        FocusRequester(),
+        FocusRequester(),
+        FocusRequester()
+    )
+
+    Row(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.extraSmall)
     ) {
-        if (value.length == 1 && index + 1 < focusRequesters.size) {
-            focusRequesters[index + 1].requestFocus()
+        repeat(6) { index ->
+            PersianCodeInputCell(
+                modifier = Modifier
+                    .onKeyEvent {
+                        if (it.key == Key.Backspace && values[index].isEmpty()) {
+                            if (index > 0) {
+                                focusRequesters[index - 1].requestFocus()
+                                return@onKeyEvent true
+                            }
+                            return@onKeyEvent false
+                        }
+                        return@onKeyEvent false
+                    },
+                value = values[index],
+                focusRequester = focusRequesters[index],
+                isSuccess = isSuccess,
+                enabled = enabled,
+                isError = isError,
+                onValueChange = { value ->
+                    onValueChange(value, index)
+                    nextFocus(index, value, focusRequesters)
+                }
+            )
         }
+    }
+}
+
+private fun nextFocus(
+    index: Int,
+    value: String,
+    focusRequesters: List<FocusRequester>
+) {
+    if (value.length == 1 && index + 1 < focusRequesters.size) {
+        focusRequesters[index + 1].requestFocus()
     }
 }
 
@@ -152,7 +149,7 @@ fun CodeInputPreview() {
                 modifier = Modifier
                     .padding(10.dp)
             ) {
-                PersianCodeInput.FourDigit(
+                PersianFourDigitCodeInput(
                     values = listOf(
                         "1",
                         "2",
@@ -164,7 +161,7 @@ fun CodeInputPreview() {
                     }
                 )
                 Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraSmall))
-                PersianCodeInput.SixDigit(
+                PersianSixDigitCodeInput(
                     values = listOf(
                         "1",
                         "2",
@@ -192,7 +189,7 @@ fun CodeInputDarkPreview() {
                 modifier = Modifier
                     .padding(10.dp)
             ) {
-                PersianCodeInput.FourDigit(
+                PersianFourDigitCodeInput(
                     values = listOf(
                         "1",
                         "2",
@@ -204,7 +201,7 @@ fun CodeInputDarkPreview() {
                     }
                 )
                 Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraSmall))
-                PersianCodeInput.SixDigit(
+                PersianSixDigitCodeInput(
                     values = listOf(
                         "1",
                         "2",
