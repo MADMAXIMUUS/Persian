@@ -3,7 +3,6 @@ package io.github.madmaximuus.persian.pageIndicator
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
@@ -38,7 +37,8 @@ fun PersianPageIndicator(
 ) {
 
     val correctedIndicatorCount =
-        if (visibleIndicatorCount % 2 == 0 && visibleIndicatorCount != pagerState.pageCount) visibleIndicatorCount - 1
+        if (visibleIndicatorCount > pagerState.pageCount) pagerState.pageCount
+        else if (visibleIndicatorCount % 2 == 0 && visibleIndicatorCount != pagerState.pageCount) visibleIndicatorCount - 1
         else visibleIndicatorCount
 
     val listState = rememberLazyListState()
@@ -73,7 +73,8 @@ fun PersianPageIndicator(
         IndicatorOrientation.HORIZONTAL -> {
             LazyRow(
                 modifier = modifier
-                    .width(totalWidth),
+                    .width(totalWidth)
+                    .height(24.dp),
                 state = listState,
                 horizontalArrangement = Arrangement.spacedBy(space),
                 userScrollEnabled = false
@@ -89,9 +90,10 @@ fun PersianPageIndicator(
 
         IndicatorOrientation.VERTICAL -> {
             LazyColumn(
-                modifier = modifier.height(totalWidth),
+                modifier = modifier
+                    .width(24.dp)
+                    .height(totalWidth),
                 state = listState,
-                contentPadding = PaddingValues(horizontal = MaterialTheme.spacing.medium),
                 verticalArrangement = Arrangement.spacedBy(space),
                 userScrollEnabled = false
             ) {
@@ -118,8 +120,10 @@ fun PageIndicatorPreview() {
         Surface {
             PersianPageIndicator(
                 pagerState = rememberPagerState {
-                    10
-                })
+                    3
+                },
+                orientation = IndicatorOrientation.VERTICAL
+            )
         }
     }
 }
@@ -132,7 +136,7 @@ fun PageIndicatorDarkPreview() {
         Surface {
             PersianPageIndicator(
                 pagerState = rememberPagerState {
-                    10
+                    3
                 })
         }
     }
