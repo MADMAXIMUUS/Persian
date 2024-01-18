@@ -2,6 +2,9 @@ package io.github.madmaximuus.persian.forms
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -94,6 +97,10 @@ fun PersianForm(
                 PersianFormContentSelect(
                     selected = content.selected,
                     values = content.values,
+                    enabled = enabled,
+                    isError = isError,
+                    isSuccess = isSuccess,
+                    placeholder = content.placeholder,
                     onSelectedChange = content.onSelectedChange,
                     expanded = content.expanded ?: remember { mutableStateOf(false) },
                     leadingIcon = content.leadingIcon,
@@ -125,7 +132,12 @@ fun PersianForm(
                     textStyle = caption.textStyle,
                 )
             }
-
+        } else {
+            Spacer(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(MaterialTheme.spacing.large)
+            )
         }
     }
 }

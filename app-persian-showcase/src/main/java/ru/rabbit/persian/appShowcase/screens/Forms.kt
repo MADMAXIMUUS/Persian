@@ -35,7 +35,7 @@ import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.inputs.InputsTransformations
 import io.github.madmaximuus.persian.inputs.PersianInput
 import io.github.madmaximuus.persian.radioButtons.PersianRadioButton
-import io.github.madmaximuus.persian.select.ActionItem
+import io.github.madmaximuus.persian.select.SelectActionItem
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object Forms : Screen {
@@ -69,17 +69,17 @@ object Forms : Screen {
                 values = tempList.toList()
             }
         }
-        val selectValues = listOf<ActionItem>(
-            ActionItem(
+        val selectValues = listOf<SelectActionItem>(
+            SelectActionItem.WithoutIcon(
                 title = "Option 1"
             ),
-            ActionItem(
+            SelectActionItem.WithoutIcon(
                 title = "Option 2"
             ),
-            ActionItem(
+            SelectActionItem.WithoutIcon(
                 title = "Option 3"
             ),
-            ActionItem(
+            SelectActionItem.WithoutIcon(
                 title = "Option 4"
             )
         )
@@ -143,8 +143,10 @@ object Forms : Screen {
             PersianFormContent.Select(
                 selected = selected,
                 values = selectValues,
-                onSelectedChange = {
-                    selected = it
+                placeholder = placeholderValue,
+                leadingIcon = if (leading) MaterialTheme.icons.person else null,
+                onSelectedChange = { option, _ ->
+                    selected = option
                 }
             )
         }

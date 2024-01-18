@@ -13,10 +13,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.foundation.spacing
-import io.github.madmaximuus.persian.select.ActionItem
 import io.github.madmaximuus.persian.select.PersianSelect
+import io.github.madmaximuus.persian.select.SelectActionItem
+import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object Select : Screen {
@@ -44,20 +46,22 @@ object Select : Screen {
                         .padding(horizontal = MaterialTheme.spacing.large),
                     selected = selectedOption,
                     values = listOf(
-                        ActionItem(
+                        SelectActionItem.WithoutIcon(
                             title = "Option 1"
                         ),
-                        ActionItem(
+                        SelectActionItem.WithoutIcon(
                             title = "Option 2"
                         ),
-                        ActionItem(
-                            title = "Option 3"
+                        SelectActionItem.PainterIcon(
+                            title = "Option 3",
+                            icon = painterResource(id = R.drawable.ic_home_filled)
                         ),
-                        ActionItem(
-                            title = "Option 4"
+                        SelectActionItem.IconUrl(
+                            title = "Option 4",
+                            iconUrl = "https://loremflickr.com/24/24"
                         )
                     ),
-                    onSelectedChange = { option ->
+                    onSelectedChange = { option, _ ->
                         selectedOption = option
                     }
                 )

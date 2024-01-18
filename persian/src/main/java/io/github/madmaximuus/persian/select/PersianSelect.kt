@@ -25,9 +25,13 @@ import io.github.madmaximuus.persian.menus.PersianMenuItem
 @Composable
 fun PersianSelect(
     selected: String,
-    values: List<ActionItem>,
-    onSelectedChange: (option: String) -> Unit,
+    values: List<SelectActionItem>,
+    onSelectedChange: (option: String, index: Int) -> Unit,
     modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    placeholder: String? = null,
+    isError: Boolean = false,
+    isSuccess: Boolean = false,
     expanded: MutableState<Boolean> = remember { mutableStateOf(false) },
     leadingIcon: Painter? = null,
     inputColors: InputColors = PersianInputDefaults.colors(),
@@ -44,8 +48,12 @@ fun PersianSelect(
                 .menuAnchor(),
             value = selected,
             leadingIcon = leadingIcon,
+            placeholder = placeholder,
             onValueChange = {},
             readOnly = true,
+            isError = isError,
+            isSuccess = isSuccess,
+            enabled = enabled,
             colors = inputColors,
             trailingIcon = if (expanded.value) MaterialTheme.icons.expendLess
             else MaterialTheme.icons.expendMore,
@@ -59,23 +67,62 @@ fun PersianSelect(
                 properties = PopupProperties(clippingEnabled = false),
                 onDismissRequest = { expanded.value = false }
             ) {
-                values.forEach {
-                    PersianMenuItem(
-                        title = it.title,
-                        onItemClick = {
-                            onSelectedChange(it.title)
-                            expanded.value = !expanded.value
-                        },
-                        leadingIcon = it.icon
-                    )
+                values.forEachIndexed { index, item ->
+                    when (item) {
+                        is SelectActionItem.IconUrl -> {
+                            PersianMenuItem(
+                                title = item.title,
+                                onItemClick = {
+                                    onSelectedChange(item.title, index)
+                                    expanded.value = !expanded.value
+                                },
+                                leadingIconUrl = item.iconUrl
+                            )
+                        }
+
+                        is SelectActionItem.PainterIcon -> {
+                            PersianMenuItem(
+                                title = item.title,
+                                onItemClick = {
+                                    onSelectedChange(item.title, index)
+                                    expanded.value = !expanded.value
+                                },
+                                leadingIcon = item.icon
+                            )
+                        }
+
+                        is SelectActionItem.WithoutIcon -> {
+                            PersianMenuItem(
+                                title = item.title,
+                                onItemClick = {
+                                    onSelectedChange(item.title, index)
+                                    expanded.value = !expanded.value
+                                },
+                                leadingIconUrl = null
+                            )
+                        }
+                    }
                 }
             }
         }
     }
 }
 
-data class ActionItem(
-    val title: String,
-    val enabled: Boolean = true,
-    val icon: Painter? = null
-)
+sealed class SelectActionItem {
+    data class PainterIcon(
+        val title: String,
+        val enabled: Boolean = true,
+        val icon: Painter
+    ) : SelectActionItem()
+
+    data class IconUrl(
+        val title: String,
+        val enabled: Boolean = true,
+        val iconUrl: String
+    ) : SelectActionItem()
+
+    data class WithoutIcon(
+        val title: String,
+        val enabled: Boolean = true,
+    ) : SelectActionItem()
+}

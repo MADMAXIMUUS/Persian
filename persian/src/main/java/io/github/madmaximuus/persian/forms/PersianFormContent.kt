@@ -16,8 +16,8 @@ import io.github.madmaximuus.persian.inputs.InputsTransformations
 import io.github.madmaximuus.persian.inputs.PersianInput
 import io.github.madmaximuus.persian.inputs.PersianInputDefaults
 import io.github.madmaximuus.persian.menus.MenuColors
-import io.github.madmaximuus.persian.select.ActionItem
 import io.github.madmaximuus.persian.select.PersianSelect
+import io.github.madmaximuus.persian.select.SelectActionItem
 import io.github.madmaximuus.persian.textAreas.PersianTextAreaDefaults
 import io.github.madmaximuus.persian.textAreas.PersianTextAreas
 import io.github.madmaximuus.persian.textAreas.TextAreaColors
@@ -60,8 +60,9 @@ sealed class PersianFormContent {
 
     data class Select(
         val selected: String,
-        val values: List<ActionItem>,
-        val onSelectedChange: (option: String) -> Unit,
+        val values: List<SelectActionItem>,
+        val placeholder: String? = null,
+        val onSelectedChange: (option: String, index: Int) -> Unit,
         val expanded: MutableState<Boolean>? = null,
         val leadingIcon: Painter? = null,
         val inputColors: InputColors? = null,
@@ -183,13 +184,17 @@ internal fun PersianFormContentFourDigitCodeInput(
 @Composable
 internal fun PersianFormContentSelect(
     selected: String,
-    values: List<ActionItem>,
-    onSelectedChange: (option: String) -> Unit,
+    values: List<SelectActionItem>,
+    onSelectedChange: (option: String, index: Int) -> Unit,
     modifier: Modifier = Modifier,
     expanded: MutableState<Boolean>,
     leadingIcon: Painter?,
+    placeholder: String?,
     inputColors: InputColors,
     menuColors: MenuColors,
+    isError: Boolean,
+    isSuccess: Boolean,
+    enabled: Boolean
 ) {
     PersianSelect(
         selected = selected,
@@ -197,6 +202,10 @@ internal fun PersianFormContentSelect(
         onSelectedChange = onSelectedChange,
         modifier = modifier,
         expanded = expanded,
+        isSuccess = isSuccess,
+        enabled = enabled,
+        placeholder = placeholder,
+        isError = isError,
         leadingIcon = leadingIcon,
         inputColors = inputColors,
         menuColors = menuColors
