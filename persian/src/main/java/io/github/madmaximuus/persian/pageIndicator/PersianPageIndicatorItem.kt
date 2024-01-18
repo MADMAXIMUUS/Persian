@@ -25,14 +25,17 @@ internal fun LazyListScope.persianPageIndicatorItem(
         val centerItemIndex = visibleIndicatorCount / 2
 
         val right1 =
-            (currentItem < centerItemIndex &&
-                    index >= visibleIndicatorCount - 1) &&
+            currentItem < centerItemIndex &&
+                    index >= visibleIndicatorCount - 1 &&
                     itemCount != visibleIndicatorCount
 
         val right2 =
-            (currentItem >= centerItemIndex &&
+            currentItem >= centerItemIndex &&
                     index >= currentItem + centerItemIndex &&
-                    index < itemCount - centerItemIndex + 1)
+                    index < itemCount - centerItemIndex + 1 &&
+                    itemCount != visibleIndicatorCount &&
+                    index != itemCount - 1
+
         val isRightEdgeItem = right1 || right2
 
         val isLeftEdgeItem =
