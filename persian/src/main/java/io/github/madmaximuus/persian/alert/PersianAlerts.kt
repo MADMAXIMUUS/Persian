@@ -21,6 +21,7 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
 import io.github.madmaximuus.persian.buttons.PersianTertiaryButton
+import io.github.madmaximuus.persian.dividers.PersianInsetHorizontalDivider
 import io.github.madmaximuus.persian.foundation.elevation
 import io.github.madmaximuus.persian.foundation.spacing
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
@@ -108,8 +109,6 @@ fun PersianAlert(
                             .wrapContentHeight()
                             .fillMaxWidth(),
                         horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement
-                            .spacedBy(MaterialTheme.spacing.extraExtraSmall),
                         content = {
                             Column(
                                 modifier = Modifier
@@ -119,7 +118,7 @@ fun PersianAlert(
                                         start = MaterialTheme.spacing.extraLarge,
                                         end = MaterialTheme.spacing.extraLarge,
                                         top = MaterialTheme.spacing.extraExtraLarge,
-                                        bottom = MaterialTheme.spacing.extraSmall
+                                        bottom = MaterialTheme.spacing.medium
                                     ),
                                 horizontalAlignment = Alignment.CenterHorizontally,
                                 verticalArrangement = Arrangement
@@ -135,16 +134,22 @@ fun PersianAlert(
                                     style = MaterialTheme.typography.headlineSmall,
                                     color = colors.titleColor
                                 )
-                                description?.let {
-                                    Text(
-                                        text = it,
-                                        style = MaterialTheme.typography.bodyMedium,
-                                        color = colors.descriptionColor,
-                                        textAlign = TextAlign.Justify
-                                    )
-                                }
+
+                            }
+                            description?.let {
+                                Text(
+                                    modifier = Modifier
+                                        .padding(horizontal = MaterialTheme.spacing.extraLarge),
+                                    text = it,
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    color = colors.descriptionColor,
+                                    textAlign = TextAlign.Justify
+                                )
                             }
                             content?.invoke()
+                            if (content != null) {
+                                PersianInsetHorizontalDivider(strokeColor = colors.dividerColor)
+                            }
                             Row(
                                 modifier = Modifier
                                     .fillMaxWidth()

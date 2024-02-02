@@ -39,15 +39,15 @@ fun DashboardScreen(
 ) {
     val topAppBarScrollBehavior =
         TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
-    SampleScaffold(title = "Persian", topAppBarScrollBehavior = topAppBarScrollBehavior) {
+    SampleScaffold(title = "Persian", topAppBarScrollBehavior = topAppBarScrollBehavior) { padding ->
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .nestedScroll(topAppBarScrollBehavior.nestedScrollConnection),
-            contentPadding = it,
+            contentPadding = padding,
             verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small)
         ) {
-            items(screens) {
+            items(screens, key = { it.name }) {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
