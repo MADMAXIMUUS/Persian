@@ -1,5 +1,6 @@
 package io.github.madmaximuus.persian.avatarsAndImages
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -13,12 +14,13 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
-import com.bumptech.glide.integration.compose.GlideImage
-import com.bumptech.glide.integration.compose.placeholder
+import com.bumptech.glide.integration.compose.GlideSubcomposition
+import com.bumptech.glide.integration.compose.RequestState
 import io.github.madmaximuus.persian.foundation.elevation
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import io.github.madmaximuus.persian.foundation.icons
@@ -32,7 +34,8 @@ import io.github.madmaximuus.persian.iconBox.PersianIconBoxDefaults
 fun PersianImage(
     modifier: Modifier = Modifier,
     imageUrl: String,
-    isEdit: Boolean = false,
+    overlay: Boolean = false,
+    overlayIcon: Painter = MaterialTheme.icons.add,
     size: ImageSize = PersianImagesDefaults.mediumShapeSize48(),
     onClick: (() -> Unit)? = null
 ) {
@@ -53,37 +56,50 @@ fun PersianImage(
             ),
         contentAlignment = Alignment.Center
     ) {
-        GlideImage(
+        GlideSubcomposition(
+            model = imageUrl,
             modifier = Modifier
                 .fillMaxSize(),
-            contentScale = ContentScale.Crop,
-            loading = placeholder {
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .shimmer(true)
-                )
-            },
-            failure = placeholder {
-                Box(
-                    modifier = Modifier.fillMaxSize(),
-                    contentAlignment = Alignment.Center
-                ) {
-                    CompositionLocalProvider(
-                        LocalContentColor provides MaterialTheme.extendedColorScheme.onPrimaryContainer
-                    ) {
-                        PersianIconBox(
-                            icon = MaterialTheme.icons.image,
-                            size = size.placeholderSize,
-                            colors = PersianIconBoxDefaults.colors()
+            content = {
+                when (state) {
+                    RequestState.Failure -> {
+                        Box(
+                            modifier = Modifier.fillMaxSize(),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            CompositionLocalProvider(
+                                LocalContentColor provides MaterialTheme.extendedColorScheme.onPrimaryContainer
+                            ) {
+                                PersianIconBox(
+                                    icon = MaterialTheme.icons.image,
+                                    size = size.placeholderSize,
+                                    colors = PersianIconBoxDefaults.colors()
+                                )
+                            }
+                        }
+                    }
+
+                    RequestState.Loading -> {
+                        Box(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .shimmer(true)
+                        )
+                    }
+
+                    is RequestState.Success -> {
+                        Image(
+                            modifier = Modifier
+                                .fillMaxSize(),
+                            contentScale = ContentScale.Crop,
+                            painter = painter,
+                            contentDescription = ""
                         )
                     }
                 }
             },
-            model = imageUrl,
-            contentDescription = ""
         )
-        if (isEdit) {
+        if (overlay) {
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -94,7 +110,7 @@ fun PersianImage(
                     LocalContentColor provides MaterialTheme.extendedColorScheme.onPrimaryContainer
                 ) {
                     PersianIconBox(
-                        icon = MaterialTheme.icons.add,
+                        icon = overlayIcon,
                         size = size.editIconBoxSize,
                         colors = PersianIconBoxDefaults.colors()
                     )
