@@ -55,17 +55,19 @@ import io.github.madmaximuus.persian.progressBars.PersianProgressBarDefaults
 fun PersianPrimaryButton(
     text: String,
     modifier: Modifier = Modifier,
+    additionInfoText: String? = null,
     leadingIcon: Painter? = null,
     trailingIcon: Painter? = null,
     enabled: Boolean = true,
     loading: Boolean = false,
     colors: ButtonColors = PersianButtonDefaults.primaryColors(),
-    sizes: ButtonSizes = PersianButtonDefaults.mediumSizes(loading),
+    sizes: ButtonSizes = PersianButtonDefaults.mediumSizes(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     onClick: () -> Unit
 ) = PersianButton(
     modifier = modifier,
     text = text,
+    additionInfoText = additionInfoText,
     enabled = enabled,
     colors = colors,
     loading = loading,
@@ -93,17 +95,19 @@ fun PersianPrimaryButton(
 fun PersianSecondaryButton(
     text: String,
     modifier: Modifier = Modifier,
+    additionInfoText: String? = null,
     leadingIcon: Painter? = null,
     trailingIcon: Painter? = null,
     enabled: Boolean = true,
     loading: Boolean = false,
     colors: ButtonColors = PersianButtonDefaults.secondaryColors(),
-    sizes: ButtonSizes = PersianButtonDefaults.mediumSizes(loading),
+    sizes: ButtonSizes = PersianButtonDefaults.mediumSizes(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     onClick: () -> Unit
 ) = PersianButton(
     modifier = modifier,
     text = text,
+    additionInfoText = additionInfoText,
     enabled = enabled,
     colors = colors,
     loading = loading,
@@ -132,17 +136,19 @@ fun PersianSecondaryButton(
 fun PersianTertiaryButton(
     text: String,
     modifier: Modifier = Modifier,
+    additionInfoText: String? = null,
     leadingIcon: Painter? = null,
     trailingIcon: Painter? = null,
     enabled: Boolean = true,
     loading: Boolean = false,
     colors: ButtonColors = PersianButtonDefaults.tertiaryColors(),
-    sizes: ButtonSizes = PersianButtonDefaults.mediumSizes(loading),
+    sizes: ButtonSizes = PersianButtonDefaults.mediumSizes(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     onClick: () -> Unit
 ) = PersianButton(
     modifier = modifier,
     text = text,
+    additionInfoText = additionInfoText,
     enabled = enabled,
     colors = colors,
     loading = loading,
@@ -169,17 +175,19 @@ fun PersianTertiaryButton(
 fun PersianOutlinedButton(
     text: String,
     modifier: Modifier = Modifier,
+    additionInfoText: String? = null,
     leadingIcon: Painter? = null,
     trailingIcon: Painter? = null,
     enabled: Boolean = true,
     loading: Boolean = false,
     colors: ButtonColors = PersianButtonDefaults.outlinedColors(),
-    sizes: ButtonSizes = PersianButtonDefaults.mediumSizes(loading),
+    sizes: ButtonSizes = PersianButtonDefaults.mediumSizes(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     onClick: () -> Unit
 ) = PersianButton(
     modifier = modifier,
     text = text,
+    additionInfoText = additionInfoText,
     enabled = enabled,
     colors = colors,
     loading = loading,
@@ -200,6 +208,7 @@ private fun PersianButton(
     modifier: Modifier = Modifier,
     leadingIcon: Painter? = null,
     trailingIcon: Painter? = null,
+    additionInfoText: String? = null,
     enabled: Boolean,
     colors: ButtonColors,
     loading: Boolean,
@@ -241,11 +250,12 @@ private fun PersianButton(
                                     size = sizes.iconSize
                                 )
                             }
-                            Box(
+                            Column(
                                 modifier = Modifier
                                     .padding(horizontal = 8.dp),
                             ) {
                                 Text(
+                                    modifier = Modifier.align(Alignment.CenterHorizontally),
                                     text = text,
                                     style = sizes.textStyle,
                                     overflow = TextOverflow.Ellipsis,
@@ -253,6 +263,16 @@ private fun PersianButton(
                                     color = colors.contentColor(enabled).value,
                                     maxLines = 1
                                 )
+                                if (sizes.additionInfoTextStyle != null && additionInfoText != null)
+                                    Text(
+                                        modifier = Modifier.align(Alignment.CenterHorizontally),
+                                        text = additionInfoText,
+                                        style = sizes.additionInfoTextStyle,
+                                        overflow = TextOverflow.Ellipsis,
+                                        textAlign = TextAlign.Center,
+                                        color = colors.contentColor(enabled).value,
+                                        maxLines = 1
+                                    )
                             }
                             trailingIcon?.let {
                                 PersianIconBox(
@@ -303,6 +323,7 @@ private fun PersianButton(
 
 
 @Preview
+@Preview(uiMode = UI_MODE_NIGHT_YES)
 @Composable
 fun PersianButtonPreview() {
     PersianTheme {
@@ -315,86 +336,40 @@ fun PersianButtonPreview() {
                 PersianPrimaryButton(
                     leadingIcon = MaterialTheme.icons.add,
                     trailingIcon = MaterialTheme.icons.chevronRight,
-                    text = "Persian",
+                    text = "Button",
+                    additionInfoText = "Addition Info",
                     loading = isLoading,
-                    sizes = PersianButtonDefaults.smallSizes(isLoading),
+                    sizes = PersianButtonDefaults.smallSizes(),
                     onClick = {}
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 PersianSecondaryButton(
                     leadingIcon = MaterialTheme.icons.add,
                     trailingIcon = MaterialTheme.icons.chevronRight,
-                    text = "Persian",
+                    text = "Button",
+                    additionInfoText = "Addition Info",
                     loading = isLoading,
-                    sizes = PersianButtonDefaults.mediumSizes(isLoading),
+                    sizes = PersianButtonDefaults.mediumSizes(),
                     onClick = {}
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 PersianTertiaryButton(
                     leadingIcon = MaterialTheme.icons.add,
                     trailingIcon = MaterialTheme.icons.chevronRight,
-                    text = "Persian",
+                    text = "Button",
+                    additionInfoText = "Addition Info",
                     loading = isLoading,
-                    sizes = PersianButtonDefaults.largeSizes(isLoading),
+                    sizes = PersianButtonDefaults.largeSizes(),
                     onClick = {}
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 PersianOutlinedButton(
                     leadingIcon = MaterialTheme.icons.add,
                     trailingIcon = MaterialTheme.icons.chevronRight,
-                    text = "Persian",
+                    text = "Button",
+                    additionInfoText = "Addition Info",
                     loading = isLoading,
-                    sizes = PersianButtonDefaults.largeSizes(isLoading),
-                    onClick = {}
-                )
-            }
-        }
-    }
-}
-
-@Preview(uiMode = UI_MODE_NIGHT_YES)
-@Composable
-fun PersianButtonDarkPreview() {
-    PersianTheme {
-        val isLoading = false
-        Surface {
-            Column(
-                modifier = Modifier
-                    .padding(10.dp)
-            ) {
-                PersianPrimaryButton(
-                    leadingIcon = MaterialTheme.icons.add,
-                    trailingIcon = MaterialTheme.icons.chevronRight,
-                    text = "Persian",
-                    loading = isLoading,
-                    sizes = PersianButtonDefaults.largeSizes(isLoading),
-                    onClick = {}
-                )
-                Spacer(modifier = Modifier.height(10.dp))
-                PersianSecondaryButton(
-                    leadingIcon = MaterialTheme.icons.add,
-                    trailingIcon = MaterialTheme.icons.chevronRight,
-                    text = "Persian",
-                    loading = isLoading,
-                    sizes = PersianButtonDefaults.largeSizes(isLoading),
-                    onClick = {}
-                )
-                Spacer(modifier = Modifier.height(10.dp))
-                PersianTertiaryButton(
-                    leadingIcon = MaterialTheme.icons.add,
-                    trailingIcon = MaterialTheme.icons.chevronRight,
-                    text = "Persian",
-                    loading = isLoading,
-                    sizes = PersianButtonDefaults.largeSizes(isLoading),
-                    onClick = {}
-                )
-                Spacer(modifier = Modifier.height(10.dp))
-                PersianOutlinedButton(
-                    leadingIcon = MaterialTheme.icons.add,
-                    trailingIcon = MaterialTheme.icons.chevronRight,
-                    text = "Persian",
-                    loading = isLoading,
-                    sizes = PersianButtonDefaults.largeSizes(isLoading),
+                    sizes = PersianButtonDefaults.largeSizes(),
                     onClick = {}
                 )
             }

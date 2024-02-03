@@ -83,16 +83,14 @@ object PersianButtonDefaults {
 
     @Composable
     fun smallSizes(
-        loading: Boolean = false,
-        fontSize: TextStyle = MaterialTheme.typography.titleSmall,
+        fontSize: TextStyle = MaterialTheme.typography.labelMedium,
         height: Dp = 36.dp,
         loaderSize: CircularProgressBarSizes = PersianProgressBarDefaults.circularSmall(),
         iconSize: IconBoxSize = PersianIconBoxDefaults.small(),
         shape: Shape = MaterialTheme.shapes.medium,
         contentPadding: PaddingValues = PaddingValues(
             horizontal = MaterialTheme.spacing.large,
-            vertical = if (!loading) MaterialTheme.spacing.small
-            else 0.dp
+            vertical = 0.dp
         )
     ): ButtonSizes = remember(
         fontSize,
@@ -114,19 +112,19 @@ object PersianButtonDefaults {
 
     @Composable
     fun mediumSizes(
-        loading: Boolean = false,
         fontSize: TextStyle = MaterialTheme.typography.labelLarge,
+        additionInfoTextStyle: TextStyle = MaterialTheme.typography.labelSmall,
         height: Dp = 44.dp,
         loaderSize: CircularProgressBarSizes = PersianProgressBarDefaults.circularMedium(),
         iconSize: IconBoxSize = PersianIconBoxDefaults.medium(),
         shape: Shape = MaterialTheme.shapes.large,
         contentPadding: PaddingValues = PaddingValues(
             horizontal = MaterialTheme.spacing.extraLarge,
-            vertical = if (!loading) MaterialTheme.spacing.medium
-            else 0.dp
+            vertical = 0.dp
         )
     ): ButtonSizes = remember(
         fontSize,
+        additionInfoTextStyle,
         height,
         loaderSize,
         iconSize,
@@ -135,6 +133,7 @@ object PersianButtonDefaults {
     ) {
         ButtonSizes(
             textStyle = fontSize,
+            additionInfoTextStyle = additionInfoTextStyle,
             height = height,
             loaderSize = loaderSize,
             iconSize = iconSize,
@@ -145,19 +144,19 @@ object PersianButtonDefaults {
 
     @Composable
     fun largeSizes(
-        loading: Boolean = false,
         fontSize: TextStyle = MaterialTheme.typography.titleMedium,
+        additionInfoTextStyle: TextStyle = MaterialTheme.typography.labelMedium,
         height: Dp = 52.dp,
         loaderSize: CircularProgressBarSizes = PersianProgressBarDefaults.circularLarge(),
         iconSize: IconBoxSize = PersianIconBoxDefaults.large(),
         shape: Shape = MaterialTheme.shapes.large,
         contentPadding: PaddingValues = PaddingValues(
             horizontal = MaterialTheme.spacing.extraExtraLarge,
-            vertical = if (!loading) MaterialTheme.spacing.large
-            else 0.dp
+            vertical = 0.dp
         )
     ): ButtonSizes = remember(
         fontSize,
+        additionInfoTextStyle,
         height,
         loaderSize,
         iconSize,
@@ -166,6 +165,7 @@ object PersianButtonDefaults {
     ) {
         ButtonSizes(
             textStyle = fontSize,
+            additionInfoTextStyle = additionInfoTextStyle,
             height = height,
             loaderSize = loaderSize,
             iconSize = iconSize,
@@ -177,8 +177,9 @@ object PersianButtonDefaults {
 }
 
 @Immutable
-data class ButtonSizes(
+class ButtonSizes internal constructor(
     val textStyle: TextStyle,
+    val additionInfoTextStyle: TextStyle? = null,
     val height: Dp,
     val iconSize: IconBoxSize,
     val loaderSize: CircularProgressBarSizes,
@@ -220,8 +221,7 @@ class ButtonColors internal constructor(
         if (contentColor != other.contentColor) return false
         if (containerColor != other.containerColor) return false
         if (disabledContentColor != other.disabledContentColor) return false
-        if (disabledContainerColor != other.disabledContainerColor) return false
-        return true
+        return disabledContainerColor == other.disabledContainerColor
     }
 
     override fun hashCode(): Int {

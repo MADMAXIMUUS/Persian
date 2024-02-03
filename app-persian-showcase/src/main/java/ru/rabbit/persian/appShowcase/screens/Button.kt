@@ -54,6 +54,8 @@ object Button : Screen {
             var text by remember { mutableStateOf("Button") }
             var showLeadingIcon by remember { mutableStateOf(false) }
             var showTrailingIcon by remember { mutableStateOf(false) }
+            var showAdditionInfoLabel by remember { mutableStateOf(false) }
+            var additionInfoLabelText by remember { mutableStateOf("Addition Info") }
             val size = PersianButtonDefaults.largeSizes()
             var sizeState by remember { mutableStateOf(size) }
             var enabled by remember { mutableStateOf(true) }
@@ -77,6 +79,7 @@ object Button : Screen {
                             sizes = sizeState,
                             enabled = enabled,
                             loading = loading,
+                            additionInfoText = if (showAdditionInfoLabel) additionInfoLabelText else null,
                             leadingIcon = if (showLeadingIcon) MaterialTheme.icons.add else null,
                             trailingIcon = if (showTrailingIcon) MaterialTheme.icons.chevronRight else null,
                             onClick = {}
@@ -87,6 +90,7 @@ object Button : Screen {
                             sizes = sizeState,
                             enabled = enabled,
                             loading = loading,
+                            additionInfoText = if (showAdditionInfoLabel) additionInfoLabelText else null,
                             leadingIcon = if (showLeadingIcon) MaterialTheme.icons.add else null,
                             trailingIcon = if (showTrailingIcon) MaterialTheme.icons.chevronRight else null,
                             onClick = {}
@@ -97,6 +101,7 @@ object Button : Screen {
                             sizes = sizeState,
                             enabled = enabled,
                             loading = loading,
+                            additionInfoText = if (showAdditionInfoLabel) additionInfoLabelText else null,
                             leadingIcon = if (showLeadingIcon) MaterialTheme.icons.add else null,
                             trailingIcon = if (showTrailingIcon) MaterialTheme.icons.chevronRight else null,
                             onClick = {}
@@ -107,6 +112,7 @@ object Button : Screen {
                             sizes = sizeState,
                             enabled = enabled,
                             loading = loading,
+                            additionInfoText = if (showAdditionInfoLabel) additionInfoLabelText else null,
                             leadingIcon = if (showLeadingIcon) MaterialTheme.icons.add else null,
                             trailingIcon = if (showTrailingIcon) MaterialTheme.icons.chevronRight else null,
                             onClick = {}
@@ -207,6 +213,21 @@ object Button : Screen {
                         modifier = Modifier
                             .fillMaxWidth()
                     ) {
+                        PersianCheckbox(
+                            text = "Addition info",
+                            checked = showAdditionInfoLabel,
+                            onCheckedChange = { isChecked ->
+                                showAdditionInfoLabel = isChecked
+                            }
+                        )
+                        if (showAdditionInfoLabel) {
+                            PersianInput(
+                                value = additionInfoLabelText,
+                                onValueChange = { label ->
+                                    additionInfoLabelText = label
+                                }
+                            )
+                        }
                         PersianCheckbox(
                             modifier = Modifier.fillMaxWidth(),
                             text = "Show Leading icon",
