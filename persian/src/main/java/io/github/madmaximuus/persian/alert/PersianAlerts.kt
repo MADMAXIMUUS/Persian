@@ -134,7 +134,6 @@ fun PersianAlert(
                                     style = MaterialTheme.typography.headlineSmall,
                                     color = colors.titleColor
                                 )
-
                             }
                             description?.let {
                                 Text(
