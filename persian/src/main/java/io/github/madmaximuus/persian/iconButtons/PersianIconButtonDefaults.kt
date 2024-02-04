@@ -4,19 +4,72 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.State
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.PersianContentStateDisabled
 import io.github.madmaximuus.persian.foundation.PersianStatesDisabled
 import io.github.madmaximuus.persian.foundation.elevation
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import io.github.madmaximuus.persian.foundation.surfaceColorAtElevation
+import io.github.madmaximuus.persian.iconBox.IconBoxSize
+import io.github.madmaximuus.persian.iconBox.PersianIconBoxDefaults
 
 object PersianIconButtonDefaults {
 
-    val shape: Shape
-        @Composable get() = MaterialTheme.shapes.large
+    @Composable
+    fun smallSizes(
+        size: Dp = 36.dp,
+        iconSize: IconBoxSize = PersianIconBoxDefaults.small(),
+        shape: Shape = MaterialTheme.shapes.medium,
+    ): IconButtonSizes = remember(
+        size,
+        iconSize,
+        shape,
+    ) {
+        IconButtonSizes(
+            size = size,
+            iconSize = iconSize,
+            shape = shape,
+        )
+    }
+
+    @Composable
+    fun mediumSizes(
+        size: Dp = 44.dp,
+        iconSize: IconBoxSize = PersianIconBoxDefaults.medium(),
+        shape: Shape = MaterialTheme.shapes.large,
+    ): IconButtonSizes = remember(
+        size,
+        iconSize,
+        shape,
+    ) {
+        IconButtonSizes(
+            size = size,
+            iconSize = iconSize,
+            shape = shape,
+        )
+    }
+
+    @Composable
+    fun largeSizes(
+        size: Dp = 52.dp,
+        iconSize: IconBoxSize = PersianIconBoxDefaults.large(),
+        shape: Shape = MaterialTheme.shapes.large
+    ): IconButtonSizes = remember(
+        size,
+        iconSize,
+        shape,
+    ) {
+        IconButtonSizes(
+            size = size,
+            iconSize = iconSize,
+            shape = shape,
+        )
+    }
 
     @Composable
     fun primaryIconButtonColors(
@@ -156,6 +209,13 @@ object PersianIconButtonDefaults {
 }
 
 @Immutable
+class IconButtonSizes internal constructor(
+    internal val size: Dp,
+    internal val iconSize: IconBoxSize,
+    internal val shape: Shape,
+)
+
+@Immutable
 class IconButtonColors internal constructor(
     private val containerColor: Color,
     private val contentColor: Color,
@@ -179,9 +239,7 @@ class IconButtonColors internal constructor(
         if (containerColor != other.containerColor) return false
         if (contentColor != other.contentColor) return false
         if (disabledContainerColor != other.disabledContainerColor) return false
-        if (disabledContentColor != other.disabledContentColor) return false
-
-        return true
+        return disabledContentColor == other.disabledContentColor
     }
 
     override fun hashCode(): Int {
@@ -233,9 +291,7 @@ class ToggleIconButtonColors internal constructor(
         if (disabledContainerColor != other.disabledContainerColor) return false
         if (disabledContentColor != other.disabledContentColor) return false
         if (checkedContainerColor != other.checkedContainerColor) return false
-        if (checkedContentColor != other.checkedContentColor) return false
-
-        return true
+        return checkedContentColor == other.checkedContentColor
     }
 
     override fun hashCode(): Int {

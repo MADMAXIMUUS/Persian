@@ -9,7 +9,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.role
@@ -25,7 +24,7 @@ fun PersianPrimaryToggleIconButton(
     checked: Boolean,
     onCheckedChange: (Boolean) -> Unit,
     enabled: Boolean = true,
-    shape: Shape = PersianIconButtonDefaults.shape,
+    sizes: IconButtonSizes = PersianIconButtonDefaults.mediumSizes(),
     colors: ToggleIconButtonColors = PersianIconButtonDefaults.primaryToggleIconButtonColors(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
 ) = Surface(
@@ -33,19 +32,25 @@ fun PersianPrimaryToggleIconButton(
     onCheckedChange = onCheckedChange,
     modifier = modifier.semantics { role = Role.Checkbox },
     enabled = enabled,
-    shape = shape,
+    shape = sizes.shape,
     color = colors.containerColor(enabled, checked).value,
     contentColor = colors.contentColor(enabled, checked).value,
     interactionSource = interactionSource
 ) {
     Box(
-        modifier = Modifier.size(40.dp),
+        modifier = Modifier.size(sizes.size),
         contentAlignment = Alignment.Center
     ) {
         if (checked) {
-            PersianIconBox(icon = checkedIcon)
+            PersianIconBox(
+                icon = checkedIcon,
+                size = sizes.iconSize
+            )
         } else {
-            PersianIconBox(icon = icon)
+            PersianIconBox(
+                icon = icon,
+                size = sizes.iconSize
+            )
         }
     }
 }
@@ -58,7 +63,7 @@ fun PersianSecondaryToggleIconButton(
     checked: Boolean,
     onCheckedChange: (Boolean) -> Unit,
     enabled: Boolean = true,
-    shape: Shape = PersianIconButtonDefaults.shape,
+    sizes: IconButtonSizes = PersianIconButtonDefaults.mediumSizes(),
     colors: ToggleIconButtonColors = PersianIconButtonDefaults.secondaryToggleIconButtonColors(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
 ) = Surface(
@@ -66,19 +71,25 @@ fun PersianSecondaryToggleIconButton(
     onCheckedChange = onCheckedChange,
     modifier = modifier.semantics { role = Role.Checkbox },
     enabled = enabled,
-    shape = shape,
+    shape = sizes.shape,
     color = colors.containerColor(enabled, checked).value,
     contentColor = colors.contentColor(enabled, checked).value,
     interactionSource = interactionSource
 ) {
     Box(
-        modifier = Modifier.size(40.dp),
+        modifier = Modifier.size(sizes.size),
         contentAlignment = Alignment.Center
     ) {
         if (checked) {
-            PersianIconBox(icon = checkedIcon)
+            PersianIconBox(
+                icon = checkedIcon,
+                size = sizes.iconSize
+            )
         } else {
-            PersianIconBox(icon = icon)
+            PersianIconBox(
+                icon = icon,
+                size = sizes.iconSize
+            )
         }
     }
 }
@@ -91,7 +102,7 @@ fun PersianTertiaryToggleIconButton(
     checked: Boolean,
     onCheckedChange: (Boolean) -> Unit,
     enabled: Boolean = true,
-    shape: Shape = PersianIconButtonDefaults.shape,
+    sizes: IconButtonSizes = PersianIconButtonDefaults.mediumSizes(),
     colors: ToggleIconButtonColors = PersianIconButtonDefaults.tertiaryToggleIconButtonColors(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
 ) = Surface(
@@ -99,19 +110,25 @@ fun PersianTertiaryToggleIconButton(
     onCheckedChange = onCheckedChange,
     modifier = modifier.semantics { role = Role.Checkbox },
     enabled = enabled,
-    shape = shape,
+    shape = sizes.shape,
     color = colors.containerColor(enabled, checked).value,
     contentColor = colors.contentColor(enabled, checked).value,
     interactionSource = interactionSource
 ) {
     Box(
-        modifier = Modifier.size(40.dp),
+        modifier = Modifier.size(sizes.size),
         contentAlignment = Alignment.Center
     ) {
         if (checked) {
-            PersianIconBox(icon = checkedIcon)
+            PersianIconBox(
+                icon = checkedIcon,
+                size = sizes.iconSize
+            )
         } else {
-            PersianIconBox(icon = icon)
+            PersianIconBox(
+                icon = icon,
+                size = sizes.iconSize
+            )
         }
     }
 }
@@ -124,7 +141,7 @@ fun PersianOutlinedToggleIconButton(
     checked: Boolean,
     onCheckedChange: (Boolean) -> Unit,
     enabled: Boolean = true,
-    shape: Shape = PersianIconButtonDefaults.shape,
+    sizes: IconButtonSizes = PersianIconButtonDefaults.mediumSizes(),
     colors: ToggleIconButtonColors = PersianIconButtonDefaults.outlinedToggleIconButtonColors(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
 ) = Surface(
@@ -132,7 +149,7 @@ fun PersianOutlinedToggleIconButton(
     onCheckedChange = onCheckedChange,
     modifier = modifier.semantics { role = Role.Checkbox },
     enabled = enabled,
-    shape = shape,
+    shape = sizes.shape,
     color = colors.containerColor(enabled, checked).value,
     contentColor = colors.contentColor(enabled, checked).value,
     border = if (checked) null else BorderStroke(
@@ -142,13 +159,19 @@ fun PersianOutlinedToggleIconButton(
     interactionSource = interactionSource
 ) {
     Box(
-        modifier = Modifier.size(40.dp),
+        modifier = Modifier.size(sizes.size),
         contentAlignment = Alignment.Center
     ) {
         if (checked) {
-            PersianIconBox(icon = checkedIcon)
+            PersianIconBox(
+                icon = checkedIcon,
+                size = sizes.iconSize
+            )
         } else {
-            PersianIconBox(icon = icon)
+            PersianIconBox(
+                icon = icon,
+                size = sizes.iconSize
+            )
         }
     }
 }

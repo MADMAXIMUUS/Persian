@@ -9,7 +9,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.role
@@ -23,23 +22,26 @@ fun PersianPrimaryIconButton(
     icon: Painter,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    shape: Shape = PersianIconButtonDefaults.shape,
+    sizes: IconButtonSizes = PersianIconButtonDefaults.mediumSizes(),
     colors: IconButtonColors = PersianIconButtonDefaults.primaryIconButtonColors(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
 ) = Surface(
     onClick = onClick,
     modifier = modifier.semantics { role = Role.Button },
     enabled = enabled,
-    shape = shape,
+    shape = sizes.shape,
     color = colors.containerColor(enabled).value,
     contentColor = colors.contentColor(enabled).value,
     interactionSource = interactionSource
 ) {
     Box(
-        modifier = Modifier.size(40.dp),
+        modifier = Modifier.size(sizes.size),
         contentAlignment = Alignment.Center
     ) {
-        PersianIconBox(icon = icon)
+        PersianIconBox(
+            icon = icon,
+            size = sizes.iconSize
+        )
     }
 }
 
@@ -49,23 +51,26 @@ fun PersianSecondaryIconButton(
     icon: Painter,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    shape: Shape = PersianIconButtonDefaults.shape,
+    sizes: IconButtonSizes = PersianIconButtonDefaults.mediumSizes(),
     colors: IconButtonColors = PersianIconButtonDefaults.secondaryIconButtonColors(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
 ) = Surface(
     onClick = onClick,
     modifier = modifier.semantics { role = Role.Button },
     enabled = enabled,
-    shape = shape,
+    shape = sizes.shape,
     color = colors.containerColor(enabled).value,
     contentColor = colors.contentColor(enabled).value,
     interactionSource = interactionSource
 ) {
     Box(
-        modifier = Modifier.size(40.dp),
+        modifier = Modifier.size(sizes.size),
         contentAlignment = Alignment.Center
     ) {
-        PersianIconBox(icon = icon)
+        PersianIconBox(
+            icon = icon,
+            size = sizes.iconSize
+        )
     }
 }
 
@@ -75,23 +80,26 @@ fun PersianTertiaryIconButton(
     icon: Painter,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    shape: Shape = PersianIconButtonDefaults.shape,
+    sizes: IconButtonSizes = PersianIconButtonDefaults.mediumSizes(),
     colors: IconButtonColors = PersianIconButtonDefaults.tertiaryIconButtonColors(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
 ) = Surface(
     onClick = onClick,
     modifier = modifier.semantics { role = Role.Button },
     enabled = enabled,
-    shape = shape,
+    shape = sizes.shape,
     color = colors.containerColor(enabled).value,
     contentColor = colors.contentColor(enabled).value,
     interactionSource = interactionSource
 ) {
     Box(
-        modifier = Modifier.size(40.dp),
+        modifier = Modifier.size(sizes.size),
         contentAlignment = Alignment.Center
     ) {
-        PersianIconBox(icon = icon)
+        PersianIconBox(
+            icon = icon,
+            size = sizes.iconSize
+        )
     }
 }
 
@@ -101,14 +109,14 @@ fun PersianOutlinedIconButton(
     icon: Painter,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    shape: Shape = PersianIconButtonDefaults.shape,
+    sizes: IconButtonSizes = PersianIconButtonDefaults.mediumSizes(),
     colors: IconButtonColors = PersianIconButtonDefaults.outlinedIconButtonColors(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
 ) = Surface(
     onClick = onClick,
     modifier = modifier.semantics { role = Role.Button },
     enabled = enabled,
-    shape = shape,
+    shape = sizes.shape,
     color = colors.containerColor(enabled).value,
     contentColor = colors.contentColor(enabled).value,
     border = BorderStroke(
@@ -118,9 +126,12 @@ fun PersianOutlinedIconButton(
     interactionSource = interactionSource
 ) {
     Box(
-        modifier = Modifier.size(40.dp),
+        modifier = Modifier.size(sizes.size),
         contentAlignment = Alignment.Center
     ) {
-        PersianIconBox(icon = icon)
+        PersianIconBox(
+            icon = icon,
+            size = sizes.iconSize
+        )
     }
 }

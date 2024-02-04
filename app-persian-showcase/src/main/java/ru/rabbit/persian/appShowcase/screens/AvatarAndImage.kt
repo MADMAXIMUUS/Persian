@@ -51,7 +51,7 @@ object AvatarAndImage : Screen {
                         PersianAvatar(
                             imageUrl = "https://loremflickr.com/320/240",
                             size = PersianAvatarDefaults.size96(),
-                            isEdit = true
+                            overlay = true
                         )
                         PersianAvatar(
                             imageUrl = "",
@@ -60,7 +60,7 @@ object AvatarAndImage : Screen {
                         PersianAvatar(
                             imageUrl = "",
                             size = PersianAvatarDefaults.size96(),
-                            isEdit = true
+                            overlay = true
                         )
                     }
                 }
@@ -73,7 +73,7 @@ object AvatarAndImage : Screen {
                         PersianAvatar(
                             imageUrl = "https://loremflickr.com/320/240",
                             size = PersianAvatarDefaults.size80(),
-                            isEdit = true
+                            overlay = true
                         )
                         PersianAvatar(
                             imageUrl = "",
@@ -82,7 +82,7 @@ object AvatarAndImage : Screen {
                         PersianAvatar(
                             imageUrl = "",
                             size = PersianAvatarDefaults.size80(),
-                            isEdit = true
+                            overlay = true
                         )
                     }
                 }
@@ -95,7 +95,7 @@ object AvatarAndImage : Screen {
                         PersianAvatar(
                             imageUrl = "https://loremflickr.com/320/240",
                             size = PersianAvatarDefaults.size64(),
-                            isEdit = true
+                            overlay = true
                         )
                         PersianAvatar(
                             imageUrl = "",
@@ -104,7 +104,7 @@ object AvatarAndImage : Screen {
                         PersianAvatar(
                             imageUrl = "",
                             size = PersianAvatarDefaults.size64(),
-                            isEdit = true
+                            overlay = true
                         )
                     }
                 }
@@ -117,7 +117,7 @@ object AvatarAndImage : Screen {
                         PersianAvatar(
                             imageUrl = "https://loremflickr.com/320/240",
                             size = PersianAvatarDefaults.size48(),
-                            isEdit = true
+                            overlay = true
                         )
                         PersianAvatar(
                             imageUrl = "",
@@ -126,7 +126,7 @@ object AvatarAndImage : Screen {
                         PersianAvatar(
                             imageUrl = "",
                             size = PersianAvatarDefaults.size48(),
-                            isEdit = true
+                            overlay = true
                         )
                     }
                 }
@@ -139,7 +139,7 @@ object AvatarAndImage : Screen {
                         PersianAvatar(
                             imageUrl = "https://loremflickr.com/320/240",
                             size = PersianAvatarDefaults.size32(),
-                            isEdit = true
+                            overlay = true
                         )
                         PersianAvatar(
                             imageUrl = "",
@@ -148,7 +148,7 @@ object AvatarAndImage : Screen {
                         PersianAvatar(
                             imageUrl = "",
                             size = PersianAvatarDefaults.size32(),
-                            isEdit = true
+                            overlay = true
                         )
                     }
                 }
@@ -161,7 +161,7 @@ object AvatarAndImage : Screen {
                         PersianAvatar(
                             imageUrl = "https://loremflickr.com/320/240",
                             size = PersianAvatarDefaults.size24(),
-                            isEdit = true
+                            overlay = true
                         )
                         PersianAvatar(
                             imageUrl = "",
@@ -170,7 +170,7 @@ object AvatarAndImage : Screen {
                         PersianAvatar(
                             imageUrl = "",
                             size = PersianAvatarDefaults.size24(),
-                            isEdit = true
+                            overlay = true
                         )
                     }
                 }
@@ -183,7 +183,7 @@ object AvatarAndImage : Screen {
                         PersianImage(
                             imageUrl = "https://loremflickr.com/320/240",
                             size = PersianImagesDefaults.smallShapeSize96(),
-                            isEdit = true
+                            overlay = true
                         )
                         PersianImage(
                             imageUrl = "",
@@ -192,7 +192,7 @@ object AvatarAndImage : Screen {
                         PersianImage(
                             imageUrl = "",
                             size = PersianImagesDefaults.smallShapeSize96(),
-                            isEdit = true
+                            overlay = true
                         )
                     }
                 }
@@ -205,7 +205,7 @@ object AvatarAndImage : Screen {
                         PersianImage(
                             imageUrl = "https://loremflickr.com/320/240",
                             size = PersianImagesDefaults.smallShapeSize80(),
-                            isEdit = true
+                            overlay = true
                         )
                         PersianImage(
                             imageUrl = "",
@@ -214,7 +214,7 @@ object AvatarAndImage : Screen {
                         PersianImage(
                             imageUrl = "",
                             size = PersianImagesDefaults.smallShapeSize80(),
-                            isEdit = true
+                            overlay = true
                         )
                     }
                 }
@@ -227,7 +227,7 @@ object AvatarAndImage : Screen {
                         PersianImage(
                             imageUrl = "https://loremflickr.com/320/240",
                             size = PersianImagesDefaults.smallShapeSize64(),
-                            isEdit = true
+                            overlay = true
                         )
                         PersianImage(
                             imageUrl = "",
@@ -236,7 +236,7 @@ object AvatarAndImage : Screen {
                         PersianImage(
                             imageUrl = "",
                             size = PersianImagesDefaults.smallShapeSize64(),
-                            isEdit = true
+                            overlay = true
                         )
                     }
                 }
@@ -249,7 +249,7 @@ object AvatarAndImage : Screen {
                         PersianImage(
                             imageUrl = "https://loremflickr.com/320/240",
                             size = PersianImagesDefaults.smallShapeSize48(),
-                            isEdit = true
+                            overlay = true
                         )
                         PersianImage(
                             imageUrl = "",
@@ -258,7 +258,7 @@ object AvatarAndImage : Screen {
                         PersianImage(
                             imageUrl = "",
                             size = PersianImagesDefaults.smallShapeSize48(),
-                            isEdit = true
+                            overlay = true
                         )
                     }
                 }
@@ -271,7 +271,7 @@ object AvatarAndImage : Screen {
                         PersianImage(
                             imageUrl = "https://loremflickr.com/320/240",
                             size = PersianImagesDefaults.smallShapeSize32(),
-                            isEdit = true
+                            overlay = true
                         )
                         PersianImage(
                             imageUrl = "",
@@ -280,7 +280,7 @@ object AvatarAndImage : Screen {
                         PersianImage(
                             imageUrl = "",
                             size = PersianImagesDefaults.smallShapeSize32(),
-                            isEdit = true
+                            overlay = true
                         )
                     }
                 }
@@ -293,7 +293,7 @@ object AvatarAndImage : Screen {
                         PersianImage(
                             imageUrl = "https://loremflickr.com/320/240",
                             size = PersianImagesDefaults.smallShapeSize24(),
-                            isEdit = true
+                            overlay = true
                         )
                         PersianImage(
                             imageUrl = "",
@@ -302,7 +302,7 @@ object AvatarAndImage : Screen {
                         PersianImage(
                             imageUrl = "",
                             size = PersianImagesDefaults.smallShapeSize24(),
-                            isEdit = true
+                            overlay = true
                         )
                     }
                 }
@@ -315,7 +315,7 @@ object AvatarAndImage : Screen {
                         PersianImage(
                             imageUrl = "https://loremflickr.com/320/240",
                             size = PersianImagesDefaults.mediumShapeSize96(),
-                            isEdit = true
+                            overlay = true
                         )
                         PersianImage(
                             imageUrl = "",
@@ -324,7 +324,7 @@ object AvatarAndImage : Screen {
                         PersianImage(
                             imageUrl = "",
                             size = PersianImagesDefaults.mediumShapeSize96(),
-                            isEdit = true
+                            overlay = true
                         )
                     }
                 }
@@ -337,7 +337,7 @@ object AvatarAndImage : Screen {
                         PersianImage(
                             imageUrl = "https://loremflickr.com/320/240",
                             size = PersianImagesDefaults.mediumShapeSize80(),
-                            isEdit = true
+                            overlay = true
                         )
                         PersianImage(
                             imageUrl = "",
@@ -346,7 +346,7 @@ object AvatarAndImage : Screen {
                         PersianImage(
                             imageUrl = "",
                             size = PersianImagesDefaults.mediumShapeSize80(),
-                            isEdit = true
+                            overlay = true
                         )
                     }
                 }
@@ -359,7 +359,7 @@ object AvatarAndImage : Screen {
                         PersianImage(
                             imageUrl = "https://loremflickr.com/320/240",
                             size = PersianImagesDefaults.mediumShapeSize64(),
-                            isEdit = true
+                            overlay = true
                         )
                         PersianImage(
                             imageUrl = "",
@@ -368,7 +368,7 @@ object AvatarAndImage : Screen {
                         PersianImage(
                             imageUrl = "",
                             size = PersianImagesDefaults.mediumShapeSize64(),
-                            isEdit = true
+                            overlay = true
                         )
                     }
                 }
@@ -381,7 +381,7 @@ object AvatarAndImage : Screen {
                         PersianImage(
                             imageUrl = "https://loremflickr.com/320/240",
                             size = PersianImagesDefaults.mediumShapeSize48(),
-                            isEdit = true
+                            overlay = true
                         )
                         PersianImage(
                             imageUrl = "",
@@ -390,7 +390,7 @@ object AvatarAndImage : Screen {
                         PersianImage(
                             imageUrl = "",
                             size = PersianImagesDefaults.mediumShapeSize48(),
-                            isEdit = true
+                            overlay = true
                         )
                     }
                 }
@@ -403,7 +403,7 @@ object AvatarAndImage : Screen {
                         PersianImage(
                             imageUrl = "",
                             size = PersianImagesDefaults.mediumShapeSize32(),
-                            isEdit = true
+                            overlay = true
                         )
                         PersianImage(
                             imageUrl = "",
@@ -412,7 +412,7 @@ object AvatarAndImage : Screen {
                         PersianImage(
                             imageUrl = "",
                             size = PersianImagesDefaults.mediumShapeSize32(),
-                            isEdit = true
+                            overlay = true
                         )
                     }
                 }
@@ -425,7 +425,7 @@ object AvatarAndImage : Screen {
                         PersianImage(
                             imageUrl = "https://loremflickr.com/320/240",
                             size = PersianImagesDefaults.mediumShapeSize24(),
-                            isEdit = true
+                            overlay = true
                         )
                         PersianImage(
                             imageUrl = "",
@@ -434,7 +434,7 @@ object AvatarAndImage : Screen {
                         PersianImage(
                             imageUrl = "",
                             size = PersianImagesDefaults.mediumShapeSize24(),
-                            isEdit = true
+                            overlay = true
                         )
                     }
                 }
@@ -447,7 +447,7 @@ object AvatarAndImage : Screen {
                         PersianImage(
                             imageUrl = "https://loremflickr.com/320/240",
                             size = PersianImagesDefaults.largeShapeSize96(),
-                            isEdit = true
+                            overlay = true
                         )
                         PersianImage(
                             imageUrl = "",
@@ -456,7 +456,7 @@ object AvatarAndImage : Screen {
                         PersianImage(
                             imageUrl = "",
                             size = PersianImagesDefaults.largeShapeSize96(),
-                            isEdit = true
+                            overlay = true
                         )
                     }
                 }
@@ -469,7 +469,7 @@ object AvatarAndImage : Screen {
                         PersianImage(
                             imageUrl = "https://loremflickr.com/320/240",
                             size = PersianImagesDefaults.largeShapeSize80(),
-                            isEdit = true
+                            overlay = true
                         )
                         PersianImage(
                             imageUrl = "",
@@ -478,7 +478,7 @@ object AvatarAndImage : Screen {
                         PersianImage(
                             imageUrl = "",
                             size = PersianImagesDefaults.largeShapeSize80(),
-                            isEdit = true
+                            overlay = true
                         )
                     }
                 }
@@ -491,7 +491,7 @@ object AvatarAndImage : Screen {
                         PersianImage(
                             imageUrl = "https://loremflickr.com/320/240",
                             size = PersianImagesDefaults.largeShapeSize64(),
-                            isEdit = true
+                            overlay = true
                         )
                         PersianImage(
                             imageUrl = "",
@@ -500,7 +500,7 @@ object AvatarAndImage : Screen {
                         PersianImage(
                             imageUrl = "",
                             size = PersianImagesDefaults.largeShapeSize64(),
-                            isEdit = true
+                            overlay = true
                         )
                     }
                 }
@@ -513,7 +513,7 @@ object AvatarAndImage : Screen {
                         PersianImage(
                             imageUrl = "https://loremflickr.com/320/240",
                             size = PersianImagesDefaults.largeShapeSize48(),
-                            isEdit = true
+                            overlay = true
                         )
                         PersianImage(
                             imageUrl = "",
@@ -522,7 +522,7 @@ object AvatarAndImage : Screen {
                         PersianImage(
                             imageUrl = "",
                             size = PersianImagesDefaults.largeShapeSize48(),
-                            isEdit = true
+                            overlay = true
                         )
                     }
                 }
@@ -535,7 +535,7 @@ object AvatarAndImage : Screen {
                         PersianImage(
                             imageUrl = "https://loremflickr.com/320/240",
                             size = PersianImagesDefaults.largeShapeSize32(),
-                            isEdit = true
+                            overlay = true
                         )
                         PersianImage(
                             imageUrl = "",
@@ -544,7 +544,7 @@ object AvatarAndImage : Screen {
                         PersianImage(
                             imageUrl = "",
                             size = PersianImagesDefaults.largeShapeSize32(),
-                            isEdit = true
+                            overlay = true
                         )
                     }
                 }
@@ -557,7 +557,7 @@ object AvatarAndImage : Screen {
                         PersianImage(
                             imageUrl = "https://loremflickr.com/320/240",
                             size = PersianImagesDefaults.largeShapeSize24(),
-                            isEdit = true
+                            overlay = true
                         )
                         PersianImage(
                             imageUrl = "",
@@ -566,7 +566,7 @@ object AvatarAndImage : Screen {
                         PersianImage(
                             imageUrl = "",
                             size = PersianImagesDefaults.largeShapeSize24(),
-                            isEdit = true
+                            overlay = true
                         )
                     }
                 }

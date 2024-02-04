@@ -8,6 +8,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.charts.donut.DonutChartData
@@ -45,23 +46,23 @@ object Charts : Screen {
                             data = listOf(
                                 DonutChartData(
                                     10.0,
-                                    MaterialTheme.extendedColorScheme.primary
+                                    Color(0xFFAD00C9)
                                 ),
                                 DonutChartData(
                                     20.0,
-                                    MaterialTheme.extendedColorScheme.secondary
+                                    Color(0xFF0267FF)
                                 ),
                                 DonutChartData(
                                     30.0,
-                                    MaterialTheme.extendedColorScheme.tertiary
+                                    Color(0xFF00C938)
                                 ),
                                 DonutChartData(
                                     40.0,
-                                    MaterialTheme.extendedColorScheme.error
+                                    Color(0xFFFFA800)
                                 ),
                                 DonutChartData(
                                     50.0,
-                                    MaterialTheme.extendedColorScheme.correct
+                                    Color(0xFFFF0000)
                                 ),
                             ),
                             config = DonutChartConfig(
