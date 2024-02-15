@@ -1,7 +1,10 @@
+
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
 }
+
+apply from: 'signing.gradle'
 
 android {
     namespace 'ru.rabbit.persian.appShowcase'
@@ -22,8 +25,10 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
