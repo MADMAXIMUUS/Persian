@@ -41,8 +41,7 @@ class ActionSheetItemColors(
         if (defaultTextColor != other.defaultTextColor) return false
         if (errorTextColor != other.errorTextColor) return false
         if (disabledTextColor != other.disabledTextColor) return false
-        if (iconColors != other.iconColors) return false
-        return true
+        return iconColors == other.iconColors
     }
 
     override fun hashCode(): Int {

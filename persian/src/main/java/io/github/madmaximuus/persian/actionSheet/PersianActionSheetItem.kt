@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.semantics.Role
@@ -21,7 +22,7 @@ data class ActionSheetItem(
     val leadingIcon: Painter? = null,
     val enabled: Boolean = true,
     val negative: Boolean = false,
-    val onClick: (AnimatedTransitionDialogHelper) -> Unit
+    val onClick: () -> Unit
 )
 
 @Composable
@@ -34,20 +35,20 @@ internal fun PersianActionSheetItem(
     Row(
         modifier = modifier
             .fillMaxWidth()
+            .height(52.dp)
             .clickable(
                 enabled = actionSheetItem.enabled,
                 onClick = {
-                    actionSheetItem.onClick(animatedTransitionDialogHelper)
+                    actionSheetItem.onClick()
+                    animatedTransitionDialogHelper.triggerAnimatedDismiss()
                 },
                 role = Role.Button
             )
             .padding(
                 start = MaterialTheme.spacing.medium,
-                top = MaterialTheme.spacing.medium,
-                bottom = MaterialTheme.spacing.medium,
-                end = 0.dp
             ),
-        horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small)
+        horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small),
+        verticalAlignment = Alignment.CenterVertically
     ) {
         val textColor = itemColors
             .textColor(enabled = actionSheetItem.enabled, isError = actionSheetItem.negative).value
@@ -59,11 +60,13 @@ internal fun PersianActionSheetItem(
                 colors = itemColors.iconColors
             )
         }
+        val padding = if (actionSheetItem.leadingIcon == null) MaterialTheme.spacing.small
+        else 0.dp
         Text(
-            modifier = Modifier.height(24.dp),
+            modifier = Modifier.padding(start = padding),
             text = actionSheetItem.text,
             style = MaterialTheme.typography.titleMedium,
-            color = textColor
+            color = textColor,
         )
     }
 }

@@ -38,8 +38,8 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-private const val ANIMATION_TIME = 180L
-private const val DIALOG_BUILD_TIME = 20L
+private const val ANIMATION_TIME = 220L
+private const val DIALOG_BUILD_TIME = 40L
 
 class AnimatedTransitionDialogHelper(
     private val coroutineScope: CoroutineScope,
@@ -107,6 +107,10 @@ fun PersianActionSheet(
     itemColors: ActionSheetItemColors = PersianActionSheetDefaults.itemColors(),
     onDismissRequest: () -> Unit
 ) {
+    require(actions.size > 2) {
+        throw IllegalArgumentException("Actions must have at least 2 items")
+    }
+
     val onDismissSharedFlow: MutableSharedFlow<Any> = remember { MutableSharedFlow() }
     val coroutineScope: CoroutineScope = rememberCoroutineScope()
     val animateTrigger = remember { mutableStateOf(false) }
@@ -140,16 +144,17 @@ fun PersianActionSheet(
         ),
         content = {
             val dialogWindowProvider = LocalView.current.parent as DialogWindowProvider
-            dialogWindowProvider.window.setGravity(Gravity.BOTTOM)
+            dialogWindowProvider.window.apply {
+                setGravity(Gravity.BOTTOM)
+                setWindowAnimations(-1)
+            }
 
             AnimatedSlideInTransition(visible = animateTrigger.value, screenHeight) {
                 Surface(
                     modifier = modifier
                         .padding(
-                            start = MaterialTheme.spacing.large,
-                            end = MaterialTheme.spacing.large,
-                            bottom = MaterialTheme.spacing.extraSmall,
-                            top = 0.dp
+                            horizontal = MaterialTheme.spacing.large,
+                            vertical = MaterialTheme.spacing.extraSmall,
                         ),
                     shape = shape,
                     tonalElevation = tonalElevation
@@ -160,8 +165,8 @@ fun PersianActionSheet(
                     ) {
                         if (title != null || subtitle != null) {
                             PersianActionSheetHeader(
-                                title = title!!,
-                                subtitle = subtitle!!
+                                title = title,
+                                subtitle = subtitle
                             )
                         }
                         actions.forEach {

@@ -9,35 +9,52 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import io.github.madmaximuus.persian.foundation.spacing
 
 @Composable
 internal fun PersianActionSheetHeader(
     modifier: Modifier = Modifier,
-    title: String,
-    subtitle: String,
+    title: String?,
+    subtitle: String?,
 ) {
     Column(
         modifier = modifier
             .fillMaxWidth()
             .padding(
-                start = MaterialTheme.spacing.extraExtraLarge,
-                end = MaterialTheme.spacing.extraExtraLarge,
-                top = MaterialTheme.spacing.large,
+                top = MaterialTheme.spacing.extraExtraLarge,
                 bottom = MaterialTheme.spacing.extraSmall
             )
     ) {
-        Text(
-            text = title,
-            style = MaterialTheme.typography.titleMedium,
-            color = MaterialTheme.extendedColorScheme.onSurface
-        )
-        Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraSmall))
-        Text(
-            text = subtitle,
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.extendedColorScheme.onSurfaceVariant
-        )
+        title?.let {
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(
+                        start = MaterialTheme.spacing.extraLarge,
+                        end = MaterialTheme.spacing.extraLarge
+                    ),
+                text = it,
+                textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.titleLarge,
+                color = MaterialTheme.extendedColorScheme.onSurface
+            )
+            Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraSmall))
+        }
+        subtitle?.let {
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(
+                        start = MaterialTheme.spacing.extraLarge,
+                        end = MaterialTheme.spacing.extraLarge
+                    ),
+                text = it,
+                textAlign = TextAlign.Justify,
+                style = MaterialTheme.typography.bodyLarge,
+                color = MaterialTheme.extendedColorScheme.onSurfaceVariant
+            )
+        }
     }
 }
