@@ -15,3 +15,5 @@
 local.properties
 varible.properties
 /.idea/
+/app-persian-showcase/signing.gradle
+/app-persian-showcase/key/persian
