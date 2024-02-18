@@ -1,19 +1,21 @@
 package io.github.madmaximuus.persian.avatarsAndImages
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.iconBox.IconBoxSize
 import io.github.madmaximuus.persian.iconBox.PersianIconBoxDefaults
 
-data class AvatarSize(
+@Immutable
+class AvatarSize internal constructor(
     val boxSizes: Dp,
     val placeholderSize: IconBoxSize,
     val editIconBoxSize: IconBoxSize
 )
 
-object PersianAvatarDefaults {
+object PersianAvatarsDefaults {
 
     @Composable
     fun size96(

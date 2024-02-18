@@ -2,198 +2,164 @@ package io.github.madmaximuus.persian.avatarsAndImages
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.State
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.iconBox.IconBoxSize
 import io.github.madmaximuus.persian.iconBox.PersianIconBoxDefaults
 
-data class ImageSize(
-    val boxSizes: Dp,
-    val placeholderSize: IconBoxSize,
-    val editIconBoxSize: IconBoxSize,
-    val shape: Shape
-)
+enum class ImageShape {
+    SMALL, MEDIUM, LARGE
+}
+
+
+@Immutable
+class ImageSize internal constructor(
+    internal val boxSizes: Dp,
+    internal val placeholderSize: IconBoxSize,
+    internal val editIconBoxSize: IconBoxSize,
+    private val smallShape: Shape,
+    private val mediumShape: Shape,
+    private val largeShape: Shape
+) {
+
+    @Composable
+    internal fun shape(shape: ImageShape): State<Shape> {
+        val target = when (shape) {
+            ImageShape.SMALL -> smallShape
+            ImageShape.MEDIUM -> mediumShape
+            ImageShape.LARGE -> largeShape
+        }
+        return rememberUpdatedState(newValue = target)
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || other !is ImageSize) return false
+
+        if (boxSizes != other.boxSizes) return false
+        if (placeholderSize != other.placeholderSize) return false
+        if (editIconBoxSize != other.editIconBoxSize) return false
+        if (smallShape != other.smallShape) return false
+        if (mediumShape != other.mediumShape) return false
+        return largeShape == other.largeShape
+    }
+
+    override fun hashCode(): Int {
+        var result = boxSizes.hashCode()
+        result = 31 * result + placeholderSize.hashCode()
+        result = 31 * result + editIconBoxSize.hashCode()
+        result = 31 * result + smallShape.hashCode()
+        result = 31 * result + mediumShape.hashCode()
+        result = 31 * result + largeShape.hashCode()
+        return result
+    }
+}
 
 object PersianImagesDefaults {
+
     @Composable
-    fun smallShapeSize96(
+    fun size96(
         boxSizes: Dp = 96.dp,
         placeholderSize: IconBoxSize = PersianIconBoxDefaults.extraExtraLarge(),
         editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.extraLarge(),
-        shape: Shape = RoundedCornerShape(8.dp)
-    ) = remember(boxSizes, placeholderSize, editIconBoxSize, shape) {
-        ImageSize(boxSizes, placeholderSize, editIconBoxSize, shape)
-    }
+        smallShape: Shape = RoundedCornerShape(8.dp),
+        mediumShape: Shape = RoundedCornerShape(12.dp),
+        largeShape: Shape = RoundedCornerShape(16.dp)
+    ): ImageSize = ImageSize(
+        boxSizes,
+        placeholderSize,
+        editIconBoxSize,
+        smallShape,
+        mediumShape,
+        largeShape
+    )
 
     @Composable
-    fun smallShapeSize80(
+    fun size80(
         boxSizes: Dp = 80.dp,
         placeholderSize: IconBoxSize = PersianIconBoxDefaults.extraExtraLarge(),
         editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.extraLarge(),
-        shape: Shape = RoundedCornerShape(8.dp)
-    ) = remember(boxSizes, placeholderSize, editIconBoxSize, shape) {
-        ImageSize(boxSizes, placeholderSize, editIconBoxSize, shape)
-    }
+        smallShape: Shape = RoundedCornerShape(8.dp),
+        mediumShape: Shape = RoundedCornerShape(11.dp),
+        largeShape: Shape = RoundedCornerShape(15.dp)
+    ): ImageSize = ImageSize(
+        boxSizes,
+        placeholderSize,
+        editIconBoxSize,
+        smallShape,
+        mediumShape,
+        largeShape
+    )
 
     @Composable
-    fun smallShapeSize64(
+    fun size64(
         boxSizes: Dp = 64.dp,
         placeholderSize: IconBoxSize = PersianIconBoxDefaults.extraLarge(),
         editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.large(),
-        shape: Shape = RoundedCornerShape(6.dp)
-    ) = remember(boxSizes, placeholderSize, editIconBoxSize, shape) {
-        ImageSize(boxSizes, placeholderSize, editIconBoxSize, shape)
-    }
+        smallShape: Shape = RoundedCornerShape(6.dp),
+        mediumShape: Shape = RoundedCornerShape(10.dp),
+        largeShape: Shape = RoundedCornerShape(14.dp)
+    ): ImageSize = ImageSize(
+        boxSizes,
+        placeholderSize,
+        editIconBoxSize,
+        smallShape,
+        mediumShape,
+        largeShape
+    )
 
     @Composable
-    fun smallShapeSize48(
+    fun size48(
         boxSizes: Dp = 48.dp,
         placeholderSize: IconBoxSize = PersianIconBoxDefaults.large(),
         editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.large(),
-        shape: Shape = RoundedCornerShape(5.dp)
-    ) = remember(boxSizes, placeholderSize, editIconBoxSize, shape) {
-        ImageSize(boxSizes, placeholderSize, editIconBoxSize, shape)
-    }
+        smallShape: Shape = RoundedCornerShape(5.dp),
+        mediumShape: Shape = RoundedCornerShape(9.dp),
+        largeShape: Shape = RoundedCornerShape(12.dp)
+    ): ImageSize = ImageSize(
+        boxSizes,
+        placeholderSize,
+        editIconBoxSize,
+        smallShape,
+        mediumShape,
+        largeShape
+    )
 
     @Composable
-    fun smallShapeSize32(
+    fun size32(
         boxSizes: Dp = 32.dp,
         placeholderSize: IconBoxSize = PersianIconBoxDefaults.medium(),
         editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.medium(),
-        shape: Shape = RoundedCornerShape(4.dp)
-    ) = remember(boxSizes, placeholderSize, editIconBoxSize, shape) {
-        ImageSize(boxSizes, placeholderSize, editIconBoxSize, shape)
-    }
+        smallShape: Shape = RoundedCornerShape(4.dp),
+        mediumShape: Shape = RoundedCornerShape(8.dp),
+        largeShape: Shape = RoundedCornerShape(10.dp)
+    ): ImageSize = ImageSize(
+        boxSizes,
+        placeholderSize,
+        editIconBoxSize,
+        smallShape,
+        mediumShape,
+        largeShape
+    )
 
     @Composable
-    fun smallShapeSize24(
+    fun size24(
         boxSizes: Dp = 24.dp,
         placeholderSize: IconBoxSize = PersianIconBoxDefaults.small(),
         editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.small(),
-        shape: Shape = RoundedCornerShape(3.dp)
-    ) = remember(boxSizes, placeholderSize, editIconBoxSize, shape) {
-        ImageSize(boxSizes, placeholderSize, editIconBoxSize, shape)
-    }
-
-    @Composable
-    fun mediumShapeSize96(
-        boxSizes: Dp = 96.dp,
-        placeholderSize: IconBoxSize = PersianIconBoxDefaults.extraExtraLarge(),
-        editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.extraLarge(),
-        shape: Shape = RoundedCornerShape(12.dp)
-    ) = remember(boxSizes, placeholderSize, editIconBoxSize, shape) {
-        ImageSize(boxSizes, placeholderSize, editIconBoxSize, shape)
-    }
-
-    @Composable
-    fun mediumShapeSize80(
-        boxSizes: Dp = 80.dp,
-        placeholderSize: IconBoxSize = PersianIconBoxDefaults.extraExtraLarge(),
-        editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.extraLarge(),
-        shape: Shape = RoundedCornerShape(11.dp)
-    ) = remember(boxSizes, placeholderSize, editIconBoxSize, shape) {
-        ImageSize(boxSizes, placeholderSize, editIconBoxSize, shape)
-    }
-
-    @Composable
-    fun mediumShapeSize64(
-        boxSizes: Dp = 64.dp,
-        placeholderSize: IconBoxSize = PersianIconBoxDefaults.extraLarge(),
-        editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.large(),
-        shape: Shape = RoundedCornerShape(10.dp)
-    ) = remember(boxSizes, placeholderSize, editIconBoxSize, shape) {
-        ImageSize(boxSizes, placeholderSize, editIconBoxSize, shape)
-    }
-
-    @Composable
-    fun mediumShapeSize48(
-        boxSizes: Dp = 48.dp,
-        placeholderSize: IconBoxSize = PersianIconBoxDefaults.large(),
-        editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.large(),
-        shape: Shape = RoundedCornerShape(9.dp)
-    ) = remember(boxSizes, placeholderSize, editIconBoxSize, shape) {
-        ImageSize(boxSizes, placeholderSize, editIconBoxSize, shape)
-    }
-
-    @Composable
-    fun mediumShapeSize32(
-        boxSizes: Dp = 32.dp,
-        placeholderSize: IconBoxSize = PersianIconBoxDefaults.medium(),
-        editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.medium(),
-        shape: Shape = RoundedCornerShape(8.dp)
-    ) = remember(boxSizes, placeholderSize, editIconBoxSize, shape) {
-        ImageSize(boxSizes, placeholderSize, editIconBoxSize, shape)
-    }
-
-    @Composable
-    fun mediumShapeSize24(
-        boxSizes: Dp = 24.dp,
-        placeholderSize: IconBoxSize = PersianIconBoxDefaults.small(),
-        editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.small(),
-        shape: Shape = RoundedCornerShape(7.dp)
-    ) = remember(boxSizes, placeholderSize, editIconBoxSize, shape) {
-        ImageSize(boxSizes, placeholderSize, editIconBoxSize, shape)
-    }
-
-    @Composable
-    fun largeShapeSize96(
-        boxSizes: Dp = 96.dp,
-        placeholderSize: IconBoxSize = PersianIconBoxDefaults.extraExtraLarge(),
-        editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.extraLarge(),
-        shape: Shape = RoundedCornerShape(16.dp)
-    ) = remember(boxSizes, placeholderSize, editIconBoxSize, shape) {
-        ImageSize(boxSizes, placeholderSize, editIconBoxSize, shape)
-    }
-
-    @Composable
-    fun largeShapeSize80(
-        boxSizes: Dp = 80.dp,
-        placeholderSize: IconBoxSize = PersianIconBoxDefaults.extraExtraLarge(),
-        editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.extraLarge(),
-        shape: Shape = RoundedCornerShape(15.dp)
-    ) = remember(boxSizes, placeholderSize, editIconBoxSize, shape) {
-        ImageSize(boxSizes, placeholderSize, editIconBoxSize, shape)
-    }
-
-    @Composable
-    fun largeShapeSize64(
-        boxSizes: Dp = 64.dp,
-        placeholderSize: IconBoxSize = PersianIconBoxDefaults.extraLarge(),
-        editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.large(),
-        shape: Shape = RoundedCornerShape(14.dp)
-    ) = remember(boxSizes, placeholderSize, editIconBoxSize, shape) {
-        ImageSize(boxSizes, placeholderSize, editIconBoxSize, shape)
-    }
-
-    @Composable
-    fun largeShapeSize48(
-        boxSizes: Dp = 48.dp,
-        placeholderSize: IconBoxSize = PersianIconBoxDefaults.large(),
-        editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.large(),
-        shape: Shape = RoundedCornerShape(12.dp)
-    ) = remember(boxSizes, placeholderSize, editIconBoxSize, shape) {
-        ImageSize(boxSizes, placeholderSize, editIconBoxSize, shape)
-    }
-
-    @Composable
-    fun largeShapeSize32(
-        boxSizes: Dp = 32.dp,
-        placeholderSize: IconBoxSize = PersianIconBoxDefaults.medium(),
-        editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.medium(),
-        shape: Shape = RoundedCornerShape(10.dp)
-    ) = remember(boxSizes, placeholderSize, editIconBoxSize, shape) {
-        ImageSize(boxSizes, placeholderSize, editIconBoxSize, shape)
-    }
-
-    @Composable
-    fun largeShapeSize24(
-        boxSizes: Dp = 24.dp,
-        placeholderSize: IconBoxSize = PersianIconBoxDefaults.small(),
-        editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.small(),
-        shape: Shape = RoundedCornerShape(8.dp)
-    ) = remember(boxSizes, placeholderSize, editIconBoxSize, shape) {
-        ImageSize(boxSizes, placeholderSize, editIconBoxSize, shape)
-    }
+        smallShape: Shape = RoundedCornerShape(3.dp),
+        mediumShape: Shape = RoundedCornerShape(7.dp),
+        largeShape: Shape = RoundedCornerShape(8.dp)
+    ): ImageSize = ImageSize(
+        boxSizes,
+        placeholderSize,
+        editIconBoxSize,
+        smallShape,
+        mediumShape,
+        largeShape
+    )
 }

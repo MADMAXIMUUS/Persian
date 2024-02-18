@@ -37,7 +37,7 @@ fun PersianAvatar(
     imageUrl: String,
     overlay: Boolean = false,
     overlayIcon: Painter = MaterialTheme.icons.add,
-    size: AvatarSize = PersianAvatarDefaults.size48(),
+    size: AvatarSize = PersianAvatarsDefaults.size48(),
     onClick: (() -> Unit)? = null
 ) {
     Box(
@@ -72,7 +72,7 @@ fun PersianAvatar(
                                 LocalContentColor provides MaterialTheme.extendedColorScheme.onPrimaryContainer
                             ) {
                                 PersianIconBox(
-                                    icon = MaterialTheme.icons.image,
+                                    icon = MaterialTheme.icons.person,
                                     size = size.placeholderSize,
                                     colors = PersianIconBoxDefaults.colors()
                                 )

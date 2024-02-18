@@ -36,25 +36,26 @@ fun PersianImage(
     imageUrl: String,
     overlay: Boolean = false,
     overlayIcon: Painter = MaterialTheme.icons.add,
-    size: ImageSize = PersianImagesDefaults.mediumShapeSize48(),
+    size: ImageSize = PersianImagesDefaults.size64(),
+    shape: ImageShape = ImageShape.MEDIUM,
     onClick: (() -> Unit)? = null
 ) {
     Box(
+        contentAlignment = Alignment.Center,
         modifier = modifier
             .size(size.boxSizes)
-            .clip(size.shape)
+            .clip(size.shape(shape).value)
             .background(
                 MaterialTheme.extendedColorScheme
                     .surfaceColorAtElevation(MaterialTheme.elevation.extraLarge),
-                size.shape
+                size.shape(shape).value
             )
-            .border(1.dp, MaterialTheme.extendedColorScheme.outline, size.shape)
+            .border(1.dp, MaterialTheme.extendedColorScheme.outline, size.shape(shape).value)
             .clickable(
                 enabled = onClick != null,
                 onClick = { onClick?.invoke() },
                 role = Role.Image
-            ),
-        contentAlignment = Alignment.Center
+            )
     ) {
         GlideSubcomposition(
             model = imageUrl,

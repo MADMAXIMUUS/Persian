@@ -10,8 +10,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.unit.dp
+import io.github.madmaximuus.persian.avatarsAndImages.ImageShape
 import io.github.madmaximuus.persian.avatarsAndImages.PersianAvatar
-import io.github.madmaximuus.persian.avatarsAndImages.PersianAvatarDefaults
+import io.github.madmaximuus.persian.avatarsAndImages.PersianAvatarsDefaults
 import io.github.madmaximuus.persian.avatarsAndImages.PersianImage
 import io.github.madmaximuus.persian.avatarsAndImages.PersianImagesDefaults
 import io.github.madmaximuus.persian.foundation.spacing
@@ -85,7 +86,8 @@ internal fun PersianSnackbarLeftImage(
                     bottom = MaterialTheme.spacing.small
                 ),
             imageUrl = imageUrl,
-            size = PersianImagesDefaults.largeShapeSize32()
+            size = PersianImagesDefaults.size32(),
+            shape = ImageShape.LARGE
         )
     }
 }
@@ -107,7 +109,7 @@ internal fun PersianSnackbarLeftAvatar(
                     bottom = MaterialTheme.spacing.small
                 ),
             imageUrl = avatarUrl,
-            size = PersianAvatarDefaults.size32(),
+            size = PersianAvatarsDefaults.size32(),
             onClick = null
         )
     }

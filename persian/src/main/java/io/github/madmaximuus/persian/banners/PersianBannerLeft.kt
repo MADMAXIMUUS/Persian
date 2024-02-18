@@ -11,8 +11,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.unit.dp
+import io.github.madmaximuus.persian.avatarsAndImages.ImageShape
 import io.github.madmaximuus.persian.avatarsAndImages.PersianAvatar
-import io.github.madmaximuus.persian.avatarsAndImages.PersianAvatarDefaults
+import io.github.madmaximuus.persian.avatarsAndImages.PersianAvatarsDefaults
 import io.github.madmaximuus.persian.avatarsAndImages.PersianImage
 import io.github.madmaximuus.persian.avatarsAndImages.PersianImagesDefaults
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
@@ -60,7 +61,8 @@ internal fun PersianBannerLeftImage(
     ) {
         PersianImage(
             imageUrl = image,
-            size = PersianImagesDefaults.smallShapeSize48()
+            size = PersianImagesDefaults.size48(),
+            shape = ImageShape.SMALL
         )
     }
 }
@@ -79,7 +81,7 @@ internal fun PersianBannerLeftAvatar(
             modifier = Modifier
                 .padding(0.dp),
             imageUrl = image,
-            size = PersianAvatarDefaults.size32(),
+            size = PersianAvatarsDefaults.size32(),
             onClick = null
         )
     }

@@ -1,22 +1,36 @@
 package ru.rabbit.persian.appShowcase.screens
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.navigationBars
-import androidx.compose.foundation.layout.windowInsetsBottomHeight
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.navigation.NavController
+import io.github.madmaximuus.persian.avatarsAndImages.ImageShape
 import io.github.madmaximuus.persian.avatarsAndImages.PersianAvatar
-import io.github.madmaximuus.persian.avatarsAndImages.PersianAvatarDefaults
+import io.github.madmaximuus.persian.avatarsAndImages.PersianAvatarsDefaults
 import io.github.madmaximuus.persian.avatarsAndImages.PersianImage
 import io.github.madmaximuus.persian.avatarsAndImages.PersianImagesDefaults
+import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
+import io.github.madmaximuus.persian.forms.PersianForm
+import io.github.madmaximuus.persian.forms.PersianFormContent
+import io.github.madmaximuus.persian.forms.PersianFormSubheadConfig
+import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.radioButtons.PersianRadioButton
+import io.github.madmaximuus.persian.select.SelectActionItem
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
@@ -36,545 +50,163 @@ object AvatarAndImage : Screen {
             onBackClick = { navController?.navigateUp() },
             topAppBarScrollBehavior = topAppBarScrollBehavior
         ) {
-            LazyColumn(
+            val (overlay, onOverlayChange) = remember { mutableStateOf(false) }
+            val (content, onContentChange) = remember { mutableStateOf(false) }
+            var shape by remember { mutableStateOf(ImageShape.LARGE) }
+            var selectedSize by remember { mutableStateOf("96") }
+            val imageSizes = listOf(
+                PersianImagesDefaults.size96(),
+                PersianImagesDefaults.size80(),
+                PersianImagesDefaults.size64(),
+                PersianImagesDefaults.size48(),
+                PersianImagesDefaults.size32(),
+                PersianImagesDefaults.size24(),
+                PersianImagesDefaults.size96(),
+            )
+            val avatarSizes = listOf(
+                PersianAvatarsDefaults.size96(),
+                PersianAvatarsDefaults.size80(),
+                PersianAvatarsDefaults.size64(),
+                PersianAvatarsDefaults.size48(),
+                PersianAvatarsDefaults.size32(),
+                PersianAvatarsDefaults.size24(),
+                PersianAvatarsDefaults.size96(),
+            )
+            var imageSizeState by remember { mutableStateOf(imageSizes[0]) }
+            var avatarSizeState by remember { mutableStateOf(avatarSizes[0]) }
+            val shapeStates = remember {
+                listOf(
+                    mutableStateOf(true),
+                    mutableStateOf(false),
+                    mutableStateOf(false)
+                )
+            }
+            Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .nestedScroll(topAppBarScrollBehavior.nestedScrollConnection),
-                contentPadding = it
+                    .padding(it)
             ) {
-                item {
-                    SampleRow(text = "Size 96", firstItem = true) {
-                        PersianAvatar(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianAvatarDefaults.size96()
-                        )
-                        PersianAvatar(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianAvatarDefaults.size96(),
-                            overlay = true
-                        )
-                        PersianAvatar(
-                            imageUrl = "",
-                            size = PersianAvatarDefaults.size96()
-                        )
-                        PersianAvatar(
-                            imageUrl = "",
-                            size = PersianAvatarDefaults.size96(),
-                            overlay = true
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Size 80") {
-                        PersianAvatar(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianAvatarDefaults.size80()
-                        )
-                        PersianAvatar(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianAvatarDefaults.size80(),
-                            overlay = true
-                        )
-                        PersianAvatar(
-                            imageUrl = "",
-                            size = PersianAvatarDefaults.size80()
-                        )
-                        PersianAvatar(
-                            imageUrl = "",
-                            size = PersianAvatarDefaults.size80(),
-                            overlay = true
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Size 64") {
-                        PersianAvatar(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianAvatarDefaults.size64()
-                        )
-                        PersianAvatar(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianAvatarDefaults.size64(),
-                            overlay = true
-                        )
-                        PersianAvatar(
-                            imageUrl = "",
-                            size = PersianAvatarDefaults.size64()
-                        )
-                        PersianAvatar(
-                            imageUrl = "",
-                            size = PersianAvatarDefaults.size64(),
-                            overlay = true
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Size 48") {
-                        PersianAvatar(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianAvatarDefaults.size48()
-                        )
-                        PersianAvatar(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianAvatarDefaults.size48(),
-                            overlay = true
-                        )
-                        PersianAvatar(
-                            imageUrl = "",
-                            size = PersianAvatarDefaults.size48()
-                        )
-                        PersianAvatar(
-                            imageUrl = "",
-                            size = PersianAvatarDefaults.size48(),
-                            overlay = true
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Size 32") {
-                        PersianAvatar(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianAvatarDefaults.size32()
-                        )
-                        PersianAvatar(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianAvatarDefaults.size32(),
-                            overlay = true
-                        )
-                        PersianAvatar(
-                            imageUrl = "",
-                            size = PersianAvatarDefaults.size32()
-                        )
-                        PersianAvatar(
-                            imageUrl = "",
-                            size = PersianAvatarDefaults.size32(),
-                            overlay = true
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Size 24") {
-                        PersianAvatar(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianAvatarDefaults.size24()
-                        )
-                        PersianAvatar(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianAvatarDefaults.size24(),
-                            overlay = true
-                        )
-                        PersianAvatar(
-                            imageUrl = "",
-                            size = PersianAvatarDefaults.size24()
-                        )
-                        PersianAvatar(
-                            imageUrl = "",
-                            size = PersianAvatarDefaults.size24(),
-                            overlay = true
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Image Small Shape Size 96") {
-                        PersianImage(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianImagesDefaults.smallShapeSize96()
-                        )
-                        PersianImage(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianImagesDefaults.smallShapeSize96(),
-                            overlay = true
-                        )
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.smallShapeSize96()
-                        )
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.smallShapeSize96(),
-                            overlay = true
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Image Small Shape Size 80") {
-                        PersianImage(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianImagesDefaults.smallShapeSize80()
-                        )
-                        PersianImage(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianImagesDefaults.smallShapeSize80(),
-                            overlay = true
-                        )
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.smallShapeSize80()
-                        )
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.smallShapeSize80(),
-                            overlay = true
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Image Small Shape Size 64") {
-                        PersianImage(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianImagesDefaults.smallShapeSize64()
-                        )
-                        PersianImage(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianImagesDefaults.smallShapeSize64(),
-                            overlay = true
-                        )
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.smallShapeSize64()
-                        )
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.smallShapeSize64(),
-                            overlay = true
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Image Small Shape Size 48") {
-                        PersianImage(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianImagesDefaults.smallShapeSize48()
-                        )
-                        PersianImage(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianImagesDefaults.smallShapeSize48(),
-                            overlay = true
-                        )
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.smallShapeSize48()
-                        )
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.smallShapeSize48(),
-                            overlay = true
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Image Small Shape Size 32") {
-                        PersianImage(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianImagesDefaults.smallShapeSize32()
-                        )
-                        PersianImage(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianImagesDefaults.smallShapeSize32(),
-                            overlay = true
-                        )
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.smallShapeSize32()
-                        )
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.smallShapeSize32(),
-                            overlay = true
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Image Small Shape Size 24") {
-                        PersianImage(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianImagesDefaults.smallShapeSize24()
-                        )
-                        PersianImage(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianImagesDefaults.smallShapeSize24(),
-                            overlay = true
-                        )
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.smallShapeSize24()
-                        )
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.smallShapeSize24(),
-                            overlay = true
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Image Medium Shape Size 96") {
-                        PersianImage(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianImagesDefaults.mediumShapeSize96()
-                        )
-                        PersianImage(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianImagesDefaults.mediumShapeSize96(),
-                            overlay = true
-                        )
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.mediumShapeSize96()
-                        )
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.mediumShapeSize96(),
-                            overlay = true
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Image Medium Shape Size 80") {
-                        PersianImage(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianImagesDefaults.mediumShapeSize80()
-                        )
-                        PersianImage(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianImagesDefaults.mediumShapeSize80(),
-                            overlay = true
-                        )
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.mediumShapeSize80()
-                        )
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.mediumShapeSize80(),
-                            overlay = true
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Image Medium Shape Size 64") {
-                        PersianImage(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianImagesDefaults.mediumShapeSize64()
-                        )
-                        PersianImage(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianImagesDefaults.mediumShapeSize64(),
-                            overlay = true
-                        )
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.mediumShapeSize64()
-                        )
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.mediumShapeSize64(),
-                            overlay = true
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Image Medium Shape Size 48") {
-                        PersianImage(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianImagesDefaults.mediumShapeSize48()
-                        )
-                        PersianImage(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianImagesDefaults.mediumShapeSize48(),
-                            overlay = true
-                        )
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.mediumShapeSize48()
-                        )
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.mediumShapeSize48(),
-                            overlay = true
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Image Medium Shape Size 32") {
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.mediumShapeSize32()
-                        )
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.mediumShapeSize32(),
-                            overlay = true
-                        )
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.mediumShapeSize32()
-                        )
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.mediumShapeSize32(),
-                            overlay = true
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Image Medium Shape Size 24") {
-                        PersianImage(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianImagesDefaults.mediumShapeSize24()
-                        )
-                        PersianImage(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianImagesDefaults.mediumShapeSize24(),
-                            overlay = true
-                        )
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.mediumShapeSize24()
-                        )
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.mediumShapeSize24(),
-                            overlay = true
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Image Large Shape Size 96") {
-                        PersianImage(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianImagesDefaults.largeShapeSize96()
-                        )
-                        PersianImage(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianImagesDefaults.largeShapeSize96(),
-                            overlay = true
-                        )
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.largeShapeSize96()
-                        )
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.largeShapeSize96(),
-                            overlay = true
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Image Large Shape Size 80") {
-                        PersianImage(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianImagesDefaults.largeShapeSize80()
-                        )
-                        PersianImage(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianImagesDefaults.largeShapeSize80(),
-                            overlay = true
-                        )
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.largeShapeSize80()
-                        )
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.largeShapeSize80(),
-                            overlay = true
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Image Large Shape Size 64") {
-                        PersianImage(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianImagesDefaults.largeShapeSize64()
-                        )
-                        PersianImage(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianImagesDefaults.largeShapeSize64(),
-                            overlay = true
-                        )
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.largeShapeSize64()
-                        )
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.largeShapeSize64(),
-                            overlay = true
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Image Large Shape Size 48") {
-                        PersianImage(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianImagesDefaults.largeShapeSize48()
-                        )
-                        PersianImage(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianImagesDefaults.largeShapeSize48(),
-                            overlay = true
-                        )
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.largeShapeSize48()
-                        )
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.largeShapeSize48(),
-                            overlay = true
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Image Large Shape Size 32") {
-                        PersianImage(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianImagesDefaults.largeShapeSize32()
-                        )
-                        PersianImage(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianImagesDefaults.largeShapeSize32(),
-                            overlay = true
-                        )
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.largeShapeSize32()
-                        )
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.largeShapeSize32(),
-                            overlay = true
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "Image Large Shape Size 24", lastItem = true) {
-                        PersianImage(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianImagesDefaults.largeShapeSize24()
-                        )
-                        PersianImage(
-                            imageUrl = "https://loremflickr.com/320/240",
-                            size = PersianImagesDefaults.largeShapeSize24(),
-                            overlay = true
-                        )
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.largeShapeSize24()
-                        )
-                        PersianImage(
-                            imageUrl = "",
-                            size = PersianImagesDefaults.largeShapeSize24(),
-                            overlay = true
-                        )
-                    }
-                }
-                item {
-                    Spacer(
-                        modifier = Modifier
-                            .windowInsetsBottomHeight(WindowInsets.navigationBars)
+                SampleRow(
+                    text = "Sample",
+                    firstItem = true
+                ) {
+                    PersianAvatar(
+                        imageUrl = if (content) "https://loremflickr.com/320/240" else "",
+                        overlay = overlay,
+                        size = avatarSizeState
                     )
+                    PersianImage(
+                        imageUrl = if (content) "https://loremflickr.com/320/240" else "",
+                        size = imageSizeState,
+                        shape = shape,
+                        overlay = overlay
+                    )
+                }
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(
+                            top = MaterialTheme.spacing.large,
+                            start = MaterialTheme.spacing.large,
+                            end = MaterialTheme.spacing.large
+                        )
+                ) {
+                    PersianCheckbox(
+                        modifier = Modifier.fillMaxWidth(),
+                        text = "Overlay",
+                        checked = overlay,
+                        onCheckedChange = onOverlayChange
+                    )
+                    PersianCheckbox(
+                        modifier = Modifier.fillMaxWidth(),
+                        text = "Content",
+                        checked = content,
+                        onCheckedChange = onContentChange
+                    )
+                    PersianForm(
+                        subhead = PersianFormSubheadConfig(
+                            text = "Size",
+                            textStyle = MaterialTheme.typography.titleMedium,
+                        ),
+                        content = PersianFormContent.Select(
+                            selected = selectedSize,
+                            values = listOf(
+                                SelectActionItem.WithoutIcon(
+                                    title = "96"
+                                ),
+                                SelectActionItem.WithoutIcon(
+                                    title = "80"
+                                ),
+                                SelectActionItem.WithoutIcon(
+                                    title = "64"
+                                ),
+                                SelectActionItem.WithoutIcon(
+                                    title = "48"
+                                ),
+                                SelectActionItem.WithoutIcon(
+                                    title = "32"
+                                ),
+                                SelectActionItem.WithoutIcon(
+                                    title = "24"
+                                ),
+                            ),
+                            onSelectedChange = { option, index ->
+                                selectedSize = option
+                                imageSizeState = imageSizes[index]
+                                avatarSizeState = avatarSizes[index]
+                            }
+                        ),
+                    )
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                    ) {
+                        Text(
+                            text = "Shape",
+                            style = MaterialTheme.typography.titleMedium,
+                            color = MaterialTheme.colorScheme.onSurface
+                        )
+                        Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraSmall))
+                        Column(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .selectableGroup()
+                        ) {
+                            PersianRadioButton(
+                                modifier = Modifier.fillMaxWidth(),
+                                text = "Large",
+                                checked = shapeStates[0].value,
+                                onCheckedChange = {
+                                    shapeStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 0
+                                    }
+                                    shape = ImageShape.LARGE
+                                }
+                            )
+                            PersianRadioButton(
+                                modifier = Modifier.fillMaxWidth(),
+                                text = "Medium",
+                                checked = shapeStates[1].value,
+                                onCheckedChange = {
+                                    shapeStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 1
+                                    }
+                                    shape = ImageShape.MEDIUM
+                                }
+                            )
+                            PersianRadioButton(
+                                modifier = Modifier.fillMaxWidth(),
+                                text = "Small",
+                                checked = shapeStates[2].value,
+                                onCheckedChange = {
+                                    shapeStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 2
+                                    }
+                                    shape = ImageShape.SMALL
+                                }
+                            )
+                        }
+                    }
                 }
             }
         }
