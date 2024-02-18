@@ -52,17 +52,17 @@ object PersianBannerDefaults {
 }
 
 @Immutable
-data class NewBannerSizes(
-    val cornerRadius: Shape,
-    val titleStyle: TextStyle,
-    val subtitleStyle: TextStyle
+class NewBannerSizes internal constructor(
+    internal val cornerRadius: Shape,
+    internal val titleStyle: TextStyle,
+    internal val subtitleStyle: TextStyle
 )
 
 @Immutable
-data class NewBannerColors(
-    val background: Color,
-    val titleColor: Color,
-    val subtitleColor: Color,
-    val leftIconColor: Color,
-    val rightIconColor: Color
+class NewBannerColors internal constructor(
+    internal val background: Color,
+    internal val titleColor: Color,
+    internal val subtitleColor: Color,
+    internal val leftIconColor: Color,
+    internal val rightIconColor: Color
 )

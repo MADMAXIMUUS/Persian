@@ -15,18 +15,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.style.TextAlign
 import io.github.madmaximuus.persian.foundation.spacing
 
 @Composable
 fun PersianBanner(
-    title: String,
     modifier: Modifier = Modifier,
-    subtitle: String? = null,
+    title: String? = null,
+    description: String? = null,
     left: PersianBannerLeft? = null,
     right: PersianBannerRight? = null,
     sizes: NewBannerSizes = PersianBannerDefaults.sizes(),
     colors: NewBannerColors = PersianBannerDefaults.colors(),
 ) {
+    require(title != null || description != null) {
+        "Title or description required"
+    }
     Box(
         modifier = modifier
             .clip(sizes.cornerRadius)
@@ -64,19 +68,22 @@ fun PersianBanner(
             Column(
                 modifier = Modifier.weight(1f)
             ) {
-                Text(
-                    modifier = Modifier.fillMaxWidth(),
-                    text = title,
-                    style = sizes.titleStyle,
-                    color = colors.titleColor,
-                )
-                subtitle?.let {
+                title?.let {
+                    Text(
+                        modifier = Modifier.fillMaxWidth(),
+                        text = title,
+                        style = sizes.titleStyle,
+                        color = colors.titleColor,
+                    )
+                }
+                description?.let {
                     Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraSmall))
                     Text(
                         modifier = Modifier.fillMaxWidth(),
                         text = it,
                         style = sizes.subtitleStyle,
-                        color = colors.subtitleColor
+                        color = colors.subtitleColor,
+                        textAlign = TextAlign.Justify
                     )
                 }
             }
