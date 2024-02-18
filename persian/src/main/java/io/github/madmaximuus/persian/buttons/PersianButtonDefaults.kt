@@ -178,24 +178,24 @@ object PersianButtonDefaults {
 
 @Immutable
 class ButtonSizes internal constructor(
-    val textStyle: TextStyle,
-    val additionInfoTextStyle: TextStyle? = null,
-    val height: Dp,
-    val iconSize: IconBoxSize,
-    val loaderSize: CircularProgressBarSizes,
-    val shape: Shape,
-    val contentPadding: PaddingValues,
+    internal val textStyle: TextStyle,
+    internal val additionInfoTextStyle: TextStyle? = null,
+    internal val height: Dp,
+    internal val iconSize: IconBoxSize,
+    internal val loaderSize: CircularProgressBarSizes,
+    internal val shape: Shape,
+    internal val contentPadding: PaddingValues,
 )
 
 @Immutable
 class ButtonColors internal constructor(
-    val contentColor: Color,
-    val containerColor: Color,
-    val disabledContentColor: Color,
-    val disabledContainerColor: Color
+    private val contentColor: Color,
+    private val containerColor: Color,
+    private val disabledContentColor: Color,
+    private val disabledContainerColor: Color
 ) {
     @Composable
-    fun contentColor(enabled: Boolean): State<Color> {
+    internal fun contentColor(enabled: Boolean): State<Color> {
         val targetValue = when {
             !enabled -> disabledContentColor
             else -> contentColor
@@ -205,7 +205,7 @@ class ButtonColors internal constructor(
     }
 
     @Composable
-    fun containerColor(enabled: Boolean): State<Color> {
+    internal fun containerColor(enabled: Boolean): State<Color> {
         val targetValue = when {
             !enabled -> disabledContainerColor
             else -> containerColor
