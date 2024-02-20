@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="select_date">Выберете дату</string>
+    <string name="select_time">Выберете время</string>
+    <string name="select_color">Выберете цвет</string>
 
     <string-array name="week_day_labels">
         <item>Пн</item>

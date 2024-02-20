@@ -5,7 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.state.ToggleableState
-import io.github.madmaximuus.persian.checkboxes.NewCheckboxColors
+import io.github.madmaximuus.persian.checkboxes.CheckboxColors
 import io.github.madmaximuus.persian.checkboxes.PersianCheckboxDefaults
 
 @Composable
@@ -14,7 +14,7 @@ fun PersianCheckboxToggle(
     onCheckedChange: ((Boolean) -> Unit)?,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    colors: NewCheckboxColors = PersianCheckboxDefaults.colors(),
+    colors: CheckboxColors = PersianCheckboxDefaults.colors(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
 ) {
     PersianTriStateCheckboxToggle(

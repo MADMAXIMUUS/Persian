@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="select_date">Select date</string>
+    <string name="select_time">Select time</string>
+    <string name="select_color">Select color</string>
 
     <string-array name="week_day_labels">
-        <item>Mn</item>
+        <item>Mo</item>
         <item>Tu</item>
         <item>We</item>
         <item>Th</item>

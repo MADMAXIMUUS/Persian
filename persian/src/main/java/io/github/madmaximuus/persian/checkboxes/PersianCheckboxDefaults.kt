@@ -6,8 +6,8 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.Stable
 import androidx.compose.runtime.State
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.state.ToggleableState
@@ -36,7 +36,7 @@ object PersianCheckboxDefaults {
         textColor: Color = MaterialTheme.extendedColorScheme.onSurface,
         disabledTextColor: Color = MaterialTheme.extendedColorScheme.onSurface
             .copy(PersianContentStateDisabled)
-    ): NewCheckboxColors = NewCheckboxColors(
+    ): CheckboxColors = CheckboxColors(
         checkedBorderColor = checkedColor,
         checkedBoxColor = checkedColor,
         checkedCheckmarkColor = checkmarkColor,
@@ -59,25 +59,12 @@ object PersianCheckboxDefaults {
         contentPadding: PaddingValues = PaddingValues(
             end = MaterialTheme.spacing.medium
         )
-    ) = remember(
-        toggleSize,
-        textStyle,
-        contentPadding
-    ) {
-        CheckboxSizes(
-            toggleSize = toggleSize,
-            textStyle = textStyle,
-            contentPadding = contentPadding
-        )
-    }
+    ) = CheckboxSizes(
+        toggleSize = toggleSize,
+        textStyle = textStyle,
+        contentPadding = contentPadding
+    )
 }
-
-@Deprecated("Replace with new CheckboxColors")
-@Immutable
-data class CheckboxColors(
-    val toggleColor: androidx.compose.material3.CheckboxColors,
-    val textColor: Color
-)
 
 @Immutable
 data class CheckboxSizes(
@@ -87,7 +74,7 @@ data class CheckboxSizes(
 )
 
 @Immutable
-class NewCheckboxColors internal constructor(
+class CheckboxColors internal constructor(
     private val checkedCheckmarkColor: Color,
     private val uncheckedCheckmarkColor: Color,
     private val checkedBoxColor: Color,
@@ -102,11 +89,9 @@ class NewCheckboxColors internal constructor(
     private val textColor: Color,
     private val disabledTextColor: Color
 ) {
-    @Composable
-    internal fun textColor(enabled: Boolean): State<Color> {
-        val target = if (!enabled) disabledTextColor else textColor
-        return rememberUpdatedState(newValue = target)
-    }
+    @Stable
+    internal fun textColor(enabled: Boolean): Color =
+        if (enabled) textColor else disabledTextColor
 
     @Composable
     internal fun checkmarkColor(state: ToggleableState): State<Color> {
@@ -180,7 +165,7 @@ class NewCheckboxColors internal constructor(
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (other == null || other !is NewCheckboxColors) return false
+        if (other == null || other !is CheckboxColors) return false
 
         if (checkedCheckmarkColor != other.checkedCheckmarkColor) return false
         if (uncheckedCheckmarkColor != other.uncheckedCheckmarkColor) return false
@@ -192,9 +177,7 @@ class NewCheckboxColors internal constructor(
         if (checkedBorderColor != other.checkedBorderColor) return false
         if (uncheckedBorderColor != other.uncheckedBorderColor) return false
         if (disabledBorderColor != other.disabledBorderColor) return false
-        if (disabledIndeterminateBorderColor != other.disabledIndeterminateBorderColor) return false
-
-        return true
+        return disabledIndeterminateBorderColor == other.disabledIndeterminateBorderColor
     }
 
     override fun hashCode(): Int {
