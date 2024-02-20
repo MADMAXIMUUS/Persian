@@ -2,18 +2,44 @@ package io.github.madmaximuus.persian.avatarsAndImages
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.takeOrElse
 import io.github.madmaximuus.persian.iconBox.IconBoxSize
 import io.github.madmaximuus.persian.iconBox.PersianIconBoxDefaults
 
 @Immutable
 class AvatarSize internal constructor(
-    val boxSizes: Dp,
-    val placeholderSize: IconBoxSize,
-    val editIconBoxSize: IconBoxSize
-)
+    internal val boxSizes: Dp,
+    internal val placeholderSize: IconBoxSize,
+    internal val overlayIconBoxSize: IconBoxSize
+){
+    fun copy(
+        boxSizes: Dp = this.boxSizes,
+        placeholderSize: IconBoxSize = this.placeholderSize,
+        overlayIconBoxSize: IconBoxSize = this.overlayIconBoxSize,
+    ) = AvatarSize(
+        boxSizes.takeOrElse { this.boxSizes },
+        placeholderSize,
+        overlayIconBoxSize
+    )
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || other !is AvatarSize) return false
+
+        if (boxSizes != other.boxSizes) return false
+        if (placeholderSize != other.placeholderSize) return false
+        return overlayIconBoxSize == other.overlayIconBoxSize
+    }
+
+    override fun hashCode(): Int {
+        var result = boxSizes.hashCode()
+        result = 31 * result + placeholderSize.hashCode()
+        result = 31 * result + overlayIconBoxSize.hashCode()
+        return result
+    }
+}
 
 object PersianAvatarsDefaults {
 
@@ -22,52 +48,40 @@ object PersianAvatarsDefaults {
         boxSizes: Dp = 96.dp,
         placeholderSize: IconBoxSize = PersianIconBoxDefaults.extraExtraLarge(),
         editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.extraLarge()
-    ) = remember(boxSizes, placeholderSize, editIconBoxSize) {
-        AvatarSize(boxSizes, placeholderSize, editIconBoxSize)
-    }
+    ) = AvatarSize(boxSizes, placeholderSize, editIconBoxSize)
 
     @Composable
     fun size80(
         boxSizes: Dp = 80.dp,
         placeholderSize: IconBoxSize = PersianIconBoxDefaults.extraExtraLarge(),
         editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.extraLarge()
-    ) = remember(boxSizes, placeholderSize, editIconBoxSize) {
-        AvatarSize(boxSizes, placeholderSize, editIconBoxSize)
-    }
+    ) = AvatarSize(boxSizes, placeholderSize, editIconBoxSize)
 
     @Composable
     fun size64(
         boxSizes: Dp = 64.dp,
         placeholderSize: IconBoxSize = PersianIconBoxDefaults.extraLarge(),
         editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.large()
-    ) = remember(boxSizes, placeholderSize, editIconBoxSize) {
-        AvatarSize(boxSizes, placeholderSize, editIconBoxSize)
-    }
+    ) = AvatarSize(boxSizes, placeholderSize, editIconBoxSize)
 
     @Composable
     fun size48(
         boxSizes: Dp = 48.dp,
         placeholderSize: IconBoxSize = PersianIconBoxDefaults.large(),
         editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.large()
-    ) = remember(boxSizes, placeholderSize, editIconBoxSize) {
-        AvatarSize(boxSizes, placeholderSize, editIconBoxSize)
-    }
+    ) = AvatarSize(boxSizes, placeholderSize, editIconBoxSize)
 
     @Composable
     fun size32(
         boxSizes: Dp = 32.dp,
         placeholderSize: IconBoxSize = PersianIconBoxDefaults.medium(),
         editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.medium()
-    ) = remember(boxSizes, placeholderSize, editIconBoxSize) {
-        AvatarSize(boxSizes, placeholderSize, editIconBoxSize)
-    }
+    ) = AvatarSize(boxSizes, placeholderSize, editIconBoxSize)
 
     @Composable
     fun size24(
         boxSizes: Dp = 24.dp,
         placeholderSize: IconBoxSize = PersianIconBoxDefaults.small(),
         editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.small()
-    ) = remember(boxSizes, placeholderSize, editIconBoxSize) {
-        AvatarSize(boxSizes, placeholderSize, editIconBoxSize)
-    }
+    ) = AvatarSize(boxSizes, placeholderSize, editIconBoxSize)
 }

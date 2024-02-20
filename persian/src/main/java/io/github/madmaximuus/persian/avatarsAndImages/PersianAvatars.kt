@@ -112,7 +112,7 @@ fun PersianAvatar(
                 ) {
                     PersianIconBox(
                         icon = overlayIcon,
-                        size = size.editIconBoxSize,
+                        size = size.overlayIconBoxSize,
                         colors = PersianIconBoxDefaults.colors()
                     )
                 }

@@ -44,13 +44,13 @@ fun PersianImage(
         contentAlignment = Alignment.Center,
         modifier = modifier
             .size(size.boxSizes)
-            .clip(size.shape(shape).value)
+            .clip(size.shape(shape))
             .background(
                 MaterialTheme.extendedColorScheme
                     .surfaceColorAtElevation(MaterialTheme.elevation.extraLarge),
-                size.shape(shape).value
+                size.shape(shape)
             )
-            .border(1.dp, MaterialTheme.extendedColorScheme.outline, size.shape(shape).value)
+            .border(1.dp, MaterialTheme.extendedColorScheme.outline, size.shape(shape))
             .clickable(
                 enabled = onClick != null,
                 onClick = { onClick?.invoke() },
@@ -112,7 +112,7 @@ fun PersianImage(
                 ) {
                     PersianIconBox(
                         icon = overlayIcon,
-                        size = size.editIconBoxSize,
+                        size = size.overlayIconBoxSize,
                         colors = PersianIconBoxDefaults.colors()
                     )
                 }
