@@ -51,7 +51,7 @@ internal fun PersianActionSheetItem(
         verticalAlignment = Alignment.CenterVertically
     ) {
         val textColor = itemColors
-            .textColor(enabled = actionSheetItem.enabled, isError = actionSheetItem.negative).value
+            .textColor(enabled = actionSheetItem.enabled, isError = actionSheetItem.negative)
         actionSheetItem.leadingIcon?.let {
             PersianIconBox(
                 icon = it,

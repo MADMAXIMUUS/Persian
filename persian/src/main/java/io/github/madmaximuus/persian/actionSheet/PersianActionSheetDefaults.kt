@@ -3,8 +3,7 @@ package io.github.madmaximuus.persian.actionSheet
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
-import androidx.compose.runtime.State
-import androidx.compose.runtime.rememberUpdatedState
+import androidx.compose.runtime.Stable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.Dp
@@ -19,19 +18,16 @@ class ActionSheetItemColors(
     private val defaultTextColor: Color,
     private val disabledTextColor: Color,
     private val errorTextColor: Color,
-    val iconColors: IconBoxColors
+    internal val iconColors: IconBoxColors
 ) {
-    @Composable
+    @Stable
     internal fun textColor(
         enabled: Boolean,
         isError: Boolean
-    ): State<Color> {
-        val targetValue = when {
-            !enabled -> disabledTextColor
-            isError -> errorTextColor
-            else -> defaultTextColor
-        }
-        return rememberUpdatedState(targetValue)
+    ): Color = when {
+        !enabled -> disabledTextColor
+        isError -> errorTextColor
+        else -> defaultTextColor
     }
 
     override fun equals(other: Any?): Boolean {
