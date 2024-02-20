@@ -4,11 +4,10 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
-import androidx.compose.runtime.State
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberUpdatedState
+import androidx.compose.runtime.Stable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.graphics.takeOrElse
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -92,23 +91,14 @@ object PersianButtonDefaults {
             horizontal = MaterialTheme.spacing.large,
             vertical = 0.dp
         )
-    ): ButtonSizes = remember(
-        fontSize,
-        height,
-        loaderSize,
-        iconSize,
-        shape,
-        contentPadding
-    ) {
-        ButtonSizes(
-            textStyle = fontSize,
-            height = height,
-            loaderSize = loaderSize,
-            iconSize = iconSize,
-            shape = shape,
-            contentPadding = contentPadding
-        )
-    }
+    ): ButtonSizes = ButtonSizes(
+        textStyle = fontSize,
+        height = height,
+        loaderSize = loaderSize,
+        iconSize = iconSize,
+        shape = shape,
+        contentPadding = contentPadding
+    )
 
     @Composable
     fun mediumSizes(
@@ -122,25 +112,15 @@ object PersianButtonDefaults {
             horizontal = MaterialTheme.spacing.extraLarge,
             vertical = 0.dp
         )
-    ): ButtonSizes = remember(
-        fontSize,
-        additionInfoTextStyle,
-        height,
-        loaderSize,
-        iconSize,
-        shape,
-        contentPadding
-    ) {
-        ButtonSizes(
-            textStyle = fontSize,
-            additionInfoTextStyle = additionInfoTextStyle,
-            height = height,
-            loaderSize = loaderSize,
-            iconSize = iconSize,
-            shape = shape,
-            contentPadding = contentPadding
-        )
-    }
+    ): ButtonSizes = ButtonSizes(
+        textStyle = fontSize,
+        additionInfoTextStyle = additionInfoTextStyle,
+        height = height,
+        loaderSize = loaderSize,
+        iconSize = iconSize,
+        shape = shape,
+        contentPadding = contentPadding
+    )
 
     @Composable
     fun largeSizes(
@@ -154,25 +134,15 @@ object PersianButtonDefaults {
             horizontal = MaterialTheme.spacing.extraExtraLarge,
             vertical = 0.dp
         )
-    ): ButtonSizes = remember(
-        fontSize,
-        additionInfoTextStyle,
-        height,
-        loaderSize,
-        iconSize,
-        shape,
-        contentPadding
-    ) {
-        ButtonSizes(
-            textStyle = fontSize,
-            additionInfoTextStyle = additionInfoTextStyle,
-            height = height,
-            loaderSize = loaderSize,
-            iconSize = iconSize,
-            shape = shape,
-            contentPadding = contentPadding
-        )
-    }
+    ): ButtonSizes = ButtonSizes(
+        textStyle = fontSize,
+        additionInfoTextStyle = additionInfoTextStyle,
+        height = height,
+        loaderSize = loaderSize,
+        iconSize = iconSize,
+        shape = shape,
+        contentPadding = contentPadding
+    )
 
 }
 
@@ -185,7 +155,49 @@ class ButtonSizes internal constructor(
     internal val loaderSize: CircularProgressBarSizes,
     internal val shape: Shape,
     internal val contentPadding: PaddingValues,
-)
+) {
+    fun copy(
+        textStyle: TextStyle = this.textStyle,
+        additionInfoTextStyle: TextStyle? = this.additionInfoTextStyle,
+        height: Dp = this.height,
+        iconSize: IconBoxSize = this.iconSize,
+        loaderSize: CircularProgressBarSizes = this.loaderSize,
+        shape: Shape = this.shape,
+        contentPadding: PaddingValues
+    ) = ButtonSizes(
+        textStyle,
+        additionInfoTextStyle,
+        height,
+        iconSize,
+        loaderSize,
+        shape,
+        contentPadding
+    )
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || other !is ButtonSizes) return false
+
+        if (textStyle != other.textStyle) return false
+        if (additionInfoTextStyle != other.additionInfoTextStyle) return false
+        if (height != other.height) return false
+        if (iconSize != other.iconSize) return false
+        if (loaderSize != other.loaderSize) return false
+        if (shape != other.shape) return false
+        return contentPadding == other.contentPadding
+    }
+
+    override fun hashCode(): Int {
+        var result = textStyle.hashCode()
+        result = 31 * result + additionInfoTextStyle.hashCode()
+        result = 31 * result + height.hashCode()
+        result = 31 * result + iconSize.hashCode()
+        result = 31 * result + loaderSize.hashCode()
+        result = 31 * result + shape.hashCode()
+        result = 31 * result + contentPadding.hashCode()
+        return result
+    }
+}
 
 @Immutable
 class ButtonColors internal constructor(
@@ -194,25 +206,25 @@ class ButtonColors internal constructor(
     private val disabledContentColor: Color,
     private val disabledContainerColor: Color
 ) {
-    @Composable
-    internal fun contentColor(enabled: Boolean): State<Color> {
-        val targetValue = when {
-            !enabled -> disabledContentColor
-            else -> contentColor
-        }
+    @Stable
+    internal fun contentColor(enabled: Boolean): Color =
+        if (enabled) contentColor else disabledContentColor
 
-        return rememberUpdatedState(targetValue)
-    }
+    @Stable
+    internal fun containerColor(enabled: Boolean): Color =
+        if (enabled) containerColor else disabledContainerColor
 
-    @Composable
-    internal fun containerColor(enabled: Boolean): State<Color> {
-        val targetValue = when {
-            !enabled -> disabledContainerColor
-            else -> containerColor
-        }
-
-        return rememberUpdatedState(targetValue)
-    }
+    fun copy(
+        contentColor: Color = this.contentColor,
+        containerColor: Color = this.containerColor,
+        disabledContentColor: Color = this.disabledContentColor,
+        disabledContainerColor: Color = this.disabledContainerColor
+    ) = ButtonColors(
+        contentColor.takeOrElse { this.contentColor },
+        containerColor.takeOrElse { this.containerColor },
+        disabledContentColor.takeOrElse { this.disabledContentColor },
+        disabledContainerColor.takeOrElse { this.disabledContainerColor }
+    )
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

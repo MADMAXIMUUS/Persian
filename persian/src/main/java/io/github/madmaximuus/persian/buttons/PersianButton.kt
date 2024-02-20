@@ -196,7 +196,7 @@ fun PersianOutlinedButton(
     trailingIcon = trailingIcon,
     border = BorderStroke(
         1.dp,
-        color = colors.contentColor(enabled).value,
+        color = colors.contentColor(enabled),
     ),
     interactionSource = interactionSource,
     onClick = onClick
@@ -217,8 +217,8 @@ private fun PersianButton(
     interactionSource: MutableInteractionSource,
     onClick: () -> Unit
 ) {
-    val containerColor = colors.containerColor(enabled).value
-    val contentColor = colors.contentColor(enabled).value
+    val containerColor = colors.containerColor(enabled)
+    val contentColor = colors.contentColor(enabled)
     Surface(
         onClick = onClick,
         modifier = modifier.semantics { role = Role.Button },
@@ -260,7 +260,7 @@ private fun PersianButton(
                                     style = sizes.textStyle,
                                     overflow = TextOverflow.Ellipsis,
                                     textAlign = TextAlign.Center,
-                                    color = colors.contentColor(enabled).value,
+                                    color = colors.contentColor(enabled),
                                     maxLines = 1
                                 )
                                 if (sizes.additionInfoTextStyle != null && additionInfoText != null)
@@ -270,7 +270,7 @@ private fun PersianButton(
                                         style = sizes.additionInfoTextStyle,
                                         overflow = TextOverflow.Ellipsis,
                                         textAlign = TextAlign.Center,
-                                        color = colors.contentColor(enabled).value,
+                                        color = colors.contentColor(enabled),
                                         maxLines = 1
                                     )
                             }
@@ -293,7 +293,7 @@ private fun PersianButton(
                                 sizes = sizes.loaderSize,
                                 colors = PersianProgressBarDefaults.colors(
                                     backgroundColor = Color.Transparent,
-                                    progressColor = colors.contentColor(true).value
+                                    progressColor = colors.contentColor(true)
                                 )
                             )
                         }
