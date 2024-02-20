@@ -6,6 +6,7 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.graphics.takeOrElse
 import androidx.compose.ui.unit.Dp
 import io.github.madmaximuus.persian.foundation.PersianContentStateDisabled
 import io.github.madmaximuus.persian.foundation.elevation
@@ -29,6 +30,18 @@ class ActionSheetItemColors(
         isError -> errorTextColor
         else -> defaultTextColor
     }
+
+    fun copy(
+        defaultTextColor: Color = this.defaultTextColor,
+        disabledTextColor: Color = this.disabledTextColor,
+        errorTextColor: Color = this.errorTextColor,
+        iconColors: IconBoxColors = this.iconColors
+    ) = ActionSheetItemColors(
+        defaultTextColor.takeOrElse { this.defaultTextColor },
+        disabledTextColor.takeOrElse { this.disabledTextColor },
+        errorTextColor.takeOrElse { this.errorTextColor },
+        iconColors
+    )
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
