@@ -25,8 +25,8 @@ fun PersianBanner(
     description: String? = null,
     left: PersianBannerLeft? = null,
     right: PersianBannerRight? = null,
-    sizes: NewBannerSizes = PersianBannerDefaults.sizes(),
-    colors: NewBannerColors = PersianBannerDefaults.colors(),
+    sizes: BannerSizes = PersianBannerDefaults.sizes(),
+    colors: BannerColors = PersianBannerDefaults.colors(),
 ) {
     require(title != null || description != null) {
         "Title or description required"
@@ -81,7 +81,7 @@ fun PersianBanner(
                     Text(
                         modifier = Modifier.fillMaxWidth(),
                         text = it,
-                        style = sizes.subtitleStyle,
+                        style = sizes.descriptionStyle,
                         color = colors.subtitleColor,
                         textAlign = TextAlign.Justify
                     )
