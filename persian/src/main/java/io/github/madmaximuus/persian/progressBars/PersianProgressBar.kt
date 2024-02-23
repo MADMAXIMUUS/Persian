@@ -38,7 +38,7 @@ fun PersianLinearProgressBar(
     sizes: LinearProgressBarSizes = PersianProgressBarDefaults.linearMedium(),
 ) {
     LinearProgressIndicator(
-        progress = progress,
+        progress = { progress },
         modifier = modifier.height(sizes.strokeSize),
         color = colors.progressColor,
         trackColor = colors.backgroundColor
@@ -93,7 +93,7 @@ fun PersianCircularProgressBar(
             }
         }
         CircularProgressIndicator(
-            progress = progress,
+            progress = { progress },
             modifier = Modifier
                 .align(Alignment.Center)
                 .fillMaxSize()

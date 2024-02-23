@@ -90,19 +90,19 @@ object PersianProgressBarDefaults {
 }
 
 @Immutable
-data class ProgressBarColors(
-    val backgroundColor: Color,
-    val progressColor: Color
+data class ProgressBarColors internal constructor(
+    internal val backgroundColor: Color,
+    internal val progressColor: Color
 )
 
 @Immutable
-data class LinearProgressBarSizes(
-    val strokeSize: Dp
+data class LinearProgressBarSizes internal constructor(
+    internal val strokeSize: Dp
 )
 
 @Immutable
-data class CircularProgressBarSizes(
-    val boxSize: Dp,
-    val strokeSize: Dp,
-    val contentPadding: Dp
+data class CircularProgressBarSizes internal constructor(
+    internal val boxSize: Dp,
+    internal val strokeSize: Dp,
+    internal val contentPadding: Dp
 )
