@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.chips.filter
+package io.github.madmaximuus.persian.chips.input
 
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.PaddingValues
@@ -13,18 +13,19 @@ import io.github.madmaximuus.persian.chips.founfation.SelectableChipElevation
 import io.github.madmaximuus.persian.chips.founfation.SelectableChipSizes
 
 @Composable
-fun PersianFilterChip(
+fun PersianInputShip(
     label: String,
     selected: Boolean,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     leadingIcon: Painter? = null,
-    trailingIcon: Painter? = null,
     onTrailingClick: (() -> Unit)? = null,
-    colors: SelectableChipColors = PersianFilterChipDefaults.chipColors(),
-    sizes: SelectableChipSizes = PersianFilterChipDefaults.chipSizes(),
-    elevation: SelectableChipElevation = PersianFilterChipDefaults.chipElevation(),
+    trailingIcon: Painter? = null,
+    avatar: String? = null,
+    colors: SelectableChipColors = PersianInputChipDefaults.chipColors(),
+    elevation: SelectableChipElevation = PersianInputChipDefaults.chipElevation(),
+    sizes: SelectableChipSizes = PersianInputChipDefaults.chipSizes(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
 ) = BaseSelectableChip(
     selected = selected,
@@ -33,7 +34,7 @@ fun PersianFilterChip(
     enabled = enabled,
     label = label,
     leadingIcon = leadingIcon,
-    avatar = null,
+    avatar = avatar,
     trailingIcon = trailingIcon,
     onTrailingClick = onTrailingClick,
     colors = colors,

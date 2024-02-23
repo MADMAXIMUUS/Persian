@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.chips.filter
+package io.github.madmaximuus.persian.chips.assist
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -7,9 +7,9 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.chips.founfation.SelectableChipColors
-import io.github.madmaximuus.persian.chips.founfation.SelectableChipElevation
-import io.github.madmaximuus.persian.chips.founfation.SelectableChipSizes
+import io.github.madmaximuus.persian.chips.founfation.ChipColors
+import io.github.madmaximuus.persian.chips.founfation.ChipElevation
+import io.github.madmaximuus.persian.chips.founfation.ChipSizes
 import io.github.madmaximuus.persian.foundation.PersianContentStateDisabled
 import io.github.madmaximuus.persian.foundation.PersianStatesDisabled
 import io.github.madmaximuus.persian.foundation.elevation
@@ -17,49 +17,34 @@ import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import io.github.madmaximuus.persian.iconBox.IconBoxSize
 import io.github.madmaximuus.persian.iconBox.PersianIconBoxDefaults
 
-object PersianFilterChipDefaults {
+object PersianAssistChipDefaults {
 
     @Composable
     fun chipColors(
         containerColor: Color = Color.Transparent,
         labelColor: Color = MaterialTheme.extendedColorScheme.onSurface,
-        leadingIconColor: Color = MaterialTheme.extendedColorScheme.primary,
-        trailingLeadingIconColor: Color = MaterialTheme.extendedColorScheme.primary,
+        leadingIconContentColor: Color = MaterialTheme.extendedColorScheme.primary,
+        trailingIconContentColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
         disabledContainerColor: Color = Color.Transparent,
         disabledLabelColor: Color = MaterialTheme.extendedColorScheme.onSurface
             .copy(alpha = PersianContentStateDisabled),
         disabledLeadingIconColor: Color = MaterialTheme.extendedColorScheme.onSurface
             .copy(alpha = PersianContentStateDisabled),
         disabledTrailingIconColor: Color = disabledLeadingIconColor,
-        selectedContainerColor: Color = MaterialTheme.extendedColorScheme.secondaryContainer,
-        disabledSelectedContainerColor: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(alpha = PersianStatesDisabled),
-        selectedLabelColor: Color = MaterialTheme.extendedColorScheme.onSecondaryContainer,
-        selectedLeadingIconColor: Color = MaterialTheme.extendedColorScheme.onSecondaryContainer,
-        selectedTrailingIconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
         borderColor: Color = MaterialTheme.extendedColorScheme.primary,
-        selectedBorderColor: Color = Color.Transparent,
         disabledBorderColor: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(alpha = PersianStatesDisabled),
-        disabledSelectedBorderColor: Color = Color.Transparent
-    ) = SelectableChipColors(
+            .copy(alpha = PersianStatesDisabled)
+    ): ChipColors = ChipColors(
         containerColor = containerColor,
         labelColor = labelColor,
-        leadingIconColor = leadingIconColor,
-        trailingIconColor = trailingLeadingIconColor,
+        leadingIconContentColor = leadingIconContentColor,
+        trailingIconContentColor = trailingIconContentColor,
+        borderColor = borderColor,
         disabledContainerColor = disabledContainerColor,
         disabledLabelColor = disabledLabelColor,
-        disabledLeadingIconColor = disabledLeadingIconColor,
-        disabledSelectedContainerColor = disabledTrailingIconColor,
-        selectedContainerColor = selectedContainerColor,
-        disabledTrailingIconColor = disabledSelectedContainerColor,
-        selectedLabelColor = selectedLabelColor,
-        selectedLeadingIconColor = selectedLeadingIconColor,
-        selectedTrailingIconColor = selectedTrailingIconColor,
-        borderColor = borderColor,
-        selectedBorderColor = selectedBorderColor,
-        disabledBorderColor = disabledBorderColor,
-        disabledSelectedBorderColor = disabledSelectedBorderColor
+        disabledLeadingIconContentColor = disabledLeadingIconColor,
+        disabledTrailingIconContentColor = disabledTrailingIconColor,
+        disabledBorderColor = disabledBorderColor
     )
 
     @Composable
@@ -68,30 +53,26 @@ object PersianFilterChipDefaults {
         leadingIconSize: IconBoxSize = PersianIconBoxDefaults.small(),
         labelStyle: TextStyle = MaterialTheme.typography.labelLarge,
         borderWidth: Dp = 1.dp,
-        selectedBorderWith: Dp = 0.dp,
         shape: Shape = MaterialTheme.shapes.small,
-        disabledBorderWith: Dp = 1.dp,
-        selectedDisabledBorderWith: Dp = 0.dp
-    ): SelectableChipSizes = SelectableChipSizes(
+        disabledBorderWith: Dp = 1.dp
+    ): ChipSizes = ChipSizes(
         trailingIconSize = trailingIconSize,
         leadingIconSize = leadingIconSize,
         labelStyle = labelStyle,
         borderWidth = borderWidth,
-        selectedBorderWith = selectedBorderWith,
         shape = shape,
-        disabledBorderWith = disabledBorderWith,
-        selectedDisabledBorderWith = selectedDisabledBorderWith
+        disabledBorderWith = disabledBorderWith
     )
 
     @Composable
     fun chipElevation(
         elevation: Dp = MaterialTheme.elevation.none,
-        pressedElevation: Dp = MaterialTheme.elevation.none,
-        focusedElevation: Dp = MaterialTheme.elevation.none,
-        hoveredElevation: Dp = MaterialTheme.elevation.extraSmall,
+        pressedElevation: Dp = elevation,
+        focusedElevation: Dp = elevation,
+        hoveredElevation: Dp = elevation,
         draggedElevation: Dp = MaterialTheme.elevation.large,
         disabledElevation: Dp = elevation
-    ): SelectableChipElevation = SelectableChipElevation(
+    ): ChipElevation = ChipElevation(
         elevation = elevation,
         pressedElevation = pressedElevation,
         focusedElevation = focusedElevation,

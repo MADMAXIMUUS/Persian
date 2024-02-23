@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideSubcomposition
 import com.bumptech.glide.integration.compose.RequestState
+import io.github.madmaximuus.persian.foundation.PersianContentStateDisabled
 import io.github.madmaximuus.persian.foundation.elevation
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import io.github.madmaximuus.persian.foundation.icons
@@ -36,6 +37,7 @@ fun PersianAvatar(
     modifier: Modifier = Modifier,
     imageUrl: String,
     overlay: Boolean = false,
+    enabled: Boolean = true,
     overlayIcon: Painter = MaterialTheme.icons.add,
     size: AvatarSize = PersianAvatarsDefaults.size48(),
     onClick: (() -> Unit)? = null
@@ -51,7 +53,7 @@ fun PersianAvatar(
             )
             .border(1.dp, MaterialTheme.extendedColorScheme.outline, CircleShape)
             .clickable(
-                enabled = onClick != null,
+                enabled = onClick != null && enabled,
                 onClick = { onClick?.invoke() },
                 role = Role.Image
             ),
@@ -74,6 +76,7 @@ fun PersianAvatar(
                                 PersianIconBox(
                                     icon = MaterialTheme.icons.person,
                                     size = size.placeholderSize,
+                                    enabled = enabled,
                                     colors = PersianIconBoxDefaults.colors()
                                 )
                             }
@@ -94,6 +97,7 @@ fun PersianAvatar(
                                 .fillMaxSize(),
                             contentScale = ContentScale.Crop,
                             painter = painter,
+                            alpha = if (!enabled) PersianContentStateDisabled else 1f,
                             contentDescription = ""
                         )
                     }
@@ -112,6 +116,7 @@ fun PersianAvatar(
                 ) {
                     PersianIconBox(
                         icon = overlayIcon,
+                        enabled = enabled,
                         size = size.overlayIconBoxSize,
                         colors = PersianIconBoxDefaults.colors()
                     )

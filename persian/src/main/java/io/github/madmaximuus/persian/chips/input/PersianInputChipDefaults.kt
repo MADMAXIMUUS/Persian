@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.chips.filter
+package io.github.madmaximuus.persian.chips.input
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -17,14 +17,14 @@ import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import io.github.madmaximuus.persian.iconBox.IconBoxSize
 import io.github.madmaximuus.persian.iconBox.PersianIconBoxDefaults
 
-object PersianFilterChipDefaults {
+object PersianInputChipDefaults {
 
     @Composable
     fun chipColors(
         containerColor: Color = Color.Transparent,
         labelColor: Color = MaterialTheme.extendedColorScheme.onSurface,
         leadingIconColor: Color = MaterialTheme.extendedColorScheme.primary,
-        trailingLeadingIconColor: Color = MaterialTheme.extendedColorScheme.primary,
+        trailingIconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
         disabledContainerColor: Color = Color.Transparent,
         disabledLabelColor: Color = MaterialTheme.extendedColorScheme.onSurface
             .copy(alpha = PersianContentStateDisabled),
@@ -42,17 +42,17 @@ object PersianFilterChipDefaults {
         disabledBorderColor: Color = MaterialTheme.extendedColorScheme.onSurface
             .copy(alpha = PersianStatesDisabled),
         disabledSelectedBorderColor: Color = Color.Transparent
-    ) = SelectableChipColors(
+    ): SelectableChipColors = SelectableChipColors(
         containerColor = containerColor,
         labelColor = labelColor,
         leadingIconColor = leadingIconColor,
-        trailingIconColor = trailingLeadingIconColor,
+        trailingIconColor = trailingIconColor,
         disabledContainerColor = disabledContainerColor,
         disabledLabelColor = disabledLabelColor,
         disabledLeadingIconColor = disabledLeadingIconColor,
-        disabledSelectedContainerColor = disabledTrailingIconColor,
+        disabledTrailingIconColor = disabledTrailingIconColor,
         selectedContainerColor = selectedContainerColor,
-        disabledTrailingIconColor = disabledSelectedContainerColor,
+        disabledSelectedContainerColor = disabledSelectedContainerColor,
         selectedLabelColor = selectedLabelColor,
         selectedLeadingIconColor = selectedLeadingIconColor,
         selectedTrailingIconColor = selectedTrailingIconColor,
@@ -86,9 +86,9 @@ object PersianFilterChipDefaults {
     @Composable
     fun chipElevation(
         elevation: Dp = MaterialTheme.elevation.none,
-        pressedElevation: Dp = MaterialTheme.elevation.none,
-        focusedElevation: Dp = MaterialTheme.elevation.none,
-        hoveredElevation: Dp = MaterialTheme.elevation.extraSmall,
+        pressedElevation: Dp = elevation,
+        focusedElevation: Dp = elevation,
+        hoveredElevation: Dp = elevation,
         draggedElevation: Dp = MaterialTheme.elevation.large,
         disabledElevation: Dp = elevation
     ): SelectableChipElevation = SelectableChipElevation(
@@ -99,5 +99,4 @@ object PersianFilterChipDefaults {
         draggedElevation = draggedElevation,
         disabledElevation = disabledElevation
     )
-
 }
