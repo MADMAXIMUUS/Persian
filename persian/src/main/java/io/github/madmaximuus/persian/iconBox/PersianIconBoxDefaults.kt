@@ -16,44 +16,50 @@ import io.github.madmaximuus.persian.foundation.extendedColorScheme
 object PersianIconBoxDefaults {
     @Composable
     fun size48(
-        width: Dp = 48.dp
-    ) = remember(width) {
-        IconBoxSize(width)
+        width: Dp = 48.dp,
+        padding: Dp = 0.dp
+    ) = remember(width, padding) {
+        IconBoxSize(width, padding)
     }
 
     @Composable
     fun size32(
-        width: Dp = 32.dp
-    ) = remember(width) {
-        IconBoxSize(width)
+        width: Dp = 32.dp,
+        padding: Dp = 0.dp
+    ) = remember(width, padding) {
+        IconBoxSize(width, padding)
     }
 
     @Composable
     fun size28(
-        width: Dp = 28.dp
-    ) = remember(width) {
-        IconBoxSize(width)
+        width: Dp = 28.dp,
+        padding: Dp = 0.dp
+    ) = remember(width, padding) {
+        IconBoxSize(width, padding)
     }
 
     @Composable
     fun size24(
-        width: Dp = 24.dp
-    ) = remember(width) {
-        IconBoxSize(width)
+        width: Dp = 24.dp,
+        padding: Dp = 0.dp
+    ) = remember(width, padding) {
+        IconBoxSize(width, padding)
     }
 
     @Composable
     fun size20(
-        width: Dp = 20.dp
-    ) = remember(width) {
-        IconBoxSize(width)
+        width: Dp = 20.dp,
+        padding: Dp = 0.dp
+    ) = remember(width, padding) {
+        IconBoxSize(width, padding)
     }
 
     @Composable
     fun size18(
-        width: Dp = 18.dp
-    ) = remember(width) {
-        IconBoxSize(width)
+        width: Dp = 18.dp,
+        padding: Dp = 0.dp
+    ) = remember(width, padding) {
+        IconBoxSize(width, padding)
     }
 
     @Composable
@@ -103,5 +109,6 @@ class IconBoxColors internal constructor(
 }
 
 data class IconBoxSize(
-    val width: Dp
+    val width: Dp,
+    val padding: Dp
 )
