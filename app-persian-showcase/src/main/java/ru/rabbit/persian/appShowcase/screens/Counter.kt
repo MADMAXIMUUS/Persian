@@ -67,8 +67,8 @@ object Counter : Screen {
                                 )
                             },
                             sizes = PersianCounterDefaults.sizes(
-                                badgeHorizontalOffset = (-12).dp,
-                                badgeVerticalOffset = 15.dp
+                                badgeHorizontalOffset = (-18).dp,
+                                badgeVerticalOffset = 20.dp
                             )
                         )
                         PersianBadge(
@@ -80,8 +80,8 @@ object Counter : Screen {
                                 )
                             },
                             sizes = PersianCounterDefaults.sizes(
-                                badgeHorizontalOffset = (-12).dp,
-                                badgeVerticalOffset = 15.dp
+                                badgeHorizontalOffset = (-22).dp,
+                                badgeVerticalOffset = 20.dp
                             )
                         )
                         PersianBadge(
@@ -93,8 +93,8 @@ object Counter : Screen {
                                 )
                             },
                             sizes = PersianCounterDefaults.sizes(
-                                badgeHorizontalOffset = (-12).dp,
-                                badgeVerticalOffset = 15.dp
+                                badgeHorizontalOffset = (-22).dp,
+                                badgeVerticalOffset = 20.dp
                             )
                         )
                         PersianBadge(
@@ -106,8 +106,8 @@ object Counter : Screen {
                                 )
                             },
                             sizes = PersianCounterDefaults.sizes(
-                                badgeHorizontalOffset = (-12).dp,
-                                badgeVerticalOffset = 15.dp
+                                badgeHorizontalOffset = (-22).dp,
+                                badgeVerticalOffset = 20.dp
                             )
                         )
                     }

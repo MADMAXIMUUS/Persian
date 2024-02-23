@@ -47,8 +47,8 @@ object PersianCounterDefaults {
 
     @Composable
     fun sizes(
-        horizontalPadding: Dp = 4.dp,
-        verticalPadding: Dp = 0.dp,
+        horizontalPadding: Dp = 5.dp,
+        verticalPadding: Dp = 2.dp,
         badgeHorizontalOffset: Dp = (-5).dp,
         badgeVerticalOffset: Dp = 0.dp,
         radius: Shape = MaterialTheme.shapes.small,

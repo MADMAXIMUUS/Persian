@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -56,7 +57,7 @@ private fun PersianCounterImpl(
     sizes: CounterSizes,
     modifier: Modifier = Modifier
 ) {
-    val shape = sizes.cornerRadius
+    val shape = if (count == 1) CircleShape else sizes.cornerRadius
     Row(
         modifier = modifier
             .background(

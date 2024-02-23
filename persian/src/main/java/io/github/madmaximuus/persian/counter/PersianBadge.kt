@@ -3,6 +3,7 @@ package io.github.madmaximuus.persian.counter
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.CircleShape
@@ -62,7 +63,9 @@ private fun PersianBadgeImpl(
                 content = anchor
             )
             PersianCounter(
-                modifier = Modifier.layoutId(LayoutId.BADGE),
+                modifier = Modifier
+                    .layoutId(LayoutId.BADGE)
+                    .padding(sizes.horizontalPadding, sizes.verticalPadding),
                 count = count,
                 colors = colors,
                 sizes = sizes
@@ -89,7 +92,7 @@ private fun PersianEmptyBadge(
     modifier: Modifier = Modifier,
 ) {
     Layout(
-        {
+        content = {
             Box(
                 modifier = Modifier.layoutId(LayoutId.ANCHOR),
                 contentAlignment = Alignment.Center,
