@@ -4,16 +4,21 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabPosition
 import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -23,10 +28,12 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.iconBox.PersianIconBox
 
 data class TabItem(
     val label: String,
     val icon: Painter? = null,
+    val iconSide: IconSide = IconSide.TOP,
     var selected: Boolean = false
 )
 
@@ -38,6 +45,7 @@ internal fun PersianTab(
     activeColor: Color,
     disabledColor: Color,
     textStyle: TextStyle,
+    iconSide: IconSide,
     textOverflow: TextOverflow,
     onTabClicked: (tabItem: TabItem) -> Unit
 ) {
@@ -58,7 +66,8 @@ internal fun PersianTab(
                     tabItem = tabItem,
                     color = color,
                     textStyle = textStyle,
-                    textOverflow = textOverflow
+                    textOverflow = textOverflow,
+                    iconSide = iconSide
                 )
 
                 else -> PersianLabelTab(
@@ -93,27 +102,52 @@ private fun PersianTopIconTab(
     tabItem: TabItem,
     color: Color,
     textStyle: TextStyle,
+    iconSide: IconSide,
     textOverflow: TextOverflow
 ) {
-    Column(
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        tabItem.icon?.let {
-            /*PersianIconBox.Primary(
-                icon = it,
-                colors = PersianIconBoxColors.primary(
-                    defaultColor = color
-                )
-            )*/
-        }
+    when (iconSide){
+        IconSide.LEFT -> {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                tabItem.icon?.let {
+                    CompositionLocalProvider(LocalContentColor provides color) {
+                        PersianIconBox(
+                            icon = it,
+                        )
+                    }
+                    Spacer(modifier = Modifier.width(MaterialTheme.spacing.extraSmall))
+                }
 
-        PersianLabelTab(
-            tabItem = tabItem,
-            color = color,
-            textStyle = textStyle,
-            textOverflow = textOverflow
-        )
+                PersianLabelTab(
+                    tabItem = tabItem,
+                    color = color,
+                    textStyle = textStyle,
+                    textOverflow = textOverflow
+                )
+            }
+        }
+        IconSide.TOP -> {
+            Column(
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                tabItem.icon?.let {
+                    CompositionLocalProvider(LocalContentColor provides color) {
+                        PersianIconBox(
+                            icon = it,
+                        )
+                    }
+                }
+
+                PersianLabelTab(
+                    tabItem = tabItem,
+                    color = color,
+                    textStyle = textStyle,
+                    textOverflow = textOverflow
+                )
+            }
+        }
     }
 }
 
@@ -126,9 +160,13 @@ internal fun PersianTabItemIndicator(
     Box(
         modifier = Modifier
             .tabIndicatorOffset(tabPositions[selectedTabIndex])
-            .padding(horizontal = MaterialTheme.spacing.large)
+            .padding(horizontal = MaterialTheme.spacing.extraExtraLarge)
             .fillMaxWidth()
             .height(3.dp)
-            .background(color = tabIndicatorColor, shape = MaterialTheme.shapes.extraSmall)
+            .background(color = tabIndicatorColor, shape = MaterialTheme.shapes.extraLarge)
     )
+}
+
+enum class IconSide{ 
+    LEFT, TOP
 }

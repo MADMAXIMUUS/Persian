@@ -23,7 +23,7 @@ fun PersianFixedTabs(
     validateTabItems(tabItems)
     val selectedTab = tabItems.firstOrNull { it.selected } ?: tabItems.first()
     val indexOfSelectedTab = tabItems.indexOf(selectedTab)
-
+    val iconSide = tabItems[0].iconSide
     TabRow(
         selectedTabIndex = indexOfSelectedTab,
         containerColor = colors.backgroundColor,
@@ -43,7 +43,8 @@ fun PersianFixedTabs(
                 disabledColor = colors.disabledColor,
                 onTabClicked = onTabClicked,
                 textStyle = textStyle,
-                textOverflow = textOverflow
+                textOverflow = textOverflow,
+                iconSide = iconSide
             )
         }
     }
@@ -62,6 +63,7 @@ fun PersianScrollableTabs(
     validateTabItems(tabItems)
     val selectedTab = tabItems.firstOrNull { it.selected } ?: tabItems.first()
     val indexOfSelectedTab = tabItems.indexOf(selectedTab)
+    val iconSide = tabItems[0].iconSide
 
     Column(modifier = modifier) {
         ScrollableTabRow(
@@ -85,7 +87,8 @@ fun PersianScrollableTabs(
                     disabledColor = colors.disabledColor,
                     onTabClicked = onTabClicked,
                     textStyle = textStyle,
-                    textOverflow = textOverflow
+                    textOverflow = textOverflow,
+                    iconSide = iconSide
                 )
             }
         }

@@ -8,7 +8,7 @@ import androidx.compose.ui.graphics.Color
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
 
 @Immutable
-data class TabColors(
+class TabColors internal constructor(
     val backgroundColor: Color,
     val indicatorColor: Color,
     val activeColor: Color,

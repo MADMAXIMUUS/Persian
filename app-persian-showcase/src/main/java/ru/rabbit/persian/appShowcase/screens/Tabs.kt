@@ -4,12 +4,16 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.foundation.icons
+import io.github.madmaximuus.persian.tabs.IconSide
 import io.github.madmaximuus.persian.tabs.PersianFixedTabs
 import io.github.madmaximuus.persian.tabs.PersianScrollableTabs
 import io.github.madmaximuus.persian.tabs.TabItem
@@ -25,6 +29,8 @@ object Tabs : Screen {
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     override fun Content(navController: NavController?) {
+        val topAppBarScrollBehavior =
+            TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
         SampleScaffold(
             title = name,
             onBackClick = {
@@ -33,8 +39,9 @@ object Tabs : Screen {
         ) {
             LazyColumn(
                 modifier = Modifier
-                    .fillMaxSize(),
-                contentPadding = it
+                    .fillMaxSize()
+                    .nestedScroll(topAppBarScrollBehavior.nestedScrollConnection),
+                contentPadding = it,
             ) {
                 item {
                     SampleRow(text = "Scrollable Icon Left", firstItem = true) {
@@ -66,6 +73,28 @@ object Tabs : Screen {
                                     label = "Label $i",
                                     icon = MaterialTheme.icons.person,
                                     selected = i == 0
+                                )
+                            )
+                        }
+
+                        PersianScrollableTabs(
+                            tabItems = list,
+                            onTabClicked = { item ->
+                                selectNewTab(list, item)
+                            }
+                        )
+                    }
+                }
+                item {
+                    SampleRow(text = "Scrollable Icon Left") {
+                        val list = remember { mutableStateListOf<TabItem>() }
+                        for (i in 0..20) {
+                            list.add(
+                                TabItem(
+                                    label = "Label $i",
+                                    icon = MaterialTheme.icons.person,
+                                    selected = i == 0,
+                                    iconSide = IconSide.LEFT
                                 )
                             )
                         }
@@ -130,6 +159,28 @@ object Tabs : Screen {
                                     label = "Label $i",
                                     icon = MaterialTheme.icons.person,
                                     selected = i == 0
+                                )
+                            )
+                        }
+
+                        PersianFixedTabs(
+                            tabItems = list,
+                            onTabClicked = { item ->
+                                selectNewTab(list, item)
+                            }
+                        )
+                    }
+                }
+                item {
+                    SampleRow(text = "Fixed Icon Left") {
+                        val list = remember { mutableStateListOf<TabItem>() }
+                        for (i in 0..2) {
+                            list.add(
+                                TabItem(
+                                    label = "Label $i",
+                                    icon = MaterialTheme.icons.person,
+                                    selected = i == 0,
+                                    iconSide = IconSide.LEFT
                                 )
                             )
                         }
