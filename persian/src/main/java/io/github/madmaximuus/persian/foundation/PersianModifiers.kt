@@ -83,9 +83,9 @@ fun Modifier.shimmer(
 internal fun shimmerBrush(showShimmer: Boolean, size: IntSize): Brush {
     return if (showShimmer) {
         val shimmerColors = listOf(
-            MaterialTheme.extendedColorScheme.surface,
-            MaterialTheme.extendedColorScheme.surfaceVariant.copy(0.6f),
-            MaterialTheme.extendedColorScheme.surface,
+            MaterialTheme.extendedColorScheme.surfaceColorAtElevation(MaterialTheme.elevation.small),
+            MaterialTheme.extendedColorScheme.surfaceColorAtElevation(MaterialTheme.elevation.extraLarge),
+            MaterialTheme.extendedColorScheme.surfaceColorAtElevation(MaterialTheme.elevation.small),
         )
         val shimmerWidthPercentage = 0.8
 
