@@ -20,7 +20,7 @@ import androidx.navigation.NavController
 import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
 import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.inputs.PersianInput
-import io.github.madmaximuus.persian.textAreas.PersianTextAreas
+import io.github.madmaximuus.persian.textAreas.PersianTextArea
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object TextArea : Screen {
@@ -57,7 +57,7 @@ object TextArea : Screen {
                         .nestedScroll(topAppBarScrollBehavior.nestedScrollConnection)
                         .padding(it),
                 ) {
-                    PersianTextAreas(
+                    PersianTextArea(
                         modifier = Modifier.padding(horizontal = 20.dp),
                         value = value,
                         onValueChange = onValueChange,

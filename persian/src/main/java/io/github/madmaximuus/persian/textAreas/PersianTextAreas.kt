@@ -45,7 +45,7 @@ import io.github.madmaximuus.persian.foundation.spacing
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
 
 @Composable
-fun PersianTextAreas(
+fun PersianTextArea(
     value: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
@@ -207,7 +207,7 @@ private fun animateBorderStrokeAsState(
 fun TextAreaPreview() {
     PersianTheme {
         Surface {
-            PersianTextAreas(
+            PersianTextArea(
                 modifier = Modifier
                     .padding(10.dp),
                 value = "",
@@ -223,7 +223,7 @@ fun TextAreaPreview() {
 fun DarkTextAreaPreview() {
     PersianTheme {
         Surface {
-            PersianTextAreas(
+            PersianTextArea(
                 modifier = Modifier
                     .padding(10.dp),
                 value = "Я введенный текст",
