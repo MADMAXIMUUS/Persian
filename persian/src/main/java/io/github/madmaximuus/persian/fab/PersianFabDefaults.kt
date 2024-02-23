@@ -76,7 +76,7 @@ object PersianFabDefaults {
     @Composable
     fun smallSizes(
         boxSize: Dp = 40.dp,
-        iconSize: IconBoxSize = PersianIconBoxDefaults.medium(),
+        iconSize: IconBoxSize = PersianIconBoxDefaults.size20(),
         textStyle: TextStyle = MaterialTheme.typography.labelLarge,
         cornerShape: Shape = MaterialTheme.shapes.large
     ) = remember(
@@ -96,7 +96,7 @@ object PersianFabDefaults {
     @Composable
     fun mediumSizes(
         boxSize: Dp = 56.dp,
-        iconSize: IconBoxSize = PersianIconBoxDefaults.medium(),
+        iconSize: IconBoxSize = PersianIconBoxDefaults.size20(),
         textStyle: TextStyle = MaterialTheme.typography.labelLarge,
         cornerShape: Shape = MaterialTheme.shapes.large
     ) = remember(

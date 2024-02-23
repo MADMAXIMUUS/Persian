@@ -23,7 +23,7 @@ object PersianIconButtonDefaults {
     @Composable
     fun smallSizes(
         size: Dp = 36.dp,
-        iconSize: IconBoxSize = PersianIconBoxDefaults.small(),
+        iconSize: IconBoxSize = PersianIconBoxDefaults.size20(),
         shape: Shape = MaterialTheme.shapes.medium,
     ): IconButtonSizes = remember(
         size,
@@ -40,7 +40,7 @@ object PersianIconButtonDefaults {
     @Composable
     fun mediumSizes(
         size: Dp = 44.dp,
-        iconSize: IconBoxSize = PersianIconBoxDefaults.medium(),
+        iconSize: IconBoxSize = PersianIconBoxDefaults.size24(),
         shape: Shape = MaterialTheme.shapes.large,
     ): IconButtonSizes = remember(
         size,
@@ -57,7 +57,7 @@ object PersianIconButtonDefaults {
     @Composable
     fun largeSizes(
         size: Dp = 52.dp,
-        iconSize: IconBoxSize = PersianIconBoxDefaults.large(),
+        iconSize: IconBoxSize = PersianIconBoxDefaults.size28(),
         shape: Shape = MaterialTheme.shapes.large
     ): IconButtonSizes = remember(
         size,

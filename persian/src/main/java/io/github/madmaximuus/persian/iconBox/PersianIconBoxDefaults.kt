@@ -15,35 +15,42 @@ import io.github.madmaximuus.persian.foundation.extendedColorScheme
 
 object PersianIconBoxDefaults {
     @Composable
-    fun extraExtraLarge(
+    fun size48(
         width: Dp = 48.dp
     ) = remember(width) {
         IconBoxSize(width)
     }
 
     @Composable
-    fun extraLarge(
+    fun size32(
         width: Dp = 32.dp
     ) = remember(width) {
         IconBoxSize(width)
     }
 
     @Composable
-    fun large(
+    fun size28(
+        width: Dp = 28.dp
+    ) = remember(width) {
+        IconBoxSize(width)
+    }
+
+    @Composable
+    fun size24(
         width: Dp = 24.dp
     ) = remember(width) {
         IconBoxSize(width)
     }
 
     @Composable
-    fun medium(
+    fun size20(
         width: Dp = 20.dp
     ) = remember(width) {
         IconBoxSize(width)
     }
 
     @Composable
-    fun small(
+    fun size18(
         width: Dp = 18.dp
     ) = remember(width) {
         IconBoxSize(width)
@@ -85,8 +92,7 @@ class IconBoxColors internal constructor(
         if (other == null || other !is IconBoxColors) return false
 
         if (errorColor != other.errorColor) return false
-        if (disabledColor != other.disabledColor) return false
-        return true
+        return disabledColor == other.disabledColor
     }
 
     override fun hashCode(): Int {

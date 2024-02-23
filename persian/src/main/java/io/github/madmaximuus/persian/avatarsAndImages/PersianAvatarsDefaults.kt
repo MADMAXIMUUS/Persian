@@ -46,42 +46,42 @@ object PersianAvatarsDefaults {
     @Composable
     fun size96(
         boxSizes: Dp = 96.dp,
-        placeholderSize: IconBoxSize = PersianIconBoxDefaults.extraExtraLarge(),
-        editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.extraLarge()
+        placeholderSize: IconBoxSize = PersianIconBoxDefaults.size48(),
+        editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.size32()
     ) = AvatarSize(boxSizes, placeholderSize, editIconBoxSize)
 
     @Composable
     fun size80(
         boxSizes: Dp = 80.dp,
-        placeholderSize: IconBoxSize = PersianIconBoxDefaults.extraExtraLarge(),
-        editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.extraLarge()
+        placeholderSize: IconBoxSize = PersianIconBoxDefaults.size48(),
+        editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.size32()
     ) = AvatarSize(boxSizes, placeholderSize, editIconBoxSize)
 
     @Composable
     fun size64(
         boxSizes: Dp = 64.dp,
-        placeholderSize: IconBoxSize = PersianIconBoxDefaults.extraLarge(),
-        editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.large()
+        placeholderSize: IconBoxSize = PersianIconBoxDefaults.size32(),
+        editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.size24()
     ) = AvatarSize(boxSizes, placeholderSize, editIconBoxSize)
 
     @Composable
     fun size48(
         boxSizes: Dp = 48.dp,
-        placeholderSize: IconBoxSize = PersianIconBoxDefaults.large(),
-        editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.large()
+        placeholderSize: IconBoxSize = PersianIconBoxDefaults.size24(),
+        editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.size24()
     ) = AvatarSize(boxSizes, placeholderSize, editIconBoxSize)
 
     @Composable
     fun size32(
         boxSizes: Dp = 32.dp,
-        placeholderSize: IconBoxSize = PersianIconBoxDefaults.medium(),
-        editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.medium()
+        placeholderSize: IconBoxSize = PersianIconBoxDefaults.size20(),
+        editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.size20()
     ) = AvatarSize(boxSizes, placeholderSize, editIconBoxSize)
 
     @Composable
     fun size24(
         boxSizes: Dp = 24.dp,
-        placeholderSize: IconBoxSize = PersianIconBoxDefaults.small(),
-        editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.small()
+        placeholderSize: IconBoxSize = PersianIconBoxDefaults.size18(),
+        editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.size18()
     ) = AvatarSize(boxSizes, placeholderSize, editIconBoxSize)
 }

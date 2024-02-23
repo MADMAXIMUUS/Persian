@@ -85,7 +85,7 @@ object PersianButtonDefaults {
         fontSize: TextStyle = MaterialTheme.typography.labelMedium,
         height: Dp = 36.dp,
         loaderSize: CircularProgressBarSizes = PersianProgressBarDefaults.circularSmall(),
-        iconSize: IconBoxSize = PersianIconBoxDefaults.small(),
+        iconSize: IconBoxSize = PersianIconBoxDefaults.size18(),
         shape: Shape = MaterialTheme.shapes.medium,
         contentPadding: PaddingValues = PaddingValues(
             horizontal = MaterialTheme.spacing.large,
@@ -106,7 +106,7 @@ object PersianButtonDefaults {
         additionInfoTextStyle: TextStyle = MaterialTheme.typography.labelSmall,
         height: Dp = 44.dp,
         loaderSize: CircularProgressBarSizes = PersianProgressBarDefaults.circularMedium(),
-        iconSize: IconBoxSize = PersianIconBoxDefaults.medium(),
+        iconSize: IconBoxSize = PersianIconBoxDefaults.size20(),
         shape: Shape = MaterialTheme.shapes.large,
         contentPadding: PaddingValues = PaddingValues(
             horizontal = MaterialTheme.spacing.extraLarge,
@@ -128,7 +128,7 @@ object PersianButtonDefaults {
         additionInfoTextStyle: TextStyle = MaterialTheme.typography.labelMedium,
         height: Dp = 52.dp,
         loaderSize: CircularProgressBarSizes = PersianProgressBarDefaults.circularLarge(),
-        iconSize: IconBoxSize = PersianIconBoxDefaults.large(),
+        iconSize: IconBoxSize = PersianIconBoxDefaults.size28(),
         shape: Shape = MaterialTheme.shapes.large,
         contentPadding: PaddingValues = PaddingValues(
             horizontal = MaterialTheme.spacing.extraExtraLarge,

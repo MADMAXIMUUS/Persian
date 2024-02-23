@@ -10,7 +10,7 @@ import androidx.compose.ui.graphics.painter.Painter
 fun PersianIconBox(
     modifier: Modifier = Modifier,
     icon: Painter,
-    size: IconBoxSize = PersianIconBoxDefaults.large(),
+    size: IconBoxSize = PersianIconBoxDefaults.size24(),
     colors: IconBoxColors = PersianIconBoxDefaults.colors(),
     enabled: Boolean = true,
     isError: Boolean = false,

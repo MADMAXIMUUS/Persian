@@ -78,8 +78,8 @@ object PersianImagesDefaults {
     @Composable
     fun size96(
         boxSizes: Dp = 96.dp,
-        placeholderSize: IconBoxSize = PersianIconBoxDefaults.extraExtraLarge(),
-        editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.extraLarge(),
+        placeholderSize: IconBoxSize = PersianIconBoxDefaults.size48(),
+        editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.size32(),
         smallShape: Shape = RoundedCornerShape(8.dp),
         mediumShape: Shape = RoundedCornerShape(12.dp),
         largeShape: Shape = RoundedCornerShape(16.dp)
@@ -95,8 +95,8 @@ object PersianImagesDefaults {
     @Composable
     fun size80(
         boxSizes: Dp = 80.dp,
-        placeholderSize: IconBoxSize = PersianIconBoxDefaults.extraExtraLarge(),
-        editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.extraLarge(),
+        placeholderSize: IconBoxSize = PersianIconBoxDefaults.size48(),
+        editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.size32(),
         smallShape: Shape = RoundedCornerShape(8.dp),
         mediumShape: Shape = RoundedCornerShape(11.dp),
         largeShape: Shape = RoundedCornerShape(15.dp)
@@ -112,8 +112,8 @@ object PersianImagesDefaults {
     @Composable
     fun size64(
         boxSizes: Dp = 64.dp,
-        placeholderSize: IconBoxSize = PersianIconBoxDefaults.extraLarge(),
-        editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.large(),
+        placeholderSize: IconBoxSize = PersianIconBoxDefaults.size32(),
+        editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.size24(),
         smallShape: Shape = RoundedCornerShape(6.dp),
         mediumShape: Shape = RoundedCornerShape(10.dp),
         largeShape: Shape = RoundedCornerShape(14.dp)
@@ -129,8 +129,8 @@ object PersianImagesDefaults {
     @Composable
     fun size48(
         boxSizes: Dp = 48.dp,
-        placeholderSize: IconBoxSize = PersianIconBoxDefaults.large(),
-        editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.large(),
+        placeholderSize: IconBoxSize = PersianIconBoxDefaults.size24(),
+        editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.size24(),
         smallShape: Shape = RoundedCornerShape(5.dp),
         mediumShape: Shape = RoundedCornerShape(9.dp),
         largeShape: Shape = RoundedCornerShape(12.dp)
@@ -146,8 +146,8 @@ object PersianImagesDefaults {
     @Composable
     fun size32(
         boxSizes: Dp = 32.dp,
-        placeholderSize: IconBoxSize = PersianIconBoxDefaults.medium(),
-        editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.medium(),
+        placeholderSize: IconBoxSize = PersianIconBoxDefaults.size20(),
+        editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.size20(),
         smallShape: Shape = RoundedCornerShape(4.dp),
         mediumShape: Shape = RoundedCornerShape(8.dp),
         largeShape: Shape = RoundedCornerShape(10.dp)
@@ -163,8 +163,8 @@ object PersianImagesDefaults {
     @Composable
     fun size24(
         boxSizes: Dp = 24.dp,
-        placeholderSize: IconBoxSize = PersianIconBoxDefaults.small(),
-        editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.small(),
+        placeholderSize: IconBoxSize = PersianIconBoxDefaults.size18(),
+        editIconBoxSize: IconBoxSize = PersianIconBoxDefaults.size18(),
         smallShape: Shape = RoundedCornerShape(3.dp),
         mediumShape: Shape = RoundedCornerShape(7.dp),
         largeShape: Shape = RoundedCornerShape(8.dp)

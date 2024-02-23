@@ -49,8 +49,8 @@ object PersianAssistChipDefaults {
 
     @Composable
     fun chipSizes(
-        trailingIconSize: IconBoxSize = PersianIconBoxDefaults.small(),
-        leadingIconSize: IconBoxSize = PersianIconBoxDefaults.small(),
+        trailingIconSize: IconBoxSize = PersianIconBoxDefaults.size18(),
+        leadingIconSize: IconBoxSize = PersianIconBoxDefaults.size18(),
         labelStyle: TextStyle = MaterialTheme.typography.labelLarge,
         borderWidth: Dp = 1.dp,
         shape: Shape = MaterialTheme.shapes.small,

@@ -28,7 +28,7 @@ fun PersianSwitch(
             {
                 PersianIconBox(
                     icon = checkedIcon,
-                    size = PersianIconBoxDefaults.small()
+                    size = PersianIconBoxDefaults.size18()
                 )
             }
         }
@@ -37,7 +37,7 @@ fun PersianSwitch(
             {
                 PersianIconBox(
                     icon = uncheckedIcon,
-                    size = PersianIconBoxDefaults.small()
+                    size = PersianIconBoxDefaults.size18()
                 )
             }
         }
