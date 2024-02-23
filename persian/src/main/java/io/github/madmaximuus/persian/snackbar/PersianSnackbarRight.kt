@@ -5,7 +5,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.painter.Painter
 import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
 import io.github.madmaximuus.persian.buttons.PersianTertiaryButton
+import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import io.github.madmaximuus.persian.foundation.icons
+import io.github.madmaximuus.persian.iconButtons.PersianIconButtonDefaults
 import io.github.madmaximuus.persian.iconButtons.PersianTertiaryIconButton
 
 sealed class PersianSnackbarRight {
@@ -28,6 +30,9 @@ internal fun PersianSnackbarRightClose(
 ) {
     PersianTertiaryIconButton(
         icon = customIcon ?: MaterialTheme.icons.close,
+        colors = PersianIconButtonDefaults.tertiaryIconButtonColors(
+            contentColor = MaterialTheme.extendedColorScheme.onSurfaceVariant
+        ),
         onClick = onClick
     )
 }

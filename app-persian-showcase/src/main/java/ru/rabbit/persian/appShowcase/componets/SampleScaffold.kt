@@ -49,11 +49,10 @@ fun SampleScaffold(
             SnackbarHost(hostState = snackbarHostState) { snackbarData ->
                 val customVisuals = snackbarData.visuals as? PersianSnackbarVisuals
                 if (customVisuals != null) {
-                    PersianSnackbar.Primary(
+                    PersianSnackbar(
                         text = customVisuals.message,
                         left = customVisuals.left,
                         right = customVisuals.right,
-                        showOnTop = customVisuals.showOnTop,
                     )
                 } else {
                     Snackbar(snackbarData = snackbarData)

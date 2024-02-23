@@ -12,12 +12,8 @@ import androidx.compose.material3.SnackbarVisuals
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.spacing
 
@@ -26,7 +22,6 @@ data class PersianSnackbarVisuals(
     override val actionLabel: String? = null,
     override val withDismissAction: Boolean = false,
     override val duration: SnackbarDuration = SnackbarDuration.Indefinite,
-    val showOnTop: Boolean = false,
     val left: PersianSnackbarLeft? = null,
     val right: PersianSnackbarRight? = null,
     val onDismiss: (() -> Unit)? = null
@@ -38,33 +33,16 @@ fun PersianSnackbar(
     left: PersianSnackbarLeft? = null,
     colors: SnackbarColors = PersianSnackbarDefaults.colors(),
     sizes: SnackbarSizes = PersianSnackbarDefaults.sizes(),
-    right: PersianSnackbarRight? = null,
-    showOnTop: Boolean = false
+    right: PersianSnackbarRight? = null
 ) {
-    val configuration = LocalConfiguration.current
 
     val spacingLarge = MaterialTheme.spacing.large
-
-    val padding by remember {
-        mutableStateOf(
-            if (showOnTop) {
-                PaddingValues(
-                    start = spacingLarge,
-                    top = 50.dp,
-                    bottom = configuration.screenHeightDp.dp - 100.dp,
-                    end = spacingLarge
-                )
-            } else {
-                PaddingValues(horizontal = spacingLarge, vertical = 70.dp)
-            }
-        )
-    }
 
     Surface(
         modifier = Modifier
             .fillMaxWidth()
             .heightIn(min = 52.dp)
-            .padding(padding),
+            .padding(PaddingValues(horizontal = spacingLarge, vertical = 70.dp)),
         shape = sizes.cornerRadius,
         color = colors.backgroundColor,
         content = {
