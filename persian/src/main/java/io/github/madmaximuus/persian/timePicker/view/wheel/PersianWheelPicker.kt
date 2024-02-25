@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.timePickerDialog
+package io.github.madmaximuus.persian.timePicker.view.wheel
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
@@ -25,7 +25,7 @@ internal fun VerticalWheelPicker(
     count: Int,
     state: LazyListState = rememberLazyListState(),
     onScrollFinish: (index: Int) -> Unit,
-    content: @Composable BoxScope.(index: Int) -> Unit
+    content: @Composable BoxScope.(index: Int, isCenterItem: Boolean) -> Unit
 ) {
     val itemHeight = 36.dp
     val visibleItemCount = 3
@@ -62,7 +62,7 @@ internal fun VerticalWheelPicker(
                     .height(itemHeight),
                 contentAlignment = Alignment.Center
             ) {
-                content(index)
+                content(index, index == state.firstVisibleItemIndex)
             }
         }
     }

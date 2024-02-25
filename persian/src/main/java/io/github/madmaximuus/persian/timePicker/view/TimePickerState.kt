@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.timePickerDialog
+package io.github.madmaximuus.persian.timePicker.view
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -10,7 +10,7 @@ import java.io.Serializable
 import java.time.LocalTime
 
 internal class TimePickerState(
-    val config: TimePickerDialogConfig,
+    val config: TimePickerConfig,
     stateData: TimePickerStateData? = null,
 ) {
 
@@ -40,7 +40,7 @@ internal class TimePickerState(
 
     companion object {
         fun Saver(
-            config: TimePickerDialogConfig
+            config: TimePickerConfig
         ): Saver<TimePickerState, *> = Saver(
             save = { state ->
                 TimePickerStateData(
@@ -74,7 +74,7 @@ internal class TimePickerState(
 
 @Composable
 internal fun rememberDatePickerState(
-    config: TimePickerDialogConfig,
+    config: TimePickerConfig,
 ): TimePickerState = rememberSaveable(
     inputs = arrayOf(config),
     saver = TimePickerState.Saver(config),

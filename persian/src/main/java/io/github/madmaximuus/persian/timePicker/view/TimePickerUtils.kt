@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.timePickerDialog
+package io.github.madmaximuus.persian.timePicker.view
 
 import java.time.LocalTime
 
@@ -14,7 +14,7 @@ internal fun PickerTime.toLocalTime(): LocalTime {
     return LocalTime.of(
         when (timesOfDay) {
             TimePickerDialogAmPM.AM -> hours % 12
-            TimePickerDialogAmPM.PM  -> hours % 12 + 12
+            TimePickerDialogAmPM.PM -> hours % 12 + 12
             else -> hours
         },
         minutes
