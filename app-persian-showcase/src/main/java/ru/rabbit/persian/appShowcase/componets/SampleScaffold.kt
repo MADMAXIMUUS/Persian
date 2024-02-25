@@ -17,7 +17,6 @@ import io.github.madmaximuus.persian.snackbar.PersianSnackbar
 import io.github.madmaximuus.persian.snackbar.PersianSnackbarVisuals
 import io.github.madmaximuus.persian.topAppBar.PersianTopAppBar
 import io.github.madmaximuus.persian.topAppBar.PersianTopAppBarLeft
-import io.github.madmaximuus.persian.topAppBar.PersianTopAppBarMiddle
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -37,9 +36,8 @@ fun SampleScaffold(
                         onClick = onBackClick
                     )
                 },
-                middle = PersianTopAppBarMiddle.Title(text = title),
+                title = title,
                 scrollBehavior = topAppBarScrollBehavior,
-                actionItemsCount = 1
             )
         },
         modifier = modifier.fillMaxSize(),

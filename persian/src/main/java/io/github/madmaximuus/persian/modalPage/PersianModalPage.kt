@@ -31,7 +31,6 @@ import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import io.github.madmaximuus.persian.foundation.spacing
 import io.github.madmaximuus.persian.topAppBar.PersianTopAppBar
 import io.github.madmaximuus.persian.topAppBar.PersianTopAppBarLeft
-import io.github.madmaximuus.persian.topAppBar.PersianTopAppBarMiddle
 import io.github.madmaximuus.persian.topAppBar.PersianTopAppBarRight
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -89,12 +88,11 @@ fun PersianDynamicHeightModalPage(
                             PersianTopAppBar(
                                 windowInsets = WindowInsets(0, 0, 0, 0),
                                 left = PersianTopAppBarLeft.Close(onClick = { onDismissRequest() }),
-                                middle = PersianTopAppBarMiddle.Title(text = top.title),
+                                title = top.title,
                                 right = PersianTopAppBarRight.Action(
                                     text = top.actionTitle,
                                     onClick = top.onActionClick
                                 ),
-                                actionItemsCount = 1
                             )
                         }
                     }
@@ -149,12 +147,11 @@ fun PersianExtendedModalPage(
                     PersianTopAppBar(
                         windowInsets = WindowInsets(0, 0, 0, 0),
                         left = PersianTopAppBarLeft.Close(onClick = { onDismissRequest() }),
-                        middle = PersianTopAppBarMiddle.Title(text = title),
+                        title = title,
                         right = PersianTopAppBarRight.Action(
                             text = actionTitle,
                             onClick = onActionClick
                         ),
-                        actionItemsCount = 1
                     )
                 }
             ) {
@@ -192,12 +189,11 @@ fun PersianFullScreenModalPage(
                     PersianTopAppBar(
                         windowInsets = WindowInsets(0, 0, 0, 0),
                         left = PersianTopAppBarLeft.Close(onClick = { onDismissRequest() }),
-                        middle = PersianTopAppBarMiddle.Title(text = title),
+                        title = title,
                         right = PersianTopAppBarRight.Action(
                             text = actionTitle,
                             onClick = onActionClick
                         ),
-                        actionItemsCount = 1
                     )
                 },
                 contentWindowInsets = WindowInsets(0, 0, 0, 0)

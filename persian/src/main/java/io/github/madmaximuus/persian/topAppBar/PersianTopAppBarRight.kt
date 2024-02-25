@@ -44,13 +44,15 @@ internal fun PersianTopAppBarRightIcons(
     showAsActionItems.forEach { action ->
         if (action.badgeCount > 0) {
             PersianBadge(
+                count = action.badgeCount,
                 sizes = PersianCounterDefaults.sizes(
-                    badgeHorizontalOffset = (-20).dp,
-                    badgeVerticalOffset = 20.dp
+                    badgeHorizontalOffset = (-28).dp,
+                    badgeVerticalOffset = 24.dp
                 )
             ) {
                 PersianTertiaryIconButton(
                     icon = action.icon,
+                    sizes = PersianIconButtonDefaults.mediumSizes(),
                     colors = PersianIconButtonDefaults.tertiaryIconButtonColors(
                         contentColor = colors.iconColor
                     ),
@@ -60,6 +62,7 @@ internal fun PersianTopAppBarRightIcons(
         } else {
             PersianTertiaryIconButton(
                 icon = action.icon,
+                sizes = PersianIconButtonDefaults.mediumSizes(),
                 colors = PersianIconButtonDefaults.tertiaryIconButtonColors(
                     contentColor = colors.iconColor
                 ),

@@ -9,6 +9,7 @@ import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
+import kotlin.math.min
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -17,28 +18,24 @@ fun PersianTopAppBar(
     topAppBarColors: TopAppBarColors = PersianTopAppBarDefaults.colors(),
     windowInsets: WindowInsets = TopAppBarDefaults.windowInsets,
     left: PersianTopAppBarLeft? = null,
-    middle: PersianTopAppBarMiddle,
+    title: String,
     right: PersianTopAppBarRight? = null,
     scrollBehavior: TopAppBarScrollBehavior? = null,
-    actionItemsCount: Int
 ) {
     CompositionLocalProvider(LocalPersianTopAppBarColors provides topAppBarColors) {
         val colors = LocalPersianTopAppBarColors.current
+        val actionItemsCount = when (right) {
+            is PersianTopAppBarRight.Action -> 1
+            is PersianTopAppBarRight.Icons -> min(right.actionItem.size, 3)
+            null -> 0
+        }
         if (actionItemsCount < 2) {
             CenterAlignedTopAppBar(
                 modifier = modifier,
                 title = {
-                    when (middle) {
-                        is PersianTopAppBarMiddle.Icon -> {
-                            PersianTopAppBarMiddleIcon(icon = middle.icon)
-                        }
-
-                        is PersianTopAppBarMiddle.Title -> {
-                            PersianTopAppBarMiddleTitle(
-                                text = middle.text
-                            )
-                        }
-                    }
+                    PersianTopAppBarMiddleTitle(
+                        text = title
+                    )
                 },
                 navigationIcon = {
                     when (left) {
@@ -91,17 +88,9 @@ fun PersianTopAppBar(
             TopAppBar(
                 modifier = modifier,
                 title = {
-                    when (middle) {
-                        is PersianTopAppBarMiddle.Icon -> {
-                            PersianTopAppBarMiddleIcon(icon = middle.icon)
-                        }
-
-                        is PersianTopAppBarMiddle.Title -> {
-                            PersianTopAppBarMiddleTitle(
-                                text = middle.text
-                            )
-                        }
-                    }
+                    PersianTopAppBarMiddleTitle(
+                        text = title
+                    )
                 },
                 navigationIcon = {
                     when (left) {
@@ -133,14 +122,7 @@ fun PersianTopAppBar(
                             PersianTopAppBarRightIcons(actions = right.actionItem)
                         }
 
-                        is PersianTopAppBarRight.Action -> {
-                            PersianTopAppBarRightButton(
-                                text = right.text,
-                                onClick = right.onClick
-                            )
-                        }
-
-                        null -> {}
+                        else -> {}
                     }
                 },
                 scrollBehavior = scrollBehavior,
