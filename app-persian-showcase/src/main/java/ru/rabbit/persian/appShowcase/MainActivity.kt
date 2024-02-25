@@ -31,7 +31,7 @@ import ru.rabbit.persian.appShowcase.screens.CheckBox
 import ru.rabbit.persian.appShowcase.screens.Chips
 import ru.rabbit.persian.appShowcase.screens.CodeInput
 import ru.rabbit.persian.appShowcase.screens.Counter
-import ru.rabbit.persian.appShowcase.screens.DatePickerDialog
+import ru.rabbit.persian.appShowcase.screens.DatePicker
 import ru.rabbit.persian.appShowcase.screens.Divider
 import ru.rabbit.persian.appShowcase.screens.Fab
 import ru.rabbit.persian.appShowcase.screens.Forms
@@ -86,14 +86,14 @@ class MainActivity : ComponentActivity() {
                         TextArea,
                         TopAppBar,
                         CodeInput,
-                        DatePickerDialog,
+                        DatePicker,
                         Skeleton,
                         Switch,
                         Charts,
                         PageIndicator,
                         TimePickerDialog,
                         Chips,
-                        Select
+                        Select,
                     )
                 }
                 NavHost(
