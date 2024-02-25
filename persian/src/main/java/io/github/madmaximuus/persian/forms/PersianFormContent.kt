@@ -18,8 +18,8 @@ import io.github.madmaximuus.persian.inputs.PersianInputDefaults
 import io.github.madmaximuus.persian.menus.MenuColors
 import io.github.madmaximuus.persian.select.PersianSelect
 import io.github.madmaximuus.persian.select.SelectActionItem
+import io.github.madmaximuus.persian.textAreas.PersianTextArea
 import io.github.madmaximuus.persian.textAreas.PersianTextAreaDefaults
-import io.github.madmaximuus.persian.textAreas.PersianTextAreas
 import io.github.madmaximuus.persian.textAreas.TextAreaColors
 
 sealed class PersianFormContent {
@@ -127,7 +127,7 @@ internal fun PersianFormContentTextArea(
 ) {
     val resolvedTextStyle = textStyle ?: MaterialTheme.typography.bodyLarge
     val resolvedColors = colors ?: PersianTextAreaDefaults.colors()
-    PersianTextAreas(
+    PersianTextArea(
         value = value,
         onValueChange = onValueChange,
         modifier = modifier,
