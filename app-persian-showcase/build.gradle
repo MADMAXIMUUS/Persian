@@ -3,6 +3,8 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
+apply from: 'signing.gradle'
+
 android {
     namespace 'ru.rabbit.persian.appShowcase'
     compileSdk 34
@@ -11,8 +13,8 @@ android {
         applicationId "ru.rabbit.persian.appShowcase"
         minSdk 26
         targetSdk 34
-        versionCode 3
-        versionName "3.0.0"
+        versionCode 6
+        versionName "4.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
