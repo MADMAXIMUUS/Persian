@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.datePickerDIalog.util
+package io.github.madmaximuus.persian.datePicker.view.util
 
 import android.icu.util.Calendar
 

@@ -1,7 +1,7 @@
-package io.github.madmaximuus.persian.datePickerDIalog.grid
+package io.github.madmaximuus.persian.datePicker.view.grid
 
 import androidx.compose.runtime.Composable
-import io.github.madmaximuus.persian.datePickerDIalog.util.DatePickerDisplayMode
+import io.github.madmaximuus.persian.datePicker.view.util.DatePickerDisplayMode
 
 @Composable
 internal fun PersianDatePickerDialogRootGrid(

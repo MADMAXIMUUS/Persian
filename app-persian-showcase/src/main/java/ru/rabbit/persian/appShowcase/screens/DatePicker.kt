@@ -19,19 +19,19 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.buttons.PersianPrimaryButton
 import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
-import io.github.madmaximuus.persian.datePickerDIalog.PersianDatePickerDialog
-import io.github.madmaximuus.persian.datePickerDIalog.util.DatePickerConfig
-import io.github.madmaximuus.persian.datePickerDIalog.util.DatePickerSelection
+import io.github.madmaximuus.persian.datePicker.PersianDatePicker
+import io.github.madmaximuus.persian.datePicker.view.util.DatePickerConfig
+import io.github.madmaximuus.persian.datePicker.view.util.DatePickerSelection
 import io.github.madmaximuus.persian.foundation.spacing
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-object DatePickerDialog : Screen {
+object DatePicker : Screen {
 
-    override val name: String = "Date Picker Dialog"
+    override val name: String = "Date Picker"
 
-    override val navigation: String = "darePickerDialog"
+    override val navigation: String = "darePicker"
 
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
@@ -77,7 +77,7 @@ object DatePickerDialog : Screen {
             dates.append(dateFormat.format(it.timeInMillis) + " ")
         }
 
-        SampleScaffold(title = Alert.name, onBackClick = { navController?.navigateUp() }) {
+        SampleScaffold(title = name, onBackClick = { navController?.navigateUp() }) {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
@@ -130,11 +130,12 @@ object DatePickerDialog : Screen {
             }
         }
         if (showDialogSelectDate) {
-            PersianDatePickerDialog(
+            PersianDatePicker(
                 config = DatePickerConfig(
                     selectable = selectable
                 ),
                 selection = DatePickerSelection.Date(
+                    selectedDate = selected,
                     onDateSelected = {
                         selected = it
                     }
@@ -145,11 +146,12 @@ object DatePickerDialog : Screen {
             )
         }
         if (showDialogSelectDates) {
-            PersianDatePickerDialog(
+            PersianDatePicker(
                 config = DatePickerConfig(
                     selectable = selectable
                 ),
                 selection = DatePickerSelection.Dates(
+                    selectedDates = selectedDates,
                     onDatesSelected = {
                         selectedDates = it
                     }
@@ -160,11 +162,12 @@ object DatePickerDialog : Screen {
             )
         }
         if (showDialogSelectPeriod) {
-            PersianDatePickerDialog(
+            PersianDatePicker(
                 config = DatePickerConfig(
                     selectable = selectable
                 ),
                 selection = DatePickerSelection.Period(
+                    selectedRange = startDate..endDate,
                     onRangeSelected = { first: Calendar, second: Calendar ->
                         startDate = first
                         endDate = second

@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.datePickerDIalog.grid
+package io.github.madmaximuus.persian.datePicker.view.grid
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -6,8 +6,9 @@ import androidx.compose.foundation.lazy.grid.LazyGridState
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import io.github.madmaximuus.persian.datePickerDIalog.cells.PersianDatePickerDialogYearCell
-import io.github.madmaximuus.persian.datePickerDIalog.util.Constants
+import io.github.madmaximuus.persian.datePicker.view.DatePickerYearCellColors
+import io.github.madmaximuus.persian.datePicker.view.cells.PersianDatePickerDialogYearCell
+import io.github.madmaximuus.persian.datePicker.view.util.Constants
 import io.github.madmaximuus.persian.foundation.spacing
 
 @Composable
@@ -16,6 +17,7 @@ internal fun PersianDatePickerDialogYearGrid(
     yearListState: LazyGridState,
     currentYear: Int,
     selectedYear: Int,
+    colors: DatePickerYearCellColors,
     onYearClick: (Int) -> Unit,
 ) {
     LazyVerticalGrid(
@@ -30,6 +32,7 @@ internal fun PersianDatePickerDialogYearGrid(
                     index = it,
                     currentYear = currentYear == yearsRange.start + it,
                     selected = selectedYear == yearsRange.start + it,
+                    colors = colors,
                     onYearClick = onYearClick
                 )
             }

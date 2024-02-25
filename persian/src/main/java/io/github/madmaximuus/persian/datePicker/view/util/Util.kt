@@ -1,9 +1,9 @@
-package io.github.madmaximuus.persian.datePickerDIalog.util
+package io.github.madmaximuus.persian.datePicker.view.util
 
 import android.icu.util.Calendar
 import androidx.annotation.RestrictTo
 import androidx.core.math.MathUtils
-import io.github.madmaximuus.persian.datePickerDIalog.state.DatePickerGridState
+import io.github.madmaximuus.persian.datePicker.view.state.DatePickerGridState
 
 internal fun monthBetween(startDate: Calendar, endDate: Calendar): Int {
     val diffYear = endDate.get(Calendar.YEAR) - startDate.get(Calendar.YEAR)
@@ -30,9 +30,17 @@ internal fun getPageFromDay(boundary: ClosedRange<Calendar>, day: Calendar): Int
 @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
 internal fun DatePickerSelection.getInitialPageFrom(config: DatePickerConfig): Int {
     val cameraDateBasedOnMode = when (this) {
-        is DatePickerSelection.Date -> selectedDate
-        is DatePickerSelection.Dates -> selectedDates?.firstOrNull()
-        is DatePickerSelection.Period -> selectedRange?.lower
+        is DatePickerSelection.Date -> selectedDate?.apply {
+            firstDayOfWeek = Calendar.MONDAY
+        }
+
+        is DatePickerSelection.Dates -> selectedDates?.firstOrNull()?.apply {
+            firstDayOfWeek = Calendar.MONDAY
+        }
+
+        is DatePickerSelection.Period -> selectedRange?.start?.apply {
+            firstDayOfWeek = Calendar.MONDAY
+        }
     } ?: Calendar.getInstance().apply {
         firstDayOfWeek = Calendar.MONDAY
     }
@@ -55,7 +63,7 @@ internal val DatePickerSelection.rangeValue: Array<Calendar?>
     @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
     get() {
         val value = if (this is DatePickerSelection.Period) selectedRange else null
-        return mutableListOf(value?.lower, value?.upper).toTypedArray()
+        return mutableListOf(value?.start, value?.endInclusive).toTypedArray()
     }
 
 @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
@@ -183,8 +191,7 @@ internal fun Calendar?.equal(other: Calendar): Boolean {
     if (this == null) return false
     if (this.get(Calendar.YEAR) != other.get(Calendar.YEAR)) return false
     if (this.get(Calendar.MONTH) != other.get(Calendar.MONTH)) return false
-    if (this.get(Calendar.DAY_OF_MONTH) != other.get(Calendar.DAY_OF_MONTH)) return false
-    return true
+    return this.get(Calendar.DAY_OF_MONTH) == other.get(Calendar.DAY_OF_MONTH)
 }
 
 @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
@@ -208,8 +215,7 @@ internal fun ClosedRange<Calendar>?.contain(cal: Calendar): Boolean {
     if (this.start.get(Calendar.DAY_OF_MONTH) > cal.get(Calendar.DAY_OF_MONTH)) return false
     if (this.endInclusive.get(Calendar.YEAR) < cal.get(Calendar.YEAR)) return false
     if (this.endInclusive.get(Calendar.MONTH) < cal.get(Calendar.MONTH)) return false
-    if (this.endInclusive.get(Calendar.DAY_OF_MONTH) < cal.get(Calendar.DAY_OF_MONTH)) return false
-    return true
+    return this.endInclusive.get(Calendar.DAY_OF_MONTH) >= cal.get(Calendar.DAY_OF_MONTH)
 }
 
 @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
@@ -218,11 +224,9 @@ internal fun Calendar.isAfter(other: Calendar): Boolean {
     if (this.get(Calendar.YEAR) == other.get(Calendar.YEAR)
         && this.get(Calendar.MONTH) > other.get(Calendar.MONTH)
     ) return true
-    if (this.get(Calendar.YEAR) == other.get(Calendar.YEAR)
-        && this.get(Calendar.MONTH) == other.get(Calendar.MONTH)
-        && this.get(Calendar.DAY_OF_MONTH) > other.get(Calendar.DAY_OF_MONTH)
-    ) return true
-    return false
+    return (this.get(Calendar.YEAR) == other.get(Calendar.YEAR)
+            && this.get(Calendar.MONTH) == other.get(Calendar.MONTH)
+            && this.get(Calendar.DAY_OF_MONTH) > other.get(Calendar.DAY_OF_MONTH))
 }
 
 @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
@@ -231,9 +235,7 @@ internal fun Calendar.isBefore(other: Calendar): Boolean {
     if (this.get(Calendar.YEAR) == other.get(Calendar.YEAR)
         && this.get(Calendar.MONTH) < other.get(Calendar.MONTH)
     ) return true
-    if (this.get(Calendar.YEAR) == other.get(Calendar.YEAR)
-        && this.get(Calendar.MONTH) == other.get(Calendar.MONTH)
-        && this.get(Calendar.DAY_OF_MONTH) < other.get(Calendar.DAY_OF_MONTH)
-    ) return true
-    return false
+    return (this.get(Calendar.YEAR) == other.get(Calendar.YEAR)
+            && this.get(Calendar.MONTH) == other.get(Calendar.MONTH)
+            && this.get(Calendar.DAY_OF_MONTH) < other.get(Calendar.DAY_OF_MONTH))
 }

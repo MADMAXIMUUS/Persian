@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.datePickerDIalog.state
+package io.github.madmaximuus.persian.datePicker.view.state
 
 import android.icu.util.Calendar
 import androidx.compose.runtime.Composable
@@ -9,18 +9,20 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import io.github.madmaximuus.persian.datePickerDIalog.util.DatePickerConfig
-import io.github.madmaximuus.persian.datePickerDIalog.util.DatePickerDisplayMode
-import io.github.madmaximuus.persian.datePickerDIalog.util.DatePickerSelection
-import io.github.madmaximuus.persian.datePickerDIalog.util.calcMonthData
-import io.github.madmaximuus.persian.datePickerDIalog.util.dateValue
-import io.github.madmaximuus.persian.datePickerDIalog.util.datesValue
-import io.github.madmaximuus.persian.datePickerDIalog.util.endValue
-import io.github.madmaximuus.persian.datePickerDIalog.util.getInitialPageFrom
-import io.github.madmaximuus.persian.datePickerDIalog.util.getPageFromDay
-import io.github.madmaximuus.persian.datePickerDIalog.util.isAfter
-import io.github.madmaximuus.persian.datePickerDIalog.util.rangeValue
-import io.github.madmaximuus.persian.datePickerDIalog.util.startValue
+import io.github.madmaximuus.persian.datePicker.view.util.DatePickerConfig
+import io.github.madmaximuus.persian.datePicker.view.util.DatePickerDisplayMode
+import io.github.madmaximuus.persian.datePicker.view.util.DatePickerSelection
+import io.github.madmaximuus.persian.datePicker.view.util.calcMonthData
+import io.github.madmaximuus.persian.datePicker.view.util.contain
+import io.github.madmaximuus.persian.datePicker.view.util.dateValue
+import io.github.madmaximuus.persian.datePicker.view.util.datesValue
+import io.github.madmaximuus.persian.datePicker.view.util.endValue
+import io.github.madmaximuus.persian.datePicker.view.util.equal
+import io.github.madmaximuus.persian.datePicker.view.util.getInitialPageFrom
+import io.github.madmaximuus.persian.datePicker.view.util.getPageFromDay
+import io.github.madmaximuus.persian.datePicker.view.util.isAfter
+import io.github.madmaximuus.persian.datePicker.view.util.rangeValue
+import io.github.madmaximuus.persian.datePicker.view.util.startValue
 import java.io.Serializable
 import java.util.Timer
 import kotlin.concurrent.schedule
@@ -43,15 +45,31 @@ internal class DatePickerState(
     var range = mutableStateListOf(*(stateData?.range ?: selection.rangeValue))
     var isRangeSelectionStart by mutableStateOf(stateData?.rangeSelectionStart ?: true)
     var yearsRange by mutableStateOf(getInitYearsRange())
-    var valid by mutableStateOf(isValid())
+    private var valid by mutableStateOf(isValid())
 
     init {
         checkSetup()
         currentPosition = getPageFromDay(
             config.boundary,
-            Calendar.getInstance().apply {
-                firstDayOfWeek = Calendar.MONDAY
+            when (selection) {
+                is DatePickerSelection.Date -> selection.dateValue ?: Calendar.getInstance().apply {
+                    firstDayOfWeek = Calendar.MONDAY
+                }
+
+                is DatePickerSelection.Dates -> {
+                    if (selection.datesValue.isEmpty())
+                        Calendar.getInstance().apply { firstDayOfWeek = Calendar.MONDAY }
+                    else selection.datesValue.first()
+                }
+
+                is DatePickerSelection.Period -> {
+                    if (selection.rangeValue.isEmpty())
+                        Calendar.getInstance().apply { firstDayOfWeek = Calendar.MONDAY }
+                    else selection.rangeValue.first() ?: Calendar.getInstance()
+                        .apply { firstDayOfWeek = Calendar.MONDAY }
+                }
             }
+
         )
         pages = calcMonthData(config).toTypedArray()
     }
@@ -68,7 +86,7 @@ internal class DatePickerState(
         }
 
         if (selection.any { it !in config.boundary }) {
-            throw IllegalStateException("Please correct your setup. Your selection is out of the provided boundary. Selection: $selection, Boundary: ${config.boundary}")
+            throw IllegalStateException("Please correct your setup. Your selection is out of the provided boundary.")
         }
     }
 
@@ -81,7 +99,7 @@ internal class DatePickerState(
 
     private fun isValid(): Boolean = when (selection) {
         is DatePickerSelection.Date -> date.value != null
-        is DatePickerSelection.Dates -> !dates.isEmpty()
+        is DatePickerSelection.Dates -> dates.isNotEmpty()
         is DatePickerSelection.Period -> range.startValue != null && range.endValue != null
     }
 
@@ -145,8 +163,8 @@ internal class DatePickerState(
             }
 
             is DatePickerSelection.Dates -> {
-                if (dates.contains(newDate)) {
-                    dates.remove(newDate)
+                if (dates.contain(newDate)) {
+                    dates.removeAll { it.equal(newDate) }
                 } else {
                     dates.add(newDate)
                 }
@@ -174,10 +192,15 @@ internal class DatePickerState(
 
     fun onFinish() {
         when (selection) {
-            is DatePickerSelection.Date -> selection.onDateSelected(date.value!!)
+            is DatePickerSelection.Date -> selection.onDateSelected(date.value ?: today)
             is DatePickerSelection.Dates -> selection.onDatesSelected(dates.sorted())
             is DatePickerSelection.Period -> selection.onRangeSelected(
-                range.startValue ?: Calendar.getInstance(), range.endValue ?: Calendar.getInstance()
+                range.startValue ?: Calendar.getInstance().apply {
+                    firstDayOfWeek = Calendar.MONDAY
+                },
+                range.endValue ?: Calendar.getInstance().apply {
+                    firstDayOfWeek = Calendar.MONDAY
+                }
             )
         }
     }
@@ -204,7 +227,7 @@ internal class DatePickerState(
         )
     }
 
-    data class CalendarStateData(
+    internal data class CalendarStateData(
         val mode: DatePickerDisplayMode,
         val pages: Array<DatePickerGridState>,
         val currentPosition: Int,
@@ -226,9 +249,7 @@ internal class DatePickerState(
             if (date != other.date) return false
             if (!dates.contentEquals(other.dates)) return false
             if (!range.contentEquals(other.range)) return false
-            if (rangeSelectionStart != other.rangeSelectionStart) return false
-
-            return true
+            return rangeSelectionStart == other.rangeSelectionStart
         }
 
         override fun hashCode(): Int {

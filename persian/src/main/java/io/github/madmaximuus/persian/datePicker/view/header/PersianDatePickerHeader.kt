@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.datePickerDIalog.header
+package io.github.madmaximuus.persian.datePicker.view.header
 
 import android.icu.util.Calendar
 import androidx.compose.animation.AnimatedVisibility
@@ -25,9 +25,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
 import io.github.madmaximuus.persian.buttons.PersianTertiaryButton
-import io.github.madmaximuus.persian.datePickerDIalog.DatePickerDialogHeaderColors
-import io.github.madmaximuus.persian.datePickerDIalog.PersianDatePickerDialogDefaults
-import io.github.madmaximuus.persian.datePickerDIalog.util.DatePickerDisplayMode
+import io.github.madmaximuus.persian.datePicker.view.DatePickerHeaderColors
+import io.github.madmaximuus.persian.datePicker.view.PersianDatePickerViewDefaults
+import io.github.madmaximuus.persian.datePicker.view.util.DatePickerDisplayMode
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.foundation.spacing
@@ -48,7 +48,7 @@ internal fun PersianDatePickerDialogHeader(
     onPrevClick: () -> Unit,
     onMonthClick: () -> Unit,
     onYearClick: () -> Unit,
-    colors: DatePickerDialogHeaderColors = PersianDatePickerDialogDefaults.headerColors(),
+    colors: DatePickerHeaderColors,
 ) {
 
     val enterTransition = expandIn(expandFrom = Alignment.Center, clip = false) + fadeIn()
@@ -107,7 +107,7 @@ internal fun PersianDatePickerDialogHeader(
                     text = month,
                     trailingIcon = if (monthIconDown) MaterialTheme.icons.expendMore
                     else MaterialTheme.icons.expendLess,
-                    colors = colors.selectMonthColor,
+                    colors = colors.selectedMonthColor,
                     sizes = PersianButtonDefaults.smallSizes(),
                     onClick = onMonthClick
                 )
@@ -115,7 +115,7 @@ internal fun PersianDatePickerDialogHeader(
                     text = year,
                     trailingIcon = if (yearIconDown) MaterialTheme.icons.expendMore
                     else MaterialTheme.icons.expendMore,
-                    colors = colors.selectYearColor,
+                    colors = colors.selectedYearColor,
                     sizes = PersianButtonDefaults.smallSizes(),
                     onClick = onYearClick
                 )
@@ -170,7 +170,8 @@ fun HeaderPreview() {
                 onNextClick = {},
                 onPrevClick = {},
                 onYearClick = {},
-                onMonthClick = {}
+                onMonthClick = {},
+                colors = PersianDatePickerViewDefaults.headerColors()
             )
         }
     }

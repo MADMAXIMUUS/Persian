@@ -1,7 +1,6 @@
-package io.github.madmaximuus.persian.datePickerDIalog.util
+package io.github.madmaximuus.persian.datePicker.view.util
 
 import android.icu.util.Calendar
-import android.util.Range
 
 sealed class DatePickerSelection {
     class Date(
@@ -15,7 +14,7 @@ sealed class DatePickerSelection {
     ) : DatePickerSelection()
 
     class Period(
-        val selectedRange: Range<Calendar>? = null,
+        val selectedRange: ClosedRange<Calendar>? = null,
         val onRangeSelected: (startDate: Calendar, endDate: Calendar) -> Unit
     ) : DatePickerSelection()
 
