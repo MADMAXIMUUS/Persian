@@ -16,16 +16,14 @@ object PersianDonutChartsDefaults {
         subtitleStyle: TextStyle = MaterialTheme.typography.headlineLarge,
         subtitleColor: Color = MaterialTheme.extendedColorScheme.onSurface,
         labelStyle: TextStyle = MaterialTheme.typography.titleLarge,
-        labelColor: Color = MaterialTheme.extendedColorScheme.surface,
-        gapPercent: Float = 0f,
+        labelColor: Color = MaterialTheme.extendedColorScheme.surface
     ): DonutChartStyle = DonutChartStyle(
         titleStyle = titleStyle,
         titleColor = titleColor,
         subtitleStyle = subtitleStyle,
         subtitleColor = subtitleColor,
         labelStyle = labelStyle,
-        labelColor = labelColor,
-        gapPercent = gapPercent
+        labelColor = labelColor
     )
 
 }

@@ -49,7 +49,7 @@ import ru.rabbit.persian.appShowcase.screens.Snackbar
 import ru.rabbit.persian.appShowcase.screens.Switch
 import ru.rabbit.persian.appShowcase.screens.Tabs
 import ru.rabbit.persian.appShowcase.screens.TextArea
-import ru.rabbit.persian.appShowcase.screens.TimePickerDialog
+import ru.rabbit.persian.appShowcase.screens.TimePicker
 import ru.rabbit.persian.appShowcase.screens.TopAppBar
 
 class MainActivity : ComponentActivity() {
@@ -91,7 +91,7 @@ class MainActivity : ComponentActivity() {
                         Switch,
                         Charts,
                         PageIndicator,
-                        TimePickerDialog,
+                        TimePicker,
                         Chips,
                         Select,
                     )

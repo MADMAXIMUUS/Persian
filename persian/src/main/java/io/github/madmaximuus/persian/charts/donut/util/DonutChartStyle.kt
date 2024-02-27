@@ -11,6 +11,5 @@ class DonutChartStyle internal constructor(
     val subtitleStyle: TextStyle,
     val subtitleColor: Color,
     val labelStyle: TextStyle,
-    val labelColor: Color,
-    val gapPercent: Float,
+    val labelColor: Color
 )

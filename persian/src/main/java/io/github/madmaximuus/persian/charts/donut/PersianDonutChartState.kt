@@ -3,7 +3,6 @@ package io.github.madmaximuus.persian.charts.donut
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableDoubleStateOf
-import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -11,7 +10,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.geometry.Offset
 import io.github.madmaximuus.persian.charts.donut.util.DonutChartConfig
 import io.github.madmaximuus.persian.charts.donut.util.DonutChartStyle
-import io.github.madmaximuus.persian.charts.donut.util.calculateGapAngle
 import io.github.madmaximuus.persian.charts.donut.util.calculateProportions
 import io.github.madmaximuus.persian.charts.donut.util.calculateTouchAngleAccordingToCanvas
 import io.github.madmaximuus.persian.charts.donut.util.findNormalizedPointFromTouch
@@ -27,12 +25,10 @@ internal class PersianChartState(
 ) {
     var data by mutableStateOf(stateData?.data ?: emptyArray())
     var totalValue by mutableDoubleStateOf(0.0)
-    var gapAngel by mutableFloatStateOf(0.0f)
 
     init {
-        data = calculateProportions(style.gapPercent, consData).toTypedArray()
+        data = calculateProportions(consData).toTypedArray()
         totalValue = consData.totalAmount
-        gapAngel = consData.calculateGapAngle(style.gapPercent)
     }
 
     fun handleTap(
@@ -58,7 +54,7 @@ internal class PersianChartState(
         var angel = 0f
         var prevAngel = 0f
         data = data.map { data ->
-            angel += data.angle + gapAngel
+            angel += data.angle
             val temp = if (angel > touchAngle && prevAngel < touchAngle) {
                 data.copy(isSelected = !data.isSelected)
             } else {
@@ -96,9 +92,7 @@ internal class PersianChartState(
 
             other as ChartStateData
 
-            if (data.contentEquals(other.data)) return false
-
-            return true
+            return !data.contentEquals(other.data)
         }
 
         override fun hashCode(): Int {
