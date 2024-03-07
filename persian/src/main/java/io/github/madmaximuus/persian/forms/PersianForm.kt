@@ -74,6 +74,7 @@ fun PersianForm(
                     trailingIcon = content.trailingIcon,
                     onTrailingIconClick = content.onTrailingIconClick,
                     transformation = content.transformation,
+                    readOnly = content.readOnly
                 )
             }
 

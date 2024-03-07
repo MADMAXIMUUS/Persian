@@ -3,7 +3,6 @@ package ru.rabbit.persian.appShowcase
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
@@ -30,6 +29,7 @@ import ru.rabbit.persian.appShowcase.screens.Charts
 import ru.rabbit.persian.appShowcase.screens.CheckBox
 import ru.rabbit.persian.appShowcase.screens.Chips
 import ru.rabbit.persian.appShowcase.screens.CodeInput
+import ru.rabbit.persian.appShowcase.screens.ColorPicker
 import ru.rabbit.persian.appShowcase.screens.Counter
 import ru.rabbit.persian.appShowcase.screens.DatePicker
 import ru.rabbit.persian.appShowcase.screens.Divider
@@ -53,7 +53,7 @@ import ru.rabbit.persian.appShowcase.screens.TimePicker
 import ru.rabbit.persian.appShowcase.screens.TopAppBar
 
 class MainActivity : ComponentActivity() {
-    @OptIn(ExperimentalLayoutApi::class)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -94,6 +94,7 @@ class MainActivity : ComponentActivity() {
                         TimePicker,
                         Chips,
                         Select,
+                        ColorPicker
                     )
                 }
                 NavHost(
