@@ -2,6 +2,10 @@
      <img alt="Version of library" src="https://img.shields.io/maven-central/v/io.github.madmaximuus.persian/persian.svg?label=Maven%20Central">
    </a>
 
+<a href="https://play.google.com/store/apps/details?id=ru.rabbit.persian.appShowcase&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge">
+    <img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" height=36px />
+</a>
+
 # Integrating the Persian library into the application:
 
 ## Step 1
