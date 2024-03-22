@@ -25,7 +25,6 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalView
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
@@ -87,13 +86,15 @@ private suspend fun startDismissWithExitAnimation(
 }
 
 /**
- * Opens a dialog at bottom of the screen with given [actions]
+ * An action sheet is a modal view that presents [actions] related to an action people initiate.
  * @param modifier The [Modifier] to be applied to the component
  * @param actions The [ActionSheetItem] actions of your action sheet.
  * [ActionSheetItem] define the look and the event associated to an item in the action sheet.
  * @param title The title of your action sheet.
  * @param subtitle The subtitle of your action sheet.
- * @param itemColors The colors of the background and the content elements in enabled and disabled mode.
+ * @param shape The shape of container
+ * @param colors The [ActionSheetColors] colors of container, title and subtitle of action sheet.
+ * @param itemColors The [ActionSheetItemColors] colors of the content of items in enabled and disabled mode.
  * @param onDismissRequest Executes when the user tries to dismiss the action sheet.
  */
 @Composable
@@ -103,7 +104,7 @@ fun PersianActionSheet(
     title: String? = null,
     subtitle: String? = null,
     shape: Shape = PersianActionSheetDefaults.shape,
-    tonalElevation: Dp = PersianActionSheetDefaults.tonalElevation,
+    colors: ActionSheetColors = PersianActionSheetDefaults.colors(),
     itemColors: ActionSheetItemColors = PersianActionSheetDefaults.itemColors(),
     onDismissRequest: () -> Unit
 ) {
@@ -157,7 +158,7 @@ fun PersianActionSheet(
                             vertical = MaterialTheme.spacing.extraSmall,
                         ),
                     shape = shape,
-                    tonalElevation = tonalElevation
+                    color = colors.containerColor
                 ) {
                     Column(
                         Modifier
@@ -166,7 +167,8 @@ fun PersianActionSheet(
                         if (title != null || subtitle != null) {
                             PersianActionSheetHeader(
                                 title = title,
-                                subtitle = subtitle
+                                subtitle = subtitle,
+                                colors = colors
                             )
                         }
                         actions.forEach {

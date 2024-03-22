@@ -10,7 +10,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import io.github.madmaximuus.persian.foundation.spacing
 
 @Composable
@@ -18,6 +17,7 @@ internal fun PersianActionSheetHeader(
     modifier: Modifier = Modifier,
     title: String?,
     subtitle: String?,
+    colors: ActionSheetColors
 ) {
     Column(
         modifier = modifier
@@ -38,7 +38,7 @@ internal fun PersianActionSheetHeader(
                 text = it,
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.titleLarge,
-                color = MaterialTheme.extendedColorScheme.onSurface
+                color = colors.titleColor
             )
             Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraSmall))
         }
@@ -53,7 +53,7 @@ internal fun PersianActionSheetHeader(
                 text = it,
                 textAlign = TextAlign.Justify,
                 style = MaterialTheme.typography.bodyLarge,
-                color = MaterialTheme.extendedColorScheme.onSurfaceVariant
+                color = colors.subtitleColor
             )
         }
     }
