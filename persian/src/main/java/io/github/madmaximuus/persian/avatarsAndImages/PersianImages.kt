@@ -4,13 +4,16 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -21,14 +24,11 @@ import androidx.compose.ui.unit.dp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideSubcomposition
 import com.bumptech.glide.integration.compose.RequestState
-import io.github.madmaximuus.persian.foundation.PersianContentStateDisabled
-import io.github.madmaximuus.persian.foundation.elevation
+import io.github.madmaximuus.persian.foundation.PersianState38
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.foundation.shimmer
-import io.github.madmaximuus.persian.foundation.surfaceColorAtElevation
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
-import io.github.madmaximuus.persian.iconBox.PersianIconBoxDefaults
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
@@ -39,6 +39,7 @@ fun PersianImage(
     enabled: Boolean = true,
     overlayIcon: Painter = MaterialTheme.icons.add,
     size: ImageSize = PersianImagesDefaults.size64(),
+    colors: ImagesColors = PersianImagesDefaults.colors(),
     shape: ImageShape = ImageShape.MEDIUM,
     onClick: (() -> Unit)? = null
 ) {
@@ -48,15 +49,18 @@ fun PersianImage(
             .size(size.boxSizes)
             .clip(size.shape(shape))
             .background(
-                MaterialTheme.extendedColorScheme
-                    .surfaceColorAtElevation(MaterialTheme.elevation.extraLarge),
+                colors.background(enabled),
                 size.shape(shape)
             )
-            .border(1.dp, MaterialTheme.extendedColorScheme.outline, size.shape(shape))
+            .border(1.dp, colors.border(enabled), size.shape(shape))
             .clickable(
                 enabled = onClick != null && enabled,
                 onClick = { onClick?.invoke() },
-                role = Role.Image
+                role = Role.Image,
+                interactionSource = remember { MutableInteractionSource() },
+                indication = rememberRipple(
+                    color = colors.overlayIcon(enabled)
+                )
             )
     ) {
         GlideSubcomposition(
@@ -71,13 +75,11 @@ fun PersianImage(
                             contentAlignment = Alignment.Center
                         ) {
                             CompositionLocalProvider(
-                                LocalContentColor provides MaterialTheme.extendedColorScheme.onPrimaryContainer
+                                LocalContentColor provides colors.placeholderIcon(enabled)
                             ) {
                                 PersianIconBox(
                                     icon = MaterialTheme.icons.image,
-                                    size = size.placeholderSize,
-                                    enabled = enabled,
-                                    colors = PersianIconBoxDefaults.colors()
+                                    size = size.placeholderSize
                                 )
                             }
                         }
@@ -97,14 +99,14 @@ fun PersianImage(
                                 .fillMaxSize(),
                             contentScale = ContentScale.Crop,
                             painter = painter,
-                            alpha = if (!enabled) PersianContentStateDisabled else 1f,
+                            alpha = if (!enabled) PersianState38 else 1f,
                             contentDescription = ""
                         )
                     }
                 }
             },
         )
-        if (overlay) {
+        if (overlay && size.overlayIconBoxSize != null) {
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -112,13 +114,11 @@ fun PersianImage(
                 contentAlignment = Alignment.Center
             ) {
                 CompositionLocalProvider(
-                    LocalContentColor provides MaterialTheme.extendedColorScheme.onPrimaryContainer
+                    LocalContentColor provides colors.overlayIcon(enabled)
                 ) {
                     PersianIconBox(
                         icon = overlayIcon,
-                        enabled = enabled,
                         size = size.overlayIconBoxSize,
-                        colors = PersianIconBoxDefaults.colors()
                     )
                 }
             }

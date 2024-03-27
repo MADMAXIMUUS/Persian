@@ -56,21 +56,37 @@ object AvatarAndImage : Screen {
             var selectedSize by remember { mutableStateOf("96") }
             val imageSizes = listOf(
                 PersianImagesDefaults.size96(),
+                PersianImagesDefaults.size88(),
                 PersianImagesDefaults.size80(),
+                PersianImagesDefaults.size72(),
                 PersianImagesDefaults.size64(),
+                PersianImagesDefaults.size56(),
                 PersianImagesDefaults.size48(),
+                PersianImagesDefaults.size44(),
+                PersianImagesDefaults.size40(),
+                PersianImagesDefaults.size36(),
                 PersianImagesDefaults.size32(),
+                PersianImagesDefaults.size28(),
                 PersianImagesDefaults.size24(),
-                PersianImagesDefaults.size96(),
+                PersianImagesDefaults.size20(),
+                PersianImagesDefaults.size16(),
             )
             val avatarSizes = listOf(
                 PersianAvatarsDefaults.size96(),
+                PersianAvatarsDefaults.size88(),
                 PersianAvatarsDefaults.size80(),
+                PersianAvatarsDefaults.size72(),
                 PersianAvatarsDefaults.size64(),
+                PersianAvatarsDefaults.size56(),
                 PersianAvatarsDefaults.size48(),
+                PersianAvatarsDefaults.size44(),
+                PersianAvatarsDefaults.size40(),
+                PersianAvatarsDefaults.size36(),
                 PersianAvatarsDefaults.size32(),
+                PersianAvatarsDefaults.size28(),
                 PersianAvatarsDefaults.size24(),
-                PersianAvatarsDefaults.size96(),
+                PersianAvatarsDefaults.size20(),
+                PersianAvatarsDefaults.size16(),
             )
             var imageSizeState by remember { mutableStateOf(imageSizes[0]) }
             var avatarSizeState by remember { mutableStateOf(avatarSizes[0]) }
@@ -135,19 +151,46 @@ object AvatarAndImage : Screen {
                                     title = "96"
                                 ),
                                 SelectActionItem.WithoutIcon(
+                                    title = "88"
+                                ),
+                                SelectActionItem.WithoutIcon(
                                     title = "80"
+                                ),
+                                SelectActionItem.WithoutIcon(
+                                    title = "72"
                                 ),
                                 SelectActionItem.WithoutIcon(
                                     title = "64"
                                 ),
                                 SelectActionItem.WithoutIcon(
+                                    title = "56"
+                                ),
+                                SelectActionItem.WithoutIcon(
                                     title = "48"
+                                ),
+                                SelectActionItem.WithoutIcon(
+                                    title = "44"
+                                ),
+                                SelectActionItem.WithoutIcon(
+                                    title = "40"
+                                ),
+                                SelectActionItem.WithoutIcon(
+                                    title = "36"
                                 ),
                                 SelectActionItem.WithoutIcon(
                                     title = "32"
                                 ),
                                 SelectActionItem.WithoutIcon(
+                                    title = "28"
+                                ),
+                                SelectActionItem.WithoutIcon(
                                     title = "24"
+                                ),
+                                SelectActionItem.WithoutIcon(
+                                    title = "20"
+                                ),
+                                SelectActionItem.WithoutIcon(
+                                    title = "16"
                                 ),
                             ),
                             onSelectedChange = { option, index ->
