@@ -2,10 +2,10 @@ package io.github.madmaximuus.persian.foundation
 
 import androidx.compose.ui.graphics.Color
 
-const val PersianState08 = .08f
-const val PersianState12 = .12f
-const val PersianState16 = .16f
-const val PersianState38 = .38f
+private const val PersianState08 = .08f
+private const val PersianState12 = .12f
+private const val PersianState16 = .16f
+private const val PersianState38 = .38f
 
 val Color.state08
     get() = this.copy(PersianState08)
