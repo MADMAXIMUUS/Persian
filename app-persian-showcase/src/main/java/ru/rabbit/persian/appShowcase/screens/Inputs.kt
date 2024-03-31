@@ -3,6 +3,7 @@ package ru.rabbit.persian.appShowcase.screens
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -11,8 +12,11 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.painterResource
@@ -21,7 +25,10 @@ import androidx.navigation.NavController
 import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
 import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.inputs.InputsTransformations
-import io.github.madmaximuus.persian.inputs.PersianInput
+import io.github.madmaximuus.persian.inputs.PersianOutlineInput
+import io.github.madmaximuus.persian.inputs.PersianPlainInput
+import io.github.madmaximuus.persian.select.PersianSelect
+import io.github.madmaximuus.persian.select.SelectActionItem
 import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
@@ -35,7 +42,7 @@ object Inputs : Screen {
         val topAppBarScrollBehavior =
             TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
         val (value, onValueChange) = remember { mutableStateOf("") }
-        val (placeholderValue, onPlaceholderValueChange) = remember { mutableStateOf("") }
+        val (placeholderValue, onPlaceholderValueChange) = remember { mutableStateOf("Placeholder") }
         val (enabled, onEnabledChange) = remember { mutableStateOf(true) }
         val (isError, onIsErrorChange) = remember { mutableStateOf(false) }
         val (isSuccess, onIsSuccessChange) = remember { mutableStateOf(false) }
@@ -44,6 +51,12 @@ object Inputs : Screen {
         val (leading, onLeadingChange) = remember { mutableStateOf(false) }
         val (trailing, onTrailingChange) = remember { mutableStateOf(false) }
         val (suffix, onSuffixChange) = remember { mutableStateOf(false) }
+        var style by remember { mutableStateOf("Plain") }
+        var styleIndex by remember { mutableIntStateOf(0) }
+        val styles = listOf(
+            SelectActionItem.WithoutIcon("Plain"),
+            SelectActionItem.WithoutIcon("Outline")
+        )
         SampleScaffold(
             title = name,
             onBackClick = { navController?.navigateUp() },
@@ -52,28 +65,56 @@ object Inputs : Screen {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    //.scrollable(rememberScrollState(), orientation = Orientation.Vertical)
                     .nestedScroll(topAppBarScrollBehavior.nestedScrollConnection)
                     .padding(it),
             ) {
-                PersianInput(
-                    modifier = Modifier.padding(horizontal = 20.dp),
-                    value = value,
-                    onValueChange = onValueChange,
-                    enabled = enabled,
-                    isError = isError,
-                    isSuccess = isSuccess,
-                    placeholder = if (placeholder) placeholderValue else null,
-                    transformation = if (password) InputsTransformations.password else InputsTransformations.none,
-                    leadingIcon = if (leading) MaterialTheme.icons.person else null,
-                    trailingIcon = if (trailing) painterResource(id = R.drawable.ic_visibility) else null,
-                    suffix = if (suffix) "12" else null,
-                    onTrailingIconClick = {}
-                )
+                when (styleIndex){
+                    0 -> {
+                        PersianPlainInput(
+                            modifier = Modifier.padding(horizontal = 20.dp),
+                            value = value,
+                            onValueChange = onValueChange,
+                            enabled = enabled,
+                            isError = isError,
+                            isValid = isSuccess,
+                            placeholder = if (placeholder) placeholderValue else null,
+                            transformation = if (password) InputsTransformations.password else InputsTransformations.none,
+                            leadingIcon = if (leading) MaterialTheme.icons.person else null,
+                            trailingIcon = if (trailing) painterResource(id = R.drawable.ic_visibility) else null,
+                            suffix = if (suffix) "12" else null,
+                            onTrailingIconClick = {}
+                        )
+                    }
+                    1-> {
+                        PersianOutlineInput(
+                            modifier = Modifier.padding(horizontal = 20.dp),
+                            value = value,
+                            onValueChange = onValueChange,
+                            enabled = enabled,
+                            isError = isError,
+                            isValid = isSuccess,
+                            placeholder = if (placeholder) placeholderValue else null,
+                            transformation = if (password) InputsTransformations.password else InputsTransformations.none,
+                            leadingIcon = if (leading) MaterialTheme.icons.person else null,
+                            trailingIcon = if (trailing) painterResource(id = R.drawable.ic_visibility) else null,
+                            suffix = if (suffix) "12" else null,
+                            onTrailingIconClick = {}
+                        )
+                    }
+                }
                 Spacer(modifier = Modifier.height(20.dp))
                 Text(
                     modifier = Modifier.padding(horizontal = 20.dp),
                     text = "Settings"
+                )
+                PersianSelect(
+                    modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp),
+                    selected = style,
+                    values = styles,
+                    onSelectedChange = { option, index ->
+                        style = option
+                        styleIndex = index
+                    }
                 )
                 PersianCheckbox(
                     modifier = Modifier.padding(horizontal = 20.dp),
@@ -100,7 +141,7 @@ object Inputs : Screen {
                     onCheckedChange = onPlaceholderChange
                 )
                 if (placeholder) {
-                    PersianInput(
+                    PersianOutlineInput(
                         modifier = Modifier.padding(horizontal = 20.dp),
                         value = placeholderValue,
                         onValueChange = onPlaceholderValueChange

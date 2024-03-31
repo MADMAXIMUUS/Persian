@@ -33,6 +33,7 @@ import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.semantics.Role
@@ -46,18 +47,18 @@ import io.github.madmaximuus.persian.foundation.spacing
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
 
 @Composable
-fun PersianInput(
+fun PersianOutlineInput(
     value: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     isError: Boolean = false,
-    isSuccess: Boolean = false,
+    isValid: Boolean = false,
     readOnly: Boolean = false,
     textStyle: TextStyle = MaterialTheme.typography.bodyLarge,
     placeholder: String? = null,
     transformation: VisualTransformation = InputsTransformations.none,
-    colors: InputColors = PersianInputDefaults.colors(),
+    colors: InputColors = PersianInputsDefaults.outlineColors(),
     leadingIcon: Painter? = null,
     trailingIcon: Painter? = null,
     suffix: String? = null,
@@ -66,7 +67,7 @@ fun PersianInput(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     onTrailingIconClick: (() -> Unit)? = null
 ) {
-    val textColor = colors.textColor(enabled, isSuccess, isError, interactionSource).value
+    val textColor = colors.textColor(enabled, isValid, isError, interactionSource).value
     val mergedTextStyle =
         textStyle.merge(TextStyle(color = textColor, baselineShift = BaselineShift.None))
 
@@ -88,14 +89,14 @@ fun PersianInput(
             cursorBrush = SolidColor(
                 colors.cursorColor(
                     isError = isError,
-                    isSuccess = isSuccess
+                    isValid = isValid
                 ).value
             ),
             decorationBox = { innerTextField ->
                 val border = animateBorderStrokeAsState(
                     enabled = enabled,
                     isError = isError,
-                    isSuccess = isSuccess,
+                    isSuccess = isValid,
                     colors = colors,
                     interactionSource = interactionSource,
                     unfocusedBorderThickness = 1.dp,
@@ -107,7 +108,7 @@ fun PersianInput(
                         .background(
                             color = colors.containerColor(
                                 enabled = enabled,
-                                isSuccess = isSuccess,
+                                isValid = isValid,
                                 isError = isError,
                                 interactionSource = interactionSource
                             ).value,
@@ -125,7 +126,7 @@ fun PersianInput(
                         CompositionLocalProvider(
                             LocalContentColor provides colors.leadingIconColor(
                                 enabled = enabled,
-                                isSuccess = isSuccess,
+                                isValid = isValid,
                                 isError = isError,
                                 interactionSource = interactionSource
                             ).value
@@ -147,6 +148,7 @@ fun PersianInput(
                                 color = colors.placeholderColor(
                                     enabled = enabled,
                                     isError = isError,
+                                    isValid = isValid,
                                     interactionSource = interactionSource
                                 ).value,
                                 style = MaterialTheme.typography.bodyLarge
@@ -165,7 +167,7 @@ fun PersianInput(
                                 text = suffix,
                                 color = colors.suffixColor(
                                     enabled = enabled,
-                                    isSuccess = isSuccess,
+                                    isValid = isValid,
                                     isError = isError,
                                     interactionSource = interactionSource
                                 ).value,
@@ -177,7 +179,7 @@ fun PersianInput(
                         CompositionLocalProvider(
                             LocalContentColor provides colors.trailingIconColor(
                                 enabled = enabled,
-                                isSuccess = isSuccess,
+                                isValid = isValid,
                                 isError = isError,
                                 interactionSource = interactionSource
                             ).value
@@ -199,13 +201,179 @@ fun PersianInput(
                     colors.stateIcon(
                         enabled = enabled,
                         isError = isError,
-                        isSuccess = isSuccess
+                        isSuccess = isValid
                     ).value?.let { icon ->
                         Spacer(modifier = Modifier.width(MaterialTheme.spacing.small))
                         CompositionLocalProvider(
                             LocalContentColor provides colors.stateIconColor(
                                 enabled = enabled,
-                                isSuccess = isSuccess,
+                                isValid = isValid,
+                                isError = isError,
+                            ).value
+                        ) {
+                            PersianIconBox(icon = icon)
+                        }
+
+                    }
+                }
+            }
+        )
+    }
+}
+
+@Composable
+fun PersianPlainInput(
+    value: String,
+    onValueChange: (String) -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    isError: Boolean = false,
+    isValid: Boolean = false,
+    readOnly: Boolean = false,
+    textStyle: TextStyle = MaterialTheme.typography.bodyLarge,
+    placeholder: String? = null,
+    transformation: VisualTransformation = InputsTransformations.none,
+    colors: InputColors = PersianInputsDefaults.plainColors(),
+    leadingIcon: Painter? = null,
+    trailingIcon: Painter? = null,
+    suffix: String? = null,
+    keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
+    keyboardActions: KeyboardActions = KeyboardActions.Default,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    onTrailingIconClick: (() -> Unit)? = null
+) {
+    val textColor = colors.textColor(enabled, isValid, isError, interactionSource).value
+    val mergedTextStyle =
+        textStyle.merge(TextStyle(color = textColor, baselineShift = BaselineShift.None))
+
+    CompositionLocalProvider(LocalTextSelectionColors provides colors.selectionColors) {
+        BasicTextField(
+            modifier = modifier,
+            value = value,
+            onValueChange = onValueChange,
+            enabled = enabled,
+            readOnly = readOnly,
+            textStyle = mergedTextStyle,
+            keyboardOptions = keyboardOptions,
+            keyboardActions = keyboardActions,
+            singleLine = true,
+            maxLines = 1,
+            minLines = 1,
+            visualTransformation = transformation,
+            interactionSource = interactionSource,
+            cursorBrush = SolidColor(
+                colors.cursorColor(
+                    isError = isError,
+                    isValid = isValid
+                ).value
+            ),
+            decorationBox = { innerTextField ->
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(
+                            color = colors.containerColor(
+                                enabled = enabled,
+                                isValid = isValid,
+                                isError = isError,
+                                interactionSource = interactionSource
+                            ).value,
+                            shape = MaterialTheme.shapes.large
+                        )
+                        .border(
+                            border = BorderStroke(width = 0.dp, Color.Transparent),
+                            shape = MaterialTheme.shapes.large
+                        )
+                        .padding(all = MaterialTheme.spacing.medium)
+                        .height(24.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    leadingIcon?.let { icon ->
+                        CompositionLocalProvider(
+                            LocalContentColor provides colors.leadingIconColor(
+                                enabled = enabled,
+                                isValid = isValid,
+                                isError = isError,
+                                interactionSource = interactionSource
+                            ).value
+                        ) {
+                            PersianIconBox(
+                                icon = icon,
+                            )
+                        }
+                    }
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = MaterialTheme.spacing.extraSmall)
+                            .weight(1f),
+                    ) {
+                        if (value.isEmpty() && placeholder != null) {
+                            Text(
+                                text = placeholder,
+                                color = colors.placeholderColor(
+                                    enabled = enabled,
+                                    isError = isError,
+                                    isValid = isValid,
+                                    interactionSource = interactionSource
+                                ).value,
+                                style = MaterialTheme.typography.bodyLarge
+                                    .copy(baselineShift = BaselineShift.None),
+                            )
+                        }
+                        innerTextField()
+                    }
+                    if (suffix != null && trailingIcon == null) {
+                        Box(
+                            modifier = Modifier
+                                .wrapContentSize()
+                                .padding(horizontal = MaterialTheme.spacing.extraSmall)
+                        ) {
+                            Text(
+                                text = suffix,
+                                color = colors.suffixColor(
+                                    enabled = enabled,
+                                    isValid = isValid,
+                                    isError = isError,
+                                    interactionSource = interactionSource
+                                ).value,
+                                style = MaterialTheme.typography.bodyLarge
+                            )
+                        }
+                    }
+                    trailingIcon?.let { icon ->
+                        CompositionLocalProvider(
+                            LocalContentColor provides colors.trailingIconColor(
+                                enabled = enabled,
+                                isValid = isValid,
+                                isError = isError,
+                                interactionSource = interactionSource
+                            ).value
+                        ) {
+                            PersianIconBox(
+                                modifier = Modifier
+                                    .clip(MaterialTheme.shapes.small)
+                                    .clickable(
+                                        enabled = onTrailingIconClick != null,
+                                        onClick = {
+                                            onTrailingIconClick?.invoke()
+                                        },
+                                        role = Role.Button
+                                    ),
+                                icon = icon
+                            )
+                        }
+                    }
+                    colors.stateIcon(
+                        enabled = enabled,
+                        isError = isError,
+                        isSuccess = isValid
+                    ).value?.let { icon ->
+                        Spacer(modifier = Modifier.width(MaterialTheme.spacing.small))
+                        CompositionLocalProvider(
+                            LocalContentColor provides colors.stateIconColor(
+                                enabled = enabled,
+                                isValid = isValid,
                                 isError = isError,
                             ).value
                         ) {
@@ -237,7 +405,7 @@ private fun animateBorderStrokeAsState(
     val focused by interactionSource.collectIsFocusedAsState()
     val indicatorColor = colors.indicatorColor(
         enabled = enabled,
-        isSuccess = isSuccess,
+        isValid = isSuccess,
         isError = isError,
         interactionSource = interactionSource
     )
