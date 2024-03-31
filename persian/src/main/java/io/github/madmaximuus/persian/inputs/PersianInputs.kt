@@ -118,8 +118,8 @@ fun PersianOutlineInput(
                             border = border,
                             shape = MaterialTheme.shapes.large
                         )
-                        .padding(all = MaterialTheme.spacing.medium)
-                        .height(24.dp),
+                        .height(52.dp)
+                        .padding(horizontal = MaterialTheme.spacing.medium),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     leadingIcon?.let { icon ->
@@ -284,8 +284,8 @@ fun PersianPlainInput(
                             border = BorderStroke(width = 0.dp, Color.Transparent),
                             shape = MaterialTheme.shapes.large
                         )
-                        .padding(all = MaterialTheme.spacing.medium)
-                        .height(24.dp),
+                        .height(52.dp)
+                        .padding(horizontal = MaterialTheme.spacing.medium),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     leadingIcon?.let { icon ->
