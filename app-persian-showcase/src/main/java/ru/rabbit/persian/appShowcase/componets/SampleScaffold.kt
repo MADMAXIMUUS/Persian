@@ -13,6 +13,8 @@ import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import io.github.madmaximuus.persian.navigationBar.NavigationBarItem
+import io.github.madmaximuus.persian.navigationBar.PersianNavigationBar
 import io.github.madmaximuus.persian.snackbar.PersianSnackbar
 import io.github.madmaximuus.persian.snackbar.PersianSnackbarVisuals
 import io.github.madmaximuus.persian.topAppBar.PersianTopAppBar
@@ -26,6 +28,7 @@ fun SampleScaffold(
     onBackClick: (() -> Unit)? = null,
     snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
     topAppBarScrollBehavior: TopAppBarScrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(),
+    navigationBarItems: List<NavigationBarItem> = emptyList(),
     content: @Composable (padding: PaddingValues) -> Unit,
 ) {
     Scaffold(
@@ -56,6 +59,10 @@ fun SampleScaffold(
                     Snackbar(snackbarData = snackbarData)
                 }
             }
+        },
+        bottomBar = {
+            if (navigationBarItems.isNotEmpty())
+                PersianNavigationBar(actions = navigationBarItems)
         }
     )
 }

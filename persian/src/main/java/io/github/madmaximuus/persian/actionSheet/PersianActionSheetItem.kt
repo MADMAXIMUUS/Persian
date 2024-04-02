@@ -8,9 +8,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.ripple.rememberRipple
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -20,6 +22,13 @@ import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.spacing
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
 
+/**
+ * @property text Text to be displayed in action
+ * @property leadingIcon Icon to be displayed in action
+ * @property enabled Is the action enabled or not?
+ * @property negative Is the action negative or not
+ * @property onClick Action that is called when the action is clicked
+ */
 data class ActionSheetItem(
     val text: String,
     val leadingIcon: Painter? = null,
@@ -27,6 +36,7 @@ data class ActionSheetItem(
     val negative: Boolean = false,
     val onClick: () -> Unit
 )
+
 
 @Composable
 internal fun PersianActionSheetItem(
@@ -58,12 +68,14 @@ internal fun PersianActionSheetItem(
         verticalAlignment = Alignment.CenterVertically
     ) {
         actionSheetItem.leadingIcon?.let {
-            PersianIconBox(
-                icon = it,
-                enabled = actionSheetItem.enabled,
-                isError = actionSheetItem.negative,
-                colors = itemColors.iconColors
-            )
+            CompositionLocalProvider(
+                LocalContentColor provides itemColors.iconColor(
+                    actionSheetItem.enabled,
+                    actionSheetItem.negative
+                )
+            ) {
+                PersianIconBox(icon = it)
+            }
         }
         val padding = if (actionSheetItem.leadingIcon == null) MaterialTheme.spacing.small
         else 0.dp

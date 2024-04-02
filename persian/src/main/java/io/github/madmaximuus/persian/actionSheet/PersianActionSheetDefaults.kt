@@ -7,10 +7,8 @@ import androidx.compose.runtime.Stable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.takeOrElse
-import io.github.madmaximuus.persian.foundation.PersianState38
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
-import io.github.madmaximuus.persian.iconBox.IconBoxColors
-import io.github.madmaximuus.persian.iconBox.PersianIconBoxDefaults
+import io.github.madmaximuus.persian.foundation.state38
 
 object PersianActionSheetDefaults {
 
@@ -32,15 +30,20 @@ object PersianActionSheetDefaults {
     fun itemColors(
         defaultColor: Color = MaterialTheme.extendedColorScheme.onSurface,
         errorColor: Color = MaterialTheme.extendedColorScheme.error,
-        disabledColor: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(alpha = PersianState38),
-        iconColors: IconBoxColors = PersianIconBoxDefaults.colors()
+        disabledColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
+
+        defaultIconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
+        errorIconColor: Color = MaterialTheme.extendedColorScheme.error,
+        disabledIconColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
     ): ActionSheetItemColors =
         ActionSheetItemColors(
             defaultTextColor = defaultColor,
             errorTextColor = errorColor,
             disabledTextColor = disabledColor,
-            iconColors = iconColors
+
+            defaultIconColor = defaultIconColor,
+            errorIconColor = errorIconColor,
+            disabledIconColor = disabledIconColor,
         )
 }
 
@@ -56,7 +59,10 @@ class ActionSheetItemColors(
     internal val defaultTextColor: Color,
     private val disabledTextColor: Color,
     private val errorTextColor: Color,
-    internal val iconColors: IconBoxColors
+
+    internal val defaultIconColor: Color,
+    private val disabledIconColor: Color,
+    private val errorIconColor: Color,
 ) {
     @Stable
     internal fun textColor(
@@ -68,16 +74,32 @@ class ActionSheetItemColors(
         else -> defaultTextColor
     }
 
+    @Stable
+    internal fun iconColor(
+        enabled: Boolean,
+        isError: Boolean
+    ): Color = when {
+        !enabled -> disabledIconColor
+        isError -> errorIconColor
+        else -> defaultIconColor
+    }
+
     fun copy(
         defaultTextColor: Color = this.defaultTextColor,
         disabledTextColor: Color = this.disabledTextColor,
         errorTextColor: Color = this.errorTextColor,
-        iconColors: IconBoxColors = this.iconColors
+
+        defaultIconColor: Color = this.defaultIconColor,
+        disabledIconColor: Color = this.disabledIconColor,
+        errorIconColor: Color = this.errorIconColor,
     ) = ActionSheetItemColors(
         defaultTextColor.takeOrElse { this.defaultTextColor },
         disabledTextColor.takeOrElse { this.disabledTextColor },
         errorTextColor.takeOrElse { this.errorTextColor },
-        iconColors
+
+        defaultIconColor.takeOrElse { this.defaultIconColor },
+        disabledIconColor.takeOrElse { this.disabledIconColor },
+        errorIconColor.takeOrElse { this.errorIconColor },
     )
 
     override fun equals(other: Any?): Boolean {
@@ -85,16 +107,22 @@ class ActionSheetItemColors(
         if (other == null || other !is ActionSheetItemColors) return false
 
         if (defaultTextColor != other.defaultTextColor) return false
-        if (errorTextColor != other.errorTextColor) return false
         if (disabledTextColor != other.disabledTextColor) return false
-        return iconColors == other.iconColors
+        if (errorTextColor != other.errorTextColor) return false
+
+        if (defaultIconColor != other.defaultIconColor) return false
+        if (disabledIconColor != other.disabledIconColor) return false
+        return errorIconColor == other.errorIconColor
     }
 
     override fun hashCode(): Int {
         var result = defaultTextColor.hashCode()
         result = 31 * result + errorTextColor.hashCode()
         result = 31 * result + disabledTextColor.hashCode()
-        result = 31 * result + iconColors.hashCode()
+
+        result = 31 * result + defaultIconColor.hashCode()
+        result = 31 * result + disabledIconColor.hashCode()
+        result = 31 * result + errorIconColor.hashCode()
         return result
     }
 }

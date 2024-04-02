@@ -86,7 +86,7 @@ private suspend fun startDismissWithExitAnimation(
 }
 
 /**
- * An action sheet is a modal view that presents [actions] related to an action people initiate.
+ * Action sheet is an element that presents a contextual menu displayed at the bottom of the screen. This element provides the user with several [ActionSheetItem] options related to the current context. Action sheet is used in cases where an action selection is required, but there is no need to display these [actions] permanently on the screen.
  * @param modifier The [Modifier] to be applied to the component
  * @param actions The [ActionSheetItem] actions of your action sheet.
  * [ActionSheetItem] define the look and the event associated to an item in the action sheet.
@@ -94,7 +94,7 @@ private suspend fun startDismissWithExitAnimation(
  * @param subtitle The subtitle of your action sheet.
  * @param shape The shape of container
  * @param colors The [ActionSheetColors] colors of container, title and subtitle of action sheet.
- * @param itemColors The [ActionSheetItemColors] colors of the content of items in enabled and disabled mode.
+ * @param itemColors The [ActionSheetItemColors] colors of the content of items in enabled, negative and disabled state.
  * @param onDismissRequest Executes when the user tries to dismiss the action sheet.
  */
 @Composable
@@ -110,6 +110,10 @@ fun PersianActionSheet(
 ) {
     require(actions.size > 2) {
         throw IllegalArgumentException("Actions must have at least 2 items")
+    }
+
+    require(actions.size <= 10) {
+        IllegalArgumentException("There should be no more than 10 actions")
     }
 
     val onDismissSharedFlow: MutableSharedFlow<Any> = remember { MutableSharedFlow() }
