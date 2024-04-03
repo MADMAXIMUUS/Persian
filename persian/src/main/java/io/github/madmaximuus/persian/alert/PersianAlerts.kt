@@ -186,6 +186,8 @@ private fun validateActionItems(actions: List<AlertAction>) {
 private fun validateOnlyActionItems(actions: List<AlertAction>) {
     if (actions.size < 2)
         throw IllegalArgumentException("Actions must have at least 2 items")
+    else if (actions.size > 10)
+        throw IllegalArgumentException("There should be no more than 10 actions")
 }
 
 data class AlertAction(

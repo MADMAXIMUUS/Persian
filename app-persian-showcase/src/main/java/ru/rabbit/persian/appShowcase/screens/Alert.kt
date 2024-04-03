@@ -26,7 +26,7 @@ import io.github.madmaximuus.persian.buttons.PersianPrimaryButton
 import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
 import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.foundation.spacing
-import io.github.madmaximuus.persian.inputs.PersianInput
+import io.github.madmaximuus.persian.inputs.PersianOutlineInput
 import io.github.madmaximuus.persian.radioButtons.PersianRadioButton
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
@@ -48,7 +48,7 @@ object Alert : Screen {
         val (content, onContentChange) = remember { mutableStateOf(false) }
         val (titleValue, onTitleValueChange) = remember { mutableStateOf("Basic Dialog Title") }
         val (descriptionValue, onDescriptionValueChange) = remember {
-            mutableStateOf("A dialog is a type of modal window that appears in front of app content to provide critical information, or prompt for a decision to be made. ")
+            mutableStateOf("A dialog is a type of modal window that appears in front of app content to provide critical information, or prompt for a decision to be made.")
         }
         SampleScaffold(title = name, onBackClick = { navController?.navigateUp() }) {
             Column(
@@ -91,7 +91,7 @@ object Alert : Screen {
                             end = MaterialTheme.spacing.large
                         )
                 ) {
-                    PersianInput(
+                    PersianOutlineInput(
                         modifier = Modifier.padding(horizontal = MaterialTheme.spacing.small),
                         value = titleValue,
                         isError = titleError,
@@ -105,7 +105,7 @@ object Alert : Screen {
                         onCheckedChange = onDescriptionChange
                     )
                     if (description) {
-                        PersianInput(
+                        PersianOutlineInput(
                             modifier = Modifier.padding(horizontal = MaterialTheme.spacing.small),
                             value = descriptionValue,
                             isError = descriptionError,
@@ -141,7 +141,6 @@ object Alert : Screen {
                     AlertAction("Action 8", onClick = { showOnlyActionAlert = false }),
                     AlertAction("Action 9", onClick = { showOnlyActionAlert = false }),
                     AlertAction("Action 10", onClick = { showOnlyActionAlert = false }),
-                    AlertAction("Action 11", onClick = { showOnlyActionAlert = false }),
                 )
             ) {
                 showOnlyActionAlert = false
