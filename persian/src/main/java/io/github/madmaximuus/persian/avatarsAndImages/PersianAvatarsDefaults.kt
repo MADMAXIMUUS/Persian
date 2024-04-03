@@ -9,10 +9,10 @@ import androidx.compose.ui.graphics.takeOrElse
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.takeOrElse
-import io.github.madmaximuus.persian.foundation.containerBackgroundDisabled
-import io.github.madmaximuus.persian.foundation.containerOrBorderDisabled
-import io.github.madmaximuus.persian.foundation.contentDisabled
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import io.github.madmaximuus.persian.foundation.state08
+import io.github.madmaximuus.persian.foundation.state12
+import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.iconBox.IconBoxSize
 import io.github.madmaximuus.persian.iconBox.PersianIconBoxDefaults
 
@@ -125,13 +125,13 @@ object PersianAvatarsDefaults {
     @Composable
     fun colors(
         placeholderContainerColor: Color = MaterialTheme.extendedColorScheme.surface1,
-        disabledPlaceholderContainerColor: Color = MaterialTheme.extendedColorScheme.onSurface.containerBackgroundDisabled,
+        disabledPlaceholderContainerColor: Color = MaterialTheme.extendedColorScheme.onSurface.state08,
         borderColor: Color = MaterialTheme.extendedColorScheme.outlineVariant,
-        disabledBorderColor: Color = MaterialTheme.extendedColorScheme.onSurface.containerOrBorderDisabled,
+        disabledBorderColor: Color = MaterialTheme.extendedColorScheme.onSurface.state12,
         placeholderIconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        disabledPlaceholderIconColor: Color = MaterialTheme.extendedColorScheme.onSurface.contentDisabled,
+        disabledPlaceholderIconColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
         overlayIconColor: Color = MaterialTheme.extendedColorScheme.primary,
-        disabledOverlayIconColor: Color = MaterialTheme.extendedColorScheme.onSurface.contentDisabled
+        disabledOverlayIconColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38
     ): AvatarsColors = AvatarsColors(
         placeholderContainerColor = placeholderContainerColor,
         disabledPlaceholderContainerColor = disabledPlaceholderContainerColor,

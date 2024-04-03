@@ -24,7 +24,6 @@ import androidx.compose.ui.unit.dp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideSubcomposition
 import com.bumptech.glide.integration.compose.RequestState
-import io.github.madmaximuus.persian.foundation.PersianState38
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.foundation.shimmer
@@ -99,7 +98,7 @@ fun PersianImage(
                                 .fillMaxSize(),
                             contentScale = ContentScale.Crop,
                             painter = painter,
-                            alpha = if (!enabled) PersianState38 else 1f,
+                            alpha = if (!enabled) .38f else 1f,
                             contentDescription = ""
                         )
                     }
