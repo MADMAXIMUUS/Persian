@@ -11,9 +11,10 @@ import androidx.compose.ui.graphics.takeOrElse
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.foundation.PersianStatesDisabled
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.state12
+import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.iconBox.IconBoxSize
 import io.github.madmaximuus.persian.iconBox.PersianIconBoxDefaults
 import io.github.madmaximuus.persian.progressBars.CircularProgressBarSizes
@@ -25,10 +26,8 @@ object PersianButtonDefaults {
     fun primaryColors(
         containerColor: Color = MaterialTheme.extendedColorScheme.primary,
         contentColor: Color = MaterialTheme.extendedColorScheme.onPrimary,
-        disabledContainerColor: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(alpha = PersianStatesDisabled),
-        disabledContentColor: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(alpha = PersianStatesDisabled),
+        disabledContainerColor: Color = MaterialTheme.extendedColorScheme.onSurface.state12,
+        disabledContentColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
     ): ButtonColors = ButtonColors(
         containerColor = containerColor,
         contentColor = contentColor,
@@ -40,10 +39,8 @@ object PersianButtonDefaults {
     fun secondaryColors(
         containerColor: Color = MaterialTheme.extendedColorScheme.primaryContainer,
         contentColor: Color = MaterialTheme.extendedColorScheme.onPrimaryContainer,
-        disabledContainerColor: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(alpha = PersianStatesDisabled),
-        disabledContentColor: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(alpha = PersianStatesDisabled),
+        disabledContainerColor: Color = MaterialTheme.extendedColorScheme.onSurface.state12,
+        disabledContentColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
     ): ButtonColors = ButtonColors(
         containerColor = containerColor,
         contentColor = contentColor,
@@ -56,8 +53,7 @@ object PersianButtonDefaults {
         containerColor: Color = Color.Transparent,
         contentColor: Color = MaterialTheme.extendedColorScheme.primary,
         disabledContainerColor: Color = Color.Transparent,
-        disabledContentColor: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(alpha = PersianStatesDisabled),
+        disabledContentColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
     ): ButtonColors = ButtonColors(
         containerColor = containerColor,
         contentColor = contentColor,
@@ -69,10 +65,8 @@ object PersianButtonDefaults {
     fun outlinedColors(
         containerColor: Color = Color.Transparent,
         contentColor: Color = MaterialTheme.extendedColorScheme.primary,
-        disabledContainerColor: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(alpha = PersianStatesDisabled),
-        disabledContentColor: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(alpha = PersianStatesDisabled),
+        disabledContainerColor: Color = MaterialTheme.extendedColorScheme.onSurface.state12,
+        disabledContentColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
     ): ButtonColors = ButtonColors(
         containerColor = containerColor,
         contentColor = contentColor,
