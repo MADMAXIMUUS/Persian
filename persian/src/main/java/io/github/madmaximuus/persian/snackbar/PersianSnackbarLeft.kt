@@ -17,6 +17,7 @@ import io.github.madmaximuus.persian.avatarsAndImages.PersianImage
 import io.github.madmaximuus.persian.avatarsAndImages.PersianImagesDefaults
 import io.github.madmaximuus.persian.foundation.spacing
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
+import io.github.madmaximuus.persian.iconBox.PersianIconBoxDefaults
 import io.github.madmaximuus.persian.progressBars.PersianCircularProgressBar
 import io.github.madmaximuus.persian.progressBars.PersianProgressBarDefaults
 
@@ -63,6 +64,7 @@ internal fun PersianSnackbarLeftIcon(
                         bottom = MaterialTheme.spacing.medium
                     ),
                 icon = icon,
+                size = PersianIconBoxDefaults.size28(),
                 contentDescription = contentDescription
             )
         }
@@ -86,7 +88,7 @@ internal fun PersianSnackbarLeftImage(
                     bottom = MaterialTheme.spacing.small
                 ),
             imageUrl = imageUrl,
-            size = PersianImagesDefaults.size32(),
+            size = PersianImagesDefaults.size36(),
             shape = ImageShape.LARGE
         )
     }
@@ -109,7 +111,7 @@ internal fun PersianSnackbarLeftAvatar(
                     bottom = MaterialTheme.spacing.small
                 ),
             imageUrl = avatarUrl,
-            size = PersianAvatarsDefaults.size32(),
+            size = PersianAvatarsDefaults.size36(),
             onClick = null
         )
     }

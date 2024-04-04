@@ -7,16 +7,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
-import io.github.madmaximuus.persian.foundation.elevation
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
-import io.github.madmaximuus.persian.foundation.surfaceColorAtElevation
 
 object PersianSnackbarDefaults {
 
     @Composable
     fun colors(
-        backgroundColor: Color = MaterialTheme.extendedColorScheme
-            .surfaceColorAtElevation(MaterialTheme.elevation.extraLarge),
+        backgroundColor: Color = MaterialTheme.extendedColorScheme.surface5,
         textColor: Color = MaterialTheme.extendedColorScheme.onSurface
     ) = remember(backgroundColor, textColor) {
         SnackbarColors(
