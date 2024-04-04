@@ -11,7 +11,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import io.github.madmaximuus.persian.foundation.spacing
-import io.github.madmaximuus.persian.inputs.PersianInputDefaults
+import io.github.madmaximuus.persian.inputs.PersianInputsDefaults
 import io.github.madmaximuus.persian.menus.PersianMenuDefaults
 
 @Composable
@@ -19,7 +19,7 @@ fun PersianForm(
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     isError: Boolean = false,
-    isSuccess: Boolean = false,
+    isValid: Boolean = false,
     subhead: PersianFormSubheadConfig? = null,
     content: PersianFormContent,
     caption: PersianFormCaptionConfig? = null,
@@ -43,7 +43,7 @@ fun PersianForm(
                     values = content.values,
                     onValueChange = content.onValueChange,
                     isError = isError,
-                    isSuccess = isSuccess,
+                    isValid = isValid,
                     enabled = enabled
                 )
             }
@@ -53,7 +53,7 @@ fun PersianForm(
                     values = content.values,
                     onValueChange = content.onValueChange,
                     isError = isError,
-                    isSuccess = isSuccess,
+                    isSuccess = isValid,
                     enabled = enabled
                 )
             }
@@ -63,7 +63,7 @@ fun PersianForm(
                     value = content.value,
                     onValueChange = content.onValueChange,
                     isError = isError,
-                    isSuccess = isSuccess,
+                    isValid = isValid,
                     enabled = enabled,
                     textStyle = content.textStyle,
                     colors = content.colors,
@@ -83,7 +83,7 @@ fun PersianForm(
                     value = content.value,
                     onValueChange = content.onValueChange,
                     isError = isError,
-                    isSuccess = isSuccess,
+                    isValid = isValid,
                     enabled = enabled,
                     textStyle = content.textStyle,
                     colors = content.colors,
@@ -100,12 +100,12 @@ fun PersianForm(
                     values = content.values,
                     enabled = enabled,
                     isError = isError,
-                    isSuccess = isSuccess,
+                    isValid = isValid,
                     placeholder = content.placeholder,
                     onSelectedChange = content.onSelectedChange,
                     expanded = content.expanded ?: remember { mutableStateOf(false) },
                     leadingIcon = content.leadingIcon,
-                    inputColors = content.inputColors ?: PersianInputDefaults.colors(),
+                    inputColors = content.inputColors ?: PersianInputsDefaults.outlineColors(),
                     menuColors = content.menuColors ?: PersianMenuDefaults.colors()
                 )
             }

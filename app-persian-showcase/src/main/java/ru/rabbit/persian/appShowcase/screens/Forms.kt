@@ -33,7 +33,7 @@ import io.github.madmaximuus.persian.forms.PersianFormContent
 import io.github.madmaximuus.persian.forms.PersianFormSubheadConfig
 import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.inputs.InputsTransformations
-import io.github.madmaximuus.persian.inputs.PersianInput
+import io.github.madmaximuus.persian.inputs.PersianOutlineInput
 import io.github.madmaximuus.persian.radioButtons.PersianRadioButton
 import io.github.madmaximuus.persian.select.SelectActionItem
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
@@ -87,7 +87,7 @@ object Forms : Screen {
             mutableStateOf("")
         }
 
-        val (placeholderValue, onPlaceholderValueChange) = remember { mutableStateOf("") }
+        val (placeholderValue, onPlaceholderValueChange) = remember { mutableStateOf("Placeholder") }
         val (enabled, onEnabledChange) = remember { mutableStateOf(true) }
         val (isError, onIsErrorChange) = remember { mutableStateOf(false) }
         val (isSuccess, onIsSuccessChange) = remember { mutableStateOf(false) }
@@ -168,7 +168,7 @@ object Forms : Screen {
                     modifier = Modifier.padding(horizontal = 20.dp),
                     enabled = enabled,
                     isError = isError,
-                    isSuccess = isSuccess,
+                    isValid = isSuccess,
                     content = content,
                     subhead = if (subhead) PersianFormSubheadConfig(
                         text = "Subhead",
@@ -259,7 +259,7 @@ object Forms : Screen {
                     onCheckedChange = onPlaceholderChange
                 )
                 if (placeholder) {
-                    PersianInput(
+                    PersianOutlineInput(
                         modifier = Modifier.padding(horizontal = 20.dp),
                         value = placeholderValue,
                         onValueChange = onPlaceholderValueChange

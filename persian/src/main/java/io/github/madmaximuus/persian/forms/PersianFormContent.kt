@@ -13,12 +13,12 @@ import io.github.madmaximuus.persian.codeInput.PersianFourDigitCodeInput
 import io.github.madmaximuus.persian.codeInput.PersianSixDigitCodeInput
 import io.github.madmaximuus.persian.inputs.InputColors
 import io.github.madmaximuus.persian.inputs.InputsTransformations
-import io.github.madmaximuus.persian.inputs.PersianInput
-import io.github.madmaximuus.persian.inputs.PersianInputDefaults
+import io.github.madmaximuus.persian.inputs.PersianInputsDefaults
+import io.github.madmaximuus.persian.inputs.PersianOutlineInput
 import io.github.madmaximuus.persian.menus.MenuColors
 import io.github.madmaximuus.persian.select.PersianSelect
 import io.github.madmaximuus.persian.select.SelectActionItem
-import io.github.madmaximuus.persian.textAreas.PersianTextArea
+import io.github.madmaximuus.persian.textAreas.PersianOutlineTextArea
 import io.github.madmaximuus.persian.textAreas.PersianTextAreaDefaults
 import io.github.madmaximuus.persian.textAreas.TextAreaColors
 
@@ -79,7 +79,7 @@ internal fun PersianFormContentInput(
     modifier: Modifier = Modifier,
     enabled: Boolean,
     isError: Boolean,
-    isSuccess: Boolean,
+    isValid: Boolean,
     textStyle: TextStyle?,
     readOnly: Boolean,
     placeholder: String?,
@@ -92,14 +92,14 @@ internal fun PersianFormContentInput(
     onTrailingIconClick: (() -> Unit)?
 ) {
     val resolvedTextStyle = textStyle ?: MaterialTheme.typography.bodyLarge
-    val resolvedColors = colors ?: PersianInputDefaults.colors()
-    PersianInput(
+    val resolvedColors = colors ?: PersianInputsDefaults.outlineColors()
+    PersianOutlineInput(
         value = value,
         onValueChange = onValueChange,
         modifier = modifier,
         enabled = enabled,
         isError = isError,
-        isSuccess = isSuccess,
+        isValid = isValid,
         readOnly = readOnly,
         textStyle = resolvedTextStyle,
         placeholder = placeholder,
@@ -120,7 +120,7 @@ internal fun PersianFormContentTextArea(
     modifier: Modifier = Modifier,
     enabled: Boolean,
     isError: Boolean,
-    isSuccess: Boolean,
+    isValid: Boolean,
     textStyle: TextStyle?,
     placeholder: String?,
     colors: TextAreaColors?,
@@ -129,14 +129,14 @@ internal fun PersianFormContentTextArea(
     keyboardActions: KeyboardActions
 ) {
     val resolvedTextStyle = textStyle ?: MaterialTheme.typography.bodyLarge
-    val resolvedColors = colors ?: PersianTextAreaDefaults.colors()
-    PersianTextArea(
+    val resolvedColors = colors ?: PersianTextAreaDefaults.outlineColors()
+    PersianOutlineTextArea(
         value = value,
         onValueChange = onValueChange,
         modifier = modifier,
         enabled = enabled,
         isError = isError,
-        isSuccess = isSuccess,
+        isValid = isValid,
         textStyle = resolvedTextStyle,
         placeholder = placeholder,
         colors = resolvedColors,
@@ -161,7 +161,7 @@ internal fun PersianFormContentSixDigitCodeInput(
         modifier = modifier,
         enabled = enabled,
         isError = isError,
-        isSuccess = isSuccess,
+        isValid = isSuccess,
     )
 }
 
@@ -171,7 +171,7 @@ internal fun PersianFormContentFourDigitCodeInput(
     values: List<String>,
     enabled: Boolean = true,
     isError: Boolean = false,
-    isSuccess: Boolean = false,
+    isValid: Boolean = false,
     onValueChange: (value: String, index: Int) -> Unit
 ) {
     PersianFourDigitCodeInput(
@@ -180,7 +180,7 @@ internal fun PersianFormContentFourDigitCodeInput(
         modifier = modifier,
         enabled = enabled,
         isError = isError,
-        isSuccess = isSuccess,
+        isValid = isValid,
     )
 }
 
@@ -196,7 +196,7 @@ internal fun PersianFormContentSelect(
     inputColors: InputColors,
     menuColors: MenuColors,
     isError: Boolean,
-    isSuccess: Boolean,
+    isValid: Boolean,
     enabled: Boolean
 ) {
     PersianSelect(
@@ -205,7 +205,7 @@ internal fun PersianFormContentSelect(
         onSelectedChange = onSelectedChange,
         modifier = modifier,
         expanded = expanded,
-        isSuccess = isSuccess,
+        isValid = isValid,
         enabled = enabled,
         placeholder = placeholder,
         isError = isError,
