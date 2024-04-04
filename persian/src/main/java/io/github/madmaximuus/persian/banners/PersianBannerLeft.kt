@@ -14,6 +14,7 @@ import io.github.madmaximuus.persian.avatarsAndImages.PersianAvatarsDefaults
 import io.github.madmaximuus.persian.avatarsAndImages.PersianImage
 import io.github.madmaximuus.persian.avatarsAndImages.PersianImagesDefaults
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
+import io.github.madmaximuus.persian.iconBox.PersianIconBoxDefaults
 
 sealed class PersianBannerLeft {
     data class Icon(val icon: Painter) : PersianBannerLeft()
@@ -33,7 +34,8 @@ internal fun PersianBannerLeftIcon(
             modifier = modifier
                 .padding(0.dp),
             icon = icon,
-            contentDescription = contentDescription
+            contentDescription = contentDescription,
+            size = PersianIconBoxDefaults.size28()
         )
     }
 }
@@ -46,7 +48,7 @@ internal fun PersianBannerLeftImage(
     PersianImage(
         modifier = modifier,
         imageUrl = image,
-        size = PersianImagesDefaults.size48(),
+        size = PersianImagesDefaults.size72(),
         shape = ImageShape.SMALL
     )
 }
@@ -59,6 +61,6 @@ internal fun PersianBannerLeftAvatar(
     PersianAvatar(
         modifier = modifier,
         imageUrl = image,
-        size = PersianAvatarsDefaults.size32(),
+        size = PersianAvatarsDefaults.size48(),
     )
 }

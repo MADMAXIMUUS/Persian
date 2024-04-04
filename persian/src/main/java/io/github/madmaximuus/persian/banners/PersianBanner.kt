@@ -16,6 +16,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.style.TextAlign
+import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
+import io.github.madmaximuus.persian.buttons.PersianPrimaryButton
 import io.github.madmaximuus.persian.foundation.spacing
 
 @Composable
@@ -25,6 +27,8 @@ fun PersianBanner(
     description: String? = null,
     left: PersianBannerLeft? = null,
     right: PersianBannerRight? = null,
+    buttonText: String? = null,
+    onButtonClick: (() -> Unit)? = null,
     sizes: BannerSizes = PersianBannerDefaults.sizes(),
     colors: BannerColors = PersianBannerDefaults.colors(),
 ) {
@@ -84,6 +88,13 @@ fun PersianBanner(
                         style = sizes.descriptionStyle,
                         color = colors.subtitleColor,
                         textAlign = TextAlign.Justify
+                    )
+                }
+                buttonText?.let {
+                    PersianPrimaryButton(
+                        text = it,
+                        sizes = PersianButtonDefaults.smallSizes(),
+                        onClick = onButtonClick ?: {}
                     )
                 }
             }

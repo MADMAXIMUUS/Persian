@@ -26,9 +26,9 @@ import io.github.madmaximuus.persian.forms.PersianForm
 import io.github.madmaximuus.persian.forms.PersianFormContent
 import io.github.madmaximuus.persian.forms.PersianFormSubheadConfig
 import io.github.madmaximuus.persian.foundation.spacing
-import io.github.madmaximuus.persian.inputs.PersianInput
+import io.github.madmaximuus.persian.inputs.PersianOutlineInput
 import io.github.madmaximuus.persian.select.SelectActionItem
-import io.github.madmaximuus.persian.textAreas.PersianTextArea
+import io.github.madmaximuus.persian.textAreas.PersianOutlineTextArea
 import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
@@ -58,6 +58,7 @@ object Banner : Screen {
             val leftAvatar = PersianBannerLeft.Avatar("https://loremflickr.com/320/240")
             val leftIcon = PersianBannerLeft.Icon(painterResource(id = R.drawable.ic_person_filled))
             var left by remember { mutableStateOf<PersianBannerLeft?>(null) }
+            val (isButtonNeed, onButtonNeedChecked) = remember { mutableStateOf(false) }
             val leftOptions = listOf(
                 SelectActionItem.WithoutIcon("None"),
                 SelectActionItem.WithoutIcon("Image"),
@@ -88,7 +89,8 @@ object Banner : Screen {
                         title = if (title) titleValue else null,
                         description = if (description) descriptionValue else null,
                         left = left,
-                        right = right
+                        right = right,
+                        buttonText = if (isButtonNeed) "Button" else null
                     )
                 }
                 Column(
@@ -108,7 +110,7 @@ object Banner : Screen {
                         }
                     )
                     if (title) {
-                        PersianInput(
+                        PersianOutlineInput(
                             modifier = Modifier.padding(horizontal = MaterialTheme.spacing.small),
                             value = titleValue,
                             onValueChange = onTitleValueChange
@@ -125,23 +127,19 @@ object Banner : Screen {
                         }
                     )
                     if (description) {
-                        PersianTextArea(
+                        PersianOutlineTextArea(
                             modifier = Modifier.padding(horizontal = MaterialTheme.spacing.small),
                             value = descriptionValue,
                             onValueChange = onDescriptionValueChange
                         )
                         Spacer(modifier = Modifier.height(MaterialTheme.spacing.small))
                     }
-                    /*PersianForm(
-                        subhead = PersianFormSubheadConfig(
-                            text = "Description",
-                            textStyle = MaterialTheme.typography.titleMedium
-                        ),
-                        content = PersianFormContent.TextArea(
-                            value = descriptionValue,
-                            onValueChange = onDescriptionValueChange
-                        )
-                    )*/
+                    PersianCheckbox(
+                        modifier = Modifier.fillMaxWidth(),
+                        text = "Button",
+                        checked = isButtonNeed,
+                        onCheckedChange = onButtonNeedChecked
+                    )
                     PersianForm(
                         subhead = PersianFormSubheadConfig(
                             text = "Left",

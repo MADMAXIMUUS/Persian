@@ -42,8 +42,8 @@ internal fun PersianBannerRightClose(
                 .clip(MaterialTheme.shapes.small)
                 .clickable { onClick() },
             icon = icon ?: MaterialTheme.icons.close,
-            colors = PersianIconBoxDefaults.colors(),
-            contentDescription = contentDescription
+            contentDescription = contentDescription,
+            size = PersianIconBoxDefaults.size24()
         )
     }
 }
@@ -63,8 +63,8 @@ internal fun PersianBannerRightOpen(
                 .clip(MaterialTheme.shapes.small)
                 .clickable { onClick() },
             icon = icon ?: MaterialTheme.icons.chevronRight,
-            colors = PersianIconBoxDefaults.colors(),
-            contentDescription = contentDescription
+            contentDescription = contentDescription,
+            size = PersianIconBoxDefaults.size24()
         )
     }
 }
