@@ -10,9 +10,77 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.graphics.Color
-import io.github.madmaximuus.persian.foundation.PersianContentStateDisabled
-import io.github.madmaximuus.persian.foundation.PersianStatesDisabled
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import io.github.madmaximuus.persian.foundation.state12
+import io.github.madmaximuus.persian.foundation.state38
+
+object PersianSearchDefaults {
+
+    @Composable
+    fun colors(
+        //Text Color
+        unfocusedTextColor: Color = MaterialTheme.extendedColorScheme.onSurface,
+        focusedTextColor: Color = MaterialTheme.extendedColorScheme.onSurface,
+        disabledTextColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
+
+        //Container Color
+        unfocusedBackgroundColor: Color = MaterialTheme.extendedColorScheme.surfaceVariant,
+        focusedBackgroundColor: Color = MaterialTheme.extendedColorScheme.surfaceVariant,
+        disabledBackgroundColor: Color = MaterialTheme.extendedColorScheme.onSurface.state12,
+
+        //Cursor Color
+        cursorColor: Color = MaterialTheme.extendedColorScheme.primary,
+        textSelectionColors: TextSelectionColors = TextSelectionColors(
+            handleColor = MaterialTheme.extendedColorScheme.primary,
+            backgroundColor = MaterialTheme.extendedColorScheme.primary.copy(alpha = 0.4f)
+        ),
+
+        //Placeholder Color
+        unfocusedPlaceholderColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
+        focusedPlaceholderColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
+        disabledPlaceholderColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
+
+        //Leading Icon Color
+        unfocusedLeadingIconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
+        focusedLeadingIconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
+        disabledLeadingIconColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
+
+        //Clear Icon Color
+        unfocusedClearIconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
+        focusedClearIconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
+        disabledClearIconColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
+    ): SearchColors = SearchColors(
+        //Text Color
+        unfocusedTextColor = unfocusedTextColor,
+        focusedTextColor = focusedTextColor,
+        disabledTextColor = disabledTextColor,
+
+        //Container Color
+        unfocusedBackgroundColor = unfocusedBackgroundColor,
+        focusedBackgroundColor = focusedBackgroundColor,
+        disabledBackgroundColor = disabledBackgroundColor,
+
+        //Cursor Color
+        cursorColor = cursorColor,
+        textSelectionColors = textSelectionColors,
+
+        //Placeholder Color
+        unfocusedPlaceholderColor = unfocusedPlaceholderColor,
+        focusedPlaceholderColor = focusedPlaceholderColor,
+        disabledPlaceholderColor = disabledPlaceholderColor,
+
+        //Leading Icon Color
+        unfocusedLeadingIconColor = unfocusedLeadingIconColor,
+        focusedLeadingIconColor = focusedLeadingIconColor,
+        disabledLeadingIconColor = disabledLeadingIconColor,
+
+        //Clear Icon Color
+        unfocusedClearIconColor = unfocusedClearIconColor,
+        focusedClearIconColor = focusedClearIconColor,
+        disabledClearIconColor = disabledClearIconColor
+    )
+
+}
 
 @Immutable
 class SearchColors internal constructor(
@@ -175,77 +243,4 @@ class SearchColors internal constructor(
         result = 31 * result + disabledPlaceholderColor.hashCode()
         return result
     }
-}
-
-object PersianSearchDefaults {
-
-    @Composable
-    fun colors(
-        //Text Color
-        unfocusedTextColor: Color = MaterialTheme.extendedColorScheme.onSurface,
-        focusedTextColor: Color = MaterialTheme.extendedColorScheme.onSurface,
-        disabledTextColor: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(alpha = PersianContentStateDisabled),
-
-        //Container Color
-        unfocusedBackgroundColor: Color = MaterialTheme.extendedColorScheme.surfaceVariant,
-        focusedBackgroundColor: Color = MaterialTheme.extendedColorScheme.surfaceVariant,
-        disabledBackgroundColor: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(alpha = PersianStatesDisabled),
-
-        //Cursor Color
-        cursorColor: Color = MaterialTheme.extendedColorScheme.primary,
-        textSelectionColors: TextSelectionColors = TextSelectionColors(
-            handleColor = MaterialTheme.extendedColorScheme.primary,
-            backgroundColor = MaterialTheme.extendedColorScheme.primary.copy(alpha = 0.4f)
-        ),
-
-        //Placeholder Color
-        unfocusedPlaceholderColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        focusedPlaceholderColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        disabledPlaceholderColor: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(alpha = PersianContentStateDisabled),
-
-        //Leading Icon Color
-        unfocusedLeadingIconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        focusedLeadingIconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        disabledLeadingIconColor: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(alpha = PersianContentStateDisabled),
-
-        //Clear Icon Color
-        unfocusedClearIconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        focusedClearIconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        disabledClearIconColor: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(alpha = PersianContentStateDisabled)
-    ): SearchColors = SearchColors(
-        //Text Color
-        unfocusedTextColor = unfocusedTextColor,
-        focusedTextColor = focusedTextColor,
-        disabledTextColor = disabledTextColor,
-
-        //Container Color
-        unfocusedBackgroundColor = unfocusedBackgroundColor,
-        focusedBackgroundColor = focusedBackgroundColor,
-        disabledBackgroundColor = disabledBackgroundColor,
-
-        //Cursor Color
-        cursorColor = cursorColor,
-        textSelectionColors = textSelectionColors,
-
-        //Placeholder Color
-        unfocusedPlaceholderColor = unfocusedPlaceholderColor,
-        focusedPlaceholderColor = focusedPlaceholderColor,
-        disabledPlaceholderColor = disabledPlaceholderColor,
-
-        //Leading Icon Color
-        unfocusedLeadingIconColor = unfocusedLeadingIconColor,
-        focusedLeadingIconColor = focusedLeadingIconColor,
-        disabledLeadingIconColor = disabledLeadingIconColor,
-
-        //Clear Icon Color
-        unfocusedClearIconColor = unfocusedClearIconColor,
-        focusedClearIconColor = focusedClearIconColor,
-        disabledClearIconColor = disabledClearIconColor
-    )
-
 }
