@@ -457,11 +457,7 @@ class InputColors internal constructor(
             focused -> focusedContainerColor
             else -> defaultContainerColor
         }
-        return animateColorAsState(
-            targetValue = targetValue,
-            animationSpec = tween(durationMillis = ANIMATION_DURATION),
-            label = "Container Color Animation"
-        )
+        return rememberUpdatedState(targetValue)
     }
 
     @Composable
