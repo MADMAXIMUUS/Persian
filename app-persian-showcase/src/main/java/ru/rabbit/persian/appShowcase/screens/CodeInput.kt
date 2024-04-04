@@ -71,7 +71,7 @@ object CodeInput : Screen {
                             PersianFourDigitCodeInput(
                                 values = list,
                                 enabled = enabled,
-                                isSuccess = isSuccess,
+                                isValid = isSuccess,
                                 isError = isError,
                                 onValueChange = { value, index ->
                                     if (list[index].length != 1 || value.isEmpty()) {
@@ -133,7 +133,7 @@ object CodeInput : Screen {
                             PersianSixDigitCodeInput(
                                 values = list,
                                 enabled = enabled,
-                                isSuccess = isSuccess,
+                                isValid = isSuccess,
                                 isError = isError,
                                 onValueChange = { value, index ->
                                     if (list[index].length != 1 || value.isEmpty()) {

@@ -28,7 +28,7 @@ fun PersianFourDigitCodeInput(
     values: List<String>,
     enabled: Boolean = true,
     isError: Boolean = false,
-    isSuccess: Boolean = false,
+    isValid: Boolean = false,
     onValueChange: (value: String, index: Int) -> Unit
 ) {
     LaunchedEffect(Unit) {
@@ -63,7 +63,7 @@ fun PersianFourDigitCodeInput(
                     },
                 value = values[index],
                 focusRequester = focusRequesters[index],
-                isValid = isSuccess,
+                isValid = isValid,
                 enabled = enabled,
                 isError = isError,
                 onValueChange = { value ->
@@ -81,7 +81,7 @@ fun PersianSixDigitCodeInput(
     values: List<String>,
     enabled: Boolean = true,
     isError: Boolean = false,
-    isSuccess: Boolean = false,
+    isValid: Boolean = false,
     onValueChange: (value: String, index: Int) -> Unit
 ) {
     LaunchedEffect(Unit) {
@@ -118,7 +118,7 @@ fun PersianSixDigitCodeInput(
                     },
                 value = values[index],
                 focusRequester = focusRequesters[index],
-                isValid = isSuccess,
+                isValid = isValid,
                 enabled = enabled,
                 isError = isError,
                 onValueChange = { value ->

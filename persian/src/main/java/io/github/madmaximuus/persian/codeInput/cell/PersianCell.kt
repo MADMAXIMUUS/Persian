@@ -98,8 +98,8 @@ internal fun PersianCodeInputCell(
             decorationBox = { innerTextField ->
                 Box(
                     modifier = Modifier
-                        .width(44.dp)
-                        .height(48.dp)
+                        .width(48.dp)
+                        .height(52.dp)
                         .border(
                             borderThickness,
                             borderColor,
