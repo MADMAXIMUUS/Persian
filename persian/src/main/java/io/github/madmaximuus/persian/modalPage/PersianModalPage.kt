@@ -26,9 +26,9 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import io.github.madmaximuus.persian.foundation.PersianContentStateDisabled
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.topAppBar.PersianTopAppBar
 import io.github.madmaximuus.persian.topAppBar.PersianTopAppBarLeft
 import io.github.madmaximuus.persian.topAppBar.PersianTopAppBarRight
@@ -76,8 +76,7 @@ fun PersianDynamicHeightModalPage(
                                         .width(40.dp)
                                         .height(6.dp)
                                         .background(
-                                            color = MaterialTheme.extendedColorScheme.onSurface
-                                                .copy(PersianContentStateDisabled),
+                                            color = MaterialTheme.extendedColorScheme.onSurface.state38,
                                             shape = MaterialTheme.shapes.extraLarge
                                         )
                                 )
