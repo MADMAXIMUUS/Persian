@@ -15,8 +15,8 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.window.PopupProperties
 import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.inputs.InputColors
-import io.github.madmaximuus.persian.inputs.PersianInput
-import io.github.madmaximuus.persian.inputs.PersianInputDefaults
+import io.github.madmaximuus.persian.inputs.PersianInputsDefaults
+import io.github.madmaximuus.persian.inputs.PersianOutlineInput
 import io.github.madmaximuus.persian.menus.MenuColors
 import io.github.madmaximuus.persian.menus.PersianMenuDefaults
 import io.github.madmaximuus.persian.menus.PersianMenuItem
@@ -31,10 +31,10 @@ fun PersianSelect(
     enabled: Boolean = true,
     placeholder: String? = null,
     isError: Boolean = false,
-    isSuccess: Boolean = false,
+    isValid: Boolean = false,
     expanded: MutableState<Boolean> = remember { mutableStateOf(false) },
     leadingIcon: Painter? = null,
-    inputColors: InputColors = PersianInputDefaults.colors(),
+    inputColors: InputColors = PersianInputsDefaults.outlineColors(),
     menuColors: MenuColors = PersianMenuDefaults.colors(),
 ) {
     ExposedDropdownMenuBox(
@@ -42,7 +42,7 @@ fun PersianSelect(
         expanded = expanded.value,
         onExpandedChange = { expanded.value = !expanded.value }
     ) {
-        PersianInput(
+        PersianOutlineInput(
             modifier = Modifier
                 .fillMaxWidth()
                 .menuAnchor(),
@@ -52,7 +52,7 @@ fun PersianSelect(
             onValueChange = {},
             readOnly = true,
             isError = isError,
-            isSuccess = isSuccess,
+            isValid = isValid,
             enabled = enabled,
             colors = inputColors,
             trailingIcon = if (expanded.value) MaterialTheme.icons.expendLess
