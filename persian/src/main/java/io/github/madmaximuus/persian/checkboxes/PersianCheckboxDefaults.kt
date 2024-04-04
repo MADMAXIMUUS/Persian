@@ -16,10 +16,10 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.checkboxes.toggle.BOX_IN_DURATION
 import io.github.madmaximuus.persian.checkboxes.toggle.BOX_OUT_DURATION
-import io.github.madmaximuus.persian.foundation.PersianContentStateDisabled
-import io.github.madmaximuus.persian.foundation.PersianStatesDisabled
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.state12
+import io.github.madmaximuus.persian.foundation.state38
 
 object PersianCheckboxDefaults {
 
@@ -28,20 +28,17 @@ object PersianCheckboxDefaults {
         checkedColor: Color = MaterialTheme.extendedColorScheme.primary,
         uncheckedColor: Color = MaterialTheme.extendedColorScheme.outline,
         checkmarkColor: Color = MaterialTheme.extendedColorScheme.surface,
-        disabledCheckedColor: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(PersianStatesDisabled),
-        disabledUncheckedColor: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(PersianStatesDisabled),
+        disabledCheckedColor: Color = MaterialTheme.extendedColorScheme.onSurface.state12,
+        disabledUncheckedColor: Color = MaterialTheme.extendedColorScheme.onSurface.state12,
         disabledIndeterminateColor: Color = disabledCheckedColor,
         textColor: Color = MaterialTheme.extendedColorScheme.onSurface,
-        disabledTextColor: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(PersianContentStateDisabled)
+        disabledTextColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38
     ): CheckboxColors = CheckboxColors(
         checkedBorderColor = checkedColor,
         checkedBoxColor = checkedColor,
         checkedCheckmarkColor = checkmarkColor,
-        uncheckedCheckmarkColor = checkmarkColor.copy(alpha = 0f),
-        uncheckedBoxColor = checkedColor.copy(alpha = 0f),
+        uncheckedCheckmarkColor = Color.Transparent,
+        uncheckedBoxColor = Color.Transparent,
         disabledCheckedBoxColor = disabledCheckedColor,
         disabledUncheckedBoxColor = disabledUncheckedColor.copy(alpha = 0f),
         disabledIndeterminateBoxColor = disabledIndeterminateColor,
