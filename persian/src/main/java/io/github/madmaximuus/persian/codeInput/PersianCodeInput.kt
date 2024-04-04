@@ -63,7 +63,7 @@ fun PersianFourDigitCodeInput(
                     },
                 value = values[index],
                 focusRequester = focusRequesters[index],
-                isSuccess = isSuccess,
+                isValid = isSuccess,
                 enabled = enabled,
                 isError = isError,
                 onValueChange = { value ->
@@ -118,7 +118,7 @@ fun PersianSixDigitCodeInput(
                     },
                 value = values[index],
                 focusRequester = focusRequesters[index],
-                isSuccess = isSuccess,
+                isValid = isSuccess,
                 enabled = enabled,
                 isError = isError,
                 onValueChange = { value ->

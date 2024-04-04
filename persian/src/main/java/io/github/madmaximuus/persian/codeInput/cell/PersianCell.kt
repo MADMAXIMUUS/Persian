@@ -39,7 +39,7 @@ internal fun PersianCodeInputCell(
     value: String,
     onValueChange: (String) -> Unit,
     enabled: Boolean = true,
-    isSuccess: Boolean = false,
+    isValid: Boolean = false,
     isError: Boolean = false,
     colors: CellColors = PersianCodeInputDefaults.cellColors(),
     focusRequester: FocusRequester = FocusRequester(),
@@ -48,7 +48,7 @@ internal fun PersianCodeInputCell(
 ) {
     val focused by interactionSource.collectIsFocusedAsState()
 
-    val textColor = colors.textColor(enabled, isSuccess, isError, interactionSource).value
+    val textColor = colors.textColor(enabled, isValid, isError, interactionSource).value
 
     val mergedTextStyle = textStyle.merge(
         TextStyle(
@@ -58,18 +58,18 @@ internal fun PersianCodeInputCell(
         )
     )
 
-    val borderThickness = if (enabled && (focused || isError || isSuccess)) 2.dp else 1.dp
+    val borderThickness = if (enabled && (focused || isError || isValid)) 2.dp else 1.dp
 
     val containerColor = colors.containerColor(
         enabled = enabled,
-        isSuccess = isSuccess,
+        isValid = isValid,
         isError = isError,
         interactionSource = interactionSource
     ).value
 
     val borderColor = colors.indicatorColor(
         enabled = enabled,
-        isSuccess = isSuccess,
+        isValid = isValid,
         isError = isError,
         interactionSource = interactionSource
     ).value
@@ -88,7 +88,7 @@ internal fun PersianCodeInputCell(
             cursorBrush = SolidColor(
                 colors.cursorColor(
                     isError = isError,
-                    isSuccess = isSuccess
+                    isValid = isValid
                 ).value
             ),
             keyboardOptions = KeyboardOptions(
