@@ -10,9 +10,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.foundation.PersianStatesDisabled
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.state12
 
 object PersianRadioButtonDefaults {
 
@@ -20,10 +20,8 @@ object PersianRadioButtonDefaults {
     fun toggleColors(
         selectedColor: Color = MaterialTheme.extendedColorScheme.primary,
         unselectedColor: Color = MaterialTheme.extendedColorScheme.outline,
-        disabledSelectedColor: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(PersianStatesDisabled),
-        disabledUnselectedColor: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(PersianStatesDisabled)
+        disabledSelectedColor: Color = MaterialTheme.extendedColorScheme.onSurface.state12,
+        disabledUnselectedColor: Color = MaterialTheme.extendedColorScheme.onSurface.state12
     ) = RadioButtonDefaults
         .colors(
             selectedColor = selectedColor,

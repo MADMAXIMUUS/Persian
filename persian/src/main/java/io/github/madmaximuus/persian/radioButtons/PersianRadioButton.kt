@@ -15,7 +15,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
-import io.github.madmaximuus.persian.foundation.PersianContentStateDisabled
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
 
 @Composable
@@ -29,7 +28,7 @@ fun PersianRadioButton(
     radioButtonSizes: RadioButtonSizes = PersianRadioButtonDefaults.sizes()
 ) {
     val textColor = if (enabled) radioButtonColors.textColor
-    else MaterialTheme.extendedColorScheme.onSurface.copy(alpha = PersianContentStateDisabled)
+    else MaterialTheme.extendedColorScheme.onSurface.copy(alpha = .38f)
     Row(
         modifier = modifier
             .clip(MaterialTheme.shapes.large)
