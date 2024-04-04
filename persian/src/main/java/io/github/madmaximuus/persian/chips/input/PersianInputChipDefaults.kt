@@ -10,10 +10,10 @@ import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.chips.founfation.SelectableChipColors
 import io.github.madmaximuus.persian.chips.founfation.SelectableChipElevation
 import io.github.madmaximuus.persian.chips.founfation.SelectableChipSizes
-import io.github.madmaximuus.persian.foundation.PersianContentStateDisabled
-import io.github.madmaximuus.persian.foundation.PersianStatesDisabled
 import io.github.madmaximuus.persian.foundation.elevation
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import io.github.madmaximuus.persian.foundation.state12
+import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.iconBox.IconBoxSize
 import io.github.madmaximuus.persian.iconBox.PersianIconBoxDefaults
 
@@ -26,21 +26,17 @@ object PersianInputChipDefaults {
         leadingIconColor: Color = MaterialTheme.extendedColorScheme.primary,
         trailingIconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
         disabledContainerColor: Color = Color.Transparent,
-        disabledLabelColor: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(alpha = PersianContentStateDisabled),
-        disabledLeadingIconColor: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(alpha = PersianContentStateDisabled),
+        disabledLabelColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
+        disabledLeadingIconColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
         disabledTrailingIconColor: Color = disabledLeadingIconColor,
         selectedContainerColor: Color = MaterialTheme.extendedColorScheme.secondaryContainer,
-        disabledSelectedContainerColor: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(alpha = PersianStatesDisabled),
+        disabledSelectedContainerColor: Color = MaterialTheme.extendedColorScheme.onSurface.state12,
         selectedLabelColor: Color = MaterialTheme.extendedColorScheme.onSecondaryContainer,
         selectedLeadingIconColor: Color = MaterialTheme.extendedColorScheme.onSecondaryContainer,
         selectedTrailingIconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
         borderColor: Color = MaterialTheme.extendedColorScheme.primary,
         selectedBorderColor: Color = Color.Transparent,
-        disabledBorderColor: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(alpha = PersianStatesDisabled),
+        disabledBorderColor: Color = MaterialTheme.extendedColorScheme.onSurface.state12,
         disabledSelectedBorderColor: Color = Color.Transparent
     ): SelectableChipColors = SelectableChipColors(
         containerColor = containerColor,

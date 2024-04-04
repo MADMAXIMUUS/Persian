@@ -30,7 +30,7 @@ import io.github.madmaximuus.persian.chips.input.PersianInputShip
 import io.github.madmaximuus.persian.chips.suggestion.PersianSuggestionChip
 import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.foundation.spacing
-import io.github.madmaximuus.persian.inputs.PersianInput
+import io.github.madmaximuus.persian.inputs.PersianOutlineInput
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
@@ -104,25 +104,25 @@ object Chips : Screen {
                     }
                 }
                 SampleRow(text = "Filter Chip Label") {
-                    PersianInput(
+                    PersianOutlineInput(
                         value = filterChipLabel,
                         onValueChange = onFilterLabelChange
                     )
                 }
                 SampleRow(text = "Suggestion Chip Label") {
-                    PersianInput(
+                    PersianOutlineInput(
                         value = suggestionChipLabel,
                         onValueChange = onSuggestionLabelChange
                     )
                 }
                 SampleRow(text = "Assist Chip Label") {
-                    PersianInput(
+                    PersianOutlineInput(
                         value = assistChipLabel,
                         onValueChange = onAssistLabelChange
                     )
                 }
                 SampleRow(text = "Input Chip Label") {
-                    PersianInput(
+                    PersianOutlineInput(
                         value = inputChipLabel,
                         onValueChange = onInputLabelChange
                     )

@@ -10,10 +10,10 @@ import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.chips.founfation.ChipColors
 import io.github.madmaximuus.persian.chips.founfation.ChipElevation
 import io.github.madmaximuus.persian.chips.founfation.ChipSizes
-import io.github.madmaximuus.persian.foundation.PersianContentStateDisabled
-import io.github.madmaximuus.persian.foundation.PersianStatesDisabled
 import io.github.madmaximuus.persian.foundation.elevation
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import io.github.madmaximuus.persian.foundation.state12
+import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.iconBox.IconBoxSize
 import io.github.madmaximuus.persian.iconBox.PersianIconBoxDefaults
 
@@ -25,13 +25,10 @@ object PersianSuggestionChipDefaults {
         labelColor: Color = MaterialTheme.extendedColorScheme.onSurface,
         leadingIconColor: Color = MaterialTheme.extendedColorScheme.primary,
         disabledContainerColor: Color = Color.Transparent,
-        disabledLabelColor: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(alpha = PersianContentStateDisabled),
-        disabledLeadingIconContentColor: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(alpha = PersianContentStateDisabled),
+        disabledLabelColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
+        disabledLeadingIconContentColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
         borderColor: Color = MaterialTheme.extendedColorScheme.primary,
-        disabledBorderColor: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(alpha = PersianStatesDisabled)
+        disabledBorderColor: Color = MaterialTheme.extendedColorScheme.onSurface.state12,
     ): ChipColors = ChipColors(
         containerColor = containerColor,
         labelColor = labelColor,
