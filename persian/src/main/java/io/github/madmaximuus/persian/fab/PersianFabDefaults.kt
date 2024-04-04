@@ -9,9 +9,7 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.foundation.elevation
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
-import io.github.madmaximuus.persian.foundation.surfaceColorAtElevation
 import io.github.madmaximuus.persian.iconBox.IconBoxSize
 import io.github.madmaximuus.persian.iconBox.PersianIconBoxDefaults
 
@@ -60,8 +58,7 @@ object PersianFabDefaults {
 
     @Composable
     fun neutralColors(
-        backgroundColor: Color = MaterialTheme.extendedColorScheme
-            .surfaceColorAtElevation(MaterialTheme.elevation.medium),
+        backgroundColor: Color = MaterialTheme.extendedColorScheme.surface3,
         content: Color = MaterialTheme.extendedColorScheme.primary
     ) = remember(
         backgroundColor,
