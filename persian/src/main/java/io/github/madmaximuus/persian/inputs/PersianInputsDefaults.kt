@@ -560,7 +560,7 @@ class InputColors internal constructor(
             isError -> errorPlaceholderColor
             isValid -> validPlaceholderColor
             focused -> focusedPlaceholderColor
-            hovered -> hoveredSuffixColor
+            hovered -> hoveredPlaceholderColor
             else -> defaultPlaceholderColor
         }
         return rememberUpdatedState(targetValue)
