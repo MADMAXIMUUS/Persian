@@ -6,15 +6,14 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.graphics.Color
-import io.github.madmaximuus.persian.foundation.PersianContentStateDisabled
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import io.github.madmaximuus.persian.foundation.state38
 
 object PersianPageIndicatorDefaults {
 
     @Composable
     fun indicatorColor(
-        defaultIndicatorColor: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(PersianContentStateDisabled),
+        defaultIndicatorColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
         selectedIndicatorColor: Color = MaterialTheme.extendedColorScheme.onSurface,
     ): PageIndicatorColors =
         PageIndicatorColors(
