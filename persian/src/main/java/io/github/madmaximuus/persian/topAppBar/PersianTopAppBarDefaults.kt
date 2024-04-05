@@ -6,10 +6,8 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
-import io.github.madmaximuus.persian.foundation.PersianContentStateDisabled
-import io.github.madmaximuus.persian.foundation.elevation
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
-import io.github.madmaximuus.persian.foundation.surfaceColorAtElevation
+import io.github.madmaximuus.persian.foundation.state38
 
 @Immutable
 data class TopAppBarColors(
@@ -25,12 +23,10 @@ object PersianTopAppBarDefaults {
     @Composable
     fun colors(
         background: Color = MaterialTheme.extendedColorScheme.surface,
-        scrolledBackgroundColor: Color = MaterialTheme.extendedColorScheme
-            .surfaceColorAtElevation(MaterialTheme.elevation.small),
+        scrolledBackgroundColor: Color = MaterialTheme.extendedColorScheme.surface2,
         contentColor: Color = MaterialTheme.extendedColorScheme.onSurface,
         iconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        disabledIconColor: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(PersianContentStateDisabled)
+        disabledIconColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
     ) = remember(
         background,
         contentColor,
