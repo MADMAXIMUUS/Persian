@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persianIcons.expandMore
+package io.github.madmaximuus.persianIcons.expendMore
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
@@ -18,11 +18,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun expandMoreDefault(): ImageVector {
+fun expendMoreDefault(): ImageVector {
     val color = LocalContentColor.current
     return remember {
         ImageVector.Builder(
-            name = "expand-more-default",
+            name = "expend-more-default",
             defaultWidth = 24.dp,
             defaultHeight = 24.dp,
             viewportWidth = 24f,
@@ -63,7 +63,7 @@ private fun IconPreview() {
         Surface {
             Icon(
                 modifier = Modifier.size(100.dp),
-                imageVector = expandMoreDefault(),
+                imageVector = expendMoreDefault(),
                 contentDescription = ""
             )
         }
