@@ -1,0 +1,50 @@
+plugins {
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.jetbrains.kotlin.android)
+}
+
+ext{
+    PUBLISH_GROUP_ID = 'io.github.madmaximuus.persian'
+    PUBLISH_VERSION = '4.0.0'
+    PUBLISH_ARTIFACT_ID = 'persian-icons'
+}
+
+android {
+    namespace 'io.github.madmaximuus.persianIcons'
+    compileSdk 34
+
+    defaultConfig {
+        minSdk 26
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.5.11'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation libs.core.ktx
+    implementation libs.bundles.compose
+    implementation libs.material3
+
+    debugImplementation libs.ui.tooling
+}
