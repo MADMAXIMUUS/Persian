@@ -131,6 +131,7 @@ object CodeInput : Screen {
                             verticalArrangement = Arrangement.spacedBy(10.dp)
                         ) {
                             PersianSixDigitCodeInput(
+                                modifier = Modifier.fillMaxWidth(),
                                 values = list,
                                 enabled = enabled,
                                 isValid = isSuccess,
