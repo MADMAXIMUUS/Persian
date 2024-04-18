@@ -101,7 +101,7 @@ fun PersianSixDigitCodeInput(
 
     Row(
         modifier = modifier,
-        horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.extraSmall)
+        horizontalArrangement = Arrangement.SpaceEvenly
     ) {
         repeat(6) { index ->
             PersianCodeInputCell(

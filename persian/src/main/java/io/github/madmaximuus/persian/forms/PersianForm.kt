@@ -2,9 +2,7 @@ package io.github.madmaximuus.persian.forms
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -50,6 +48,7 @@ fun PersianForm(
 
             is PersianFormContent.SixDigitCodeInput -> {
                 PersianFormContentSixDigitCodeInput(
+                    modifier = Modifier.fillMaxWidth(),
                     values = content.values,
                     onValueChange = content.onValueChange,
                     isError = isError,
@@ -133,12 +132,6 @@ fun PersianForm(
                     textStyle = caption.textStyle,
                 )
             }
-        } else {
-            Spacer(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(MaterialTheme.spacing.large)
-            )
         }
     }
 }
