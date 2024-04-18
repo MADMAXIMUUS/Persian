@@ -12,6 +12,7 @@ import io.github.madmaximuus.persian.chips.founfation.ChipElevation
 import io.github.madmaximuus.persian.chips.founfation.ChipSizes
 import io.github.madmaximuus.persian.foundation.elevation
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import io.github.madmaximuus.persian.foundation.shape
 import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.iconBox.IconBoxSize
@@ -50,7 +51,7 @@ object PersianAssistChipDefaults {
         leadingIconSize: IconBoxSize = PersianIconBoxDefaults.size18(),
         labelStyle: TextStyle = MaterialTheme.typography.labelLarge,
         borderWidth: Dp = 1.dp,
-        shape: Shape = MaterialTheme.shapes.small,
+        shape: Shape = MaterialTheme.shape.shape8,
         disabledBorderWith: Dp = 1.dp
     ): ChipSizes = ChipSizes(
         trailingIconSize = trailingIconSize,

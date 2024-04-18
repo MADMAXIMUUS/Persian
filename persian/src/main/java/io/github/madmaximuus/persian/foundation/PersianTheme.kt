@@ -59,12 +59,12 @@ fun PersianTheme(
         LocalPersianIcons provides MaterialTheme.icons,
         LocalPersianElevation provides MaterialTheme.elevation,
         LocalColorScheme provides colorScheme,
+        LocalPersianShapes provides MaterialTheme.shape
     ) {
         MaterialTheme(
             colorScheme = defaultColorScheme,
             typography = PersianTypography,
             content = content,
-            shapes = PersianShapes
         )
     }
 

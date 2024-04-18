@@ -7,6 +7,7 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.graphics.Color
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import io.github.madmaximuus.persian.foundation.state38
 
 object PersianFormDefaults {
 
@@ -14,12 +15,10 @@ object PersianFormDefaults {
     fun captionColors(
         textColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
         errorColor: Color = MaterialTheme.extendedColorScheme.error,
-        disabledColor: Color = MaterialTheme.extendedColorScheme.onSurface,
-            //.copy(PersianState38),
+        disabledColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
         counterColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
         errorCounterColor: Color = MaterialTheme.extendedColorScheme.error,
-        disabledCounterColor: Color = MaterialTheme.extendedColorScheme.onSurface,
-            //.copy(PersianState38),
+        disabledCounterColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
     ): CaptionColors = CaptionColors(
         textColor = textColor,
         errorColor = errorColor,
@@ -32,12 +31,10 @@ object PersianFormDefaults {
     @Composable
     fun subheadColors(
         textColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        disabledColor: Color = MaterialTheme.extendedColorScheme.onSurface,
-            //.copy(PersianState38),
+        disabledColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
 
         requiredColor: Color = MaterialTheme.extendedColorScheme.error,
-        requiredDisabledColor: Color = MaterialTheme.extendedColorScheme.error,
-            //.copy(PersianState38),
+        requiredDisabledColor: Color = MaterialTheme.extendedColorScheme.error.state38,
     ): SubheadColors = SubheadColors(
         textColor = textColor,
         disabledColor = disabledColor,

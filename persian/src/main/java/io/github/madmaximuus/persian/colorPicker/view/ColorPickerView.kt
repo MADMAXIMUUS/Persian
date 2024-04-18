@@ -26,6 +26,7 @@ import io.github.madmaximuus.persian.colorPicker.view.panels.HueBar
 import io.github.madmaximuus.persian.colorPicker.view.saturation.SatValPanel
 import io.github.madmaximuus.persian.colorPicker.view.util.ColorPickerDisplayMode
 import io.github.madmaximuus.persian.colorPicker.view.util.ColorPickerState
+import io.github.madmaximuus.persian.foundation.shape
 import io.github.madmaximuus.persian.foundation.spacing
 
 @Composable
@@ -92,7 +93,7 @@ internal fun ColorPickerView(
             Column {
                 Text(
                     modifier = Modifier
-                        .clip(MaterialTheme.shapes.extraSmall)
+                        .clip(MaterialTheme.shape.shape4)
                         .clickable {
                             state.setRGB()
                         }
@@ -108,7 +109,7 @@ internal fun ColorPickerView(
                 )
                 Text(
                     modifier = Modifier
-                        .clip(MaterialTheme.shapes.extraSmall)
+                        .clip(MaterialTheme.shape.shape4)
                         .clickable {
                             state.setHEX()
                         }
@@ -124,7 +125,7 @@ internal fun ColorPickerView(
                 )
                 Text(
                     modifier = Modifier
-                        .clip(MaterialTheme.shapes.extraSmall)
+                        .clip(MaterialTheme.shape.shape4)
                         .clickable {
                             state.setHSV()
                         }
@@ -149,7 +150,7 @@ internal fun ColorPickerView(
                             value = state.color.third,
                             alpha = state.alpha
                         ),
-                        MaterialTheme.shapes.extraSmall
+                        MaterialTheme.shape.shape4
                     )
             )
         }

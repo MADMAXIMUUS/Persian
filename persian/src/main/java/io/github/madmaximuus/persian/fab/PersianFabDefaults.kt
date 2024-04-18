@@ -10,6 +10,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import io.github.madmaximuus.persian.foundation.shape
 import io.github.madmaximuus.persian.iconBox.IconBoxSize
 import io.github.madmaximuus.persian.iconBox.PersianIconBoxDefaults
 
@@ -75,7 +76,7 @@ object PersianFabDefaults {
         boxSize: Dp = 40.dp,
         iconSize: IconBoxSize = PersianIconBoxDefaults.size20(),
         textStyle: TextStyle = MaterialTheme.typography.labelLarge,
-        cornerShape: Shape = MaterialTheme.shapes.large
+        cornerShape: Shape = MaterialTheme.shape.shape16
     ) = remember(
         boxSize,
         iconSize,
@@ -95,7 +96,7 @@ object PersianFabDefaults {
         boxSize: Dp = 56.dp,
         iconSize: IconBoxSize = PersianIconBoxDefaults.size20(),
         textStyle: TextStyle = MaterialTheme.typography.labelLarge,
-        cornerShape: Shape = MaterialTheme.shapes.large
+        cornerShape: Shape = MaterialTheme.shape.shape16
     ) = remember(
         boxSize,
         iconSize,

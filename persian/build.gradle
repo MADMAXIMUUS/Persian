@@ -1,11 +1,11 @@
 plugins {
-    id 'com.android.library'
-    id 'org.jetbrains.kotlin.android'
+    alias libs.plugins.android.library
+    alias libs.plugins.jetbrains.kotlin.android
 }
 
 ext{
     PUBLISH_GROUP_ID = 'io.github.madmaximuus.persian'
-    PUBLISH_VERSION = '4.0.0'
+    PUBLISH_VERSION = '5.0.0'
     PUBLISH_ARTIFACT_ID = 'persian'
 }
 
@@ -33,7 +33,7 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion '1.5.3'
+        kotlinCompilerExtensionVersion '1.5.11'
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8

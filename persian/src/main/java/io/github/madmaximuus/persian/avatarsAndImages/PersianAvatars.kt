@@ -8,7 +8,6 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
@@ -27,6 +26,7 @@ import com.bumptech.glide.integration.compose.GlideSubcomposition
 import com.bumptech.glide.integration.compose.RequestState
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import io.github.madmaximuus.persian.foundation.icons
+import io.github.madmaximuus.persian.foundation.shape
 import io.github.madmaximuus.persian.foundation.shimmer
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
 
@@ -45,12 +45,12 @@ fun PersianAvatar(
     Box(
         modifier = modifier
             .size(size.boxSizes)
-            .clip(CircleShape)
+            .clip(MaterialTheme.shape.full)
             .background(
                 colors.background(enabled),
-                CircleShape
+                MaterialTheme.shape.full
             )
-            .border(1.dp, colors.border(enabled), CircleShape)
+            .border(1.dp, colors.border(enabled), MaterialTheme.shape.full)
             .clickable(
                 enabled = onClick != null && enabled,
                 onClick = { onClick?.invoke() },

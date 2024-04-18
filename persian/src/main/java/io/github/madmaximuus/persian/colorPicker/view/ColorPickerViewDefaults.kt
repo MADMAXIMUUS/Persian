@@ -4,14 +4,13 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
-import io.github.madmaximuus.persian.foundation.PersianContentStateDisabled
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import io.github.madmaximuus.persian.foundation.state38
 
 object ColorPickerViewDefaults {
     @Composable
     fun colors(
-        colorModeTitle: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(PersianContentStateDisabled),
+        colorModeTitle: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
         colorModeTitleSelectedColor: Color = MaterialTheme.extendedColorScheme.onSurface,
         selectorBorderColor: Color = MaterialTheme.extendedColorScheme.outline,
         selectorThumbColor: Color = MaterialTheme.extendedColorScheme.primary,

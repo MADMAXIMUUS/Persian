@@ -27,7 +27,7 @@ import io.github.madmaximuus.persian.buttons.PersianPrimaryButton
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.foundation.spacing
-import io.github.madmaximuus.persian.inputs.PersianInput
+import io.github.madmaximuus.persian.inputs.PersianOutlineInput
 import io.github.madmaximuus.persian.radioButtons.PersianRadioButton
 import io.github.madmaximuus.persian.snackbar.PersianSnackbarLeft
 import io.github.madmaximuus.persian.snackbar.PersianSnackbarRight
@@ -83,7 +83,7 @@ object Snackbar : Screen {
                     }
                 }
                 SampleRow(text = "Message") {
-                    PersianInput(
+                    PersianOutlineInput(
                         value = text,
                         onValueChange = onTextChange
                     )

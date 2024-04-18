@@ -11,6 +11,7 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import io.github.madmaximuus.persian.foundation.shape
 import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.iconBox.IconBoxSize
@@ -22,7 +23,7 @@ object PersianIconButtonDefaults {
     fun smallSizes(
         size: Dp = 36.dp,
         iconSize: IconBoxSize = PersianIconBoxDefaults.size20(),
-        shape: Shape = MaterialTheme.shapes.medium,
+        shape: Shape = MaterialTheme.shape.shape12,
     ): IconButtonSizes = remember(
         size,
         iconSize,
@@ -39,7 +40,7 @@ object PersianIconButtonDefaults {
     fun mediumSizes(
         size: Dp = 44.dp,
         iconSize: IconBoxSize = PersianIconBoxDefaults.size24(),
-        shape: Shape = MaterialTheme.shapes.large,
+        shape: Shape = MaterialTheme.shape.shape14,
     ): IconButtonSizes = remember(
         size,
         iconSize,
@@ -56,7 +57,7 @@ object PersianIconButtonDefaults {
     fun largeSizes(
         size: Dp = 52.dp,
         iconSize: IconBoxSize = PersianIconBoxDefaults.size28(),
-        shape: Shape = MaterialTheme.shapes.large
+        shape: Shape = MaterialTheme.shape.shape16
     ): IconButtonSizes = remember(
         size,
         iconSize,

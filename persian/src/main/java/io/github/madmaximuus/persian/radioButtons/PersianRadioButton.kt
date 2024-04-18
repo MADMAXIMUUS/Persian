@@ -16,6 +16,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import io.github.madmaximuus.persian.foundation.shape
 
 @Composable
 fun PersianRadioButton(
@@ -31,7 +32,7 @@ fun PersianRadioButton(
     else MaterialTheme.extendedColorScheme.onSurface.copy(alpha = .38f)
     Row(
         modifier = modifier
-            .clip(MaterialTheme.shapes.large)
+            .clip(MaterialTheme.shape.shape16)
             .selectable(
                 enabled = enabled,
                 selected = checked,

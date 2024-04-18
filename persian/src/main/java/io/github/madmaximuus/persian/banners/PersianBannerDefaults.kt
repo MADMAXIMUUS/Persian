@@ -7,6 +7,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import io.github.madmaximuus.persian.foundation.shape
 
 object PersianBannerDefaults {
     @Composable
@@ -26,7 +27,7 @@ object PersianBannerDefaults {
 
     @Composable
     fun sizes(
-        cornerRadius: Shape = MaterialTheme.shapes.medium,
+        cornerRadius: Shape = MaterialTheme.shape.shape12,
         titleStyle: TextStyle = MaterialTheme.typography.titleMedium,
         descriptionStyle: TextStyle = MaterialTheme.typography.bodyMedium
     ) = BannerSizes(

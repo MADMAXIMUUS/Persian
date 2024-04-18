@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.datePicker.view.DatePickerMonthCellColors
 import io.github.madmaximuus.persian.datePicker.view.PersianDatePickerViewDefaults
 import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.foundation.shape
 import io.github.madmaximuus.persian.foundation.spacing
 
 @Composable
@@ -47,9 +48,9 @@ internal fun PersianDatePickerDialogMonthCell(
         modifier = modifier
             .background(
                 color = colors.containerColor(selected = selected).value,
-                shape = MaterialTheme.shapes.medium
+                shape = MaterialTheme.shape.shape12
             )
-            .clip(MaterialTheme.shapes.medium)
+            .clip(MaterialTheme.shape.shape12)
             .clickable(enabled = enabled) { onMonthClick(index) }
             .padding(
                 horizontal = MaterialTheme.spacing.extraSmall,

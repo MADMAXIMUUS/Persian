@@ -23,6 +23,7 @@ import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
 import io.github.madmaximuus.persian.buttons.PersianTertiaryButton
 import io.github.madmaximuus.persian.dividers.PersianInsetHorizontalDivider
 import io.github.madmaximuus.persian.foundation.elevation
+import io.github.madmaximuus.persian.foundation.shape
 import io.github.madmaximuus.persian.foundation.spacing
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
 
@@ -46,7 +47,7 @@ fun PersianOnlyActionAlert(
                     .fillMaxWidth()
                     .wrapContentHeight()
                     .padding(horizontal = MaterialTheme.spacing.extraExtraLarge),
-                shape = MaterialTheme.shapes.extraLarge,
+                shape = MaterialTheme.shape.shape20,
                 color = colors.backgroundColor,
                 tonalElevation = MaterialTheme.elevation.small,
                 shadowElevation = 0.dp,
@@ -99,7 +100,7 @@ fun PersianAlert(
                     .fillMaxWidth()
                     .wrapContentHeight()
                     .padding(horizontal = MaterialTheme.spacing.extraExtraLarge),
-                shape = MaterialTheme.shapes.extraLarge,
+                shape = MaterialTheme.shape.shape20,
                 color = colors.backgroundColor,
                 tonalElevation = MaterialTheme.elevation.small,
                 shadowElevation = 0.dp,

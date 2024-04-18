@@ -7,10 +7,8 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.graphics.Color
-import io.github.madmaximuus.persian.foundation.PersianContentStateDisabled
-import io.github.madmaximuus.persian.foundation.elevation
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
-import io.github.madmaximuus.persian.foundation.surfaceColorAtElevation
+import io.github.madmaximuus.persian.foundation.state38
 
 object PersianMenuDefaults {
 
@@ -18,16 +16,13 @@ object PersianMenuDefaults {
     fun itemColors(
         titleColor: Color = MaterialTheme.extendedColorScheme.onSurface,
         negativeTitleColor: Color = MaterialTheme.extendedColorScheme.error,
-        disabledTitleColor: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(alpha = PersianContentStateDisabled),
+        disabledTitleColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
         leadingIconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
         negativeLeadingIconColor: Color = MaterialTheme.extendedColorScheme.error,
-        disabledLeadingIconColor: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(alpha = PersianContentStateDisabled),
+        disabledLeadingIconColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
         expendIconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
         negativeExpandIconColor: Color = MaterialTheme.extendedColorScheme.error,
-        disabledExpandIconColor: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(alpha = PersianContentStateDisabled)
+        disabledExpandIconColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
     ): MenuItemColors =
         MenuItemColors(
             titleColor = titleColor,
@@ -43,8 +38,7 @@ object PersianMenuDefaults {
 
     @Composable
     fun colors(
-        backgroundColor: Color = MaterialTheme.extendedColorScheme
-            .surfaceColorAtElevation(MaterialTheme.elevation.small),
+        backgroundColor: Color = MaterialTheme.extendedColorScheme.surface2,
         itemColors: MenuItemColors = itemColors()
     ) = remember(backgroundColor, itemColors) {
         MenuColors(

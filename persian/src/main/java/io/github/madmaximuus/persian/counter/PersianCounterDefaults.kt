@@ -10,6 +10,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import io.github.madmaximuus.persian.foundation.shape
 
 object PersianCounterDefaults {
     @Composable
@@ -51,7 +52,7 @@ object PersianCounterDefaults {
         verticalPadding: Dp = 2.dp,
         badgeHorizontalOffset: Dp = (-5).dp,
         badgeVerticalOffset: Dp = 0.dp,
-        radius: Shape = MaterialTheme.shapes.small,
+        radius: Shape = MaterialTheme.shape.shape8,
         textStyle: TextStyle = MaterialTheme.typography.labelSmall
     ) = remember(
         horizontalPadding,

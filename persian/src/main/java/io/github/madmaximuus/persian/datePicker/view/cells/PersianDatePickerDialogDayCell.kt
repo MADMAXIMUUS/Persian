@@ -27,6 +27,7 @@ import io.github.madmaximuus.persian.datePicker.view.PersianDatePickerViewDefaul
 import io.github.madmaximuus.persian.datePicker.view.util.DatePickerDayData
 import io.github.madmaximuus.persian.datePicker.view.util.equal
 import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.foundation.shape
 import io.github.madmaximuus.persian.foundation.spacing
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -45,7 +46,7 @@ internal fun PersianDatePickerDialogDayCell(
         }
     )
 
-    val defaultShape = MaterialTheme.shapes.medium
+    val defaultShape = MaterialTheme.shape.shape12
 
     val shape = when {
 
@@ -121,7 +122,7 @@ internal fun PersianDatePickerDialogDayCell(
                         between = dateData.selectedBetween,
                         today = today
                     ).value,
-                    shape = MaterialTheme.shapes.extraSmall
+                    shape = MaterialTheme.shape.shape4
                 )
         )
     }

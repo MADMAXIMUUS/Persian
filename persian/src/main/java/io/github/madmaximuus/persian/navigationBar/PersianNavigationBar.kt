@@ -12,14 +12,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.unit.dp
+import io.github.madmaximuus.persian.counter.PersianBadge
+import io.github.madmaximuus.persian.counter.PersianCounterDefaults
 import io.github.madmaximuus.persian.foundation.elevation
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
 
 data class NavigationBarItem(
-    val selected: Boolean = false,
+    val selected: Boolean,
     val icon: Painter,
     val selectedIcon: Painter,
-    val text: String,
+    val text: String? = null,
+    val badgeCount: Int = 0,
     val onClick: () -> Unit
 )
 
@@ -31,6 +35,9 @@ fun PersianNavigationBar(
     colors: NavigationBarColors = PersianNavigationBarDefault.colors(),
     sizes: NavigationBarSizes = PersianNavigationBarDefault.sizes()
 ) {
+    require(actions.all { it.text != null } || actions.all { it.text == null }) {
+        throw IllegalArgumentException("All items must have a text or none must have one.")
+    }
     NavigationBar(
         modifier = modifier,
         containerColor = colors.backgroundColor,
@@ -46,26 +53,40 @@ fun PersianNavigationBar(
                     unselectedTextColor = colors.itemColors.textColor,
                     selectedTextColor = colors.itemColors.selectedTextColor,
                     indicatorColor = colors.itemColors.selectedBackgroundColor,
-                    disabledIconColor = colors.itemColors.disabledIconColor,
-                    disabledTextColor = colors.itemColors.disabledTextColor
                 ),
                 icon = {
-                    val iconColor = if (item.selected) colors.itemColors.selectedIconColor
-                    else colors.itemColors.iconColor
-                    CompositionLocalProvider(
-                        LocalContentColor provides iconColor
-                    ) {}
-                    if (item.selected)
-                        PersianIconBox(icon = item.selectedIcon)
-                    else
-                        PersianIconBox(icon = item.icon)
-
+                    if (item.badgeCount > 0) {
+                        PersianBadge(
+                            count = item.badgeCount,
+                            sizes = PersianCounterDefaults.sizes(
+                                badgeHorizontalOffset = (-16).dp
+                            )
+                        ) {
+                            if (item.selected)
+                                PersianIconBox(icon = item.selectedIcon)
+                            else
+                                PersianIconBox(icon = item.icon)
+                        }
+                    } else {
+                        val iconColor = if (item.selected) colors.itemColors.selectedIconColor
+                        else colors.itemColors.iconColor
+                        CompositionLocalProvider(
+                            LocalContentColor provides iconColor
+                        ) {
+                            if (item.selected)
+                                PersianIconBox(icon = item.selectedIcon)
+                            else
+                                PersianIconBox(icon = item.icon)
+                        }
+                    }
                 },
-                label = {
-                    Text(
-                        text = item.text,
-                        style = sizes.itemSizes.textStyle,
-                    )
+                label = item.text?.let { text ->
+                    {
+                        Text(
+                            text = text,
+                            style = sizes.textStyle,
+                        )
+                    }
                 },
                 alwaysShowLabel = true,
                 onClick = { item.onClick() }

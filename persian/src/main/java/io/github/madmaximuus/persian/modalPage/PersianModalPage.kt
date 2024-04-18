@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import io.github.madmaximuus.persian.foundation.shape
 import io.github.madmaximuus.persian.foundation.spacing
 import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.topAppBar.PersianTopAppBar
@@ -39,7 +40,7 @@ fun PersianDynamicHeightModalPage(
     modifier: Modifier = Modifier,
     onDismissRequest: () -> Unit,
     sheetState: SheetState = rememberModalBottomSheetState(),
-    shape: Shape = MaterialTheme.shapes.extraLarge.copy(
+    shape: Shape = MaterialTheme.shape.shape20.copy(
         bottomStart = CornerSize(0.dp),
         bottomEnd = CornerSize(0.dp)
     ),
@@ -77,7 +78,7 @@ fun PersianDynamicHeightModalPage(
                                         .height(6.dp)
                                         .background(
                                             color = MaterialTheme.extendedColorScheme.onSurface.state38,
-                                            shape = MaterialTheme.shapes.extraLarge
+                                            shape = MaterialTheme.shape.shape20
                                         )
                                 )
                             }
@@ -117,7 +118,7 @@ fun PersianExtendedModalPage(
     sheetState: SheetState = rememberModalBottomSheetState(
         skipPartiallyExpanded = true
     ),
-    shape: Shape = MaterialTheme.shapes.extraLarge.copy(
+    shape: Shape = MaterialTheme.shape.shape20.copy(
         bottomStart = CornerSize(0.dp),
         bottomEnd = CornerSize(0.dp)
     ),

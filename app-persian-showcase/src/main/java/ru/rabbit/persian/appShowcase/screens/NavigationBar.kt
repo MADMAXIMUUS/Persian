@@ -41,6 +41,7 @@ object NavigationBar : Screen {
                                     icon = painterResource(id = R.drawable.ic_home_outlined),
                                     selectedIcon = painterResource(id = R.drawable.ic_home_filled),
                                     text = "Feed",
+                                    badgeCount = 20,
                                     onClick = {}
                                 ),
                                 NavigationBarItem(

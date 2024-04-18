@@ -12,6 +12,7 @@ import io.github.madmaximuus.persian.chips.founfation.SelectableChipElevation
 import io.github.madmaximuus.persian.chips.founfation.SelectableChipSizes
 import io.github.madmaximuus.persian.foundation.elevation
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import io.github.madmaximuus.persian.foundation.shape
 import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.iconBox.IconBoxSize
@@ -65,7 +66,7 @@ object PersianInputChipDefaults {
         labelStyle: TextStyle = MaterialTheme.typography.labelLarge,
         borderWidth: Dp = 1.dp,
         selectedBorderWith: Dp = 0.dp,
-        shape: Shape = MaterialTheme.shapes.small,
+        shape: Shape = MaterialTheme.shape.shape8,
         disabledBorderWith: Dp = 1.dp,
         selectedDisabledBorderWith: Dp = 0.dp
     ): SelectableChipSizes = SelectableChipSizes(

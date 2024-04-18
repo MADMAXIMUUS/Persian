@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.codeInput.CellColors
 import io.github.madmaximuus.persian.codeInput.PersianCodeInputDefaults
 import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.foundation.shape
 
 @Composable
 internal fun PersianCodeInputCell(
@@ -97,18 +98,19 @@ internal fun PersianCodeInputCell(
             interactionSource = interactionSource,
             decorationBox = { innerTextField ->
                 Box(
-                    modifier = Modifier
-                        .width(48.dp)
-                        .height(52.dp)
-                        .border(
-                            borderThickness,
-                            borderColor,
-                            MaterialTheme.shapes.large
-                        )
-                        .background(
-                            containerColor,
-                            MaterialTheme.shapes.large
-                        ),
+                    modifier = Modifier.run {
+                        width(48.dp)
+                            .height(52.dp)
+                            .border(
+                                borderThickness,
+                                borderColor,
+                                MaterialTheme.shape.shape16
+                            )
+                            .background(
+                                containerColor,
+                                MaterialTheme.shape.shape16
+                            )
+                    },
                     contentAlignment = Alignment.Center
                 ) {
                     innerTextField()

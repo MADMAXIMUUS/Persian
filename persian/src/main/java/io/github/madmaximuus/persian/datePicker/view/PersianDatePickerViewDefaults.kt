@@ -9,10 +9,8 @@ import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.graphics.Color
 import io.github.madmaximuus.persian.buttons.ButtonColors
 import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
-import io.github.madmaximuus.persian.foundation.PersianContentStateDisabled
-import io.github.madmaximuus.persian.foundation.elevation
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
-import io.github.madmaximuus.persian.foundation.surfaceColorAtElevation
+import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.iconButtons.IconButtonColors
 import io.github.madmaximuus.persian.iconButtons.PersianIconButtonDefaults
 
@@ -23,8 +21,7 @@ object PersianDatePickerViewDefaults {
         headerColors: DatePickerHeaderColors = headerColors(),
         datePickerGridColors: DatePickerGridColors = gridColors(),
         containerColor: Color = Color.Transparent,
-        elevatedContainerColor: Color = MaterialTheme.extendedColorScheme
-            .surfaceColorAtElevation(MaterialTheme.elevation.small),
+        elevatedContainerColor: Color = MaterialTheme.extendedColorScheme.surface1,
     ) = remember(
         headerColors,
         datePickerGridColors,
@@ -97,8 +94,7 @@ object PersianDatePickerViewDefaults {
     @Composable
     fun dayCellColors(
         cellTextColor: Color = MaterialTheme.extendedColorScheme.onSurface,
-        cellTextDisabledColor: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(PersianContentStateDisabled),
+        cellTextDisabledColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
         cellTextBetweenSelectionColor: Color = MaterialTheme.extendedColorScheme.onPrimaryContainer,
         cellTextSelectedColor: Color = MaterialTheme.extendedColorScheme.onPrimary,
 
@@ -142,8 +138,7 @@ object PersianDatePickerViewDefaults {
     @Composable
     fun monthCellColors(
         cellTextColor: Color = MaterialTheme.extendedColorScheme.onSurface,
-        cellTextDisabledColor: Color = MaterialTheme.extendedColorScheme.onSurface
-            .copy(PersianContentStateDisabled),
+        cellTextDisabledColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
         cellTextSelectedColor: Color = MaterialTheme.extendedColorScheme.onPrimary,
 
         currentDateIndicator: Color = MaterialTheme.extendedColorScheme.primary,

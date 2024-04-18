@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.window.PopupProperties
 import io.github.madmaximuus.persian.foundation.icons
+import io.github.madmaximuus.persian.foundation.shape
 import io.github.madmaximuus.persian.inputs.InputColors
 import io.github.madmaximuus.persian.inputs.PersianInputsDefaults
 import io.github.madmaximuus.persian.inputs.PersianOutlineInput
@@ -58,11 +59,11 @@ fun PersianSelect(
             trailingIcon = if (expanded.value) MaterialTheme.icons.expendLess
             else MaterialTheme.icons.expendMore,
         )
-        MaterialTheme(shapes = MaterialTheme.shapes.copy(extraSmall = MaterialTheme.shapes.large)) {
+        MaterialTheme(shapes = MaterialTheme.shapes.copy(extraSmall = MaterialTheme.shape.shape16)) {
             DropdownMenu(
                 modifier = Modifier
                     .exposedDropdownSize()
-                    .background(menuColors.backgroundColor, MaterialTheme.shapes.large),
+                    .background(menuColors.backgroundColor, MaterialTheme.shape.shape16),
                 expanded = expanded.value,
                 properties = PopupProperties(clippingEnabled = false),
                 onDismissRequest = { expanded.value = false }

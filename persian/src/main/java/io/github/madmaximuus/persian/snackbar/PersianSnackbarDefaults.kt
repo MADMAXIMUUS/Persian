@@ -8,6 +8,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import io.github.madmaximuus.persian.foundation.shape
 
 object PersianSnackbarDefaults {
 
@@ -24,7 +25,7 @@ object PersianSnackbarDefaults {
 
     @Composable
     fun sizes(
-        cornerRadius: Shape = MaterialTheme.shapes.large,
+        cornerRadius: Shape = MaterialTheme.shape.shape16,
         textStyle: TextStyle = MaterialTheme.typography.bodyMedium
     ) = remember(cornerRadius, textStyle) {
         SnackbarSizes(

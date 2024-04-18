@@ -41,6 +41,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.foundation.shape
 import io.github.madmaximuus.persian.foundation.spacing
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
 
@@ -107,11 +108,11 @@ fun PersianOutlineTextArea(
                                 isError = isError,
                                 interactionSource = interactionSource
                             ).value,
-                            shape = MaterialTheme.shapes.extraLarge
+                            shape = MaterialTheme.shape.shape16
                         )
                         .border(
                             border = border,
-                            shape = MaterialTheme.shapes.extraLarge
+                            shape = MaterialTheme.shape.shape16
                         )
                         .padding(all = MaterialTheme.spacing.medium)
                         .height(120.dp),
@@ -238,11 +239,11 @@ fun PersianPlainTextArea(
                                 isError = isError,
                                 interactionSource = interactionSource
                             ).value,
-                            shape = MaterialTheme.shapes.extraLarge
+                            shape = MaterialTheme.shape.shape16
                         )
                         .border(
                             border = border,
-                            shape = MaterialTheme.shapes.extraLarge
+                            shape = MaterialTheme.shape.shape16
                         )
                         .padding(all = MaterialTheme.spacing.medium)
                         .height(120.dp),

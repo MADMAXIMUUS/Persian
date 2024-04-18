@@ -20,6 +20,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import io.github.madmaximuus.persian.checkboxes.toggle.PersianCheckboxToggle
 import io.github.madmaximuus.persian.checkboxes.toggle.PersianTriStateCheckboxToggle
 import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.foundation.shape
 
 @Composable
 fun PersianCheckbox(
@@ -33,7 +34,7 @@ fun PersianCheckbox(
 ) {
     Row(
         modifier = modifier
-            .clip(MaterialTheme.shapes.large)
+            .clip(MaterialTheme.shape.shape16)
             .toggleable(
                 value = checked,
                 enabled = enabled,
@@ -72,7 +73,7 @@ fun PersianTriStateCheckbox(
 ) {
     Row(
         modifier = modifier
-            .clip(MaterialTheme.shapes.large)
+            .clip(MaterialTheme.shape.shape16)
             .triStateToggleable(
                 state = state,
                 enabled = enabled,

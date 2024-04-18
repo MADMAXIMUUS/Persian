@@ -12,6 +12,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import io.github.madmaximuus.persian.foundation.shape
 import io.github.madmaximuus.persian.foundation.spacing
 import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state38
@@ -80,7 +81,7 @@ object PersianButtonDefaults {
         height: Dp = 36.dp,
         loaderSize: CircularProgressBarSizes = PersianProgressBarDefaults.circularSmall(),
         iconSize: IconBoxSize = PersianIconBoxDefaults.size18(),
-        shape: Shape = MaterialTheme.shapes.medium,
+        shape: Shape = MaterialTheme.shape.shape12,
         contentPadding: PaddingValues = PaddingValues(
             horizontal = MaterialTheme.spacing.large,
             vertical = 0.dp
@@ -101,7 +102,7 @@ object PersianButtonDefaults {
         height: Dp = 44.dp,
         loaderSize: CircularProgressBarSizes = PersianProgressBarDefaults.circularMedium(),
         iconSize: IconBoxSize = PersianIconBoxDefaults.size20(),
-        shape: Shape = MaterialTheme.shapes.large,
+        shape: Shape = MaterialTheme.shape.shape14,
         contentPadding: PaddingValues = PaddingValues(
             horizontal = MaterialTheme.spacing.extraLarge,
             vertical = 0.dp
@@ -123,7 +124,7 @@ object PersianButtonDefaults {
         height: Dp = 52.dp,
         loaderSize: CircularProgressBarSizes = PersianProgressBarDefaults.circularLarge(),
         iconSize: IconBoxSize = PersianIconBoxDefaults.size28(),
-        shape: Shape = MaterialTheme.shapes.large,
+        shape: Shape = MaterialTheme.shape.shape16,
         contentPadding: PaddingValues = PaddingValues(
             horizontal = MaterialTheme.spacing.extraExtraLarge,
             vertical = 0.dp

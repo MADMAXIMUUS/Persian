@@ -43,6 +43,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.BaselineShift
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import io.github.madmaximuus.persian.foundation.shape
 import io.github.madmaximuus.persian.foundation.spacing
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
 
@@ -112,11 +113,11 @@ fun PersianOutlineInput(
                                 isError = isError,
                                 interactionSource = interactionSource
                             ).value,
-                            shape = MaterialTheme.shapes.large
+                            shape = MaterialTheme.shape.shape16
                         )
                         .border(
                             border = border,
-                            shape = MaterialTheme.shapes.large
+                            shape = MaterialTheme.shape.shape16
                         )
                         .height(52.dp)
                         .padding(horizontal = MaterialTheme.spacing.medium),
@@ -186,7 +187,7 @@ fun PersianOutlineInput(
                         ) {
                             PersianIconBox(
                                 modifier = Modifier
-                                    .clip(MaterialTheme.shapes.small)
+                                    .clip(MaterialTheme.shape.shape8)
                                     .clickable(
                                         enabled = onTrailingIconClick != null,
                                         onClick = {
@@ -278,11 +279,11 @@ fun PersianPlainInput(
                                 isError = isError,
                                 interactionSource = interactionSource
                             ).value,
-                            shape = MaterialTheme.shapes.large
+                            shape = MaterialTheme.shape.shape16
                         )
                         .border(
                             border = BorderStroke(width = 0.dp, Color.Transparent),
-                            shape = MaterialTheme.shapes.large
+                            shape = MaterialTheme.shape.shape16
                         )
                         .height(52.dp)
                         .padding(horizontal = MaterialTheme.spacing.medium),
@@ -352,7 +353,7 @@ fun PersianPlainInput(
                         ) {
                             PersianIconBox(
                                 modifier = Modifier
-                                    .clip(MaterialTheme.shapes.small)
+                                    .clip(MaterialTheme.shape.shape8)
                                     .clickable(
                                         enabled = onTrailingIconClick != null,
                                         onClick = {

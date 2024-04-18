@@ -34,6 +34,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.icons
+import io.github.madmaximuus.persian.foundation.shape
 import io.github.madmaximuus.persian.foundation.spacing
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
 import io.github.madmaximuus.persian.iconButtons.PersianIconButtonDefaults
@@ -116,7 +117,7 @@ fun PersianSearch(
                                     enabled = enabled,
                                     interactionSource = interactionSource
                                 ).value,
-                                shape = MaterialTheme.shapes.large
+                                shape = MaterialTheme.shape.shape16
                             )
                             .padding(all = MaterialTheme.spacing.medium)
                             .height(24.dp),

@@ -27,6 +27,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import io.github.madmaximuus.persian.foundation.shape
 import io.github.madmaximuus.persian.foundation.spacing
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
 
@@ -163,7 +164,7 @@ internal fun PersianTabItemIndicator(
             .padding(horizontal = MaterialTheme.spacing.extraExtraLarge)
             .fillMaxWidth()
             .height(3.dp)
-            .background(color = tabIndicatorColor, shape = MaterialTheme.shapes.extraLarge)
+            .background(color = tabIndicatorColor, shape = MaterialTheme.shape.shape20)
     )
 }
 

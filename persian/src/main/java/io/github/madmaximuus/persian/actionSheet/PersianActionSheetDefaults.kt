@@ -8,11 +8,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.takeOrElse
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import io.github.madmaximuus.persian.foundation.shape
 import io.github.madmaximuus.persian.foundation.state38
 
 object PersianActionSheetDefaults {
 
-    val shape: Shape @Composable get() = MaterialTheme.shapes.large
+    val shape: Shape @Composable get() = MaterialTheme.shape.shape16
 
     @Composable
     fun colors(
