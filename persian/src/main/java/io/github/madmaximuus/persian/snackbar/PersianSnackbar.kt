@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarVisuals
@@ -40,6 +41,7 @@ fun PersianSnackbar(
 
     Surface(
         modifier = Modifier
+            .widthIn(max = 500.dp)
             .fillMaxWidth()
             .heightIn(min = 52.dp)
             .padding(PaddingValues(horizontal = spacingLarge, vertical = 70.dp)),
