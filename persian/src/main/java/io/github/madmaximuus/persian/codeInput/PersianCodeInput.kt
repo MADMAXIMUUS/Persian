@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
@@ -16,6 +17,7 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.input.key.key
 import androidx.compose.ui.input.key.onKeyEvent
+import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.codeInput.cell.PersianCodeInputCell
@@ -101,7 +103,7 @@ fun PersianSixDigitCodeInput(
 
     Row(
         modifier = modifier,
-        horizontalArrangement = Arrangement.SpaceEvenly
+        horizontalArrangement = Arrangement.SpaceBetween
     ) {
         repeat(6) { index ->
             PersianCodeInputCell(
@@ -140,51 +142,16 @@ private fun nextFocus(
     }
 }
 
-@Preview
+@Preview(showBackground = true, showSystemUi = true)
+@Preview(uiMode = UI_MODE_NIGHT_YES, showBackground = true, showSystemUi = true)
+@Preview(device = Devices.TABLET, showBackground = true, showSystemUi = true)
+@Preview(device = Devices.TABLET, uiMode = UI_MODE_NIGHT_YES, showBackground = true, showSystemUi = true)
 @Composable
 fun CodeInputPreview() {
     PersianTheme {
-        Surface {
-            Column(
-                modifier = Modifier
-                    .padding(10.dp)
-            ) {
-                PersianFourDigitCodeInput(
-                    values = listOf(
-                        "1",
-                        "2",
-                        "3",
-                        "4"
-                    ),
-                    onValueChange = { _, _ ->
-
-                    }
-                )
-                Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraSmall))
-                PersianSixDigitCodeInput(
-                    values = listOf(
-                        "1",
-                        "2",
-                        "3",
-                        "4",
-                        "5",
-                        "6"
-                    ),
-                    onValueChange = { _, _ ->
-
-                    }
-                )
-            }
-
-        }
-    }
-}
-
-@Preview(uiMode = UI_MODE_NIGHT_YES)
-@Composable
-fun CodeInputDarkPreview() {
-    PersianTheme {
-        Surface {
+        Surface(
+            modifier = Modifier.fillMaxSize()
+        ) {
             Column(
                 modifier = Modifier
                     .padding(10.dp)
