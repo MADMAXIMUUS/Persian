@@ -29,7 +29,7 @@ object PersianNavigationBarDefault {
     @Composable
     fun sizes(
         itemCounts: Int = 4,
-        textStyle: TextStyle = MaterialTheme.typography.bodyLarge,
+        textStyle: TextStyle = MaterialTheme.typography.labelMedium,
         paddingValues: PaddingValues = PaddingValues(
             horizontal = MaterialTheme.spacing.small,
             vertical = MaterialTheme.spacing.extraSmall
