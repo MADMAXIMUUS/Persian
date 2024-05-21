@@ -1,6 +1,6 @@
 package io.github.madmaximuus.persianIcons.foundation
 
-object PersianIcons {
+object PersianSymbols {
     object Default
 
     object Filled
