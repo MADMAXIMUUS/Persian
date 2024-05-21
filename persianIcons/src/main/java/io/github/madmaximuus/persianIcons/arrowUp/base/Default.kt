@@ -1,13 +1,12 @@
-package io.github.madmaximuus.persianIcons.arrowUpward
+package io.github.madmaximuus.persianIcons.arrowUp.base
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
-import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.StrokeCap
@@ -16,13 +15,15 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import io.github.madmaximuus.persianIcons.foundation.PersianSymbols
 
-@Composable
-fun arrowUpwardDefault(): ImageVector {
-    val color = LocalContentColor.current
-    return remember {
-        ImageVector.Builder(
-            name = "arrow-upward-default",
+val PersianSymbols.Default.ArrowUp: ImageVector
+    get() {
+        if (arrowUp != null) {
+            return arrowUp!!
+        }
+        arrowUp = ImageVector.Builder(
+            name = "arrow-up-default",
             defaultWidth = 24.dp,
             defaultHeight = 24.dp,
             viewportWidth = 24f,
@@ -31,7 +32,7 @@ fun arrowUpwardDefault(): ImageVector {
             path(
                 fill = null,
                 fillAlpha = 1.0f,
-                stroke = SolidColor(color),
+                stroke = SolidColor(Color(0xFF000000)),
                 strokeAlpha = 1.0f,
                 strokeLineWidth = 2f,
                 strokeLineCap = StrokeCap.Round,
@@ -47,8 +48,10 @@ fun arrowUpwardDefault(): ImageVector {
                 lineTo(12f, 19.4222f)
             }
         }.build()
+        return arrowUp!!
     }
-}
+
+private var arrowUp: ImageVector? = null
 
 @Preview
 @Composable
@@ -57,7 +60,7 @@ private fun IconPreview() {
         Surface {
             Icon(
                 modifier = Modifier.size(100.dp),
-                imageVector = arrowUpwardDefault(),
+                imageVector = PersianSymbols.Default.ArrowUp,
                 contentDescription = ""
             )
         }

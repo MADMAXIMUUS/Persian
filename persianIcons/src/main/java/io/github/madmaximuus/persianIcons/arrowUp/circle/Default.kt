@@ -1,13 +1,12 @@
-package io.github.madmaximuus.persianIcons.arrowCircleUp
+package io.github.madmaximuus.persianIcons.arrowUp.circle
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
-import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.StrokeCap
@@ -16,20 +15,22 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import io.github.madmaximuus.persianIcons.foundation.PersianSymbols
 
-@Composable
-fun arrowCircleUpDefault(): ImageVector {
-    val color = LocalContentColor.current
-    return remember {
-        ImageVector.Builder(
-            name = "arrow-circle-up-default",
+val PersianSymbols.Default.ArrowUpCircle: ImageVector
+    get() {
+        if (arrowUpCircle != null) {
+            return arrowUpCircle!!
+        }
+        arrowUpCircle = ImageVector.Builder(
+            name = "arrow-up-circle-default",
             defaultWidth = 24.dp,
             defaultHeight = 24.dp,
             viewportWidth = 24f,
             viewportHeight = 24f
         ).apply {
             path(
-                fill = SolidColor(color),
+                fill = SolidColor(Color(0xFF000000)),
                 fillAlpha = 1.0f,
                 stroke = null,
                 strokeAlpha = 1.0f,
@@ -58,7 +59,7 @@ fun arrowCircleUpDefault(): ImageVector {
                 close()
             }
             path(
-                fill = SolidColor(color),
+                fill = SolidColor(Color(0xFF000000)),
                 fillAlpha = 1.0f,
                 stroke = null,
                 strokeAlpha = 1.0f,
@@ -82,8 +83,10 @@ fun arrowCircleUpDefault(): ImageVector {
                 close()
             }
         }.build()
+        return arrowUpCircle!!
     }
-}
+
+private var arrowUpCircle: ImageVector? = null
 
 @Preview
 @Composable
@@ -92,7 +95,7 @@ private fun IconPreview() {
         Surface {
             Icon(
                 modifier = Modifier.size(100.dp),
-                imageVector = arrowCircleUpDefault(),
+                imageVector = PersianSymbols.Default.ArrowUpCircle,
                 contentDescription = ""
             )
         }
