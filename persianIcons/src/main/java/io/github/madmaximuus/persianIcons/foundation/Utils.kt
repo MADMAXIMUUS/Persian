@@ -5,6 +5,8 @@ import io.github.madmaximuus.persianIcons.add.base.Add
 import io.github.madmaximuus.persianIcons.add.box.AddBox
 import io.github.madmaximuus.persianIcons.add.circle.AddCircle
 import io.github.madmaximuus.persianIcons.apps.Apps
+import io.github.madmaximuus.persianIcons.arrowDown.base.ArrowDown
+import io.github.madmaximuus.persianIcons.arrowDown.circle.ArrowDownCircle
 import io.github.madmaximuus.persianIcons.arrowLeft.base.ArrowLeft
 import io.github.madmaximuus.persianIcons.arrowLeft.circle.ArrowLeftCircle
 import io.github.madmaximuus.persianIcons.arrowRight.circle.ArrowRightCircle
@@ -21,13 +23,15 @@ fun PersianSymbols.Default.getAllIcons(): List<ImageVector> {
         ArrowLeftCircle,
         ArrowRightCircle,
         ArrowUp,
-        ArrowUpCircle
+        ArrowUpCircle,
+        ArrowDown,
+        ArrowDownCircle
     )
 }
 
 fun PersianSymbols.Filled.getAllIcons(): List<ImageVector> {
     return listOf(
-        AddBox, AddCircle, ArrowLeftCircle, ArrowRightCircle, ArrowUpCircle
+        AddBox, AddCircle, ArrowLeftCircle, ArrowRightCircle, ArrowUpCircle, ArrowDownCircle
     )
 }
 
