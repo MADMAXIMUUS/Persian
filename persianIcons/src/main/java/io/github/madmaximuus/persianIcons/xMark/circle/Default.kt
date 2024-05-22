@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persianIcons.xmark.circle
+package io.github.madmaximuus.persianIcons.xMark.circle
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon

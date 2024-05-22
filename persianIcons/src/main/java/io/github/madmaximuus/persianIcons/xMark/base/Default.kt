@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persianIcons.xmark.circle
+package io.github.madmaximuus.persianIcons.xMark.base
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
@@ -17,13 +17,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianIcons.foundation.PersianSymbols
 
-public val PersianSymbols.Filled.XMarkCircle: ImageVector
+val PersianSymbols.Default.XMark: ImageVector
     get() {
-        if (xMarkCircle != null) {
-            return xMarkCircle!!
+        if (xMark != null) {
+            return xMark!!
         }
-        xMarkCircle = ImageVector.Builder(
-            name = "xMark-circle-filled",
+        xMark = ImageVector.Builder(
+            name = "xMark-default",
             defaultWidth = 24.dp,
             defaultHeight = 24.dp,
             viewportWidth = 24f,
@@ -38,38 +38,32 @@ public val PersianSymbols.Filled.XMarkCircle: ImageVector
                 strokeLineCap = StrokeCap.Butt,
                 strokeLineJoin = StrokeJoin.Miter,
                 strokeLineMiter = 1.0f,
-                pathFillType = PathFillType.EvenOdd
+                pathFillType = PathFillType.NonZero
             ) {
-                moveTo(12f, 22f)
-                curveTo(17.5228f, 22f, 22f, 17.5228f, 22f, 12f)
-                curveTo(22f, 6.4771f, 17.5228f, 2f, 12f, 2f)
-                curveTo(6.4771f, 2f, 2f, 6.4771f, 2f, 12f)
-                curveTo(2f, 17.5228f, 6.4771f, 22f, 12f, 22f)
-                close()
-                moveTo(9.70711f, 8.29289f)
-                curveTo(9.3166f, 7.9024f, 8.6834f, 7.9024f, 8.2929f, 8.2929f)
-                curveTo(7.9024f, 8.6834f, 7.9024f, 9.3166f, 8.2929f, 9.7071f)
-                lineTo(10.5858f, 12f)
-                lineTo(8.29289f, 14.2929f)
-                curveTo(7.9024f, 14.6834f, 7.9024f, 15.3166f, 8.2929f, 15.7071f)
-                curveTo(8.6834f, 16.0976f, 9.3166f, 16.0976f, 9.7071f, 15.7071f)
+                moveTo(4.92541f, 17.6604f)
+                curveTo(4.5349f, 18.0509f, 4.5365f, 18.6825f, 4.9289f, 19.0711f)
+                curveTo(5.3214f, 19.4596f, 5.9562f, 19.4581f, 6.3467f, 19.0675f)
                 lineTo(12f, 13.4142f)
-                lineTo(14.2929f, 15.7071f)
-                curveTo(14.6834f, 16.0976f, 15.3166f, 16.0976f, 15.7071f, 15.7071f)
-                curveTo(16.0976f, 15.3166f, 16.0976f, 14.6834f, 15.7071f, 14.2929f)
+                lineTo(17.6533f, 19.0675f)
+                curveTo(18.0439f, 19.4581f, 18.6786f, 19.4597f, 19.0711f, 19.0711f)
+                curveTo(19.4635f, 18.6825f, 19.4651f, 18.0509f, 19.0746f, 17.6604f)
                 lineTo(13.4142f, 12f)
-                lineTo(15.7071f, 9.70711f)
-                curveTo(16.0976f, 9.3166f, 16.0976f, 8.6834f, 15.7071f, 8.2929f)
-                curveTo(15.3166f, 7.9024f, 14.6834f, 7.9024f, 14.2929f, 8.2929f)
+                lineTo(19.0746f, 6.3396f)
+                curveTo(19.4651f, 5.9491f, 19.4635f, 5.3175f, 19.0711f, 4.9289f)
+                curveTo(18.6786f, 4.5404f, 18.0439f, 4.542f, 17.6533f, 4.9325f)
                 lineTo(12f, 10.5858f)
-                lineTo(9.70711f, 8.29289f)
+                lineTo(6.34668f, 4.9325f)
+                curveTo(5.9562f, 4.542f, 5.3214f, 4.5404f, 4.9289f, 4.929f)
+                curveTo(4.5365f, 5.3175f, 4.5349f, 5.9491f, 4.9254f, 6.3396f)
+                lineTo(10.5858f, 12f)
+                lineTo(4.92541f, 17.6604f)
                 close()
             }
         }.build()
-        return xMarkCircle!!
+        return xMark!!
     }
 
-private var xMarkCircle: ImageVector? = null
+private var xMark: ImageVector? = null
 
 @Preview
 @Composable
@@ -78,7 +72,7 @@ private fun IconPreview() {
         Surface {
             Icon(
                 modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Filled.XMarkCircle,
+                imageVector = PersianSymbols.Default.XMark,
                 contentDescription = ""
             )
         }
