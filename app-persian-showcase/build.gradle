@@ -58,4 +58,5 @@ dependencies {
 
     implementation libs.compose.navigation
     api project(':persian')
+    api project(':persianIcons')
 }

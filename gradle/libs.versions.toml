@@ -1,18 +1,13 @@
 [versions]
-coreKtx = "1.12.0"
+coreKtx = "1.13.1"
 kotlinGradlePlugin = "1.9.23"
 navigation = "2.7.7"
-compose = "1.6.5"
-activityCompose = "1.8.2"
+compose = "1.6.7"
+activityCompose = "1.9.0"
 material3 = "1.2.1"
 glide = "1.0.0-beta01"
 splash = "1.0.1"
 agp = "8.3.2"
-kotlin = "1.9.21"
-junit = "4.13.2"
-junitVersion = "1.1.5"
-espressoCore = "3.5.1"
-appcompat = "1.6.1"
 nexus = "1.1.0"
 dokka = "1.9.0"
 
@@ -29,10 +24,6 @@ compose-ui-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview
 ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling", version.ref = "compose" }
 glide = { group = "com.github.bumptech.glide", name = "compose", version.ref = "glide" }
 splash = { group = "androidx.core", name = "core-splashscreen", version.ref = "splash" }
-junit = { group = "junit", name = "junit", version.ref = "junit" }
-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
