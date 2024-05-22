@@ -23,7 +23,7 @@ val PersianSymbols.Default.Bars: ImageVector
             return bars!!
         }
         bars = ImageVector.Builder(
-            name = "menu-default",
+            name = "bars-default",
             defaultWidth = 24.dp,
             defaultHeight = 24.dp,
             viewportWidth = 24f,
@@ -40,13 +40,13 @@ val PersianSymbols.Default.Bars: ImageVector
                 strokeLineMiter = 1.0f,
                 pathFillType = PathFillType.NonZero
             ) {
-                moveTo(3.99994f, 5.99988f)
-                curveTo(3.4476f, 5.9999f, 2.9999f, 6.4476f, 2.9999f, 6.9999f)
-                curveTo(2.9999f, 7.5522f, 3.4476f, 7.9999f, 3.9999f, 7.9999f)
-                horizontalLineTo(19.9999f)
-                curveTo(20.5522f, 7.9999f, 20.9999f, 7.5522f, 20.9999f, 6.9999f)
-                curveTo(20.9999f, 6.4476f, 20.5522f, 5.9999f, 19.9999f, 5.9999f)
-                horizontalLineTo(3.99994f)
+                moveTo(4.88968f, 6f)
+                curveTo(4.3988f, 6f, 4.0008f, 6.4477f, 4.0008f, 7f)
+                curveTo(4.0008f, 7.5523f, 4.3988f, 8f, 4.8897f, 8f)
+                horizontalLineTo(19.1111f)
+                curveTo(19.602f, 8f, 19.9999f, 7.5523f, 19.9999f, 7f)
+                curveTo(19.9999f, 6.4477f, 19.602f, 6f, 19.1111f, 6f)
+                horizontalLineTo(4.88968f)
                 close()
             }
             path(
@@ -60,13 +60,13 @@ val PersianSymbols.Default.Bars: ImageVector
                 strokeLineMiter = 1.0f,
                 pathFillType = PathFillType.NonZero
             ) {
-                moveTo(2.99899f, 12f)
-                curveTo(2.999f, 11.4477f, 3.4467f, 11f, 3.999f, 11f)
-                horizontalLineTo(19.9989f)
-                curveTo(20.5512f, 11f, 20.9989f, 11.4477f, 20.9989f, 12f)
-                curveTo(20.9989f, 12.5523f, 20.5512f, 13f, 19.9989f, 13f)
-                horizontalLineTo(3.99899f)
-                curveTo(3.4467f, 13f, 2.999f, 12.5523f, 2.999f, 12f)
+                moveTo(4f, 12.0001f)
+                curveTo(4f, 11.4478f, 4.3979f, 11.0001f, 4.8888f, 11.0001f)
+                horizontalLineTo(19.1102f)
+                curveTo(19.6011f, 11.0001f, 19.9991f, 11.4478f, 19.9991f, 12.0001f)
+                curveTo(19.9991f, 12.5524f, 19.6011f, 13.0001f, 19.1102f, 13.0001f)
+                horizontalLineTo(4.88884f)
+                curveTo(4.3979f, 13.0001f, 4f, 12.5524f, 4f, 12.0001f)
                 close()
             }
             path(
@@ -80,13 +80,13 @@ val PersianSymbols.Default.Bars: ImageVector
                 strokeLineMiter = 1.0f,
                 pathFillType = PathFillType.NonZero
             ) {
-                moveTo(3.00005f, 16.9999f)
-                curveTo(3f, 16.4476f, 3.4478f, 15.9999f, 4f, 15.9999f)
-                horizontalLineTo(20f)
-                curveTo(20.5523f, 15.9999f, 21f, 16.4476f, 21f, 16.9999f)
-                curveTo(21f, 17.5522f, 20.5523f, 17.9999f, 20f, 17.9999f)
-                horizontalLineTo(4.00005f)
-                curveTo(3.4478f, 17.9999f, 3f, 17.5522f, 3f, 16.9999f)
+                moveTo(4.00094f, 17f)
+                curveTo(4.0009f, 16.4477f, 4.3989f, 16f, 4.8898f, 16f)
+                horizontalLineTo(19.1112f)
+                curveTo(19.6021f, 16f, 20f, 16.4477f, 20f, 17f)
+                curveTo(20f, 17.5523f, 19.6021f, 18f, 19.1112f, 18f)
+                horizontalLineTo(4.88977f)
+                curveTo(4.3989f, 18f, 4.0009f, 17.5523f, 4.0009f, 17f)
                 close()
             }
         }.build()
