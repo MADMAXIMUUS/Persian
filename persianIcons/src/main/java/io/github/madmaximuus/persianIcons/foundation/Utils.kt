@@ -13,6 +13,7 @@ import io.github.madmaximuus.persianIcons.arrowRight.circle.ArrowRightCircle
 import io.github.madmaximuus.persianIcons.arrowUp.base.ArrowUp
 import io.github.madmaximuus.persianIcons.arrowUp.circle.ArrowUpCircle
 import io.github.madmaximuus.persianIcons.home.Home
+import io.github.madmaximuus.persianIcons.menu.Menu
 import io.github.madmaximuus.persianIcons.search.Search
 
 fun PersianSymbols.Default.getAllIcons(): List<ImageVector> {
@@ -29,7 +30,8 @@ fun PersianSymbols.Default.getAllIcons(): List<ImageVector> {
         ArrowDown,
         ArrowDownCircle,
         Search,
-        Home
+        Home,
+        Menu
     ).sortedBy { it::class.simpleName }
 }
 
