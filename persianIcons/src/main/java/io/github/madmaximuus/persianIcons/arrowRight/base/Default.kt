@@ -51,7 +51,6 @@ val PersianSymbols.Default.ArrowRight: ImageVector
         return arrowRight!!
     }
 
-
 private var arrowRight: ImageVector? = null
 
 @Preview
