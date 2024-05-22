@@ -1,13 +1,12 @@
-package io.github.madmaximuus.persianIcons.close
+package io.github.madmaximuus.persianIcons.xmark.base
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
-import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.StrokeCap
@@ -16,12 +15,14 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import io.github.madmaximuus.persianIcons.foundation.PersianSymbols
 
-@Composable
-fun closeDefault(): ImageVector {
-    val color = LocalContentColor.current
-    return remember {
-        ImageVector.Builder(
+val PersianSymbols.Default.XMark: ImageVector
+    get() {
+        if (xMark != null) {
+            return xMark!!
+        }
+        xMark = ImageVector.Builder(
             name = "close-default",
             defaultWidth = 24.dp,
             defaultHeight = 24.dp,
@@ -29,7 +30,7 @@ fun closeDefault(): ImageVector {
             viewportHeight = 24f
         ).apply {
             path(
-                fill = SolidColor(color),
+                fill = SolidColor(Color(0xFF000000)),
                 fillAlpha = 1.0f,
                 stroke = null,
                 strokeAlpha = 1.0f,
@@ -59,8 +60,10 @@ fun closeDefault(): ImageVector {
                 close()
             }
         }.build()
+        return xMark!!
     }
-}
+
+private var xMark: ImageVector? = null
 
 @Preview
 @Composable
@@ -69,7 +72,7 @@ private fun IconPreview() {
         Surface {
             Icon(
                 modifier = Modifier.size(100.dp),
-                imageVector = closeDefault(),
+                imageVector = PersianSymbols.Default.XMark,
                 contentDescription = ""
             )
         }
