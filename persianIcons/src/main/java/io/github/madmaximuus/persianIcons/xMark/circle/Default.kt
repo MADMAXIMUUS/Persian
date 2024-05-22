@@ -17,7 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianIcons.foundation.PersianSymbols
 
-public val PersianSymbols.Default.XMarkCircle: ImageVector
+val PersianSymbols.Default.XMarkCircle: ImageVector
     get() {
         if (xMarkCircle != null) {
             return xMarkCircle!!
