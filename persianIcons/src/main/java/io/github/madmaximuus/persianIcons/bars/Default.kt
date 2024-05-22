@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persianIcons.menu
+package io.github.madmaximuus.persianIcons.bars
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
@@ -17,12 +17,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianIcons.foundation.PersianSymbols
 
-val PersianSymbols.Default.Menu: ImageVector
+val PersianSymbols.Default.Bars: ImageVector
     get() {
-        if (menu != null) {
-            return menu!!
+        if (bars != null) {
+            return bars!!
         }
-        menu = ImageVector.Builder(
+        bars = ImageVector.Builder(
             name = "menu-default",
             defaultWidth = 24.dp,
             defaultHeight = 24.dp,
@@ -90,10 +90,10 @@ val PersianSymbols.Default.Menu: ImageVector
                 close()
             }
         }.build()
-        return menu!!
+        return bars!!
     }
 
-private var menu: ImageVector? = null
+private var bars: ImageVector? = null
 
 @Preview
 @Composable
@@ -102,7 +102,7 @@ private fun IconPreview() {
         Surface {
             Icon(
                 modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Default.Menu,
+                imageVector = PersianSymbols.Default.Bars,
                 contentDescription = ""
             )
         }

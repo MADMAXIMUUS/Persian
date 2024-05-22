@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persianIcons.add.base
+package io.github.madmaximuus.persianIcons.plus.base
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
@@ -17,12 +17,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianIcons.foundation.PersianSymbols
 
-val PersianSymbols.Default.Add: ImageVector
+val PersianSymbols.Default.Plus: ImageVector
     get() {
-        if (add != null) {
-            return add!!
+        if (plus != null) {
+            return plus!!
         }
-        add = ImageVector.Builder(
+        plus = ImageVector.Builder(
             name = "add-default",
             defaultWidth = 24.dp,
             defaultHeight = 24.dp,
@@ -60,10 +60,10 @@ val PersianSymbols.Default.Add: ImageVector
                 close()
             }
         }.build()
-        return add!!
+        return plus!!
     }
 
-private var add: ImageVector? = null
+private var plus: ImageVector? = null
 
 @Preview
 @Composable
@@ -72,7 +72,7 @@ private fun IconPreview() {
         Surface {
             Icon(
                 modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Default.Add,
+                imageVector = PersianSymbols.Default.Plus,
                 contentDescription = ""
             )
         }

@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persianIcons.apps
+package io.github.madmaximuus.persianIcons.ellipsisGrid
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
@@ -17,12 +17,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianIcons.foundation.PersianSymbols
 
-val PersianSymbols.Default.Apps: ImageVector
+val PersianSymbols.Default.EllipsisGrid: ImageVector
     get() {
-        if (apps != null) {
-            return apps!!
+        if (ellipsisGrid != null) {
+            return ellipsisGrid!!
         }
-        apps = ImageVector.Builder(
+        ellipsisGrid = ImageVector.Builder(
             name = "apps-default",
             defaultWidth = 24.dp,
             defaultHeight = 24.dp,
@@ -192,10 +192,10 @@ val PersianSymbols.Default.Apps: ImageVector
                 close()
             }
         }.build()
-        return apps!!
+        return ellipsisGrid!!
     }
 
-private var apps: ImageVector? = null
+private var ellipsisGrid: ImageVector? = null
 
 @Preview
 @Composable
@@ -204,7 +204,7 @@ private fun IconPreview() {
         Surface {
             Icon(
                 modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Default.Apps,
+                imageVector = PersianSymbols.Default.EllipsisGrid,
                 contentDescription = ""
             )
         }

@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persianIcons.search
+package io.github.madmaximuus.persianIcons.magnifyingGlass
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
@@ -18,12 +18,12 @@ import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianIcons.foundation.PersianSymbols
 
 
-val PersianSymbols.Default.Search: ImageVector
+val PersianSymbols.Default.MagnifyingGlass: ImageVector
     get() {
-        if (search != null) {
-            return search!!
+        if (magnifyingGlass != null) {
+            return magnifyingGlass!!
         }
-        search = ImageVector.Builder(
+        magnifyingGlass = ImageVector.Builder(
             name = "search-default",
             defaultWidth = 24.dp,
             defaultHeight = 24.dp,
@@ -60,10 +60,10 @@ val PersianSymbols.Default.Search: ImageVector
                 close()
             }
         }.build()
-        return search!!
+        return magnifyingGlass!!
     }
 
-private var search: ImageVector? = null
+private var magnifyingGlass: ImageVector? = null
 
 @Preview
 @Composable
@@ -72,7 +72,7 @@ private fun IconPreview() {
         Surface {
             Icon(
                 modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Default.Search,
+                imageVector = PersianSymbols.Default.MagnifyingGlass,
                 contentDescription = ""
             )
         }

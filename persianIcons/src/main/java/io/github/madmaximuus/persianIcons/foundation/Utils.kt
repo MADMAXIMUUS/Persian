@@ -1,10 +1,6 @@
 package io.github.madmaximuus.persianIcons.foundation
 
 import androidx.compose.ui.graphics.vector.ImageVector
-import io.github.madmaximuus.persianIcons.add.base.Add
-import io.github.madmaximuus.persianIcons.add.box.AddBox
-import io.github.madmaximuus.persianIcons.add.circle.AddCircle
-import io.github.madmaximuus.persianIcons.apps.Apps
 import io.github.madmaximuus.persianIcons.arrowDown.base.ArrowDown
 import io.github.madmaximuus.persianIcons.arrowDown.circle.ArrowDownCircle
 import io.github.madmaximuus.persianIcons.arrowLeft.base.ArrowLeft
@@ -12,32 +8,44 @@ import io.github.madmaximuus.persianIcons.arrowLeft.circle.ArrowLeftCircle
 import io.github.madmaximuus.persianIcons.arrowRight.circle.ArrowRightCircle
 import io.github.madmaximuus.persianIcons.arrowUp.base.ArrowUp
 import io.github.madmaximuus.persianIcons.arrowUp.circle.ArrowUpCircle
-import io.github.madmaximuus.persianIcons.home.Home
-import io.github.madmaximuus.persianIcons.menu.Menu
-import io.github.madmaximuus.persianIcons.search.Search
+import io.github.madmaximuus.persianIcons.bars.Bars
+import io.github.madmaximuus.persianIcons.ellipsisGrid.EllipsisGrid
+import io.github.madmaximuus.persianIcons.house.House
+import io.github.madmaximuus.persianIcons.magnifyingGlass.MagnifyingGlass
+import io.github.madmaximuus.persianIcons.plus.base.Plus
+import io.github.madmaximuus.persianIcons.plus.box.PlusBox
+import io.github.madmaximuus.persianIcons.plus.circle.PlusCircle
+import io.github.madmaximuus.persianIcons.xmark.base.XMark
 
 fun PersianSymbols.Default.getAllIcons(): List<ImageVector> {
     return listOf(
-        Add,
-        AddBox,
-        AddCircle,
-        Apps,
-        ArrowLeft,
-        ArrowLeftCircle,
-        ArrowRightCircle,
-        ArrowUp,
-        ArrowUpCircle,
-        ArrowDown,
-        ArrowDownCircle,
-        Search,
-        Home,
-        Menu
+        PersianSymbols.Default.Plus,
+        PersianSymbols.Default.PlusBox,
+        PersianSymbols.Default.PlusCircle,
+        PersianSymbols.Default.EllipsisGrid,
+        PersianSymbols.Default.ArrowLeft,
+        PersianSymbols.Default.ArrowLeftCircle,
+        PersianSymbols.Default.ArrowRightCircle,
+        PersianSymbols.Default.ArrowUp,
+        PersianSymbols.Default.ArrowUpCircle,
+        PersianSymbols.Default.ArrowDown,
+        PersianSymbols.Default.ArrowDownCircle,
+        PersianSymbols.Default.MagnifyingGlass,
+        PersianSymbols.Default.House,
+        PersianSymbols.Default.Bars,
+        PersianSymbols.Default.XMark
     ).sortedBy { it::class.simpleName }
 }
 
 fun PersianSymbols.Filled.getAllIcons(): List<ImageVector> {
     return listOf(
-        AddBox, AddCircle, ArrowLeftCircle, ArrowRightCircle, ArrowUpCircle, ArrowDownCircle, Home
+        PersianSymbols.Filled.PlusBox,
+        PersianSymbols.Filled.PlusCircle,
+        PersianSymbols.Filled.ArrowLeftCircle,
+        PersianSymbols.Filled.ArrowRightCircle,
+        PersianSymbols.Filled.ArrowUpCircle,
+        PersianSymbols.Filled.ArrowDownCircle,
+        PersianSymbols.Filled.House
     ).sortedBy { it::class.simpleName }
 }
 
