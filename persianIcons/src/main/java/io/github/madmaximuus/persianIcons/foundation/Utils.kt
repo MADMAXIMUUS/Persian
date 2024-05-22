@@ -12,6 +12,7 @@ import io.github.madmaximuus.persianIcons.bars.Bars
 import io.github.madmaximuus.persianIcons.check.base.Check
 import io.github.madmaximuus.persianIcons.check.circle.CheckCircle
 import io.github.madmaximuus.persianIcons.chevronDown.base.ChevronDown
+import io.github.madmaximuus.persianIcons.chevronRight.base.ChevronRight
 import io.github.madmaximuus.persianIcons.ellipsisGrid.EllipsisGrid
 import io.github.madmaximuus.persianIcons.gear.Gear
 import io.github.madmaximuus.persianIcons.heart.Heart
@@ -22,8 +23,8 @@ import io.github.madmaximuus.persianIcons.plus.box.PlusBox
 import io.github.madmaximuus.persianIcons.plus.circle.PlusCircle
 import io.github.madmaximuus.persianIcons.star.Star
 import io.github.madmaximuus.persianIcons.trash.base.Trash
-import io.github.madmaximuus.persianIcons.xMark.base.XMark
-import io.github.madmaximuus.persianIcons.xMark.circle.XMarkCircle
+import io.github.madmaximuus.persianIcons.xmark.base.XMark
+import io.github.madmaximuus.persianIcons.xmark.circle.XMarkCircle
 
 fun PersianSymbols.Default.getAllIcons(): List<ImageVector> {
     return listOf(
@@ -50,6 +51,7 @@ fun PersianSymbols.Default.getAllIcons(): List<ImageVector> {
         PersianSymbols.Default.Trash,
         PersianSymbols.Default.ChevronDown,
         PersianSymbols.Default.Star,
+        PersianSymbols.Default.ChevronRight,
     ).sortedBy { it::class.simpleName }
 }
 
