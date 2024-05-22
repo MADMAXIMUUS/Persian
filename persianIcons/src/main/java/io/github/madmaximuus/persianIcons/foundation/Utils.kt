@@ -11,6 +11,7 @@ import io.github.madmaximuus.persianIcons.arrowUp.circle.ArrowUpCircle
 import io.github.madmaximuus.persianIcons.bars.Bars
 import io.github.madmaximuus.persianIcons.check.base.Check
 import io.github.madmaximuus.persianIcons.check.circle.CheckCircle
+import io.github.madmaximuus.persianIcons.chevronDown.base.ChevronDown
 import io.github.madmaximuus.persianIcons.ellipsisGrid.EllipsisGrid
 import io.github.madmaximuus.persianIcons.gear.Gear
 import io.github.madmaximuus.persianIcons.heart.Heart
@@ -46,6 +47,7 @@ fun PersianSymbols.Default.getAllIcons(): List<ImageVector> {
         PersianSymbols.Default.CheckCircle,
         PersianSymbols.Default.Heart,
         PersianSymbols.Default.Trash,
+        PersianSymbols.Default.ChevronDown,
     ).sortedBy { it::class.simpleName }
 }
 
