@@ -3,6 +3,7 @@ package io.github.madmaximuus.persianIcons.foundation
 import androidx.compose.ui.graphics.vector.ImageVector
 import io.github.madmaximuus.persianIcons.arrowDown.base.ArrowDown
 import io.github.madmaximuus.persianIcons.arrowDown.circle.ArrowDownCircle
+import io.github.madmaximuus.persianIcons.arrowDown.toBracket.ArrowDownToBracket
 import io.github.madmaximuus.persianIcons.arrowLeft.base.ArrowLeft
 import io.github.madmaximuus.persianIcons.arrowLeft.circle.ArrowLeftCircle
 import io.github.madmaximuus.persianIcons.arrowRight.circle.ArrowRightCircle
@@ -22,7 +23,8 @@ import io.github.madmaximuus.persianIcons.chevronDown.base.ChevronDown
 import io.github.madmaximuus.persianIcons.chevronLeft.base.ChevronLeft
 import io.github.madmaximuus.persianIcons.chevronRight.base.ChevronRight
 import io.github.madmaximuus.persianIcons.chevronUp.base.ChevronUp
-import io.github.madmaximuus.persianIcons.circle.Circle
+import io.github.madmaximuus.persianIcons.circle.base.Circle
+import io.github.madmaximuus.persianIcons.circle.dot.CircleDot
 import io.github.madmaximuus.persianIcons.elepsisHoriz.EllipsisHoriz
 import io.github.madmaximuus.persianIcons.ellipsisGrid.EllipsisGrid
 import io.github.madmaximuus.persianIcons.ellipsisVert.EllipsisVert
@@ -78,6 +80,8 @@ fun PersianSymbols.Default.getAllIcons(): List<ImageVector> {
         PersianSymbols.Default.ChevronUp,
         PersianSymbols.Default.Circle,
         PersianSymbols.Default.EllipsisHoriz,
+        PersianSymbols.Default.ArrowDownToBracket,
+        PersianSymbols.Default.CircleDot,
     ).sortedBy { it::class.simpleName }
 }
 
@@ -100,6 +104,7 @@ fun PersianSymbols.Filled.getAllIcons(): List<ImageVector> {
         PersianSymbols.Filled.ToggleOn,
         PersianSymbols.Filled.Box,
         PersianSymbols.Filled.Circle,
+        PersianSymbols.Filled.CircleDot,
     ).sortedBy { it::class.simpleName }
 }
 
