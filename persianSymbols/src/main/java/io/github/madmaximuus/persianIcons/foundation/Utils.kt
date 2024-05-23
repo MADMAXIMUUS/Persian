@@ -32,10 +32,12 @@ import io.github.madmaximuus.persianIcons.gear.Gear
 import io.github.madmaximuus.persianIcons.heart.Heart
 import io.github.madmaximuus.persianIcons.house.House
 import io.github.madmaximuus.persianIcons.magnifyingGlass.MagnifyingGlass
+import io.github.madmaximuus.persianIcons.minus.Minus
 import io.github.madmaximuus.persianIcons.plus.base.Plus
 import io.github.madmaximuus.persianIcons.plus.box.PlusBox
 import io.github.madmaximuus.persianIcons.plus.circle.PlusCircle
 import io.github.madmaximuus.persianIcons.star.Star
+import io.github.madmaximuus.persianIcons.toggleOff.ToggleOff
 import io.github.madmaximuus.persianIcons.toggleOn.ToggleOn
 import io.github.madmaximuus.persianIcons.trash.base.Trash
 import io.github.madmaximuus.persianIcons.xmark.base.XMark
@@ -82,6 +84,8 @@ fun PersianSymbols.Default.getAllIcons(): List<ImageVector> {
         PersianSymbols.Default.EllipsisHoriz,
         PersianSymbols.Default.ArrowDownToBracket,
         PersianSymbols.Default.CircleDot,
+        PersianSymbols.Default.Minus,
+        PersianSymbols.Default.ToggleOff,
     ).sortedBy { it::class.simpleName }
 }
 
@@ -105,6 +109,7 @@ fun PersianSymbols.Filled.getAllIcons(): List<ImageVector> {
         PersianSymbols.Filled.Box,
         PersianSymbols.Filled.Circle,
         PersianSymbols.Filled.CircleDot,
+        PersianSymbols.Filled.ToggleOff,
     ).sortedBy { it::class.simpleName }
 }
 
