@@ -8,6 +8,7 @@ import io.github.madmaximuus.persianIcons.arrowLeft.circle.ArrowLeftCircle
 import io.github.madmaximuus.persianIcons.arrowRight.circle.ArrowRightCircle
 import io.github.madmaximuus.persianIcons.arrowRight.fromBracket.ArrowRightFromBracket
 import io.github.madmaximuus.persianIcons.arrowRight.rotate.ArrowRightRotate
+import io.github.madmaximuus.persianIcons.arrowRight.toBracket.ArrowRightToBracket
 import io.github.madmaximuus.persianIcons.arrowRightUp.fromBox.ArrowRightUpFromBox
 import io.github.madmaximuus.persianIcons.arrowUp.base.ArrowUp
 import io.github.madmaximuus.persianIcons.arrowUp.circle.ArrowUpCircle
@@ -68,6 +69,7 @@ fun PersianSymbols.Default.getAllIcons(): List<ImageVector> {
         PersianSymbols.Default.ArrowRightUpFromBox,
         PersianSymbols.Default.Box,
         PersianSymbols.Default.ArrowRightRotate,
+        PersianSymbols.Default.ArrowRightToBracket,
     ).sortedBy { it::class.simpleName }
 }
 
