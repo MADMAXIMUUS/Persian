@@ -19,7 +19,9 @@ import io.github.madmaximuus.persianIcons.check.base.Check
 import io.github.madmaximuus.persianIcons.check.box.CheckBox
 import io.github.madmaximuus.persianIcons.check.circle.CheckCircle
 import io.github.madmaximuus.persianIcons.chevronDown.base.ChevronDown
+import io.github.madmaximuus.persianIcons.chevronLeft.base.ChevronLeft
 import io.github.madmaximuus.persianIcons.chevronRight.base.ChevronRight
+import io.github.madmaximuus.persianIcons.circle.Circle
 import io.github.madmaximuus.persianIcons.ellipsisGrid.EllipsisGrid
 import io.github.madmaximuus.persianIcons.ellipsisVert.EllipsisVert
 import io.github.madmaximuus.persianIcons.gear.Gear
@@ -70,6 +72,7 @@ fun PersianSymbols.Default.getAllIcons(): List<ImageVector> {
         PersianSymbols.Default.Box,
         PersianSymbols.Default.ArrowRightRotate,
         PersianSymbols.Default.ArrowRightToBracket,
+        PersianSymbols.Default.ChevronLeft,
     ).sortedBy { it::class.simpleName }
 }
 
@@ -91,9 +94,10 @@ fun PersianSymbols.Filled.getAllIcons(): List<ImageVector> {
         PersianSymbols.Filled.CheckBox,
         PersianSymbols.Filled.ToggleOn,
         PersianSymbols.Filled.Box,
+        PersianSymbols.Filled.Circle,
     ).sortedBy { it::class.simpleName }
 }
 
 fun PersianSymbols.getAllIcons(): List<ImageVector> {
-    return (PersianSymbols.Default.getAllIcons() + PersianSymbols.Filled.getAllIcons()).sortedBy { it::class.simpleName }
+    return (PersianSymbols.Default.getAllIcons() + PersianSymbols.Filled.getAllIcons())
 }
