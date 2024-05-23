@@ -23,7 +23,7 @@ val PersianSymbols.Default.ArrowRightToBracket: ImageVector
             return arrowRightToBracket!!
         }
         arrowRightToBracket = ImageVector.Builder(
-            name = "arrow-right-to-bracket",
+            name = "arrow-right-to-bracket-default",
             defaultWidth = 24.dp,
             defaultHeight = 24.dp,
             viewportWidth = 24f,
