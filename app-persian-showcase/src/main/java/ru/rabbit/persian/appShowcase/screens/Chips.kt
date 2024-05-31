@@ -63,7 +63,7 @@ object Chips : Screen {
                     .verticalScroll(rememberScrollState())
                     .padding(it),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.extraExtraSmall)
+                verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size2)
             ) {
                 SampleRow(
                     text = "Sample chip",
@@ -71,7 +71,7 @@ object Chips : Screen {
                 ) {
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small)
+                        verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size8)
                     ) {
                         PersianFilterChip(
                             label = filterChipLabel,
@@ -131,10 +131,10 @@ object Chips : Screen {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(
-                            top = MaterialTheme.spacing.small,
-                            bottom = MaterialTheme.spacing.small,
-                            start = MaterialTheme.spacing.medium,
-                            end = MaterialTheme.spacing.medium
+                            top = MaterialTheme.spacing.size8,
+                            bottom = MaterialTheme.spacing.size8,
+                            start = MaterialTheme.spacing.size12,
+                            end = MaterialTheme.spacing.size12
                         ),
                 ) {
                     Text(
@@ -142,7 +142,7 @@ object Chips : Screen {
                         style = MaterialTheme.typography.titleMedium,
                         color = MaterialTheme.colorScheme.onSurface
                     )
-                    Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraSmall))
+                    Spacer(modifier = Modifier.height(MaterialTheme.spacing.size4))
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
