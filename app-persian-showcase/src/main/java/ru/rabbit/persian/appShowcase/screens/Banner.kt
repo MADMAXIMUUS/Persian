@@ -96,8 +96,8 @@ object Banner : Screen {
                 Column(
                     modifier = Modifier
                         .padding(
-                            horizontal = MaterialTheme.spacing.large,
-                            vertical = MaterialTheme.spacing.large
+                            horizontal = MaterialTheme.spacing.size16,
+                            vertical = MaterialTheme.spacing.size16
                         )
                 ) {
                     PersianCheckbox(
@@ -111,11 +111,11 @@ object Banner : Screen {
                     )
                     if (title) {
                         PersianOutlineInput(
-                            modifier = Modifier.padding(horizontal = MaterialTheme.spacing.small),
+                            modifier = Modifier.padding(horizontal = MaterialTheme.spacing.size8),
                             value = titleValue,
                             onValueChange = onTitleValueChange
                         )
-                        Spacer(modifier = Modifier.height(MaterialTheme.spacing.small))
+                        Spacer(modifier = Modifier.height(MaterialTheme.spacing.size8))
                     }
                     PersianCheckbox(
                         modifier = Modifier.fillMaxWidth(),
@@ -128,11 +128,11 @@ object Banner : Screen {
                     )
                     if (description) {
                         PersianOutlineTextArea(
-                            modifier = Modifier.padding(horizontal = MaterialTheme.spacing.small),
+                            modifier = Modifier.padding(horizontal = MaterialTheme.spacing.size8),
                             value = descriptionValue,
                             onValueChange = onDescriptionValueChange
                         )
-                        Spacer(modifier = Modifier.height(MaterialTheme.spacing.small))
+                        Spacer(modifier = Modifier.height(MaterialTheme.spacing.size8))
                     }
                     PersianCheckbox(
                         modifier = Modifier.fillMaxWidth(),
