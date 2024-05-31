@@ -83,7 +83,7 @@ object PersianButtonDefaults {
         iconSize: IconBoxSize = PersianIconBoxDefaults.size18(),
         shape: Shape = MaterialTheme.shape.shape12,
         contentPadding: PaddingValues = PaddingValues(
-            horizontal = MaterialTheme.spacing.large,
+            horizontal = MaterialTheme.spacing.size16,
             vertical = 0.dp
         )
     ): ButtonSizes = ButtonSizes(
@@ -104,7 +104,7 @@ object PersianButtonDefaults {
         iconSize: IconBoxSize = PersianIconBoxDefaults.size20(),
         shape: Shape = MaterialTheme.shape.shape14,
         contentPadding: PaddingValues = PaddingValues(
-            horizontal = MaterialTheme.spacing.extraLarge,
+            horizontal = MaterialTheme.spacing.size20,
             vertical = 0.dp
         )
     ): ButtonSizes = ButtonSizes(
@@ -126,7 +126,7 @@ object PersianButtonDefaults {
         iconSize: IconBoxSize = PersianIconBoxDefaults.size28(),
         shape: Shape = MaterialTheme.shape.shape16,
         contentPadding: PaddingValues = PaddingValues(
-            horizontal = MaterialTheme.spacing.extraExtraLarge,
+            horizontal = MaterialTheme.spacing.size24,
             vertical = 0.dp
         )
     ): ButtonSizes = ButtonSizes(
