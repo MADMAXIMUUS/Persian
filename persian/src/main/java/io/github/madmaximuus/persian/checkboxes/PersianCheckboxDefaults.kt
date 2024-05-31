@@ -54,7 +54,7 @@ object PersianCheckboxDefaults {
         toggleSize: Dp = 48.dp,
         textStyle: TextStyle = MaterialTheme.typography.bodyLarge,
         contentPadding: PaddingValues = PaddingValues(
-            end = MaterialTheme.spacing.medium
+            end = MaterialTheme.spacing.size12
         )
     ) = CheckboxSizes(
         toggleSize = toggleSize,

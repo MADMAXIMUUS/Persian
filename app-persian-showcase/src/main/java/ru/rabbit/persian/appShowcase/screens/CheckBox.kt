@@ -38,7 +38,7 @@ object CheckBox : Screen {
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(horizontal = MaterialTheme.spacing.medium),
+                    .padding(horizontal = MaterialTheme.spacing.size12),
                 contentPadding = it,
             ) {
                 item {
@@ -103,12 +103,12 @@ object CheckBox : Screen {
                         Spacer(
                             Modifier
                                 .fillMaxWidth()
-                                .height(MaterialTheme.spacing.extraSmall)
+                                .height(MaterialTheme.spacing.size4)
                         )
                         Column(
                             Modifier
                                 .fillMaxWidth()
-                                .padding(start = MaterialTheme.spacing.medium)
+                                .padding(start = MaterialTheme.spacing.size12)
                         ) {
                             PersianCheckbox(
                                 modifier = Modifier.fillMaxWidth(),
@@ -119,7 +119,7 @@ object CheckBox : Screen {
                             Spacer(
                                 Modifier
                                     .fillMaxWidth()
-                                    .height(MaterialTheme.spacing.extraSmall)
+                                    .height(MaterialTheme.spacing.size4)
                             )
                             PersianCheckbox(
                                 modifier = Modifier.fillMaxWidth(),
