@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -14,7 +15,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
@@ -25,7 +25,6 @@ import io.github.madmaximuus.persian.dividers.PersianInsetHorizontalDivider
 import io.github.madmaximuus.persian.foundation.elevation
 import io.github.madmaximuus.persian.foundation.shape
 import io.github.madmaximuus.persian.foundation.spacing
-import io.github.madmaximuus.persian.iconBox.PersianIconBox
 
 @Composable
 fun PersianOnlyActionAlert(
@@ -46,7 +45,8 @@ fun PersianOnlyActionAlert(
                 modifier = modifier
                     .fillMaxWidth()
                     .wrapContentHeight()
-                    .padding(horizontal = MaterialTheme.spacing.extraExtraLarge),
+                    .widthIn(max = 460.dp)
+                    .padding(horizontal = MaterialTheme.spacing.size24),
                 shape = MaterialTheme.shape.shape20,
                 color = colors.backgroundColor,
                 tonalElevation = MaterialTheme.elevation.small,
@@ -55,7 +55,7 @@ fun PersianOnlyActionAlert(
                     Column(
                         modifier = modifier
                             .fillMaxWidth()
-                            .padding(MaterialTheme.spacing.large)
+                            .padding(MaterialTheme.spacing.size16)
                             .verticalScroll(rememberScrollState()),
                         horizontalAlignment = Alignment.CenterHorizontally,
                         content = {
@@ -82,7 +82,6 @@ fun PersianAlert(
     colors: AlertsColors = PersianAlertsDefaults.colors(),
     title: String,
     description: String? = null,
-    icon: Painter? = null,
     actions: List<AlertAction>,
     onDismiss: () -> Unit,
     content: (@Composable () -> Unit)? = null
@@ -99,7 +98,7 @@ fun PersianAlert(
                 modifier = modifier
                     .fillMaxWidth()
                     .wrapContentHeight()
-                    .padding(horizontal = MaterialTheme.spacing.extraExtraLarge),
+                    .padding(horizontal = MaterialTheme.spacing.size24),
                 shape = MaterialTheme.shape.shape20,
                 color = colors.backgroundColor,
                 tonalElevation = MaterialTheme.elevation.small,
@@ -116,18 +115,15 @@ fun PersianAlert(
                                     .wrapContentHeight()
                                     .fillMaxWidth()
                                     .padding(
-                                        start = MaterialTheme.spacing.extraLarge,
-                                        end = MaterialTheme.spacing.extraLarge,
-                                        top = MaterialTheme.spacing.extraExtraLarge,
-                                        bottom = MaterialTheme.spacing.medium
+                                        start = MaterialTheme.spacing.size20,
+                                        end = MaterialTheme.spacing.size20,
+                                        top = MaterialTheme.spacing.size24,
+                                        bottom = MaterialTheme.spacing.size12
                                     ),
                                 horizontalAlignment = Alignment.CenterHorizontally,
                                 verticalArrangement = Arrangement
-                                    .spacedBy(MaterialTheme.spacing.large),
+                                    .spacedBy(MaterialTheme.spacing.size16),
                             ) {
-                                icon?.let {
-                                    PersianIconBox(icon = it)
-                                }
                                 Text(
                                     modifier = Modifier.fillMaxWidth(),
                                     text = title,
@@ -139,7 +135,7 @@ fun PersianAlert(
                             description?.let {
                                 Text(
                                     modifier = Modifier
-                                        .padding(horizontal = MaterialTheme.spacing.extraLarge),
+                                        .padding(horizontal = MaterialTheme.spacing.size20),
                                     text = it,
                                     style = MaterialTheme.typography.bodyMedium,
                                     color = colors.descriptionColor,
@@ -153,9 +149,9 @@ fun PersianAlert(
                             Row(
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .padding(MaterialTheme.spacing.large),
+                                    .padding(MaterialTheme.spacing.size16),
                                 horizontalArrangement = Arrangement.spacedBy(
-                                    MaterialTheme.spacing.small,
+                                    MaterialTheme.spacing.size8,
                                     Alignment.End
                                 ),
                                 content = {

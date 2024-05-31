@@ -24,7 +24,6 @@ import io.github.madmaximuus.persian.alert.PersianOnlyActionAlert
 import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
 import io.github.madmaximuus.persian.buttons.PersianPrimaryButton
 import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
-import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.foundation.spacing
 import io.github.madmaximuus.persian.inputs.PersianOutlineInput
 import io.github.madmaximuus.persian.radioButtons.PersianRadioButton
@@ -41,7 +40,6 @@ object Alert : Screen {
     override fun Content(navController: NavController?) {
         var showOnlyActionAlert by remember { mutableStateOf(false) }
         var showAlert by remember { mutableStateOf(false) }
-        val (icon, onIconChange) = remember { mutableStateOf(false) }
         val (description, onDescriptionChange) = remember { mutableStateOf(false) }
         var titleError by remember { mutableStateOf(false) }
         var descriptionError by remember { mutableStateOf(false) }
@@ -56,7 +54,7 @@ object Alert : Screen {
                     .fillMaxSize()
                     .padding(it),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.medium)
+                verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size12)
             ) {
                 PersianPrimaryButton(
                     text = "Only Action Alert",
@@ -86,18 +84,18 @@ object Alert : Screen {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(
-                            top = MaterialTheme.spacing.large,
-                            start = MaterialTheme.spacing.large,
-                            end = MaterialTheme.spacing.large
+                            top = MaterialTheme.spacing.size16,
+                            start = MaterialTheme.spacing.size16,
+                            end = MaterialTheme.spacing.size16
                         )
                 ) {
                     PersianOutlineInput(
-                        modifier = Modifier.padding(horizontal = MaterialTheme.spacing.small),
+                        modifier = Modifier.padding(horizontal = MaterialTheme.spacing.size8),
                         value = titleValue,
                         isError = titleError,
                         onValueChange = onTitleValueChange
                     )
-                    Spacer(modifier = Modifier.height(MaterialTheme.spacing.small))
+                    Spacer(modifier = Modifier.height(MaterialTheme.spacing.size8))
                     PersianCheckbox(
                         modifier = Modifier.fillMaxWidth(),
                         text = "Subtitle",
@@ -106,19 +104,13 @@ object Alert : Screen {
                     )
                     if (description) {
                         PersianOutlineInput(
-                            modifier = Modifier.padding(horizontal = MaterialTheme.spacing.small),
+                            modifier = Modifier.padding(horizontal = MaterialTheme.spacing.size8),
                             value = descriptionValue,
                             isError = descriptionError,
                             onValueChange = onDescriptionValueChange
                         )
-                        Spacer(modifier = Modifier.height(MaterialTheme.spacing.small))
+                        Spacer(modifier = Modifier.height(MaterialTheme.spacing.size8))
                     }
-                    PersianCheckbox(
-                        modifier = Modifier.fillMaxWidth(),
-                        text = "Icons",
-                        checked = icon,
-                        onCheckedChange = onIconChange
-                    )
                     PersianCheckbox(
                         modifier = Modifier.fillMaxWidth(),
                         text = "Content",
@@ -148,7 +140,6 @@ object Alert : Screen {
         }
         if (showAlert) {
             PersianAlert(
-                icon = if (icon) MaterialTheme.icons.image else null,
                 title = titleValue,
                 actions = listOf(
                     AlertAction("OK", onClick = { showAlert = false }),
@@ -162,7 +153,7 @@ object Alert : Screen {
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .selectableGroup()
-                                .padding(horizontal = MaterialTheme.spacing.medium)
+                                .padding(horizontal = MaterialTheme.spacing.size12)
                         ) {
                             PersianRadioButton(
                                 modifier = Modifier.fillMaxWidth(),
