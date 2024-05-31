@@ -42,6 +42,7 @@ internal fun PersianCodeInputCell(
     enabled: Boolean = true,
     isValid: Boolean = false,
     isError: Boolean = false,
+    isPassword: Boolean = false,
     colors: CellColors = PersianCodeInputDefaults.cellColors(),
     focusRequester: FocusRequester = FocusRequester(),
     textStyle: TextStyle = MaterialTheme.typography.bodyLarge,
@@ -79,7 +80,7 @@ internal fun PersianCodeInputCell(
         BasicTextField(
             modifier = modifier
                 .focusRequester(focusRequester),
-            value = value,
+            value = if (isPassword) "●" else value,
             onValueChange = onValueChange,
             readOnly = false,
             singleLine = true,
@@ -128,6 +129,7 @@ fun CellPreview() {
             PersianCodeInputCell(
                 modifier = Modifier.padding(10.dp),
                 value = "1",
+                isPassword = true,
                 onValueChange = {}
             )
         }

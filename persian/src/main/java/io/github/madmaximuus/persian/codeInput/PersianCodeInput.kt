@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
@@ -31,6 +32,7 @@ fun PersianFourDigitCodeInput(
     enabled: Boolean = true,
     isError: Boolean = false,
     isValid: Boolean = false,
+    isPassword: Boolean = false,
     onValueChange: (value: String, index: Int) -> Unit
 ) {
     LaunchedEffect(Unit) {
@@ -47,8 +49,9 @@ fun PersianFourDigitCodeInput(
     )
 
     Row(
-        modifier = modifier,
-        horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.extraSmall)
+        modifier = modifier
+            .widthIn(min = 190.dp, max = 250.dp),
+        horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size4)
     ) {
         repeat(4) { index ->
             PersianCodeInputCell(
@@ -68,6 +71,7 @@ fun PersianFourDigitCodeInput(
                 isValid = isValid,
                 enabled = enabled,
                 isError = isError,
+                isPassword = isPassword,
                 onValueChange = { value ->
                     onValueChange(value, index)
                     nextFocus(index, value, focusRequesters)
@@ -84,6 +88,7 @@ fun PersianSixDigitCodeInput(
     enabled: Boolean = true,
     isError: Boolean = false,
     isValid: Boolean = false,
+    isPassword: Boolean = false,
     onValueChange: (value: String, index: Int) -> Unit
 ) {
     LaunchedEffect(Unit) {
@@ -102,7 +107,8 @@ fun PersianSixDigitCodeInput(
     )
 
     Row(
-        modifier = modifier,
+        modifier = modifier
+            .widthIn(min = 286.dp, max = 360.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         repeat(6) { index ->
@@ -123,6 +129,7 @@ fun PersianSixDigitCodeInput(
                 isValid = isValid,
                 enabled = enabled,
                 isError = isError,
+                isPassword = isPassword,
                 onValueChange = { value ->
                     onValueChange(value, index)
                     nextFocus(index, value, focusRequesters)
@@ -145,7 +152,12 @@ private fun nextFocus(
 @Preview(showBackground = true, showSystemUi = true)
 @Preview(uiMode = UI_MODE_NIGHT_YES, showBackground = true, showSystemUi = true)
 @Preview(device = Devices.TABLET, showBackground = true, showSystemUi = true)
-@Preview(device = Devices.TABLET, uiMode = UI_MODE_NIGHT_YES, showBackground = true, showSystemUi = true)
+@Preview(
+    device = Devices.TABLET,
+    uiMode = UI_MODE_NIGHT_YES,
+    showBackground = true,
+    showSystemUi = true
+)
 @Composable
 fun CodeInputPreview() {
     PersianTheme {
@@ -167,7 +179,7 @@ fun CodeInputPreview() {
 
                     }
                 )
-                Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraSmall))
+                Spacer(modifier = Modifier.height(MaterialTheme.spacing.size4))
                 PersianSixDigitCodeInput(
                     values = listOf(
                         "1",
