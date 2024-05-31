@@ -44,9 +44,9 @@ fun PersianBanner(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(MaterialTheme.spacing.medium),
+                .padding(MaterialTheme.spacing.size12),
             verticalAlignment = Alignment.Top,
-            horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small)
+            horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size8)
         ) {
             when (left) {
                 is PersianBannerLeft.Avatar -> {
@@ -81,7 +81,7 @@ fun PersianBanner(
                     )
                 }
                 description?.let {
-                    Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraSmall))
+                    Spacer(modifier = Modifier.height(MaterialTheme.spacing.size4))
                     Text(
                         modifier = Modifier.fillMaxWidth(),
                         text = it,

@@ -84,7 +84,7 @@ object Button : Screen {
                             trailingIcon = if (showTrailingIcon) MaterialTheme.icons.chevronRight else null,
                             onClick = {}
                         )
-                        Spacer(modifier = Modifier.height(MaterialTheme.spacing.large))
+                        Spacer(modifier = Modifier.height(MaterialTheme.spacing.size16))
                         PersianSecondaryButton(
                             text = text,
                             sizes = sizeState,
@@ -95,7 +95,7 @@ object Button : Screen {
                             trailingIcon = if (showTrailingIcon) MaterialTheme.icons.chevronRight else null,
                             onClick = {}
                         )
-                        Spacer(modifier = Modifier.height(MaterialTheme.spacing.large))
+                        Spacer(modifier = Modifier.height(MaterialTheme.spacing.size16))
                         PersianTertiaryButton(
                             text = text,
                             sizes = sizeState,
@@ -106,7 +106,7 @@ object Button : Screen {
                             trailingIcon = if (showTrailingIcon) MaterialTheme.icons.chevronRight else null,
                             onClick = {}
                         )
-                        Spacer(modifier = Modifier.height(MaterialTheme.spacing.large))
+                        Spacer(modifier = Modifier.height(MaterialTheme.spacing.size16))
                         PersianOutlinedButton(
                             text = text,
                             sizes = sizeState,
@@ -141,10 +141,10 @@ object Button : Screen {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(
-                            top = MaterialTheme.spacing.small,
-                            bottom = MaterialTheme.spacing.small,
-                            start = MaterialTheme.spacing.medium,
-                            end = MaterialTheme.spacing.medium
+                            top = MaterialTheme.spacing.size8,
+                            bottom = MaterialTheme.spacing.size8,
+                            start = MaterialTheme.spacing.size12,
+                            end = MaterialTheme.spacing.size12
                         ),
                 ) {
                     Text(
@@ -152,7 +152,7 @@ object Button : Screen {
                         style = MaterialTheme.typography.titleMedium,
                         color = MaterialTheme.colorScheme.onSurface
                     )
-                    Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraSmall))
+                    Spacer(modifier = Modifier.height(MaterialTheme.spacing.size4))
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -197,10 +197,10 @@ object Button : Screen {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(
-                            top = MaterialTheme.spacing.small,
-                            bottom = MaterialTheme.spacing.small,
-                            start = MaterialTheme.spacing.medium,
-                            end = MaterialTheme.spacing.medium
+                            top = MaterialTheme.spacing.size8,
+                            bottom = MaterialTheme.spacing.size8,
+                            start = MaterialTheme.spacing.size12,
+                            end = MaterialTheme.spacing.size12
                         ),
                 ) {
                     Text(
@@ -208,7 +208,7 @@ object Button : Screen {
                         style = MaterialTheme.typography.titleMedium,
                         color = MaterialTheme.colorScheme.onSurface
                     )
-                    Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraSmall))
+                    Spacer(modifier = Modifier.height(MaterialTheme.spacing.size4))
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
