@@ -23,8 +23,8 @@ internal fun PersianActionSheetHeader(
         modifier = modifier
             .fillMaxWidth()
             .padding(
-                top = MaterialTheme.spacing.extraExtraLarge,
-                bottom = MaterialTheme.spacing.extraSmall
+                top = MaterialTheme.spacing.size24,
+                bottom = MaterialTheme.spacing.size4
             )
     ) {
         title?.let {
@@ -32,23 +32,23 @@ internal fun PersianActionSheetHeader(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(
-                        start = MaterialTheme.spacing.extraLarge,
-                        end = MaterialTheme.spacing.extraLarge
+                        start = MaterialTheme.spacing.size20,
+                        end = MaterialTheme.spacing.size20
                     ),
                 text = it,
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.titleLarge,
                 color = colors.titleColor
             )
-            Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraSmall))
+            Spacer(modifier = Modifier.height(MaterialTheme.spacing.size4))
         }
         subtitle?.let {
             Text(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(
-                        start = MaterialTheme.spacing.extraLarge,
-                        end = MaterialTheme.spacing.extraLarge
+                        start = MaterialTheme.spacing.size20,
+                        end = MaterialTheme.spacing.size20
                     ),
                 text = it,
                 textAlign = TextAlign.Justify,

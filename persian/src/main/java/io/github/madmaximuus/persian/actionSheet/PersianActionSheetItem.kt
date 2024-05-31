@@ -62,9 +62,9 @@ internal fun PersianActionSheetItem(
                 )
             )
             .padding(
-                start = MaterialTheme.spacing.medium,
+                start = MaterialTheme.spacing.size12,
             ),
-        horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small),
+        horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size8),
         verticalAlignment = Alignment.CenterVertically
     ) {
         actionSheetItem.leadingIcon?.let {
@@ -77,7 +77,7 @@ internal fun PersianActionSheetItem(
                 PersianIconBox(icon = it)
             }
         }
-        val padding = if (actionSheetItem.leadingIcon == null) MaterialTheme.spacing.small
+        val padding = if (actionSheetItem.leadingIcon == null) MaterialTheme.spacing.size8
         else 0.dp
         Text(
             modifier = Modifier.padding(start = padding),

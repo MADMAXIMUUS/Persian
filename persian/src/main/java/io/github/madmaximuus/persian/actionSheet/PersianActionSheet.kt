@@ -12,8 +12,10 @@ import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
@@ -29,6 +31,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.compose.ui.window.DialogWindowProvider
+import androidx.window.core.layout.WindowWidthSizeClass
 import io.github.madmaximuus.persian.foundation.spacing
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
@@ -37,8 +40,9 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-private const val ANIMATION_TIME = 220L
-private const val DIALOG_BUILD_TIME = 40L
+private const val ANIMATION_COMPACT_TIME = 220L
+private const val ANIMATION_MEDIUM_TIME = 365L
+private const val DIALOG_BUILD_TIME = 80L
 
 class AnimatedTransitionDialogHelper(
     private val coroutineScope: CoroutineScope,
@@ -56,32 +60,41 @@ class AnimatedTransitionDialogHelper(
 private fun AnimatedSlideInTransition(
     visible: Boolean,
     screenHeight: Int,
+    windowWidthSizeClass: WindowWidthSizeClass,
     content: @Composable AnimatedVisibilityScope.() -> Unit
 ) {
+    val animationTime =
+        if (windowWidthSizeClass == WindowWidthSizeClass.COMPACT) ANIMATION_COMPACT_TIME
+        else ANIMATION_MEDIUM_TIME
     AnimatedVisibility(
         visible = visible,
         enter = slideInVertically(
-            animationSpec = tween(ANIMATION_TIME.toInt(), easing = LinearEasing),
+            animationSpec = tween(animationTime.toInt(), easing = LinearEasing),
             initialOffsetY = {
                 screenHeight + it
             }
-        ) + fadeIn(animationSpec = tween(ANIMATION_TIME.toInt(), easing = LinearEasing)),
+        ) + fadeIn(animationSpec = tween(animationTime.toInt(), easing = LinearEasing)),
         exit = slideOutVertically(
-            animationSpec = tween(ANIMATION_TIME.toInt(), easing = LinearEasing),
+            animationSpec = tween(animationTime.toInt(), easing = LinearEasing),
             targetOffsetY = {
                 screenHeight + it
             }
-        ) + fadeOut(animationSpec = tween(ANIMATION_TIME.toInt(), easing = LinearEasing)),
+        ) + fadeOut(animationSpec = tween(animationTime.toInt(), easing = LinearEasing)),
         content = content
     )
 }
 
 private suspend fun startDismissWithExitAnimation(
     animateTrigger: MutableState<Boolean>,
-    onDismissRequest: () -> Unit
+    onDismissRequest: () -> Unit,
+    windowWidthSizeClass: WindowWidthSizeClass,
 ) {
+
     animateTrigger.value = false
-    delay(ANIMATION_TIME)
+    if (windowWidthSizeClass == WindowWidthSizeClass.COMPACT)
+        delay(ANIMATION_COMPACT_TIME)
+    else
+        delay(ANIMATION_MEDIUM_TIME)
     onDismissRequest()
 }
 
@@ -108,6 +121,7 @@ fun PersianActionSheet(
     itemColors: ActionSheetItemColors = PersianActionSheetDefaults.itemColors(),
     onDismissRequest: () -> Unit
 ) {
+    val windowWidthSizeClass = currentWindowAdaptiveInfo().windowSizeClass.windowWidthSizeClass
     require(actions.size > 2) {
         throw IllegalArgumentException("Actions must have at least 2 items")
     }
@@ -132,7 +146,11 @@ fun PersianActionSheet(
         }
         launch {
             onDismissSharedFlow.asSharedFlow().collectLatest {
-                startDismissWithExitAnimation(animateTrigger, onDismissRequest)
+                startDismissWithExitAnimation(
+                    animateTrigger,
+                    onDismissRequest,
+                    windowWidthSizeClass
+                )
             }
         }
     }
@@ -140,7 +158,11 @@ fun PersianActionSheet(
     Dialog(
         onDismissRequest = {
             coroutineScope.launch {
-                startDismissWithExitAnimation(animateTrigger, onDismissRequest)
+                startDismissWithExitAnimation(
+                    animateTrigger,
+                    onDismissRequest,
+                    windowWidthSizeClass
+                )
             }
         },
         properties = DialogProperties(
@@ -154,12 +176,13 @@ fun PersianActionSheet(
                 setWindowAnimations(-1)
             }
 
-            AnimatedSlideInTransition(visible = animateTrigger.value, screenHeight) {
+            AnimatedSlideInTransition(visible = animateTrigger.value, screenHeight, windowWidthSizeClass) {
                 Surface(
                     modifier = modifier
+                        .widthIn(max = 460.dp)
                         .padding(
-                            horizontal = MaterialTheme.spacing.large,
-                            vertical = MaterialTheme.spacing.extraSmall,
+                            horizontal = MaterialTheme.spacing.size16,
+                            vertical = MaterialTheme.spacing.size8,
                         ),
                     shape = shape,
                     color = colors.containerColor
