@@ -54,15 +54,15 @@ object Charts : Screen {
                         data = listOf(
                             DonutChartData(
                                 10.0,
-                                Color(0xFFAD00C9)
+                                Color(0xFF5F00AA)
                             ),
                             DonutChartData(
                                 20.0,
-                                Color(0xFF0267FF)
+                                Color(0xFF004EC3)
                             ),
                             DonutChartData(
                                 30.0,
-                                Color(0xFF00C938)
+                                Color(0xFF277A00)
                             ),
                             DonutChartData(
                                 40.0,
@@ -70,7 +70,7 @@ object Charts : Screen {
                             ),
                             DonutChartData(
                                 50.0,
-                                Color(0xFFFF0000)
+                                Color(0xFF9B0000)
                             ),
                         ),
                         config = DonutChartConfig(
@@ -87,10 +87,10 @@ object Charts : Screen {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(
-                            top = MaterialTheme.spacing.small,
-                            bottom = MaterialTheme.spacing.small,
-                            start = MaterialTheme.spacing.medium,
-                            end = MaterialTheme.spacing.medium
+                            top = MaterialTheme.spacing.size8,
+                            bottom = MaterialTheme.spacing.size8,
+                            start = MaterialTheme.spacing.size12,
+                            end = MaterialTheme.spacing.size12
                         ),
                 ) {
                     Text(
@@ -98,7 +98,7 @@ object Charts : Screen {
                         style = MaterialTheme.typography.titleMedium,
                         color = MaterialTheme.colorScheme.onSurface
                     )
-                    Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraSmall))
+                    Spacer(modifier = Modifier.height(MaterialTheme.spacing.size4))
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
