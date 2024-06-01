@@ -78,11 +78,7 @@ object Counter : Screen {
                                     icon = MaterialTheme.icons.person,
                                     onClick = {}
                                 )
-                            },
-                            sizes = PersianCounterDefaults.sizes(
-                                badgeHorizontalOffset = (-22).dp,
-                                badgeVerticalOffset = 20.dp
-                            )
+                            }
                         )
                         PersianBadge(
                             count = 10,
@@ -91,11 +87,7 @@ object Counter : Screen {
                                     icon = MaterialTheme.icons.person,
                                     onClick = {}
                                 )
-                            },
-                            sizes = PersianCounterDefaults.sizes(
-                                badgeHorizontalOffset = (-22).dp,
-                                badgeVerticalOffset = 20.dp
-                            )
+                            }
                         )
                         PersianBadge(
                             count = 100,
@@ -104,11 +96,7 @@ object Counter : Screen {
                                     icon = MaterialTheme.icons.person,
                                     onClick = {}
                                 )
-                            },
-                            sizes = PersianCounterDefaults.sizes(
-                                badgeHorizontalOffset = (-22).dp,
-                                badgeVerticalOffset = 20.dp
-                            )
+                            }
                         )
                     }
                 }

@@ -1,15 +1,16 @@
 package io.github.madmaximuus.persian.counter
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 
 @Composable
 fun PersianCounter(
@@ -57,24 +58,31 @@ private fun PersianCounterImpl(
     sizes: CounterSizes,
     modifier: Modifier = Modifier
 ) {
-    val shape = if (count == 1) CircleShape else sizes.cornerRadius
-    Row(
+    require(count > 0) {
+        throw IllegalArgumentException("Count must be positive")
+    }
+    Box(
         modifier = modifier
-            .background(
-                color = colors.backgroundColor,
-                shape = shape
-            )
-            .clip(shape)
-            .padding(
-                horizontal = sizes.horizontalPadding, vertical = sizes.verticalPadding
-            ),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.Center
+            .padding(sizes.outerPadding(count))
+            .size(34.dp, 24.dp),
+        contentAlignment = Alignment.Center
     ) {
-        Text(
-            text = if (count > 99) "99+" else count.toString(),
-            color = colors.textColor,
-            style = sizes.textStyle
-        )
+        Box(
+            modifier = Modifier
+                .background(
+                    color = colors.backgroundColor,
+                    shape = sizes.cornerRadius(count)
+                )
+                .clip(sizes.cornerRadius(count))
+                .padding(sizes.innerPadding(count)),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                text = if (count > 99) "99+" else count.toString(),
+                color = colors.textColor,
+                style = sizes.textStyle,
+                textAlign = TextAlign.Center
+            )
+        }
     }
 }
