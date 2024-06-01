@@ -2,6 +2,7 @@ package io.github.madmaximuus.persian.colorPicker.view.util
 
 import android.graphics.Bitmap
 import android.graphics.Color
+import android.graphics.Matrix
 import android.graphics.RectF
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectDragGestures
@@ -70,7 +71,7 @@ internal fun Modifier.emitDragGesture(
     }
 )
 
-internal fun pointToAlpha(pointX: Float, rect: RectF): Float {
+internal fun pointToAlphaCompact(pointX: Float, rect: RectF): Float {
     val width = rect.width()
     val x = when {
         pointX < rect.left -> 0F
@@ -80,8 +81,17 @@ internal fun pointToAlpha(pointX: Float, rect: RectF): Float {
     return x / width
 }
 
+internal fun pointToAlphaMedium(pointY: Float, rect: RectF): Float {
+    val height = rect.height()
+    val y = when {
+        pointY < rect.top -> 0F
+        pointY > rect.bottom -> height
+        else -> pointY - rect.top
+    }
+    return y / height
+}
 
-internal fun pointToHue(pointX: Float, rect: RectF): Float {
+internal fun pointToHueCompact(pointX: Float, rect: RectF): Float {
     val width = rect.width()
     val x = when {
         pointX < rect.left -> 0F
@@ -89,6 +99,16 @@ internal fun pointToHue(pointX: Float, rect: RectF): Float {
         else -> pointX - rect.left
     }
     return x * 360f / width
+}
+
+internal fun pointToHueMedium(pointY: Float, rect: RectF): Float {
+    val height = rect.height()
+    val y = when {
+        pointY < rect.top -> 0F
+        pointY > rect.bottom -> height
+        else -> pointY - rect.top
+    }
+    return y * 360f / height
 }
 
 internal fun pointToSatVal(pointX: Float, pointY: Float, rect: RectF): Pair<Float, Float> {
@@ -141,4 +161,9 @@ internal fun getARGB(hex: Int): IntArray {
     val g = hex and 0xFF00 shr 8
     val b = hex and 0xFF
     return intArrayOf(a, r, g, b)
+}
+
+fun Bitmap.rotate(degrees: Float): Bitmap {
+    val matrix = Matrix().apply { postRotate(degrees) }
+    return Bitmap.createBitmap(this, 0, 0, width, height, matrix, true)
 }

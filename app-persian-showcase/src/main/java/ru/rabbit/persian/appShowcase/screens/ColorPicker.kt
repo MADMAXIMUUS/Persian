@@ -46,14 +46,14 @@ object ColorPicker : Screen {
                     .fillMaxSize()
                     .padding(it),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.medium)
+                verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size12)
             ) {
                 PersianPrimaryButton(
                     text = "Show Dialog"
                 ) {
                     showDialog = true
                 }
-                Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraLarge))
+                Spacer(modifier = Modifier.height(MaterialTheme.spacing.size20))
                 Box(
                     modifier = Modifier
                         .size(100.dp)

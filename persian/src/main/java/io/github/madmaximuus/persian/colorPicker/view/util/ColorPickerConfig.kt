@@ -5,9 +5,10 @@ import androidx.compose.ui.graphics.Color
 sealed class ColorPickerConfig {
 
     abstract val alpha: Float
+
     data class HEX(
         val color: Color,
-        override val alpha: Float = 1f
+        override val alpha: Float = color.alpha
     ) : ColorPickerConfig()
 
     data class RGB(

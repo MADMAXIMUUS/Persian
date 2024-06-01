@@ -17,7 +17,7 @@ fun RgbInput(
 ) {
     Row(
         modifier = modifier,
-        horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.extraExtraSmall)
+        horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size2)
     ) {
         PersianForm(
             modifier = Modifier.weight(1f),

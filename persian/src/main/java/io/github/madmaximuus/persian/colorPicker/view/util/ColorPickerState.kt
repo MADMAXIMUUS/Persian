@@ -28,8 +28,8 @@ internal class ColorPickerState(
         color = color.copy(first = newColor)
     }
 
-    fun updateAlpha(alpha: Float) {
-        this.alpha = alpha
+    fun updateAlpha(newAlpha: Float) {
+        alpha = newAlpha
     }
 
     fun setRGB() {
@@ -56,7 +56,13 @@ internal class ColorPickerState(
 
     fun getRGBColor(): Triple<Int, Int, Int> {
         val color =
-            AndroidColor.HSVToColor(floatArrayOf(this.color.first, this.color.second, this.color.third))
+            AndroidColor.HSVToColor(
+                floatArrayOf(
+                    this.color.first,
+                    this.color.second,
+                    this.color.third
+                )
+            )
         val rgb = color.toColor()
         return Triple(
             (rgb.red() * 255).toInt(),
@@ -65,7 +71,7 @@ internal class ColorPickerState(
         )
     }
 
-    fun onFinish(): Color{
+    fun onFinish(): Color {
         return Color.hsv(color.first, color.second, color.third, alpha)
     }
 

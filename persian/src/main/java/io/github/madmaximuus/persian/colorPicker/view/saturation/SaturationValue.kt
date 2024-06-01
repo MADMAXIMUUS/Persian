@@ -9,9 +9,9 @@ import android.graphics.RectF
 import android.graphics.Shader
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -21,6 +21,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.dp
+import androidx.window.core.layout.WindowHeightSizeClass
 import io.github.madmaximuus.persian.colorPicker.view.ColorPickerViewColors
 import io.github.madmaximuus.persian.colorPicker.view.util.collectForPress
 import io.github.madmaximuus.persian.colorPicker.view.util.drawBitmap
@@ -34,6 +35,8 @@ fun SatValPanel(
     hsvColor: Triple<Float, Float, Float>,
     setSatVal: (Float, Float) -> Unit
 ) {
+    val windowHeightSizeClass = currentWindowAdaptiveInfo().windowSizeClass.windowHeightSizeClass
+
     val interactionSource = remember {
         MutableInteractionSource()
     }
@@ -45,10 +48,11 @@ fun SatValPanel(
         mutableStateOf(Offset.Zero)
     }
 
+    val canvasSize = if (windowHeightSizeClass == WindowHeightSizeClass.COMPACT) 150.dp else 288.dp
+
     Canvas(
         modifier = Modifier
-            .fillMaxWidth()
-            .aspectRatio(1f)
+            .size(canvasSize)
             .emitDragGesture(interactionSource)
             .clip(RoundedCornerShape(12.dp))
     ) {
