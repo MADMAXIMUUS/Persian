@@ -120,7 +120,7 @@ fun PersianOutlineInput(
                             shape = MaterialTheme.shape.shape16
                         )
                         .height(52.dp)
-                        .padding(horizontal = MaterialTheme.spacing.medium),
+                        .padding(horizontal = MaterialTheme.spacing.size12),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     leadingIcon?.let { icon ->
@@ -140,7 +140,7 @@ fun PersianOutlineInput(
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(horizontal = MaterialTheme.spacing.extraSmall)
+                            .padding(horizontal = MaterialTheme.spacing.size4)
                             .weight(1f),
                     ) {
                         if (value.isEmpty() && placeholder != null) {
@@ -162,7 +162,7 @@ fun PersianOutlineInput(
                         Box(
                             modifier = Modifier
                                 .wrapContentSize()
-                                .padding(horizontal = MaterialTheme.spacing.extraSmall)
+                                .padding(horizontal = MaterialTheme.spacing.size4)
                         ) {
                             Text(
                                 text = suffix,
@@ -172,7 +172,7 @@ fun PersianOutlineInput(
                                     isError = isError,
                                     interactionSource = interactionSource
                                 ).value,
-                                style = MaterialTheme.typography.bodyLarge
+                                style = MaterialTheme.typography.bodyMedium
                             )
                         }
                     }
@@ -204,7 +204,7 @@ fun PersianOutlineInput(
                         isError = isError,
                         isSuccess = isValid
                     ).value?.let { icon ->
-                        Spacer(modifier = Modifier.width(MaterialTheme.spacing.small))
+                        Spacer(modifier = Modifier.width(MaterialTheme.spacing.size8))
                         CompositionLocalProvider(
                             LocalContentColor provides colors.stateIconColor(
                                 enabled = enabled,
@@ -286,7 +286,7 @@ fun PersianPlainInput(
                             shape = MaterialTheme.shape.shape16
                         )
                         .height(52.dp)
-                        .padding(horizontal = MaterialTheme.spacing.medium),
+                        .padding(horizontal = MaterialTheme.spacing.size12),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     leadingIcon?.let { icon ->
@@ -306,7 +306,7 @@ fun PersianPlainInput(
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(horizontal = MaterialTheme.spacing.extraSmall)
+                            .padding(horizontal = MaterialTheme.spacing.size4)
                             .weight(1f),
                     ) {
                         if (value.isEmpty() && placeholder != null) {
@@ -328,7 +328,7 @@ fun PersianPlainInput(
                         Box(
                             modifier = Modifier
                                 .wrapContentSize()
-                                .padding(horizontal = MaterialTheme.spacing.extraSmall)
+                                .padding(horizontal = MaterialTheme.spacing.size4)
                         ) {
                             Text(
                                 text = suffix,
@@ -338,7 +338,7 @@ fun PersianPlainInput(
                                     isError = isError,
                                     interactionSource = interactionSource
                                 ).value,
-                                style = MaterialTheme.typography.bodyLarge
+                                style = MaterialTheme.typography.bodyMedium
                             )
                         }
                     }
@@ -370,7 +370,7 @@ fun PersianPlainInput(
                         isError = isError,
                         isSuccess = isValid
                     ).value?.let { icon ->
-                        Spacer(modifier = Modifier.width(MaterialTheme.spacing.small))
+                        Spacer(modifier = Modifier.width(MaterialTheme.spacing.size8))
                         CompositionLocalProvider(
                             LocalContentColor provides colors.stateIconColor(
                                 enabled = enabled,
