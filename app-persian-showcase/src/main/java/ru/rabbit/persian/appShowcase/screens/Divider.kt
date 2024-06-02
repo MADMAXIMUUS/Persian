@@ -57,7 +57,7 @@ object Divider : Screen {
                     SampleRow(text = "Full Size Horizontal", firstItem = true) {
                         Column(
                             Modifier.fillMaxWidth(),
-                            verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small)
+                            verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size8)
                         ) {
                             Box(modifier = Modifier
                                 .size(100.dp, 10.dp)
@@ -77,7 +77,7 @@ object Divider : Screen {
                     SampleRow(text = "Middle Size Left Horizontal") {
                         Column(
                             Modifier.fillMaxWidth(),
-                            verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small)
+                            verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size8)
                         ) {
                             Box(modifier = Modifier
                                 .size(100.dp, 10.dp)
@@ -99,7 +99,7 @@ object Divider : Screen {
                     SampleRow(text = "Middle Size Right Horizontal") {
                         Column(
                             Modifier.fillMaxWidth(),
-                            verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small)
+                            verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size8)
                         ) {
                             Box(modifier = Modifier
                                 .size(100.dp, 10.dp)
@@ -121,7 +121,7 @@ object Divider : Screen {
                     SampleRow(text = "Insets Horizontal") {
                         Column(
                             Modifier.fillMaxWidth(),
-                            verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small)
+                            verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size8)
                         ) {
                             Box(modifier = Modifier
                                 .size(100.dp, 10.dp)
@@ -143,7 +143,7 @@ object Divider : Screen {
                             Modifier
                                 .fillMaxWidth()
                                 .height(200.dp),
-                            horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small)
+                            horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size8)
                         ) {
                             Box(modifier = Modifier
                                 .size(10.dp, 100.dp)
@@ -165,7 +165,7 @@ object Divider : Screen {
                             Modifier
                                 .fillMaxWidth()
                                 .height(200.dp),
-                            horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small)
+                            horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size8)
                         ) {
                             Box(modifier = Modifier
                                 .size(10.dp, 100.dp)
@@ -189,7 +189,7 @@ object Divider : Screen {
                             Modifier
                                 .fillMaxWidth()
                                 .height(200.dp),
-                            horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small)
+                            horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size8)
                         ) {
                             Box(modifier = Modifier
                                 .size(10.dp, 100.dp)
@@ -213,7 +213,7 @@ object Divider : Screen {
                             Modifier
                                 .fillMaxWidth()
                                 .height(200.dp),
-                            horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small)
+                            horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size8)
                         ) {
                             Box(modifier = Modifier
                                 .size(10.dp, 100.dp)

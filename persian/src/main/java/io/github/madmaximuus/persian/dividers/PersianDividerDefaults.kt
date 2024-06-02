@@ -11,7 +11,7 @@ import io.github.madmaximuus.persian.foundation.spacing
 object PersianDividerDefaults {
     @Composable
     fun sizes(
-        inset: Dp = MaterialTheme.spacing.large,
+        inset: Dp = MaterialTheme.spacing.size16,
         strokeThickness: Dp = 1.dp
     ) = remember(inset, strokeThickness) {
         DividerSizes(
