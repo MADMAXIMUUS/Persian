@@ -34,7 +34,7 @@ internal fun PersianFormSubhead(
     val resolvedTextStyle = textStyle ?: MaterialTheme.typography.bodySmall
     Row(
         modifier = modifier,
-        horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.extraExtraSmall)
+        horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size2)
     ) {
         Text(
             text = text,

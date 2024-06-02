@@ -35,7 +35,7 @@ internal fun PersianFormCaption(
     val resolvedTextStyle = textStyle ?: MaterialTheme.typography.bodySmall
     Row(
         modifier = modifier,
-        horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.extraExtraSmall),
+        horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size2),
         verticalAlignment = Alignment.Top
     ) {
         Text(
@@ -65,7 +65,7 @@ internal fun PersianFormCaption(
     val resolvedCounterTextStyle = counterTextStyle ?: MaterialTheme.typography.bodySmall
     Row(
         modifier = modifier,
-        horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.extraExtraSmall),
+        horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size2),
         verticalAlignment = Alignment.Top
     ) {
         Text(

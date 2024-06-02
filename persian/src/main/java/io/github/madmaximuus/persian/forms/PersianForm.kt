@@ -24,7 +24,7 @@ fun PersianForm(
 ) {
     Column(
         modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.extraExtraSmall)
+        verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size2)
     ) {
         if (subhead != null) {
             PersianFormSubhead(
