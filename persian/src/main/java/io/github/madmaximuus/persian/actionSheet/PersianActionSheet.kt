@@ -181,7 +181,7 @@ fun PersianActionSheet(
                     modifier = modifier
                         .widthIn(max = 460.dp)
                         .padding(
-                            horizontal = MaterialTheme.spacing.size16,
+                            horizontal = MaterialTheme.spacing.size8,
                             vertical = MaterialTheme.spacing.size8,
                         ),
                     shape = shape,
