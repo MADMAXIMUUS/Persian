@@ -1,5 +1,6 @@
 package io.github.madmaximuus.persian.banners
 
+import android.net.Uri
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.runtime.Composable
@@ -47,7 +48,7 @@ internal fun PersianBannerLeftImage(
 ) {
     PersianImage(
         modifier = modifier,
-        imageUrl = image,
+        imageUrl = Uri.parse(image),
         sizes = PersianImagesDefaults.size72(),
         shape = ImageShape.SMALL
     )
@@ -60,7 +61,7 @@ internal fun PersianBannerLeftAvatar(
 ) {
     PersianAvatar(
         modifier = modifier,
-        imageUrl = image,
+        imageUrl = Uri.parse(image),
         sizes = PersianAvatarsDefaults.size48(),
     )
 }

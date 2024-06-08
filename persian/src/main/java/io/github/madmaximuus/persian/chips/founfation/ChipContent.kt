@@ -1,5 +1,6 @@
 package io.github.madmaximuus.persian.chips.founfation
 
+import android.net.Uri
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -59,7 +60,7 @@ internal fun ChipContent(
         if (avatar != null || leadingIcon != null || image != null) {
             if (avatar != null) {
                 PersianAvatar(
-                    imageUrl = avatar,
+                    imageUrl = Uri.parse(avatar),
                     enabled = enabled,
                     sizes = PersianAvatarsDefaults.size24(),
                     overlay = selected,
@@ -77,7 +78,7 @@ internal fun ChipContent(
                 }
             } else if (image != null) {
                 PersianImage(
-                    imageUrl = image,
+                    imageUrl = Uri.parse(image),
                     enabled = enabled,
                     sizes = PersianImagesDefaults.size24(),
                     shape = ImageShape.MEDIUM,

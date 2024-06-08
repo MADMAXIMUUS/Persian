@@ -1,5 +1,6 @@
 package io.github.madmaximuus.persian.avatarsAndImages
 
+import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -41,7 +42,7 @@ import io.github.madmaximuus.persianSymbols.play.base.Play
 @Composable
 fun PersianImage(
     modifier: Modifier = Modifier,
-    imageUrl: String,
+    imageUrl: Uri,
     overlay: Boolean = false,
     enabled: Boolean = true,
     overlayIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.Play),
