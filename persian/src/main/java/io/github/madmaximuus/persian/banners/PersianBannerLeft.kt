@@ -48,7 +48,7 @@ internal fun PersianBannerLeftImage(
     PersianImage(
         modifier = modifier,
         imageUrl = image,
-        size = PersianImagesDefaults.size72(),
+        sizes = PersianImagesDefaults.size72(),
         shape = ImageShape.SMALL
     )
 }
@@ -61,6 +61,6 @@ internal fun PersianBannerLeftAvatar(
     PersianAvatar(
         modifier = modifier,
         imageUrl = image,
-        size = PersianAvatarsDefaults.size48(),
+        sizes = PersianAvatarsDefaults.size48(),
     )
 }

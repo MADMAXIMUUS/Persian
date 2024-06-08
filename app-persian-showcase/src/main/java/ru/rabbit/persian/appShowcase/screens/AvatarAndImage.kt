@@ -1,5 +1,7 @@
 package ru.rabbit.persian.appShowcase.screens
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -28,6 +30,7 @@ import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
 import io.github.madmaximuus.persian.forms.PersianForm
 import io.github.madmaximuus.persian.forms.PersianFormContent
 import io.github.madmaximuus.persian.forms.PersianFormSubheadConfig
+import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import io.github.madmaximuus.persian.foundation.spacing
 import io.github.madmaximuus.persian.radioButtons.PersianRadioButton
 import io.github.madmaximuus.persian.select.SelectActionItem
@@ -109,22 +112,34 @@ object AvatarAndImage : Screen {
                     PersianAvatar(
                         imageUrl = if (content) "https://loremflickr.com/320/240" else "",
                         overlay = overlay,
-                        size = avatarSizeState
+                        sizes = avatarSizeState,
+                        badge = {
+                            Box(modifier = Modifier
+                                .fillMaxSize()
+                                .background(MaterialTheme.extendedColorScheme.surface5, )
+                            )
+                        }
                     )
                     PersianImage(
                         imageUrl = if (content) "https://loremflickr.com/320/240" else "",
-                        size = imageSizeState,
+                        sizes = imageSizeState,
                         shape = shape,
-                        overlay = overlay
+                        overlay = overlay,
+                        badge = {
+                            Box(modifier = Modifier
+                                .fillMaxSize()
+                                .background(MaterialTheme.extendedColorScheme.surface5, )
+                            )
+                        }
                     )
                 }
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(
-                            top = MaterialTheme.spacing.large,
-                            start = MaterialTheme.spacing.large,
-                            end = MaterialTheme.spacing.large
+                            top = MaterialTheme.spacing.size16,
+                            start = MaterialTheme.spacing.size16,
+                            end = MaterialTheme.spacing.size16
                         )
                 ) {
                     PersianCheckbox(
@@ -209,7 +224,7 @@ object AvatarAndImage : Screen {
                             style = MaterialTheme.typography.titleMedium,
                             color = MaterialTheme.colorScheme.onSurface
                         )
-                        Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraSmall))
+                        Spacer(modifier = Modifier.height(MaterialTheme.spacing.size4))
                         Column(
                             modifier = Modifier
                                 .fillMaxWidth()

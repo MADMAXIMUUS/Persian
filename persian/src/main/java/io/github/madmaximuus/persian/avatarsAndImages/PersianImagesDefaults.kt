@@ -27,15 +27,21 @@ object PersianImagesDefaults {
         overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size32(),
         smallShape: Shape = RoundedCornerShape(8.dp),
         mediumShape: Shape = RoundedCornerShape(12.dp),
-        largeShape: Shape = RoundedCornerShape(16.dp)
+        largeShape: Shape = RoundedCornerShape(16.dp),
+        badgeSize: Dp = 28.dp,
+        horizontalBadgeOffset: Dp = 5.dp,
+        verticalBadgeOffset: Dp = 5.dp,
     ): ImageSize = ImageSize(
         boxSizes,
         placeholderIconSize,
         overlayIconSize,
         smallShape,
         mediumShape,
-        largeShape
-    )
+        largeShape,
+        badgeSize,
+        horizontalBadgeOffset,
+        verticalBadgeOffset
+        )
 
     @Composable
     fun size88(
@@ -44,14 +50,20 @@ object PersianImagesDefaults {
         overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size32(),
         smallShape: Shape = RoundedCornerShape(8.dp),
         mediumShape: Shape = RoundedCornerShape(12.dp),
-        largeShape: Shape = RoundedCornerShape(16.dp)
+        largeShape: Shape = RoundedCornerShape(16.dp),
+        badgeSize: Dp = 28.dp,
+        horizontalBadgeOffset: Dp = 5.dp,
+        verticalBadgeOffset: Dp = 5.dp,
     ): ImageSize = ImageSize(
         boxSizes,
         placeholderIconSize,
         overlayIconSize,
         smallShape,
         mediumShape,
-        largeShape
+        largeShape,
+        badgeSize,
+        horizontalBadgeOffset,
+        verticalBadgeOffset
     )
 
     @Composable
@@ -61,14 +73,20 @@ object PersianImagesDefaults {
         overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size32(),
         smallShape: Shape = RoundedCornerShape(8.dp),
         mediumShape: Shape = RoundedCornerShape(12.dp),
-        largeShape: Shape = RoundedCornerShape(16.dp)
+        largeShape: Shape = RoundedCornerShape(16.dp),
+        badgeSize: Dp = 28.dp,
+        horizontalBadgeOffset: Dp = 5.dp,
+        verticalBadgeOffset: Dp = 5.dp,
     ): ImageSize = ImageSize(
         boxSizes,
         placeholderIconSize,
         overlayIconSize,
         smallShape,
         mediumShape,
-        largeShape
+        largeShape,
+        badgeSize,
+        horizontalBadgeOffset,
+        verticalBadgeOffset
     )
 
     @Composable
@@ -78,14 +96,20 @@ object PersianImagesDefaults {
         overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size28(),
         smallShape: Shape = RoundedCornerShape(6.dp),
         mediumShape: Shape = RoundedCornerShape(10.dp),
-        largeShape: Shape = RoundedCornerShape(14.dp)
+        largeShape: Shape = RoundedCornerShape(14.dp),
+        badgeSize: Dp = 28.dp,
+        horizontalBadgeOffset: Dp = 5.dp,
+        verticalBadgeOffset: Dp = 5.dp,
     ): ImageSize = ImageSize(
         boxSizes,
         placeholderIconSize,
         overlayIconSize,
         smallShape,
         mediumShape,
-        largeShape
+        largeShape,
+        badgeSize,
+        horizontalBadgeOffset,
+        verticalBadgeOffset
     )
 
     @Composable
@@ -95,14 +119,20 @@ object PersianImagesDefaults {
         overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size28(),
         smallShape: Shape = RoundedCornerShape(6.dp),
         mediumShape: Shape = RoundedCornerShape(10.dp),
-        largeShape: Shape = RoundedCornerShape(14.dp)
+        largeShape: Shape = RoundedCornerShape(14.dp),
+        badgeSize: Dp = 24.dp,
+        horizontalBadgeOffset: Dp = 4.dp,
+        verticalBadgeOffset: Dp = 4.dp,
     ): ImageSize = ImageSize(
         boxSizes,
         placeholderIconSize,
         overlayIconSize,
         smallShape,
         mediumShape,
-        largeShape
+        largeShape,
+        badgeSize,
+        horizontalBadgeOffset,
+        verticalBadgeOffset
     )
 
     @Composable
@@ -112,14 +142,20 @@ object PersianImagesDefaults {
         overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size28(),
         smallShape: Shape = RoundedCornerShape(6.dp),
         mediumShape: Shape = RoundedCornerShape(10.dp),
-        largeShape: Shape = RoundedCornerShape(14.dp)
+        largeShape: Shape = RoundedCornerShape(14.dp),
+        badgeSize: Dp = 24.dp,
+        horizontalBadgeOffset: Dp = 4.dp,
+        verticalBadgeOffset: Dp = 4.dp,
     ): ImageSize = ImageSize(
         boxSizes,
         placeholderIconSize,
         overlayIconSize,
         smallShape,
         mediumShape,
-        largeShape
+        largeShape,
+        badgeSize,
+        horizontalBadgeOffset,
+        verticalBadgeOffset
     )
 
     @Composable
@@ -129,14 +165,20 @@ object PersianImagesDefaults {
         overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size24(),
         smallShape: Shape = RoundedCornerShape(4.dp),
         mediumShape: Shape = RoundedCornerShape(8.dp),
-        largeShape: Shape = RoundedCornerShape(12.dp)
+        largeShape: Shape = RoundedCornerShape(12.dp),
+        badgeSize: Dp = 20.dp,
+        horizontalBadgeOffset: Dp = 3.dp,
+        verticalBadgeOffset: Dp = 3.dp,
     ): ImageSize = ImageSize(
         boxSizes,
         placeholderIconSize,
         overlayIconSize,
         smallShape,
         mediumShape,
-        largeShape
+        largeShape,
+        badgeSize,
+        horizontalBadgeOffset,
+        verticalBadgeOffset
     )
 
     @Composable
@@ -146,14 +188,20 @@ object PersianImagesDefaults {
         overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size24(),
         smallShape: Shape = RoundedCornerShape(4.dp),
         mediumShape: Shape = RoundedCornerShape(8.dp),
-        largeShape: Shape = RoundedCornerShape(12.dp)
+        largeShape: Shape = RoundedCornerShape(12.dp),
+        badgeSize: Dp = 20.dp,
+        horizontalBadgeOffset: Dp = 3.dp,
+        verticalBadgeOffset: Dp = 3.dp,
     ): ImageSize = ImageSize(
         boxSizes,
         placeholderIconSize,
         overlayIconSize,
         smallShape,
         mediumShape,
-        largeShape
+        largeShape,
+        badgeSize,
+        horizontalBadgeOffset,
+        verticalBadgeOffset
     )
 
     @Composable
@@ -163,14 +211,20 @@ object PersianImagesDefaults {
         overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size20(),
         smallShape: Shape = RoundedCornerShape(4.dp),
         mediumShape: Shape = RoundedCornerShape(8.dp),
-        largeShape: Shape = RoundedCornerShape(12.dp)
+        largeShape: Shape = RoundedCornerShape(12.dp),
+        badgeSize: Dp = 20.dp,
+        horizontalBadgeOffset: Dp = 3.dp,
+        verticalBadgeOffset: Dp = 3.dp,
     ): ImageSize = ImageSize(
         boxSizes,
         placeholderIconSize,
         overlayIconSize,
         smallShape,
         mediumShape,
-        largeShape
+        largeShape,
+        badgeSize,
+        horizontalBadgeOffset,
+        verticalBadgeOffset
     )
 
     @Composable
@@ -180,14 +234,20 @@ object PersianImagesDefaults {
         overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size20(),
         smallShape: Shape = RoundedCornerShape(4.dp),
         mediumShape: Shape = RoundedCornerShape(8.dp),
-        largeShape: Shape = RoundedCornerShape(12.dp)
+        largeShape: Shape = RoundedCornerShape(12.dp),
+        badgeSize: Dp = 16.dp,
+        horizontalBadgeOffset: Dp = 3.dp,
+        verticalBadgeOffset: Dp = 3.dp,
     ): ImageSize = ImageSize(
         boxSizes,
         placeholderIconSize,
         overlayIconSize,
         smallShape,
         mediumShape,
-        largeShape
+        largeShape,
+        badgeSize,
+        horizontalBadgeOffset,
+        verticalBadgeOffset
     )
 
     @Composable
@@ -197,14 +257,20 @@ object PersianImagesDefaults {
         overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size20(),
         smallShape: Shape = RoundedCornerShape(3.dp),
         mediumShape: Shape = RoundedCornerShape(7.dp),
-        largeShape: Shape = RoundedCornerShape(11.dp)
+        largeShape: Shape = RoundedCornerShape(11.dp),
+        badgeSize: Dp = 16.dp,
+        horizontalBadgeOffset: Dp = 3.dp,
+        verticalBadgeOffset: Dp = 3.dp,
     ): ImageSize = ImageSize(
         boxSizes,
         placeholderIconSize,
         overlayIconSize,
         smallShape,
         mediumShape,
-        largeShape
+        largeShape,
+        badgeSize,
+        horizontalBadgeOffset,
+        verticalBadgeOffset
     )
 
     @Composable
@@ -214,14 +280,20 @@ object PersianImagesDefaults {
         overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size20(),
         smallShape: Shape = RoundedCornerShape(3.dp),
         mediumShape: Shape = RoundedCornerShape(7.dp),
-        largeShape: Shape = RoundedCornerShape(11.dp)
+        largeShape: Shape = RoundedCornerShape(11.dp),
+        badgeSize: Dp = 16.dp,
+        horizontalBadgeOffset: Dp = 3.dp,
+        verticalBadgeOffset: Dp = 3.dp,
     ): ImageSize = ImageSize(
         boxSizes,
         placeholderIconSize,
         overlayIconSize,
         smallShape,
         mediumShape,
-        largeShape
+        largeShape,
+        badgeSize,
+        horizontalBadgeOffset,
+        verticalBadgeOffset
     )
 
     @Composable
@@ -231,14 +303,20 @@ object PersianImagesDefaults {
         overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size18(),
         smallShape: Shape = RoundedCornerShape(3.dp),
         mediumShape: Shape = RoundedCornerShape(7.dp),
-        largeShape: Shape = RoundedCornerShape(9.dp)
+        largeShape: Shape = RoundedCornerShape(9.dp),
+        badgeSize: Dp = 16.dp,
+        horizontalBadgeOffset: Dp = 3.dp,
+        verticalBadgeOffset: Dp = 3.dp,
     ): ImageSize = ImageSize(
         boxSizes,
         placeholderIconSize,
         overlayIconSize,
         smallShape,
         mediumShape,
-        largeShape
+        largeShape,
+        badgeSize,
+        horizontalBadgeOffset,
+        verticalBadgeOffset
     )
 
     @Composable
@@ -254,7 +332,10 @@ object PersianImagesDefaults {
         null,
         smallShape,
         mediumShape,
-        largeShape
+        largeShape,
+        null,
+        0.dp,
+        0.dp
     )
 
     @Composable
@@ -270,7 +351,10 @@ object PersianImagesDefaults {
         null,
         smallShape,
         mediumShape,
-        largeShape
+        largeShape,
+        null,
+        0.dp,
+        0.dp
     )
 
     @Composable
@@ -279,7 +363,7 @@ object PersianImagesDefaults {
         disabledPlaceholderContainerColor: Color = MaterialTheme.extendedColorScheme.onSurface.state08,
         borderColor: Color = MaterialTheme.extendedColorScheme.outlineVariant,
         disabledBorderColor: Color = MaterialTheme.extendedColorScheme.onSurface.state12,
-        placeholderIconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
+        placeholderIconColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
         disabledPlaceholderIconColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
         overlayIconColor: Color = MaterialTheme.extendedColorScheme.primary,
         disabledOverlayIconColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38
@@ -306,7 +390,10 @@ class ImageSize internal constructor(
     internal val overlayIconBoxSize: IconBoxSize?,
     private val smallShape: Shape,
     private val mediumShape: Shape,
-    private val largeShape: Shape
+    private val largeShape: Shape,
+    internal val badgeSize: Dp?,
+    internal val horizontalBadgeOffset: Dp,
+    internal val verticalBadgeOffset: Dp,
 ) {
 
     @Stable
@@ -323,14 +410,20 @@ class ImageSize internal constructor(
         overlayIconBoxSize: IconBoxSize? = this.overlayIconBoxSize,
         smallShape: Shape = this.smallShape,
         mediumShape: Shape = this.mediumShape,
-        largeShape: Shape = this.largeShape
+        largeShape: Shape = this.largeShape,
+        badgeSize: Dp? = this.badgeSize,
+        horizontalBadgeOffset: Dp = this.horizontalBadgeOffset,
+        verticalBadgeOffset: Dp = this.verticalBadgeOffset
     ) = ImageSize(
         boxSizes.takeOrElse { this.boxSizes },
         placeholderSize,
         overlayIconBoxSize,
         smallShape,
         mediumShape,
-        largeShape
+        largeShape,
+        badgeSize,
+        horizontalBadgeOffset.takeOrElse { this.horizontalBadgeOffset },
+        verticalBadgeOffset.takeOrElse { this.verticalBadgeOffset }
     )
 
     override fun equals(other: Any?): Boolean {
@@ -342,6 +435,9 @@ class ImageSize internal constructor(
         if (overlayIconBoxSize != other.overlayIconBoxSize) return false
         if (smallShape != other.smallShape) return false
         if (mediumShape != other.mediumShape) return false
+        if (badgeSize != other.badgeSize) return false
+        if (horizontalBadgeOffset != other.horizontalBadgeOffset) return false
+        if (verticalBadgeOffset != other.verticalBadgeOffset) return false
         return largeShape == other.largeShape
     }
 
@@ -352,6 +448,9 @@ class ImageSize internal constructor(
         result = 31 * result + smallShape.hashCode()
         result = 31 * result + mediumShape.hashCode()
         result = 31 * result + largeShape.hashCode()
+        result = 31 * result + badgeSize.hashCode()
+        result = 31 * result + horizontalBadgeOffset.hashCode()
+        result = 31 * result + verticalBadgeOffset.hashCode()
         return result
     }
 }
@@ -393,7 +492,7 @@ class ImagesColors internal constructor(
         disabledPlaceholderIconColor: Color = this.disabledPlaceholderIconColor,
         overlayIconColor: Color = this.overlayIconColor,
         disabledOverlayIconColor: Color = this.disabledOverlayIconColor
-    ): AvatarsColors = AvatarsColors(
+    ): ImagesColors = ImagesColors(
         placeholderContainerColor = placeholderContainerColor.takeOrElse { this.placeholderContainerColor },
         disabledPlaceholderContainerColor = disabledPlaceholderContainerColor.takeOrElse { this.disabledPlaceholderContainerColor },
         borderColor = borderColor.takeOrElse { this.borderColor },
