@@ -1,14 +1,13 @@
-package io.github.madmaximuus.persian.charts.donut.util
+package io.github.madmaximuus.persian.charts.util
 
 import androidx.compose.ui.geometry.Offset
-import io.github.madmaximuus.persian.charts.donut.DonutChartData
 import kotlin.math.atan2
 import kotlin.math.pow
 import kotlin.math.sqrt
 
 internal fun calculateProportions(
-    data: List<DonutChartData>
-): List<DonutChartData> {
+    data: List<ChartData>
+): List<ChartData> {
     return data.sortedBy { it.value }.mapIndexed { index, donutChartData ->
         donutChartData.copy(
             percentage = donutChartData.value * 100 / data.totalAmount,
@@ -17,12 +16,12 @@ internal fun calculateProportions(
     }
 }
 
-internal fun List<DonutChartData>.getTotalAmountWithGapIncluded(
+internal fun List<ChartData>.getTotalAmountWithGapIncluded(
 ): Float {
     return this.totalAmount.toFloat()
 }
 
-internal fun List<DonutChartData>.findSweepAngle(
+internal fun List<ChartData>.findSweepAngle(
     index: Int,
 ): Float {
     val amount = this[index].value.toFloat()
@@ -30,7 +29,7 @@ internal fun List<DonutChartData>.findSweepAngle(
     return (((amount / totalWithGap) * 360f))
 }
 
-internal val List<DonutChartData>.totalAmount: Double
+internal val List<ChartData>.totalAmount: Double
     get() = sumOf { it.value }
 
 internal fun findTouchDistanceFromCenter(center: Offset, touch: Offset) =

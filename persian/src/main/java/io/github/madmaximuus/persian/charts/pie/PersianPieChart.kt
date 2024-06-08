@@ -1,13 +1,10 @@
-package io.github.madmaximuus.persian.charts.donut
+package io.github.madmaximuus.persian.charts.pie
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.BoxWithConstraints
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
@@ -25,8 +22,6 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.drawText
 import androidx.compose.ui.text.rememberTextMeasurer
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.charts.util.ChartConfig
@@ -40,20 +35,16 @@ import kotlin.math.cos
 import kotlin.math.sin
 
 @Composable
-fun PersianDonutChart(
+fun PersianPieChart(
     data: List<ChartData>,
     config: ChartConfig,
     modifier: Modifier = Modifier,
-    style: ChartStyle = PersianDonutChartsDefaults.style(),
-    title: String? = null,
-    subtitle: String? = null,
+    style: ChartStyle = PersianPieChartsDefaults.style(),
     size: Dp = 320.dp,
 ) {
     val state = rememberDonutChartState(data, config, style)
 
-    val strokeCoeff = if (config.showLabel) 0.45f else 0.2f
-    val borderWidth = if (config.showLabel) 8.dp else 6.dp
-    val innerRadius: Dp = (size - (size * strokeCoeff)) / 2
+    val borderWidth = 6.dp
     val measurer = rememberTextMeasurer()
     val textStyle = style.labelStyle.copy(color = style.labelColor)
     var center by remember { mutableStateOf(Offset.Zero) }
@@ -69,7 +60,6 @@ fun PersianDonutChart(
         val canvasSize = min(constraints.maxWidth, constraints.maxHeight)
         val canvasSizeDp = with(LocalDensity.current) { canvasSize.toDp() }
         val borderColor = MaterialTheme.extendedColorScheme.surface
-        val backgroundColor = MaterialTheme.extendedColorScheme.surface
         Canvas(
             modifier = modifier
                 .size(canvasSizeDp)
@@ -80,8 +70,8 @@ fun PersianDonutChart(
                                 state.handleTap(
                                     center = center,
                                     tapOffset = tapOffset,
-                                    innerRadius = innerRadius.toPx(),
-                                    outerRadius = ((size / 2 + innerRadius) * 1.3f).toPx()
+                                    innerRadius = 0f,
+                                    outerRadius = ((size / 2 + 0.dp) * 1.3f).toPx()
                                 )
                             }
                         }
@@ -125,51 +115,20 @@ fun PersianDonutChart(
                             topLeft = Offset(
                                 center.x
                                         - measurement.size.width / 2
-                                        + (innerRadius.toPx()
-                                        + ((size / 2 - innerRadius) / 2).toPx())
+                                        + (35.dp.toPx()
+                                        + ((size / 2 - 35.dp) / 2).toPx())
                                         * cos(angleInRadians) * scale,
                                 center.y
                                         - measurement.size.height / 2
-                                        + (innerRadius.toPx()
-                                        + ((size / 2 - innerRadius) / 2).toPx())
+                                        + (35.dp.toPx()
+                                        + ((size / 2 - 35.dp) / 2).toPx())
                                         * sin(angleInRadians) * scale
                             )
                         )
                     }
                     startAngle += data.angle
                 }
-                drawCircle(
-                    color = backgroundColor,
-                    center = center,
-                    radius = innerRadius.toPx()
-                )
             }
         )
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            title?.let {
-                Text(
-                    modifier = Modifier.fillMaxWidth(),
-                    text = it,
-                    style = style.titleStyle,
-                    color = style.titleColor,
-                    textAlign = TextAlign.Center,
-                    maxLines = 2,
-                    overflow = TextOverflow.Ellipsis
-                )
-            }
-            if (subtitle != null || config.showTotalValueAsSubtitle) {
-                Text(
-                    modifier = Modifier.fillMaxWidth(),
-                    text = if (config.showTotalValueAsSubtitle) state.totalValue.toString() else subtitle.toString(),
-                    style = style.subtitleStyle,
-                    color = style.subtitleColor,
-                    textAlign = TextAlign.Center,
-                    maxLines = 2,
-                    overflow = TextOverflow.Ellipsis
-                )
-            }
-        }
     }
 }

@@ -1,11 +1,11 @@
-package io.github.madmaximuus.persian.charts.donut.util
+package io.github.madmaximuus.persian.charts.util
 
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 
 @Immutable
-class DonutChartStyle internal constructor(
+class ChartStyle internal constructor(
     val titleStyle: TextStyle,
     val titleColor: Color,
     val subtitleStyle: TextStyle,

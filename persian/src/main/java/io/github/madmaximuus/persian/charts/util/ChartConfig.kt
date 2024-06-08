@@ -1,6 +1,6 @@
-package io.github.madmaximuus.persian.charts.donut.util
+package io.github.madmaximuus.persian.charts.util
 
-class DonutChartConfig(
+class ChartConfig(
     /*val minimalDisplayedValue: Double = 15.0,*/
     val selectable: Boolean = false,
     val showLabel: Boolean = false,

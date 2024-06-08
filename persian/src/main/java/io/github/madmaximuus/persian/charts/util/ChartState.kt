@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.charts.donut
+package io.github.madmaximuus.persian.charts.util
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -8,19 +8,12 @@ import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.geometry.Offset
-import io.github.madmaximuus.persian.charts.donut.util.DonutChartConfig
-import io.github.madmaximuus.persian.charts.donut.util.DonutChartStyle
-import io.github.madmaximuus.persian.charts.donut.util.calculateProportions
-import io.github.madmaximuus.persian.charts.donut.util.calculateTouchAngleAccordingToCanvas
-import io.github.madmaximuus.persian.charts.donut.util.findNormalizedPointFromTouch
-import io.github.madmaximuus.persian.charts.donut.util.findTouchDistanceFromCenter
-import io.github.madmaximuus.persian.charts.donut.util.totalAmount
 import java.io.Serializable
 
-internal class PersianChartState(
-    val consData: List<DonutChartData>,
-    val config: DonutChartConfig,
-    val style: DonutChartStyle,
+internal class ChartState(
+    val consData: List<ChartData>,
+    val config: ChartConfig,
+    val style: ChartStyle,
     stateData: ChartStateData? = null,
 ) {
     var data by mutableStateOf(stateData?.data ?: emptyArray())
@@ -67,23 +60,23 @@ internal class PersianChartState(
 
     companion object {
         fun Saver(
-            savedData: List<DonutChartData>,
-            config: DonutChartConfig,
-            style: DonutChartStyle
-        ): Saver<PersianChartState, *> = Saver(
+            savedData: List<ChartData>,
+            config: ChartConfig,
+            style: ChartStyle
+        ): Saver<ChartState, *> = Saver(
             save = { state ->
                 ChartStateData(
                     data = state.data
                 )
             },
             restore = { data ->
-                PersianChartState(savedData, config, style, data)
+                ChartState(savedData, config, style, data)
             }
         )
     }
 
     data class ChartStateData(
-        val data: Array<DonutChartData>
+        val data: Array<ChartData>
     ) : Serializable {
 
         override fun equals(other: Any?): Boolean {
@@ -103,11 +96,11 @@ internal class PersianChartState(
 
 @Composable
 internal fun rememberDonutChartState(
-    data: List<DonutChartData>,
-    config: DonutChartConfig,
-    style: DonutChartStyle,
-): PersianChartState = rememberSaveable(
+    data: List<ChartData>,
+    config: ChartConfig,
+    style: ChartStyle,
+): ChartState = rememberSaveable(
     inputs = arrayOf(config),
-    saver = PersianChartState.Saver(data, config, style),
-    init = { PersianChartState(data, config, style) }
+    saver = ChartState.Saver(data, config, style),
+    init = { ChartState(data, config, style) }
 )
