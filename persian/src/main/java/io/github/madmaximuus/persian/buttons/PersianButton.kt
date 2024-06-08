@@ -325,7 +325,7 @@ private fun PersianButton(
 @Preview
 @Preview(uiMode = UI_MODE_NIGHT_YES)
 @Composable
-fun PersianButtonPreview() {
+private fun PersianButtonPreview() {
     PersianTheme {
         val isLoading = false
         Surface {
