@@ -20,7 +20,7 @@ internal fun PersianDatePickerDialogMonthGrid(
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(Constants.MONTH_MODE_GRID_COLUMNS),
-        verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.extraSmall),
+        verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size4),
         userScrollEnabled = false,
         horizontalArrangement = Arrangement.SpaceEvenly,
         content = {

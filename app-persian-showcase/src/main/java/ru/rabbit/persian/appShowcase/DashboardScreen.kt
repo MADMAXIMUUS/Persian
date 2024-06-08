@@ -23,11 +23,13 @@ import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persianSymbols.chevronRight.base.ChevronRight
+import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 import ru.rabbit.persian.appShowcase.screens.Screen
 
@@ -67,7 +69,7 @@ fun DashboardScreen(
                                 .weight(1f)
                         )
                         Icon(
-                            painter = MaterialTheme.icons.chevronRight,
+                            painter = rememberVectorPainter(image = PersianSymbols.Default.ChevronRight),
                             contentDescription = "",
                             tint = MaterialTheme.colorScheme.onSurfaceVariant
                         )

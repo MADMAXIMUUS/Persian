@@ -5,12 +5,15 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import io.github.madmaximuus.persian.avatarsAndImages.PersianAvatar
 import io.github.madmaximuus.persian.avatarsAndImages.PersianAvatarsDefaults
-import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.foundation.spacing
 import io.github.madmaximuus.persian.iconButtons.PersianIconButtonDefaults
 import io.github.madmaximuus.persian.iconButtons.PersianTertiaryIconButton
+import io.github.madmaximuus.persianSymbols.arrow.left.base.ArrowLeft
+import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
+import io.github.madmaximuus.persianSymbols.xmark.base.XMark
 
 sealed class PersianTopAppBarLeft {
 
@@ -33,7 +36,7 @@ sealed class PersianTopAppBarLeft {
 @Composable
 internal fun PersianTopAppBarLeftNavigation(
     modifier: Modifier = Modifier,
-    icon: Painter = MaterialTheme.icons.arrowBack,
+    icon: Painter = rememberVectorPainter(image = PersianSymbols.Default.ArrowLeft),
     onClick: () -> Unit
 ) {
     val colors = LocalPersianTopAppBarColors.current
@@ -50,7 +53,7 @@ internal fun PersianTopAppBarLeftNavigation(
 
 @Composable
 internal fun PersianTopAppBarLeftClose(
-    icon: Painter = MaterialTheme.icons.close,
+    icon: Painter = rememberVectorPainter(image = PersianSymbols.Default.XMark),
     onClick: () -> Unit
 ) {
     val colors = LocalPersianTopAppBarColors.current

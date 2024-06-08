@@ -5,11 +5,17 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.navigationBar.NavigationBarItem
 import io.github.madmaximuus.persian.navigationBar.PersianNavigationBar
-import ru.rabbit.persian.appShowcase.R
+import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
+import io.github.madmaximuus.persianSymbols.gear.Gear
+import io.github.madmaximuus.persianSymbols.house.House
+import io.github.madmaximuus.persianSymbols.magnifyingGlass.MagnifyingGlass
+import io.github.madmaximuus.persianSymbols.message.bars.MessageBars
+import io.github.madmaximuus.persianSymbols.message.base.Message
+import io.github.madmaximuus.persianSymbols.user.base.User
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
@@ -38,24 +44,24 @@ object NavigationBar : Screen {
                             actions = listOf(
                                 NavigationBarItem(
                                     selected = true,
-                                    icon = painterResource(id = R.drawable.ic_home_outlined),
-                                    selectedIcon = painterResource(id = R.drawable.ic_home_filled),
-                                    text = "Feed",
+                                    icon = rememberVectorPainter(image = PersianSymbols.Default.House),
+                                    selectedIcon = rememberVectorPainter(image = PersianSymbols.Filled.House),
+                                    text = "Home",
                                     badgeCount = 20,
                                     onClick = {}
                                 ),
                                 NavigationBarItem(
                                     selected = false,
-                                    icon = painterResource(id = R.drawable.ic_home_outlined),
-                                    selectedIcon = painterResource(id = R.drawable.ic_home_filled),
-                                    text = "Feed",
+                                    icon = rememberVectorPainter(image = PersianSymbols.Default.MagnifyingGlass),
+                                    selectedIcon = rememberVectorPainter(image = PersianSymbols.Default.MagnifyingGlass),
+                                    text = "Search",
                                     onClick = {}
                                 ),
                                 NavigationBarItem(
                                     selected = false,
-                                    icon = painterResource(id = R.drawable.ic_home_outlined),
-                                    selectedIcon = painterResource(id = R.drawable.ic_home_filled),
-                                    text = "Feed",
+                                    icon = rememberVectorPainter(image = PersianSymbols.Default.Message),
+                                    selectedIcon = rememberVectorPainter(image = PersianSymbols.Filled.Message),
+                                    text = "Chat",
                                     onClick = {}
                                 ),
                             )
@@ -68,30 +74,31 @@ object NavigationBar : Screen {
                             actions = listOf(
                                 NavigationBarItem(
                                     selected = true,
-                                    icon = painterResource(id = R.drawable.ic_home_outlined),
-                                    selectedIcon = painterResource(id = R.drawable.ic_home_filled),
-                                    text = "Feed",
+                                    icon = rememberVectorPainter(image = PersianSymbols.Default.House),
+                                    selectedIcon = rememberVectorPainter(image = PersianSymbols.Filled.House),
+                                    text = "House",
+                                    badgeCount = 20,
                                     onClick = {}
                                 ),
                                 NavigationBarItem(
                                     selected = false,
-                                    icon = painterResource(id = R.drawable.ic_home_outlined),
-                                    selectedIcon = painterResource(id = R.drawable.ic_home_filled),
-                                    text = "Feed",
+                                    icon = rememberVectorPainter(image = PersianSymbols.Default.MagnifyingGlass),
+                                    selectedIcon = rememberVectorPainter(image = PersianSymbols.Default.MagnifyingGlass),
+                                    text = "Search",
                                     onClick = {}
                                 ),
                                 NavigationBarItem(
                                     selected = false,
-                                    icon = painterResource(id = R.drawable.ic_home_outlined),
-                                    selectedIcon = painterResource(id = R.drawable.ic_home_filled),
-                                    text = "Feed",
+                                    icon = rememberVectorPainter(image = PersianSymbols.Default.MessageBars),
+                                    selectedIcon = rememberVectorPainter(image = PersianSymbols.Filled.MessageBars),
+                                    text = "Chat",
                                     onClick = {}
                                 ),
                                 NavigationBarItem(
                                     selected = false,
-                                    icon = painterResource(id = R.drawable.ic_home_outlined),
-                                    selectedIcon = painterResource(id = R.drawable.ic_home_filled),
-                                    text = "Feed",
+                                    icon = rememberVectorPainter(image = PersianSymbols.Default.User),
+                                    selectedIcon = rememberVectorPainter(image = PersianSymbols.Filled.User),
+                                    text = "Profile",
                                     onClick = {}
                                 ),
                             )
@@ -104,37 +111,38 @@ object NavigationBar : Screen {
                             actions = listOf(
                                 NavigationBarItem(
                                     selected = true,
-                                    icon = painterResource(id = R.drawable.ic_home_outlined),
-                                    selectedIcon = painterResource(id = R.drawable.ic_home_filled),
-                                    text = "Feed",
+                                    icon = rememberVectorPainter(image = PersianSymbols.Default.House),
+                                    selectedIcon = rememberVectorPainter(image = PersianSymbols.Filled.House),
+                                    text = "House",
+                                    badgeCount = 20,
                                     onClick = {}
                                 ),
                                 NavigationBarItem(
                                     selected = false,
-                                    icon = painterResource(id = R.drawable.ic_home_outlined),
-                                    selectedIcon = painterResource(id = R.drawable.ic_home_filled),
-                                    text = "Feed",
+                                    icon = rememberVectorPainter(image = PersianSymbols.Default.MagnifyingGlass),
+                                    selectedIcon = rememberVectorPainter(image = PersianSymbols.Default.MagnifyingGlass),
+                                    text = "Search",
                                     onClick = {}
                                 ),
                                 NavigationBarItem(
                                     selected = false,
-                                    icon = painterResource(id = R.drawable.ic_home_outlined),
-                                    selectedIcon = painterResource(id = R.drawable.ic_home_filled),
-                                    text = "Feed",
+                                    icon = rememberVectorPainter(image = PersianSymbols.Default.MessageBars),
+                                    selectedIcon = rememberVectorPainter(image = PersianSymbols.Filled.MessageBars),
+                                    text = "Chat",
                                     onClick = {}
                                 ),
                                 NavigationBarItem(
                                     selected = false,
-                                    icon = painterResource(id = R.drawable.ic_home_outlined),
-                                    selectedIcon = painterResource(id = R.drawable.ic_home_filled),
-                                    text = "Feed",
+                                    icon = rememberVectorPainter(image = PersianSymbols.Default.User),
+                                    selectedIcon = rememberVectorPainter(image = PersianSymbols.Filled.User),
+                                    text = "Profile",
                                     onClick = {}
                                 ),
                                 NavigationBarItem(
                                     selected = false,
-                                    icon = painterResource(id = R.drawable.ic_home_outlined),
-                                    selectedIcon = painterResource(id = R.drawable.ic_home_filled),
-                                    text = "Feed",
+                                    icon = rememberVectorPainter(image = PersianSymbols.Default.Gear),
+                                    selectedIcon = rememberVectorPainter(image = PersianSymbols.Filled.Gear),
+                                    text = "Settings",
                                     onClick = {}
                                 ),
                             )

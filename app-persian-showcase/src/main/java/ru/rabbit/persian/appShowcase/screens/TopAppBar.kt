@@ -17,14 +17,16 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.foundation.spacing
 import io.github.madmaximuus.persian.radioButtons.PersianRadioButton
 import io.github.madmaximuus.persian.topAppBar.ActionItem
 import io.github.madmaximuus.persian.topAppBar.PersianTopAppBar
 import io.github.madmaximuus.persian.topAppBar.PersianTopAppBarLeft
 import io.github.madmaximuus.persian.topAppBar.PersianTopAppBarRight
+import io.github.madmaximuus.persianSymbols.bell.base.Bell
+import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
 object TopAppBar : Screen {
     override val name: String = "Top App Bar"
@@ -194,7 +196,7 @@ object TopAppBar : Screen {
                                     )
                             }
                         )
-                        val icon = MaterialTheme.icons.person
+                        val icon = rememberVectorPainter(image = PersianSymbols.Default.Bell)
                         PersianRadioButton(
                             modifier = Modifier.fillMaxWidth(),
                             text = "Icon",

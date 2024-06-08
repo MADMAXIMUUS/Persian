@@ -92,8 +92,8 @@ internal fun PersianDatePickerDialogDayCell(
                 }
             }
             .padding(
-                horizontal = MaterialTheme.spacing.extraSmall,
-                vertical = MaterialTheme.spacing.small
+                horizontal = MaterialTheme.spacing.size4,
+                vertical = MaterialTheme.spacing.size8
             ),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -110,9 +110,9 @@ internal fun PersianDatePickerDialogDayCell(
         Box(
             modifier = Modifier
                 .padding(
-                    top = MaterialTheme.spacing.extraExtraSmall,
-                    start = MaterialTheme.spacing.small,
-                    end = MaterialTheme.spacing.small
+                    top = MaterialTheme.spacing.size2,
+                    start = MaterialTheme.spacing.size8,
+                    end = MaterialTheme.spacing.size8
                 )
                 .fillMaxWidth()
                 .height(2.dp)

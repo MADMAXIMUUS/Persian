@@ -52,8 +52,8 @@ internal fun PersianDatePickerDialogYearCell(
             .clip(MaterialTheme.shape.shape12)
             .clickable { onYearClick(index) }
             .padding(
-                horizontal = MaterialTheme.spacing.extraSmall,
-                vertical = MaterialTheme.spacing.small
+                horizontal = MaterialTheme.spacing.size4,
+                vertical = MaterialTheme.spacing.size8
             ),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -66,9 +66,9 @@ internal fun PersianDatePickerDialogYearCell(
         Box(
             modifier = Modifier
                 .padding(
-                    top = MaterialTheme.spacing.extraExtraSmall,
-                    start = MaterialTheme.spacing.medium,
-                    end = MaterialTheme.spacing.medium
+                    top = MaterialTheme.spacing.size2,
+                    start = MaterialTheme.spacing.size12,
+                    end = MaterialTheme.spacing.size12
                 )
                 .fillMaxWidth()
                 .height(2.dp)

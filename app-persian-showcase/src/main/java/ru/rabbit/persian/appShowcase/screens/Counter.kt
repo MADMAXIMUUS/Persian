@@ -3,9 +3,9 @@ package ru.rabbit.persian.appShowcase.screens
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.counter.PersianBadge
@@ -13,8 +13,9 @@ import io.github.madmaximuus.persian.counter.PersianCounter
 import io.github.madmaximuus.persian.counter.PersianCounterDefaults
 import io.github.madmaximuus.persian.counter.PersianTonalCounter
 import io.github.madmaximuus.persian.counter.PersianTransparentCounter
-import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.iconButtons.PersianTertiaryIconButton
+import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
+import io.github.madmaximuus.persianSymbols.user.base.User
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
@@ -62,7 +63,7 @@ object Counter : Screen {
                         PersianBadge(
                             content = {
                                 PersianTertiaryIconButton(
-                                    icon = MaterialTheme.icons.person,
+                                    icon = rememberVectorPainter(image = PersianSymbols.Default.User),
                                     onClick = {}
                                 )
                             },
@@ -75,7 +76,7 @@ object Counter : Screen {
                             count = 1,
                             content = {
                                 PersianTertiaryIconButton(
-                                    icon = MaterialTheme.icons.person,
+                                    icon = rememberVectorPainter(image = PersianSymbols.Default.User),
                                     onClick = {}
                                 )
                             }
@@ -84,7 +85,7 @@ object Counter : Screen {
                             count = 10,
                             content = {
                                 PersianTertiaryIconButton(
-                                    icon = MaterialTheme.icons.person,
+                                    icon = rememberVectorPainter(image = PersianSymbols.Default.User),
                                     onClick = {}
                                 )
                             }
@@ -93,7 +94,7 @@ object Counter : Screen {
                             count = 100,
                             content = {
                                 PersianTertiaryIconButton(
-                                    icon = MaterialTheme.icons.person,
+                                    icon = rememberVectorPainter(image = PersianSymbols.Default.User),
                                     onClick = {}
                                 )
                             }

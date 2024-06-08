@@ -22,7 +22,7 @@ internal fun PersianDatePickerDialogYearGrid(
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(Constants.YEAR_MODE_GRID_COLUMNS),
-        verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.extraSmall),
+        verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size4),
         horizontalArrangement = Arrangement.SpaceEvenly,
         state = yearListState,
         content = {

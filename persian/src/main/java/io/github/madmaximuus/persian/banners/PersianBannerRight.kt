@@ -10,10 +10,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
 import io.github.madmaximuus.persian.iconBox.PersianIconBoxDefaults
+import io.github.madmaximuus.persianSymbols.chevronRight.base.ChevronRight
+import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
+import io.github.madmaximuus.persianSymbols.xmark.base.XMark
 
 sealed class PersianBannerRight {
     data class Close(
@@ -41,7 +44,7 @@ internal fun PersianBannerRightClose(
                 .padding(0.dp)
                 .clip(MaterialTheme.shapes.small)
                 .clickable { onClick() },
-            icon = icon ?: MaterialTheme.icons.close,
+            icon = icon ?: rememberVectorPainter(image = PersianSymbols.Default.XMark),
             contentDescription = contentDescription,
             size = PersianIconBoxDefaults.size24()
         )
@@ -62,7 +65,7 @@ internal fun PersianBannerRightOpen(
                 .padding(0.dp)
                 .clip(MaterialTheme.shapes.small)
                 .clickable { onClick() },
-            icon = icon ?: MaterialTheme.icons.chevronRight,
+            icon = icon ?: rememberVectorPainter(image = PersianSymbols.Default.ChevronRight),
             contentDescription = contentDescription,
             size = PersianIconBoxDefaults.size24()
         )

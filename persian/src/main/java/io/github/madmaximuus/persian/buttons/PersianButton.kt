@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.LocalContentColor
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ProvideTextStyle
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -24,6 +23,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
@@ -33,10 +33,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.PersianSubcomposeLayout
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
 import io.github.madmaximuus.persian.progressBars.PersianCircularProgressBar
 import io.github.madmaximuus.persian.progressBars.PersianProgressBarDefaults
+import io.github.madmaximuus.persianSymbols.chevronRight.base.ChevronRight
+import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
+import io.github.madmaximuus.persianSymbols.plus.base.Plus
 
 
 /**
@@ -334,8 +336,8 @@ private fun PersianButtonPreview() {
                     .padding(10.dp)
             ) {
                 PersianPrimaryButton(
-                    leadingIcon = MaterialTheme.icons.add,
-                    trailingIcon = MaterialTheme.icons.chevronRight,
+                    leadingIcon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
+                    trailingIcon = rememberVectorPainter(image = PersianSymbols.Default.ChevronRight),
                     text = "Button",
                     additionInfoText = "Addition Info",
                     loading = isLoading,
@@ -344,8 +346,8 @@ private fun PersianButtonPreview() {
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 PersianSecondaryButton(
-                    leadingIcon = MaterialTheme.icons.add,
-                    trailingIcon = MaterialTheme.icons.chevronRight,
+                    leadingIcon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
+                    trailingIcon = rememberVectorPainter(image = PersianSymbols.Default.ChevronRight),
                     text = "Button",
                     additionInfoText = "Addition Info",
                     loading = isLoading,
@@ -354,8 +356,8 @@ private fun PersianButtonPreview() {
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 PersianTertiaryButton(
-                    leadingIcon = MaterialTheme.icons.add,
-                    trailingIcon = MaterialTheme.icons.chevronRight,
+                    leadingIcon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
+                    trailingIcon = rememberVectorPainter(image = PersianSymbols.Default.ChevronRight),
                     text = "Button",
                     additionInfoText = "Addition Info",
                     loading = isLoading,
@@ -364,8 +366,8 @@ private fun PersianButtonPreview() {
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 PersianOutlinedButton(
-                    leadingIcon = MaterialTheme.icons.add,
-                    trailingIcon = MaterialTheme.icons.chevronRight,
+                    leadingIcon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
+                    trailingIcon = rememberVectorPainter(image = PersianSymbols.Default.ChevronRight),
                     text = "Button",
                     additionInfoText = "Addition Info",
                     loading = isLoading,

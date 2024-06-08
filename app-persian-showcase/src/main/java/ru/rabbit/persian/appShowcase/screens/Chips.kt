@@ -21,6 +21,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
@@ -28,9 +29,12 @@ import io.github.madmaximuus.persian.chips.assist.PersianAssistChip
 import io.github.madmaximuus.persian.chips.filter.PersianFilterChip
 import io.github.madmaximuus.persian.chips.input.PersianInputShip
 import io.github.madmaximuus.persian.chips.suggestion.PersianSuggestionChip
-import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.foundation.spacing
 import io.github.madmaximuus.persian.inputs.PersianOutlineInput
+import io.github.madmaximuus.persianSymbols.chevronDown.base.ChevronDown
+import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
+import io.github.madmaximuus.persianSymbols.plus.base.Plus
+import io.github.madmaximuus.persianSymbols.xmark.base.XMark
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
@@ -77,20 +81,20 @@ object Chips : Screen {
                             label = filterChipLabel,
                             selected = selected,
                             enabled = enabled,
-                            leadingIcon = if (showLeadingIcon) MaterialTheme.icons.person else null,
-                            trailingIcon = if (showTrailingIcon) MaterialTheme.icons.expendMore else null,
+                            leadingIcon = if (showLeadingIcon) rememberVectorPainter(image = PersianSymbols.Default.Plus) else null,
+                            trailingIcon = if (showTrailingIcon) rememberVectorPainter(image = PersianSymbols.Default.ChevronDown) else null,
                             onClick = { selected = !selected }
                         )
                         PersianSuggestionChip(
                             label = suggestionChipLabel,
                             enabled = enabled,
-                            icon = if (showLeadingIcon) MaterialTheme.icons.person else null,
+                            icon = if (showLeadingIcon) rememberVectorPainter(image = PersianSymbols.Default.Plus) else null,
                             onClick = { }
                         )
                         PersianAssistChip(
                             label = assistChipLabel,
                             enabled = enabled,
-                            leadingIcon = if (showLeadingIcon) MaterialTheme.icons.person else null,
+                            leadingIcon = if (showLeadingIcon) rememberVectorPainter(image = PersianSymbols.Default.Plus) else null,
                             onClick = { }
                         )
                         PersianInputShip(
@@ -98,7 +102,7 @@ object Chips : Screen {
                             selected = selected,
                             enabled = enabled,
                             avatar = if (showLeadingIcon) "https://loremflickr.com/320/240" else null,
-                            trailingIcon = if (showTrailingIcon) MaterialTheme.icons.close else null,
+                            trailingIcon = if (showTrailingIcon) rememberVectorPainter(image = PersianSymbols.Default.XMark) else null,
                             onClick = { selected = !selected }
                         )
                     }

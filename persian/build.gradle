@@ -52,4 +52,6 @@ dependencies {
     debugImplementation libs.ui.tooling
 
     implementation libs.glide
+
+    implementation(project(":persianSymbols"))
 }

@@ -19,8 +19,8 @@ internal fun PersianDatePickerDialogWeekLabelCell(
     Box(
         modifier = modifier
             .padding(
-                horizontal = MaterialTheme.spacing.extraSmall,
-                vertical = MaterialTheme.spacing.extraExtraSmall
+                horizontal = MaterialTheme.spacing.size4,
+                vertical = MaterialTheme.spacing.size2
             ),
         contentAlignment = Alignment.Center
     ) {

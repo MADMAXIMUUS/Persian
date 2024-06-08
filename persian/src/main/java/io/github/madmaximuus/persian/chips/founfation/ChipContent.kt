@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.LocalContentColor
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -15,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.PlatformTextStyle
 import androidx.compose.ui.text.TextStyle
@@ -22,9 +22,10 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.avatarsAndImages.PersianAvatar
 import io.github.madmaximuus.persian.avatarsAndImages.PersianAvatarsDefaults
-import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.iconBox.IconBoxSize
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
+import io.github.madmaximuus.persianSymbols.check.base.Check
+import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
 @Composable
 internal fun ChipContent(
@@ -55,9 +56,9 @@ internal fun ChipContent(
                 PersianAvatar(
                     imageUrl = avatar,
                     enabled = enabled,
-                    size = PersianAvatarsDefaults.size24(),
+                    sizes = PersianAvatarsDefaults.size24(),
                     overlay = selected,
-                    overlayIcon = MaterialTheme.icons.done
+                    overlayIcon = rememberVectorPainter(image = PersianSymbols.Default.Check)
                 )
             } else if (leadingIcon != null) {
                 CompositionLocalProvider(

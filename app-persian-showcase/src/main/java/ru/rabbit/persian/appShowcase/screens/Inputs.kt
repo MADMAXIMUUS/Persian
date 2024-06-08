@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
@@ -18,17 +17,19 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
-import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.inputs.InputsTransformations
 import io.github.madmaximuus.persian.inputs.PersianOutlineInput
 import io.github.madmaximuus.persian.inputs.PersianPlainInput
 import io.github.madmaximuus.persian.select.PersianSelect
 import io.github.madmaximuus.persian.select.SelectActionItem
+import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
+import io.github.madmaximuus.persianSymbols.user.base.User
 import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
@@ -68,7 +69,7 @@ object Inputs : Screen {
                     .nestedScroll(topAppBarScrollBehavior.nestedScrollConnection)
                     .padding(it),
             ) {
-                when (styleIndex){
+                when (styleIndex) {
                     0 -> {
                         PersianPlainInput(
                             modifier = Modifier.padding(horizontal = 20.dp),
@@ -79,13 +80,14 @@ object Inputs : Screen {
                             isValid = isSuccess,
                             placeholder = if (placeholder) placeholderValue else null,
                             transformation = if (password) InputsTransformations.password else InputsTransformations.none,
-                            leadingIcon = if (leading) MaterialTheme.icons.person else null,
+                            leadingIcon = if (leading) rememberVectorPainter(image = PersianSymbols.Default.User) else null,
                             trailingIcon = if (trailing) painterResource(id = R.drawable.ic_visibility) else null,
                             suffix = if (suffix) "12" else null,
                             onTrailingIconClick = {}
                         )
                     }
-                    1-> {
+
+                    1 -> {
                         PersianOutlineInput(
                             modifier = Modifier.padding(horizontal = 20.dp),
                             value = value,
@@ -95,7 +97,7 @@ object Inputs : Screen {
                             isValid = isSuccess,
                             placeholder = if (placeholder) placeholderValue else null,
                             transformation = if (password) InputsTransformations.password else InputsTransformations.none,
-                            leadingIcon = if (leading) MaterialTheme.icons.person else null,
+                            leadingIcon = if (leading) rememberVectorPainter(image = PersianSymbols.Default.User) else null,
                             trailingIcon = if (trailing) painterResource(id = R.drawable.ic_visibility) else null,
                             suffix = if (suffix) "12" else null,
                             onTrailingIconClick = {}
@@ -108,7 +110,9 @@ object Inputs : Screen {
                     text = "Settings"
                 )
                 PersianSelect(
-                    modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 20.dp),
                     selected = style,
                     values = styles,
                     onSelectedChange = { option, index ->

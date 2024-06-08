@@ -7,13 +7,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.buttons.PersianTertiaryButton
 import io.github.madmaximuus.persian.counter.PersianBadge
 import io.github.madmaximuus.persian.counter.PersianCounterDefaults
-import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.iconButtons.PersianIconButtonDefaults
 import io.github.madmaximuus.persian.iconButtons.PersianTertiaryIconButton
+import io.github.madmaximuus.persianSymbols.ellepsis.vert.EllipsisVert
+import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
 sealed class PersianTopAppBarRight {
 
@@ -74,7 +76,7 @@ internal fun PersianTopAppBarRightIcons(
         OverflowMenu(
             actions = overflowItems,
             expanded = expanded,
-            overflowIcon = MaterialTheme.icons.moreVert
+            overflowIcon = rememberVectorPainter(image = PersianSymbols.Default.EllipsisVert)
         )
     }
 }

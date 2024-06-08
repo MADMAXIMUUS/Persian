@@ -3,14 +3,15 @@ package ru.rabbit.persian.appShowcase.screens
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.fab.PersianFabDefaults
 import io.github.madmaximuus.persian.fab.PersianMediumFab
 import io.github.madmaximuus.persian.fab.PersianSmallFab
-import io.github.madmaximuus.persian.foundation.icons
+import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
+import io.github.madmaximuus.persianSymbols.plus.base.Plus
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
@@ -34,22 +35,22 @@ object Fab : Screen {
                 item {
                     SampleRow(text = "Small FAB", firstItem = true) {
                         PersianSmallFab(
-                            icon = MaterialTheme.icons.add,
+                            icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
                             colors = PersianFabDefaults.neutralColors(),
                             onClick = {}
                         )
                         PersianSmallFab(
-                            icon = MaterialTheme.icons.add,
+                            icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
                             colors = PersianFabDefaults.primaryColors(),
                             onClick = {}
                         )
                         PersianSmallFab(
-                            icon = MaterialTheme.icons.add,
+                            icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
                             colors = PersianFabDefaults.secondaryColors(),
                             onClick = {}
                         )
                         PersianSmallFab(
-                            icon = MaterialTheme.icons.add,
+                            icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
                             colors = PersianFabDefaults.tertiaryColors(),
                             onClick = {}
                         )
@@ -58,22 +59,22 @@ object Fab : Screen {
                 item {
                     SampleRow(text = "Medium FAB") {
                         PersianMediumFab(
-                            icon = MaterialTheme.icons.add,
+                            icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
                             colors = PersianFabDefaults.neutralColors(),
                             onClick = {}
                         )
                         PersianMediumFab(
-                            icon = MaterialTheme.icons.add,
+                            icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
                             colors = PersianFabDefaults.primaryColors(),
                             onClick = {}
                         )
                         PersianMediumFab(
-                            icon = MaterialTheme.icons.add,
+                            icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
                             colors = PersianFabDefaults.secondaryColors(),
                             onClick = {}
                         )
                         PersianMediumFab(
-                            icon = MaterialTheme.icons.add,
+                            icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
                             colors = PersianFabDefaults.tertiaryColors(),
                             onClick = {}
                         )
@@ -82,14 +83,14 @@ object Fab : Screen {
                 item {
                     SampleRow(text = "Medium Expanded FAB") {
                         PersianMediumFab(
-                            icon = MaterialTheme.icons.add,
+                            icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
                             title = "Add",
                             expanded = true,
                             colors = PersianFabDefaults.neutralColors(),
                             onClick = {}
                         )
                         PersianMediumFab(
-                            icon = MaterialTheme.icons.add,
+                            icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
                             title = "Add",
                             expanded = true,
                             colors = PersianFabDefaults.primaryColors(),
@@ -100,14 +101,14 @@ object Fab : Screen {
                 item {
                     SampleRow(text = "Medium Expanded FAB", lastItem = true) {
                         PersianMediumFab(
-                            icon = MaterialTheme.icons.add,
+                            icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
                             title = "Add",
                             expanded = true,
                             colors = PersianFabDefaults.secondaryColors(),
                             onClick = {}
                         )
                         PersianMediumFab(
-                            icon = MaterialTheme.icons.add,
+                            icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
                             title = "Add",
                             expanded = true,
                             colors = PersianFabDefaults.tertiaryColors(),

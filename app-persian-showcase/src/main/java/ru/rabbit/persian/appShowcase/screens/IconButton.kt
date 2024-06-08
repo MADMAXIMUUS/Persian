@@ -23,11 +23,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.nestedscroll.nestedScroll
-import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
-import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.foundation.spacing
 import io.github.madmaximuus.persian.iconButtons.PersianIconButtonDefaults
 import io.github.madmaximuus.persian.iconButtons.PersianOutlinedIconButton
@@ -39,7 +38,8 @@ import io.github.madmaximuus.persian.iconButtons.PersianSecondaryToggleIconButto
 import io.github.madmaximuus.persian.iconButtons.PersianTertiaryIconButton
 import io.github.madmaximuus.persian.iconButtons.PersianTertiaryToggleIconButton
 import io.github.madmaximuus.persian.radioButtons.PersianRadioButton
-import ru.rabbit.persian.appShowcase.R
+import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
+import io.github.madmaximuus.persianSymbols.user.base.User
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
@@ -74,7 +74,7 @@ object IconButton : Screen {
                     text = "Sample Icon Buttons",
                     firstItem = true
                 ) {
-                    Column(modifier = Modifier.padding(top = MaterialTheme.spacing.extraSmall)) {
+                    Column(modifier = Modifier.padding(top = MaterialTheme.spacing.size4)) {
                         Row(
                             modifier = Modifier.fillMaxWidth(),
                             verticalAlignment = Alignment.CenterVertically,
@@ -83,61 +83,61 @@ object IconButton : Screen {
                             PersianPrimaryIconButton(
                                 sizes = sizeState,
                                 enabled = enabled,
-                                icon = MaterialTheme.icons.person,
+                                icon = rememberVectorPainter(image = PersianSymbols.Default.User),
                                 onClick = {}
                             )
                             PersianSecondaryIconButton(
                                 sizes = sizeState,
                                 enabled = enabled,
-                                icon = MaterialTheme.icons.person,
+                                icon = rememberVectorPainter(image = PersianSymbols.Default.User),
                                 onClick = {}
                             )
                             PersianTertiaryIconButton(
                                 sizes = sizeState,
                                 enabled = enabled,
-                                icon = MaterialTheme.icons.person,
+                                icon = rememberVectorPainter(image = PersianSymbols.Default.User),
                                 onClick = {}
                             )
                             PersianOutlinedIconButton(
                                 sizes = sizeState,
                                 enabled = enabled,
-                                icon = MaterialTheme.icons.person,
+                                icon = rememberVectorPainter(image = PersianSymbols.Default.User),
                                 onClick = {}
                             )
                         }
-                        Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraExtraLarge))
+                        Spacer(modifier = Modifier.height(MaterialTheme.spacing.size24))
                         Row(
                             modifier = Modifier.fillMaxWidth(),
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.SpaceEvenly
                         ) {
                             PersianPrimaryToggleIconButton(
-                                icon = MaterialTheme.icons.person,
-                                checkedIcon = painterResource(id = R.drawable.ic_person_filled),
+                                icon = rememberVectorPainter(image = PersianSymbols.Default.User),
+                                checkedIcon = rememberVectorPainter(image = PersianSymbols.Filled.User),
                                 checked = checked,
                                 sizes = sizeState,
                                 enabled = enabled,
                                 onCheckedChange = onCheckedChange
                             )
                             PersianSecondaryToggleIconButton(
-                                icon = MaterialTheme.icons.person,
-                                checkedIcon = painterResource(id = R.drawable.ic_person_filled),
+                                icon = rememberVectorPainter(image = PersianSymbols.Default.User),
+                                checkedIcon = rememberVectorPainter(image = PersianSymbols.Filled.User),
                                 checked = checked,
                                 sizes = sizeState,
                                 enabled = enabled,
                                 onCheckedChange = onCheckedChange
                             )
                             PersianTertiaryToggleIconButton(
-                                icon = MaterialTheme.icons.person,
-                                checkedIcon = painterResource(id = R.drawable.ic_person_filled),
+                                icon = rememberVectorPainter(image = PersianSymbols.Default.User),
+                                checkedIcon = rememberVectorPainter(image = PersianSymbols.Filled.User),
                                 checked = checked,
                                 sizes = sizeState,
                                 enabled = enabled,
                                 onCheckedChange = onCheckedChange
                             )
                             PersianOutlinedToggleIconButton(
-                                icon = MaterialTheme.icons.person,
-                                checkedIcon = painterResource(id = R.drawable.ic_person_filled),
+                                icon = rememberVectorPainter(image = PersianSymbols.Default.User),
+                                checkedIcon = rememberVectorPainter(image = PersianSymbols.Filled.User),
                                 checked = checked,
                                 sizes = sizeState,
                                 enabled = enabled,
@@ -160,10 +160,10 @@ object IconButton : Screen {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(
-                            top = MaterialTheme.spacing.small,
-                            bottom = MaterialTheme.spacing.small,
-                            start = MaterialTheme.spacing.medium,
-                            end = MaterialTheme.spacing.medium
+                            top = MaterialTheme.spacing.size8,
+                            bottom = MaterialTheme.spacing.size8,
+                            start = MaterialTheme.spacing.size12,
+                            end = MaterialTheme.spacing.size12
                         ),
                 ) {
                     Text(
@@ -171,7 +171,7 @@ object IconButton : Screen {
                         style = MaterialTheme.typography.titleMedium,
                         color = MaterialTheme.colorScheme.onSurface
                     )
-                    Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraSmall))
+                    Spacer(modifier = Modifier.height(MaterialTheme.spacing.size4))
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -216,10 +216,10 @@ object IconButton : Screen {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(
-                            top = MaterialTheme.spacing.small,
-                            bottom = MaterialTheme.spacing.small,
-                            start = MaterialTheme.spacing.medium,
-                            end = MaterialTheme.spacing.medium
+                            top = MaterialTheme.spacing.size8,
+                            bottom = MaterialTheme.spacing.size8,
+                            start = MaterialTheme.spacing.size12,
+                            end = MaterialTheme.spacing.size12
                         ),
                 ) {
                     Text(
@@ -227,7 +227,7 @@ object IconButton : Screen {
                         style = MaterialTheme.typography.titleMedium,
                         color = MaterialTheme.colorScheme.onSurface
                     )
-                    Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraSmall))
+                    Spacer(modifier = Modifier.height(MaterialTheme.spacing.size4))
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()

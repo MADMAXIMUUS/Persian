@@ -14,20 +14,23 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
-import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.foundation.state08
 import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state16
 import io.github.madmaximuus.persian.foundation.state38
+import io.github.madmaximuus.persianSymbols.check.circle.CheckCircle
+import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
+import io.github.madmaximuus.persianSymbols.xmark.circle.XMarkCircle
 
 object PersianInputsDefaults {
 
     @Composable
     fun outlineColors(
         //State Icon
-        validStateIcon: Painter = MaterialTheme.icons.checkCircle,
-        errorStateIcon: Painter = MaterialTheme.icons.errorCircle,
+        validStateIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.CheckCircle),
+        errorStateIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.XMarkCircle),
 
         //State Icon Colors
         validStateIconColor: Color = MaterialTheme.extendedColorScheme.valid,
@@ -173,8 +176,8 @@ object PersianInputsDefaults {
     @Composable
     fun plainColors(
         //State Icon
-        validStateIcon: Painter = MaterialTheme.icons.checkCircle,
-        errorStateIcon: Painter = MaterialTheme.icons.errorCircle,
+        validStateIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.CheckCircle),
+        errorStateIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.XMarkCircle),
 
         //State Icon Colors
         validStateIconColor: Color = MaterialTheme.extendedColorScheme.valid,

@@ -72,12 +72,12 @@ internal fun PersianDatePickerView(
         .fillMaxWidth()
         .wrapContentHeight()
         .animateContentSize()
-        .padding(MaterialTheme.spacing.medium)
+        .padding(MaterialTheme.spacing.size12)
 
     Column(
         modifier = baseModifier,
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.extraSmall)
+        verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size4)
     ) {
         PersianDatePickerDialogHeader(
             selectable = config.selectable,

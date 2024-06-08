@@ -36,6 +36,7 @@ import ru.rabbit.persian.appShowcase.screens.Divider
 import ru.rabbit.persian.appShowcase.screens.Fab
 import ru.rabbit.persian.appShowcase.screens.Forms
 import ru.rabbit.persian.appShowcase.screens.IconButton
+import ru.rabbit.persian.appShowcase.screens.Icons
 import ru.rabbit.persian.appShowcase.screens.Inputs
 import ru.rabbit.persian.appShowcase.screens.ModalPage
 import ru.rabbit.persian.appShowcase.screens.NavigationBar
@@ -94,7 +95,9 @@ class MainActivity : ComponentActivity() {
                         TimePicker,
                         Chips,
                         Select,
-                        ColorPicker
+                        ColorPicker,
+                        Icons,
+                        ListItem
                     )
                 }
                 NavHost(

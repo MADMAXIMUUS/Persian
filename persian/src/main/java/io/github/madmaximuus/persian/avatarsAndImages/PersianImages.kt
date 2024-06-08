@@ -31,11 +31,11 @@ import com.bumptech.glide.integration.compose.RequestState
 import io.github.madmaximuus.persian.avatarsAndImages.utils.LayoutId
 import io.github.madmaximuus.persian.avatarsAndImages.utils.badgeMeasurePolicy
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
-import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.foundation.shimmer
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.image.base.Image
+import io.github.madmaximuus.persianSymbols.play.base.Play
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
@@ -44,7 +44,7 @@ fun PersianImage(
     imageUrl: String,
     overlay: Boolean = false,
     enabled: Boolean = true,
-    overlayIcon: Painter = MaterialTheme.icons.add,
+    overlayIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.Play),
     sizes: ImageSize = PersianImagesDefaults.size64(),
     colors: ImagesColors = PersianImagesDefaults.colors(),
     shape: ImageShape = ImageShape.MEDIUM,

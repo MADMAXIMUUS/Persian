@@ -12,8 +12,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.window.PopupProperties
-import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.foundation.shape
 import io.github.madmaximuus.persian.inputs.InputColors
 import io.github.madmaximuus.persian.inputs.PersianInputsDefaults
@@ -21,6 +21,9 @@ import io.github.madmaximuus.persian.inputs.PersianOutlineInput
 import io.github.madmaximuus.persian.menus.MenuColors
 import io.github.madmaximuus.persian.menus.PersianMenuDefaults
 import io.github.madmaximuus.persian.menus.PersianMenuItem
+import io.github.madmaximuus.persianSymbols.chevronDown.base.ChevronDown
+import io.github.madmaximuus.persianSymbols.chevronUp.base.ChevronUp
+import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -56,8 +59,8 @@ fun PersianSelect(
             isValid = isValid,
             enabled = enabled,
             colors = inputColors,
-            trailingIcon = if (expanded.value) MaterialTheme.icons.expendLess
-            else MaterialTheme.icons.expendMore,
+            trailingIcon = if (expanded.value) rememberVectorPainter(image = PersianSymbols.Default.ChevronUp)
+            else rememberVectorPainter(image = PersianSymbols.Default.ChevronDown),
         )
         MaterialTheme(shapes = MaterialTheme.shapes.copy(extraSmall = MaterialTheme.shape.shape16)) {
             DropdownMenu(

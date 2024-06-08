@@ -21,6 +21,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
@@ -29,10 +30,12 @@ import io.github.madmaximuus.persian.buttons.PersianPrimaryButton
 import io.github.madmaximuus.persian.buttons.PersianSecondaryButton
 import io.github.madmaximuus.persian.buttons.PersianTertiaryButton
 import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
-import io.github.madmaximuus.persian.foundation.icons
 import io.github.madmaximuus.persian.foundation.spacing
 import io.github.madmaximuus.persian.inputs.PersianOutlineInput
 import io.github.madmaximuus.persian.radioButtons.PersianRadioButton
+import io.github.madmaximuus.persianSymbols.chevronRight.base.ChevronRight
+import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
+import io.github.madmaximuus.persianSymbols.plus.base.Plus
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
@@ -80,8 +83,8 @@ object Button : Screen {
                             enabled = enabled,
                             loading = loading,
                             additionInfoText = if (showAdditionInfoLabel) additionInfoLabelText else null,
-                            leadingIcon = if (showLeadingIcon) MaterialTheme.icons.add else null,
-                            trailingIcon = if (showTrailingIcon) MaterialTheme.icons.chevronRight else null,
+                            leadingIcon = if (showLeadingIcon) rememberVectorPainter(image = PersianSymbols.Default.Plus) else null,
+                            trailingIcon = if (showTrailingIcon) rememberVectorPainter(image = PersianSymbols.Default.ChevronRight) else null,
                             onClick = {}
                         )
                         Spacer(modifier = Modifier.height(MaterialTheme.spacing.size16))
@@ -91,8 +94,8 @@ object Button : Screen {
                             enabled = enabled,
                             loading = loading,
                             additionInfoText = if (showAdditionInfoLabel) additionInfoLabelText else null,
-                            leadingIcon = if (showLeadingIcon) MaterialTheme.icons.add else null,
-                            trailingIcon = if (showTrailingIcon) MaterialTheme.icons.chevronRight else null,
+                            leadingIcon = if (showLeadingIcon) rememberVectorPainter(image = PersianSymbols.Default.Plus) else null,
+                            trailingIcon = if (showTrailingIcon) rememberVectorPainter(image = PersianSymbols.Default.ChevronRight) else null,
                             onClick = {}
                         )
                         Spacer(modifier = Modifier.height(MaterialTheme.spacing.size16))
@@ -102,8 +105,8 @@ object Button : Screen {
                             enabled = enabled,
                             loading = loading,
                             additionInfoText = if (showAdditionInfoLabel) additionInfoLabelText else null,
-                            leadingIcon = if (showLeadingIcon) MaterialTheme.icons.add else null,
-                            trailingIcon = if (showTrailingIcon) MaterialTheme.icons.chevronRight else null,
+                            leadingIcon = if (showLeadingIcon) rememberVectorPainter(image = PersianSymbols.Default.Plus) else null,
+                            trailingIcon = if (showTrailingIcon) rememberVectorPainter(image = PersianSymbols.Default.ChevronRight) else null,
                             onClick = {}
                         )
                         Spacer(modifier = Modifier.height(MaterialTheme.spacing.size16))
@@ -113,8 +116,8 @@ object Button : Screen {
                             enabled = enabled,
                             loading = loading,
                             additionInfoText = if (showAdditionInfoLabel) additionInfoLabelText else null,
-                            leadingIcon = if (showLeadingIcon) MaterialTheme.icons.add else null,
-                            trailingIcon = if (showTrailingIcon) MaterialTheme.icons.chevronRight else null,
+                            leadingIcon = if (showLeadingIcon) rememberVectorPainter(image = PersianSymbols.Default.Plus) else null,
+                            trailingIcon = if (showTrailingIcon) rememberVectorPainter(image = PersianSymbols.Default.ChevronRight) else null,
                             onClick = {}
                         )
                     }

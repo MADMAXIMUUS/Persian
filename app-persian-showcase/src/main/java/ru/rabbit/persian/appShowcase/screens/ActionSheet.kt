@@ -17,7 +17,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.actionSheet.ActionSheetItem
 import io.github.madmaximuus.persian.actionSheet.PersianActionSheet
@@ -26,7 +26,8 @@ import io.github.madmaximuus.persian.buttons.PersianPrimaryButton
 import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
 import io.github.madmaximuus.persian.foundation.spacing
 import io.github.madmaximuus.persian.inputs.PersianOutlineInput
-import ru.rabbit.persian.appShowcase.R
+import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
+import io.github.madmaximuus.persianSymbols.image.base.Image
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object ActionSheet : Screen {
@@ -149,70 +150,70 @@ object ActionSheet : Screen {
                 actions = listOf(
                     ActionSheetItem(
                         text = "Action 1",
-                        leadingIcon = if (icons) painterResource(id = R.drawable.pentagon) else null,
+                        leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
                         negative = negative,
                         enabled = enabled,
                         onClick = {}
                     ),
                     ActionSheetItem(
                         text = "Action 2",
-                        leadingIcon = if (icons) painterResource(id = R.drawable.pentagon) else null,
+                        leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
                         negative = negative,
                         enabled = enabled,
                         onClick = {}
                     ),
                     ActionSheetItem(
                         text = "Action 3",
-                        leadingIcon = if (icons) painterResource(id = R.drawable.pentagon) else null,
+                        leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
                         negative = negative,
                         enabled = enabled,
                         onClick = {}
                     ),
                     ActionSheetItem(
                         text = "Action 4",
-                        leadingIcon = if (icons) painterResource(id = R.drawable.pentagon) else null,
+                        leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
                         negative = negative,
                         enabled = enabled,
                         onClick = {}
                     ),
                     ActionSheetItem(
                         text = "Action 5",
-                        leadingIcon = if (icons) painterResource(id = R.drawable.pentagon) else null,
+                        leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
                         negative = negative,
                         enabled = enabled,
                         onClick = {}
                     ),
                     ActionSheetItem(
                         text = "Action 6",
-                        leadingIcon = if (icons) painterResource(id = R.drawable.pentagon) else null,
+                        leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
                         negative = negative,
                         enabled = enabled,
                         onClick = {}
                     ),
                     ActionSheetItem(
                         text = "Action 7",
-                        leadingIcon = if (icons) painterResource(id = R.drawable.pentagon) else null,
+                        leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
                         negative = negative,
                         enabled = enabled,
                         onClick = {}
                     ),
                     ActionSheetItem(
                         text = "Action 8",
-                        leadingIcon = if (icons) painterResource(id = R.drawable.pentagon) else null,
+                        leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
                         negative = negative,
                         enabled = enabled,
                         onClick = {}
                     ),
                     ActionSheetItem(
                         text = "Action 9",
-                        leadingIcon = if (icons) painterResource(id = R.drawable.pentagon) else null,
+                        leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
                         negative = negative,
                         enabled = enabled,
                         onClick = {}
                     ),
                     ActionSheetItem(
                         text = "Action 10",
-                        leadingIcon = if (icons) painterResource(id = R.drawable.pentagon) else null,
+                        leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
                         negative = negative,
                         enabled = enabled,
                         onClick = {}
