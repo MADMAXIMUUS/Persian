@@ -25,6 +25,7 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.BaselineShift
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -80,7 +81,7 @@ internal fun PersianCodeInputCell(
         BasicTextField(
             modifier = modifier
                 .focusRequester(focusRequester),
-            value = if (isPassword) "●" else value,
+            value = value,
             onValueChange = onValueChange,
             readOnly = false,
             singleLine = true,
@@ -96,6 +97,7 @@ internal fun PersianCodeInputCell(
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.NumberPassword
             ),
+            visualTransformation = if (isPassword) SecretTransformation() else VisualTransformation.None,
             interactionSource = interactionSource,
             decorationBox = { innerTextField ->
                 Box(
@@ -122,28 +124,15 @@ internal fun PersianCodeInputCell(
 }
 
 @Preview
+@Preview(uiMode = UI_MODE_NIGHT_YES)
 @Composable
 fun CellPreview() {
     PersianTheme {
         Surface {
             PersianCodeInputCell(
                 modifier = Modifier.padding(10.dp),
-                value = "1",
+                value = "",
                 isPassword = true,
-                onValueChange = {}
-            )
-        }
-    }
-}
-
-@Preview(uiMode = UI_MODE_NIGHT_YES)
-@Composable
-fun CellDarkPreview() {
-    PersianTheme {
-        Surface {
-            PersianCodeInputCell(
-                modifier = Modifier.padding(10.dp),
-                value = "0",
                 onValueChange = {}
             )
         }

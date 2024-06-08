@@ -50,6 +50,7 @@ object CodeInput : Screen {
                     var isSuccess by remember { mutableStateOf(false) }
                     var isError by remember { mutableStateOf(false) }
                     var enabled by remember { mutableStateOf(true) }
+                    var secret by remember { mutableStateOf(false) }
 
                     var list by remember {
                         mutableStateOf(
@@ -64,15 +65,16 @@ object CodeInput : Screen {
 
                     SampleRow(text = "Code Four Input", firstItem = true) {
                         Column(
-                            modifier = Modifier
-                                .fillMaxWidth(),
+                            modifier = Modifier.fillMaxWidth(),
                             verticalArrangement = Arrangement.spacedBy(10.dp)
                         ) {
                             PersianFourDigitCodeInput(
+                                modifier = Modifier.fillMaxWidth(),
                                 values = list,
                                 enabled = enabled,
                                 isValid = isSuccess,
                                 isError = isError,
+                                isPassword = secret,
                                 onValueChange = { value, index ->
                                     if (list[index].length != 1 || value.isEmpty()) {
                                         val tempList = list.toMutableList()
@@ -102,6 +104,13 @@ object CodeInput : Screen {
                                     isError = isChecked
                                 }
                             )
+                            PersianCheckbox(
+                                text = "Secret",
+                                checked = secret,
+                                onCheckedChange = { isChecked ->
+                                    secret = isChecked
+                                }
+                            )
                         }
                     }
                 }
@@ -110,6 +119,7 @@ object CodeInput : Screen {
                     var isSuccess by remember { mutableStateOf(false) }
                     var isError by remember { mutableStateOf(false) }
                     var enabled by remember { mutableStateOf(true) }
+                    var secret by remember { mutableStateOf(false) }
 
                     var list by remember {
                         mutableStateOf(
@@ -136,6 +146,7 @@ object CodeInput : Screen {
                                 enabled = enabled,
                                 isValid = isSuccess,
                                 isError = isError,
+                                isPassword = secret,
                                 onValueChange = { value, index ->
                                     if (list[index].length != 1 || value.isEmpty()) {
                                         val tempList = list.toMutableList()
@@ -163,6 +174,13 @@ object CodeInput : Screen {
                                 checked = isError,
                                 onCheckedChange = { isChecked ->
                                     isError = isChecked
+                                }
+                            )
+                            PersianCheckbox(
+                                text = "Secret",
+                                checked = secret,
+                                onCheckedChange = { isChecked ->
+                                    secret = isChecked
                                 }
                             )
                         }

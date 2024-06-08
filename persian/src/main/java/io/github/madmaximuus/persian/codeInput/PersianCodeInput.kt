@@ -49,8 +49,9 @@ fun PersianFourDigitCodeInput(
     )
 
     Row(
-        modifier = modifier
-            .widthIn(min = 190.dp, max = 250.dp),
+        modifier = Modifier
+            .widthIn(min = 190.dp, max = 250.dp)
+            .then(modifier),
         horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size4)
     ) {
         repeat(4) { index ->
@@ -107,8 +108,9 @@ fun PersianSixDigitCodeInput(
     )
 
     Row(
-        modifier = modifier
-            .widthIn(min = 286.dp, max = 360.dp),
+        modifier = Modifier
+            .widthIn(min = 286.dp, max = 360.dp)
+            .then(modifier),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         repeat(6) { index ->
