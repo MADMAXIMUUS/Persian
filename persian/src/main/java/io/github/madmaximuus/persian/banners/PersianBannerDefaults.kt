@@ -16,18 +16,18 @@ object PersianBannerDefaults {
         leftIconColor: Color = MaterialTheme.extendedColorScheme.onTertiaryContainer,
         rightIconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
         titleColor: Color = MaterialTheme.extendedColorScheme.onTertiaryContainer,
-        subtitleColor: Color = MaterialTheme.extendedColorScheme.onSurface
+        body: Color = MaterialTheme.extendedColorScheme.tertiary
     ) = BannerColors(
         background = background,
         leftIconColor = leftIconColor,
         rightIconColor = rightIconColor,
         titleColor = titleColor,
-        subtitleColor = subtitleColor
+        body = body
     )
 
     @Composable
     fun sizes(
-        cornerRadius: Shape = MaterialTheme.shape.shape12,
+        cornerRadius: Shape = MaterialTheme.shape.shape14,
         titleStyle: TextStyle = MaterialTheme.typography.titleMedium,
         descriptionStyle: TextStyle = MaterialTheme.typography.bodyMedium
     ) = BannerSizes(
@@ -74,7 +74,7 @@ class BannerSizes internal constructor(
 class BannerColors internal constructor(
     internal val background: Color,
     internal val titleColor: Color,
-    internal val subtitleColor: Color,
+    internal val body: Color,
     internal val leftIconColor: Color,
     internal val rightIconColor: Color
 )

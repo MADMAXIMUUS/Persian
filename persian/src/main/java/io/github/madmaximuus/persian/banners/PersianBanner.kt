@@ -8,14 +8,20 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
 import io.github.madmaximuus.persian.buttons.PersianPrimaryButton
 import io.github.madmaximuus.persian.foundation.spacing
@@ -35,6 +41,7 @@ fun PersianBanner(
     require(title != null || description != null) {
         "Title or description required"
     }
+    var size by remember { mutableStateOf(28.dp) }
     Box(
         modifier = modifier
             .clip(sizes.cornerRadius)
@@ -50,12 +57,14 @@ fun PersianBanner(
         ) {
             when (left) {
                 is PersianBannerLeft.Avatar -> {
+                    size = 48.dp
                     PersianBannerLeftAvatar(
                         image = left.avatarUrl
                     )
                 }
 
                 is PersianBannerLeft.Icon -> {
+                    size = 28.dp
                     PersianBannerLeftIcon(
                         icon = left.icon,
                         contentDescription = "",
@@ -64,13 +73,17 @@ fun PersianBanner(
                 }
 
                 is PersianBannerLeft.Image -> {
+                    size = 72.dp
                     PersianBannerLeftImage(image = left.imageUrl)
                 }
 
-                null -> {}
+                null -> {
+                    size = 28.dp
+                }
             }
             Column(
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.heightIn(min = size),
+                verticalArrangement = Arrangement.Center
             ) {
                 title?.let {
                     Text(
@@ -81,12 +94,13 @@ fun PersianBanner(
                     )
                 }
                 description?.let {
-                    Spacer(modifier = Modifier.height(MaterialTheme.spacing.size4))
+                    if (title != null)
+                        Spacer(modifier = Modifier.height(MaterialTheme.spacing.size4))
                     Text(
                         modifier = Modifier.fillMaxWidth(),
                         text = it,
                         style = sizes.descriptionStyle,
-                        color = colors.subtitleColor,
+                        color = colors.body,
                         textAlign = TextAlign.Justify
                     )
                 }

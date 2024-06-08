@@ -16,7 +16,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.banners.PersianBanner
 import io.github.madmaximuus.persian.banners.PersianBannerLeft
@@ -29,7 +29,8 @@ import io.github.madmaximuus.persian.foundation.spacing
 import io.github.madmaximuus.persian.inputs.PersianOutlineInput
 import io.github.madmaximuus.persian.select.SelectActionItem
 import io.github.madmaximuus.persian.textAreas.PersianOutlineTextArea
-import ru.rabbit.persian.appShowcase.R
+import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
+import io.github.madmaximuus.persianSymbols.globe.Globe
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
@@ -56,7 +57,8 @@ object Banner : Screen {
 
             val leftImage = PersianBannerLeft.Image("https://loremflickr.com/320/240")
             val leftAvatar = PersianBannerLeft.Avatar("https://loremflickr.com/320/240")
-            val leftIcon = PersianBannerLeft.Icon(painterResource(id = R.drawable.ic_person_filled))
+            val leftIcon =
+                PersianBannerLeft.Icon(rememberVectorPainter(image = PersianSymbols.Default.Globe))
             var left by remember { mutableStateOf<PersianBannerLeft?>(null) }
             val (isButtonNeed, onButtonNeedChecked) = remember { mutableStateOf(false) }
             val leftOptions = listOf(
@@ -93,15 +95,11 @@ object Banner : Screen {
                         buttonText = if (isButtonNeed) "Button" else null
                     )
                 }
-                Column(
-                    modifier = Modifier
-                        .padding(
-                            horizontal = MaterialTheme.spacing.size16,
-                            vertical = MaterialTheme.spacing.size16
-                        )
-                ) {
+                Column {
                     PersianCheckbox(
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier
+                            .padding(horizontal = MaterialTheme.spacing.size8)
+                            .fillMaxWidth(),
                         text = "Title",
                         checked = title,
                         onCheckedChange = { isChecked ->
@@ -111,14 +109,16 @@ object Banner : Screen {
                     )
                     if (title) {
                         PersianOutlineInput(
-                            modifier = Modifier.padding(horizontal = MaterialTheme.spacing.size8),
+                            modifier = Modifier.padding(horizontal = MaterialTheme.spacing.size20),
                             value = titleValue,
                             onValueChange = onTitleValueChange
                         )
                         Spacer(modifier = Modifier.height(MaterialTheme.spacing.size8))
                     }
                     PersianCheckbox(
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier
+                            .padding(horizontal = MaterialTheme.spacing.size8)
+                            .fillMaxWidth(),
                         text = "Description",
                         checked = description,
                         onCheckedChange = { isChecked ->
@@ -128,19 +128,23 @@ object Banner : Screen {
                     )
                     if (description) {
                         PersianOutlineTextArea(
-                            modifier = Modifier.padding(horizontal = MaterialTheme.spacing.size8),
+                            modifier = Modifier.padding(horizontal = MaterialTheme.spacing.size20),
                             value = descriptionValue,
                             onValueChange = onDescriptionValueChange
                         )
                         Spacer(modifier = Modifier.height(MaterialTheme.spacing.size8))
                     }
                     PersianCheckbox(
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier
+                            .padding(horizontal = MaterialTheme.spacing.size8)
+                            .fillMaxWidth(),
                         text = "Button",
                         checked = isButtonNeed,
                         onCheckedChange = onButtonNeedChecked
                     )
+                    Spacer(modifier = Modifier.height(MaterialTheme.spacing.size8))
                     PersianForm(
+                        modifier = Modifier.padding(horizontal = MaterialTheme.spacing.size20),
                         subhead = PersianFormSubheadConfig(
                             text = "Left",
                             textStyle = MaterialTheme.typography.titleMedium
@@ -159,7 +163,9 @@ object Banner : Screen {
                             }
                         )
                     )
+                    Spacer(modifier = Modifier.height(MaterialTheme.spacing.size16))
                     PersianForm(
+                        modifier = Modifier.padding(horizontal = MaterialTheme.spacing.size20),
                         subhead = PersianFormSubheadConfig(
                             text = "Right",
                             textStyle = MaterialTheme.typography.titleMedium
