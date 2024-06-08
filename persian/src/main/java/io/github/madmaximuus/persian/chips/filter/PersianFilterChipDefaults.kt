@@ -66,7 +66,7 @@ object PersianFilterChipDefaults {
         labelStyle: TextStyle = MaterialTheme.typography.labelLarge,
         borderWidth: Dp = 1.dp,
         selectedBorderWith: Dp = 0.dp,
-        shape: Shape = MaterialTheme.shape.shape8,
+        shape: Shape = MaterialTheme.shape.shape10,
         disabledBorderWith: Dp = 1.dp,
         selectedDisabledBorderWith: Dp = 0.dp
     ): SelectableChipSizes = SelectableChipSizes(

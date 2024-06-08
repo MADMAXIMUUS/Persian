@@ -23,6 +23,7 @@ fun PersianInputShip(
     onTrailingClick: (() -> Unit)? = null,
     trailingIcon: Painter? = null,
     avatar: String? = null,
+    image: String? = null,
     colors: SelectableChipColors = PersianInputChipDefaults.chipColors(),
     elevation: SelectableChipElevation = PersianInputChipDefaults.chipElevation(),
     sizes: SelectableChipSizes = PersianInputChipDefaults.chipSizes(),
@@ -35,12 +36,12 @@ fun PersianInputShip(
     label = label,
     leadingIcon = leadingIcon,
     avatar = avatar,
+    image = image,
     trailingIcon = trailingIcon,
     onTrailingClick = onTrailingClick,
     colors = colors,
     elevation = elevation,
     sizes = sizes,
-    minHeight = 32.dp,
-    paddingValues = PaddingValues(8.dp, 6.dp),
+    paddingValues = PaddingValues(4.dp, 0.dp),
     interactionSource = interactionSource
 )

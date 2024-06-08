@@ -94,7 +94,7 @@ object Chips : Screen {
                         PersianAssistChip(
                             label = assistChipLabel,
                             enabled = enabled,
-                            leadingIcon = if (showLeadingIcon) rememberVectorPainter(image = PersianSymbols.Default.Plus) else null,
+                            image = if (showLeadingIcon) "https://loremflickr.com/320/240" else null,
                             onClick = { }
                         )
                         PersianInputShip(

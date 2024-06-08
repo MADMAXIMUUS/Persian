@@ -34,12 +34,12 @@ fun PersianFilterChip(
     label = label,
     leadingIcon = leadingIcon,
     avatar = null,
+    image = null,
     trailingIcon = trailingIcon,
     onTrailingClick = onTrailingClick,
     colors = colors,
     elevation = elevation,
     sizes = sizes,
-    minHeight = 32.dp,
-    paddingValues = PaddingValues(8.dp, 6.dp),
+    paddingValues = PaddingValues(4.dp, 0.dp),
     interactionSource = interactionSource
 )

@@ -19,6 +19,7 @@ fun PersianAssistChip(
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     leadingIcon: Painter? = null,
+    image: String? = null,
     colors: ChipColors = PersianAssistChipDefaults.chipColors(),
     sizes: ChipSizes = PersianAssistChipDefaults.chipSizes(),
     elevation: ChipElevation = PersianAssistChipDefaults.chipElevation(),
@@ -30,10 +31,10 @@ fun PersianAssistChip(
     label = label,
     leadingIcon = leadingIcon,
     trailingIcon = null,
+    image = image,
     colors = colors,
     sizes = sizes,
-    minHeight = 32.dp,
-    paddingValues = PaddingValues(8.dp, 6.dp),
+    paddingValues = PaddingValues(4.dp, 0.dp),
     elevation = elevation,
     interactionSource = interactionSource
 )

@@ -30,10 +30,10 @@ fun PersianSuggestionChip(
     label = label,
     leadingIcon = icon,
     trailingIcon = null,
+    image = null,
     colors = colors,
     sizes = sizes,
-    minHeight = 32.dp,
-    paddingValues = PaddingValues(8.dp, 6.dp),
+    paddingValues = PaddingValues(4.dp, 0.dp),
     elevation = elevation,
     interactionSource = interactionSource
 )

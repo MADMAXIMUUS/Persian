@@ -3,10 +3,12 @@ package io.github.madmaximuus.persian.chips.founfation
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -18,10 +20,13 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.PlatformTextStyle
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import io.github.madmaximuus.persian.avatarsAndImages.ImageShape
 import io.github.madmaximuus.persian.avatarsAndImages.PersianAvatar
 import io.github.madmaximuus.persian.avatarsAndImages.PersianAvatarsDefaults
+import io.github.madmaximuus.persian.avatarsAndImages.PersianImage
+import io.github.madmaximuus.persian.avatarsAndImages.PersianImagesDefaults
+import io.github.madmaximuus.persian.foundation.spacing
 import io.github.madmaximuus.persian.iconBox.IconBoxSize
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
 import io.github.madmaximuus.persianSymbols.check.base.Check
@@ -33,6 +38,7 @@ internal fun ChipContent(
     selected: Boolean,
     labelTextStyle: TextStyle,
     avatar: String?,
+    image: String?,
     leadingIcon: Painter?,
     trailingIcon: Painter?,
     onTrailingClick: (() -> Unit)?,
@@ -41,17 +47,16 @@ internal fun ChipContent(
     trailingIconColor: Color,
     leadingIconSize: IconBoxSize,
     trailingIconSize: IconBoxSize,
-    minHeight: Dp,
     paddingValues: PaddingValues,
     enabled: Boolean
 ) {
     Row(
         modifier = Modifier
-            .defaultMinSize(minHeight = minHeight)
+            .height(32.dp)
             .padding(paddingValues),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        if (avatar != null || leadingIcon != null) {
+        if (avatar != null || leadingIcon != null || image != null) {
             if (avatar != null) {
                 PersianAvatar(
                     imageUrl = avatar,
@@ -64,11 +69,21 @@ internal fun ChipContent(
                 CompositionLocalProvider(
                     LocalContentColor provides leadingIconColor,
                 ) {
+                    Spacer(modifier = Modifier.width(MaterialTheme.spacing.size4))
                     PersianIconBox(
                         icon = leadingIcon,
                         size = leadingIconSize
                     )
                 }
+            } else if (image != null) {
+                PersianImage(
+                    imageUrl = image,
+                    enabled = enabled,
+                    sizes = PersianImagesDefaults.size24(),
+                    shape = ImageShape.MEDIUM,
+                    overlay = selected,
+                    overlayIcon = rememberVectorPainter(image = PersianSymbols.Default.Check)
+                )
             }
         }
         Text(
@@ -96,6 +111,7 @@ internal fun ChipContent(
                     size = trailingIconSize,
                 )
             }
+            Spacer(modifier = Modifier.width(MaterialTheme.spacing.size4))
         }
     }
 }

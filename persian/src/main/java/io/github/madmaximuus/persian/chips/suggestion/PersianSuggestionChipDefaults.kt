@@ -49,7 +49,7 @@ object PersianSuggestionChipDefaults {
         leadingIconSize: IconBoxSize = PersianIconBoxDefaults.size18(),
         labelStyle: TextStyle = MaterialTheme.typography.labelLarge,
         borderWidth: Dp = 1.dp,
-        shape: Shape = MaterialTheme.shape.shape8,
+        shape: Shape = MaterialTheme.shape.shape10,
         disabledBorderWith: Dp = 0.dp,
     ): ChipSizes = ChipSizes(
         trailingIconSize = trailingIconSize,
