@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -29,7 +28,7 @@ import io.github.madmaximuus.persian.colorPicker.view.util.drawBitmap
 import io.github.madmaximuus.persian.colorPicker.view.util.emitDragGesture
 import io.github.madmaximuus.persian.colorPicker.view.util.pointToHueCompact
 import io.github.madmaximuus.persian.colorPicker.view.util.pointToHueMedium
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import android.graphics.Color as AndroidColor
 
 @Composable
@@ -46,7 +45,7 @@ fun HueBarCompact(
         mutableStateOf(Offset.Zero)
     }
 
-    val padding = MaterialTheme.spacing.size8.value
+    val padding = PersianTheme.spacing.size8.value
     Canvas(
         modifier = Modifier
             .fillMaxWidth()
@@ -123,7 +122,7 @@ fun HueBarMedium(
         mutableStateOf(Offset.Zero)
     }
 
-    val padding = MaterialTheme.spacing.size8.value
+    val padding = PersianTheme.spacing.size8.value
     val canvasSize = if (windowHeightSizeClass == WindowHeightSizeClass.COMPACT) 150.dp else 288.dp
     Canvas(
         modifier = Modifier

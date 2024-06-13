@@ -6,7 +6,6 @@ import androidx.compose.foundation.interaction.InteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
 import androidx.compose.foundation.interaction.collectIsHoveredAsState
 import androidx.compose.foundation.text.selection.TextSelectionColors
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.State
@@ -15,7 +14,7 @@ import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state08
 import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state16
@@ -33,57 +32,57 @@ object PersianTextAreaDefaults {
         errorStateIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.XMarkCircle),
 
         //State Icon Colors
-        validStateIconColor: Color = MaterialTheme.extendedColorScheme.valid,
-        errorStateIconColor: Color = MaterialTheme.extendedColorScheme.error,
+        validStateIconColor: Color = PersianTheme.colorScheme.valid,
+        errorStateIconColor: Color = PersianTheme.colorScheme.error,
 
         //Text Colors
-        defaultTextColor: Color = MaterialTheme.extendedColorScheme.onSurface,
-        hoveredTextColor: Color = MaterialTheme.extendedColorScheme.onSurface,
-        focusedTextColor: Color = MaterialTheme.extendedColorScheme.onSurface,
-        validTextColor: Color = MaterialTheme.extendedColorScheme.valid,
-        errorTextColor: Color = MaterialTheme.extendedColorScheme.error,
-        disabledTextColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
+        defaultTextColor: Color = PersianTheme.colorScheme.onSurface,
+        hoveredTextColor: Color = PersianTheme.colorScheme.onSurface,
+        focusedTextColor: Color = PersianTheme.colorScheme.onSurface,
+        validTextColor: Color = PersianTheme.colorScheme.valid,
+        errorTextColor: Color = PersianTheme.colorScheme.error,
+        disabledTextColor: Color = PersianTheme.colorScheme.onSurface.state38,
 
         //Container Colors
-        defaultContainerColor: Color = MaterialTheme.extendedColorScheme.primaryContainer.state08,
-        hoveredContainerColor: Color = MaterialTheme.extendedColorScheme.primaryContainer.state12,
-        focusedContainerColor: Color = MaterialTheme.extendedColorScheme.primaryContainer.state16,
-        validContainerColor: Color = MaterialTheme.extendedColorScheme.validContainer.state12,
-        errorContainerColor: Color = MaterialTheme.extendedColorScheme.errorContainer.state12,
-        disabledContainerColor: Color = MaterialTheme.extendedColorScheme.onSurface.state08,
+        defaultContainerColor: Color = PersianTheme.colorScheme.primaryContainer.state08,
+        hoveredContainerColor: Color = PersianTheme.colorScheme.primaryContainer.state12,
+        focusedContainerColor: Color = PersianTheme.colorScheme.primaryContainer.state16,
+        validContainerColor: Color = PersianTheme.colorScheme.validContainer.state12,
+        errorContainerColor: Color = PersianTheme.colorScheme.errorContainer.state12,
+        disabledContainerColor: Color = PersianTheme.colorScheme.onSurface.state08,
 
         //Cursor Colors
-        defaultCursorColor: Color = MaterialTheme.extendedColorScheme.primary,
-        validCursorColor: Color = MaterialTheme.extendedColorScheme.valid,
-        errorCursorColor: Color = MaterialTheme.extendedColorScheme.error,
+        defaultCursorColor: Color = PersianTheme.colorScheme.primary,
+        validCursorColor: Color = PersianTheme.colorScheme.valid,
+        errorCursorColor: Color = PersianTheme.colorScheme.error,
         textSelectionColors: TextSelectionColors = TextSelectionColors(
-            handleColor = MaterialTheme.extendedColorScheme.primary,
-            backgroundColor = MaterialTheme.extendedColorScheme.primary.copy(alpha = 0.4f)
+            handleColor = PersianTheme.colorScheme.primary,
+            backgroundColor = PersianTheme.colorScheme.primary.copy(alpha = 0.4f)
         ),
 
         //Indicator Colors
-        defaultIndicatorColor: Color = MaterialTheme.extendedColorScheme.outlineVariant,
-        hoveredIndicatorColor: Color = MaterialTheme.extendedColorScheme.outline,
-        focusedIndicatorColor: Color = MaterialTheme.extendedColorScheme.primary,
-        validIndicatorColor: Color = MaterialTheme.extendedColorScheme.valid,
-        errorIndicatorColor: Color = MaterialTheme.extendedColorScheme.error,
-        disabledIndicatorColor: Color = MaterialTheme.extendedColorScheme.onSurface.state12,
+        defaultIndicatorColor: Color = PersianTheme.colorScheme.outlineVariant,
+        hoveredIndicatorColor: Color = PersianTheme.colorScheme.outline,
+        focusedIndicatorColor: Color = PersianTheme.colorScheme.primary,
+        validIndicatorColor: Color = PersianTheme.colorScheme.valid,
+        errorIndicatorColor: Color = PersianTheme.colorScheme.error,
+        disabledIndicatorColor: Color = PersianTheme.colorScheme.onSurface.state12,
 
         //Leading Icon Colors
-        defaultLeadingIconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        hoveredLeadingIconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        focusedLeadingIconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        validLeadingIconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        errorLeadingIconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        disabledLeadingIconColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
+        defaultLeadingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
+        hoveredLeadingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
+        focusedLeadingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
+        validLeadingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
+        errorLeadingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
+        disabledLeadingIconColor: Color = PersianTheme.colorScheme.onSurface.state38,
 
         //Placeholder Colors
-        defaultPlaceholderColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        hoveredPlaceholderColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        focusedPlaceholderColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        validPlaceholderColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        errorPlaceholderColor: Color = MaterialTheme.extendedColorScheme.error,
-        disabledPlaceholderColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
+        defaultPlaceholderColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
+        hoveredPlaceholderColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
+        focusedPlaceholderColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
+        validPlaceholderColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
+        errorPlaceholderColor: Color = PersianTheme.colorScheme.error,
+        disabledPlaceholderColor: Color = PersianTheme.colorScheme.onSurface.state38,
     ): TextAreaColors =
         TextAreaColors(
             //State Icon
@@ -148,49 +147,49 @@ object PersianTextAreaDefaults {
         errorStateIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.XMarkCircle),
 
         //State Icon Colors
-        validStateIconColor: Color = MaterialTheme.extendedColorScheme.valid,
-        errorStateIconColor: Color = MaterialTheme.extendedColorScheme.error,
+        validStateIconColor: Color = PersianTheme.colorScheme.valid,
+        errorStateIconColor: Color = PersianTheme.colorScheme.error,
 
         //Text Colors
-        defaultTextColor: Color = MaterialTheme.extendedColorScheme.onSurface,
-        hoveredTextColor: Color = MaterialTheme.extendedColorScheme.onSurface,
-        focusedTextColor: Color = MaterialTheme.extendedColorScheme.onSurface,
-        validTextColor: Color = MaterialTheme.extendedColorScheme.valid,
-        errorTextColor: Color = MaterialTheme.extendedColorScheme.error,
-        disabledTextColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
+        defaultTextColor: Color = PersianTheme.colorScheme.onSurface,
+        hoveredTextColor: Color = PersianTheme.colorScheme.onSurface,
+        focusedTextColor: Color = PersianTheme.colorScheme.onSurface,
+        validTextColor: Color = PersianTheme.colorScheme.valid,
+        errorTextColor: Color = PersianTheme.colorScheme.error,
+        disabledTextColor: Color = PersianTheme.colorScheme.onSurface.state38,
 
         //Container Colors
         defaultContainerColor: Color = Color.Transparent,
-        hoveredContainerColor: Color = MaterialTheme.extendedColorScheme.primaryContainer.state12,
-        focusedContainerColor: Color = MaterialTheme.extendedColorScheme.primaryContainer.state16,
-        validContainerColor: Color = MaterialTheme.extendedColorScheme.validContainer.state12,
-        errorContainerColor: Color = MaterialTheme.extendedColorScheme.errorContainer.state12,
-        disabledContainerColor: Color = MaterialTheme.extendedColorScheme.onSurface.state08,
+        hoveredContainerColor: Color = PersianTheme.colorScheme.primaryContainer.state12,
+        focusedContainerColor: Color = PersianTheme.colorScheme.primaryContainer.state16,
+        validContainerColor: Color = PersianTheme.colorScheme.validContainer.state12,
+        errorContainerColor: Color = PersianTheme.colorScheme.errorContainer.state12,
+        disabledContainerColor: Color = PersianTheme.colorScheme.onSurface.state08,
 
         //Cursor Colors
-        defaultCursorColor: Color = MaterialTheme.extendedColorScheme.primary,
-        validCursorColor: Color = MaterialTheme.extendedColorScheme.valid,
-        errorCursorColor: Color = MaterialTheme.extendedColorScheme.error,
+        defaultCursorColor: Color = PersianTheme.colorScheme.primary,
+        validCursorColor: Color = PersianTheme.colorScheme.valid,
+        errorCursorColor: Color = PersianTheme.colorScheme.error,
         textSelectionColors: TextSelectionColors = TextSelectionColors(
-            handleColor = MaterialTheme.extendedColorScheme.primary,
-            backgroundColor = MaterialTheme.extendedColorScheme.primary.copy(alpha = 0.4f)
+            handleColor = PersianTheme.colorScheme.primary,
+            backgroundColor = PersianTheme.colorScheme.primary.copy(alpha = 0.4f)
         ),
 
         //Leading Icon Colors
-        defaultLeadingIconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        hoveredLeadingIconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        focusedLeadingIconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        validLeadingIconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        errorLeadingIconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        disabledLeadingIconColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
+        defaultLeadingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
+        hoveredLeadingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
+        focusedLeadingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
+        validLeadingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
+        errorLeadingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
+        disabledLeadingIconColor: Color = PersianTheme.colorScheme.onSurface.state38,
 
         //Placeholder Colors
-        defaultPlaceholderColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        hoveredPlaceholderColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        focusedPlaceholderColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        validPlaceholderColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        errorPlaceholderColor: Color = MaterialTheme.extendedColorScheme.error,
-        disabledPlaceholderColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
+        defaultPlaceholderColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
+        hoveredPlaceholderColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
+        focusedPlaceholderColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
+        validPlaceholderColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
+        errorPlaceholderColor: Color = PersianTheme.colorScheme.error,
+        disabledPlaceholderColor: Color = PersianTheme.colorScheme.onSurface.state38,
     ): TextAreaColors =
         TextAreaColors(
             //State Icon

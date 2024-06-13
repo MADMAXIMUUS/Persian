@@ -10,8 +10,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
@@ -29,8 +27,9 @@ import io.github.madmaximuus.persian.chips.assist.PersianAssistChip
 import io.github.madmaximuus.persian.chips.filter.PersianFilterChip
 import io.github.madmaximuus.persian.chips.input.PersianInputShip
 import io.github.madmaximuus.persian.chips.suggestion.PersianSuggestionChip
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.inputs.PersianOutlineInput
+import io.github.madmaximuus.persian.text.Text
 import io.github.madmaximuus.persianSymbols.chevronDown.base.ChevronDown
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.plus.base.Plus
@@ -67,7 +66,7 @@ object Chips : Screen {
                     .verticalScroll(rememberScrollState())
                     .padding(it),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size2)
+                verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size2)
             ) {
                 SampleRow(
                     text = "Sample chip",
@@ -75,7 +74,7 @@ object Chips : Screen {
                 ) {
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size8)
+                        verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8)
                     ) {
                         PersianFilterChip(
                             label = filterChipLabel,
@@ -135,18 +134,18 @@ object Chips : Screen {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(
-                            top = MaterialTheme.spacing.size8,
-                            bottom = MaterialTheme.spacing.size8,
-                            start = MaterialTheme.spacing.size12,
-                            end = MaterialTheme.spacing.size12
+                            top = PersianTheme.spacing.size8,
+                            bottom = PersianTheme.spacing.size8,
+                            start = PersianTheme.spacing.size12,
+                            end = PersianTheme.spacing.size12
                         ),
                 ) {
                     Text(
                         text = "Additional settings",
-                        style = MaterialTheme.typography.titleMedium,
-                        color = MaterialTheme.colorScheme.onSurface
+                        style = PersianTheme.typography.titleMedium,
+                        color = PersianTheme.colorScheme.onSurface
                     )
-                    Spacer(modifier = Modifier.height(MaterialTheme.spacing.size4))
+                    Spacer(modifier = Modifier.height(PersianTheme.spacing.size4))
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()

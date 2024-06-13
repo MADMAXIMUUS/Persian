@@ -1,25 +1,23 @@
 package io.github.madmaximuus.persian.actionSheet
 
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.takeOrElse
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
-import io.github.madmaximuus.persian.foundation.shape
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state38
 
 object PersianActionSheetDefaults {
 
-    val shape: Shape @Composable get() = MaterialTheme.shape.shape16
+    val shape: Shape @Composable get() = PersianTheme.shapes.shape16
 
     @Composable
     fun colors(
-        titleColor: Color = MaterialTheme.extendedColorScheme.onSurface,
-        subtitleColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        containerColor: Color = MaterialTheme.extendedColorScheme.surface1
+        titleColor: Color = PersianTheme.colorScheme.onSurface,
+        subtitleColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
+        containerColor: Color = PersianTheme.colorScheme.surface1
     ): ActionSheetColors =
         ActionSheetColors(
             titleColor = titleColor,
@@ -29,13 +27,13 @@ object PersianActionSheetDefaults {
 
     @Composable
     fun itemColors(
-        defaultColor: Color = MaterialTheme.extendedColorScheme.onSurface,
-        errorColor: Color = MaterialTheme.extendedColorScheme.error,
-        disabledColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
+        defaultColor: Color = PersianTheme.colorScheme.onSurface,
+        errorColor: Color = PersianTheme.colorScheme.error,
+        disabledColor: Color = PersianTheme.colorScheme.onSurface.state38,
 
-        defaultIconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        errorIconColor: Color = MaterialTheme.extendedColorScheme.error,
-        disabledIconColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
+        defaultIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
+        errorIconColor: Color = PersianTheme.colorScheme.error,
+        disabledIconColor: Color = PersianTheme.colorScheme.onSurface.state38,
     ): ActionSheetItemColors =
         ActionSheetItemColors(
             defaultTextColor = defaultColor,

@@ -3,13 +3,12 @@ package io.github.madmaximuus.persian.forms
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.text.Text
 
 data class PersianFormCaptionConfig(
     val text: String,
@@ -32,10 +31,10 @@ internal fun PersianFormCaption(
     textStyle: TextStyle?
 ) {
     val resolvedColors = colors ?: PersianFormDefaults.captionColors()
-    val resolvedTextStyle = textStyle ?: MaterialTheme.typography.bodySmall
+    val resolvedTextStyle = textStyle ?: PersianTheme.typography.bodySmall
     Row(
         modifier = modifier,
-        horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size2),
+        horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size2),
         verticalAlignment = Alignment.Top
     ) {
         Text(
@@ -61,11 +60,11 @@ internal fun PersianFormCaption(
     counterTextStyle: TextStyle?
 ) {
     val resolvedColors = colors ?: PersianFormDefaults.captionColors()
-    val resolvedTextStyle = textStyle ?: MaterialTheme.typography.bodySmall
-    val resolvedCounterTextStyle = counterTextStyle ?: MaterialTheme.typography.bodySmall
+    val resolvedTextStyle = textStyle ?: PersianTheme.typography.bodySmall
+    val resolvedCounterTextStyle = counterTextStyle ?: PersianTheme.typography.bodySmall
     Row(
         modifier = modifier,
-        horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size2),
+        horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size2),
         verticalAlignment = Alignment.Top
     ) {
         Text(

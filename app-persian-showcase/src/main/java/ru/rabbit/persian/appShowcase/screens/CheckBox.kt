@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -17,7 +16,7 @@ import androidx.compose.ui.state.ToggleableState
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
 import io.github.madmaximuus.persian.checkboxes.PersianTriStateCheckbox
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object CheckBox : Screen {
@@ -38,7 +37,7 @@ object CheckBox : Screen {
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(horizontal = MaterialTheme.spacing.size12),
+                    .padding(horizontal = PersianTheme.spacing.size12),
                 contentPadding = it,
             ) {
                 item {
@@ -103,12 +102,12 @@ object CheckBox : Screen {
                         Spacer(
                             Modifier
                                 .fillMaxWidth()
-                                .height(MaterialTheme.spacing.size4)
+                                .height(PersianTheme.spacing.size4)
                         )
                         Column(
                             Modifier
                                 .fillMaxWidth()
-                                .padding(start = MaterialTheme.spacing.size12)
+                                .padding(start = PersianTheme.spacing.size12)
                         ) {
                             PersianCheckbox(
                                 modifier = Modifier.fillMaxWidth(),
@@ -119,7 +118,7 @@ object CheckBox : Screen {
                             Spacer(
                                 Modifier
                                     .fillMaxWidth()
-                                    .height(MaterialTheme.spacing.size4)
+                                    .height(PersianTheme.spacing.size4)
                             )
                             PersianCheckbox(
                                 modifier = Modifier.fillMaxWidth(),

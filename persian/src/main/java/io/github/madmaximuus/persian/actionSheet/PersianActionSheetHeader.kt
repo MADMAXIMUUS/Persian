@@ -5,12 +5,11 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.text.Text
 
 @Composable
 internal fun PersianActionSheetHeader(
@@ -23,8 +22,8 @@ internal fun PersianActionSheetHeader(
         modifier = modifier
             .fillMaxWidth()
             .padding(
-                top = MaterialTheme.spacing.size24,
-                bottom = MaterialTheme.spacing.size4
+                top = PersianTheme.spacing.size24,
+                bottom = PersianTheme.spacing.size4
             )
     ) {
         title?.let {
@@ -32,27 +31,27 @@ internal fun PersianActionSheetHeader(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(
-                        start = MaterialTheme.spacing.size20,
-                        end = MaterialTheme.spacing.size20
+                        start = PersianTheme.spacing.size20,
+                        end = PersianTheme.spacing.size20
                     ),
                 text = it,
                 textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.titleLarge,
+                style = PersianTheme.typography.titleLarge,
                 color = colors.titleColor
             )
-            Spacer(modifier = Modifier.height(MaterialTheme.spacing.size4))
+            Spacer(modifier = Modifier.height(PersianTheme.spacing.size4))
         }
         subtitle?.let {
             Text(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(
-                        start = MaterialTheme.spacing.size20,
-                        end = MaterialTheme.spacing.size20
+                        start = PersianTheme.spacing.size20,
+                        end = PersianTheme.spacing.size20
                     ),
                 text = it,
                 textAlign = TextAlign.Justify,
-                style = MaterialTheme.typography.bodyLarge,
+                style = PersianTheme.typography.bodyLarge,
                 color = colors.subtitleColor
             )
         }

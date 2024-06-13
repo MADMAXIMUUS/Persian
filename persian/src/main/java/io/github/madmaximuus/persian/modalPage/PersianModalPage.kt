@@ -12,9 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SheetState
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
@@ -26,10 +24,9 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
-import io.github.madmaximuus.persian.foundation.shape
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state38
+import io.github.madmaximuus.persian.scafold.Scaffold
 import io.github.madmaximuus.persian.topAppBar.PersianTopAppBar
 import io.github.madmaximuus.persian.topAppBar.PersianTopAppBarLeft
 import io.github.madmaximuus.persian.topAppBar.PersianTopAppBarRight
@@ -40,11 +37,11 @@ fun PersianDynamicHeightModalPage(
     modifier: Modifier = Modifier,
     onDismissRequest: () -> Unit,
     sheetState: SheetState = rememberModalBottomSheetState(),
-    shape: Shape = MaterialTheme.shape.shape20.copy(
+    shape: Shape = PersianTheme.shapes.shape20.copy(
         bottomStart = CornerSize(0.dp),
         bottomEnd = CornerSize(0.dp)
     ),
-    backgroundColor: Color = MaterialTheme.extendedColorScheme.surface,
+    backgroundColor: Color = PersianTheme.colorScheme.surface,
     top: PersianModalPageTop = PersianModalPageTop.Handle,
     content: @Composable BoxScope.() -> Unit
 ) {
@@ -73,12 +70,12 @@ fun PersianDynamicHeightModalPage(
                             ) {
                                 Box(
                                     modifier = Modifier
-                                        .padding(vertical = MaterialTheme.spacing.large)
+                                        .padding(vertical = PersianTheme.spacing.size16)
                                         .width(40.dp)
                                         .height(6.dp)
                                         .background(
-                                            color = MaterialTheme.extendedColorScheme.onSurface.state38,
-                                            shape = MaterialTheme.shape.shape20
+                                            color = PersianTheme.colorScheme.onSurface.state38,
+                                            shape = PersianTheme.shapes.shape20
                                         )
                                 )
                             }
@@ -118,11 +115,11 @@ fun PersianExtendedModalPage(
     sheetState: SheetState = rememberModalBottomSheetState(
         skipPartiallyExpanded = true
     ),
-    shape: Shape = MaterialTheme.shape.shape20.copy(
+    shape: Shape = PersianTheme.shapes.shape20.copy(
         bottomStart = CornerSize(0.dp),
         bottomEnd = CornerSize(0.dp)
     ),
-    backgroundColor: Color = MaterialTheme.extendedColorScheme.surface,
+    backgroundColor: Color = PersianTheme.colorScheme.surface,
     title: String,
     actionTitle: String,
     onActionClick: () -> Unit,

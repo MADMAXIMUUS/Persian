@@ -2,7 +2,6 @@ package io.github.madmaximuus.persian.tabs
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.height
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ScrollableTabRow
 import androidx.compose.material3.TabRow
 import androidx.compose.runtime.Composable
@@ -10,13 +9,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import io.github.madmaximuus.persian.foundation.PersianTheme
 
 @Composable
 fun PersianFixedTabs(
     tabItems: List<TabItem>,
     modifier: Modifier = Modifier,
     colors: TabColors = PersianTabsDefaults.colors(),
-    textStyle: TextStyle = MaterialTheme.typography.titleSmall,
+    textStyle: TextStyle = PersianTheme.typography.titleSmall,
     textOverflow: TextOverflow = TextOverflow.Ellipsis,
     onTabClicked: (tabItem: TabItem) -> Unit
 ) {
@@ -56,7 +56,7 @@ fun PersianScrollableTabs(
     tabItems: List<TabItem>,
     modifier: Modifier = Modifier,
     colors: TabColors = PersianTabsDefaults.colors(),
-    textStyle: TextStyle = MaterialTheme.typography.titleSmall,
+    textStyle: TextStyle = PersianTheme.typography.titleSmall,
     textOverflow: TextOverflow = TextOverflow.Ellipsis,
     onTabClicked: (tabItem: TabItem) -> Unit
 ) {

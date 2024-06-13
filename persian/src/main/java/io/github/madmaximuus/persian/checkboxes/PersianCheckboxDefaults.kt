@@ -3,7 +3,6 @@ package io.github.madmaximuus.persian.checkboxes
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
@@ -16,8 +15,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.checkboxes.toggle.BOX_IN_DURATION
 import io.github.madmaximuus.persian.checkboxes.toggle.BOX_OUT_DURATION
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state38
 
@@ -25,14 +23,14 @@ object PersianCheckboxDefaults {
 
     @Composable
     fun colors(
-        checkedColor: Color = MaterialTheme.extendedColorScheme.primary,
-        uncheckedColor: Color = MaterialTheme.extendedColorScheme.outline,
-        checkmarkColor: Color = MaterialTheme.extendedColorScheme.surface,
-        disabledCheckedColor: Color = MaterialTheme.extendedColorScheme.onSurface.state12,
-        disabledUncheckedColor: Color = MaterialTheme.extendedColorScheme.onSurface.state12,
+        checkedColor: Color = PersianTheme.colorScheme.primary,
+        uncheckedColor: Color = PersianTheme.colorScheme.outline,
+        checkmarkColor: Color = PersianTheme.colorScheme.surface,
+        disabledCheckedColor: Color = PersianTheme.colorScheme.onSurface.state12,
+        disabledUncheckedColor: Color = PersianTheme.colorScheme.onSurface.state12,
         disabledIndeterminateColor: Color = disabledCheckedColor,
-        textColor: Color = MaterialTheme.extendedColorScheme.onSurface,
-        disabledTextColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38
+        textColor: Color = PersianTheme.colorScheme.onSurface,
+        disabledTextColor: Color = PersianTheme.colorScheme.onSurface.state38
     ): CheckboxColors = CheckboxColors(
         checkedBorderColor = checkedColor,
         checkedBoxColor = checkedColor,
@@ -52,9 +50,9 @@ object PersianCheckboxDefaults {
     @Composable
     fun sizes(
         toggleSize: Dp = 48.dp,
-        textStyle: TextStyle = MaterialTheme.typography.bodyLarge,
+        textStyle: TextStyle = PersianTheme.typography.bodyLarge,
         contentPadding: PaddingValues = PaddingValues(
-            end = MaterialTheme.spacing.size12
+            end = PersianTheme.spacing.size12
         )
     ) = CheckboxSizes(
         toggleSize = toggleSize,

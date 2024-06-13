@@ -10,9 +10,6 @@ import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -25,9 +22,9 @@ import androidx.window.core.layout.WindowHeightSizeClass
 import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
 import io.github.madmaximuus.persian.buttons.PersianTertiaryButton
 import io.github.madmaximuus.persian.dividers.PersianInsetHorizontalDivider
-import io.github.madmaximuus.persian.foundation.elevation
-import io.github.madmaximuus.persian.foundation.shape
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.surface.Surface
+import io.github.madmaximuus.persian.text.Text
 
 @Composable
 fun PersianOnlyActionAlert(
@@ -49,16 +46,16 @@ fun PersianOnlyActionAlert(
                     .widthIn(max = 460.dp)
                     .fillMaxWidth()
                     .wrapContentHeight()
-                    .padding(horizontal = MaterialTheme.spacing.size24),
-                shape = MaterialTheme.shape.shape20,
+                    .padding(horizontal = PersianTheme.spacing.size24),
+                shape = PersianTheme.shapes.shape20,
                 color = colors.backgroundColor,
-                tonalElevation = MaterialTheme.elevation.small,
+                tonalElevation = PersianTheme.elevation.small,
                 shadowElevation = 0.dp,
                 content = {
                     Column(
                         modifier = modifier
                             .fillMaxWidth()
-                            .padding(MaterialTheme.spacing.size16)
+                            .padding(PersianTheme.spacing.size16)
                             .verticalScroll(rememberScrollState()),
                         horizontalAlignment = Alignment.CenterHorizontally,
                         content = {
@@ -103,10 +100,10 @@ fun PersianAlert(
                     .widthIn(max = 460.dp)
                     .fillMaxWidth()
                     .wrapContentHeight()
-                    .padding(horizontal = MaterialTheme.spacing.size24),
-                shape = MaterialTheme.shape.shape20,
+                    .padding(horizontal = PersianTheme.spacing.size24),
+                shape = PersianTheme.shapes.shape20,
                 color = colors.backgroundColor,
-                tonalElevation = MaterialTheme.elevation.small,
+                tonalElevation = PersianTheme.elevation.small,
                 shadowElevation = 0.dp,
                 content = {
                     Column(
@@ -117,15 +114,15 @@ fun PersianAlert(
                         content = {
                             val padding =
                                 if (heightSizeClass == WindowHeightSizeClass.COMPACT) PaddingValues(
-                                    start = MaterialTheme.spacing.size24,
-                                    end = MaterialTheme.spacing.size24,
-                                    top = MaterialTheme.spacing.size12,
-                                    bottom = MaterialTheme.spacing.size6
+                                    start = PersianTheme.spacing.size24,
+                                    end = PersianTheme.spacing.size24,
+                                    top = PersianTheme.spacing.size12,
+                                    bottom = PersianTheme.spacing.size6
                                 ) else PaddingValues(
-                                    start = MaterialTheme.spacing.size24,
-                                    end = MaterialTheme.spacing.size24,
-                                    top = MaterialTheme.spacing.size24,
-                                    bottom = MaterialTheme.spacing.size12
+                                    start = PersianTheme.spacing.size24,
+                                    end = PersianTheme.spacing.size24,
+                                    top = PersianTheme.spacing.size24,
+                                    bottom = PersianTheme.spacing.size12
                                 )
                             Column(
                                 modifier = Modifier
@@ -134,22 +131,22 @@ fun PersianAlert(
                                     .padding(padding),
                                 horizontalAlignment = Alignment.CenterHorizontally,
                                 verticalArrangement = Arrangement
-                                    .spacedBy(MaterialTheme.spacing.size16),
+                                    .spacedBy(PersianTheme.spacing.size16),
                             ) {
                                 Text(
                                     modifier = Modifier.fillMaxWidth(),
                                     text = title,
                                     textAlign = TextAlign.Center,
-                                    style = MaterialTheme.typography.headlineSmall,
+                                    style = PersianTheme.typography.headlineSmall,
                                     color = colors.titleColor
                                 )
                             }
                             description?.let {
                                 Text(
                                     modifier = Modifier
-                                        .padding(horizontal = MaterialTheme.spacing.size20),
+                                        .padding(horizontal = PersianTheme.spacing.size20),
                                     text = it,
-                                    style = MaterialTheme.typography.bodyMedium,
+                                    style = PersianTheme.typography.bodyMedium,
                                     color = colors.descriptionColor,
                                     textAlign = TextAlign.Justify
                                 )
@@ -160,17 +157,17 @@ fun PersianAlert(
                             }
                             val actionPadding =
                                 if (heightSizeClass == WindowHeightSizeClass.COMPACT)
-                                    PaddingValues(MaterialTheme.spacing.size16)
+                                    PaddingValues(PersianTheme.spacing.size16)
                                 else PaddingValues(
-                                    horizontal = MaterialTheme.spacing.size16,
-                                    vertical = MaterialTheme.spacing.size8
+                                    horizontal = PersianTheme.spacing.size16,
+                                    vertical = PersianTheme.spacing.size8
                                 )
                             Row(
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .padding(actionPadding),
                                 horizontalArrangement = Arrangement.spacedBy(
-                                    MaterialTheme.spacing.size8,
+                                    PersianTheme.spacing.size8,
                                     Alignment.End
                                 ),
                                 content = {

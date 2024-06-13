@@ -2,25 +2,30 @@ package io.github.madmaximuus.persian.foundation
 
 import android.app.Activity
 import android.os.Build
+import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.foundation.text.selection.LocalTextSelectionColors
+import androidx.compose.material.ripple.LocalRippleTheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
+import io.github.madmaximuus.persian.foundation.PersianTheme.elevation
+import io.github.madmaximuus.persian.foundation.PersianTheme.shapes
+import io.github.madmaximuus.persian.foundation.PersianTheme.spacing
 
 @Composable
 fun PersianTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    dynamicColor: Boolean = false,
-    lightColors: ExtendedColorScheme = LightColorScheme,
-    darkColors: ExtendedColorScheme = DarkColorScheme,
+    lightColors: ColorScheme = LightColorScheme,
+    darkColors: ColorScheme = DarkColorScheme,
     content: @Composable () -> Unit
 ) {
     val view = LocalView.current
@@ -30,52 +35,59 @@ fun PersianTheme(
         SideEffect {
             currentWindow.statusBarColor = Color.Transparent.toArgb()
             currentWindow.navigationBarColor = Color.Transparent.toArgb()
-            WindowCompat.getInsetsController(currentWindow, view).isAppearanceLightStatusBars =
-                !darkTheme
-            WindowCompat.getInsetsController(currentWindow, view).isAppearanceLightNavigationBars =
-                !darkTheme
+            WindowCompat
+                .getInsetsController(currentWindow, view)
+                .isAppearanceLightStatusBars = !darkTheme
+            WindowCompat
+                .getInsetsController(currentWindow, view)
+                .isAppearanceLightNavigationBars = !darkTheme
         }
     }
 
-    val colorScheme = resolveDynamicColor(
-        dynamicColor = dynamicColor,
-        darkTheme = darkTheme,
-        lightColors = lightColors,
-        darkColors = darkColors
+    val colorScheme = if (darkTheme) darkColors else lightColors
+
+    PersianTheme(
+        colorScheme = colorScheme,
+        typography = LocalTypography.current,
+        spacing = spacing,
+        shapes = shapes,
+        elevation = elevation,
+        content = content,
     )
-    val defaultColorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context)
-            else dynamicLightColorScheme(context)
-        }
-
-        darkTheme -> darkColorScheme
-        else -> lightColorScheme
-    }
-
-    CompositionLocalProvider(
-        LocalPersianSpacing provides MaterialTheme.spacing,
-        LocalPersianElevation provides MaterialTheme.elevation,
-        LocalColorScheme provides colorScheme,
-        LocalPersianShapes provides MaterialTheme.shape
-    ) {
-        MaterialTheme(
-            colorScheme = defaultColorScheme,
-            typography = PersianTypography,
-            content = content,
-        )
-    }
-
 }
 
 @Composable
-private fun resolveDynamicColor(
+fun PersianTheme(
+    colorScheme: ColorScheme,
+    typography: Typography,
+    spacing: Spacing,
+    shapes: Shapes,
+    elevation: Elevation,
+    content: @Composable () -> Unit
+) {
+    val rippleIndication = androidx.compose.material.ripple.rememberRipple()
+    val selectionColors = rememberTextSelectionColors(colorScheme)
+    CompositionLocalProvider(
+        LocalColorScheme provides colorScheme,
+        LocalIndication provides rippleIndication,
+        LocalRippleTheme provides RippleTheme,
+        LocalShapes provides shapes,
+        LocalSpacing provides spacing,
+        LocalTextSelectionColors provides selectionColors,
+        LocalTypography provides typography,
+        LocalElevation provides elevation
+    ) {
+        ProvideTextStyle(value = typography.bodyLarge, content = content)
+    }
+}
+
+@Composable
+fun resolveDynamicColor(
     dynamicColor: Boolean,
     darkTheme: Boolean,
-    lightColors: ExtendedColorScheme,
-    darkColors: ExtendedColorScheme
-): ExtendedColorScheme {
+    lightColors: ColorScheme,
+    darkColors: ColorScheme
+): ColorScheme {
     return when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current
@@ -140,4 +152,47 @@ private fun resolveDynamicColor(
         darkTheme -> darkColors
         else -> lightColors
     }
+}
+
+object PersianTheme {
+    /**
+     * Retrieves the current [ColorScheme] at the call site's position in the hierarchy.
+     */
+    val colorScheme: ColorScheme
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalColorScheme.current
+
+    /**
+     * Retrieves the current [Typography] at the call site's position in the hierarchy.
+     */
+    val typography: Typography
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalTypography.current
+
+    /**
+     * Retrieves the current [Shapes] at the call site's position in the hierarchy.
+     */
+    val shapes: Shapes
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalShapes.current
+
+    /**
+     * Retrieves the current [Spacing] at the call site's position in the hierarchy.
+     */
+    val spacing: Spacing
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalSpacing.current
+
+    /**
+     * Retrieves the current [Elevation] at the call site's position in the hierarchy.
+     */
+    val elevation: Elevation
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalElevation.current
+
 }

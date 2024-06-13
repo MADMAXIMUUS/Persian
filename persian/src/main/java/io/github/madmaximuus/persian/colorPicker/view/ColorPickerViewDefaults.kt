@@ -1,21 +1,20 @@
 package io.github.madmaximuus.persian.colorPicker.view
 
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state38
 
 object ColorPickerViewDefaults {
     @Composable
     fun colors(
-        colorModeTitle: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
-        colorModeTitleSelectedColor: Color = MaterialTheme.extendedColorScheme.onSurface,
-        selectorBorderColor: Color = MaterialTheme.extendedColorScheme.outline,
-        selectorThumbColor: Color = MaterialTheme.extendedColorScheme.primary,
-        selectorThumbBorderColor: Color = MaterialTheme.extendedColorScheme.primaryContainer,
-        saturationValueThumbColor: Color = MaterialTheme.extendedColorScheme.primaryContainer
+        colorModeTitle: Color = PersianTheme.colorScheme.onSurface.state38,
+        colorModeTitleSelectedColor: Color = PersianTheme.colorScheme.onSurface,
+        selectorBorderColor: Color = PersianTheme.colorScheme.outline,
+        selectorThumbColor: Color = PersianTheme.colorScheme.primary,
+        selectorThumbBorderColor: Color = PersianTheme.colorScheme.primaryContainer,
+        saturationValueThumbColor: Color = PersianTheme.colorScheme.primaryContainer
     ): ColorPickerViewColors = ColorPickerViewColors(
         colorModeTitleColor = colorModeTitle,
         colorModeTitleSelectedColor = colorModeTitleSelectedColor,

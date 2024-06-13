@@ -6,17 +6,16 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import io.github.madmaximuus.persian.foundation.PersianTheme
 
 @Composable
 fun PersianFullWidthHorizontalDivider(
     modifier: Modifier = Modifier,
     sizes: DividerSizes = PersianDividerDefaults.sizes(),
-    strokeColor: Color = MaterialTheme.extendedColorScheme.outlineVariant
+    strokeColor: Color = PersianTheme.colorScheme.outlineVariant
 ) {
     Box(
         modifier = modifier
@@ -31,7 +30,7 @@ fun PersianMiddleInsetsHorizontalDivider(
     modifier: Modifier = Modifier,
     sizes: DividerSizes = PersianDividerDefaults.sizes(),
     insetSide: HorizontalInsetSide = HorizontalInsetSide.LEFT,
-    strokeColor: Color = MaterialTheme.extendedColorScheme.outlineVariant
+    strokeColor: Color = PersianTheme.colorScheme.outlineVariant
 ) {
     val padding = when (insetSide) {
         HorizontalInsetSide.LEFT -> PaddingValues(start = sizes.inset)
@@ -50,7 +49,7 @@ fun PersianMiddleInsetsHorizontalDivider(
 fun PersianInsetHorizontalDivider(
     modifier: Modifier = Modifier,
     sizes: DividerSizes = PersianDividerDefaults.sizes(),
-    strokeColor: Color = MaterialTheme.extendedColorScheme.outlineVariant
+    strokeColor: Color = PersianTheme.colorScheme.outlineVariant
 ) {
     Box(
         modifier = modifier

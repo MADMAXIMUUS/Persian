@@ -2,13 +2,12 @@ package io.github.madmaximuus.persian.datePicker.view.cells
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import io.github.madmaximuus.persian.datePicker.view.DatePickerDayOfWeekCellColors
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.text.Text
 
 @Composable
 internal fun PersianDatePickerDialogWeekLabelCell(
@@ -19,14 +18,14 @@ internal fun PersianDatePickerDialogWeekLabelCell(
     Box(
         modifier = modifier
             .padding(
-                horizontal = MaterialTheme.spacing.size4,
-                vertical = MaterialTheme.spacing.size2
+                horizontal = PersianTheme.spacing.size4,
+                vertical = PersianTheme.spacing.size2
             ),
         contentAlignment = Alignment.Center
     ) {
         Text(
             text = label,
-            style = MaterialTheme.typography.labelLarge,
+            style = PersianTheme.typography.labelLarge,
             color = colors.dayOfWeekLabelColor
         )
     }

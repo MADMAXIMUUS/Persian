@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
@@ -25,7 +24,7 @@ import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
 import io.github.madmaximuus.persian.forms.PersianForm
 import io.github.madmaximuus.persian.forms.PersianFormContent
 import io.github.madmaximuus.persian.forms.PersianFormSubheadConfig
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.inputs.PersianOutlineInput
 import io.github.madmaximuus.persian.select.SelectActionItem
 import io.github.madmaximuus.persian.textAreas.PersianOutlineTextArea
@@ -98,7 +97,7 @@ object Banner : Screen {
                 Column {
                     PersianCheckbox(
                         modifier = Modifier
-                            .padding(horizontal = MaterialTheme.spacing.size8)
+                            .padding(horizontal = PersianTheme.spacing.size8)
                             .fillMaxWidth(),
                         text = "Title",
                         checked = title,
@@ -109,15 +108,15 @@ object Banner : Screen {
                     )
                     if (title) {
                         PersianOutlineInput(
-                            modifier = Modifier.padding(horizontal = MaterialTheme.spacing.size20),
+                            modifier = Modifier.padding(horizontal = PersianTheme.spacing.size20),
                             value = titleValue,
                             onValueChange = onTitleValueChange
                         )
-                        Spacer(modifier = Modifier.height(MaterialTheme.spacing.size8))
+                        Spacer(modifier = Modifier.height(PersianTheme.spacing.size8))
                     }
                     PersianCheckbox(
                         modifier = Modifier
-                            .padding(horizontal = MaterialTheme.spacing.size8)
+                            .padding(horizontal = PersianTheme.spacing.size8)
                             .fillMaxWidth(),
                         text = "Description",
                         checked = description,
@@ -128,26 +127,26 @@ object Banner : Screen {
                     )
                     if (description) {
                         PersianOutlineTextArea(
-                            modifier = Modifier.padding(horizontal = MaterialTheme.spacing.size20),
+                            modifier = Modifier.padding(horizontal = PersianTheme.spacing.size20),
                             value = descriptionValue,
                             onValueChange = onDescriptionValueChange
                         )
-                        Spacer(modifier = Modifier.height(MaterialTheme.spacing.size8))
+                        Spacer(modifier = Modifier.height(PersianTheme.spacing.size8))
                     }
                     PersianCheckbox(
                         modifier = Modifier
-                            .padding(horizontal = MaterialTheme.spacing.size8)
+                            .padding(horizontal = PersianTheme.spacing.size8)
                             .fillMaxWidth(),
                         text = "Button",
                         checked = isButtonNeed,
                         onCheckedChange = onButtonNeedChecked
                     )
-                    Spacer(modifier = Modifier.height(MaterialTheme.spacing.size8))
+                    Spacer(modifier = Modifier.height(PersianTheme.spacing.size8))
                     PersianForm(
-                        modifier = Modifier.padding(horizontal = MaterialTheme.spacing.size20),
+                        modifier = Modifier.padding(horizontal = PersianTheme.spacing.size20),
                         subhead = PersianFormSubheadConfig(
                             text = "Left",
-                            textStyle = MaterialTheme.typography.titleMedium
+                            textStyle = PersianTheme.typography.titleMedium
                         ),
                         content = PersianFormContent.Select(
                             selected = selectedLeft,
@@ -163,12 +162,12 @@ object Banner : Screen {
                             }
                         )
                     )
-                    Spacer(modifier = Modifier.height(MaterialTheme.spacing.size16))
+                    Spacer(modifier = Modifier.height(PersianTheme.spacing.size16))
                     PersianForm(
-                        modifier = Modifier.padding(horizontal = MaterialTheme.spacing.size20),
+                        modifier = Modifier.padding(horizontal = PersianTheme.spacing.size20),
                         subhead = PersianFormSubheadConfig(
                             text = "Right",
-                            textStyle = MaterialTheme.typography.titleMedium
+                            textStyle = PersianTheme.typography.titleMedium
                         ),
                         content = PersianFormContent.Select(
                             selected = selectedRight,

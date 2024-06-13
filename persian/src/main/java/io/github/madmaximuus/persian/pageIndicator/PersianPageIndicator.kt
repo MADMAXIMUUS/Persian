@@ -10,7 +10,6 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -23,7 +22,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.foundation.spacing
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -32,7 +30,7 @@ fun PersianPageIndicator(
     modifier: Modifier = Modifier,
     orientation: IndicatorOrientation = IndicatorOrientation.HORIZONTAL,
     visibleIndicatorCount: Int = 5,
-    space: Dp = MaterialTheme.spacing.small,
+    space: Dp = PersianTheme.spacing.size8,
     colors: PageIndicatorColors = PersianPageIndicatorDefaults.indicatorColor()
 ) {
 

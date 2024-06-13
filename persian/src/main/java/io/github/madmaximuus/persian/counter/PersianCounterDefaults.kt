@@ -1,7 +1,6 @@
 package io.github.madmaximuus.persian.counter
 
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
@@ -11,14 +10,13 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
-import io.github.madmaximuus.persian.foundation.shape
+import io.github.madmaximuus.persian.foundation.PersianTheme
 
 object PersianCounterDefaults {
     @Composable
     fun colors(
-        backgroundColor: Color = MaterialTheme.extendedColorScheme.error,
-        textColor: Color = MaterialTheme.extendedColorScheme.onError
+        backgroundColor: Color = PersianTheme.colorScheme.error,
+        textColor: Color = PersianTheme.colorScheme.onError
     ) = remember(backgroundColor, textColor) {
         CounterColors(
             backgroundColor = backgroundColor,
@@ -28,8 +26,8 @@ object PersianCounterDefaults {
 
     @Composable
     fun tonalColors(
-        backgroundColor: Color = MaterialTheme.extendedColorScheme.primaryContainer,
-        textColor: Color = MaterialTheme.extendedColorScheme.onPrimaryContainer
+        backgroundColor: Color = PersianTheme.colorScheme.primaryContainer,
+        textColor: Color = PersianTheme.colorScheme.onPrimaryContainer
     ) = remember(backgroundColor, textColor) {
         CounterColors(
             backgroundColor = backgroundColor,
@@ -40,7 +38,7 @@ object PersianCounterDefaults {
     @Composable
     fun transparentColors(
         backgroundColor: Color = Color.Transparent,
-        textColor: Color = MaterialTheme.extendedColorScheme.onSurface
+        textColor: Color = PersianTheme.colorScheme.onSurface
     ) = remember(backgroundColor, textColor) {
         CounterColors(
             backgroundColor = backgroundColor,
@@ -56,9 +54,9 @@ object PersianCounterDefaults {
         innerOneDigitPadding: PaddingValues = PaddingValues(horizontal = 8.dp, vertical = 4.dp),
         innerTwoDigitPadding: PaddingValues = PaddingValues(horizontal = 4.dp, vertical = 4.dp),
         innerOverDigitPadding: PaddingValues = PaddingValues(horizontal = 4.dp, vertical = 4.dp),
-        oneDigitCornerRadius: Shape = MaterialTheme.shape.shape12,
-        twoDigitCornerRadius: Shape = MaterialTheme.shape.shape12,
-        overDigitCornerRadius: Shape = MaterialTheme.shape.shape12,
+        oneDigitCornerRadius: Shape = PersianTheme.shapes.shape12,
+        twoDigitCornerRadius: Shape = PersianTheme.shapes.shape12,
+        overDigitCornerRadius: Shape = PersianTheme.shapes.shape12,
         badgeHorizontalOffset: Dp = (-18).dp,
         badgeVerticalOffset: Dp = 20.dp,
         oneDigitBadgeHorizontalOffset: Dp = (-32).dp,
@@ -67,7 +65,7 @@ object PersianCounterDefaults {
         twoDigitBadgeVerticalOffset: Dp = 20.dp,
         overDigitBadgeHorizontalOffset: Dp = (-22).dp,
         overDigitBadgeVerticalOffset: Dp = 20.dp,
-        textStyle: TextStyle = MaterialTheme.typography.bodyMedium
+        textStyle: TextStyle = PersianTheme.typography.bodyMedium
     ): CounterSizes =
         CounterSizes(
             outerOneDigitPadding = outerOneDigitPadding,

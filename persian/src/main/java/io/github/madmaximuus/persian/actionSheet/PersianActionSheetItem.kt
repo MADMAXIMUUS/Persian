@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.LocalContentColor
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -19,7 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
 
 /**
@@ -62,9 +61,9 @@ internal fun PersianActionSheetItem(
                 )
             )
             .padding(
-                start = MaterialTheme.spacing.size12,
+                start = PersianTheme.spacing.size12,
             ),
-        horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size8),
+        horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8),
         verticalAlignment = Alignment.CenterVertically
     ) {
         actionSheetItem.leadingIcon?.let {
@@ -77,12 +76,12 @@ internal fun PersianActionSheetItem(
                 PersianIconBox(icon = it)
             }
         }
-        val padding = if (actionSheetItem.leadingIcon == null) MaterialTheme.spacing.size8
+        val padding = if (actionSheetItem.leadingIcon == null) PersianTheme.spacing.size8
         else 0.dp
         Text(
             modifier = Modifier.padding(start = padding),
             text = actionSheetItem.text,
-            style = MaterialTheme.typography.titleMedium,
+            style = PersianTheme.typography.titleMedium,
             color = itemColors
                 .textColor(
                     enabled = actionSheetItem.enabled,

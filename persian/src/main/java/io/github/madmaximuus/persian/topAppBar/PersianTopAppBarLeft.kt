@@ -1,14 +1,14 @@
 package io.github.madmaximuus.persian.topAppBar
 
+import android.net.Uri
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import io.github.madmaximuus.persian.avatarsAndImages.PersianAvatar
 import io.github.madmaximuus.persian.avatarsAndImages.PersianAvatarsDefaults
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.iconButtons.PersianIconButtonDefaults
 import io.github.madmaximuus.persian.iconButtons.PersianTertiaryIconButton
 import io.github.madmaximuus.persianSymbols.arrow.left.base.ArrowLeft
@@ -74,9 +74,9 @@ internal fun PersianTopAppBarLeftAvatar(
 ) {
     PersianAvatar(
         modifier = Modifier
-            .padding(start = MaterialTheme.spacing.medium),
-        imageUrl = image,
-        size = PersianAvatarsDefaults.size32(),
+            .padding(start = PersianTheme.spacing.size12),
+        imageUrl = Uri.parse(image),
+        sizes = PersianAvatarsDefaults.size32(),
         onClick = onClick
     )
 }

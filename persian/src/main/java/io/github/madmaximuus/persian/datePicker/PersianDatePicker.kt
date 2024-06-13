@@ -1,7 +1,6 @@
 package io.github.madmaximuus.persian.datePicker
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
-import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -13,6 +12,7 @@ import io.github.madmaximuus.persian.datePicker.view.state.rememberDatePickerSta
 import io.github.madmaximuus.persian.datePicker.view.util.DatePickerConfig
 import io.github.madmaximuus.persian.datePicker.view.util.DatePickerSelection
 import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.surface.Surface
 
 @Composable
 fun PersianDatePicker(

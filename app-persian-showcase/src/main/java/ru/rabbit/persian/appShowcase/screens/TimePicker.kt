@@ -6,8 +6,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -18,7 +16,8 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.buttons.PersianPrimaryButton
 import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.text.Text
 import io.github.madmaximuus.persian.timePicker.PersianTimePicker
 import io.github.madmaximuus.persian.timePicker.view.TimePickerConfig
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
@@ -45,7 +44,7 @@ object TimePicker : Screen {
                     .padding(it)
                     .fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.extraExtraLarge)
+                verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size24)
             ) {
                 PersianPrimaryButton(text = "Time Picker") {
                     showDialog = true
@@ -54,7 +53,7 @@ object TimePicker : Screen {
                 PersianCheckbox(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = MaterialTheme.spacing.medium),
+                        .padding(horizontal = PersianTheme.spacing.size12),
                     text = "24H Format",
                     checked = is24HFormat,
                     onCheckedChange = onFormatChange

@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -16,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
 import io.github.madmaximuus.persian.buttons.PersianPrimaryButton
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.modalPage.PersianDynamicHeightModalPage
 import io.github.madmaximuus.persian.modalPage.PersianExtendedModalPage
 import io.github.madmaximuus.persian.modalPage.PersianFullScreenModalPage
@@ -44,7 +43,7 @@ object ModalPage : Screen {
                     .fillMaxSize()
                     .padding(it),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.medium)
+                verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size12)
             ) {
                 PersianPrimaryButton(
                     text = "Half Expended with TopBar",

@@ -4,12 +4,11 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyGridState
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import io.github.madmaximuus.persian.datePicker.view.DatePickerYearCellColors
 import io.github.madmaximuus.persian.datePicker.view.cells.PersianDatePickerDialogYearCell
 import io.github.madmaximuus.persian.datePicker.view.util.Constants
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme
 
 @Composable
 internal fun PersianDatePickerDialogYearGrid(
@@ -22,7 +21,7 @@ internal fun PersianDatePickerDialogYearGrid(
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(Constants.YEAR_MODE_GRID_COLUMNS),
-        verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size4),
+        verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size4),
         horizontalArrangement = Arrangement.SpaceEvenly,
         state = yearListState,
         content = {

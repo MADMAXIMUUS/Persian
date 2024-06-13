@@ -1,7 +1,6 @@
 package io.github.madmaximuus.persian.avatarsAndImages
 
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
@@ -11,7 +10,7 @@ import androidx.compose.ui.graphics.takeOrElse
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.takeOrElse
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state08
 import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state38
@@ -41,7 +40,7 @@ object PersianImagesDefaults {
         badgeSize,
         horizontalBadgeOffset,
         verticalBadgeOffset
-        )
+    )
 
     @Composable
     fun size88(
@@ -359,14 +358,14 @@ object PersianImagesDefaults {
 
     @Composable
     fun colors(
-        placeholderContainerColor: Color = MaterialTheme.extendedColorScheme.surface1,
-        disabledPlaceholderContainerColor: Color = MaterialTheme.extendedColorScheme.onSurface.state08,
-        borderColor: Color = MaterialTheme.extendedColorScheme.outlineVariant,
-        disabledBorderColor: Color = MaterialTheme.extendedColorScheme.onSurface.state12,
-        placeholderIconColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
-        disabledPlaceholderIconColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
-        overlayIconColor: Color = MaterialTheme.extendedColorScheme.primary,
-        disabledOverlayIconColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38
+        placeholderContainerColor: Color = PersianTheme.colorScheme.surface1,
+        disabledPlaceholderContainerColor: Color = PersianTheme.colorScheme.onSurface.state08,
+        borderColor: Color = PersianTheme.colorScheme.outlineVariant,
+        disabledBorderColor: Color = PersianTheme.colorScheme.onSurface.state12,
+        placeholderIconColor: Color = PersianTheme.colorScheme.onSurface.state38,
+        disabledPlaceholderIconColor: Color = PersianTheme.colorScheme.onSurface.state38,
+        overlayIconColor: Color = PersianTheme.colorScheme.primary,
+        disabledOverlayIconColor: Color = PersianTheme.colorScheme.onSurface.state38
     ): ImagesColors = ImagesColors(
         placeholderContainerColor = placeholderContainerColor,
         disabledPlaceholderContainerColor = disabledPlaceholderContainerColor,

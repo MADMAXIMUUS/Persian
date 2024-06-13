@@ -1,6 +1,6 @@
 package io.github.madmaximuus.persian.chips.input
 
-import androidx.compose.material3.MaterialTheme
+
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
@@ -10,9 +10,7 @@ import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.chips.founfation.SelectableChipColors
 import io.github.madmaximuus.persian.chips.founfation.SelectableChipElevation
 import io.github.madmaximuus.persian.chips.founfation.SelectableChipSizes
-import io.github.madmaximuus.persian.foundation.elevation
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
-import io.github.madmaximuus.persian.foundation.shape
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.iconBox.IconBoxSize
@@ -23,21 +21,21 @@ object PersianInputChipDefaults {
     @Composable
     fun chipColors(
         containerColor: Color = Color.Transparent,
-        labelColor: Color = MaterialTheme.extendedColorScheme.onSurface,
-        leadingIconColor: Color = MaterialTheme.extendedColorScheme.primary,
-        trailingIconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
+        labelColor: Color = PersianTheme.colorScheme.onSurface,
+        leadingIconColor: Color = PersianTheme.colorScheme.primary,
+        trailingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         disabledContainerColor: Color = Color.Transparent,
-        disabledLabelColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
-        disabledLeadingIconColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
+        disabledLabelColor: Color = PersianTheme.colorScheme.onSurface.state38,
+        disabledLeadingIconColor: Color = PersianTheme.colorScheme.onSurface.state38,
         disabledTrailingIconColor: Color = disabledLeadingIconColor,
-        selectedContainerColor: Color = MaterialTheme.extendedColorScheme.secondaryContainer,
-        disabledSelectedContainerColor: Color = MaterialTheme.extendedColorScheme.onSurface.state12,
-        selectedLabelColor: Color = MaterialTheme.extendedColorScheme.onSecondaryContainer,
-        selectedLeadingIconColor: Color = MaterialTheme.extendedColorScheme.onSecondaryContainer,
-        selectedTrailingIconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        borderColor: Color = MaterialTheme.extendedColorScheme.primary,
+        selectedContainerColor: Color = PersianTheme.colorScheme.secondaryContainer,
+        disabledSelectedContainerColor: Color = PersianTheme.colorScheme.onSurface.state12,
+        selectedLabelColor: Color = PersianTheme.colorScheme.onSecondaryContainer,
+        selectedLeadingIconColor: Color = PersianTheme.colorScheme.onSecondaryContainer,
+        selectedTrailingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
+        borderColor: Color = PersianTheme.colorScheme.primary,
         selectedBorderColor: Color = Color.Transparent,
-        disabledBorderColor: Color = MaterialTheme.extendedColorScheme.onSurface.state12,
+        disabledBorderColor: Color = PersianTheme.colorScheme.onSurface.state12,
         disabledSelectedBorderColor: Color = Color.Transparent
     ): SelectableChipColors = SelectableChipColors(
         containerColor = containerColor,
@@ -63,10 +61,10 @@ object PersianInputChipDefaults {
     fun chipSizes(
         trailingIconSize: IconBoxSize = PersianIconBoxDefaults.size18(),
         leadingIconSize: IconBoxSize = PersianIconBoxDefaults.size18(),
-        labelStyle: TextStyle = MaterialTheme.typography.labelLarge,
+        labelStyle: TextStyle = PersianTheme.typography.labelLarge,
         borderWidth: Dp = 1.dp,
         selectedBorderWith: Dp = 0.dp,
-        shape: Shape = MaterialTheme.shape.shape10,
+        shape: Shape = PersianTheme.shapes.shape10,
         disabledBorderWith: Dp = 1.dp,
         selectedDisabledBorderWith: Dp = 0.dp
     ): SelectableChipSizes = SelectableChipSizes(
@@ -82,11 +80,11 @@ object PersianInputChipDefaults {
 
     @Composable
     fun chipElevation(
-        elevation: Dp = MaterialTheme.elevation.none,
+        elevation: Dp = PersianTheme.elevation.none,
         pressedElevation: Dp = elevation,
         focusedElevation: Dp = elevation,
         hoveredElevation: Dp = elevation,
-        draggedElevation: Dp = MaterialTheme.elevation.large,
+        draggedElevation: Dp = PersianTheme.elevation.large,
         disabledElevation: Dp = elevation
     ): SelectableChipElevation = SelectableChipElevation(
         elevation = elevation,

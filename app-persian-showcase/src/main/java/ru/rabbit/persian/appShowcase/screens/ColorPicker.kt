@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -23,8 +22,7 @@ import androidx.navigation.NavController
 import io.github.madmaximuus.persian.buttons.PersianPrimaryButton
 import io.github.madmaximuus.persian.colorPicker.PersianColorPicker
 import io.github.madmaximuus.persian.colorPicker.view.util.ColorPickerConfig
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object ColorPicker : Screen {
@@ -36,7 +34,7 @@ object ColorPicker : Screen {
     @Composable
     override fun Content(navController: NavController?) {
         var showDialog by remember { mutableStateOf(false) }
-        val color = MaterialTheme.extendedColorScheme.primary
+        val color = PersianTheme.colorScheme.primary
         var backgroundColor by remember {
             mutableStateOf(color)
         }
@@ -46,14 +44,14 @@ object ColorPicker : Screen {
                     .fillMaxSize()
                     .padding(it),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size12)
+                verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size12)
             ) {
                 PersianPrimaryButton(
                     text = "Show Dialog"
                 ) {
                     showDialog = true
                 }
-                Spacer(modifier = Modifier.height(MaterialTheme.spacing.size20))
+                Spacer(modifier = Modifier.height(PersianTheme.spacing.size20))
                 Box(
                     modifier = Modifier
                         .size(100.dp)

@@ -10,8 +10,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
@@ -27,7 +25,8 @@ import io.github.madmaximuus.persian.charts.pie.PersianPieChart
 import io.github.madmaximuus.persian.charts.util.ChartConfig
 import io.github.madmaximuus.persian.charts.util.ChartData
 import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.text.Text
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
@@ -131,18 +130,18 @@ object Charts : Screen {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(
-                            top = MaterialTheme.spacing.size8,
-                            bottom = MaterialTheme.spacing.size8,
-                            start = MaterialTheme.spacing.size12,
-                            end = MaterialTheme.spacing.size12
+                            top = PersianTheme.spacing.size8,
+                            bottom = PersianTheme.spacing.size8,
+                            start = PersianTheme.spacing.size12,
+                            end = PersianTheme.spacing.size12
                         ),
                 ) {
                     Text(
                         text = "Settings",
-                        style = MaterialTheme.typography.titleMedium,
-                        color = MaterialTheme.colorScheme.onSurface
+                        style = PersianTheme.typography.titleMedium,
+                        color = PersianTheme.colorScheme.onSurface
                     )
-                    Spacer(modifier = Modifier.height(MaterialTheme.spacing.size4))
+                    Spacer(modifier = Modifier.height(PersianTheme.spacing.size4))
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()

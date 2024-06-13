@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Snackbar
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
@@ -15,6 +14,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import io.github.madmaximuus.persian.navigationBar.NavigationBarItem
 import io.github.madmaximuus.persian.navigationBar.PersianNavigationBar
+import io.github.madmaximuus.persian.scafold.Scaffold
 import io.github.madmaximuus.persian.snackbar.PersianSnackbar
 import io.github.madmaximuus.persian.snackbar.PersianSnackbarVisuals
 import io.github.madmaximuus.persian.topAppBar.PersianTopAppBar

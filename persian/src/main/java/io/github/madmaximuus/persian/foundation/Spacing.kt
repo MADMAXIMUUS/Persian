@@ -1,15 +1,12 @@
 package io.github.madmaximuus.persian.foundation
 
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
-import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 @Immutable
-data class PersianSpacing(
+data class Spacing(
     val size2: Dp = 2.dp,
     val size4: Dp = 4.dp,
     val size6: Dp = 6.dp,
@@ -24,9 +21,4 @@ data class PersianSpacing(
     val size24: Dp = 24.dp
 )
 
-val LocalPersianSpacing = staticCompositionLocalOf { PersianSpacing() }
-
-val MaterialTheme.spacing: PersianSpacing
-    @Composable
-    @ReadOnlyComposable
-    get() = LocalPersianSpacing.current
+val LocalSpacing = staticCompositionLocalOf { Spacing() }

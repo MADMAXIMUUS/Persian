@@ -13,8 +13,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -32,7 +30,8 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.compose.ui.window.DialogWindowProvider
 import androidx.window.core.layout.WindowWidthSizeClass
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.surface.Surface
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -44,12 +43,12 @@ private const val ANIMATION_COMPACT_TIME = 220L
 private const val ANIMATION_MEDIUM_TIME = 365L
 private const val DIALOG_BUILD_TIME = 80L
 
-class AnimatedTransitionDialogHelper(
+internal class AnimatedTransitionDialogHelper(
     private val coroutineScope: CoroutineScope,
     private val onDismissFlow: MutableSharedFlow<Any>
 ) {
 
-    fun triggerAnimatedDismiss() {
+    internal fun triggerAnimatedDismiss() {
         coroutineScope.launch {
             onDismissFlow.emit(Any())
         }
@@ -99,7 +98,9 @@ private suspend fun startDismissWithExitAnimation(
 }
 
 /**
- * Action sheet is an element that presents a contextual menu displayed at the bottom of the screen. This element provides the user with several [ActionSheetItem] options related to the current context. Action sheet is used in cases where an action selection is required, but there is no need to display these [actions] permanently on the screen.
+ * Action sheet is an element that presents a contextual menu displayed at the bottom of the screen.
+ * This element provides the user with several [ActionSheetItem] options related to the current context.
+ * Action sheet is used in cases where an action selection is required, but there is no need to display these [actions] permanently on the screen.
  * @param modifier The [Modifier] to be applied to the component
  * @param actions The [ActionSheetItem] actions of your action sheet.
  * [ActionSheetItem] define the look and the event associated to an item in the action sheet.
@@ -122,13 +123,7 @@ fun PersianActionSheet(
     onDismissRequest: () -> Unit
 ) {
     val windowWidthSizeClass = currentWindowAdaptiveInfo().windowSizeClass.windowWidthSizeClass
-    require(actions.size > 2) {
-        throw IllegalArgumentException("Actions must have at least 2 items")
-    }
-
-    require(actions.size <= 10) {
-        IllegalArgumentException("There should be no more than 10 actions")
-    }
+    validate(actions)
 
     val onDismissSharedFlow: MutableSharedFlow<Any> = remember { MutableSharedFlow() }
     val coroutineScope: CoroutineScope = rememberCoroutineScope()
@@ -176,13 +171,17 @@ fun PersianActionSheet(
                 setWindowAnimations(-1)
             }
 
-            AnimatedSlideInTransition(visible = animateTrigger.value, screenHeight, windowWidthSizeClass) {
+            AnimatedSlideInTransition(
+                visible = animateTrigger.value,
+                screenHeight,
+                windowWidthSizeClass
+            ) {
                 Surface(
                     modifier = modifier
                         .widthIn(max = 460.dp)
                         .padding(
-                            horizontal = MaterialTheme.spacing.size8,
-                            vertical = MaterialTheme.spacing.size8,
+                            horizontal = PersianTheme.spacing.size8,
+                            vertical = PersianTheme.spacing.size8,
                         ),
                     shape = shape,
                     color = colors.containerColor
@@ -213,4 +212,20 @@ fun PersianActionSheet(
             }
         }
     )
+}
+
+private fun validate(
+    actions: List<ActionSheetItem>
+) {
+    require(actions.size > 2) {
+        throw IllegalArgumentException("Actions must have at least 2 items")
+    }
+
+    require(actions.size <= 10) {
+        throw IllegalArgumentException("There should be no more than 10 actions")
+    }
+
+    require(actions.all { it.leadingIcon == null } || actions.all { it.leadingIcon != null }) {
+        throw IllegalArgumentException("All items must have an icon or none must have one.")
+    }
 }

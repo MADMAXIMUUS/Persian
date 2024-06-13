@@ -20,10 +20,6 @@ import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.selection.LocalTextSelectionColors
-import androidx.compose.material3.LocalContentColor
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.State
@@ -40,10 +36,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import io.github.madmaximuus.persian.foundation.LocalContentColor
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.foundation.shape
-import io.github.madmaximuus.persian.foundation.spacing
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
+import io.github.madmaximuus.persian.surface.Surface
+import io.github.madmaximuus.persian.text.Text
 
 @Composable
 fun PersianOutlineTextArea(
@@ -54,7 +51,7 @@ fun PersianOutlineTextArea(
     isError: Boolean = false,
     isValid: Boolean = false,
     readOnly: Boolean = false,
-    textStyle: TextStyle = MaterialTheme.typography.bodyLarge,
+    textStyle: TextStyle = PersianTheme.typography.bodyLarge,
     placeholder: String? = null,
     colors: TextAreaColors = PersianTextAreaDefaults.outlineColors(),
     leadingIcon: Painter? = null,
@@ -108,13 +105,13 @@ fun PersianOutlineTextArea(
                                 isError = isError,
                                 interactionSource = interactionSource
                             ).value,
-                            shape = MaterialTheme.shape.shape16
+                            shape = PersianTheme.shapes.shape16
                         )
                         .border(
                             border = border,
-                            shape = MaterialTheme.shape.shape16
+                            shape = PersianTheme.shapes.shape16
                         )
-                        .padding(all = MaterialTheme.spacing.medium)
+                        .padding(all = PersianTheme.spacing.size12)
                         .height(120.dp),
                     verticalAlignment = Alignment.Top
                 ) {
@@ -133,7 +130,7 @@ fun PersianOutlineTextArea(
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(horizontal = MaterialTheme.spacing.extraSmall)
+                            .padding(horizontal = PersianTheme.spacing.size4)
                             .weight(1f)
                     ) {
                         if (value.isEmpty() && placeholder != null) {
@@ -145,7 +142,7 @@ fun PersianOutlineTextArea(
                                     isValid = isValid,
                                     interactionSource = interactionSource
                                 ).value,
-                                style = MaterialTheme.typography.bodyLarge
+                                style = PersianTheme.typography.bodyLarge
                                     .copy(baselineShift = BaselineShift.Superscript)
                             )
                         }
@@ -156,7 +153,7 @@ fun PersianOutlineTextArea(
                         isError = isError,
                         isSuccess = isValid
                     ).value?.let { icon ->
-                        Spacer(modifier = Modifier.width(MaterialTheme.spacing.small))
+                        Spacer(modifier = Modifier.width(PersianTheme.spacing.size8))
                         CompositionLocalProvider(
                             LocalContentColor provides colors.stateIconColor(
                                 enabled = enabled,
@@ -185,7 +182,7 @@ fun PersianPlainTextArea(
     isError: Boolean = false,
     isValid: Boolean = false,
     readOnly: Boolean = false,
-    textStyle: TextStyle = MaterialTheme.typography.bodyLarge,
+    textStyle: TextStyle = PersianTheme.typography.bodyLarge,
     placeholder: String? = null,
     colors: TextAreaColors = PersianTextAreaDefaults.plainColors(),
     leadingIcon: Painter? = null,
@@ -239,13 +236,13 @@ fun PersianPlainTextArea(
                                 isError = isError,
                                 interactionSource = interactionSource
                             ).value,
-                            shape = MaterialTheme.shape.shape16
+                            shape = PersianTheme.shapes.shape16
                         )
                         .border(
                             border = border,
-                            shape = MaterialTheme.shape.shape16
+                            shape = PersianTheme.shapes.shape16
                         )
-                        .padding(all = MaterialTheme.spacing.medium)
+                        .padding(all = PersianTheme.spacing.size12)
                         .height(120.dp),
                     verticalAlignment = Alignment.Top
                 ) {
@@ -264,7 +261,7 @@ fun PersianPlainTextArea(
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(horizontal = MaterialTheme.spacing.extraSmall)
+                            .padding(horizontal = PersianTheme.spacing.size4)
                             .weight(1f)
                     ) {
                         if (value.isEmpty() && placeholder != null) {
@@ -276,7 +273,7 @@ fun PersianPlainTextArea(
                                     isValid = isValid,
                                     interactionSource = interactionSource
                                 ).value,
-                                style = MaterialTheme.typography.bodyLarge
+                                style = PersianTheme.typography.bodyLarge
                                     .copy(baselineShift = BaselineShift.Superscript)
                             )
                         }
@@ -287,7 +284,7 @@ fun PersianPlainTextArea(
                         isError = isError,
                         isSuccess = isValid
                     ).value?.let { icon ->
-                        Spacer(modifier = Modifier.width(MaterialTheme.spacing.small))
+                        Spacer(modifier = Modifier.width(PersianTheme.spacing.size8))
                         CompositionLocalProvider(
                             LocalContentColor provides colors.stateIconColor(
                                 enabled = enabled,
@@ -336,6 +333,7 @@ private fun animateBorderStrokeAsState(
 }
 
 @Preview
+@Preview(uiMode = UI_MODE_NIGHT_YES)
 @Composable
 fun TextAreaPreview() {
     PersianTheme {
@@ -344,22 +342,6 @@ fun TextAreaPreview() {
                 modifier = Modifier
                     .padding(10.dp),
                 value = "",
-                placeholder = "Я текст",
-                onValueChange = {}
-            )
-        }
-    }
-}
-
-@Preview(uiMode = UI_MODE_NIGHT_YES)
-@Composable
-fun DarkTextAreaPreview() {
-    PersianTheme {
-        Surface {
-            PersianOutlineTextArea(
-                modifier = Modifier
-                    .padding(10.dp),
-                value = "Я введенный текст",
                 placeholder = "Я текст",
                 onValueChange = {}
             )

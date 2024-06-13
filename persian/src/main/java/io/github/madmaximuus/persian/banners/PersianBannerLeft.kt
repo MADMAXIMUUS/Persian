@@ -2,7 +2,6 @@ package io.github.madmaximuus.persian.banners
 
 import android.net.Uri
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.LocalContentColor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
@@ -14,6 +13,7 @@ import io.github.madmaximuus.persian.avatarsAndImages.PersianAvatar
 import io.github.madmaximuus.persian.avatarsAndImages.PersianAvatarsDefaults
 import io.github.madmaximuus.persian.avatarsAndImages.PersianImage
 import io.github.madmaximuus.persian.avatarsAndImages.PersianImagesDefaults
+import io.github.madmaximuus.persian.foundation.LocalContentColor
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
 import io.github.madmaximuus.persian.iconBox.PersianIconBoxDefaults
 

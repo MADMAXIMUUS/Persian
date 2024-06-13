@@ -1,11 +1,10 @@
 package io.github.madmaximuus.persian.tabs
 
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import io.github.madmaximuus.persian.foundation.PersianTheme
 
 @Immutable
 class TabColors internal constructor(
@@ -19,10 +18,10 @@ object PersianTabsDefaults {
 
     @Composable
     fun colors(
-        backgroundColor: Color = MaterialTheme.extendedColorScheme.surface,
-        indicatorColor: Color = MaterialTheme.extendedColorScheme.primary,
-        activeColor: Color = MaterialTheme.extendedColorScheme.primary,
-        disabledColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant
+        backgroundColor: Color = PersianTheme.colorScheme.surface,
+        indicatorColor: Color = PersianTheme.colorScheme.primary,
+        activeColor: Color = PersianTheme.colorScheme.primary,
+        disabledColor: Color = PersianTheme.colorScheme.onSurfaceVariant
     ): TabColors = remember(
         backgroundColor, indicatorColor, activeColor, disabledColor
     ) {

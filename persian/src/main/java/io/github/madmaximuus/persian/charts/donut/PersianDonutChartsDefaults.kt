@@ -1,21 +1,20 @@
 package io.github.madmaximuus.persian.charts.donut
 
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import io.github.madmaximuus.persian.charts.util.ChartStyle
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import io.github.madmaximuus.persian.foundation.PersianTheme
 
 object PersianDonutChartsDefaults {
 
     @Composable
     fun style(
-        titleStyle: TextStyle = MaterialTheme.typography.titleLarge,
-        titleColor: Color = MaterialTheme.extendedColorScheme.onSurface,
-        subtitleStyle: TextStyle = MaterialTheme.typography.headlineLarge,
-        subtitleColor: Color = MaterialTheme.extendedColorScheme.onSurface,
-        labelStyle: TextStyle = MaterialTheme.typography.titleLarge,
+        titleStyle: TextStyle = PersianTheme.typography.titleLarge,
+        titleColor: Color = PersianTheme.colorScheme.onSurface,
+        subtitleStyle: TextStyle = PersianTheme.typography.headlineLarge,
+        subtitleColor: Color = PersianTheme.colorScheme.onSurface,
+        labelStyle: TextStyle = PersianTheme.typography.titleLarge,
         labelColor: Color = Color.White
     ): ChartStyle = ChartStyle(
         titleStyle = titleStyle,

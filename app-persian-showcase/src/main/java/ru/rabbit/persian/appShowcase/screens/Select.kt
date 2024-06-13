@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -15,7 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.select.PersianSelect
 import io.github.madmaximuus.persian.select.SelectActionItem
 import ru.rabbit.persian.appShowcase.R
@@ -39,11 +38,11 @@ object Select : Screen {
                     .padding(it)
                     .fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.extraExtraLarge)
+                verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size24)
             ) {
                 PersianSelect(
                     modifier = Modifier
-                        .padding(horizontal = MaterialTheme.spacing.large),
+                        .padding(horizontal = PersianTheme.spacing.size16),
                     selected = selectedOption,
                     values = listOf(
                         SelectActionItem.WithoutIcon(

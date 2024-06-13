@@ -4,7 +4,6 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
@@ -29,7 +28,7 @@ import io.github.madmaximuus.persian.charts.util.ChartData
 import io.github.madmaximuus.persian.charts.util.ChartStyle
 import io.github.madmaximuus.persian.charts.util.degreeToAngle
 import io.github.madmaximuus.persian.charts.util.rememberDonutChartState
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import java.lang.Integer.min
 import kotlin.math.cos
 import kotlin.math.sin
@@ -59,7 +58,7 @@ fun PersianPieChart(
     ) {
         val canvasSize = min(constraints.maxWidth, constraints.maxHeight)
         val canvasSizeDp = with(LocalDensity.current) { canvasSize.toDp() }
-        val borderColor = MaterialTheme.extendedColorScheme.surface
+        val borderColor = PersianTheme.colorScheme.surface
         Canvas(
             modifier = modifier
                 .size(canvasSizeDp)

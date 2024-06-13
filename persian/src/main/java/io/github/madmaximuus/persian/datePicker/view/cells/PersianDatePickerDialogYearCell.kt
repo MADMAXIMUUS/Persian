@@ -9,9 +9,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -21,8 +18,8 @@ import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.datePicker.view.DatePickerYearCellColors
 import io.github.madmaximuus.persian.datePicker.view.PersianDatePickerViewDefaults
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.foundation.shape
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.surface.Surface
+import io.github.madmaximuus.persian.text.Text
 
 @Composable
 internal fun PersianDatePickerDialogYearCell(
@@ -36,24 +33,24 @@ internal fun PersianDatePickerDialogYearCell(
 ) {
 
     val textStyle = when {
-        selected -> MaterialTheme.typography.bodyMedium
+        selected -> PersianTheme.typography.bodyMedium
 
-        currentYear -> MaterialTheme.typography.labelLarge
+        currentYear -> PersianTheme.typography.labelLarge
 
-        else -> MaterialTheme.typography.bodyMedium
+        else -> PersianTheme.typography.bodyMedium
     }
 
     Column(
         modifier = modifier
             .background(
                 color = colors.containerColor(selected = selected).value,
-                shape = MaterialTheme.shape.shape12
+                shape = PersianTheme.shapes.shape12
             )
-            .clip(MaterialTheme.shape.shape12)
+            .clip(PersianTheme.shapes.shape12)
             .clickable { onYearClick(index) }
             .padding(
-                horizontal = MaterialTheme.spacing.size4,
-                vertical = MaterialTheme.spacing.size8
+                horizontal = PersianTheme.spacing.size4,
+                vertical = PersianTheme.spacing.size8
             ),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -66,15 +63,15 @@ internal fun PersianDatePickerDialogYearCell(
         Box(
             modifier = Modifier
                 .padding(
-                    top = MaterialTheme.spacing.size2,
-                    start = MaterialTheme.spacing.size12,
-                    end = MaterialTheme.spacing.size12
+                    top = PersianTheme.spacing.size2,
+                    start = PersianTheme.spacing.size12,
+                    end = PersianTheme.spacing.size12
                 )
                 .fillMaxWidth()
                 .height(2.dp)
                 .background(
                     color = colors.indicatorColor(selected = selected, currentYear).value,
-                    shape = MaterialTheme.shape.shape4
+                    shape = PersianTheme.shapes.shape4
                 )
         )
     }

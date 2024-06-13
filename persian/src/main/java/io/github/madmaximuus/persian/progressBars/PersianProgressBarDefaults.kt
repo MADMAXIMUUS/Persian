@@ -1,20 +1,19 @@
 package io.github.madmaximuus.persian.progressBars
 
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import io.github.madmaximuus.persian.foundation.PersianTheme
 
 object PersianProgressBarDefaults {
 
     @Composable
     fun colors(
-        backgroundColor: Color = MaterialTheme.extendedColorScheme.surfaceVariant,
-        progressColor: Color = MaterialTheme.extendedColorScheme.primary
+        backgroundColor: Color = PersianTheme.colorScheme.surfaceVariant,
+        progressColor: Color = PersianTheme.colorScheme.primary
     ) = remember(backgroundColor, progressColor) {
         ProgressBarColors(
             backgroundColor = backgroundColor,

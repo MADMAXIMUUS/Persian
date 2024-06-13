@@ -11,12 +11,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.LocalContentColor
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabPosition
 import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
@@ -27,9 +24,10 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.foundation.shape
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.LocalContentColor
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
+import io.github.madmaximuus.persian.text.Text
 
 data class TabItem(
     val label: String,
@@ -106,7 +104,7 @@ private fun PersianTopIconTab(
     iconSide: IconSide,
     textOverflow: TextOverflow
 ) {
-    when (iconSide){
+    when (iconSide) {
         IconSide.LEFT -> {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -117,7 +115,7 @@ private fun PersianTopIconTab(
                             icon = it,
                         )
                     }
-                    Spacer(modifier = Modifier.width(MaterialTheme.spacing.extraSmall))
+                    Spacer(modifier = Modifier.width(PersianTheme.spacing.size4))
                 }
 
                 PersianLabelTab(
@@ -128,6 +126,7 @@ private fun PersianTopIconTab(
                 )
             }
         }
+
         IconSide.TOP -> {
             Column(
                 verticalArrangement = Arrangement.Center,
@@ -161,13 +160,13 @@ internal fun PersianTabItemIndicator(
     Box(
         modifier = Modifier
             .tabIndicatorOffset(tabPositions[selectedTabIndex])
-            .padding(horizontal = MaterialTheme.spacing.extraExtraLarge)
+            .padding(horizontal = PersianTheme.spacing.size24)
             .fillMaxWidth()
             .height(3.dp)
-            .background(color = tabIndicatorColor, shape = MaterialTheme.shape.shape20)
+            .background(color = tabIndicatorColor, shape = PersianTheme.shapes.shape20)
     )
 }
 
-enum class IconSide{ 
+enum class IconSide {
     LEFT, TOP
 }

@@ -1,24 +1,23 @@
 package io.github.madmaximuus.persian.forms
 
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.graphics.Color
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state38
 
 object PersianFormDefaults {
 
     @Composable
     fun captionColors(
-        textColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        errorColor: Color = MaterialTheme.extendedColorScheme.error,
-        disabledColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
-        counterColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        errorCounterColor: Color = MaterialTheme.extendedColorScheme.error,
-        disabledCounterColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
+        textColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
+        errorColor: Color = PersianTheme.colorScheme.error,
+        disabledColor: Color = PersianTheme.colorScheme.onSurface.state38,
+        counterColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
+        errorCounterColor: Color = PersianTheme.colorScheme.error,
+        disabledCounterColor: Color = PersianTheme.colorScheme.onSurface.state38,
     ): CaptionColors = CaptionColors(
         textColor = textColor,
         errorColor = errorColor,
@@ -30,11 +29,11 @@ object PersianFormDefaults {
 
     @Composable
     fun subheadColors(
-        textColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        disabledColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
+        textColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
+        disabledColor: Color = PersianTheme.colorScheme.onSurface.state38,
 
-        requiredColor: Color = MaterialTheme.extendedColorScheme.error,
-        requiredDisabledColor: Color = MaterialTheme.extendedColorScheme.error.state38,
+        requiredColor: Color = PersianTheme.colorScheme.error,
+        requiredDisabledColor: Color = PersianTheme.colorScheme.error.state38,
     ): SubheadColors = SubheadColors(
         textColor = textColor,
         disabledColor = disabledColor,

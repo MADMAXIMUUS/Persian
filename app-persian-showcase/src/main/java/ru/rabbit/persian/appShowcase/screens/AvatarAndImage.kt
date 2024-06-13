@@ -1,5 +1,6 @@
 package ru.rabbit.persian.appShowcase.screens
 
+import android.net.Uri
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -10,8 +11,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
@@ -30,10 +29,10 @@ import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
 import io.github.madmaximuus.persian.forms.PersianForm
 import io.github.madmaximuus.persian.forms.PersianFormContent
 import io.github.madmaximuus.persian.forms.PersianFormSubheadConfig
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.radioButtons.PersianRadioButton
 import io.github.madmaximuus.persian.select.SelectActionItem
+import io.github.madmaximuus.persian.text.Text
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
@@ -110,25 +109,27 @@ object AvatarAndImage : Screen {
                     firstItem = true
                 ) {
                     PersianAvatar(
-                        imageUrl = if (content) "https://loremflickr.com/320/240" else "",
+                        imageUrl = if (content) Uri.parse("https://loremflickr.com/320/240") else Uri.EMPTY,
                         overlay = overlay,
                         sizes = avatarSizeState,
                         badge = {
-                            Box(modifier = Modifier
-                                .fillMaxSize()
-                                .background(MaterialTheme.extendedColorScheme.surface5, )
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .background(PersianTheme.colorScheme.surface5)
                             )
                         }
                     )
                     PersianImage(
-                        imageUrl = if (content) "https://loremflickr.com/320/240" else "",
+                        imageUrl = if (content) Uri.parse("https://loremflickr.com/320/240") else Uri.EMPTY,
                         sizes = imageSizeState,
                         shape = shape,
                         overlay = overlay,
                         badge = {
-                            Box(modifier = Modifier
-                                .fillMaxSize()
-                                .background(MaterialTheme.extendedColorScheme.surface5, )
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .background(PersianTheme.colorScheme.surface5)
                             )
                         }
                     )
@@ -137,9 +138,9 @@ object AvatarAndImage : Screen {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(
-                            top = MaterialTheme.spacing.size16,
-                            start = MaterialTheme.spacing.size16,
-                            end = MaterialTheme.spacing.size16
+                            top = PersianTheme.spacing.size16,
+                            start = PersianTheme.spacing.size16,
+                            end = PersianTheme.spacing.size16
                         )
                 ) {
                     PersianCheckbox(
@@ -157,7 +158,7 @@ object AvatarAndImage : Screen {
                     PersianForm(
                         subhead = PersianFormSubheadConfig(
                             text = "Size",
-                            textStyle = MaterialTheme.typography.titleMedium,
+                            textStyle = PersianTheme.typography.titleMedium,
                         ),
                         content = PersianFormContent.Select(
                             selected = selectedSize,
@@ -221,10 +222,10 @@ object AvatarAndImage : Screen {
                     ) {
                         Text(
                             text = "Shape",
-                            style = MaterialTheme.typography.titleMedium,
-                            color = MaterialTheme.colorScheme.onSurface
+                            style = PersianTheme.typography.titleMedium,
+                            color = PersianTheme.colorScheme.onSurface
                         )
-                        Spacer(modifier = Modifier.height(MaterialTheme.spacing.size4))
+                        Spacer(modifier = Modifier.height(PersianTheme.spacing.size4))
                         Column(
                             modifier = Modifier
                                 .fillMaxWidth()

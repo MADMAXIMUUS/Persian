@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -30,8 +29,8 @@ import io.github.madmaximuus.persian.colorPicker.view.panels.HueBarMedium
 import io.github.madmaximuus.persian.colorPicker.view.saturation.SatValPanel
 import io.github.madmaximuus.persian.colorPicker.view.util.ColorPickerDisplayMode
 import io.github.madmaximuus.persian.colorPicker.view.util.ColorPickerState
-import io.github.madmaximuus.persian.foundation.shape
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.text.Text
 
 @Composable
 internal fun ColorPickerView(
@@ -42,10 +41,10 @@ internal fun ColorPickerView(
     val windowHeightSizeClass = currentWindowAdaptiveInfo().windowSizeClass.windowHeightSizeClass
     Column(
         modifier = Modifier
-            .padding(MaterialTheme.spacing.size12)
+            .padding(PersianTheme.spacing.size12)
             .fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size12)
+        verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size12)
     ) {
         if (windowWidthSizeClass == WindowWidthSizeClass.COMPACT) {
             SatValPanel(
@@ -54,7 +53,7 @@ internal fun ColorPickerView(
                 colors = colors
             )
             Column(
-                verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size4)
+                verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size4)
             ) {
                 HueBarCompact(
                     value = state.color.first,
@@ -69,10 +68,9 @@ internal fun ColorPickerView(
                 )
             }
         } else {
-            val windowHeightSizeClass = currentWindowAdaptiveInfo().windowSizeClass.windowHeightSizeClass
             Row(
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size12)
+                horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size12)
             ) {
                 SatValPanel(
                     hsvColor = state.color,
@@ -80,7 +78,7 @@ internal fun ColorPickerView(
                     colors = colors
                 )
                 Row(
-                    horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size8)
+                    horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8)
                 ) {
                     HueBarMedium(
                         value = state.color.first,
@@ -94,7 +92,7 @@ internal fun ColorPickerView(
                         colors = colors
                     )
                 }
-                if (windowHeightSizeClass == WindowHeightSizeClass.COMPACT){
+                if (windowHeightSizeClass == WindowHeightSizeClass.COMPACT) {
                     Box(
                         modifier = Modifier
                             .size(64.dp)
@@ -105,7 +103,7 @@ internal fun ColorPickerView(
                                     value = state.color.third,
                                     alpha = state.alpha
                                 ),
-                                MaterialTheme.shape.shape4
+                                PersianTheme.shapes.shape4
                             )
                     )
                 }
@@ -115,7 +113,7 @@ internal fun ColorPickerView(
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size4)
+                horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size4)
             ) {
                 when (state.mode) {
                     ColorPickerDisplayMode.HEX -> {
@@ -142,29 +140,29 @@ internal fun ColorPickerView(
                 Column {
                     Text(
                         modifier = Modifier
-                            .clip(MaterialTheme.shape.shape4)
+                            .clip(PersianTheme.shapes.shape4)
                             .clickable {
                                 state.setRGB()
                             }
                             .padding(
-                                vertical = MaterialTheme.spacing.size4,
-                                horizontal = MaterialTheme.spacing.size8
+                                vertical = PersianTheme.spacing.size4,
+                                horizontal = PersianTheme.spacing.size8
                             ),
                         text = "RGB",
-                        style = MaterialTheme.typography.bodyLarge,
+                        style = PersianTheme.typography.bodyLarge,
                         color = if (state.mode == ColorPickerDisplayMode.RGB)
                             colors.colorModeTitleSelectedColor
                         else colors.colorModeTitleColor
                     )
                     Text(
                         modifier = Modifier
-                            .clip(MaterialTheme.shape.shape4)
+                            .clip(PersianTheme.shapes.shape4)
                             .clickable {
                                 state.setHEX()
                             }
                             .padding(
-                                vertical = MaterialTheme.spacing.size4,
-                                horizontal = MaterialTheme.spacing.size8
+                                vertical = PersianTheme.spacing.size4,
+                                horizontal = PersianTheme.spacing.size8
                             ),
                         text = "HEX",
                         style = MaterialTheme.typography.bodyLarge,
@@ -174,13 +172,13 @@ internal fun ColorPickerView(
                     )
                     Text(
                         modifier = Modifier
-                            .clip(MaterialTheme.shape.shape4)
+                            .clip(PersianTheme.shapes.shape4)
                             .clickable {
                                 state.setHSV()
                             }
                             .padding(
-                                vertical = MaterialTheme.spacing.size4,
-                                horizontal = MaterialTheme.spacing.size8
+                                vertical = PersianTheme.spacing.size4,
+                                horizontal = PersianTheme.spacing.size8
                             ),
                         text = "HSV",
                         style = MaterialTheme.typography.bodyLarge,
@@ -200,7 +198,7 @@ internal fun ColorPickerView(
                                     value = state.color.third,
                                     alpha = state.alpha
                                 ),
-                                MaterialTheme.shape.shape4
+                                PersianTheme.shapes.shape4
                             )
                     )
                 } else {
@@ -214,7 +212,7 @@ internal fun ColorPickerView(
                                     value = state.color.third,
                                     alpha = state.alpha
                                 ),
-                                MaterialTheme.shape.shape4
+                                PersianTheme.shapes.shape4
                             )
                     )
                 }

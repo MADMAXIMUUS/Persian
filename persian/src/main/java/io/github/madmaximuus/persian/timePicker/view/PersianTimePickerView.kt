@@ -6,13 +6,12 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.text.Text
 import io.github.madmaximuus.persian.timePicker.view.wheel.VerticalWheelPicker
 import java.time.LocalTime
 
@@ -27,7 +26,7 @@ internal fun PersianTimePickerView(
             .fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(
-            MaterialTheme.spacing.medium,
+            PersianTheme.spacing.size12,
             Alignment.CenterHorizontally
         )
     ) {
@@ -115,12 +114,9 @@ internal class PickerTime(
     var timesOfDay: TimePickerDialogAmPM? = null
 ) {
     override fun toString(): String {
-        return "${String.format("%02d", hours)}:${
-            String.format(
-                "%02d",
-                minutes
-            )
-        } ${timesOfDay?.toString() ?: ""}"
+        return "${String.format("%02d", hours)}:" +
+                "${String.format("%02d", minutes)} " +
+                "${timesOfDay?.toString() ?: ""}"
     }
 }
 

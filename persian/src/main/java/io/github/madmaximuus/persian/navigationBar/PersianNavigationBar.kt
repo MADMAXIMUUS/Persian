@@ -3,7 +3,6 @@ package io.github.madmaximuus.persian.navigationBar
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.material3.BottomAppBarDefaults
 import androidx.compose.material3.LocalContentColor
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
@@ -15,7 +14,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.counter.PersianBadge
 import io.github.madmaximuus.persian.counter.PersianCounterDefaults
-import io.github.madmaximuus.persian.foundation.elevation
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
 
 data class NavigationBarItem(
@@ -42,7 +41,7 @@ fun PersianNavigationBar(
         modifier = modifier,
         containerColor = colors.backgroundColor,
         windowInsets = windowInsets,
-        tonalElevation = MaterialTheme.elevation.small,
+        tonalElevation = PersianTheme.elevation.small,
     ) {
         actions.forEach { item ->
             NavigationBarItem(

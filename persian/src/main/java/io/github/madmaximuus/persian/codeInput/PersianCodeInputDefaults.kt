@@ -6,14 +6,13 @@ import androidx.compose.foundation.interaction.InteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
 import androidx.compose.foundation.interaction.collectIsHoveredAsState
 import androidx.compose.foundation.text.selection.TextSelectionColors
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.graphics.Color
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state08
 import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state16
@@ -24,37 +23,37 @@ object PersianCodeInputDefaults {
     @Composable
     fun cellColors(
         //Text Colors
-        defaultTextColor: Color = MaterialTheme.extendedColorScheme.onSurface,
-        hoveredTextColor: Color = MaterialTheme.extendedColorScheme.onSurface,
-        focusedTextColor: Color = MaterialTheme.extendedColorScheme.onSurface,
-        validTextColor: Color = MaterialTheme.extendedColorScheme.valid,
-        errorTextColor: Color = MaterialTheme.extendedColorScheme.error,
-        disabledTextColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
+        defaultTextColor: Color = PersianTheme.colorScheme.onSurface,
+        hoveredTextColor: Color = PersianTheme.colorScheme.onSurface,
+        focusedTextColor: Color = PersianTheme.colorScheme.onSurface,
+        validTextColor: Color = PersianTheme.colorScheme.valid,
+        errorTextColor: Color = PersianTheme.colorScheme.error,
+        disabledTextColor: Color = PersianTheme.colorScheme.onSurface.state38,
 
         //Container Colors
-        defaultContainerColor: Color = MaterialTheme.extendedColorScheme.primaryContainer.state08,
-        hoveredContainerColor: Color = MaterialTheme.extendedColorScheme.primaryContainer.state12,
-        focusedContainerColor: Color = MaterialTheme.extendedColorScheme.primaryContainer.state16,
-        validContainerColor: Color = MaterialTheme.extendedColorScheme.validContainer.state12,
-        errorContainerColor: Color = MaterialTheme.extendedColorScheme.errorContainer.state12,
-        disabledContainerColor: Color = MaterialTheme.extendedColorScheme.onSurface.state08,
+        defaultContainerColor: Color = PersianTheme.colorScheme.primaryContainer.state08,
+        hoveredContainerColor: Color = PersianTheme.colorScheme.primaryContainer.state12,
+        focusedContainerColor: Color = PersianTheme.colorScheme.primaryContainer.state16,
+        validContainerColor: Color = PersianTheme.colorScheme.validContainer.state12,
+        errorContainerColor: Color = PersianTheme.colorScheme.errorContainer.state12,
+        disabledContainerColor: Color = PersianTheme.colorScheme.onSurface.state08,
 
         //Cursor Colors
-        defaultCursorColor: Color = MaterialTheme.extendedColorScheme.primary,
-        validCursorColor: Color = MaterialTheme.extendedColorScheme.valid,
-        errorCursorColor: Color = MaterialTheme.extendedColorScheme.error,
+        defaultCursorColor: Color = PersianTheme.colorScheme.primary,
+        validCursorColor: Color = PersianTheme.colorScheme.valid,
+        errorCursorColor: Color = PersianTheme.colorScheme.error,
         textSelectionColors: TextSelectionColors = TextSelectionColors(
-            handleColor = MaterialTheme.extendedColorScheme.primary,
-            backgroundColor = MaterialTheme.extendedColorScheme.primary.copy(alpha = 0.4f)
+            handleColor = PersianTheme.colorScheme.primary,
+            backgroundColor = PersianTheme.colorScheme.primary.copy(alpha = 0.4f)
         ),
 
         //Indicator Colors
-        defaultIndicatorColor: Color = MaterialTheme.extendedColorScheme.outlineVariant,
-        hoveredIndicatorColor: Color = MaterialTheme.extendedColorScheme.outline,
-        focusedIndicatorColor: Color = MaterialTheme.extendedColorScheme.primary,
-        validIndicatorColor: Color = MaterialTheme.extendedColorScheme.valid,
-        errorIndicatorColor: Color = MaterialTheme.extendedColorScheme.error,
-        disabledIndicatorColor: Color = MaterialTheme.extendedColorScheme.onSurface.state12,
+        defaultIndicatorColor: Color = PersianTheme.colorScheme.outlineVariant,
+        hoveredIndicatorColor: Color = PersianTheme.colorScheme.outline,
+        focusedIndicatorColor: Color = PersianTheme.colorScheme.primary,
+        validIndicatorColor: Color = PersianTheme.colorScheme.valid,
+        errorIndicatorColor: Color = PersianTheme.colorScheme.error,
+        disabledIndicatorColor: Color = PersianTheme.colorScheme.onSurface.state12,
     ): CellColors =
         CellColors(
             //Text Colors
@@ -164,10 +163,10 @@ class CellColors(
             else -> defaultContainerColor
         }
         return rememberUpdatedState(targetValue)
-            /*targetValue = targetValue,
-            animationSpec = tween(durationMillis = ANIMATION_DURATION),
-            label = "Container Color Animation"
-        )*/
+        /*targetValue = targetValue,
+        animationSpec = tween(durationMillis = ANIMATION_DURATION),
+        label = "Container Color Animation"
+    )*/
     }
 
     @Composable

@@ -1,6 +1,5 @@
 package io.github.madmaximuus.persian.chips.suggestion
 
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
@@ -10,9 +9,7 @@ import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.chips.founfation.ChipColors
 import io.github.madmaximuus.persian.chips.founfation.ChipElevation
 import io.github.madmaximuus.persian.chips.founfation.ChipSizes
-import io.github.madmaximuus.persian.foundation.elevation
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
-import io.github.madmaximuus.persian.foundation.shape
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.iconBox.IconBoxSize
@@ -23,13 +20,13 @@ object PersianSuggestionChipDefaults {
     @Composable
     fun chipColors(
         containerColor: Color = Color.Transparent,
-        labelColor: Color = MaterialTheme.extendedColorScheme.onSurface,
-        leadingIconColor: Color = MaterialTheme.extendedColorScheme.primary,
+        labelColor: Color = PersianTheme.colorScheme.onSurface,
+        leadingIconColor: Color = PersianTheme.colorScheme.primary,
         disabledContainerColor: Color = Color.Transparent,
-        disabledLabelColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
-        disabledLeadingIconContentColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
-        borderColor: Color = MaterialTheme.extendedColorScheme.primary,
-        disabledBorderColor: Color = MaterialTheme.extendedColorScheme.onSurface.state12,
+        disabledLabelColor: Color = PersianTheme.colorScheme.onSurface.state38,
+        disabledLeadingIconContentColor: Color = PersianTheme.colorScheme.onSurface.state38,
+        borderColor: Color = PersianTheme.colorScheme.primary,
+        disabledBorderColor: Color = PersianTheme.colorScheme.onSurface.state12,
     ): ChipColors = ChipColors(
         containerColor = containerColor,
         labelColor = labelColor,
@@ -47,9 +44,9 @@ object PersianSuggestionChipDefaults {
     fun chipSizes(
         trailingIconSize: IconBoxSize = PersianIconBoxDefaults.size18(),
         leadingIconSize: IconBoxSize = PersianIconBoxDefaults.size18(),
-        labelStyle: TextStyle = MaterialTheme.typography.labelLarge,
+        labelStyle: TextStyle = PersianTheme.typography.labelLarge,
         borderWidth: Dp = 1.dp,
-        shape: Shape = MaterialTheme.shape.shape10,
+        shape: Shape = PersianTheme.shapes.shape10,
         disabledBorderWith: Dp = 0.dp,
     ): ChipSizes = ChipSizes(
         trailingIconSize = trailingIconSize,
@@ -62,11 +59,11 @@ object PersianSuggestionChipDefaults {
 
     @Composable
     fun chipElevation(
-        elevation: Dp = MaterialTheme.elevation.none,
+        elevation: Dp = PersianTheme.elevation.none,
         pressedElevation: Dp = elevation,
         focusedElevation: Dp = elevation,
         hoveredElevation: Dp = elevation,
-        draggedElevation: Dp = MaterialTheme.elevation.large,
+        draggedElevation: Dp = PersianTheme.elevation.large,
         disabledElevation: Dp = elevation
     ): ChipElevation = ChipElevation(
         elevation = elevation,

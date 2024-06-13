@@ -3,15 +3,13 @@ package io.github.madmaximuus.persian.forms
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.surface.Surface
+import io.github.madmaximuus.persian.text.Text
 
 
 data class PersianFormSubheadConfig(
@@ -31,10 +29,10 @@ internal fun PersianFormSubhead(
     textStyle: TextStyle? = null
 ) {
     val resolvedColors = colors ?: PersianFormDefaults.subheadColors()
-    val resolvedTextStyle = textStyle ?: MaterialTheme.typography.bodySmall
+    val resolvedTextStyle = textStyle ?: PersianTheme.typography.bodySmall
     Row(
         modifier = modifier,
-        horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size2)
+        horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size2)
     ) {
         Text(
             text = text,

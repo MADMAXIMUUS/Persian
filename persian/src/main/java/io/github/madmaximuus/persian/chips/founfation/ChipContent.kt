@@ -8,9 +8,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.LocalContentColor
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
@@ -27,9 +24,11 @@ import io.github.madmaximuus.persian.avatarsAndImages.PersianAvatar
 import io.github.madmaximuus.persian.avatarsAndImages.PersianAvatarsDefaults
 import io.github.madmaximuus.persian.avatarsAndImages.PersianImage
 import io.github.madmaximuus.persian.avatarsAndImages.PersianImagesDefaults
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.LocalContentColor
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.iconBox.IconBoxSize
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
+import io.github.madmaximuus.persian.text.Text
 import io.github.madmaximuus.persianSymbols.check.base.Check
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
@@ -70,7 +69,7 @@ internal fun ChipContent(
                 CompositionLocalProvider(
                     LocalContentColor provides leadingIconColor,
                 ) {
-                    Spacer(modifier = Modifier.width(MaterialTheme.spacing.size4))
+                    Spacer(modifier = Modifier.width(PersianTheme.spacing.size4))
                     PersianIconBox(
                         icon = leadingIcon,
                         size = leadingIconSize
@@ -112,7 +111,7 @@ internal fun ChipContent(
                     size = trailingIconSize,
                 )
             }
-            Spacer(modifier = Modifier.width(MaterialTheme.spacing.size4))
+            Spacer(modifier = Modifier.width(PersianTheme.spacing.size4))
         }
     }
 }

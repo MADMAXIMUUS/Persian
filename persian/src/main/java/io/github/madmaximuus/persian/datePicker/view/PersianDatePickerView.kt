@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
@@ -31,7 +30,7 @@ import io.github.madmaximuus.persian.datePicker.view.util.DatePickerDisplayMode
 import io.github.madmaximuus.persian.datePicker.view.util.endValue
 import io.github.madmaximuus.persian.datePicker.view.util.monthBetween
 import io.github.madmaximuus.persian.datePicker.view.util.startValue
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -72,12 +71,12 @@ internal fun PersianDatePickerView(
         .fillMaxWidth()
         .wrapContentHeight()
         .animateContentSize()
-        .padding(MaterialTheme.spacing.size12)
+        .padding(PersianTheme.spacing.size12)
 
     Column(
         modifier = baseModifier,
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size4)
+        verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size4)
     ) {
         PersianDatePickerDialogHeader(
             selectable = config.selectable,

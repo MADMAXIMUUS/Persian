@@ -1,6 +1,5 @@
 package io.github.madmaximuus.persian.topAppBar
 
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
@@ -27,7 +26,7 @@ sealed class PersianTopAppBarRight {
     data class Action(
         val text: String,
         val onClick: () -> Unit
-    ): PersianTopAppBarRight()
+    ) : PersianTopAppBarRight()
 
 }
 

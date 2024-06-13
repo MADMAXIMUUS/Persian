@@ -7,8 +7,6 @@ import androidx.compose.foundation.gestures.detectTransformGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
@@ -35,7 +33,8 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.fab.PersianFabDefaults
 import io.github.madmaximuus.persian.fab.PersianMediumFab
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.scafold.Scaffold
 import io.github.madmaximuus.persianSymbols.check.base.Check
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import kotlin.math.abs
@@ -51,8 +50,8 @@ private fun CropPhoto(
     val configuration = LocalConfiguration.current
     val screenWidth =
         with(LocalDensity.current) { configuration.screenWidthDp.dp.roundToPx() - 30f }
-    val background = MaterialTheme.extendedColorScheme.surface
-    val onBackground = MaterialTheme.extendedColorScheme.surface
+    val background = PersianTheme.colorScheme.surface
+    val onBackground = PersianTheme.colorScheme.surface
     var outBitmap: Bitmap? = null
     val preScale = if (imageWidth < imageHeight) screenWidth / imageWidth
     else screenWidth / imageHeight

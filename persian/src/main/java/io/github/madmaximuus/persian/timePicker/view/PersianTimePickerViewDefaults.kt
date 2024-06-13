@@ -1,20 +1,19 @@
 package io.github.madmaximuus.persian.timePicker.view
 
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.graphics.Color
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state38
 
 object PersianTimePickerViewDefaults {
 
     @Composable
     fun colors(
-        textColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
-        selectedTextColor: Color = MaterialTheme.extendedColorScheme.onSurface
+        textColor: Color = PersianTheme.colorScheme.onSurface.state38,
+        selectedTextColor: Color = PersianTheme.colorScheme.onSurface
     ): TimePickerViewColors = TimePickerViewColors(
         textColor = textColor,
         selectedTextColor = selectedTextColor

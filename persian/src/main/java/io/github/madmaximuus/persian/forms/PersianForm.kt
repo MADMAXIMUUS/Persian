@@ -3,12 +3,11 @@ package io.github.madmaximuus.persian.forms
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.inputs.PersianInputsDefaults
 import io.github.madmaximuus.persian.menus.PersianMenuDefaults
 
@@ -24,7 +23,7 @@ fun PersianForm(
 ) {
     Column(
         modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size2)
+        verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size2)
     ) {
         if (subhead != null) {
             PersianFormSubhead(

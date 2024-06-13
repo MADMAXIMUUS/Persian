@@ -1,23 +1,22 @@
 package io.github.madmaximuus.persian.alert
 
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.takeOrElse
 import io.github.madmaximuus.persian.buttons.ButtonColors
 import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import io.github.madmaximuus.persian.foundation.PersianTheme
 
 object PersianAlertsDefaults {
 
     @Composable
     fun colors(
-        backgroundColor: Color = MaterialTheme.extendedColorScheme.surface,
-        titleColor: Color = MaterialTheme.extendedColorScheme.onSurface,
-        descriptionColor: Color = MaterialTheme.extendedColorScheme.onSurface,
-        iconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        dividerColor: Color = MaterialTheme.extendedColorScheme.outlineVariant,
+        backgroundColor: Color = PersianTheme.colorScheme.surface,
+        titleColor: Color = PersianTheme.colorScheme.onSurface,
+        descriptionColor: Color = PersianTheme.colorScheme.onSurface,
+        iconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
+        dividerColor: Color = PersianTheme.colorScheme.outlineVariant,
         actionColor: ButtonColors = PersianButtonDefaults.tertiaryColors()
     ) = AlertsColors(
         backgroundColor = backgroundColor,

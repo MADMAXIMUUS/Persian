@@ -11,8 +11,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material.ripple.rememberRipple
-import androidx.compose.material3.LocalContentColor
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
@@ -31,8 +29,8 @@ import com.bumptech.glide.integration.compose.GlideSubcomposition
 import com.bumptech.glide.integration.compose.RequestState
 import io.github.madmaximuus.persian.avatarsAndImages.utils.LayoutId
 import io.github.madmaximuus.persian.avatarsAndImages.utils.badgeMeasurePolicy
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
-import io.github.madmaximuus.persian.foundation.shape
+import io.github.madmaximuus.persian.foundation.LocalContentColor
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.shimmer
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
@@ -63,12 +61,12 @@ fun PersianAvatar(
                     Box(
                         modifier = modifier
                             .size(sizes.boxSizes)
-                            .clip(MaterialTheme.shape.full)
+                            .clip(PersianTheme.shapes.full)
                             .background(
                                 colors.background(enabled),
-                                MaterialTheme.shape.full
+                                PersianTheme.shapes.full
                             )
-                            .border(1.dp, colors.border(enabled), MaterialTheme.shape.full)
+                            .border(1.dp, colors.border(enabled), PersianTheme.shapes.full)
                             .clickable(
                                 enabled = onClick != null && enabled,
                                 onClick = { onClick?.invoke() },
@@ -92,9 +90,10 @@ fun PersianAvatar(
                                             contentAlignment = Alignment.Center
                                         ) {
                                             CompositionLocalProvider(
-                                                LocalContentColor provides colors.placeholderIcon(
-                                                    enabled
-                                                )
+                                                LocalContentColor provides colors
+                                                    .placeholderIcon(
+                                                        enabled
+                                                    )
                                             ) {
                                                 PersianIconBox(
                                                     icon = rememberVectorPainter(image = PersianSymbols.Default.User),
@@ -129,7 +128,7 @@ fun PersianAvatar(
                             Box(
                                 modifier = Modifier
                                     .fillMaxSize()
-                                    .background(MaterialTheme.extendedColorScheme.surface.copy(alpha = 0.8f)),
+                                    .background(PersianTheme.colorScheme.surface.copy(alpha = 0.8f)),
                                 contentAlignment = Alignment.Center
                             ) {
                                 CompositionLocalProvider(

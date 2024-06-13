@@ -7,16 +7,15 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
-import io.github.madmaximuus.persian.foundation.shape
+import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.surface.Surface
+import io.github.madmaximuus.persian.text.Text
 
 @Composable
 fun PersianRadioButton(
@@ -29,10 +28,10 @@ fun PersianRadioButton(
     radioButtonSizes: RadioButtonSizes = PersianRadioButtonDefaults.sizes()
 ) {
     val textColor = if (enabled) radioButtonColors.textColor
-    else MaterialTheme.extendedColorScheme.onSurface.copy(alpha = .38f)
+    else PersianTheme.colorScheme.onSurface.copy(alpha = .38f)
     Row(
         modifier = modifier
-            .clip(MaterialTheme.shape.shape16)
+            .clip(PersianTheme.shapes.shape16)
             .selectable(
                 enabled = enabled,
                 selected = checked,

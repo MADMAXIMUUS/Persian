@@ -2,8 +2,6 @@ package io.github.madmaximuus.persian.banners
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.LocalContentColor
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
@@ -12,6 +10,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.unit.dp
+import io.github.madmaximuus.persian.foundation.LocalContentColor
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
 import io.github.madmaximuus.persian.iconBox.PersianIconBoxDefaults
 import io.github.madmaximuus.persianSymbols.chevronRight.base.ChevronRight
@@ -42,7 +42,7 @@ internal fun PersianBannerRightClose(
         PersianIconBox(
             modifier = modifier
                 .padding(0.dp)
-                .clip(MaterialTheme.shapes.small)
+                .clip(PersianTheme.shapes.shape4)
                 .clickable { onClick() },
             icon = icon ?: rememberVectorPainter(image = PersianSymbols.Default.XMark),
             contentDescription = contentDescription,
@@ -63,7 +63,7 @@ internal fun PersianBannerRightOpen(
         PersianIconBox(
             modifier = modifier
                 .padding(0.dp)
-                .clip(MaterialTheme.shapes.small)
+                .clip(PersianTheme.shapes.shape4)
                 .clickable { onClick() },
             icon = icon ?: rememberVectorPainter(image = PersianSymbols.Default.ChevronRight),
             contentDescription = contentDescription,

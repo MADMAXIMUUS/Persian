@@ -1,7 +1,6 @@
 package io.github.madmaximuus.persian.buttons
 
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
@@ -11,9 +10,7 @@ import androidx.compose.ui.graphics.takeOrElse
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
-import io.github.madmaximuus.persian.foundation.shape
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.iconBox.IconBoxSize
@@ -25,10 +22,10 @@ object PersianButtonDefaults {
 
     @Composable
     fun primaryColors(
-        containerColor: Color = MaterialTheme.extendedColorScheme.primary,
-        contentColor: Color = MaterialTheme.extendedColorScheme.onPrimary,
-        disabledContainerColor: Color = MaterialTheme.extendedColorScheme.onSurface.state12,
-        disabledContentColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
+        containerColor: Color = PersianTheme.colorScheme.primary,
+        contentColor: Color = PersianTheme.colorScheme.onPrimary,
+        disabledContainerColor: Color = PersianTheme.colorScheme.onSurface.state12,
+        disabledContentColor: Color = PersianTheme.colorScheme.onSurface.state38,
     ): ButtonColors = ButtonColors(
         containerColor = containerColor,
         contentColor = contentColor,
@@ -38,10 +35,10 @@ object PersianButtonDefaults {
 
     @Composable
     fun secondaryColors(
-        containerColor: Color = MaterialTheme.extendedColorScheme.primaryContainer,
-        contentColor: Color = MaterialTheme.extendedColorScheme.onPrimaryContainer,
-        disabledContainerColor: Color = MaterialTheme.extendedColorScheme.onSurface.state12,
-        disabledContentColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
+        containerColor: Color = PersianTheme.colorScheme.primaryContainer,
+        contentColor: Color = PersianTheme.colorScheme.onPrimaryContainer,
+        disabledContainerColor: Color = PersianTheme.colorScheme.onSurface.state12,
+        disabledContentColor: Color = PersianTheme.colorScheme.onSurface.state38,
     ): ButtonColors = ButtonColors(
         containerColor = containerColor,
         contentColor = contentColor,
@@ -52,9 +49,9 @@ object PersianButtonDefaults {
     @Composable
     fun tertiaryColors(
         containerColor: Color = Color.Transparent,
-        contentColor: Color = MaterialTheme.extendedColorScheme.primary,
+        contentColor: Color = PersianTheme.colorScheme.primary,
         disabledContainerColor: Color = Color.Transparent,
-        disabledContentColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
+        disabledContentColor: Color = PersianTheme.colorScheme.onSurface.state38,
     ): ButtonColors = ButtonColors(
         containerColor = containerColor,
         contentColor = contentColor,
@@ -65,9 +62,9 @@ object PersianButtonDefaults {
     @Composable
     fun outlinedColors(
         containerColor: Color = Color.Transparent,
-        contentColor: Color = MaterialTheme.extendedColorScheme.primary,
-        disabledContainerColor: Color = MaterialTheme.extendedColorScheme.onSurface.state12,
-        disabledContentColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
+        contentColor: Color = PersianTheme.colorScheme.primary,
+        disabledContainerColor: Color = PersianTheme.colorScheme.onSurface.state12,
+        disabledContentColor: Color = PersianTheme.colorScheme.onSurface.state38,
     ): ButtonColors = ButtonColors(
         containerColor = containerColor,
         contentColor = contentColor,
@@ -77,13 +74,13 @@ object PersianButtonDefaults {
 
     @Composable
     fun smallSizes(
-        fontSize: TextStyle = MaterialTheme.typography.labelMedium,
+        fontSize: TextStyle = PersianTheme.typography.labelMedium,
         height: Dp = 36.dp,
         loaderSize: CircularProgressBarSizes = PersianProgressBarDefaults.circularSmall(),
         iconSize: IconBoxSize = PersianIconBoxDefaults.size18(),
-        shape: Shape = MaterialTheme.shape.shape12,
+        shape: Shape = PersianTheme.shapes.shape12,
         contentPadding: PaddingValues = PaddingValues(
-            horizontal = MaterialTheme.spacing.size16,
+            horizontal = PersianTheme.spacing.size16,
             vertical = 0.dp
         )
     ): ButtonSizes = ButtonSizes(
@@ -97,14 +94,14 @@ object PersianButtonDefaults {
 
     @Composable
     fun mediumSizes(
-        fontSize: TextStyle = MaterialTheme.typography.labelLarge,
-        additionInfoTextStyle: TextStyle = MaterialTheme.typography.labelSmall,
+        fontSize: TextStyle = PersianTheme.typography.labelLarge,
+        additionInfoTextStyle: TextStyle = PersianTheme.typography.labelSmall,
         height: Dp = 44.dp,
         loaderSize: CircularProgressBarSizes = PersianProgressBarDefaults.circularMedium(),
         iconSize: IconBoxSize = PersianIconBoxDefaults.size20(),
-        shape: Shape = MaterialTheme.shape.shape14,
+        shape: Shape = PersianTheme.shapes.shape14,
         contentPadding: PaddingValues = PaddingValues(
-            horizontal = MaterialTheme.spacing.size20,
+            horizontal = PersianTheme.spacing.size20,
             vertical = 0.dp
         )
     ): ButtonSizes = ButtonSizes(
@@ -119,14 +116,14 @@ object PersianButtonDefaults {
 
     @Composable
     fun largeSizes(
-        fontSize: TextStyle = MaterialTheme.typography.titleMedium,
-        additionInfoTextStyle: TextStyle = MaterialTheme.typography.labelMedium,
+        fontSize: TextStyle = PersianTheme.typography.titleMedium,
+        additionInfoTextStyle: TextStyle = PersianTheme.typography.labelMedium,
         height: Dp = 52.dp,
         loaderSize: CircularProgressBarSizes = PersianProgressBarDefaults.circularLarge(),
         iconSize: IconBoxSize = PersianIconBoxDefaults.size28(),
-        shape: Shape = MaterialTheme.shape.shape16,
+        shape: Shape = PersianTheme.shapes.shape16,
         contentPadding: PaddingValues = PaddingValues(
-            horizontal = MaterialTheme.spacing.size24,
+            horizontal = PersianTheme.spacing.size24,
             vertical = 0.dp
         )
     ): ButtonSizes = ButtonSizes(

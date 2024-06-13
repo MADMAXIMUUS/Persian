@@ -10,8 +10,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -24,7 +22,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
 import io.github.madmaximuus.persian.buttons.PersianPrimaryButton
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.text.Text
 
 @Composable
 fun PersianBanner(
@@ -51,9 +50,9 @@ fun PersianBanner(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(MaterialTheme.spacing.size12),
+                .padding(PersianTheme.spacing.size12),
             verticalAlignment = Alignment.Top,
-            horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size8)
+            horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8)
         ) {
             when (left) {
                 is PersianBannerLeft.Avatar -> {
@@ -95,7 +94,7 @@ fun PersianBanner(
                 }
                 description?.let {
                     if (title != null)
-                        Spacer(modifier = Modifier.height(MaterialTheme.spacing.size4))
+                        Spacer(modifier = Modifier.height(PersianTheme.spacing.size4))
                     Text(
                         modifier = Modifier.fillMaxWidth(),
                         text = it,

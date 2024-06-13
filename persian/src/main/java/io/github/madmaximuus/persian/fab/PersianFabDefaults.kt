@@ -9,16 +9,15 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
-import io.github.madmaximuus.persian.foundation.shape
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.iconBox.IconBoxSize
 import io.github.madmaximuus.persian.iconBox.PersianIconBoxDefaults
 
 object PersianFabDefaults {
     @Composable
     fun primaryColors(
-        backgroundColor: Color = MaterialTheme.extendedColorScheme.primaryContainer,
-        content: Color = MaterialTheme.extendedColorScheme.onPrimaryContainer,
+        backgroundColor: Color = PersianTheme.colorScheme.primaryContainer,
+        content: Color = PersianTheme.colorScheme.onPrimaryContainer,
     ) = remember(
         backgroundColor,
         content
@@ -31,8 +30,8 @@ object PersianFabDefaults {
 
     @Composable
     fun secondaryColors(
-        backgroundColor: Color = MaterialTheme.extendedColorScheme.secondaryContainer,
-        content: Color = MaterialTheme.extendedColorScheme.onSecondaryContainer,
+        backgroundColor: Color = PersianTheme.colorScheme.secondaryContainer,
+        content: Color = PersianTheme.colorScheme.onSecondaryContainer,
     ) = remember(
         backgroundColor,
         content
@@ -45,8 +44,8 @@ object PersianFabDefaults {
 
     @Composable
     fun tertiaryColors(
-        backgroundColor: Color = MaterialTheme.extendedColorScheme.tertiaryContainer,
-        content: Color = MaterialTheme.extendedColorScheme.onTertiaryContainer
+        backgroundColor: Color = MaterialTheme.colorScheme.tertiaryContainer,
+        content: Color = MaterialTheme.colorScheme.onTertiaryContainer
     ) = remember(
         backgroundColor,
         content
@@ -59,8 +58,8 @@ object PersianFabDefaults {
 
     @Composable
     fun neutralColors(
-        backgroundColor: Color = MaterialTheme.extendedColorScheme.surface3,
-        content: Color = MaterialTheme.extendedColorScheme.primary
+        backgroundColor: Color = PersianTheme.colorScheme.surface3,
+        content: Color = PersianTheme.colorScheme.primary
     ) = remember(
         backgroundColor,
         content
@@ -75,8 +74,8 @@ object PersianFabDefaults {
     fun smallSizes(
         boxSize: Dp = 40.dp,
         iconSize: IconBoxSize = PersianIconBoxDefaults.size20(),
-        textStyle: TextStyle = MaterialTheme.typography.labelLarge,
-        cornerShape: Shape = MaterialTheme.shape.shape16
+        textStyle: TextStyle = PersianTheme.typography.labelLarge,
+        cornerShape: Shape = PersianTheme.shapes.shape16
     ) = remember(
         boxSize,
         iconSize,
@@ -96,7 +95,7 @@ object PersianFabDefaults {
         boxSize: Dp = 56.dp,
         iconSize: IconBoxSize = PersianIconBoxDefaults.size20(),
         textStyle: TextStyle = MaterialTheme.typography.labelLarge,
-        cornerShape: Shape = MaterialTheme.shape.shape16
+        cornerShape: Shape = PersianTheme.shapes.shape16
     ) = remember(
         boxSize,
         iconSize,

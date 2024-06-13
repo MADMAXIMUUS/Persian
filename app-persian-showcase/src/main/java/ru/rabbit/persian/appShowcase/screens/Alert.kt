@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -24,7 +23,7 @@ import io.github.madmaximuus.persian.alert.PersianOnlyActionAlert
 import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
 import io.github.madmaximuus.persian.buttons.PersianPrimaryButton
 import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.inputs.PersianOutlineInput
 import io.github.madmaximuus.persian.radioButtons.PersianRadioButton
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
@@ -54,7 +53,7 @@ object Alert : Screen {
                     .fillMaxSize()
                     .padding(it),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size12)
+                verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size12)
             ) {
                 PersianPrimaryButton(
                     text = "Only Action Alert",
@@ -84,18 +83,18 @@ object Alert : Screen {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(
-                            top = MaterialTheme.spacing.size16,
-                            start = MaterialTheme.spacing.size16,
-                            end = MaterialTheme.spacing.size16
+                            top = PersianTheme.spacing.size16,
+                            start = PersianTheme.spacing.size16,
+                            end = PersianTheme.spacing.size16
                         )
                 ) {
                     PersianOutlineInput(
-                        modifier = Modifier.padding(horizontal = MaterialTheme.spacing.size8),
+                        modifier = Modifier.padding(horizontal = PersianTheme.spacing.size8),
                         value = titleValue,
                         isError = titleError,
                         onValueChange = onTitleValueChange
                     )
-                    Spacer(modifier = Modifier.height(MaterialTheme.spacing.size8))
+                    Spacer(modifier = Modifier.height(PersianTheme.spacing.size8))
                     PersianCheckbox(
                         modifier = Modifier.fillMaxWidth(),
                         text = "Subtitle",
@@ -104,12 +103,12 @@ object Alert : Screen {
                     )
                     if (description) {
                         PersianOutlineInput(
-                            modifier = Modifier.padding(horizontal = MaterialTheme.spacing.size8),
+                            modifier = Modifier.padding(horizontal = PersianTheme.spacing.size8),
                             value = descriptionValue,
                             isError = descriptionError,
                             onValueChange = onDescriptionValueChange
                         )
-                        Spacer(modifier = Modifier.height(MaterialTheme.spacing.size8))
+                        Spacer(modifier = Modifier.height(PersianTheme.spacing.size8))
                     }
                     PersianCheckbox(
                         modifier = Modifier.fillMaxWidth(),
@@ -153,7 +152,7 @@ object Alert : Screen {
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .selectableGroup()
-                                .padding(horizontal = MaterialTheme.spacing.size12)
+                                .padding(horizontal = PersianTheme.spacing.size12)
                         ) {
                             PersianRadioButton(
                                 modifier = Modifier.fillMaxWidth(),

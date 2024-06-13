@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
@@ -24,7 +23,7 @@ import io.github.madmaximuus.persian.actionSheet.PersianActionSheet
 import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
 import io.github.madmaximuus.persian.buttons.PersianPrimaryButton
 import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.inputs.PersianOutlineInput
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.image.base.Image
@@ -64,7 +63,7 @@ object ActionSheet : Screen {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 PersianPrimaryButton(
-                    modifier = Modifier.padding(top = MaterialTheme.spacing.size24),
+                    modifier = Modifier.padding(top = PersianTheme.spacing.size24),
                     text = "Show sheet",
                     sizes = PersianButtonDefaults.largeSizes(),
                     colors = PersianButtonDefaults.primaryColors()
@@ -87,9 +86,9 @@ object ActionSheet : Screen {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(
-                            top = MaterialTheme.spacing.size16,
-                            start = MaterialTheme.spacing.size16,
-                            end = MaterialTheme.spacing.size16
+                            top = PersianTheme.spacing.size16,
+                            start = PersianTheme.spacing.size16,
+                            end = PersianTheme.spacing.size16
                         )
                 ) {
                     PersianCheckbox(
@@ -100,12 +99,12 @@ object ActionSheet : Screen {
                     )
                     if (title) {
                         PersianOutlineInput(
-                            modifier = Modifier.padding(horizontal = MaterialTheme.spacing.size8),
+                            modifier = Modifier.padding(horizontal = PersianTheme.spacing.size8),
                             value = titleValue,
                             isError = titleError,
                             onValueChange = onTitleValueChange
                         )
-                        Spacer(modifier = Modifier.height(MaterialTheme.spacing.size8))
+                        Spacer(modifier = Modifier.height(PersianTheme.spacing.size8))
                     }
                     PersianCheckbox(
                         modifier = Modifier.fillMaxWidth(),
@@ -115,12 +114,12 @@ object ActionSheet : Screen {
                     )
                     if (subtitle) {
                         PersianOutlineInput(
-                            modifier = Modifier.padding(horizontal = MaterialTheme.spacing.size8),
+                            modifier = Modifier.padding(horizontal = PersianTheme.spacing.size8),
                             value = subtitleValue,
                             isError = subtitleError,
                             onValueChange = onSubtitleValueChange
                         )
-                        Spacer(modifier = Modifier.height(MaterialTheme.spacing.size8))
+                        Spacer(modifier = Modifier.height(PersianTheme.spacing.size8))
                     }
                     PersianCheckbox(
                         modifier = Modifier.fillMaxWidth(),

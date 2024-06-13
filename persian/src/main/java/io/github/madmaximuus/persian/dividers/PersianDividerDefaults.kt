@@ -1,17 +1,16 @@
 package io.github.madmaximuus.persian.dividers
 
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme
 
 object PersianDividerDefaults {
     @Composable
     fun sizes(
-        inset: Dp = MaterialTheme.spacing.size16,
+        inset: Dp = PersianTheme.spacing.size16,
         strokeThickness: Dp = 1.dp
     ) = remember(inset, strokeThickness) {
         DividerSizes(

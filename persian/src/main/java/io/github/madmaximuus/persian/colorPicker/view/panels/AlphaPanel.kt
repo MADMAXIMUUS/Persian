@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -34,7 +33,7 @@ import io.github.madmaximuus.persian.colorPicker.view.util.emitDragGesture
 import io.github.madmaximuus.persian.colorPicker.view.util.pointToAlphaCompact
 import io.github.madmaximuus.persian.colorPicker.view.util.pointToAlphaMedium
 import io.github.madmaximuus.persian.colorPicker.view.util.rotate
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme
 
 @Composable
 fun AlphaBarCompact(
@@ -57,7 +56,7 @@ fun AlphaBarCompact(
         color.third
     )
 
-    val padding = MaterialTheme.spacing.size8.value
+    val padding = PersianTheme.spacing.size8.value
 
     val background = ImageBitmap.imageResource(id = R.drawable.vector).asAndroidBitmap()
     Canvas(
@@ -128,7 +127,7 @@ fun AlphaBarMedium(
         color.third
     )
 
-    val padding = MaterialTheme.spacing.size8.value
+    val padding = PersianTheme.spacing.size8.value
 
     val background = ImageBitmap.imageResource(id = R.drawable.vector).asAndroidBitmap().rotate(90f)
     val canvasSize = if (windowHeightSizeClass == WindowHeightSizeClass.COMPACT) 150.dp else 288.dp
@@ -146,7 +145,7 @@ fun AlphaBarMedium(
 
         val brush = Brush.verticalGradient(listOf(resolvedColor, resolvedColor.copy(alpha = 0f)))
 
-        pressOffset.value = Offset(0f, (1-alpha) * huePanel.height())
+        pressOffset.value = Offset(0f, (1 - alpha) * huePanel.height())
 
         scope.collectForPress(interactionSource) { pressPosition ->
             val pressPos = pressPosition.y.coerceIn(0f..drawScopeSize.height)

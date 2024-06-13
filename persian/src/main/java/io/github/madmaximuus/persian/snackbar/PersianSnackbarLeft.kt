@@ -1,9 +1,8 @@
 package io.github.madmaximuus.persian.snackbar
 
+import android.net.Uri
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.LocalContentColor
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
@@ -15,7 +14,8 @@ import io.github.madmaximuus.persian.avatarsAndImages.PersianAvatar
 import io.github.madmaximuus.persian.avatarsAndImages.PersianAvatarsDefaults
 import io.github.madmaximuus.persian.avatarsAndImages.PersianImage
 import io.github.madmaximuus.persian.avatarsAndImages.PersianImagesDefaults
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.LocalContentColor
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
 import io.github.madmaximuus.persian.iconBox.PersianIconBoxDefaults
 import io.github.madmaximuus.persian.progressBars.PersianCircularProgressBar
@@ -58,10 +58,10 @@ internal fun PersianSnackbarLeftIcon(
             PersianIconBox(
                 modifier = Modifier
                     .padding(
-                        start = MaterialTheme.spacing.large,
+                        start = PersianTheme.spacing.size16,
                         end = 0.dp,
-                        top = MaterialTheme.spacing.medium,
-                        bottom = MaterialTheme.spacing.medium
+                        top = PersianTheme.spacing.size12,
+                        bottom = PersianTheme.spacing.size12
                     ),
                 icon = icon,
                 size = PersianIconBoxDefaults.size28(),
@@ -82,13 +82,13 @@ internal fun PersianSnackbarLeftImage(
         PersianImage(
             modifier = Modifier
                 .padding(
-                    start = MaterialTheme.spacing.small,
+                    start = PersianTheme.spacing.size8,
                     end = 0.dp,
-                    top = MaterialTheme.spacing.small,
-                    bottom = MaterialTheme.spacing.small
+                    top = PersianTheme.spacing.size8,
+                    bottom = PersianTheme.spacing.size8
                 ),
-            imageUrl = imageUrl,
-            size = PersianImagesDefaults.size36(),
+            imageUrl = Uri.parse(imageUrl),
+            sizes = PersianImagesDefaults.size36(),
             shape = ImageShape.LARGE
         )
     }
@@ -105,13 +105,13 @@ internal fun PersianSnackbarLeftAvatar(
         PersianAvatar(
             modifier = Modifier
                 .padding(
-                    start = MaterialTheme.spacing.small,
+                    start = PersianTheme.spacing.size8,
                     end = 0.dp,
-                    top = MaterialTheme.spacing.small,
-                    bottom = MaterialTheme.spacing.small
+                    top = PersianTheme.spacing.size8,
+                    bottom = PersianTheme.spacing.size8
                 ),
-            imageUrl = avatarUrl,
-            size = PersianAvatarsDefaults.size36(),
+            imageUrl = Uri.parse(avatarUrl),
+            sizes = PersianAvatarsDefaults.size36(),
             onClick = null
         )
     }
@@ -129,10 +129,10 @@ internal fun PersianSnackbarLeftProgress(
             progress = progress,
             modifier = Modifier
                 .padding(
-                    start = MaterialTheme.spacing.extraSmall,
+                    start = PersianTheme.spacing.size4,
                     end = 0.dp,
-                    top = MaterialTheme.spacing.small,
-                    bottom = MaterialTheme.spacing.small
+                    top = PersianTheme.spacing.size8,
+                    bottom = PersianTheme.spacing.size8
                 ),
             sizes = PersianProgressBarDefaults.circularMedium(),
             counter = true

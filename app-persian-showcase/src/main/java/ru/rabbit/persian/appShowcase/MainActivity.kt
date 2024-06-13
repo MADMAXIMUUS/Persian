@@ -38,12 +38,12 @@ import ru.rabbit.persian.appShowcase.screens.Forms
 import ru.rabbit.persian.appShowcase.screens.IconButton
 import ru.rabbit.persian.appShowcase.screens.Icons
 import ru.rabbit.persian.appShowcase.screens.Inputs
+import ru.rabbit.persian.appShowcase.screens.ListItem
 import ru.rabbit.persian.appShowcase.screens.ModalPage
 import ru.rabbit.persian.appShowcase.screens.NavigationBar
 import ru.rabbit.persian.appShowcase.screens.PageIndicator
 import ru.rabbit.persian.appShowcase.screens.ProgressBar
 import ru.rabbit.persian.appShowcase.screens.RadioButton
-import ru.rabbit.persian.appShowcase.screens.Search
 import ru.rabbit.persian.appShowcase.screens.Select
 import ru.rabbit.persian.appShowcase.screens.Skeleton
 import ru.rabbit.persian.appShowcase.screens.Snackbar
@@ -81,7 +81,6 @@ class MainActivity : ComponentActivity() {
                         NavigationBar,
                         ProgressBar,
                         RadioButton,
-                        Search,
                         Snackbar,
                         Tabs,
                         TextArea,

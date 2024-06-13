@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
@@ -28,6 +27,7 @@ import io.github.madmaximuus.persian.inputs.PersianOutlineInput
 import io.github.madmaximuus.persian.inputs.PersianPlainInput
 import io.github.madmaximuus.persian.select.PersianSelect
 import io.github.madmaximuus.persian.select.SelectActionItem
+import io.github.madmaximuus.persian.text.Text
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.user.base.User
 import ru.rabbit.persian.appShowcase.R

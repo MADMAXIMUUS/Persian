@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
@@ -27,7 +26,7 @@ import io.github.madmaximuus.persian.dividers.PersianInsetVerticalDivider
 import io.github.madmaximuus.persian.dividers.PersianMiddleInsetsHorizontalDivider
 import io.github.madmaximuus.persian.dividers.PersianMiddleInsetsVerticalDivider
 import io.github.madmaximuus.persian.dividers.VerticalInsetSide
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
@@ -57,16 +56,16 @@ object Divider : Screen {
                     SampleRow(text = "Full Size Horizontal", firstItem = true) {
                         Column(
                             Modifier.fillMaxWidth(),
-                            verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size8)
+                            verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8)
                         ) {
                             Box(modifier = Modifier
                                 .size(100.dp, 10.dp)
-                                .background(MaterialTheme.colorScheme.onSurface),
+                                .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
                             Box(modifier = Modifier
                                 .size(150.dp, 10.dp)
-                                .background(MaterialTheme.colorScheme.onSurface),
+                                .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
                             PersianFullWidthHorizontalDivider()
@@ -77,16 +76,16 @@ object Divider : Screen {
                     SampleRow(text = "Middle Size Left Horizontal") {
                         Column(
                             Modifier.fillMaxWidth(),
-                            verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size8)
+                            verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8)
                         ) {
                             Box(modifier = Modifier
                                 .size(100.dp, 10.dp)
-                                .background(MaterialTheme.colorScheme.onSurface),
+                                .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
                             Box(modifier = Modifier
                                 .size(150.dp, 10.dp)
-                                .background(MaterialTheme.colorScheme.onSurface),
+                                .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
                             PersianMiddleInsetsHorizontalDivider(
@@ -99,16 +98,16 @@ object Divider : Screen {
                     SampleRow(text = "Middle Size Right Horizontal") {
                         Column(
                             Modifier.fillMaxWidth(),
-                            verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size8)
+                            verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8)
                         ) {
                             Box(modifier = Modifier
                                 .size(100.dp, 10.dp)
-                                .background(MaterialTheme.colorScheme.onSurface),
+                                .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
                             Box(modifier = Modifier
                                 .size(150.dp, 10.dp)
-                                .background(MaterialTheme.colorScheme.onSurface),
+                                .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
                             PersianMiddleInsetsHorizontalDivider(
@@ -121,16 +120,16 @@ object Divider : Screen {
                     SampleRow(text = "Insets Horizontal") {
                         Column(
                             Modifier.fillMaxWidth(),
-                            verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size8)
+                            verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8)
                         ) {
                             Box(modifier = Modifier
                                 .size(100.dp, 10.dp)
-                                .background(MaterialTheme.colorScheme.onSurface),
+                                .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
                             Box(modifier = Modifier
                                 .size(150.dp, 10.dp)
-                                .background(MaterialTheme.colorScheme.onSurface),
+                                .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
                             PersianInsetHorizontalDivider()
@@ -143,16 +142,16 @@ object Divider : Screen {
                             Modifier
                                 .fillMaxWidth()
                                 .height(200.dp),
-                            horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size8)
+                            horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8)
                         ) {
                             Box(modifier = Modifier
                                 .size(10.dp, 100.dp)
-                                .background(MaterialTheme.colorScheme.onSurface),
+                                .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
                             Box(modifier = Modifier
                                 .size(10.dp, 150.dp)
-                                .background(MaterialTheme.colorScheme.onSurface),
+                                .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
                             PersianFullHeightVerticalDivider()
@@ -165,16 +164,16 @@ object Divider : Screen {
                             Modifier
                                 .fillMaxWidth()
                                 .height(200.dp),
-                            horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size8)
+                            horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8)
                         ) {
                             Box(modifier = Modifier
                                 .size(10.dp, 100.dp)
-                                .background(MaterialTheme.colorScheme.onSurface),
+                                .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
                             Box(modifier = Modifier
                                 .size(10.dp, 150.dp)
-                                .background(MaterialTheme.colorScheme.onSurface),
+                                .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
                             PersianMiddleInsetsVerticalDivider(
@@ -189,16 +188,16 @@ object Divider : Screen {
                             Modifier
                                 .fillMaxWidth()
                                 .height(200.dp),
-                            horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size8)
+                            horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8)
                         ) {
                             Box(modifier = Modifier
                                 .size(10.dp, 100.dp)
-                                .background(MaterialTheme.colorScheme.onSurface),
+                                .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
                             Box(modifier = Modifier
                                 .size(10.dp, 150.dp)
-                                .background(MaterialTheme.colorScheme.onSurface),
+                                .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
                             PersianMiddleInsetsVerticalDivider(
@@ -213,16 +212,16 @@ object Divider : Screen {
                             Modifier
                                 .fillMaxWidth()
                                 .height(200.dp),
-                            horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size8)
+                            horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8)
                         ) {
                             Box(modifier = Modifier
                                 .size(10.dp, 100.dp)
-                                .background(MaterialTheme.colorScheme.onSurface),
+                                .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
                             Box(modifier = Modifier
                                 .size(10.dp, 150.dp)
-                                .background(MaterialTheme.colorScheme.onSurface),
+                                .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
                             PersianInsetVerticalDivider()

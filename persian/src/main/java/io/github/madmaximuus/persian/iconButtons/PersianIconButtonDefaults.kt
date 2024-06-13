@@ -1,6 +1,5 @@
 package io.github.madmaximuus.persian.iconButtons
 
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.State
@@ -10,8 +9,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
-import io.github.madmaximuus.persian.foundation.shape
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.iconBox.IconBoxSize
@@ -23,7 +21,7 @@ object PersianIconButtonDefaults {
     fun smallSizes(
         size: Dp = 36.dp,
         iconSize: IconBoxSize = PersianIconBoxDefaults.size20(),
-        shape: Shape = MaterialTheme.shape.shape12,
+        shape: Shape = PersianTheme.shapes.shape12,
     ): IconButtonSizes = remember(
         size,
         iconSize,
@@ -40,7 +38,7 @@ object PersianIconButtonDefaults {
     fun mediumSizes(
         size: Dp = 44.dp,
         iconSize: IconBoxSize = PersianIconBoxDefaults.size24(),
-        shape: Shape = MaterialTheme.shape.shape14,
+        shape: Shape = PersianTheme.shapes.shape14,
     ): IconButtonSizes = remember(
         size,
         iconSize,
@@ -57,7 +55,7 @@ object PersianIconButtonDefaults {
     fun largeSizes(
         size: Dp = 52.dp,
         iconSize: IconBoxSize = PersianIconBoxDefaults.size28(),
-        shape: Shape = MaterialTheme.shape.shape16
+        shape: Shape = PersianTheme.shapes.shape16
     ): IconButtonSizes = remember(
         size,
         iconSize,
@@ -72,10 +70,10 @@ object PersianIconButtonDefaults {
 
     @Composable
     fun primaryIconButtonColors(
-        containerColor: Color = MaterialTheme.extendedColorScheme.primary,
-        contentColor: Color = MaterialTheme.extendedColorScheme.onPrimary,
-        disabledContainerColor: Color = MaterialTheme.extendedColorScheme.onSurface.state12,
-        disabledContentColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
+        containerColor: Color = PersianTheme.colorScheme.primary,
+        contentColor: Color = PersianTheme.colorScheme.onPrimary,
+        disabledContainerColor: Color = PersianTheme.colorScheme.onSurface.state12,
+        disabledContentColor: Color = PersianTheme.colorScheme.onSurface.state38,
     ): IconButtonColors = IconButtonColors(
         containerColor = containerColor,
         contentColor = contentColor,
@@ -85,10 +83,10 @@ object PersianIconButtonDefaults {
 
     @Composable
     fun secondaryIconButtonColors(
-        containerColor: Color = MaterialTheme.extendedColorScheme.primaryContainer,
-        contentColor: Color = MaterialTheme.extendedColorScheme.onPrimaryContainer,
-        disabledContainerColor: Color = MaterialTheme.extendedColorScheme.onSurface.state12,
-        disabledContentColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
+        containerColor: Color = PersianTheme.colorScheme.primaryContainer,
+        contentColor: Color = PersianTheme.colorScheme.onPrimaryContainer,
+        disabledContainerColor: Color = PersianTheme.colorScheme.onSurface.state12,
+        disabledContentColor: Color = PersianTheme.colorScheme.onSurface.state38,
     ): IconButtonColors = IconButtonColors(
         containerColor = containerColor,
         contentColor = contentColor,
@@ -99,9 +97,9 @@ object PersianIconButtonDefaults {
     @Composable
     fun tertiaryIconButtonColors(
         containerColor: Color = Color.Transparent,
-        contentColor: Color = MaterialTheme.extendedColorScheme.primary,
+        contentColor: Color = PersianTheme.colorScheme.primary,
         disabledContainerColor: Color = Color.Transparent,
-        disabledContentColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
+        disabledContentColor: Color = PersianTheme.colorScheme.onSurface.state38,
     ): IconButtonColors = IconButtonColors(
         containerColor = containerColor,
         contentColor = contentColor,
@@ -112,9 +110,9 @@ object PersianIconButtonDefaults {
     @Composable
     fun outlinedIconButtonColors(
         containerColor: Color = Color.Transparent,
-        contentColor: Color = MaterialTheme.extendedColorScheme.primary,
+        contentColor: Color = PersianTheme.colorScheme.primary,
         disabledContainerColor: Color = Color.Transparent,
-        disabledContentColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38
+        disabledContentColor: Color = PersianTheme.colorScheme.onSurface.state38
     ): IconButtonColors = IconButtonColors(
         containerColor = containerColor,
         contentColor = contentColor,
@@ -124,12 +122,12 @@ object PersianIconButtonDefaults {
 
     @Composable
     fun primaryToggleIconButtonColors(
-        containerColor: Color = MaterialTheme.extendedColorScheme.surfaceVariant,
-        contentColor: Color = MaterialTheme.extendedColorScheme.primary,
-        disabledContainerColor: Color = MaterialTheme.extendedColorScheme.onSurface.state12,
-        disabledContentColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
-        checkedContainerColor: Color = MaterialTheme.extendedColorScheme.primary,
-        checkedContentColor: Color = MaterialTheme.extendedColorScheme.onPrimary,
+        containerColor: Color = PersianTheme.colorScheme.surfaceVariant,
+        contentColor: Color = PersianTheme.colorScheme.primary,
+        disabledContainerColor: Color = PersianTheme.colorScheme.onSurface.state12,
+        disabledContentColor: Color = PersianTheme.colorScheme.onSurface.state38,
+        checkedContainerColor: Color = PersianTheme.colorScheme.primary,
+        checkedContentColor: Color = PersianTheme.colorScheme.onPrimary,
     ): ToggleIconButtonColors = ToggleIconButtonColors(
         containerColor = containerColor,
         contentColor = contentColor,
@@ -141,12 +139,12 @@ object PersianIconButtonDefaults {
 
     @Composable
     fun secondaryToggleIconButtonColors(
-        containerColor: Color = MaterialTheme.extendedColorScheme.surface5,
-        contentColor: Color = MaterialTheme.extendedColorScheme.onSurface,
-        disabledContainerColor: Color = MaterialTheme.extendedColorScheme.onSurface.state12,
-        disabledContentColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
-        checkedContainerColor: Color = MaterialTheme.extendedColorScheme.primaryContainer,
-        checkedContentColor: Color = MaterialTheme.extendedColorScheme.onPrimaryContainer,
+        containerColor: Color = PersianTheme.colorScheme.surface5,
+        contentColor: Color = PersianTheme.colorScheme.onSurface,
+        disabledContainerColor: Color = PersianTheme.colorScheme.onSurface.state12,
+        disabledContentColor: Color = PersianTheme.colorScheme.onSurface.state38,
+        checkedContainerColor: Color = PersianTheme.colorScheme.primaryContainer,
+        checkedContentColor: Color = PersianTheme.colorScheme.onPrimaryContainer,
     ): ToggleIconButtonColors = ToggleIconButtonColors(
         containerColor = containerColor,
         contentColor = contentColor,
@@ -159,11 +157,11 @@ object PersianIconButtonDefaults {
     @Composable
     fun tertiaryToggleIconButtonColors(
         containerColor: Color = Color.Transparent,
-        contentColor: Color = MaterialTheme.extendedColorScheme.primary,
-        disabledContainerColor: Color = MaterialTheme.extendedColorScheme.onSurface.state12,
-        disabledContentColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
+        contentColor: Color = PersianTheme.colorScheme.primary,
+        disabledContainerColor: Color = PersianTheme.colorScheme.onSurface.state12,
+        disabledContentColor: Color = PersianTheme.colorScheme.onSurface.state38,
         checkedContainerColor: Color = Color.Transparent,
-        checkedContentColor: Color = MaterialTheme.extendedColorScheme.primary,
+        checkedContentColor: Color = PersianTheme.colorScheme.primary,
     ): ToggleIconButtonColors = ToggleIconButtonColors(
         containerColor = containerColor,
         contentColor = contentColor,
@@ -176,11 +174,11 @@ object PersianIconButtonDefaults {
     @Composable
     fun outlinedToggleIconButtonColors(
         containerColor: Color = Color.Transparent,
-        contentColor: Color = MaterialTheme.extendedColorScheme.primary,
-        disabledContainerColor: Color = MaterialTheme.extendedColorScheme.onSurface.state12,
-        disabledContentColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
-        checkedContainerColor: Color = MaterialTheme.extendedColorScheme.primary,
-        checkedContentColor: Color = MaterialTheme.extendedColorScheme.onPrimary,
+        contentColor: Color = PersianTheme.colorScheme.primary,
+        disabledContainerColor: Color = PersianTheme.colorScheme.onSurface.state12,
+        disabledContentColor: Color = PersianTheme.colorScheme.onSurface.state38,
+        checkedContainerColor: Color = PersianTheme.colorScheme.primary,
+        checkedContentColor: Color = PersianTheme.colorScheme.onPrimary,
     ): ToggleIconButtonColors = ToggleIconButtonColors(
         containerColor = containerColor,
         contentColor = contentColor,

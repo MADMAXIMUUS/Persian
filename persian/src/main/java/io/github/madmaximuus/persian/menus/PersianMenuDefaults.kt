@@ -1,28 +1,27 @@
 package io.github.madmaximuus.persian.menus
 
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.graphics.Color
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state38
 
 object PersianMenuDefaults {
 
     @Composable
     fun itemColors(
-        titleColor: Color = MaterialTheme.extendedColorScheme.onSurface,
-        negativeTitleColor: Color = MaterialTheme.extendedColorScheme.error,
-        disabledTitleColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
-        leadingIconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        negativeLeadingIconColor: Color = MaterialTheme.extendedColorScheme.error,
-        disabledLeadingIconColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
-        expendIconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        negativeExpandIconColor: Color = MaterialTheme.extendedColorScheme.error,
-        disabledExpandIconColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
+        titleColor: Color = PersianTheme.colorScheme.onSurface,
+        negativeTitleColor: Color = PersianTheme.colorScheme.error,
+        disabledTitleColor: Color = PersianTheme.colorScheme.onSurface.state38,
+        leadingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
+        negativeLeadingIconColor: Color = PersianTheme.colorScheme.error,
+        disabledLeadingIconColor: Color = PersianTheme.colorScheme.onSurface.state38,
+        expendIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
+        negativeExpandIconColor: Color = PersianTheme.colorScheme.error,
+        disabledExpandIconColor: Color = PersianTheme.colorScheme.onSurface.state38,
     ): MenuItemColors =
         MenuItemColors(
             titleColor = titleColor,
@@ -38,7 +37,7 @@ object PersianMenuDefaults {
 
     @Composable
     fun colors(
-        backgroundColor: Color = MaterialTheme.extendedColorScheme.surface2,
+        backgroundColor: Color = PersianTheme.colorScheme.surface2,
         itemColors: MenuItemColors = itemColors()
     ) = remember(backgroundColor, itemColors) {
         MenuColors(

@@ -7,8 +7,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -17,12 +15,18 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import com.maxkeppeker.sheets.core.models.base.rememberUseCaseState
+import com.maxkeppeler.sheets.calendar.CalendarDialog
+import com.maxkeppeler.sheets.calendar.models.CalendarConfig
+import com.maxkeppeler.sheets.calendar.models.CalendarSelection
+import com.maxkeppeler.sheets.calendar.models.CalendarStyle
 import io.github.madmaximuus.persian.buttons.PersianPrimaryButton
 import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
 import io.github.madmaximuus.persian.datePicker.PersianDatePicker
 import io.github.madmaximuus.persian.datePicker.view.util.DatePickerConfig
 import io.github.madmaximuus.persian.datePicker.view.util.DatePickerSelection
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.text.Text
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -82,9 +86,9 @@ object DatePicker : Screen {
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(it)
-                    .padding(horizontal = MaterialTheme.spacing.extraLarge),
+                    .padding(horizontal = PersianTheme.spacing.size20),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.medium)
+                verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size12)
             ) {
                 PersianPrimaryButton(
                     text = "Date Picker Selection Date",
@@ -130,7 +134,7 @@ object DatePicker : Screen {
             }
         }
         if (showDialogSelectDate) {
-            PersianDatePicker(
+            /*PersianDatePicker(
                 config = DatePickerConfig(
                     selectable = selectable
                 ),
@@ -143,7 +147,7 @@ object DatePicker : Screen {
                 onDismissRequest = {
                     showDialogSelectDate = false
                 },
-            )
+            )*/
         }
         if (showDialogSelectDates) {
             PersianDatePicker(
@@ -178,5 +182,19 @@ object DatePicker : Screen {
                 },
             )
         }
+
+        CalendarDialog(
+            state = rememberUseCaseState(
+                visible = true,
+                onCloseRequest = { showDialogSelectDate = false }),
+            config = CalendarConfig(
+                yearSelection = true,
+                monthSelection = true,
+                style = CalendarStyle.MONTH,
+            ),
+            selection = CalendarSelection.Dates { newDates ->
+
+            },
+        )
     }
 }

@@ -1,6 +1,5 @@
 package io.github.madmaximuus.persian.datePicker.view
 
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.State
@@ -9,7 +8,7 @@ import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.graphics.Color
 import io.github.madmaximuus.persian.buttons.ButtonColors
 import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.iconButtons.IconButtonColors
 import io.github.madmaximuus.persian.iconButtons.PersianIconButtonDefaults
@@ -21,7 +20,7 @@ object PersianDatePickerViewDefaults {
         headerColors: DatePickerHeaderColors = headerColors(),
         datePickerGridColors: DatePickerGridColors = gridColors(),
         containerColor: Color = Color.Transparent,
-        elevatedContainerColor: Color = MaterialTheme.extendedColorScheme.surface1,
+        elevatedContainerColor: Color = PersianTheme.colorScheme.surface1,
     ) = remember(
         headerColors,
         datePickerGridColors,
@@ -40,8 +39,8 @@ object PersianDatePickerViewDefaults {
     fun headerColors(
         prevButtonColor: IconButtonColors = PersianIconButtonDefaults.primaryIconButtonColors(),
         nextButtonColor: IconButtonColors = PersianIconButtonDefaults.primaryIconButtonColors(),
-        monthLabelColor: Color = MaterialTheme.extendedColorScheme.primary,
-        yearLabelColor: Color = MaterialTheme.extendedColorScheme.primary,
+        monthLabelColor: Color = PersianTheme.colorScheme.primary,
+        yearLabelColor: Color = PersianTheme.colorScheme.primary,
         selectedMonthColor: ButtonColors = PersianButtonDefaults.tertiaryColors(),
         selectedYearColor: ButtonColors = PersianButtonDefaults.tertiaryColors(),
     ) = remember(
@@ -84,7 +83,7 @@ object PersianDatePickerViewDefaults {
 
     @Composable
     fun dayOfWeekLabelColors(
-        label: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant
+        label: Color = PersianTheme.colorScheme.onSurfaceVariant
     ) = remember(
         label
     ) {
@@ -93,18 +92,18 @@ object PersianDatePickerViewDefaults {
 
     @Composable
     fun dayCellColors(
-        cellTextColor: Color = MaterialTheme.extendedColorScheme.onSurface,
-        cellTextDisabledColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
-        cellTextBetweenSelectionColor: Color = MaterialTheme.extendedColorScheme.onPrimaryContainer,
-        cellTextSelectedColor: Color = MaterialTheme.extendedColorScheme.onPrimary,
+        cellTextColor: Color = PersianTheme.colorScheme.onSurface,
+        cellTextDisabledColor: Color = PersianTheme.colorScheme.onSurface.state38,
+        cellTextBetweenSelectionColor: Color = PersianTheme.colorScheme.onPrimaryContainer,
+        cellTextSelectedColor: Color = PersianTheme.colorScheme.onPrimary,
 
-        currentDateIndicator: Color = MaterialTheme.extendedColorScheme.primary,
-        currentDateBetweenSelectionIndicatorColor: Color = MaterialTheme.extendedColorScheme.primary,
-        currentDateIndicatorSelectedColor: Color = MaterialTheme.extendedColorScheme.onPrimary,
+        currentDateIndicator: Color = PersianTheme.colorScheme.primary,
+        currentDateBetweenSelectionIndicatorColor: Color = PersianTheme.colorScheme.primary,
+        currentDateIndicatorSelectedColor: Color = PersianTheme.colorScheme.onPrimary,
 
         containerColor: Color = Color.Transparent,
-        betweenSelectionContainerColor: Color = MaterialTheme.extendedColorScheme.primaryContainer,
-        selectedContainerColor: Color = MaterialTheme.extendedColorScheme.primary,
+        betweenSelectionContainerColor: Color = PersianTheme.colorScheme.primaryContainer,
+        selectedContainerColor: Color = PersianTheme.colorScheme.primary,
     ) = remember(
         cellTextColor,
         cellTextDisabledColor,
@@ -137,15 +136,15 @@ object PersianDatePickerViewDefaults {
 
     @Composable
     fun monthCellColors(
-        cellTextColor: Color = MaterialTheme.extendedColorScheme.onSurface,
-        cellTextDisabledColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
-        cellTextSelectedColor: Color = MaterialTheme.extendedColorScheme.onPrimary,
+        cellTextColor: Color = PersianTheme.colorScheme.onSurface,
+        cellTextDisabledColor: Color = PersianTheme.colorScheme.onSurface.state38,
+        cellTextSelectedColor: Color = PersianTheme.colorScheme.onPrimary,
 
-        currentDateIndicator: Color = MaterialTheme.extendedColorScheme.primary,
-        currentDateIndicatorSelectedColor: Color = MaterialTheme.extendedColorScheme.onPrimary,
+        currentDateIndicator: Color = PersianTheme.colorScheme.primary,
+        currentDateIndicatorSelectedColor: Color = PersianTheme.colorScheme.onPrimary,
 
         backgroundColor: Color = Color.Transparent,
-        selectedBackgroundColor: Color = MaterialTheme.extendedColorScheme.primary,
+        selectedBackgroundColor: Color = PersianTheme.colorScheme.primary,
     ) = remember(
         cellTextColor,
         cellTextDisabledColor,
@@ -172,14 +171,14 @@ object PersianDatePickerViewDefaults {
 
     @Composable
     fun yearCellColors(
-        cellTextColor: Color = MaterialTheme.extendedColorScheme.onSurface,
-        cellTextSelectedColor: Color = MaterialTheme.extendedColorScheme.onPrimary,
+        cellTextColor: Color = PersianTheme.colorScheme.onSurface,
+        cellTextSelectedColor: Color = PersianTheme.colorScheme.onPrimary,
 
-        currentDateIndicator: Color = MaterialTheme.extendedColorScheme.primary,
-        currentDateIndicatorSelectedColor: Color = MaterialTheme.extendedColorScheme.onPrimary,
+        currentDateIndicator: Color = PersianTheme.colorScheme.primary,
+        currentDateIndicatorSelectedColor: Color = PersianTheme.colorScheme.onPrimary,
 
         containerColor: Color = Color.Transparent,
-        selectedContainerColor: Color = MaterialTheme.extendedColorScheme.primary,
+        selectedContainerColor: Color = PersianTheme.colorScheme.primary,
     ) = remember(
         cellTextColor,
         cellTextSelectedColor,

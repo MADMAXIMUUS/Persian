@@ -11,7 +11,6 @@ import androidx.compose.foundation.interaction.InteractionSource
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.PressInteraction
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.LaunchedEffect
@@ -34,6 +33,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import io.github.madmaximuus.persian.foundation.animateElevation
 import io.github.madmaximuus.persian.iconBox.IconBoxSize
+import io.github.madmaximuus.persian.surface.Surface
 
 @Composable
 internal fun BaseChip(

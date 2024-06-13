@@ -11,9 +11,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -30,8 +27,9 @@ import io.github.madmaximuus.persian.datePicker.view.DatePickerHeaderColors
 import io.github.madmaximuus.persian.datePicker.view.PersianDatePickerViewDefaults
 import io.github.madmaximuus.persian.datePicker.view.util.DatePickerDisplayMode
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.foundation.spacing
 import io.github.madmaximuus.persian.iconButtons.PersianPrimaryIconButton
+import io.github.madmaximuus.persian.surface.Surface
+import io.github.madmaximuus.persian.text.Text
 import io.github.madmaximuus.persianSymbols.chevronDown.base.ChevronDown
 import io.github.madmaximuus.persianSymbols.chevronLeft.base.ChevronLeft
 import io.github.madmaximuus.persianSymbols.chevronRight.base.ChevronRight
@@ -89,7 +87,7 @@ internal fun PersianDatePickerDialogHeader(
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = MaterialTheme.spacing.size4),
+            .padding(horizontal = PersianTheme.spacing.size4),
         contentAlignment = Alignment.Center
     ) {
         AnimatedVisibility(
@@ -127,18 +125,18 @@ internal fun PersianDatePickerDialogHeader(
             }
         } else {
             Row(
-                horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.size8),
+                horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
                     text = month,
                     color = colors.monthLabelColor,
-                    style = MaterialTheme.typography.labelLarge
+                    style = PersianTheme.typography.labelLarge
                 )
                 Text(
                     text = year,
                     color = colors.yearLabelColor,
-                    style = MaterialTheme.typography.labelLarge
+                    style = PersianTheme.typography.labelLarge
                 )
             }
         }

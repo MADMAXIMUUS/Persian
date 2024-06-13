@@ -9,10 +9,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHostState
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -25,13 +23,13 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
 import io.github.madmaximuus.persian.buttons.PersianPrimaryButton
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.inputs.PersianOutlineInput
 import io.github.madmaximuus.persian.radioButtons.PersianRadioButton
 import io.github.madmaximuus.persian.snackbar.PersianSnackbarLeft
 import io.github.madmaximuus.persian.snackbar.PersianSnackbarRight
 import io.github.madmaximuus.persian.snackbar.PersianSnackbarVisuals
+import io.github.madmaximuus.persian.text.Text
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.wifi.slash.WifiSlash
 import kotlinx.coroutines.launch
@@ -66,7 +64,7 @@ object Snackbar : Screen {
                     .fillMaxSize()
                     .padding(it),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.medium)
+                verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size12)
             ) {
                 PersianPrimaryButton(
                     text = "Show snackbar",
@@ -103,25 +101,25 @@ object Snackbar : Screen {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(
-                            top = MaterialTheme.spacing.small,
-                            bottom = MaterialTheme.spacing.small,
-                            start = MaterialTheme.spacing.medium,
-                            end = MaterialTheme.spacing.medium
+                            top = PersianTheme.spacing.size8,
+                            bottom = PersianTheme.spacing.size8,
+                            start = PersianTheme.spacing.size12,
+                            end = PersianTheme.spacing.size12
                         ),
                 ) {
                     Text(
                         text = "Left",
-                        style = MaterialTheme.typography.titleMedium,
-                        color = MaterialTheme.colorScheme.onSurface
+                        style = PersianTheme.typography.titleMedium,
+                        color = PersianTheme.colorScheme.onSurface
                     )
-                    Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraSmall))
+                    Spacer(modifier = Modifier.height(PersianTheme.spacing.size4))
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
                             .selectableGroup()
                     ) {
                         val icon = rememberVectorPainter(image = PersianSymbols.Default.WifiSlash)
-                        val color = MaterialTheme.extendedColorScheme.primary
+                        val color = PersianTheme.colorScheme.primary
                         PersianRadioButton(
                             modifier = Modifier.fillMaxWidth(),
                             text = "None",
@@ -199,18 +197,18 @@ object Snackbar : Screen {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(
-                            top = MaterialTheme.spacing.small,
-                            bottom = MaterialTheme.spacing.small,
-                            start = MaterialTheme.spacing.medium,
-                            end = MaterialTheme.spacing.medium
+                            top = PersianTheme.spacing.size8,
+                            bottom = PersianTheme.spacing.size8,
+                            start = PersianTheme.spacing.size12,
+                            end = PersianTheme.spacing.size12
                         ),
                 ) {
                     Text(
                         text = "Right",
-                        style = MaterialTheme.typography.titleMedium,
-                        color = MaterialTheme.colorScheme.onSurface
+                        style = PersianTheme.typography.titleMedium,
+                        color = PersianTheme.colorScheme.onSurface
                     )
-                    Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraSmall))
+                    Spacer(modifier = Modifier.height(PersianTheme.spacing.size4))
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()

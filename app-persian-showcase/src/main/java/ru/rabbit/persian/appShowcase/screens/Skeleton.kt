@@ -8,16 +8,14 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.shimmer
-import io.github.madmaximuus.persian.foundation.spacing
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object Skeleton : Screen {
@@ -36,15 +34,15 @@ object Skeleton : Screen {
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),
                 contentPadding = it,
-                verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.extraSmall)
+                verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size4)
             ) {
                 item {
                     Text(
                         modifier = Modifier.fillMaxWidth(),
                         text = "Infinite loading",
                         textAlign = TextAlign.Center,
-                        style = MaterialTheme.typography.titleLarge,
-                        color = MaterialTheme.extendedColorScheme.onSurface
+                        style = PersianTheme.typography.titleLarge,
+                        color = PersianTheme.colorScheme.onSurface
                     )
                 }
                 item {
@@ -52,8 +50,8 @@ object Skeleton : Screen {
                         modifier = Modifier.fillMaxWidth(),
                         text = "These loaders show one of the library's features",
                         textAlign = TextAlign.Center,
-                        style = MaterialTheme.typography.labelLarge,
-                        color = MaterialTheme.extendedColorScheme.onSurface
+                        style = PersianTheme.typography.labelLarge,
+                        color = PersianTheme.colorScheme.onSurface
                     )
                 }
                 items(4) {
@@ -61,7 +59,7 @@ object Skeleton : Screen {
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(80.dp)
-                            .padding(horizontal = MaterialTheme.spacing.medium)
+                            .padding(horizontal = PersianTheme.spacing.size12)
                             .shimmer(true)
                     ) {
 

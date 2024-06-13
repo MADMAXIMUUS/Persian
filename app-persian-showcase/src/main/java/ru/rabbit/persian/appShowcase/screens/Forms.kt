@@ -13,7 +13,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
@@ -35,6 +34,7 @@ import io.github.madmaximuus.persian.inputs.InputsTransformations
 import io.github.madmaximuus.persian.inputs.PersianOutlineInput
 import io.github.madmaximuus.persian.radioButtons.PersianRadioButton
 import io.github.madmaximuus.persian.select.SelectActionItem
+import io.github.madmaximuus.persian.text.Text
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.user.base.User
 import io.github.madmaximuus.persianSymbols.xmark.base.XMark

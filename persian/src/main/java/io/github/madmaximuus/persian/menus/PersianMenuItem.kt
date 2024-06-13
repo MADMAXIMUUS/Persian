@@ -5,9 +5,6 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material3.DropdownMenuItem
-import androidx.compose.material3.LocalContentColor
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
@@ -17,8 +14,10 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.LocalContentColor
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
+import io.github.madmaximuus.persian.text.Text
 
 @Composable
 internal fun PersianMenuItem(
@@ -26,7 +25,7 @@ internal fun PersianMenuItem(
     onItemClick: () -> Unit,
     modifier: Modifier = Modifier,
     colors: MenuItemColors = PersianMenuDefaults.itemColors(),
-    textStyle: TextStyle = MaterialTheme.typography.bodyLarge,
+    textStyle: TextStyle = PersianTheme.typography.bodyLarge,
     enabled: Boolean = true,
     isNegative: Boolean = false,
     leadingIcon: Painter? = null,
@@ -55,7 +54,7 @@ internal fun PersianMenuItem(
                 }
             }
         },
-        contentPadding = PaddingValues(horizontal = MaterialTheme.spacing.large),
+        contentPadding = PaddingValues(horizontal = PersianTheme.spacing.size16),
         onClick = onItemClick,
         interactionSource = interactionSource
     )
@@ -68,7 +67,7 @@ internal fun PersianMenuItem(
     onItemClick: () -> Unit,
     modifier: Modifier = Modifier,
     colors: MenuItemColors = PersianMenuDefaults.itemColors(),
-    textStyle: TextStyle = MaterialTheme.typography.bodyLarge,
+    textStyle: TextStyle = PersianTheme.typography.bodyLarge,
     enabled: Boolean = true,
     isNegative: Boolean = false,
     leadingIconUrl: String? = null,
@@ -95,7 +94,7 @@ internal fun PersianMenuItem(
                 )
             }
         },
-        contentPadding = PaddingValues(horizontal = MaterialTheme.spacing.large),
+        contentPadding = PaddingValues(horizontal = PersianTheme.spacing.size16),
         onClick = onItemClick,
         interactionSource = interactionSource
     )

@@ -1,12 +1,11 @@
 package io.github.madmaximuus.persian.snackbar
 
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
 import io.github.madmaximuus.persian.buttons.PersianTertiaryButton
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.iconButtons.PersianIconButtonDefaults
 import io.github.madmaximuus.persian.iconButtons.PersianTertiaryIconButton
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
@@ -33,7 +32,7 @@ internal fun PersianSnackbarRightClose(
     PersianTertiaryIconButton(
         icon = customIcon ?: rememberVectorPainter(image = PersianSymbols.Default.XMark),
         colors = PersianIconButtonDefaults.tertiaryIconButtonColors(
-            contentColor = MaterialTheme.extendedColorScheme.onSurfaceVariant
+            contentColor = PersianTheme.colorScheme.onSurfaceVariant
         ),
         onClick = onClick
     )

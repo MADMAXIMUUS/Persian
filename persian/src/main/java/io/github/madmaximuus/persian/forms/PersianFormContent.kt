@@ -2,7 +2,6 @@ package io.github.madmaximuus.persian.forms
 
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
@@ -11,6 +10,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.VisualTransformation
 import io.github.madmaximuus.persian.codeInput.PersianFourDigitCodeInput
 import io.github.madmaximuus.persian.codeInput.PersianSixDigitCodeInput
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.inputs.InputColors
 import io.github.madmaximuus.persian.inputs.InputsTransformations
 import io.github.madmaximuus.persian.inputs.PersianInputsDefaults
@@ -91,7 +91,7 @@ internal fun PersianFormContentInput(
     keyboardActions: KeyboardActions,
     onTrailingIconClick: (() -> Unit)?
 ) {
-    val resolvedTextStyle = textStyle ?: MaterialTheme.typography.bodyLarge
+    val resolvedTextStyle = textStyle ?: PersianTheme.typography.bodyLarge
     val resolvedColors = colors ?: PersianInputsDefaults.outlineColors()
     PersianOutlineInput(
         value = value,
@@ -128,7 +128,7 @@ internal fun PersianFormContentTextArea(
     keyboardOptions: KeyboardOptions,
     keyboardActions: KeyboardActions
 ) {
-    val resolvedTextStyle = textStyle ?: MaterialTheme.typography.bodyLarge
+    val resolvedTextStyle = textStyle ?: PersianTheme.typography.bodyLarge
     val resolvedColors = colors ?: PersianTextAreaDefaults.outlineColors()
     PersianOutlineTextArea(
         value = value,

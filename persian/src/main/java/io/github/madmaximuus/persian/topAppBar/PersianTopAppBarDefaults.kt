@@ -1,12 +1,11 @@
 package io.github.madmaximuus.persian.topAppBar
 
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state38
 
 @Immutable
@@ -22,11 +21,11 @@ object PersianTopAppBarDefaults {
 
     @Composable
     fun colors(
-        background: Color = MaterialTheme.extendedColorScheme.surface,
-        scrolledBackgroundColor: Color = MaterialTheme.extendedColorScheme.surface2,
-        contentColor: Color = MaterialTheme.extendedColorScheme.onSurface,
-        iconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        disabledIconColor: Color = MaterialTheme.extendedColorScheme.onSurface.state38,
+        background: Color = PersianTheme.colorScheme.surface,
+        scrolledBackgroundColor: Color = PersianTheme.colorScheme.surface2,
+        contentColor: Color = PersianTheme.colorScheme.onSurface,
+        iconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
+        disabledIconColor: Color = PersianTheme.colorScheme.onSurface.state38,
     ) = remember(
         background,
         contentColor,

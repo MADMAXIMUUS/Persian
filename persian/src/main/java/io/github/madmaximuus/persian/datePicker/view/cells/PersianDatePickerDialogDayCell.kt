@@ -13,9 +13,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -27,8 +24,8 @@ import io.github.madmaximuus.persian.datePicker.view.PersianDatePickerViewDefaul
 import io.github.madmaximuus.persian.datePicker.view.util.DatePickerDayData
 import io.github.madmaximuus.persian.datePicker.view.util.equal
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.foundation.shape
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.surface.Surface
+import io.github.madmaximuus.persian.text.Text
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -46,7 +43,7 @@ internal fun PersianDatePickerDialogDayCell(
         }
     )
 
-    val defaultShape = MaterialTheme.shape.shape12
+    val defaultShape = PersianTheme.shapes.shape12
 
     val shape = when {
 
@@ -65,11 +62,11 @@ internal fun PersianDatePickerDialogDayCell(
     }
 
     val textStyle = when {
-        dateData.selected && !dateData.selectedBetween -> MaterialTheme.typography.bodyMedium
+        dateData.selected && !dateData.selectedBetween -> PersianTheme.typography.bodyMedium
 
-        today -> MaterialTheme.typography.labelLarge
+        today -> PersianTheme.typography.labelLarge
 
-        else -> MaterialTheme.typography.bodyMedium
+        else -> PersianTheme.typography.bodyMedium
     }
 
     val dayFormat = SimpleDateFormat("d", Locale.getDefault())
@@ -92,8 +89,8 @@ internal fun PersianDatePickerDialogDayCell(
                 }
             }
             .padding(
-                horizontal = MaterialTheme.spacing.size4,
-                vertical = MaterialTheme.spacing.size8
+                horizontal = PersianTheme.spacing.size4,
+                vertical = PersianTheme.spacing.size8
             ),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -110,9 +107,9 @@ internal fun PersianDatePickerDialogDayCell(
         Box(
             modifier = Modifier
                 .padding(
-                    top = MaterialTheme.spacing.size2,
-                    start = MaterialTheme.spacing.size8,
-                    end = MaterialTheme.spacing.size8
+                    top = PersianTheme.spacing.size2,
+                    start = PersianTheme.spacing.size8,
+                    end = PersianTheme.spacing.size8
                 )
                 .fillMaxWidth()
                 .height(2.dp)
@@ -122,7 +119,7 @@ internal fun PersianDatePickerDialogDayCell(
                         between = dateData.selectedBetween,
                         today = today
                     ).value,
-                    shape = MaterialTheme.shape.shape4
+                    shape = PersianTheme.shapes.shape4
                 )
         )
     }

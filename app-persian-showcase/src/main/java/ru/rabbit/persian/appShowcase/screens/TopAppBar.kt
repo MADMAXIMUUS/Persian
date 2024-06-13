@@ -8,9 +8,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -19,8 +16,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.radioButtons.PersianRadioButton
+import io.github.madmaximuus.persian.scafold.Scaffold
+import io.github.madmaximuus.persian.text.Text
 import io.github.madmaximuus.persian.topAppBar.ActionItem
 import io.github.madmaximuus.persian.topAppBar.PersianTopAppBar
 import io.github.madmaximuus.persian.topAppBar.PersianTopAppBarLeft
@@ -80,18 +79,18 @@ object TopAppBar : Screen {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(
-                            top = MaterialTheme.spacing.small,
-                            bottom = MaterialTheme.spacing.small,
-                            start = MaterialTheme.spacing.medium,
-                            end = MaterialTheme.spacing.medium
+                            top = PersianTheme.spacing.size8,
+                            bottom = PersianTheme.spacing.size8,
+                            start = PersianTheme.spacing.size12,
+                            end = PersianTheme.spacing.size12
                         ),
                 ) {
                     Text(
                         text = "Left",
-                        style = MaterialTheme.typography.titleMedium,
-                        color = MaterialTheme.colorScheme.onSurface
+                        style = PersianTheme.typography.titleMedium,
+                        color = PersianTheme.colorScheme.onSurface
                     )
-                    Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraSmall))
+                    Spacer(modifier = Modifier.height(PersianTheme.spacing.size4))
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -153,18 +152,18 @@ object TopAppBar : Screen {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(
-                            top = MaterialTheme.spacing.small,
-                            bottom = MaterialTheme.spacing.small,
-                            start = MaterialTheme.spacing.medium,
-                            end = MaterialTheme.spacing.medium
+                            top = PersianTheme.spacing.size8,
+                            bottom = PersianTheme.spacing.size8,
+                            start = PersianTheme.spacing.size12,
+                            end = PersianTheme.spacing.size12
                         ),
                 ) {
                     Text(
                         text = "Right",
-                        style = MaterialTheme.typography.titleMedium,
-                        color = MaterialTheme.colorScheme.onSurface
+                        style = PersianTheme.typography.titleMedium,
+                        color = PersianTheme.colorScheme.onSurface
                     )
-                    Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraSmall))
+                    Spacer(modifier = Modifier.height(PersianTheme.spacing.size4))
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()

@@ -14,7 +14,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.window.PopupProperties
-import io.github.madmaximuus.persian.foundation.shape
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import kotlinx.coroutines.flow.filter
 
 @Composable
@@ -38,10 +38,10 @@ fun PersianDropdownMenu(
 
     Box {
         anchor()
-        MaterialTheme(shapes = MaterialTheme.shapes.copy(extraSmall = MaterialTheme.shape.shape16)) {
+        MaterialTheme(shapes = MaterialTheme.shapes.copy(extraSmall = PersianTheme.shapes.shape16)) {
             DropdownMenu(
                 modifier = modifier
-                    .background(colors.backgroundColor, MaterialTheme.shape.shape16),
+                    .background(colors.backgroundColor, PersianTheme.shapes.shape16),
                 expanded = expanded.value,
                 offset = offset,
                 onDismissRequest = {

@@ -1,22 +1,20 @@
 package io.github.madmaximuus.persian.banners
 
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
-import io.github.madmaximuus.persian.foundation.extendedColorScheme
-import io.github.madmaximuus.persian.foundation.shape
+import io.github.madmaximuus.persian.foundation.PersianTheme
 
 object PersianBannerDefaults {
     @Composable
     fun colors(
-        background: Color = MaterialTheme.extendedColorScheme.tertiaryContainer,
-        leftIconColor: Color = MaterialTheme.extendedColorScheme.onTertiaryContainer,
-        rightIconColor: Color = MaterialTheme.extendedColorScheme.onSurfaceVariant,
-        titleColor: Color = MaterialTheme.extendedColorScheme.onTertiaryContainer,
-        body: Color = MaterialTheme.extendedColorScheme.tertiary
+        background: Color = PersianTheme.colorScheme.tertiaryContainer,
+        leftIconColor: Color = PersianTheme.colorScheme.onTertiaryContainer,
+        rightIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
+        titleColor: Color = PersianTheme.colorScheme.onTertiaryContainer,
+        body: Color = PersianTheme.colorScheme.tertiary
     ) = BannerColors(
         background = background,
         leftIconColor = leftIconColor,
@@ -27,9 +25,9 @@ object PersianBannerDefaults {
 
     @Composable
     fun sizes(
-        cornerRadius: Shape = MaterialTheme.shape.shape14,
-        titleStyle: TextStyle = MaterialTheme.typography.titleMedium,
-        descriptionStyle: TextStyle = MaterialTheme.typography.bodyMedium
+        cornerRadius: Shape = PersianTheme.shapes.shape14,
+        titleStyle: TextStyle = PersianTheme.typography.titleMedium,
+        descriptionStyle: TextStyle = PersianTheme.typography.bodyMedium
     ) = BannerSizes(
         cornerRadius = cornerRadius,
         titleStyle = titleStyle,

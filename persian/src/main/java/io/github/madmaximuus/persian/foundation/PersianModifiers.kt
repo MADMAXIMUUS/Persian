@@ -6,7 +6,6 @@ import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -83,9 +82,9 @@ fun Modifier.shimmer(
 internal fun shimmerBrush(showShimmer: Boolean, size: IntSize): Brush {
     return if (showShimmer) {
         val shimmerColors = listOf(
-            MaterialTheme.extendedColorScheme.surface2,
-            MaterialTheme.extendedColorScheme.surface5,
-            MaterialTheme.extendedColorScheme.surface2,
+            PersianTheme.colorScheme.surface2,
+            PersianTheme.colorScheme.surface5,
+            PersianTheme.colorScheme.surface2,
         )
         val shimmerWidthPercentage = 0.8
 

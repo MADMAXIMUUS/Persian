@@ -12,8 +12,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.selection.LocalTextSelectionColors
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
@@ -33,7 +31,7 @@ import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.codeInput.CellColors
 import io.github.madmaximuus.persian.codeInput.PersianCodeInputDefaults
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.foundation.shape
+import io.github.madmaximuus.persian.surface.Surface
 
 @Composable
 internal fun PersianCodeInputCell(
@@ -46,7 +44,7 @@ internal fun PersianCodeInputCell(
     isPassword: Boolean = false,
     colors: CellColors = PersianCodeInputDefaults.cellColors(),
     focusRequester: FocusRequester = FocusRequester(),
-    textStyle: TextStyle = MaterialTheme.typography.bodyLarge,
+    textStyle: TextStyle = PersianTheme.typography.bodyLarge,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
 ) {
     val focused by interactionSource.collectIsFocusedAsState()
@@ -107,11 +105,11 @@ internal fun PersianCodeInputCell(
                             .border(
                                 borderThickness,
                                 borderColor,
-                                MaterialTheme.shape.shape16
+                                PersianTheme.shapes.shape16
                             )
                             .background(
                                 containerColor,
-                                MaterialTheme.shape.shape16
+                                PersianTheme.shapes.shape16
                             )
                     },
                     contentAlignment = Alignment.Center

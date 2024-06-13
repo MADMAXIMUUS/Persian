@@ -1,14 +1,14 @@
 package io.github.madmaximuus.persian.topAppBar
 
-import androidx.compose.material3.LocalContentColor
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.TextStyle
+import io.github.madmaximuus.persian.foundation.LocalContentColor
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.iconBox.PersianIconBox
+import io.github.madmaximuus.persian.text.Text
 
 sealed class PersianTopAppBarMiddle {
 
@@ -26,7 +26,7 @@ sealed class PersianTopAppBarMiddle {
 internal fun PersianTopAppBarMiddleTitle(
     modifier: Modifier = Modifier,
     text: String,
-    textStyle: TextStyle = MaterialTheme.typography.titleLarge
+    textStyle: TextStyle = PersianTheme.typography.titleLarge
 ) {
     val colors = LocalPersianTopAppBarColors.current
     Text(

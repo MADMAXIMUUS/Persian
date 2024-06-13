@@ -7,16 +7,15 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarVisuals
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.surface.Surface
+import io.github.madmaximuus.persian.text.Text
 
 data class PersianSnackbarVisuals(
     override val message: String,
@@ -37,7 +36,7 @@ fun PersianSnackbar(
     right: PersianSnackbarRight? = null
 ) {
 
-    val spacingLarge = MaterialTheme.spacing.large
+    val spacingLarge = PersianTheme.spacing.size16
 
     Surface(
         modifier = Modifier
@@ -87,8 +86,8 @@ fun PersianSnackbar(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(
-                                horizontal = MaterialTheme.spacing.medium,
-                                vertical = MaterialTheme.spacing.medium
+                                horizontal = PersianTheme.spacing.size12,
+                                vertical = PersianTheme.spacing.size12
                             ),
                         text = text,
                         style = sizes.textStyle,

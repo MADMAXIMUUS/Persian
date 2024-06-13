@@ -1,7 +1,6 @@
 package io.github.madmaximuus.persian.topAppBar
 
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
@@ -9,7 +8,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.unit.DpOffset
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.iconButtons.PersianIconButtonDefaults
 import io.github.madmaximuus.persian.iconButtons.PersianTertiaryIconButton
 import io.github.madmaximuus.persian.menus.PersianDropdownMenu
@@ -29,7 +28,7 @@ internal fun OverflowMenu(
         expanded = expanded,
         modifier = modifier,
         interactionSource = interactionSource,
-        offset = DpOffset(MaterialTheme.spacing.medium, MaterialTheme.spacing.small),
+        offset = DpOffset(PersianTheme.spacing.size12, PersianTheme.spacing.size8),
         onDismissRequest = {
             onDismissRequest?.let { it() }
         },
