@@ -27,7 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import io.github.madmaximuus.persian.foundation.LocalContentColor
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.iconBox.PersianIconBox
+import io.github.madmaximuus.persian.iconBox.Icon
 import io.github.madmaximuus.persian.text.Text
 import io.github.madmaximuus.persianSymbols.chevronRight.base.ChevronRight
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
@@ -73,8 +73,8 @@ fun DashboardScreen(
                                 .weight(1f)
                         )
                         CompositionLocalProvider(LocalContentColor provides PersianTheme.colorScheme.onSurfaceVariant) {
-                            PersianIconBox(
-                                icon = rememberVectorPainter(image = PersianSymbols.Default.ChevronRight),
+                            Icon(
+                                painter = rememberVectorPainter(image = PersianSymbols.Default.ChevronRight),
                                 contentDescription = "",
                             )
                         }

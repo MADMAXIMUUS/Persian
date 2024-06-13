@@ -16,8 +16,8 @@ import io.github.madmaximuus.persian.avatarsAndImages.PersianImage
 import io.github.madmaximuus.persian.avatarsAndImages.PersianImagesDefaults
 import io.github.madmaximuus.persian.foundation.LocalContentColor
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.iconBox.PersianIconBox
-import io.github.madmaximuus.persian.iconBox.PersianIconBoxDefaults
+import io.github.madmaximuus.persian.iconBox.Icon
+import io.github.madmaximuus.persian.iconBox.IconDefaults
 import io.github.madmaximuus.persian.progressBars.PersianCircularProgressBar
 import io.github.madmaximuus.persian.progressBars.PersianProgressBarDefaults
 
@@ -55,7 +55,7 @@ internal fun PersianSnackbarLeftIcon(
         CompositionLocalProvider(
             LocalContentColor provides color
         ) {
-            PersianIconBox(
+            Icon(
                 modifier = Modifier
                     .padding(
                         start = PersianTheme.spacing.size16,
@@ -63,8 +63,8 @@ internal fun PersianSnackbarLeftIcon(
                         top = PersianTheme.spacing.size12,
                         bottom = PersianTheme.spacing.size12
                     ),
-                icon = icon,
-                size = PersianIconBoxDefaults.size28(),
+                painter = icon,
+                size = IconDefaults.size28(),
                 contentDescription = contentDescription
             )
         }

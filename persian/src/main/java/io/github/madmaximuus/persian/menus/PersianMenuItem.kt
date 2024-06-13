@@ -16,7 +16,7 @@ import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import io.github.madmaximuus.persian.foundation.LocalContentColor
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.iconBox.PersianIconBox
+import io.github.madmaximuus.persian.iconBox.Icon
 import io.github.madmaximuus.persian.text.Text
 
 @Composable
@@ -50,7 +50,7 @@ internal fun PersianMenuItem(
                         isNegative = isNegative
                     ).value
                 ) {
-                    PersianIconBox(icon = it)
+                    Icon(painter = it)
                 }
             }
         },

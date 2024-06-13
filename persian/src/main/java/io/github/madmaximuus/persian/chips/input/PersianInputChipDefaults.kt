@@ -13,8 +13,8 @@ import io.github.madmaximuus.persian.chips.founfation.SelectableChipSizes
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state38
-import io.github.madmaximuus.persian.iconBox.IconBoxSize
-import io.github.madmaximuus.persian.iconBox.PersianIconBoxDefaults
+import io.github.madmaximuus.persian.iconBox.IconSize
+import io.github.madmaximuus.persian.iconBox.IconDefaults
 
 object PersianInputChipDefaults {
 
@@ -59,8 +59,8 @@ object PersianInputChipDefaults {
 
     @Composable
     fun chipSizes(
-        trailingIconSize: IconBoxSize = PersianIconBoxDefaults.size18(),
-        leadingIconSize: IconBoxSize = PersianIconBoxDefaults.size18(),
+        trailingIconSize: IconSize = IconDefaults.size18(),
+        leadingIconSize: IconSize = IconDefaults.size18(),
         labelStyle: TextStyle = PersianTheme.typography.labelLarge,
         borderWidth: Dp = 1.dp,
         selectedBorderWith: Dp = 0.dp,

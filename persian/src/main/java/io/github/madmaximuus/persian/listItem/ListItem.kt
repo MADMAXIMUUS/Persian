@@ -17,7 +17,7 @@ import io.github.madmaximuus.persian.avatarsAndImages.PersianAvatarsDefaults
 import io.github.madmaximuus.persian.avatarsAndImages.PersianImagesDefaults
 import io.github.madmaximuus.persian.dividers.PersianInsetHorizontalDivider
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.iconBox.PersianIconBoxDefaults
+import io.github.madmaximuus.persian.iconBox.IconDefaults
 import io.github.madmaximuus.persian.snackbar.PersianSnackbarDefaults
 import io.github.madmaximuus.persian.snackbar.SnackbarColors
 import io.github.madmaximuus.persian.snackbar.SnackbarSizes
@@ -133,9 +133,9 @@ fun PersianListCell(
 
                 is PersianListCellLeft.Icon -> {
                     val size = when {
-                        middle.subhead != null && middle.body != null -> PersianIconBoxDefaults.size40()
-                        middle.subhead != null || middle.body != null -> PersianIconBoxDefaults.size32()
-                        else -> PersianIconBoxDefaults.size24()
+                        middle.subhead != null && middle.body != null -> IconDefaults.size40()
+                        middle.subhead != null || middle.body != null -> IconDefaults.size32()
+                        else -> IconDefaults.size24()
                     }
                     val padding = when {
                         middle.subhead != null && middle.body != null -> PaddingValues(

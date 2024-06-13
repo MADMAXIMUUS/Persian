@@ -12,8 +12,8 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.LocalContentColor
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.iconBox.PersianIconBox
-import io.github.madmaximuus.persian.iconBox.PersianIconBoxDefaults
+import io.github.madmaximuus.persian.iconBox.Icon
+import io.github.madmaximuus.persian.iconBox.IconDefaults
 import io.github.madmaximuus.persianSymbols.chevronRight.base.ChevronRight
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.xmark.base.XMark
@@ -39,14 +39,14 @@ internal fun PersianBannerRightClose(
     onClick: () -> Unit
 ) {
     CompositionLocalProvider(LocalContentColor provides iconColor) {
-        PersianIconBox(
+        Icon(
             modifier = modifier
                 .padding(0.dp)
                 .clip(PersianTheme.shapes.shape4)
                 .clickable { onClick() },
-            icon = icon ?: rememberVectorPainter(image = PersianSymbols.Default.XMark),
+            painter = icon ?: rememberVectorPainter(image = PersianSymbols.Default.XMark),
             contentDescription = contentDescription,
-            size = PersianIconBoxDefaults.size24()
+            size = IconDefaults.size24()
         )
     }
 }
@@ -60,14 +60,13 @@ internal fun PersianBannerRightOpen(
     onClick: () -> Unit
 ) {
     CompositionLocalProvider(LocalContentColor provides iconColor) {
-        PersianIconBox(
+        Icon(
             modifier = modifier
                 .padding(0.dp)
                 .clip(PersianTheme.shapes.shape4)
                 .clickable { onClick() },
-            icon = icon ?: rememberVectorPainter(image = PersianSymbols.Default.ChevronRight),
-            contentDescription = contentDescription,
-            size = PersianIconBoxDefaults.size24()
+            painter = icon ?: rememberVectorPainter(image = PersianSymbols.Default.ChevronRight),
+            contentDescription = contentDescription
         )
     }
 }

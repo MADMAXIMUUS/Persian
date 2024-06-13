@@ -12,15 +12,15 @@ import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state38
-import io.github.madmaximuus.persian.iconBox.IconBoxSize
-import io.github.madmaximuus.persian.iconBox.PersianIconBoxDefaults
+import io.github.madmaximuus.persian.iconBox.IconSize
+import io.github.madmaximuus.persian.iconBox.IconDefaults
 
 object PersianIconButtonDefaults {
 
     @Composable
     fun smallSizes(
         size: Dp = 36.dp,
-        iconSize: IconBoxSize = PersianIconBoxDefaults.size20(),
+        iconSize: IconSize = IconDefaults.size20(),
         shape: Shape = PersianTheme.shapes.shape12,
     ): IconButtonSizes = remember(
         size,
@@ -37,7 +37,7 @@ object PersianIconButtonDefaults {
     @Composable
     fun mediumSizes(
         size: Dp = 44.dp,
-        iconSize: IconBoxSize = PersianIconBoxDefaults.size24(),
+        iconSize: IconSize = IconDefaults.size24(),
         shape: Shape = PersianTheme.shapes.shape14,
     ): IconButtonSizes = remember(
         size,
@@ -54,7 +54,7 @@ object PersianIconButtonDefaults {
     @Composable
     fun largeSizes(
         size: Dp = 52.dp,
-        iconSize: IconBoxSize = PersianIconBoxDefaults.size28(),
+        iconSize: IconSize = IconDefaults.size28(),
         shape: Shape = PersianTheme.shapes.shape16
     ): IconButtonSizes = remember(
         size,
@@ -192,7 +192,7 @@ object PersianIconButtonDefaults {
 @Immutable
 class IconButtonSizes internal constructor(
     internal val size: Dp,
-    internal val iconSize: IconBoxSize,
+    internal val iconSize: IconSize,
     internal val shape: Shape,
 )
 

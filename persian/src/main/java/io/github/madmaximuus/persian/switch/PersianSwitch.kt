@@ -7,8 +7,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
-import io.github.madmaximuus.persian.iconBox.PersianIconBox
-import io.github.madmaximuus.persian.iconBox.PersianIconBoxDefaults
+import io.github.madmaximuus.persian.iconBox.Icon
+import io.github.madmaximuus.persian.iconBox.IconDefaults
 
 @Composable
 fun PersianSwitch(
@@ -26,18 +26,18 @@ fun PersianSwitch(
         checkedIcon == null && uncheckedIcon == null -> null
         checkedIcon != null && checked -> {
             {
-                PersianIconBox(
-                    icon = checkedIcon,
-                    size = PersianIconBoxDefaults.size18()
+                Icon(
+                    painter = checkedIcon,
+                    size = IconDefaults.size18()
                 )
             }
         }
 
         uncheckedIcon != null && !checked -> {
             {
-                PersianIconBox(
-                    icon = uncheckedIcon,
-                    size = PersianIconBoxDefaults.size18()
+                Icon(
+                    painter = uncheckedIcon,
+                    size = IconDefaults.size18()
                 )
             }
         }

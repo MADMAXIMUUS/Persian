@@ -13,7 +13,7 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.iconBox.PersianIconBox
+import io.github.madmaximuus.persian.iconBox.Icon
 import io.github.madmaximuus.persian.surface.Surface
 
 @Composable
@@ -42,13 +42,13 @@ fun PersianPrimaryToggleIconButton(
         contentAlignment = Alignment.Center
     ) {
         if (checked) {
-            PersianIconBox(
-                icon = checkedIcon,
+            Icon(
+                painter = checkedIcon,
                 size = sizes.iconSize
             )
         } else {
-            PersianIconBox(
-                icon = icon,
+            Icon(
+                painter = icon,
                 size = sizes.iconSize
             )
         }
@@ -81,13 +81,13 @@ fun PersianSecondaryToggleIconButton(
         contentAlignment = Alignment.Center
     ) {
         if (checked) {
-            PersianIconBox(
-                icon = checkedIcon,
+            Icon(
+                painter = checkedIcon,
                 size = sizes.iconSize
             )
         } else {
-            PersianIconBox(
-                icon = icon,
+            Icon(
+                painter = icon,
                 size = sizes.iconSize
             )
         }
@@ -120,13 +120,13 @@ fun PersianTertiaryToggleIconButton(
         contentAlignment = Alignment.Center
     ) {
         if (checked) {
-            PersianIconBox(
-                icon = checkedIcon,
+            Icon(
+                painter = checkedIcon,
                 size = sizes.iconSize
             )
         } else {
-            PersianIconBox(
-                icon = icon,
+            Icon(
+                painter = icon,
                 size = sizes.iconSize
             )
         }
@@ -163,13 +163,13 @@ fun PersianOutlinedToggleIconButton(
         contentAlignment = Alignment.Center
     ) {
         if (checked) {
-            PersianIconBox(
-                icon = checkedIcon,
+            Icon(
+                painter = checkedIcon,
                 size = sizes.iconSize
             )
         } else {
-            PersianIconBox(
-                icon = icon,
+            Icon(
+                painter = icon,
                 size = sizes.iconSize
             )
         }

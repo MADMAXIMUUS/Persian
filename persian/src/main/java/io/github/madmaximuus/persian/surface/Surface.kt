@@ -37,7 +37,7 @@ import io.github.madmaximuus.persian.foundation.LocalContentColor
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.contentColorFor
 import io.github.madmaximuus.persian.foundation.minimumInteractiveComponentSize
-import io.github.madmaximuus.persian.iconBox.PersianIconBox
+import io.github.madmaximuus.persian.iconBox.Icon
 import io.github.madmaximuus.persian.text.Text
 import kotlin.math.ln
 
@@ -61,7 +61,7 @@ import kotlin.math.ln
  * ancestors, by summing the elevation of all previous Surfaces.
  *
  * 4) Content color: Surface uses [contentColor] to specify a preferred color for the content of
- * this surface - this is used by the [Text] and [PersianIconBox] components as a default color.
+ * this surface - this is used by the [Text] and [Icon] components as a default color.
  *
  * If no [contentColor] is set, this surface will try and match its background color to a color
  * defined in the theme [ColorScheme], and return the corresponding content color. For example, if
@@ -148,7 +148,7 @@ fun Surface(
  * its ancestors, by summing the elevation of all previous Surfaces.
  *
  * 4) Content color: Surface uses [contentColor] to specify a preferred color for the content of
- * this surface - this is used by the [Text] and [PersianIconBox] components as a default color. If no
+ * this surface - this is used by the [Text] and [Icon] components as a default color. If no
  * [contentColor] is set, this surface will try and match its background color to a color defined in
  * the theme [ColorScheme], and return the corresponding content color. For example, if the [color]
  * of this surface is [ColorScheme.surface], [contentColor] will be set to [ColorScheme.onSurface].
@@ -254,7 +254,7 @@ fun Surface(
  * its ancestors, by summing the elevation of all previous Surfaces.
  *
  * 4) Content color: Surface uses [contentColor] to specify a preferred color for the content of
- * this surface - this is used by the [Text] and [PersianIconBox] components as a default color. If no
+ * this surface - this is used by the [Text] and [Icon] components as a default color. If no
  * [contentColor] is set, this surface will try and match its background color to a color defined in
  * the theme [ColorScheme], and return the corresponding content color. For example, if the [color]
  * of this surface is [ColorScheme.surface], [contentColor] will be set to [ColorScheme.onSurface].
@@ -362,7 +362,7 @@ fun Surface(
  * its ancestors, by summing the elevation of all previous Surfaces.
  *
  * 4) Content color: Surface uses [contentColor] to specify a preferred color for the content of
- * this surface - this is used by the [Text] and [PersianIconBox] components as a default color. If no
+ * this surface - this is used by the [Text] and [Icon] components as a default color. If no
  * [contentColor] is set, this surface will try and match its background color to a color defined in
  * the theme [ColorScheme], and return the corresponding content color. For example, if the [color]
  * of this surface is [ColorScheme.surface], [contentColor] will be set to [ColorScheme.onSurface].

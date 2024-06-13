@@ -11,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
-import io.github.madmaximuus.persian.iconBox.PersianIconBox
+import io.github.madmaximuus.persian.iconBox.Icon
 
 @Composable
 fun PersianSmallFab(
@@ -31,8 +31,8 @@ fun PersianSmallFab(
         interactionSource = interactionSource,
         onClick = onClick
     ) {
-        PersianIconBox(
-            icon = icon,
+        Icon(
+            painter = icon,
             size = sizes.iconSize
         )
     }
@@ -59,8 +59,8 @@ fun PersianMediumFab(
             interactionSource = interactionSource,
             onClick = onClick,
             content = {
-                PersianIconBox(
-                    icon = icon,
+                Icon(
+                    painter = icon,
                     size = sizes.iconSize
                 )
             }
@@ -76,8 +76,8 @@ fun PersianMediumFab(
             interactionSource = interactionSource,
             onClick = onClick,
             icon = {
-                PersianIconBox(
-                    icon = icon,
+                Icon(
+                    painter = icon,
                     size = sizes.iconSize
                 )
             },

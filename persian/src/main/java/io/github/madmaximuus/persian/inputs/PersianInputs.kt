@@ -42,7 +42,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.LocalContentColor
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.iconBox.PersianIconBox
+import io.github.madmaximuus.persian.iconBox.Icon
 import io.github.madmaximuus.persian.text.Text
 
 @Composable
@@ -130,8 +130,8 @@ fun PersianOutlineInput(
                                 interactionSource = interactionSource
                             ).value
                         ) {
-                            PersianIconBox(
-                                icon = icon,
+                            Icon(
+                                painter = icon,
                             )
                         }
                     }
@@ -183,7 +183,7 @@ fun PersianOutlineInput(
                                 interactionSource = interactionSource
                             ).value
                         ) {
-                            PersianIconBox(
+                            Icon(
                                 modifier = Modifier
                                     .clip(PersianTheme.shapes.shape8)
                                     .clickable(
@@ -193,7 +193,7 @@ fun PersianOutlineInput(
                                         },
                                         role = Role.Button
                                     ),
-                                icon = icon
+                                painter = icon
                             )
                         }
                     }
@@ -210,7 +210,7 @@ fun PersianOutlineInput(
                                 isError = isError,
                             ).value
                         ) {
-                            PersianIconBox(icon = icon)
+                            Icon(painter = icon)
                         }
 
                     }
@@ -296,8 +296,8 @@ fun PersianPlainInput(
                                 interactionSource = interactionSource
                             ).value
                         ) {
-                            PersianIconBox(
-                                icon = icon,
+                            Icon(
+                                painter = icon,
                             )
                         }
                     }
@@ -349,7 +349,7 @@ fun PersianPlainInput(
                                 interactionSource = interactionSource
                             ).value
                         ) {
-                            PersianIconBox(
+                            Icon(
                                 modifier = Modifier
                                     .clip(PersianTheme.shapes.shape8)
                                     .clickable(
@@ -359,7 +359,7 @@ fun PersianPlainInput(
                                         },
                                         role = Role.Button
                                     ),
-                                icon = icon
+                                painter = icon
                             )
                         }
                     }
@@ -376,7 +376,7 @@ fun PersianPlainInput(
                                 isError = isError,
                             ).value
                         ) {
-                            PersianIconBox(icon = icon)
+                            Icon(painter = icon)
                         }
 
                     }

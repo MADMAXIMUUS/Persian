@@ -7,7 +7,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.TextStyle
 import io.github.madmaximuus.persian.foundation.LocalContentColor
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.iconBox.PersianIconBox
+import io.github.madmaximuus.persian.iconBox.Icon
 import io.github.madmaximuus.persian.text.Text
 
 sealed class PersianTopAppBarMiddle {
@@ -47,9 +47,9 @@ internal fun PersianTopAppBarMiddleIcon(
     CompositionLocalProvider(
         LocalContentColor provides colors.contentColor
     ) {
-        PersianIconBox(
+        Icon(
             modifier = modifier,
-            icon = icon
+            painter = icon
         )
     }
 }

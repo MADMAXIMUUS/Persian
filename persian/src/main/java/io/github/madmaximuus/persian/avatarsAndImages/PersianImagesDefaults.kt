@@ -14,16 +14,16 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state08
 import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state38
-import io.github.madmaximuus.persian.iconBox.IconBoxSize
-import io.github.madmaximuus.persian.iconBox.PersianIconBoxDefaults
+import io.github.madmaximuus.persian.iconBox.IconSize
+import io.github.madmaximuus.persian.iconBox.IconDefaults
 
 object PersianImagesDefaults {
 
     @Composable
     fun size96(
         boxSizes: Dp = 96.dp,
-        placeholderIconSize: IconBoxSize = PersianIconBoxDefaults.size48(),
-        overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size32(),
+        placeholderIconSize: IconSize = IconDefaults.size48(),
+        overlayIconSize: IconSize = IconDefaults.size32(),
         smallShape: Shape = RoundedCornerShape(8.dp),
         mediumShape: Shape = RoundedCornerShape(12.dp),
         largeShape: Shape = RoundedCornerShape(16.dp),
@@ -45,8 +45,8 @@ object PersianImagesDefaults {
     @Composable
     fun size88(
         boxSizes: Dp = 88.dp,
-        placeholderIconSize: IconBoxSize = PersianIconBoxDefaults.size48(),
-        overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size32(),
+        placeholderIconSize: IconSize = IconDefaults.size48(),
+        overlayIconSize: IconSize = IconDefaults.size32(),
         smallShape: Shape = RoundedCornerShape(8.dp),
         mediumShape: Shape = RoundedCornerShape(12.dp),
         largeShape: Shape = RoundedCornerShape(16.dp),
@@ -68,8 +68,8 @@ object PersianImagesDefaults {
     @Composable
     fun size80(
         boxSizes: Dp = 80.dp,
-        placeholderIconSize: IconBoxSize = PersianIconBoxDefaults.size48(),
-        overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size32(),
+        placeholderIconSize: IconSize = IconDefaults.size48(),
+        overlayIconSize: IconSize = IconDefaults.size32(),
         smallShape: Shape = RoundedCornerShape(8.dp),
         mediumShape: Shape = RoundedCornerShape(12.dp),
         largeShape: Shape = RoundedCornerShape(16.dp),
@@ -91,8 +91,8 @@ object PersianImagesDefaults {
     @Composable
     fun size72(
         boxSizes: Dp = 72.dp,
-        placeholderIconSize: IconBoxSize = PersianIconBoxDefaults.size40(),
-        overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size28(),
+        placeholderIconSize: IconSize = IconDefaults.size40(),
+        overlayIconSize: IconSize = IconDefaults.size28(),
         smallShape: Shape = RoundedCornerShape(6.dp),
         mediumShape: Shape = RoundedCornerShape(10.dp),
         largeShape: Shape = RoundedCornerShape(14.dp),
@@ -114,8 +114,8 @@ object PersianImagesDefaults {
     @Composable
     fun size64(
         boxSizes: Dp = 64.dp,
-        placeholderIconSize: IconBoxSize = PersianIconBoxDefaults.size40(),
-        overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size28(),
+        placeholderIconSize: IconSize = IconDefaults.size40(),
+        overlayIconSize: IconSize = IconDefaults.size28(),
         smallShape: Shape = RoundedCornerShape(6.dp),
         mediumShape: Shape = RoundedCornerShape(10.dp),
         largeShape: Shape = RoundedCornerShape(14.dp),
@@ -137,8 +137,8 @@ object PersianImagesDefaults {
     @Composable
     fun size56(
         boxSizes: Dp = 56.dp,
-        placeholderIconSize: IconBoxSize = PersianIconBoxDefaults.size32(),
-        overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size28(),
+        placeholderIconSize: IconSize = IconDefaults.size32(),
+        overlayIconSize: IconSize = IconDefaults.size28(),
         smallShape: Shape = RoundedCornerShape(6.dp),
         mediumShape: Shape = RoundedCornerShape(10.dp),
         largeShape: Shape = RoundedCornerShape(14.dp),
@@ -160,8 +160,8 @@ object PersianImagesDefaults {
     @Composable
     fun size48(
         boxSizes: Dp = 48.dp,
-        placeholderIconSize: IconBoxSize = PersianIconBoxDefaults.size32(),
-        overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size24(),
+        placeholderIconSize: IconSize = IconDefaults.size32(),
+        overlayIconSize: IconSize = IconDefaults.size24(),
         smallShape: Shape = RoundedCornerShape(4.dp),
         mediumShape: Shape = RoundedCornerShape(8.dp),
         largeShape: Shape = RoundedCornerShape(12.dp),
@@ -183,8 +183,8 @@ object PersianImagesDefaults {
     @Composable
     fun size44(
         boxSizes: Dp = 44.dp,
-        placeholderIconSize: IconBoxSize = PersianIconBoxDefaults.size28(),
-        overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size24(),
+        placeholderIconSize: IconSize = IconDefaults.size28(),
+        overlayIconSize: IconSize = IconDefaults.size24(),
         smallShape: Shape = RoundedCornerShape(4.dp),
         mediumShape: Shape = RoundedCornerShape(8.dp),
         largeShape: Shape = RoundedCornerShape(12.dp),
@@ -206,8 +206,8 @@ object PersianImagesDefaults {
     @Composable
     fun size40(
         boxSizes: Dp = 40.dp,
-        placeholderIconSize: IconBoxSize = PersianIconBoxDefaults.size24(),
-        overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size20(),
+        placeholderIconSize: IconSize = IconDefaults.size24(),
+        overlayIconSize: IconSize = IconDefaults.size20(),
         smallShape: Shape = RoundedCornerShape(4.dp),
         mediumShape: Shape = RoundedCornerShape(8.dp),
         largeShape: Shape = RoundedCornerShape(12.dp),
@@ -229,8 +229,8 @@ object PersianImagesDefaults {
     @Composable
     fun size36(
         boxSizes: Dp = 40.dp,
-        placeholderIconSize: IconBoxSize = PersianIconBoxDefaults.size24(),
-        overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size20(),
+        placeholderIconSize: IconSize = IconDefaults.size24(),
+        overlayIconSize: IconSize = IconDefaults.size20(),
         smallShape: Shape = RoundedCornerShape(4.dp),
         mediumShape: Shape = RoundedCornerShape(8.dp),
         largeShape: Shape = RoundedCornerShape(12.dp),
@@ -252,8 +252,8 @@ object PersianImagesDefaults {
     @Composable
     fun size32(
         boxSizes: Dp = 32.dp,
-        placeholderIconSize: IconBoxSize = PersianIconBoxDefaults.size20(),
-        overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size20(),
+        placeholderIconSize: IconSize = IconDefaults.size20(),
+        overlayIconSize: IconSize = IconDefaults.size20(),
         smallShape: Shape = RoundedCornerShape(3.dp),
         mediumShape: Shape = RoundedCornerShape(7.dp),
         largeShape: Shape = RoundedCornerShape(11.dp),
@@ -275,8 +275,8 @@ object PersianImagesDefaults {
     @Composable
     fun size28(
         boxSizes: Dp = 28.dp,
-        placeholderIconSize: IconBoxSize = PersianIconBoxDefaults.size18(),
-        overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size20(),
+        placeholderIconSize: IconSize = IconDefaults.size18(),
+        overlayIconSize: IconSize = IconDefaults.size20(),
         smallShape: Shape = RoundedCornerShape(3.dp),
         mediumShape: Shape = RoundedCornerShape(7.dp),
         largeShape: Shape = RoundedCornerShape(11.dp),
@@ -298,8 +298,8 @@ object PersianImagesDefaults {
     @Composable
     fun size24(
         boxSizes: Dp = 24.dp,
-        placeholderIconSize: IconBoxSize = PersianIconBoxDefaults.size16(),
-        overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size18(),
+        placeholderIconSize: IconSize = IconDefaults.size16(),
+        overlayIconSize: IconSize = IconDefaults.size18(),
         smallShape: Shape = RoundedCornerShape(3.dp),
         mediumShape: Shape = RoundedCornerShape(7.dp),
         largeShape: Shape = RoundedCornerShape(9.dp),
@@ -321,7 +321,7 @@ object PersianImagesDefaults {
     @Composable
     fun size20(
         boxSizes: Dp = 20.dp,
-        placeholderIconSize: IconBoxSize = PersianIconBoxDefaults.size16(),
+        placeholderIconSize: IconSize = IconDefaults.size16(),
         smallShape: Shape = RoundedCornerShape(2.dp),
         mediumShape: Shape = RoundedCornerShape(6.dp),
         largeShape: Shape = RoundedCornerShape(8.dp)
@@ -340,7 +340,7 @@ object PersianImagesDefaults {
     @Composable
     fun size16(
         boxSizes: Dp = 16.dp,
-        placeholderIconSize: IconBoxSize = PersianIconBoxDefaults.size12(),
+        placeholderIconSize: IconSize = IconDefaults.size12(),
         smallShape: Shape = RoundedCornerShape(2.dp),
         mediumShape: Shape = RoundedCornerShape(4.dp),
         largeShape: Shape = RoundedCornerShape(6.dp)
@@ -385,8 +385,8 @@ enum class ImageShape {
 @Immutable
 class ImageSize internal constructor(
     internal val boxSizes: Dp,
-    internal val placeholderSize: IconBoxSize,
-    internal val overlayIconBoxSize: IconBoxSize?,
+    internal val placeholderSize: IconSize,
+    internal val overlayIconSize: IconSize?,
     private val smallShape: Shape,
     private val mediumShape: Shape,
     private val largeShape: Shape,
@@ -405,8 +405,8 @@ class ImageSize internal constructor(
 
     fun copy(
         boxSizes: Dp = this.boxSizes,
-        placeholderSize: IconBoxSize = this.placeholderSize,
-        overlayIconBoxSize: IconBoxSize? = this.overlayIconBoxSize,
+        placeholderSize: IconSize = this.placeholderSize,
+        overlayIconSize: IconSize? = this.overlayIconSize,
         smallShape: Shape = this.smallShape,
         mediumShape: Shape = this.mediumShape,
         largeShape: Shape = this.largeShape,
@@ -416,7 +416,7 @@ class ImageSize internal constructor(
     ) = ImageSize(
         boxSizes.takeOrElse { this.boxSizes },
         placeholderSize,
-        overlayIconBoxSize,
+        overlayIconSize,
         smallShape,
         mediumShape,
         largeShape,
@@ -431,7 +431,7 @@ class ImageSize internal constructor(
 
         if (boxSizes != other.boxSizes) return false
         if (placeholderSize != other.placeholderSize) return false
-        if (overlayIconBoxSize != other.overlayIconBoxSize) return false
+        if (overlayIconSize != other.overlayIconSize) return false
         if (smallShape != other.smallShape) return false
         if (mediumShape != other.mediumShape) return false
         if (badgeSize != other.badgeSize) return false
@@ -443,7 +443,7 @@ class ImageSize internal constructor(
     override fun hashCode(): Int {
         var result = boxSizes.hashCode()
         result = 31 * result + placeholderSize.hashCode()
-        result = 31 * result + overlayIconBoxSize.hashCode()
+        result = 31 * result + overlayIconSize.hashCode()
         result = 31 * result + smallShape.hashCode()
         result = 31 * result + mediumShape.hashCode()
         result = 31 * result + largeShape.hashCode()

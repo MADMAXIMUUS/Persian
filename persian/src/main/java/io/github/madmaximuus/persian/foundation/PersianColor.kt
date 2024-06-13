@@ -1,9 +1,9 @@
+@file:Suppress("UNUSED")
+
 package io.github.madmaximuus.persian.foundation
 
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.graphics.Color
-
-private val Seed = Color(0xFF1DA1F2)
 
 val White = Color(0xFFFFFFFF)
 val Black = Color(0xFF000000)

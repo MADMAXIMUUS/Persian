@@ -33,7 +33,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import io.github.madmaximuus.persian.foundation.animateElevation
-import io.github.madmaximuus.persian.iconBox.IconBoxSize
+import io.github.madmaximuus.persian.iconBox.IconSize
 import io.github.madmaximuus.persian.surface.Surface
 
 @Composable
@@ -235,8 +235,8 @@ class SelectableChipColors internal constructor(
 
 @Immutable
 class SelectableChipSizes internal constructor(
-    internal val trailingIconSize: IconBoxSize,
-    internal val leadingIconSize: IconBoxSize,
+    internal val trailingIconSize: IconSize,
+    internal val leadingIconSize: IconSize,
     internal val labelStyle: TextStyle,
     private val borderWidth: Dp,
     private val selectedBorderWith: Dp,

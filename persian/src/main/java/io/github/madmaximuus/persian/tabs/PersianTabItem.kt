@@ -26,7 +26,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.LocalContentColor
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.iconBox.PersianIconBox
+import io.github.madmaximuus.persian.iconBox.Icon
 import io.github.madmaximuus.persian.text.Text
 
 data class TabItem(
@@ -111,8 +111,8 @@ private fun PersianTopIconTab(
             ) {
                 tabItem.icon?.let {
                     CompositionLocalProvider(LocalContentColor provides color) {
-                        PersianIconBox(
-                            icon = it,
+                        Icon(
+                            painter = it,
                         )
                     }
                     Spacer(modifier = Modifier.width(PersianTheme.spacing.size4))
@@ -134,8 +134,8 @@ private fun PersianTopIconTab(
             ) {
                 tabItem.icon?.let {
                     CompositionLocalProvider(LocalContentColor provides color) {
-                        PersianIconBox(
-                            icon = it,
+                        Icon(
+                            painter = it,
                         )
                     }
                 }

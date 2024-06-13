@@ -26,8 +26,8 @@ import io.github.madmaximuus.persian.avatarsAndImages.PersianImage
 import io.github.madmaximuus.persian.avatarsAndImages.PersianImagesDefaults
 import io.github.madmaximuus.persian.foundation.LocalContentColor
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.iconBox.IconBoxSize
-import io.github.madmaximuus.persian.iconBox.PersianIconBox
+import io.github.madmaximuus.persian.iconBox.IconSize
+import io.github.madmaximuus.persian.iconBox.Icon
 import io.github.madmaximuus.persian.text.Text
 import io.github.madmaximuus.persianSymbols.check.base.Check
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
@@ -45,8 +45,8 @@ internal fun ChipContent(
     labelColor: Color,
     leadingIconColor: Color,
     trailingIconColor: Color,
-    leadingIconSize: IconBoxSize,
-    trailingIconSize: IconBoxSize,
+    leadingIconSize: IconSize,
+    trailingIconSize: IconSize,
     paddingValues: PaddingValues,
     enabled: Boolean
 ) {
@@ -70,8 +70,8 @@ internal fun ChipContent(
                     LocalContentColor provides leadingIconColor,
                 ) {
                     Spacer(modifier = Modifier.width(PersianTheme.spacing.size4))
-                    PersianIconBox(
-                        icon = leadingIcon,
+                    Icon(
+                        painter = leadingIcon,
                         size = leadingIconSize
                     )
                 }
@@ -98,7 +98,7 @@ internal fun ChipContent(
             CompositionLocalProvider(
                 LocalContentColor provides trailingIconColor,
             ) {
-                PersianIconBox(
+                Icon(
                     modifier = Modifier
                         .clickable(
                             enabled = onTrailingClick != null && enabled,
@@ -107,7 +107,7 @@ internal fun ChipContent(
                                 onTrailingClick?.invoke()
                             }
                         ),
-                    icon = trailingIcon,
+                    painter = trailingIcon,
                     size = trailingIconSize,
                 )
             }

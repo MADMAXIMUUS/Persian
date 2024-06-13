@@ -8,8 +8,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.ripple.rememberRipple
-import androidx.compose.material3.LocalContentColor
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
@@ -18,8 +16,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
+import io.github.madmaximuus.persian.foundation.LocalContentColor
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.iconBox.PersianIconBox
+import io.github.madmaximuus.persian.iconBox.Icon
+import io.github.madmaximuus.persian.text.Text
 
 /**
  * @property text Text to be displayed in action
@@ -73,7 +73,7 @@ internal fun PersianActionSheetItem(
                     actionSheetItem.negative
                 )
             ) {
-                PersianIconBox(icon = it)
+                Icon(painter = it)
             }
         }
         val padding = if (actionSheetItem.leadingIcon == null) PersianTheme.spacing.size8

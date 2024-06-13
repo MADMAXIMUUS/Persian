@@ -14,7 +14,7 @@ android {
         minSdk 26
         targetSdk 34
         versionCode 8
-        versionName "5.0.0"
+        versionName "6.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -54,9 +54,13 @@ dependencies {
     implementation libs.activity.compose
     implementation libs.bundles.compose
     implementation libs.material3
+    implementation libs.adaptive.android
     implementation libs.splash
+    implementation libs.sheets.dialog.core
+    implementation libs.sheets.dialog.calendar
+
 
     implementation libs.compose.navigation
     api project(':persian')
-    api project(':persianIcons')
+    api project(':persianSymbols')
 }

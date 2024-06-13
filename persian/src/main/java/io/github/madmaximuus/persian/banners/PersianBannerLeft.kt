@@ -14,8 +14,8 @@ import io.github.madmaximuus.persian.avatarsAndImages.PersianAvatarsDefaults
 import io.github.madmaximuus.persian.avatarsAndImages.PersianImage
 import io.github.madmaximuus.persian.avatarsAndImages.PersianImagesDefaults
 import io.github.madmaximuus.persian.foundation.LocalContentColor
-import io.github.madmaximuus.persian.iconBox.PersianIconBox
-import io.github.madmaximuus.persian.iconBox.PersianIconBoxDefaults
+import io.github.madmaximuus.persian.iconBox.Icon
+import io.github.madmaximuus.persian.iconBox.IconDefaults
 
 sealed class PersianBannerLeft {
     data class Icon(val icon: Painter) : PersianBannerLeft()
@@ -31,12 +31,12 @@ internal fun PersianBannerLeftIcon(
     iconColor: Color
 ) {
     CompositionLocalProvider(LocalContentColor provides iconColor) {
-        PersianIconBox(
+        Icon(
             modifier = modifier
                 .padding(0.dp),
-            icon = icon,
+            painter = icon,
             contentDescription = contentDescription,
-            size = PersianIconBoxDefaults.size28()
+            size = IconDefaults.size28()
         )
     }
 }

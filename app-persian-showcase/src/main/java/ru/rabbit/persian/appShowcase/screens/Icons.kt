@@ -16,8 +16,8 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.iconBox.PersianIconBox
-import io.github.madmaximuus.persian.iconBox.PersianIconBoxDefaults
+import io.github.madmaximuus.persian.iconBox.Icon
+import io.github.madmaximuus.persian.iconBox.IconDefaults
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.foundation.getAllIcons
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
@@ -49,9 +49,9 @@ object Icons : Screen {
             ) {
                 items(PersianSymbols.getAllIcons()) {
                     Box(contentAlignment = Alignment.Center) {
-                        PersianIconBox(
-                            icon = rememberVectorPainter(it),
-                            size = PersianIconBoxDefaults.size48(
+                        Icon(
+                            painter = rememberVectorPainter(it),
+                            size = IconDefaults.size48(
                                 width = 64.dp
                             )
                         )

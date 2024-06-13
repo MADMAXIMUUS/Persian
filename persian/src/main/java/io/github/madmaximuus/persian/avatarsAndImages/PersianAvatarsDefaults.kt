@@ -12,16 +12,16 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state08
 import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state38
-import io.github.madmaximuus.persian.iconBox.IconBoxSize
-import io.github.madmaximuus.persian.iconBox.PersianIconBoxDefaults
+import io.github.madmaximuus.persian.iconBox.IconSize
+import io.github.madmaximuus.persian.iconBox.IconDefaults
 
 object PersianAvatarsDefaults {
 
     @Composable
     fun size96(
         boxSizes: Dp = 96.dp,
-        placeholderIconSize: IconBoxSize = PersianIconBoxDefaults.size48(),
-        overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size32(),
+        placeholderIconSize: IconSize = IconDefaults.size48(),
+        overlayIconSize: IconSize = IconDefaults.size32(),
         badgeSize: Dp = 28.dp,
         horizontalBadgeOffset: Dp = 0.dp,
         verticalBadgeOffset: Dp = 0.dp,
@@ -37,8 +37,8 @@ object PersianAvatarsDefaults {
     @Composable
     fun size88(
         boxSizes: Dp = 88.dp,
-        placeholderIconSize: IconBoxSize = PersianIconBoxDefaults.size48(),
-        overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size32(),
+        placeholderIconSize: IconSize = IconDefaults.size48(),
+        overlayIconSize: IconSize = IconDefaults.size32(),
         badgeSize: Dp = 28.dp,
         horizontalBadgeOffset: Dp = 1.dp,
         verticalBadgeOffset: Dp = 1.dp,
@@ -54,8 +54,8 @@ object PersianAvatarsDefaults {
     @Composable
     fun size80(
         boxSizes: Dp = 80.dp,
-        placeholderIconSize: IconBoxSize = PersianIconBoxDefaults.size48(),
-        overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size32(),
+        placeholderIconSize: IconSize = IconDefaults.size48(),
+        overlayIconSize: IconSize = IconDefaults.size32(),
         badgeSize: Dp = 28.dp,
         horizontalBadgeOffset: Dp = 0.dp,
         verticalBadgeOffset: Dp = 4.dp,
@@ -71,8 +71,8 @@ object PersianAvatarsDefaults {
     @Composable
     fun size72(
         boxSizes: Dp = 72.dp,
-        placeholderIconSize: IconBoxSize = PersianIconBoxDefaults.size40(),
-        overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size28(),
+        placeholderIconSize: IconSize = IconDefaults.size40(),
+        overlayIconSize: IconSize = IconDefaults.size28(),
         badgeSize: Dp = 28.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
@@ -88,8 +88,8 @@ object PersianAvatarsDefaults {
     @Composable
     fun size64(
         boxSizes: Dp = 64.dp,
-        placeholderIconSize: IconBoxSize = PersianIconBoxDefaults.size40(),
-        overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size28(),
+        placeholderIconSize: IconSize = IconDefaults.size40(),
+        overlayIconSize: IconSize = IconDefaults.size28(),
         badgeSize: Dp = 24.dp,
         horizontalBadgeOffset: Dp = 2.dp,
         verticalBadgeOffset: Dp = 2.dp,
@@ -105,8 +105,8 @@ object PersianAvatarsDefaults {
     @Composable
     fun size56(
         boxSizes: Dp = 56.dp,
-        placeholderIconSize: IconBoxSize = PersianIconBoxDefaults.size32(),
-        overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size28(),
+        placeholderIconSize: IconSize = IconDefaults.size32(),
+        overlayIconSize: IconSize = IconDefaults.size28(),
         badgeSize: Dp = 24.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
@@ -122,8 +122,8 @@ object PersianAvatarsDefaults {
     @Composable
     fun size48(
         boxSizes: Dp = 48.dp,
-        placeholderIconSize: IconBoxSize = PersianIconBoxDefaults.size32(),
-        overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size24(),
+        placeholderIconSize: IconSize = IconDefaults.size32(),
+        overlayIconSize: IconSize = IconDefaults.size24(),
         badgeSize: Dp = 20.dp,
         horizontalBadgeOffset: Dp = 2.dp,
         verticalBadgeOffset: Dp = 2.dp,
@@ -139,8 +139,8 @@ object PersianAvatarsDefaults {
     @Composable
     fun size44(
         boxSizes: Dp = 44.dp,
-        placeholderIconSize: IconBoxSize = PersianIconBoxDefaults.size28(),
-        overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size24(),
+        placeholderIconSize: IconSize = IconDefaults.size28(),
+        overlayIconSize: IconSize = IconDefaults.size24(),
         badgeSize: Dp = 20.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
@@ -156,8 +156,8 @@ object PersianAvatarsDefaults {
     @Composable
     fun size40(
         boxSizes: Dp = 40.dp,
-        placeholderIconSize: IconBoxSize = PersianIconBoxDefaults.size24(),
-        overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size20(),
+        placeholderIconSize: IconSize = IconDefaults.size24(),
+        overlayIconSize: IconSize = IconDefaults.size20(),
         badgeSize: Dp = 20.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
@@ -173,8 +173,8 @@ object PersianAvatarsDefaults {
     @Composable
     fun size36(
         boxSizes: Dp = 36.dp,
-        placeholderIconSize: IconBoxSize = PersianIconBoxDefaults.size24(),
-        overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size20(),
+        placeholderIconSize: IconSize = IconDefaults.size24(),
+        overlayIconSize: IconSize = IconDefaults.size20(),
         badgeSize: Dp = 16.dp,
         horizontalBadgeOffset: Dp = 2.dp,
         verticalBadgeOffset: Dp = 2.dp,
@@ -190,8 +190,8 @@ object PersianAvatarsDefaults {
     @Composable
     fun size32(
         boxSizes: Dp = 32.dp,
-        placeholderIconSize: IconBoxSize = PersianIconBoxDefaults.size20(),
-        overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size20(),
+        placeholderIconSize: IconSize = IconDefaults.size20(),
+        overlayIconSize: IconSize = IconDefaults.size20(),
         badgeSize: Dp = 16.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
@@ -207,8 +207,8 @@ object PersianAvatarsDefaults {
     @Composable
     fun size28(
         boxSizes: Dp = 28.dp,
-        placeholderIconSize: IconBoxSize = PersianIconBoxDefaults.size20(),
-        overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size18(),
+        placeholderIconSize: IconSize = IconDefaults.size20(),
+        overlayIconSize: IconSize = IconDefaults.size18(),
         badgeSize: Dp = 16.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
@@ -224,8 +224,8 @@ object PersianAvatarsDefaults {
     @Composable
     fun size24(
         boxSizes: Dp = 24.dp,
-        placeholderIconSize: IconBoxSize = PersianIconBoxDefaults.size16(),
-        overlayIconSize: IconBoxSize = PersianIconBoxDefaults.size18(),
+        placeholderIconSize: IconSize = IconDefaults.size16(),
+        overlayIconSize: IconSize = IconDefaults.size18(),
         badgeSize: Dp = 16.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
@@ -241,7 +241,7 @@ object PersianAvatarsDefaults {
     @Composable
     fun size20(
         boxSizes: Dp = 20.dp,
-        placeholderIconSize: IconBoxSize = PersianIconBoxDefaults.size16(),
+        placeholderIconSize: IconSize = IconDefaults.size16(),
     ) = AvatarSize(
         boxSizes,
         placeholderIconSize,
@@ -254,7 +254,7 @@ object PersianAvatarsDefaults {
     @Composable
     fun size16(
         boxSizes: Dp = 16.dp,
-        placeholderIconSize: IconBoxSize = PersianIconBoxDefaults.size12(),
+        placeholderIconSize: IconSize = IconDefaults.size12(),
     ) = AvatarSize(
         boxSizes,
         placeholderIconSize,
@@ -290,23 +290,23 @@ object PersianAvatarsDefaults {
 @Immutable
 class AvatarSize internal constructor(
     internal val boxSizes: Dp,
-    internal val placeholderIconSize: IconBoxSize,
-    internal val overlayIconSize: IconBoxSize?,
+    internal val placeholderIconSize: IconSize,
+    internal val overlayIconSize: IconSize?,
     internal val badgeSize: Dp?,
     internal val horizontalBadgeOffset: Dp,
     internal val verticalBadgeOffset: Dp,
 ) {
     fun copy(
         boxSizes: Dp = this.boxSizes,
-        placeholderSize: IconBoxSize = this.placeholderIconSize,
-        overlayIconBoxSize: IconBoxSize? = this.overlayIconSize,
+        placeholderSize: IconSize = this.placeholderIconSize,
+        overlayIconSize: IconSize? = this.overlayIconSize,
         badgeSize: Dp? = this.badgeSize,
         horizontalBadgeOffset: Dp = this.horizontalBadgeOffset,
         verticalBadgeOffset: Dp = this.verticalBadgeOffset
     ) = AvatarSize(
         boxSizes.takeOrElse { this.boxSizes },
         placeholderSize,
-        overlayIconBoxSize,
+        overlayIconSize,
         badgeSize,
         horizontalBadgeOffset.takeOrElse { this.horizontalBadgeOffset },
         verticalBadgeOffset.takeOrElse { this.verticalBadgeOffset }

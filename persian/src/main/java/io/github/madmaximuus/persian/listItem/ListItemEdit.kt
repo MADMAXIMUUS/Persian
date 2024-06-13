@@ -14,8 +14,8 @@ import io.github.madmaximuus.persian.checkboxes.toggle.PersianCheckboxToggle
 import io.github.madmaximuus.persian.foundation.LocalContentColor
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.minimumInteractiveComponentSize
-import io.github.madmaximuus.persian.iconBox.PersianIconBox
-import io.github.madmaximuus.persian.iconBox.PersianIconBoxDefaults
+import io.github.madmaximuus.persian.iconBox.Icon
+import io.github.madmaximuus.persian.iconBox.IconDefaults
 import io.github.madmaximuus.persian.radioButtons.PersianRadioButtonToggle
 import io.github.madmaximuus.persianSymbols.bars.base.Bars
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
@@ -124,12 +124,12 @@ internal fun PersianListItemEditDrag(
                 modifier = Modifier
                     .padding(PaddingValues(vertical = PersianTheme.spacing.size8))
             ) {
-                PersianIconBox(
+                Icon(
                     modifier = Modifier
                         .minimumInteractiveComponentSize()
                         .clickable { onClick() },
-                    icon = customIcon ?: rememberVectorPainter(image = PersianSymbols.Default.Bars),
-                    size = PersianIconBoxDefaults.size24(),
+                    painter = customIcon ?: rememberVectorPainter(image = PersianSymbols.Default.Bars),
+                    size = IconDefaults.size24(),
                 )
             }
         }
@@ -157,12 +157,12 @@ internal fun PersianListItemEditAdd(
                 modifier = Modifier
                     .padding(PaddingValues(vertical = PersianTheme.spacing.size8))
             ) {
-                PersianIconBox(
+                Icon(
                     modifier = Modifier
                         .minimumInteractiveComponentSize()
                         .clickable { onClick() },
-                    icon = customIcon ?: rememberVectorPainter(image = PersianSymbols.Default.Plus),
-                    size = PersianIconBoxDefaults.size24(),
+                    painter = customIcon ?: rememberVectorPainter(image = PersianSymbols.Default.Plus),
+                    size = IconDefaults.size24(),
                 )
             }
         }
@@ -190,13 +190,13 @@ internal fun PersianListItemEditRemove(
                 modifier = Modifier
                     .padding(PaddingValues(vertical = PersianTheme.spacing.size8))
             ) {
-                PersianIconBox(
+                Icon(
                     modifier = Modifier
                         .minimumInteractiveComponentSize()
                         .clickable { onClick() },
-                    icon = customIcon
+                    painter = customIcon
                         ?: rememberVectorPainter(image = PersianSymbols.Default.Minus),
-                    size = PersianIconBoxDefaults.size24(),
+                    size = IconDefaults.size24(),
                 )
             }
         }

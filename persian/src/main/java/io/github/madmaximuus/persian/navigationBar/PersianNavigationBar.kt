@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.counter.PersianBadge
 import io.github.madmaximuus.persian.counter.PersianCounterDefaults
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.iconBox.PersianIconBox
+import io.github.madmaximuus.persian.iconBox.Icon
 
 data class NavigationBarItem(
     val selected: Boolean,
@@ -62,9 +62,9 @@ fun PersianNavigationBar(
                             )
                         ) {
                             if (item.selected)
-                                PersianIconBox(icon = item.selectedIcon)
+                                Icon(painter = item.selectedIcon)
                             else
-                                PersianIconBox(icon = item.icon)
+                                Icon(painter = item.icon)
                         }
                     } else {
                         val iconColor = if (item.selected) colors.itemColors.selectedIconColor
@@ -73,9 +73,9 @@ fun PersianNavigationBar(
                             LocalContentColor provides iconColor
                         ) {
                             if (item.selected)
-                                PersianIconBox(icon = item.selectedIcon)
+                                Icon(painter = item.selectedIcon)
                             else
-                                PersianIconBox(icon = item.icon)
+                                Icon(painter = item.icon)
                         }
                     }
                 },

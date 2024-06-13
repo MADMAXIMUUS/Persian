@@ -5,13 +5,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
-object PersianIconBoxDefaults {
+object IconDefaults {
     @Composable
     fun size48(
         width: Dp = 48.dp,
         padding: Dp = 0.dp
     ) = remember(width, padding) {
-        IconBoxSize(width, padding)
+        IconSize(width, padding)
     }
 
     @Composable
@@ -19,7 +19,7 @@ object PersianIconBoxDefaults {
         width: Dp = 40.dp,
         padding: Dp = 0.dp
     ) = remember(width, padding) {
-        IconBoxSize(width, padding)
+        IconSize(width, padding)
     }
 
     @Composable
@@ -27,7 +27,7 @@ object PersianIconBoxDefaults {
         width: Dp = 32.dp,
         padding: Dp = 0.dp
     ) = remember(width, padding) {
-        IconBoxSize(width, padding)
+        IconSize(width, padding)
     }
 
     @Composable
@@ -35,7 +35,7 @@ object PersianIconBoxDefaults {
         width: Dp = 28.dp,
         padding: Dp = 0.dp
     ) = remember(width, padding) {
-        IconBoxSize(width, padding)
+        IconSize(width, padding)
     }
 
     @Composable
@@ -43,7 +43,7 @@ object PersianIconBoxDefaults {
         width: Dp = 24.dp,
         padding: Dp = 0.dp
     ) = remember(width, padding) {
-        IconBoxSize(width, padding)
+        IconSize(width, padding)
     }
 
     @Composable
@@ -51,7 +51,7 @@ object PersianIconBoxDefaults {
         width: Dp = 20.dp,
         padding: Dp = 0.dp
     ) = remember(width, padding) {
-        IconBoxSize(width, padding)
+        IconSize(width, padding)
     }
 
     @Composable
@@ -59,7 +59,7 @@ object PersianIconBoxDefaults {
         width: Dp = 18.dp,
         padding: Dp = 0.dp
     ) = remember(width, padding) {
-        IconBoxSize(width, padding)
+        IconSize(width, padding)
     }
 
     @Composable
@@ -67,7 +67,7 @@ object PersianIconBoxDefaults {
         width: Dp = 16.dp,
         padding: Dp = 0.dp
     ) = remember(width, padding) {
-        IconBoxSize(width, padding)
+        IconSize(width, padding)
     }
 
     @Composable
@@ -75,11 +75,11 @@ object PersianIconBoxDefaults {
         width: Dp = 12.dp,
         padding: Dp = 0.dp
     ) = remember(width, padding) {
-        IconBoxSize(width, padding)
+        IconSize(width, padding)
     }
 }
 
-data class IconBoxSize(
+data class IconSize(
     val width: Dp,
     val padding: Dp
 )

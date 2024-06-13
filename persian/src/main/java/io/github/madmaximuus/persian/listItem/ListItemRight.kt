@@ -17,8 +17,8 @@ import io.github.madmaximuus.persian.buttons.PersianPrimaryButton
 import io.github.madmaximuus.persian.counter.PersianCounter
 import io.github.madmaximuus.persian.foundation.LocalContentColor
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.iconBox.PersianIconBox
-import io.github.madmaximuus.persian.iconBox.PersianIconBoxDefaults
+import io.github.madmaximuus.persian.iconBox.Icon
+import io.github.madmaximuus.persian.iconBox.IconDefaults
 import io.github.madmaximuus.persian.switch.PersianSwitch
 import io.github.madmaximuus.persian.text.Text
 import io.github.madmaximuus.persianSymbols.chevronRight.base.ChevronRight
@@ -84,9 +84,9 @@ internal fun PersianListCellRightOpen(
         CompositionLocalProvider(
             LocalContentColor provides PersianTheme.colorScheme.onSurfaceVariant
         ) {
-            PersianIconBox(
-                icon = icon ?: rememberVectorPainter(PersianSymbols.Default.ChevronRight),
-                size = PersianIconBoxDefaults.size24(),
+            Icon(
+                painter = icon ?: rememberVectorPainter(PersianSymbols.Default.ChevronRight),
+                size = IconDefaults.size24(),
             )
         }
     }
@@ -121,9 +121,9 @@ internal fun PersianListCellRightSwitch(
             CompositionLocalProvider(
                 LocalContentColor provides PersianTheme.colorScheme.onSurfaceVariant
             ) {
-                PersianIconBox(
-                    icon = rememberVectorPainter(PersianSymbols.Default.ChevronRight),
-                    size = PersianIconBoxDefaults.size24(),
+                Icon(
+                    painter = rememberVectorPainter(PersianSymbols.Default.ChevronRight),
+                    size = IconDefaults.size24(),
                 )
             }
         }
@@ -150,18 +150,18 @@ internal fun PersianListCellRightMore(
         CompositionLocalProvider(
             LocalContentColor provides PersianTheme.colorScheme.onSurfaceVariant
         ) {
-            PersianIconBox(
-                icon = icon ?: rememberVectorPainter(PersianSymbols.Default.EllipsisVert),
-                size = PersianIconBoxDefaults.size24(),
+            Icon(
+                painter = icon ?: rememberVectorPainter(PersianSymbols.Default.EllipsisVert),
+                size = IconDefaults.size24(),
             )
         }
         if (showOpen) {
             CompositionLocalProvider(
                 LocalContentColor provides PersianTheme.colorScheme.onSurfaceVariant
             ) {
-                PersianIconBox(
-                    icon = rememberVectorPainter(PersianSymbols.Default.ChevronRight),
-                    size = PersianIconBoxDefaults.size24(),
+                Icon(
+                    painter = rememberVectorPainter(PersianSymbols.Default.ChevronRight),
+                    size = IconDefaults.size24(),
                 )
             }
         }
@@ -188,18 +188,18 @@ internal fun PersianListCellRightIcon(
         CompositionLocalProvider(
             LocalContentColor provides color
         ) {
-            PersianIconBox(
-                icon = icon,
-                size = PersianIconBoxDefaults.size24(),
+            Icon(
+                painter = icon,
+                size = IconDefaults.size24(),
             )
         }
         if (showOpen) {
             CompositionLocalProvider(
                 LocalContentColor provides PersianTheme.colorScheme.onSurfaceVariant
             ) {
-                PersianIconBox(
-                    icon = rememberVectorPainter(PersianSymbols.Default.ChevronRight),
-                    size = PersianIconBoxDefaults.size24(),
+                Icon(
+                    painter = rememberVectorPainter(PersianSymbols.Default.ChevronRight),
+                    size = IconDefaults.size24(),
                 )
             }
         }
@@ -227,9 +227,9 @@ internal fun PersianListCellRightCounter(
             CompositionLocalProvider(
                 LocalContentColor provides PersianTheme.colorScheme.onSurfaceVariant
             ) {
-                PersianIconBox(
-                    icon = rememberVectorPainter(PersianSymbols.Default.ChevronRight),
-                    size = PersianIconBoxDefaults.size24(),
+                Icon(
+                    painter = rememberVectorPainter(PersianSymbols.Default.ChevronRight),
+                    size = IconDefaults.size24(),
                 )
             }
         }
@@ -261,9 +261,9 @@ internal fun PersianListCellRightSuffix(
             CompositionLocalProvider(
                 LocalContentColor provides PersianTheme.colorScheme.onSurfaceVariant
             ) {
-                PersianIconBox(
-                    icon = rememberVectorPainter(PersianSymbols.Default.ChevronRight),
-                    size = PersianIconBoxDefaults.size24(),
+                Icon(
+                    painter = rememberVectorPainter(PersianSymbols.Default.ChevronRight),
+                    size = IconDefaults.size24(),
                 )
             }
         }
@@ -296,9 +296,9 @@ internal fun PersianListCellRightButton(
             CompositionLocalProvider(
                 LocalContentColor provides PersianTheme.colorScheme.onSurfaceVariant
             ) {
-                PersianIconBox(
-                    icon = rememberVectorPainter(PersianSymbols.Default.ChevronRight),
-                    size = PersianIconBoxDefaults.size24(),
+                Icon(
+                    painter = rememberVectorPainter(PersianSymbols.Default.ChevronRight),
+                    size = IconDefaults.size24(),
                 )
             }
         }

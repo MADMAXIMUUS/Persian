@@ -38,7 +38,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.LocalContentColor
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.iconBox.PersianIconBox
+import io.github.madmaximuus.persian.iconBox.Icon
 import io.github.madmaximuus.persian.surface.Surface
 import io.github.madmaximuus.persian.text.Text
 
@@ -124,7 +124,7 @@ fun PersianOutlineTextArea(
                                 interactionSource = interactionSource
                             ).value
                         ) {
-                            PersianIconBox(icon = icon)
+                            Icon(painter = icon)
                         }
                     }
                     Box(
@@ -161,8 +161,8 @@ fun PersianOutlineTextArea(
                                 isError = isError
                             ).value
                         ) {
-                            PersianIconBox(
-                                icon = icon,
+                            Icon(
+                                painter = icon,
                                 contentDescription = ""
                             )
                         }
@@ -255,7 +255,7 @@ fun PersianPlainTextArea(
                                 interactionSource = interactionSource
                             ).value
                         ) {
-                            PersianIconBox(icon = icon)
+                            Icon(painter = icon)
                         }
                     }
                     Box(
@@ -292,8 +292,8 @@ fun PersianPlainTextArea(
                                 isError = isError
                             ).value
                         ) {
-                            PersianIconBox(
-                                icon = icon,
+                            Icon(
+                                painter = icon,
                                 contentDescription = ""
                             )
                         }

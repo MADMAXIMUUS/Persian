@@ -13,7 +13,7 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.iconBox.PersianIconBox
+import io.github.madmaximuus.persian.iconBox.Icon
 import io.github.madmaximuus.persian.surface.Surface
 
 @Composable
@@ -38,8 +38,8 @@ fun PersianPrimaryIconButton(
         modifier = Modifier.size(sizes.size),
         contentAlignment = Alignment.Center
     ) {
-        PersianIconBox(
-            icon = icon,
+        Icon(
+            painter = icon,
             size = sizes.iconSize
         )
     }
@@ -67,8 +67,8 @@ fun PersianSecondaryIconButton(
         modifier = Modifier.size(sizes.size),
         contentAlignment = Alignment.Center
     ) {
-        PersianIconBox(
-            icon = icon,
+        Icon(
+            painter = icon,
             size = sizes.iconSize
         )
     }
@@ -96,8 +96,8 @@ fun PersianTertiaryIconButton(
         modifier = Modifier.size(sizes.size),
         contentAlignment = Alignment.Center
     ) {
-        PersianIconBox(
-            icon = icon,
+        Icon(
+            painter = icon,
             size = sizes.iconSize
         )
     }
@@ -129,8 +129,8 @@ fun PersianOutlinedIconButton(
         modifier = Modifier.size(sizes.size),
         contentAlignment = Alignment.Center
     ) {
-        PersianIconBox(
-            icon = icon,
+        Icon(
+            painter = icon,
             size = sizes.iconSize
         )
     }

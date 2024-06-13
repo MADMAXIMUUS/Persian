@@ -17,8 +17,8 @@ import io.github.madmaximuus.persian.avatarsAndImages.PersianAvatar
 import io.github.madmaximuus.persian.avatarsAndImages.PersianImage
 import io.github.madmaximuus.persian.foundation.LocalContentColor
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.iconBox.IconBoxSize
-import io.github.madmaximuus.persian.iconBox.PersianIconBox
+import io.github.madmaximuus.persian.iconBox.IconSize
+import io.github.madmaximuus.persian.iconBox.Icon
 
 sealed class PersianListCellLeft {
 
@@ -41,7 +41,7 @@ internal fun PersianListCellLeftIcon(
     modifier: Modifier = Modifier,
     icon: Painter,
     color: Color,
-    size: IconBoxSize,
+    size: IconSize,
     paddingValues: PaddingValues,
     contentDescription: String,
 ) {
@@ -60,8 +60,8 @@ internal fun PersianListCellLeftIcon(
                 modifier = Modifier
                     .padding(paddingValues)
             ) {
-                PersianIconBox(
-                    icon = icon,
+                Icon(
+                    painter = icon,
                     size = size,
                     contentDescription = contentDescription
                 )

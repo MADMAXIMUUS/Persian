@@ -32,7 +32,7 @@ import io.github.madmaximuus.persian.avatarsAndImages.utils.badgeMeasurePolicy
 import io.github.madmaximuus.persian.foundation.LocalContentColor
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.shimmer
-import io.github.madmaximuus.persian.iconBox.PersianIconBox
+import io.github.madmaximuus.persian.iconBox.Icon
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.image.base.Image
 import io.github.madmaximuus.persianSymbols.play.base.Play
@@ -95,8 +95,8 @@ fun PersianImage(
                                                     enabled
                                                 )
                                             ) {
-                                                PersianIconBox(
-                                                    icon = rememberVectorPainter(image = PersianSymbols.Default.Image),
+                                                Icon(
+                                                    painter = rememberVectorPainter(image = PersianSymbols.Default.Image),
                                                     size = sizes.placeholderSize
                                                 )
                                             }
@@ -124,7 +124,7 @@ fun PersianImage(
                                 }
                             },
                         )
-                        if (overlay && sizes.overlayIconBoxSize != null) {
+                        if (overlay && sizes.overlayIconSize != null) {
                             Box(
                                 modifier = Modifier
                                     .fillMaxSize()
@@ -134,9 +134,9 @@ fun PersianImage(
                                 CompositionLocalProvider(
                                     LocalContentColor provides colors.overlayIcon(enabled)
                                 ) {
-                                    PersianIconBox(
-                                        icon = overlayIcon,
-                                        size = sizes.overlayIconBoxSize,
+                                    Icon(
+                                        painter = overlayIcon,
+                                        size = sizes.overlayIconSize,
                                     )
                                 }
                             }
