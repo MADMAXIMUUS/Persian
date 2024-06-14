@@ -17,7 +17,7 @@ import io.github.madmaximuus.persian.avatarsAndImages.PersianAvatarsDefaults
 import io.github.madmaximuus.persian.avatarsAndImages.PersianImagesDefaults
 import io.github.madmaximuus.persian.dividers.PersianInsetHorizontalDivider
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.iconBox.IconDefaults
+import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persian.snackbar.PersianSnackbarDefaults
 import io.github.madmaximuus.persian.snackbar.SnackbarColors
 import io.github.madmaximuus.persian.snackbar.SnackbarSizes

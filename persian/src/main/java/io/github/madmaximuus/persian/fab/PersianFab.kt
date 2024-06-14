@@ -11,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
-import io.github.madmaximuus.persian.iconBox.Icon
+import io.github.madmaximuus.persian.icon.Icon
 
 @Composable
 fun PersianSmallFab(

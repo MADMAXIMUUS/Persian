@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.iconBox
+package io.github.madmaximuus.persian.icon
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember

@@ -12,8 +12,8 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state08
 import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state38
-import io.github.madmaximuus.persian.iconBox.IconSize
-import io.github.madmaximuus.persian.iconBox.IconDefaults
+import io.github.madmaximuus.persian.icon.IconDefaults
+import io.github.madmaximuus.persian.icon.IconSize
 
 object PersianAvatarsDefaults {
 

@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.counter.PersianBadge
 import io.github.madmaximuus.persian.counter.PersianCounterDefaults
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.iconBox.Icon
+import io.github.madmaximuus.persian.icon.Icon
 
 data class NavigationBarItem(
     val selected: Boolean,

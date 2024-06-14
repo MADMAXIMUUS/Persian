@@ -10,8 +10,8 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.iconBox.IconSize
-import io.github.madmaximuus.persian.iconBox.IconDefaults
+import io.github.madmaximuus.persian.icon.IconDefaults
+import io.github.madmaximuus.persian.icon.IconSize
 
 object PersianFabDefaults {
     @Composable

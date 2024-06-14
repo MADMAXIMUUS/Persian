@@ -16,8 +16,8 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.iconBox.Icon
-import io.github.madmaximuus.persian.iconBox.IconDefaults
+import io.github.madmaximuus.persian.icon.Icon
+import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.foundation.getAllIcons
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold

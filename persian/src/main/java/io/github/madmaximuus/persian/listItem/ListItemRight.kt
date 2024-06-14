@@ -17,8 +17,8 @@ import io.github.madmaximuus.persian.buttons.PersianPrimaryButton
 import io.github.madmaximuus.persian.counter.PersianCounter
 import io.github.madmaximuus.persian.foundation.LocalContentColor
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.iconBox.Icon
-import io.github.madmaximuus.persian.iconBox.IconDefaults
+import io.github.madmaximuus.persian.icon.Icon
+import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persian.switch.PersianSwitch
 import io.github.madmaximuus.persian.text.Text
 import io.github.madmaximuus.persianSymbols.chevronRight.base.ChevronRight

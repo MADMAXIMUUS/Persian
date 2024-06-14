@@ -37,7 +37,7 @@ import io.github.madmaximuus.persian.foundation.LocalContentColor
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.contentColorFor
 import io.github.madmaximuus.persian.foundation.minimumInteractiveComponentSize
-import io.github.madmaximuus.persian.iconBox.Icon
+import io.github.madmaximuus.persian.icon.Icon
 import io.github.madmaximuus.persian.text.Text
 import kotlin.math.ln
 

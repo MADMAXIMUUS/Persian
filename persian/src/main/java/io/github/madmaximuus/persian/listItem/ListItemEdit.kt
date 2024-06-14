@@ -14,8 +14,8 @@ import io.github.madmaximuus.persian.checkboxes.toggle.PersianCheckboxToggle
 import io.github.madmaximuus.persian.foundation.LocalContentColor
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.minimumInteractiveComponentSize
-import io.github.madmaximuus.persian.iconBox.Icon
-import io.github.madmaximuus.persian.iconBox.IconDefaults
+import io.github.madmaximuus.persian.icon.Icon
+import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persian.radioButtons.PersianRadioButtonToggle
 import io.github.madmaximuus.persianSymbols.bars.base.Bars
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
