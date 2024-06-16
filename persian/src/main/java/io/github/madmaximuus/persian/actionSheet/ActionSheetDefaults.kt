@@ -9,9 +9,9 @@ import androidx.compose.ui.graphics.takeOrElse
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state38
 
-object PersianActionSheetDefaults {
+object ActionSheetDefaults {
 
-    val shape: Shape @Composable get() = PersianTheme.shapes.shape16
+    val shape: Shape @Composable get() = PersianTheme.shapes.shape22
 
     @Composable
     fun colors(

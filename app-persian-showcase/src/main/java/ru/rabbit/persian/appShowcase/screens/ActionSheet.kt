@@ -18,21 +18,21 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.actionSheet.ActionSheetItem
-import io.github.madmaximuus.persian.actionSheet.PersianActionSheet
+import io.github.madmaximuus.persian.actionSheet.ActionSheet
 import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
 import io.github.madmaximuus.persian.buttons.PersianPrimaryButton
 import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.inputs.PersianOutlineInput
+import io.github.madmaximuus.persian.textAreas.PersianOutlineTextArea
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.image.base.Image
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object ActionSheet : Screen {
-    override val name: String = "Action Sheets"
+    override val name: String = "Action Sheet"
 
-    override val navigation: String = "actionSheets"
+    override val navigation: String = "actionSheet"
 
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
@@ -99,7 +99,6 @@ object ActionSheet : Screen {
                     )
                     if (title) {
                         PersianOutlineInput(
-                            modifier = Modifier.padding(horizontal = PersianTheme.spacing.size8),
                             value = titleValue,
                             isError = titleError,
                             onValueChange = onTitleValueChange
@@ -113,8 +112,7 @@ object ActionSheet : Screen {
                         onCheckedChange = onSubtitleChange
                     )
                     if (subtitle) {
-                        PersianOutlineInput(
-                            modifier = Modifier.padding(horizontal = PersianTheme.spacing.size8),
+                        PersianOutlineTextArea(
                             value = subtitleValue,
                             isError = subtitleError,
                             onValueChange = onSubtitleValueChange
@@ -143,81 +141,87 @@ object ActionSheet : Screen {
             }
         }
         if (needShow) {
-            PersianActionSheet(
-                title = if (title) titleValue else null,
-                subtitle = if (subtitle) subtitleValue else null,
-                actions = listOf(
-                    ActionSheetItem(
+            ActionSheet(
+                header = if (title || subtitle) {
+                    {
+                        ActionSheetHeader(
+                            title = if (title) titleValue else null,
+                            subtitle = if (subtitle) subtitleValue else null,
+                        )
+                    }
+                } else null,
+                actions = {
+                    ActionItem(
                         text = "Action 1",
                         leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
                         negative = negative,
                         enabled = enabled,
                         onClick = {}
-                    ),
-                    ActionSheetItem(
+                    )
+                    ActionItem(
                         text = "Action 2",
                         leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
                         negative = negative,
                         enabled = enabled,
                         onClick = {}
-                    ),
-                    ActionSheetItem(
+                    )
+                    ActionItem(
                         text = "Action 3",
                         leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
                         negative = negative,
                         enabled = enabled,
                         onClick = {}
-                    ),
-                    ActionSheetItem(
+                    )
+                    ActionItem(
                         text = "Action 4",
                         leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
                         negative = negative,
                         enabled = enabled,
                         onClick = {}
-                    ),
-                    ActionSheetItem(
+                    )
+                    ActionItem(
                         text = "Action 5",
                         leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
                         negative = negative,
                         enabled = enabled,
                         onClick = {}
-                    ),
-                    ActionSheetItem(
+                    )
+                    ActionItem(
                         text = "Action 6",
                         leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
                         negative = negative,
                         enabled = enabled,
                         onClick = {}
-                    ),
-                    ActionSheetItem(
+                    )
+                    ActionItem(
                         text = "Action 7",
                         leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
                         negative = negative,
                         enabled = enabled,
                         onClick = {}
-                    ),
-                    ActionSheetItem(
+                    )
+                    ActionItem(
                         text = "Action 8",
                         leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
                         negative = negative,
                         enabled = enabled,
                         onClick = {}
-                    ),
-                    ActionSheetItem(
+                    )
+                    ActionItem(
                         text = "Action 9",
                         leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
                         negative = negative,
                         enabled = enabled,
                         onClick = {}
-                    ),
-                    ActionSheetItem(
+                    )
+                    ActionItem(
                         text = "Action 10",
                         leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
                         negative = negative,
                         enabled = enabled,
                         onClick = {}
-                    ),
-                ),
+                    )
+                },
                 onDismissRequest = { needShow = false }
             )
         }
