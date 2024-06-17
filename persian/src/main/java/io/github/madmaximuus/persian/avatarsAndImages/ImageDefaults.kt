@@ -1,9 +1,11 @@
 package io.github.madmaximuus.persian.avatarsAndImages
 
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.takeOrElse
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -15,20 +17,26 @@ import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persian.icon.IconSize
 
-object PersianAvatarsDefaults {
+object ImageDefaults {
 
     @Composable
     fun size96(
         boxSizes: Dp = 96.dp,
         placeholderIconSize: IconSize = IconDefaults.size48(),
         overlayIconSize: IconSize = IconDefaults.size32(),
+        smallShape: Shape = RoundedCornerShape(8.dp),
+        mediumShape: Shape = RoundedCornerShape(12.dp),
+        largeShape: Shape = RoundedCornerShape(16.dp),
         badgeSize: Dp = 28.dp,
-        horizontalBadgeOffset: Dp = 0.dp,
-        verticalBadgeOffset: Dp = 0.dp,
-    ) = AvatarSize(
+        horizontalBadgeOffset: Dp = 5.dp,
+        verticalBadgeOffset: Dp = 5.dp,
+    ): ImageSize = ImageSize(
         boxSizes,
         placeholderIconSize,
         overlayIconSize,
+        smallShape,
+        mediumShape,
+        largeShape,
         badgeSize,
         horizontalBadgeOffset,
         verticalBadgeOffset
@@ -39,13 +47,19 @@ object PersianAvatarsDefaults {
         boxSizes: Dp = 88.dp,
         placeholderIconSize: IconSize = IconDefaults.size48(),
         overlayIconSize: IconSize = IconDefaults.size32(),
+        smallShape: Shape = RoundedCornerShape(8.dp),
+        mediumShape: Shape = RoundedCornerShape(12.dp),
+        largeShape: Shape = RoundedCornerShape(16.dp),
         badgeSize: Dp = 28.dp,
-        horizontalBadgeOffset: Dp = 1.dp,
-        verticalBadgeOffset: Dp = 1.dp,
-    ) = AvatarSize(
+        horizontalBadgeOffset: Dp = 5.dp,
+        verticalBadgeOffset: Dp = 5.dp,
+    ): ImageSize = ImageSize(
         boxSizes,
         placeholderIconSize,
         overlayIconSize,
+        smallShape,
+        mediumShape,
+        largeShape,
         badgeSize,
         horizontalBadgeOffset,
         verticalBadgeOffset
@@ -56,13 +70,19 @@ object PersianAvatarsDefaults {
         boxSizes: Dp = 80.dp,
         placeholderIconSize: IconSize = IconDefaults.size48(),
         overlayIconSize: IconSize = IconDefaults.size32(),
+        smallShape: Shape = RoundedCornerShape(8.dp),
+        mediumShape: Shape = RoundedCornerShape(12.dp),
+        largeShape: Shape = RoundedCornerShape(16.dp),
         badgeSize: Dp = 28.dp,
-        horizontalBadgeOffset: Dp = 0.dp,
-        verticalBadgeOffset: Dp = 4.dp,
-    ) = AvatarSize(
+        horizontalBadgeOffset: Dp = 5.dp,
+        verticalBadgeOffset: Dp = 5.dp,
+    ): ImageSize = ImageSize(
         boxSizes,
         placeholderIconSize,
         overlayIconSize,
+        smallShape,
+        mediumShape,
+        largeShape,
         badgeSize,
         horizontalBadgeOffset,
         verticalBadgeOffset
@@ -73,13 +93,19 @@ object PersianAvatarsDefaults {
         boxSizes: Dp = 72.dp,
         placeholderIconSize: IconSize = IconDefaults.size40(),
         overlayIconSize: IconSize = IconDefaults.size28(),
+        smallShape: Shape = RoundedCornerShape(6.dp),
+        mediumShape: Shape = RoundedCornerShape(10.dp),
+        largeShape: Shape = RoundedCornerShape(14.dp),
         badgeSize: Dp = 28.dp,
-        horizontalBadgeOffset: Dp = 3.dp,
-        verticalBadgeOffset: Dp = 3.dp,
-    ) = AvatarSize(
+        horizontalBadgeOffset: Dp = 5.dp,
+        verticalBadgeOffset: Dp = 5.dp,
+    ): ImageSize = ImageSize(
         boxSizes,
         placeholderIconSize,
         overlayIconSize,
+        smallShape,
+        mediumShape,
+        largeShape,
         badgeSize,
         horizontalBadgeOffset,
         verticalBadgeOffset
@@ -90,13 +116,19 @@ object PersianAvatarsDefaults {
         boxSizes: Dp = 64.dp,
         placeholderIconSize: IconSize = IconDefaults.size40(),
         overlayIconSize: IconSize = IconDefaults.size28(),
+        smallShape: Shape = RoundedCornerShape(6.dp),
+        mediumShape: Shape = RoundedCornerShape(10.dp),
+        largeShape: Shape = RoundedCornerShape(14.dp),
         badgeSize: Dp = 24.dp,
-        horizontalBadgeOffset: Dp = 2.dp,
-        verticalBadgeOffset: Dp = 2.dp,
-    ) = AvatarSize(
+        horizontalBadgeOffset: Dp = 4.dp,
+        verticalBadgeOffset: Dp = 4.dp,
+    ): ImageSize = ImageSize(
         boxSizes,
         placeholderIconSize,
         overlayIconSize,
+        smallShape,
+        mediumShape,
+        largeShape,
         badgeSize,
         horizontalBadgeOffset,
         verticalBadgeOffset
@@ -107,13 +139,19 @@ object PersianAvatarsDefaults {
         boxSizes: Dp = 56.dp,
         placeholderIconSize: IconSize = IconDefaults.size32(),
         overlayIconSize: IconSize = IconDefaults.size28(),
+        smallShape: Shape = RoundedCornerShape(6.dp),
+        mediumShape: Shape = RoundedCornerShape(10.dp),
+        largeShape: Shape = RoundedCornerShape(14.dp),
         badgeSize: Dp = 24.dp,
-        horizontalBadgeOffset: Dp = 3.dp,
-        verticalBadgeOffset: Dp = 3.dp,
-    ) = AvatarSize(
+        horizontalBadgeOffset: Dp = 4.dp,
+        verticalBadgeOffset: Dp = 4.dp,
+    ): ImageSize = ImageSize(
         boxSizes,
         placeholderIconSize,
         overlayIconSize,
+        smallShape,
+        mediumShape,
+        largeShape,
         badgeSize,
         horizontalBadgeOffset,
         verticalBadgeOffset
@@ -124,13 +162,19 @@ object PersianAvatarsDefaults {
         boxSizes: Dp = 48.dp,
         placeholderIconSize: IconSize = IconDefaults.size32(),
         overlayIconSize: IconSize = IconDefaults.size24(),
+        smallShape: Shape = RoundedCornerShape(4.dp),
+        mediumShape: Shape = RoundedCornerShape(8.dp),
+        largeShape: Shape = RoundedCornerShape(12.dp),
         badgeSize: Dp = 20.dp,
-        horizontalBadgeOffset: Dp = 2.dp,
-        verticalBadgeOffset: Dp = 2.dp,
-    ) = AvatarSize(
+        horizontalBadgeOffset: Dp = 3.dp,
+        verticalBadgeOffset: Dp = 3.dp,
+    ): ImageSize = ImageSize(
         boxSizes,
         placeholderIconSize,
         overlayIconSize,
+        smallShape,
+        mediumShape,
+        largeShape,
         badgeSize,
         horizontalBadgeOffset,
         verticalBadgeOffset
@@ -141,13 +185,19 @@ object PersianAvatarsDefaults {
         boxSizes: Dp = 44.dp,
         placeholderIconSize: IconSize = IconDefaults.size28(),
         overlayIconSize: IconSize = IconDefaults.size24(),
+        smallShape: Shape = RoundedCornerShape(4.dp),
+        mediumShape: Shape = RoundedCornerShape(8.dp),
+        largeShape: Shape = RoundedCornerShape(12.dp),
         badgeSize: Dp = 20.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
-    ) = AvatarSize(
+    ): ImageSize = ImageSize(
         boxSizes,
         placeholderIconSize,
         overlayIconSize,
+        smallShape,
+        mediumShape,
+        largeShape,
         badgeSize,
         horizontalBadgeOffset,
         verticalBadgeOffset
@@ -158,13 +208,19 @@ object PersianAvatarsDefaults {
         boxSizes: Dp = 40.dp,
         placeholderIconSize: IconSize = IconDefaults.size24(),
         overlayIconSize: IconSize = IconDefaults.size20(),
+        smallShape: Shape = RoundedCornerShape(4.dp),
+        mediumShape: Shape = RoundedCornerShape(8.dp),
+        largeShape: Shape = RoundedCornerShape(12.dp),
         badgeSize: Dp = 20.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
-    ) = AvatarSize(
+    ): ImageSize = ImageSize(
         boxSizes,
         placeholderIconSize,
         overlayIconSize,
+        smallShape,
+        mediumShape,
+        largeShape,
         badgeSize,
         horizontalBadgeOffset,
         verticalBadgeOffset
@@ -172,16 +228,22 @@ object PersianAvatarsDefaults {
 
     @Composable
     fun size36(
-        boxSizes: Dp = 36.dp,
+        boxSizes: Dp = 40.dp,
         placeholderIconSize: IconSize = IconDefaults.size24(),
         overlayIconSize: IconSize = IconDefaults.size20(),
+        smallShape: Shape = RoundedCornerShape(4.dp),
+        mediumShape: Shape = RoundedCornerShape(8.dp),
+        largeShape: Shape = RoundedCornerShape(12.dp),
         badgeSize: Dp = 16.dp,
-        horizontalBadgeOffset: Dp = 2.dp,
-        verticalBadgeOffset: Dp = 2.dp,
-    ) = AvatarSize(
+        horizontalBadgeOffset: Dp = 3.dp,
+        verticalBadgeOffset: Dp = 3.dp,
+    ): ImageSize = ImageSize(
         boxSizes,
         placeholderIconSize,
         overlayIconSize,
+        smallShape,
+        mediumShape,
+        largeShape,
         badgeSize,
         horizontalBadgeOffset,
         verticalBadgeOffset
@@ -192,13 +254,19 @@ object PersianAvatarsDefaults {
         boxSizes: Dp = 32.dp,
         placeholderIconSize: IconSize = IconDefaults.size20(),
         overlayIconSize: IconSize = IconDefaults.size20(),
+        smallShape: Shape = RoundedCornerShape(3.dp),
+        mediumShape: Shape = RoundedCornerShape(7.dp),
+        largeShape: Shape = RoundedCornerShape(11.dp),
         badgeSize: Dp = 16.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
-    ) = AvatarSize(
+    ): ImageSize = ImageSize(
         boxSizes,
         placeholderIconSize,
         overlayIconSize,
+        smallShape,
+        mediumShape,
+        largeShape,
         badgeSize,
         horizontalBadgeOffset,
         verticalBadgeOffset
@@ -207,15 +275,21 @@ object PersianAvatarsDefaults {
     @Composable
     fun size28(
         boxSizes: Dp = 28.dp,
-        placeholderIconSize: IconSize = IconDefaults.size20(),
-        overlayIconSize: IconSize = IconDefaults.size18(),
+        placeholderIconSize: IconSize = IconDefaults.size18(),
+        overlayIconSize: IconSize = IconDefaults.size20(),
+        smallShape: Shape = RoundedCornerShape(3.dp),
+        mediumShape: Shape = RoundedCornerShape(7.dp),
+        largeShape: Shape = RoundedCornerShape(11.dp),
         badgeSize: Dp = 16.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
-    ) = AvatarSize(
+    ): ImageSize = ImageSize(
         boxSizes,
         placeholderIconSize,
         overlayIconSize,
+        smallShape,
+        mediumShape,
+        largeShape,
         badgeSize,
         horizontalBadgeOffset,
         verticalBadgeOffset
@@ -226,13 +300,19 @@ object PersianAvatarsDefaults {
         boxSizes: Dp = 24.dp,
         placeholderIconSize: IconSize = IconDefaults.size16(),
         overlayIconSize: IconSize = IconDefaults.size18(),
+        smallShape: Shape = RoundedCornerShape(3.dp),
+        mediumShape: Shape = RoundedCornerShape(7.dp),
+        largeShape: Shape = RoundedCornerShape(9.dp),
         badgeSize: Dp = 16.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
-    ) = AvatarSize(
+    ): ImageSize = ImageSize(
         boxSizes,
         placeholderIconSize,
         overlayIconSize,
+        smallShape,
+        mediumShape,
+        largeShape,
         badgeSize,
         horizontalBadgeOffset,
         verticalBadgeOffset
@@ -242,28 +322,39 @@ object PersianAvatarsDefaults {
     fun size20(
         boxSizes: Dp = 20.dp,
         placeholderIconSize: IconSize = IconDefaults.size16(),
-    ) = AvatarSize(
+        smallShape: Shape = RoundedCornerShape(2.dp),
+        mediumShape: Shape = RoundedCornerShape(6.dp),
+        largeShape: Shape = RoundedCornerShape(8.dp)
+    ): ImageSize = ImageSize(
         boxSizes,
         placeholderIconSize,
         null,
+        smallShape,
+        mediumShape,
+        largeShape,
         null,
         0.dp,
-        0.dp,
+        0.dp
     )
 
     @Composable
     fun size16(
         boxSizes: Dp = 16.dp,
         placeholderIconSize: IconSize = IconDefaults.size12(),
-    ) = AvatarSize(
+        smallShape: Shape = RoundedCornerShape(2.dp),
+        mediumShape: Shape = RoundedCornerShape(4.dp),
+        largeShape: Shape = RoundedCornerShape(6.dp)
+    ): ImageSize = ImageSize(
         boxSizes,
         placeholderIconSize,
         null,
+        smallShape,
+        mediumShape,
+        largeShape,
         null,
         0.dp,
         0.dp
     )
-
 
     @Composable
     fun colors(
@@ -274,8 +365,8 @@ object PersianAvatarsDefaults {
         placeholderIconColor: Color = PersianTheme.colorScheme.onSurface.state38,
         disabledPlaceholderIconColor: Color = PersianTheme.colorScheme.onSurface.state38,
         overlayIconColor: Color = PersianTheme.colorScheme.primary,
-        disabledOverlayIconColor: Color = PersianTheme.colorScheme.onSurface.state38,
-    ): AvatarsColors = AvatarsColors(
+        disabledOverlayIconColor: Color = PersianTheme.colorScheme.onSurface.state38
+    ): ImagesColors = ImagesColors(
         placeholderContainerColor = placeholderContainerColor,
         disabledPlaceholderContainerColor = disabledPlaceholderContainerColor,
         borderColor = borderColor,
@@ -283,30 +374,52 @@ object PersianAvatarsDefaults {
         placeholderIconColor = placeholderIconColor,
         disabledPlaceholderIconColor = disabledPlaceholderIconColor,
         overlayIconColor = overlayIconColor,
-        disabledOverlayIconColor = disabledOverlayIconColor,
+        disabledOverlayIconColor = disabledOverlayIconColor
     )
 }
 
+enum class ImageShape {
+    SMALL, MEDIUM, LARGE
+}
+
 @Immutable
-class AvatarSize internal constructor(
+class ImageSize internal constructor(
     internal val boxSizes: Dp,
-    internal val placeholderIconSize: IconSize,
+    internal val placeholderSize: IconSize,
     internal val overlayIconSize: IconSize?,
+    private val smallShape: Shape,
+    private val mediumShape: Shape,
+    private val largeShape: Shape,
     internal val badgeSize: Dp?,
     internal val horizontalBadgeOffset: Dp,
     internal val verticalBadgeOffset: Dp,
 ) {
+
+    @Stable
+    internal fun shape(shape: ImageShape): Shape =
+        when (shape) {
+            ImageShape.SMALL -> smallShape
+            ImageShape.MEDIUM -> mediumShape
+            ImageShape.LARGE -> largeShape
+        }
+
     fun copy(
         boxSizes: Dp = this.boxSizes,
-        placeholderSize: IconSize = this.placeholderIconSize,
+        placeholderSize: IconSize = this.placeholderSize,
         overlayIconSize: IconSize? = this.overlayIconSize,
+        smallShape: Shape = this.smallShape,
+        mediumShape: Shape = this.mediumShape,
+        largeShape: Shape = this.largeShape,
         badgeSize: Dp? = this.badgeSize,
         horizontalBadgeOffset: Dp = this.horizontalBadgeOffset,
         verticalBadgeOffset: Dp = this.verticalBadgeOffset
-    ) = AvatarSize(
+    ) = ImageSize(
         boxSizes.takeOrElse { this.boxSizes },
         placeholderSize,
         overlayIconSize,
+        smallShape,
+        mediumShape,
+        largeShape,
         badgeSize,
         horizontalBadgeOffset.takeOrElse { this.horizontalBadgeOffset },
         verticalBadgeOffset.takeOrElse { this.verticalBadgeOffset }
@@ -314,20 +427,26 @@ class AvatarSize internal constructor(
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (other == null || other !is AvatarSize) return false
+        if (other == null || other !is ImageSize) return false
 
         if (boxSizes != other.boxSizes) return false
-        if (placeholderIconSize != other.placeholderIconSize) return false
+        if (placeholderSize != other.placeholderSize) return false
         if (overlayIconSize != other.overlayIconSize) return false
+        if (smallShape != other.smallShape) return false
+        if (mediumShape != other.mediumShape) return false
         if (badgeSize != other.badgeSize) return false
         if (horizontalBadgeOffset != other.horizontalBadgeOffset) return false
-        return verticalBadgeOffset == other.verticalBadgeOffset
+        if (verticalBadgeOffset != other.verticalBadgeOffset) return false
+        return largeShape == other.largeShape
     }
 
     override fun hashCode(): Int {
         var result = boxSizes.hashCode()
-        result = 31 * result + placeholderIconSize.hashCode()
+        result = 31 * result + placeholderSize.hashCode()
         result = 31 * result + overlayIconSize.hashCode()
+        result = 31 * result + smallShape.hashCode()
+        result = 31 * result + mediumShape.hashCode()
+        result = 31 * result + largeShape.hashCode()
         result = 31 * result + badgeSize.hashCode()
         result = 31 * result + horizontalBadgeOffset.hashCode()
         result = 31 * result + verticalBadgeOffset.hashCode()
@@ -336,18 +455,15 @@ class AvatarSize internal constructor(
 }
 
 @Immutable
-class AvatarsColors internal constructor(
+class ImagesColors internal constructor(
     private val placeholderContainerColor: Color,
     private val disabledPlaceholderContainerColor: Color,
-
     private val borderColor: Color,
     private val disabledBorderColor: Color,
-
     private val placeholderIconColor: Color,
     private val disabledPlaceholderIconColor: Color,
-
     private val overlayIconColor: Color,
-    private val disabledOverlayIconColor: Color,
+    private val disabledOverlayIconColor: Color
 ) {
 
     @Stable
@@ -374,8 +490,8 @@ class AvatarsColors internal constructor(
         placeholderIconColor: Color = this.placeholderIconColor,
         disabledPlaceholderIconColor: Color = this.disabledPlaceholderIconColor,
         overlayIconColor: Color = this.overlayIconColor,
-        disabledOverlayIconColor: Color = this.disabledOverlayIconColor,
-    ): AvatarsColors = AvatarsColors(
+        disabledOverlayIconColor: Color = this.disabledOverlayIconColor
+    ): ImagesColors = ImagesColors(
         placeholderContainerColor = placeholderContainerColor.takeOrElse { this.placeholderContainerColor },
         disabledPlaceholderContainerColor = disabledPlaceholderContainerColor.takeOrElse { this.disabledPlaceholderContainerColor },
         borderColor = borderColor.takeOrElse { this.borderColor },
@@ -383,12 +499,12 @@ class AvatarsColors internal constructor(
         placeholderIconColor = placeholderIconColor.takeOrElse { this.placeholderIconColor },
         disabledPlaceholderIconColor = disabledPlaceholderIconColor.takeOrElse { this.disabledPlaceholderIconColor },
         overlayIconColor = overlayIconColor.takeOrElse { this.overlayIconColor },
-        disabledOverlayIconColor = disabledOverlayIconColor.takeOrElse { this.disabledOverlayIconColor },
+        disabledOverlayIconColor = disabledOverlayIconColor.takeOrElse { this.disabledOverlayIconColor }
     )
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (other == null || other !is AvatarsColors) return false
+        if (other == null || other !is ImagesColors) return false
 
         if (placeholderContainerColor != other.placeholderContainerColor) return false
         if (disabledPlaceholderContainerColor != other.disabledPlaceholderContainerColor) return false
@@ -411,8 +527,4 @@ class AvatarsColors internal constructor(
         result = 31 * result + disabledOverlayIconColor.hashCode()
         return result
     }
-}
-
-enum class OnlineBadgeSize {
-    SMALL, MEDIUM
 }

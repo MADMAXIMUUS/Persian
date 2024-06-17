@@ -34,19 +34,20 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.shimmer
 import io.github.madmaximuus.persian.icon.Icon
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
-import io.github.madmaximuus.persianSymbols.play.base.Play
+import io.github.madmaximuus.persianSymbols.plus.base.Plus
 import io.github.madmaximuus.persianSymbols.user.base.User
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
-fun PersianAvatar(
+fun Avatar(
     modifier: Modifier = Modifier,
     imageUrl: Uri,
     overlay: Boolean = false,
     enabled: Boolean = true,
-    overlayIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.Play),
-    colors: AvatarsColors = PersianAvatarsDefaults.colors(),
-    sizes: AvatarSize = PersianAvatarsDefaults.size48(),
+    placeholderIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.User),
+    overlayIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.Plus),
+    colors: AvatarsColors = AvatarDefaults.colors(),
+    sizes: AvatarSize = AvatarDefaults.size48(),
     onClick: (() -> Unit)? = null,
     badge: (@Composable () -> Unit)? = null
 ) {
@@ -89,17 +90,11 @@ fun PersianAvatar(
                                             modifier = Modifier.fillMaxSize(),
                                             contentAlignment = Alignment.Center
                                         ) {
-                                            CompositionLocalProvider(
-                                                LocalContentColor provides colors
-                                                    .placeholderIcon(
-                                                        enabled
-                                                    )
-                                            ) {
-                                                Icon(
-                                                    painter = rememberVectorPainter(image = PersianSymbols.Default.User),
-                                                    size = sizes.placeholderIconSize
-                                                )
-                                            }
+                                            Icon(
+                                                painter = placeholderIcon,
+                                                size = sizes.placeholderIconSize,
+                                                tint = colors.placeholderIcon(enabled)
+                                            )
                                         }
                                     }
 

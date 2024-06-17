@@ -20,11 +20,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import io.github.madmaximuus.persian.avatarsAndImages.Avatar
+import io.github.madmaximuus.persian.avatarsAndImages.AvatarDefaults
+import io.github.madmaximuus.persian.avatarsAndImages.Image
+import io.github.madmaximuus.persian.avatarsAndImages.ImageDefaults
 import io.github.madmaximuus.persian.avatarsAndImages.ImageShape
-import io.github.madmaximuus.persian.avatarsAndImages.PersianAvatar
-import io.github.madmaximuus.persian.avatarsAndImages.PersianAvatarsDefaults
-import io.github.madmaximuus.persian.avatarsAndImages.PersianImage
-import io.github.madmaximuus.persian.avatarsAndImages.PersianImagesDefaults
 import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
 import io.github.madmaximuus.persian.forms.PersianForm
 import io.github.madmaximuus.persian.forms.PersianFormContent
@@ -54,41 +54,42 @@ object AvatarAndImage : Screen {
         ) {
             val (overlay, onOverlayChange) = remember { mutableStateOf(false) }
             val (content, onContentChange) = remember { mutableStateOf(false) }
+            val (badge, onBadgeChange) = remember { mutableStateOf(false) }
             var shape by remember { mutableStateOf(ImageShape.LARGE) }
             var selectedSize by remember { mutableStateOf("96") }
             val imageSizes = listOf(
-                PersianImagesDefaults.size96(),
-                PersianImagesDefaults.size88(),
-                PersianImagesDefaults.size80(),
-                PersianImagesDefaults.size72(),
-                PersianImagesDefaults.size64(),
-                PersianImagesDefaults.size56(),
-                PersianImagesDefaults.size48(),
-                PersianImagesDefaults.size44(),
-                PersianImagesDefaults.size40(),
-                PersianImagesDefaults.size36(),
-                PersianImagesDefaults.size32(),
-                PersianImagesDefaults.size28(),
-                PersianImagesDefaults.size24(),
-                PersianImagesDefaults.size20(),
-                PersianImagesDefaults.size16(),
+                ImageDefaults.size96(),
+                ImageDefaults.size88(),
+                ImageDefaults.size80(),
+                ImageDefaults.size72(),
+                ImageDefaults.size64(),
+                ImageDefaults.size56(),
+                ImageDefaults.size48(),
+                ImageDefaults.size44(),
+                ImageDefaults.size40(),
+                ImageDefaults.size36(),
+                ImageDefaults.size32(),
+                ImageDefaults.size28(),
+                ImageDefaults.size24(),
+                ImageDefaults.size20(),
+                ImageDefaults.size16(),
             )
             val avatarSizes = listOf(
-                PersianAvatarsDefaults.size96(),
-                PersianAvatarsDefaults.size88(),
-                PersianAvatarsDefaults.size80(),
-                PersianAvatarsDefaults.size72(),
-                PersianAvatarsDefaults.size64(),
-                PersianAvatarsDefaults.size56(),
-                PersianAvatarsDefaults.size48(),
-                PersianAvatarsDefaults.size44(),
-                PersianAvatarsDefaults.size40(),
-                PersianAvatarsDefaults.size36(),
-                PersianAvatarsDefaults.size32(),
-                PersianAvatarsDefaults.size28(),
-                PersianAvatarsDefaults.size24(),
-                PersianAvatarsDefaults.size20(),
-                PersianAvatarsDefaults.size16(),
+                AvatarDefaults.size96(),
+                AvatarDefaults.size88(),
+                AvatarDefaults.size80(),
+                AvatarDefaults.size72(),
+                AvatarDefaults.size64(),
+                AvatarDefaults.size56(),
+                AvatarDefaults.size48(),
+                AvatarDefaults.size44(),
+                AvatarDefaults.size40(),
+                AvatarDefaults.size36(),
+                AvatarDefaults.size32(),
+                AvatarDefaults.size28(),
+                AvatarDefaults.size24(),
+                AvatarDefaults.size20(),
+                AvatarDefaults.size16(),
             )
             var imageSizeState by remember { mutableStateOf(imageSizes[0]) }
             var avatarSizeState by remember { mutableStateOf(avatarSizes[0]) }
@@ -108,30 +109,40 @@ object AvatarAndImage : Screen {
                     text = "Sample",
                     firstItem = true
                 ) {
-                    PersianAvatar(
+                    Avatar(
                         imageUrl = if (content) Uri.parse("https://loremflickr.com/320/240") else Uri.EMPTY,
                         overlay = overlay,
                         sizes = avatarSizeState,
-                        badge = {
-                            Box(
-                                modifier = Modifier
-                                    .fillMaxSize()
-                                    .background(PersianTheme.colorScheme.surface5)
-                            )
-                        }
+                        badge = if (badge) {
+                            {
+                                Box(
+                                    modifier = Modifier
+                                        .fillMaxSize()
+                                        .background(
+                                            PersianTheme.colorScheme.surface5,
+                                            PersianTheme.shapes.shape6
+                                        )
+                                )
+                            }
+                        } else null
                     )
-                    PersianImage(
+                    Image(
                         imageUrl = if (content) Uri.parse("https://loremflickr.com/320/240") else Uri.EMPTY,
                         sizes = imageSizeState,
                         shape = shape,
                         overlay = overlay,
-                        badge = {
-                            Box(
-                                modifier = Modifier
-                                    .fillMaxSize()
-                                    .background(PersianTheme.colorScheme.surface5)
-                            )
-                        }
+                        badge = if (badge) {
+                            {
+                                Box(
+                                    modifier = Modifier
+                                        .fillMaxSize()
+                                        .background(
+                                            PersianTheme.colorScheme.surface5,
+                                            PersianTheme.shapes.shape6
+                                        )
+                                )
+                            }
+                        } else null
                     )
                 }
                 Column(
@@ -154,6 +165,12 @@ object AvatarAndImage : Screen {
                         text = "Content",
                         checked = content,
                         onCheckedChange = onContentChange
+                    )
+                    PersianCheckbox(
+                        modifier = Modifier.fillMaxWidth(),
+                        text = "Badge",
+                        checked = badge,
+                        onCheckedChange = onBadgeChange
                     )
                     PersianForm(
                         subhead = PersianFormSubheadConfig(

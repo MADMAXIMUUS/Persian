@@ -35,18 +35,19 @@ import io.github.madmaximuus.persian.foundation.shimmer
 import io.github.madmaximuus.persian.icon.Icon
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.image.base.Image
-import io.github.madmaximuus.persianSymbols.play.base.Play
+import io.github.madmaximuus.persianSymbols.plus.base.Plus
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
-fun PersianImage(
+fun Image(
     modifier: Modifier = Modifier,
     imageUrl: Uri,
     overlay: Boolean = false,
     enabled: Boolean = true,
-    overlayIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.Play),
-    sizes: ImageSize = PersianImagesDefaults.size64(),
-    colors: ImagesColors = PersianImagesDefaults.colors(),
+    placeholderIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.Image),
+    overlayIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.Plus),
+    sizes: ImageSize = ImageDefaults.size64(),
+    colors: ImagesColors = ImageDefaults.colors(),
     shape: ImageShape = ImageShape.MEDIUM,
     onClick: (() -> Unit)? = null,
     badge: (@Composable () -> Unit)? = null
@@ -90,16 +91,11 @@ fun PersianImage(
                                             modifier = Modifier.fillMaxSize(),
                                             contentAlignment = Alignment.Center
                                         ) {
-                                            CompositionLocalProvider(
-                                                LocalContentColor provides colors.placeholderIcon(
-                                                    enabled
-                                                )
-                                            ) {
-                                                Icon(
-                                                    painter = rememberVectorPainter(image = PersianSymbols.Default.Image),
-                                                    size = sizes.placeholderSize
-                                                )
-                                            }
+                                            Icon(
+                                                painter = placeholderIcon,
+                                                size = sizes.placeholderSize,
+                                                tint = colors.placeholderIcon(enabled)
+                                            )
                                         }
                                     }
 
