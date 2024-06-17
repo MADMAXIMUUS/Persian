@@ -17,9 +17,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.alert.AlertAction
-import io.github.madmaximuus.persian.alert.PersianAlert
-import io.github.madmaximuus.persian.alert.PersianOnlyActionAlert
+import io.github.madmaximuus.persian.alert.Alert
+import io.github.madmaximuus.persian.alert.OnlyActionAlert
 import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
 import io.github.madmaximuus.persian.buttons.PersianPrimaryButton
 import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
@@ -120,30 +119,32 @@ object Alert : Screen {
             }
         }
         if (showOnlyActionAlert) {
-            PersianOnlyActionAlert(
-                actions = listOf(
-                    AlertAction("Action 1", onClick = { showOnlyActionAlert = false }),
-                    AlertAction("Action 2", onClick = { showOnlyActionAlert = false }),
-                    AlertAction("Action 3", onClick = { showOnlyActionAlert = false }),
-                    AlertAction("Action 4", onClick = { showOnlyActionAlert = false }),
-                    AlertAction("Action 5", onClick = { showOnlyActionAlert = false }),
-                    AlertAction("Action 6", onClick = { showOnlyActionAlert = false }),
-                    AlertAction("Action 7", onClick = { showOnlyActionAlert = false }),
-                    AlertAction("Action 8", onClick = { showOnlyActionAlert = false }),
-                    AlertAction("Action 9", onClick = { showOnlyActionAlert = false }),
-                    AlertAction("Action 10", onClick = { showOnlyActionAlert = false }),
-                )
+            OnlyActionAlert(
+                actions = {
+                    ActionItem(title = "Action 1", onClick = { showOnlyActionAlert = false })
+                    ActionItem(title = "Action 2", onClick = { showOnlyActionAlert = false })
+                    ActionItem(title = "Action 3", onClick = { showOnlyActionAlert = false })
+                    ActionItem(title = "Action 4", onClick = { showOnlyActionAlert = false })
+                    ActionItem(title = "Action 5", onClick = { showOnlyActionAlert = false })
+                    ActionItem(title = "Action 6", onClick = { showOnlyActionAlert = false })
+                    ActionItem(title = "Action 7", onClick = { showOnlyActionAlert = false })
+                    ActionItem(title = "Action 8", onClick = { showOnlyActionAlert = false })
+                    ActionItem(title = "Action 9", onClick = { showOnlyActionAlert = false })
+                    ActionItem(title = "Action 10", onClick = { showOnlyActionAlert = false })
+                }
             ) {
                 showOnlyActionAlert = false
             }
         }
         if (showAlert) {
-            PersianAlert(
+            Alert(
                 title = titleValue,
-                actions = listOf(
-                    AlertAction("OK", onClick = { showAlert = false }),
-                    AlertAction("Cancel", onClick = { showAlert = false }),
-                ),
+                confirmAction = {
+                    ActionItem(title = "OK", onClick = { showAlert = false })
+                },
+                dismissAction = {
+                    ActionItem(title = "Cancel", onClick = { showAlert = false })
+                },
                 description = if (description) descriptionValue else null,
                 onDismiss = { showAlert = false },
                 content = if (content) {

@@ -8,7 +8,7 @@ import io.github.madmaximuus.persian.buttons.ButtonColors
 import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
-object PersianAlertsDefaults {
+object AlertsDefaults {
 
     @Composable
     fun colors(

@@ -20,20 +20,19 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.window.core.layout.WindowHeightSizeClass
 import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
-import io.github.madmaximuus.persian.buttons.PersianTertiaryButton
 import io.github.madmaximuus.persian.dividers.PersianInsetHorizontalDivider
+import io.github.madmaximuus.persian.foundation.ActionsLayout
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.surface.Surface
 import io.github.madmaximuus.persian.text.Text
 
 @Composable
-fun PersianOnlyActionAlert(
+fun OnlyActionAlert(
     modifier: Modifier = Modifier,
-    colors: AlertsColors = PersianAlertsDefaults.colors(),
-    actions: List<AlertAction>,
+    colors: AlertsColors = AlertsDefaults.colors(),
+    actions: @Composable AlertActionScope.() -> Unit,
     onDismiss: () -> Unit
 ) {
-    validateOnlyActionItems(actions)
     Dialog(
         onDismissRequest = onDismiss,
         properties = DialogProperties(
@@ -52,21 +51,20 @@ fun PersianOnlyActionAlert(
                 tonalElevation = PersianTheme.elevation.small,
                 shadowElevation = 0.dp,
                 content = {
-                    Column(
-                        modifier = modifier
+                    ActionsLayout(
+                        modifier = Modifier
                             .fillMaxWidth()
                             .padding(PersianTheme.spacing.size16)
                             .verticalScroll(rememberScrollState()),
-                        horizontalAlignment = Alignment.CenterHorizontally,
                         content = {
-                            actions.forEach { action ->
-                                PersianTertiaryButton(
-                                    modifier = Modifier.fillMaxWidth(),
-                                    text = action.title,
-                                    colors = colors.actionColor,
-                                    onClick = action.onClick,
-                                    sizes = PersianButtonDefaults.largeSizes()
+                            with(
+                                AlertActionScope(
+                                    colors.actionColor,
+                                    PersianButtonDefaults.largeSizes(),
+                                    Modifier.fillMaxWidth()
                                 )
+                            ) {
+                                actions()
                             }
                         }
                     )
@@ -77,16 +75,17 @@ fun PersianOnlyActionAlert(
 }
 
 @Composable
-fun PersianAlert(
+fun Alert(
     modifier: Modifier = Modifier,
-    colors: AlertsColors = PersianAlertsDefaults.colors(),
+    colors: AlertsColors = AlertsDefaults.colors(),
     title: String,
     description: String? = null,
-    actions: List<AlertAction>,
+    confirmAction: @Composable AlertActionScope.() -> Unit,
+    dismissAction: (@Composable AlertActionScope.() -> Unit)? = null,
+    cancelAction: (@Composable AlertActionScope.() -> Unit)? = null,
     onDismiss: () -> Unit,
     content: (@Composable () -> Unit)? = null
 ) {
-    validateActionItems(actions)
     val heightSizeClass = currentWindowAdaptiveInfo().windowSizeClass.windowHeightSizeClass
     Dialog(
         onDismissRequest = onDismiss,
@@ -171,13 +170,16 @@ fun PersianAlert(
                                     Alignment.End
                                 ),
                                 content = {
-                                    actions.reversed().forEach { action ->
-                                        PersianTertiaryButton(
-                                            text = action.title,
-                                            colors = colors.actionColor,
-                                            onClick = action.onClick,
-                                            sizes = PersianButtonDefaults.smallSizes()
+                                    with(
+                                        AlertActionScope(
+                                            colors.actionColor,
+                                            PersianButtonDefaults.smallSizes(),
+                                            Modifier
                                         )
+                                    ) {
+                                        cancelAction?.let { it() }
+                                        dismissAction?.let { it() }
+                                        confirmAction()
                                     }
                                 }
                             )
@@ -188,22 +190,3 @@ fun PersianAlert(
         }
     )
 }
-
-private fun validateActionItems(actions: List<AlertAction>) {
-    if (actions.size > 3)
-        throw IllegalArgumentException("There should be no more than 3 actions")
-    else if (actions.isEmpty())
-        throw IllegalArgumentException("Actions must have at least 1 item")
-}
-
-private fun validateOnlyActionItems(actions: List<AlertAction>) {
-    if (actions.size < 2)
-        throw IllegalArgumentException("Actions must have at least 2 items")
-    else if (actions.size > 10)
-        throw IllegalArgumentException("There should be no more than 10 actions")
-}
-
-data class AlertAction(
-    val title: String,
-    val onClick: () -> Unit
-)
