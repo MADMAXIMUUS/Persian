@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
@@ -17,9 +19,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.banners.PersianBanner
-import io.github.madmaximuus.persian.banners.PersianBannerLeft
-import io.github.madmaximuus.persian.banners.PersianBannerRight
+import io.github.madmaximuus.persian.banners.Banner
 import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
 import io.github.madmaximuus.persian.forms.PersianForm
 import io.github.madmaximuus.persian.forms.PersianFormContent
@@ -53,13 +53,8 @@ object Banner : Screen {
             val (descriptionValue, onDescriptionValueChange) = remember { mutableStateOf("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed laoreet imperdiet consectetur. Nam vitae massa a metus dignissim malesuada. Duis.") }
             var title by remember { mutableStateOf(true) }
             var description by remember { mutableStateOf(true) }
-
-            val leftImage = PersianBannerLeft.Image("https://loremflickr.com/320/240")
-            val leftAvatar = PersianBannerLeft.Avatar("https://loremflickr.com/320/240")
-            val leftIcon =
-                PersianBannerLeft.Icon(rememberVectorPainter(image = PersianSymbols.Default.Globe))
-            var left by remember { mutableStateOf<PersianBannerLeft?>(null) }
             val (isButtonNeed, onButtonNeedChecked) = remember { mutableStateOf(false) }
+
             val leftOptions = listOf(
                 SelectActionItem.WithoutIcon("None"),
                 SelectActionItem.WithoutIcon("Image"),
@@ -68,9 +63,6 @@ object Banner : Screen {
             )
             var selectedLeft by remember { mutableStateOf("None") }
 
-            val rightOpen = PersianBannerRight.Open(onClick = {})
-            val rightClose = PersianBannerRight.Close(onClick = {})
-            var right by remember { mutableStateOf<PersianBannerRight?>(null) }
             val rightOptions = listOf(
                 SelectActionItem.WithoutIcon("None"),
                 SelectActionItem.WithoutIcon("Close"),
@@ -86,15 +78,67 @@ object Banner : Screen {
                     text = "Sample Banner",
                     firstItem = true
                 ) {
-                    PersianBanner(
+                    Banner(
                         title = if (title) titleValue else null,
-                        description = if (description) descriptionValue else null,
-                        left = left,
-                        right = right,
-                        buttonText = if (isButtonNeed) "Button" else null
+                        message = if (description) descriptionValue else null,
+                        left = when (selectedLeft) {
+                            "Image" -> {
+                                {
+                                    Image(
+                                        image = "https://loremflickr.com/320/240"
+                                    )
+                                }
+                            }
+
+                            "Avatar" -> {
+                                {
+                                    Avatar(
+                                        image = "https://loremflickr.com/320/240"
+                                    )
+                                }
+                            }
+
+                            "Icon" -> {
+                                {
+                                    Icon(
+                                        icon = rememberVectorPainter(image = PersianSymbols.Default.Globe),
+                                        contentDescription = ""
+                                    )
+                                }
+                            }
+
+                            else -> null
+                        },
+                        right = when (selectedRight) {
+                            "Open" -> {
+                                {
+                                    Open()
+                                }
+                            }
+
+                            "Close" -> {
+                                {
+                                    Close {
+
+                                    }
+                                }
+                            }
+
+                            else -> null
+                        },
+                        button = if (isButtonNeed) {
+                            {
+                                Primary(
+                                    text = "Button",
+                                    onClick = {}
+                                )
+                            }
+                        } else null,
                     )
                 }
-                Column {
+                Column(
+                    modifier = Modifier.verticalScroll(rememberScrollState())
+                ) {
                     PersianCheckbox(
                         modifier = Modifier
                             .padding(horizontal = PersianTheme.spacing.size8)
@@ -151,14 +195,8 @@ object Banner : Screen {
                         content = PersianFormContent.Select(
                             selected = selectedLeft,
                             values = leftOptions,
-                            onSelectedChange = { option, index ->
+                            onSelectedChange = { option, _ ->
                                 selectedLeft = option
-                                when (index) {
-                                    0 -> left = null
-                                    1 -> left = leftImage
-                                    2 -> left = leftIcon
-                                    3 -> left = leftAvatar
-                                }
                             }
                         )
                     )
@@ -172,13 +210,8 @@ object Banner : Screen {
                         content = PersianFormContent.Select(
                             selected = selectedRight,
                             values = rightOptions,
-                            onSelectedChange = { option, index ->
+                            onSelectedChange = { option, _ ->
                                 selectedRight = option
-                                when (index) {
-                                    0 -> right = null
-                                    1 -> right = rightClose
-                                    2 -> right = rightOpen
-                                }
                             }
                         )
                     )
