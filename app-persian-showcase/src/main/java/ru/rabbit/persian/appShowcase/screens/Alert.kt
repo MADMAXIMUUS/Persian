@@ -20,8 +20,8 @@ import androidx.navigation.NavController
 import io.github.madmaximuus.persian.alert.Alert
 import io.github.madmaximuus.persian.alert.OnlyActionAlert
 import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
-import io.github.madmaximuus.persian.buttons.PersianPrimaryButton
-import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
+import io.github.madmaximuus.persian.buttons.PrimaryButton
+import io.github.madmaximuus.persian.checkboxes.Checkbox
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.inputs.PersianOutlineInput
 import io.github.madmaximuus.persian.radioButtons.PersianRadioButton
@@ -54,13 +54,13 @@ object Alert : Screen {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size12)
             ) {
-                PersianPrimaryButton(
+                PrimaryButton(
                     text = "Only Action Alert",
                     sizes = PersianButtonDefaults.largeSizes()
                 ) {
                     showOnlyActionAlert = true
                 }
-                PersianPrimaryButton(
+                PrimaryButton(
                     text = "Primary Alert",
                     sizes = PersianButtonDefaults.largeSizes()
                 ) {
@@ -94,7 +94,7 @@ object Alert : Screen {
                         onValueChange = onTitleValueChange
                     )
                     Spacer(modifier = Modifier.height(PersianTheme.spacing.size8))
-                    PersianCheckbox(
+                    Checkbox(
                         modifier = Modifier.fillMaxWidth(),
                         text = "Subtitle",
                         checked = description,
@@ -109,7 +109,7 @@ object Alert : Screen {
                         )
                         Spacer(modifier = Modifier.height(PersianTheme.spacing.size8))
                     }
-                    PersianCheckbox(
+                    Checkbox(
                         modifier = Modifier.fillMaxWidth(),
                         text = "Content",
                         checked = content,
