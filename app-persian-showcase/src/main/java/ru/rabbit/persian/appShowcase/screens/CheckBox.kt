@@ -14,8 +14,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.state.ToggleableState
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
-import io.github.madmaximuus.persian.checkboxes.PersianTriStateCheckbox
+import io.github.madmaximuus.persian.checkboxes.Checkbox
+import io.github.madmaximuus.persian.checkboxes.TriStateCheckbox
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
@@ -41,7 +41,7 @@ object CheckBox : Screen {
                 contentPadding = it,
             ) {
                 item {
-                    PersianCheckbox(
+                    Checkbox(
                         modifier = Modifier.fillMaxWidth(),
                         text = "Checked by default",
                         checked = checked,
@@ -49,7 +49,7 @@ object CheckBox : Screen {
                     )
                 }
                 item {
-                    PersianCheckbox(
+                    Checkbox(
                         modifier = Modifier.fillMaxWidth(),
                         text = "Unchecked by default",
                         checked = checked1,
@@ -57,7 +57,7 @@ object CheckBox : Screen {
                     )
                 }
                 item {
-                    PersianCheckbox(
+                    Checkbox(
                         modifier = Modifier.fillMaxWidth(),
                         text = "Checked disabled",
                         checked = true,
@@ -66,7 +66,7 @@ object CheckBox : Screen {
                     )
                 }
                 item {
-                    PersianCheckbox(
+                    Checkbox(
                         modifier = Modifier.fillMaxWidth(),
                         text = "Unchecked disabled",
                         checked = false,
@@ -93,7 +93,7 @@ object CheckBox : Screen {
                             onStateChange2(s)
                         }
 
-                        PersianTriStateCheckbox(
+                        TriStateCheckbox(
                             modifier = Modifier.fillMaxWidth(),
                             state = parentState,
                             onClick = onParentClick,
@@ -109,7 +109,7 @@ object CheckBox : Screen {
                                 .fillMaxWidth()
                                 .padding(start = PersianTheme.spacing.size12)
                         ) {
-                            PersianCheckbox(
+                            Checkbox(
                                 modifier = Modifier.fillMaxWidth(),
                                 checked = state,
                                 onCheckedChange = onStateChange,
@@ -120,7 +120,7 @@ object CheckBox : Screen {
                                     .fillMaxWidth()
                                     .height(PersianTheme.spacing.size4)
                             )
-                            PersianCheckbox(
+                            Checkbox(
                                 modifier = Modifier.fillMaxWidth(),
                                 checked = state2,
                                 onCheckedChange = onStateChange2,

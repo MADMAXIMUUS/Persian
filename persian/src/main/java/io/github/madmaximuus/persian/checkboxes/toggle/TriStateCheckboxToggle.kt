@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.selection.triStateToggleable
-import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.remember
@@ -34,11 +33,12 @@ import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.checkboxes.CheckboxColors
 import io.github.madmaximuus.persian.checkboxes.PersianCheckboxDefaults
 import io.github.madmaximuus.persian.foundation.minimumInteractiveComponentSize
+import io.github.madmaximuus.persian.foundation.ripple.ripple
 import kotlin.math.floor
 import kotlin.math.max
 
 @Composable
-fun PersianTriStateCheckboxToggle(
+fun TriStateCheckboxToggle(
     state: ToggleableState,
     onClick: (() -> Unit)?,
     modifier: Modifier = Modifier,
@@ -54,9 +54,9 @@ fun PersianTriStateCheckboxToggle(
                 enabled = enabled,
                 role = Role.Checkbox,
                 interactionSource = interactionSource,
-                indication = rememberRipple(
-                    bounded = false,
-                    radius = 20.dp
+                indication = ripple(
+                    color = colors.boxColor(enabled = enabled, state = state).value,
+                    radius = 24.dp
                 )
             )
         } else {
@@ -187,11 +187,11 @@ private fun DrawScope.drawCheck(
 ) {
     val stroke = Stroke(width = strokeWidthPx, cap = StrokeCap.Round, join = StrokeJoin.Round)
     val width = size.width
-    val checkCrossX = 0.4f
-    val checkCrossY = 0.7f
-    val leftX = 0.2f
+    val checkCrossX = 0.42f
+    val checkCrossY = 0.67f
+    val leftX = 0.25f
     val leftY = 0.5f
-    val rightX = 0.8f
+    val rightX = 0.76f
     val rightY = 0.3f
 
     val gravitatedCrossX = lerp(checkCrossX, 0.5f, crossCenterGravitation)
@@ -221,14 +221,14 @@ private class CheckDrawingCache(
     val pathToDraw: Path = Path()
 )
 
-internal const val BOX_IN_DURATION = 50
-internal const val BOX_OUT_DURATION = 100
-internal const val CHECK_ANIMATION_DURATION = 100
+internal const val BOX_IN_DURATION = 100
+internal const val BOX_OUT_DURATION = 150
+internal const val CHECK_ANIMATION_DURATION = 200
 
-internal val checkboxDefaultPadding = 2.dp
-internal val checkboxSize = 20.dp
-internal val strokeWidth = 2.dp
-internal val radiusSize = 4.dp
+internal val checkboxDefaultPadding = 4.dp
+internal val checkboxSize = 22.dp
+internal val strokeWidth = 2.5.dp
+internal val radiusSize = 6.dp
 
 private fun lerp(x: Float, y: Float, t: Float): Float {
     return x * (1 - t) + y * t

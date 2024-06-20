@@ -1,6 +1,7 @@
 package io.github.madmaximuus.persian.checkboxes
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -8,20 +9,22 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.selection.triStateToggleable
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.state.ToggleableState
 import androidx.compose.ui.tooling.preview.Preview
-import io.github.madmaximuus.persian.checkboxes.toggle.PersianCheckboxToggle
-import io.github.madmaximuus.persian.checkboxes.toggle.PersianTriStateCheckboxToggle
+import io.github.madmaximuus.persian.checkboxes.toggle.CheckboxToggle
+import io.github.madmaximuus.persian.checkboxes.toggle.TriStateCheckboxToggle
 import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.foundation.ripple.ripple
 import io.github.madmaximuus.persian.surface.Surface
 import io.github.madmaximuus.persian.text.Text
 
 @Composable
-fun PersianCheckbox(
+fun Checkbox(
     modifier: Modifier = Modifier,
     text: String,
     checked: Boolean,
@@ -37,13 +40,17 @@ fun PersianCheckbox(
                 value = checked,
                 enabled = enabled,
                 onValueChange = { onCheckedChange(!checked) },
-                role = Role.Checkbox
+                role = Role.Checkbox,
+                interactionSource = remember { MutableInteractionSource() },
+                indication = ripple(
+                    color = checkboxColors.textColor(enabled)
+                )
             )
             .padding(checkboxSizes.contentPadding),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Start
     ) {
-        PersianCheckboxToggle(
+        CheckboxToggle(
             modifier = Modifier
                 .size(checkboxSizes.toggleSize),
             checked = checked,
@@ -60,7 +67,7 @@ fun PersianCheckbox(
 }
 
 @Composable
-fun PersianTriStateCheckbox(
+fun TriStateCheckbox(
     modifier: Modifier = Modifier,
     text: String,
     state: ToggleableState,
@@ -76,13 +83,17 @@ fun PersianTriStateCheckbox(
                 state = state,
                 enabled = enabled,
                 onClick = onClick,
-                role = Role.Checkbox
+                role = Role.Checkbox,
+                interactionSource = remember { MutableInteractionSource() },
+                indication = ripple(
+                    color = checkboxColors.boxColor(enabled = enabled, state = state).value,
+                )
             )
             .padding(checkboxSizes.contentPadding),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Start
     ) {
-        PersianTriStateCheckboxToggle(
+        TriStateCheckboxToggle(
             modifier = Modifier
                 .size(checkboxSizes.toggleSize),
             state = state,
@@ -104,7 +115,7 @@ fun PersianTriStateCheckbox(
 private fun CheckboxPreview() {
     PersianTheme {
         Surface {
-            PersianCheckbox(
+            Checkbox(
                 text = "Checkbox",
                 checked = true,
                 onCheckedChange = {}
@@ -119,7 +130,7 @@ private fun CheckboxPreview() {
 private fun TriStateCheckboxPreview() {
     PersianTheme {
         Surface {
-            PersianTriStateCheckbox(
+            TriStateCheckbox(
                 text = "Checkbox",
                 state = ToggleableState.Indeterminate,
                 onClick = {}
