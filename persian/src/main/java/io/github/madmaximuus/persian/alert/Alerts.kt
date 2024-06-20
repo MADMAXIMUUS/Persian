@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.window.core.layout.WindowHeightSizeClass
-import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
+import io.github.madmaximuus.persian.button.PersianButtonDefaults
 import io.github.madmaximuus.persian.dividers.PersianInsetHorizontalDivider
 import io.github.madmaximuus.persian.foundation.ActionsLayout
 import io.github.madmaximuus.persian.foundation.PersianTheme

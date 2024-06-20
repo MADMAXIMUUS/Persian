@@ -22,12 +22,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
-import io.github.madmaximuus.persian.buttons.PersianOutlinedButton
-import io.github.madmaximuus.persian.buttons.PersianPrimaryButton
-import io.github.madmaximuus.persian.buttons.PersianSecondaryButton
-import io.github.madmaximuus.persian.buttons.PersianTertiaryButton
-import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
+import io.github.madmaximuus.persian.button.OutlinedButton
+import io.github.madmaximuus.persian.button.PersianButtonDefaults
+import io.github.madmaximuus.persian.button.PrimaryButton
+import io.github.madmaximuus.persian.button.SecondaryButton
+import io.github.madmaximuus.persian.button.TertiaryButton
+import io.github.madmaximuus.persian.checkboxes.Checkbox
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.inputs.PersianOutlineInput
 import io.github.madmaximuus.persian.radioButtons.PersianRadioButton
@@ -76,7 +76,7 @@ object Button : Screen {
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        PersianPrimaryButton(
+                        PrimaryButton(
                             text = text,
                             sizes = sizeState,
                             enabled = enabled,
@@ -87,7 +87,7 @@ object Button : Screen {
                             onClick = {}
                         )
                         Spacer(modifier = Modifier.height(PersianTheme.spacing.size16))
-                        PersianSecondaryButton(
+                        SecondaryButton(
                             text = text,
                             sizes = sizeState,
                             enabled = enabled,
@@ -98,7 +98,7 @@ object Button : Screen {
                             onClick = {}
                         )
                         Spacer(modifier = Modifier.height(PersianTheme.spacing.size16))
-                        PersianTertiaryButton(
+                        TertiaryButton(
                             text = text,
                             sizes = sizeState,
                             enabled = enabled,
@@ -109,7 +109,7 @@ object Button : Screen {
                             onClick = {}
                         )
                         Spacer(modifier = Modifier.height(PersianTheme.spacing.size16))
-                        PersianOutlinedButton(
+                        OutlinedButton(
                             text = text,
                             sizes = sizeState,
                             enabled = enabled,
@@ -215,7 +215,7 @@ object Button : Screen {
                         modifier = Modifier
                             .fillMaxWidth()
                     ) {
-                        PersianCheckbox(
+                        Checkbox(
                             text = "Addition info",
                             checked = showAdditionInfoLabel,
                             onCheckedChange = { isChecked ->
@@ -230,7 +230,7 @@ object Button : Screen {
                                 }
                             )
                         }
-                        PersianCheckbox(
+                        Checkbox(
                             modifier = Modifier.fillMaxWidth(),
                             text = "Show Leading icon",
                             checked = showLeadingIcon,
@@ -238,7 +238,7 @@ object Button : Screen {
                                 showLeadingIcon = !showLeadingIcon
                             }
                         )
-                        PersianCheckbox(
+                        Checkbox(
                             modifier = Modifier.fillMaxWidth(),
                             text = "Show Trailing icon",
                             checked = showTrailingIcon,
@@ -246,7 +246,7 @@ object Button : Screen {
                                 showTrailingIcon = !showTrailingIcon
                             }
                         )
-                        PersianCheckbox(
+                        Checkbox(
                             modifier = Modifier.fillMaxWidth(),
                             text = "Enabled",
                             checked = enabled,
@@ -254,7 +254,7 @@ object Button : Screen {
                                 enabled = !enabled
                             }
                         )
-                        PersianCheckbox(
+                        Checkbox(
                             modifier = Modifier.fillMaxWidth(),
                             text = "Loading",
                             checked = loading,

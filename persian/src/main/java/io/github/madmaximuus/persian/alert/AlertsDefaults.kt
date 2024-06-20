@@ -4,8 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.takeOrElse
-import io.github.madmaximuus.persian.buttons.ButtonColors
-import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
+import io.github.madmaximuus.persian.button.ButtonColors
+import io.github.madmaximuus.persian.button.PersianButtonDefaults
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
 object AlertsDefaults {

@@ -19,8 +19,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.actionSheet.ActionSheet
-import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
-import io.github.madmaximuus.persian.buttons.PrimaryButton
+import io.github.madmaximuus.persian.button.PersianButtonDefaults
+import io.github.madmaximuus.persian.button.PrimaryButton
 import io.github.madmaximuus.persian.checkboxes.Checkbox
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.inputs.PersianOutlineInput

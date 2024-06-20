@@ -3,10 +3,10 @@ package io.github.madmaximuus.persian.banner
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.Modifier
-import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
-import io.github.madmaximuus.persian.buttons.PrimaryButton
-import io.github.madmaximuus.persian.buttons.SecondaryButton
-import io.github.madmaximuus.persian.buttons.TertiaryButton
+import io.github.madmaximuus.persian.button.PersianButtonDefaults
+import io.github.madmaximuus.persian.button.PrimaryButton
+import io.github.madmaximuus.persian.button.SecondaryButton
+import io.github.madmaximuus.persian.button.TertiaryButton
 
 @Stable
 object BannerButtonScope {

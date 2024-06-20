@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.buttons
+package io.github.madmaximuus.persian.button
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.BorderStroke
@@ -54,7 +54,7 @@ import io.github.madmaximuus.persianSymbols.plus.base.Plus
  * @param onClick The callback to be called when the user click on the button
  */
 @Composable
-fun PersianPrimaryButton(
+fun PrimaryButton(
     text: String,
     modifier: Modifier = Modifier,
     additionInfoText: String? = null,
@@ -66,7 +66,7 @@ fun PersianPrimaryButton(
     sizes: ButtonSizes = PersianButtonDefaults.mediumSizes(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     onClick: () -> Unit
-) = PersianButton(
+) = ButtonImpl(
     modifier = modifier,
     text = text,
     additionInfoText = additionInfoText,
@@ -94,7 +94,7 @@ fun PersianPrimaryButton(
  * @param onClick The callback to be called when the user click on the button
  */
 @Composable
-fun PersianSecondaryButton(
+fun SecondaryButton(
     text: String,
     modifier: Modifier = Modifier,
     additionInfoText: String? = null,
@@ -106,7 +106,7 @@ fun PersianSecondaryButton(
     sizes: ButtonSizes = PersianButtonDefaults.mediumSizes(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     onClick: () -> Unit
-) = PersianButton(
+) = ButtonImpl(
     modifier = modifier,
     text = text,
     additionInfoText = additionInfoText,
@@ -135,7 +135,7 @@ fun PersianSecondaryButton(
  * @param onClick The callback to be called when the user click on the button
  */
 @Composable
-fun PersianTertiaryButton(
+fun TertiaryButton(
     text: String,
     modifier: Modifier = Modifier,
     additionInfoText: String? = null,
@@ -147,7 +147,7 @@ fun PersianTertiaryButton(
     sizes: ButtonSizes = PersianButtonDefaults.mediumSizes(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     onClick: () -> Unit
-) = PersianButton(
+) = ButtonImpl(
     modifier = modifier,
     text = text,
     additionInfoText = additionInfoText,
@@ -174,7 +174,7 @@ fun PersianTertiaryButton(
  * @param onClick The callback to be called when the user click on the button
  */
 @Composable
-fun PersianOutlinedButton(
+fun OutlinedButton(
     text: String,
     modifier: Modifier = Modifier,
     additionInfoText: String? = null,
@@ -186,7 +186,7 @@ fun PersianOutlinedButton(
     sizes: ButtonSizes = PersianButtonDefaults.mediumSizes(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     onClick: () -> Unit
-) = PersianButton(
+) = ButtonImpl(
     modifier = modifier,
     text = text,
     additionInfoText = additionInfoText,
@@ -205,7 +205,7 @@ fun PersianOutlinedButton(
 )
 
 @Composable
-private fun PersianButton(
+private fun ButtonImpl(
     text: String,
     modifier: Modifier = Modifier,
     leadingIcon: Painter? = null,
@@ -221,17 +221,17 @@ private fun PersianButton(
 ) {
     val containerColor = colors.containerColor(enabled)
     val contentColor = colors.contentColor(enabled)
-    Surface(
-        onClick = onClick,
-        modifier = modifier.semantics { role = Role.Button },
-        enabled = enabled,
-        shape = sizes.shape,
-        color = containerColor,
-        contentColor = contentColor,
-        border = border,
-        interactionSource = interactionSource
-    ) {
-        CompositionLocalProvider(LocalContentColor provides contentColor) {
+    CompositionLocalProvider(LocalContentColor provides contentColor) {
+        Surface(
+            onClick = onClick,
+            modifier = modifier.semantics { role = Role.Button },
+            enabled = enabled,
+            shape = sizes.shape,
+            color = containerColor,
+            contentColor = contentColor,
+            border = border,
+            interactionSource = interactionSource
+        ) {
             ProvideTextStyle(value = sizes.textStyle) {
                 Row(
                     Modifier
@@ -335,27 +335,7 @@ private fun PersianButtonPreview() {
                 modifier = Modifier
                     .padding(10.dp)
             ) {
-                PersianPrimaryButton(
-                    leadingIcon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
-                    trailingIcon = rememberVectorPainter(image = PersianSymbols.Default.ChevronRight),
-                    text = "Button",
-                    additionInfoText = "Addition Info",
-                    loading = isLoading,
-                    sizes = PersianButtonDefaults.smallSizes(),
-                    onClick = {}
-                )
-                Spacer(modifier = Modifier.height(10.dp))
-                PersianSecondaryButton(
-                    leadingIcon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
-                    trailingIcon = rememberVectorPainter(image = PersianSymbols.Default.ChevronRight),
-                    text = "Button",
-                    additionInfoText = "Addition Info",
-                    loading = isLoading,
-                    sizes = PersianButtonDefaults.mediumSizes(),
-                    onClick = {}
-                )
-                Spacer(modifier = Modifier.height(10.dp))
-                PersianTertiaryButton(
+                PrimaryButton(
                     leadingIcon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
                     trailingIcon = rememberVectorPainter(image = PersianSymbols.Default.ChevronRight),
                     text = "Button",
@@ -365,7 +345,27 @@ private fun PersianButtonPreview() {
                     onClick = {}
                 )
                 Spacer(modifier = Modifier.height(10.dp))
-                PersianOutlinedButton(
+                SecondaryButton(
+                    leadingIcon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
+                    trailingIcon = rememberVectorPainter(image = PersianSymbols.Default.ChevronRight),
+                    text = "Button",
+                    additionInfoText = "Addition Info",
+                    loading = isLoading,
+                    sizes = PersianButtonDefaults.largeSizes(),
+                    onClick = {}
+                )
+                Spacer(modifier = Modifier.height(10.dp))
+                TertiaryButton(
+                    leadingIcon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
+                    trailingIcon = rememberVectorPainter(image = PersianSymbols.Default.ChevronRight),
+                    text = "Button",
+                    additionInfoText = "Addition Info",
+                    loading = isLoading,
+                    sizes = PersianButtonDefaults.largeSizes(),
+                    onClick = {}
+                )
+                Spacer(modifier = Modifier.height(10.dp))
+                OutlinedButton(
                     leadingIcon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
                     trailingIcon = rememberVectorPainter(image = PersianSymbols.Default.ChevronRight),
                     text = "Button",
