@@ -25,7 +25,7 @@ import io.github.madmaximuus.persian.avatarsAndImages.AvatarDefaults
 import io.github.madmaximuus.persian.avatarsAndImages.Image
 import io.github.madmaximuus.persian.avatarsAndImages.ImageDefaults
 import io.github.madmaximuus.persian.avatarsAndImages.ImageShape
-import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
+import io.github.madmaximuus.persian.checkboxes.Checkbox
 import io.github.madmaximuus.persian.forms.PersianForm
 import io.github.madmaximuus.persian.forms.PersianFormContent
 import io.github.madmaximuus.persian.forms.PersianFormSubheadConfig
@@ -154,19 +154,19 @@ object AvatarAndImage : Screen {
                             end = PersianTheme.spacing.size16
                         )
                 ) {
-                    PersianCheckbox(
+                    Checkbox(
                         modifier = Modifier.fillMaxWidth(),
                         text = "Overlay",
                         checked = overlay,
                         onCheckedChange = onOverlayChange
                     )
-                    PersianCheckbox(
+                    Checkbox(
                         modifier = Modifier.fillMaxWidth(),
                         text = "Content",
                         checked = content,
                         onCheckedChange = onContentChange
                     )
-                    PersianCheckbox(
+                    Checkbox(
                         modifier = Modifier.fillMaxWidth(),
                         text = "Badge",
                         checked = badge,
