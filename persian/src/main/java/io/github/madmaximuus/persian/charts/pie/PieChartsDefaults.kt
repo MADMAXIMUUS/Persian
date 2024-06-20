@@ -6,7 +6,7 @@ import androidx.compose.ui.text.TextStyle
 import io.github.madmaximuus.persian.charts.util.ChartStyle
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
-object PersianPieChartsDefaults {
+object PieChartsDefaults {
 
     @Composable
     fun style(

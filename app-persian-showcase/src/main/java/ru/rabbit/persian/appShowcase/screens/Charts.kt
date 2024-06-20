@@ -19,12 +19,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.charts.donut.PersianDonutChart
-import io.github.madmaximuus.persian.charts.donut.PersianDonutChartsDefaults
-import io.github.madmaximuus.persian.charts.pie.PersianPieChart
+import io.github.madmaximuus.persian.charts.donut.DonutChart
+import io.github.madmaximuus.persian.charts.donut.DonutChartsDefaults
+import io.github.madmaximuus.persian.charts.pie.PieChart
 import io.github.madmaximuus.persian.charts.util.ChartConfig
 import io.github.madmaximuus.persian.charts.util.ChartData
-import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
+import io.github.madmaximuus.persian.checkboxes.Checkbox
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.text.Text
 import ru.rabbit.persian.appShowcase.componets.SampleRow
@@ -59,7 +59,7 @@ object Charts : Screen {
                     .navigationBarsPadding()
             ) {
                 SampleRow(text = "Sample", firstItem = true) {
-                    PersianDonutChart(
+                    DonutChart(
                         modifier = Modifier,
                         data = listOf(
                             ChartData(
@@ -90,11 +90,11 @@ object Charts : Screen {
                         ),
                         title = if (title) "Title" else null,
                         subtitle = if (subtitle) "Subtitle" else null,
-                        style = PersianDonutChartsDefaults.style()
+                        style = DonutChartsDefaults.style()
                     )
                 }
                 SampleRow(text = "Sample", firstItem = true) {
-                    PersianPieChart(
+                    PieChart(
                         modifier = Modifier,
                         data = listOf(
                             ChartData(
@@ -123,7 +123,7 @@ object Charts : Screen {
                             showTotalValueAsSubtitle = total,
                             divided = divided
                         ),
-                        style = PersianDonutChartsDefaults.style()
+                        style = DonutChartsDefaults.style()
                     )
                 }
                 Column(
@@ -146,31 +146,31 @@ object Charts : Screen {
                         modifier = Modifier
                             .fillMaxWidth()
                     ) {
-                        PersianCheckbox(
+                        Checkbox(
                             modifier = Modifier.fillMaxWidth(),
                             text = "Show Total",
                             checked = total,
                             onCheckedChange = onTotalChange
                         )
-                        PersianCheckbox(
+                        Checkbox(
                             modifier = Modifier.fillMaxWidth(),
                             text = "Show Label",
                             checked = label,
                             onCheckedChange = onLabelChange
                         )
-                        PersianCheckbox(
+                        Checkbox(
                             modifier = Modifier.fillMaxWidth(),
                             text = "Title",
                             checked = title,
                             onCheckedChange = onTitleChange
                         )
-                        PersianCheckbox(
+                        Checkbox(
                             modifier = Modifier.fillMaxWidth(),
                             text = "Subtitle",
                             checked = subtitle,
                             onCheckedChange = onSubtitleChange
                         )
-                        PersianCheckbox(
+                        Checkbox(
                             modifier = Modifier.fillMaxWidth(),
                             text = "Divided",
                             checked = divided,

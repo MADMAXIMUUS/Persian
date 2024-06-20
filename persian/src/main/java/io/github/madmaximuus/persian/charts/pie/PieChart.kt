@@ -34,11 +34,11 @@ import kotlin.math.cos
 import kotlin.math.sin
 
 @Composable
-fun PersianPieChart(
+fun PieChart(
     data: List<ChartData>,
     config: ChartConfig,
     modifier: Modifier = Modifier,
-    style: ChartStyle = PersianPieChartsDefaults.style(),
+    style: ChartStyle = PieChartsDefaults.style(),
     size: Dp = 320.dp,
 ) {
     val state = rememberDonutChartState(data, config, style)
@@ -81,7 +81,9 @@ fun PersianPieChart(
                 state.data.forEach { data ->
                     scale = if (data.isSelected) 1.1f else 1f
                     val angleInRadians = (startAngle + data.angle / 2).degreeToAngle
-                    val text = "${String.format("%.1f", data.value)}%"
+                    val text = "%.1f".format(data.value)
+                        .trimEnd { it == '0' }
+                        .trimEnd { it == '.' } + "%"
                     val measurement = measurer.measure(text, textStyle)
                     scale(scale) {
                         drawArc(

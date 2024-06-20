@@ -39,11 +39,11 @@ import kotlin.math.cos
 import kotlin.math.sin
 
 @Composable
-fun PersianDonutChart(
+fun DonutChart(
     data: List<ChartData>,
     config: ChartConfig,
     modifier: Modifier = Modifier,
-    style: ChartStyle = PersianDonutChartsDefaults.style(),
+    style: ChartStyle = DonutChartsDefaults.style(),
     title: String? = null,
     subtitle: String? = null,
     size: Dp = 320.dp,
@@ -91,7 +91,9 @@ fun PersianDonutChart(
                 state.data.forEach { data ->
                     scale = if (data.isSelected) 1.1f else 1f
                     val angleInRadians = (startAngle + data.angle / 2).degreeToAngle
-                    val text = "${String.format("%.1f", data.value)}%"
+                    val text = "%.1f".format(data.value)
+                        .trimEnd { it == '0' }
+                        .trimEnd { it == '.' } + "%"
                     val measurement = measurer.measure(text, textStyle)
                     scale(scale) {
                         drawArc(
@@ -159,9 +161,12 @@ fun PersianDonutChart(
                 )
             }
             if (subtitle != null || config.showTotalValueAsSubtitle) {
+                val text = if (config.showTotalValueAsSubtitle)
+                    state.totalValue.toString().trimEnd { it == '0' }.trimEnd { it == '.' }
+                else subtitle.toString()
                 Text(
                     modifier = Modifier.fillMaxWidth(),
-                    text = if (config.showTotalValueAsSubtitle) state.totalValue.toString() else subtitle.toString(),
+                    text = text,
                     style = style.subtitleStyle,
                     color = style.subtitleColor,
                     textAlign = TextAlign.Center,
