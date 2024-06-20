@@ -1,12 +1,12 @@
-package io.github.madmaximuus.persian.banners
+package io.github.madmaximuus.persian.banner
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.Modifier
 import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
-import io.github.madmaximuus.persian.buttons.PersianPrimaryButton
-import io.github.madmaximuus.persian.buttons.PersianSecondaryButton
-import io.github.madmaximuus.persian.buttons.PersianTertiaryButton
+import io.github.madmaximuus.persian.buttons.PrimaryButton
+import io.github.madmaximuus.persian.buttons.SecondaryButton
+import io.github.madmaximuus.persian.buttons.TertiaryButton
 
 @Stable
 object BannerButtonScope {
@@ -17,7 +17,7 @@ object BannerButtonScope {
         text: String,
         onClick: () -> Unit
     ) {
-        PersianPrimaryButton(
+        PrimaryButton(
             modifier = modifier,
             text = text,
             onClick = onClick,
@@ -31,7 +31,7 @@ object BannerButtonScope {
         text: String,
         onClick: () -> Unit
     ) {
-        PersianSecondaryButton(
+        SecondaryButton(
             modifier = modifier,
             text = text,
             onClick = onClick,
@@ -45,7 +45,7 @@ object BannerButtonScope {
         text: String,
         onClick: () -> Unit
     ) {
-        PersianTertiaryButton(
+        TertiaryButton(
             modifier = modifier,
             text = text,
             onClick = onClick,

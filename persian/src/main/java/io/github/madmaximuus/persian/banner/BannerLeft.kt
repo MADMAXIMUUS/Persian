@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.banners
+package io.github.madmaximuus.persian.banner
 
 import android.net.Uri
 import androidx.compose.foundation.layout.padding

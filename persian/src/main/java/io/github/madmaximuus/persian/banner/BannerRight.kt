@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.banners
+package io.github.madmaximuus.persian.banner
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.padding

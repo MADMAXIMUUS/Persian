@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.banners
+package io.github.madmaximuus.persian.banner
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable

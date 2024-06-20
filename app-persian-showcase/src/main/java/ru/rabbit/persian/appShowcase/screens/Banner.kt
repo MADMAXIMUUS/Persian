@@ -19,8 +19,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.banners.Banner
-import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
+import io.github.madmaximuus.persian.banner.Banner
+import io.github.madmaximuus.persian.checkboxes.Checkbox
 import io.github.madmaximuus.persian.forms.PersianForm
 import io.github.madmaximuus.persian.forms.PersianFormContent
 import io.github.madmaximuus.persian.forms.PersianFormSubheadConfig
@@ -139,7 +139,7 @@ object Banner : Screen {
                 Column(
                     modifier = Modifier.verticalScroll(rememberScrollState())
                 ) {
-                    PersianCheckbox(
+                    Checkbox(
                         modifier = Modifier
                             .padding(horizontal = PersianTheme.spacing.size8)
                             .fillMaxWidth(),
@@ -158,7 +158,7 @@ object Banner : Screen {
                         )
                         Spacer(modifier = Modifier.height(PersianTheme.spacing.size8))
                     }
-                    PersianCheckbox(
+                    Checkbox(
                         modifier = Modifier
                             .padding(horizontal = PersianTheme.spacing.size8)
                             .fillMaxWidth(),
@@ -177,7 +177,7 @@ object Banner : Screen {
                         )
                         Spacer(modifier = Modifier.height(PersianTheme.spacing.size8))
                     }
-                    PersianCheckbox(
+                    Checkbox(
                         modifier = Modifier
                             .padding(horizontal = PersianTheme.spacing.size8)
                             .fillMaxWidth(),
