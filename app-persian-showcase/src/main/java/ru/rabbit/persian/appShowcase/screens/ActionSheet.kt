@@ -20,8 +20,8 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.actionSheet.ActionSheet
 import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
-import io.github.madmaximuus.persian.buttons.PersianPrimaryButton
-import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
+import io.github.madmaximuus.persian.buttons.PrimaryButton
+import io.github.madmaximuus.persian.checkboxes.Checkbox
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.inputs.PersianOutlineInput
 import io.github.madmaximuus.persian.textAreas.PersianOutlineTextArea
@@ -62,7 +62,7 @@ object ActionSheet : Screen {
                     .padding(it),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                PersianPrimaryButton(
+                PrimaryButton(
                     modifier = Modifier.padding(top = PersianTheme.spacing.size24),
                     text = "Show sheet",
                     sizes = PersianButtonDefaults.largeSizes(),
@@ -91,7 +91,7 @@ object ActionSheet : Screen {
                             end = PersianTheme.spacing.size16
                         )
                 ) {
-                    PersianCheckbox(
+                    Checkbox(
                         modifier = Modifier.fillMaxWidth(),
                         text = "Title",
                         checked = title,
@@ -105,7 +105,7 @@ object ActionSheet : Screen {
                         )
                         Spacer(modifier = Modifier.height(PersianTheme.spacing.size8))
                     }
-                    PersianCheckbox(
+                    Checkbox(
                         modifier = Modifier.fillMaxWidth(),
                         text = "Subtitle",
                         checked = subtitle,
@@ -119,19 +119,19 @@ object ActionSheet : Screen {
                         )
                         Spacer(modifier = Modifier.height(PersianTheme.spacing.size8))
                     }
-                    PersianCheckbox(
+                    Checkbox(
                         modifier = Modifier.fillMaxWidth(),
                         text = "Icons",
                         checked = icons,
                         onCheckedChange = onIconsChange
                     )
-                    PersianCheckbox(
+                    Checkbox(
                         modifier = Modifier.fillMaxWidth(),
                         text = "Negative",
                         checked = negative,
                         onCheckedChange = onNegativeChange
                     )
-                    PersianCheckbox(
+                    Checkbox(
                         modifier = Modifier.fillMaxWidth(),
                         text = "Enabled",
                         checked = enabled,
