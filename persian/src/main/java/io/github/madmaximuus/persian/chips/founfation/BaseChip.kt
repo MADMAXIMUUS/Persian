@@ -10,7 +10,6 @@ import androidx.compose.foundation.interaction.Interaction
 import androidx.compose.foundation.interaction.InteractionSource
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.PressInteraction
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.LaunchedEffect
@@ -24,13 +23,15 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.takeOrElse
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
+import io.github.madmaximuus.persian.avatarsAndImages.AvatarColors
+import io.github.madmaximuus.persian.avatarsAndImages.ImageColors
+import io.github.madmaximuus.persian.avatarsAndImages.ImageSize
 import io.github.madmaximuus.persian.foundation.animateElevation
 import io.github.madmaximuus.persian.icon.IconSize
 import io.github.madmaximuus.persian.surface.Surface
@@ -41,12 +42,10 @@ internal fun BaseChip(
     onClick: () -> Unit,
     enabled: Boolean,
     label: String,
-    leadingIcon: Painter?,
-    image: String?,
-    trailingIcon: Painter?,
+    leading: (@Composable () -> Unit)?,
+    trailing: (@Composable () -> Unit)?,
     colors: ChipColors,
     sizes: ChipSizes,
-    paddingValues: PaddingValues,
     elevation: ChipElevation,
     interactionSource: MutableInteractionSource,
 ) {
@@ -56,7 +55,10 @@ internal fun BaseChip(
         enabled = enabled,
         shape = sizes.shape,
         color = colors.containerColor(enabled),
-        border = BorderStroke(sizes.borderWidth(enabled), colors.borderColor(enabled)),
+        border = BorderStroke(
+            sizes.borderWidth(enabled),
+            colors.borderColor(enabled)
+        ),
         tonalElevation = elevation.tonalElevation(enabled),
         shadowElevation = elevation.shadowElevation(
             enabled = enabled,
@@ -66,20 +68,10 @@ internal fun BaseChip(
     ) {
         ChipContent(
             label = label,
-            selected = false,
             labelTextStyle = sizes.labelStyle,
-            leadingIcon = leadingIcon,
-            leadingIconSize = sizes.leadingIconSize,
-            trailingIconSize = sizes.trailingIconSize,
-            avatar = null,
-            image = image,
-            trailingIcon = trailingIcon,
-            paddingValues = paddingValues,
-            leadingIconColor = colors.leadingIconContentColor(enabled),
-            trailingIconColor = colors.trailingIconContentColor(enabled),
+            leading = leading,
+            trailing = trailing,
             labelColor = colors.labelColor(enabled),
-            onTrailingClick = null,
-            enabled = enabled
         )
     }
 }
@@ -87,15 +79,22 @@ internal fun BaseChip(
 @Immutable
 class ChipColors internal constructor(
     private val containerColor: Color,
-    private val labelColor: Color,
-    private val leadingIconContentColor: Color,
-    private val trailingIconContentColor: Color,
-    private val borderColor: Color,
     private val disabledContainerColor: Color,
+
+    private val labelColor: Color,
     private val disabledLabelColor: Color,
+
+    private val leadingIconContentColor: Color,
     private val disabledLeadingIconContentColor: Color,
+
+    private val trailingIconContentColor: Color,
     private val disabledTrailingIconContentColor: Color,
-    private val disabledBorderColor: Color
+
+    private val borderColor: Color,
+    private val disabledBorderColor: Color,
+
+    internal val avatarColors: AvatarColors,
+    internal val imageColors: ImageColors
 ) {
     fun copy(
         containerColor: Color = this.containerColor,
@@ -107,7 +106,9 @@ class ChipColors internal constructor(
         disabledLabelColor: Color = this.disabledLabelColor,
         disabledLeadingIconContentColor: Color = this.disabledLeadingIconContentColor,
         disabledTrailingIconContentColor: Color = this.disabledTrailingIconContentColor,
-        disabledBorderColor: Color = this.disabledBorderColor
+        disabledBorderColor: Color = this.disabledBorderColor,
+        imageColors: ImageColors,
+        avatarColors: AvatarColors,
     ) = ChipColors(
         containerColor.takeOrElse { this.containerColor },
         labelColor.takeOrElse { this.labelColor },
@@ -118,7 +119,9 @@ class ChipColors internal constructor(
         disabledLabelColor.takeOrElse { this.disabledLabelColor },
         disabledLeadingIconContentColor.takeOrElse { this.disabledLeadingIconContentColor },
         disabledTrailingIconContentColor.takeOrElse { this.disabledTrailingIconContentColor },
-        disabledBorderColor.takeOrElse { this.disabledBorderColor }
+        disabledBorderColor.takeOrElse { this.disabledBorderColor },
+        imageColors = imageColors,
+        avatarColors = avatarColors
     )
 
     @Stable
@@ -152,6 +155,8 @@ class ChipColors internal constructor(
         if (disabledContainerColor != other.disabledContainerColor) return false
         if (disabledLabelColor != other.disabledLabelColor) return false
         if (disabledLeadingIconContentColor != other.disabledLeadingIconContentColor) return false
+        if (imageColors != other.imageColors) return false
+        if (avatarColors != other.avatarColors) return false
         return disabledTrailingIconContentColor == other.disabledTrailingIconContentColor
     }
 
@@ -164,6 +169,8 @@ class ChipColors internal constructor(
         result = 31 * result + disabledLabelColor.hashCode()
         result = 31 * result + disabledLeadingIconContentColor.hashCode()
         result = 31 * result + disabledTrailingIconContentColor.hashCode()
+        result = 31 * result + imageColors.hashCode()
+        result = 31 * result + avatarColors.hashCode()
 
         return result
     }
@@ -171,11 +178,12 @@ class ChipColors internal constructor(
 
 @Immutable
 class ChipSizes internal constructor(
+    internal val shape: Shape,
     internal val trailingIconSize: IconSize,
     internal val leadingIconSize: IconSize,
+    internal val leadingImageSize: ImageSize,
     internal val labelStyle: TextStyle,
     internal val borderWidth: Dp,
-    internal val shape: Shape,
     internal val disabledBorderWith: Dp,
 ) {
 

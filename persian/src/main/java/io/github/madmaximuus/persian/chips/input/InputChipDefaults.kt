@@ -1,4 +1,5 @@
-package io.github.madmaximuus.persian.chips.filter
+package io.github.madmaximuus.persian.chips.input
+
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
@@ -6,6 +7,12 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import io.github.madmaximuus.persian.avatarsAndImages.AvatarColors
+import io.github.madmaximuus.persian.avatarsAndImages.AvatarDefaults
+import io.github.madmaximuus.persian.avatarsAndImages.AvatarSize
+import io.github.madmaximuus.persian.avatarsAndImages.ImageColors
+import io.github.madmaximuus.persian.avatarsAndImages.ImageDefaults
+import io.github.madmaximuus.persian.avatarsAndImages.ImageSize
 import io.github.madmaximuus.persian.chips.founfation.SelectableChipColors
 import io.github.madmaximuus.persian.chips.founfation.SelectableChipElevation
 import io.github.madmaximuus.persian.chips.founfation.SelectableChipSizes
@@ -15,14 +22,14 @@ import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persian.icon.IconSize
 
-object PersianFilterChipDefaults {
+object InputChipDefaults {
 
     @Composable
     fun chipColors(
         containerColor: Color = Color.Transparent,
         labelColor: Color = PersianTheme.colorScheme.onSurface,
         leadingIconColor: Color = PersianTheme.colorScheme.primary,
-        trailingLeadingIconColor: Color = PersianTheme.colorScheme.primary,
+        trailingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         disabledContainerColor: Color = Color.Transparent,
         disabledLabelColor: Color = PersianTheme.colorScheme.onSurface.state38,
         disabledLeadingIconColor: Color = PersianTheme.colorScheme.onSurface.state38,
@@ -35,25 +42,29 @@ object PersianFilterChipDefaults {
         borderColor: Color = PersianTheme.colorScheme.primary,
         selectedBorderColor: Color = Color.Transparent,
         disabledBorderColor: Color = PersianTheme.colorScheme.onSurface.state12,
-        disabledSelectedBorderColor: Color = Color.Transparent
-    ) = SelectableChipColors(
+        disabledSelectedBorderColor: Color = Color.Transparent,
+        avatarColors: AvatarColors = AvatarDefaults.colors(),
+        imageColors: ImageColors = ImageDefaults.colors()
+    ): SelectableChipColors = SelectableChipColors(
         containerColor = containerColor,
         labelColor = labelColor,
         leadingIconColor = leadingIconColor,
-        trailingIconColor = trailingLeadingIconColor,
+        trailingIconColor = trailingIconColor,
         disabledContainerColor = disabledContainerColor,
         disabledLabelColor = disabledLabelColor,
         disabledLeadingIconColor = disabledLeadingIconColor,
-        disabledSelectedContainerColor = disabledTrailingIconColor,
+        disabledTrailingIconColor = disabledTrailingIconColor,
         selectedContainerColor = selectedContainerColor,
-        disabledTrailingIconColor = disabledSelectedContainerColor,
+        disabledSelectedContainerColor = disabledSelectedContainerColor,
         selectedLabelColor = selectedLabelColor,
         selectedLeadingIconColor = selectedLeadingIconColor,
         selectedTrailingIconColor = selectedTrailingIconColor,
         borderColor = borderColor,
         selectedBorderColor = selectedBorderColor,
         disabledBorderColor = disabledBorderColor,
-        disabledSelectedBorderColor = disabledSelectedBorderColor
+        disabledSelectedBorderColor = disabledSelectedBorderColor,
+        avatarColors = avatarColors,
+        imageColors = imageColors
     )
 
     @Composable
@@ -65,7 +76,9 @@ object PersianFilterChipDefaults {
         selectedBorderWith: Dp = 0.dp,
         shape: Shape = PersianTheme.shapes.shape10,
         disabledBorderWith: Dp = 1.dp,
-        selectedDisabledBorderWith: Dp = 0.dp
+        selectedDisabledBorderWith: Dp = 0.dp,
+        avatarSizes: AvatarSize = AvatarDefaults.size24(),
+        imageSizes: ImageSize = ImageDefaults.size24()
     ): SelectableChipSizes = SelectableChipSizes(
         trailingIconSize = trailingIconSize,
         leadingIconSize = leadingIconSize,
@@ -74,15 +87,17 @@ object PersianFilterChipDefaults {
         selectedBorderWith = selectedBorderWith,
         shape = shape,
         disabledBorderWith = disabledBorderWith,
-        selectedDisabledBorderWith = selectedDisabledBorderWith
+        selectedDisabledBorderWith = selectedDisabledBorderWith,
+        avatarSizes = avatarSizes,
+        imageSizes = imageSizes
     )
 
     @Composable
     fun chipElevation(
         elevation: Dp = PersianTheme.elevation.none,
-        pressedElevation: Dp = PersianTheme.elevation.none,
-        focusedElevation: Dp = PersianTheme.elevation.none,
-        hoveredElevation: Dp = PersianTheme.elevation.extraSmall,
+        pressedElevation: Dp = elevation,
+        focusedElevation: Dp = elevation,
+        hoveredElevation: Dp = elevation,
         draggedElevation: Dp = PersianTheme.elevation.large,
         disabledElevation: Dp = elevation
     ): SelectableChipElevation = SelectableChipElevation(
@@ -93,5 +108,4 @@ object PersianFilterChipDefaults {
         draggedElevation = draggedElevation,
         disabledElevation = disabledElevation
     )
-
 }

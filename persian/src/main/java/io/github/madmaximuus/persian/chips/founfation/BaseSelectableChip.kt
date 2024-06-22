@@ -10,7 +10,6 @@ import androidx.compose.foundation.interaction.Interaction
 import androidx.compose.foundation.interaction.InteractionSource
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.PressInteraction
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.LaunchedEffect
@@ -25,13 +24,16 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.takeOrElse
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
+import io.github.madmaximuus.persian.avatarsAndImages.AvatarColors
+import io.github.madmaximuus.persian.avatarsAndImages.AvatarSize
+import io.github.madmaximuus.persian.avatarsAndImages.ImageColors
+import io.github.madmaximuus.persian.avatarsAndImages.ImageSize
 import io.github.madmaximuus.persian.foundation.animateElevation
 import io.github.madmaximuus.persian.icon.IconSize
 import io.github.madmaximuus.persian.surface.Surface
@@ -43,15 +45,11 @@ internal fun BaseSelectableChip(
     onClick: () -> Unit,
     enabled: Boolean,
     label: String,
-    leadingIcon: Painter?,
-    avatar: String?,
-    image: String?,
-    trailingIcon: Painter?,
-    onTrailingClick: (() -> Unit)?,
+    leading: (@Composable () -> Unit)?,
+    trailing: (@Composable () -> Unit)?,
     colors: SelectableChipColors,
     elevation: SelectableChipElevation,
     sizes: SelectableChipSizes,
-    paddingValues: PaddingValues,
     interactionSource: MutableInteractionSource
 ) {
     Surface(
@@ -75,19 +73,9 @@ internal fun BaseSelectableChip(
         ChipContent(
             label = label,
             labelTextStyle = sizes.labelStyle,
-            leadingIcon = leadingIcon,
-            avatar = avatar,
-            image = image,
             labelColor = colors.labelColor(enabled, selected),
-            trailingIcon = trailingIcon,
-            onTrailingClick = onTrailingClick,
-            leadingIconColor = colors.leadingIconContentColor(enabled, selected),
-            trailingIconColor = colors.trailingIconContentColor(enabled, selected),
-            paddingValues = paddingValues,
-            selected = selected,
-            leadingIconSize = sizes.leadingIconSize,
-            trailingIconSize = sizes.trailingIconSize,
-            enabled = enabled
+            leading = leading,
+            trailing = trailing
         )
     }
 }
@@ -110,7 +98,10 @@ class SelectableChipColors internal constructor(
     private val borderColor: Color,
     private val selectedBorderColor: Color,
     private val disabledBorderColor: Color,
-    private val disabledSelectedBorderColor: Color
+    private val disabledSelectedBorderColor: Color,
+
+    internal val avatarColors: AvatarColors,
+    internal val imageColors: ImageColors
 ) {
     fun copy(
         containerColor: Color = this.containerColor,
@@ -129,7 +120,9 @@ class SelectableChipColors internal constructor(
         borderColor: Color = this.borderColor,
         selectedBorderColor: Color = this.selectedBorderColor,
         disabledBorderColor: Color = this.disabledBorderColor,
-        disabledSelectedBorderColor: Color = this.disabledSelectedBorderColor
+        disabledSelectedBorderColor: Color = this.disabledSelectedBorderColor,
+        avatarColors: AvatarColors = this.avatarColors,
+        imageColors: ImageColors = this.imageColors
     ) = SelectableChipColors(
         containerColor.takeOrElse { this.containerColor },
         labelColor.takeOrElse { this.labelColor },
@@ -147,7 +140,9 @@ class SelectableChipColors internal constructor(
         borderColor.takeOrElse { this.borderColor },
         selectedBorderColor.takeOrElse { this.selectedBorderColor },
         disabledBorderColor.takeOrElse { this.disabledBorderColor },
-        disabledSelectedBorderColor.takeOrElse { this.disabledSelectedBorderColor }
+        disabledSelectedBorderColor.takeOrElse { this.disabledSelectedBorderColor },
+        avatarColors = avatarColors,
+        imageColors = imageColors
     )
 
 
@@ -242,7 +237,10 @@ class SelectableChipSizes internal constructor(
     private val selectedBorderWith: Dp,
     internal val shape: Shape,
     private val disabledBorderWith: Dp,
-    private val selectedDisabledBorderWith: Dp
+    private val selectedDisabledBorderWith: Dp,
+
+    internal val avatarSizes: AvatarSize,
+    internal val imageSizes: ImageSize
 ) {
 
     @Stable
@@ -254,13 +252,15 @@ class SelectableChipSizes internal constructor(
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (other == null || other !is ChipSizes) return false
+        if (other == null || other !is SelectableChipSizes) return false
 
         if (trailingIconSize != other.trailingIconSize) return false
         if (leadingIconSize != other.leadingIconSize) return false
         if (labelStyle != other.labelStyle) return false
         if (borderWidth != other.borderWidth) return false
         if (shape != other.shape) return false
+        if (avatarSizes != other.avatarSizes) return false
+        if (imageSizes != other.imageSizes) return false
         return disabledBorderWith == other.disabledBorderWith
     }
 
@@ -271,6 +271,8 @@ class SelectableChipSizes internal constructor(
         result = 31 * result + borderWidth.hashCode()
         result = 31 * result + disabledBorderWith.hashCode()
         result = 31 * result + shape.hashCode()
+        result = 31 * result + avatarSizes.hashCode()
+        result = 31 * result + imageSizes.hashCode()
 
         return result
     }
