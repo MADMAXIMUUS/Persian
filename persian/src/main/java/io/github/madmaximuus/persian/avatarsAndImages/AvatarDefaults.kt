@@ -275,7 +275,7 @@ object AvatarDefaults {
         disabledPlaceholderIconColor: Color = PersianTheme.colorScheme.onSurface.state38,
         overlayIconColor: Color = PersianTheme.colorScheme.primary,
         disabledOverlayIconColor: Color = PersianTheme.colorScheme.onSurface.state38,
-    ): AvatarsColors = AvatarsColors(
+    ): AvatarColors = AvatarColors(
         placeholderContainerColor = placeholderContainerColor,
         disabledPlaceholderContainerColor = disabledPlaceholderContainerColor,
         borderColor = borderColor,
@@ -336,7 +336,7 @@ class AvatarSize internal constructor(
 }
 
 @Immutable
-class AvatarsColors internal constructor(
+class AvatarColors internal constructor(
     private val placeholderContainerColor: Color,
     private val disabledPlaceholderContainerColor: Color,
 
@@ -375,7 +375,7 @@ class AvatarsColors internal constructor(
         disabledPlaceholderIconColor: Color = this.disabledPlaceholderIconColor,
         overlayIconColor: Color = this.overlayIconColor,
         disabledOverlayIconColor: Color = this.disabledOverlayIconColor,
-    ): AvatarsColors = AvatarsColors(
+    ): AvatarColors = AvatarColors(
         placeholderContainerColor = placeholderContainerColor.takeOrElse { this.placeholderContainerColor },
         disabledPlaceholderContainerColor = disabledPlaceholderContainerColor.takeOrElse { this.disabledPlaceholderContainerColor },
         borderColor = borderColor.takeOrElse { this.borderColor },
@@ -388,7 +388,7 @@ class AvatarsColors internal constructor(
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (other == null || other !is AvatarsColors) return false
+        if (other == null || other !is AvatarColors) return false
 
         if (placeholderContainerColor != other.placeholderContainerColor) return false
         if (disabledPlaceholderContainerColor != other.disabledPlaceholderContainerColor) return false

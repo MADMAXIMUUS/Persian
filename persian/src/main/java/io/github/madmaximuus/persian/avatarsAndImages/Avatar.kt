@@ -46,7 +46,7 @@ fun Avatar(
     enabled: Boolean = true,
     placeholderIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.User),
     overlayIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.Plus),
-    colors: AvatarsColors = AvatarDefaults.colors(),
+    colors: AvatarColors = AvatarDefaults.colors(),
     sizes: AvatarSize = AvatarDefaults.size48(),
     onClick: (() -> Unit)? = null,
     badge: (@Composable () -> Unit)? = null

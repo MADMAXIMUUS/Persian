@@ -47,7 +47,7 @@ fun Image(
     placeholderIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.Image),
     overlayIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.Plus),
     sizes: ImageSize = ImageDefaults.size64(),
-    colors: ImagesColors = ImageDefaults.colors(),
+    colors: ImageColors = ImageDefaults.colors(),
     shape: ImageShape = ImageShape.MEDIUM,
     onClick: (() -> Unit)? = null,
     badge: (@Composable () -> Unit)? = null

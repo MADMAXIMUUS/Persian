@@ -366,7 +366,7 @@ object ImageDefaults {
         disabledPlaceholderIconColor: Color = PersianTheme.colorScheme.onSurface.state38,
         overlayIconColor: Color = PersianTheme.colorScheme.primary,
         disabledOverlayIconColor: Color = PersianTheme.colorScheme.onSurface.state38
-    ): ImagesColors = ImagesColors(
+    ): ImageColors = ImageColors(
         placeholderContainerColor = placeholderContainerColor,
         disabledPlaceholderContainerColor = disabledPlaceholderContainerColor,
         borderColor = borderColor,
@@ -455,7 +455,7 @@ class ImageSize internal constructor(
 }
 
 @Immutable
-class ImagesColors internal constructor(
+class ImageColors internal constructor(
     private val placeholderContainerColor: Color,
     private val disabledPlaceholderContainerColor: Color,
     private val borderColor: Color,
@@ -491,7 +491,7 @@ class ImagesColors internal constructor(
         disabledPlaceholderIconColor: Color = this.disabledPlaceholderIconColor,
         overlayIconColor: Color = this.overlayIconColor,
         disabledOverlayIconColor: Color = this.disabledOverlayIconColor
-    ): ImagesColors = ImagesColors(
+    ): ImageColors = ImageColors(
         placeholderContainerColor = placeholderContainerColor.takeOrElse { this.placeholderContainerColor },
         disabledPlaceholderContainerColor = disabledPlaceholderContainerColor.takeOrElse { this.disabledPlaceholderContainerColor },
         borderColor = borderColor.takeOrElse { this.borderColor },
@@ -504,7 +504,7 @@ class ImagesColors internal constructor(
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (other == null || other !is ImagesColors) return false
+        if (other == null || other !is ImageColors) return false
 
         if (placeholderContainerColor != other.placeholderContainerColor) return false
         if (disabledPlaceholderContainerColor != other.disabledPlaceholderContainerColor) return false
