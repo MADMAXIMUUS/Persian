@@ -7,9 +7,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.fab.PersianFabDefaults
-import io.github.madmaximuus.persian.fab.PersianMediumFab
-import io.github.madmaximuus.persian.fab.PersianSmallFab
+import io.github.madmaximuus.persian.fab.FabDefaults
+import io.github.madmaximuus.persian.fab.MediumFab
+import io.github.madmaximuus.persian.fab.SmallFab
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.plus.base.Plus
 import ru.rabbit.persian.appShowcase.componets.SampleRow
@@ -34,84 +34,84 @@ object Fab : Screen {
             ) {
                 item {
                     SampleRow(text = "Small FAB", firstItem = true) {
-                        PersianSmallFab(
+                        SmallFab(
                             icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
-                            colors = PersianFabDefaults.neutralColors(),
+                            colors = FabDefaults.neutralColors(),
                             onClick = {}
                         )
-                        PersianSmallFab(
+                        SmallFab(
                             icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
-                            colors = PersianFabDefaults.primaryColors(),
+                            colors = FabDefaults.primaryColors(),
                             onClick = {}
                         )
-                        PersianSmallFab(
+                        SmallFab(
                             icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
-                            colors = PersianFabDefaults.secondaryColors(),
+                            colors = FabDefaults.secondaryColors(),
                             onClick = {}
                         )
-                        PersianSmallFab(
+                        SmallFab(
                             icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
-                            colors = PersianFabDefaults.tertiaryColors(),
+                            colors = FabDefaults.tertiaryColors(),
                             onClick = {}
                         )
                     }
                 }
                 item {
                     SampleRow(text = "Medium FAB") {
-                        PersianMediumFab(
+                        MediumFab(
                             icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
-                            colors = PersianFabDefaults.neutralColors(),
+                            colors = FabDefaults.neutralColors(),
                             onClick = {}
                         )
-                        PersianMediumFab(
+                        MediumFab(
                             icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
-                            colors = PersianFabDefaults.primaryColors(),
+                            colors = FabDefaults.primaryColors(),
                             onClick = {}
                         )
-                        PersianMediumFab(
+                        MediumFab(
                             icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
-                            colors = PersianFabDefaults.secondaryColors(),
+                            colors = FabDefaults.secondaryColors(),
                             onClick = {}
                         )
-                        PersianMediumFab(
+                        MediumFab(
                             icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
-                            colors = PersianFabDefaults.tertiaryColors(),
+                            colors = FabDefaults.tertiaryColors(),
                             onClick = {}
                         )
                     }
                 }
                 item {
                     SampleRow(text = "Medium Expanded FAB") {
-                        PersianMediumFab(
+                        MediumFab(
                             icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
                             title = "Add",
                             expanded = true,
-                            colors = PersianFabDefaults.neutralColors(),
+                            colors = FabDefaults.neutralColors(),
                             onClick = {}
                         )
-                        PersianMediumFab(
+                        MediumFab(
                             icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
                             title = "Add",
                             expanded = true,
-                            colors = PersianFabDefaults.primaryColors(),
+                            colors = FabDefaults.primaryColors(),
                             onClick = {}
                         )
                     }
                 }
                 item {
                     SampleRow(text = "Medium Expanded FAB", lastItem = true) {
-                        PersianMediumFab(
+                        MediumFab(
                             icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
                             title = "Add",
                             expanded = true,
-                            colors = PersianFabDefaults.secondaryColors(),
+                            colors = FabDefaults.secondaryColors(),
                             onClick = {}
                         )
-                        PersianMediumFab(
+                        MediumFab(
                             icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
                             title = "Add",
                             expanded = true,
-                            colors = PersianFabDefaults.tertiaryColors(),
+                            colors = FabDefaults.tertiaryColors(),
                             onClick = {}
                         )
                     }
