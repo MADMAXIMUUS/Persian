@@ -5,7 +5,6 @@ import android.os.Build
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.text.selection.LocalTextSelectionColors
-import androidx.compose.material.ripple.LocalRippleTheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.runtime.Composable
@@ -20,6 +19,7 @@ import androidx.core.view.WindowCompat
 import io.github.madmaximuus.persian.foundation.PersianTheme.elevation
 import io.github.madmaximuus.persian.foundation.PersianTheme.shapes
 import io.github.madmaximuus.persian.foundation.PersianTheme.spacing
+import io.github.madmaximuus.persian.foundation.ripple.ripple
 
 @Composable
 fun PersianTheme(
@@ -65,12 +65,11 @@ fun PersianTheme(
     elevation: Elevation,
     content: @Composable () -> Unit
 ) {
-    val rippleIndication = androidx.compose.material.ripple.rememberRipple()
+    val rippleIndication = ripple()
     val selectionColors = rememberTextSelectionColors(colorScheme)
     CompositionLocalProvider(
         LocalColorScheme provides colorScheme,
         LocalIndication provides rippleIndication,
-        LocalRippleTheme provides RippleTheme,
         LocalShapes provides shapes,
         LocalSpacing provides spacing,
         LocalTextSelectionColors provides selectionColors,

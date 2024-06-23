@@ -1,6 +1,5 @@
 package io.github.madmaximuus.persian.foundation
 
-import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.ProvidableCompositionLocal
 import androidx.compose.runtime.Stable
@@ -67,7 +66,7 @@ internal class MinimumInteractiveModifierNode :
         val size = minimumInteractiveComponentSize
         val placeable = measurable.measure(constraints)
         val enforcement =
-            isAttached && currentValueOf(androidx.compose.material3.LocalMinimumInteractiveComponentEnforcement)
+            isAttached && currentValueOf(LocalMinimumInteractiveComponentEnforcement)
 
         // Be at least as big as the minimum dimension in both dimensions
         val width = if (enforcement) {
@@ -97,32 +96,8 @@ internal class MinimumInteractiveModifierNode :
  * a layout / near to another component without any padding, there will not be enough space for
  * an accessible touch target.
  */
-@Suppress("OPT_IN_MARKER_ON_WRONG_TARGET")
-@get:ExperimentalMaterial3Api
-@ExperimentalMaterial3Api
 val LocalMinimumInteractiveComponentEnforcement: ProvidableCompositionLocal<Boolean> =
     staticCompositionLocalOf { true }
-
-/**
- * CompositionLocal that configures whether Material components that have a visual size that is
- * lower than the minimum touch target size for accessibility (such as [Button]) will include
- * extra space outside the component to ensure that they are accessible. If set to false there
- * will be no extra space, and so it is possible that if the component is placed near the edge of
- * a layout / near to another component without any padding, there will not be enough space for
- * an accessible touch target.
- */
-@Suppress("OPT_IN_MARKER_ON_WRONG_TARGET")
-@get:ExperimentalMaterial3Api
-@ExperimentalMaterial3Api
-@Deprecated(
-    message = "Use LocalMinimumInteractiveComponentEnforcement instead.",
-    replaceWith = ReplaceWith(
-        "LocalMinimumInteractiveComponentEnforcement"
-    ),
-    level = DeprecationLevel.WARNING
-)
-val LocalMinimumTouchTargetEnforcement: ProvidableCompositionLocal<Boolean> =
-    androidx.compose.material3.LocalMinimumInteractiveComponentEnforcement
 
 private class MinimumInteractiveComponentSizeModifier(val size: DpSize) : LayoutModifier {
     override fun MeasureScope.measure(
