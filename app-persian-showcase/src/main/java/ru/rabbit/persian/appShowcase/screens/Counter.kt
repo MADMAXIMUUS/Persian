@@ -6,13 +6,11 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.counter.PersianBadge
-import io.github.madmaximuus.persian.counter.PersianCounter
-import io.github.madmaximuus.persian.counter.PersianCounterDefaults
-import io.github.madmaximuus.persian.counter.PersianTonalCounter
-import io.github.madmaximuus.persian.counter.PersianTransparentCounter
+import io.github.madmaximuus.persian.counter.Badge
+import io.github.madmaximuus.persian.counter.Counter
+import io.github.madmaximuus.persian.counter.TonalCounter
+import io.github.madmaximuus.persian.counter.TransparentCounter
 import io.github.madmaximuus.persian.iconButtons.PersianTertiaryIconButton
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.user.base.User
@@ -39,40 +37,36 @@ object Counter : Screen {
             ) {
                 item {
                     SampleRow(text = "Counter Default", firstItem = true) {
-                        PersianCounter(count = 1)
-                        PersianCounter(count = 10)
-                        PersianCounter(count = 100)
+                        Counter(count = 1)
+                        Counter(count = 10)
+                        Counter(count = 100)
                     }
                 }
                 item {
                     SampleRow(text = "Counter Tonal") {
-                        PersianTonalCounter(count = 1)
-                        PersianTonalCounter(count = 10)
-                        PersianTonalCounter(count = 100)
+                        TonalCounter(count = 1)
+                        TonalCounter(count = 10)
+                        TonalCounter(count = 100)
                     }
                 }
                 item {
                     SampleRow(text = "Counter Transparent") {
-                        PersianTransparentCounter(count = 1)
-                        PersianTransparentCounter(count = 10)
-                        PersianTransparentCounter(count = 100)
+                        TransparentCounter(count = 1)
+                        TransparentCounter(count = 10)
+                        TransparentCounter(count = 100)
                     }
                 }
                 item {
                     SampleRow(text = "Badge", lastItem = true) {
-                        PersianBadge(
+                        Badge(
                             content = {
                                 PersianTertiaryIconButton(
                                     icon = rememberVectorPainter(image = PersianSymbols.Default.User),
                                     onClick = {}
                                 )
                             },
-                            sizes = PersianCounterDefaults.sizes(
-                                badgeHorizontalOffset = (-18).dp,
-                                badgeVerticalOffset = 20.dp
-                            )
                         )
-                        PersianBadge(
+                        Badge(
                             count = 1,
                             content = {
                                 PersianTertiaryIconButton(
@@ -81,7 +75,7 @@ object Counter : Screen {
                                 )
                             }
                         )
-                        PersianBadge(
+                        Badge(
                             count = 10,
                             content = {
                                 PersianTertiaryIconButton(
@@ -90,7 +84,7 @@ object Counter : Screen {
                                 )
                             }
                         )
-                        PersianBadge(
+                        Badge(
                             count = 100,
                             content = {
                                 PersianTertiaryIconButton(

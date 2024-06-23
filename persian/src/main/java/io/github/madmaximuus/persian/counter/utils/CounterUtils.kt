@@ -15,11 +15,11 @@ internal fun badgeMeasurePolicy(
     badgeHorizontalOffset: Int,
     badgeWithContentVerticalOffset: Int,
 ): MeasureResult {
-    val badgePlaceable = measurables.first { it.layoutId == LayoutId.BADGE }.measure(
-        constraints.copy(minHeight = 0)
-    )
+    val badgePlaceable = measurables.first { it.layoutId == LayoutId.BADGE }
+        .measure(constraints.copy(minHeight = 0))
 
-    val anchorPlaceable = measurables.first { it.layoutId == LayoutId.ANCHOR }.measure(constraints)
+    val anchorPlaceable = measurables.first { it.layoutId == LayoutId.ANCHOR }
+        .measure(constraints)
 
     val firstBaseline = anchorPlaceable[FirstBaseline]
     val lastBaseline = anchorPlaceable[LastBaseline]

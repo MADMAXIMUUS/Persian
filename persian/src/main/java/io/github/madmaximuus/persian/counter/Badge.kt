@@ -18,12 +18,12 @@ import io.github.madmaximuus.persian.counter.utils.LayoutId
 import io.github.madmaximuus.persian.counter.utils.badgeMeasurePolicy
 
 @Composable
-fun PersianBadge(
+fun Badge(
     modifier: Modifier = Modifier,
-    colors: CounterColors = PersianCounterDefaults.colors(),
-    sizes: CounterSizes = PersianCounterDefaults.sizes(),
+    colors: CounterColors = CounterDefaults.badgeColors(),
+    sizes: CounterSizes = CounterDefaults.badgeSizes(),
     content: @Composable (BoxScope.() -> Unit)
-) = PersianEmptyBadge(
+) = EmptyBadge(
     modifier = modifier,
     backgroundColor = colors.backgroundColor,
     sizes = sizes,
@@ -32,36 +32,36 @@ fun PersianBadge(
 
 
 @Composable
-fun PersianBadge(
+fun Badge(
     count: Int,
     modifier: Modifier = Modifier,
-    colors: CounterColors = PersianCounterDefaults.colors(),
-    sizes: CounterSizes = PersianCounterDefaults.sizes(),
+    colors: CounterColors = CounterDefaults.badgeColors(),
+    sizes: CounterSizes = CounterDefaults.digitSizes(),
     content: @Composable (BoxScope.() -> Unit)
-) = PersianBadgeImpl(
+) = BadgeImpl(
     modifier = modifier,
     count = count,
     colors = colors,
     sizes = sizes,
-    anchor = content
+    content = content
 )
 
 @Composable
-private fun PersianBadgeImpl(
+private fun BadgeImpl(
     count: Int,
     colors: CounterColors,
     sizes: CounterSizes,
     modifier: Modifier = Modifier,
-    anchor: @Composable BoxScope.() -> Unit
+    content: @Composable BoxScope.() -> Unit
 ) {
     Layout(
         content = {
             Box(
                 modifier = Modifier.layoutId(LayoutId.ANCHOR),
                 contentAlignment = Alignment.Center,
-                content = anchor
+                content = content
             )
-            PersianCounter(
+            Counter(
                 modifier = Modifier
                     .layoutId(LayoutId.BADGE),
                 count = count,
@@ -76,14 +76,14 @@ private fun PersianBadgeImpl(
             scope = this,
             measurables = measurables,
             constraints = constraints,
-            badgeHorizontalOffset = sizes.horizontalOffset(count).roundToPx(),
-            badgeWithContentVerticalOffset = sizes.verticalOffset(count).roundToPx()
+            badgeHorizontalOffset = sizes.badgeHorizontalOffset.roundToPx(),
+            badgeWithContentVerticalOffset = sizes.badgeVerticalOffset.roundToPx()
         )
     }
 }
 
 @Composable
-private fun PersianEmptyBadge(
+private fun EmptyBadge(
     backgroundColor: Color,
     anchor: @Composable BoxScope.() -> Unit,
     sizes: CounterSizes,
