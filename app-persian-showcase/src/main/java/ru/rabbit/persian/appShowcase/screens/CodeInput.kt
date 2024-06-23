@@ -17,9 +17,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
-import io.github.madmaximuus.persian.codeInput.PersianFourDigitCodeInput
-import io.github.madmaximuus.persian.codeInput.PersianSixDigitCodeInput
+import io.github.madmaximuus.persian.checkboxes.Checkbox
+import io.github.madmaximuus.persian.codeInput.FourDigitCodeInput
+import io.github.madmaximuus.persian.codeInput.SixDigitCodeInput
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
@@ -68,7 +68,7 @@ object CodeInput : Screen {
                             modifier = Modifier.fillMaxWidth(),
                             verticalArrangement = Arrangement.spacedBy(10.dp)
                         ) {
-                            PersianFourDigitCodeInput(
+                            FourDigitCodeInput(
                                 modifier = Modifier.fillMaxWidth(),
                                 values = list,
                                 enabled = enabled,
@@ -83,28 +83,32 @@ object CodeInput : Screen {
                                     }
                                 }
                             )
-                            PersianCheckbox(
+                            Checkbox(
+                                modifier = Modifier.fillMaxWidth(),
                                 text = "Enabled",
                                 checked = enabled,
                                 onCheckedChange = { isChecked ->
                                     enabled = isChecked
                                 }
                             )
-                            PersianCheckbox(
-                                text = "Success",
+                            Checkbox(
+                                modifier = Modifier.fillMaxWidth(),
+                                text = "Valid",
                                 checked = isSuccess,
                                 onCheckedChange = { isChecked ->
                                     isSuccess = isChecked
                                 }
                             )
-                            PersianCheckbox(
+                            Checkbox(
+                                modifier = Modifier.fillMaxWidth(),
                                 text = "Error",
                                 checked = isError,
                                 onCheckedChange = { isChecked ->
                                     isError = isChecked
                                 }
                             )
-                            PersianCheckbox(
+                            Checkbox(
+                                modifier = Modifier.fillMaxWidth(),
                                 text = "Secret",
                                 checked = secret,
                                 onCheckedChange = { isChecked ->
@@ -140,7 +144,7 @@ object CodeInput : Screen {
                                 .fillMaxWidth(),
                             verticalArrangement = Arrangement.spacedBy(10.dp)
                         ) {
-                            PersianSixDigitCodeInput(
+                            SixDigitCodeInput(
                                 modifier = Modifier.fillMaxWidth(),
                                 values = list,
                                 enabled = enabled,
@@ -155,28 +159,32 @@ object CodeInput : Screen {
                                     }
                                 }
                             )
-                            PersianCheckbox(
+                            Checkbox(
+                                modifier = Modifier.fillMaxWidth(),
                                 text = "Enabled",
                                 checked = enabled,
                                 onCheckedChange = { isChecked ->
                                     enabled = isChecked
                                 }
                             )
-                            PersianCheckbox(
-                                text = "Success",
+                            Checkbox(
+                                modifier = Modifier.fillMaxWidth(),
+                                text = "Valid",
                                 checked = isSuccess,
                                 onCheckedChange = { isChecked ->
                                     isSuccess = isChecked
                                 }
                             )
-                            PersianCheckbox(
+                            Checkbox(
+                                modifier = Modifier.fillMaxWidth(),
                                 text = "Error",
                                 checked = isError,
                                 onCheckedChange = { isChecked ->
                                     isError = isChecked
                                 }
                             )
-                            PersianCheckbox(
+                            Checkbox(
+                                modifier = Modifier.fillMaxWidth(),
                                 text = "Secret",
                                 checked = secret,
                                 onCheckedChange = { isChecked ->

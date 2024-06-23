@@ -34,7 +34,7 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.surface.Surface
 
 @Composable
-internal fun PersianCodeInputCell(
+internal fun CodeInputCell(
     modifier: Modifier = Modifier,
     value: String,
     onValueChange: (String) -> Unit,
@@ -124,10 +124,10 @@ internal fun PersianCodeInputCell(
 @Preview
 @Preview(uiMode = UI_MODE_NIGHT_YES)
 @Composable
-fun CellPreview() {
+private fun CellPreview() {
     PersianTheme {
         Surface {
-            PersianCodeInputCell(
+            CodeInputCell(
                 modifier = Modifier.padding(10.dp),
                 value = "",
                 isPassword = true,
