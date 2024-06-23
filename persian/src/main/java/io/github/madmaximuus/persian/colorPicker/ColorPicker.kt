@@ -4,14 +4,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import io.github.madmaximuus.persian.R
-import io.github.madmaximuus.persian.alert.AlertAction
-import io.github.madmaximuus.persian.alert.PersianAlert
+import io.github.madmaximuus.persian.alert.Alert
 import io.github.madmaximuus.persian.colorPicker.view.ColorPickerView
 import io.github.madmaximuus.persian.colorPicker.view.util.ColorPickerConfig
 import io.github.madmaximuus.persian.colorPicker.view.util.rememberColorPickerState
 
 @Composable
-fun PersianColorPicker(
+fun ColorPicker(
     config: ColorPickerConfig,
     onColorSelected: (Color) -> Unit,
     colors: ColorPickerColors = PersianColorPickerDefaults.colors(),
@@ -20,25 +19,27 @@ fun PersianColorPicker(
 
     val state = rememberColorPickerState(config)
 
-    PersianAlert(
+    Alert(
         title = stringResource(id = R.string.select_color),
         onDismiss = onDismissRequest,
         colors = colors.alertsColors,
-        actions = listOf(
-            AlertAction(
+        confirmAction = {
+            ActionItem(
                 title = stringResource(id = R.string.ok),
                 onClick = {
                     onColorSelected(state.onFinish())
                     onDismissRequest()
                 }
-            ),
-            AlertAction(
+            )
+        },
+        dismissAction = {
+            ActionItem(
                 title = stringResource(id = R.string.cancel),
                 onClick = {
                     onDismissRequest()
                 }
             )
-        )
+        }
     ) {
         ColorPickerView(
             state = state,

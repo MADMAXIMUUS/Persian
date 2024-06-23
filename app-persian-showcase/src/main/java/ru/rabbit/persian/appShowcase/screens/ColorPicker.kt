@@ -19,8 +19,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.buttons.PersianPrimaryButton
-import io.github.madmaximuus.persian.colorPicker.PersianColorPicker
+import io.github.madmaximuus.persian.button.PrimaryButton
+import io.github.madmaximuus.persian.colorPicker.ColorPicker
 import io.github.madmaximuus.persian.colorPicker.view.util.ColorPickerConfig
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
@@ -46,7 +46,7 @@ object ColorPicker : Screen {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size12)
             ) {
-                PersianPrimaryButton(
+                PrimaryButton(
                     text = "Show Dialog"
                 ) {
                     showDialog = true
@@ -61,7 +61,7 @@ object ColorPicker : Screen {
         }
 
         if (showDialog) {
-            PersianColorPicker(
+            ColorPicker(
                 config = ColorPickerConfig.HEX(
                     backgroundColor
                 ),
