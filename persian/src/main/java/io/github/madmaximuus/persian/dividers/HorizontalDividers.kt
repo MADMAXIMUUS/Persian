@@ -12,9 +12,9 @@ import androidx.compose.ui.graphics.Color
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
 @Composable
-fun PersianFullWidthHorizontalDivider(
+fun FullWidthHorizontalDivider(
     modifier: Modifier = Modifier,
-    sizes: DividerSizes = PersianDividerDefaults.sizes(),
+    sizes: DividerSizes = DividerDefaults.sizes(),
     strokeColor: Color = PersianTheme.colorScheme.outlineVariant
 ) {
     Box(
@@ -26,9 +26,9 @@ fun PersianFullWidthHorizontalDivider(
 }
 
 @Composable
-fun PersianMiddleInsetsHorizontalDivider(
+fun MiddleInsetsHorizontalDivider(
     modifier: Modifier = Modifier,
-    sizes: DividerSizes = PersianDividerDefaults.sizes(),
+    sizes: DividerSizes = DividerDefaults.sizes(),
     insetSide: HorizontalInsetSide = HorizontalInsetSide.LEFT,
     strokeColor: Color = PersianTheme.colorScheme.outlineVariant
 ) {
@@ -46,9 +46,9 @@ fun PersianMiddleInsetsHorizontalDivider(
 }
 
 @Composable
-fun PersianInsetHorizontalDivider(
+fun InsetHorizontalDivider(
     modifier: Modifier = Modifier,
-    sizes: DividerSizes = PersianDividerDefaults.sizes(),
+    sizes: DividerSizes = DividerDefaults.sizes(),
     strokeColor: Color = PersianTheme.colorScheme.outlineVariant
 ) {
     Box(

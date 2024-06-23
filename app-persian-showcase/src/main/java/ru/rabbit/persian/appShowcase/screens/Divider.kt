@@ -18,13 +18,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import io.github.madmaximuus.persian.dividers.FullHeightVerticalDivider
+import io.github.madmaximuus.persian.dividers.FullWidthHorizontalDivider
 import io.github.madmaximuus.persian.dividers.HorizontalInsetSide
-import io.github.madmaximuus.persian.dividers.PersianFullHeightVerticalDivider
-import io.github.madmaximuus.persian.dividers.PersianFullWidthHorizontalDivider
-import io.github.madmaximuus.persian.dividers.PersianInsetHorizontalDivider
-import io.github.madmaximuus.persian.dividers.PersianInsetVerticalDivider
-import io.github.madmaximuus.persian.dividers.PersianMiddleInsetsHorizontalDivider
-import io.github.madmaximuus.persian.dividers.PersianMiddleInsetsVerticalDivider
+import io.github.madmaximuus.persian.dividers.InsetHorizontalDivider
+import io.github.madmaximuus.persian.dividers.InsetVerticalDivider
+import io.github.madmaximuus.persian.dividers.MiddleInsetsHorizontalDivider
+import io.github.madmaximuus.persian.dividers.MiddleInsetsVerticalDivider
 import io.github.madmaximuus.persian.dividers.VerticalInsetSide
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import ru.rabbit.persian.appShowcase.componets.SampleRow
@@ -68,7 +68,7 @@ object Divider : Screen {
                                 .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
-                            PersianFullWidthHorizontalDivider()
+                            FullWidthHorizontalDivider()
                         }
                     }
                 }
@@ -88,7 +88,7 @@ object Divider : Screen {
                                 .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
-                            PersianMiddleInsetsHorizontalDivider(
+                            MiddleInsetsHorizontalDivider(
                                 insetSide = HorizontalInsetSide.LEFT
                             )
                         }
@@ -110,7 +110,7 @@ object Divider : Screen {
                                 .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
-                            PersianMiddleInsetsHorizontalDivider(
+                            MiddleInsetsHorizontalDivider(
                                 insetSide = HorizontalInsetSide.RIGHT
                             )
                         }
@@ -132,7 +132,7 @@ object Divider : Screen {
                                 .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
-                            PersianInsetHorizontalDivider()
+                            InsetHorizontalDivider()
                         }
                     }
                 }
@@ -154,7 +154,7 @@ object Divider : Screen {
                                 .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
-                            PersianFullHeightVerticalDivider()
+                            FullHeightVerticalDivider()
                         }
                     }
                 }
@@ -176,7 +176,7 @@ object Divider : Screen {
                                 .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
-                            PersianMiddleInsetsVerticalDivider(
+                            MiddleInsetsVerticalDivider(
                                 insetSide = VerticalInsetSide.TOP
                             )
                         }
@@ -200,7 +200,7 @@ object Divider : Screen {
                                 .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
-                            PersianMiddleInsetsVerticalDivider(
+                            MiddleInsetsVerticalDivider(
                                 insetSide = VerticalInsetSide.BOTTOM
                             )
                         }
@@ -224,7 +224,7 @@ object Divider : Screen {
                                 .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
-                            PersianInsetVerticalDivider()
+                            InsetVerticalDivider()
                         }
                     }
                 }

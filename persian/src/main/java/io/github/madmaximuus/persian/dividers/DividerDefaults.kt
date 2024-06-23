@@ -7,7 +7,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
-object PersianDividerDefaults {
+object DividerDefaults {
+
     @Composable
     fun sizes(
         inset: Dp = PersianTheme.spacing.size16,
