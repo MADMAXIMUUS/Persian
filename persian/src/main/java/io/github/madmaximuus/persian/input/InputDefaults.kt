@@ -1,35 +1,43 @@
-package io.github.madmaximuus.persian.inputs
+package io.github.madmaximuus.persian.input
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.interaction.InteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
 import androidx.compose.foundation.interaction.collectIsHoveredAsState
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.text.selection.TextSelectionColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.Stable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state08
 import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state16
 import io.github.madmaximuus.persian.foundation.state38
+import io.github.madmaximuus.persian.icon.IconDefaults
+import io.github.madmaximuus.persian.icon.IconSize
 import io.github.madmaximuus.persianSymbols.check.circle.CheckCircle
+import io.github.madmaximuus.persianSymbols.exclamation.circle.ExclamationCircle
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
-import io.github.madmaximuus.persianSymbols.xmark.circle.XMarkCircle
 
-object PersianInputsDefaults {
+object InputsDefaults {
 
     @Composable
     fun outlineColors(
         //State Icon
         validStateIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.CheckCircle),
-        errorStateIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.XMarkCircle),
+        errorStateIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.ExclamationCircle),
 
         //State Icon Colors
         validStateIconColor: Color = PersianTheme.colorScheme.valid,
@@ -176,7 +184,7 @@ object PersianInputsDefaults {
     fun plainColors(
         //State Icon
         validStateIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.CheckCircle),
-        errorStateIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.XMarkCircle),
+        errorStateIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.ExclamationCircle),
 
         //State Icon Colors
         validStateIconColor: Color = PersianTheme.colorScheme.valid,
@@ -235,7 +243,7 @@ object PersianInputsDefaults {
         defaultSuffixColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         hoveredSuffixColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         focusedSuffixColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
-        validSuffixColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
+        validSuffixColor: Color = PersianTheme.colorScheme.valid,
         errorSuffixColor: Color = PersianTheme.colorScheme.error,
         disabledSuffixColor: Color = PersianTheme.colorScheme.onSurface.state38,
     ): InputColors =
@@ -309,6 +317,36 @@ object PersianInputsDefaults {
             validSuffixColor = validSuffixColor,
             errorSuffixColor = errorSuffixColor,
             disabledSuffixColor = disabledSuffixColor,
+        )
+
+    @Composable
+    fun sizes(
+        unfocusedBorderThickness: Dp = 1.dp,
+        focusedBorderThickness: Dp = 2.dp,
+
+        shape: Shape = PersianTheme.shapes.shape16,
+        contentPaddingValues: PaddingValues = PaddingValues(horizontal = PersianTheme.spacing.size12),
+
+        leadingIconSize: IconSize = IconDefaults.size24(),
+        trailingIconSize: IconSize = IconDefaults.size24(),
+        stateIconSize: IconSize = IconDefaults.size24(),
+
+        placeholderTextStyle: TextStyle = PersianTheme.typography.bodyLarge,
+        inputTextStyle: TextStyle = PersianTheme.typography.bodyLarge,
+        suffixTextStyle: TextStyle = PersianTheme.typography.bodyMedium
+    ): InputSizes =
+        InputSizes(
+            unfocusedBorderThickness = unfocusedBorderThickness,
+            focusedBorderThickness = focusedBorderThickness,
+            shape = shape,
+            contentPaddingValues = contentPaddingValues,
+            leadingIconSize = leadingIconSize,
+            trailingIconSize = trailingIconSize,
+            stateIconSize = stateIconSize,
+
+            placeholderTextStyle = placeholderTextStyle,
+            inputTextStyle = inputTextStyle,
+            suffixTextStyle = suffixTextStyle
         )
 }
 
@@ -723,5 +761,68 @@ class InputColors internal constructor(
 
     private companion object {
         const val ANIMATION_DURATION = 150
+    }
+}
+
+
+@Stable
+class InputSizes(
+    internal val unfocusedBorderThickness: Dp,
+    internal val focusedBorderThickness: Dp,
+
+    internal val shape: Shape,
+    internal val contentPaddingValues: PaddingValues,
+
+    internal val leadingIconSize: IconSize,
+    internal val trailingIconSize: IconSize,
+    internal val stateIconSize: IconSize,
+
+    internal val placeholderTextStyle: TextStyle,
+    internal val inputTextStyle: TextStyle,
+    internal val suffixTextStyle: TextStyle
+) {
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || other !is InputSizes) return false
+
+        //Border
+        if (unfocusedBorderThickness != other.unfocusedBorderThickness) return false
+        if (focusedBorderThickness != other.focusedBorderThickness) return false
+
+        //Container
+        if (shape != other.shape) return false
+        if (contentPaddingValues != other.contentPaddingValues) return false
+
+        //Icons
+        if (leadingIconSize != other.leadingIconSize) return false
+        if (trailingIconSize != other.trailingIconSize) return false
+        if (stateIconSize != other.stateIconSize) return false
+
+        //Text Style
+        if (placeholderTextStyle != other.placeholderTextStyle) return false
+        if (inputTextStyle != other.inputTextStyle) return false
+        return suffixTextStyle == other.suffixTextStyle
+    }
+
+    override fun hashCode(): Int {
+        //Border
+        var result = unfocusedBorderThickness.hashCode()
+        result = 31 * result + focusedBorderThickness.hashCode()
+
+        //Container
+        result = 31 * result + shape.hashCode()
+        result = 31 * result + contentPaddingValues.hashCode()
+
+        //Icons
+        result = 31 * result + leadingIconSize.hashCode()
+        result = 31 * result + trailingIconSize.hashCode()
+        result = 31 * result + stateIconSize.hashCode()
+
+        //Indicator Colors
+        result = 31 * result + placeholderTextStyle.hashCode()
+        result = 31 * result + inputTextStyle.hashCode()
+        result = 31 * result + suffixTextStyle.hashCode()
+        return result
     }
 }

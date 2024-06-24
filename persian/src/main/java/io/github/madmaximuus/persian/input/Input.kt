@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.inputs
+package io.github.madmaximuus.persian.input
 
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
@@ -30,7 +30,6 @@ import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.semantics.Role
@@ -46,7 +45,7 @@ import io.github.madmaximuus.persian.icon.Icon
 import io.github.madmaximuus.persian.text.Text
 
 @Composable
-fun PersianOutlineInput(
+fun OutlineInput(
     value: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
@@ -54,10 +53,10 @@ fun PersianOutlineInput(
     isError: Boolean = false,
     isValid: Boolean = false,
     readOnly: Boolean = false,
-    textStyle: TextStyle = PersianTheme.typography.bodyLarge,
     placeholder: String? = null,
     transformation: VisualTransformation = InputsTransformations.none,
-    colors: InputColors = PersianInputsDefaults.outlineColors(),
+    colors: InputColors = InputsDefaults.outlineColors(),
+    sizes: InputSizes = InputsDefaults.sizes(),
     leadingIcon: Painter? = null,
     trailingIcon: Painter? = null,
     suffix: String? = null,
@@ -68,7 +67,7 @@ fun PersianOutlineInput(
 ) {
     val textColor = colors.textColor(enabled, isValid, isError, interactionSource).value
     val mergedTextStyle =
-        textStyle.merge(TextStyle(color = textColor, baselineShift = BaselineShift.None))
+        sizes.inputTextStyle.merge(TextStyle(color = textColor, baselineShift = BaselineShift.None))
 
     CompositionLocalProvider(LocalTextSelectionColors provides colors.selectionColors) {
         BasicTextField(
@@ -98,8 +97,8 @@ fun PersianOutlineInput(
                     isSuccess = isValid,
                     colors = colors,
                     interactionSource = interactionSource,
-                    unfocusedBorderThickness = 1.dp,
-                    focusedBorderThickness = 2.dp
+                    unfocusedBorderThickness = sizes.unfocusedBorderThickness,
+                    focusedBorderThickness = sizes.focusedBorderThickness
                 ).value
                 Row(
                     modifier = Modifier
@@ -111,29 +110,26 @@ fun PersianOutlineInput(
                                 isError = isError,
                                 interactionSource = interactionSource
                             ).value,
-                            shape = PersianTheme.shapes.shape16
+                            shape = sizes.shape
                         )
                         .border(
                             border = border,
-                            shape = PersianTheme.shapes.shape16
+                            shape = sizes.shape
                         )
                         .height(52.dp)
-                        .padding(horizontal = PersianTheme.spacing.size12),
+                        .padding(sizes.contentPaddingValues),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     leadingIcon?.let { icon ->
-                        CompositionLocalProvider(
-                            LocalContentColor provides colors.leadingIconColor(
+                        Icon(
+                            painter = icon,
+                            tint = colors.leadingIconColor(
                                 enabled = enabled,
                                 isValid = isValid,
                                 isError = isError,
                                 interactionSource = interactionSource
                             ).value
-                        ) {
-                            Icon(
-                                painter = icon,
-                            )
-                        }
+                        )
                     }
                     Box(
                         modifier = Modifier
@@ -150,7 +146,7 @@ fun PersianOutlineInput(
                                     isValid = isValid,
                                     interactionSource = interactionSource
                                 ).value,
-                                style = PersianTheme.typography.bodyLarge
+                                style = sizes.placeholderTextStyle
                                     .copy(baselineShift = BaselineShift.None),
                             )
                         }
@@ -170,32 +166,29 @@ fun PersianOutlineInput(
                                     isError = isError,
                                     interactionSource = interactionSource
                                 ).value,
-                                style = PersianTheme.typography.bodyMedium
+                                style = sizes.suffixTextStyle
                             )
                         }
                     }
                     trailingIcon?.let { icon ->
-                        CompositionLocalProvider(
-                            LocalContentColor provides colors.trailingIconColor(
+                        Icon(
+                            modifier = Modifier
+                                .clip(PersianTheme.shapes.shape8)
+                                .clickable(
+                                    enabled = onTrailingIconClick != null,
+                                    onClick = {
+                                        onTrailingIconClick?.invoke()
+                                    },
+                                    role = Role.Button
+                                ),
+                            painter = icon,
+                            tint = colors.trailingIconColor(
                                 enabled = enabled,
                                 isValid = isValid,
                                 isError = isError,
                                 interactionSource = interactionSource
                             ).value
-                        ) {
-                            Icon(
-                                modifier = Modifier
-                                    .clip(PersianTheme.shapes.shape8)
-                                    .clickable(
-                                        enabled = onTrailingIconClick != null,
-                                        onClick = {
-                                            onTrailingIconClick?.invoke()
-                                        },
-                                        role = Role.Button
-                                    ),
-                                painter = icon
-                            )
-                        }
+                        )
                     }
                     colors.stateIcon(
                         enabled = enabled,
@@ -203,16 +196,14 @@ fun PersianOutlineInput(
                         isSuccess = isValid
                     ).value?.let { icon ->
                         Spacer(modifier = Modifier.width(PersianTheme.spacing.size8))
-                        CompositionLocalProvider(
-                            LocalContentColor provides colors.stateIconColor(
+                        Icon(
+                            painter = icon,
+                            tint = colors.stateIconColor(
                                 enabled = enabled,
                                 isValid = isValid,
                                 isError = isError,
                             ).value
-                        ) {
-                            Icon(painter = icon)
-                        }
-
+                        )
                     }
                 }
             }
@@ -221,7 +212,7 @@ fun PersianOutlineInput(
 }
 
 @Composable
-fun PersianPlainInput(
+fun PlainInput(
     value: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
@@ -232,7 +223,7 @@ fun PersianPlainInput(
     textStyle: TextStyle = PersianTheme.typography.bodyLarge,
     placeholder: String? = null,
     transformation: VisualTransformation = InputsTransformations.none,
-    colors: InputColors = PersianInputsDefaults.plainColors(),
+    colors: InputColors = InputsDefaults.plainColors(),
     leadingIcon: Painter? = null,
     trailingIcon: Painter? = null,
     suffix: String? = null,
@@ -277,10 +268,6 @@ fun PersianPlainInput(
                                 isError = isError,
                                 interactionSource = interactionSource
                             ).value,
-                            shape = PersianTheme.shapes.shape16
-                        )
-                        .border(
-                            border = BorderStroke(width = 0.dp, Color.Transparent),
                             shape = PersianTheme.shapes.shape16
                         )
                         .height(52.dp)

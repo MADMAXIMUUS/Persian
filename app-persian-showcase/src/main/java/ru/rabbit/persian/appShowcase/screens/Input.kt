@@ -21,10 +21,11 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
-import io.github.madmaximuus.persian.inputs.InputsTransformations
-import io.github.madmaximuus.persian.inputs.PersianOutlineInput
-import io.github.madmaximuus.persian.inputs.PersianPlainInput
+import io.github.madmaximuus.persian.checkboxes.Checkbox
+import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.input.InputsTransformations
+import io.github.madmaximuus.persian.input.OutlineInput
+import io.github.madmaximuus.persian.input.PlainInput
 import io.github.madmaximuus.persian.select.PersianSelect
 import io.github.madmaximuus.persian.select.SelectActionItem
 import io.github.madmaximuus.persian.text.Text
@@ -33,8 +34,8 @@ import io.github.madmaximuus.persianSymbols.user.base.User
 import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
-object Inputs : Screen {
-    override val name: String = "Inputs"
+object Input : Screen {
+    override val name: String = "Input"
     override val navigation: String = "input"
 
     @OptIn(ExperimentalMaterial3Api::class)
@@ -52,8 +53,8 @@ object Inputs : Screen {
         val (leading, onLeadingChange) = remember { mutableStateOf(false) }
         val (trailing, onTrailingChange) = remember { mutableStateOf(false) }
         val (suffix, onSuffixChange) = remember { mutableStateOf(false) }
-        var style by remember { mutableStateOf("Plain") }
-        var styleIndex by remember { mutableIntStateOf(0) }
+        var style by remember { mutableStateOf("Outline") }
+        var styleIndex by remember { mutableIntStateOf(1) }
         val styles = listOf(
             SelectActionItem.WithoutIcon("Plain"),
             SelectActionItem.WithoutIcon("Outline")
@@ -71,8 +72,9 @@ object Inputs : Screen {
             ) {
                 when (styleIndex) {
                     0 -> {
-                        PersianPlainInput(
-                            modifier = Modifier.padding(horizontal = 20.dp),
+                        PlainInput(
+                            modifier = Modifier
+                                .padding(horizontal = PersianTheme.spacing.size12),
                             value = value,
                             onValueChange = onValueChange,
                             enabled = enabled,
@@ -88,8 +90,9 @@ object Inputs : Screen {
                     }
 
                     1 -> {
-                        PersianOutlineInput(
-                            modifier = Modifier.padding(horizontal = 20.dp),
+                        OutlineInput(
+                            modifier = Modifier
+                                .padding(horizontal = PersianTheme.spacing.size12),
                             value = value,
                             onValueChange = onValueChange,
                             enabled = enabled,
@@ -111,8 +114,8 @@ object Inputs : Screen {
                 )
                 PersianSelect(
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 20.dp),
+                        .padding(horizontal = PersianTheme.spacing.size12)
+                        .fillMaxWidth(),
                     selected = style,
                     values = styles,
                     onSelectedChange = { option, index ->
@@ -120,57 +123,75 @@ object Inputs : Screen {
                         styleIndex = index
                     }
                 )
-                PersianCheckbox(
-                    modifier = Modifier.padding(horizontal = 20.dp),
+                Checkbox(
+                    modifier = Modifier
+                        .padding(horizontal = PersianTheme.spacing.size12)
+                        .fillMaxWidth(),
                     text = "Enabled",
                     checked = enabled,
                     onCheckedChange = onEnabledChange
                 )
-                PersianCheckbox(
-                    modifier = Modifier.padding(horizontal = 20.dp),
+                Checkbox(
+                    modifier = Modifier
+                        .padding(horizontal = PersianTheme.spacing.size12)
+                        .fillMaxWidth(),
                     text = "Is Error State",
                     checked = isError,
                     onCheckedChange = onIsErrorChange
                 )
-                PersianCheckbox(
-                    modifier = Modifier.padding(horizontal = 20.dp),
+                Checkbox(
+                    modifier = Modifier
+                        .padding(horizontal = PersianTheme.spacing.size12)
+                        .fillMaxWidth(),
                     text = "Is Success State",
                     checked = isSuccess,
                     onCheckedChange = onIsSuccessChange
                 )
-                PersianCheckbox(
-                    modifier = Modifier.padding(horizontal = 20.dp),
+                Checkbox(
+                    modifier = Modifier
+                        .padding(horizontal = PersianTheme.spacing.size12)
+                        .fillMaxWidth(),
                     text = "Placeholder",
                     checked = placeholder,
                     onCheckedChange = onPlaceholderChange
                 )
                 if (placeholder) {
-                    PersianOutlineInput(
-                        modifier = Modifier.padding(horizontal = 20.dp),
+                    OutlineInput(
+                        modifier = Modifier
+                            .padding(horizontal = PersianTheme.spacing.size12)
+                            .fillMaxWidth(),
                         value = placeholderValue,
                         onValueChange = onPlaceholderValueChange
                     )
                 }
-                PersianCheckbox(
-                    modifier = Modifier.padding(horizontal = 20.dp),
+                Checkbox(
+                    modifier = Modifier
+                        .padding(horizontal = PersianTheme.spacing.size12)
+                        .fillMaxWidth(),
                     text = "Password",
                     checked = password,
                     onCheckedChange = onPasswordChange
                 )
-                PersianCheckbox(
-                    modifier = Modifier.padding(horizontal = 20.dp),
+                Checkbox(
+                    modifier = Modifier
+                        .padding(horizontal = PersianTheme.spacing.size12)
+                        .fillMaxWidth(),
                     text = "Leading Icon",
                     checked = leading,
                     onCheckedChange = onLeadingChange
                 )
-                PersianCheckbox(
-                    modifier = Modifier.padding(horizontal = 20.dp),
+                Checkbox(
+                    modifier = Modifier
+                        .padding(horizontal = PersianTheme.spacing.size12)
+                        .fillMaxWidth(),
                     text = "Trailing Icon",
                     checked = trailing,
                     onCheckedChange = onTrailingChange
                 )
-                PersianCheckbox(
-                    modifier = Modifier.padding(horizontal = 20.dp),
+                Checkbox(
+                    modifier = Modifier
+                        .padding(horizontal = PersianTheme.spacing.size12)
+                        .fillMaxWidth(),
                     text = "Suffix",
                     checked = suffix,
                     onCheckedChange = onSuffixChange
