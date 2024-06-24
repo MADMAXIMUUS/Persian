@@ -24,17 +24,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
+import io.github.madmaximuus.persian.checkboxes.Checkbox
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.iconButtons.PersianIconButtonDefaults
-import io.github.madmaximuus.persian.iconButtons.PersianOutlinedIconButton
-import io.github.madmaximuus.persian.iconButtons.PersianOutlinedToggleIconButton
-import io.github.madmaximuus.persian.iconButtons.PersianPrimaryIconButton
-import io.github.madmaximuus.persian.iconButtons.PersianPrimaryToggleIconButton
-import io.github.madmaximuus.persian.iconButtons.PersianSecondaryIconButton
-import io.github.madmaximuus.persian.iconButtons.PersianSecondaryToggleIconButton
-import io.github.madmaximuus.persian.iconButtons.PersianTertiaryIconButton
-import io.github.madmaximuus.persian.iconButtons.PersianTertiaryToggleIconButton
+import io.github.madmaximuus.persian.iconButton.IconButtonDefaults
+import io.github.madmaximuus.persian.iconButton.OutlinedIconButton
+import io.github.madmaximuus.persian.iconButton.OutlinedToggleIconButton
+import io.github.madmaximuus.persian.iconButton.PrimaryIconButton
+import io.github.madmaximuus.persian.iconButton.SecondaryIconButton
+import io.github.madmaximuus.persian.iconButton.SecondaryToggleIconButton
+import io.github.madmaximuus.persian.iconButton.TertiaryIconButton
+import io.github.madmaximuus.persian.iconButton.TertiaryToggleIconButton
+import io.github.madmaximuus.persian.iconButton.ToggleIconButton
 import io.github.madmaximuus.persian.radioButtons.PersianRadioButton
 import io.github.madmaximuus.persian.text.Text
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
@@ -58,7 +58,7 @@ object IconButton : Screen {
             onBackClick = { navController?.navigateUp() },
             topAppBarScrollBehavior = topAppBarScrollBehavior,
         ) {
-            val size = PersianIconButtonDefaults.largeSizes()
+            val size = IconButtonDefaults.largeSizes()
             var sizeState by remember { mutableStateOf(size) }
             var enabled by remember { mutableStateOf(true) }
             val (checked, onCheckedChange) = remember { mutableStateOf(false) }
@@ -79,25 +79,25 @@ object IconButton : Screen {
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.SpaceEvenly
                         ) {
-                            PersianPrimaryIconButton(
+                            PrimaryIconButton(
                                 sizes = sizeState,
                                 enabled = enabled,
                                 icon = rememberVectorPainter(image = PersianSymbols.Default.User),
                                 onClick = {}
                             )
-                            PersianSecondaryIconButton(
+                            SecondaryIconButton(
                                 sizes = sizeState,
                                 enabled = enabled,
                                 icon = rememberVectorPainter(image = PersianSymbols.Default.User),
                                 onClick = {}
                             )
-                            PersianTertiaryIconButton(
+                            TertiaryIconButton(
                                 sizes = sizeState,
                                 enabled = enabled,
                                 icon = rememberVectorPainter(image = PersianSymbols.Default.User),
                                 onClick = {}
                             )
-                            PersianOutlinedIconButton(
+                            OutlinedIconButton(
                                 sizes = sizeState,
                                 enabled = enabled,
                                 icon = rememberVectorPainter(image = PersianSymbols.Default.User),
@@ -110,7 +110,7 @@ object IconButton : Screen {
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.SpaceEvenly
                         ) {
-                            PersianPrimaryToggleIconButton(
+                            ToggleIconButton(
                                 icon = rememberVectorPainter(image = PersianSymbols.Default.User),
                                 checkedIcon = rememberVectorPainter(image = PersianSymbols.Filled.User),
                                 checked = checked,
@@ -118,7 +118,7 @@ object IconButton : Screen {
                                 enabled = enabled,
                                 onCheckedChange = onCheckedChange
                             )
-                            PersianSecondaryToggleIconButton(
+                            SecondaryToggleIconButton(
                                 icon = rememberVectorPainter(image = PersianSymbols.Default.User),
                                 checkedIcon = rememberVectorPainter(image = PersianSymbols.Filled.User),
                                 checked = checked,
@@ -126,7 +126,7 @@ object IconButton : Screen {
                                 enabled = enabled,
                                 onCheckedChange = onCheckedChange
                             )
-                            PersianTertiaryToggleIconButton(
+                            TertiaryToggleIconButton(
                                 icon = rememberVectorPainter(image = PersianSymbols.Default.User),
                                 checkedIcon = rememberVectorPainter(image = PersianSymbols.Filled.User),
                                 checked = checked,
@@ -134,7 +134,7 @@ object IconButton : Screen {
                                 enabled = enabled,
                                 onCheckedChange = onCheckedChange
                             )
-                            PersianOutlinedToggleIconButton(
+                            OutlinedToggleIconButton(
                                 icon = rememberVectorPainter(image = PersianSymbols.Default.User),
                                 checkedIcon = rememberVectorPainter(image = PersianSymbols.Filled.User),
                                 checked = checked,
@@ -152,9 +152,9 @@ object IconButton : Screen {
                         mutableStateOf(false)
                     )
                 }
-                val large = PersianIconButtonDefaults.largeSizes()
-                val medium = PersianIconButtonDefaults.mediumSizes()
-                val small = PersianIconButtonDefaults.smallSizes()
+                val large = IconButtonDefaults.largeSizes()
+                val medium = IconButtonDefaults.mediumSizes()
+                val small = IconButtonDefaults.smallSizes()
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -231,7 +231,7 @@ object IconButton : Screen {
                         modifier = Modifier
                             .fillMaxWidth()
                     ) {
-                        PersianCheckbox(
+                        Checkbox(
                             modifier = Modifier.fillMaxWidth(),
                             text = "Enabled",
                             checked = enabled,

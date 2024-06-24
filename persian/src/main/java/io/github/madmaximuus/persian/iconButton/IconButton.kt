@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.iconButtons
+package io.github.madmaximuus.persian.iconButton
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -17,13 +17,13 @@ import io.github.madmaximuus.persian.icon.Icon
 import io.github.madmaximuus.persian.surface.Surface
 
 @Composable
-fun PersianPrimaryIconButton(
+fun PrimaryIconButton(
     onClick: () -> Unit,
     icon: Painter,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    sizes: IconButtonSizes = PersianIconButtonDefaults.mediumSizes(),
-    colors: IconButtonColors = PersianIconButtonDefaults.primaryIconButtonColors(),
+    sizes: IconButtonSizes = IconButtonDefaults.mediumSizes(),
+    colors: IconButtonColors = IconButtonDefaults.primaryIconButtonColors(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
 ) = Surface(
     onClick = onClick,
@@ -47,13 +47,13 @@ fun PersianPrimaryIconButton(
 }
 
 @Composable
-fun PersianSecondaryIconButton(
+fun SecondaryIconButton(
     onClick: () -> Unit,
     icon: Painter,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    sizes: IconButtonSizes = PersianIconButtonDefaults.mediumSizes(),
-    colors: IconButtonColors = PersianIconButtonDefaults.secondaryIconButtonColors(),
+    sizes: IconButtonSizes = IconButtonDefaults.mediumSizes(),
+    colors: IconButtonColors = IconButtonDefaults.secondaryIconButtonColors(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
 ) = Surface(
     onClick = onClick,
@@ -76,13 +76,13 @@ fun PersianSecondaryIconButton(
 }
 
 @Composable
-fun PersianTertiaryIconButton(
+fun TertiaryIconButton(
     onClick: () -> Unit,
     icon: Painter,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    sizes: IconButtonSizes = PersianIconButtonDefaults.mediumSizes(),
-    colors: IconButtonColors = PersianIconButtonDefaults.tertiaryIconButtonColors(),
+    sizes: IconButtonSizes = IconButtonDefaults.mediumSizes(),
+    colors: IconButtonColors = IconButtonDefaults.tertiaryIconButtonColors(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
 ) = Surface(
     onClick = onClick,
@@ -105,13 +105,13 @@ fun PersianTertiaryIconButton(
 }
 
 @Composable
-fun PersianOutlinedIconButton(
+fun OutlinedIconButton(
     onClick: () -> Unit,
     icon: Painter,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    sizes: IconButtonSizes = PersianIconButtonDefaults.mediumSizes(),
-    colors: IconButtonColors = PersianIconButtonDefaults.outlinedIconButtonColors(),
+    sizes: IconButtonSizes = IconButtonDefaults.mediumSizes(),
+    colors: IconButtonColors = IconButtonDefaults.outlinedIconButtonColors(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
 ) = Surface(
     onClick = onClick,

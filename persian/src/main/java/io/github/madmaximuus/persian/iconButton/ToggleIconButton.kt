@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.iconButtons
+package io.github.madmaximuus.persian.iconButton
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -17,15 +17,15 @@ import io.github.madmaximuus.persian.icon.Icon
 import io.github.madmaximuus.persian.surface.Surface
 
 @Composable
-fun PersianPrimaryToggleIconButton(
+fun ToggleIconButton(
     modifier: Modifier = Modifier,
     icon: Painter,
     checkedIcon: Painter,
     checked: Boolean,
     onCheckedChange: (Boolean) -> Unit,
     enabled: Boolean = true,
-    sizes: IconButtonSizes = PersianIconButtonDefaults.mediumSizes(),
-    colors: ToggleIconButtonColors = PersianIconButtonDefaults.primaryToggleIconButtonColors(),
+    sizes: IconButtonSizes = IconButtonDefaults.mediumSizes(),
+    colors: ToggleIconButtonColors = IconButtonDefaults.primaryToggleIconButtonColors(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
 ) = Surface(
     checked = checked,
@@ -56,15 +56,15 @@ fun PersianPrimaryToggleIconButton(
 }
 
 @Composable
-fun PersianSecondaryToggleIconButton(
+fun SecondaryToggleIconButton(
     modifier: Modifier = Modifier,
     icon: Painter,
     checkedIcon: Painter,
     checked: Boolean,
     onCheckedChange: (Boolean) -> Unit,
     enabled: Boolean = true,
-    sizes: IconButtonSizes = PersianIconButtonDefaults.mediumSizes(),
-    colors: ToggleIconButtonColors = PersianIconButtonDefaults.secondaryToggleIconButtonColors(),
+    sizes: IconButtonSizes = IconButtonDefaults.mediumSizes(),
+    colors: ToggleIconButtonColors = IconButtonDefaults.secondaryToggleIconButtonColors(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
 ) = Surface(
     checked = checked,
@@ -95,15 +95,15 @@ fun PersianSecondaryToggleIconButton(
 }
 
 @Composable
-fun PersianTertiaryToggleIconButton(
+fun TertiaryToggleIconButton(
     modifier: Modifier = Modifier,
     icon: Painter,
     checkedIcon: Painter,
     checked: Boolean,
     onCheckedChange: (Boolean) -> Unit,
     enabled: Boolean = true,
-    sizes: IconButtonSizes = PersianIconButtonDefaults.mediumSizes(),
-    colors: ToggleIconButtonColors = PersianIconButtonDefaults.tertiaryToggleIconButtonColors(),
+    sizes: IconButtonSizes = IconButtonDefaults.mediumSizes(),
+    colors: ToggleIconButtonColors = IconButtonDefaults.tertiaryToggleIconButtonColors(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
 ) = Surface(
     checked = checked,
@@ -134,15 +134,15 @@ fun PersianTertiaryToggleIconButton(
 }
 
 @Composable
-fun PersianOutlinedToggleIconButton(
+fun OutlinedToggleIconButton(
     modifier: Modifier = Modifier,
     icon: Painter,
     checkedIcon: Painter,
     checked: Boolean,
     onCheckedChange: (Boolean) -> Unit,
     enabled: Boolean = true,
-    sizes: IconButtonSizes = PersianIconButtonDefaults.mediumSizes(),
-    colors: ToggleIconButtonColors = PersianIconButtonDefaults.outlinedToggleIconButtonColors(),
+    sizes: IconButtonSizes = IconButtonDefaults.mediumSizes(),
+    colors: ToggleIconButtonColors = IconButtonDefaults.outlinedToggleIconButtonColors(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
 ) = Surface(
     checked = checked,

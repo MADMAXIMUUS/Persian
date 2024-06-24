@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.iconButtons
+package io.github.madmaximuus.persian.iconButton
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
@@ -15,7 +15,7 @@ import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persian.icon.IconSize
 
-object PersianIconButtonDefaults {
+object IconButtonDefaults {
 
     @Composable
     fun smallSizes(
