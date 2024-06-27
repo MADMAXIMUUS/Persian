@@ -9,7 +9,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.switch.PersianSwitch
+import io.github.madmaximuus.persian.switch.Switch
 import io.github.madmaximuus.persianSymbols.check.base.Check
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.xmark.base.XMark
@@ -34,7 +34,7 @@ object Switch : Screen {
                 item {
                     val (checked, onCheckedChange) = remember { mutableStateOf(false) }
                     SampleRow(text = "Default", firstItem = true) {
-                        PersianSwitch(
+                        Switch(
                             checked = checked,
                             onCheckedChange = onCheckedChange
                         )
@@ -43,7 +43,7 @@ object Switch : Screen {
                 item {
                     val (checked, onCheckedChange) = remember { mutableStateOf(false) }
                     SampleRow(text = "With Checked Icon") {
-                        PersianSwitch(
+                        Switch(
                             checked = checked,
                             onCheckedChange = onCheckedChange,
                             checkedIcon = rememberVectorPainter(image = PersianSymbols.Default.Check),
@@ -53,7 +53,7 @@ object Switch : Screen {
                 item {
                     val (checked, onCheckedChange) = remember { mutableStateOf(false) }
                     SampleRow(text = "With Icons") {
-                        PersianSwitch(
+                        Switch(
                             checked = checked,
                             onCheckedChange = onCheckedChange,
                             checkedIcon = rememberVectorPainter(image = PersianSymbols.Default.Check),
@@ -64,7 +64,7 @@ object Switch : Screen {
                 item {
                     val (checked, onCheckedChange) = remember { mutableStateOf(false) }
                     SampleRow(text = "Disabled") {
-                        PersianSwitch(
+                        Switch(
                             checked = checked,
                             onCheckedChange = onCheckedChange,
                             enabled = false,
