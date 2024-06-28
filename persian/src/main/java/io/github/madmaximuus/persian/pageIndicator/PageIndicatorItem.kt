@@ -2,17 +2,19 @@ package io.github.madmaximuus.persian.pageIndicator
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyListScope
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
+import io.github.madmaximuus.persian.foundation.PersianTheme
 
 
-internal fun LazyListScope.persianPageIndicatorItem(
+internal fun LazyListScope.persianPageDotIndicatorItem(
     itemCount: Int,
     currentItem: Int,
     visibleIndicatorCount: Int,
@@ -64,11 +66,31 @@ internal fun LazyListScope.persianPageIndicatorItem(
                         scaleY = scale
                     }
                     .size(12.dp)
-                    .clip(CircleShape)
+                    .clip(PersianTheme.shapes.full)
                     .background(
                         colors.indicatorColor(isSelected).value
                     )
             )
         }
+    }
+}
+
+internal fun LazyListScope.persianPageLineIndicatorItem(
+    itemCount: Int,
+    currentItem: Int,
+    colors: PageIndicatorColors
+) {
+    items(itemCount) { index ->
+
+        val isSelected = (index == currentItem)
+        Box(
+            modifier = Modifier
+                .width(24.dp)
+                .height(4.dp)
+                .clip(PersianTheme.shapes.full)
+                .background(
+                    colors.indicatorColor(isSelected).value
+                )
+        )
     }
 }

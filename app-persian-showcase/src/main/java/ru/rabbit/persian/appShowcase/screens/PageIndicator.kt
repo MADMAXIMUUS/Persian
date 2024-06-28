@@ -1,6 +1,5 @@
 package ru.rabbit.persian.appShowcase.screens
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,7 +16,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.pageIndicator.IndicatorOrientation
+import io.github.madmaximuus.persian.pageIndicator.IndicatorStyle
 import io.github.madmaximuus.persian.pageIndicator.PersianPageIndicator
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
@@ -27,7 +28,7 @@ object PageIndicator : Screen {
 
     override val navigation: String = "page_indicator"
 
-    @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
+    @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     override fun Content(navController: NavController?) {
         SampleScaffold(
@@ -35,16 +36,14 @@ object PageIndicator : Screen {
             onBackClick = { navController?.navigateUp() }
         ) {
 
-            val pagerState = rememberPagerState {
-                5
-            }
+            val pagerState = rememberPagerState { 5 }
 
             Column(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(it),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.SpaceEvenly
+                verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size24, Alignment.CenterVertically)
             ) {
                 HorizontalPager(
                     modifier = Modifier
@@ -67,7 +66,12 @@ object PageIndicator : Screen {
 
                 PersianPageIndicator(
                     pagerState = pagerState,
-                    visibleIndicatorCount = 3
+                    visibleIndicatorCount = 5
+                )
+                PersianPageIndicator(
+                    pagerState = pagerState,
+                    visibleIndicatorCount = 3,
+                    style = IndicatorStyle.DOT
                 )
                 PersianPageIndicator(
                     pagerState = pagerState,

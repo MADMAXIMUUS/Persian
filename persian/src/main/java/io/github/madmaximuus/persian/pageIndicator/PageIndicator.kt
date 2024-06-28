@@ -1,7 +1,6 @@
 package io.github.madmaximuus.persian.pageIndicator
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
@@ -10,7 +9,6 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
@@ -22,18 +20,22 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.surface.Surface
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun PersianPageIndicator(
     pagerState: PagerState,
     modifier: Modifier = Modifier,
     orientation: IndicatorOrientation = IndicatorOrientation.HORIZONTAL,
+    style: IndicatorStyle = IndicatorStyle.LINE,
     visibleIndicatorCount: Int = 5,
-    space: Dp = PersianTheme.spacing.size8,
-    colors: PageIndicatorColors = PersianPageIndicatorDefaults.indicatorColor()
+    colors: PageIndicatorColors = PageIndicatorDefaults.indicatorColor()
 ) {
 
+    val space = when (style) {
+        IndicatorStyle.DOT -> PersianTheme.spacing.size8
+        IndicatorStyle.LINE -> PersianTheme.spacing.size4
+    }
     val correctedIndicatorCount =
         if (visibleIndicatorCount > pagerState.pageCount) pagerState.pageCount
         else if (visibleIndicatorCount % 2 == 0 && visibleIndicatorCount != pagerState.pageCount) visibleIndicatorCount - 1
@@ -67,22 +69,35 @@ fun PersianPageIndicator(
         }
     }
 
+    val height = when (style) {
+        IndicatorStyle.DOT -> 24.dp
+        IndicatorStyle.LINE -> 4.dp
+    }
     when (orientation) {
         IndicatorOrientation.HORIZONTAL -> {
             LazyRow(
                 modifier = modifier
                     .width(totalWidth)
-                    .height(24.dp),
+                    .height(height),
                 state = listState,
                 horizontalArrangement = Arrangement.spacedBy(space),
                 userScrollEnabled = false
             ) {
-                persianPageIndicatorItem(
-                    itemCount,
-                    currentItem,
-                    correctedIndicatorCount,
-                    colors
-                )
+                when (style) {
+                    IndicatorStyle.DOT -> persianPageDotIndicatorItem(
+                        itemCount,
+                        currentItem,
+                        correctedIndicatorCount,
+                        colors
+                    )
+
+                    IndicatorStyle.LINE -> persianPageLineIndicatorItem(
+                        itemCount,
+                        currentItem,
+                        colors
+                    )
+                }
+
             }
         }
 
@@ -95,7 +110,7 @@ fun PersianPageIndicator(
                 verticalArrangement = Arrangement.spacedBy(space),
                 userScrollEnabled = false
             ) {
-                persianPageIndicatorItem(
+                persianPageDotIndicatorItem(
                     itemCount,
                     currentItem,
                     correctedIndicatorCount,
@@ -110,8 +125,12 @@ enum class IndicatorOrientation {
     HORIZONTAL, VERTICAL
 }
 
-@OptIn(ExperimentalFoundationApi::class)
+enum class IndicatorStyle {
+    DOT, LINE
+}
+
 @Preview
+@Preview(uiMode = UI_MODE_NIGHT_YES)
 @Composable
 fun PageIndicatorPreview() {
     PersianTheme {
@@ -120,22 +139,8 @@ fun PageIndicatorPreview() {
                 pagerState = rememberPagerState {
                     3
                 },
-                orientation = IndicatorOrientation.VERTICAL
+                style = IndicatorStyle.LINE
             )
-        }
-    }
-}
-
-@OptIn(ExperimentalFoundationApi::class)
-@Preview(uiMode = UI_MODE_NIGHT_YES)
-@Composable
-fun PageIndicatorDarkPreview() {
-    PersianTheme {
-        Surface {
-            PersianPageIndicator(
-                pagerState = rememberPagerState {
-                    3
-                })
         }
     }
 }
