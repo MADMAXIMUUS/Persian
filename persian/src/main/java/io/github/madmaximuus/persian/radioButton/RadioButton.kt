@@ -1,34 +1,34 @@
-package io.github.madmaximuus.persian.radioButtons
+package io.github.madmaximuus.persian.radioButton
 
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.selection.selectable
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.surface.Surface
 import io.github.madmaximuus.persian.text.Text
 
 @Composable
-fun PersianRadioButton(
+fun RadioButton(
     modifier: Modifier = Modifier,
     text: String,
     checked: Boolean,
     enabled: Boolean = true,
     onCheckedChange: (Boolean) -> Unit,
-    radioButtonColors: RadioButtonColors = PersianRadioButtonDefaults.colors(),
-    radioButtonSizes: RadioButtonSizes = PersianRadioButtonDefaults.sizes()
+    radioButtonColors: RadioButtonColors = RadioButtonDefaults.colors(),
+    radioButtonSizes: RadioButtonSizes = RadioButtonDefaults.sizes()
 ) {
-    val textColor = if (enabled) radioButtonColors.textColor
-    else PersianTheme.colorScheme.onSurface.copy(alpha = .38f)
     Row(
         modifier = modifier
             .clip(PersianTheme.shapes.shape16)
@@ -38,14 +38,15 @@ fun PersianRadioButton(
                 onClick = { onCheckedChange(!checked) },
                 role = Role.RadioButton
             )
-            .padding(radioButtonSizes.contentPadding),
+            .padding(radioButtonSizes.contentPadding)
+            .height(48.dp),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.Start
+        horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8)
     ) {
-        PersianRadioButtonToggle(
+        RadioButtonToggle(
             modifier = Modifier
                 .size(radioButtonSizes.toggleSize),
-            checked = checked,
+            selected = checked,
             enabled = enabled,
             onClick = null,
             colors = radioButtonColors.toggleColor
@@ -53,21 +54,22 @@ fun PersianRadioButton(
         Text(
             modifier = Modifier,
             text = text,
-            color = textColor,
+            color = radioButtonColors.textColor(enabled),
             style = radioButtonSizes.textStyle
         )
     }
 }
 
 @Preview
+@Preview(uiMode = UI_MODE_NIGHT_YES)
 @Composable
 fun CheckboxPreview() {
-    MaterialTheme {
+    PersianTheme {
         Surface {
-            PersianRadioButton(
+            RadioButton(
                 modifier = Modifier.fillMaxWidth(),
                 text = "Radio Button",
-                checked = false,
+                checked = true,
                 onCheckedChange = {}
             )
         }
