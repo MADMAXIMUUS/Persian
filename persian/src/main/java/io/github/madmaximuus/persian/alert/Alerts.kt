@@ -20,7 +20,7 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.window.core.layout.WindowHeightSizeClass
 import io.github.madmaximuus.persian.button.PersianButtonDefaults
-import io.github.madmaximuus.persian.dividers.PersianInsetHorizontalDivider
+import io.github.madmaximuus.persian.dividers.InsetHorizontalDivider
 import io.github.madmaximuus.persian.foundation.ActionsLayout
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.surface.Surface
@@ -152,7 +152,7 @@ fun Alert(
                             }
                             content?.invoke()
                             if (content != null) {
-                                PersianInsetHorizontalDivider(strokeColor = colors.dividerColor)
+                                InsetHorizontalDivider(strokeColor = colors.dividerColor)
                             }
                             val actionPadding =
                                 if (heightSizeClass == WindowHeightSizeClass.COMPACT)
