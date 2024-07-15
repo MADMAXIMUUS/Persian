@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
@@ -31,6 +30,7 @@ import io.github.madmaximuus.persian.avatarsAndImages.utils.LayoutId
 import io.github.madmaximuus.persian.avatarsAndImages.utils.badgeMeasurePolicy
 import io.github.madmaximuus.persian.foundation.LocalContentColor
 import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.foundation.ripple.ripple
 import io.github.madmaximuus.persian.foundation.shimmer
 import io.github.madmaximuus.persian.icon.Icon
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
@@ -46,7 +46,7 @@ fun Image(
     enabled: Boolean = true,
     placeholderIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.Image),
     overlayIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.Plus),
-    sizes: ImageSize = ImageDefaults.size64(),
+    sizes: ImageSizes = ImageDefaults.size64(),
     colors: ImageColors = ImageDefaults.colors(),
     shape: ImageShape = ImageShape.MEDIUM,
     onClick: (() -> Unit)? = null,
@@ -93,7 +93,7 @@ fun Image(
                                         ) {
                                             Icon(
                                                 painter = placeholderIcon,
-                                                size = sizes.placeholderSize,
+                                                sizes = sizes.placeholderSize,
                                                 tint = colors.placeholderIcon(enabled)
                                             )
                                         }
@@ -120,7 +120,7 @@ fun Image(
                                 }
                             },
                         )
-                        if (overlay && sizes.overlayIconSize != null) {
+                        if (overlay && sizes.overlayIconSizes != null) {
                             Box(
                                 modifier = Modifier
                                     .fillMaxSize()
@@ -132,7 +132,7 @@ fun Image(
                                 ) {
                                     Icon(
                                         painter = overlayIcon,
-                                        size = sizes.overlayIconSize,
+                                        sizes = sizes.overlayIconSizes,
                                     )
                                 }
                             }

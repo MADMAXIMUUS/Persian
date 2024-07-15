@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
@@ -31,6 +30,7 @@ import io.github.madmaximuus.persian.avatarsAndImages.utils.LayoutId
 import io.github.madmaximuus.persian.avatarsAndImages.utils.badgeMeasurePolicy
 import io.github.madmaximuus.persian.foundation.LocalContentColor
 import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.foundation.ripple.ripple
 import io.github.madmaximuus.persian.foundation.shimmer
 import io.github.madmaximuus.persian.icon.Icon
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
@@ -47,7 +47,7 @@ fun Avatar(
     placeholderIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.User),
     overlayIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.Plus),
     colors: AvatarColors = AvatarDefaults.colors(),
-    sizes: AvatarSize = AvatarDefaults.size48(),
+    sizes: AvatarSizes = AvatarDefaults.size48(),
     onClick: (() -> Unit)? = null,
     badge: (@Composable () -> Unit)? = null
 ) {
@@ -92,7 +92,7 @@ fun Avatar(
                                         ) {
                                             Icon(
                                                 painter = placeholderIcon,
-                                                size = sizes.placeholderIconSize,
+                                                sizes = sizes.placeholderIconSizes,
                                                 tint = colors.placeholderIcon(enabled)
                                             )
                                         }
@@ -119,7 +119,7 @@ fun Avatar(
                                 }
                             },
                         )
-                        if (overlay && sizes.overlayIconSize != null) {
+                        if (overlay && sizes.overlayIconSizes != null) {
                             Box(
                                 modifier = Modifier
                                     .fillMaxSize()
@@ -131,7 +131,7 @@ fun Avatar(
                                 ) {
                                     Icon(
                                         painter = overlayIcon,
-                                        size = sizes.overlayIconSize
+                                        sizes = sizes.overlayIconSizes
                                     )
                                 }
                             }
