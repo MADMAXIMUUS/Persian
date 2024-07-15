@@ -9,7 +9,7 @@ import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.avatarsAndImages.AvatarDefaults
 import io.github.madmaximuus.persian.avatarsAndImages.ImageColors
 import io.github.madmaximuus.persian.avatarsAndImages.ImageDefaults
-import io.github.madmaximuus.persian.avatarsAndImages.ImageSize
+import io.github.madmaximuus.persian.avatarsAndImages.ImageSizes
 import io.github.madmaximuus.persian.chips.founfation.ChipColors
 import io.github.madmaximuus.persian.chips.founfation.ChipElevation
 import io.github.madmaximuus.persian.chips.founfation.ChipSizes
@@ -17,7 +17,7 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.icon.IconDefaults
-import io.github.madmaximuus.persian.icon.IconSize
+import io.github.madmaximuus.persian.icon.IconSizes
 
 object AssistChipDefaults {
 
@@ -29,7 +29,6 @@ object AssistChipDefaults {
         disabledContainerColor: Color = Color.Transparent,
         disabledLabelColor: Color = PersianTheme.colorScheme.onSurface.state38,
         disabledLeadingIconColor: Color = PersianTheme.colorScheme.onSurface.state38,
-        disabledTrailingIconColor: Color = disabledLeadingIconColor,
         borderColor: Color = PersianTheme.colorScheme.primary,
         disabledBorderColor: Color = PersianTheme.colorScheme.onSurface.state12,
         imageColors: ImageColors = ImageDefaults.colors()
@@ -37,12 +36,10 @@ object AssistChipDefaults {
         containerColor = containerColor,
         labelColor = labelColor,
         leadingIconContentColor = leadingIconContentColor,
-        trailingIconContentColor = PersianTheme.colorScheme.onSurfaceVariant,
         borderColor = borderColor,
         disabledContainerColor = disabledContainerColor,
         disabledLabelColor = disabledLabelColor,
         disabledLeadingIconContentColor = disabledLeadingIconColor,
-        disabledTrailingIconContentColor = disabledTrailingIconColor,
         disabledBorderColor = disabledBorderColor,
 
         avatarColors = AvatarDefaults.colors(),
@@ -51,20 +48,20 @@ object AssistChipDefaults {
 
     @Composable
     fun chipSizes(
-        leadingIconSize: IconSize = IconDefaults.size18(),
+        leadingIconSizes: IconSizes = IconDefaults.size18(),
         labelStyle: TextStyle = PersianTheme.typography.labelLarge,
         borderWidth: Dp = 1.dp,
         shape: Shape = PersianTheme.shapes.shape10,
         disabledBorderWith: Dp = 1.dp,
-        leadingImageSize: ImageSize = ImageDefaults.size24(),
+        leadingImageSizes: ImageSizes = ImageDefaults.size24(),
     ): ChipSizes = ChipSizes(
-        trailingIconSize = IconDefaults.size18(),
-        leadingIconSize = leadingIconSize,
+        trailingIconSizes = IconDefaults.size18(),
+        leadingIconSizes = leadingIconSizes,
         labelStyle = labelStyle,
         borderWidth = borderWidth,
         shape = shape,
         disabledBorderWith = disabledBorderWith,
-        leadingImageSize = leadingImageSize
+        leadingImageSizes = leadingImageSizes
     )
 
     @Composable

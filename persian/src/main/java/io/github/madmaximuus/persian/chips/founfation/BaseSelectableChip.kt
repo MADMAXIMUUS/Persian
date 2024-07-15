@@ -31,11 +31,11 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import io.github.madmaximuus.persian.avatarsAndImages.AvatarColors
-import io.github.madmaximuus.persian.avatarsAndImages.AvatarSize
+import io.github.madmaximuus.persian.avatarsAndImages.AvatarSizes
 import io.github.madmaximuus.persian.avatarsAndImages.ImageColors
-import io.github.madmaximuus.persian.avatarsAndImages.ImageSize
+import io.github.madmaximuus.persian.avatarsAndImages.ImageSizes
 import io.github.madmaximuus.persian.foundation.animateElevation
-import io.github.madmaximuus.persian.icon.IconSize
+import io.github.madmaximuus.persian.icon.IconSizes
 import io.github.madmaximuus.persian.surface.Surface
 
 @Composable
@@ -230,8 +230,8 @@ class SelectableChipColors internal constructor(
 
 @Immutable
 class SelectableChipSizes internal constructor(
-    internal val trailingIconSize: IconSize,
-    internal val leadingIconSize: IconSize,
+    internal val trailingIconSizes: IconSizes,
+    internal val leadingIconSizes: IconSizes,
     internal val labelStyle: TextStyle,
     private val borderWidth: Dp,
     private val selectedBorderWith: Dp,
@@ -239,8 +239,8 @@ class SelectableChipSizes internal constructor(
     private val disabledBorderWith: Dp,
     private val selectedDisabledBorderWith: Dp,
 
-    internal val avatarSizes: AvatarSize,
-    internal val imageSizes: ImageSize
+    internal val avatarSizes: AvatarSizes,
+    internal val imageSizes: ImageSizes
 ) {
 
     @Stable
@@ -254,8 +254,8 @@ class SelectableChipSizes internal constructor(
         if (this === other) return true
         if (other == null || other !is SelectableChipSizes) return false
 
-        if (trailingIconSize != other.trailingIconSize) return false
-        if (leadingIconSize != other.leadingIconSize) return false
+        if (trailingIconSizes != other.trailingIconSizes) return false
+        if (leadingIconSizes != other.leadingIconSizes) return false
         if (labelStyle != other.labelStyle) return false
         if (borderWidth != other.borderWidth) return false
         if (shape != other.shape) return false
@@ -265,8 +265,8 @@ class SelectableChipSizes internal constructor(
     }
 
     override fun hashCode(): Int {
-        var result = trailingIconSize.hashCode()
-        result = 31 * result + leadingIconSize.hashCode()
+        var result = trailingIconSizes.hashCode()
+        result = 31 * result + leadingIconSizes.hashCode()
         result = 31 * result + labelStyle.hashCode()
         result = 31 * result + borderWidth.hashCode()
         result = 31 * result + disabledBorderWith.hashCode()

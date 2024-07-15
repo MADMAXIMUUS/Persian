@@ -37,7 +37,7 @@ fun PersianInputShip(
                 InputChipLeadingScope(
                     enabled = enabled,
                     selected = selected,
-                    iconSize = sizes.leadingIconSize,
+                    iconSizes = sizes.leadingIconSizes,
                     iconColor = colors.leadingIconContentColor(enabled, selected),
                     avatarColors = colors.avatarColors,
                     avatarSizes = sizes.avatarSizes,
@@ -54,7 +54,7 @@ fun PersianInputShip(
             with(
                 InputChipTrailingScope(
                     enabled = enabled,
-                    iconSize = sizes.trailingIconSize,
+                    iconSizes = sizes.trailingIconSizes,
                     iconColor = colors.trailingIconContentColor(enabled, selected)
                 )
             ) {

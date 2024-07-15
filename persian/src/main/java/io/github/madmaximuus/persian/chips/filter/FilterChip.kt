@@ -37,7 +37,7 @@ fun FilterChip(
                 FilterChipLeadingScope(
                     enabled = enabled,
                     selected = selected,
-                    iconSize = sizes.leadingIconSize,
+                    iconSizes = sizes.leadingIconSizes,
                     iconColor = colors.leadingIconContentColor(enabled, selected)
                 )
             ) {
@@ -50,7 +50,7 @@ fun FilterChip(
             with(
                 FilterChipTrailingScope(
                     enabled = enabled,
-                    iconSize = sizes.trailingIconSize,
+                    iconSizes = sizes.trailingIconSizes,
                     iconColor = colors.trailingIconContentColor(enabled, selected)
                 )
             ) {

@@ -33,7 +33,7 @@ fun PersianSuggestionChip(
         {
             with(
                 SuggestionChipLeadingScope(
-                    iconSize = sizes.leadingIconSize,
+                    iconSizes = sizes.leadingIconSizes,
                     iconColor = colors.leadingIconContentColor(enabled),
                 )
             ) {

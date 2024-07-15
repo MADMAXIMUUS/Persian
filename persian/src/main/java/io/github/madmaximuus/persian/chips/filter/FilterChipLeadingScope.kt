@@ -9,7 +9,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.icon.Icon
-import io.github.madmaximuus.persian.icon.IconSize
+import io.github.madmaximuus.persian.icon.IconSizes
 import io.github.madmaximuus.persianSymbols.check.base.Check
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
@@ -17,7 +17,7 @@ class FilterChipLeadingScope(
     val enabled: Boolean,
     val selected: Boolean,
     val iconColor: Color,
-    val iconSize: IconSize
+    val iconSizes: IconSizes
 ) {
 
     @Composable
@@ -32,7 +32,7 @@ class FilterChipLeadingScope(
         ) {
             Icon(
                 painter = if (selected) selectedIcon else icon,
-                size = iconSize,
+                sizes = iconSizes,
                 tint = iconColor
             )
         }

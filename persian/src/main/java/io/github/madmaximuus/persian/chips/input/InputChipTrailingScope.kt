@@ -12,14 +12,14 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.semantics.Role
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.icon.Icon
-import io.github.madmaximuus.persian.icon.IconSize
+import io.github.madmaximuus.persian.icon.IconSizes
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.xmark.base.XMark
 
 class InputChipTrailingScope(
     val enabled: Boolean,
     val iconColor: Color,
-    val iconSize: IconSize
+    val iconSizes: IconSizes
 ) {
 
     @Composable
@@ -41,7 +41,7 @@ class InputChipTrailingScope(
                         role = Role.Image
                     ),
                 painter = icon,
-                size = iconSize,
+                sizes = iconSizes,
                 tint = iconColor,
             )
         }

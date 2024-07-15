@@ -11,12 +11,12 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.semantics.Role
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.icon.Icon
-import io.github.madmaximuus.persian.icon.IconSize
+import io.github.madmaximuus.persian.icon.IconSizes
 
 class FilterChipTrailingScope(
     val enabled: Boolean,
     val iconColor: Color,
-    val iconSize: IconSize
+    val iconSizes: IconSizes
 ) {
 
     @Composable
@@ -38,7 +38,7 @@ class FilterChipTrailingScope(
                         role = Role.Image
                     ),
                 painter = icon,
-                size = iconSize,
+                sizes = iconSizes,
                 tint = iconColor,
             )
         }

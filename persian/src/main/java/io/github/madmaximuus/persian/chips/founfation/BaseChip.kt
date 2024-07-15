@@ -31,9 +31,9 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import io.github.madmaximuus.persian.avatarsAndImages.AvatarColors
 import io.github.madmaximuus.persian.avatarsAndImages.ImageColors
-import io.github.madmaximuus.persian.avatarsAndImages.ImageSize
+import io.github.madmaximuus.persian.avatarsAndImages.ImageSizes
 import io.github.madmaximuus.persian.foundation.animateElevation
-import io.github.madmaximuus.persian.icon.IconSize
+import io.github.madmaximuus.persian.icon.IconSizes
 import io.github.madmaximuus.persian.surface.Surface
 
 @Composable
@@ -87,9 +87,6 @@ class ChipColors internal constructor(
     private val leadingIconContentColor: Color,
     private val disabledLeadingIconContentColor: Color,
 
-    private val trailingIconContentColor: Color,
-    private val disabledTrailingIconContentColor: Color,
-
     private val borderColor: Color,
     private val disabledBorderColor: Color,
 
@@ -100,12 +97,10 @@ class ChipColors internal constructor(
         containerColor: Color = this.containerColor,
         labelColor: Color = this.labelColor,
         leadingIconContentColor: Color = this.leadingIconContentColor,
-        trailingIconContentColor: Color = this.trailingIconContentColor,
         borderColor: Color = this.borderColor,
         disabledContainerColor: Color = this.disabledContainerColor,
         disabledLabelColor: Color = this.disabledLabelColor,
         disabledLeadingIconContentColor: Color = this.disabledLeadingIconContentColor,
-        disabledTrailingIconContentColor: Color = this.disabledTrailingIconContentColor,
         disabledBorderColor: Color = this.disabledBorderColor,
         imageColors: ImageColors,
         avatarColors: AvatarColors,
@@ -113,12 +108,10 @@ class ChipColors internal constructor(
         containerColor.takeOrElse { this.containerColor },
         labelColor.takeOrElse { this.labelColor },
         leadingIconContentColor.takeOrElse { this.leadingIconContentColor },
-        trailingIconContentColor.takeOrElse { this.trailingIconContentColor },
         borderColor.takeOrElse { this.borderColor },
         disabledContainerColor.takeOrElse { this.disabledContainerColor },
         disabledLabelColor.takeOrElse { this.disabledLabelColor },
         disabledLeadingIconContentColor.takeOrElse { this.disabledLeadingIconContentColor },
-        disabledTrailingIconContentColor.takeOrElse { this.disabledTrailingIconContentColor },
         disabledBorderColor.takeOrElse { this.disabledBorderColor },
         imageColors = imageColors,
         avatarColors = avatarColors
@@ -137,10 +130,6 @@ class ChipColors internal constructor(
         if (enabled) leadingIconContentColor else disabledLeadingIconContentColor
 
     @Stable
-    internal fun trailingIconContentColor(enabled: Boolean): Color =
-        if (enabled) trailingIconContentColor else disabledTrailingIconContentColor
-
-    @Stable
     internal fun borderColor(enabled: Boolean): Color =
         if (enabled) borderColor else disabledBorderColor
 
@@ -151,24 +140,20 @@ class ChipColors internal constructor(
         if (containerColor != other.containerColor) return false
         if (labelColor != other.labelColor) return false
         if (leadingIconContentColor != other.leadingIconContentColor) return false
-        if (trailingIconContentColor != other.trailingIconContentColor) return false
         if (disabledContainerColor != other.disabledContainerColor) return false
         if (disabledLabelColor != other.disabledLabelColor) return false
         if (disabledLeadingIconContentColor != other.disabledLeadingIconContentColor) return false
         if (imageColors != other.imageColors) return false
-        if (avatarColors != other.avatarColors) return false
-        return disabledTrailingIconContentColor == other.disabledTrailingIconContentColor
+        return avatarColors == other.avatarColors
     }
 
     override fun hashCode(): Int {
         var result = containerColor.hashCode()
         result = 31 * result + labelColor.hashCode()
         result = 31 * result + leadingIconContentColor.hashCode()
-        result = 31 * result + trailingIconContentColor.hashCode()
         result = 31 * result + disabledContainerColor.hashCode()
         result = 31 * result + disabledLabelColor.hashCode()
         result = 31 * result + disabledLeadingIconContentColor.hashCode()
-        result = 31 * result + disabledTrailingIconContentColor.hashCode()
         result = 31 * result + imageColors.hashCode()
         result = 31 * result + avatarColors.hashCode()
 
@@ -179,9 +164,9 @@ class ChipColors internal constructor(
 @Immutable
 class ChipSizes internal constructor(
     internal val shape: Shape,
-    internal val trailingIconSize: IconSize,
-    internal val leadingIconSize: IconSize,
-    internal val leadingImageSize: ImageSize,
+    internal val trailingIconSizes: IconSizes,
+    internal val leadingIconSizes: IconSizes,
+    internal val leadingImageSizes: ImageSizes,
     internal val labelStyle: TextStyle,
     internal val borderWidth: Dp,
     internal val disabledBorderWith: Dp,
@@ -195,8 +180,8 @@ class ChipSizes internal constructor(
         if (this === other) return true
         if (other == null || other !is ChipSizes) return false
 
-        if (trailingIconSize != other.trailingIconSize) return false
-        if (leadingIconSize != other.leadingIconSize) return false
+        if (trailingIconSizes != other.trailingIconSizes) return false
+        if (leadingIconSizes != other.leadingIconSizes) return false
         if (labelStyle != other.labelStyle) return false
         if (borderWidth != other.borderWidth) return false
         if (shape != other.shape) return false
@@ -204,8 +189,8 @@ class ChipSizes internal constructor(
     }
 
     override fun hashCode(): Int {
-        var result = trailingIconSize.hashCode()
-        result = 31 * result + leadingIconSize.hashCode()
+        var result = trailingIconSizes.hashCode()
+        result = 31 * result + leadingIconSizes.hashCode()
         result = 31 * result + labelStyle.hashCode()
         result = 31 * result + borderWidth.hashCode()
         result = 31 * result + disabledBorderWith.hashCode()

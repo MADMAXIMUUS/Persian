@@ -30,9 +30,9 @@ fun AssistChip(
             with(
                 AssistChipLeadingScope(
                     enabled = enabled,
-                    iconSize = sizes.leadingIconSize,
+                    iconSizes = sizes.leadingIconSizes,
                     iconColor = colors.leadingIconContentColor(enabled),
-                    imageSizes = sizes.leadingImageSize,
+                    imageSizes = sizes.leadingImageSizes,
                     imageColors = colors.imageColors
                 )
             ) {

@@ -14,7 +14,7 @@ import io.github.madmaximuus.persian.chips.founfation.ChipSizes
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.icon.IconDefaults
-import io.github.madmaximuus.persian.icon.IconSize
+import io.github.madmaximuus.persian.icon.IconSizes
 
 object SuggestionChipDefaults {
 
@@ -32,11 +32,9 @@ object SuggestionChipDefaults {
         containerColor = containerColor,
         labelColor = labelColor,
         leadingIconContentColor = leadingIconColor,
-        trailingIconContentColor = leadingIconColor,
         disabledContainerColor = disabledContainerColor,
         disabledLabelColor = disabledLabelColor,
         disabledLeadingIconContentColor = disabledLeadingIconContentColor,
-        disabledTrailingIconContentColor = disabledLeadingIconContentColor,
         borderColor = borderColor,
         disabledBorderColor = disabledBorderColor,
         imageColors = ImageDefaults.colors(),
@@ -45,20 +43,20 @@ object SuggestionChipDefaults {
 
     @Composable
     fun chipSizes(
-        trailingIconSize: IconSize = IconDefaults.size18(),
-        leadingIconSize: IconSize = IconDefaults.size18(),
+        trailingIconSizes: IconSizes = IconDefaults.size18(),
+        leadingIconSizes: IconSizes = IconDefaults.size18(),
         labelStyle: TextStyle = PersianTheme.typography.labelLarge,
         borderWidth: Dp = 1.dp,
         shape: Shape = PersianTheme.shapes.shape10,
         disabledBorderWith: Dp = 0.dp,
     ): ChipSizes = ChipSizes(
-        trailingIconSize = trailingIconSize,
-        leadingIconSize = leadingIconSize,
+        trailingIconSizes = trailingIconSizes,
+        leadingIconSizes = leadingIconSizes,
         labelStyle = labelStyle,
         borderWidth = borderWidth,
         shape = shape,
         disabledBorderWith = disabledBorderWith,
-        leadingImageSize = ImageDefaults.size24(),
+        leadingImageSizes = ImageDefaults.size24(),
     )
 
     @Composable

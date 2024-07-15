@@ -8,10 +8,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.icon.Icon
-import io.github.madmaximuus.persian.icon.IconSize
+import io.github.madmaximuus.persian.icon.IconSizes
 
 class SuggestionChipLeadingScope(
-    private val iconSize: IconSize,
+    private val iconSizes: IconSizes,
     private val iconColor: Color,
 ) {
 
@@ -26,7 +26,7 @@ class SuggestionChipLeadingScope(
         ) {
             Icon(
                 painter = painter,
-                size = iconSize,
+                sizes = iconSizes,
                 tint = iconColor
             )
         }

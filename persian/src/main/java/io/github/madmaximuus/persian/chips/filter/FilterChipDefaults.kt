@@ -15,7 +15,7 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.icon.IconDefaults
-import io.github.madmaximuus.persian.icon.IconSize
+import io.github.madmaximuus.persian.icon.IconSizes
 
 object FilterChipDefaults {
 
@@ -62,8 +62,8 @@ object FilterChipDefaults {
 
     @Composable
     fun chipSizes(
-        trailingIconSize: IconSize = IconDefaults.size18(),
-        leadingIconSize: IconSize = IconDefaults.size18(),
+        trailingIconSizes: IconSizes = IconDefaults.size18(),
+        leadingIconSizes: IconSizes = IconDefaults.size18(),
         labelStyle: TextStyle = PersianTheme.typography.labelLarge,
         borderWidth: Dp = 1.dp,
         selectedBorderWith: Dp = 0.dp,
@@ -71,8 +71,8 @@ object FilterChipDefaults {
         disabledBorderWith: Dp = 1.dp,
         selectedDisabledBorderWith: Dp = 0.dp
     ): SelectableChipSizes = SelectableChipSizes(
-        trailingIconSize = trailingIconSize,
-        leadingIconSize = leadingIconSize,
+        trailingIconSizes = trailingIconSizes,
+        leadingIconSizes = leadingIconSizes,
         labelStyle = labelStyle,
         borderWidth = borderWidth,
         selectedBorderWith = selectedBorderWith,

@@ -10,16 +10,16 @@ import androidx.compose.ui.graphics.painter.Painter
 import io.github.madmaximuus.persian.avatarsAndImages.Image
 import io.github.madmaximuus.persian.avatarsAndImages.ImageColors
 import io.github.madmaximuus.persian.avatarsAndImages.ImageShape
-import io.github.madmaximuus.persian.avatarsAndImages.ImageSize
+import io.github.madmaximuus.persian.avatarsAndImages.ImageSizes
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.icon.Icon
-import io.github.madmaximuus.persian.icon.IconSize
+import io.github.madmaximuus.persian.icon.IconSizes
 
 class AssistChipLeadingScope(
     private val enabled: Boolean,
-    private val iconSize: IconSize,
+    private val iconSizes: IconSizes,
     private val iconColor: Color,
-    private val imageSizes: ImageSize,
+    private val imageSizes: ImageSizes,
     private val imageColors: ImageColors,
 ) {
 
@@ -34,7 +34,7 @@ class AssistChipLeadingScope(
         ) {
             Icon(
                 painter = painter,
-                size = iconSize,
+                sizes = iconSizes,
                 tint = iconColor
             )
         }

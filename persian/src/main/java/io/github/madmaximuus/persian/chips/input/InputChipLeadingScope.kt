@@ -10,14 +10,14 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import io.github.madmaximuus.persian.avatarsAndImages.Avatar
 import io.github.madmaximuus.persian.avatarsAndImages.AvatarColors
-import io.github.madmaximuus.persian.avatarsAndImages.AvatarSize
+import io.github.madmaximuus.persian.avatarsAndImages.AvatarSizes
 import io.github.madmaximuus.persian.avatarsAndImages.Image
 import io.github.madmaximuus.persian.avatarsAndImages.ImageColors
 import io.github.madmaximuus.persian.avatarsAndImages.ImageShape
-import io.github.madmaximuus.persian.avatarsAndImages.ImageSize
+import io.github.madmaximuus.persian.avatarsAndImages.ImageSizes
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.icon.Icon
-import io.github.madmaximuus.persian.icon.IconSize
+import io.github.madmaximuus.persian.icon.IconSizes
 import io.github.madmaximuus.persianSymbols.check.base.Check
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
@@ -25,11 +25,11 @@ class InputChipLeadingScope(
     val enabled: Boolean,
     val selected: Boolean,
     val iconColor: Color,
-    val iconSize: IconSize,
+    val iconSizes: IconSizes,
     val avatarColors: AvatarColors,
-    val avatarSizes: AvatarSize,
+    val avatarSizes: AvatarSizes,
     val imageColors: ImageColors,
-    val imageSizes: ImageSize
+    val imageSizes: ImageSizes
 ) {
 
     @Composable
@@ -44,7 +44,7 @@ class InputChipLeadingScope(
         ) {
             Icon(
                 painter = if (selected) selectedIcon else icon,
-                size = iconSize,
+                sizes = iconSizes,
                 tint = iconColor
             )
         }
@@ -53,7 +53,8 @@ class InputChipLeadingScope(
     @Composable
     fun Image(
         modifier: Modifier = Modifier,
-        imageUrl: Uri
+        imageUrl: Uri,
+        selectedIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.Check)
     ) {
         Box(
             modifier = modifier
@@ -67,6 +68,7 @@ class InputChipLeadingScope(
                 sizes = imageSizes,
                 overlay = selected,
                 colors = imageColors,
+                overlayIcon = selectedIcon,
                 enabled = enabled,
                 shape = ImageShape.MEDIUM
             )
@@ -76,7 +78,8 @@ class InputChipLeadingScope(
     @Composable
     fun Avatar(
         modifier: Modifier = Modifier,
-        avatarUrl: Uri
+        avatarUrl: Uri,
+        selectedIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.Check)
     ) {
         Box(
             modifier = modifier
@@ -89,6 +92,7 @@ class InputChipLeadingScope(
                 imageUrl = avatarUrl,
                 sizes = avatarSizes,
                 overlay = selected,
+                overlayIcon = selectedIcon,
                 colors = avatarColors,
                 enabled = enabled,
             )
