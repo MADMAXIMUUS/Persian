@@ -10,11 +10,11 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.avatarsAndImages.Avatar
 import io.github.madmaximuus.persian.avatarsAndImages.AvatarDefaults
-import io.github.madmaximuus.persian.avatarsAndImages.AvatarSize
+import io.github.madmaximuus.persian.avatarsAndImages.AvatarSizes
 import io.github.madmaximuus.persian.avatarsAndImages.Image
 import io.github.madmaximuus.persian.avatarsAndImages.ImageDefaults
 import io.github.madmaximuus.persian.avatarsAndImages.ImageShape
-import io.github.madmaximuus.persian.avatarsAndImages.ImageSize
+import io.github.madmaximuus.persian.avatarsAndImages.ImageSizes
 import io.github.madmaximuus.persian.icon.Icon
 import io.github.madmaximuus.persian.icon.IconDefaults
 
@@ -34,7 +34,7 @@ class BannerLeftScope(
                 .padding(0.dp),
             painter = icon,
             contentDescription = contentDescription,
-            size = IconDefaults.size28(),
+            sizes = IconDefaults.size28(),
             tint = iconColor
         )
     }
@@ -43,8 +43,8 @@ class BannerLeftScope(
     fun Image(
         modifier: Modifier = Modifier,
         image: String,
-        sizes: ImageSize = ImageDefaults.size72(),
-        shape: ImageShape = ImageShape.SMALL
+        sizes: ImageSizes = ImageDefaults.size72(),
+        shape: ImageShape = ImageShape.MEDIUM
     ) {
         Image(
             modifier = modifier,
@@ -58,7 +58,7 @@ class BannerLeftScope(
     fun Avatar(
         modifier: Modifier = Modifier,
         image: String,
-        sizes: AvatarSize = AvatarDefaults.size48()
+        sizes: AvatarSizes = AvatarDefaults.size48()
     ) {
         Avatar(
             modifier = modifier,

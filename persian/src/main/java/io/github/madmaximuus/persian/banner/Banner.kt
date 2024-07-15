@@ -1,6 +1,7 @@
 package io.github.madmaximuus.persian.banner
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -20,6 +21,7 @@ fun Banner(
     modifier: Modifier = Modifier,
     title: String? = null,
     message: String? = null,
+    onClick: (() -> Unit)? = null,
     left: (@Composable BannerLeftScope.() -> Unit)? = null,
     right: (@Composable BannerRightScope.() -> Unit)? = null,
     button: (@Composable BannerButtonScope.() -> Unit)? = null,
@@ -32,7 +34,10 @@ fun Banner(
     Box(
         modifier = modifier
             .clip(sizes.cornerRadius)
-            .background(colors.background),
+            .background(colors.background)
+            .clickable(
+                enabled = onClick != null
+            ) { onClick?.invoke() },
         contentAlignment = Alignment.Center
     ) {
         Row(
