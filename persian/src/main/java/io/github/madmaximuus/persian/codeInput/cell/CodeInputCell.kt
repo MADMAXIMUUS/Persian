@@ -82,6 +82,7 @@ internal fun CodeInputCell(
             value = value,
             onValueChange = onValueChange,
             readOnly = false,
+            enabled = enabled,
             singleLine = true,
             minLines = 1,
             maxLines = 1,
