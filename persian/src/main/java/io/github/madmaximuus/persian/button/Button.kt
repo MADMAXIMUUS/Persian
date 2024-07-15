@@ -32,14 +32,13 @@ import io.github.madmaximuus.persian.foundation.PersianSubcomposeLayout
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.ProvideTextStyle
 import io.github.madmaximuus.persian.icon.Icon
-import io.github.madmaximuus.persian.progressBars.PersianCircularProgressBar
-import io.github.madmaximuus.persian.progressBars.PersianProgressBarDefaults
+import io.github.madmaximuus.persian.progressIndicator.CircularProgressIndicator
+import io.github.madmaximuus.persian.progressIndicator.ProgressIndicatorDefaults
 import io.github.madmaximuus.persian.surface.Surface
 import io.github.madmaximuus.persian.text.Text
 import io.github.madmaximuus.persianSymbols.chevronRight.base.ChevronRight
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.plus.base.Plus
-
 
 /**
  * The primary button should only be used once per view
@@ -249,7 +248,7 @@ private fun ButtonImpl(
                             leadingIcon?.let {
                                 Icon(
                                     painter = it,
-                                    size = sizes.iconSize
+                                    sizes = sizes.iconSizes
                                 )
                             }
                             Column(
@@ -279,7 +278,7 @@ private fun ButtonImpl(
                             trailingIcon?.let {
                                 Icon(
                                     painter = it,
-                                    size = sizes.iconSize
+                                    sizes = sizes.iconSizes
                                 )
                             }
                         }
@@ -291,11 +290,11 @@ private fun ButtonImpl(
                                 .fillMaxHeight(),
                             contentAlignment = Alignment.Center
                         ) {
-                            PersianCircularProgressBar(
+                            CircularProgressIndicator(
                                 sizes = sizes.loaderSize,
-                                colors = PersianProgressBarDefaults.colors(
-                                    backgroundColor = Color.Transparent,
-                                    progressColor = colors.contentColor(true)
+                                colors = ProgressIndicatorDefaults.colors(
+                                    trackColor = Color.Transparent,
+                                    progressColor = colors.contentColor(enabled)
                                 )
                             )
                         }

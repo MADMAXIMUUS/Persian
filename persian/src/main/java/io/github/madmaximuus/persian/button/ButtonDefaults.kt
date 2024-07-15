@@ -14,9 +14,9 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.icon.IconDefaults
-import io.github.madmaximuus.persian.icon.IconSize
-import io.github.madmaximuus.persian.progressBars.CircularProgressBarSizes
-import io.github.madmaximuus.persian.progressBars.PersianProgressBarDefaults
+import io.github.madmaximuus.persian.icon.IconSizes
+import io.github.madmaximuus.persian.progressIndicator.CircularProgressBarSizes
+import io.github.madmaximuus.persian.progressIndicator.ProgressIndicatorDefaults
 
 object PersianButtonDefaults {
 
@@ -76,8 +76,8 @@ object PersianButtonDefaults {
     fun smallSizes(
         fontSize: TextStyle = PersianTheme.typography.labelMedium,
         height: Dp = 36.dp,
-        loaderSize: CircularProgressBarSizes = PersianProgressBarDefaults.circularSmall(),
-        iconSize: IconSize = IconDefaults.size18(),
+        loaderSize: CircularProgressBarSizes = ProgressIndicatorDefaults.circularSmall(),
+        iconSizes: IconSizes = IconDefaults.size18(),
         shape: Shape = PersianTheme.shapes.shape12,
         contentPadding: PaddingValues = PaddingValues(
             horizontal = PersianTheme.spacing.size16,
@@ -87,7 +87,7 @@ object PersianButtonDefaults {
         textStyle = fontSize,
         height = height,
         loaderSize = loaderSize,
-        iconSize = iconSize,
+        iconSizes = iconSizes,
         shape = shape,
         contentPadding = contentPadding
     )
@@ -97,8 +97,8 @@ object PersianButtonDefaults {
         fontSize: TextStyle = PersianTheme.typography.labelLarge,
         additionInfoTextStyle: TextStyle = PersianTheme.typography.labelSmall,
         height: Dp = 44.dp,
-        loaderSize: CircularProgressBarSizes = PersianProgressBarDefaults.circularMedium(),
-        iconSize: IconSize = IconDefaults.size20(),
+        loaderSize: CircularProgressBarSizes = ProgressIndicatorDefaults.circularMedium(),
+        iconSizes: IconSizes = IconDefaults.size20(),
         shape: Shape = PersianTheme.shapes.shape14,
         contentPadding: PaddingValues = PaddingValues(
             horizontal = PersianTheme.spacing.size20,
@@ -109,7 +109,7 @@ object PersianButtonDefaults {
         additionInfoTextStyle = additionInfoTextStyle,
         height = height,
         loaderSize = loaderSize,
-        iconSize = iconSize,
+        iconSizes = iconSizes,
         shape = shape,
         contentPadding = contentPadding
     )
@@ -119,8 +119,8 @@ object PersianButtonDefaults {
         fontSize: TextStyle = PersianTheme.typography.titleMedium,
         additionInfoTextStyle: TextStyle = PersianTheme.typography.labelMedium,
         height: Dp = 52.dp,
-        loaderSize: CircularProgressBarSizes = PersianProgressBarDefaults.circularLarge(),
-        iconSize: IconSize = IconDefaults.size28(),
+        loaderSize: CircularProgressBarSizes = ProgressIndicatorDefaults.circularLarge(),
+        iconSizes: IconSizes = IconDefaults.size28(),
         shape: Shape = PersianTheme.shapes.shape16,
         contentPadding: PaddingValues = PaddingValues(
             horizontal = PersianTheme.spacing.size24,
@@ -131,7 +131,7 @@ object PersianButtonDefaults {
         additionInfoTextStyle = additionInfoTextStyle,
         height = height,
         loaderSize = loaderSize,
-        iconSize = iconSize,
+        iconSizes = iconSizes,
         shape = shape,
         contentPadding = contentPadding
     )
@@ -143,7 +143,7 @@ class ButtonSizes internal constructor(
     internal val textStyle: TextStyle,
     internal val additionInfoTextStyle: TextStyle? = null,
     internal val height: Dp,
-    internal val iconSize: IconSize,
+    internal val iconSizes: IconSizes,
     internal val loaderSize: CircularProgressBarSizes,
     internal val shape: Shape,
     internal val contentPadding: PaddingValues,
@@ -152,7 +152,7 @@ class ButtonSizes internal constructor(
         textStyle: TextStyle = this.textStyle,
         additionInfoTextStyle: TextStyle? = this.additionInfoTextStyle,
         height: Dp = this.height,
-        iconSize: IconSize = this.iconSize,
+        iconSizes: IconSizes = this.iconSizes,
         loaderSize: CircularProgressBarSizes = this.loaderSize,
         shape: Shape = this.shape,
         contentPadding: PaddingValues
@@ -160,7 +160,7 @@ class ButtonSizes internal constructor(
         textStyle,
         additionInfoTextStyle,
         height,
-        iconSize,
+        iconSizes,
         loaderSize,
         shape,
         contentPadding
@@ -173,7 +173,7 @@ class ButtonSizes internal constructor(
         if (textStyle != other.textStyle) return false
         if (additionInfoTextStyle != other.additionInfoTextStyle) return false
         if (height != other.height) return false
-        if (iconSize != other.iconSize) return false
+        if (iconSizes != other.iconSizes) return false
         if (loaderSize != other.loaderSize) return false
         if (shape != other.shape) return false
         return contentPadding == other.contentPadding
@@ -183,7 +183,7 @@ class ButtonSizes internal constructor(
         var result = textStyle.hashCode()
         result = 31 * result + additionInfoTextStyle.hashCode()
         result = 31 * result + height.hashCode()
-        result = 31 * result + iconSize.hashCode()
+        result = 31 * result + iconSizes.hashCode()
         result = 31 * result + loaderSize.hashCode()
         result = 31 * result + shape.hashCode()
         result = 31 * result + contentPadding.hashCode()
