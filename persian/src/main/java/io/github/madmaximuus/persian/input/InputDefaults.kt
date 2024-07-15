@@ -26,7 +26,7 @@ import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state16
 import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.icon.IconDefaults
-import io.github.madmaximuus.persian.icon.IconSize
+import io.github.madmaximuus.persian.icon.IconSizes
 import io.github.madmaximuus.persianSymbols.check.circle.CheckCircle
 import io.github.madmaximuus.persianSymbols.exclamation.circle.ExclamationCircle
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
@@ -325,11 +325,14 @@ object InputsDefaults {
         focusedBorderThickness: Dp = 2.dp,
 
         shape: Shape = PersianTheme.shapes.shape16,
-        contentPaddingValues: PaddingValues = PaddingValues(horizontal = PersianTheme.spacing.size12),
+        contentPaddingValues: PaddingValues = PaddingValues(
+            start = PersianTheme.spacing.size12,
+            end = PersianTheme.spacing.size4
+        ),
 
-        leadingIconSize: IconSize = IconDefaults.size24(),
-        trailingIconSize: IconSize = IconDefaults.size24(),
-        stateIconSize: IconSize = IconDefaults.size24(),
+        leadingIconSizes: IconSizes = IconDefaults.size24(),
+        trailingIconSizes: IconSizes = IconDefaults.size24(),
+        stateIconSizes: IconSizes = IconDefaults.size24(),
 
         placeholderTextStyle: TextStyle = PersianTheme.typography.bodyLarge,
         inputTextStyle: TextStyle = PersianTheme.typography.bodyLarge,
@@ -340,9 +343,9 @@ object InputsDefaults {
             focusedBorderThickness = focusedBorderThickness,
             shape = shape,
             contentPaddingValues = contentPaddingValues,
-            leadingIconSize = leadingIconSize,
-            trailingIconSize = trailingIconSize,
-            stateIconSize = stateIconSize,
+            leadingIconSizes = leadingIconSizes,
+            trailingIconSizes = trailingIconSizes,
+            stateIconSizes = stateIconSizes,
 
             placeholderTextStyle = placeholderTextStyle,
             inputTextStyle = inputTextStyle,
@@ -773,9 +776,9 @@ class InputSizes(
     internal val shape: Shape,
     internal val contentPaddingValues: PaddingValues,
 
-    internal val leadingIconSize: IconSize,
-    internal val trailingIconSize: IconSize,
-    internal val stateIconSize: IconSize,
+    internal val leadingIconSizes: IconSizes,
+    internal val trailingIconSizes: IconSizes,
+    internal val stateIconSizes: IconSizes,
 
     internal val placeholderTextStyle: TextStyle,
     internal val inputTextStyle: TextStyle,
@@ -795,9 +798,9 @@ class InputSizes(
         if (contentPaddingValues != other.contentPaddingValues) return false
 
         //Icons
-        if (leadingIconSize != other.leadingIconSize) return false
-        if (trailingIconSize != other.trailingIconSize) return false
-        if (stateIconSize != other.stateIconSize) return false
+        if (leadingIconSizes != other.leadingIconSizes) return false
+        if (trailingIconSizes != other.trailingIconSizes) return false
+        if (stateIconSizes != other.stateIconSizes) return false
 
         //Text Style
         if (placeholderTextStyle != other.placeholderTextStyle) return false
@@ -815,9 +818,9 @@ class InputSizes(
         result = 31 * result + contentPaddingValues.hashCode()
 
         //Icons
-        result = 31 * result + leadingIconSize.hashCode()
-        result = 31 * result + trailingIconSize.hashCode()
-        result = 31 * result + stateIconSize.hashCode()
+        result = 31 * result + leadingIconSizes.hashCode()
+        result = 31 * result + trailingIconSizes.hashCode()
+        result = 31 * result + stateIconSizes.hashCode()
 
         //Indicator Colors
         result = 31 * result + placeholderTextStyle.hashCode()

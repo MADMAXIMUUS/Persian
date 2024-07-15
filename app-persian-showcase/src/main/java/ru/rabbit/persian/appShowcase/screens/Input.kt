@@ -115,6 +115,7 @@ object Input : Screen {
                 PersianSelect(
                     modifier = Modifier
                         .padding(horizontal = PersianTheme.spacing.size12)
+                        .padding(top = PersianTheme.spacing.size8)
                         .fillMaxWidth(),
                     selected = style,
                     values = styles,
@@ -126,6 +127,7 @@ object Input : Screen {
                 Checkbox(
                     modifier = Modifier
                         .padding(horizontal = PersianTheme.spacing.size12)
+                        .padding(top = PersianTheme.spacing.size8)
                         .fillMaxWidth(),
                     text = "Enabled",
                     checked = enabled,
@@ -135,7 +137,7 @@ object Input : Screen {
                     modifier = Modifier
                         .padding(horizontal = PersianTheme.spacing.size12)
                         .fillMaxWidth(),
-                    text = "Is Error State",
+                    text = "Error",
                     checked = isError,
                     onCheckedChange = onIsErrorChange
                 )
@@ -143,7 +145,7 @@ object Input : Screen {
                     modifier = Modifier
                         .padding(horizontal = PersianTheme.spacing.size12)
                         .fillMaxWidth(),
-                    text = "Is Success State",
+                    text = "Valid",
                     checked = isSuccess,
                     onCheckedChange = onIsSuccessChange
                 )
