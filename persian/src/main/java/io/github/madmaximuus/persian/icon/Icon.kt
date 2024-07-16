@@ -23,7 +23,7 @@ fun Icon(
     modifier: Modifier = Modifier,
     painter: Painter,
     contentDescription: String? = null,
-    size: IconSize = IconDefaults.size24(),
+    sizes: IconSizes = IconDefaults.size24(),
     tint: Color = LocalContentColor.current
 ) {
     val colorFilter = remember(tint) {
@@ -40,8 +40,8 @@ fun Icon(
         }
     Box(
         modifier
-            .size(size.width)
-            .padding(size.padding)
+            .size(sizes.width)
+            .padding(sizes.padding)
             .toolingGraphicsLayer()
             .paint(painter, colorFilter = colorFilter, contentScale = ContentScale.Fit)
             .then(semantics)

@@ -11,7 +11,7 @@ object IconDefaults {
         width: Dp = 48.dp,
         padding: Dp = 0.dp
     ) = remember(width, padding) {
-        IconSize(width, padding)
+        IconSizes(width, padding)
     }
 
     @Composable
@@ -19,7 +19,7 @@ object IconDefaults {
         width: Dp = 40.dp,
         padding: Dp = 0.dp
     ) = remember(width, padding) {
-        IconSize(width, padding)
+        IconSizes(width, padding)
     }
 
     @Composable
@@ -27,7 +27,7 @@ object IconDefaults {
         width: Dp = 32.dp,
         padding: Dp = 0.dp
     ) = remember(width, padding) {
-        IconSize(width, padding)
+        IconSizes(width, padding)
     }
 
     @Composable
@@ -35,7 +35,7 @@ object IconDefaults {
         width: Dp = 28.dp,
         padding: Dp = 0.dp
     ) = remember(width, padding) {
-        IconSize(width, padding)
+        IconSizes(width, padding)
     }
 
     @Composable
@@ -43,7 +43,7 @@ object IconDefaults {
         width: Dp = 24.dp,
         padding: Dp = 0.dp
     ) = remember(width, padding) {
-        IconSize(width, padding)
+        IconSizes(width, padding)
     }
 
     @Composable
@@ -51,7 +51,7 @@ object IconDefaults {
         width: Dp = 20.dp,
         padding: Dp = 0.dp
     ) = remember(width, padding) {
-        IconSize(width, padding)
+        IconSizes(width, padding)
     }
 
     @Composable
@@ -59,7 +59,7 @@ object IconDefaults {
         width: Dp = 18.dp,
         padding: Dp = 0.dp
     ) = remember(width, padding) {
-        IconSize(width, padding)
+        IconSizes(width, padding)
     }
 
     @Composable
@@ -67,7 +67,7 @@ object IconDefaults {
         width: Dp = 16.dp,
         padding: Dp = 0.dp
     ) = remember(width, padding) {
-        IconSize(width, padding)
+        IconSizes(width, padding)
     }
 
     @Composable
@@ -75,11 +75,11 @@ object IconDefaults {
         width: Dp = 12.dp,
         padding: Dp = 0.dp
     ) = remember(width, padding) {
-        IconSize(width, padding)
+        IconSizes(width, padding)
     }
 }
 
-data class IconSize(
+data class IconSizes(
     val width: Dp,
     val padding: Dp
 )
