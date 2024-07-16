@@ -50,7 +50,7 @@ fun SmallFab(
         content = {
             Icon(
                 painter = icon,
-                size = sizes.iconSize,
+                sizes = sizes.iconSizes,
                 tint = colors.contentColor
             )
         },

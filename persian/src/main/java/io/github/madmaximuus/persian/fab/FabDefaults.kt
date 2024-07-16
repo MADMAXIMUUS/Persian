@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.animateElevation
 import io.github.madmaximuus.persian.icon.IconDefaults
-import io.github.madmaximuus.persian.icon.IconSize
+import io.github.madmaximuus.persian.icon.IconSizes
 import kotlinx.coroutines.launch
 
 object FabDefaults {
@@ -85,18 +85,18 @@ object FabDefaults {
     @Composable
     fun smallSizes(
         boxSize: Dp = 40.dp,
-        iconSize: IconSize = IconDefaults.size20(),
+        iconSizes: IconSizes = IconDefaults.size20(),
         textStyle: TextStyle = PersianTheme.typography.labelLarge,
         cornerShape: Shape = PersianTheme.shapes.shape12
     ) = remember(
         boxSize,
-        iconSize,
+        iconSizes,
         textStyle,
         cornerShape
     ) {
         FabSizes(
             boxSize = boxSize,
-            iconSize = iconSize,
+            iconSizes = iconSizes,
             textStyle = textStyle,
             cornerShape = cornerShape
         )
@@ -105,19 +105,19 @@ object FabDefaults {
     @Composable
     fun mediumSizes(
         boxSize: Dp = 56.dp,
-        iconSize: IconSize = IconDefaults.size20(),
+        iconSizes: IconSizes = IconDefaults.size20(),
         textStyle: TextStyle = PersianTheme.typography.labelLarge,
         cornerShape: Shape = PersianTheme.shapes.shape16
     ) = remember(
         boxSize,
-        iconSize,
+        iconSizes,
         textStyle,
         cornerShape
     )
     {
         FabSizes(
             boxSize = boxSize,
-            iconSize = iconSize,
+            iconSizes = iconSizes,
             textStyle = textStyle,
             cornerShape = cornerShape
         )
@@ -158,7 +158,7 @@ data class FabColors(
 @Immutable
 data class FabSizes(
     val boxSize: Dp,
-    val iconSize: IconSize,
+    val iconSizes: IconSizes,
     val textStyle: TextStyle,
     val cornerShape: Shape
 )
