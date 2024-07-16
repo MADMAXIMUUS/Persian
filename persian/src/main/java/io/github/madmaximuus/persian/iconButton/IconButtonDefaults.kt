@@ -13,23 +13,23 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.icon.IconDefaults
-import io.github.madmaximuus.persian.icon.IconSize
+import io.github.madmaximuus.persian.icon.IconSizes
 
 object IconButtonDefaults {
 
     @Composable
     fun smallSizes(
         size: Dp = 36.dp,
-        iconSize: IconSize = IconDefaults.size20(),
+        iconSizes: IconSizes = IconDefaults.size20(),
         shape: Shape = PersianTheme.shapes.shape12,
     ): IconButtonSizes = remember(
         size,
-        iconSize,
+        iconSizes,
         shape,
     ) {
         IconButtonSizes(
             size = size,
-            iconSize = iconSize,
+            iconSizes = iconSizes,
             shape = shape,
         )
     }
@@ -37,16 +37,16 @@ object IconButtonDefaults {
     @Composable
     fun mediumSizes(
         size: Dp = 44.dp,
-        iconSize: IconSize = IconDefaults.size24(),
+        iconSizes: IconSizes = IconDefaults.size24(),
         shape: Shape = PersianTheme.shapes.shape14,
     ): IconButtonSizes = remember(
         size,
-        iconSize,
+        iconSizes,
         shape,
     ) {
         IconButtonSizes(
             size = size,
-            iconSize = iconSize,
+            iconSizes = iconSizes,
             shape = shape,
         )
     }
@@ -54,16 +54,16 @@ object IconButtonDefaults {
     @Composable
     fun largeSizes(
         size: Dp = 52.dp,
-        iconSize: IconSize = IconDefaults.size28(),
+        iconSizes: IconSizes = IconDefaults.size28(),
         shape: Shape = PersianTheme.shapes.shape16
     ): IconButtonSizes = remember(
         size,
-        iconSize,
+        iconSizes,
         shape,
     ) {
         IconButtonSizes(
             size = size,
-            iconSize = iconSize,
+            iconSizes = iconSizes,
             shape = shape,
         )
     }
@@ -192,7 +192,7 @@ object IconButtonDefaults {
 @Immutable
 class IconButtonSizes internal constructor(
     internal val size: Dp,
-    internal val iconSize: IconSize,
+    internal val iconSizes: IconSizes,
     internal val shape: Shape,
 )
 

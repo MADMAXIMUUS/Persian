@@ -44,12 +44,12 @@ fun ToggleIconButton(
         if (checked) {
             Icon(
                 painter = checkedIcon,
-                size = sizes.iconSize
+                sizes = sizes.iconSizes
             )
         } else {
             Icon(
                 painter = icon,
-                size = sizes.iconSize
+                sizes = sizes.iconSizes
             )
         }
     }
@@ -83,12 +83,12 @@ fun SecondaryToggleIconButton(
         if (checked) {
             Icon(
                 painter = checkedIcon,
-                size = sizes.iconSize
+                sizes = sizes.iconSizes
             )
         } else {
             Icon(
                 painter = icon,
-                size = sizes.iconSize
+                sizes = sizes.iconSizes
             )
         }
     }
@@ -122,12 +122,12 @@ fun TertiaryToggleIconButton(
         if (checked) {
             Icon(
                 painter = checkedIcon,
-                size = sizes.iconSize
+                sizes = sizes.iconSizes
             )
         } else {
             Icon(
                 painter = icon,
-                size = sizes.iconSize
+                sizes = sizes.iconSizes
             )
         }
     }
@@ -154,7 +154,7 @@ fun OutlinedToggleIconButton(
     contentColor = colors.contentColor(enabled, checked).value,
     border = if (checked) null else BorderStroke(
         1.dp,
-        colors.contentColor(enabled, checked).value
+        colors.contentColor(enabled, false).value
     ),
     interactionSource = interactionSource
 ) {
@@ -165,12 +165,12 @@ fun OutlinedToggleIconButton(
         if (checked) {
             Icon(
                 painter = checkedIcon,
-                size = sizes.iconSize
+                sizes = sizes.iconSizes
             )
         } else {
             Icon(
                 painter = icon,
-                size = sizes.iconSize
+                sizes = sizes.iconSizes
             )
         }
     }

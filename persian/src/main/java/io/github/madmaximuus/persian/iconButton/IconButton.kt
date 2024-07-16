@@ -40,7 +40,7 @@ fun PrimaryIconButton(
     ) {
         Icon(
             painter = icon,
-            size = sizes.iconSize,
+            sizes = sizes.iconSizes,
             tint = colors.contentColor(enabled = enabled).value
         )
     }
@@ -70,7 +70,7 @@ fun SecondaryIconButton(
     ) {
         Icon(
             painter = icon,
-            size = sizes.iconSize
+            sizes = sizes.iconSizes
         )
     }
 }
@@ -99,7 +99,7 @@ fun TertiaryIconButton(
     ) {
         Icon(
             painter = icon,
-            size = sizes.iconSize
+            sizes = sizes.iconSizes
         )
     }
 }
@@ -132,7 +132,7 @@ fun OutlinedIconButton(
     ) {
         Icon(
             painter = icon,
-            size = sizes.iconSize
+            sizes = sizes.iconSizes
         )
     }
 }
