@@ -28,46 +28,52 @@ object ProgressIndicatorDefaults {
         strokeSize: Dp = 4.dp,
         gapSize: Dp = 4.dp,
         stopSize: Dp = 4.dp,
-        strokeCap: StrokeCap = StrokeCap.Round
+        strokeCap: StrokeCap = StrokeCap.Round,
+        contentTextStyle: TextStyle = PersianTheme.typography.bodyLarge
     ): LinearProgressBarSizes =
         LinearProgressBarSizes(
             strokeSize = strokeSize,
             gapSize = gapSize,
             stopSize = stopSize,
-            strokeCap = strokeCap
+            strokeCap = strokeCap,
+            contentTextStyle = contentTextStyle
         )
 
     @Composable
     fun linearMedium(
         strokeSize: Dp = 3.dp,
         gapSize: Dp = 4.dp,
-        stopSize: Dp = 4.dp,
-        strokeCap: StrokeCap = StrokeCap.Round
+        stopSize: Dp = 3.dp,
+        strokeCap: StrokeCap = StrokeCap.Round,
+        contentTextStyle: TextStyle = PersianTheme.typography.bodyMedium
     ): LinearProgressBarSizes =
         LinearProgressBarSizes(
             strokeSize = strokeSize,
             gapSize = gapSize,
             stopSize = stopSize,
-            strokeCap = strokeCap
+            strokeCap = strokeCap,
+            contentTextStyle = contentTextStyle
         )
 
     @Composable
     fun linearSmall(
         strokeSize: Dp = 2.dp,
         gapSize: Dp = 4.dp,
-        stopSize: Dp = 4.dp,
-        strokeCap: StrokeCap = StrokeCap.Round
+        stopSize: Dp = 2.dp,
+        strokeCap: StrokeCap = StrokeCap.Round,
+        contentTextStyle: TextStyle = PersianTheme.typography.bodySmall
     ): LinearProgressBarSizes =
         LinearProgressBarSizes(
             strokeSize = strokeSize,
             gapSize = gapSize,
             stopSize = stopSize,
-            strokeCap = strokeCap
+            strokeCap = strokeCap,
+            contentTextStyle = contentTextStyle
         )
 
     @Composable
     fun circularLarge(
-        diameter: Dp = 36.dp,
+        diameter: Dp = 40.dp,
         strokeSize: Dp = 2.dp,
         gapSize: Dp = 4.dp,
         strokeCap: StrokeCap = StrokeCap.Round,
@@ -83,7 +89,7 @@ object ProgressIndicatorDefaults {
 
     @Composable
     fun circularMedium(
-        diameter: Dp = 30.dp,
+        diameter: Dp = 32.dp,
         strokeSize: Dp = 2.dp,
         gapSize: Dp = 4.dp,
         strokeCap: StrokeCap = StrokeCap.Round,
@@ -126,7 +132,8 @@ class LinearProgressBarSizes internal constructor(
     internal val strokeSize: Dp,
     internal val gapSize: Dp,
     internal val stopSize: Dp,
-    internal val strokeCap: StrokeCap
+    internal val strokeCap: StrokeCap,
+    internal val contentTextStyle: TextStyle
 )
 
 @Immutable

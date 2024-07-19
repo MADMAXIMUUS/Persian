@@ -17,9 +17,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.layout.layout
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.ProgressBarRangeInfo
 import androidx.compose.ui.semantics.progressBarRangeInfo
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.drawText
+import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
@@ -39,19 +42,30 @@ import kotlin.math.min
 fun LinearProgressIndicator(
     progress: () -> Float,
     modifier: Modifier = Modifier,
+    maxValue: () -> Float = { 1f },
     colors: ProgressBarColors = ProgressIndicatorDefaults.colors(),
     sizes: LinearProgressBarSizes = ProgressIndicatorDefaults.linearMedium(),
+    content: Boolean = false
 ) {
-    val coercedProgress = { progress().coerceIn(0f, 1f) }
+    val coercedProgress = { progress().coerceIn(0f, maxValue()) / maxValue() }
+    val measurer = rememberTextMeasurer()
+    val measurement =
+        measurer.measure(progress().getProgressInPercent(), sizes.contentTextStyle)
+    val textStyle = sizes.contentTextStyle.copy(color = colors.contentColor)
+    var height: Dp
+    with(LocalDensity.current) {
+        height = if (content) (measurement.size.height + sizes.strokeSize.toPx() + 5).toDp()
+        else (sizes.strokeSize.toPx()).toDp()
+    }
     Canvas(
         modifier
             .then(IncreaseSemanticsBounds)
             .semantics(mergeDescendants = true) {
                 progressBarRangeInfo = ProgressBarRangeInfo(coercedProgress(), 0f..1f)
             }
-            .height(sizes.strokeSize)
+            .height(height)
     ) {
-        val strokeWidth = size.height
+        val strokeWidth = sizes.strokeSize.toPx()
         val adjustedGapSize =
             if (sizes.strokeCap == StrokeCap.Butt || size.height > size.width) {
                 sizes.gapSize
@@ -86,8 +100,24 @@ fun LinearProgressIndicator(
             drawScope = this,
             stopSize = sizes.stopSize,
             color = colors.progressColor,
-            strokeCap = StrokeCap.Round
+            strokeCap = StrokeCap.Round,
+            sizes.strokeSize.toPx()
         )
+        if (content) {
+            drawText(
+                textMeasurer = measurer,
+                text = progress().getProgressInPercent(),
+                style = textStyle,
+                size = Size(
+                    measurement.size.width.toFloat(),
+                    measurement.size.height.toFloat()
+                ),
+                topLeft = Offset(
+                    x = size.width - measurement.size.width,
+                    y = 0f
+                )
+            )
+        }
     }
 }
 
@@ -225,12 +255,12 @@ private fun DrawScope.drawLinearIndicator(
     endFraction: Float,
     color: Color,
     strokeWidth: Float,
-    strokeCap: StrokeCap,
+    strokeCap: StrokeCap
 ) {
     val width = size.width
     val height = size.height
     // Start drawing from the vertical center of the stroke
-    val yOffset = height / 2
+    val yOffset = height - strokeWidth / 2
 
     val isLtr = layoutDirection == LayoutDirection.Ltr
     val barStart = (if (isLtr) startFraction else 1f - endFraction) * width
@@ -274,11 +304,12 @@ fun drawStopIndicator(
     stopSize: Dp,
     color: Color,
     strokeCap: StrokeCap,
+    strokeSize: Float
 ) {
     with(drawScope) {
         val adjustedStopSize =
-            min(stopSize.toPx(), size.height) // Stop can't be bigger than track
-        val stopOffset = (size.height - adjustedStopSize) / 2 // Offset from end
+            min(stopSize.toPx(), strokeSize) // Stop can't be bigger than track
+        val stopOffset = (strokeSize - adjustedStopSize) / 2 // Offset from end
         if (strokeCap == StrokeCap.Round) {
             drawCircle(
                 color = color,
@@ -286,7 +317,7 @@ fun drawStopIndicator(
                 center =
                 Offset(
                     x = size.width - (adjustedStopSize / 2f) - stopOffset,
-                    y = size.height / 2f
+                    y = size.height - strokeSize / 2f
                 )
             )
         } else {
@@ -295,7 +326,7 @@ fun drawStopIndicator(
                 topLeft =
                 Offset(
                     x = size.width - adjustedStopSize - stopOffset,
-                    y = (size.height - adjustedStopSize) / 2f
+                    y = (size.height - adjustedStopSize) - strokeSize / 2f
                 ),
                 size = Size(width = adjustedStopSize, height = adjustedStopSize)
             )

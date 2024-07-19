@@ -32,7 +32,6 @@ import kotlin.math.PI
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
-import kotlin.math.roundToInt
 
 /**
  * Progress indicators express an unspecified wait time or display the duration of a process.
@@ -45,18 +44,22 @@ import kotlin.math.roundToInt
 fun CircularProgressIndicator(
     progress: () -> Float,
     modifier: Modifier = Modifier,
+    maxValue: () -> Float = { 1f },
     sizes: CircularProgressBarSizes = ProgressIndicatorDefaults.circularMedium(),
     colors: ProgressBarColors = ProgressIndicatorDefaults.colors(),
     content: Boolean = false
 ) {
-    val coercedProgress = { progress().coerceIn(0f, 1f) }
+    val coercedProgress = { progress().coerceIn(0f, maxValue()) / maxValue() }
     val stroke = with(LocalDensity.current) {
         Stroke(
             width = sizes.strokeWidth.toPx(),
             cap = sizes.strokeCap
         )
     }
+
     val measurer = rememberTextMeasurer()
+    val measurement =
+        measurer.measure(progress().getProgressInPercent(), sizes.contentTextStyle)
     val textStyle = sizes.contentTextStyle.copy(color = colors.contentColor)
     Canvas(
         modifier
@@ -85,8 +88,6 @@ fun CircularProgressIndicator(
         )
         drawDeterminateCircularIndicator(startAngle, sweep, colors.progressColor, stroke)
         if (content) {
-            val measurement =
-                measurer.measure(progress().getProgressInPercent(), sizes.contentTextStyle)
             drawText(
                 textMeasurer = measurer,
                 text = progress().getProgressInPercent(),
@@ -292,4 +293,6 @@ private val CircularEasing = CubicBezierEasing(0.4f, 0f, 0.2f, 1f)
 private const val RotationsPerCycle = 5
 
 @SuppressWarnings("MagicNumber")
-internal fun Float.getProgressInPercent(): String = "${(this * 10).roundToInt()}"
+internal fun Float.getProgressInPercent(): String = "%.1f".format(this)
+    .trimEnd { it == '0' }
+    .trimEnd { it == '.' }
