@@ -74,7 +74,7 @@ object ProgressIndicatorDefaults {
     @Composable
     fun circularLarge(
         diameter: Dp = 40.dp,
-        strokeSize: Dp = 2.dp,
+        strokeSize: Dp = 4.dp,
         gapSize: Dp = 4.dp,
         strokeCap: StrokeCap = StrokeCap.Round,
         contentTextStyle: TextStyle = PersianTheme.typography.bodyLarge
@@ -90,7 +90,7 @@ object ProgressIndicatorDefaults {
     @Composable
     fun circularMedium(
         diameter: Dp = 32.dp,
-        strokeSize: Dp = 2.dp,
+        strokeSize: Dp = 3.dp,
         gapSize: Dp = 4.dp,
         strokeCap: StrokeCap = StrokeCap.Round,
         contentTextStyle: TextStyle = PersianTheme.typography.bodyMedium
