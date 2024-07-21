@@ -8,11 +8,11 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
-object PersianSnackbarDefaults {
+object SnackbarDefaults {
 
     @Composable
     fun colors(
-        backgroundColor: Color = PersianTheme.colorScheme.surface5,
+        backgroundColor: Color = PersianTheme.colorScheme.surface2,
         textColor: Color = PersianTheme.colorScheme.onSurface
     ) = remember(backgroundColor, textColor) {
         SnackbarColors(
