@@ -10,7 +10,6 @@ import androidx.compose.foundation.interaction.PressInteraction
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.toggleable
-import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.NonRestartableComposable
@@ -37,12 +36,13 @@ import io.github.madmaximuus.persian.foundation.LocalContentColor
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.contentColorFor
 import io.github.madmaximuus.persian.foundation.minimumInteractiveComponentSize
+import io.github.madmaximuus.persian.foundation.ripple.ripple
 import io.github.madmaximuus.persian.icon.Icon
 import io.github.madmaximuus.persian.text.Text
 import kotlin.math.ln
 
 /**
- * Material surface is the central metaphor in material design. Each surface exists at a given
+ * Surface is the central metaphor in Persian design. Each surface exists at a given
  * elevation, which influences how that piece of surface visually relates to other surfaces and how
  * that surface is modified by tonal variance.
  *
@@ -101,7 +101,7 @@ fun Surface(
 ) {
     val absoluteElevation = LocalAbsoluteTonalElevation.current + tonalElevation
     CompositionLocalProvider(
-        androidx.compose.material3.LocalContentColor provides contentColor,
+        LocalContentColor provides contentColor,
         LocalAbsoluteTonalElevation provides absoluteElevation
     ) {
         Box(
@@ -128,7 +128,7 @@ fun Surface(
 }
 
 /**
- * Material surface is the central metaphor in material design. Each surface exists at a given
+ * Surface is the central metaphor in Persian design. Each surface exists at a given
  * elevation, which influences how that piece of surface visually relates to other surfaces and how
  * that surface is modified by tonal variance.
  *
@@ -204,7 +204,7 @@ fun Surface(
 ) {
     val absoluteElevation = LocalAbsoluteTonalElevation.current + tonalElevation
     CompositionLocalProvider(
-        androidx.compose.material3.LocalContentColor provides contentColor,
+        LocalContentColor provides contentColor,
         LocalAbsoluteTonalElevation provides absoluteElevation
     ) {
         @Suppress("DEPRECATION_ERROR")
@@ -222,7 +222,7 @@ fun Surface(
                 )
                 .clickable(
                     interactionSource = interactionSource,
-                    indication = androidx.compose.material.ripple.rememberRipple(),
+                    indication = ripple(),
                     enabled = enabled,
                     onClick = onClick
                 ),
@@ -234,7 +234,7 @@ fun Surface(
 }
 
 /**
- * Material surface is the central metaphor in material design. Each surface exists at a given
+ * Surface is the central metaphor in Persian design. Each surface exists at a given
  * elevation, which influences how that piece of surface visually relates to other surfaces and how
  * that surface is modified by tonal variance.
  *
@@ -311,7 +311,7 @@ fun Surface(
 ) {
     val absoluteElevation = LocalAbsoluteTonalElevation.current + tonalElevation
     CompositionLocalProvider(
-        androidx.compose.material3.LocalContentColor provides contentColor,
+        LocalContentColor provides contentColor,
         LocalAbsoluteTonalElevation provides absoluteElevation
     ) {
         @Suppress("DEPRECATION_ERROR")
@@ -330,7 +330,7 @@ fun Surface(
                 .selectable(
                     selected = selected,
                     interactionSource = interactionSource,
-                    indication = rememberRipple(),
+                    indication = ripple(),
                     enabled = enabled,
                     onClick = onClick
                 ),
@@ -342,7 +342,7 @@ fun Surface(
 }
 
 /**
- * Material surface is the central metaphor in material design. Each surface exists at a given
+ * Surface is the central metaphor in Persian design. Each surface exists at a given
  * elevation, which influences how that piece of surface visually relates to other surfaces and how
  * that surface is modified by tonal variance.
  *
@@ -419,7 +419,7 @@ fun Surface(
 ) {
     val absoluteElevation = LocalAbsoluteTonalElevation.current + tonalElevation
     CompositionLocalProvider(
-        androidx.compose.material3.LocalContentColor provides contentColor,
+        LocalContentColor provides contentColor,
         LocalAbsoluteTonalElevation provides absoluteElevation
     ) {
         @Suppress("DEPRECATION_ERROR")
@@ -438,7 +438,7 @@ fun Surface(
                 .toggleable(
                     value = checked,
                     interactionSource = interactionSource,
-                    indication = rememberRipple(),
+                    indication = ripple(),
                     enabled = enabled,
                     onValueChange = onCheckedChange
                 ),
