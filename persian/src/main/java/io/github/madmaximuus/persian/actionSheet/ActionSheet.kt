@@ -16,8 +16,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -40,7 +40,6 @@ import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat
 import io.github.madmaximuus.persian.actionSheet.utils.ActionSheetPopup
 import io.github.madmaximuus.persian.actionSheet.utils.ActionSheetProperties
-import io.github.madmaximuus.persian.foundation.ActionsLayout
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.surface.Surface
 import kotlinx.coroutines.CoroutineScope
@@ -171,7 +170,7 @@ fun ActionSheet(
                     Surface(
                         modifier = Modifier
                             .widthIn(max = 460.dp)
-                            .navigationBarsPadding()
+                            .systemBarsPadding()
                             .padding(
                                 horizontal = PersianTheme.spacing.size8,
                                 vertical = PersianTheme.spacing.size8,
@@ -186,7 +185,7 @@ fun ActionSheet(
                             with(ActionSheetHeaderScope) {
                                 header?.let { it() }
                             }
-                            ActionsLayout(
+                            Column(
                                 Modifier
                                     .fillMaxWidth()
                                     .verticalScroll(rememberScrollState())

@@ -17,7 +17,7 @@ object ActionSheetDefaults {
     fun colors(
         titleColor: Color = PersianTheme.colorScheme.onSurface,
         subtitleColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
-        containerColor: Color = PersianTheme.colorScheme.surface1
+        containerColor: Color = PersianTheme.colorScheme.surfaceContainer
     ): ActionSheetColors =
         ActionSheetColors(
             titleColor = titleColor,
