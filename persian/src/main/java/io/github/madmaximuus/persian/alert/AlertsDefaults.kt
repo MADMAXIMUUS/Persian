@@ -12,7 +12,7 @@ object AlertsDefaults {
 
     @Composable
     fun colors(
-        backgroundColor: Color = PersianTheme.colorScheme.surface,
+        backgroundColor: Color = PersianTheme.colorScheme.surfaceContainer,
         titleColor: Color = PersianTheme.colorScheme.onSurface,
         descriptionColor: Color = PersianTheme.colorScheme.onSurface,
         iconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,

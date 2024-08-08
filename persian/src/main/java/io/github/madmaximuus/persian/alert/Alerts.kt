@@ -21,7 +21,6 @@ import androidx.compose.ui.window.DialogProperties
 import androidx.window.core.layout.WindowHeightSizeClass
 import io.github.madmaximuus.persian.button.PersianButtonDefaults
 import io.github.madmaximuus.persian.dividers.InsetHorizontalDivider
-import io.github.madmaximuus.persian.foundation.ActionsLayout
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.surface.Surface
 import io.github.madmaximuus.persian.text.Text
@@ -51,7 +50,7 @@ fun OnlyActionAlert(
                 tonalElevation = PersianTheme.elevation.small,
                 shadowElevation = 0.dp,
                 content = {
-                    ActionsLayout(
+                    Column(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(PersianTheme.spacing.size16)
