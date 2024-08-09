@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
@@ -37,7 +38,6 @@ import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.plus.base.Plus
 import io.github.madmaximuus.persianSymbols.user.base.User
 
-@OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun Avatar(
     modifier: Modifier = Modifier,
@@ -46,6 +46,7 @@ fun Avatar(
     enabled: Boolean = true,
     placeholderIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.User),
     overlayIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.Plus),
+    initials: String? = null,
     colors: AvatarColors = AvatarDefaults.colors(),
     sizes: AvatarSizes = AvatarDefaults.size48(),
     onClick: (() -> Unit)? = null,
@@ -64,7 +65,7 @@ fun Avatar(
                             .size(sizes.boxSizes)
                             .clip(PersianTheme.shapes.full)
                             .background(
-                                colors.background(enabled),
+                                colors.background(enabled, initials != null),
                                 PersianTheme.shapes.full
                             )
                             .border(1.dp, colors.border(enabled), PersianTheme.shapes.full)
@@ -79,46 +80,22 @@ fun Avatar(
                             ),
                         contentAlignment = Alignment.Center
                     ) {
-                        GlideSubcomposition(
-                            model = imageUrl,
-                            modifier = Modifier
-                                .fillMaxSize(),
-                            content = {
-                                when (state) {
-                                    RequestState.Failure -> {
-                                        Box(
-                                            modifier = Modifier.fillMaxSize(),
-                                            contentAlignment = Alignment.Center
-                                        ) {
-                                            Icon(
-                                                painter = placeholderIcon,
-                                                sizes = sizes.placeholderIconSizes,
-                                                tint = colors.placeholderIcon(enabled)
-                                            )
-                                        }
-                                    }
-
-                                    RequestState.Loading -> {
-                                        Box(
-                                            modifier = Modifier
-                                                .fillMaxSize()
-                                                .shimmer(true)
-                                        )
-                                    }
-
-                                    is RequestState.Success -> {
-                                        Image(
-                                            modifier = Modifier
-                                                .fillMaxSize(),
-                                            contentScale = ContentScale.Crop,
-                                            painter = painter,
-                                            alpha = if (!enabled) .38f else 1f,
-                                            contentDescription = ""
-                                        )
-                                    }
-                                }
-                            },
-                        )
+                        if (initials != null) {
+                            Initials(
+                                initials = initials,
+                                sizes = sizes,
+                                colors = colors,
+                                enabled = enabled
+                            )
+                        } else {
+                            Image(
+                                imageUrl = imageUrl,
+                                placeholderIcon = placeholderIcon,
+                                sizes = sizes,
+                                colors = colors,
+                                enabled = enabled
+                            )
+                        }
                         if (overlay && sizes.overlayIconSizes != null) {
                             Box(
                                 modifier = Modifier
@@ -159,5 +136,76 @@ fun Avatar(
                 badgeWithContentVerticalOffset = sizes.verticalBadgeOffset.roundToPx()
             )
         }
+    )
+}
+
+@Composable
+private fun Initials(
+    initials: String,
+    sizes: AvatarSizes,
+    colors: AvatarColors,
+    enabled: Boolean,
+) {
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            text = initials,
+            style = sizes.initialsTextStyle,
+            color = colors.initials(enabled)
+        )
+    }
+}
+
+
+@Composable
+@OptIn(ExperimentalGlideComposeApi::class)
+private fun Image(
+    imageUrl: Uri,
+    placeholderIcon: Painter,
+    sizes: AvatarSizes,
+    colors: AvatarColors,
+    enabled: Boolean
+) {
+    GlideSubcomposition(
+        model = imageUrl,
+        modifier = Modifier
+            .fillMaxSize(),
+        content = {
+            when (state) {
+                RequestState.Failure -> {
+                    Box(
+                        modifier = Modifier.fillMaxSize(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Icon(
+                            painter = placeholderIcon,
+                            sizes = sizes.placeholderIconSizes,
+                            tint = colors.placeholderIcon(enabled)
+                        )
+                    }
+                }
+
+                RequestState.Loading -> {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .shimmer(true)
+                    )
+                }
+
+                is RequestState.Success -> {
+                    Image(
+                        modifier = Modifier
+                            .fillMaxSize(),
+                        contentScale = ContentScale.Crop,
+                        painter = painter,
+                        alpha = if (!enabled) .38f else 1f,
+                        contentDescription = ""
+                    )
+                }
+            }
+        },
     )
 }

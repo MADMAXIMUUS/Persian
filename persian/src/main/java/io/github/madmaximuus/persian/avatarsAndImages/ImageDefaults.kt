@@ -358,7 +358,7 @@ object ImageDefaults {
 
     @Composable
     fun colors(
-        placeholderContainerColor: Color = PersianTheme.colorScheme.surface1,
+        placeholderContainerColor: Color = PersianTheme.colorScheme.surfaceContainer,
         disabledPlaceholderContainerColor: Color = PersianTheme.colorScheme.onSurface.state08,
         borderColor: Color = PersianTheme.colorScheme.outlineVariant,
         disabledBorderColor: Color = PersianTheme.colorScheme.onSurface.state12,

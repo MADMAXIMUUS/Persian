@@ -5,8 +5,10 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.takeOrElse
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.takeOrElse
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state08
@@ -25,13 +27,17 @@ object AvatarDefaults {
         badgeSize: Dp = 28.dp,
         horizontalBadgeOffset: Dp = 0.dp,
         verticalBadgeOffset: Dp = 0.dp,
+        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
+            fontSize = 30.sp
+        )
     ) = AvatarSizes(
         boxSizes,
         placeholderIconSizes,
         overlayIconSizes,
         badgeSize,
         horizontalBadgeOffset,
-        verticalBadgeOffset
+        verticalBadgeOffset,
+        initialsTextStyle
     )
 
     @Composable
@@ -42,13 +48,17 @@ object AvatarDefaults {
         badgeSize: Dp = 28.dp,
         horizontalBadgeOffset: Dp = 1.dp,
         verticalBadgeOffset: Dp = 1.dp,
+        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
+            fontSize = 30.sp
+        )
     ) = AvatarSizes(
         boxSizes,
         placeholderIconSizes,
         overlayIconSizes,
         badgeSize,
         horizontalBadgeOffset,
-        verticalBadgeOffset
+        verticalBadgeOffset,
+        initialsTextStyle
     )
 
     @Composable
@@ -59,13 +69,17 @@ object AvatarDefaults {
         badgeSize: Dp = 28.dp,
         horizontalBadgeOffset: Dp = 0.dp,
         verticalBadgeOffset: Dp = 4.dp,
+        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
+            fontSize = 26.sp
+        )
     ) = AvatarSizes(
         boxSizes,
         placeholderIconSizes,
         overlayIconSizes,
         badgeSize,
         horizontalBadgeOffset,
-        verticalBadgeOffset
+        verticalBadgeOffset,
+        initialsTextStyle
     )
 
     @Composable
@@ -76,13 +90,17 @@ object AvatarDefaults {
         badgeSize: Dp = 28.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
+        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
+            fontSize = 26.sp
+        )
     ) = AvatarSizes(
         boxSizes,
         placeholderIconSizes,
         overlayIconSizes,
         badgeSize,
         horizontalBadgeOffset,
-        verticalBadgeOffset
+        verticalBadgeOffset,
+        initialsTextStyle
     )
 
     @Composable
@@ -93,13 +111,17 @@ object AvatarDefaults {
         badgeSize: Dp = 24.dp,
         horizontalBadgeOffset: Dp = 2.dp,
         verticalBadgeOffset: Dp = 2.dp,
+        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
+            fontSize = 21.sp
+        )
     ) = AvatarSizes(
         boxSizes,
         placeholderIconSizes,
         overlayIconSizes,
         badgeSize,
         horizontalBadgeOffset,
-        verticalBadgeOffset
+        verticalBadgeOffset,
+        initialsTextStyle
     )
 
     @Composable
@@ -110,13 +132,17 @@ object AvatarDefaults {
         badgeSize: Dp = 24.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
+        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
+            fontSize = 18.sp
+        )
     ) = AvatarSizes(
         boxSizes,
         placeholderIconSizes,
         overlayIconSizes,
         badgeSize,
         horizontalBadgeOffset,
-        verticalBadgeOffset
+        verticalBadgeOffset,
+        initialsTextStyle
     )
 
     @Composable
@@ -127,13 +153,17 @@ object AvatarDefaults {
         badgeSize: Dp = 20.dp,
         horizontalBadgeOffset: Dp = 2.dp,
         verticalBadgeOffset: Dp = 2.dp,
+        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
+            fontSize = 17.sp
+        )
     ) = AvatarSizes(
         boxSizes,
         placeholderIconSizes,
         overlayIconSizes,
         badgeSize,
         horizontalBadgeOffset,
-        verticalBadgeOffset
+        verticalBadgeOffset,
+        initialsTextStyle
     )
 
     @Composable
@@ -144,13 +174,17 @@ object AvatarDefaults {
         badgeSize: Dp = 20.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
+        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
+            fontSize = 14.sp
+        )
     ) = AvatarSizes(
         boxSizes,
         placeholderIconSizes,
         overlayIconSizes,
         badgeSize,
         horizontalBadgeOffset,
-        verticalBadgeOffset
+        verticalBadgeOffset,
+        initialsTextStyle
     )
 
     @Composable
@@ -161,13 +195,17 @@ object AvatarDefaults {
         badgeSize: Dp = 20.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
+        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
+            fontSize = 14.sp
+        )
     ) = AvatarSizes(
         boxSizes,
         placeholderIconSizes,
         overlayIconSizes,
         badgeSize,
         horizontalBadgeOffset,
-        verticalBadgeOffset
+        verticalBadgeOffset,
+        initialsTextStyle
     )
 
     @Composable
@@ -178,13 +216,17 @@ object AvatarDefaults {
         badgeSize: Dp = 16.dp,
         horizontalBadgeOffset: Dp = 2.dp,
         verticalBadgeOffset: Dp = 2.dp,
+        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
+            fontSize = 13.sp
+        )
     ) = AvatarSizes(
         boxSizes,
         placeholderIconSizes,
         overlayIconSizes,
         badgeSize,
         horizontalBadgeOffset,
-        verticalBadgeOffset
+        verticalBadgeOffset,
+        initialsTextStyle
     )
 
     @Composable
@@ -195,13 +237,17 @@ object AvatarDefaults {
         badgeSize: Dp = 16.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
+        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
+            fontSize = 10.sp
+        )
     ) = AvatarSizes(
         boxSizes,
         placeholderIconSizes,
         overlayIconSizes,
         badgeSize,
         horizontalBadgeOffset,
-        verticalBadgeOffset
+        verticalBadgeOffset,
+        initialsTextStyle
     )
 
     @Composable
@@ -212,13 +258,17 @@ object AvatarDefaults {
         badgeSize: Dp = 16.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
+        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
+            fontSize = 10.sp
+        )
     ) = AvatarSizes(
         boxSizes,
         placeholderIconSizes,
         overlayIconSizes,
         badgeSize,
         horizontalBadgeOffset,
-        verticalBadgeOffset
+        verticalBadgeOffset,
+        initialsTextStyle
     )
 
     @Composable
@@ -229,19 +279,26 @@ object AvatarDefaults {
         badgeSize: Dp = 16.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
+        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
+            fontSize = 8.sp
+        )
     ) = AvatarSizes(
         boxSizes,
         placeholderIconSizes,
         overlayIconSizes,
         badgeSize,
         horizontalBadgeOffset,
-        verticalBadgeOffset
+        verticalBadgeOffset,
+        initialsTextStyle
     )
 
     @Composable
     fun size20(
         boxSizes: Dp = 20.dp,
         placeholderIconSizes: IconSizes = IconDefaults.size16(),
+        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
+            fontSize = 8.sp
+        )
     ) = AvatarSizes(
         boxSizes,
         placeholderIconSizes,
@@ -249,41 +306,64 @@ object AvatarDefaults {
         null,
         0.dp,
         0.dp,
+        initialsTextStyle
     )
 
     @Composable
     fun size16(
         boxSizes: Dp = 16.dp,
         placeholderIconSizes: IconSizes = IconDefaults.size12(),
+        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
+            fontSize = 5.sp
+        )
     ) = AvatarSizes(
         boxSizes,
         placeholderIconSizes,
         null,
         null,
         0.dp,
-        0.dp
+        0.dp,
+        initialsTextStyle
     )
 
 
     @Composable
     fun colors(
-        placeholderContainerColor: Color = PersianTheme.colorScheme.surface1,
+        placeholderContainerColor: Color = PersianTheme.colorScheme.surfaceContainer,
         disabledPlaceholderContainerColor: Color = PersianTheme.colorScheme.onSurface.state08,
+
         borderColor: Color = PersianTheme.colorScheme.outlineVariant,
         disabledBorderColor: Color = PersianTheme.colorScheme.onSurface.state12,
+
         placeholderIconColor: Color = PersianTheme.colorScheme.onSurface.state38,
         disabledPlaceholderIconColor: Color = PersianTheme.colorScheme.onSurface.state38,
+
         overlayIconColor: Color = PersianTheme.colorScheme.primary,
         disabledOverlayIconColor: Color = PersianTheme.colorScheme.onSurface.state38,
+
+        initialsTextColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
+        disabledInitialsTextColor: Color = PersianTheme.colorScheme.onSurface.state38,
+
+        initialsContainerColor: Color = PersianTheme.colorScheme.surfaceContainerHighest,
+        disabledInitialsContainerColor: Color = disabledPlaceholderContainerColor
     ): AvatarColors = AvatarColors(
         placeholderContainerColor = placeholderContainerColor,
         disabledPlaceholderContainerColor = disabledPlaceholderContainerColor,
+
         borderColor = borderColor,
         disabledBorderColor = disabledBorderColor,
+
         placeholderIconColor = placeholderIconColor,
         disabledPlaceholderIconColor = disabledPlaceholderIconColor,
+
         overlayIconColor = overlayIconColor,
         disabledOverlayIconColor = disabledOverlayIconColor,
+
+        initialsTextColor = initialsTextColor,
+        disabledInitialsTextColor = disabledInitialsTextColor,
+
+        initialsContainerColor = initialsContainerColor,
+        disabledInitialsContainerColor = disabledInitialsContainerColor
     )
 }
 
@@ -295,6 +375,7 @@ class AvatarSizes internal constructor(
     internal val badgeSize: Dp?,
     internal val horizontalBadgeOffset: Dp,
     internal val verticalBadgeOffset: Dp,
+    internal val initialsTextStyle: TextStyle
 ) {
     fun copy(
         boxSizes: Dp = this.boxSizes,
@@ -302,14 +383,16 @@ class AvatarSizes internal constructor(
         overlayIconSizes: IconSizes? = this.overlayIconSizes,
         badgeSize: Dp? = this.badgeSize,
         horizontalBadgeOffset: Dp = this.horizontalBadgeOffset,
-        verticalBadgeOffset: Dp = this.verticalBadgeOffset
+        verticalBadgeOffset: Dp = this.verticalBadgeOffset,
+        initialsTextStyle: TextStyle = this.initialsTextStyle
     ) = AvatarSizes(
         boxSizes.takeOrElse { this.boxSizes },
         placeholderSize,
         overlayIconSizes,
         badgeSize,
         horizontalBadgeOffset.takeOrElse { this.horizontalBadgeOffset },
-        verticalBadgeOffset.takeOrElse { this.verticalBadgeOffset }
+        verticalBadgeOffset.takeOrElse { this.verticalBadgeOffset },
+        initialsTextStyle
     )
 
     override fun equals(other: Any?): Boolean {
@@ -321,6 +404,7 @@ class AvatarSizes internal constructor(
         if (overlayIconSizes != other.overlayIconSizes) return false
         if (badgeSize != other.badgeSize) return false
         if (horizontalBadgeOffset != other.horizontalBadgeOffset) return false
+        if (initialsTextStyle != other.initialsTextStyle) return false
         return verticalBadgeOffset == other.verticalBadgeOffset
     }
 
@@ -331,6 +415,7 @@ class AvatarSizes internal constructor(
         result = 31 * result + badgeSize.hashCode()
         result = 31 * result + horizontalBadgeOffset.hashCode()
         result = 31 * result + verticalBadgeOffset.hashCode()
+        result = 31 * result + initialsTextStyle.hashCode()
         return result
     }
 }
@@ -348,11 +433,20 @@ class AvatarColors internal constructor(
 
     private val overlayIconColor: Color,
     private val disabledOverlayIconColor: Color,
+
+    private val initialsTextColor: Color,
+    private val disabledInitialsTextColor: Color,
+
+    private val initialsContainerColor: Color,
+    private val disabledInitialsContainerColor: Color,
 ) {
 
     @Stable
-    internal fun background(enabled: Boolean): Color =
-        if (enabled) placeholderContainerColor else disabledPlaceholderContainerColor
+    internal fun background(enabled: Boolean, initials: Boolean): Color =
+        if (enabled)
+            if (initials) initialsContainerColor else placeholderContainerColor
+        else
+            if (initials) disabledInitialsContainerColor else disabledPlaceholderContainerColor
 
     @Stable
     internal fun border(enabled: Boolean): Color =
@@ -366,24 +460,46 @@ class AvatarColors internal constructor(
     internal fun overlayIcon(enabled: Boolean): Color =
         if (enabled) overlayIconColor else disabledOverlayIconColor
 
+    @Stable
+    internal fun initials(enabled: Boolean): Color =
+        if (enabled) initialsTextColor else disabledInitialsTextColor
+
     fun copy(
         placeholderContainerColor: Color = this.placeholderContainerColor,
         disabledPlaceholderContainerColor: Color = this.disabledPlaceholderContainerColor,
+
         borderColor: Color = this.borderColor,
         disabledBorderColor: Color = this.disabledBorderColor,
+
         placeholderIconColor: Color = this.placeholderIconColor,
         disabledPlaceholderIconColor: Color = this.disabledPlaceholderIconColor,
+
         overlayIconColor: Color = this.overlayIconColor,
         disabledOverlayIconColor: Color = this.disabledOverlayIconColor,
+
+        initialsTextColor: Color = this.initialsTextColor,
+        disabledInitialsColor: Color = this.initialsTextColor,
+
+        initialsContainerColor: Color = this.initialsContainerColor,
+        disabledInitialsContainerColor: Color = this.disabledInitialsContainerColor
     ): AvatarColors = AvatarColors(
         placeholderContainerColor = placeholderContainerColor.takeOrElse { this.placeholderContainerColor },
         disabledPlaceholderContainerColor = disabledPlaceholderContainerColor.takeOrElse { this.disabledPlaceholderContainerColor },
+
         borderColor = borderColor.takeOrElse { this.borderColor },
         disabledBorderColor = disabledBorderColor.takeOrElse { this.disabledBorderColor },
+
         placeholderIconColor = placeholderIconColor.takeOrElse { this.placeholderIconColor },
         disabledPlaceholderIconColor = disabledPlaceholderIconColor.takeOrElse { this.disabledPlaceholderIconColor },
+
         overlayIconColor = overlayIconColor.takeOrElse { this.overlayIconColor },
         disabledOverlayIconColor = disabledOverlayIconColor.takeOrElse { this.disabledOverlayIconColor },
+
+        initialsTextColor = initialsTextColor.takeOrElse { this.initialsTextColor },
+        disabledInitialsTextColor = disabledInitialsColor.takeOrElse { this.disabledInitialsTextColor },
+
+        initialsContainerColor = initialsContainerColor.takeOrElse { this.initialsContainerColor },
+        disabledInitialsContainerColor = disabledInitialsContainerColor.takeOrElse { this.disabledInitialsContainerColor }
     )
 
     override fun equals(other: Any?): Boolean {
@@ -397,6 +513,10 @@ class AvatarColors internal constructor(
         if (placeholderIconColor != other.placeholderIconColor) return false
         if (disabledPlaceholderIconColor != other.disabledPlaceholderIconColor) return false
         if (overlayIconColor != other.overlayIconColor) return false
+        if (initialsTextColor != other.initialsTextColor) return false
+        if (disabledInitialsTextColor != other.disabledInitialsTextColor) return false
+        if (initialsContainerColor != other.initialsContainerColor) return false
+        if (disabledInitialsContainerColor != other.disabledInitialsContainerColor) return false
         return disabledOverlayIconColor == other.disabledOverlayIconColor
     }
 
@@ -409,6 +529,10 @@ class AvatarColors internal constructor(
         result = 31 * result + disabledPlaceholderIconColor.hashCode()
         result = 31 * result + overlayIconColor.hashCode()
         result = 31 * result + disabledOverlayIconColor.hashCode()
+        result = 31 * result + initialsTextColor.hashCode()
+        result = 31 * result + disabledInitialsTextColor.hashCode()
+        result = 31 * result + initialsContainerColor.hashCode()
+        result = 31 * result + disabledInitialsContainerColor.hashCode()
         return result
     }
 }
