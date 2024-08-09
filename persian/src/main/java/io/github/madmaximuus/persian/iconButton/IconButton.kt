@@ -30,8 +30,8 @@ fun PrimaryIconButton(
     modifier = modifier.semantics { role = Role.Button },
     enabled = enabled,
     shape = sizes.shape,
-    color = colors.containerColor(enabled).value,
-    contentColor = colors.contentColor(enabled).value,
+    color = colors.containerColor(enabled),
+    contentColor = colors.contentColor(enabled),
     interactionSource = interactionSource
 ) {
     Box(
@@ -41,7 +41,7 @@ fun PrimaryIconButton(
         Icon(
             painter = icon,
             sizes = sizes.iconSizes,
-            tint = colors.contentColor(enabled = enabled).value
+            tint = colors.contentColor(enabled = enabled)
         )
     }
 }
@@ -60,8 +60,8 @@ fun SecondaryIconButton(
     modifier = modifier.semantics { role = Role.Button },
     enabled = enabled,
     shape = sizes.shape,
-    color = colors.containerColor(enabled).value,
-    contentColor = colors.contentColor(enabled).value,
+    color = colors.containerColor(enabled),
+    contentColor = colors.contentColor(enabled),
     interactionSource = interactionSource
 ) {
     Box(
@@ -89,8 +89,8 @@ fun TertiaryIconButton(
     modifier = modifier.semantics { role = Role.Button },
     enabled = enabled,
     shape = sizes.shape,
-    color = colors.containerColor(enabled).value,
-    contentColor = colors.contentColor(enabled).value,
+    color = colors.containerColor(enabled),
+    contentColor = colors.contentColor(enabled),
     interactionSource = interactionSource
 ) {
     Box(
@@ -118,11 +118,11 @@ fun OutlinedIconButton(
     modifier = modifier.semantics { role = Role.Button },
     enabled = enabled,
     shape = sizes.shape,
-    color = colors.containerColor(enabled).value,
-    contentColor = colors.contentColor(enabled).value,
+    color = colors.containerColor(enabled),
+    contentColor = colors.contentColor(enabled),
     border = BorderStroke(
         1.dp,
-        colors.contentColor(enabled).value
+        colors.contentColor(enabled)
     ),
     interactionSource = interactionSource
 ) {

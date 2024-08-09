@@ -2,9 +2,7 @@ package io.github.madmaximuus.persian.iconButton
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
-import androidx.compose.runtime.State
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberUpdatedState
+import androidx.compose.runtime.Stable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.Dp
@@ -22,51 +20,36 @@ object IconButtonDefaults {
         size: Dp = 36.dp,
         iconSizes: IconSizes = IconDefaults.size20(),
         shape: Shape = PersianTheme.shapes.shape12,
-    ): IconButtonSizes = remember(
-        size,
-        iconSizes,
-        shape,
-    ) {
+    ): IconButtonSizes =
         IconButtonSizes(
             size = size,
             iconSizes = iconSizes,
             shape = shape,
         )
-    }
 
     @Composable
     fun mediumSizes(
         size: Dp = 44.dp,
         iconSizes: IconSizes = IconDefaults.size24(),
         shape: Shape = PersianTheme.shapes.shape14,
-    ): IconButtonSizes = remember(
-        size,
-        iconSizes,
-        shape,
-    ) {
+    ): IconButtonSizes =
         IconButtonSizes(
             size = size,
             iconSizes = iconSizes,
             shape = shape,
         )
-    }
 
     @Composable
     fun largeSizes(
         size: Dp = 52.dp,
         iconSizes: IconSizes = IconDefaults.size28(),
         shape: Shape = PersianTheme.shapes.shape16
-    ): IconButtonSizes = remember(
-        size,
-        iconSizes,
-        shape,
-    ) {
+    ): IconButtonSizes =
         IconButtonSizes(
             size = size,
             iconSizes = iconSizes,
             shape = shape,
         )
-    }
 
     @Composable
     fun primaryIconButtonColors(
@@ -122,7 +105,7 @@ object IconButtonDefaults {
 
     @Composable
     fun primaryToggleIconButtonColors(
-        containerColor: Color = PersianTheme.colorScheme.surfaceVariant,
+        containerColor: Color = PersianTheme.colorScheme.surfaceContainerHighest,
         contentColor: Color = PersianTheme.colorScheme.primary,
         disabledContainerColor: Color = PersianTheme.colorScheme.onSurface.state12,
         disabledContentColor: Color = PersianTheme.colorScheme.onSurface.state38,
@@ -139,7 +122,7 @@ object IconButtonDefaults {
 
     @Composable
     fun secondaryToggleIconButtonColors(
-        containerColor: Color = PersianTheme.colorScheme.surface5,
+        containerColor: Color = PersianTheme.colorScheme.surfaceContainerHighest,
         contentColor: Color = PersianTheme.colorScheme.onSurface,
         disabledContainerColor: Color = PersianTheme.colorScheme.onSurface.state12,
         disabledContentColor: Color = PersianTheme.colorScheme.onSurface.state38,
@@ -203,14 +186,14 @@ class IconButtonColors internal constructor(
     private val disabledContainerColor: Color,
     private val disabledContentColor: Color,
 ) {
-    @Composable
-    internal fun containerColor(enabled: Boolean): State<Color> {
-        return rememberUpdatedState(if (enabled) containerColor else disabledContainerColor)
+    @Stable
+    internal fun containerColor(enabled: Boolean): Color {
+        return if (enabled) containerColor else disabledContainerColor
     }
 
-    @Composable
-    internal fun contentColor(enabled: Boolean): State<Color> {
-        return rememberUpdatedState(if (enabled) contentColor else disabledContentColor)
+    @Stable
+    internal fun contentColor(enabled: Boolean): Color {
+        return if (enabled) contentColor else disabledContentColor
     }
 
     override fun equals(other: Any?): Boolean {
@@ -243,24 +226,23 @@ class ToggleIconButtonColors internal constructor(
     private val checkedContentColor: Color,
 ) {
 
-    @Composable
-    internal fun containerColor(enabled: Boolean, checked: Boolean): State<Color> {
-        val target = when {
+    @Stable
+    internal fun containerColor(enabled: Boolean, checked: Boolean): Color {
+
+        return when {
             !enabled -> disabledContainerColor
             !checked -> containerColor
             else -> checkedContainerColor
         }
-        return rememberUpdatedState(target)
     }
 
-    @Composable
-    internal fun contentColor(enabled: Boolean, checked: Boolean): State<Color> {
-        val target = when {
+    @Stable
+    internal fun contentColor(enabled: Boolean, checked: Boolean): Color {
+        return when {
             !enabled -> disabledContentColor
             !checked -> contentColor
             else -> checkedContentColor
         }
-        return rememberUpdatedState(target)
     }
 
     override fun equals(other: Any?): Boolean {

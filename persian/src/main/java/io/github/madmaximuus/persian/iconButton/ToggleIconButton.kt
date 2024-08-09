@@ -33,8 +33,8 @@ fun ToggleIconButton(
     modifier = modifier.semantics { role = Role.Checkbox },
     enabled = enabled,
     shape = sizes.shape,
-    color = colors.containerColor(enabled, checked).value,
-    contentColor = colors.contentColor(enabled, checked).value,
+    color = colors.containerColor(enabled, checked),
+    contentColor = colors.contentColor(enabled, checked),
     interactionSource = interactionSource
 ) {
     Box(
@@ -72,8 +72,8 @@ fun SecondaryToggleIconButton(
     modifier = modifier.semantics { role = Role.Checkbox },
     enabled = enabled,
     shape = sizes.shape,
-    color = colors.containerColor(enabled, checked).value,
-    contentColor = colors.contentColor(enabled, checked).value,
+    color = colors.containerColor(enabled, checked),
+    contentColor = colors.contentColor(enabled, checked),
     interactionSource = interactionSource
 ) {
     Box(
@@ -111,8 +111,8 @@ fun TertiaryToggleIconButton(
     modifier = modifier.semantics { role = Role.Checkbox },
     enabled = enabled,
     shape = sizes.shape,
-    color = colors.containerColor(enabled, checked).value,
-    contentColor = colors.contentColor(enabled, checked).value,
+    color = colors.containerColor(enabled, checked),
+    contentColor = colors.contentColor(enabled, checked),
     interactionSource = interactionSource
 ) {
     Box(
@@ -150,11 +150,11 @@ fun OutlinedToggleIconButton(
     modifier = modifier.semantics { role = Role.Checkbox },
     enabled = enabled,
     shape = sizes.shape,
-    color = colors.containerColor(enabled, checked).value,
-    contentColor = colors.contentColor(enabled, checked).value,
+    color = colors.containerColor(enabled, checked),
+    contentColor = colors.contentColor(enabled, checked),
     border = if (checked) null else BorderStroke(
         1.dp,
-        colors.contentColor(enabled, false).value
+        colors.contentColor(enabled, false)
     ),
     interactionSource = interactionSource
 ) {
