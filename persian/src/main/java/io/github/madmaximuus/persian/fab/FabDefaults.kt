@@ -26,61 +26,46 @@ import io.github.madmaximuus.persian.icon.IconSizes
 import kotlinx.coroutines.launch
 
 object FabDefaults {
+
     @Composable
     fun primaryColors(
         backgroundColor: Color = PersianTheme.colorScheme.primaryContainer,
         content: Color = PersianTheme.colorScheme.onPrimaryContainer,
-    ) = remember(
-        backgroundColor,
-        content
-    ) {
+    ): FabColors =
         FabColors(
             backgroundColor = backgroundColor,
             contentColor = content,
         )
-    }
 
     @Composable
     fun secondaryColors(
         backgroundColor: Color = PersianTheme.colorScheme.secondaryContainer,
         content: Color = PersianTheme.colorScheme.onSecondaryContainer,
-    ) = remember(
-        backgroundColor,
-        content
-    ) {
+    ): FabColors =
         FabColors(
             backgroundColor = backgroundColor,
             contentColor = content
         )
-    }
 
     @Composable
     fun tertiaryColors(
         backgroundColor: Color = PersianTheme.colorScheme.tertiaryContainer,
         content: Color = PersianTheme.colorScheme.onTertiaryContainer
-    ) = remember(
-        backgroundColor,
-        content
-    ) {
+    ): FabColors =
         FabColors(
             backgroundColor = backgroundColor,
             contentColor = content
         )
-    }
 
     @Composable
     fun neutralColors(
-        backgroundColor: Color = PersianTheme.colorScheme.surface3,
+        backgroundColor: Color = PersianTheme.colorScheme.surfaceContainerHighest,
         content: Color = PersianTheme.colorScheme.primary
-    ) = remember(
-        backgroundColor,
-        content
-    ) {
+    ): FabColors =
         FabColors(
             backgroundColor = backgroundColor,
             contentColor = content
         )
-    }
 
     @Composable
     fun smallSizes(
@@ -88,19 +73,13 @@ object FabDefaults {
         iconSizes: IconSizes = IconDefaults.size20(),
         textStyle: TextStyle = PersianTheme.typography.labelLarge,
         cornerShape: Shape = PersianTheme.shapes.shape12
-    ) = remember(
-        boxSize,
-        iconSizes,
-        textStyle,
-        cornerShape
-    ) {
+    ): FabSizes =
         FabSizes(
             boxSize = boxSize,
             iconSizes = iconSizes,
             textStyle = textStyle,
             cornerShape = cornerShape
         )
-    }
 
     @Composable
     fun mediumSizes(
@@ -108,20 +87,13 @@ object FabDefaults {
         iconSizes: IconSizes = IconDefaults.size20(),
         textStyle: TextStyle = PersianTheme.typography.labelLarge,
         cornerShape: Shape = PersianTheme.shapes.shape16
-    ) = remember(
-        boxSize,
-        iconSizes,
-        textStyle,
-        cornerShape
-    )
-    {
+    ): FabSizes =
         FabSizes(
             boxSize = boxSize,
             iconSizes = iconSizes,
             textStyle = textStyle,
             cornerShape = cornerShape
         )
-    }
 
     /**
      * Creates a [FabElevation] that represents the elevation of a
@@ -163,7 +135,6 @@ data class FabSizes(
     val cornerShape: Shape
 )
 
-
 /**
  * Represents the tonal and shadow elevation for a floating action button in different states.
  *
@@ -171,8 +142,7 @@ data class FabSizes(
  * [Fab] and [MediumFab].
  */
 @Stable
-open class FabElevation
-internal constructor(
+open class FabElevation internal constructor(
     private val defaultElevation: Dp,
     private val pressedElevation: Dp,
     private val focusedElevation: Dp,
