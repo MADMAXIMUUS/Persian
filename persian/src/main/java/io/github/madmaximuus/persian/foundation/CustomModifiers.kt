@@ -82,9 +82,9 @@ fun Modifier.shimmer(
 internal fun shimmerBrush(showShimmer: Boolean, size: IntSize): Brush {
     return if (showShimmer) {
         val shimmerColors = listOf(
-            PersianTheme.colorScheme.surface2,
-            PersianTheme.colorScheme.surface5,
-            PersianTheme.colorScheme.surface2,
+            PersianTheme.colorScheme.surface,
+            PersianTheme.colorScheme.surfaceContainerHighest,
+            PersianTheme.colorScheme.surface,
         )
         val shimmerWidthPercentage = 0.8
 
