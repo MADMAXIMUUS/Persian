@@ -33,33 +33,28 @@ fun PersianInputShip(
     sizes = sizes,
     leading = if (leading != null) {
         {
-            with(
-                InputChipLeadingScope(
+            val scope = remember(enabled, selected, colors, sizes) {
+                InputChipLeadingScopeWrapper(
                     enabled = enabled,
                     selected = selected,
-                    iconSizes = sizes.leadingIconSizes,
-                    iconColor = colors.leadingIconContentColor(enabled, selected),
-                    avatarColors = colors.avatarColors,
-                    avatarSizes = sizes.avatarSizes,
-                    imageColors = colors.imageColors,
-                    imageSizes = sizes.imageSizes
+                    sizes = sizes,
+                    colors = colors
                 )
-            ) {
-                leading()
             }
+            scope.leading()
         }
     } else null,
     trailing = if (trailing != null) {
         {
-            with(
-                InputChipTrailingScope(
+            val scope = remember(enabled, selected, colors, sizes) {
+                InputChipTrailingScopeWrapper(
                     enabled = enabled,
-                    iconSizes = sizes.trailingIconSizes,
-                    iconColor = colors.trailingIconContentColor(enabled, selected)
+                    selected = selected,
+                    sizes = sizes,
+                    colors = colors
                 )
-            ) {
-                trailing()
             }
+            scope.trailing()
         }
     } else null,
     interactionSource = interactionSource

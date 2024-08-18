@@ -33,29 +33,28 @@ fun FilterChip(
     sizes = sizes,
     leading = if (leading != null) {
         {
-            with(
-                FilterChipLeadingScope(
+            val scope = remember(enabled, selected, colors, sizes) {
+                FilterChipLeadingScopeWrapper(
                     enabled = enabled,
                     selected = selected,
-                    iconSizes = sizes.leadingIconSizes,
-                    iconColor = colors.leadingIconContentColor(enabled, selected)
+                    sizes = sizes,
+                    colors = colors
                 )
-            ) {
-                leading()
             }
+            scope.leading()
         }
     } else null,
     trailing = if (trailing != null) {
         {
-            with(
-                FilterChipTrailingScope(
+            val scope = remember(enabled, selected, colors, sizes) {
+                FilterChipTrailingScopeWrapper(
                     enabled = enabled,
-                    iconSizes = sizes.trailingIconSizes,
-                    iconColor = colors.trailingIconContentColor(enabled, selected)
+                    selected = selected,
+                    sizes = sizes,
+                    colors = colors
                 )
-            ) {
-                trailing()
             }
+            scope.trailing()
         }
     } else null,
     interactionSource = interactionSource

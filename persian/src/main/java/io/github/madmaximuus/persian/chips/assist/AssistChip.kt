@@ -27,17 +27,14 @@ fun AssistChip(
     label = label,
     leading = if (leading != null) {
         {
-            with(
-                AssistChipLeadingScope(
-                    enabled = enabled,
-                    iconSizes = sizes.leadingIconSizes,
-                    iconColor = colors.leadingIconContentColor(enabled),
-                    imageSizes = sizes.leadingImageSizes,
-                    imageColors = colors.imageColors
+            val scope = remember(enabled, colors, sizes) {
+                AssistChipLeadingScopeWrapper(
+                    sizes = sizes,
+                    colors = colors,
+                    enabled = enabled
                 )
-            ) {
-                leading()
             }
+            scope.leading()
         }
     } else null,
     trailing = null,

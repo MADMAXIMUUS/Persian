@@ -31,14 +31,14 @@ fun PersianSuggestionChip(
     interactionSource = interactionSource,
     leading = if (leading != null) {
         {
-            with(
-                SuggestionChipLeadingScope(
-                    iconSizes = sizes.leadingIconSizes,
-                    iconColor = colors.leadingIconContentColor(enabled),
+            val scope = remember(enabled, colors, sizes) {
+                SuggestionChipLeadingScopeWrapper(
+                    sizes = sizes,
+                    colors = colors,
+                    enabled = enabled
                 )
-            ) {
-                leading()
             }
+            scope.leading()
         }
     } else null,
     trailing = null
