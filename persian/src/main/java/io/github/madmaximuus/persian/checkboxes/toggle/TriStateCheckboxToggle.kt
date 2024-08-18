@@ -30,8 +30,8 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.state.ToggleableState
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.checkboxes.CheckboxColors
-import io.github.madmaximuus.persian.checkboxes.PersianCheckboxDefaults
+import io.github.madmaximuus.persian.checkboxes.CheckboxDefaults
+import io.github.madmaximuus.persian.checkboxes.CheckboxToggleColors
 import io.github.madmaximuus.persian.foundation.minimumInteractiveComponentSize
 import io.github.madmaximuus.persian.foundation.ripple.ripple
 import kotlin.math.floor
@@ -43,7 +43,7 @@ fun TriStateCheckboxToggle(
     onClick: (() -> Unit)?,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    colors: CheckboxColors = PersianCheckboxDefaults.colors(),
+    colors: CheckboxToggleColors = CheckboxDefaults.toggleColors(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
 ) {
     val toggleableModifier =
@@ -84,7 +84,7 @@ private fun CheckboxImpl(
     enabled: Boolean,
     value: ToggleableState,
     modifier: Modifier,
-    colors: CheckboxColors
+    colors: CheckboxToggleColors
 ) {
     val transition = updateTransition(value, label = "")
     val checkDrawFraction = transition.animateFloat(

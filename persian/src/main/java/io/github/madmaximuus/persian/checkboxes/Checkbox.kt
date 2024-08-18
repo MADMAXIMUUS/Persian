@@ -30,8 +30,8 @@ fun Checkbox(
     checked: Boolean,
     enabled: Boolean = true,
     onCheckedChange: (Boolean) -> Unit,
-    checkboxColors: CheckboxColors = PersianCheckboxDefaults.colors(),
-    checkboxSizes: CheckboxSizes = PersianCheckboxDefaults.sizes()
+    colors: CheckboxColors = CheckboxDefaults.colors(),
+    sizes: CheckboxSizes = CheckboxDefaults.sizes()
 ) {
     Row(
         modifier = modifier
@@ -43,25 +43,25 @@ fun Checkbox(
                 role = Role.Checkbox,
                 interactionSource = remember { MutableInteractionSource() },
                 indication = ripple(
-                    color = checkboxColors.textColor(enabled)
+                    color = colors.textColor(enabled)
                 )
             )
-            .padding(checkboxSizes.contentPadding),
+            .padding(sizes.contentPadding),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Start
     ) {
         CheckboxToggle(
             modifier = Modifier
-                .size(checkboxSizes.toggleSize),
+                .size(sizes.toggleSize),
             checked = checked,
             enabled = enabled,
             onCheckedChange = null,
-            colors = checkboxColors
+            colors = colors.toggleColors
         )
         Text(
             text = text,
-            color = checkboxColors.textColor(enabled),
-            style = checkboxSizes.textStyle
+            color = colors.textColor(enabled),
+            style = sizes.textStyle
         )
     }
 }
@@ -73,8 +73,8 @@ fun TriStateCheckbox(
     state: ToggleableState,
     enabled: Boolean = true,
     onClick: () -> Unit,
-    checkboxColors: CheckboxColors = PersianCheckboxDefaults.colors(),
-    checkboxSizes: CheckboxSizes = PersianCheckboxDefaults.sizes()
+    colors: CheckboxColors = CheckboxDefaults.colors(),
+    sizes: CheckboxSizes = CheckboxDefaults.sizes()
 ) {
     Row(
         modifier = modifier
@@ -86,25 +86,25 @@ fun TriStateCheckbox(
                 role = Role.Checkbox,
                 interactionSource = remember { MutableInteractionSource() },
                 indication = ripple(
-                    color = checkboxColors.boxColor(enabled = enabled, state = state).value,
+                    color = colors.toggleColors.boxColor(enabled = enabled, state = state).value,
                 )
             )
-            .padding(checkboxSizes.contentPadding),
+            .padding(sizes.contentPadding),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Start
     ) {
         TriStateCheckboxToggle(
             modifier = Modifier
-                .size(checkboxSizes.toggleSize),
+                .size(sizes.toggleSize),
             state = state,
             enabled = enabled,
             onClick = null,
-            colors = checkboxColors
+            colors = colors.toggleColors
         )
         Text(
             text = text,
-            color = checkboxColors.textColor(enabled),
-            style = checkboxSizes.textStyle
+            color = colors.textColor(enabled),
+            style = sizes.textStyle
         )
     }
 }

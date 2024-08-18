@@ -19,30 +19,47 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state38
 
-object PersianCheckboxDefaults {
+object CheckboxDefaults {
+
+    @Composable
+    fun toggleColors(
+        checkedBorderColor: Color = PersianTheme.colorScheme.primary,
+        uncheckedBorderColor: Color = PersianTheme.colorScheme.outline,
+
+        checkedBoxColor: Color = PersianTheme.colorScheme.primary,
+        uncheckedBoxColor: Color = Color.Transparent,
+        disabledCheckedBoxColor: Color = PersianTheme.colorScheme.onSurface.state12,
+
+        checkedCheckmarkColor: Color = PersianTheme.colorScheme.surface,
+        uncheckedCheckmarkColor: Color = Color.Transparent,
+
+        disabledBorderColor: Color = PersianTheme.colorScheme.onSurface.state12,
+        disabledUncheckedColor: Color = PersianTheme.colorScheme.onSurface.state12,
+        disabledIndeterminateColor: Color = disabledBorderColor
+    ): CheckboxToggleColors = CheckboxToggleColors(
+        checkedBorderColor = checkedBorderColor,
+        uncheckedBorderColor = uncheckedBorderColor,
+        disabledBorderColor = disabledBorderColor,
+
+        checkedBoxColor = checkedBoxColor,
+        checkedCheckmarkColor = checkedCheckmarkColor,
+
+        uncheckedCheckmarkColor = uncheckedCheckmarkColor,
+        uncheckedBoxColor = uncheckedBoxColor,
+        disabledCheckedBoxColor = disabledCheckedBoxColor,
+        disabledUncheckedBoxColor = disabledUncheckedColor.copy(alpha = 0f),
+        disabledIndeterminateBoxColor = disabledIndeterminateColor,
+
+        disabledIndeterminateBorderColor = disabledIndeterminateColor
+    )
 
     @Composable
     fun colors(
-        checkedColor: Color = PersianTheme.colorScheme.primary,
-        uncheckedColor: Color = PersianTheme.colorScheme.outline,
-        checkmarkColor: Color = PersianTheme.colorScheme.surface,
-        disabledCheckedColor: Color = PersianTheme.colorScheme.onSurface.state12,
-        disabledUncheckedColor: Color = PersianTheme.colorScheme.onSurface.state12,
-        disabledIndeterminateColor: Color = disabledCheckedColor,
+        toggleColors: CheckboxToggleColors = toggleColors(),
         textColor: Color = PersianTheme.colorScheme.onSurface,
         disabledTextColor: Color = PersianTheme.colorScheme.onSurface.state38
     ): CheckboxColors = CheckboxColors(
-        checkedBorderColor = checkedColor,
-        checkedBoxColor = checkedColor,
-        checkedCheckmarkColor = checkmarkColor,
-        uncheckedCheckmarkColor = Color.Transparent,
-        uncheckedBoxColor = Color.Transparent,
-        disabledCheckedBoxColor = disabledCheckedColor,
-        disabledUncheckedBoxColor = disabledUncheckedColor.copy(alpha = 0f),
-        disabledIndeterminateBoxColor = disabledIndeterminateColor,
-        uncheckedBorderColor = uncheckedColor,
-        disabledBorderColor = disabledCheckedColor,
-        disabledIndeterminateBorderColor = disabledIndeterminateColor,
+        toggleColors = toggleColors,
         textColor = textColor,
         disabledTextColor = disabledTextColor
     )
@@ -70,23 +87,33 @@ data class CheckboxSizes(
 
 @Immutable
 class CheckboxColors internal constructor(
+    internal val toggleColors: CheckboxToggleColors,
+    private val textColor: Color,
+    private val disabledTextColor: Color
+) {
+
+    @Stable
+    internal fun textColor(enabled: Boolean): Color =
+        if (enabled) textColor else disabledTextColor
+}
+
+@Immutable
+class CheckboxToggleColors internal constructor(
     private val checkedCheckmarkColor: Color,
     private val uncheckedCheckmarkColor: Color,
+
     private val checkedBoxColor: Color,
     private val uncheckedBoxColor: Color,
     private val disabledCheckedBoxColor: Color,
     private val disabledUncheckedBoxColor: Color,
     private val disabledIndeterminateBoxColor: Color,
+
     private val checkedBorderColor: Color,
     private val uncheckedBorderColor: Color,
     private val disabledBorderColor: Color,
     private val disabledIndeterminateBorderColor: Color,
-    private val textColor: Color,
-    private val disabledTextColor: Color
-) {
-    @Stable
-    internal fun textColor(enabled: Boolean): Color =
-        if (enabled) textColor else disabledTextColor
+
+    ) {
 
     @Composable
     internal fun checkmarkColor(state: ToggleableState): State<Color> {
@@ -160,7 +187,7 @@ class CheckboxColors internal constructor(
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (other == null || other !is CheckboxColors) return false
+        if (other == null || other !is CheckboxToggleColors) return false
 
         if (checkedCheckmarkColor != other.checkedCheckmarkColor) return false
         if (uncheckedCheckmarkColor != other.uncheckedCheckmarkColor) return false
