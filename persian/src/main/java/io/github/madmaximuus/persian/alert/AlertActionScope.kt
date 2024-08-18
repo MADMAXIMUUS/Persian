@@ -14,7 +14,7 @@ interface OnlyActionScope : ColumnScope {
     val sizes: ButtonSizes
 }
 
-class OnlyActionScopeWrapper(
+internal class OnlyActionScopeWrapper(
     val scope: ColumnScope,
     override val colors: ButtonColors,
     override val sizes: ButtonSizes
@@ -25,7 +25,7 @@ interface ActionScope : RowScope {
     val sizes: ButtonSizes
 }
 
-class ActionScopeWrapper(
+internal class ActionScopeWrapper(
     val scope: RowScope,
     override val colors: ButtonColors,
     override val sizes: ButtonSizes
