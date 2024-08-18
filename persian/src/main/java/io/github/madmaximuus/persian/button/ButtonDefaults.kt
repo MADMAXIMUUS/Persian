@@ -18,7 +18,7 @@ import io.github.madmaximuus.persian.icon.IconSizes
 import io.github.madmaximuus.persian.progressIndicator.CircularProgressBarSizes
 import io.github.madmaximuus.persian.progressIndicator.ProgressIndicatorDefaults
 
-object PersianButtonDefaults {
+object ButtonDefaults {
 
     @Composable
     fun primaryColors(
@@ -156,7 +156,7 @@ class ButtonSizes internal constructor(
         loaderSize: CircularProgressBarSizes = this.loaderSize,
         shape: Shape = this.shape,
         contentPadding: PaddingValues
-    ) = ButtonSizes(
+    ):ButtonSizes = ButtonSizes(
         textStyle,
         additionInfoTextStyle,
         height,

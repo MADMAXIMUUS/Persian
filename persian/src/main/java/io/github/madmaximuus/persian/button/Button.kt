@@ -61,8 +61,8 @@ fun PrimaryButton(
     trailingIcon: Painter? = null,
     enabled: Boolean = true,
     loading: Boolean = false,
-    colors: ButtonColors = PersianButtonDefaults.primaryColors(),
-    sizes: ButtonSizes = PersianButtonDefaults.mediumSizes(),
+    colors: ButtonColors = ButtonDefaults.primaryColors(),
+    sizes: ButtonSizes = ButtonDefaults.mediumSizes(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     onClick: () -> Unit
 ) = ButtonImpl(
@@ -101,8 +101,8 @@ fun SecondaryButton(
     trailingIcon: Painter? = null,
     enabled: Boolean = true,
     loading: Boolean = false,
-    colors: ButtonColors = PersianButtonDefaults.secondaryColors(),
-    sizes: ButtonSizes = PersianButtonDefaults.mediumSizes(),
+    colors: ButtonColors = ButtonDefaults.secondaryColors(),
+    sizes: ButtonSizes = ButtonDefaults.mediumSizes(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     onClick: () -> Unit
 ) = ButtonImpl(
@@ -142,8 +142,8 @@ fun TertiaryButton(
     trailingIcon: Painter? = null,
     enabled: Boolean = true,
     loading: Boolean = false,
-    colors: ButtonColors = PersianButtonDefaults.tertiaryColors(),
-    sizes: ButtonSizes = PersianButtonDefaults.mediumSizes(),
+    colors: ButtonColors = ButtonDefaults.tertiaryColors(),
+    sizes: ButtonSizes = ButtonDefaults.mediumSizes(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     onClick: () -> Unit
 ) = ButtonImpl(
@@ -181,8 +181,8 @@ fun OutlinedButton(
     trailingIcon: Painter? = null,
     enabled: Boolean = true,
     loading: Boolean = false,
-    colors: ButtonColors = PersianButtonDefaults.outlinedColors(),
-    sizes: ButtonSizes = PersianButtonDefaults.mediumSizes(),
+    colors: ButtonColors = ButtonDefaults.outlinedColors(),
+    sizes: ButtonSizes = ButtonDefaults.mediumSizes(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     onClick: () -> Unit
 ) = ButtonImpl(
@@ -340,7 +340,7 @@ private fun PersianButtonPreview() {
                     text = "Button",
                     additionInfoText = "Addition Info",
                     loading = isLoading,
-                    sizes = PersianButtonDefaults.largeSizes(),
+                    sizes = ButtonDefaults.largeSizes(),
                     onClick = {}
                 )
                 Spacer(modifier = Modifier.height(10.dp))
@@ -350,7 +350,7 @@ private fun PersianButtonPreview() {
                     text = "Button",
                     additionInfoText = "Addition Info",
                     loading = isLoading,
-                    sizes = PersianButtonDefaults.largeSizes(),
+                    sizes = ButtonDefaults.largeSizes(),
                     onClick = {}
                 )
                 Spacer(modifier = Modifier.height(10.dp))
@@ -360,7 +360,7 @@ private fun PersianButtonPreview() {
                     text = "Button",
                     additionInfoText = "Addition Info",
                     loading = isLoading,
-                    sizes = PersianButtonDefaults.largeSizes(),
+                    sizes = ButtonDefaults.largeSizes(),
                     onClick = {}
                 )
                 Spacer(modifier = Modifier.height(10.dp))
@@ -370,7 +370,7 @@ private fun PersianButtonPreview() {
                     text = "Button",
                     additionInfoText = "Addition Info",
                     loading = isLoading,
-                    sizes = PersianButtonDefaults.largeSizes(),
+                    sizes = ButtonDefaults.largeSizes(),
                     onClick = {}
                 )
             }
