@@ -6,23 +6,26 @@ import androidx.compose.runtime.Stable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.takeOrElse
+import androidx.compose.ui.text.TextStyle
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state38
+import io.github.madmaximuus.persian.icon.IconDefaults
+import io.github.madmaximuus.persian.icon.IconSizes
 
 object ActionSheetDefaults {
-
-    val shape: Shape @Composable get() = PersianTheme.shapes.shape22
 
     @Composable
     fun colors(
         titleColor: Color = PersianTheme.colorScheme.onSurface,
         subtitleColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
-        containerColor: Color = PersianTheme.colorScheme.surfaceContainer
+        containerColor: Color = PersianTheme.colorScheme.surfaceContainer,
+        itemColors: ActionSheetItemColors = itemColors()
     ): ActionSheetColors =
         ActionSheetColors(
             titleColor = titleColor,
             subtitleColor = subtitleColor,
-            containerColor = containerColor
+            containerColor = containerColor,
+            itemColors = itemColors
         )
 
     @Composable
@@ -44,13 +47,36 @@ object ActionSheetDefaults {
             errorIconColor = errorIconColor,
             disabledIconColor = disabledIconColor,
         )
+
+    @Composable
+    fun sizes(
+        titleTextStyle: TextStyle = PersianTheme.typography.headlineSmall,
+        subtitleTextStyle: TextStyle = PersianTheme.typography.bodyMedium,
+        containerShape: Shape = PersianTheme.shapes.shape22,
+        itemSizes: ActionSheetItemSizes = itemSizes()
+    ): ActionSheetSizes = ActionSheetSizes(
+        titleTextStyle = titleTextStyle,
+        subtitleTextStyle = subtitleTextStyle,
+        containerShape = containerShape,
+        itemSizes = itemSizes
+    )
+
+    @Composable
+    fun itemSizes(
+        textStyle: TextStyle = PersianTheme.typography.bodyLarge,
+        iconSize: IconSizes = IconDefaults.size24()
+    ): ActionSheetItemSizes = ActionSheetItemSizes(
+        textStyle = textStyle,
+        iconSize = iconSize
+    )
 }
 
 @Immutable
 class ActionSheetColors(
     internal val titleColor: Color,
     internal val subtitleColor: Color,
-    internal val containerColor: Color
+    internal val containerColor: Color,
+    internal val itemColors: ActionSheetItemColors
 )
 
 @Immutable
@@ -122,6 +148,43 @@ class ActionSheetItemColors(
         result = 31 * result + defaultIconColor.hashCode()
         result = 31 * result + disabledIconColor.hashCode()
         result = 31 * result + errorIconColor.hashCode()
+        return result
+    }
+}
+
+@Immutable
+class ActionSheetSizes(
+    internal val titleTextStyle: TextStyle,
+    internal val subtitleTextStyle: TextStyle,
+    internal val containerShape: Shape,
+    internal val itemSizes: ActionSheetItemSizes
+)
+
+@Immutable
+class ActionSheetItemSizes(
+    internal val textStyle: TextStyle,
+    internal val iconSize: IconSizes,
+) {
+
+    fun copy(
+        textStyle: TextStyle = this.textStyle,
+        iconSize: IconSizes = this.iconSize,
+    ) = ActionSheetItemSizes(
+        textStyle = textStyle,
+        iconSize = iconSize
+    )
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || other !is ActionSheetItemSizes) return false
+
+        if (textStyle != other.textStyle) return false
+        return iconSize == other.iconSize
+    }
+
+    override fun hashCode(): Int {
+        var result = textStyle.hashCode()
+        result = 31 * result + iconSize.hashCode()
         return result
     }
 }

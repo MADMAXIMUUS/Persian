@@ -30,7 +30,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
@@ -99,13 +98,12 @@ private suspend fun startDismissWithExitAnimation(
  * @param shape The shape of container
  * @param colors The [ActionSheetColors] colors of container, title and subtitle of action sheet.
  * @param onDismissRequest Executes when the user tries to dismiss the action sheet.
- * @param colors The [ActionSheetItemColors] colors of the content of items in enabled, negative and disabled state.
  */
 @Composable
 fun ActionSheet(
     onDismissRequest: () -> Unit,
-    shape: Shape = ActionSheetDefaults.shape,
     colors: ActionSheetColors = ActionSheetDefaults.colors(),
+    sizes: ActionSheetSizes = ActionSheetDefaults.sizes(),
     header: (@Composable ActionSheetHeaderScope.() -> Unit)? = null,
     actions: @Composable ActionSheetItemScope.() -> Unit
 ) {
@@ -175,31 +173,39 @@ fun ActionSheet(
                                 horizontal = PersianTheme.spacing.size8,
                                 vertical = PersianTheme.spacing.size8,
                             ),
-                        shape = shape,
+                        shape = sizes.containerShape,
                         color = colors.containerColor
                     ) {
                         Column(
                             Modifier
                                 .fillMaxWidth()
                         ) {
-                            with(ActionSheetHeaderScope) {
-                                header?.let { it() }
+                            val headerScope = remember(colors, sizes) {
+                                ActionSheetHeaderScopeWrapper(
+                                    this,
+                                    colors = colors,
+                                    sizes = sizes
+                                )
                             }
+                            header?.let { headerScope.it() }
                             Column(
                                 Modifier
                                     .fillMaxWidth()
                                     .verticalScroll(rememberScrollState())
                             ) {
-                                with(
-                                    ActionSheetItemScope(
-                                        AnimatedTransitionDialogHelper(
-                                            coroutineScope,
-                                            onDismissSharedFlow
-                                        )
+                                val helper = AnimatedTransitionDialogHelper(
+                                    coroutineScope,
+                                    onDismissSharedFlow
+                                )
+                                val scope = remember(helper, colors, sizes) {
+                                    ActionSheetItemScopeWrapper(
+                                        scope = this,
+                                        animatedTransitionDialogHelper = helper,
+                                        colors = colors.itemColors,
+                                        sizes = sizes.itemSizes
                                     )
-                                ) {
-                                    actions()
                                 }
+                                scope.actions()
                             }
                         }
                     }
