@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -47,9 +48,15 @@ fun Banner(
             verticalAlignment = Alignment.Top,
             horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8)
         ) {
-            with(BannerLeftScope(colors.leftIconColor)) {
-                left?.let { it() }
+            val scope = remember(colors, sizes) {
+                BannerLeftScopeWrapper(
+                    scope = this,
+                    bannerSizes = sizes,
+                    bannerColors = colors,
+
+                    )
             }
+            left?.let { scope.it() }
             Column(
                 modifier = Modifier.weight(1f),
                 verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size4)
@@ -71,13 +78,22 @@ fun Banner(
                         textAlign = TextAlign.Justify
                     )
                 }
-                with(BannerButtonScope) {
-                    button?.let { it() }
+                val buttonScope = remember(sizes) {
+                    BannerButtonScopeWrapper(
+                        scope = this,
+                        bannerSizes = sizes
+                    )
                 }
+                button?.let { buttonScope.it() }
             }
-            with(BannerRightScope(colors.rightIconColor)) {
-                right?.let { it() }
+            val rightScope = remember(colors, sizes) {
+                BannerRightScopeWrapper(
+                    scope = this,
+                    bannerColors = colors,
+                    bannerSizes = sizes
+                )
             }
+            right?.let { rightScope.it() }
         }
     }
 }

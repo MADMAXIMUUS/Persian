@@ -5,6 +5,8 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
+import io.github.madmaximuus.persian.button.ButtonDefaults
+import io.github.madmaximuus.persian.button.ButtonSizes
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
 object PersianBannerDefaults {
@@ -27,11 +29,13 @@ object PersianBannerDefaults {
     fun sizes(
         cornerRadius: Shape = PersianTheme.shapes.shape14,
         titleStyle: TextStyle = PersianTheme.typography.titleMedium,
-        descriptionStyle: TextStyle = PersianTheme.typography.bodyMedium
+        descriptionStyle: TextStyle = PersianTheme.typography.bodyMedium,
+        buttonSizes: ButtonSizes = ButtonDefaults.smallSizes()
     ) = BannerSizes(
         cornerRadius = cornerRadius,
         titleStyle = titleStyle,
-        descriptionStyle = descriptionStyle
+        descriptionStyle = descriptionStyle,
+        buttonSizes = buttonSizes
     )
 }
 
@@ -39,16 +43,19 @@ object PersianBannerDefaults {
 class BannerSizes internal constructor(
     internal val cornerRadius: Shape,
     internal val titleStyle: TextStyle,
-    internal val descriptionStyle: TextStyle
+    internal val descriptionStyle: TextStyle,
+    internal val buttonSizes: ButtonSizes,
 ) {
     fun copy(
         cornerRadius: Shape = this.cornerRadius,
         titleStyle: TextStyle = this.titleStyle,
         descriptionStyle: TextStyle = this.descriptionStyle,
-    ) = BannerSizes(
-        cornerRadius,
-        titleStyle,
-        descriptionStyle
+        buttonSizes: ButtonSizes = this.buttonSizes
+    ): BannerSizes = BannerSizes(
+        cornerRadius = cornerRadius,
+        titleStyle = titleStyle,
+        descriptionStyle = descriptionStyle,
+        buttonSizes = buttonSizes
     )
 
     override fun equals(other: Any?): Boolean {
@@ -57,6 +64,7 @@ class BannerSizes internal constructor(
 
         if (cornerRadius != other.cornerRadius) return false
         if (titleStyle != other.titleStyle) return false
+        if (buttonSizes != other.buttonSizes) return false
         return descriptionStyle == other.descriptionStyle
     }
 
@@ -64,6 +72,7 @@ class BannerSizes internal constructor(
         var result = cornerRadius.hashCode()
         result = 31 * result + titleStyle.hashCode()
         result = 31 * result + descriptionStyle.hashCode()
+        result = 31 * result + buttonSizes.hashCode()
         return result
     }
 }
