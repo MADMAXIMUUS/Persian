@@ -11,7 +11,7 @@ interface BannerButtonScope : ColumnScope {
     val bannerSizes: BannerSizes
 }
 
-class BannerButtonScopeWrapper(
+internal class BannerButtonScopeWrapper(
     val scope: ColumnScope,
     override val bannerSizes: BannerSizes,
 ) : BannerButtonScope, ColumnScope by scope

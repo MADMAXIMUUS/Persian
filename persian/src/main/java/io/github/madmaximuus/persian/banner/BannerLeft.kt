@@ -20,7 +20,7 @@ interface BannerLeftScope : RowScope {
     val bannerColors: BannerColors
 }
 
-class BannerLeftScopeWrapper(
+internal class BannerLeftScopeWrapper(
     val scope: RowScope,
     override val bannerSizes: BannerSizes,
     override val bannerColors: BannerColors
