@@ -1,49 +1,56 @@
 package io.github.madmaximuus.persian.listItem
 
-import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.text.Text
 
-data class ListCellMiddle(
-    val title: String,
-    val body: String? = null,
-    val subhead: String? = null,
-    val multiline: Boolean = false,
-    val newLabel: Boolean = false,
-)
+interface ListItemMiddle : RowScope {
+    val sizes: ListItemSizes
+    val colors: ListItemColors
+    val enabled: Boolean
+}
+
+internal class ListItemMiddleWrapper(
+    scope: RowScope,
+    override val sizes: ListItemSizes,
+    override val colors: ListItemColors,
+    override val enabled: Boolean,
+) : ListItemMiddle, RowScope by scope
 
 @Composable
-internal fun PersianListCellMiddle(
+fun ListItemMiddle.Middle(
     modifier: Modifier = Modifier,
     title: String,
-    subhead: String?,
-    body: String?,
-    multiline: Boolean,
-    newLabel: Boolean,
+    subhead: String? = null,
+    body: String? = null,
+    multiline: Boolean = false,
+    newLabel: Boolean = false,
 ) {
     Column(
         modifier = modifier
+            .weight(1f)
             .padding(vertical = PersianTheme.spacing.size8),
-        verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size2)
+        verticalArrangement = Arrangement.spacedBy(
+            space = PersianTheme.spacing.size2,
+            alignment = Alignment.CenterVertically
+        )
     ) {
         subhead?.let {
             Text(
                 modifier = Modifier.fillMaxWidth(),
                 text = it,
-                style = MaterialTheme.typography.labelMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                style = this@Middle.sizes.subheadTextStyle,
+                color = this@Middle.colors.subheadColor(this@Middle.enabled),
                 maxLines = if (multiline) 2 else 1,
                 overflow = TextOverflow.Ellipsis
             )
@@ -53,27 +60,25 @@ internal fun PersianListCellMiddle(
             horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size4)
         ) {
             Text(
-                modifier = if (multiline) Modifier.weight(1f) else Modifier,
                 text = title,
-                style = MaterialTheme.typography.bodyLarge,
-                color = MaterialTheme.colorScheme.onSurface,
-                maxLines = if (multiline) 2 else 1,
+                style = this@Middle.sizes.titleTextStyle,
+                color = this@Middle.colors.titleColor(this@Middle.enabled),
                 overflow = TextOverflow.Ellipsis
             )
             if (newLabel) {
                 Text(
                     modifier = Modifier
                         .background(
-                            color = PersianTheme.colorScheme.valid,
-                            shape = PersianTheme.shapes.shape4
+                            color = this@Middle.colors.newLabelContainerColor(this@Middle.enabled),
+                            shape = this@Middle.sizes.newLabelShape
                         )
                         .padding(
                             horizontal = PersianTheme.spacing.size4,
                             vertical = PersianTheme.spacing.size2
                         ),
                     text = "New",
-                    style = PersianTheme.typography.labelSmall,
-                    color = PersianTheme.colorScheme.onValid
+                    style = this@Middle.sizes.newLabelTextStyle,
+                    color = this@Middle.colors.newLabelColor(this@Middle.enabled)
                 )
             }
         }
@@ -81,30 +86,12 @@ internal fun PersianListCellMiddle(
             Text(
                 modifier = Modifier.fillMaxWidth(),
                 text = it,
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                style = this@Middle.sizes.bodyTextStyle,
+                color = this@Middle.colors.bodyColor(this@Middle.enabled),
                 maxLines = if (multiline) 2 else 1,
                 overflow = TextOverflow.Ellipsis
             )
         }
     }
-}
 
-@Preview
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
-@Composable
-private fun MiddlePreview() {
-    PersianTheme {
-        Surface(
-            color = MaterialTheme.colorScheme.surface
-        ) {
-            PersianListCellMiddle(
-                title = "Title",
-                subhead = null,
-                body = null,
-                multiline = false,
-                newLabel = false
-            )
-        }
-    }
 }

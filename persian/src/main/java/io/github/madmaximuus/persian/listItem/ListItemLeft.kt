@@ -2,106 +2,86 @@ package io.github.madmaximuus.persian.listItem
 
 import android.net.Uri
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.avatarsAndImages.AvatarSize
+import io.github.madmaximuus.persian.avatarsAndImages.Avatar
+import io.github.madmaximuus.persian.avatarsAndImages.Image
 import io.github.madmaximuus.persian.avatarsAndImages.ImageShape
-import io.github.madmaximuus.persian.avatarsAndImages.ImageSize
-import io.github.madmaximuus.persian.avatarsAndImages.PersianAvatar
-import io.github.madmaximuus.persian.avatarsAndImages.PersianImage
-import io.github.madmaximuus.persian.foundation.LocalContentColor
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.icon.Icon
-import io.github.madmaximuus.persian.icon.IconSize
 
-sealed class PersianListCellLeft {
-
-    data class Icon(
-        val icon: Painter,
-        val color: Color,
-    ) : PersianListCellLeft()
-
-    data class Image(
-        val imageUrl: String
-    ) : PersianListCellLeft()
-
-    data class Avatar(
-        val avatarUrl: String
-    ) : PersianListCellLeft()
+interface ListItemLeft : RowScope {
+    val sizes: ListItemSizes
+    val colors: ListItemColors
+    val enabled: Boolean
 }
 
+internal class ListItemLeftWrapper(
+    val scope: RowScope,
+    override val sizes: ListItemSizes,
+    override val colors: ListItemColors,
+    override val enabled: Boolean,
+) : ListItemLeft, RowScope by scope
+
 @Composable
-internal fun PersianListCellLeftIcon(
+fun ListItemLeft.Icon(
     modifier: Modifier = Modifier,
     icon: Painter,
-    color: Color,
-    size: IconSize,
-    paddingValues: PaddingValues,
-    contentDescription: String,
 ) {
     Box(
-        modifier = modifier.padding(
-            top = PersianTheme.spacing.size4,
-            bottom = PersianTheme.spacing.size4,
-            start = 0.dp,
-            end = PersianTheme.spacing.size12
-        )
+        modifier = modifier
+            .padding(
+                end = PersianTheme.spacing.size12
+            )
     ) {
-        CompositionLocalProvider(
-            LocalContentColor provides color
-        ) {
-            Box(
-                modifier = Modifier
-                    .padding(paddingValues)
-            ) {
-                Icon(
-                    painter = icon,
-                    size = size,
-                    contentDescription = contentDescription
-                )
-            }
-        }
+        Icon(
+            painter = icon,
+            sizes = this@Icon.sizes.leftIconSizes,
+            tint = this@Icon.colors.leftIconColor(this@Icon.enabled),
+            contentDescription = "List Leading Icon"
+        )
     }
 }
 
 @Composable
-internal fun PersianListCellLeftImage(
+fun ListItemLeft.Image(
     modifier: Modifier = Modifier,
-    imageUrl: String,
-    size: ImageSize,
-    paddingValues: PaddingValues
+    imageUrl: Uri,
 ) {
     Box(
-        modifier = modifier.padding(paddingValues),
+        modifier = modifier
+            .padding(
+                end = PersianTheme.spacing.size8
+            )
     ) {
-        PersianImage(
-            imageUrl = Uri.parse(imageUrl),
-            sizes = size,
+        Image(
+            imageUrl = imageUrl,
+            sizes = this@Image.sizes.leftImageSizes,
+            colors = this@Image.colors.leftImageColors,
+            enabled = this@Image.enabled,
             shape = ImageShape.LARGE
         )
     }
 }
 
 @Composable
-internal fun PersianListCellLeftAvatar(
+fun ListItemLeft.Avatar(
     modifier: Modifier = Modifier,
-    avatarUrl: String,
-    size: AvatarSize,
-    paddingValues: PaddingValues
+    avatarUrl: Uri,
 ) {
     Box(
-        modifier = modifier.padding(paddingValues),
+        modifier = modifier.padding(
+            end = PersianTheme.spacing.size8
+        )
     ) {
-        PersianAvatar(
-            imageUrl = Uri.parse(avatarUrl),
-            sizes = size,
-            onClick = null
+        Avatar(
+            imageUrl = avatarUrl,
+            colors = this@Avatar.colors.leftAvatarColors,
+            enabled = this@Avatar.enabled,
+            sizes = this@Avatar.sizes.leftAvatarSizes,
         )
     }
 }

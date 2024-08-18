@@ -1,204 +1,139 @@
 package io.github.madmaximuus.persian.listItem
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
-import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.checkboxes.toggle.PersianCheckboxToggle
-import io.github.madmaximuus.persian.foundation.LocalContentColor
+import io.github.madmaximuus.persian.checkboxes.toggle.CheckboxToggle
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.foundation.minimumInteractiveComponentSize
 import io.github.madmaximuus.persian.icon.Icon
-import io.github.madmaximuus.persian.icon.IconDefaults
-import io.github.madmaximuus.persian.radioButtons.PersianRadioButtonToggle
+import io.github.madmaximuus.persian.iconButton.TertiaryIconButton
+import io.github.madmaximuus.persian.radioButton.RadioButtonToggle
 import io.github.madmaximuus.persianSymbols.bars.base.Bars
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.minus.base.Minus
 import io.github.madmaximuus.persianSymbols.plus.base.Plus
 
-sealed class PersianListItemEdit {
-
-    data class Checkbox(
-        val checked: Boolean,
-        val onCheckedChange: (Boolean) -> Unit
-    ) : PersianListItemEdit()
-
-    data class RadioButton(
-        val selected: Boolean,
-        val onClick: () -> Unit
-    ) : PersianListItemEdit()
-
-    data class Drag(
-        val customIcon: Painter? = null,
-        val onClick: () -> Unit
-    ) : PersianListItemEdit()
-
-    data class Add(
-        val customIcon: Painter? = null,
-        val onClick: () -> Unit
-    ) : PersianListItemEdit()
-
-    data class Remove(
-        val customIcon: Painter? = null,
-        val onClick: () -> Unit
-    ) : PersianListItemEdit()
+interface ListItemEdit : RowScope {
+    val sizes: ListItemSizes
+    val colors: ListItemColors
+    val enabled: Boolean
+    val checked: Boolean
 }
 
-@Composable
-internal fun PersianListItemEditCheckbox(
-    modifier: Modifier = Modifier,
-    checked: Boolean,
-    onCheckedChange: (Boolean) -> Unit,
-) {
-    Box(
-        modifier = modifier.padding(
-            top = PersianTheme.spacing.size4,
-            bottom = PersianTheme.spacing.size4,
-            start = 0.dp,
-            end = PersianTheme.spacing.size16
-        )
-    ) {
-        Box(
-            modifier = Modifier
-                .padding(PaddingValues(vertical = PersianTheme.spacing.size8))
-        ) {
-            PersianCheckboxToggle(
-                checked = checked,
-                onCheckedChange = onCheckedChange
-            )
-        }
-    }
-}
+internal class ListItemEditWrapper(
+    val scope: RowScope,
+    override val sizes: ListItemSizes,
+    override val colors: ListItemColors,
+    override val enabled: Boolean,
+    override val checked: Boolean,
+) : ListItemEdit, RowScope by scope
 
 @Composable
-internal fun PersianListItemEditRadio(
+fun ListItemEdit.Check(
     modifier: Modifier = Modifier,
-    checked: Boolean,
-    onClick: () -> Unit,
-) {
-    Box(
-        modifier = modifier.padding(
-            top = PersianTheme.spacing.size4,
-            bottom = PersianTheme.spacing.size4,
-            start = 0.dp,
-            end = PersianTheme.spacing.size16
-        )
-    ) {
-        Box(
-            modifier = Modifier
-                .padding(PaddingValues(vertical = PersianTheme.spacing.size8))
-        ) {
-            PersianRadioButtonToggle(
-                checked = checked,
-                onClick = onClick
-            )
-        }
-    }
-}
-
-@Composable
-internal fun PersianListItemEditDrag(
-    modifier: Modifier = Modifier,
-    customIcon: Painter?,
-    onClick: () -> Unit,
 ) {
     Box(
         modifier = modifier
             .padding(
-                top = PersianTheme.spacing.size4,
-                bottom = PersianTheme.spacing.size4,
-                start = 0.dp,
-                end = PersianTheme.spacing.size16
+                horizontal = PersianTheme.spacing.size12
             )
     ) {
-        CompositionLocalProvider(
-            LocalContentColor provides PersianTheme.colorScheme.onSurfaceVariant
-        ) {
-            Box(
-                modifier = Modifier
-                    .padding(PaddingValues(vertical = PersianTheme.spacing.size8))
-            ) {
-                Icon(
-                    modifier = Modifier
-                        .minimumInteractiveComponentSize()
-                        .clickable { onClick() },
-                    painter = customIcon ?: rememberVectorPainter(image = PersianSymbols.Default.Bars),
-                    size = IconDefaults.size24(),
-                )
-            }
-        }
+        CheckboxToggle(
+            modifier = Modifier
+                .size(this@Check.sizes.editCheckboxSizes.toggleSize),
+            checked = this@Check.checked,
+            enabled = this@Check.enabled,
+            colors = this@Check.colors.editCheckboxToggleColors,
+            onCheckedChange = null
+        )
     }
 }
 
 @Composable
-internal fun PersianListItemEditAdd(
+fun ListItemEdit.Radio(
     modifier: Modifier = Modifier,
-    customIcon: Painter?,
-    onClick: () -> Unit,
 ) {
     Box(
-        modifier = modifier.padding(
-            top = PersianTheme.spacing.size4,
-            bottom = PersianTheme.spacing.size4,
-            start = 0.dp,
-            end = PersianTheme.spacing.size16
-        )
+        modifier = modifier
+            .padding(
+                horizontal = PersianTheme.spacing.size12
+            )
     ) {
-        CompositionLocalProvider(
-            LocalContentColor provides PersianTheme.colorScheme.onSurfaceVariant
-        ) {
-            Box(
-                modifier = Modifier
-                    .padding(PaddingValues(vertical = PersianTheme.spacing.size8))
-            ) {
-                Icon(
-                    modifier = Modifier
-                        .minimumInteractiveComponentSize()
-                        .clickable { onClick() },
-                    painter = customIcon ?: rememberVectorPainter(image = PersianSymbols.Default.Plus),
-                    size = IconDefaults.size24(),
-                )
-            }
-        }
+        RadioButtonToggle(
+            modifier = Modifier
+                .size(this@Radio.sizes.editRadioButtonSizes.toggleSize),
+            selected = this@Radio.checked,
+            enabled = this@Radio.enabled,
+            colors = this@Radio.colors.editRadioButtonColors,
+            onClick = null
+        )
     }
 }
 
 @Composable
-internal fun PersianListItemEditRemove(
+fun ListItemEdit.Drag(
     modifier: Modifier = Modifier,
-    customIcon: Painter?,
-    onClick: () -> Unit,
+    icon: Painter = rememberVectorPainter(image = PersianSymbols.Default.Bars)
 ) {
     Box(
-        modifier = modifier.padding(
-            top = PersianTheme.spacing.size4,
-            bottom = PersianTheme.spacing.size4,
-            start = 0.dp,
-            end = PersianTheme.spacing.size16
-        )
+        modifier = modifier
+            .padding(
+                horizontal = PersianTheme.spacing.size12
+            )
     ) {
-        CompositionLocalProvider(
-            LocalContentColor provides PersianTheme.colorScheme.onSurfaceVariant
-        ) {
-            Box(
-                modifier = Modifier
-                    .padding(PaddingValues(vertical = PersianTheme.spacing.size8))
-            ) {
-                Icon(
-                    modifier = Modifier
-                        .minimumInteractiveComponentSize()
-                        .clickable { onClick() },
-                    painter = customIcon
-                        ?: rememberVectorPainter(image = PersianSymbols.Default.Minus),
-                    size = IconDefaults.size24(),
-                )
-            }
-        }
+        Icon(
+            painter = icon,
+            tint = this@Drag.colors.dragColor(this@Drag.enabled),
+            sizes = this@Drag.sizes.editDragIconSizes,
+        )
+    }
+}
+
+@Composable
+fun ListItemEdit.Add(
+    modifier: Modifier = Modifier,
+    icon: Painter = rememberVectorPainter(image = PersianSymbols.Default.Plus),
+    onClick: () -> Unit
+) {
+    Box(
+        modifier = modifier
+            .padding(
+                horizontal = PersianTheme.spacing.size4
+            )
+    ) {
+        TertiaryIconButton(
+            onClick = onClick,
+            icon = icon,
+            enabled = this@Add.enabled,
+            sizes = this@Add.sizes.editAddIconButtonSizes,
+            colors = this@Add.colors.editAddColors
+        )
+    }
+}
+
+@Composable
+fun ListItemEdit.Remove(
+    modifier: Modifier = Modifier,
+    icon: Painter = rememberVectorPainter(image = PersianSymbols.Default.Minus),
+    onClick: () -> Unit
+) {
+    Box(
+        modifier = modifier
+            .padding(
+                horizontal = PersianTheme.spacing.size4
+            )
+    ) {
+        TertiaryIconButton(
+            onClick = onClick,
+            icon = icon,
+            enabled = this@Remove.enabled,
+            sizes = this@Remove.sizes.editRemoveIconButtonSizes,
+            colors = this@Remove.colors.editRemoveColors
+        )
     }
 }
