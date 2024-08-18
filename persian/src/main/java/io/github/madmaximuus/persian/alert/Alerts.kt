@@ -12,6 +12,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
@@ -19,7 +20,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.window.core.layout.WindowHeightSizeClass
-import io.github.madmaximuus.persian.button.PersianButtonDefaults
 import io.github.madmaximuus.persian.dividers.InsetHorizontalDivider
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.surface.Surface
@@ -28,8 +28,9 @@ import io.github.madmaximuus.persian.text.Text
 @Composable
 fun OnlyActionAlert(
     modifier: Modifier = Modifier,
-    colors: AlertsColors = AlertsDefaults.colors(),
-    actions: @Composable AlertActionScope.() -> Unit,
+    colors: AlertColors = AlertsDefaults.colors(),
+    sizes: AlertSizes = AlertsDefaults.onlyActionSizes(),
+    actions: @Composable OnlyActionScope.() -> Unit,
     onDismiss: () -> Unit
 ) {
     Dialog(
@@ -44,9 +45,9 @@ fun OnlyActionAlert(
                     .widthIn(max = 460.dp)
                     .fillMaxWidth()
                     .wrapContentHeight()
-                    .padding(horizontal = PersianTheme.spacing.size24),
-                shape = PersianTheme.shapes.shape20,
-                color = colors.backgroundColor,
+                    .padding(horizontal = PersianTheme.spacing.size20),
+                shape = sizes.containerShape,
+                color = colors.containerColor,
                 tonalElevation = PersianTheme.elevation.small,
                 shadowElevation = 0.dp,
                 content = {
@@ -56,15 +57,14 @@ fun OnlyActionAlert(
                             .padding(PersianTheme.spacing.size16)
                             .verticalScroll(rememberScrollState()),
                         content = {
-                            with(
-                                AlertActionScope(
-                                    colors.actionColor,
-                                    PersianButtonDefaults.largeSizes(),
-                                    Modifier.fillMaxWidth()
+                            val scope = remember(colors, sizes) {
+                                OnlyActionScopeWrapper(
+                                    scope = this,
+                                    colors = colors.actionColor,
+                                    sizes = sizes.actionSize
                                 )
-                            ) {
-                                actions()
                             }
+                            scope.actions()
                         }
                     )
                 }
@@ -76,12 +76,13 @@ fun OnlyActionAlert(
 @Composable
 fun Alert(
     modifier: Modifier = Modifier,
-    colors: AlertsColors = AlertsDefaults.colors(),
+    colors: AlertColors = AlertsDefaults.colors(),
+    sizes: AlertSizes = AlertsDefaults.alertSizes(),
     title: String,
     description: String? = null,
-    confirmAction: @Composable AlertActionScope.() -> Unit,
-    dismissAction: (@Composable AlertActionScope.() -> Unit)? = null,
-    cancelAction: (@Composable AlertActionScope.() -> Unit)? = null,
+    confirmAction: @Composable ActionScope.() -> Unit,
+    dismissAction: (@Composable ActionScope.() -> Unit)? = null,
+    cancelAction: (@Composable ActionScope.() -> Unit)? = null,
     onDismiss: () -> Unit,
     content: (@Composable () -> Unit)? = null
 ) {
@@ -98,9 +99,9 @@ fun Alert(
                     .widthIn(max = 460.dp)
                     .fillMaxWidth()
                     .wrapContentHeight()
-                    .padding(horizontal = PersianTheme.spacing.size24),
-                shape = PersianTheme.shapes.shape20,
-                color = colors.backgroundColor,
+                    .padding(horizontal = PersianTheme.spacing.size20),
+                shape = sizes.containerShape,
+                color = colors.containerColor,
                 tonalElevation = PersianTheme.elevation.small,
                 shadowElevation = 0.dp,
                 content = {
@@ -135,7 +136,7 @@ fun Alert(
                                     modifier = Modifier.fillMaxWidth(),
                                     text = title,
                                     textAlign = TextAlign.Center,
-                                    style = PersianTheme.typography.headlineSmall,
+                                    style = sizes.titleTextStyle,
                                     color = colors.titleColor
                                 )
                             }
@@ -144,14 +145,17 @@ fun Alert(
                                     modifier = Modifier
                                         .padding(horizontal = PersianTheme.spacing.size20),
                                     text = it,
-                                    style = PersianTheme.typography.bodyMedium,
+                                    style = sizes.descriptionTextStyle,
                                     color = colors.descriptionColor,
                                     textAlign = TextAlign.Justify
                                 )
                             }
                             content?.invoke()
                             if (content != null) {
-                                InsetHorizontalDivider(strokeColor = colors.dividerColor)
+                                InsetHorizontalDivider(
+                                    strokeColor = colors.dividerColor,
+                                    sizes = sizes.dividerSizes
+                                )
                             }
                             val actionPadding =
                                 if (heightSizeClass == WindowHeightSizeClass.COMPACT)
@@ -169,17 +173,16 @@ fun Alert(
                                     Alignment.End
                                 ),
                                 content = {
-                                    with(
-                                        AlertActionScope(
-                                            colors.actionColor,
-                                            PersianButtonDefaults.smallSizes(),
-                                            Modifier
+                                    val scope = remember(colors) {
+                                        ActionScopeWrapper(
+                                            scope = this,
+                                            colors = colors.actionColor,
+                                            sizes = sizes.actionSize
                                         )
-                                    ) {
-                                        cancelAction?.let { it() }
-                                        dismissAction?.let { it() }
-                                        confirmAction()
                                     }
+                                    cancelAction?.let { scope.it() }
+                                    dismissAction?.let { scope.it() }
+                                    scope.confirmAction()
                                 }
                             )
                         }
