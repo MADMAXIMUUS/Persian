@@ -46,7 +46,6 @@ internal fun LazyListScope.persianPageDotIndicatorItem(
                     index < itemCount - visibleIndicatorCount + 1 &&
                     itemCount != visibleIndicatorCount
 
-
         Box(
             modifier = Modifier
                 .size(24.dp),
@@ -67,9 +66,7 @@ internal fun LazyListScope.persianPageDotIndicatorItem(
                     }
                     .size(12.dp)
                     .clip(PersianTheme.shapes.full)
-                    .background(
-                        colors.indicatorColor(isSelected).value
-                    )
+                    .background(colors.indicatorColor(isSelected).value)
             )
         }
     }

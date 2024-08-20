@@ -31,7 +31,6 @@ fun PersianPageIndicator(
     visibleIndicatorCount: Int = 5,
     colors: PageIndicatorColors = PageIndicatorDefaults.indicatorColor()
 ) {
-
     val space = when (style) {
         IndicatorStyle.DOT -> PersianTheme.spacing.size8
         IndicatorStyle.LINE -> PersianTheme.spacing.size4
@@ -137,7 +136,7 @@ fun PageIndicatorPreview() {
         Surface {
             PersianPageIndicator(
                 pagerState = rememberPagerState {
-                    3
+                    6
                 },
                 style = IndicatorStyle.LINE
             )
