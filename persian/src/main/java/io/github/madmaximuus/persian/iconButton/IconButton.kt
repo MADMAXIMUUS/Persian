@@ -3,6 +3,7 @@ package io.github.madmaximuus.persian.iconButton
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -27,7 +28,9 @@ fun PrimaryIconButton(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
 ) = Surface(
     onClick = onClick,
-    modifier = modifier.semantics { role = Role.Button },
+    modifier = modifier
+        .semantics { role = Role.Button }
+        .size(sizes.size),
     enabled = enabled,
     shape = sizes.shape,
     color = colors.containerColor(enabled),
@@ -35,7 +38,7 @@ fun PrimaryIconButton(
     interactionSource = interactionSource
 ) {
     Box(
-        modifier = Modifier.size(sizes.size),
+        modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
         Icon(
@@ -57,7 +60,9 @@ fun SecondaryIconButton(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
 ) = Surface(
     onClick = onClick,
-    modifier = modifier.semantics { role = Role.Button },
+    modifier = modifier
+        .semantics { role = Role.Button }
+        .size(sizes.size),
     enabled = enabled,
     shape = sizes.shape,
     color = colors.containerColor(enabled),
@@ -65,7 +70,7 @@ fun SecondaryIconButton(
     interactionSource = interactionSource
 ) {
     Box(
-        modifier = Modifier.size(sizes.size),
+        modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
         Icon(
@@ -86,7 +91,9 @@ fun TertiaryIconButton(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
 ) = Surface(
     onClick = onClick,
-    modifier = modifier.semantics { role = Role.Button },
+    modifier = modifier
+        .semantics { role = Role.Button }
+        .size(sizes.size),
     enabled = enabled,
     shape = sizes.shape,
     color = colors.containerColor(enabled),
@@ -94,7 +101,7 @@ fun TertiaryIconButton(
     interactionSource = interactionSource
 ) {
     Box(
-        modifier = Modifier.size(sizes.size),
+        modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
         Icon(
@@ -115,7 +122,9 @@ fun OutlinedIconButton(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
 ) = Surface(
     onClick = onClick,
-    modifier = modifier.semantics { role = Role.Button },
+    modifier = modifier
+        .semantics { role = Role.Button }
+        .size(sizes.size),
     enabled = enabled,
     shape = sizes.shape,
     color = colors.containerColor(enabled),
@@ -127,7 +136,7 @@ fun OutlinedIconButton(
     interactionSource = interactionSource
 ) {
     Box(
-        modifier = Modifier.size(sizes.size),
+        modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
         Icon(

@@ -3,6 +3,7 @@ package io.github.madmaximuus.persian.iconButton
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -30,7 +31,9 @@ fun ToggleIconButton(
 ) = Surface(
     checked = checked,
     onCheckedChange = onCheckedChange,
-    modifier = modifier.semantics { role = Role.Checkbox },
+    modifier = modifier
+        .semantics { role = Role.Checkbox }
+        .size(sizes.size),
     enabled = enabled,
     shape = sizes.shape,
     color = colors.containerColor(enabled, checked),
@@ -38,20 +41,13 @@ fun ToggleIconButton(
     interactionSource = interactionSource
 ) {
     Box(
-        modifier = Modifier.size(sizes.size),
+        modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
-        if (checked) {
-            Icon(
-                painter = checkedIcon,
-                sizes = sizes.iconSizes
-            )
-        } else {
-            Icon(
-                painter = icon,
-                sizes = sizes.iconSizes
-            )
-        }
+        Icon(
+            painter = if (checked) checkedIcon else icon,
+            sizes = sizes.iconSizes
+        )
     }
 }
 
@@ -69,7 +65,9 @@ fun SecondaryToggleIconButton(
 ) = Surface(
     checked = checked,
     onCheckedChange = onCheckedChange,
-    modifier = modifier.semantics { role = Role.Checkbox },
+    modifier = modifier
+        .semantics { role = Role.Checkbox }
+        .size(sizes.size),
     enabled = enabled,
     shape = sizes.shape,
     color = colors.containerColor(enabled, checked),
@@ -77,20 +75,13 @@ fun SecondaryToggleIconButton(
     interactionSource = interactionSource
 ) {
     Box(
-        modifier = Modifier.size(sizes.size),
+        modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
-        if (checked) {
-            Icon(
-                painter = checkedIcon,
-                sizes = sizes.iconSizes
-            )
-        } else {
-            Icon(
-                painter = icon,
-                sizes = sizes.iconSizes
-            )
-        }
+        Icon(
+            painter = if (checked) checkedIcon else icon,
+            sizes = sizes.iconSizes
+        )
     }
 }
 
@@ -108,7 +99,9 @@ fun TertiaryToggleIconButton(
 ) = Surface(
     checked = checked,
     onCheckedChange = onCheckedChange,
-    modifier = modifier.semantics { role = Role.Checkbox },
+    modifier = modifier
+        .semantics { role = Role.Checkbox }
+        .size(sizes.size),
     enabled = enabled,
     shape = sizes.shape,
     color = colors.containerColor(enabled, checked),
@@ -116,20 +109,13 @@ fun TertiaryToggleIconButton(
     interactionSource = interactionSource
 ) {
     Box(
-        modifier = Modifier.size(sizes.size),
+        modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
-        if (checked) {
-            Icon(
-                painter = checkedIcon,
-                sizes = sizes.iconSizes
-            )
-        } else {
-            Icon(
-                painter = icon,
-                sizes = sizes.iconSizes
-            )
-        }
+        Icon(
+            painter = if (checked) checkedIcon else icon,
+            sizes = sizes.iconSizes
+        )
     }
 }
 
@@ -147,7 +133,9 @@ fun OutlinedToggleIconButton(
 ) = Surface(
     checked = checked,
     onCheckedChange = onCheckedChange,
-    modifier = modifier.semantics { role = Role.Checkbox },
+    modifier = modifier
+        .semantics { role = Role.Checkbox }
+        .size(sizes.size),
     enabled = enabled,
     shape = sizes.shape,
     color = colors.containerColor(enabled, checked),
@@ -159,19 +147,12 @@ fun OutlinedToggleIconButton(
     interactionSource = interactionSource
 ) {
     Box(
-        modifier = Modifier.size(sizes.size),
+        modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
-        if (checked) {
-            Icon(
-                painter = checkedIcon,
-                sizes = sizes.iconSizes
-            )
-        } else {
-            Icon(
-                painter = icon,
-                sizes = sizes.iconSizes
-            )
-        }
+        Icon(
+            painter = if (checked) checkedIcon else icon,
+            sizes = sizes.iconSizes
+        )
     }
 }
