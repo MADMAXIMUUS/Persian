@@ -7,7 +7,7 @@
         <item name="android:navigationBarColor">@android:color/transparent</item>
     </style>
 
-    <style name="Base.Theme.Persian" parent="Base.V27.Theme.Persian" />
+    <style name="Base.Theme.Persian" parent="Base.V26.Theme.Persian" />
 
     <style name="Theme.Persian" parent="Base.Theme.Persian" />
 
