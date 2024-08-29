@@ -5,10 +5,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.takeOrElse
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.takeOrElse
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state38
+import io.github.madmaximuus.persian.icon.IconDefaults
+import io.github.madmaximuus.persian.icon.IconSizes
 
 object SwitchDefaults {
 
@@ -19,7 +25,7 @@ object SwitchDefaults {
         checkedBorderColor: Color = PersianTheme.colorScheme.primary,
         checkedIconColor: Color = PersianTheme.colorScheme.onPrimaryContainer,
         uncheckedThumbColor: Color = PersianTheme.colorScheme.onPrimaryContainer,
-        uncheckedTrackColor: Color = PersianTheme.colorScheme.surface4,
+        uncheckedTrackColor: Color = PersianTheme.colorScheme.surfaceContainerHighest,
         uncheckedBorderColor: Color = PersianTheme.colorScheme.primary,
         uncheckedIconColor: Color = PersianTheme.colorScheme.onPrimary,
         disabledCheckedThumbColor: Color = PersianTheme.colorScheme.surface,
@@ -47,6 +53,23 @@ object SwitchDefaults {
         disabledUncheckedIconColor = disabledUncheckedIconColor,
         disabledUncheckedThumbColor = disabledUncheckedThumbColor,
         disabledUncheckedTrackColor = disabledUncheckedTrackColor
+    )
+
+    @Composable
+    fun sizes(
+        toggleSize: Dp = 24.dp,
+        uncheckedToggleSizes: Dp = 16.dp,
+        iconSizes: IconSizes = IconDefaults.size18(),
+        toggleShape: Shape = PersianTheme.shapes.full,
+        trackShape: Shape = PersianTheme.shapes.full,
+        trackBorderWith: Dp = 2.dp
+    ): SwitchSizes = SwitchSizes(
+        toggleSize = toggleSize,
+        uncheckedToggleSizes = uncheckedToggleSizes,
+        iconSizes = iconSizes,
+        toggleShape = toggleShape,
+        trackShape = trackShape,
+        trackBorderWith = trackBorderWith
     )
 }
 
@@ -168,7 +191,7 @@ class SwitchColors internal constructor(
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (other == null || other !is androidx.compose.material3.SwitchColors) return false
+        if (other == null || other !is SwitchColors) return false
 
         if (checkedThumbColor != other.checkedThumbColor) return false
         if (checkedTrackColor != other.checkedTrackColor) return false
@@ -207,6 +230,61 @@ class SwitchColors internal constructor(
         result = 31 * result + disabledUncheckedTrackColor.hashCode()
         result = 31 * result + disabledUncheckedBorderColor.hashCode()
         result = 31 * result + disabledUncheckedIconColor.hashCode()
+        return result
+    }
+}
+
+@Immutable
+class SwitchSizes(
+    internal val toggleSize: Dp,
+    internal val uncheckedToggleSizes: Dp,
+    internal val iconSizes: IconSizes,
+    internal val toggleShape: Shape,
+    internal val trackShape: Shape,
+    internal val trackBorderWith: Dp
+) {
+    /**
+     * Returns a copy of this SwitchColors, optionally overriding some of the values. This uses the
+     * Color.Unspecified to mean “use the value from the source”
+     */
+    fun copy(
+        toggleSize: Dp = this.toggleSize,
+        uncheckedToggleSizes: Dp = this.uncheckedToggleSizes,
+        iconSizes: IconSizes = this.iconSizes,
+        toggleShape: Shape = this.toggleShape,
+        trackShape: Shape = this.trackShape,
+        trackBorderWith: Dp = this.trackBorderWith,
+    ): SwitchSizes =
+        SwitchSizes(
+            toggleSize = toggleSize.takeOrElse { this.toggleSize },
+            uncheckedToggleSizes = uncheckedToggleSizes.takeOrElse { this.uncheckedToggleSizes },
+            iconSizes = iconSizes,
+            toggleShape = toggleShape,
+            trackShape = trackShape,
+            trackBorderWith = trackBorderWith.takeOrElse { this.trackBorderWith },
+        )
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || other !is SwitchSizes) return false
+
+        if (toggleSize != other.toggleSize) return false
+        if (uncheckedToggleSizes != other.uncheckedToggleSizes) return false
+        if (iconSizes != other.iconSizes) return false
+        if (toggleShape != other.toggleShape) return false
+        if (trackShape != other.trackShape) return false
+        if (trackBorderWith != other.trackBorderWith) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = toggleSize.hashCode()
+        result = 31 * result + uncheckedToggleSizes.hashCode()
+        result = 31 * result + iconSizes.hashCode()
+        result = 31 * result + toggleShape.hashCode()
+        result = 31 * result + trackShape.hashCode()
+        result = 31 * result + trackBorderWith.hashCode()
         return result
     }
 }

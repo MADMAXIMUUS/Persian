@@ -20,7 +20,6 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.Measurable
 import androidx.compose.ui.layout.MeasureResult
@@ -31,26 +30,21 @@ import androidx.compose.ui.node.invalidateMeasurement
 import androidx.compose.ui.platform.InspectorInfo
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.Constraints
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.LocalContentColor
-import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.minimumInteractiveComponentSize
 import io.github.madmaximuus.persian.foundation.ripple.ripple
 import io.github.madmaximuus.persian.icon.Icon
-import io.github.madmaximuus.persian.icon.IconDefaults
 import kotlinx.coroutines.launch
 
 /**
  * Switches toggle the state of a single item on or off.
  *
- * Switch can be used with a custom icon via [thumbContent] parameter
- *
  * @param checked whether or not this switch is checked
  * @param onCheckedChange called when this switch is clicked. If `null`, then this switch will not
  *   be interactable, unless something else handles its input events and updates its state.
  * @param modifier the [Modifier] to be applied to this switch
- * @param thumbContent content that will be drawn inside the thumb, expected to measure
- *   [SwitchDefaults.IconSize]
  * @param enabled controls the enabled state of this switch. When `false`, this component will not
  *   respond to user input, and it will appear visually disabled and disabled to accessibility
  *   services.
@@ -70,6 +64,7 @@ fun Switch(
     uncheckedIcon: Painter? = null,
     enabled: Boolean = true,
     colors: SwitchColors = SwitchDefaults.colors(),
+    sizes: SwitchSizes = SwitchDefaults.sizes(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
 ) {
     val icon: (@Composable () -> Unit)? = when {
@@ -78,7 +73,7 @@ fun Switch(
             {
                 Icon(
                     painter = checkedIcon,
-                    sizes = IconDefaults.size18()
+                    sizes = sizes.iconSizes
                 )
             }
         }
@@ -87,7 +82,7 @@ fun Switch(
             {
                 Icon(
                     painter = uncheckedIcon,
-                    sizes = IconDefaults.size18()
+                    sizes = sizes.iconSizes
                 )
             }
         }
@@ -120,8 +115,8 @@ fun Switch(
         checked = checked,
         enabled = enabled,
         colors = colors,
+        sizes = sizes,
         interactionSource = interactionSource,
-        thumbShape = PersianTheme.shapes.full,
         thumbContent = icon,
     )
 }
@@ -133,24 +128,30 @@ private fun SwitchImpl(
     checked: Boolean,
     enabled: Boolean,
     colors: SwitchColors,
+    sizes: SwitchSizes,
     thumbContent: (@Composable () -> Unit)?,
     interactionSource: InteractionSource,
-    thumbShape: Shape,
 ) {
     val trackColor = colors.trackColor(enabled, checked)
     val resolvedThumbColor = colors.thumbColor(enabled, checked)
-    val trackShape = PersianTheme.shapes.full
 
     Box(
         modifier
-            .border(2.dp, colors.borderColor(enabled, checked), trackShape)
-            .background(trackColor, trackShape)
+            .border(sizes.trackBorderWith, colors.borderColor(enabled, checked), sizes.trackShape)
+            .background(trackColor, sizes.trackShape)
     ) {
         Box(
             modifier =
             Modifier
                 .align(Alignment.CenterStart)
-                .then(ThumbElement(interactionSource, checked))
+                .then(
+                    ThumbElement(
+                        interactionSource,
+                        checked,
+                        sizes.toggleSize,
+                        sizes.uncheckedToggleSizes
+                    )
+                )
                 .indication(
                     interactionSource = interactionSource,
                     indication = ripple(
@@ -158,7 +159,7 @@ private fun SwitchImpl(
                         radius = 20.dp
                     )
                 )
-                .background(resolvedThumbColor, thumbShape),
+                .background(resolvedThumbColor, sizes.toggleShape),
             contentAlignment = Alignment.Center
         ) {
             if (thumbContent != null) {
@@ -175,8 +176,10 @@ private fun SwitchImpl(
 private data class ThumbElement(
     val interactionSource: InteractionSource,
     val checked: Boolean,
+    private val thumbSize: Dp,
+    private val uncheckedThumbSize: Dp
 ) : ModifierNodeElement<ThumbNode>() {
-    override fun create() = ThumbNode(interactionSource, checked)
+    override fun create() = ThumbNode(interactionSource, checked, thumbSize, uncheckedThumbSize)
 
     override fun update(node: ThumbNode) {
         node.interactionSource = interactionSource
@@ -197,6 +200,8 @@ private data class ThumbElement(
 private class ThumbNode(
     var interactionSource: InteractionSource,
     var checked: Boolean,
+    private val thumbSize: Dp,
+    private val uncheckedThumbSize: Dp
 ) : Modifier.Node(), LayoutModifierNode {
 
     override val shouldAutoInvalidate: Boolean
@@ -228,7 +233,7 @@ private class ThumbNode(
 
     override fun MeasureScope.measure(
         measurable: Measurable,
-        constraints: Constraints
+        constraints: Constraints,
     ): MeasureResult {
         val hasContent =
             measurable.maxIntrinsicHeight(constraints.maxWidth) != 0 &&
@@ -236,15 +241,17 @@ private class ThumbNode(
         val size =
             when {
                 isPressed -> 28.0.dp
-                hasContent || checked -> ThumbDiameter
-                else -> UncheckedThumbDiameter
+                hasContent || checked -> thumbSize
+                else -> uncheckedThumbSize
             }.toPx()
 
         val actualSize = (sizeAnim?.value ?: size).toInt()
         val placeable = measurable.measure(Constraints.fixed(actualSize, actualSize))
         val thumbPaddingStart = (SwitchHeight - size.toDp()) / 2f
         val minBound = thumbPaddingStart.toPx()
-        val thumbPathLength = (SwitchWidth - ThumbDiameter) - ThumbPadding
+        val thumbPadding = (SwitchHeight - thumbSize) / 2
+        val thumbPathLength = (SwitchWidth - thumbSize) - thumbPadding
+
         val maxBound = thumbPathLength.toPx()
         val offset =
             when {
@@ -293,11 +300,8 @@ private class ThumbNode(
 
 
 /* @VisibleForTesting */
-internal val ThumbDiameter = 24.0.dp
-internal val UncheckedThumbDiameter = 16.0.dp
 
-private val SwitchWidth = 52.0.dp
-private val SwitchHeight = 32.0.dp
-private val ThumbPadding = (SwitchHeight - ThumbDiameter) / 2
+private val SwitchWidth = 52.dp
+private val SwitchHeight = 32.dp
 private val SnapSpec = SnapSpec<Float>()
 private val AnimationSpec = TweenSpec<Float>(durationMillis = 100)
