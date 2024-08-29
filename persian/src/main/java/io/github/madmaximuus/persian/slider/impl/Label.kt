@@ -11,6 +11,7 @@ import androidx.compose.ui.text.style.TextAlign
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.slider.SliderColors
 import io.github.madmaximuus.persian.slider.SliderDefaults
+import java.util.Locale
 
 @Composable
 internal fun Label(
@@ -25,7 +26,7 @@ internal fun Label(
     ) {
         Text(
             textAlign = TextAlign.Center,
-            text = String.format("%.1f", value),
+            text = String.format(Locale.getDefault(), "%.1f", value),
             color = colors.labelTextColor,
             style = PersianTheme.typography.labelLarge.copy(baselineShift = BaselineShift.None)
         )

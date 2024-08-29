@@ -46,7 +46,7 @@ object SliderDefaults {
         inactiveTrackColor: Color = PersianTheme.colorScheme.secondaryContainer,
         inactiveTickColor: Color = PersianTheme.colorScheme.primary,
         labelTextColor: Color = PersianTheme.colorScheme.onSurface,
-        labelBackgroundColor: Color = PersianTheme.colorScheme.surface5,
+        labelBackgroundColor: Color = PersianTheme.colorScheme.surfaceContainerHighest,
         disabledThumbColor: Color = PersianTheme.colorScheme.onSurface.state38,
         disabledActiveTrackColor: Color = PersianTheme.colorScheme.onSurface.state38,
         disabledActiveTickColor: Color = PersianTheme.colorScheme.surface.state38,
