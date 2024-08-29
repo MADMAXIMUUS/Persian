@@ -6,9 +6,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.window.core.layout.WindowHeightSizeClass
+import androidx.window.core.layout.WindowWidthSizeClass
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.topAppBar.PersianTopAppBarLeft
 import io.github.madmaximuus.persian.topAppBar.PersianTopAppBarRight
@@ -44,19 +47,25 @@ fun ModalPageTopScope.TopBar(
     )
 }
 
+/**
+ * Showing only with [WindowWidthSizeClass.COMPACT] width or [WindowHeightSizeClass.COMPACT]  height
+ */
 @Composable
-fun ModalPageTopScope.Handle(
-) {
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = PersianTheme.spacing.size16),
-        contentAlignment = Alignment.Center
-    ) {
+fun ModalPageTopScope.Handle() {
+    val heightSizeClass = currentWindowAdaptiveInfo().windowSizeClass.windowHeightSizeClass
+    val widthSizeClass = currentWindowAdaptiveInfo().windowSizeClass.windowWidthSizeClass
+    if (widthSizeClass == WindowWidthSizeClass.COMPACT || heightSizeClass == WindowHeightSizeClass.COMPACT) {
         Box(
             modifier = Modifier
-                .size(this@Handle.sizes.dragHandleSizes)
-                .background(this@Handle.colors.dragHandleColor, PersianTheme.shapes.full)
-        )
+                .fillMaxWidth()
+                .padding(vertical = PersianTheme.spacing.size16),
+            contentAlignment = Alignment.Center
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(this@Handle.sizes.dragHandleSizes)
+                    .background(this@Handle.colors.dragHandleColor, PersianTheme.shapes.full)
+            )
+        }
     }
 }

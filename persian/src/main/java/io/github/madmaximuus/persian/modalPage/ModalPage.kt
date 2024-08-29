@@ -2,17 +2,19 @@ package io.github.madmaximuus.persian.modalPage
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.window.core.layout.WindowHeightSizeClass
+import androidx.window.core.layout.WindowWidthSizeClass
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.modalPage.util.DragAnchor
 import kotlinx.coroutines.launch
@@ -40,11 +42,53 @@ fun ModalPage(
     modifier: Modifier = Modifier,
     pageState: PageState = rememberPageState(),
     top: @Composable (ModalPageTopScope.() -> Unit)? = null,
+    bottom: @Composable (ModalPageBottomScope.() -> Unit)? = null,
     contentWindowInsets: WindowInsets = WindowInsets.navigationBars,
     properties: ModalPageProperties = ModalPageProperties(),
     colors: ModalPageColors = ModalPageDefaults.colors(),
     sizes: ModalPageSizes = ModalPageDefaults.sizes(),
-    content: @Composable ColumnScope.(PaddingValues) -> Unit,
+    content: @Composable (PaddingValues) -> Unit,
+) {
+    val heightSizeClass = currentWindowAdaptiveInfo().windowSizeClass.windowHeightSizeClass
+    val widthSizeClass = currentWindowAdaptiveInfo().windowSizeClass.windowWidthSizeClass
+    if (widthSizeClass == WindowWidthSizeClass.COMPACT || heightSizeClass == WindowHeightSizeClass.COMPACT) {
+        CompactModalPage(
+            onDismissRequest = onDismissRequest,
+            colors = colors,
+            sizes = sizes,
+            top = top,
+            bottom = bottom,
+            contentWindowInsets = contentWindowInsets,
+            pageState = pageState,
+            modifier = modifier,
+            properties = properties,
+            content = content
+        )
+    } else if (widthSizeClass != WindowWidthSizeClass.COMPACT) {
+        MediumModalPage(
+            onDismissRequest = onDismissRequest,
+            colors = colors,
+            sizes = sizes,
+            top = top,
+            bottom = bottom,
+            contentWindowInsets = contentWindowInsets,
+            content = content
+        )
+    }
+}
+
+@Composable
+private fun CompactModalPage(
+    onDismissRequest: () -> Unit,
+    modifier: Modifier,
+    pageState: PageState,
+    top: @Composable (ModalPageTopScope.() -> Unit)?,
+    bottom: @Composable (ModalPageBottomScope.() -> Unit)?,
+    contentWindowInsets: WindowInsets,
+    properties: ModalPageProperties,
+    colors: ModalPageColors,
+    sizes: ModalPageSizes,
+    content: @Composable (PaddingValues) -> Unit,
 ) {
     val scope = rememberCoroutineScope()
     val animateToDismiss: () -> Unit = {
@@ -99,6 +143,7 @@ fun ModalPage(
                 colors,
                 sizes,
                 top,
+                bottom,
                 contentWindowInsets,
                 content
             )

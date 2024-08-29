@@ -10,7 +10,6 @@ import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.draggable
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,6 +17,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -110,8 +110,9 @@ internal fun BoxScope.ModalBottomSheetContent(
     colors: ModalPageColors,
     sizes: ModalPageSizes,
     top: @Composable (ModalPageTopScope.() -> Unit)?,
+    bottom: @Composable (ModalPageBottomScope.() -> Unit)?,
     contentWindowInsets: WindowInsets,
-    content: @Composable ColumnScope.(PaddingValues) -> Unit
+    content: @Composable (PaddingValues) -> Unit
 ) {
     val dragAnchor = pageState.dragAnchors
     Surface(
@@ -190,7 +191,10 @@ internal fun BoxScope.ModalBottomSheetContent(
                 startDragImmediately = pageState.anchoredDraggableState.isAnimationRunning,
                 onDragStopped = { settleToDismiss(it) }
             ),
-        shape = sizes.containerShape,
+        shape = sizes.containerShape.copy(
+            bottomStart = CornerSize(0.dp),
+            bottomEnd = CornerSize(0.dp)
+        ),
         color = colors.containerColor,
     ) {
         Column(
@@ -209,24 +213,28 @@ internal fun BoxScope.ModalBottomSheetContent(
                     transformOrigin = PredictiveBackChildTransformOrigin
                 }
         ) {
-            if (top != null) {
-                Scaffold(
-                    modifier = Modifier.fillMaxSize(),
-                    topBar = {
-                        val scope = remember(colors, sizes) {
-                            ModalPageTopScopeWrapper(sizes, colors)
-                        }
-                        scope.top()
+            Scaffold(
+                modifier = Modifier.fillMaxSize(),
+                topBar = {
+                    val scope = remember(colors, sizes) {
+                        ModalPageTopScopeWrapper(sizes, colors)
                     }
-                ) { paddingValues ->
-                    content(paddingValues)
+                    top?.let { scope.it() }
+                },
+                bottomBar = {
+                    ActionRow(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        paddingValues = PaddingValues(
+                            PersianTheme.spacing.size12
+                        ),
+                        colors = colors,
+                        sizes = sizes,
+                        bottom = bottom
+                    )
                 }
-            } else {
-                Scaffold(
-                    modifier = Modifier.fillMaxSize(),
-                ) { paddingValues ->
-                    content(paddingValues)
-                }
+            ) { paddingValues ->
+                content(paddingValues)
             }
         }
     }
