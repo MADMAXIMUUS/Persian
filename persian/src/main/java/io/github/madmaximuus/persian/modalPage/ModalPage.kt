@@ -138,6 +138,7 @@ private fun CompactModalPage(
             ModalBottomSheetContent(
                 predictiveBackProgress,
                 settleToDismiss,
+                onDismissRequest,
                 modifier,
                 pageState,
                 colors,

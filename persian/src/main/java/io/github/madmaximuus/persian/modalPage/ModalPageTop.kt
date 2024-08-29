@@ -20,11 +20,13 @@ import io.github.madmaximuus.persian.topAppBar.TopAppBar
 interface ModalPageTopScope {
     val colors: ModalPageColors
     val sizes: ModalPageSizes
+    val onDismiss: ()->Unit
 }
 
 internal class ModalPageTopScopeWrapper(
     override val sizes: ModalPageSizes,
     override val colors: ModalPageColors,
+    override val onDismiss: () -> Unit,
 ) : ModalPageTopScope
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -37,7 +39,7 @@ fun ModalPageTopScope.TopBar(
     TopAppBar(
         modifier = Modifier.fillMaxWidth(),
         left = PersianTopAppBarLeft.Close(
-            onClick = {}
+            onClick = onDismiss
         ),
         title = title,
         right = PersianTopAppBarRight.Action(

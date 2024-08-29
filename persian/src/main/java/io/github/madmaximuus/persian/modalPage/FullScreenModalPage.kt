@@ -81,7 +81,7 @@ private fun CompactFullScreenModalPage(
                 modifier = Modifier.fillMaxSize(),
                 topBar = {
                     val scope = remember(colors, sizes) {
-                        ModalPageTopScopeWrapper(sizes, colors)
+                        ModalPageTopScopeWrapper(sizes, colors, onDismissRequest)
                     }
                     top?.let { scope.it() }
                 },
@@ -141,7 +141,7 @@ internal fun MediumModalPage(
                     modifier = Modifier.fillMaxSize(),
                     topBar = {
                         val scope = remember(colors, sizes) {
-                            ModalPageTopScopeWrapper(sizes, colors)
+                            ModalPageTopScopeWrapper(sizes, colors, onDismissRequest)
                         }
                         top?.let { scope.it() }
                     },

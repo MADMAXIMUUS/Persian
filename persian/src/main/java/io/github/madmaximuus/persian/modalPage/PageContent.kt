@@ -14,13 +14,17 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -33,11 +37,13 @@ import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.onClick
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.Velocity
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.lerp
@@ -105,6 +111,7 @@ internal fun Scrim(
 internal fun BoxScope.ModalBottomSheetContent(
     predictiveBackProgress: Animatable<Float, AnimationVector1D>,
     settleToDismiss: (velocity: Float) -> Unit,
+    onDismissRequest: () -> Unit,
     modifier: Modifier = Modifier,
     pageState: PageState,
     colors: ModalPageColors,
@@ -115,10 +122,16 @@ internal fun BoxScope.ModalBottomSheetContent(
     content: @Composable (PaddingValues) -> Unit
 ) {
     val dragAnchor = pageState.dragAnchors
+    var modalHeight by remember { mutableIntStateOf(0) }
+    var footerHeight by remember { mutableIntStateOf(0) }
+    var bottomPadding = WindowInsets.navigationBars.getBottom(LocalDensity.current)
     Surface(
         modifier = modifier
             .statusBarsPadding()
-            .padding(top = PersianTheme.spacing.size12)
+            .padding(top = PersianTheme.spacing.size4)
+            .onGloballyPositioned {
+                modalHeight = it.size.height
+            }
             .align(Alignment.BottomCenter)
             .fillMaxWidth()
             .graphicsLayer {
@@ -217,11 +230,11 @@ internal fun BoxScope.ModalBottomSheetContent(
                 modifier = Modifier.fillMaxSize(),
                 topBar = {
                     val scope = remember(colors, sizes) {
-                        ModalPageTopScopeWrapper(sizes, colors)
+                        ModalPageTopScopeWrapper(sizes, colors, onDismissRequest)
                     }
                     top?.let { scope.it() }
                 },
-                bottomBar = {
+                /*bottomBar = {
                     ActionRow(
                         modifier = Modifier
                             .fillMaxWidth(),
@@ -232,9 +245,31 @@ internal fun BoxScope.ModalBottomSheetContent(
                         sizes = sizes,
                         bottom = bottom
                     )
-                }
+                }*/
             ) { paddingValues ->
-                content(paddingValues)
+                Column(
+                    modifier = Modifier
+                        .offset {
+                            IntOffset(
+                                0,
+                                (modalHeight - pageState.requireOffset() - footerHeight).toInt()
+                            )
+                        }
+                        .onGloballyPositioned {
+                            footerHeight = it.size.height + bottomPadding
+                        }
+                ) {
+                    content(paddingValues)
+                    ActionRow(
+                        modifier = Modifier.fillMaxWidth(),
+                        paddingValues = PaddingValues(
+                            PersianTheme.spacing.size12
+                        ),
+                        colors = colors,
+                        sizes = sizes,
+                        bottom = bottom
+                    )
+                }
             }
         }
     }
