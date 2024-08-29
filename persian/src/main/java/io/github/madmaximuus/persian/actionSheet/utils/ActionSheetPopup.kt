@@ -42,6 +42,7 @@ import androidx.lifecycle.setViewTreeLifecycleOwner
 import androidx.lifecycle.setViewTreeViewModelStoreOwner
 import androidx.savedstate.findViewTreeSavedStateRegistryOwner
 import androidx.savedstate.setViewTreeSavedStateRegistryOwner
+import io.github.madmaximuus.persian.R
 import java.util.UUID
 
 /**
@@ -152,7 +153,7 @@ private class ModalBottomSheetWindow(
         setViewTreeLifecycleOwner(composeView.findViewTreeLifecycleOwner())
         setViewTreeViewModelStoreOwner(composeView.findViewTreeViewModelStoreOwner())
         setViewTreeSavedStateRegistryOwner(composeView.findViewTreeSavedStateRegistryOwner())
-        setTag(androidx.compose.ui.R.id.compose_view_saveable_id_tag, "Popup:$saveId")
+        setTag(R.id.compose_view_saveable_id_tag, "Popup:$saveId")
         // Enable children to draw their shadow by not clipping them
         clipChildren = false
     }
@@ -333,8 +334,6 @@ private class ModalBottomSheetWindow(
     }
 }
 
-
-// Taken from AndroidPopup.android.kt
 private fun View.isFlagSecureEnabled(): Boolean {
     val windowParams = rootView.layoutParams as? WindowManager.LayoutParams
     if (windowParams != null) {
@@ -343,7 +342,6 @@ private fun View.isFlagSecureEnabled(): Boolean {
     return false
 }
 
-// Taken from AndroidPopup.android.kt
 private fun SecureFlagPolicy.shouldApplySecureFlag(isSecureFlagSetOnParent: Boolean): Boolean {
     return when (this) {
         SecureFlagPolicy.SecureOff -> false
