@@ -97,6 +97,7 @@ fun Surface(
     tonalElevation: Dp = 0.dp,
     shadowElevation: Dp = 0.dp,
     border: BorderStroke? = null,
+    needClip: Boolean = true,
     content: @Composable () -> Unit
 ) {
     val absoluteElevation = LocalAbsoluteTonalElevation.current + tonalElevation
@@ -113,6 +114,7 @@ fun Surface(
                         elevation = absoluteElevation
                     ),
                     border = border,
+                    needClip = needClip,
                     shadowElevation = with(LocalDensity.current) { shadowElevation.toPx() }
                 )
                 .semantics(mergeDescendants = false) {
@@ -199,6 +201,7 @@ fun Surface(
     tonalElevation: Dp = 0.dp,
     shadowElevation: Dp = 0.dp,
     border: BorderStroke? = null,
+    needClip: Boolean = true,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     content: @Composable () -> Unit
 ) {
@@ -218,6 +221,7 @@ fun Surface(
                         elevation = absoluteElevation
                     ),
                     border = border,
+                    needClip = needClip,
                     shadowElevation = with(LocalDensity.current) { shadowElevation.toPx() }
                 )
                 .clickable(
@@ -306,6 +310,7 @@ fun Surface(
     tonalElevation: Dp = 0.dp,
     shadowElevation: Dp = 0.dp,
     border: BorderStroke? = null,
+    needClip: Boolean = true,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     content: @Composable () -> Unit
 ) {
@@ -325,6 +330,7 @@ fun Surface(
                         elevation = absoluteElevation
                     ),
                     border = border,
+                    needClip = needClip,
                     shadowElevation = with(LocalDensity.current) { shadowElevation.toPx() }
                 )
                 .selectable(
@@ -414,6 +420,7 @@ fun Surface(
     tonalElevation: Dp = 0.dp,
     shadowElevation: Dp = 0.dp,
     border: BorderStroke? = null,
+    needClip: Boolean = true,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     content: @Composable () -> Unit
 ) {
@@ -433,6 +440,7 @@ fun Surface(
                         elevation = absoluteElevation
                     ),
                     border = border,
+                    needClip = needClip,
                     shadowElevation = with(LocalDensity.current) { shadowElevation.toPx() }
                 )
                 .toggleable(
@@ -454,12 +462,14 @@ private fun Modifier.surface(
     shape: Shape,
     backgroundColor: Color,
     border: BorderStroke?,
+    needClip: Boolean,
     shadowElevation: Float,
 ) = this
     .graphicsLayer(shadowElevation = shadowElevation, shape = shape, clip = false)
     .then(if (border != null) Modifier.border(border, shape) else Modifier)
     .background(color = backgroundColor, shape = shape)
-    .clip(shape)
+    .then(if (needClip) Modifier.clip(shape) else Modifier)
+
 
 @Composable
 private fun surfaceColorAtElevation(color: Color, elevation: Dp): Color =
@@ -492,7 +502,7 @@ internal fun ColorScheme.applyTonalElevation(backgroundColor: Color, elevation: 
  *
  * @param elevation Elevation value used to compute alpha of the color overlay layer.
  *
- * @return the [ColorScheme.surface] color with an alpha of the [ColorScheme.surfaceTint] color
+ * @return the [ColorScheme.surface] color with an alpha of the [ColorScheme.primary] color
  * overlaid on top of it.
  */
 @Stable
@@ -501,7 +511,7 @@ fun ColorScheme.surfaceColorAtElevation(
 ): Color {
     if (elevation == 0.dp) return surface
     val alpha = ((4.5f * ln(elevation.value + 1)) + 2f) / 100f
-    return surfaceTint.copy(alpha = alpha).compositeOver(surface)
+    return primary.copy(alpha = alpha).compositeOver(surface)
 }
 
 /**
