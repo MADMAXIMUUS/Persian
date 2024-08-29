@@ -10,7 +10,7 @@ sealed class DragAnchor : Comparable<DragAnchor> {
             val value = when (other) {
                 is Half -> 0
                 is Expanded -> -1
-                is Fraction -> other.value.compareTo(0.5f)
+                is Fraction -> 0.5f.compareTo(other.value)
                 is Hidden -> 1
             }
             return value
@@ -30,23 +30,11 @@ sealed class DragAnchor : Comparable<DragAnchor> {
         }
     }
 
-    /*data class Height(val height: Double) : DragAnchor() {
-        override fun compareTo(other: DragAnchor): Int {
-            return when (other) {
-                is Half -> 1
-                is Expanded -> 1
-                is Height -> height.compareTo(other.height)
-                is Fraction -> -1
-                is Hidden -> -1
-            }
-        }
-    }*/
-
     data class Fraction(val value: Float) : DragAnchor(), Serializable {
         override fun compareTo(other: DragAnchor): Int {
             val value = when (other) {
-                is Half -> value.compareTo(0.5f)
-                is Expanded -> value.compareTo(1f)
+                is Half -> 0.5f.compareTo(value)
+                is Expanded -> 1f.compareTo(value)
                 is Fraction -> value.compareTo(other.value)
                 is Hidden -> 1
             }

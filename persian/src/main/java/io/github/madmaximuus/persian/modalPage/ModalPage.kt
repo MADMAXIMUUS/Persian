@@ -110,44 +110,46 @@ private fun CompactModalPage(
 
     val predictiveBackProgress = remember { Animatable(initialValue = 0f) }
 
-    ModalPageDialog(
-        properties = properties,
-        onDismissRequest = {
-            if (pageState.currentValue == DragAnchor.Expanded) {
-                // Smoothly animate away predictive back transformations since we are not fully
-                // dismissing. We don't need to do this in the else below because we want to
-                // preserve the predictive back transformations (scale) during the hide animation.
-                scope.launch { predictiveBackProgress.animateTo(0f) }
-            } else { // Is expanded without collapsed state or is collapsed.
-                scope.launch { pageState.hide() }.invokeOnCompletion { onDismissRequest() }
-            }
-        },
-        predictiveBackProgress = predictiveBackProgress,
-    ) {
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .imePadding()
+    if (pageState.dragAnchors.isNotEmpty()) {
+        ModalPageDialog(
+            properties = properties,
+            onDismissRequest = {
+                if (pageState.currentValue == DragAnchor.Expanded) {
+                    // Smoothly animate away predictive back transformations since we are not fully
+                    // dismissing. We don't need to do this in the else below because we want to
+                    // preserve the predictive back transformations (scale) during the hide animation.
+                    scope.launch { predictiveBackProgress.animateTo(0f) }
+                } else { // Is expanded without collapsed state or is collapsed.
+                    scope.launch { pageState.hide() }.invokeOnCompletion { onDismissRequest() }
+                }
+            },
+            predictiveBackProgress = predictiveBackProgress,
         ) {
-            Scrim(
-                color = PersianTheme.colorScheme.scrim,
-                onDismissRequest = animateToDismiss,
-                pageState = pageState,
-                visible = pageState.targetValue != DragAnchor.Hidden
-            )
-            ModalBottomSheetContent(
-                predictiveBackProgress,
-                settleToDismiss,
-                onDismissRequest,
-                modifier,
-                pageState,
-                colors,
-                sizes,
-                top,
-                bottom,
-                contentWindowInsets,
-                content
-            )
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .imePadding()
+            ) {
+                Scrim(
+                    color = PersianTheme.colorScheme.scrim,
+                    onDismissRequest = animateToDismiss,
+                    pageState = pageState,
+                    visible = pageState.targetValue != DragAnchor.Hidden
+                )
+                ModalBottomSheetContent(
+                    predictiveBackProgress,
+                    settleToDismiss,
+                    onDismissRequest,
+                    modifier,
+                    pageState,
+                    colors,
+                    sizes,
+                    top,
+                    bottom,
+                    contentWindowInsets,
+                    content
+                )
+            }
         }
     }
     if (pageState.dragAnchors.isNotEmpty()) {
