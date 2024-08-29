@@ -7,7 +7,7 @@ import androidx.compose.runtime.Stable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
-import io.github.madmaximuus.persian.button.PersianButtonDefaults
+import io.github.madmaximuus.persian.button.ButtonDefaults
 import io.github.madmaximuus.persian.button.TertiaryButton
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.iconButton.IconButtonDefaults
@@ -51,7 +51,7 @@ class SnackbarRightScope(
         ) {
             TertiaryButton(
                 text = text,
-                sizes = PersianButtonDefaults.smallSizes(),
+                sizes = ButtonDefaults.smallSizes(),
                 onClick = {
                     onClick(snackbarData)
                 }

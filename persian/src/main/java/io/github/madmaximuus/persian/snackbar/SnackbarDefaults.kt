@@ -12,7 +12,7 @@ object SnackbarDefaults {
 
     @Composable
     fun colors(
-        backgroundColor: Color = PersianTheme.colorScheme.surface2,
+        backgroundColor: Color = PersianTheme.colorScheme.surfaceContainerLow,
         textColor: Color = PersianTheme.colorScheme.onSurface
     ) = remember(backgroundColor, textColor) {
         SnackbarColors(

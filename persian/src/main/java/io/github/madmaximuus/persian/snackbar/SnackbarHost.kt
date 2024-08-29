@@ -21,9 +21,9 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.fab.Fab
-import io.github.madmaximuus.persian.navigationBar.PersianNavigationBar
+import io.github.madmaximuus.persian.navigationBar.NavigationBar
 import io.github.madmaximuus.persian.scafold.Scaffold
-import io.github.madmaximuus.persian.topAppBar.PersianTopAppBar
+import io.github.madmaximuus.persian.topAppBar.TopAppBar
 import kotlinx.coroutines.CancellableContinuation
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -356,12 +356,12 @@ private const val ANIMATION_COMPACT_TIME = 300L
 value class SnackbarPosition internal constructor(@Suppress("unused") private val value: Int) {
     companion object {
         /**
-         * Position Snackbar at the top of the screen, under the [PersianTopAppBar] (if it exists)
+         * Position Snackbar at the top of the screen, under the [TopAppBar] (if it exists)
          */
         val Top = SnackbarPosition(0)
 
         /**
-         * Position Snackbar at the bottom of the screen, above the [PersianNavigationBar] (if it
+         * Position Snackbar at the bottom of the screen, above the [NavigationBar] (if it
          * exists) or [Fab] (if it exists)
          */
         val Bottom = SnackbarPosition(1)
