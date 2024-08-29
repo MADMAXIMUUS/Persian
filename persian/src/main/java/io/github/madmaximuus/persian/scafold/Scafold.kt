@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.exclude
 import androidx.compose.foundation.layout.onConsumedWindowInsetsChanged
 import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.Immutable
@@ -18,7 +19,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.layout.SubcomposeLayout
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
@@ -77,6 +80,7 @@ fun Scaffold(
     fabPosition: FabPosition = FabPosition.End,
     containerColor: Color = PersianTheme.colorScheme.surface,
     contentColor: Color = contentColorFor(containerColor),
+    shape: Shape = RoundedCornerShape(0.dp),
     contentWindowInsets: WindowInsets = ScaffoldDefaults.contentWindowInsets,
     content: @Composable (PaddingValues) -> Unit
 ) {
@@ -87,6 +91,7 @@ fun Scaffold(
         modifier = modifier.onConsumedWindowInsetsChanged { consumedWindowInsets ->
             safeInsets.insets = contentWindowInsets.exclude(consumedWindowInsets)
         },
+        shape = shape,
         color = containerColor,
         contentColor = contentColor
     ) {
@@ -97,6 +102,7 @@ fun Scaffold(
             content = content,
             snackbar = snackbarHost,
             contentWindowInsets = safeInsets,
+            shape = shape,
             fab = floatingActionButton
         )
     }
@@ -122,6 +128,7 @@ private fun ScaffoldLayout(
     snackbar: @Composable () -> Unit,
     fab: @Composable () -> Unit,
     contentWindowInsets: WindowInsets,
+    shape: Shape,
     bottomBar: @Composable () -> Unit
 ) {
     if (ScaffoldSubcomposeInMeasureFix) {
@@ -132,6 +139,7 @@ private fun ScaffoldLayout(
             snackbar = snackbar,
             fab = fab,
             contentWindowInsets = contentWindowInsets,
+            shape = shape,
             bottomBar = bottomBar
         )
     } else {
@@ -142,6 +150,7 @@ private fun ScaffoldLayout(
             snackbar = snackbar,
             fab = fab,
             contentWindowInsets = contentWindowInsets,
+            shape = shape,
             bottomBar = bottomBar
         )
     }
@@ -158,9 +167,12 @@ private fun ScaffoldLayoutWithMeasureFix(
     snackbar: @Composable () -> Unit,
     fab: @Composable () -> Unit,
     contentWindowInsets: WindowInsets,
+    shape: Shape,
     bottomBar: @Composable () -> Unit
 ) {
-    SubcomposeLayout { constraints ->
+    SubcomposeLayout(
+        modifier = Modifier.clip(shape)
+    ) { constraints ->
         val layoutWidth = constraints.maxWidth
         val layoutHeight = constraints.maxHeight
 
@@ -325,9 +337,12 @@ private fun LegacyScaffoldLayout(
     snackbar: @Composable () -> Unit,
     fab: @Composable () -> Unit,
     contentWindowInsets: WindowInsets,
+    shape: Shape,
     bottomBar: @Composable () -> Unit
 ) {
-    SubcomposeLayout { constraints ->
+    SubcomposeLayout(
+        modifier = Modifier.clip(shape)
+    ) { constraints ->
         val layoutWidth = constraints.maxWidth
         val layoutHeight = constraints.maxHeight
 
