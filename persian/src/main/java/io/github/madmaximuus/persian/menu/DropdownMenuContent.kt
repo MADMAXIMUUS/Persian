@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 internal fun DropdownMenuContent(
     modifier: Modifier,
+    matchAnchorWidth: Boolean,
     expandedState: MutableTransitionState<Boolean>,
     transformOriginState: MutableState<TransformOrigin>,
     scrollState: ScrollState,
@@ -37,8 +38,7 @@ internal fun DropdownMenuContent(
     // Menu open/close animation.
     @Suppress("DEPRECATION") val transition = updateTransition(expandedState, "DropDownMenu")
 
-    val scale by
-    transition.animateFloat(
+    val scale by transition.animateFloat(
         transitionSpec = {
             if (false isTransitioningTo true) {
                 // Dismissed to expanded
@@ -68,10 +68,11 @@ internal fun DropdownMenuContent(
     ) { expanded ->
         if (expanded) ExpandedAlphaTarget else ClosedAlphaTarget
     }
+    val widthModifier = if (!matchAnchorWidth) Modifier.width(220.dp) else Modifier
 
     val isInspecting = LocalInspectionMode.current
     Surface(
-        modifier = Modifier
+        modifier = modifier
             .graphicsLayer {
                 scaleX =
                     if (!isInspecting) scale
@@ -84,14 +85,13 @@ internal fun DropdownMenuContent(
                     else if (expandedState.targetState) ExpandedAlphaTarget else ClosedAlphaTarget
                 transformOrigin = transformOriginState.value
             }
-            .width(220.dp),
+            .then(widthModifier),
         shape = sizes.containerShape,
         color = colors.containerColor,
         shadowElevation = shadowElevation,
     ) {
-
         Column(
-            modifier = modifier
+            modifier = Modifier
                 .fillMaxWidth()
                 .verticalScroll(scrollState),
             content = {

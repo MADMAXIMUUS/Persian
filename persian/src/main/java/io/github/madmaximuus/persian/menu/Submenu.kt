@@ -5,6 +5,7 @@ import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.PressInteraction
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -42,8 +43,8 @@ fun Submenu(
 ) {
     val expandedState = remember { MutableTransitionState(expanded) }
 
-    val screeWidth = with(LocalConfiguration.current){ this.screenWidthDp.dp }
-    val resolvedOffset = offset.copy(x= screeWidth - offset.x)
+    val screeWidth = with(LocalConfiguration.current) { this.screenWidthDp.dp }
+    val resolvedOffset = offset.copy(x = screeWidth - offset.x)
 
     LaunchedEffect(interactionSource) {
         interactionSource.interactions
@@ -112,15 +113,21 @@ internal fun Submenu(
                 colors = colors,
                 sizes = sizes,
                 header = null,
+                matchAnchorWidth = false,
                 content = {
-                    DropdownMenuItem(
-                        leadingIcon = rememberVectorPainter(image = PersianSymbols.Default.ArrowLeft),
-                        text = "Back",
-                        onClick = {
-                            expandedState.targetState = false
+                    Column {
+                        val scope = remember(colors, sizes) {
+                            DropdownMenuItemScopeWrapper(this, colors.itemColors, sizes.itemSizes)
                         }
-                    )
-                    content()
+                        scope.DropdownMenuItem(
+                            leadingIcon = rememberVectorPainter(image = PersianSymbols.Default.ArrowLeft),
+                            text = "Back",
+                            onClick = {
+                                expandedState.targetState = false
+                            }
+                        )
+                        scope.content()
+                    }
                 },
             )
         }

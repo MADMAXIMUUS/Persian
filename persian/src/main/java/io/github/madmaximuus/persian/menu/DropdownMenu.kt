@@ -110,6 +110,7 @@ fun DropdownMenu(
                 colors = colors,
                 sizes = sizes,
                 header = header,
+                matchAnchorWidth = false,
                 content = content,
             )
         }
