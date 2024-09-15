@@ -2,9 +2,6 @@ package io.github.madmaximuus.persian.datePicker.view
 
 import android.icu.util.Calendar
 import androidx.compose.animation.animateContentSize
-import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
@@ -12,18 +9,18 @@ import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.R
-import io.github.madmaximuus.persian.datePicker.view.grid.PersianDatePickerDialogCalendarGrid
-import io.github.madmaximuus.persian.datePicker.view.grid.PersianDatePickerDialogMonthGrid
-import io.github.madmaximuus.persian.datePicker.view.grid.PersianDatePickerDialogRootGrid
-import io.github.madmaximuus.persian.datePicker.view.grid.PersianDatePickerDialogYearGrid
-import io.github.madmaximuus.persian.datePicker.view.header.PersianDatePickerDialogHeader
+import io.github.madmaximuus.persian.datePicker.view.grid.DatePickerDialogCalendarGrid
+import io.github.madmaximuus.persian.datePicker.view.grid.DatePickerDialogMonthGrid
+import io.github.madmaximuus.persian.datePicker.view.grid.DatePickerDialogRootGrid
+import io.github.madmaximuus.persian.datePicker.view.grid.DatePickerDialogYearGrid
+import io.github.madmaximuus.persian.datePicker.view.header.DatePickerDialogHeader
 import io.github.madmaximuus.persian.datePicker.view.state.DatePickerState
 import io.github.madmaximuus.persian.datePicker.view.util.DatePickerConfig
 import io.github.madmaximuus.persian.datePicker.view.util.DatePickerDisplayMode
@@ -32,16 +29,15 @@ import io.github.madmaximuus.persian.datePicker.view.util.monthBetween
 import io.github.madmaximuus.persian.datePicker.view.util.startValue
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
-internal fun PersianDatePickerView(
+internal fun DatePickerView(
     state: DatePickerState,
     modifier: Modifier = Modifier,
     colors: DatePickerViewColors = PersianDatePickerViewDefaults.colors(),
     config: DatePickerConfig = DatePickerConfig(),
     onSelection: (Calendar) -> Unit
 ) {
-
+    val windowHeightSizeClass = currentWindowAdaptiveInfo().windowSizeClass.windowHeightSizeClass
     val weekLabels = stringArrayResource(id = R.array.week_day_labels)
     val monthLabels = stringArrayResource(id = R.array.months)
 
@@ -73,12 +69,10 @@ internal fun PersianDatePickerView(
         .animateContentSize()
         .padding(PersianTheme.spacing.size12)
 
-    Column(
+    DatePickerViewRoot(
         modifier = baseModifier,
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size4)
     ) {
-        PersianDatePickerDialogHeader(
+        DatePickerDialogHeader(
             selectable = config.selectable,
             isPrevDisabled = state.isPrevDisabled,
             navigationDisabled = state.mode != DatePickerDisplayMode.CALENDAR,
@@ -91,10 +85,10 @@ internal fun PersianDatePickerView(
             onYearClick = state::onYearSelectionClick,
             colors = colors.headerColors
         )
-        PersianDatePickerDialogRootGrid(
+        DatePickerDialogRootGrid(
             mode = state.mode,
             calendarGrid = {
-                PersianDatePickerDialogCalendarGrid(
+                DatePickerDialogCalendarGrid(
                     weekLabels = weekLabels,
                     config = config,
                     pagerState = pagerState,
@@ -113,7 +107,7 @@ internal fun PersianDatePickerView(
                 )
             },
             monthGrid = {
-                PersianDatePickerDialogMonthGrid(
+                DatePickerDialogMonthGrid(
                     monthLabels = monthLabels,
                     currentMonth = state.today.get(Calendar.MONTH),
                     selectedMonth = state.pages[state.currentPosition].month,
@@ -122,7 +116,7 @@ internal fun PersianDatePickerView(
                 )
             },
             yearGrid = {
-                PersianDatePickerDialogYearGrid(
+                DatePickerDialogYearGrid(
                     yearsRange = state.yearsRange,
                     yearListState = yearListState,
                     selectedYear = state.pages[state.currentPosition].year,

@@ -5,12 +5,12 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.runtime.Composable
 import io.github.madmaximuus.persian.datePicker.view.DatePickerMonthCellColors
-import io.github.madmaximuus.persian.datePicker.view.cells.PersianDatePickerDialogMonthCell
+import io.github.madmaximuus.persian.datePicker.view.cells.DatePickerDialogMonthCell
 import io.github.madmaximuus.persian.datePicker.view.util.Constants
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
 @Composable
-internal fun PersianDatePickerDialogMonthGrid(
+internal fun DatePickerDialogMonthGrid(
     monthLabels: Array<String>,
     currentMonth: Int,
     selectedMonth: Int,
@@ -24,7 +24,7 @@ internal fun PersianDatePickerDialogMonthGrid(
         horizontalArrangement = Arrangement.SpaceEvenly,
         content = {
             items(monthLabels.size) {
-                PersianDatePickerDialogMonthCell(
+                DatePickerDialogMonthCell(
                     month = monthLabels[it],
                     index = it,
                     enabled = true,

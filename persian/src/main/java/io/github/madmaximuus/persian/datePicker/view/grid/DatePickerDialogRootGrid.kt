@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import io.github.madmaximuus.persian.datePicker.view.util.DatePickerDisplayMode
 
 @Composable
-internal fun PersianDatePickerDialogRootGrid(
+internal fun DatePickerDialogRootGrid(
     mode: DatePickerDisplayMode,
     calendarGrid: @Composable () -> Unit,
     monthGrid: @Composable () -> Unit,

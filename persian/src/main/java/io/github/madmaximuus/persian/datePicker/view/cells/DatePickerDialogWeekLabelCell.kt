@@ -10,7 +10,7 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.text.Text
 
 @Composable
-internal fun PersianDatePickerDialogWeekLabelCell(
+internal fun DatePickerDialogWeekLabelCell(
     label: String,
     modifier: Modifier = Modifier,
     colors: DatePickerDayOfWeekCellColors,

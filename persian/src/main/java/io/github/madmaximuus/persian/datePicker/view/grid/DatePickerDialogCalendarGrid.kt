@@ -1,7 +1,6 @@
 package io.github.madmaximuus.persian.datePicker.view.grid
 
 import android.icu.util.Calendar
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -11,8 +10,8 @@ import androidx.compose.foundation.pager.PagerState
 import androidx.compose.runtime.Composable
 import io.github.madmaximuus.persian.datePicker.view.DatePickerDayCellColors
 import io.github.madmaximuus.persian.datePicker.view.DatePickerDayOfWeekCellColors
-import io.github.madmaximuus.persian.datePicker.view.cells.PersianDatePickerDialogDayCell
-import io.github.madmaximuus.persian.datePicker.view.cells.PersianDatePickerDialogWeekLabelCell
+import io.github.madmaximuus.persian.datePicker.view.cells.DatePickerDialogDayCell
+import io.github.madmaximuus.persian.datePicker.view.cells.DatePickerDialogWeekLabelCell
 import io.github.madmaximuus.persian.datePicker.view.state.DatePickerGridState
 import io.github.madmaximuus.persian.datePicker.view.util.Constants
 import io.github.madmaximuus.persian.datePicker.view.util.DatePickerConfig
@@ -22,9 +21,8 @@ import io.github.madmaximuus.persian.datePicker.view.util.calcCalendarDateData
 import io.github.madmaximuus.persian.datePicker.view.util.findDayOffset
 import io.github.madmaximuus.persian.datePicker.view.util.getDaysInMonth
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
-internal fun PersianDatePickerDialogCalendarGrid(
+internal fun DatePickerDialogCalendarGrid(
     pagerState: PagerState,
     config: DatePickerConfig,
     weekLabels: Array<String>,
@@ -53,13 +51,13 @@ internal fun PersianDatePickerDialogCalendarGrid(
             horizontalArrangement = Arrangement.SpaceEvenly,
             content = {
                 items(weekLabels) {
-                    PersianDatePickerDialogWeekLabelCell(
+                    DatePickerDialogWeekLabelCell(
                         label = it,
                         colors = dayOfWeekCellColors
                     )
                 }
                 items(offset) {
-                    PersianDatePickerDialogDayCell(
+                    DatePickerDialogDayCell(
                         dateData = DatePickerDayData(otherMonth = true),
                         colors = dayCellColors
                     )
@@ -82,7 +80,7 @@ internal fun PersianDatePickerDialogCalendarGrid(
                         selectedRange = selectedRange
                     ) ?: return@items
 
-                    PersianDatePickerDialogDayCell(
+                    DatePickerDialogDayCell(
                         dateData = dateData,
                         onDateClick = onDateClick,
                         colors = dayCellColors

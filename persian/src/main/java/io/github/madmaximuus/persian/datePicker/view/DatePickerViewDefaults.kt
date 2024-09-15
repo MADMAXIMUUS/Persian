@@ -6,12 +6,12 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.graphics.Color
-import io.github.madmaximuus.persian.buttons.ButtonColors
-import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
+import io.github.madmaximuus.persian.button.ButtonColors
+import io.github.madmaximuus.persian.button.ButtonDefaults
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state38
-import io.github.madmaximuus.persian.iconButtons.IconButtonColors
-import io.github.madmaximuus.persian.iconButtons.PersianIconButtonDefaults
+import io.github.madmaximuus.persian.iconButton.IconButtonColors
+import io.github.madmaximuus.persian.iconButton.IconButtonDefaults
 
 object PersianDatePickerViewDefaults {
 
@@ -20,7 +20,7 @@ object PersianDatePickerViewDefaults {
         headerColors: DatePickerHeaderColors = headerColors(),
         datePickerGridColors: DatePickerGridColors = gridColors(),
         containerColor: Color = Color.Transparent,
-        elevatedContainerColor: Color = PersianTheme.colorScheme.surface1,
+        elevatedContainerColor: Color = PersianTheme.colorScheme.surfaceContainer,
     ) = remember(
         headerColors,
         datePickerGridColors,
@@ -37,12 +37,12 @@ object PersianDatePickerViewDefaults {
 
     @Composable
     fun headerColors(
-        prevButtonColor: IconButtonColors = PersianIconButtonDefaults.primaryIconButtonColors(),
-        nextButtonColor: IconButtonColors = PersianIconButtonDefaults.primaryIconButtonColors(),
+        prevButtonColor: IconButtonColors = IconButtonDefaults.primaryIconButtonColors(),
+        nextButtonColor: IconButtonColors = IconButtonDefaults.primaryIconButtonColors(),
         monthLabelColor: Color = PersianTheme.colorScheme.primary,
         yearLabelColor: Color = PersianTheme.colorScheme.primary,
-        selectedMonthColor: ButtonColors = PersianButtonDefaults.tertiaryColors(),
-        selectedYearColor: ButtonColors = PersianButtonDefaults.tertiaryColors(),
+        selectedMonthColor: ButtonColors = ButtonDefaults.tertiaryColors(),
+        selectedYearColor: ButtonColors = ButtonDefaults.tertiaryColors(),
     ) = remember(
         prevButtonColor,
         nextButtonColor,

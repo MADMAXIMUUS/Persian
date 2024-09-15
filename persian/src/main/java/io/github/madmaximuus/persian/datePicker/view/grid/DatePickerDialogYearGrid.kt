@@ -11,7 +11,7 @@ import io.github.madmaximuus.persian.datePicker.view.util.Constants
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
 @Composable
-internal fun PersianDatePickerDialogYearGrid(
+internal fun DatePickerDialogYearGrid(
     yearsRange: ClosedRange<Int>,
     yearListState: LazyGridState,
     currentYear: Int,

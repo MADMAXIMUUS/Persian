@@ -30,7 +30,7 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 
 @Composable
-internal fun PersianDatePickerDialogDayCell(
+internal fun DatePickerDialogDayCell(
     dateData: DatePickerDayData,
     modifier: Modifier = Modifier,
     colors: DatePickerDayCellColors,
@@ -131,7 +131,7 @@ internal fun PersianDatePickerDialogDayCell(
 private fun DayCellPreview() {
     PersianTheme {
         Surface {
-            PersianDatePickerDialogDayCell(
+            DatePickerDialogDayCell(
                 dateData = DatePickerDayData(
                     date = Calendar.getInstance().apply {
                         firstDayOfWeek = Calendar.MONDAY

@@ -22,7 +22,7 @@ import io.github.madmaximuus.persian.surface.Surface
 import io.github.madmaximuus.persian.text.Text
 
 @Composable
-internal fun PersianDatePickerDialogMonthCell(
+internal fun DatePickerDialogMonthCell(
     month: String,
     index: Int,
     enabled: Boolean,
@@ -84,7 +84,7 @@ internal fun PersianDatePickerDialogMonthCell(
 private fun DayCellPreview() {
     PersianTheme {
         Surface {
-            PersianDatePickerDialogMonthCell(
+            DatePickerDialogMonthCell(
                 month = "January",
                 index = 0,
                 enabled = true,
