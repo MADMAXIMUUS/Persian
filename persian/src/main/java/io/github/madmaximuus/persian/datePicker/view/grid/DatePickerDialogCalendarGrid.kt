@@ -7,7 +7,10 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.unit.dp
+import androidx.window.core.layout.WindowHeightSizeClass
 import io.github.madmaximuus.persian.datePicker.view.DatePickerDayCellColors
 import io.github.madmaximuus.persian.datePicker.view.DatePickerDayOfWeekCellColors
 import io.github.madmaximuus.persian.datePicker.view.cells.DatePickerDialogDayCell
@@ -42,13 +45,18 @@ internal fun DatePickerDialogCalendarGrid(
     val days = getDaysInMonth(calendar.get(Calendar.MONTH), calendar.get(Calendar.YEAR))
     val offset = findDayOffset(calendar.get(Calendar.DAY_OF_WEEK), Calendar.MONDAY)
 
+    val windowHeightSizeClass = currentWindowAdaptiveInfo().windowSizeClass.windowHeightSizeClass
+    val arrangement =
+        if (windowHeightSizeClass == WindowHeightSizeClass.COMPACT) Arrangement.spacedBy(0.dp)
+        else Arrangement.SpaceEvenly
+
     HorizontalPager(
         state = pagerState
     ) {
         LazyVerticalGrid(
             columns = GridCells.Fixed(Constants.CALENDAR_MODE_GRID_COLUMNS),
             userScrollEnabled = false,
-            horizontalArrangement = Arrangement.SpaceEvenly,
+            horizontalArrangement = arrangement,
             content = {
                 items(weekLabels) {
                     DatePickerDialogWeekLabelCell(

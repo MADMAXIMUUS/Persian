@@ -11,14 +11,17 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.window.core.layout.WindowHeightSizeClass
 import io.github.madmaximuus.persian.datePicker.view.DatePickerDayCellColors
 import io.github.madmaximuus.persian.datePicker.view.PersianDatePickerViewDefaults
 import io.github.madmaximuus.persian.datePicker.view.util.DatePickerDayData
@@ -73,25 +76,27 @@ internal fun DatePickerDialogDayCell(
     val day = if (dateData.otherMonth) ""
     else dateData.date?.timeInMillis?.let { dayFormat.format(it) } ?: ""
 
-    Column(
-        modifier = modifier
-            .aspectRatio(1f, true)
-            .background(
-                color = colors.containerColor(
-                    selected = dateData.selected || dateData.selectedStart || dateData.selectedEnd,
-                    between = dateData.selectedBetween
-                ).value, shape = shape
-            )
-            .clip(shape)
-            .clickable(enabled = !dateData.otherMonth && !dateData.disabledPassively) {
-                dateData.date?.let {
-                    onDateClick(it)
-                }
+    val windowHeightSizeClass = currentWindowAdaptiveInfo().windowSizeClass.windowHeightSizeClass
+    val sizeModifier = if (windowHeightSizeClass == WindowHeightSizeClass.COMPACT) modifier.size(34.dp)
+    else modifier
+
+    val baseModifier = sizeModifier
+        .aspectRatio(1f, true)
+        .background(
+            color = colors.containerColor(
+                selected = dateData.selected || dateData.selectedStart || dateData.selectedEnd,
+                between = dateData.selectedBetween
+            ).value, shape = shape
+        )
+        .clip(shape)
+        .clickable(enabled = !dateData.otherMonth && !dateData.disabledPassively) {
+            dateData.date?.let {
+                onDateClick(it)
             }
-            .padding(
-                horizontal = PersianTheme.spacing.size4,
-                vertical = PersianTheme.spacing.size8
-            ),
+        }
+
+    Column(
+        modifier = baseModifier,
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
