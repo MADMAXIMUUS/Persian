@@ -95,7 +95,6 @@ private suspend fun startDismissWithExitAnimation(
  * Action sheet is used in cases where an action selection is required, but there is no need to display these [actions] permanently on the screen.
  * @param actions The actions of your action sheet.
  * @param header The title and subtitle of your action sheet.
- * @param shape The shape of container
  * @param colors The [ActionSheetColors] colors of container, title and subtitle of action sheet.
  * @param onDismissRequest Executes when the user tries to dismiss the action sheet.
  */
