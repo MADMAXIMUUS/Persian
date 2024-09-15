@@ -34,8 +34,7 @@ fun MultiChoiceSegmentedButtonRow(
     content: @Composable MultiChoiceSegmentedButtonRowScope.() -> Unit
 ) {
     Row(
-        modifier =
-        modifier
+        modifier = modifier
             .height(sizes.height)
             .widthIn(min = 90.dp),
         horizontalArrangement = Arrangement.spacedBy(-sizes.border),
