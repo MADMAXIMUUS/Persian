@@ -44,11 +44,9 @@ import io.github.madmaximuus.persian.counter.CounterDefaults
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.ripple.ripple
 import io.github.madmaximuus.persian.icon.Icon
-import io.github.madmaximuus.persian.segmentedButton.MultiChoiceSegmentedButtonRow
 import io.github.madmaximuus.persian.text.Text
 import kotlin.math.roundToInt
 
-/** Scope for the children of a [MultiChoiceSegmentedButtonRow] */
 interface NavigationBarRowScope : RowScope {
     val sizes: NavigationBarSizes
     val colors: NavigationBarItemColors
