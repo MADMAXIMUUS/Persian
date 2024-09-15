@@ -40,6 +40,7 @@ internal fun TabRowImpl(
 ) {
     Surface(
         modifier = modifier.selectableGroup(),
+        needClip = false
     ) {
         val tabsScope = remember(colors, sizes, iconSide) {
             TabBarItemScopeWrapper(iconSide, colors, sizes)

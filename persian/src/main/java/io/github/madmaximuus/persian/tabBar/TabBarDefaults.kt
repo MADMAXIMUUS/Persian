@@ -62,7 +62,10 @@ object TabBarDefaults {
         textStyle: TextStyle = PersianTheme.typography.labelLarge,
 
         counterSizes: CounterSizes = CounterDefaults.digitSizes(),
-        badgeSizes: CounterSizes = CounterDefaults.badgeSizes(),
+        badgeSizes: CounterSizes = CounterDefaults.badgeSizes(
+            badgeHorizontalOffset = (-12).dp,
+            badgeVerticalOffset = 2.dp
+        ),
 
         edgePadding: Dp = 52.dp
     ): TabSizes = TabSizes(

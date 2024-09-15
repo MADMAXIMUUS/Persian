@@ -11,7 +11,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.Measurable
 import androidx.compose.ui.layout.MeasureResult
@@ -53,8 +52,8 @@ internal fun ScrollableTabRowImpl(
             .fillMaxWidth()
             .wrapContentSize(align = Alignment.CenterStart)
             .horizontalScroll(scrollState)
-            .selectableGroup()
-            .clipToBounds(),
+            .selectableGroup(),
+        needClip = false
     ) {
         val coroutineScope = rememberCoroutineScope()
         val scrollableTabData =
