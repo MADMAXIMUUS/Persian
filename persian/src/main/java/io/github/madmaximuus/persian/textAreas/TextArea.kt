@@ -43,7 +43,7 @@ import io.github.madmaximuus.persian.surface.Surface
 import io.github.madmaximuus.persian.text.Text
 
 @Composable
-fun PersianOutlineTextArea(
+fun OutlineTextArea(
     value: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
@@ -53,7 +53,7 @@ fun PersianOutlineTextArea(
     readOnly: Boolean = false,
     textStyle: TextStyle = PersianTheme.typography.bodyLarge,
     placeholder: String? = null,
-    colors: TextAreaColors = PersianTextAreaDefaults.outlineColors(),
+    colors: TextAreaColors = TextAreaDefaults.outlineColors(),
     leadingIcon: Painter? = null,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
@@ -174,7 +174,7 @@ fun PersianOutlineTextArea(
 }
 
 @Composable
-fun PersianPlainTextArea(
+fun PlainTextArea(
     value: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
@@ -184,7 +184,7 @@ fun PersianPlainTextArea(
     readOnly: Boolean = false,
     textStyle: TextStyle = PersianTheme.typography.bodyLarge,
     placeholder: String? = null,
-    colors: TextAreaColors = PersianTextAreaDefaults.plainColors(),
+    colors: TextAreaColors = TextAreaDefaults.plainColors(),
     leadingIcon: Painter? = null,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
@@ -338,7 +338,7 @@ private fun animateBorderStrokeAsState(
 fun TextAreaPreview() {
     PersianTheme {
         Surface {
-            PersianOutlineTextArea(
+            OutlineTextArea(
                 modifier = Modifier
                     .padding(10.dp),
                 value = "",

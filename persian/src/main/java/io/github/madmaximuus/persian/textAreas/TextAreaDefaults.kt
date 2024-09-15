@@ -20,16 +20,17 @@ import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state16
 import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persianSymbols.check.circle.CheckCircle
+import io.github.madmaximuus.persianSymbols.exclamation.circle.ExclamationCircle
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.xmark.circle.XMarkCircle
 
-object PersianTextAreaDefaults {
+object TextAreaDefaults {
 
     @Composable
     fun outlineColors(
         //State Icon
         validStateIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.CheckCircle),
-        errorStateIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.XMarkCircle),
+        errorStateIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.ExclamationCircle),
 
         //State Icon Colors
         validStateIconColor: Color = PersianTheme.colorScheme.valid,
