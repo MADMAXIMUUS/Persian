@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
@@ -193,8 +194,8 @@ private fun InputImpl(
     interactionSource: MutableInteractionSource,
 ) {
     val textColor = colors.textColor(enabled, isValid, isError, interactionSource).value
-    val mergedTextStyle =
-        sizes.inputTextStyle.merge(TextStyle(color = textColor, baselineShift = BaselineShift.None))
+    val mergedTextStyle = sizes.inputTextStyle
+        .merge(TextStyle(color = textColor, baselineShift = BaselineShift.None))
 
     CompositionLocalProvider(LocalTextSelectionColors provides colors.selectionColors) {
         BasicTextField(
@@ -244,10 +245,7 @@ private fun InputImpl(
                             ).value,
                             shape = sizes.shape
                         )
-                        .border(
-                            border,
-                            sizes.shape
-                        )
+                        .border(border, sizes.shape)
                         .height(52.dp)
                         .padding(sizes.contentPaddingValues)
                 Row(
@@ -267,6 +265,7 @@ private fun InputImpl(
                                 isError = isError,
                             ).value
                         )
+                        Spacer(modifier = Modifier.width(PersianTheme.spacing.size4))
                     } ?: leadingIcon?.let { icon ->
                         Icon(
                             painter = icon,
@@ -277,11 +276,11 @@ private fun InputImpl(
                                 interactionSource = interactionSource
                             ).value
                         )
+                        Spacer(modifier = Modifier.width(PersianTheme.spacing.size4))
                     }
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(horizontal = PersianTheme.spacing.size4)
                             .weight(1f),
                     ) {
                         if (value.isEmpty() && placeholder != null) {
