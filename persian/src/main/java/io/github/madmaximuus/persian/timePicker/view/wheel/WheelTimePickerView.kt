@@ -1,9 +1,10 @@
-package io.github.madmaximuus.persian.timePicker.view
+package io.github.madmaximuus.persian.timePicker.view.wheel
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
@@ -12,18 +13,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.text.Text
-import io.github.madmaximuus.persian.timePicker.view.wheel.VerticalWheelPicker
-import java.time.LocalTime
+import io.github.madmaximuus.persian.timePicker.state.TimePickerState
+import io.github.madmaximuus.persian.timePicker.view.wheel.wheel.VerticalWheelPicker
+import java.util.Locale
 
 @Composable
-internal fun PersianTimePickerView(
+internal fun WheelTimePickerView(
     state: TimePickerState,
-    config: TimePickerConfig,
-    colors: TimePickerViewColors
+    colors: WheelTimePickerViewColors,
+    sizes: WheelTimePickerViewSizes
 ) {
     Row(
         modifier = Modifier
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .padding(vertical = PersianTheme.spacing.size8),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(
             PersianTheme.spacing.size12,
@@ -31,35 +34,37 @@ internal fun PersianTimePickerView(
         )
     ) {
         VerticalWheelPicker(
-            count = if (config.is24HFormat) 24 else 12,
+            count = if (state.is24hour) 24 else 12,
             state = rememberLazyListState(
-                initialFirstVisibleItemIndex = if (config.is24HFormat)
-                    state.time.hours
-                else state.time.hours - 1
+                initialFirstVisibleItemIndex = if (state.is24hour) state.hour else state.hour % 12
             ),
             onScrollFinish = {
-                state.onHourSelected(it)
+                state.hour = it
             }
         ) { index, isCenterItem ->
             Box(
                 modifier = Modifier.size(40.dp, 36.dp),
                 contentAlignment = Alignment.Center
             ) {
-                val text = if (config.is24HFormat) index else index + 1
                 Text(
-                    text = String.format("%02d", text),
-                    color = colors.textColor(selected = isCenterItem).value
+                    text = String.format(Locale.getDefault(), "%02d", index),
+                    color = colors.textColor(selected = isCenterItem).value,
+                    style = sizes.textStyle
                 )
             }
         }
-        Text(text = ":")
+        Text(
+            text = ":",
+            color = PersianTheme.colorScheme.onSurface,
+            style = PersianTheme.typography.titleMedium
+        )
         VerticalWheelPicker(
             count = 60,
             state = rememberLazyListState(
-                initialFirstVisibleItemIndex = state.time.minutes
+                initialFirstVisibleItemIndex = state.minute
             ),
             onScrollFinish = {
-                state.onMinuteSelected(it)
+                state.minute = it
             }
         ) { index, isCenterItem ->
             Box(
@@ -67,23 +72,20 @@ internal fun PersianTimePickerView(
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = String.format("%02d", index),
-                    color = colors.textColor(selected = isCenterItem).value
+                    text = String.format(Locale.getDefault(), "%02d", index),
+                    color = colors.textColor(selected = isCenterItem).value,
+                    style = sizes.textStyle
                 )
             }
         }
-        if (config.is24HFormat.not()) {
+        if (state.is24hour.not()) {
             VerticalWheelPicker(
                 count = 2,
                 state = rememberLazyListState(
-                    initialFirstVisibleItemIndex = when (state.time.timesOfDay) {
-                        TimePickerDialogAmPM.AM -> 0
-                        TimePickerDialogAmPM.PM -> 1
-                        null -> 0
-                    }
+                    initialFirstVisibleItemIndex = if (state.isAfternoon) 1 else 0
                 ),
                 onScrollFinish = {
-                    state.onAmPmSelected(it)
+                    state.isAfternoon = it == 1
                 }
             ) { index, isCenterItem ->
                 Box(
@@ -92,13 +94,15 @@ internal fun PersianTimePickerView(
                 ) {
                     when (index) {
                         0 -> Text(
-                            text = "Am",
-                            color = colors.textColor(selected = isCenterItem).value
+                            text = "AM",
+                            color = colors.textColor(selected = isCenterItem).value,
+                            style = sizes.textStyle
                         )
 
                         1 -> Text(
-                            text = "Pm",
-                            color = colors.textColor(selected = isCenterItem).value
+                            text = "PM",
+                            color = colors.textColor(selected = isCenterItem).value,
+                            style = sizes.textStyle
                         )
                     }
                 }
@@ -106,25 +110,3 @@ internal fun PersianTimePickerView(
         }
     }
 }
-
-
-internal class PickerTime(
-    var hours: Int,
-    var minutes: Int,
-    var timesOfDay: TimePickerDialogAmPM? = null
-) {
-    override fun toString(): String {
-        return "${String.format("%02d", hours)}:" +
-                "${String.format("%02d", minutes)} " +
-                "${timesOfDay?.toString() ?: ""}"
-    }
-}
-
-internal enum class TimePickerDialogAmPM {
-    AM, PM
-}
-
-class TimePickerConfig(
-    val time: LocalTime = LocalTime.now(),
-    val is24HFormat: Boolean = false,
-)

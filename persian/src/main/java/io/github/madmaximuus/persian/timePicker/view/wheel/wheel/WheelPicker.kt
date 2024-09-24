@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.timePicker.view.wheel
+package io.github.madmaximuus.persian.timePicker.view.wheel.wheel
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope

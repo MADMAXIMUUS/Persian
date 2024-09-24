@@ -1,27 +1,35 @@
-package io.github.madmaximuus.persian.timePicker.view
+package io.github.madmaximuus.persian.timePicker.view.wheel
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state38
 
-object PersianTimePickerViewDefaults {
+object WheelTimePickerViewDefaults {
 
     @Composable
     fun colors(
         textColor: Color = PersianTheme.colorScheme.onSurface.state38,
         selectedTextColor: Color = PersianTheme.colorScheme.onSurface
-    ): TimePickerViewColors = TimePickerViewColors(
+    ): WheelTimePickerViewColors = WheelTimePickerViewColors(
         textColor = textColor,
         selectedTextColor = selectedTextColor
+    )
+
+    @Composable
+    fun sizes(
+        textStyle: TextStyle = PersianTheme.typography.titleMedium,
+    ): WheelTimePickerViewSizes = WheelTimePickerViewSizes(
+        textStyle = textStyle,
     )
 }
 
 @Immutable
-class TimePickerViewColors internal constructor(
+class WheelTimePickerViewColors internal constructor(
     private val textColor: Color,
     private val selectedTextColor: Color,
 ) {
@@ -32,3 +40,8 @@ class TimePickerViewColors internal constructor(
         return rememberUpdatedState(newValue = target)
     }
 }
+
+@Immutable
+class WheelTimePickerViewSizes internal constructor(
+    internal val textStyle: TextStyle,
+)
