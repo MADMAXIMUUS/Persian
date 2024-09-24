@@ -11,11 +11,9 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -29,16 +27,13 @@ import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.BaselineShift
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.foundation.LocalContentColor
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.icon.Icon
 import io.github.madmaximuus.persian.surface.Surface
 import io.github.madmaximuus.persian.text.Text
 
@@ -54,7 +49,6 @@ fun OutlineTextArea(
     textStyle: TextStyle = PersianTheme.typography.bodyLarge,
     placeholder: String? = null,
     colors: TextAreaColors = TextAreaDefaults.outlineColors(),
-    leadingIcon: Painter? = null,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
@@ -64,7 +58,7 @@ fun OutlineTextArea(
         TextStyle(
             color = textColor,
             textAlign = TextAlign.Justify,
-            baselineShift = BaselineShift.Superscript
+            //baselineShift = BaselineShift.Superscript
         )
     )
 
@@ -111,27 +105,12 @@ fun OutlineTextArea(
                             border = border,
                             shape = PersianTheme.shapes.shape16
                         )
-                        .padding(all = PersianTheme.spacing.size12)
-                        .height(120.dp),
+                        .padding(PersianTheme.spacing.size12)
+                        .heightIn(min = 44.dp, max = 144.dp),
                     verticalAlignment = Alignment.Top
                 ) {
-                    leadingIcon?.let { icon ->
-                        CompositionLocalProvider(
-                            LocalContentColor provides colors.leadingIconColor(
-                                enabled = enabled,
-                                isValid = isValid,
-                                isError = isError,
-                                interactionSource = interactionSource
-                            ).value
-                        ) {
-                            Icon(painter = icon)
-                        }
-                    }
                     Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = PersianTheme.spacing.size4)
-                            .weight(1f)
+                        modifier = Modifier.fillMaxWidth()
                     ) {
                         if (value.isEmpty() && placeholder != null) {
                             Text(
@@ -147,25 +126,6 @@ fun OutlineTextArea(
                             )
                         }
                         innerTextField()
-                    }
-                    colors.stateIcon(
-                        enabled = enabled,
-                        isError = isError,
-                        isSuccess = isValid
-                    ).value?.let { icon ->
-                        Spacer(modifier = Modifier.width(PersianTheme.spacing.size8))
-                        CompositionLocalProvider(
-                            LocalContentColor provides colors.stateIconColor(
-                                enabled = enabled,
-                                isValid = isValid,
-                                isError = isError
-                            ).value
-                        ) {
-                            Icon(
-                                painter = icon,
-                                contentDescription = ""
-                            )
-                        }
                     }
                 }
             }
@@ -185,7 +145,6 @@ fun PlainTextArea(
     textStyle: TextStyle = PersianTheme.typography.bodyLarge,
     placeholder: String? = null,
     colors: TextAreaColors = TextAreaDefaults.plainColors(),
-    leadingIcon: Painter? = null,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
@@ -242,22 +201,10 @@ fun PlainTextArea(
                             border = border,
                             shape = PersianTheme.shapes.shape16
                         )
-                        .padding(all = PersianTheme.spacing.size12)
-                        .height(120.dp),
+                        .padding(PersianTheme.spacing.size12)
+                        .heightIn(min = 44.dp, max = 144.dp),
                     verticalAlignment = Alignment.Top
                 ) {
-                    leadingIcon?.let { icon ->
-                        CompositionLocalProvider(
-                            LocalContentColor provides colors.leadingIconColor(
-                                enabled = enabled,
-                                isValid = isValid,
-                                isError = isError,
-                                interactionSource = interactionSource
-                            ).value
-                        ) {
-                            Icon(painter = icon)
-                        }
-                    }
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -278,25 +225,6 @@ fun PlainTextArea(
                             )
                         }
                         innerTextField()
-                    }
-                    colors.stateIcon(
-                        enabled = enabled,
-                        isError = isError,
-                        isSuccess = isValid
-                    ).value?.let { icon ->
-                        Spacer(modifier = Modifier.width(PersianTheme.spacing.size8))
-                        CompositionLocalProvider(
-                            LocalContentColor provides colors.stateIconColor(
-                                enabled = enabled,
-                                isValid = isValid,
-                                isError = isError
-                            ).value
-                        ) {
-                            Icon(
-                                painter = icon,
-                                contentDescription = ""
-                            )
-                        }
                     }
                 }
             }
