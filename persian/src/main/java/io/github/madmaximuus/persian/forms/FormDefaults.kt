@@ -8,7 +8,7 @@ import androidx.compose.ui.graphics.Color
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state38
 
-object PersianFormDefaults {
+object FormDefaults {
 
     @Composable
     fun captionColors(

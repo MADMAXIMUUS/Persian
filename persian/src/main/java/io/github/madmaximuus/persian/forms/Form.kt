@@ -2,39 +2,39 @@ package io.github.madmaximuus.persian.forms
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.inputs.PersianInputsDefaults
-import io.github.madmaximuus.persian.menus.PersianMenuDefaults
 
 @Composable
-fun PersianForm(
+fun Form(
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     isError: Boolean = false,
     isValid: Boolean = false,
-    subhead: PersianFormSubheadConfig? = null,
-    content: PersianFormContent,
-    caption: PersianFormCaptionConfig? = null,
+    subhead: @Composable (FormSubheadScope.() -> Unit)? = null,
+    content: @Composable FormContentScope.() -> Unit,
+    caption: @Composable (FormCaptionScope.() -> Unit)? = null,
 ) {
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size2)
     ) {
-        if (subhead != null) {
-            PersianFormSubhead(
-                text = subhead.text,
-                required = subhead.required,
-                enabled = enabled,
-                colors = subhead.colors,
-                textStyle = subhead.textStyle
-            )
+        val subheadColors = FormDefaults.subheadColors()
+        val subheadTextStyle = PersianTheme.typography.labelMedium
+        subhead?.let { subhead ->
+            val subheadScope = remember(subheadColors, enabled, isError) {
+                FormSubheadScopeWrapper(
+                    scope = this,
+                    colors = subheadColors,
+                    textStyle = subheadTextStyle,
+                    enabled = enabled,
+                )
+            }
+            subheadScope.subhead()
         }
-        when (content) {
+        /*when (content) {
             is PersianFormContent.FourDigitCodeInput -> {
                 PersianFormContentFourDigitCodeInput(
                     values = content.values,
@@ -103,34 +103,31 @@ fun PersianForm(
                     onSelectedChange = content.onSelectedChange,
                     expanded = content.expanded ?: remember { mutableStateOf(false) },
                     leadingIcon = content.leadingIcon,
-                    inputColors = content.inputColors ?: PersianInputsDefaults.outlineColors(),
-                    menuColors = content.menuColors ?: PersianMenuDefaults.colors()
+                    inputColors = content.inputColors ?: InputsDefaults.outlineColors(),
+                    menuColors = content.menuColors ?: MenuDefaults.colors()
                 )
             }
+        }*/
+        val contentScope = remember(enabled, isError, isValid) {
+            FormContentScopeWrapper(
+                scope = this,
+                enabled = enabled,
+                isError = isError,
+                isValid = isValid
+            )
         }
-        if (caption != null) {
-            if (caption.counter != null && caption.counterMax != null) {
-                PersianFormCaption(
-                    text = caption.text,
-                    isError = isError,
-                    errorText = caption.errorText,
+        contentScope.content()
+        val colors = FormDefaults.captionColors()
+        caption?.let { caption ->
+            val captionScope = remember(colors, enabled, isError) {
+                FormCaptionScopeWrapper(
+                    scope = this,
+                    colors = colors,
                     enabled = enabled,
-                    colors = caption.colors,
-                    textStyle = caption.textStyle,
-                    counter = caption.counter,
-                    counterMax = caption.counterMax,
-                    counterTextStyle = caption.counterTextStyle
-                )
-            } else {
-                PersianFormCaption(
-                    text = caption.text,
-                    isError = isError,
-                    errorText = caption.errorText,
-                    enabled = enabled,
-                    colors = caption.colors,
-                    textStyle = caption.textStyle,
+                    isError = isError
                 )
             }
+            captionScope.caption()
         }
     }
 }
