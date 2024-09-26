@@ -66,7 +66,7 @@ object TopAppBarDefaults {
     @Composable
     fun sizes(
         leftIconButtonSizes: IconButtonSizes = IconButtonDefaults.mediumSizes(),
-        leftAvatarSizes: AvatarSizes = AvatarDefaults.size40(),
+        leftAvatarSizes: AvatarSizes = AvatarDefaults.size36(),
         titleTextStyle: TextStyle = PersianTheme.typography.titleLarge,
         rightActionButtonSizes: ButtonSizes = ButtonDefaults.mediumSizes(),
         rightIconButtonSizes: IconButtonSizes = IconButtonDefaults.mediumSizes(),
