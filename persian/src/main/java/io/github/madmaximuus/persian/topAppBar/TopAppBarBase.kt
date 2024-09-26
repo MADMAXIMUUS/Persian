@@ -8,7 +8,6 @@ import androidx.compose.foundation.gestures.draggable
 import androidx.compose.foundation.gestures.rememberDraggableState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
@@ -18,25 +17,22 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
-import androidx.compose.ui.layout.AlignmentLine
-import androidx.compose.ui.layout.LastBaseline
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.isFinite
 import androidx.compose.ui.unit.isSpecified
-import androidx.compose.ui.util.fastFirst
 import io.github.madmaximuus.persian.foundation.LocalContentColor
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.surface.Surface
 import io.github.madmaximuus.persian.text.Text
 import io.github.madmaximuus.persian.topAppBar.util.LayoutId
 import io.github.madmaximuus.persian.topAppBar.util.ScrolledOffset
-import io.github.madmaximuus.persian.topAppBar.util.TopAppBarHorizontalPadding
 import io.github.madmaximuus.persian.topAppBar.util.TopAppBarTitleInset
 import io.github.madmaximuus.persian.topAppBar.util.settleAppBar
 import kotlin.math.max
@@ -92,27 +88,12 @@ internal fun SingleRowTopAppBar(
         label = "Top App Bar Container Animation"
     )
 
-    // Wrap the given actions in a Row.
-    val actionsRow = @Composable {
-        Row(
-            horizontalArrangement = Arrangement.End,
-            verticalAlignment = Alignment.CenterVertically,
-            content = {
-                val scope = remember {
-                    TopAppBarRightScopeWrapper(colors, sizes)
-                }
-                right?.let { scope.it() }
-            }
-        )
-    }
-
     // Set up support for resizing the top app bar when vertically dragging the bar itself.
     val appBarDragModifier =
         if (scrollBehavior != null && !scrollBehavior.isPinned) {
             Modifier.draggable(
                 orientation = Orientation.Vertical,
-                state =
-                rememberDraggableState { delta -> scrollBehavior.state.heightOffset += delta },
+                state = rememberDraggableState { delta -> scrollBehavior.state.heightOffset += delta },
                 onDragStopped = { velocity ->
                     settleAppBar(
                         scrollBehavior.state,
@@ -134,6 +115,9 @@ internal fun SingleRowTopAppBar(
         TopAppBarLayout(
             modifier = Modifier
                 .windowInsetsPadding(windowInsets)
+                .padding(
+                    horizontal = PersianTheme.spacing.size4,
+                )
                 // clip after padding so we don't show the title over the inset area
                 .clipToBounds()
                 .heightIn(max = expandedHeight),
@@ -197,9 +181,7 @@ private fun TopAppBarLayout(
         content = {
             left?.let { leftScope.it() }
             Box(
-                Modifier
-                    .layoutId(LayoutId.TITLE)
-                    .padding(horizontal = TopAppBarHorizontalPadding)
+                modifier = Modifier.layoutId(LayoutId.TITLE)
             ) {
                 Text(
                     text = title,
@@ -212,61 +194,47 @@ private fun TopAppBarLayout(
         modifier = modifier
     ) { measurables, constraints ->
         val leftPlaceable = measurables
-            .filter { it.layoutId == LayoutId.LEFT }
-            .map { it.measure(constraints.copy(maxWidth = 0)) }
+            .firstOrNull { it.layoutId == LayoutId.LEFT }
+            ?.measure(constraints.copy(minWidth = 0))
 
-        require(leftPlaceable.size <= 1) {
-            throw IllegalArgumentException("Top App Bar Left slot must contain no more than one element")
-        }
         val rightAction = measurables
-            .filter { it.layoutId == LayoutId.RIGHT_ICON }
-            .map { it.measure(constraints.copy(maxWidth = 0)) }
+            .firstOrNull { it.layoutId == LayoutId.RIGHT_BUTTON }
+            ?.measure(constraints.copy(minWidth = 0))
 
         val rightOverflow = measurables
-            .filter { it.layoutId == LayoutId.RIGHT_OVERFLOW }
-            .map { it.measure(constraints.copy(maxWidth = 0)) }
+            .firstOrNull { it.layoutId == LayoutId.RIGHT_OVERFLOW }
+            ?.measure(constraints.copy(minWidth = 0))
 
         val rightIcons = measurables
             .filter { it.layoutId == LayoutId.RIGHT_ICON }
-            .map { it.measure(constraints.copy(maxWidth = 0)) }
+            .map { it.measure(constraints.copy(minWidth = 0)) }
 
-        require(rightAction.size <= 1 && rightOverflow.isEmpty() && rightIcons.isEmpty()) {
-            throw IllegalArgumentException("Top App Bar Right slot must contain no more than one action and don't contain icon buttons")
+        val isRightValid = (rightAction != null && rightOverflow == null && rightIcons.isEmpty()) ||
+                (rightAction == null && rightOverflow == null && rightIcons.size <= 3) ||
+                (rightAction == null && rightOverflow != null && rightIcons.size <= 2)
+
+        require(isRightValid) {
+            throw IllegalArgumentException("Top App Bar Right slot must contain no more than one action or three icon buttons or icon buttons and overflow")
         }
 
-        require(rightIcons.size <= 3 && rightOverflow.isEmpty() && rightAction.isEmpty()) {
-            throw IllegalArgumentException("Top App Bar Right slot must contain no more than three icon button and don't contain action button")
-        }
-
-        require(rightIcons.size <= 2 && rightOverflow.size == 1 && rightAction.isEmpty()) {
-            throw IllegalArgumentException("Top App Bar Right slot must contain no more than two icon button with overflow button and don't contain action button")
-        }
-
-        val leftWidth = leftPlaceable.sumOf { it.width }
-        val rightActionWidth = rightAction.sumOf { it.width }
+        val leftWidth = leftPlaceable?.width ?: 0
+        val rightActionWidth = rightAction?.width ?: 0
         val rightIconsWidth = rightIcons.sumOf { it.width }
-        val rightOverflowWidth = rightOverflow.sumOf { it.width }
+        val rightOverflowWidth = rightOverflow?.width ?: 0
 
         val maxTitleWidth = if (constraints.maxWidth == Constraints.Infinity) {
             constraints.maxWidth
         } else {
             (constraints.maxWidth
-                    - leftPlaceable.sumOf { it.width }
-                    - rightAction.sumOf { it.width }
+                    - leftWidth
+                    - rightActionWidth
                     - rightIcons.sumOf { it.width }
-                    - rightOverflow.sumOf { it.width }
+                    - rightOverflowWidth
                     ).coerceAtLeast(0)
         }
         val titlePlaceable = measurables
-            .fastFirst { it.layoutId == LayoutId.TITLE }
+            .first { it.layoutId == LayoutId.TITLE }
             .measure(constraints.copy(minWidth = 0, maxWidth = maxTitleWidth))
-
-        // Locate the title's baseline.
-        val titleBaseline = if (titlePlaceable[LastBaseline] != AlignmentLine.Unspecified) {
-            titlePlaceable[LastBaseline]
-        } else {
-            0
-        }
 
         // Subtract the scrolledOffset from the maxHeight. The scrolledOffset is expected to be
         // equal or smaller than zero.
@@ -282,12 +250,10 @@ private fun TopAppBarLayout(
 
         layout(constraints.maxWidth, layoutHeight) {
             // Navigation icon
-            leftPlaceable.forEach { placeable ->
-                placeable.placeRelative(
-                    x = 0,
-                    y = (layoutHeight - leftWidth / 2)
-                )
-            }
+            leftPlaceable?.placeRelative(
+                x = 0,
+                y = (layoutHeight - leftPlaceable.height) / 2
+            )
 
             // Title
             titlePlaceable.placeRelative(
@@ -319,42 +285,33 @@ private fun TopAppBarLayout(
                     // Arrangement.Start.
                     // An TopAppBarTitleInset will make sure the title is offset in case the
                     // navigation icon is missing.
-                    else -> max(TopAppBarTitleInset.roundToPx(), leftWidth)
+                    else -> {
+                        max(TopAppBarTitleInset.roundToPx(), leftWidth) + 8.dp.roundToPx()
+                    }
                 },
                 y = (layoutHeight - titlePlaceable.height) / 2
             )
 
             // Action icons
-            rightAction.forEach { action ->
-                action.placeRelative(
-                    x = constraints.maxWidth - rightActionWidth,
-                    y = (layoutHeight - rightAction.sumOf { it.height }) / 2
-                )
-            }
+            rightAction?.placeRelative(
+                x = constraints.maxWidth - rightActionWidth,
+                y = (layoutHeight - rightAction.height) / 2
+            )
 
-            rightIcons.forEach { action ->
-                action.placeRelative(
-                    x = constraints.maxWidth - rightActionWidth,
-                    y = (layoutHeight - rightAction.sumOf { it.height }) / 2
-                )
-            }
-
-            var x = constraints.maxWidth - rightIconsWidth - rightOverflowWidth
+            var x =
+                constraints.maxWidth - rightIconsWidth - rightOverflowWidth /*+ 8.dp.roundToPx()*/
             rightIcons.forEach { action ->
                 action.placeRelative(
                     x = x,
-                    y = (layoutHeight - rightIcons.sumOf { it.height }) / 2
+                    y = (layoutHeight - action.height) / 2
                 )
                 x += action.width
             }
 
-            rightOverflow.forEach { action ->
-                action.placeRelative(
-                    x = x,
-                    y = (layoutHeight - rightOverflow.sumOf { it.height }) / 2
-                )
-                x += action.width
-            }
+            rightOverflow?.placeRelative(
+                x = x,
+                y = (layoutHeight - rightOverflow.height) / 2
+            )
         }
     }
 }

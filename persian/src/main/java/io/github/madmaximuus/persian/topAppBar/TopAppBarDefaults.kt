@@ -66,9 +66,9 @@ object TopAppBarDefaults {
     @Composable
     fun sizes(
         leftIconButtonSizes: IconButtonSizes = IconButtonDefaults.mediumSizes(),
-        leftAvatarSizes: AvatarSizes = AvatarDefaults.size32(),
+        leftAvatarSizes: AvatarSizes = AvatarDefaults.size40(),
         titleTextStyle: TextStyle = PersianTheme.typography.titleLarge,
-        rightActionButtonSizes: ButtonSizes = ButtonDefaults.smallSizes(),
+        rightActionButtonSizes: ButtonSizes = ButtonDefaults.mediumSizes(),
         rightIconButtonSizes: IconButtonSizes = IconButtonDefaults.mediumSizes(),
         menuSizes: MenuSizes = MenuDefaults.sizes(),
         badgeSizes: CounterSizes = CounterDefaults.badgeSizes(),
@@ -86,9 +86,7 @@ object TopAppBarDefaults {
     /** Default insets to be used and consumed by the top app bars */
     val windowInsets: WindowInsets
         @Composable
-        get() = WindowInsets.systemBars.only(
-            WindowInsetsSides.Horizontal + WindowInsetsSides.Top
-        )
+        get() = WindowInsets.systemBars.only(WindowInsetsSides.Top)
 
 
     /**
