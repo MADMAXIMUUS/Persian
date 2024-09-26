@@ -25,7 +25,7 @@ fun ListItem(
     middle: @Composable ListItemMiddle.() -> Unit,
     right: (@Composable ListItemRight.() -> Unit)? = null,
     divider: Boolean = false,
-    enabled: Boolean = false,
+    enabled: Boolean = true,
     checked: Boolean = false,
     sizes: ListItemSizes = ListItemDefaults.sizes(),
     colors: ListItemColors = ListItemDefaults.colors(),
