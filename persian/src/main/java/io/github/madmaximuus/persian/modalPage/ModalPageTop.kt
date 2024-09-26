@@ -5,22 +5,24 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.window.core.layout.WindowHeightSizeClass
 import androidx.window.core.layout.WindowWidthSizeClass
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.topAppBar.PersianTopAppBarLeft
-import io.github.madmaximuus.persian.topAppBar.PersianTopAppBarRight
-import io.github.madmaximuus.persian.topAppBar.TopAppBar
+import io.github.madmaximuus.persian.topAppBar.Action
+import io.github.madmaximuus.persian.topAppBar.CenteredTopAppBar
+import io.github.madmaximuus.persian.topAppBar.IconButton
+import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
+import io.github.madmaximuus.persianSymbols.xmark.base.XMark
 
 interface ModalPageTopScope {
     val colors: ModalPageColors
     val sizes: ModalPageSizes
-    val onDismiss: ()->Unit
+    val onDismiss: () -> Unit
 }
 
 internal class ModalPageTopScopeWrapper(
@@ -29,23 +31,27 @@ internal class ModalPageTopScopeWrapper(
     override val onDismiss: () -> Unit,
 ) : ModalPageTopScope
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ModalPageTopScope.TopBar(
     title: String,
     actionTitle: String,
     onActionClick: () -> Unit
 ) {
-    TopAppBar(
+    CenteredTopAppBar(
         modifier = Modifier.fillMaxWidth(),
-        left = PersianTopAppBarLeft.Close(
-            onClick = onDismiss
-        ),
+        left = {
+            IconButton(
+                icon = rememberVectorPainter(PersianSymbols.Default.XMark),
+                onClick = onDismiss
+            )
+        },
         title = title,
-        right = PersianTopAppBarRight.Action(
-            text = actionTitle,
-            onClick = onActionClick
-        )
+        right = {
+            Action(
+                text = actionTitle,
+                onClick = onActionClick
+            )
+        }
     )
 }
 

@@ -14,15 +14,15 @@ import io.github.madmaximuus.persian.button.ButtonDefaults
 import io.github.madmaximuus.persian.button.ButtonSizes
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.modalPage.util.DragAnchor
-import io.github.madmaximuus.persian.topAppBar.PersianTopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.TopAppBarColors
+import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 
 object ModalPageDefaults {
 
     @Composable
     fun colors(
         containerColor: Color = PersianTheme.colorScheme.surface,
-        topAppBarColors: TopAppBarColors = PersianTopAppBarDefaults.colors(),
+        topAppBarColors: TopAppBarColors = TopAppBarDefaults.colors(),
         dragHandleColor: Color = PersianTheme.colorScheme.outlineVariant,
         actionColors: ButtonColors = ButtonDefaults.primaryColors()
     ): ModalPageColors = ModalPageColors(
