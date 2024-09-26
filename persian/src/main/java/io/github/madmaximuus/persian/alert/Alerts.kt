@@ -96,7 +96,7 @@ fun Alert(
         content = {
             Surface(
                 modifier = modifier
-                    .widthIn(max = 460.dp)
+                    .widthIn(max = 500.dp)
                     .fillMaxWidth()
                     .wrapContentHeight()
                     .padding(horizontal = PersianTheme.spacing.size20),
