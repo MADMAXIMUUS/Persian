@@ -32,7 +32,7 @@ object AlertsDefaults {
 
     @Composable
     fun onlyActionSizes(
-        containerShape: Shape = PersianTheme.shapes.shape22,
+        containerShape: Shape = PersianTheme.shapes.shape20,
         titleTextStyle: TextStyle = PersianTheme.typography.headlineSmall,
         descriptionTextStyle: TextStyle = PersianTheme.typography.bodyMedium,
         dividerSizes: DividerSizes = DividerDefaults.sizes(),
@@ -47,7 +47,7 @@ object AlertsDefaults {
 
     @Composable
     fun alertSizes(
-        containerShape: Shape = PersianTheme.shapes.shape22,
+        containerShape: Shape = PersianTheme.shapes.shape20,
         titleTextStyle: TextStyle = PersianTheme.typography.headlineSmall,
         descriptionTextStyle: TextStyle = PersianTheme.typography.bodyMedium,
         dividerSizes: DividerSizes = DividerDefaults.sizes(),
@@ -119,11 +119,11 @@ class AlertSizes internal constructor(
         dividerSizes: DividerSizes = this.dividerSizes,
         actionSize: ButtonSizes = this.actionSize,
     ): AlertSizes = AlertSizes(
-        containerShape = this.containerShape,
-        titleTextStyle = this.titleTextStyle,
-        descriptionTextStyle = this.descriptionTextStyle,
-        dividerSizes = this.dividerSizes,
-        actionSize = this.actionSize,
+        containerShape = containerShape,
+        titleTextStyle = titleTextStyle,
+        descriptionTextStyle = descriptionTextStyle,
+        dividerSizes = dividerSizes,
+        actionSize = actionSize,
     )
 
     override fun equals(other: Any?): Boolean {
