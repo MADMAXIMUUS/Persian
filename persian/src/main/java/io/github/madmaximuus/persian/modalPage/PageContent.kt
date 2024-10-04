@@ -70,7 +70,7 @@ internal fun Scrim(
     if (color.isSpecified) {
         val alpha by animateFloatAsState(
             targetValue = when (target) {
-                in 0f..0.1f -> 0.8f
+                in 0f..0.1f -> 0.9f
                 in 0.1f..0.5f -> 0.6f
                 in 0.5f..0.7f -> 0.4f
                 else -> 0.3f
@@ -124,11 +124,11 @@ internal fun BoxScope.ModalBottomSheetContent(
     val dragAnchor = pageState.dragAnchors
     var modalHeight by remember { mutableIntStateOf(0) }
     var footerHeight by remember { mutableIntStateOf(0) }
-    var bottomPadding = WindowInsets.navigationBars.getBottom(LocalDensity.current)
+    val bottomPadding = WindowInsets.navigationBars.getBottom(LocalDensity.current)
     Surface(
         modifier = modifier
             .statusBarsPadding()
-            .padding(top = PersianTheme.spacing.size4)
+            .padding(top = PersianTheme.spacing.size8)
             .onGloballyPositioned {
                 modalHeight = it.size.height
             }
@@ -234,18 +234,6 @@ internal fun BoxScope.ModalBottomSheetContent(
                     }
                     top?.let { scope.it() }
                 },
-                /*bottomBar = {
-                    ActionRow(
-                        modifier = Modifier
-                            .fillMaxWidth(),
-                        paddingValues = PaddingValues(
-                            PersianTheme.spacing.size12
-                        ),
-                        colors = colors,
-                        sizes = sizes,
-                        bottom = bottom
-                    )
-                }*/
             ) { paddingValues ->
                 Column(
                     modifier = Modifier
