@@ -98,7 +98,6 @@ fun RadioButtonToggle(
     }
 }
 
-private val RadioButtonPadding = 2.dp
 private val RadioButtonDotSize = 13.dp
 private val RadioStrokeWidth = 2.dp
 

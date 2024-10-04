@@ -63,7 +63,7 @@ fun RadioButton(
 @Preview
 @Preview(uiMode = UI_MODE_NIGHT_YES)
 @Composable
-fun CheckboxPreview() {
+private fun RadioButtonPreview() {
     PersianTheme {
         Surface {
             RadioButton(
