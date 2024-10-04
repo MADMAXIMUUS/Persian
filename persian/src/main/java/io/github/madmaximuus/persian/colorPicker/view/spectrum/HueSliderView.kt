@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.colorPicker.view.panels
+package io.github.madmaximuus.persian.colorPicker.view.spectrum
 
 import android.graphics.Bitmap
 import android.graphics.Paint
@@ -18,11 +18,13 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.dp
 import androidx.window.core.layout.WindowHeightSizeClass
 import io.github.madmaximuus.persian.colorPicker.view.ColorPickerViewColors
+import io.github.madmaximuus.persian.colorPicker.view.util.ColorPickerState
 import io.github.madmaximuus.persian.colorPicker.view.util.collectForPress
 import io.github.madmaximuus.persian.colorPicker.view.util.drawBitmap
 import io.github.madmaximuus.persian.colorPicker.view.util.emitDragGesture
@@ -32,9 +34,8 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
 import android.graphics.Color as AndroidColor
 
 @Composable
-fun HueBarCompact(
-    value: Float,
-    setColor: (Float) -> Unit,
+internal fun HueSliderView(
+    state: ColorPickerState,
     colors: ColorPickerViewColors
 ) {
     val scope = rememberCoroutineScope()
@@ -45,11 +46,11 @@ fun HueBarCompact(
         mutableStateOf(Offset.Zero)
     }
 
-    val padding = PersianTheme.spacing.size8.value
+    val padding = PersianTheme.spacing.size12.value
     Canvas(
         modifier = Modifier
             .fillMaxWidth()
-            .height(24.dp)
+            .height(30.dp)
             .clip(RoundedCornerShape(100))
             .border(1.dp, colors.selectorBorderColor, RoundedCornerShape(100))
             .emitDragGesture(interactionSource)
@@ -62,7 +63,7 @@ fun HueBarCompact(
 
         val huePanel = RectF(0f, 0f, bitmap.width.toFloat(), bitmap.height.toFloat())
 
-        pressOffset.value = Offset(value * huePanel.width() / 360f, 0f)
+        pressOffset.value = Offset(state.colorHueState * huePanel.width() / 360f, 0f)
 
         val hueColors = IntArray((huePanel.width()).toInt())
         var hue = 0f
@@ -86,11 +87,17 @@ fun HueBarCompact(
         scope.collectForPress(interactionSource) { pressPosition ->
             val pressPos = pressPosition.x.coerceIn(0f..drawScopeSize.width)
             val selectedHue = pointToHueCompact(pressPos, huePanel)
-            setColor(selectedHue)
+            state.colorHueState = selectedHue
         }
 
         drawCircle(
-            colors.selectorThumbColor,
+            Color.White,
+            radius = size.height / 2 - padding / 2,
+            center = Offset(pressOffset.value.x, size.height / 2),
+            style = Fill
+        )
+        drawCircle(
+            state.selectedColor,
             radius = size.height / 2 - padding / 2,
             center = Offset(pressOffset.value.x, size.height / 2f),
             style = Fill
@@ -108,9 +115,8 @@ fun HueBarCompact(
 }
 
 @Composable
-fun HueBarMedium(
-    value: Float,
-    setColor: (Float) -> Unit,
+internal fun HueBarMedium(
+    state: ColorPickerState,
     colors: ColorPickerViewColors
 ) {
     val windowHeightSizeClass = currentWindowAdaptiveInfo().windowSizeClass.windowHeightSizeClass
@@ -140,7 +146,7 @@ fun HueBarMedium(
 
         val huePanel = RectF(0f, 0f, bitmap.width.toFloat(), bitmap.height.toFloat())
 
-        pressOffset.value = Offset(0f, value * huePanel.height() / 360f)
+        pressOffset.value = Offset(0f, state.colorHueState * huePanel.height() / 360f)
 
         val hueColors = IntArray((huePanel.height()).toInt())
         var hue = 0f
@@ -164,7 +170,7 @@ fun HueBarMedium(
         scope.collectForPress(interactionSource) { pressPosition ->
             val pressPos = pressPosition.y.coerceIn(0f..drawScopeSize.height)
             val selectedHue = pointToHueMedium(pressPos, huePanel)
-            setColor(selectedHue)
+            state.colorHueState = selectedHue
         }
 
         drawCircle(

@@ -21,6 +21,7 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.core.graphics.toRect
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+import androidx.compose.ui.graphics.Color as ComposeColor
 
 internal fun CoroutineScope.collectForPress(
     interactionSource: InteractionSource,
@@ -133,25 +134,10 @@ internal fun pointToSatVal(pointX: Float, pointY: Float, rect: RectF): Pair<Floa
     return satPoint to valuePoint
 }
 
-internal fun resolveColor(config: ColorPickerConfig): Triple<Float, Float, Float> {
-    return when (config) {
-        is ColorPickerConfig.HEX -> {
-            val hsv = floatArrayOf(0f, 0f, 0f)
-            Color.colorToHSV(config.color.toArgb(), hsv)
-            Triple(hsv[0], hsv[1], hsv[2])
-        }
-
-        is ColorPickerConfig.HSV -> {
-            Triple(config.hue, config.saturation, config.value)
-        }
-
-        is ColorPickerConfig.RGB -> {
-            val color = Color.valueOf(config.red, config.blue, config.green)
-            val hsv = floatArrayOf(0f, 0f, 0f)
-            Color.colorToHSV(color.toArgb(), hsv)
-            Triple(hsv[0], hsv[1], hsv[2])
-        }
-    }
+internal fun resolveColor(color: ComposeColor): Triple<Float, Float, Float> {
+    val hsv = floatArrayOf(0f, 0f, 0f)
+    Color.colorToHSV(color.toArgb(), hsv)
+    return Triple(hsv[0], hsv[1], hsv[2])
 }
 
 
@@ -163,7 +149,7 @@ internal fun getARGB(hex: Int): IntArray {
     return intArrayOf(a, r, g, b)
 }
 
-fun Bitmap.rotate(degrees: Float): Bitmap {
+internal fun Bitmap.rotate(degrees: Float): Bitmap {
     val matrix = Matrix().apply { postRotate(degrees) }
     return Bitmap.createBitmap(this, 0, 0, width, height, matrix, true)
 }

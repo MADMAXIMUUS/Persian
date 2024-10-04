@@ -4,36 +4,32 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import io.github.madmaximuus.persian.R
+import io.github.madmaximuus.persian.alert.Action
 import io.github.madmaximuus.persian.alert.Alert
 import io.github.madmaximuus.persian.colorPicker.view.ColorPickerView
-import io.github.madmaximuus.persian.colorPicker.view.util.ColorPickerConfig
-import io.github.madmaximuus.persian.colorPicker.view.util.rememberColorPickerState
+import io.github.madmaximuus.persian.colorPicker.view.util.ColorPickerState
 
 @Composable
 fun ColorPicker(
-    config: ColorPickerConfig,
-    onColorSelected: (Color) -> Unit,
+    state: ColorPickerState,
     colors: ColorPickerColors = PersianColorPickerDefaults.colors(),
+    onConfirm: (color: Color) -> Unit,
     onDismissRequest: () -> Unit
 ) {
-
-    val state = rememberColorPickerState(config)
-
     Alert(
         title = stringResource(id = R.string.select_color),
         onDismiss = onDismissRequest,
-        colors = colors.alertsColors,
+        colors = colors.alertColors,
         confirmAction = {
-            ActionItem(
+            Action(
                 title = stringResource(id = R.string.ok),
                 onClick = {
-                    onColorSelected(state.onFinish())
-                    onDismissRequest()
+                    onConfirm(state.selectedColor)
                 }
             )
         },
         dismissAction = {
-            ActionItem(
+            Action(
                 title = stringResource(id = R.string.cancel),
                 onClick = {
                     onDismissRequest()

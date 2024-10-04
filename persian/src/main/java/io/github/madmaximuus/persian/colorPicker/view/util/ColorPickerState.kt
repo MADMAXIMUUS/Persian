@@ -12,39 +12,57 @@ import androidx.core.graphics.toColor
 import java.io.Serializable
 import android.graphics.Color as AndroidColor
 
-internal class ColorPickerState(
-    val config: ColorPickerConfig,
-    stateData: ColorPickerStateData? = null
+class ColorPickerState internal constructor(
+    initialColor: Color,
+    internal val isSupportOpacity: Boolean,
 ) {
-    var mode by mutableStateOf(stateData?.mode ?: ColorPickerDisplayMode.HEX)
-    var color by mutableStateOf(stateData?.color ?: resolveColor(config))
-    var alpha by mutableFloatStateOf(stateData?.alpha ?: config.alpha)
+    internal var mode by mutableStateOf(ColorPickerDisplayMode.GRID)
+    internal var colorSaturationState by mutableFloatStateOf(0f)
+    internal var colorValueState by mutableFloatStateOf(0f)
+    internal var colorHueState by mutableFloatStateOf(0f)
+    internal var alpha by mutableFloatStateOf(if (isSupportOpacity) initialColor.alpha else 1f)
+    private var savedColorsState = mutableStateOf(emptyList<Color>())
+    var savedColors: List<Color>
+        get() = savedColorsState.value
+        set(value) {
+            savedColorsState.value = value
+        }
 
-    fun updateSatVal(saturation: Float, value: Float) {
-        color = color.copy(second = saturation, third = value)
+    init {
+        val resolvedColor = resolveColor(initialColor)
+        colorHueState = resolvedColor.first
+        colorSaturationState = resolvedColor.second
+        colorValueState = resolvedColor.third
     }
 
-    fun updateColor(newColor: Float) {
-        color = color.copy(first = newColor)
+    internal val selectedColor: Color
+        get() = Color.hsv(colorHueState, colorSaturationState, colorValueState, alpha)
+
+    internal fun moveToSpectrum() {
+        mode = ColorPickerDisplayMode.SPECTRUM
     }
 
-    fun updateAlpha(newAlpha: Float) {
-        alpha = newAlpha
+    internal fun moveToGrid() {
+        mode = ColorPickerDisplayMode.GRID
     }
 
-    fun setRGB() {
-        mode = ColorPickerDisplayMode.RGB
+    internal fun moveToSliders() {
+        mode = ColorPickerDisplayMode.SLIDERS
     }
 
-    fun setHEX() {
-        mode = ColorPickerDisplayMode.HEX
+    internal fun saveColor() {
+        val list = savedColors.toMutableList()
+        list.add(list.size - 1, selectedColor.copy(alpha))
+        savedColors = list
     }
 
-    fun setHSV() {
-        mode = ColorPickerDisplayMode.HSV
+    internal fun removeColor(color: Color) {
+        val list = savedColors.toMutableList()
+        list.remove(color)
+        savedColors = list
     }
 
-    @OptIn(ExperimentalStdlibApi::class)
+    /*@OptIn(ExperimentalStdlibApi::class)
     fun getHexColor(): String {
         return "#${
             AndroidColor.HSVToColor(
@@ -52,50 +70,52 @@ internal class ColorPickerState(
                 floatArrayOf(color.first, color.second, color.third)
             ).toHexString(HexFormat.UpperCase)
         }"
-    }
+    }*/
 
-    fun getRGBColor(): Triple<Int, Int, Int> {
+    internal fun getRGBColor(): AndroidColor {
         val color =
             AndroidColor.HSVToColor(
                 floatArrayOf(
-                    this.color.first,
-                    this.color.second,
-                    this.color.third
+                    colorHueState,
+                    colorSaturationState,
+                    colorValueState
                 )
             )
         val rgb = color.toColor()
-        return Triple(
-            (rgb.red() * 255).toInt(),
-            (rgb.green() * 255).toInt(),
-            (rgb.blue() * 255).toInt()
-        )
-    }
-
-    fun onFinish(): Color {
-        return Color.hsv(color.first, color.second, color.third, alpha)
+        return rgb
     }
 
     companion object {
-        fun Saver(
-            config: ColorPickerConfig
-        ): Saver<ColorPickerState, *> = Saver(
+        internal fun Saver(): Saver<ColorPickerState, *> = Saver(
             save = { state ->
                 ColorPickerStateData(
-                    mode = state.mode,
-                    color = state.color,
-                    alpha = state.alpha
+                    state.colorHueState,
+                    state.colorSaturationState,
+                    state.colorValueState,
+                    state.alpha,
+                    state.isSupportOpacity
                 )
             },
-            restore = { data ->
-                ColorPickerState(config, data)
+            restore = { value ->
+                ColorPickerState(
+                    initialColor = Color.hsv(
+                        value.colorHue,
+                        value.colorSaturation,
+                        value.colorValue,
+                        value.alpha
+                    ),
+                    isSupportOpacity = value.isSupportOpacity
+                )
             }
         )
     }
 
     internal data class ColorPickerStateData(
-        val mode: ColorPickerDisplayMode,
-        val color: Triple<Float, Float, Float>,
-        val alpha: Float
+        val colorHue: Float,
+        val colorSaturation: Float,
+        val colorValue: Float,
+        val alpha: Float,
+        val isSupportOpacity: Boolean
     ) : Serializable {
 
         override fun equals(other: Any?): Boolean {
@@ -104,23 +124,37 @@ internal class ColorPickerState(
 
             other as ColorPickerStateData
 
-            if (mode != other.mode) return false
-            return color == other.color
+            if (colorHue != other.colorHue) return false
+            if (colorSaturation != other.colorSaturation) return false
+            if (colorValue != other.colorValue) return false
+            if (alpha != other.alpha) return false
+            return isSupportOpacity == other.isSupportOpacity
         }
 
         override fun hashCode(): Int {
-            var result = mode.hashCode()
-            result = 31 * result + color.hashCode()
+            var result = colorHue.hashCode()
+            result = 31 * result + colorSaturation.hashCode()
+            result = 31 * result + colorValue.hashCode()
+            result = 31 * result + alpha.hashCode()
+            result = 31 * result + isSupportOpacity.hashCode()
             return result
         }
     }
 }
 
 @Composable
-internal fun rememberColorPickerState(
-    config: ColorPickerConfig
-): ColorPickerState = rememberSaveable(
-    inputs = arrayOf(config),
-    saver = ColorPickerState.Saver(config),
-    init = { ColorPickerState(config, null) }
-)
+fun rememberColorPickerState(
+    initialColor: Color,
+    isSupportOpacity: Boolean = false
+): ColorPickerState {
+    return rememberSaveable(
+        inputs = arrayOf(isSupportOpacity),
+        saver = ColorPickerState.Saver(),
+        init = {
+            ColorPickerState(
+                initialColor = initialColor,
+                isSupportOpacity = isSupportOpacity
+            )
+        }
+    )
+}

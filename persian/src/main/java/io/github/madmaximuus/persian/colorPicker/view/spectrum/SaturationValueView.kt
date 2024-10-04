@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.colorPicker.view.saturation
+package io.github.madmaximuus.persian.colorPicker.view.spectrum
 
 import android.graphics.Bitmap
 import android.graphics.ComposeShader
@@ -9,9 +9,10 @@ import android.graphics.RectF
 import android.graphics.Shader
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
+import androidx.compose.material3.adaptive.currentWindowSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -21,40 +22,51 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.dp
-import androidx.window.core.layout.WindowHeightSizeClass
 import io.github.madmaximuus.persian.colorPicker.view.ColorPickerViewColors
+import io.github.madmaximuus.persian.colorPicker.view.util.ColorPickerState
 import io.github.madmaximuus.persian.colorPicker.view.util.collectForPress
 import io.github.madmaximuus.persian.colorPicker.view.util.drawBitmap
 import io.github.madmaximuus.persian.colorPicker.view.util.emitDragGesture
 import io.github.madmaximuus.persian.colorPicker.view.util.pointToSatVal
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import android.graphics.Color as AndroidColor
 
 @Composable
-fun SatValPanel(
+internal fun ColumnScope.SaturationValueView(
+    state: ColorPickerState,
     colors: ColorPickerViewColors,
-    hsvColor: Triple<Float, Float, Float>,
-    setSatVal: (Float, Float) -> Unit
 ) {
     val windowHeightSizeClass = currentWindowAdaptiveInfo().windowSizeClass.windowHeightSizeClass
+    val windowWidth = currentWindowSize().width
 
     val interactionSource = remember {
         MutableInteractionSource()
     }
     val scope = rememberCoroutineScope()
-    var sat: Float
-    var value: Float
 
     val pressOffset = remember {
         mutableStateOf(Offset.Zero)
     }
 
-    val canvasSize = if (windowHeightSizeClass == WindowHeightSizeClass.COMPACT) 150.dp else 288.dp
+    /*val canvasSize: DpSize =
+        if (windowHeightSizeClass == WindowHeightSizeClass.COMPACT) {
+            DpSize(200.dp, 200.dp / 1.358f)
+        } else {
+            val width = with(LocalDensity.current) {
+                max(
+                    windowWidth - 36.dp.roundToPx() * 2,
+                    288.dp.roundToPx()
+                ).toDp()
+            }
+            DpSize(width, width / 1.358f)
+        }*/
 
     Canvas(
         modifier = Modifier
-            .size(canvasSize)
+            .fillMaxWidth()
+            .weight(1f)
             .emitDragGesture(interactionSource)
-            .clip(RoundedCornerShape(12.dp))
+            .clip(PersianTheme.shapes.shape12)
     ) {
         val cornerRadius = 16.dp.toPx()
         val satValSize = size
@@ -64,7 +76,7 @@ fun SatValPanel(
         val canvas = android.graphics.Canvas(bitmap)
         val satValPanel = RectF(0f, 0f, bitmap.width.toFloat(), bitmap.height.toFloat())
 
-        val rgb = AndroidColor.HSVToColor(floatArrayOf(hsvColor.first, 1f, 1f))
+        val rgb = AndroidColor.HSVToColor(floatArrayOf(state.colorHueState, 1f, 1f))
 
         val satShader = LinearGradient(
             satValPanel.left, satValPanel.top, satValPanel.right, satValPanel.top,
@@ -76,8 +88,8 @@ fun SatValPanel(
         )
 
         pressOffset.value = Offset(
-            hsvColor.second * satValSize.width,
-            (hsvColor.third - 1f) * (-1) * satValSize.height
+            state.colorSaturationState * satValSize.width,
+            (state.colorValueState - 1f) * (-1) * satValSize.height
         )
 
         canvas.drawRoundRect(
@@ -108,25 +120,17 @@ fun SatValPanel(
                 pressPositionOffset.y,
                 satValPanel
             )
-            sat = satPoint
-            value = valuePoint
-
-            setSatVal(sat, value)
+            state.colorSaturationState = satPoint
+            state.colorValueState = valuePoint
         }
 
         drawCircle(
             color = colors.saturationValueThumbColor,
-            radius = 10.dp.toPx(),
+            radius = 12.dp.toPx(),
             center = pressOffset.value,
             style = Stroke(
-                width = 1.dp.toPx()
+                width = 2.dp.toPx()
             )
-        )
-
-        drawCircle(
-            color = colors.saturationValueThumbColor,
-            radius = 2.dp.toPx(),
-            center = pressOffset.value,
         )
     }
 }

@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.colorPicker.view.panels
+package io.github.madmaximuus.persian.colorPicker.view.toolsPanel
 
 import android.graphics.RectF
 import androidx.compose.foundation.Canvas
@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.window.core.layout.WindowHeightSizeClass
 import io.github.madmaximuus.persian.R
 import io.github.madmaximuus.persian.colorPicker.view.ColorPickerViewColors
+import io.github.madmaximuus.persian.colorPicker.view.util.ColorPickerState
 import io.github.madmaximuus.persian.colorPicker.view.util.collectForPress
 import io.github.madmaximuus.persian.colorPicker.view.util.drawBitmap
 import io.github.madmaximuus.persian.colorPicker.view.util.emitDragGesture
@@ -36,11 +37,10 @@ import io.github.madmaximuus.persian.colorPicker.view.util.rotate
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
 @Composable
-fun AlphaBarCompact(
+internal fun AlphaSliderView(
+    modifier: Modifier = Modifier,
+    state: ColorPickerState,
     colors: ColorPickerViewColors,
-    color: Triple<Float, Float, Float>,
-    alpha: Float,
-    setAlpha: (Float) -> Unit
 ) {
     val scope = rememberCoroutineScope()
     val interactionSource = remember {
@@ -50,19 +50,15 @@ fun AlphaBarCompact(
         mutableStateOf(Offset.Zero)
     }
 
-    val resolvedColor = Color.hsv(
-        color.first,
-        color.second,
-        color.third
-    )
+    val resolvedColor = state.selectedColor
 
-    val padding = PersianTheme.spacing.size8.value
+    val padding = PersianTheme.spacing.size12.value
 
     val background = ImageBitmap.imageResource(id = R.drawable.vector).asAndroidBitmap()
     Canvas(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
-            .height(24.dp)
+            .height(30.dp)
             .clip(RoundedCornerShape(100))
             .border(1.dp, colors.selectorBorderColor, RoundedCornerShape(100))
             .emitDragGesture(interactionSource)
@@ -71,14 +67,19 @@ fun AlphaBarCompact(
 
         val huePanel = RectF(0f, 0f, size.width, size.height)
 
-        val brush = Brush.horizontalGradient(listOf(resolvedColor.copy(alpha = 0f), resolvedColor))
+        val brush = Brush.horizontalGradient(
+            listOf(
+                resolvedColor.copy(alpha = 0f),
+                resolvedColor.copy(alpha = 1f)
+            )
+        )
 
-        pressOffset.value = Offset(alpha * huePanel.width(), 0f)
+        pressOffset.value = Offset(state.alpha * huePanel.width(), 0f)
 
         scope.collectForPress(interactionSource) { pressPosition ->
             val pressPos = pressPosition.x.coerceIn(0f..drawScopeSize.width)
             val selectedAlpha = pointToAlphaCompact(pressPos, huePanel)
-            setAlpha(selectedAlpha)
+            state.alpha = selectedAlpha
         }
 
         drawBitmap(
@@ -89,7 +90,13 @@ fun AlphaBarCompact(
         drawRect(brush = brush)
 
         drawCircle(
-            colors.selectorThumbColor,
+            Color.White,
+            radius = size.height / 2 - padding / 2,
+            center = Offset(pressOffset.value.x, size.height / 2),
+            style = Fill
+        )
+        drawCircle(
+            state.selectedColor,
             radius = size.height / 2 - padding / 2,
             center = Offset(pressOffset.value.x, size.height / 2),
             style = Fill
@@ -106,26 +113,18 @@ fun AlphaBarCompact(
 }
 
 @Composable
-fun AlphaBarMedium(
+internal fun AlphaBarMedium(
+    state: ColorPickerState,
     colors: ColorPickerViewColors,
-    color: Triple<Float, Float, Float>,
-    alpha: Float,
-    setAlpha: (Float) -> Unit
 ) {
     val windowHeightSizeClass = currentWindowAdaptiveInfo().windowSizeClass.windowHeightSizeClass
     val scope = rememberCoroutineScope()
-    val interactionSource = remember {
-        MutableInteractionSource()
-    }
+    val interactionSource = remember { MutableInteractionSource() }
     val pressOffset = remember {
         mutableStateOf(Offset.Zero)
     }
 
-    val resolvedColor = Color.hsv(
-        color.first,
-        color.second,
-        color.third
-    )
+    val resolvedColor = state.selectedColor
 
     val padding = PersianTheme.spacing.size8.value
 
@@ -143,14 +142,19 @@ fun AlphaBarMedium(
 
         val huePanel = RectF(0f, 0f, size.width, size.height)
 
-        val brush = Brush.verticalGradient(listOf(resolvedColor, resolvedColor.copy(alpha = 0f)))
+        val brush = Brush.verticalGradient(
+            listOf(
+                resolvedColor.copy(alpha = 1f),
+                resolvedColor.copy(alpha = 0f)
+            )
+        )
 
-        pressOffset.value = Offset(0f, (1 - alpha) * huePanel.height())
+        pressOffset.value = Offset(0f, (1 - state.alpha) * huePanel.height())
 
         scope.collectForPress(interactionSource) { pressPosition ->
             val pressPos = pressPosition.y.coerceIn(0f..drawScopeSize.height)
             val selectedAlpha = pointToAlphaMedium(pressPos, huePanel)
-            setAlpha(1 - selectedAlpha)
+            state.alpha = selectedAlpha
         }
 
         drawBitmap(
@@ -161,13 +165,13 @@ fun AlphaBarMedium(
         drawRect(brush = brush)
 
         drawCircle(
-            colors.selectorThumbColor,
+            color = state.selectedColor,
             radius = size.width / 2 - padding / 2,
             center = Offset(size.width / 2, pressOffset.value.y),
             style = Fill
         )
         drawCircle(
-            colors.selectorThumbBorderColor,
+            color = colors.selectorThumbBorderColor,
             radius = size.width / 2 - padding / 2,
             center = Offset(size.width / 2, pressOffset.value.y),
             style = Stroke(
