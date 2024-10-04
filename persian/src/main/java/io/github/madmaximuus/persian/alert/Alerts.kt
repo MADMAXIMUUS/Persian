@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.window.core.layout.WindowHeightSizeClass
+import androidx.window.core.layout.WindowWidthSizeClass
 import io.github.madmaximuus.persian.dividers.InsetHorizontalDivider
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.surface.Surface
@@ -87,6 +88,7 @@ fun Alert(
     content: (@Composable () -> Unit)? = null
 ) {
     val heightSizeClass = currentWindowAdaptiveInfo().windowSizeClass.windowHeightSizeClass
+    val widthSizeClass = currentWindowAdaptiveInfo().windowSizeClass.windowWidthSizeClass
     Dialog(
         onDismissRequest = onDismiss,
         properties = DialogProperties(
@@ -158,8 +160,13 @@ fun Alert(
                                 )
                             }
                             val actionPadding =
-                                if (heightSizeClass == WindowHeightSizeClass.COMPACT)
+                                if (
+                                    widthSizeClass != WindowWidthSizeClass.COMPACT
+                                    && heightSizeClass != WindowHeightSizeClass.COMPACT
+                                )
                                     PaddingValues(PersianTheme.spacing.size16)
+                                else if (heightSizeClass == WindowHeightSizeClass.COMPACT)
+                                    PaddingValues(PersianTheme.spacing.size8)
                                 else PaddingValues(
                                     horizontal = PersianTheme.spacing.size16,
                                     vertical = PersianTheme.spacing.size8
