@@ -43,8 +43,8 @@ fun ListItem(
             ),
         verticalArrangement = Arrangement.Center
     ) {
-        val padding = if (edit != null) PaddingValues(end = PersianTheme.spacing.size12)
-        else PaddingValues(horizontal = PersianTheme.spacing.size12)
+        val padding = if (edit != null) PaddingValues(end = PersianTheme.spacing.size16)
+        else PaddingValues(horizontal = PersianTheme.spacing.size16)
         Row(
             Modifier
                 .fillMaxWidth()

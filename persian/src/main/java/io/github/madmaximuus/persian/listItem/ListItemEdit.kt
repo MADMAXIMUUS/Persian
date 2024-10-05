@@ -40,7 +40,7 @@ fun ListItemEdit.Check(
     Box(
         modifier = modifier
             .padding(
-                horizontal = PersianTheme.spacing.size12
+                start = PersianTheme.spacing.size12
             )
     ) {
         CheckboxToggle(
