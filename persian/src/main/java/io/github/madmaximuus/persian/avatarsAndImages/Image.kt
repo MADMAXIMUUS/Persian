@@ -49,7 +49,7 @@ import io.github.madmaximuus.persianSymbols.plus.base.Plus
  * @param overlayIcon the icon that will be displayed on top of the image, if [overlay] is `true`
  * @param colors The [AvatarColors] colors of the container, icons and text of this avatar.
  * @param sizes The [AvatarSizes] sizes of the container, icons and text of this avatar.
- * @param onClick called when this avatar is clicked.
+ * @param onClick called when this image is clicked.
  * @param badge element to be displayed in the corner of this avatar.
  */
 @OptIn(ExperimentalGlideComposeApi::class)
