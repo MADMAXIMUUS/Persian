@@ -119,7 +119,7 @@ private suspend fun startDismissWithExitAnimation(
  * @param actions The actions in [ActionSheetItemScope] of this action sheet.
  * @param header The title and subtitle in [ActionSheetHeaderScope] of this action sheet.
  * @param colors The [ActionSheetColors] colors of container, title and subtitle and [ActionSheetItemColors] of this action sheet.
- * @param sizes The [ActionSheetSizes] colors of container, title and subtitle and [ActionSheetItemSizes] of this action sheet.
+ * @param sizes The [ActionSheetSizes] sizes of container, title and subtitle and [ActionSheetItemSizes] of this action sheet.
  * @param onDismissRequest Executes when the user tries to dismiss the action sheet.
  */
 @Composable
