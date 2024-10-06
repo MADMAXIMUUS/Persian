@@ -37,6 +37,21 @@ import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.image.base.Image
 import io.github.madmaximuus.persianSymbols.plus.base.Plus
 
+/**
+ * The avatar displays an image. If there is no image, a placeholder is displayed
+ *
+ * @param modifier the [Modifier] to be applied to this avatar.
+ * @param imageUrl the Uri that used for image download.
+ * @param overlay if `true` [overlayIcon] will be displayed on top of the image.
+ * @param enabled controls the enabled state of this avatar. When `false`, this component will not
+ * respond to user input, and it will appear visually disabled.
+ * @param placeholderIcon the icon that will be displayed if the image is not loaded
+ * @param overlayIcon the icon that will be displayed on top of the image, if [overlay] is `true`
+ * @param colors The [AvatarColors] colors of the container, icons and text of this avatar.
+ * @param sizes The [AvatarSizes] sizes of the container, icons and text of this avatar.
+ * @param onClick called when this avatar is clicked.
+ * @param badge element to be displayed in the corner of this avatar.
+ */
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun Image(
@@ -66,7 +81,7 @@ fun Image(
                             .size(sizes.boxSizes)
                             .clip(sizes.shape(shape))
                             .background(
-                                colors.background(enabled),
+                                colors.container(enabled),
                                 sizes.shape(shape)
                             )
                             .border(1.dp, colors.border(enabled), sizes.shape(shape))
@@ -93,7 +108,7 @@ fun Image(
                                         ) {
                                             Icon(
                                                 painter = placeholderIcon,
-                                                sizes = sizes.placeholderSize,
+                                                sizes = sizes.placeholderIconSizes,
                                                 tint = colors.placeholderIcon(enabled)
                                             )
                                         }

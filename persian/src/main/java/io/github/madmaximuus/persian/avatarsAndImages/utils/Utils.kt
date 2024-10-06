@@ -8,6 +8,15 @@ import androidx.compose.ui.layout.MeasureScope
 import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.unit.Constraints
 
+/**
+ * The measure policy which is used to position the badge on the avatar and image.
+ *
+ * @param scope the measure scope of this measure policy.
+ * @param measurables elements that will be located in the layout.
+ * @param constraints the restrictions for elements.
+ * @param badgeHorizontalOffset the right offset for badge.
+ * @param badgeWithContentVerticalOffset the bottom offset for badge.
+ */
 internal fun badgeMeasurePolicy(
     scope: MeasureScope,
     measurables: List<Measurable>,
@@ -38,7 +47,8 @@ internal fun badgeMeasurePolicy(
         placementBlock = {
             anchorPlaceable.placeRelative(0, 0)
             val badgeX = anchorPlaceable.width - badgePlaceable.width + badgeHorizontalOffset
-            val badgeY = anchorPlaceable.height -badgePlaceable.height+ badgeWithContentVerticalOffset
+            val badgeY =
+                anchorPlaceable.height - badgePlaceable.height + badgeWithContentVerticalOffset
             badgePlaceable.placeRelative(badgeX, badgeY)
         }
     )

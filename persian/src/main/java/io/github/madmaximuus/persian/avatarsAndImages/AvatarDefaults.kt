@@ -17,8 +17,22 @@ import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persian.icon.IconSizes
 
+/**
+ * Contains all default values used by all alert types
+ */
 object AvatarDefaults {
 
+    /**
+     * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
+     *
+     * @param boxSizes the container size of this avatar.
+     * @param placeholderIconSizes the placeholder icon size of this avatar.
+     * @param overlayIconSizes the overlay icon size of this avatar.
+     * @param badgeSize the badge size of this avatar.
+     * @param horizontalBadgeOffset the badge left offset of this avatar.
+     * @param verticalBadgeOffset the badge bottom offset of this avatar.
+     * @param initialsTextStyle the initials text style of this avatar.
+     */
     @Composable
     fun size96(
         boxSizes: Dp = 96.dp,
@@ -40,6 +54,17 @@ object AvatarDefaults {
         initialsTextStyle
     )
 
+    /**
+     * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
+     *
+     * @param boxSizes the container size of this avatar.
+     * @param placeholderIconSizes the placeholder icon size of this avatar.
+     * @param overlayIconSizes the overlay icon size of this avatar.
+     * @param badgeSize the badge size of this avatar.
+     * @param horizontalBadgeOffset the badge left offset of this avatar.
+     * @param verticalBadgeOffset the badge bottom offset of this avatar.
+     * @param initialsTextStyle the initials text style of this avatar.
+     */
     @Composable
     fun size88(
         boxSizes: Dp = 88.dp,
@@ -61,6 +86,17 @@ object AvatarDefaults {
         initialsTextStyle
     )
 
+    /**
+     * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
+     *
+     * @param boxSizes the container size of this avatar.
+     * @param placeholderIconSizes the placeholder icon size of this avatar.
+     * @param overlayIconSizes the overlay icon size of this avatar.
+     * @param badgeSize the badge size of this avatar.
+     * @param horizontalBadgeOffset the badge left offset of this avatar.
+     * @param verticalBadgeOffset the badge bottom offset of this avatar.
+     * @param initialsTextStyle the initials text style of this avatar.
+     */
     @Composable
     fun size80(
         boxSizes: Dp = 80.dp,
@@ -82,6 +118,17 @@ object AvatarDefaults {
         initialsTextStyle
     )
 
+    /**
+     * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
+     *
+     * @param boxSizes the container size of this avatar.
+     * @param placeholderIconSizes the placeholder icon size of this avatar.
+     * @param overlayIconSizes the overlay icon size of this avatar.
+     * @param badgeSize the badge size of this avatar.
+     * @param horizontalBadgeOffset the badge left offset of this avatar.
+     * @param verticalBadgeOffset the badge bottom offset of this avatar.
+     * @param initialsTextStyle the initials text style of this avatar.
+     */
     @Composable
     fun size72(
         boxSizes: Dp = 72.dp,
@@ -103,6 +150,17 @@ object AvatarDefaults {
         initialsTextStyle
     )
 
+    /**
+     * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
+     *
+     * @param boxSizes the container size of this avatar.
+     * @param placeholderIconSizes the placeholder icon size of this avatar.
+     * @param overlayIconSizes the overlay icon size of this avatar.
+     * @param badgeSize the badge size of this avatar.
+     * @param horizontalBadgeOffset the badge left offset of this avatar.
+     * @param verticalBadgeOffset the badge bottom offset of this avatar.
+     * @param initialsTextStyle the initials text style of this avatar.
+     */
     @Composable
     fun size64(
         boxSizes: Dp = 64.dp,
@@ -124,6 +182,17 @@ object AvatarDefaults {
         initialsTextStyle
     )
 
+    /**
+     * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
+     *
+     * @param boxSizes the container size of this avatar.
+     * @param placeholderIconSizes the placeholder icon size of this avatar.
+     * @param overlayIconSizes the overlay icon size of this avatar.
+     * @param badgeSize the badge size of this avatar.
+     * @param horizontalBadgeOffset the badge left offset of this avatar.
+     * @param verticalBadgeOffset the badge bottom offset of this avatar.
+     * @param initialsTextStyle the initials text style of this avatar.
+     */
     @Composable
     fun size56(
         boxSizes: Dp = 56.dp,
@@ -145,6 +214,17 @@ object AvatarDefaults {
         initialsTextStyle
     )
 
+    /**
+     * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
+     *
+     * @param boxSizes the container size of this avatar.
+     * @param placeholderIconSizes the placeholder icon size of this avatar.
+     * @param overlayIconSizes the overlay icon size of this avatar.
+     * @param badgeSize the badge size of this avatar.
+     * @param horizontalBadgeOffset the badge left offset of this avatar.
+     * @param verticalBadgeOffset the badge bottom offset of this avatar.
+     * @param initialsTextStyle the initials text style of this avatar.
+     */
     @Composable
     fun size48(
         boxSizes: Dp = 48.dp,
@@ -166,6 +246,17 @@ object AvatarDefaults {
         initialsTextStyle
     )
 
+    /**
+     * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
+     *
+     * @param boxSizes the container size of this avatar.
+     * @param placeholderIconSizes the placeholder icon size of this avatar.
+     * @param overlayIconSizes the overlay icon size of this avatar.
+     * @param badgeSize the badge size of this avatar.
+     * @param horizontalBadgeOffset the badge left offset of this avatar.
+     * @param verticalBadgeOffset the badge bottom offset of this avatar.
+     * @param initialsTextStyle the initials text style of this avatar.
+     */
     @Composable
     fun size44(
         boxSizes: Dp = 44.dp,
@@ -187,6 +278,17 @@ object AvatarDefaults {
         initialsTextStyle
     )
 
+    /**
+     * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
+     *
+     * @param boxSizes the container size of this avatar.
+     * @param placeholderIconSizes the placeholder icon size of this avatar.
+     * @param overlayIconSizes the overlay icon size of this avatar.
+     * @param badgeSize the badge size of this avatar.
+     * @param horizontalBadgeOffset the badge left offset of this avatar.
+     * @param verticalBadgeOffset the badge bottom offset of this avatar.
+     * @param initialsTextStyle the initials text style of this avatar.
+     */
     @Composable
     fun size40(
         boxSizes: Dp = 40.dp,
@@ -208,6 +310,17 @@ object AvatarDefaults {
         initialsTextStyle
     )
 
+    /**
+     * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
+     *
+     * @param boxSizes the container size of this avatar.
+     * @param placeholderIconSizes the placeholder icon size of this avatar.
+     * @param overlayIconSizes the overlay icon size of this avatar.
+     * @param badgeSize the badge size of this avatar.
+     * @param horizontalBadgeOffset the badge left offset of this avatar.
+     * @param verticalBadgeOffset the badge bottom offset of this avatar.
+     * @param initialsTextStyle the initials text style of this avatar.
+     */
     @Composable
     fun size36(
         boxSizes: Dp = 36.dp,
@@ -229,6 +342,17 @@ object AvatarDefaults {
         initialsTextStyle
     )
 
+    /**
+     * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
+     *
+     * @param boxSizes the container size of this avatar.
+     * @param placeholderIconSizes the placeholder icon size of this avatar.
+     * @param overlayIconSizes the overlay icon size of this avatar.
+     * @param badgeSize the badge size of this avatar.
+     * @param horizontalBadgeOffset the badge left offset of this avatar.
+     * @param verticalBadgeOffset the badge bottom offset of this avatar.
+     * @param initialsTextStyle the initials text style of this avatar.
+     */
     @Composable
     fun size32(
         boxSizes: Dp = 32.dp,
@@ -250,6 +374,17 @@ object AvatarDefaults {
         initialsTextStyle
     )
 
+    /**
+     * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
+     *
+     * @param boxSizes the container size of this avatar.
+     * @param placeholderIconSizes the placeholder icon size of this avatar.
+     * @param overlayIconSizes the overlay icon size of this avatar.
+     * @param badgeSize the badge size of this avatar.
+     * @param horizontalBadgeOffset the badge left offset of this avatar.
+     * @param verticalBadgeOffset the badge bottom offset of this avatar.
+     * @param initialsTextStyle the initials text style of this avatar.
+     */
     @Composable
     fun size28(
         boxSizes: Dp = 28.dp,
@@ -271,6 +406,17 @@ object AvatarDefaults {
         initialsTextStyle
     )
 
+    /**
+     * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
+     *
+     * @param boxSizes the container size of this avatar.
+     * @param placeholderIconSizes the placeholder icon size of this avatar.
+     * @param overlayIconSizes the overlay icon size of this avatar.
+     * @param badgeSize the badge size of this avatar.
+     * @param horizontalBadgeOffset the badge left offset of this avatar.
+     * @param verticalBadgeOffset the badge bottom offset of this avatar.
+     * @param initialsTextStyle the initials text style of this avatar.
+     */
     @Composable
     fun size24(
         boxSizes: Dp = 24.dp,
@@ -292,6 +438,13 @@ object AvatarDefaults {
         initialsTextStyle
     )
 
+    /**
+     * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
+     *
+     * @param boxSizes the container size of this avatar.
+     * @param placeholderIconSizes the placeholder icon size of this avatar.
+     * @param initialsTextStyle the initials text style of this avatar.
+     */
     @Composable
     fun size20(
         boxSizes: Dp = 20.dp,
@@ -309,6 +462,13 @@ object AvatarDefaults {
         initialsTextStyle
     )
 
+    /**
+     * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
+     *
+     * @param boxSizes the container size of this avatar.
+     * @param placeholderIconSizes the placeholder icon size of this avatar.
+     * @param initialsTextStyle the initials text style of this avatar.
+     */
     @Composable
     fun size16(
         boxSizes: Dp = 16.dp,
@@ -327,6 +487,22 @@ object AvatarDefaults {
     )
 
 
+    /**
+     * Creates an [AvatarColors] that represents the default sizes used in an avatar.
+     *
+     * @param placeholderContainerColor the container color of this avatar when enabled when placeholder is displayed.
+     * @param disabledPlaceholderContainerColor the container color of this avatar when not enabled when placeholder is displayed.
+     * @param borderColor the border color of this avatar when enabled.
+     * @param disabledBorderColor the border color of this avatar when not enabled.
+     * @param placeholderIconColor the placeholder icon color of this avatar when enabled.
+     * @param disabledPlaceholderIconColor the placeholder icon color of this avatar when not enabled.
+     * @param overlayIconColor the overlay icon color of this avatar when enabled.
+     * @param disabledOverlayIconColor the overlay icon color of this avatar when not enabled.
+     * @param initialsTextColor the initials color of this avatar when enabled.
+     * @param disabledInitialsTextColor the initials text color of this avatar when not enabled.
+     * @param initialsContainerColor the initials container color of this avatar when enabled.
+     * @param disabledInitialsContainerColor the initials container color of this avatar when not enabled.
+     */
     @Composable
     fun colors(
         placeholderContainerColor: Color = PersianTheme.colorScheme.surfaceContainer,
@@ -367,6 +543,21 @@ object AvatarDefaults {
     )
 }
 
+/**
+ * Represents the container and contents sizes in different state.
+ *
+ * @param boxSizes the container size of this avatar.
+ * @param placeholderIconSizes the placeholder icon size of this avatar.
+ * @param overlayIconSizes the overlay icon size of this avatar.
+ * @param badgeSize the badge size of this avatar.
+ * @param horizontalBadgeOffset the badge left offset of this avatar.
+ * @param verticalBadgeOffset the badge bottom offset of this avatar.
+ * @param initialsTextStyle the initials text style of this avatar.
+ *
+ * @constructor create an instance with arbitrary colors.
+ *
+ * - See [AvatarDefaults.size96] and other sizes for the default sizes used in an [Avatar].
+ */
 @Immutable
 class AvatarSizes internal constructor(
     internal val boxSizes: Dp,
@@ -377,6 +568,9 @@ class AvatarSizes internal constructor(
     internal val verticalBadgeOffset: Dp,
     internal val initialsTextStyle: TextStyle
 ) {
+    /**
+     * Returns a copy of this [AvatarSizes], optionally overriding some of the values
+     */
     fun copy(
         boxSizes: Dp = this.boxSizes,
         placeholderSize: IconSizes = this.placeholderIconSizes,
@@ -420,6 +614,26 @@ class AvatarSizes internal constructor(
     }
 }
 
+/**
+ * Represents the container and contents colors in different state.
+ *
+ * @param placeholderContainerColor the container color of this avatar when enabled when placeholder is displayed.
+ * @param disabledPlaceholderContainerColor the container color of this avatar when not enabled when placeholder is displayed.
+ * @param borderColor the border color of this avatar when enabled.
+ * @param disabledBorderColor the border color of this avatar when not enabled.
+ * @param placeholderIconColor the placeholder icon color of this avatar when enabled.
+ * @param disabledPlaceholderIconColor the placeholder icon color of this avatar when not enabled.
+ * @param overlayIconColor the overlay icon color of this avatar when enabled.
+ * @param disabledOverlayIconColor the overlay icon color of this avatar when not enabled.
+ * @param initialsTextColor the initials color of this avatar when enabled.
+ * @param disabledInitialsTextColor the initials text color of this avatar when not enabled.
+ * @param initialsContainerColor the initials container color of this avatar when enabled.
+ * @param disabledInitialsContainerColor the initials container color of this avatar when not enabled.
+ *
+ * @constructor create an instance with arbitrary colors.
+ *
+ * - See [AvatarDefaults.colors] for the default colors used in an [Avatar].
+ */
 @Immutable
 class AvatarColors internal constructor(
     private val placeholderContainerColor: Color,
@@ -441,29 +655,58 @@ class AvatarColors internal constructor(
     private val disabledInitialsContainerColor: Color,
 ) {
 
+    /**
+     * Represents the container color for this avatar, depending on [enabled] and [initials].
+     *
+     * @param enabled whether the avatar is enabled
+     * @param initials whether the initials is displayed in avatar.
+     */
     @Stable
-    internal fun background(enabled: Boolean, initials: Boolean): Color =
+    internal fun container(enabled: Boolean, initials: Boolean): Color =
         if (enabled)
             if (initials) initialsContainerColor else placeholderContainerColor
         else
             if (initials) disabledInitialsContainerColor else disabledPlaceholderContainerColor
 
+    /**
+     * Represents the border color for this avatar, depending on [enabled].
+     *
+     * @param enabled whether the avatar is enabled.
+     */
     @Stable
     internal fun border(enabled: Boolean): Color =
         if (enabled) borderColor else disabledBorderColor
 
+    /**
+     * Represents the placeholder icon color for this avatar, depending on [enabled].
+     *
+     * @param enabled whether the avatar is enabled.
+     */
     @Stable
     internal fun placeholderIcon(enabled: Boolean): Color =
         if (enabled) placeholderIconColor else disabledPlaceholderIconColor
 
+    /**
+     * Represents the overlay icon color for this avatar, depending on [enabled].
+     *
+     * @param enabled whether the avatar is enabled.
+     */
     @Stable
     internal fun overlayIcon(enabled: Boolean): Color =
         if (enabled) overlayIconColor else disabledOverlayIconColor
 
+    /**
+     * Represents the initials color for this avatar, depending on [enabled].
+     *
+     * @param enabled whether the avatar is enabled.
+     */
     @Stable
     internal fun initials(enabled: Boolean): Color =
         if (enabled) initialsTextColor else disabledInitialsTextColor
 
+    /**
+     * Returns a copy of this [AvatarColors], optionally overriding some of the values
+     */
     fun copy(
         placeholderContainerColor: Color = this.placeholderContainerColor,
         disabledPlaceholderContainerColor: Color = this.disabledPlaceholderContainerColor,
@@ -535,8 +778,4 @@ class AvatarColors internal constructor(
         result = 31 * result + disabledInitialsContainerColor.hashCode()
         return result
     }
-}
-
-enum class OnlineBadgeSize {
-    SMALL, MEDIUM
 }

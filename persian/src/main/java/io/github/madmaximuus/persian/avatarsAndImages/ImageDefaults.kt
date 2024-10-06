@@ -19,6 +19,19 @@ import io.github.madmaximuus.persian.icon.IconSizes
 
 object ImageDefaults {
 
+    /**
+     * Creates an [ImageSizes] that represents the default sizes used in an image.
+     *
+     * @param boxSizes the container size of this image.
+     * @param placeholderIconSizes the placeholder icon size of this image.
+     * @param overlayIconSizes the overlay icon size of this image.
+     * @param smallShape the shape that used when [ImageShape.SMALL] of this image.
+     * @param mediumShape the shape that used when [ImageShape.MEDIUM] of this image.
+     * @param largeShape the shape that used when [ImageShape.LARGE] of this image.
+     * @param badgeSize the badge size of this image.
+     * @param horizontalBadgeOffset the badge left offset of this image.
+     * @param verticalBadgeOffset the badge bottom offset of this image.
+     */
     @Composable
     fun size96(
         boxSizes: Dp = 96.dp,
@@ -42,6 +55,19 @@ object ImageDefaults {
         verticalBadgeOffset
     )
 
+    /**
+     * Creates an [ImageSizes] that represents the default sizes used in an image.
+     *
+     * @param boxSizes the container size of this image.
+     * @param placeholderIconSizes the placeholder icon size of this image.
+     * @param overlayIconSizes the overlay icon size of this image.
+     * @param smallShape the shape that used when [ImageShape.SMALL] of this image.
+     * @param mediumShape the shape that used when [ImageShape.MEDIUM] of this image.
+     * @param largeShape the shape that used when [ImageShape.LARGE] of this image.
+     * @param badgeSize the badge size of this image.
+     * @param horizontalBadgeOffset the badge left offset of this image.
+     * @param verticalBadgeOffset the badge bottom offset of this image.
+     */
     @Composable
     fun size88(
         boxSizes: Dp = 88.dp,
@@ -65,6 +91,19 @@ object ImageDefaults {
         verticalBadgeOffset
     )
 
+    /**
+     * Creates an [ImageSizes] that represents the default sizes used in an image.
+     *
+     * @param boxSizes the container size of this image.
+     * @param placeholderIconSizes the placeholder icon size of this image.
+     * @param overlayIconSizes the overlay icon size of this image.
+     * @param smallShape the shape that used when [ImageShape.SMALL] of this image.
+     * @param mediumShape the shape that used when [ImageShape.MEDIUM] of this image.
+     * @param largeShape the shape that used when [ImageShape.LARGE] of this image.
+     * @param badgeSize the badge size of this image.
+     * @param horizontalBadgeOffset the badge left offset of this image.
+     * @param verticalBadgeOffset the badge bottom offset of this image.
+     */
     @Composable
     fun size80(
         boxSizes: Dp = 80.dp,
@@ -88,6 +127,19 @@ object ImageDefaults {
         verticalBadgeOffset
     )
 
+    /**
+     * Creates an [ImageSizes] that represents the default sizes used in an image.
+     *
+     * @param boxSizes the container size of this image.
+     * @param placeholderIconSizes the placeholder icon size of this image.
+     * @param overlayIconSizes the overlay icon size of this image.
+     * @param smallShape the shape that used when [ImageShape.SMALL] of this image.
+     * @param mediumShape the shape that used when [ImageShape.MEDIUM] of this image.
+     * @param largeShape the shape that used when [ImageShape.LARGE] of this image.
+     * @param badgeSize the badge size of this image.
+     * @param horizontalBadgeOffset the badge left offset of this image.
+     * @param verticalBadgeOffset the badge bottom offset of this image.
+     */
     @Composable
     fun size72(
         boxSizes: Dp = 72.dp,
@@ -111,6 +163,19 @@ object ImageDefaults {
         verticalBadgeOffset
     )
 
+    /**
+     * Creates an [ImageSizes] that represents the default sizes used in an image.
+     *
+     * @param boxSizes the container size of this image.
+     * @param placeholderIconSizes the placeholder icon size of this image.
+     * @param overlayIconSizes the overlay icon size of this image.
+     * @param smallShape the shape that used when [ImageShape.SMALL] of this image.
+     * @param mediumShape the shape that used when [ImageShape.MEDIUM] of this image.
+     * @param largeShape the shape that used when [ImageShape.LARGE] of this image.
+     * @param badgeSize the badge size of this image.
+     * @param horizontalBadgeOffset the badge left offset of this image.
+     * @param verticalBadgeOffset the badge bottom offset of this image.
+     */
     @Composable
     fun size64(
         boxSizes: Dp = 64.dp,
@@ -134,6 +199,19 @@ object ImageDefaults {
         verticalBadgeOffset
     )
 
+    /**
+     * Creates an [ImageSizes] that represents the default sizes used in an image.
+     *
+     * @param boxSizes the container size of this image.
+     * @param placeholderIconSizes the placeholder icon size of this image.
+     * @param overlayIconSizes the overlay icon size of this image.
+     * @param smallShape the shape that used when [ImageShape.SMALL] of this image.
+     * @param mediumShape the shape that used when [ImageShape.MEDIUM] of this image.
+     * @param largeShape the shape that used when [ImageShape.LARGE] of this image.
+     * @param badgeSize the badge size of this image.
+     * @param horizontalBadgeOffset the badge left offset of this image.
+     * @param verticalBadgeOffset the badge bottom offset of this image.
+     */
     @Composable
     fun size56(
         boxSizes: Dp = 56.dp,
@@ -157,6 +235,19 @@ object ImageDefaults {
         verticalBadgeOffset
     )
 
+    /**
+     * Creates an [ImageSizes] that represents the default sizes used in an image.
+     *
+     * @param boxSizes the container size of this image.
+     * @param placeholderIconSizes the placeholder icon size of this image.
+     * @param overlayIconSizes the overlay icon size of this image.
+     * @param smallShape the shape that used when [ImageShape.SMALL] of this image.
+     * @param mediumShape the shape that used when [ImageShape.MEDIUM] of this image.
+     * @param largeShape the shape that used when [ImageShape.LARGE] of this image.
+     * @param badgeSize the badge size of this image.
+     * @param horizontalBadgeOffset the badge left offset of this image.
+     * @param verticalBadgeOffset the badge bottom offset of this image.
+     */
     @Composable
     fun size48(
         boxSizes: Dp = 48.dp,
@@ -180,6 +271,19 @@ object ImageDefaults {
         verticalBadgeOffset
     )
 
+    /**
+     * Creates an [ImageSizes] that represents the default sizes used in an image.
+     *
+     * @param boxSizes the container size of this image.
+     * @param placeholderIconSizes the placeholder icon size of this image.
+     * @param overlayIconSizes the overlay icon size of this image.
+     * @param smallShape the shape that used when [ImageShape.SMALL] of this image.
+     * @param mediumShape the shape that used when [ImageShape.MEDIUM] of this image.
+     * @param largeShape the shape that used when [ImageShape.LARGE] of this image.
+     * @param badgeSize the badge size of this image.
+     * @param horizontalBadgeOffset the badge left offset of this image.
+     * @param verticalBadgeOffset the badge bottom offset of this image.
+     */
     @Composable
     fun size44(
         boxSizes: Dp = 44.dp,
@@ -203,6 +307,19 @@ object ImageDefaults {
         verticalBadgeOffset
     )
 
+    /**
+     * Creates an [ImageSizes] that represents the default sizes used in an image.
+     *
+     * @param boxSizes the container size of this image.
+     * @param placeholderIconSizes the placeholder icon size of this image.
+     * @param overlayIconSizes the overlay icon size of this image.
+     * @param smallShape the shape that used when [ImageShape.SMALL] of this image.
+     * @param mediumShape the shape that used when [ImageShape.MEDIUM] of this image.
+     * @param largeShape the shape that used when [ImageShape.LARGE] of this image.
+     * @param badgeSize the badge size of this image.
+     * @param horizontalBadgeOffset the badge left offset of this image.
+     * @param verticalBadgeOffset the badge bottom offset of this image.
+     */
     @Composable
     fun size40(
         boxSizes: Dp = 40.dp,
@@ -226,6 +343,19 @@ object ImageDefaults {
         verticalBadgeOffset
     )
 
+    /**
+     * Creates an [ImageSizes] that represents the default sizes used in an image.
+     *
+     * @param boxSizes the container size of this image.
+     * @param placeholderIconSizes the placeholder icon size of this image.
+     * @param overlayIconSizes the overlay icon size of this image.
+     * @param smallShape the shape that used when [ImageShape.SMALL] of this image.
+     * @param mediumShape the shape that used when [ImageShape.MEDIUM] of this image.
+     * @param largeShape the shape that used when [ImageShape.LARGE] of this image.
+     * @param badgeSize the badge size of this image.
+     * @param horizontalBadgeOffset the badge left offset of this image.
+     * @param verticalBadgeOffset the badge bottom offset of this image.
+     */
     @Composable
     fun size36(
         boxSizes: Dp = 40.dp,
@@ -249,6 +379,19 @@ object ImageDefaults {
         verticalBadgeOffset
     )
 
+    /**
+     * Creates an [ImageSizes] that represents the default sizes used in an image.
+     *
+     * @param boxSizes the container size of this image.
+     * @param placeholderIconSizes the placeholder icon size of this image.
+     * @param overlayIconSizes the overlay icon size of this image.
+     * @param smallShape the shape that used when [ImageShape.SMALL] of this image.
+     * @param mediumShape the shape that used when [ImageShape.MEDIUM] of this image.
+     * @param largeShape the shape that used when [ImageShape.LARGE] of this image.
+     * @param badgeSize the badge size of this image.
+     * @param horizontalBadgeOffset the badge left offset of this image.
+     * @param verticalBadgeOffset the badge bottom offset of this image.
+     */
     @Composable
     fun size32(
         boxSizes: Dp = 32.dp,
@@ -272,6 +415,19 @@ object ImageDefaults {
         verticalBadgeOffset
     )
 
+    /**
+     * Creates an [ImageSizes] that represents the default sizes used in an image.
+     *
+     * @param boxSizes the container size of this image.
+     * @param placeholderIconSizes the placeholder icon size of this image.
+     * @param overlayIconSizes the overlay icon size of this image.
+     * @param smallShape the shape that used when [ImageShape.SMALL] of this image.
+     * @param mediumShape the shape that used when [ImageShape.MEDIUM] of this image.
+     * @param largeShape the shape that used when [ImageShape.LARGE] of this image.
+     * @param badgeSize the badge size of this image.
+     * @param horizontalBadgeOffset the badge left offset of this image.
+     * @param verticalBadgeOffset the badge bottom offset of this image.
+     */
     @Composable
     fun size28(
         boxSizes: Dp = 28.dp,
@@ -295,6 +451,19 @@ object ImageDefaults {
         verticalBadgeOffset
     )
 
+    /**
+     * Creates an [ImageSizes] that represents the default sizes used in an image.
+     *
+     * @param boxSizes the container size of this image.
+     * @param placeholderIconSizes the placeholder icon size of this image.
+     * @param overlayIconSizes the overlay icon size of this image.
+     * @param smallShape the shape that used when [ImageShape.SMALL] of this image.
+     * @param mediumShape the shape that used when [ImageShape.MEDIUM] of this image.
+     * @param largeShape the shape that used when [ImageShape.LARGE] of this image.
+     * @param badgeSize the badge size of this image.
+     * @param horizontalBadgeOffset the badge left offset of this image.
+     * @param verticalBadgeOffset the badge bottom offset of this image.
+     */
     @Composable
     fun size24(
         boxSizes: Dp = 24.dp,
@@ -318,6 +487,15 @@ object ImageDefaults {
         verticalBadgeOffset
     )
 
+    /**
+     * Creates an [ImageSizes] that represents the default sizes used in an image.
+     *
+     * @param boxSizes the container size of this image.
+     * @param placeholderIconSizes the placeholder icon size of this image.
+     * @param smallShape the shape that used when [ImageShape.SMALL] of this image.
+     * @param mediumShape the shape that used when [ImageShape.MEDIUM] of this image.
+     * @param largeShape the shape that used when [ImageShape.LARGE] of this image.
+     */
     @Composable
     fun size20(
         boxSizes: Dp = 20.dp,
@@ -337,6 +515,15 @@ object ImageDefaults {
         0.dp
     )
 
+    /**
+     * Creates an [ImageSizes] that represents the default sizes used in an image.
+     *
+     * @param boxSizes the container size of this image.
+     * @param placeholderIconSizes the placeholder icon size of this image.
+     * @param smallShape the shape that used when [ImageShape.SMALL] of this image.
+     * @param mediumShape the shape that used when [ImageShape.MEDIUM] of this image.
+     * @param largeShape the shape that used when [ImageShape.LARGE] of this image.
+     */
     @Composable
     fun size16(
         boxSizes: Dp = 16.dp,
@@ -356,6 +543,18 @@ object ImageDefaults {
         0.dp
     )
 
+    /**
+     * Creates an [ImageColors] that represents the default sizes used in an avatar.
+     *
+     * @param placeholderContainerColor the container color of this avatar when enabled when placeholder is displayed.
+     * @param disabledPlaceholderContainerColor the container color of this avatar when not enabled when placeholder is displayed.
+     * @param borderColor the border color of this avatar when enabled.
+     * @param disabledBorderColor the border color of this avatar when not enabled.
+     * @param placeholderIconColor the placeholder icon color of this avatar when enabled.
+     * @param disabledPlaceholderIconColor the placeholder icon color of this avatar when not enabled.
+     * @param overlayIconColor the overlay icon color of this avatar when enabled.
+     * @param disabledOverlayIconColor the overlay icon color of this avatar when not enabled.
+     */
     @Composable
     fun colors(
         placeholderContainerColor: Color = PersianTheme.colorScheme.surfaceContainer,
@@ -382,10 +581,27 @@ enum class ImageShape {
     SMALL, MEDIUM, LARGE
 }
 
+/**
+ * Represents the container and contents sizes in different state.
+ *
+ * @param boxSizes the container size of this image.
+ * @param placeholderIconSizes the placeholder icon size of this image.
+ * @param overlayIconSizes the overlay icon size of this image.
+ * @param smallShape the shape that used when [ImageShape.SMALL] of this image.
+ * @param mediumShape the shape that used when [ImageShape.MEDIUM] of this image.
+ * @param largeShape the shape that used when [ImageShape.LARGE] of this image.
+ * @param badgeSize the badge size of this image.
+ * @param horizontalBadgeOffset the badge left offset of this image.
+ * @param verticalBadgeOffset the badge bottom offset of this image.
+ *
+ * @constructor create an instance with arbitrary colors.
+ *
+ * - See [ImageDefaults.size96] and other for the default sizes used in an [Image].
+ */
 @Immutable
 class ImageSizes internal constructor(
     internal val boxSizes: Dp,
-    internal val placeholderSize: IconSizes,
+    internal val placeholderIconSizes: IconSizes,
     internal val overlayIconSizes: IconSizes?,
     private val smallShape: Shape,
     private val mediumShape: Shape,
@@ -395,6 +611,11 @@ class ImageSizes internal constructor(
     internal val verticalBadgeOffset: Dp,
 ) {
 
+    /**
+     * Represents the container shape for this image, depending on [ImageShape].
+     *
+     * @param shape the [ImageShape] size of this image.
+     */
     @Stable
     internal fun shape(shape: ImageShape): Shape =
         when (shape) {
@@ -403,9 +624,12 @@ class ImageSizes internal constructor(
             ImageShape.LARGE -> largeShape
         }
 
+    /**
+     * Returns a copy of this [ImageSizes], optionally overriding some of the values
+     */
     fun copy(
         boxSizes: Dp = this.boxSizes,
-        placeholderSize: IconSizes = this.placeholderSize,
+        placeholderSize: IconSizes = this.placeholderIconSizes,
         overlayIconSizes: IconSizes? = this.overlayIconSizes,
         smallShape: Shape = this.smallShape,
         mediumShape: Shape = this.mediumShape,
@@ -430,7 +654,7 @@ class ImageSizes internal constructor(
         if (other == null || other !is ImageSizes) return false
 
         if (boxSizes != other.boxSizes) return false
-        if (placeholderSize != other.placeholderSize) return false
+        if (placeholderIconSizes != other.placeholderIconSizes) return false
         if (overlayIconSizes != other.overlayIconSizes) return false
         if (smallShape != other.smallShape) return false
         if (mediumShape != other.mediumShape) return false
@@ -442,7 +666,7 @@ class ImageSizes internal constructor(
 
     override fun hashCode(): Int {
         var result = boxSizes.hashCode()
-        result = 31 * result + placeholderSize.hashCode()
+        result = 31 * result + placeholderIconSizes.hashCode()
         result = 31 * result + overlayIconSizes.hashCode()
         result = 31 * result + smallShape.hashCode()
         result = 31 * result + mediumShape.hashCode()
@@ -454,6 +678,22 @@ class ImageSizes internal constructor(
     }
 }
 
+/**
+ * Represents the container and contents colors in different state.
+ *
+ * @param placeholderContainerColor the container color of this avatar when enabled when placeholder is displayed.
+ * @param disabledPlaceholderContainerColor the container color of this avatar when not enabled when placeholder is displayed.
+ * @param borderColor the border color of this avatar when enabled.
+ * @param disabledBorderColor the border color of this avatar when not enabled.
+ * @param placeholderIconColor the placeholder icon color of this avatar when enabled.
+ * @param disabledPlaceholderIconColor the placeholder icon color of this avatar when not enabled.
+ * @param overlayIconColor the overlay icon color of this avatar when enabled.
+ * @param disabledOverlayIconColor the overlay icon color of this avatar when not enabled.
+ *
+ * @constructor create an instance with arbitrary colors.
+ *
+ * - See [ImageDefaults.colors] for the default colors used in an [Avatar].
+ */
 @Immutable
 class ImageColors internal constructor(
     private val placeholderContainerColor: Color,
@@ -466,22 +706,45 @@ class ImageColors internal constructor(
     private val disabledOverlayIconColor: Color
 ) {
 
+    /**
+     * Represents the container color for this avatar, depending on [enabled].
+     *
+     * @param enabled whether the avatar is enabled
+     */
     @Stable
-    internal fun background(enabled: Boolean): Color =
+    internal fun container(enabled: Boolean): Color =
         if (enabled) placeholderContainerColor else disabledPlaceholderContainerColor
 
+    /**
+     * Represents the border color for this avatar, depending on [enabled].
+     *
+     * @param enabled whether the avatar is enabled.
+     */
     @Stable
     internal fun border(enabled: Boolean): Color =
         if (enabled) borderColor else disabledBorderColor
 
+    /**
+     * Represents the placeholder icon color for this avatar, depending on [enabled].
+     *
+     * @param enabled whether the avatar is enabled.
+     */
     @Stable
     internal fun placeholderIcon(enabled: Boolean): Color =
         if (enabled) placeholderIconColor else disabledPlaceholderIconColor
 
+    /**
+     * Represents the overlay icon color for this avatar, depending on [enabled].
+     *
+     * @param enabled whether the avatar is enabled.
+     */
     @Stable
     internal fun overlayIcon(enabled: Boolean): Color =
         if (enabled) overlayIconColor else disabledOverlayIconColor
 
+    /**
+     * Returns a copy of this [ImageColors], optionally overriding some of the values
+     */
     fun copy(
         placeholderContainerColor: Color = this.placeholderContainerColor,
         disabledPlaceholderContainerColor: Color = this.disabledPlaceholderContainerColor,

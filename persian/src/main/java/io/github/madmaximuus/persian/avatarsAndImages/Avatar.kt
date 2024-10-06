@@ -38,6 +38,22 @@ import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.plus.base.Plus
 import io.github.madmaximuus.persianSymbols.user.base.User
 
+/**
+ * The avatar displays an image of the user. If there is no image, a placeholder is displayed
+ *
+ * @param modifier the [Modifier] to be applied to this avatar.
+ * @param imageUrl the Uri that used for image download.
+ * @param overlay if `true` [overlayIcon] will be displayed on top of the image.
+ * @param enabled controls the enabled state of this avatar. When `false`, this component will not
+ * respond to user input, and it will appear visually disabled.
+ * @param placeholderIcon the icon that will be displayed if the image is not loaded
+ * @param overlayIcon the icon that will be displayed on top of the image, if [overlay] is `true`
+ * @param initials the text that will be displayed in this avatar.
+ * @param colors The [AvatarColors] colors of the container, icons and text of this avatar.
+ * @param sizes The [AvatarSizes] sizes of the container, icons and text of this avatar.
+ * @param onClick called when this avatar is clicked.
+ * @param badge element to be displayed in the corner of this avatar.
+ */
 @Composable
 fun Avatar(
     modifier: Modifier = Modifier,
@@ -65,7 +81,7 @@ fun Avatar(
                             .size(sizes.boxSizes)
                             .clip(PersianTheme.shapes.full)
                             .background(
-                                colors.background(enabled, initials != null),
+                                colors.container(enabled, initials != null),
                                 PersianTheme.shapes.full
                             )
                             .border(1.dp, colors.border(enabled), PersianTheme.shapes.full)
@@ -139,6 +155,15 @@ fun Avatar(
     )
 }
 
+/**
+ * The initials displays a text in this avatar.
+ *
+ * @param enabled controls the enabled state of this avatar. When `false`, this component will not
+ * respond to user input, and it will appear visually disabled.
+ * @param initials the text that will be displayed if the image is not loaded.
+ * @param colors The [AvatarColors] colors of the container, icons and text of this avatar.
+ * @param sizes The [AvatarSizes] sizes of the container, icons and text of this avatar.
+ */
 @Composable
 private fun Initials(
     initials: String,
@@ -158,7 +183,16 @@ private fun Initials(
     }
 }
 
-
+/**
+ * The image displays an image of the user. If there is no image, a placeholder is displayed
+ *
+ * @param imageUrl the Uri that used for image download.
+ * @param enabled controls the enabled state of this avatar. When `false`, this component will not
+ * respond to user input, and it will appear visually disabled.
+ * @param placeholderIcon the icon that will be displayed if the image is not loaded
+ * @param colors The [AvatarColors] colors of the container, icons and text of this avatar.
+ * @param sizes The [AvatarSizes] sizes of the container, icons and text of this avatar.
+ */
 @Composable
 @OptIn(ExperimentalGlideComposeApi::class)
 private fun Image(
