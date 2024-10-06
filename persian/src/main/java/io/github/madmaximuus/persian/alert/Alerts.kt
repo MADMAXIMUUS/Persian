@@ -33,7 +33,7 @@ import io.github.madmaximuus.persian.text.Text
  * @param modifier the [Modifier] to be applied to this alert.
  * @param actions The actions in [OnlyActionScope] of this alert.
  * @param colors The [AlertColors] colors of container and [actions] of this alert.
- * @param sizes The [AlertSizes] colors of container and [actions] of this alert.
+ * @param sizes The [AlertSizes] sizes of container and [actions] of this alert.
  * @param onDismiss Executes when the user tries to dismiss the alert.
  */
 @Composable
