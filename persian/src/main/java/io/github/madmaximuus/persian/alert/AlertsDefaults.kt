@@ -13,72 +13,118 @@ import io.github.madmaximuus.persian.dividers.DividerDefaults
 import io.github.madmaximuus.persian.dividers.DividerSizes
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
+/**
+ * Contains all default values used by all alert types
+ */
 object AlertsDefaults {
 
+    /**
+     * Creates an [AlertColors] that represents the default colors used in an alerts.
+     *
+     * @param containerColor the container color of this [Alert].
+     * @param titleColor the title color of this [Alert].
+     * @param messageColor the message color of this [Alert].
+     * @param dividerColor the divider color of this [Alert].
+     * @param actionColor the actions colors of this [Alert].
+     */
     @Composable
     fun colors(
         containerColor: Color = PersianTheme.colorScheme.surfaceContainer,
         titleColor: Color = PersianTheme.colorScheme.onSurface,
-        descriptionColor: Color = PersianTheme.colorScheme.onSurface,
+        messageColor: Color = PersianTheme.colorScheme.onSurface,
         dividerColor: Color = PersianTheme.colorScheme.outlineVariant,
         actionColor: ButtonColors = ButtonDefaults.tertiaryColors()
     ) = AlertColors(
         containerColor = containerColor,
         titleColor = titleColor,
-        descriptionColor = descriptionColor,
+        messageColor = messageColor,
         dividerColor = dividerColor,
         actionColor = actionColor
     )
 
+    /**
+     * Creates an [AlertSizes] that represents the default sizes used in an [OnlyActionAlert].
+     *
+     * @param containerShape the container shape size of this [OnlyActionAlert].
+     * @param titleTextStyle the title text style of this [OnlyActionAlert].
+     * @param messageTextStyle the message text style of this [OnlyActionAlert].
+     * @param dividerSizes the divider thickness and padding of this [OnlyActionAlert].
+     * @param actionSize the actions sizes of this [OnlyActionAlert].
+     */
     @Composable
     fun onlyActionSizes(
         containerShape: Shape = PersianTheme.shapes.shape20,
         titleTextStyle: TextStyle = PersianTheme.typography.headlineSmall,
-        descriptionTextStyle: TextStyle = PersianTheme.typography.bodyMedium,
+        messageTextStyle: TextStyle = PersianTheme.typography.bodyMedium,
         dividerSizes: DividerSizes = DividerDefaults.sizes(),
         actionSize: ButtonSizes = ButtonDefaults.largeSizes()
     ): AlertSizes = AlertSizes(
         containerShape = containerShape,
         titleTextStyle = titleTextStyle,
-        descriptionTextStyle = descriptionTextStyle,
+        messageTextStyle = messageTextStyle,
         dividerSizes = dividerSizes,
         actionSize = actionSize
     )
 
+    /**
+     * Creates an [AlertSizes] that represents the default sizes used in an [Alert].
+     *
+     * @param containerShape the container shape size of this [Alert].
+     * @param titleTextStyle the title text style of this [Alert].
+     * @param messageTextStyle the message text style of this [Alert].
+     * @param dividerSizes the divider thickness and padding of this [Alert].
+     * @param actionSize the actions sizes of this [Alert].
+     */
     @Composable
     fun alertSizes(
         containerShape: Shape = PersianTheme.shapes.shape20,
         titleTextStyle: TextStyle = PersianTheme.typography.headlineSmall,
-        descriptionTextStyle: TextStyle = PersianTheme.typography.bodyMedium,
+        messageTextStyle: TextStyle = PersianTheme.typography.bodyMedium,
         dividerSizes: DividerSizes = DividerDefaults.sizes(),
         actionSize: ButtonSizes = ButtonDefaults.smallSizes()
     ): AlertSizes = AlertSizes(
         containerShape = containerShape,
         titleTextStyle = titleTextStyle,
-        descriptionTextStyle = descriptionTextStyle,
+        messageTextStyle = messageTextStyle,
         dividerSizes = dividerSizes,
         actionSize = actionSize
     )
 }
 
+/**
+ * Represents the container, texts, divider and actions colors in different state.
+ *
+ * @param containerColor the container color of this alert.
+ * @param titleColor the title color of this alert.
+ * @param messageColor the message color of this alert.
+ * @param dividerColor the divider color of this alert.
+ * @param actionColor the actions color of this alert.
+ *
+ * @constructor create an instance with arbitrary colors.
+ *
+ * - See [AlertsDefaults.colors] for the default colors used in an [Alert].
+ */
 @Immutable
 class AlertColors internal constructor(
     internal val containerColor: Color,
     internal val titleColor: Color,
-    internal val descriptionColor: Color,
+    internal val messageColor: Color,
     internal val dividerColor: Color,
     internal val actionColor: ButtonColors
 ) {
+    /**
+     * Returns a copy of this [AlertColors], optionally overriding some of the values
+     */
     fun copy(
         backgroundColor: Color = this.containerColor,
         titleColor: Color = this.titleColor,
-        descriptionColor: Color = this.descriptionColor,
+        descriptionColor: Color = this.messageColor,
         dividerColor: Color = this.dividerColor,
         actionColor: ButtonColors = this.actionColor
     ) = AlertColors(
         backgroundColor.takeOrElse { this.containerColor },
         titleColor.takeOrElse { this.titleColor },
-        descriptionColor.takeOrElse { this.descriptionColor },
+        descriptionColor.takeOrElse { this.messageColor },
         dividerColor.takeOrElse { this.dividerColor },
         actionColor
     )
@@ -89,7 +135,7 @@ class AlertColors internal constructor(
 
         if (containerColor != other.containerColor) return false
         if (titleColor != other.titleColor) return false
-        if (descriptionColor != other.descriptionColor) return false
+        if (messageColor != other.messageColor) return false
         if (dividerColor != other.dividerColor) return false
         return actionColor == other.actionColor
     }
@@ -97,31 +143,48 @@ class AlertColors internal constructor(
     override fun hashCode(): Int {
         var result = containerColor.hashCode()
         result = 31 * result + titleColor.hashCode()
-        result = 31 * result + descriptionColor.hashCode()
+        result = 31 * result + messageColor.hashCode()
         result = 31 * result + dividerColor.hashCode()
         result = 31 * result + actionColor.hashCode()
         return result
     }
 }
 
+/**
+ * Represents the container, texts, divider and actions colors in different state.
+ *
+ * @param containerShape the container shape size of this alert.
+ * @param titleTextStyle the title text style of this alert.
+ * @param messageTextStyle the message text style of this alert.
+ * @param dividerSizes the divider thickness and padding sizes of this alert.
+ * @param actionSize the actions sizes of this alert.
+ *
+ * @constructor create an instance with arbitrary sizes.
+ *
+ * - See [AlertsDefaults.onlyActionSizes] for the default sizes used in an [OnlyActionAlert].
+ * - See [AlertsDefaults.alertSizes] for the default sizes user in an [Alert].
+ */
 @Immutable
 class AlertSizes internal constructor(
     internal val containerShape: Shape,
     internal val titleTextStyle: TextStyle,
-    internal val descriptionTextStyle: TextStyle,
+    internal val messageTextStyle: TextStyle,
     internal val dividerSizes: DividerSizes,
     internal val actionSize: ButtonSizes,
 ) {
+    /**
+     * Returns a copy of this [AlertSizes], optionally overriding some of the values
+     */
     fun copy(
         containerShape: Shape = this.containerShape,
         titleTextStyle: TextStyle = this.titleTextStyle,
-        descriptionTextStyle: TextStyle = this.descriptionTextStyle,
+        descriptionTextStyle: TextStyle = this.messageTextStyle,
         dividerSizes: DividerSizes = this.dividerSizes,
         actionSize: ButtonSizes = this.actionSize,
     ): AlertSizes = AlertSizes(
         containerShape = containerShape,
         titleTextStyle = titleTextStyle,
-        descriptionTextStyle = descriptionTextStyle,
+        messageTextStyle = descriptionTextStyle,
         dividerSizes = dividerSizes,
         actionSize = actionSize,
     )
@@ -132,7 +195,7 @@ class AlertSizes internal constructor(
 
         if (containerShape != other.containerShape) return false
         if (titleTextStyle != other.titleTextStyle) return false
-        if (descriptionTextStyle != other.descriptionTextStyle) return false
+        if (messageTextStyle != other.messageTextStyle) return false
         if (dividerSizes != other.dividerSizes) return false
         return actionSize == other.actionSize
     }
@@ -140,7 +203,7 @@ class AlertSizes internal constructor(
     override fun hashCode(): Int {
         var result = containerShape.hashCode()
         result = 31 * result + titleTextStyle.hashCode()
-        result = 31 * result + descriptionTextStyle.hashCode()
+        result = 31 * result + messageTextStyle.hashCode()
         result = 31 * result + dividerSizes.hashCode()
         result = 31 * result + actionSize.hashCode()
         return result
