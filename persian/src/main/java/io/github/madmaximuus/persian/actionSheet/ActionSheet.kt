@@ -50,11 +50,20 @@ import kotlinx.coroutines.launch
 
 private const val ANIMATION_COMPACT_TIME = 300L
 
+/**
+ * Helper class for [ActionSheet] for launch onDismissFlow
+ *
+ * @param coroutineScope Coroutine scope for launch onDismissFlow
+ * @param onDismissFlow Flow for launch onDismiss with animation
+ */
 class AnimatedTransitionDialogHelper(
     private val coroutineScope: CoroutineScope,
     private val onDismissFlow: MutableSharedFlow<Any>
 ) {
 
+    /**
+     * Function that called when action was clicked
+     */
     internal fun triggerAnimatedDismiss() {
         coroutineScope.launch {
             onDismissFlow.emit(Any())
@@ -62,6 +71,13 @@ class AnimatedTransitionDialogHelper(
     }
 }
 
+/**
+ * Animation for appear/disappear [ActionSheet] on the screen
+ *
+ * @param visible Trigger for launch animation
+ * @param screenHeight Screen height for calculation [ActionSheet] position
+ * @param content Content of [ActionSheet]
+ */
 @Composable
 private fun AnimatedSlideInTransition(
     visible: Boolean,
@@ -80,6 +96,12 @@ private fun AnimatedSlideInTransition(
     )
 }
 
+/**
+ * Helper function for animated appear/disappear on the screen
+ *
+ * @param animateTrigger Trigger for launch animation
+ * @param onDismissRequest request launched when [ActionSheet] disappeared from screen
+ */
 private suspend fun startDismissWithExitAnimation(
     animateTrigger: MutableState<Boolean>,
     onDismissRequest: () -> Unit,
@@ -93,9 +115,11 @@ private suspend fun startDismissWithExitAnimation(
  * Action sheet is an element that presents a contextual menu displayed at the bottom of the screen.
  * This element provides the user with several options related to the current context.
  * Action sheet is used in cases where an action selection is required, but there is no need to display these [actions] permanently on the screen.
- * @param actions The actions of your action sheet.
- * @param header The title and subtitle of your action sheet.
- * @param colors The [ActionSheetColors] colors of container, title and subtitle of action sheet.
+ *
+ * @param actions The actions in [ActionSheetItemScope] of this action sheet.
+ * @param header The title and subtitle in [ActionSheetHeaderScope] of this action sheet.
+ * @param colors The [ActionSheetColors] colors of container, title and subtitle and [ActionSheetItemColors] of this action sheet.
+ * @param sizes The [ActionSheetSizes] colors of container, title and subtitle and [ActionSheetItemSizes] of this action sheet.
  * @param onDismissRequest Executes when the user tries to dismiss the action sheet.
  */
 @Composable

@@ -13,10 +13,10 @@ import android.window.OnBackInvokedDispatcher
 import androidx.annotation.DoNotInline
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionContext
 import androidx.compose.runtime.DisposableEffect
@@ -43,20 +43,21 @@ import androidx.lifecycle.setViewTreeViewModelStoreOwner
 import androidx.savedstate.findViewTreeSavedStateRegistryOwner
 import androidx.savedstate.setViewTreeSavedStateRegistryOwner
 import io.github.madmaximuus.persian.R
+import io.github.madmaximuus.persian.actionSheet.ActionSheet
 import java.util.UUID
 
 /**
- * Properties used to customize the behavior of a [ModalBottomSheet].
+ * Properties used to customize the behavior of a [ActionSheetPopup].
  *
  * @param securePolicy Policy for setting [WindowManager.LayoutParams.FLAG_SECURE] on the bottom
  * sheet's window.
- * @param isFocusable Whether the modal bottom sheet is focusable. When true,
- * the modal bottom sheet will receive IME events and key presses, such as when
+ * @param isFocusable Whether the action sheet is focusable. When true,
+ * the action sheet will receive IME events and key presses, such as when
  * the back button is pressed.
- * @param shouldDismissOnBackPress Whether the modal bottom sheet can be dismissed by pressing
+ * @param shouldDismissOnBackPress Whether the action sheet can be dismissed by pressing
  * the back button. If true, pressing the back button will call onDismissRequest.
  * Note that [isFocusable] must be set to true in order to receive key events such as
- * the back button - if the modal bottom sheet is not focusable then this property does nothing.
+ * the back button - if the action sheet is not focusable then this property does nothing.
  */
 class ActionSheetProperties(
     val securePolicy: SecureFlagPolicy = SecureFlagPolicy.Inherit,
@@ -83,7 +84,13 @@ class ActionSheetProperties(
 }
 
 /**
- * Popup specific for modal bottom sheet.
+ * Popup specific for [ActionSheet].
+ *
+ * @param properties Properties used to customize the behavior
+ * @param onDismissRequest Executes when the user clicks outside of the bottom sheet, after sheet
+ * animates to closed state.
+ * @param windowInsets Window insets to be passed to the action sheet via [PaddingValues] params.
+ * @param content The content to be displayed inside the action sheet.
  */
 @Composable
 internal fun ActionSheetPopup(
@@ -134,7 +141,14 @@ internal fun ActionSheetPopup(
     }
 }
 
-/** Custom compose view for [ActionSheet] */
+/** Custom compose view for [ActionSheet]
+ *
+ * @param properties Properties used to customize the behavior
+ * @param onDismissRequest Executes when the user clicks outside of the bottom sheet, after sheet
+ * animates to closed state.
+ * @param composeView Inside view
+ * @param saveId Id for view
+ * */
 private class ModalBottomSheetWindow(
     private val properties: ActionSheetProperties,
     private var onDismissRequest: () -> Unit,

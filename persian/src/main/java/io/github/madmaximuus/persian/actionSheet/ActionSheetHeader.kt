@@ -11,19 +11,39 @@ import androidx.compose.ui.text.style.TextAlign
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.text.Text
 
+/**
+ * The scope of header in this [ActionSheet].
+ *
+ * @property colors the colors used for title and subtitle.
+ * @property sizes the sizes used for title and subtitle.
+ */
 interface ActionSheetHeaderScope : ColumnScope {
     val colors: ActionSheetColors
     val sizes: ActionSheetSizes
 }
 
+/**
+ * The wrapper class for scope of header in this [ActionSheet].
+ *
+ * @param scope the column scope used in header.
+ * @param colors the colors used for title and subtitle.
+ * @param sizes the sizes used for title and subtitle.
+ */
 internal class ActionSheetHeaderScopeWrapper(
     val scope: ColumnScope,
     override val colors: ActionSheetColors,
     override val sizes: ActionSheetSizes,
 ) : ActionSheetHeaderScope, ColumnScope by scope
 
+/**
+ * The extension function for [ActionSheetHeaderScope] that represent header in this [ActionSheet].
+ *
+ * @param modifier the [Modifier] to be applied to this action sheet.
+ * @param title text that will be displayed in the title.
+ * @param subtitle text that will be displayed in the subtitle.
+ */
 @Composable
-fun ActionSheetHeaderScope.ActionSheetHeader(
+fun ActionSheetHeaderScope.Header(
     modifier: Modifier = Modifier,
     title: String?,
     subtitle: String?
@@ -47,8 +67,8 @@ fun ActionSheetHeaderScope.ActionSheetHeader(
                     ),
                 text = it,
                 textAlign = TextAlign.Center,
-                style = this@ActionSheetHeader.sizes.titleTextStyle,
-                color = this@ActionSheetHeader.colors.titleColor
+                style = this@Header.sizes.titleTextStyle,
+                color = this@Header.colors.titleColor
             )
         }
         subtitle?.let {
@@ -61,8 +81,8 @@ fun ActionSheetHeaderScope.ActionSheetHeader(
                     ),
                 text = it,
                 textAlign = TextAlign.Justify,
-                style = this@ActionSheetHeader.sizes.subtitleTextStyle,
-                color = this@ActionSheetHeader.colors.subtitleColor
+                style = this@Header.sizes.subtitleTextStyle,
+                color = this@Header.colors.subtitleColor
             )
         }
     }

@@ -20,12 +20,27 @@ import io.github.madmaximuus.persian.foundation.ripple.ripple
 import io.github.madmaximuus.persian.icon.Icon
 import io.github.madmaximuus.persian.text.Text
 
+/**
+ * The scope of Item in this [ActionSheet].
+ *
+ * @property animatedTransitionDialogHelper the [AnimatedTransitionDialogHelper] for launch dismiss animation.
+ * @property colors the colors used for text and leading icon.
+ * @property sizes the sizes used for text and leading icon.
+ */
 interface ActionSheetItemScope : ColumnScope {
     val animatedTransitionDialogHelper: AnimatedTransitionDialogHelper
     val colors: ActionSheetItemColors
     val sizes: ActionSheetItemSizes
 }
 
+/**
+ * The wrapper class for scope of action in this [ActionSheet].
+ *
+ * @param scope the column scope used in action.
+ * @param animatedTransitionDialogHelper the [AnimatedTransitionDialogHelper] for launch dismiss animation.
+ * @param colors the colors used for title and subtitle.
+ * @param sizes the sizes used for title and subtitle.
+ */
 internal class ActionSheetItemScopeWrapper(
     val scope: ColumnScope,
     override val animatedTransitionDialogHelper: AnimatedTransitionDialogHelper,
@@ -34,18 +49,21 @@ internal class ActionSheetItemScopeWrapper(
 ) : ActionSheetItemScope, ColumnScope by scope
 
 /**
- * @property text Text to be displayed in action
- * @property leadingIcon Icon to be displayed in action
- * @property enabled Is the action enabled or not?
- * @property negative Is the action negative or not
- * @property onClick Action that is called when the action is clicked
+ * The extension function for [ActionSheetItemScope] that represent action in this [ActionSheet].
+ *
+ * @param text text that will be displayed in the action.
+ * @param leadingIcon icon that will be displayed in the action.
+ * @param enabled controls the enabled state of this action. When `false`, this component will not
+ * respond to user input, and it will appear visually disabled.
+ * @param destructive controls the destructive state of this action. When `true`, this component will change the color of text and icon.
+ * @param onClick called when this action is clicked
  */
 @Composable
-fun ActionSheetItemScope.ActionItem(
+fun ActionSheetItemScope.Action(
     text: String,
     leadingIcon: Painter? = null,
     enabled: Boolean = true,
-    negative: Boolean = false,
+    destructive: Boolean = false,
     onClick: () -> Unit,
 ) {
     Row(
@@ -56,12 +74,15 @@ fun ActionSheetItemScope.ActionItem(
                 enabled = enabled,
                 onClick = {
                     onClick()
-                    this@ActionItem.animatedTransitionDialogHelper.triggerAnimatedDismiss()
+                    this@Action.animatedTransitionDialogHelper.triggerAnimatedDismiss()
                 },
                 role = Role.Button,
                 interactionSource = remember { MutableInteractionSource() },
                 indication = ripple(
-                    color = this@ActionItem.colors.textColor(enabled = enabled, isError = negative)
+                    color = this@Action.colors.textColor(
+                        enabled = enabled,
+                        destructive = destructive
+                    )
                 )
             )
             .padding(
@@ -73,14 +94,14 @@ fun ActionSheetItemScope.ActionItem(
         leadingIcon?.let {
             Icon(
                 painter = it,
-                sizes = this@ActionItem.sizes.iconSize,
-                tint = this@ActionItem.colors.iconColor(enabled, negative)
+                sizes = this@Action.sizes.iconSize,
+                tint = this@Action.colors.iconColor(enabled, destructive)
             )
         }
         Text(
             text = text,
-            style = this@ActionItem.sizes.textStyle,
-            color = this@ActionItem.colors.textColor(enabled = enabled, isError = negative),
+            style = this@Action.sizes.textStyle,
+            color = this@Action.colors.textColor(enabled = enabled, destructive = destructive),
         )
     }
 }
