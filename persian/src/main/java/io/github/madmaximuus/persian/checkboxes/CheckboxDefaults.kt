@@ -19,8 +19,25 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state38
 
+/**
+ * Contains the default values used by [Checkbox].
+ */
 object CheckboxDefaults {
 
+    /**
+     * Creates a [CheckboxToggleColors] that represents the default container and content colors used in a Checkbox toggle.
+     *
+     * @param checkedBorderColor The color of the border when the checkbox is checked.
+     * @param uncheckedBorderColor The color of the border when the checkbox is unchecked.
+     * @param checkedBoxColor The color of the box when the checkbox is checked.
+     * @param uncheckedBoxColor The color of the box when the checkbox is unchecked.
+     * @param disabledCheckedBoxColor The color of the box when the checkbox is checked and disabled.
+     * @param checkedCheckmarkColor The color of the checkmark when the checkbox is checked.
+     * @param uncheckedCheckmarkColor The color of the checkmark when the checkbox is unchecked.
+     * @param disabledBorderColor The color of the border when the checkbox is disabled.
+     * @param disabledUncheckedColor The color of the box when the checkbox is unchecked and disabled.
+     * @param disabledIndeterminateColor The color of the box when the checkbox is in an indeterminate state and disabled.
+     */
     @Composable
     fun toggleColors(
         checkedBorderColor: Color = PersianTheme.colorScheme.primary,
@@ -53,6 +70,13 @@ object CheckboxDefaults {
         disabledIndeterminateBorderColor = disabledIndeterminateColor
     )
 
+    /**
+     * Creates a [CheckboxColors] that represents the default container and content colors used in a Checkbox.
+     *
+     * @param toggleColors The [CheckboxToggleColors] instance that defines the colors for the checkbox toggle.
+     * @param textColor The color of the text when the checkbox is enabled.
+     * @param disabledTextColor The color of the text when the checkbox is disabled.
+     */
     @Composable
     fun colors(
         toggleColors: CheckboxToggleColors = toggleColors(),
@@ -64,6 +88,13 @@ object CheckboxDefaults {
         disabledTextColor = disabledTextColor
     )
 
+    /**
+     * Creates a [CheckboxSizes] that represents the default container and content sized used in a Checkbox.
+     *
+     * @param toggleSize The size of the checkbox toggle.
+     * @param textStyle The style of the text associated with the checkbox.
+     * @param contentPadding The padding values for the content of the checkbox.
+     */
     @Composable
     fun sizes(
         toggleSize: Dp = 48.dp,
@@ -71,20 +102,34 @@ object CheckboxDefaults {
         contentPadding: PaddingValues = PaddingValues(
             end = PersianTheme.spacing.size12
         )
-    ) = CheckboxSizes(
+    ): CheckboxSizes = CheckboxSizes(
         toggleSize = toggleSize,
         textStyle = textStyle,
         contentPadding = contentPadding
     )
 }
 
+/**
+ * Represents the container and content sizes used in a checkbox in different states.
+ *
+ * @param toggleSize The size of the checkbox toggle.
+ * @param textStyle The style of the text associated with the checkbox.
+ * @param contentPadding The padding values for the content of the checkbox.
+ */
 @Immutable
-data class CheckboxSizes(
+class CheckboxSizes internal constructor(
     val toggleSize: Dp,
     val textStyle: TextStyle,
     val contentPadding: PaddingValues
 )
 
+/**
+ * Represents the container and content colors used in a checkbox in different states.
+ *
+ * @param toggleColors The [CheckboxToggleColors] instance that defines the colors for the checkbox toggle.
+ * @param textColor The color of the text when the checkbox is enabled.
+ * @param disabledTextColor The color of the text when the checkbox is disabled.
+ */
 @Immutable
 class CheckboxColors internal constructor(
     internal val toggleColors: CheckboxToggleColors,
@@ -92,11 +137,34 @@ class CheckboxColors internal constructor(
     private val disabledTextColor: Color
 ) {
 
+    /**
+     * Returns the color of the text based on the enabled status of the checkbox.
+     *
+     * @param enabled Whether the checkbox is enabled.
+     */
     @Stable
     internal fun textColor(enabled: Boolean): Color =
         if (enabled) textColor else disabledTextColor
 }
 
+/**
+ * Represents the container and content colors used in a checkbox toggle in different states.
+ *
+ * @param checkedCheckmarkColor The color of the checkmark when the checkbox is checked.
+ * @param uncheckedCheckmarkColor The color of the checkmark when the checkbox is unchecked.
+ * @param checkedBoxColor The color of the box when the checkbox is checked.
+ * @param uncheckedBoxColor The color of the box when the checkbox is unchecked.
+ * @param disabledCheckedBoxColor The color of the box when the checkbox is checked and disabled.
+ * @param disabledUncheckedBoxColor The color of the box when the checkbox is unchecked and disabled.
+ * @param disabledIndeterminateBoxColor The color of the box when the checkbox is in an indeterminate state and disabled.
+ * @param checkedBorderColor The color of the border when the checkbox is checked.
+ * @param uncheckedBorderColor The color of the border when the checkbox is unchecked.
+ * @param disabledBorderColor The color of the border when the checkbox is disabled.
+ * @param disabledIndeterminateBorderColor The color of the border when the checkbox is in an indeterminate state and disabled.
+ *
+ * @constructor create an instance with arbitrary colors.
+ * - See [CheckboxDefaults.toggleColors] for the default colors used in a Checkbox toggle.
+ */
 @Immutable
 class CheckboxToggleColors internal constructor(
     private val checkedCheckmarkColor: Color,
@@ -111,10 +179,14 @@ class CheckboxToggleColors internal constructor(
     private val checkedBorderColor: Color,
     private val uncheckedBorderColor: Color,
     private val disabledBorderColor: Color,
-    private val disabledIndeterminateBorderColor: Color,
+    private val disabledIndeterminateBorderColor: Color
+) {
 
-    ) {
-
+    /**
+     * Returns the color of the checkmark based on the current state of the checkbox.
+     *
+     * @param state The current state of the checkbox.
+     */
     @Composable
     internal fun checkmarkColor(state: ToggleableState): State<Color> {
         val target = if (state == ToggleableState.Off) {
@@ -131,6 +203,12 @@ class CheckboxToggleColors internal constructor(
         )
     }
 
+    /**
+     * Returns the color of the box based on the current state and enabled status of the checkbox.
+     *
+     * @param enabled Whether the checkbox is enabled.
+     * @param state The current state of the checkbox.
+     */
     @Composable
     internal fun boxColor(enabled: Boolean, state: ToggleableState): State<Color> {
         val target = if (enabled) {
@@ -159,6 +237,12 @@ class CheckboxToggleColors internal constructor(
         }
     }
 
+    /**
+     * Returns the color of the border based on the current state and enabled status of the checkbox.
+     *
+     * @param enabled Whether the checkbox is enabled.
+     * @param state The current state of the checkbox.
+     */
     @Composable
     internal fun borderColor(enabled: Boolean, state: ToggleableState): State<Color> {
         val target = if (enabled) {

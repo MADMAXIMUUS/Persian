@@ -6,6 +6,7 @@ import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.core.updateTransition
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.interaction.Interaction
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
@@ -37,6 +38,22 @@ import io.github.madmaximuus.persian.foundation.ripple.ripple
 import kotlin.math.floor
 import kotlin.math.max
 
+/**
+ * Checkboxes can have a parent-child relationship with other checkboxes. When the parent checkbox
+ * is checked, all child checkboxes are checked. If a parent checkbox is unchecked, all child
+ * checkboxes are unchecked. If some, but not all, child checkboxes are checked, the parent checkbox
+ * becomes an indeterminate checkbox.
+ *
+ * @param state The current state of the checkbox, which can be checked, unchecked, or indeterminate.
+ * @param onClick A callback to be invoked when the checkbox is clicked.
+ * @param modifier The [Modifier] to be applied to the checkbox.
+ * @param enabled Whether the checkbox is enabled and can be interacted with.
+ * @param colors The colors to be used for the checkbox.
+ * @param interactionSource an optional hoisted [MutableInteractionSource] for observing and
+ *   emitting [Interaction]s for this button. You can use this to change the checkbox toggle's appearance or
+ *   preview the button in different states. Note that if `null` is provided, interactions will
+ *   still happen internally.
+ */
 @Composable
 fun TriStateCheckboxToggle(
     state: ToggleableState,

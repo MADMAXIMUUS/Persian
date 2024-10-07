@@ -1,6 +1,5 @@
 package io.github.madmaximuus.persian.checkboxes
 
-import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -15,14 +14,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.state.ToggleableState
-import androidx.compose.ui.tooling.preview.Preview
 import io.github.madmaximuus.persian.checkboxes.toggle.CheckboxToggle
 import io.github.madmaximuus.persian.checkboxes.toggle.TriStateCheckboxToggle
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.ripple.ripple
-import io.github.madmaximuus.persian.surface.Surface
 import io.github.madmaximuus.persian.text.Text
 
+/**
+ * Checkboxes allow users to select one or more items from a set. Checkboxes can turn an option on
+ * or off.
+ *
+ * @param modifier The [Modifier] to be applied to the checkbox.
+ * @param text The text label to be displayed next to the checkbox.
+ * @param checked The current checked state of the checkbox.
+ * @param enabled Whether the checkbox is enabled and can be interacted with. Defaults to true.
+ * @param onCheckedChange A callback to be invoked when the checked state changes.
+ * @param colors The colors to be used for the checkbox.
+ * @param sizes The sizes to be used for the checkbox.
+ */
 @Composable
 fun Checkbox(
     modifier: Modifier = Modifier,
@@ -66,6 +75,20 @@ fun Checkbox(
     }
 }
 
+/**
+ * Checkboxes can have a parent-child relationship with other checkboxes. When the parent checkbox
+ * is checked, all child checkboxes are checked. If a parent checkbox is unchecked, all child
+ * checkboxes are unchecked. If some, but not all, child checkboxes are checked, the parent checkbox
+ * becomes an indeterminate checkbox.
+ *
+ * @param text The text label to be displayed next to the checkbox.
+ * @param state The current state of the checkbox, which can be checked, unchecked, or indeterminate.
+ * @param onClick A callback to be invoked when the checkbox is clicked.
+ * @param modifier The [Modifier] to be applied to the checkbox.
+ * @param enabled Whether the checkbox is enabled and can be interacted with.
+ * @param colors The colors to be used for the checkbox.
+ * @param sizes The sizes to be used for the checkbox.
+ */
 @Composable
 fun TriStateCheckbox(
     modifier: Modifier = Modifier,
@@ -106,35 +129,5 @@ fun TriStateCheckbox(
             color = colors.textColor(enabled),
             style = sizes.textStyle
         )
-    }
-}
-
-@Preview
-@Preview(uiMode = UI_MODE_NIGHT_YES)
-@Composable
-private fun CheckboxPreview() {
-    PersianTheme {
-        Surface {
-            Checkbox(
-                text = "Checkbox",
-                checked = true,
-                onCheckedChange = {}
-            )
-        }
-    }
-}
-
-@Preview
-@Preview(uiMode = UI_MODE_NIGHT_YES)
-@Composable
-private fun TriStateCheckboxPreview() {
-    PersianTheme {
-        Surface {
-            TriStateCheckbox(
-                text = "Checkbox",
-                state = ToggleableState.Indeterminate,
-                onClick = {}
-            )
-        }
     }
 }

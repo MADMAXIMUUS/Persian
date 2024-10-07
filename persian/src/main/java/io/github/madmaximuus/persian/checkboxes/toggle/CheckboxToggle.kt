@@ -1,17 +1,28 @@
 package io.github.madmaximuus.persian.checkboxes.toggle
 
-import android.content.res.Configuration
+import androidx.compose.foundation.interaction.Interaction
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.state.ToggleableState
-import androidx.compose.ui.tooling.preview.Preview
 import io.github.madmaximuus.persian.checkboxes.CheckboxDefaults
 import io.github.madmaximuus.persian.checkboxes.CheckboxToggleColors
-import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.surface.Surface
 
+/**
+ * Checkboxes allow users to select one or more items from a set. Checkboxes can turn an option on
+ * or off.
+ *
+ * @param checked The current checked state of the checkbox.
+ * @param onCheckedChange A callback to be invoked when the checked state changes.
+ * @param modifier The [Modifier] to be applied to the checkbox.
+ * @param enabled Whether the checkbox is enabled and can be interacted with.
+ * @param colors The colors to be used for the checkbox.
+ * @param interactionSource an optional hoisted [MutableInteractionSource] for observing and
+ *   emitting [Interaction]s for this button. You can use this to change the checkbox toggle's appearance or
+ *   preview the button in different states. Note that if `null` is provided, interactions will
+ *   still happen internally.
+ */
 @Composable
 fun CheckboxToggle(
     checked: Boolean,
@@ -33,18 +44,4 @@ fun CheckboxToggle(
         colors = colors,
         interactionSource = interactionSource
     )
-}
-
-@Preview
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
-@Composable
-private fun CheckboxTogglePreview() {
-    PersianTheme {
-        Surface {
-            CheckboxToggle(
-                checked = true,
-                onCheckedChange = {}
-            )
-        }
-    }
 }
