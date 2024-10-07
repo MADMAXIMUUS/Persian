@@ -18,8 +18,20 @@ import io.github.madmaximuus.persian.icon.IconSizes
 import io.github.madmaximuus.persian.progressIndicator.CircularProgressBarSizes
 import io.github.madmaximuus.persian.progressIndicator.ProgressIndicatorDefaults
 
+/**
+ * Contains the default values used by all 4 button types.
+ */
 object ButtonDefaults {
 
+    /**
+     * Creates a [ButtonColors] that represents the default container and content colors used in a
+     * [PrimaryButton].
+     *
+     * @param containerColor the container color of this [PrimaryButton] when enabled.
+     * @param contentColor the content color of this [PrimaryButton] when enabled.
+     * @param disabledContainerColor the container color of this [PrimaryButton] when not enabled.
+     * @param disabledContentColor the content color of this [PrimaryButton] when not enabled.
+     */
     @Composable
     fun primaryColors(
         containerColor: Color = PersianTheme.colorScheme.primary,
@@ -33,6 +45,15 @@ object ButtonDefaults {
         disabledContentColor = disabledContentColor
     )
 
+    /**
+     * Creates a [ButtonColors] that represents the default container and content colors used in a
+     * [SecondaryButton].
+     *
+     * @param containerColor the container color of this [SecondaryButton] when enabled.
+     * @param contentColor the content color of this [SecondaryButton] when enabled.
+     * @param disabledContainerColor the container color of this [SecondaryButton] when not enabled.
+     * @param disabledContentColor the content color of this [SecondaryButton] when not enabled.
+     */
     @Composable
     fun secondaryColors(
         containerColor: Color = PersianTheme.colorScheme.primaryContainer,
@@ -46,6 +67,15 @@ object ButtonDefaults {
         disabledContentColor = disabledContentColor
     )
 
+    /**
+     * Creates a [ButtonColors] that represents the default container and content colors used in a
+     * [TertiaryButton].
+     *
+     * @param containerColor the container color of this [TertiaryButton] when enabled.
+     * @param contentColor the content color of this [TertiaryButton] when enabled.
+     * @param disabledContainerColor the container color of this [TertiaryButton] when not enabled.
+     * @param disabledContentColor the content color of this [TertiaryButton] when not enabled.
+     */
     @Composable
     fun tertiaryColors(
         containerColor: Color = Color.Transparent,
@@ -59,6 +89,15 @@ object ButtonDefaults {
         disabledContentColor = disabledContentColor
     )
 
+    /**
+     * Creates a [ButtonColors] that represents the default container and content colors used in a
+     * [OutlinedButton].
+     *
+     * @param containerColor the container color of this [OutlinedButton] when enabled.
+     * @param contentColor the content color of this [OutlinedButton] when enabled.
+     * @param disabledContainerColor the container color of this [OutlinedButton] when not enabled.
+     * @param disabledContentColor the content color of this [OutlinedButton] when not enabled.
+     */
     @Composable
     fun outlinedColors(
         containerColor: Color = Color.Transparent,
@@ -72,9 +111,20 @@ object ButtonDefaults {
         disabledContentColor = disabledContentColor
     )
 
+    /**
+     * Creates a [ButtonSizes] that represents the default container and content sizes used in a button.
+     *
+     * @param textStyle the main text style of this button.
+     * @param height the height of this button.
+     * @param loaderSize the size of inner loader of this button.
+     * @param iconSizes the icon size color of this button.
+     * @param shape the shape of this button.
+     * @param contentPadding the spacing values to apply internally between the container and the
+     * content of this button.
+     */
     @Composable
     fun smallSizes(
-        fontSize: TextStyle = PersianTheme.typography.labelMedium,
+        textStyle: TextStyle = PersianTheme.typography.labelMedium,
         height: Dp = 36.dp,
         loaderSize: CircularProgressBarSizes = ProgressIndicatorDefaults.circularSmall(),
         iconSizes: IconSizes = IconDefaults.size18(),
@@ -84,7 +134,7 @@ object ButtonDefaults {
             vertical = 0.dp
         )
     ): ButtonSizes = ButtonSizes(
-        textStyle = fontSize,
+        textStyle = textStyle,
         height = height,
         loaderSize = loaderSize,
         iconSizes = iconSizes,
@@ -92,9 +142,21 @@ object ButtonDefaults {
         contentPadding = contentPadding
     )
 
+    /**
+     * Creates a [ButtonSizes] that represents the default container and content sizes used in a button.
+     *
+     * @param textStyle the primary text style of this button.
+     * @param additionInfoTextStyle the secondary text style of this button.
+     * @param height the height of this button.
+     * @param loaderSize the size of inner loader of this button.
+     * @param iconSizes the icon size color of this button.
+     * @param shape the shape of this button.
+     * @param contentPadding the spacing values to apply internally between the container and the
+     * content of this button.
+     */
     @Composable
     fun mediumSizes(
-        fontSize: TextStyle = PersianTheme.typography.labelLarge,
+        textStyle: TextStyle = PersianTheme.typography.labelLarge,
         additionInfoTextStyle: TextStyle = PersianTheme.typography.labelSmall,
         height: Dp = 44.dp,
         loaderSize: CircularProgressBarSizes = ProgressIndicatorDefaults.circularMedium(),
@@ -105,7 +167,7 @@ object ButtonDefaults {
             vertical = 0.dp
         )
     ): ButtonSizes = ButtonSizes(
-        textStyle = fontSize,
+        textStyle = textStyle,
         additionInfoTextStyle = additionInfoTextStyle,
         height = height,
         loaderSize = loaderSize,
@@ -114,9 +176,21 @@ object ButtonDefaults {
         contentPadding = contentPadding
     )
 
+    /**
+     * Creates a [ButtonSizes] that represents the default container and content sizes used in a button.
+     *
+     * @param textStyle the primary text style of this button.
+     * @param additionInfoTextStyle the secondary text style of this button.
+     * @param height the height of this button.
+     * @param loaderSize the size of inner loader of this button.
+     * @param iconSizes the icon size color of this button.
+     * @param shape the shape of this button.
+     * @param contentPadding the spacing values to apply internally between the container and the
+     * content of this button.
+     */
     @Composable
     fun largeSizes(
-        fontSize: TextStyle = PersianTheme.typography.titleMedium,
+        textStyle: TextStyle = PersianTheme.typography.titleMedium,
         additionInfoTextStyle: TextStyle = PersianTheme.typography.labelMedium,
         height: Dp = 52.dp,
         loaderSize: CircularProgressBarSizes = ProgressIndicatorDefaults.circularLarge(),
@@ -127,7 +201,7 @@ object ButtonDefaults {
             vertical = 0.dp
         )
     ): ButtonSizes = ButtonSizes(
-        textStyle = fontSize,
+        textStyle = textStyle,
         additionInfoTextStyle = additionInfoTextStyle,
         height = height,
         loaderSize = loaderSize,
@@ -138,6 +212,21 @@ object ButtonDefaults {
 
 }
 
+/**
+ * Represents the container and content sized used in a button in different size variant.
+ *
+ * @param textStyle the primary text style of this button.
+ * @param additionInfoTextStyle the secondary text style of this button.
+ * @param height the height of this button.
+ * @param iconSizes the icon size color of this button.
+ * @param loaderSize the size of inner loader of this button.
+ * @param shape the shape of this button.
+ * @param contentPadding the spacing values to apply internally between the container and the
+ * @constructor create an instance with arbitrary colors.
+ * - See [ButtonDefaults.smallSizes] for the default sizes used in a small button.
+ * - See [ButtonDefaults.mediumSizes] for the default sizes used in a medium button.
+ * - See [ButtonDefaults.largeSizes] for the default sizes used in a large button.
+ */
 @Immutable
 class ButtonSizes internal constructor(
     internal val textStyle: TextStyle,
@@ -148,6 +237,9 @@ class ButtonSizes internal constructor(
     internal val shape: Shape,
     internal val contentPadding: PaddingValues,
 ) {
+    /**
+     * Returns a copy of this [ButtonSizes], optionally overriding some of the values.
+     */
     fun copy(
         textStyle: TextStyle = this.textStyle,
         additionInfoTextStyle: TextStyle? = this.additionInfoTextStyle,
@@ -156,7 +248,7 @@ class ButtonSizes internal constructor(
         loaderSize: CircularProgressBarSizes = this.loaderSize,
         shape: Shape = this.shape,
         contentPadding: PaddingValues
-    ):ButtonSizes = ButtonSizes(
+    ): ButtonSizes = ButtonSizes(
         textStyle,
         additionInfoTextStyle,
         height,
@@ -191,6 +283,19 @@ class ButtonSizes internal constructor(
     }
 }
 
+/**
+ * Represents the container and content colors used in a button in different states.
+ *
+ * @param containerColor the container color of this button when enabled.
+ * @param contentColor the content color of this button when enabled.
+ * @param disabledContainerColor the container color of this button when not enabled.
+ * @param disabledContentColor the content color of this button when not enabled.
+ * @constructor create an instance with arbitrary colors.
+ * - See [ButtonDefaults.primaryColors] for the default colors used in a [PrimaryButton].
+ * - See [ButtonDefaults.secondaryColors] for the default colors used in a [SecondaryButton].
+ * - See [ButtonDefaults.tertiaryColors] for the default colors used in a [TertiaryButton].
+ * - See [ButtonDefaults.outlinedColors] for the default colors used in a [OutlinedButton].
+ */
 @Immutable
 class ButtonColors internal constructor(
     private val contentColor: Color,
@@ -198,14 +303,28 @@ class ButtonColors internal constructor(
     private val disabledContentColor: Color,
     private val disabledContainerColor: Color
 ) {
+
+    /**
+     * Represents the content color for this button, depending on [enabled].
+     *
+     * @param enabled whether the button is enabled
+     */
     @Stable
     internal fun contentColor(enabled: Boolean): Color =
         if (enabled) contentColor else disabledContentColor
 
+    /**
+     * Represents the container color for this button, depending on [enabled].
+     *
+     * @param enabled whether the button is enabled
+     */
     @Stable
     internal fun containerColor(enabled: Boolean): Color =
         if (enabled) containerColor else disabledContainerColor
 
+    /**
+     * Returns a copy of this [ButtonColors], optionally overriding some of the values.
+     */
     fun copy(
         contentColor: Color = this.contentColor,
         containerColor: Color = this.containerColor,
