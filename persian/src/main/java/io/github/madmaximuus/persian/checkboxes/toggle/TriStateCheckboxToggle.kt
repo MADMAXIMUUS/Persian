@@ -96,6 +96,14 @@ fun TriStateCheckboxToggle(
     )
 }
 
+/**
+ * A base implementation of a checkbox.
+ *
+ * @param enabled Whether the checkbox is enabled and can be interacted with.
+ * @param value The current state of the checkbox, which can be checked, unchecked, or indeterminate.
+ * @param modifier The [Modifier] to be applied to the checkbox.
+ * @param colors The [CheckboxToggleColors] instance that defines the colors for the checkbox toggle.
+ */
 @Composable
 private fun CheckboxImpl(
     enabled: Boolean,
@@ -161,6 +169,14 @@ private fun CheckboxImpl(
     }
 }
 
+/**
+ * Draws a box of checkbox with the specified colors, corner radius, and border stroke width.
+ *
+ * @param boxColor The color of the box.
+ * @param borderColor The color of the border.
+ * @param radius The corner radius of the box.
+ * @param strokeWidth The width of the border stroke.
+ */
 private fun DrawScope.drawBox(
     boxColor: Color,
     borderColor: Color,
@@ -195,6 +211,15 @@ private fun DrawScope.drawBox(
     }
 }
 
+/**
+ * Draws a checkmark inside of checkbox with the specified colors, fraction, center gravitation, stroke width, and drawing cache.
+ *
+ * @param checkColor The color of the checkmark.
+ * @param checkFraction The fraction of the checkmark to be drawn, ranging from 0 to 1.
+ * @param crossCenterGravitation The gravitation factor for the center of the cross.
+ * @param strokeWidthPx The width of the stroke in pixels.
+ * @param drawingCache The cache used for drawing the checkmark.
+ */
 private fun DrawScope.drawCheck(
     checkColor: Color,
     checkFraction: Float,
@@ -231,6 +256,13 @@ private fun DrawScope.drawCheck(
     drawPath(drawingCache.pathToDraw, checkColor, style = stroke)
 }
 
+/**
+ * A private immutable class that holds the drawing cache for a checkmark.
+ *
+ * @property checkPath The [Path] used to define the shape of the checkmark.
+ * @property pathMeasure The [PathMeasure] used to measure the length of the checkmark path.
+ * @property pathToDraw The [Path] used to draw the checkmark.
+ */
 @Immutable
 private class CheckDrawingCache(
     val checkPath: Path = Path(),
@@ -247,6 +279,13 @@ internal val checkboxSize = 22.dp
 internal val strokeWidth = 2.5.dp
 internal val radiusSize = 6.dp
 
+/**
+ * Performs a linear interpolation between two values.
+ *
+ * @param x The start value.
+ * @param y The end value.
+ * @param t The interpolation factor, typically in the range [0, 1].
+ */
 private fun lerp(x: Float, y: Float, t: Float): Float {
     return x * (1 - t) + y * t
 }
