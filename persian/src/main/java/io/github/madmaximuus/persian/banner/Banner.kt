@@ -17,6 +17,21 @@ import androidx.compose.ui.text.style.TextAlign
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.text.Text
 
+/**
+ * The banner is a versatile and customizable element designed to display important
+ * messages, alerts, or notifications. It can be used to provide feedback,
+ * highlight critical information, or guide users through important steps.
+ *
+ * @param modifier the [Modifier] to be applied to this banner.
+ * @param title the text displayed in this banner as title.
+ * @param message the text displayed in this banner as message.
+ * @param onClick called when this banner is clicked.
+ * @param left optional component in [BannerLeftScope] displayed in leading slot of this banner.
+ * @param right optional component in [BannerRightScope] displayed in trailing slot of this banner.
+ * @param button optional component in [BannerButtonScope] displayed in bottom slot of this banner.
+ * @param sizes The [BannerSizes] sizes of the banner components of this banner.
+ * @param colors The [BannerColors] colors of the banner components of this banner.
+ */
 @Composable
 fun Banner(
     modifier: Modifier = Modifier,
@@ -26,15 +41,15 @@ fun Banner(
     left: (@Composable BannerLeftScope.() -> Unit)? = null,
     right: (@Composable BannerRightScope.() -> Unit)? = null,
     button: (@Composable BannerButtonScope.() -> Unit)? = null,
-    sizes: BannerSizes = PersianBannerDefaults.sizes(),
-    colors: BannerColors = PersianBannerDefaults.colors(),
+    sizes: BannerSizes = BannerDefaults.sizes(),
+    colors: BannerColors = BannerDefaults.colors(),
 ) {
     require(title != null || message != null) {
         throw IllegalArgumentException("Title or message required")
     }
     Box(
         modifier = modifier
-            .clip(sizes.cornerRadius)
+            .clip(sizes.containerShape)
             .background(colors.background)
             .clickable(
                 enabled = onClick != null
@@ -73,8 +88,8 @@ fun Banner(
                     Text(
                         modifier = Modifier.fillMaxWidth(),
                         text = it,
-                        style = sizes.descriptionStyle,
-                        color = colors.body,
+                        style = sizes.messageTextStyle,
+                        color = colors.messageColor,
                         textAlign = TextAlign.Justify
                     )
                 }

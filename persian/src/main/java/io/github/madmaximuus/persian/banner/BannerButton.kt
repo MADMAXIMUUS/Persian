@@ -7,15 +7,33 @@ import io.github.madmaximuus.persian.button.PrimaryButton
 import io.github.madmaximuus.persian.button.SecondaryButton
 import io.github.madmaximuus.persian.button.TertiaryButton
 
+/**
+ * The banner button scope for bottom button in banner.
+ *
+ * @property bannerSizes The size of action button of this banner.
+ */
 interface BannerButtonScope : ColumnScope {
     val bannerSizes: BannerSizes
 }
 
+/**
+ * The banner button scope wrapper for bottom button in banner.
+ *
+ * @param scope The column scope used in banner.
+ * @param bannerSizes The size of action button of this banner.
+ */
 internal class BannerButtonScopeWrapper(
     val scope: ColumnScope,
     override val bannerSizes: BannerSizes,
 ) : BannerButtonScope, ColumnScope by scope
 
+/**
+ * The extension function for [BannerButtonScope] that represent action button in this [Banner].
+ *
+ * @param modifier the [Modifier] to be applied to banner action button.
+ * @param text text that will be displayed in the action.
+ * @param onClick called when this action is clicked.
+ */
 @Composable
 fun BannerButtonScope.Primary(
     modifier: Modifier = Modifier,
@@ -30,6 +48,13 @@ fun BannerButtonScope.Primary(
     )
 }
 
+/**
+ * The extension function for [BannerButtonScope] that represent action button in this [Banner].
+ *
+ * @param modifier the [Modifier] to be applied to banner action button.
+ * @param text text that will be displayed in the action.
+ * @param onClick called when this action is clicked
+ */
 @Composable
 fun BannerButtonScope.Secondary(
     modifier: Modifier = Modifier,
@@ -44,6 +69,13 @@ fun BannerButtonScope.Secondary(
     )
 }
 
+/**
+ * The extension function for [BannerButtonScope] that represent action button in this [Banner].
+ *
+ * @param modifier the [Modifier] to be applied to banner action button.
+ * @param text text that will be displayed in the action.
+ * @param onClick called when this action is clicked
+ */
 @Composable
 fun BannerButtonScope.Tertiary(
     modifier: Modifier = Modifier,
