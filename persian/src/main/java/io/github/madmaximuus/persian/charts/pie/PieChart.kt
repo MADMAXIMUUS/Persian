@@ -27,21 +27,30 @@ import io.github.madmaximuus.persian.charts.util.ChartConfig
 import io.github.madmaximuus.persian.charts.util.ChartData
 import io.github.madmaximuus.persian.charts.util.ChartStyle
 import io.github.madmaximuus.persian.charts.util.degreeToAngle
-import io.github.madmaximuus.persian.charts.util.rememberDonutChartState
+import io.github.madmaximuus.persian.charts.util.rememberChartState
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import java.lang.Integer.min
 import kotlin.math.cos
 import kotlin.math.sin
 
+/**
+ * A composable function to render a Pie Chart.
+ *
+ * @param data A list of [ChartData] objects representing the data points to be displayed in the chart.
+ * @param config A [ChartConfig] object containing the configuration settings for the chart.
+ * @param modifier A [Modifier] to apply to this composable.
+ * @param style A [ChartStyle] object to customize the appearance of the chart.
+ * @param size The size of the chart in [Dp].
+ */
 @Composable
 fun PieChart(
     data: List<ChartData>,
     config: ChartConfig,
     modifier: Modifier = Modifier,
-    style: ChartStyle = PieChartsDefaults.style(),
+    style: ChartStyle = PieChartDefaults.style(),
     size: Dp = 320.dp,
 ) {
-    val state = rememberDonutChartState(data, config, style)
+    val state = rememberChartState(data, config, style)
 
     val borderWidth = 6.dp
     val measurer = rememberTextMeasurer()

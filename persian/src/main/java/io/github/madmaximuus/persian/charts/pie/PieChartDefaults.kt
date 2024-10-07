@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.charts.donut
+package io.github.madmaximuus.persian.charts.pie
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
@@ -6,8 +6,23 @@ import androidx.compose.ui.text.TextStyle
 import io.github.madmaximuus.persian.charts.util.ChartStyle
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
-object DonutChartsDefaults {
+/**
+ * Contains the default values used by [PieChart].
+ */
+object PieChartDefaults {
 
+    /**
+     * Creates a default [ChartStyle] instance with the specified styling properties.
+     *
+     * This composable function allows customization of the default styles for the title, subtitle, and labels of the chart.
+     *
+     * @param titleStyle The title text style of this pie chart.
+     * @param titleColor The title color of this pie chart.
+     * @param subtitleStyle The subtitle text style of this pie chart.
+     * @param subtitleColor The subtitle color of this pie chart.
+     * @param labelStyle The label text style of this pie chart.
+     * @param labelColor The label color of this pie chart.
+     */
     @Composable
     fun style(
         titleStyle: TextStyle = PersianTheme.typography.titleLarge,
@@ -24,5 +39,4 @@ object DonutChartsDefaults {
         labelStyle = labelStyle,
         labelColor = labelColor
     )
-
 }

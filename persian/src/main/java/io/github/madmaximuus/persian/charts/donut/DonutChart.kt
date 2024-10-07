@@ -31,24 +31,35 @@ import io.github.madmaximuus.persian.charts.util.ChartConfig
 import io.github.madmaximuus.persian.charts.util.ChartData
 import io.github.madmaximuus.persian.charts.util.ChartStyle
 import io.github.madmaximuus.persian.charts.util.degreeToAngle
-import io.github.madmaximuus.persian.charts.util.rememberDonutChartState
+import io.github.madmaximuus.persian.charts.util.rememberChartState
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.text.Text
 import java.lang.Integer.min
 import kotlin.math.cos
 import kotlin.math.sin
 
+/**
+ * A composable function to render a Donut Chart.
+ *
+ * @param data A list of [ChartData] objects representing the data points to be displayed in the chart.
+ * @param config A [ChartConfig] object containing the configuration settings for the chart.
+ * @param modifier A [Modifier] to apply to this composable. Defaults to [Modifier].
+ * @param style A [ChartStyle] object to customize the appearance of the chart. Defaults to [DonutChartDefaults.style].
+ * @param title An optional title for the chart. Defaults to null.
+ * @param subtitle An optional subtitle for the chart. Defaults to null.
+ * @param size The size of the chart in [Dp]. Defaults to 320.dp.
+ */
 @Composable
 fun DonutChart(
     data: List<ChartData>,
     config: ChartConfig,
     modifier: Modifier = Modifier,
-    style: ChartStyle = DonutChartsDefaults.style(),
+    style: ChartStyle = DonutChartDefaults.style(),
     title: String? = null,
     subtitle: String? = null,
     size: Dp = 320.dp,
 ) {
-    val state = rememberDonutChartState(data, config, style)
+    val state = rememberChartState(data, config, style)
 
     val strokeCoeff = if (config.showLabel) 0.45f else 0.2f
     val borderWidth = if (config.showLabel) 8.dp else 6.dp
