@@ -8,6 +8,15 @@ import androidx.compose.ui.layout.MeasureScope
 import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.unit.Constraints
 
+/**
+ * The measure policy which is used to position the badge on the anchor
+ *
+ * @param scope the measure scope of this measure policy.
+ * @param measurables elements that will be located in the layout.
+ * @param constraints the restrictions for elements.
+ * @param badgeHorizontalOffset the right offset for badge.
+ * @param badgeWithContentVerticalOffset the bottom offset for badge.
+ */
 internal fun badgeMeasurePolicy(
     scope: MeasureScope,
     measurables: List<Measurable>,

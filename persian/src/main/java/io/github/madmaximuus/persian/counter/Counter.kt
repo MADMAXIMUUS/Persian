@@ -13,6 +13,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.text.Text
 
+/**
+ * Composable function to create a counter with a specified count, customizable colors, sizes, and modifier.
+ *
+ * @param count The count to be displayed in the counter.
+ * @param modifier The [Modifier] to be applied to this composable.
+ * @param colors The color configurations for the counter.
+ * @param sizes The size configurations for the counter.
+ */
 @Composable
 fun Counter(
     count: Int,
@@ -26,6 +34,14 @@ fun Counter(
     sizes = sizes
 )
 
+/**
+ * Composable function to create a counter with a specified count, customizable colors, sizes, and modifier.
+ *
+ * @param count The count to be displayed in the counter.
+ * @param modifier The [Modifier] to be applied to this composable.
+ * @param colors The color configurations for the counter.
+ * @param sizes The size configurations for the counter.
+ */
 @Composable
 fun TonalCounter(
     count: Int,
@@ -39,6 +55,14 @@ fun TonalCounter(
     sizes = sizes
 )
 
+/**
+ * Composable function to create a counter with a specified count, customizable colors, sizes, and modifier.
+ *
+ * @param count The count to be displayed in the counter.
+ * @param modifier The [Modifier] to be applied to this composable.
+ * @param colors The color configurations for the counter.
+ * @param sizes The size configurations for the counter.
+ */
 @Composable
 fun TransparentCounter(
     count: Int,
@@ -52,6 +76,14 @@ fun TransparentCounter(
     sizes = sizes
 )
 
+/**
+ * Composable function to create a counter implementation with a specified count, customizable colors, sizes, and modifier.
+ *
+ * @param count The count to be displayed in the counter.
+ * @param colors The color configurations for the counter.
+ * @param sizes The size configurations for the counter.
+ * @param modifier The [Modifier] to be applied to this composable.
+ */
 @Composable
 private fun CounterImpl(
     count: Int,

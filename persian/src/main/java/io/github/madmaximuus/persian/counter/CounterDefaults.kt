@@ -11,19 +11,33 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
+/**
+ * Contains all default values used by counter.
+ */
 object CounterDefaults {
 
+    /**
+     * Composable function to create a [CounterColors] object with customizable background and text colors for a badge.
+     *
+     * @param backgroundColor The background color of the badge.
+     * @param textColor The text color of the badge.
+     */
     @Composable
     fun badgeColors(
         backgroundColor: Color = PersianTheme.colorScheme.error,
         textColor: Color = PersianTheme.colorScheme.onError
-    ) = remember(backgroundColor, textColor) {
+    ): CounterColors =
         CounterColors(
             backgroundColor = backgroundColor,
             textColor = textColor
         )
-    }
 
+    /**
+     * Composable function to create a [CounterColors] object with customizable background and text colors for a badge.
+     *
+     * @param backgroundColor The background color of the badge.
+     * @param textColor The text color of the badge.
+     */
     @Composable
     fun primaryColors(
         backgroundColor: Color = PersianTheme.colorScheme.primary,
@@ -35,6 +49,12 @@ object CounterDefaults {
         )
     }
 
+    /**
+     * Composable function to create a [CounterColors] object with customizable background and text colors for a badge.
+     *
+     * @param backgroundColor The background color of the badge.
+     * @param textColor The text color of the badge.
+     */
     @Composable
     fun tonalColors(
         backgroundColor: Color = PersianTheme.colorScheme.primaryContainer,
@@ -46,6 +66,12 @@ object CounterDefaults {
         )
     }
 
+    /**
+     * Composable function to create a [CounterColors] object with customizable background and text colors for a badge.
+     *
+     * @param backgroundColor The background color of the badge.
+     * @param textColor The text color of the badge.
+     */
     @Composable
     fun transparentColors(
         backgroundColor: Color = Color.Transparent,
@@ -57,6 +83,12 @@ object CounterDefaults {
         )
     }
 
+    /**
+     * Composable function to create a [CounterSizes] object with customizable horizontal and vertical offsets for a badge.
+     *
+     * @param badgeHorizontalOffset The horizontal offset for the badge.
+     * @param badgeVerticalOffset The vertical offset for the badge.
+     */
     @Composable
     fun badgeSizes(
         badgeHorizontalOffset: Dp = (-16).dp,
@@ -70,6 +102,12 @@ object CounterDefaults {
             textStyle = PersianTheme.typography.bodyLarge
         )
 
+    /**
+     * Composable function to create a [CounterSizes] object with customizable horizontal and vertical offsets for a badge.
+     *
+     * @param badgeHorizontalOffset The horizontal offset for the badge.
+     * @param badgeVerticalOffset The vertical offset for the badge.
+     */
     @Composable
     fun digitSizes(
         digitPadding: PaddingValues = PaddingValues(horizontal = 6.dp, vertical = 2.dp),
@@ -87,14 +125,29 @@ object CounterDefaults {
         )
 }
 
+/**
+ * An immutable class that holds the color configurations for a counter.
+ *
+ * @param backgroundColor The background color of the counter.
+ * @param textColor The text color of the counter.
+ */
 @Immutable
-data class CounterColors(
+class CounterColors internal constructor(
     val backgroundColor: Color,
     val textColor: Color
 )
 
+/**
+ * An immutable class that holds the size configurations for a counter.
+ *
+ * @param digitPadding The padding values for the digits in the counter.
+ * @param digitCornerRadius The shape defining the corner radius of the counter.
+ * @param badgeHorizontalOffset The horizontal offset for the badge.
+ * @param badgeVerticalOffset The vertical offset for the badge.
+ * @param textStyle The text style for the digits in the counter.
+ */
 @Immutable
-class CounterSizes(
+class CounterSizes internal constructor(
     internal val digitPadding: PaddingValues,
     internal val digitCornerRadius: Shape,
     internal val badgeHorizontalOffset: Dp,
@@ -102,6 +155,9 @@ class CounterSizes(
     internal val textStyle: TextStyle
 ) {
 
+    /**
+     * Creates a copy of this [CounterSizes] instance with the specified properties.
+     */
     fun copy(
         digitPadding: PaddingValues = this.digitPadding,
         digitCornerRadius: Shape = this.digitCornerRadius,

@@ -17,6 +17,15 @@ import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.counter.utils.LayoutId
 import io.github.madmaximuus.persian.counter.utils.badgeMeasurePolicy
 
+/**
+ * Composable function to create a badge with customizable colors, sizes, and content.
+ *
+ * @param modifier The [Modifier] to be applied to this composable.
+ * @param colors The color configurations for the badge.
+ * @param sizes The size configurations for the badge.
+ * @param content The content to be displayed inside the badge. This is a composable lambda that
+ * provides a [BoxScope] to define the content.
+ */
 @Composable
 fun Badge(
     modifier: Modifier = Modifier,
@@ -30,7 +39,16 @@ fun Badge(
     anchor = content
 )
 
-
+/**
+ * Composable function to create a badge with a count, customizable colors, sizes, and content.
+ *
+ * @param count The count to be displayed in the badge.
+ * @param modifier The [Modifier] to be applied to this composable.
+ * @param colors The color configurations for the badge.
+ * @param sizes The size configurations for the badge.
+ * @param content The content to be displayed inside the badge. This is a composable lambda that
+ * provides a [BoxScope] to define the content.
+ */
 @Composable
 fun Badge(
     count: Int,
@@ -46,6 +64,16 @@ fun Badge(
     content = content
 )
 
+/**
+ * Composable function to create a badge implementation with a count, customizable colors, sizes, and content.
+ *
+ * @param count The count to be displayed in the badge.
+ * @param colors The color configurations for the badge.
+ * @param sizes The size configurations for the badge.
+ * @param modifier The [Modifier] to be applied to this composable.
+ * @param content The content to be displayed inside the badge. This is a composable lambda that
+ * provides a [BoxScope] to define the content.
+ */
 @Composable
 private fun BadgeImpl(
     count: Int,
@@ -82,6 +110,15 @@ private fun BadgeImpl(
     }
 }
 
+/**
+ * Composable function to create an empty badge with customizable background color, anchor content, sizes, and modifier.
+ *
+ * @param backgroundColor The background color of the badge.
+ * @param anchor The content to be displayed inside the badge. This is a composable lambda that
+ * provides a [BoxScope] to define the content.
+ * @param sizes The size configurations for the badge.
+ * @param modifier The [Modifier] to be applied to this composable.
+ */
 @Composable
 private fun EmptyBadge(
     backgroundColor: Color,
