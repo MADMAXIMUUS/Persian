@@ -1,14 +1,7 @@
 package io.github.madmaximuus.persian.codeInput
 
-import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -17,12 +10,23 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.input.key.key
 import androidx.compose.ui.input.key.onKeyEvent
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.codeInput.cell.CodeInputCell
-import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.surface.Surface
 
+/**
+ * A four-digit code input field.
+ *
+ * This input typically used for entering a four-digit verification code.
+ *
+ * @param modifier The [Modifier] to be applied to this composable.
+ * @param values A list of strings representing the current values of the four cells.
+ * @param enabled Whether the input cells are enabled or disabled.
+ * @param isError Whether the input cells are in an error state.
+ * @param isValid Whether the input cells are in a valid state.
+ * @param isPassword Whether the input cells should mask their input as a password.
+ * @param onValueChange Callback invoked when the value of any cell changes. The callback receives
+ * the new value and the index of the cell that changed.
+ */
 @Composable
 fun FourDigitCodeInput(
     modifier: Modifier = Modifier,
@@ -80,6 +84,20 @@ fun FourDigitCodeInput(
     }
 }
 
+/**
+ * A six-digit code input field.
+ *
+ * This input typically used for entering a six-digit verification code.
+ *
+ * @param modifier The [Modifier] to be applied to this composable.
+ * @param values A list of strings representing the current values of the four cells.
+ * @param enabled Whether the input cells are enabled or disabled.
+ * @param isError Whether the input cells are in an error state.
+ * @param isValid Whether the input cells are in a valid state.
+ * @param isPassword Whether the input cells should mask their input as a password.
+ * @param onValueChange Callback invoked when the value of any cell changes. The callback receives
+ * the new value and the index of the cell that changed.
+ */
 @Composable
 fun SixDigitCodeInput(
     modifier: Modifier = Modifier,
@@ -139,6 +157,16 @@ fun SixDigitCodeInput(
     }
 }
 
+/**
+ * Moves the focus to the next input cell if the current cell's value is of length 1.
+ *
+ * This function is used to automatically shift the focus to the next input cell when the user
+ * enters a single character in the current cell.
+ *
+ * @param index The index of the current input cell.
+ * @param value The current value of the input cell.
+ * @param focusRequesters A list of [FocusRequester] objects corresponding to each input cell.
+ */
 private fun nextFocus(
     index: Int,
     value: String,
@@ -146,50 +174,5 @@ private fun nextFocus(
 ) {
     if (value.length == 1 && index + 1 < focusRequesters.size) {
         focusRequesters[index + 1].requestFocus()
-    }
-}
-
-@Preview
-@Preview(uiMode = UI_MODE_NIGHT_YES)
-@Composable
-private fun CodeInputPreview() {
-    PersianTheme {
-        Surface(
-            modifier = Modifier.fillMaxSize()
-        ) {
-            Column(
-                modifier = Modifier
-                    .padding(10.dp)
-            ) {
-                FourDigitCodeInput(
-                    modifier = Modifier.fillMaxWidth(),
-                    values = listOf(
-                        "1",
-                        "2",
-                        "3",
-                        "4"
-                    ),
-                    onValueChange = { _, _ ->
-
-                    }
-                )
-                Spacer(modifier = Modifier.height(PersianTheme.spacing.size4))
-                SixDigitCodeInput(
-                    modifier = Modifier.fillMaxWidth(),
-                    values = listOf(
-                        "1",
-                        "2",
-                        "3",
-                        "4",
-                        "5",
-                        "6"
-                    ),
-                    onValueChange = { _, _ ->
-
-                    }
-                )
-            }
-
-        }
     }
 }

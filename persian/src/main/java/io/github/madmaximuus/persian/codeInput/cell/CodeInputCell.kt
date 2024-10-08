@@ -1,13 +1,12 @@
 package io.github.madmaximuus.persian.codeInput.cell
 
-import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.interaction.Interaction
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
@@ -26,13 +25,31 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.BaselineShift
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.codeInput.CellColors
-import io.github.madmaximuus.persian.codeInput.PersianCodeInputDefaults
+import io.github.madmaximuus.persian.codeInput.CodeInputDefaults
+import io.github.madmaximuus.persian.codeInput.FourDigitCodeInput
+import io.github.madmaximuus.persian.codeInput.SixDigitCodeInput
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.surface.Surface
 
+/**
+ * Create a cell that used by [SixDigitCodeInput] and [FourDigitCodeInput]
+ *
+ * @param modifier The [Modifier] to be applied to this composable.
+ * @param value The current value of the cell.
+ * @param onValueChange Callback invoked when the value of the cell changes.
+ * @param enabled Whether the cell is enabled or disabled.
+ * @param isValid Whether the cell's value is valid.
+ * @param isError Whether the cell's value is in error state.
+ * @param isPassword Whether the cell should mask its input as a password.
+ * @param colors The colors to be used for the cell.
+ * @param focusRequester The [FocusRequester] to control the focus of the cell.
+ * @param textStyle The [TextStyle] to be applied to the text in the cell.
+ * @param interactionSource an optional hoisted [MutableInteractionSource] for observing and
+ *   emitting [Interaction]s for this chip. You can use this to change the chip's appearance or
+ *   preview the chip in different states. Note that if `null` is provided, interactions will still
+ *   happen internally.
+ */
 @Composable
 internal fun CodeInputCell(
     modifier: Modifier = Modifier,
@@ -42,7 +59,7 @@ internal fun CodeInputCell(
     isValid: Boolean = false,
     isError: Boolean = false,
     isPassword: Boolean = false,
-    colors: CellColors = PersianCodeInputDefaults.cellColors(),
+    colors: CellColors = CodeInputDefaults.cellColors(),
     focusRequester: FocusRequester = FocusRequester(),
     textStyle: TextStyle = PersianTheme.typography.bodyLarge,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
@@ -119,21 +136,5 @@ internal fun CodeInputCell(
                 }
             }
         )
-    }
-}
-
-@Preview
-@Preview(uiMode = UI_MODE_NIGHT_YES)
-@Composable
-private fun CellPreview() {
-    PersianTheme {
-        Surface {
-            CodeInputCell(
-                modifier = Modifier.padding(10.dp),
-                value = "",
-                isPassword = true,
-                onValueChange = {}
-            )
-        }
     }
 }

@@ -12,14 +12,45 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.graphics.Color
+import io.github.madmaximuus.persian.codeInput.cell.CodeInputCell
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state08
 import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state16
 import io.github.madmaximuus.persian.foundation.state38
 
-object PersianCodeInputDefaults {
+/**
+ * Contains the default values used by [SixDigitCodeInput] and [FourDigitCodeInput].
+ */
+object CodeInputDefaults {
 
+    /**
+     * Create a [CellColors] that represents the default container and content colors used in a
+     * [CodeInputCell].
+     *
+     * @param defaultTextColor The default text color.
+     * @param hoveredTextColor The text color when the cell is hovered.
+     * @param focusedTextColor The text color when the cell is focused.
+     * @param validTextColor The text color when the cell's value is valid.
+     * @param errorTextColor The text color when the cell's value is in error state.
+     * @param disabledTextColor The text color when the cell is disabled.
+     * @param defaultContainerColor The default container color.
+     * @param hoveredContainerColor The container color when the cell is hovered.
+     * @param focusedContainerColor The container color when the cell is focused.
+     * @param validContainerColor The container color when the cell's value is valid.
+     * @param errorContainerColor The container color when the cell's value is in error state.
+     * @param disabledContainerColor The container color when the cell is disabled.
+     * @param defaultCursorColor The default cursor color.
+     * @param validCursorColor The cursor color when the cell's value is valid.
+     * @param errorCursorColor The cursor color when the cell's value is in error state.
+     * @param textSelectionColors The colors for text selection.
+     * @param defaultIndicatorColor The default indicator color.
+     * @param hoveredIndicatorColor The indicator color when the cell is hovered.
+     * @param focusedIndicatorColor The indicator color when the cell is focused.
+     * @param validIndicatorColor The indicator color when the cell's value is valid.
+     * @param errorIndicatorColor The indicator color when the cell's value is in error state.
+     * @param disabledIndicatorColor The indicator color when the cell is disabled.
+     */
     @Composable
     fun cellColors(
         //Text Colors
@@ -89,6 +120,35 @@ object PersianCodeInputDefaults {
 
 }
 
+/**
+ * Represents the container and content colors used in a code input in different states.
+ *
+ * @param defaultTextColor The default text color.
+ * @param hoveredTextColor The text color when the cell is hovered.
+ * @param focusedTextColor The text color when the cell is focused.
+ * @param validTextColor The text color when the cell's value is valid.
+ * @param errorTextColor The text color when the cell's value is in error state.
+ * @param disabledTextColor The text color when the cell is disabled.
+ *
+ * @param defaultContainerColor The default container color.
+ * @param hoveredContainerColor The container color when the cell is hovered.
+ * @param focusedContainerColor The container color when the cell is focused.
+ * @param validContainerColor The container color when the cell's value is valid.
+ * @param errorContainerColor The container color when the cell's value is in error state.
+ * @param disabledContainerColor The container color when the cell is disabled.
+ *
+ * @param defaultCursorColor The default cursor color.
+ * @param validCursorColor The cursor color when the cell's value is valid.
+ * @param errorCursorColor The cursor color when the cell's value is in error state.
+ * @param textSelectionColors The colors for text selection.
+ *
+ * @param defaultIndicatorColor The default indicator color.
+ * @param hoveredIndicatorColor The indicator color when the cell is hovered.
+ * @param focusedIndicatorColor The indicator color when the cell is focused.
+ * @param validIndicatorColor The indicator color when the cell's value is valid.
+ * @param errorIndicatorColor The indicator color when the cell's value is in error state.
+ * @param disabledIndicatorColor The indicator color when the cell is disabled.
+ */
 @Immutable
 class CellColors(
 
@@ -122,6 +182,15 @@ class CellColors(
     private val errorIndicatorColor: Color,
     private val disabledIndicatorColor: Color,
 ) {
+
+    /**
+     * Returns the appropriate text color based on the cell's state.
+     *
+     * @param enabled Whether the cell is enabled.
+     * @param isValid Whether the cell's value is valid.
+     * @param isError Whether the cell's value is in error state.
+     * @param interactionSource The interaction source to determine the cell's interaction state.
+     */
     @Composable
     internal fun textColor(
         enabled: Boolean,
@@ -144,6 +213,14 @@ class CellColors(
         return rememberUpdatedState(targetValue)
     }
 
+    /**
+     * Returns the appropriate container color based on the cell's state.
+     *
+     * @param enabled Whether the cell is enabled.
+     * @param isValid Whether the cell's value is valid.
+     * @param isError Whether the cell's value is in error state.
+     * @param interactionSource The interaction source to determine the cell's interaction state.
+     */
     @Composable
     internal fun containerColor(
         enabled: Boolean,
@@ -163,12 +240,14 @@ class CellColors(
             else -> defaultContainerColor
         }
         return rememberUpdatedState(targetValue)
-        /*targetValue = targetValue,
-        animationSpec = tween(durationMillis = ANIMATION_DURATION),
-        label = "Container Color Animation"
-    )*/
     }
 
+    /**
+     * Returns the appropriate cursor color based on the cell's state.
+     *
+     * @param isError Whether the cell's value is in error state.
+     * @param isValid Whether the cell's value is valid.
+     */
     @Composable
     internal fun cursorColor(isError: Boolean, isValid: Boolean): State<Color> {
         val targetValue = when {
@@ -179,9 +258,20 @@ class CellColors(
         return rememberUpdatedState(targetValue)
     }
 
+    /**
+     * Returns the text selection colors.
+     */
     internal val selectionColors: TextSelectionColors
         @Composable get() = textSelectionColors
 
+    /**
+     * Returns the appropriate indicator color based on the cell's state.
+     *
+     * @param enabled Whether the cell is enabled.
+     * @param isValid Whether the cell's value is valid.
+     * @param isError Whether the cell's value is in error state.
+     * @param interactionSource The interaction source to determine the cell's interaction state.
+     */
     @Composable
     internal fun indicatorColor(
         enabled: Boolean,
