@@ -47,6 +47,19 @@ import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.plus.base.Plus
 import kotlinx.coroutines.launch
 
+/**
+ * A composable function that represents a view for displaying saved colors in a horizontal list.
+ *
+ * This function displays a lazy row of saved colors, allowing the user to interact with them.
+ * Each color is displayed in a grid cell, and the user can click to select a color or long-press to remove it.
+ * The view also includes an option to add a new color.
+ * The state of the saved colors and the selected color is managed by the provided [state].
+ *
+ * @param modifier The modifier to be applied to the layout.
+ * @param lazyRowState The state of the lazy row, which manages the scrolling behavior.
+ * @param colorPreferences The preferences for saving colors, which handles the persistence of saved colors.
+ * @param state The state of the color picker, which contains information about the saved colors, selected color, and other configurations.
+ */
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun RowScope.SavedColorView(

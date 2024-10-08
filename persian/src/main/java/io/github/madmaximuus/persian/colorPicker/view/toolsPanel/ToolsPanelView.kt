@@ -19,6 +19,17 @@ import io.github.madmaximuus.persian.colorPicker.view.util.ColorPreferences
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.text.Text
 
+/**
+ * A composable function that represents a tools panel view for a color picker.
+ *
+ * This function displays a panel with various tools for interacting with the color picker, based on the provided [state], [colors], and [colorsPreferences].
+ * The panel includes an alpha slider for adjusting the opacity of the selected color (if supported), a preview box displaying the selected color, and a view for saved colors.
+ *
+ * @param modifier The modifier to be applied to the layout.
+ * @param state The state of the color picker.
+ * @param colors The colors used for the view, which includes various UI elements such as the background, text, and borders.
+ * @param colorsPreferences The preferences for saving colors, which handles the persistence of saved colors.
+ */
 @Composable
 fun ToolsPanelView(
     modifier: Modifier,

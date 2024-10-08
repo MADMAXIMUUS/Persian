@@ -15,11 +15,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import io.github.madmaximuus.persian.colorPicker.ColorPicker
 import io.github.madmaximuus.persian.colorPicker.view.ColorPickerViewColors
 import io.github.madmaximuus.persian.colorPicker.view.util.ColorPickerState
 import io.github.madmaximuus.persian.colorPicker.view.util.resolveColor
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
+/**
+ * Create a color grid view used by [ColorPicker]
+ *
+ * @param state The state of the color picker, which contains information about the selected color and other configurations.
+ * @param viewColors The colors used for the view, which includes various UI elements such as background, text, and borders.
+ */
 @Composable
 internal fun GridView(
     state: ColorPickerState,

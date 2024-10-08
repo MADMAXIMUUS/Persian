@@ -29,6 +29,16 @@ import io.github.madmaximuus.persian.segmentedButton.SingleChoiceSegmentedButton
 import io.github.madmaximuus.persian.segmentedButton.StartSegment
 import kotlinx.coroutines.launch
 
+/**
+ * A composable function that represents the main view of a color picker.
+ *
+ * This function displays the color picker interface, including a segmented button row for selecting the display mode,
+ * and either a horizontal or vertical layout for the color picker and tools panel, depending on the window height size class.
+ * The color picker state and colors are managed by the provided [state] and [colors] parameters.
+ *
+ * @param state The state of the color picker, which contains information about the selected color, display mode, and other configurations.
+ * @param colors The colors used for the view, which includes various UI elements such as the background, text, and borders.
+ */
 @Composable
 internal fun ColorPickerView(
     state: ColorPickerState,

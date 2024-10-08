@@ -20,6 +20,12 @@ import io.github.madmaximuus.persian.slider.continuous.Slider
 import io.github.madmaximuus.persian.text.Text
 import java.util.Locale
 
+/**
+ * A composable function that represents a view with sliders for adjusting the RGB components of a color.
+ *
+ * @param state The state of the color picker, which contains information about the selected color and other configurations.
+ * @param viewColors The colors used for the view, which includes various UI elements such as background, text, and borders.
+ */
 @Composable
 internal fun SlidersView(
     state: ColorPickerState,
@@ -67,6 +73,15 @@ internal fun SlidersView(
     }
 }
 
+/**
+ * A composable function that represents a slider view with a label and a value display.
+ *
+ * @param text The label text to be displayed above the slider.
+ * @param range The range of values for the slider. Defaults to 0f..255f.
+ * @param colors The colors used for the slider, which includes various UI elements such as the track and thumb.
+ * @param currentValue The current value of the slider, which will be displayed as a formatted integer.
+ * @param onValueChange A callback function that is invoked when the slider's value changes.
+ */
 @Composable
 private fun SliderView(
     text: String,

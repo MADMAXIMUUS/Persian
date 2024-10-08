@@ -18,6 +18,16 @@ import io.github.madmaximuus.persian.colorPicker.view.util.ColorPickerState
 import io.github.madmaximuus.persian.foundation.PersianSubcomposeLayout
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
+/**
+ * Provide a base layout for various color picker views.
+ *
+ * It uses a [PersianSubcomposeLayout] to manage the layout of the main content and dependent content.
+ * The main content is always a [GridView], while the dependent content varies based on the [state].
+ *
+ * @param modifier The modifier to be applied to the layout.
+ * @param state The state of the color picker.
+ * @param colors The colors used by these views.
+ */
 @Composable
 fun ColorPickersView(
     modifier: Modifier,

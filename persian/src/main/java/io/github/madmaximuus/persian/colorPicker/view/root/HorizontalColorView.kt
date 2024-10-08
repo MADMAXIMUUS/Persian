@@ -8,6 +8,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
+/**
+ * A composable function that arranges two columns of content horizontally within a row.
+ *
+ * @param leftColumn A left column views.
+ * @param rightColumn A right column views.
+ */
 @Composable
 fun HorizontalColorView(
     leftColumn: @Composable RowScope.() -> Unit,

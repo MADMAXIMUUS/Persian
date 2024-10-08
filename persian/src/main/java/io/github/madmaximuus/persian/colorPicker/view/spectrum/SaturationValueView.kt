@@ -11,8 +11,6 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
-import androidx.compose.material3.adaptive.currentWindowSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -31,14 +29,21 @@ import io.github.madmaximuus.persian.colorPicker.view.util.pointToSatVal
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import android.graphics.Color as AndroidColor
 
+/**
+ * A composable function that represents a view for selecting saturation and value (brightness) of a color.
+ *
+ * This function displays a rectangular panel where the user can select the saturation and value of a color based on the provided [state] and [colors].
+ * The panel uses a gradient shader to visualize the saturation and value, and includes a draggable thumb that indicates the current selection.
+ * The selection updates the [state] with the new saturation and value values.
+ *
+ * @param state The state of the color picker, which contains information about the selected color and other configurations.
+ * @param colors The colors used for the view, which includes various UI elements such as the thumb color.
+ */
 @Composable
 internal fun ColumnScope.SaturationValueView(
     state: ColorPickerState,
     colors: ColorPickerViewColors,
 ) {
-    val windowHeightSizeClass = currentWindowAdaptiveInfo().windowSizeClass.windowHeightSizeClass
-    val windowWidth = currentWindowSize().width
-
     val interactionSource = remember {
         MutableInteractionSource()
     }
@@ -47,19 +52,6 @@ internal fun ColumnScope.SaturationValueView(
     val pressOffset = remember {
         mutableStateOf(Offset.Zero)
     }
-
-    /*val canvasSize: DpSize =
-        if (windowHeightSizeClass == WindowHeightSizeClass.COMPACT) {
-            DpSize(200.dp, 200.dp / 1.358f)
-        } else {
-            val width = with(LocalDensity.current) {
-                max(
-                    windowWidth - 36.dp.roundToPx() * 2,
-                    288.dp.roundToPx()
-                ).toDp()
-            }
-            DpSize(width, width / 1.358f)
-        }*/
 
     Canvas(
         modifier = Modifier
