@@ -38,6 +38,24 @@ import io.github.madmaximuus.persian.foundation.animateElevation
 import io.github.madmaximuus.persian.icon.IconSizes
 import io.github.madmaximuus.persian.surface.Surface
 
+/**
+ * Base composable function to implement chip
+ *
+ * @param selected Whether the chip is selected or not.
+ * @param modifier The modifier to be applied to the chip.
+ * @param onClick The callback to be invoked when the chip is clicked.
+ * @param enabled Whether the chip is enabled or disabled.
+ * @param label The text to be displayed on the chip.
+ * @param leading The optional leading content of the chip.
+ * @param trailing The optional trailing content of the chip.
+ * @param colors The colors to be used for the chip.
+ * @param elevation The elevation to be used for the chip.
+ * @param sizes The sizes to be used for the chip.
+ * @param interactionSource an optional hoisted [MutableInteractionSource] for observing and
+ *   emitting [Interaction]s for this chip. You can use this to change the chip's appearance or
+ *   preview the chip in different states. Note that if `null` is provided, interactions will still
+ *   happen internally.
+ */
 @Composable
 internal fun BaseSelectableChip(
     selected: Boolean,
@@ -80,6 +98,29 @@ internal fun BaseSelectableChip(
     }
 }
 
+/**
+ * Represents the container and content colors used in a selectable chip in different states.
+ *
+ * @param containerColor The color of the chip's container when it is enabled and not selected.
+ * @param labelColor The color of the chip's label text when it is enabled and not selected.
+ * @param leadingIconColor The color of the leading icon when it is enabled and not selected.
+ * @param trailingIconColor The color of the trailing icon when it is enabled and not selected.
+ * @param disabledContainerColor The color of the chip's container when it is disabled and not selected.
+ * @param disabledLabelColor The color of the chip's label text when it is disabled and not selected.
+ * @param disabledLeadingIconColor The color of the leading icon when it is disabled and not selected.
+ * @param disabledTrailingIconColor The color of the trailing icon when it is disabled and not selected.
+ * @param selectedContainerColor The color of the chip's container when it is selected.
+ * @param disabledSelectedContainerColor The color of the chip's container when it is disabled and selected.
+ * @param selectedLabelColor The color of the chip's label text when it is selected.
+ * @param selectedLeadingIconColor The color of the leading icon when it is selected.
+ * @param selectedTrailingIconColor The color of the trailing icon when it is selected.
+ * @param borderColor The color of the chip's border when it is enabled and not selected.
+ * @param selectedBorderColor The color of the chip's border when it is selected.
+ * @param disabledBorderColor The color of the chip's border when it is disabled and not selected.
+ * @param disabledSelectedBorderColor The color of the chip's border when it is disabled and selected.
+ * @param avatarColors The colors to be used for avatars within the chip.
+ * @param imageColors The colors to be used for images within the chip.
+ */
 @Immutable
 class SelectableChipColors internal constructor(
     private val containerColor: Color,
@@ -103,6 +144,29 @@ class SelectableChipColors internal constructor(
     internal val avatarColors: AvatarColors,
     internal val imageColors: ImageColors
 ) {
+    /**
+     * Returns a copy of this [SelectableChipColors], optionally overriding some of the values.
+     *
+     * @param containerColor The color of the chip's container when it is enabled and not selected.
+     * @param labelColor The color of the chip's label text when it is enabled and not selected.
+     * @param leadingIconColor The color of the leading icon when it is enabled and not selected.
+     * @param trailingIconColor The color of the trailing icon when it is enabled and not selected.
+     * @param disabledContainerColor The color of the chip's container when it is disabled and not selected.
+     * @param disabledLabelColor The color of the chip's label text when it is disabled and not selected.
+     * @param disabledLeadingIconColor The color of the leading icon when it is disabled and not selected.
+     * @param disabledTrailingIconColor The color of the trailing icon when it is disabled and not selected.
+     * @param selectedContainerColor The color of the chip's container when it is selected.
+     * @param disabledSelectedContainerColor The color of the chip's container when it is disabled and selected.
+     * @param selectedLabelColor The color of the chip's label text when it is selected.
+     * @param selectedLeadingIconColor The color of the leading icon when it is selected.
+     * @param selectedTrailingIconColor The color of the trailing icon when it is selected.
+     * @param borderColor The color of the chip's border when it is enabled and not selected.
+     * @param selectedBorderColor The color of the chip's border when it is selected.
+     * @param disabledBorderColor The color of the chip's border when it is disabled and not selected.
+     * @param disabledSelectedBorderColor The color of the chip's border when it is disabled and selected.
+     * @param imageColors The colors to be used for images within the chip.
+     * @param avatarColors The colors to be used for avatars within the chip.
+     */
     fun copy(
         containerColor: Color = this.containerColor,
         labelColor: Color = this.labelColor,
@@ -145,7 +209,12 @@ class SelectableChipColors internal constructor(
         imageColors = imageColors
     )
 
-
+    /**
+     * Returns the color of the chip's container based on its enabled and selected states.
+     *
+     * @param enabled Whether the chip is enabled or disabled.
+     * @param selected Whether the chip is selected or not.
+     */
     @Composable
     internal fun containerColor(enabled: Boolean, selected: Boolean): State<Color> {
         val target = when {
@@ -156,7 +225,12 @@ class SelectableChipColors internal constructor(
         return rememberUpdatedState(target)
     }
 
-
+    /**
+     * Returns the color of the chip's label text based on its enabled and selected states.
+     *
+     * @param enabled Whether the chip is enabled or disabled.
+     * @param selected Whether the chip is selected or not.
+     */
     internal fun labelColor(enabled: Boolean, selected: Boolean): Color {
         return when {
             !enabled -> disabledLabelColor
@@ -165,6 +239,12 @@ class SelectableChipColors internal constructor(
         }
     }
 
+    /**
+     * Returns the color of the leading icon based on its enabled and selected states.
+     *
+     * @param enabled Whether the chip is enabled or disabled.
+     * @param selected Whether the chip is selected or not.
+     */
     internal fun leadingIconContentColor(enabled: Boolean, selected: Boolean): Color {
         return when {
             !enabled -> disabledLeadingIconColor
@@ -173,6 +253,12 @@ class SelectableChipColors internal constructor(
         }
     }
 
+    /**
+     * Returns the color of the trailing icon based on its enabled and selected states.
+     *
+     * @param enabled Whether the chip is enabled or disabled.
+     * @param selected Whether the chip is selected or not.
+     */
     internal fun trailingIconContentColor(enabled: Boolean, selected: Boolean): Color {
         return when {
             !enabled -> disabledTrailingIconColor
@@ -181,6 +267,13 @@ class SelectableChipColors internal constructor(
         }
     }
 
+    /**
+     * Returns the color of the chip's border based on its enabled and selected states.
+     *
+     * @param enabled Whether the chip is enabled or disabled.
+     * @param selected Whether the chip is selected or not.
+     * @return The color of the chip's border.
+     */
     internal fun borderColor(enabled: Boolean, selected: Boolean): Color {
         return when {
             !enabled && !selected -> disabledBorderColor
@@ -228,6 +321,20 @@ class SelectableChipColors internal constructor(
     }
 }
 
+/**
+ * Represents the container and content sizes used in a selectable chip in different states.
+ *
+ * @param trailingIconSizes The sizes to be used for the trailing icon.
+ * @param leadingIconSizes The sizes to be used for the leading icon.
+ * @param labelStyle The text style to be used for the chip's label.
+ * @param borderWidth The width of the chip's border when it is enabled and not selected.
+ * @param selectedBorderWith The width of the chip's border when it is selected.
+ * @param shape The shape to be used for the chip.
+ * @param disabledBorderWith The width of the chip's border when it is disabled and not selected.
+ * @param selectedDisabledBorderWith The width of the chip's border when it is disabled and selected.
+ * @param avatarSizes The sizes to be used for avatars within the chip.
+ * @param imageSizes The sizes to be used for images within the chip.
+ */
 @Immutable
 class SelectableChipSizes internal constructor(
     internal val trailingIconSizes: IconSizes,
@@ -242,7 +349,12 @@ class SelectableChipSizes internal constructor(
     internal val avatarSizes: AvatarSizes,
     internal val imageSizes: ImageSizes
 ) {
-
+    /**
+     * Returns the width of the chip's border based on its enabled and selected states.
+     *
+     * @param enabled Whether the chip is enabled or disabled.
+     * @param selected Whether the chip is selected or not.
+     */
     @Stable
     internal fun borderWidth(enabled: Boolean, selected: Boolean): Dp =
         if (enabled) {
@@ -278,6 +390,16 @@ class SelectableChipSizes internal constructor(
     }
 }
 
+/**
+ * Represents the container and content sizes used in a selectable chip in different states.
+ *
+ * @param elevation The default elevation of the chip.
+ * @param pressedElevation The elevation of the chip when it is pressed.
+ * @param focusedElevation The elevation of the chip when it is focused.
+ * @param hoveredElevation The elevation of the chip when it is hovered.
+ * @param draggedElevation The elevation of the chip when it is dragged.
+ * @param disabledElevation The elevation of the chip when it is disabled.
+ */
 @Immutable
 class SelectableChipElevation internal constructor(
     internal val elevation: Dp,
@@ -288,10 +410,22 @@ class SelectableChipElevation internal constructor(
     private val disabledElevation: Dp
 ) {
 
+    /**
+     * Returns the tonal elevation of the chip based on its enabled state.
+     *
+     * @param enabled Whether the chip is enabled or disabled.
+     */
+    @Stable
     internal fun tonalElevation(enabled: Boolean): Dp {
         return if (enabled) elevation else disabledElevation
     }
 
+    /**
+     * Returns the shadow elevation of the chip based on its enabled state and interaction source.
+     *
+     * @param enabled Whether the chip is enabled or disabled.
+     * @param interactionSource The interaction source to be used for the chip.
+     */
     @Composable
     internal fun shadowElevation(
         enabled: Boolean,
@@ -300,6 +434,12 @@ class SelectableChipElevation internal constructor(
         return animateElevation(enabled = enabled, interactionSource = interactionSource)
     }
 
+    /**
+     * Animates the elevation of the chip based on its enabled state and interaction source.
+     *
+     * @param enabled Whether the chip is enabled or disabled.
+     * @param interactionSource The interaction source to be used for the chip.
+     */
     @Composable
     private fun animateElevation(
         enabled: Boolean,

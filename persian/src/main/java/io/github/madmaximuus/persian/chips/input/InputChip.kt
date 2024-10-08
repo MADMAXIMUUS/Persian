@@ -1,5 +1,6 @@
 package io.github.madmaximuus.persian.chips.input
 
+import androidx.compose.foundation.interaction.Interaction
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -9,8 +10,30 @@ import io.github.madmaximuus.persian.chips.founfation.SelectableChipColors
 import io.github.madmaximuus.persian.chips.founfation.SelectableChipElevation
 import io.github.madmaximuus.persian.chips.founfation.SelectableChipSizes
 
+/**
+ * Chips help people enter information, make selections, filter content, or trigger actions. Chips
+ * can show multiple interactive elements together in the same area, such as a list of selectable
+ * movie times, or a series of email contacts.
+ *
+ * Input chips represent discrete pieces of information entered by a user.
+ *
+ * @param label The text to be displayed on the chip.
+ * @param selected Whether the chip is selected or not.
+ * @param onClick The callback to be invoked when the chip is clicked.
+ * @param modifier The modifier to be applied to the chip.
+ * @param enabled Whether the chip is enabled or disabled.
+ * @param leading The optional leading content of the chip.
+ * @param trailing The optional trailing content of the chip.
+ * @param colors The colors to be used for the chip.
+ * @param elevation The elevation to be used for the chip.
+ * @param sizes The sizes to be used for the chip.
+ * @param interactionSource an optional hoisted [MutableInteractionSource] for observing and
+ *   emitting [Interaction]s for this chip. You can use this to change the chip's appearance or
+ *   preview the chip in different states. Note that if `null` is provided, interactions will still
+ *   happen internally.
+ */
 @Composable
-fun PersianInputShip(
+fun InputShip(
     label: String,
     selected: Boolean,
     onClick: () -> Unit,

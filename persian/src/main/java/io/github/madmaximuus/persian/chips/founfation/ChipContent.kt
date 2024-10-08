@@ -14,6 +14,15 @@ import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.text.Text
 
+/**
+ * Base implementation the content for a chip.
+ *
+ * @param label The text to be displayed on the chip.
+ * @param labelTextStyle The text style to be applied to the chip's label.
+ * @param leading The optional leading content of the chip.
+ * @param trailing The optional trailing content of the chip.
+ * @param labelColor The color of the chip's label text.
+ */
 @Composable
 internal fun ChipContent(
     label: String,

@@ -32,10 +32,31 @@ import androidx.compose.ui.unit.Dp
 import io.github.madmaximuus.persian.avatarsAndImages.AvatarColors
 import io.github.madmaximuus.persian.avatarsAndImages.ImageColors
 import io.github.madmaximuus.persian.avatarsAndImages.ImageSizes
+import io.github.madmaximuus.persian.chips.assist.AssistChip
+import io.github.madmaximuus.persian.chips.assist.AssistChipDefaults
+import io.github.madmaximuus.persian.chips.suggestion.SuggestionChip
+import io.github.madmaximuus.persian.chips.suggestion.SuggestionChipDefaults
 import io.github.madmaximuus.persian.foundation.animateElevation
 import io.github.madmaximuus.persian.icon.IconSizes
 import io.github.madmaximuus.persian.surface.Surface
 
+/**
+ * Base composable function to implement chip
+ *
+ * @param modifier The modifier to be applied to the chip.
+ * @param onClick The callback to be invoked when the chip is clicked.
+ * @param enabled Whether the chip is enabled or disabled.
+ * @param label The text to be displayed on the chip.
+ * @param leading The optional leading content of the chip.
+ * @param trailing The optional trailing content of the chip.
+ * @param colors The colors to be used for the chip.
+ * @param sizes The sizes to be used for the chip.
+ * @param elevation The elevation to be used for the chip.
+ * @param interactionSource an optional hoisted [MutableInteractionSource] for observing and
+ *   emitting [Interaction]s for this chip. You can use this to change the chip's appearance or
+ *   preview the chip in different states. Note that if `null` is provided, interactions will still
+ *   happen internally.
+ */
 @Composable
 internal fun BaseChip(
     modifier: Modifier,
@@ -76,6 +97,23 @@ internal fun BaseChip(
     }
 }
 
+/**
+ * Represents the container and content colors used in a chip in different states.
+ *
+ * @property containerColor The color of the chip's container when it is enabled.
+ * @property disabledContainerColor The color of the chip's container when it is disabled.
+ * @property labelColor The color of the chip's label text when it is enabled.
+ * @property disabledLabelColor The color of the chip's label text when it is disabled.
+ * @property leadingIconContentColor The color of the leading icon content when it is enabled.
+ * @property disabledLeadingIconContentColor The color of the leading icon content when it is disabled.
+ * @property borderColor The color of the chip's border when it is enabled.
+ * @property disabledBorderColor The color of the chip's border when it is disabled.
+ * @property avatarColors The colors to be used for avatars within the chip.
+ * @property imageColors The colors to be used for images within the chip.
+ * @constructor create an instance with arbitrary colors.
+ * - See [AssistChipDefaults.chipColors] for the default colors used in a [AssistChip].
+ * - See [SuggestionChipDefaults.chipColors] for the default colors used in a [SuggestionChip].
+ */
 @Immutable
 class ChipColors internal constructor(
     private val containerColor: Color,
@@ -93,6 +131,20 @@ class ChipColors internal constructor(
     internal val avatarColors: AvatarColors,
     internal val imageColors: ImageColors
 ) {
+    /**
+     * Returns a copy of this [ChipColors], optionally overriding some of the values.
+     *
+     * @param containerColor The color of the chip's container when it is enabled.
+     * @param labelColor The color of the chip's label text when it is enabled.
+     * @param leadingIconContentColor The color of the leading icon content when it is enabled.
+     * @param borderColor The color of the chip's border when it is enabled.
+     * @param disabledContainerColor The color of the chip's container when it is disabled.
+     * @param disabledLabelColor The color of the chip's label text when it is disabled.
+     * @param disabledLeadingIconContentColor The color of the leading icon content when it is disabled.
+     * @param disabledBorderColor The color of the chip's border when it is disabled.
+     * @param imageColors The colors to be used for images within the chip.
+     * @param avatarColors The colors to be used for avatars within the chip.
+     */
     fun copy(
         containerColor: Color = this.containerColor,
         labelColor: Color = this.labelColor,
@@ -117,18 +169,38 @@ class ChipColors internal constructor(
         avatarColors = avatarColors
     )
 
+    /**
+     * Returns the color of the chip's container based on its enabled state.
+     *
+     * @param enabled Whether the chip is enabled or disabled.
+     */
     @Stable
     internal fun containerColor(enabled: Boolean): Color =
         if (enabled) containerColor else disabledContainerColor
 
+    /**
+     * Returns the color of the chip's label text based on its enabled state.
+     *
+     * @param enabled Whether the chip is enabled or disabled.
+     */
     @Stable
     internal fun labelColor(enabled: Boolean): Color =
         if (enabled) labelColor else disabledLabelColor
 
+    /**
+     * Returns the color of the leading icon content based on its enabled state.
+     *
+     * @param enabled Whether the chip is enabled or disabled.
+     */
     @Stable
     internal fun leadingIconContentColor(enabled: Boolean): Color =
         if (enabled) leadingIconContentColor else disabledLeadingIconContentColor
 
+    /**
+     * Returns the color of the chip's border based on its enabled state.
+     *
+     * @param enabled Whether the chip is enabled or disabled.
+     */
     @Stable
     internal fun borderColor(enabled: Boolean): Color =
         if (enabled) borderColor else disabledBorderColor
@@ -161,6 +233,17 @@ class ChipColors internal constructor(
     }
 }
 
+/**
+ * Represents the container and content sizes used in a chip in different states.
+ *
+ * @property shape The shape to be used for the chip.
+ * @property trailingIconSizes The sizes to be used for the trailing icon.
+ * @property leadingIconSizes The sizes to be used for the leading icon.
+ * @property leadingImageSizes The sizes to be used for the leading image.
+ * @property labelStyle The text style to be used for the chip's label.
+ * @property borderWidth The width of the chip's border when it is enabled.
+ * @property disabledBorderWith The width of the chip's border when it is disabled.
+ */
 @Immutable
 class ChipSizes internal constructor(
     internal val shape: Shape,
@@ -172,6 +255,12 @@ class ChipSizes internal constructor(
     internal val disabledBorderWith: Dp,
 ) {
 
+    /**
+     * Returns the width of the chip's border based on its enabled state.
+     *
+     * @param enabled Whether the chip is enabled or disabled.
+     * @return The width of the chip's border.
+     */
     @Stable
     internal fun borderWidth(enabled: Boolean): Dp =
         if (enabled) borderWidth else disabledBorderWith
@@ -200,6 +289,16 @@ class ChipSizes internal constructor(
     }
 }
 
+/**
+ * Represents the container and content elevations used in a chip in different states.
+ *
+ * @property elevation The default elevation of the chip.
+ * @property pressedElevation The elevation of the chip when it is pressed.
+ * @property focusedElevation The elevation of the chip when it is focused.
+ * @property hoveredElevation The elevation of the chip when it is hovered.
+ * @property draggedElevation The elevation of the chip when it is dragged.
+ * @property disabledElevation The elevation of the chip when it is disabled.
+ */
 @Immutable
 class ChipElevation internal constructor(
     internal val elevation: Dp,
@@ -210,10 +309,22 @@ class ChipElevation internal constructor(
     private val disabledElevation: Dp
 ) {
 
+    /**
+     * Returns the tonal elevation of the chip based on its enabled state.
+     *
+     * @param enabled Whether the chip is enabled or disabled.
+     */
+    @Stable
     internal fun tonalElevation(enabled: Boolean): Dp {
         return if (enabled) elevation else disabledElevation
     }
 
+    /**
+     * Returns the shadow elevation of the chip based on its enabled state and interaction source.
+     *
+     * @param enabled Whether the chip is enabled or disabled.
+     * @param interactionSource The interaction source to be used for the chip.
+     */
     @Composable
     internal fun shadowElevation(
         enabled: Boolean,
@@ -222,6 +333,13 @@ class ChipElevation internal constructor(
         return animateElevation(enabled = enabled, interactionSource = interactionSource)
     }
 
+    /**
+     * Animates the elevation of the chip based on its enabled state and interaction source.
+     *
+     * @param enabled Whether the chip is enabled or disabled.
+     * @param interactionSource The interaction source to be used for the chip.
+     * @return A [State] object representing the current elevation of the chip.
+     */
     @Composable
     private fun animateElevation(
         enabled: Boolean,

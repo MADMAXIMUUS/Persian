@@ -22,8 +22,33 @@ import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persian.icon.IconSizes
 
+/**
+ * Contains the default values used by [InputShip].
+ */
 object InputChipDefaults {
 
+    /**
+     * Creates a [SelectableChipColors] that represents the default container and content colors used in an
+     * [InputShip].
+     *
+     * @param containerColor The color of the chip's container.
+     * @param labelColor The color of the chip's label text.
+     * @param leadingIconColor The color of the leading icon.
+     * @param trailingIconColor The color of the trailing icon.
+     * @param disabledContainerColor The color of the chip's container when it is disabled.
+     * @param disabledLabelColor The color of the chip's label text when it is disabled.
+     * @param disabledLeadingIconColor The color of the leading icon when the chip is disabled.
+     * @param disabledTrailingIconColor The color of the trailing icon when the chip is disabled.
+     * @param selectedContainerColor The color of the chip's container when it is selected.
+     * @param disabledSelectedContainerColor The color of the chip's container when it is disabled and selected.
+     * @param selectedLabelColor The color of the chip's label text when it is selected.
+     * @param selectedLeadingIconColor The color of the leading icon when the chip is selected.
+     * @param selectedTrailingIconColor The color of the trailing icon when the chip is selected.
+     * @param borderColor The color of the chip's border.
+     * @param selectedBorderColor The color of the chip's border when it is selected.
+     * @param disabledBorderColor The color of the chip's border when it is disabled.
+     * @param disabledSelectedBorderColor The color of the chip's border when it is disabled and selected.
+     */
     @Composable
     fun chipColors(
         containerColor: Color = Color.Transparent,
@@ -67,6 +92,19 @@ object InputChipDefaults {
         imageColors = imageColors
     )
 
+    /**
+     * Creates a [SelectableChipSizes] that represents the default container and content sizes used in an
+     * [InputShip].
+     *
+     * @param trailingIconSizes The sizes to be used for the trailing icon.
+     * @param leadingIconSizes The sizes to be used for the leading icon.
+     * @param labelStyle The text style to be used for the chip's label.
+     * @param borderWidth The width of the chip's border.
+     * @param selectedBorderWith The width of the chip's border when it is selected.
+     * @param shape The shape to be used for the chip.
+     * @param disabledBorderWith The width of the chip's border when it is disabled.
+     * @param selectedDisabledBorderWith The width of the chip's border when it is disabled and selected.
+     */
     @Composable
     fun chipSizes(
         trailingIconSizes: IconSizes = IconDefaults.size18(),
@@ -92,6 +130,17 @@ object InputChipDefaults {
         imageSizes = imageSizes
     )
 
+    /**
+     * Creates a [SelectableChipElevation] that represents the default chip elevation used in an
+     * [InputShip].
+     *
+     * @param elevation The default elevation of the chip.
+     * @param pressedElevation The elevation of the chip when it is pressed.
+     * @param focusedElevation The elevation of the chip when it is focused.
+     * @param hoveredElevation The elevation of the chip when it is hovered.
+     * @param draggedElevation The elevation of the chip when it is dragged.
+     * @param disabledElevation The elevation of the chip when it is disabled.
+     */
     @Composable
     fun chipElevation(
         elevation: Dp = PersianTheme.elevation.none,

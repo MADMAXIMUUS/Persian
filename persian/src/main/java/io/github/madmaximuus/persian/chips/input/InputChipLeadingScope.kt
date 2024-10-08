@@ -17,6 +17,17 @@ import io.github.madmaximuus.persian.icon.Icon
 import io.github.madmaximuus.persianSymbols.check.base.Check
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
+/**
+ * An interface that defines the scope for the leading content of an InputChip.
+ *
+ * This interface provides access to the colors, sizes, enabled state, and selected state of the InputChip,
+ * allowing customization of the leading content based on these properties.
+ *
+ * @property colors The colors to be used for the chip.
+ * @property sizes The sizes to be used for the chip.
+ * @property enabled Whether the chip is enabled or disabled.
+ * @property selected Whether the chip is selected or not.
+ */
 interface InputChipLeadingScope {
     val colors: SelectableChipColors
     val sizes: SelectableChipSizes
@@ -24,6 +35,18 @@ interface InputChipLeadingScope {
     val selected: Boolean
 }
 
+/**
+ * An internal implementation of the [InputChipLeadingScope] interface that wraps the colors, sizes,
+ * enabled state, and selected state of an InputChip.
+ *
+ * This class is used to provide a concrete implementation of the [InputChipLeadingScope] interface,
+ * allowing the leading content of an InputChip to access the chip's properties.
+ *
+ * @param colors The colors to be used for the chip.
+ * @param sizes The sizes to be used for the chip.
+ * @param enabled Whether the chip is enabled or disabled.
+ * @param selected Whether the chip is selected or not.
+ */
 internal class InputChipLeadingScopeWrapper(
     override val colors: SelectableChipColors,
     override val sizes: SelectableChipSizes,
@@ -31,6 +54,13 @@ internal class InputChipLeadingScopeWrapper(
     override val selected: Boolean
 ) : InputChipLeadingScope
 
+/**
+ * Provides an icon within the leading scope of an [InputShip].
+ *
+ * @param modifier The modifier to be applied to the icon. Default is [Modifier].
+ * @param icon The painter to be used for the icon when the chip is not selected.
+ * @param selectedIcon The painter to be used for the icon when the chip is selected. Default is a checkmark icon.
+ */
 @Composable
 fun InputChipLeadingScope.Icon(
     modifier: Modifier = Modifier,
@@ -49,6 +79,13 @@ fun InputChipLeadingScope.Icon(
     }
 }
 
+/**
+ * Provides an image within the leading scope of an [InputShip].
+ *
+ * @param modifier The modifier to be applied to the image.
+ * @param imageUrl The URI of the image to be displayed.
+ * @param selectedIcon The painter to be used for the overlay icon when the chip is selected.
+ */
 @Composable
 fun InputChipLeadingScope.Image(
     modifier: Modifier = Modifier,
@@ -74,6 +111,13 @@ fun InputChipLeadingScope.Image(
     }
 }
 
+/**
+ * Provides an avatar within the leading scope of an [InputShip].
+ *
+ * @param modifier The modifier to be applied to the avatar.
+ * @param avatarUrl The URI of the avatar image to be displayed.
+ * @param selectedIcon The painter to be used for the overlay icon when the chip is selected.
+ */
 @Composable
 fun InputChipLeadingScope.Avatar(
     modifier: Modifier = Modifier,

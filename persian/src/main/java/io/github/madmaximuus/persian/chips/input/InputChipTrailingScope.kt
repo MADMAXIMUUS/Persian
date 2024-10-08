@@ -16,6 +16,17 @@ import io.github.madmaximuus.persian.icon.Icon
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.xmark.base.XMark
 
+/**
+ * An interface that defines the scope for the trailing content of an InputChip.
+ *
+ * This interface provides access to the colors, sizes, enabled state, and selected state of the InputChip,
+ * allowing customization of the trailing content based on these properties.
+ *
+ * @property colors The colors to be used for the chip.
+ * @property sizes The sizes to be used for the chip.
+ * @property enabled Whether the chip is enabled or disabled.
+ * @property selected Whether the chip is selected or not.
+ */
 interface InputChipTrailingScope {
     val colors: SelectableChipColors
     val sizes: SelectableChipSizes
@@ -23,6 +34,18 @@ interface InputChipTrailingScope {
     val selected: Boolean
 }
 
+/**
+ * An internal implementation of the [InputChipTrailingScope] interface that wraps the colors, sizes,
+ * enabled state, and selected state of an InputChip.
+ *
+ * This class is used to provide a concrete implementation of the [InputChipTrailingScope] interface,
+ * allowing the trailing content of an InputChip to access the chip's properties.
+ *
+ * @param colors The colors to be used for the chip.
+ * @param sizes The sizes to be used for the chip.
+ * @param enabled Whether the chip is enabled or disabled.
+ * @param selected Whether the chip is selected or not.
+ */
 internal class InputChipTrailingScopeWrapper(
     override val colors: SelectableChipColors,
     override val sizes: SelectableChipSizes,
@@ -30,6 +53,13 @@ internal class InputChipTrailingScopeWrapper(
     override val selected: Boolean
 ) : InputChipTrailingScope
 
+/**
+ * Provides an icon within the trailing scope of an [InputShip].
+ *
+ * @param modifier The modifier to be applied to the icon.
+ * @param icon The painter to be used for the icon.
+ * @param onClick Called when this chip is clicked.
+ */
 @Composable
 fun InputChipTrailingScope.Icon(
     modifier: Modifier = Modifier,

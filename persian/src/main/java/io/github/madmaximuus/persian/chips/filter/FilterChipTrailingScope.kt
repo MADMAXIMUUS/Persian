@@ -13,6 +13,17 @@ import io.github.madmaximuus.persian.chips.founfation.SelectableChipSizes
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.icon.Icon
 
+/**
+ * An interface that defines the scope for the trailing content of a FilterChip.
+ *
+ * This interface provides access to the colors, sizes, enabled state, and selected state of the FilterChip,
+ * allowing customization of the trailing content based on these properties.
+ *
+ * @property colors The colors to be used for the chip.
+ * @property sizes The sizes to be used for the chip.
+ * @property enabled Whether the chip is enabled or disabled.
+ * @property selected Whether the chip is selected or not.
+ */
 interface FilterChipTrailingScope {
     val colors: SelectableChipColors
     val sizes: SelectableChipSizes
@@ -20,6 +31,18 @@ interface FilterChipTrailingScope {
     val selected: Boolean
 }
 
+/**
+ * An internal implementation of the [FilterChipTrailingScope] interface that wraps the colors, sizes,
+ * enabled state, and selected state of a FilterChip.
+ *
+ * This class is used to provide a concrete implementation of the [FilterChipTrailingScope] interface,
+ * allowing the trailing content of a FilterChip to access the chip's properties.
+ *
+ * @param colors The colors to be used for the chip.
+ * @param sizes The sizes to be used for the chip.
+ * @param enabled Whether the chip is enabled or disabled.
+ * @param selected Whether the chip is selected or not.
+ */
 internal class FilterChipTrailingScopeWrapper(
     override val colors: SelectableChipColors,
     override val sizes: SelectableChipSizes,
@@ -27,6 +50,13 @@ internal class FilterChipTrailingScopeWrapper(
     override val selected: Boolean
 ) : FilterChipTrailingScope
 
+/**
+ * Provides an icon within the trailing scope of an [FilterChip].
+ *
+ * @param modifier The modifier to be applied to the icon.
+ * @param icon The painter to be used for the icon.
+ * @param onClick called when the icon is clicked by user.
+ */
 @Composable
 fun FilterChipTrailingScope.Icon(
     modifier: Modifier = Modifier,

@@ -16,8 +16,24 @@ import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persian.icon.IconSizes
 
+/**
+ * Contains the default values used by [SuggestionChip].
+ */
 object SuggestionChipDefaults {
 
+    /**
+     * Creates a [ChipColors] that represents the default container and content colors used in an
+     * [SuggestionChip].
+     *
+     * @param containerColor The color of the chip's container.
+     * @param labelColor The color of the chip's label text.
+     * @param leadingIconColor The color of the leading icon content.
+     * @param disabledContainerColor The color of the chip's container when it is disabled.
+     * @param disabledLabelColor The color of the chip's label text when it is disabled.
+     * @param disabledLeadingIconContentColor The color of the leading icon content when the chip is disabled.
+     * @param borderColor The color of the chip's border.
+     * @param disabledBorderColor The color of the chip's border when it is disabled.
+     */
     @Composable
     fun chipColors(
         containerColor: Color = Color.Transparent,
@@ -41,6 +57,15 @@ object SuggestionChipDefaults {
         avatarColors = AvatarDefaults.colors()
     )
 
+    /**
+     * Creates a [ChipSizes] that represents the default container and content sizes used in an
+     * [SuggestionChip].
+     *
+     * @param labelStyle The text style to be used for the chip's label.
+     * @param borderWidth The width of the chip's border.
+     * @param shape The shape to be used for the chip.
+     * @param disabledBorderWith The width of the chip's border when it is disabled.
+     */
     @Composable
     fun chipSizes(
         trailingIconSizes: IconSizes = IconDefaults.size18(),
@@ -59,6 +84,16 @@ object SuggestionChipDefaults {
         leadingImageSizes = ImageDefaults.size24(),
     )
 
+    /**
+     * Creates a [ChipElevation] that represents the default elevation used in an [SuggestionChip].
+     *
+     * @param elevation The default elevation of the chip.
+     * @param pressedElevation The elevation of the chip when it is pressed.
+     * @param focusedElevation The elevation of the chip when it is focused.
+     * @param hoveredElevation The elevation of the chip when it is hovered.
+     * @param draggedElevation The elevation of the chip when it is dragged.
+     * @param disabledElevation The elevation of the chip when it is disabled.
+     */
     @Composable
     fun chipElevation(
         elevation: Dp = PersianTheme.elevation.none,
