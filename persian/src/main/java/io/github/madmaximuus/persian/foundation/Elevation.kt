@@ -15,6 +15,16 @@ import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
+/**
+ * Data class representing different elevation levels.
+ *
+ * @property none The elevation level representing no elevation.
+ * @property extraSmall The elevation level representing extra small elevation.
+ * @property small The elevation level representing small elevation.
+ * @property medium The elevation level representing medium elevation.
+ * @property large The elevation level representing large elevation.
+ * @property extraLarge The elevation level representing extra large elevation.
+ */
 data class Elevation(
     val none: Dp = 0.dp,
     val extraSmall: Dp = 1.dp,
@@ -24,8 +34,18 @@ data class Elevation(
     val extraLarge: Dp = 12.dp
 )
 
+/**
+ * CompositionLocal for providing elevation settings.
+ */
 val LocalElevation = staticCompositionLocalOf { Elevation() }
 
+/**
+ * Suspend function to animate elevation changes.
+ *
+ * @param target The target elevation value to animate to.
+ * @param from The interaction that triggered the animation, if any.
+ * @param to The interaction that the animation is targeting, if any.
+ */
 internal suspend fun Animatable<Dp, *>.animateElevation(
     target: Dp,
     from: Interaction? = null,
@@ -39,8 +59,16 @@ internal suspend fun Animatable<Dp, *>.animateElevation(
     if (spec != null) animateTo(target, spec) else snapTo(target)
 }
 
+/**
+ * Private object containing default animation specifications for elevation changes.
+ */
 private object ElevationDefaults {
 
+    /**
+     * Returns the incoming animation specification for the given interaction.
+     *
+     * @param interaction The interaction that triggered the animation.
+     */
     fun incomingAnimationSpecForInteraction(interaction: Interaction): AnimationSpec<Dp>? {
         return when (interaction) {
             is PressInteraction.Press -> DefaultIncomingSpec
@@ -51,6 +79,11 @@ private object ElevationDefaults {
         }
     }
 
+    /**
+     * Returns the outgoing animation specification for the given interaction.
+     *
+     * @param interaction The interaction that triggered the animation.
+     */
     fun outgoingAnimationSpecForInteraction(interaction: Interaction): AnimationSpec<Dp>? {
         return when (interaction) {
             is PressInteraction.Press -> DefaultOutgoingSpec

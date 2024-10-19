@@ -1,19 +1,13 @@
 package io.github.madmaximuus.persian.foundation
 
 import android.app.Activity
-import android.os.Build
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.text.selection.LocalTextSelectionColors
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.SideEffect
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.toArgb
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 import io.github.madmaximuus.persian.foundation.PersianTheme.elevation
@@ -21,6 +15,20 @@ import io.github.madmaximuus.persian.foundation.PersianTheme.shapes
 import io.github.madmaximuus.persian.foundation.PersianTheme.spacing
 import io.github.madmaximuus.persian.foundation.ripple.ripple
 
+/**
+ * Composable function to apply the PersianTheme to the UI.
+ *
+ * This function sets up the theme for the application, including handling dark and light modes,
+ * and configuring the status bar and navigation bar colors.
+ *
+ * @param darkTheme Boolean flag indicating whether the dark theme should be applied.
+ * @param lightColors The color scheme to be used for the light theme.
+ * @param darkColors The color scheme to be used for the dark theme.
+ * @param content The composable content to be themed.
+ *
+ * @throws Exception if the function is not called within an activity context,
+ * as it requires a window reference.
+ */
 @Composable
 fun PersianTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
@@ -33,8 +41,6 @@ fun PersianTheme(
         val currentWindow = (view.context as? Activity)?.window
             ?: throw Exception("Not in an activity - unable to get Window reference")
         SideEffect {
-            currentWindow.statusBarColor = Color.Transparent.toArgb()
-            currentWindow.navigationBarColor = Color.Transparent.toArgb()
             WindowCompat
                 .getInsetsController(currentWindow, view)
                 .isAppearanceLightStatusBars = !darkTheme
@@ -56,6 +62,19 @@ fun PersianTheme(
     )
 }
 
+/**
+ * Composable function to apply the PersianTheme to the UI.
+ *
+ * This function sets up the theme for the application, including color scheme, typography, spacing,
+ * shapes, and elevation. It also provides ripple indication and text selection colors.
+ *
+ * @param colorScheme The color scheme to be used for the theme.
+ * @param typography The typography settings to be used for the theme.
+ * @param spacing The spacing settings to be used for the theme.
+ * @param shapes The shape settings to be used for the theme.
+ * @param elevation The elevation settings to be used for the theme.
+ * @param content The composable content to be themed.
+ */
 @Composable
 fun PersianTheme(
     colorScheme: ColorScheme,
@@ -80,6 +99,50 @@ fun PersianTheme(
     }
 }
 
+object PersianTheme {
+    /**
+     * Retrieves the current [ColorScheme] at the call site's position in the hierarchy.
+     */
+    val colorScheme: ColorScheme
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalColorScheme.current
+
+    /**
+     * Retrieves the current [Typography] at the call site's position in the hierarchy.
+     */
+    val typography: Typography
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalTypography.current
+
+    /**
+     * Retrieves the current [Shapes] at the call site's position in the hierarchy.
+     */
+    val shapes: Shapes
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalShapes.current
+
+    /**
+     * Retrieves the current [Spacing] at the call site's position in the hierarchy.
+     */
+    val spacing: Spacing
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalSpacing.current
+
+    /**
+     * Retrieves the current [Elevation] at the call site's position in the hierarchy.
+     */
+    val elevation: Elevation
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalElevation.current
+
+}
+
+/*
 @Composable
 fun resolveDynamicColor(
     dynamicColor: Boolean,
@@ -148,47 +211,4 @@ fun resolveDynamicColor(
         darkTheme -> darkColors
         else -> lightColors
     }
-}
-
-object PersianTheme {
-    /**
-     * Retrieves the current [ColorScheme] at the call site's position in the hierarchy.
-     */
-    val colorScheme: ColorScheme
-        @Composable
-        @ReadOnlyComposable
-        get() = LocalColorScheme.current
-
-    /**
-     * Retrieves the current [Typography] at the call site's position in the hierarchy.
-     */
-    val typography: Typography
-        @Composable
-        @ReadOnlyComposable
-        get() = LocalTypography.current
-
-    /**
-     * Retrieves the current [Shapes] at the call site's position in the hierarchy.
-     */
-    val shapes: Shapes
-        @Composable
-        @ReadOnlyComposable
-        get() = LocalShapes.current
-
-    /**
-     * Retrieves the current [Spacing] at the call site's position in the hierarchy.
-     */
-    val spacing: Spacing
-        @Composable
-        @ReadOnlyComposable
-        get() = LocalSpacing.current
-
-    /**
-     * Retrieves the current [Elevation] at the call site's position in the hierarchy.
-     */
-    val elevation: Elevation
-        @Composable
-        @ReadOnlyComposable
-        get() = LocalElevation.current
-
-}
+}*/

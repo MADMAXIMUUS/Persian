@@ -1,6 +1,5 @@
 package io.github.madmaximuus.persian.foundation
 
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.ProvidableCompositionLocal
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.staticCompositionLocalOf
@@ -53,12 +52,31 @@ internal object MinimumInteractiveModifier :
     override fun equals(other: Any?) = (other === this)
 }
 
+/**
+ * An internal class that represents a modifier node for enforcing minimum interactive component sizes.
+ *
+ * This class extends [Modifier.Node], [CompositionLocalConsumerModifierNode], and [LayoutModifierNode]
+ * to provide a custom layout behavior that ensures the component meets the minimum interactive size requirements.
+ *
+ * @property minimumInteractiveComponentSize The minimum size required for the interactive component.
+ * @property isAttached Indicates whether the modifier node is currently attached.
+ * @property currentValueOf A function to retrieve the current value of a composition local.
+ * @property LocalMinimumInteractiveComponentEnforcement A composition local that determines whether the minimum
+ * interactive component enforcement is active.
+ */
 internal class MinimumInteractiveModifierNode :
     Modifier.Node(),
     CompositionLocalConsumerModifierNode,
     LayoutModifierNode {
 
-    @OptIn(ExperimentalMaterial3Api::class)
+    /**
+     * Measures the given [measurable] within the provided [constraints] and enforces the minimum interactive
+     * component size if the enforcement is active.
+     *
+     * @param measurable The measurable object to be measured.
+     * @param constraints The constraints to be applied during measurement.
+     * @return A [MeasureResult] representing the measured layout.
+     */
     override fun MeasureScope.measure(
         measurable: Measurable,
         constraints: Constraints

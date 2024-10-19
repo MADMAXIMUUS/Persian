@@ -11,6 +11,30 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
+/**
+ * An immutable class representing a set of typographic styles.
+ *
+ * This class provides a comprehensive set of predefined text styles that can be used throughout an application to maintain
+ * consistent typography. Each style includes properties such as font family, font weight, font size, line height, and letter spacing.
+ *
+ * @property displayLarge The largest display text style.
+ * @property displayMedium The medium display text style.
+ * @property displaySmall The smallest display text style.
+ * @property headlineLarge The largest headline text style.
+ * @property headlineMedium The medium headline text style.
+ * @property headlineSmall The smallest headline text style.
+ * @property titleLarge The largest title text style.
+ * @property titleMedium The medium title text style.
+ * @property titleSmall The smallest title text style.
+ * @property bodyLarge The largest body text style.
+ * @property bodyMedium The medium body text style.
+ * @property bodySmall The smallest body text style.
+ * @property labelLarge The largest label text style.
+ * @property labelMedium The medium label text style.
+ * @property labelSmall The smallest label text style.
+ *
+ * @constructor Creates a new Typography instance with the specified text styles.
+ */
 @Immutable
 class Typography(
     val displayLarge: TextStyle = TextStyle(
@@ -208,10 +232,28 @@ class Typography(
     }
 }
 
+/**
+ * A composition local for providing a Typography instance.
+ *
+ * This local can be used to provide a custom Typography instance to a composition hierarchy.
+ */
 internal val LocalTypography = staticCompositionLocalOf { Typography() }
 
+/**
+ * A composition local for providing a TextStyle instance.
+ *
+ * This local can be used to provide a custom TextStyle instance to a composition hierarchy.
+ */
 val LocalTextStyle = compositionLocalOf(structuralEqualityPolicy()) { TextStyle.Default }
 
+/**
+ * Provides a TextStyle to the composition hierarchy.
+ *
+ * This function merges the provided TextStyle with the current TextStyle in the composition hierarchy and provides the merged style.
+ *
+ * @param value The TextStyle to provide.
+ * @param content The composable content that will use the provided TextStyle.
+ */
 @Composable
 fun ProvideTextStyle(value: TextStyle, content: @Composable () -> Unit) {
     val mergedStyle = LocalTextStyle.current.merge(value)

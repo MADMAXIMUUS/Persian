@@ -9,6 +9,17 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.DpSize
 
+/**
+ * A composable function that creates a layout with a main content and a dependent content.
+ *
+ * This function uses [SubcomposeLayout] to measure and place the main content and dependent content.
+ * The dependent content receives the size of the main content as a parameter.
+ *
+ * @param modifier The modifier to be applied to the layout.
+ * @param mainContent A composable lambda that provides the main content of the layout.
+ * @param dependentContent A composable lambda that provides the dependent content of the layout.
+ * It receives the size of the main content as a parameter.
+ */
 @Composable
 internal fun PersianSubcomposeLayout(
     modifier: Modifier = Modifier,

@@ -27,6 +27,14 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntSize
 
+/**
+ * Creates a [Modifier] that draws a dashed border around its content with the specified stroke width, color,
+ * and corner radius.
+ *
+ * @param strokeWidth The width of the border stroke.
+ * @param color The color of the border.
+ * @param cornerRadiusDp The corner radius of the border.
+ */
 fun Modifier.dashedBorder(strokeWidth: Dp, color: Color, cornerRadiusDp: Dp) = composed(
     factory = {
         val density = LocalDensity.current
@@ -53,6 +61,12 @@ fun Modifier.dashedBorder(strokeWidth: Dp, color: Color, cornerRadiusDp: Dp) = c
     }
 )
 
+/**
+ * Creates a [Modifier] that applies a shimmer effect to its content. The shimmer effect is a gradient
+ * animation that moves across the content.
+ *
+ * @param showShimmer Whether to show the shimmer effect.
+ */
 fun Modifier.shimmer(
     showShimmer: Boolean
 ) = composed(
@@ -78,6 +92,14 @@ fun Modifier.shimmer(
     }
 )
 
+/**
+ * Creates a [Brush] for the shimmer effect. If `showShimmer` is `true`, the brush will be a linear gradient
+ * with an animation that moves across the content. If `showShimmer` is `false`, the brush will be transparent.
+ *
+ * @param showShimmer Whether to show the shimmer effect.
+ * @param size The size of the content.
+ *
+ */
 @Composable
 internal fun shimmerBrush(showShimmer: Boolean, size: IntSize): Brush {
     return if (showShimmer) {

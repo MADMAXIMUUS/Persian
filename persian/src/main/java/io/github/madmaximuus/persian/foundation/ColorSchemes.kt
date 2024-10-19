@@ -1,9 +1,6 @@
 package io.github.madmaximuus.persian.foundation
 
 import androidx.compose.foundation.text.selection.TextSelectionColors
-import androidx.compose.material3.Button
-import androidx.compose.material3.LocalContentColor
-import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.Stable
@@ -17,6 +14,47 @@ import androidx.compose.runtime.structuralEqualityPolicy
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.takeOrElse
 
+/**
+ * Class representing a color scheme for a UI theme.
+ *
+ * This class encapsulates various colors used in a UI theme, including primary, secondary, tertiary,
+ * surface, error, valid, outline, and other related colors. Each color can be individually accessed
+ * and modified.
+ *
+ * @property primary The primary color.
+ * @property onPrimary The color to use on top of the primary color.
+ * @property primaryContainer The container color for the primary color.
+ * @property onPrimaryContainer The color to use on top of the primary container color.
+ * @property secondary The secondary color.
+ * @property onSecondary The color to use on top of the secondary color.
+ * @property secondaryContainer The container color for the secondary color.
+ * @property onSecondaryContainer The color to use on top of the secondary container color.
+ * @property tertiary The tertiary color.
+ * @property onTertiary The color to use on top of the tertiary color.
+ * @property tertiaryContainer The container color for the tertiary color.
+ * @property onTertiaryContainer The color to use on top of the tertiary container color.
+ * @property surface The surface color.
+ * @property onSurface The color to use on top of the surface color.
+ * @property onSurfaceVariant The variant color to use on top of the surface color.
+ * @property error The error color.
+ * @property onError The color to use on top of the error color.
+ * @property errorContainer The container color for the error color.
+ * @property onErrorContainer The color to use on top of the error container color.
+ * @property valid The valid color.
+ * @property onValid The color to use on top of the valid color.
+ * @property validContainer The container color for the valid color.
+ * @property onValidContainer The color to use on top of the valid container color.
+ * @property outline The outline color.
+ * @property outlineVariant The variant color for the outline.
+ * @property scrim The scrim color.
+ * @property surfaceDim The dim surface color.
+ * @property surfaceBright The bright surface color.
+ * @property surfaceContainerLowest The lowest surface container color.
+ * @property surfaceContainerLow The low surface container color.
+ * @property surfaceContainer The surface container color.
+ * @property surfaceContainerHigh The high surface container color.
+ * @property surfaceContainerHighest The highest surface container color.
+ */
 class ColorScheme(
     primary: Color,
     onPrimary: Color,
@@ -384,6 +422,15 @@ val DarkColorScheme = darkColorScheme()
 
 val LocalColorScheme = staticCompositionLocalOf { LightColorScheme }
 
+/**
+ * Composable function to remember and create an instance of [TextSelectionColors] based on the provided [ColorScheme].
+ *
+ * This function uses the primary color from the [ColorScheme] to determine the handle and background colors
+ * for text selection. The background color is derived from the primary color with an alpha value of 0.4.
+ *
+ * @param colorScheme The [ColorScheme] from which to derive the text selection colors.
+ * @return An instance of [TextSelectionColors] with the specified handle and background colors.
+ */
 @Composable
 internal fun rememberTextSelectionColors(colorScheme: ColorScheme): TextSelectionColors {
     val primaryColor = colorScheme.primary
