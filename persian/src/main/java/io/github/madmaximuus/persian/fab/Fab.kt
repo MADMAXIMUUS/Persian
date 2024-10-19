@@ -30,6 +30,17 @@ import io.github.madmaximuus.persian.icon.Icon
 import io.github.madmaximuus.persian.surface.Surface
 import io.github.madmaximuus.persian.text.Text
 
+/**
+ * A small Floating Action Button (FAB) composable.
+ *
+ * @param modifier The modifier to be applied to the FAB.
+ * @param icon The [Painter] that represents the icon to be displayed in the FAB.
+ * @param sizes The [FabSizes] that define the sizes of the FAB and its icon.
+ * @param colors The [FabColors] that define the colors of the FAB and its content.
+ * @param elevation The [FabElevation] that defines the elevation of the FAB.
+ * @param interactionSource The [MutableInteractionSource] that handles the interaction state of the FAB.
+ * @param onClick The callback to be invoked when the FAB is clicked.
+ */
 @Composable
 fun SmallFab(
     modifier: Modifier = Modifier,
@@ -57,6 +68,19 @@ fun SmallFab(
     )
 }
 
+/**
+ * A medium Floating Action Button (FAB) composable.
+ *
+ * @param modifier The modifier to be applied to the FAB.
+ * @param icon The [Painter] that represents the icon to be displayed in the FAB.
+ * @param title The optional title text to be displayed in the FAB when expanded.
+ * @param expanded A boolean indicating whether the FAB is in the expanded state.
+ * @param sizes The [FabSizes] that define the sizes of the FAB and its icon.
+ * @param colors The [FabColors] that define the colors of the FAB and its content.
+ * @param elevation The [FabElevation] that defines the elevation of the FAB.
+ * @param interactionSource The [MutableInteractionSource] that handles the interaction state of the FAB.
+ * @param onClick The callback to be invoked when the FAB is clicked.
+ */
 @Composable
 fun MediumFab(
     modifier: Modifier = Modifier,
@@ -113,6 +137,17 @@ fun MediumFab(
     }
 }
 
+/**
+ * A Floating Action Button (FAB) composable.
+ *
+ * @param onClick The callback to be invoked when the FAB is clicked.
+ * @param modifier The modifier to be applied to the FAB.
+ * @param sizes The [FabSizes] that define the sizes of the FAB and its icon.
+ * @param colors The [FabColors] that define the colors of the FAB and its content.
+ * @param elevation The [FabElevation] that defines the elevation of the FAB.
+ * @param interactionSource The [MutableInteractionSource] that handles the interaction state of the FAB.
+ * @param content The composable content to be displayed inside the FAB.
+ */
 @Composable
 internal fun Fab(
     onClick: () -> Unit,

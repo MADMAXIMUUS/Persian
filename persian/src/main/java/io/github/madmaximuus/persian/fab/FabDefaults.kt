@@ -7,7 +7,6 @@ import androidx.compose.foundation.interaction.HoverInteraction
 import androidx.compose.foundation.interaction.Interaction
 import androidx.compose.foundation.interaction.InteractionSource
 import androidx.compose.foundation.interaction.PressInteraction
-import androidx.compose.material3.FloatingActionButtonDefaults.loweredElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.LaunchedEffect
@@ -25,8 +24,17 @@ import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persian.icon.IconSizes
 import kotlinx.coroutines.launch
 
+/**
+ * Contains all default values used by FAB.
+ */
 object FabDefaults {
 
+    /**
+     * Creates a [FabColors] instance with primary theme colors.
+     *
+     * @param backgroundColor The background color of the FAB.
+     * @param content The color of the content (e.g., icon, text) within the FAB.
+     */
     @Composable
     fun primaryColors(
         backgroundColor: Color = PersianTheme.colorScheme.primaryContainer,
@@ -37,6 +45,12 @@ object FabDefaults {
             contentColor = content,
         )
 
+    /**
+     * Creates a [FabColors] instance with secondary theme colors.
+     *
+     * @param backgroundColor The background color of the FAB.
+     * @param content The color of the content (e.g., icon, text) within the FAB.
+     */
     @Composable
     fun secondaryColors(
         backgroundColor: Color = PersianTheme.colorScheme.secondaryContainer,
@@ -47,6 +61,12 @@ object FabDefaults {
             contentColor = content
         )
 
+    /**
+     * Creates a [FabColors] instance with tertiary theme colors.
+     *
+     * @param backgroundColor The background color of the FAB.
+     * @param content The color of the content (e.g., icon, text) within the FAB.
+     */
     @Composable
     fun tertiaryColors(
         backgroundColor: Color = PersianTheme.colorScheme.tertiaryContainer,
@@ -57,6 +77,12 @@ object FabDefaults {
             contentColor = content
         )
 
+    /**
+     * Creates a [FabColors] instance with neutral theme colors.
+     *
+     * @param backgroundColor The background color of the FAB.
+     * @param content The color of the content (e.g., icon, text) within the FAB.
+     */
     @Composable
     fun neutralColors(
         backgroundColor: Color = PersianTheme.colorScheme.surfaceContainerHighest,
@@ -67,6 +93,14 @@ object FabDefaults {
             contentColor = content
         )
 
+    /**
+     * Creates a [FabSizes] instance with small size configurations.
+     *
+     * @param boxSize The size of the FAB's box.
+     * @param iconSizes The sizes of the icon displayed within the FAB.
+     * @param textStyle The text style applied to any text within the FAB.
+     * @param cornerShape The shape of the FAB's corners.
+     */
     @Composable
     fun smallSizes(
         boxSize: Dp = 40.dp,
@@ -81,6 +115,14 @@ object FabDefaults {
             cornerShape = cornerShape
         )
 
+    /**
+     * Creates a [FabSizes] instance with medium size configurations.
+     *
+     * @param boxSize The size of the FAB's box.
+     * @param iconSizes The sizes of the icon displayed within the FAB.
+     * @param textStyle The text style applied to any text within the FAB.
+     * @param cornerShape The shape of the FAB's corners.
+     */
     @Composable
     fun mediumSizes(
         boxSize: Dp = 56.dp,
@@ -97,8 +139,7 @@ object FabDefaults {
 
     /**
      * Creates a [FabElevation] that represents the elevation of a
-     * [Fab] in different states. For use cases in which a less prominent
-     * [Fab] is possible consider the [loweredElevation].
+     * [Fab] in different states.
      *
      * @param defaultElevation the elevation used when the [Fab] has no other
      *   [Interaction]s.
@@ -121,12 +162,26 @@ object FabDefaults {
         )
 }
 
+/**
+ * Represents the colors for a Floating Action Button (FAB).
+ *
+ * @param backgroundColor The background color of the FAB.
+ * @param contentColor The color of the content (e.g., icon, text) within the FAB.
+ */
 @Immutable
 data class FabColors(
     val backgroundColor: Color,
     val contentColor: Color,
 )
 
+/**
+ * Represents the sizes and styles for a Floating Action Button (FAB).
+ *
+ * @param boxSize The size of the FAB's box.
+ * @param iconSizes The sizes of the icon displayed within the FAB.
+ * @param textStyle The text style applied to any text within the FAB.
+ * @param cornerShape The shape of the FAB's corners.
+ */
 @Immutable
 data class FabSizes(
     val boxSize: Dp,
@@ -148,15 +203,29 @@ open class FabElevation internal constructor(
     private val focusedElevation: Dp,
     private val hoveredElevation: Dp,
 ) {
+
+    /**
+     * Returns the shadow elevation as a [State] of [Dp] based on the current interaction state.
+     *
+     * @param interactionSource The [InteractionSource] that provides the interaction state.
+     */
     @Composable
     internal fun shadowElevation(interactionSource: InteractionSource): State<Dp> {
         return animateElevation(interactionSource = interactionSource)
     }
 
+    /**
+     * Returns the tonal elevation of the FAB.
+     */
     internal fun tonalElevation(): Dp {
         return defaultElevation
     }
 
+    /**
+     * Animates the elevation based on the current interaction state.
+     *
+     * @param interactionSource The [InteractionSource] that provides the interaction state.
+     */
     @Composable
     private fun animateElevation(interactionSource: InteractionSource): State<Dp> {
         val animatable =
@@ -237,6 +306,14 @@ open class FabElevation internal constructor(
     }
 }
 
+/**
+ * A class that manages the elevation animation for a Floating Action Button (FAB).
+ *
+ * @param defaultElevation The default elevation of the FAB.
+ * @param pressedElevation The elevation of the FAB when it is pressed.
+ * @param hoveredElevation The elevation of the FAB when it is hovered.
+ * @param focusedElevation The elevation of the FAB when it is focused.
+ */
 private class FloatingActionButtonElevationAnimatable(
     private var defaultElevation: Dp,
     private var pressedElevation: Dp,
@@ -248,6 +325,9 @@ private class FloatingActionButtonElevationAnimatable(
     private var lastTargetInteraction: Interaction? = null
     private var targetInteraction: Interaction? = null
 
+    /**
+     * Calculates the target elevation based on the current interaction.
+     */
     private fun Interaction?.calculateTarget(): Dp {
         return when (this) {
             is PressInteraction.Press -> pressedElevation
@@ -257,6 +337,14 @@ private class FloatingActionButtonElevationAnimatable(
         }
     }
 
+    /**
+     * Updates the elevation values and snaps the animation to the current target elevation.
+     *
+     * @param defaultElevation The new default elevation of the FAB.
+     * @param pressedElevation The new elevation of the FAB when it is pressed.
+     * @param hoveredElevation The new elevation of the FAB when it is hovered.
+     * @param focusedElevation The new elevation of the FAB when it is focused.
+     */
     suspend fun updateElevation(
         defaultElevation: Dp,
         pressedElevation: Dp,
@@ -270,6 +358,9 @@ private class FloatingActionButtonElevationAnimatable(
         snapElevation()
     }
 
+    /**
+     * Snaps the elevation animation to the current target elevation.
+     */
     private suspend fun snapElevation() {
         val target = targetInteraction.calculateTarget()
         if (animatable.targetValue != target) {
@@ -281,6 +372,11 @@ private class FloatingActionButtonElevationAnimatable(
         }
     }
 
+    /**
+     * Animates the elevation to the target interaction.
+     *
+     * @param to The target interaction to animate to.
+     */
     suspend fun animateElevation(to: Interaction?) {
         val target = to.calculateTarget()
         // Update the interaction even if the values are the same, for when we change to another
