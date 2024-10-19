@@ -11,6 +11,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
+/**
+ * Creates a full-width vertical divider.
+ *
+ * @param modifier The [Modifier] to be applied to the divider.
+ * @param sizes The [DividerSizes] that define the thickness of the divider.
+ * @param strokeColor The [Color] of the divider.
+ */
 @Composable
 fun FullHeightVerticalDivider(
     modifier: Modifier = Modifier,
@@ -25,6 +32,14 @@ fun FullHeightVerticalDivider(
     )
 }
 
+/**
+ * Creates a vertical divider with insets on one side.
+ *
+ * @param modifier The [Modifier] to be applied to the divider.
+ * @param sizes The [DividerSizes] that define the thickness and inset of the divider.
+ * @param insetSide The [HorizontalInsetSide] that specifies which side of the divider should have the inset.
+ * @param strokeColor The [Color] of the divider.
+ */
 @Composable
 fun MiddleInsetsVerticalDivider(
     modifier: Modifier = Modifier,
@@ -45,6 +60,13 @@ fun MiddleInsetsVerticalDivider(
     )
 }
 
+/**
+ * Creates a vertical divider with insets on both sides.
+ *
+ * @param modifier The [Modifier] to be applied to the divider.
+ * @param sizes The [DividerSizes] that define the thickness and inset of the divider.
+ * @param strokeColor The [Color] of the divider.
+ */
 @Composable
 fun InsetVerticalDivider(
     modifier: Modifier = Modifier,
@@ -60,4 +82,7 @@ fun InsetVerticalDivider(
     )
 }
 
+/**
+ * An enumeration that specifies the side of the vertical inset.
+ */
 enum class VerticalInsetSide { TOP, BOTTOM }

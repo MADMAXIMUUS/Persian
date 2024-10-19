@@ -11,6 +11,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
+/**
+ * Creates a full-width horizontal divider.
+ *
+ * @param modifier The [Modifier] to be applied to the divider.
+ * @param sizes The [DividerSizes] that define the thickness of the divider.
+ * @param strokeColor The [Color] of the divider.
+ */
 @Composable
 fun FullWidthHorizontalDivider(
     modifier: Modifier = Modifier,
@@ -25,6 +32,14 @@ fun FullWidthHorizontalDivider(
     )
 }
 
+/**
+ * Creates a horizontal divider with insets on one side.
+ *
+ * @param modifier The [Modifier] to be applied to the divider.
+ * @param sizes The [DividerSizes] that define the thickness and inset of the divider.
+ * @param insetSide The [HorizontalInsetSide] that specifies which side of the divider should have the inset.
+ * @param strokeColor The [Color] of the divider.
+ */
 @Composable
 fun MiddleInsetsHorizontalDivider(
     modifier: Modifier = Modifier,
@@ -45,6 +60,13 @@ fun MiddleInsetsHorizontalDivider(
     )
 }
 
+/**
+ * Creates a horizontal divider with insets on both sides.
+ *
+ * @param modifier The [Modifier] to be applied to the divider.
+ * @param sizes The [DividerSizes] that define the thickness and inset of the divider.
+ * @param strokeColor The [Color] of the divider.
+ */
 @Composable
 fun InsetHorizontalDivider(
     modifier: Modifier = Modifier,
@@ -60,4 +82,7 @@ fun InsetHorizontalDivider(
     )
 }
 
+/**
+ * An enumeration that specifies the side of the horizontal inset.
+ */
 enum class HorizontalInsetSide { LEFT, RIGHT }
