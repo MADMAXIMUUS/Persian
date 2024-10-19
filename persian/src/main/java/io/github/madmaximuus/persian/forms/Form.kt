@@ -7,6 +7,17 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
+/**
+ * Composable function to display a form with optional subhead, content, and caption.
+ *
+ * @param modifier The modifier to be applied to the form.
+ * @param enabled Indicates whether the form is enabled.
+ * @param isError Indicates whether the form is in an error state.
+ * @param isValid Indicates whether the form is valid.
+ * @param subhead The composable content to be displayed as the subhead of the form.
+ * @param content The composable content to be displayed as the main content of the form.
+ * @param caption The composable content to be displayed as the caption of the form.
+ */
 @Composable
 fun Form(
     modifier: Modifier = Modifier,
@@ -34,80 +45,6 @@ fun Form(
             }
             subheadScope.subhead()
         }
-        /*when (content) {
-            is PersianFormContent.FourDigitCodeInput -> {
-                PersianFormContentFourDigitCodeInput(
-                    values = content.values,
-                    onValueChange = content.onValueChange,
-                    isError = isError,
-                    isValid = isValid,
-                    enabled = enabled
-                )
-            }
-
-            is PersianFormContent.SixDigitCodeInput -> {
-                PersianFormContentSixDigitCodeInput(
-                    modifier = Modifier.fillMaxWidth(),
-                    values = content.values,
-                    onValueChange = content.onValueChange,
-                    isError = isError,
-                    isSuccess = isValid,
-                    enabled = enabled
-                )
-            }
-
-            is PersianFormContent.Input -> {
-                PersianFormContentInput(
-                    value = content.value,
-                    onValueChange = content.onValueChange,
-                    isError = isError,
-                    isValid = isValid,
-                    enabled = enabled,
-                    textStyle = content.textStyle,
-                    colors = content.colors,
-                    keyboardActions = content.keyboardActions,
-                    keyboardOptions = content.keyboardOptions,
-                    leadingIcon = content.leadingIcon,
-                    placeholder = content.placeholder,
-                    trailingIcon = content.trailingIcon,
-                    onTrailingIconClick = content.onTrailingIconClick,
-                    transformation = content.transformation,
-                    readOnly = content.readOnly
-                )
-            }
-
-            is PersianFormContent.TextArea -> {
-                PersianFormContentTextArea(
-                    value = content.value,
-                    onValueChange = content.onValueChange,
-                    isError = isError,
-                    isValid = isValid,
-                    enabled = enabled,
-                    textStyle = content.textStyle,
-                    colors = content.colors,
-                    keyboardActions = content.keyboardActions,
-                    keyboardOptions = content.keyboardOptions,
-                    leadingIcon = content.leadingIcon,
-                    placeholder = content.placeholder,
-                )
-            }
-
-            is PersianFormContent.Select -> {
-                PersianFormContentSelect(
-                    selected = content.selected,
-                    values = content.values,
-                    enabled = enabled,
-                    isError = isError,
-                    isValid = isValid,
-                    placeholder = content.placeholder,
-                    onSelectedChange = content.onSelectedChange,
-                    expanded = content.expanded ?: remember { mutableStateOf(false) },
-                    leadingIcon = content.leadingIcon,
-                    inputColors = content.inputColors ?: InputsDefaults.outlineColors(),
-                    menuColors = content.menuColors ?: MenuDefaults.colors()
-                )
-            }
-        }*/
         val contentScope = remember(enabled, isError, isValid) {
             FormContentScopeWrapper(
                 scope = this,

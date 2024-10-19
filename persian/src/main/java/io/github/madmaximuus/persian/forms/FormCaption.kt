@@ -10,12 +10,33 @@ import androidx.compose.ui.Modifier
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.text.Text
 
+/**
+ * Interface representing the scope for a form caption.
+ *
+ * This interface extends [ColumnScope] and provides additional properties
+ * specific to form captions, such as colors, enabled state, and error status.
+ *
+ * @property colors The colors associated with the form caption.
+ * @property enabled Indicates whether the form caption is enabled.
+ * @property isError Indicates whether the form caption is in an error state.
+ */
 interface FormCaptionScope : ColumnScope {
     val colors: CaptionColors
     val enabled: Boolean
     val isError: Boolean
 }
 
+/**
+ * Internal wrapper class for [FormCaptionScope].
+ *
+ * This class implements [FormCaptionScope] and delegates [ColumnScope] functionality to the provided [scope].
+ * It encapsulates the properties required for a form caption, such as colors, enabled state, and error status.
+ *
+ * @param scope The [ColumnScope] to delegate functionality to.
+ * @param colors The colors associated with the form caption.
+ * @param enabled Indicates whether the form caption is enabled.
+ * @param isError Indicates whether the form caption is in an error state.
+ */
 internal class FormCaptionScopeWrapper(
     scope: ColumnScope,
     override val colors: CaptionColors,
@@ -23,7 +44,16 @@ internal class FormCaptionScopeWrapper(
     override val isError: Boolean
 ) : FormCaptionScope, ColumnScope by scope
 
-
+/**
+ * Composable function to display a caption within a form.
+ *
+ * This function uses the properties from the [FormCaptionScope] to determine the appearance and behavior
+ * of the caption text. It displays the provided [text] or [errorText] if the caption is in an error state.
+ *
+ * @param modifier The modifier to be applied to the caption.
+ * @param text The main text to be displayed in the caption.
+ * @param errorText The text to be displayed if the caption is in an error state.
+ */
 @Composable
 fun FormCaptionScope.Caption(
     modifier: Modifier = Modifier,
@@ -49,6 +79,19 @@ fun FormCaptionScope.Caption(
     }
 }
 
+/**
+ * Composable function to display a caption within a form, including an optional counter.
+ *
+ * This function uses the properties from the [FormCaptionScope] to determine the appearance and behavior
+ * of the caption text and counter. It displays the provided [text] or [errorText] if the caption is in an error state.
+ * Additionally, it can display a counter showing the current count and maximum count.
+ *
+ * @param modifier The modifier to be applied to the caption.
+ * @param text The main text to be displayed in the caption.
+ * @param counter The current count to be displayed. Default is 0.
+ * @param counterMax The maximum count to be displayed. Default is 0.
+ * @param errorText The text to be displayed if the caption is in an error state.
+ */
 @Composable
 fun FormCaptionScope.Caption(
     modifier: Modifier = Modifier,

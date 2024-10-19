@@ -8,8 +8,25 @@ import androidx.compose.ui.graphics.Color
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state38
 
+/**
+ * Contains all default values used by form.
+ */
 object FormDefaults {
 
+    /**
+     * Composable function to create an instance of [CaptionColors] with customizable colors.
+     *
+     * This function allows you to specify the colors for the text and counter of a form caption,
+     * including their enabled, disabled, and error states. If no custom colors are provided,
+     * default colors from the [PersianTheme] are used.
+     *
+     * @param textColor The color of the text when enabled.
+     * @param errorColor The color of the text when in an error state.
+     * @param disabledColor The color of the text when disabled.
+     * @param counterColor The color of the counter when enabled.
+     * @param errorCounterColor The color of the counter when in an error state.
+     * @param disabledCounterColor The color of the counter when disabled.
+     */
     @Composable
     fun captionColors(
         textColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
@@ -27,6 +44,18 @@ object FormDefaults {
         disabledCounterColor = disabledCounterColor
     )
 
+    /**
+     * Composable function to create an instance of [SubheadColors] with customizable colors.
+     *
+     * This function allows you to specify the colors for the text and required indicator of a form subhead,
+     * including their enabled and disabled states. If no custom colors are provided,
+     * default colors from the [PersianTheme] are used.
+     *
+     * @param textColor The color of the text when enabled.
+     * @param disabledColor The color of the text when disabled.
+     * @param requiredColor The color of the required indicator when enabled.
+     * @param requiredDisabledColor The color of the required indicator when disabled.
+     */
     @Composable
     fun subheadColors(
         textColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
@@ -42,6 +71,19 @@ object FormDefaults {
     )
 }
 
+/**
+ * Immutable class representing the colors for a form caption.
+ *
+ * This class encapsulates the colors used for the text and counter of a form caption,
+ * including their enabled, disabled, and error states.
+ *
+ * @property textColor The color of the text when enabled.
+ * @property errorColor The color of the text when in an error state.
+ * @property disabledColor The color of the text when disabled.
+ * @property counterColor The color of the counter when enabled.
+ * @property errorCounterColor The color of the counter when in an error state.
+ * @property disabledCounterColor The color of the counter when disabled.
+ */
 @Immutable
 class CaptionColors internal constructor(
     private val textColor: Color,
@@ -52,6 +94,12 @@ class CaptionColors internal constructor(
     private val errorCounterColor: Color,
     private val disabledCounterColor: Color
 ) {
+    /**
+     * Composable function to get the text color based on the enabled and error states.
+     *
+     * @param enabled Indicates whether the text is enabled.
+     * @param isError Indicates whether the text is in an error state.
+     */
     @Composable
     internal fun textColor(
         enabled: Boolean,
@@ -65,6 +113,12 @@ class CaptionColors internal constructor(
         return rememberUpdatedState(newValue = target)
     }
 
+    /**
+     * Composable function to get the counter color based on the enabled and error states.
+     *
+     * @param enabled Indicates whether the counter is enabled.
+     * @param isError Indicates whether the counter is in an error state.
+     */
     @Composable
     internal fun counterColor(
         enabled: Boolean,
@@ -79,6 +133,17 @@ class CaptionColors internal constructor(
     }
 }
 
+/**
+ * Immutable class representing the colors for a form subhead.
+ *
+ * This class encapsulates the colors used for the text and required indicator of a form subhead,
+ * including their enabled and disabled states.
+ *
+ * @property textColor The color of the text when enabled.
+ * @property disabledColor The color of the text when disabled.
+ * @property requiredColor The color of the required indicator when enabled.
+ * @property requiredDisabledColor The color of the required indicator when disabled.
+ */
 @Immutable
 class SubheadColors internal constructor(
     private val textColor: Color,
@@ -87,6 +152,11 @@ class SubheadColors internal constructor(
     private val requiredColor: Color,
     private val requiredDisabledColor: Color
 ) {
+    /**
+     * Composable function to get the text color based on the enabled state.
+     *
+     * @param enabled Indicates whether the text is enabled.
+     */
     @Composable
     internal fun textColor(
         enabled: Boolean
@@ -98,6 +168,11 @@ class SubheadColors internal constructor(
         return rememberUpdatedState(newValue = target)
     }
 
+    /**
+     * Composable function to get the required indicator color based on the enabled state.
+     *
+     * @param enabled Indicates whether the required indicator is enabled.
+     */
     @Composable
     internal fun requiredColor(
         enabled: Boolean
