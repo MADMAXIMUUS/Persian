@@ -27,24 +27,75 @@ import java.io.Serializable
 import java.util.Timer
 import kotlin.concurrent.schedule
 
+/**
+ * A class that represents the state of a date picker.
+ *
+ * This class holds the state of the date picker, including the selection mode, configuration, current position,
+ * pages, selected dates, and other relevant information. It provides methods to navigate through the date picker,
+ * handle selections, and validate the state.
+ *
+ * @param selection The selection mode for the date picker.
+ * @param config The configuration settings for the date picker.
+ * @param stateData Optional initial state data for the date picker.
+ */
 internal class DatePickerState(
     val selection: DatePickerSelection,
     val config: DatePickerConfig,
     stateData: CalendarStateData? = null,
 ) {
+    /**
+     * The mode of the date picker display.
+     *
+     */
     var mode by mutableStateOf(stateData?.mode ?: DatePickerDisplayMode.CALENDAR)
+
+    /**
+     * Current page index based on month and year
+     */
     var currentPosition by mutableIntStateOf(
         stateData?.currentPosition ?: selection.getInitialPageFrom(config)
     )
+
+    /**
+     * The current date representing today.
+     */
     val today: Calendar = Calendar.getInstance().apply {
         firstDayOfWeek = Calendar.MONDAY
     }
+
+    /**
+     * The pages of the date picker.
+     */
     var pages by mutableStateOf(stateData?.pages ?: emptyArray())
+
+    /**
+     * The selected date.
+     */
     var date = mutableStateOf(stateData?.date ?: selection.dateValue)
+
+    /**
+     * The list of selected dates.
+     */
     var dates = mutableStateListOf(*(stateData?.dates ?: selection.datesValue))
+
+    /**
+     * The range of selected dates.
+     */
     var range = mutableStateListOf(*(stateData?.range ?: selection.rangeValue))
+
+    /**
+     * Indicates if the range selection is starting.
+     */
     var isRangeSelectionStart by mutableStateOf(stateData?.rangeSelectionStart ?: true)
+
+    /**
+     * The range of years.
+     */
     var yearsRange by mutableStateOf(getInitYearsRange())
+
+    /**
+     * Indicates if the current state is valid.
+     */
     private var valid by mutableStateOf(isValid())
 
     init {
@@ -74,6 +125,11 @@ internal class DatePickerState(
         pages = calcMonthData(config).toTypedArray()
     }
 
+    /**
+     * Checks if the setup is correct.
+     *
+     * @throws IllegalStateException if the selection is out of the provided boundary.
+     */
     private fun checkSetup() {
         val selection = mutableListOf<Calendar>()
         when (this.selection) {
@@ -90,36 +146,63 @@ internal class DatePickerState(
         }
     }
 
+    /**
+     * Gets the initial years range.
+     */
     private fun getInitYearsRange(): ClosedRange<Int> =
         config.boundary.start.get(Calendar.YEAR)..config.boundary.endInclusive.get(Calendar.YEAR)
 
+    /**
+     * Checks if the current state is valid.
+     */
     private fun checkValid() {
         valid = isValid()
     }
 
+    /**
+     * Checks if the current state is valid.
+     */
     private fun isValid(): Boolean = when (selection) {
         is DatePickerSelection.Date -> date.value != null
         is DatePickerSelection.Dates -> dates.isNotEmpty()
         is DatePickerSelection.Period -> range.startValue != null && range.endValue != null
     }
 
+    /**
+     * Indicates if the previous button is disabled.
+     */
     val isPrevDisabled: Boolean
         get() = currentPosition == 0
 
+    /**
+     * Indicates if the next button is disabled.
+     */
     val isNextDisabled: Boolean
         get() = currentPosition == pages.size - 1
 
+    /**
+     * Gets the year index.
+     */
     val yearIndex: Int
         get() = pages[currentPosition].year - yearsRange.start
 
+    /**
+     * Moves to the previous page.
+     */
     fun onPrevious() {
         currentPosition--
     }
 
+    /**
+     * Moves to the next page.
+     */
     fun onNext() {
         currentPosition++
     }
 
+    /**
+     * Handles the click event for month selection.
+     */
     fun onMonthSelectionClick() {
         mode = when (mode) {
             DatePickerDisplayMode.MONTH -> DatePickerDisplayMode.CALENDAR
@@ -128,6 +211,9 @@ internal class DatePickerState(
         }
     }
 
+    /**
+     * Handles the click event for year selection.
+     */
     fun onYearSelectionClick() {
         mode = when (mode) {
             DatePickerDisplayMode.YEAR -> DatePickerDisplayMode.CALENDAR
@@ -136,6 +222,11 @@ internal class DatePickerState(
         }
     }
 
+    /**
+     * Handles the click event for a specific month.
+     *
+     * @param month The month that was clicked.
+     */
     fun onMonthClick(month: Int) {
         val currentMonth = pages[currentPosition].month
         val diffMonth = currentMonth - month
@@ -146,6 +237,11 @@ internal class DatePickerState(
         }
     }
 
+    /**
+     * Handles the click event for a specific year.
+     *
+     * @param year The year that was clicked.
+     */
     fun onYearClick(year: Int) {
         val diffYear = yearIndex - year
         val diffMonth = 12 * diffYear
@@ -156,6 +252,11 @@ internal class DatePickerState(
         }
     }
 
+    /**
+     * Processes the selection of a new date.
+     *
+     * @param newDate The new date that was selected.
+     */
     fun processSelection(newDate: Calendar) {
         when (selection) {
             is DatePickerSelection.Date -> {
@@ -190,6 +291,9 @@ internal class DatePickerState(
         checkValid()
     }
 
+    /**
+     * Handles the confirm button click event.
+     */
     fun onFinish() {
         when (selection) {
             is DatePickerSelection.Date -> selection.onDateSelected(date.value ?: today)
@@ -206,6 +310,13 @@ internal class DatePickerState(
     }
 
     companion object {
+        /**
+         * Creates a Saver for the DatePickerState.
+         *
+         * @param selection The date picker selection.
+         * @param config The date picker configuration.
+         * @return A Saver for the DatePickerState.
+         */
         fun Saver(
             selection: DatePickerSelection,
             config: DatePickerConfig
@@ -227,6 +338,17 @@ internal class DatePickerState(
         )
     }
 
+    /**
+     * Data class representing the state of the calendar in the date picker.
+     *
+     * @property mode The display mode of the date picker.
+     * @property pages The array of pages representing the date picker grid states.
+     * @property currentPosition The current position of the date picker.
+     * @property date The selected date.
+     * @property dates The array of selected dates.
+     * @property range The array representing the range of selected dates.
+     * @property rangeSelectionStart Indicates if the range selection is starting.
+     */
     internal data class CalendarStateData(
         val mode: DatePickerDisplayMode,
         val pages: Array<DatePickerGridState>,
@@ -265,6 +387,12 @@ internal class DatePickerState(
     }
 }
 
+/**
+ * Function to remember the state of the date picker.
+ *
+ * @param selection The selection type for the date picker.
+ * @param config The configuration for the date picker.
+ */
 @Composable
 internal fun rememberDatePickerState(
     selection: DatePickerSelection,

@@ -1,6 +1,5 @@
 package io.github.madmaximuus.persian.datePicker.view.cells
 
-import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -13,14 +12,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.datePicker.view.DatePickerMonthCellColors
-import io.github.madmaximuus.persian.datePicker.view.PersianDatePickerViewDefaults
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.surface.Surface
 import io.github.madmaximuus.persian.text.Text
 
+/**
+ * A composable function that represents a month cell in a date picker dialog.
+ *
+ * @param month The name of the month to be displayed.
+ * @param index The index of the month in the list of months.
+ * @param enabled A boolean indicating whether the month cell is enabled.
+ * @param selected A boolean indicating whether the month cell is selected.
+ * @param currentMonth A boolean indicating whether the month cell represents the current month.
+ * @param colors The colors to be used for the month cell, including container, content, and indicator colors.
+ * @param onMonthClick A callback function that is invoked when the month cell is clicked.
+ * @param modifier The modifier to be applied to the composable.
+ */
 @Composable
 internal fun DatePickerDialogMonthCell(
     month: String,
@@ -75,24 +83,5 @@ internal fun DatePickerDialogMonthCell(
                     shape = PersianTheme.shapes.shape4
                 )
         )
-    }
-}
-
-@Preview
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
-@Composable
-private fun DayCellPreview() {
-    PersianTheme {
-        Surface {
-            DatePickerDialogMonthCell(
-                month = "January",
-                index = 0,
-                enabled = true,
-                selected = false,
-                currentMonth = true,
-                colors = PersianDatePickerViewDefaults.monthCellColors(),
-                onMonthClick = {}
-            )
-        }
     }
 }

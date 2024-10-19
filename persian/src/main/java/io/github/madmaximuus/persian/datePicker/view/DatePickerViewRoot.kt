@@ -10,6 +10,15 @@ import androidx.compose.ui.Modifier
 import androidx.window.core.layout.WindowHeightSizeClass
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
+/**
+ * Composable function to render the root layout of the date picker view.
+ *
+ * The layout adapts based on the window height size class. If the window height size class is compact,
+ * the content is arranged in a row. Otherwise, the content is arranged in a column.
+ *
+ * @param modifier The modifier to be applied to the root layout.
+ * @param content The composable content to be displayed within the root layout.
+ */
 @Composable
 internal fun DatePickerViewRoot(
     modifier: Modifier = Modifier,

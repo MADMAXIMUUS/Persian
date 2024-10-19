@@ -1,6 +1,5 @@
 package io.github.madmaximuus.persian.datePicker.view.header
 
-import android.content.res.Configuration
 import android.icu.util.Calendar
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.expandIn
@@ -23,16 +22,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.window.core.layout.WindowHeightSizeClass
 import io.github.madmaximuus.persian.button.ButtonDefaults
 import io.github.madmaximuus.persian.button.TertiaryButton
 import io.github.madmaximuus.persian.datePicker.view.DatePickerHeaderColors
-import io.github.madmaximuus.persian.datePicker.view.PersianDatePickerViewDefaults
 import io.github.madmaximuus.persian.datePicker.view.util.DatePickerDisplayMode
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.iconButton.PrimaryIconButton
-import io.github.madmaximuus.persian.surface.Surface
 import io.github.madmaximuus.persian.text.Text
 import io.github.madmaximuus.persianSymbols.chevronDown.base.ChevronDown
 import io.github.madmaximuus.persianSymbols.chevronLeft.base.ChevronLeft
@@ -42,6 +38,26 @@ import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import java.text.SimpleDateFormat
 import java.util.Locale
 
+/**
+ * A composable function that represents the header of a date picker dialog.
+ *
+ * This function displays the header of the date picker dialog, which includes navigation buttons
+ * and mode selection buttons. The appearance and behavior of the header are customizable based on
+ * the provided parameters. The header layout changes based on the window height size class.
+ *
+ * @param modifier The modifier to be applied to the composable.
+ * @param isPrevDisabled A boolean indicating whether the previous navigation button is disabled.
+ * @param isNextDisabled A boolean indicating whether the next navigation button is disabled.
+ * @param navigationDisabled A boolean indicating whether navigation is disabled.
+ * @param mode The display mode for the date picker, which can be CALENDAR, MONTH, or YEAR.
+ * @param date The current date displayed in the header.
+ * @param selectable A boolean indicating whether the date is selectable.
+ * @param onNextClick A callback function that is invoked when the next navigation button is clicked.
+ * @param onPrevClick A callback function that is invoked when the previous navigation button is clicked.
+ * @param onMonthClick A callback function that is invoked when the month selection button is clicked.
+ * @param onYearClick A callback function that is invoked when the year selection button is clicked.
+ * @param colors The colors to be used for the header components.
+ */
 @Composable
 internal fun DatePickerDialogHeader(
     modifier: Modifier = Modifier,
@@ -91,6 +107,26 @@ internal fun DatePickerDialogHeader(
     }
 }
 
+/**
+ * A composable function that represents the portrait header of a date picker dialog.
+ *
+ * This function displays the header of the date picker dialog in portrait mode, which includes navigation
+ * buttons and mode selection buttons. The appearance and behavior of the header are customizable based on
+ * the provided parameters.
+ *
+ * @param modifier The modifier to be applied to the composable.
+ * @param isPrevDisabled A boolean indicating whether the previous navigation button is disabled.
+ * @param isNextDisabled A boolean indicating whether the next navigation button is disabled.
+ * @param navigationDisabled A boolean indicating whether navigation is disabled.
+ * @param mode The display mode for the date picker, which can be CALENDAR, MONTH, or YEAR.
+ * @param date The current date displayed in the header.
+ * @param selectable A boolean indicating whether the date is selectable.
+ * @param onNextClick A callback function that is invoked when the next navigation button is clicked.
+ * @param onPrevClick A callback function that is invoked when the previous navigation button is clicked.
+ * @param onMonthClick A callback function that is invoked when the month selection button is clicked.
+ * @param onYearClick A callback function that is invoked when the year selection button is clicked.
+ * @param colors The colors to be used for the header components.
+ */
 @Composable
 internal fun DatePickerViewPortraitHeader(
     modifier: Modifier = Modifier,
@@ -208,6 +244,26 @@ internal fun DatePickerViewPortraitHeader(
     }
 }
 
+/**
+ * A composable function that represents the landscape header of a date picker dialog.
+ *
+ * This function displays the header of the date picker dialog in landscape mode, which includes navigation
+ * buttons and mode selection buttons. The appearance and behavior of the header are customizable based on
+ * the provided parameters.
+ *
+ * @param modifier The modifier to be applied to the composable.
+ * @param isPrevDisabled A boolean indicating whether the previous navigation button is disabled.
+ * @param isNextDisabled A boolean indicating whether the next navigation button is disabled.
+ * @param navigationDisabled A boolean indicating whether navigation is disabled.
+ * @param mode The display mode for the date picker, which can be CALENDAR, MONTH, or YEAR.
+ * @param date The current date displayed in the header.
+ * @param selectable A boolean indicating whether the date is selectable.
+ * @param onNextClick A callback function that is invoked when the next navigation button is clicked.
+ * @param onPrevClick A callback function that is invoked when the previous navigation button is clicked.
+ * @param onMonthClick A callback function that is invoked when the month selection button is clicked.
+ * @param onYearClick A callback function that is invoked when the year selection button is clicked.
+ * @param colors The colors to be used for the header components.
+ */
 @Composable
 internal fun DatePickerViewLandscapeHeader(
     modifier: Modifier = Modifier,
@@ -327,31 +383,6 @@ internal fun DatePickerViewLandscapeHeader(
                     onClick = onNextClick
                 )
             }
-        }
-    }
-}
-
-@Preview
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
-@Composable
-fun HeaderPreview() {
-    PersianTheme {
-        Surface {
-            DatePickerDialogHeader(
-                mode = DatePickerDisplayMode.CALENDAR,
-                selectable = true,
-                date = Calendar.getInstance().apply {
-                    firstDayOfWeek = Calendar.MONDAY
-                },
-                isNextDisabled = false,
-                isPrevDisabled = false,
-                navigationDisabled = false,
-                onNextClick = {},
-                onPrevClick = {},
-                onYearClick = {},
-                onMonthClick = {},
-                colors = PersianDatePickerViewDefaults.headerColors()
-            )
         }
     }
 }

@@ -24,6 +24,26 @@ import io.github.madmaximuus.persian.datePicker.view.util.calcCalendarDateData
 import io.github.madmaximuus.persian.datePicker.view.util.findDayOffset
 import io.github.madmaximuus.persian.datePicker.view.util.getDaysInMonth
 
+/**
+ * A composable function that represents a calendar grid in a date picker dialog.
+ *
+ * This function displays a calendar grid with weeks and days, allowing users to navigate through
+ * different months and select dates. The appearance and behavior of the grid are customizable based
+ * on the provided parameters.
+ *
+ * @param pagerState The state of the horizontal pager used for navigating through months.
+ * @param config The configuration settings for the date picker.
+ * @param weekLabels An array of strings representing the labels for the days of the week.
+ * @param data A list of [DatePickerGridState] objects representing the state of each month in the calendar.
+ * @param currentPosition The index of the currently displayed month.
+ * @param selection The selection mode for the date picker (e.g., single, multiple, range).
+ * @param selectedDate The currently selected date, if any.
+ * @param selectedDates A list of selected dates, if multiple dates are selected.
+ * @param selectedRange A pair representing the start and end dates of a selected range, if any.
+ * @param dayCellColors The colors to be used for the day cells in the calendar.
+ * @param dayOfWeekCellColors The colors to be used for the day of the week labels.
+ * @param onDateClick A callback function that is invoked when a date cell is clicked.
+ */
 @Composable
 internal fun DatePickerDialogCalendarGrid(
     pagerState: PagerState,

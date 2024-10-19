@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
@@ -29,6 +28,15 @@ import io.github.madmaximuus.persian.datePicker.view.util.monthBetween
 import io.github.madmaximuus.persian.datePicker.view.util.startValue
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
+/**
+ * Composable function to render the date picker view.
+ *
+ * @param state The state of the date picker.
+ * @param modifier The modifier to be applied to the date picker view.
+ * @param colors The colors to be used for the date picker view.
+ * @param config The configuration for the date picker.
+ * @param onSelection The callback to be invoked when a date is selected.
+ */
 @Composable
 internal fun DatePickerView(
     state: DatePickerState,
@@ -37,7 +45,6 @@ internal fun DatePickerView(
     config: DatePickerConfig = DatePickerConfig(),
     onSelection: (Calendar) -> Unit
 ) {
-    val windowHeightSizeClass = currentWindowAdaptiveInfo().windowSizeClass.windowHeightSizeClass
     val weekLabels = stringArrayResource(id = R.array.week_day_labels)
     val monthLabels = stringArrayResource(id = R.array.months)
 

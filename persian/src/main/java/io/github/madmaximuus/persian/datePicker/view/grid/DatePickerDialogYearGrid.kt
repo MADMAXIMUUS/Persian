@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.datePicker.view.DatePickerYearCellColors
-import io.github.madmaximuus.persian.datePicker.view.cells.PersianDatePickerDialogYearCell
+import io.github.madmaximuus.persian.datePicker.view.cells.DatePickerDialogYearCell
 import io.github.madmaximuus.persian.datePicker.view.util.Constants
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
@@ -30,7 +30,7 @@ internal fun DatePickerDialogYearGrid(
         state = yearListState,
         content = {
             items(yearsRange.endInclusive.minus(yearsRange.start)) {
-                PersianDatePickerDialogYearCell(
+                DatePickerDialogYearCell(
                     year = (yearsRange.start + it).toString(),
                     index = it,
                     currentYear = currentYear == yearsRange.start + it,

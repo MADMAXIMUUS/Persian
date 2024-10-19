@@ -1,6 +1,5 @@
 package io.github.madmaximuus.persian.datePicker.view.cells
 
-import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -13,16 +12,24 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.datePicker.view.DatePickerYearCellColors
-import io.github.madmaximuus.persian.datePicker.view.PersianDatePickerViewDefaults
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.surface.Surface
 import io.github.madmaximuus.persian.text.Text
 
+/**
+ * A composable function that represents a year cell in a Persian date picker dialog.
+ *
+ * @param year The year to be displayed.
+ * @param index The index of the year in the list of years.
+ * @param currentYear A boolean indicating whether the year cell represents the current year.
+ * @param selected A boolean indicating whether the year cell is selected.
+ * @param colors The colors to be used for the year cell, including container, content, and indicator colors.
+ * @param onYearClick A callback function that is invoked when the year cell is clicked.
+ * @param modifier The modifier to be applied to the composable.
+ */
 @Composable
-internal fun PersianDatePickerDialogYearCell(
+internal fun DatePickerDialogYearCell(
     year: String,
     index: Int,
     currentYear: Boolean,
@@ -74,23 +81,5 @@ internal fun PersianDatePickerDialogYearCell(
                     shape = PersianTheme.shapes.shape4
                 )
         )
-    }
-}
-
-@Preview
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
-@Composable
-private fun DayCellPreview() {
-    PersianTheme {
-        Surface {
-            PersianDatePickerDialogYearCell(
-                year = "2024",
-                index = 0,
-                selected = true,
-                currentYear = false,
-                colors = PersianDatePickerViewDefaults.yearCellColors(),
-                onYearClick = {}
-            )
-        }
     }
 }

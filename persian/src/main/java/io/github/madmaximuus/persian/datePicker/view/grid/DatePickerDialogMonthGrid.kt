@@ -9,6 +9,18 @@ import io.github.madmaximuus.persian.datePicker.view.cells.DatePickerDialogMonth
 import io.github.madmaximuus.persian.datePicker.view.util.Constants
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
+/**
+ * A composable function that represents a month grid in a date picker dialog.
+ *
+ * This function displays a grid of months, allowing users to select a month. The appearance and behavior
+ * of the grid are customizable based on the provided parameters.
+ *
+ * @param monthLabels An array of strings representing the labels for the months.
+ * @param currentMonth The index of the current month.
+ * @param selectedMonth The index of the selected month.
+ * @param colors The colors to be used for the month cells in the grid.
+ * @param onMonthClick A callback function that is invoked when a month cell is clicked.
+ */
 @Composable
 internal fun DatePickerDialogMonthGrid(
     monthLabels: Array<String>,

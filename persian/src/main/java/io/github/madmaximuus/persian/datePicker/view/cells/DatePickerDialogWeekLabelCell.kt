@@ -13,6 +13,13 @@ import io.github.madmaximuus.persian.datePicker.view.DatePickerDayOfWeekCellColo
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.text.Text
 
+/**
+ * A composable function that represents a week label cell in a date picker dialog.
+ *
+ * @param label The label text to be displayed, typically representing the day of the week.
+ * @param modifier The modifier to be applied to the composable.
+ * @param colors The colors to be used for the week label cell, including the day of the week label color.
+ */
 @Composable
 internal fun DatePickerDialogWeekLabelCell(
     label: String,

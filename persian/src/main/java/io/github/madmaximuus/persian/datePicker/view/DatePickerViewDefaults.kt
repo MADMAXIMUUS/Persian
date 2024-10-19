@@ -3,7 +3,6 @@ package io.github.madmaximuus.persian.datePicker.view
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.State
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.graphics.Color
 import io.github.madmaximuus.persian.button.ButtonColors
@@ -13,28 +12,43 @@ import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.iconButton.IconButtonColors
 import io.github.madmaximuus.persian.iconButton.IconButtonDefaults
 
+/**
+ * Contains all default values used by date picker view.
+ */
 object PersianDatePickerViewDefaults {
 
+    /**
+     * Returns the default colors for the date picker view.
+     *
+     * @param headerColors The colors for the header of the date picker.
+     * @param datePickerGridColors The colors for the various cells in the date picker grid.
+     * @param containerColor The color of the container for the date picker view.
+     * @param elevatedContainerColor The color of the container for the date picker view when it is elevated.
+     * @return The default colors for the date picker view.
+     */
     @Composable
     fun colors(
         headerColors: DatePickerHeaderColors = headerColors(),
         datePickerGridColors: DatePickerGridColors = gridColors(),
         containerColor: Color = Color.Transparent,
         elevatedContainerColor: Color = PersianTheme.colorScheme.surfaceContainer,
-    ) = remember(
-        headerColors,
-        datePickerGridColors,
-        containerColor,
-        elevatedContainerColor
-    ) {
-        DatePickerViewColors(
-            headerColors = headerColors,
-            datePickerGridColors = datePickerGridColors,
-            containerColor = containerColor,
-            elevatedContainerColor = elevatedContainerColor
-        )
-    }
+    ): DatePickerViewColors = DatePickerViewColors(
+        headerColors = headerColors,
+        datePickerGridColors = datePickerGridColors,
+        containerColor = containerColor,
+        elevatedContainerColor = elevatedContainerColor
+    )
 
+    /**
+     * Returns the default colors for the header of the date picker.
+     *
+     * @param prevButtonColor The colors for the previous button in the date picker header.
+     * @param nextButtonColor The colors for the next button in the date picker header.
+     * @param monthLabelColor The color for the month label in the date picker header.
+     * @param yearLabelColor The color for the year label in the date picker header.
+     * @param selectedMonthColor The colors for the selected month button in the date picker header.
+     * @param selectedYearColor The colors for the selected year button in the date picker header.
+     */
     @Composable
     fun headerColors(
         prevButtonColor: IconButtonColors = IconButtonDefaults.primaryIconButtonColors(),
@@ -43,53 +57,60 @@ object PersianDatePickerViewDefaults {
         yearLabelColor: Color = PersianTheme.colorScheme.primary,
         selectedMonthColor: ButtonColors = ButtonDefaults.tertiaryColors(),
         selectedYearColor: ButtonColors = ButtonDefaults.tertiaryColors(),
-    ) = remember(
-        prevButtonColor,
-        nextButtonColor,
-        monthLabelColor,
-        yearLabelColor,
-        selectedMonthColor,
-        selectedYearColor,
-    ) {
-        DatePickerHeaderColors(
-            prevButtonColor = prevButtonColor,
-            nextButtonColor = nextButtonColor,
-            monthLabelColor = monthLabelColor,
-            yearLabelColor = yearLabelColor,
-            selectedMonthColor = selectedMonthColor,
-            selectedYearColor = selectedYearColor,
-        )
-    }
+    ): DatePickerHeaderColors = DatePickerHeaderColors(
+        prevButtonColor = prevButtonColor,
+        nextButtonColor = nextButtonColor,
+        monthLabelColor = monthLabelColor,
+        yearLabelColor = yearLabelColor,
+        selectedMonthColor = selectedMonthColor,
+        selectedYearColor = selectedYearColor,
+    )
 
+    /**
+     * Returns the default colors for the various cells in the date picker grid.
+     *
+     * @param dayOfWeekLabelColors The colors for the day of the week labels in the date picker grid.
+     * @param dayPickerDayCellColors The colors for the day cells in the date picker grid.
+     * @param dayPickerMonthCellColors The colors for the month cells in the date picker grid.
+     * @param dayPickerYearCellColors The colors for the year cells in the date picker grid.
+     */
     @Composable
     fun gridColors(
         dayOfWeekLabelColors: DatePickerDayOfWeekCellColors = dayOfWeekLabelColors(),
         dayPickerDayCellColors: DatePickerDayCellColors = dayCellColors(),
         dayPickerMonthCellColors: DatePickerMonthCellColors = monthCellColors(),
         dayPickerYearCellColors: DatePickerYearCellColors = yearCellColors()
-    ) = remember(
-        dayOfWeekLabelColors,
-        dayPickerDayCellColors,
-        dayPickerMonthCellColors,
-        dayPickerYearCellColors
-    ) {
-        DatePickerGridColors(
-            dayOfWeekLabelColors = dayOfWeekLabelColors,
-            dayPickerDayCellColors = dayPickerDayCellColors,
-            dayPickerMonthCellColors = dayPickerMonthCellColors,
-            dayPickerYearCellColors = dayPickerYearCellColors
-        )
-    }
+    ): DatePickerGridColors = DatePickerGridColors(
+        dayOfWeekLabelColors = dayOfWeekLabelColors,
+        dayPickerDayCellColors = dayPickerDayCellColors,
+        dayPickerMonthCellColors = dayPickerMonthCellColors,
+        dayPickerYearCellColors = dayPickerYearCellColors
+    )
 
+    /**
+     * Returns the default colors for the day of the week labels in the date picker grid.
+     *
+     * @param label The color for the day of the week label.
+     */
     @Composable
     fun dayOfWeekLabelColors(
         label: Color = PersianTheme.colorScheme.onSurfaceVariant
-    ) = remember(
-        label
-    ) {
-        DatePickerDayOfWeekCellColors(label)
-    }
+    ): DatePickerDayOfWeekCellColors = DatePickerDayOfWeekCellColors(label)
 
+    /**
+     * Returns the default colors for the day cells in the date picker grid.
+     *
+     * @param cellTextColor The color of the text in the day cell.
+     * @param cellTextDisabledColor The color of the text in the day cell when it is disabled.
+     * @param cellTextBetweenSelectionColor The color of the text in the day cell when it is between a selection.
+     * @param cellTextSelectedColor The color of the text in the day cell when it is selected.
+     * @param currentDateIndicator The color of the indicator for the current date.
+     * @param currentDateBetweenSelectionIndicatorColor The color of the indicator for the current date when it is between a selection.
+     * @param currentDateIndicatorSelectedColor The color of the indicator for the current date when it is selected.
+     * @param containerColor The color of the container for the day cell.
+     * @param betweenSelectionContainerColor The color of the container for the day cell when it is between a selection.
+     * @param selectedContainerColor The color of the container for the day cell when it is selected.
+     */
     @Composable
     fun dayCellColors(
         cellTextColor: Color = PersianTheme.colorScheme.onSurface,
@@ -104,36 +125,32 @@ object PersianDatePickerViewDefaults {
         containerColor: Color = Color.Transparent,
         betweenSelectionContainerColor: Color = PersianTheme.colorScheme.primaryContainer,
         selectedContainerColor: Color = PersianTheme.colorScheme.primary,
-    ) = remember(
-        cellTextColor,
-        cellTextDisabledColor,
-        cellTextBetweenSelectionColor,
-        cellTextSelectedColor,
+    ): DatePickerDayCellColors = DatePickerDayCellColors(
+        cellTextColor = cellTextColor,
+        cellTextDisabledColor = cellTextDisabledColor,
+        cellTextBetweenSelectionColor = cellTextBetweenSelectionColor,
+        cellTextSelectedColor = cellTextSelectedColor,
 
-        currentDateIndicator,
-        currentDateBetweenSelectionIndicatorColor,
-        currentDateIndicatorSelectedColor,
+        currentDateIndicator = currentDateIndicator,
+        currentDateBetweenSelectionIndicatorColor = currentDateBetweenSelectionIndicatorColor,
+        currentDateIndicatorSelectedColor = currentDateIndicatorSelectedColor,
 
-        containerColor,
-        betweenSelectionContainerColor,
-        selectedContainerColor,
-    ) {
-        DatePickerDayCellColors(
-            cellTextColor = cellTextColor,
-            cellTextDisabledColor = cellTextDisabledColor,
-            cellTextBetweenSelectionColor = cellTextBetweenSelectionColor,
-            cellTextSelectedColor = cellTextSelectedColor,
+        containerColor = containerColor,
+        betweenSelectionContainerColor = betweenSelectionContainerColor,
+        selectedContainerColor = selectedContainerColor,
+    )
 
-            currentDateIndicator = currentDateIndicator,
-            currentDateBetweenSelectionIndicatorColor = currentDateBetweenSelectionIndicatorColor,
-            currentDateIndicatorSelectedColor = currentDateIndicatorSelectedColor,
-
-            containerColor = containerColor,
-            betweenSelectionContainerColor = betweenSelectionContainerColor,
-            selectedContainerColor = selectedContainerColor,
-        )
-    }
-
+    /**
+     * Returns the default colors for the month cells in the date picker grid.
+     *
+     * @param cellTextColor The color of the text in the month cell.
+     * @param cellTextDisabledColor The color of the text in the month cell when it is disabled.
+     * @param cellTextSelectedColor The color of the text in the month cell when it is selected.
+     * @param currentDateIndicator The color of the indicator for the current date.
+     * @param currentDateIndicatorSelectedColor The color of the indicator for the current date when it is selected.
+     * @param backgroundColor The color of the background for the month cell.
+     * @param selectedBackgroundColor The color of the background for the month cell when it is selected.
+     */
     @Composable
     fun monthCellColors(
         cellTextColor: Color = PersianTheme.colorScheme.onSurface,
@@ -145,30 +162,28 @@ object PersianDatePickerViewDefaults {
 
         backgroundColor: Color = Color.Transparent,
         selectedBackgroundColor: Color = PersianTheme.colorScheme.primary,
-    ) = remember(
-        cellTextColor,
-        cellTextDisabledColor,
-        cellTextSelectedColor,
+    ): DatePickerMonthCellColors = DatePickerMonthCellColors(
+        cellTextColor = cellTextColor,
+        cellTextDisabledColor = cellTextDisabledColor,
+        cellTextSelectedColor = cellTextSelectedColor,
 
-        currentDateIndicator,
-        currentDateIndicatorSelectedColor,
+        currentDateIndicator = currentDateIndicator,
+        currentDateIndicatorSelectedColor = currentDateIndicatorSelectedColor,
 
-        backgroundColor,
-        selectedBackgroundColor,
-    ) {
-        DatePickerMonthCellColors(
-            cellTextColor = cellTextColor,
-            cellTextDisabledColor = cellTextDisabledColor,
-            cellTextSelectedColor = cellTextSelectedColor,
+        containerColor = backgroundColor,
+        selectedContainerColor = selectedBackgroundColor,
+    )
 
-            currentDateIndicator = currentDateIndicator,
-            currentDateIndicatorSelectedColor = currentDateIndicatorSelectedColor,
-
-            containerColor = backgroundColor,
-            selectedContainerColor = selectedBackgroundColor,
-        )
-    }
-
+    /**
+     * Returns the default colors for the year cells in the date picker grid.
+     *
+     * @param cellTextColor The color of the text in the year cell.
+     * @param cellTextSelectedColor The color of the text in the year cell when it is selected.
+     * @param currentDateIndicator The color of the indicator for the current date.
+     * @param currentDateIndicatorSelectedColor The color of the indicator for the current date when it is selected.
+     * @param containerColor The color of the container for the year cell.
+     * @param selectedContainerColor The color of the container for the year cell when it is selected.
+     */
     @Composable
     fun yearCellColors(
         cellTextColor: Color = PersianTheme.colorScheme.onSurface,
@@ -179,31 +194,26 @@ object PersianDatePickerViewDefaults {
 
         containerColor: Color = Color.Transparent,
         selectedContainerColor: Color = PersianTheme.colorScheme.primary,
-    ) = remember(
-        cellTextColor,
-        cellTextSelectedColor,
+    ): DatePickerYearCellColors = DatePickerYearCellColors(
+        cellTextColor = cellTextColor,
+        cellTextSelectedColor = cellTextSelectedColor,
 
-        currentDateIndicator,
-        currentDateIndicatorSelectedColor,
+        currentDateIndicator = currentDateIndicator,
+        currentDateIndicatorSelectedColor = currentDateIndicatorSelectedColor,
 
-        containerColor,
-        selectedContainerColor,
-    ) {
-        DatePickerYearCellColors(
-            cellTextColor = cellTextColor,
-            cellTextSelectedColor = cellTextSelectedColor,
-
-            currentDateIndicator = currentDateIndicator,
-            currentDateIndicatorSelectedColor = currentDateIndicatorSelectedColor,
-
-            containerColor = containerColor,
-            selectedContainerColor = selectedContainerColor,
-        )
-    }
-
-
+        containerColor = containerColor,
+        selectedContainerColor = selectedContainerColor,
+    )
 }
 
+/**
+ * Immutable class representing the colors used for the date picker view.
+ *
+ * @property headerColors The colors used for the header of the date picker.
+ * @property datePickerGridColors The colors used for the various cells in the date picker grid.
+ * @property containerColor The color of the container for the date picker view.
+ * @property elevatedContainerColor The color of the container for the date picker view when it is elevated.
+ */
 @Immutable
 class DatePickerViewColors internal constructor(
     internal val headerColors: DatePickerHeaderColors,
@@ -211,6 +221,12 @@ class DatePickerViewColors internal constructor(
     private val containerColor: Color,
     private val elevatedContainerColor: Color
 ) {
+
+    /**
+     * Returns the container color for the date picker view based on whether it is elevated.
+     *
+     * @param elevated Indicates whether the container is elevated.
+     */
     @Composable
     internal fun containerColor(
         elevated: Boolean
@@ -223,6 +239,16 @@ class DatePickerViewColors internal constructor(
     }
 }
 
+/**
+ * Immutable class representing the colors used for the header of the date picker.
+ *
+ * @property prevButtonColor The colors used for the previous button in the date picker header.
+ * @property nextButtonColor The colors used for the next button in the date picker header.
+ * @property monthLabelColor The color used for the month label in the date picker header.
+ * @property yearLabelColor The color used for the year label in the date picker header.
+ * @property selectedMonthColor The colors used for the selected month button in the date picker header.
+ * @property selectedYearColor The colors used for the selected year button in the date picker header.
+ */
 @Immutable
 class DatePickerHeaderColors internal constructor(
     internal val prevButtonColor: IconButtonColors,
@@ -234,6 +260,14 @@ class DatePickerHeaderColors internal constructor(
     internal val selectedYearColor: ButtonColors
 )
 
+/**
+ * Immutable class representing the colors used for the various cells in the date picker grid.
+ *
+ * @property dayOfWeekLabelColors The colors used for the day of the week labels in the date picker grid.
+ * @property dayPickerDayCellColors The colors used for the day cells in the date picker grid.
+ * @property dayPickerMonthCellColors The colors used for the month cells in the date picker grid.
+ * @property dayPickerYearCellColors The colors used for the year cells in the date picker grid.
+ */
 @Immutable
 class DatePickerGridColors internal constructor(
     internal val dayOfWeekLabelColors: DatePickerDayOfWeekCellColors,
@@ -242,11 +276,30 @@ class DatePickerGridColors internal constructor(
     internal val dayPickerYearCellColors: DatePickerYearCellColors
 )
 
+/**
+ * Immutable class representing the colors used for the day of the week cells in the date picker.
+ *
+ * @property dayOfWeekLabelColor The color of the label for the day of the week cell.
+ */
 @Immutable
 class DatePickerDayOfWeekCellColors internal constructor(
     internal val dayOfWeekLabelColor: Color
 )
 
+/**
+ * Immutable class representing the colors used for the day cells in the date picker.
+ *
+ * @property cellTextColor The color of the text in the day cell.
+ * @property cellTextDisabledColor The color of the text in the day cell when it is disabled.
+ * @property cellTextBetweenSelectionColor The color of the text in the day cell when it is between a selection.
+ * @property cellTextSelectedColor The color of the text in the day cell when it is selected.
+ * @property currentDateIndicator The color of the indicator for the current date.
+ * @property currentDateBetweenSelectionIndicatorColor The color of the indicator for the current date when it is between a selection.
+ * @property currentDateIndicatorSelectedColor The color of the indicator for the current date when it is selected.
+ * @property containerColor The color of the container for the day cell.
+ * @property betweenSelectionContainerColor The color of the container for the day cell when it is between a selection.
+ * @property selectedContainerColor The color of the container for the day cell when it is selected.
+ */
 @Immutable
 class DatePickerDayCellColors internal constructor(
     private val cellTextColor: Color,
@@ -262,6 +315,14 @@ class DatePickerDayCellColors internal constructor(
     private val betweenSelectionContainerColor: Color,
     private val selectedContainerColor: Color,
 ) {
+
+    /**
+     * Returns the content color for the day cell based on whether it is selected, between a selection, and whether it is enabled.
+     *
+     * @param selected Indicates whether the day cell is selected.
+     * @param between Indicates whether the day cell is between a selection.
+     * @param enabled Indicates whether the day cell is enabled.
+     */
     @Composable
     internal fun contentColor(
         selected: Boolean,
@@ -279,6 +340,12 @@ class DatePickerDayCellColors internal constructor(
         return rememberUpdatedState(targetValue)
     }
 
+    /**
+     * Returns the container color for the day cell based on whether it is selected and whether it is between a selection.
+     *
+     * @param selected Indicates whether the day cell is selected.
+     * @param between Indicates whether the day cell is between a selection.
+     */
     @Composable
     internal fun containerColor(
         selected: Boolean,
@@ -293,6 +360,13 @@ class DatePickerDayCellColors internal constructor(
         return rememberUpdatedState(targetValue)
     }
 
+    /**
+     * Returns the indicator color for the day cell based on whether it is selected, between a selection, and whether it is the current day.
+     *
+     * @param selected Indicates whether the day cell is selected.
+     * @param between Indicates whether the day cell is between a selection.
+     * @param today Indicates whether the day cell represents the current day.
+     */
     @Composable
     internal fun indicatorColor(
         selected: Boolean,
@@ -339,6 +413,17 @@ class DatePickerDayCellColors internal constructor(
     }
 }
 
+/**
+ * Immutable class representing the colors used for the month cells in the date picker.
+ *
+ * @property cellTextColor The color of the text in the month cell.
+ * @property cellTextDisabledColor The color of the text in the month cell when it is disabled.
+ * @property cellTextSelectedColor The color of the text in the month cell when it is selected.
+ * @property currentDateIndicator The color of the indicator for the current date.
+ * @property currentDateIndicatorSelectedColor The color of the indicator for the current date when it is selected.
+ * @property containerColor The color of the container for the month cell.
+ * @property selectedContainerColor The color of the container for the month cell when it is selected.
+ */
 @Immutable
 class DatePickerMonthCellColors internal constructor(
     private val cellTextColor: Color,
@@ -351,6 +436,12 @@ class DatePickerMonthCellColors internal constructor(
     private val containerColor: Color,
     private val selectedContainerColor: Color,
 ) {
+    /**
+     * Returns the content color for the month cell based on whether it is selected and whether it is enabled.
+     *
+     * @param selected Indicates whether the month cell is selected.
+     * @param enabled Indicates whether the month cell is enabled.
+     */
     @Composable
     internal fun contentColor(
         selected: Boolean,
@@ -366,6 +457,11 @@ class DatePickerMonthCellColors internal constructor(
         return rememberUpdatedState(targetValue)
     }
 
+    /**
+     * Returns the container color for the month cell based on whether it is selected.
+     *
+     * @param selected Indicates whether the month cell is selected.
+     */
     @Composable
     internal fun containerColor(
         selected: Boolean,
@@ -378,6 +474,12 @@ class DatePickerMonthCellColors internal constructor(
         return rememberUpdatedState(targetValue)
     }
 
+    /**
+     * Returns the indicator color for the month cell based on whether it is selected and whether it is the current month.
+     *
+     * @param selected Indicates whether the month cell is selected.
+     * @param currentMonth Indicates whether the month cell represents the current month.
+     */
     @Composable
     internal fun indicatorColor(
         selected: Boolean,
@@ -417,6 +519,16 @@ class DatePickerMonthCellColors internal constructor(
     }
 }
 
+/**
+ * Immutable class representing the colors used for the year cells in the date picker.
+ *
+ * @property cellTextColor The color of the text in the year cell.
+ * @property cellTextSelectedColor The color of the text in the year cell when it is selected.
+ * @property currentDateIndicator The color of the indicator for the current date.
+ * @property currentDateIndicatorSelectedColor The color of the indicator for the current date when it is selected.
+ * @property containerColor The color of the container for the year cell.
+ * @property selectedContainerColor The color of the container for the year cell when it is selected.
+ */
 @Immutable
 class DatePickerYearCellColors internal constructor(
     private val cellTextColor: Color,
@@ -428,6 +540,11 @@ class DatePickerYearCellColors internal constructor(
     private val containerColor: Color,
     private val selectedContainerColor: Color,
 ) {
+    /**
+     * Returns the content color for the year cell based on whether it is selected.
+     *
+     * @param selected Indicates whether the year cell is selected.
+     */
     @Composable
     internal fun contentColor(
         selected: Boolean,
@@ -441,6 +558,11 @@ class DatePickerYearCellColors internal constructor(
         return rememberUpdatedState(targetValue)
     }
 
+    /**
+     * Returns the container color for the year cell based on whether it is selected.
+     *
+     * @param selected Indicates whether the year cell is selected.
+     */
     @Composable
     internal fun containerColor(
         selected: Boolean,
@@ -453,6 +575,12 @@ class DatePickerYearCellColors internal constructor(
         return rememberUpdatedState(targetValue)
     }
 
+    /**
+     * Returns the indicator color for the year cell based on whether it is selected and whether it is the current year.
+     *
+     * @param selected Indicates whether the year cell is selected.
+     * @param currentYear Indicates whether the year cell represents the current year.
+     */
     @Composable
     internal fun indicatorColor(
         selected: Boolean,
