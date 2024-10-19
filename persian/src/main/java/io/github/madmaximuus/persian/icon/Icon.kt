@@ -18,6 +18,15 @@ import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import io.github.madmaximuus.persian.foundation.LocalContentColor
 
+/**
+ * A composable function to display an icon with customizable properties.
+ *
+ * @param modifier The [Modifier] to be applied to the icon.
+ * @param painter The [Painter] used to draw the icon.
+ * @param contentDescription An optional string describing the content of the icon for accessibility purposes.
+ * @param sizes The [IconSizes] defining the width and padding of the icon.
+ * @param tint The [Color] to tint the icon.
+ */
 @Composable
 fun Icon(
     modifier: Modifier = Modifier,
