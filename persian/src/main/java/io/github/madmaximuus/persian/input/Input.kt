@@ -40,8 +40,32 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.icon.Icon
 import io.github.madmaximuus.persian.iconButton.IconButtonDefaults
 import io.github.madmaximuus.persian.iconButton.TertiaryIconButton
+import io.github.madmaximuus.persian.input.InputsTransformations.none
+import io.github.madmaximuus.persian.input.InputsTransformations.password
 import io.github.madmaximuus.persian.text.Text
 
+/**
+ * A composable function that creates an outlined input field with various customization options.
+ *
+ * @param value The current value of the input field.
+ * @param onValueChange A callback that is invoked when the value of the input field changes.
+ * @param modifier The [Modifier] to be applied to the input field.
+ * @param enabled Whether the input field is enabled or disabled.
+ * @param isError Whether the input field is in an error state.
+ * @param isValid Whether the input field is in a valid state.
+ * @param readOnly Whether the input field is read-only.
+ * @param placeholder The placeholder text to be displayed when the input field is empty.
+ * @param transformation The visual transformation to be applied to the input field.
+ * @param colors The colors to be used for the input field.
+ * @param sizes The sizes to be used for the input field.
+ * @param leadingIcon The leading icon to be displayed in the input field.
+ * @param trailingIcon The trailing icon to be displayed in the input field.
+ * @param onTrailingIconClick A callback that is invoked when the trailing icon is clicked.
+ * @param suffix The suffix text to be displayed in the input field.
+ * @param keyboardOptions The keyboard options for the input field.
+ * @param keyboardActions The keyboard actions for the input field.
+ * @param interactionSource The [MutableInteractionSource] to be used for the input field.
+ */
 @Composable
 fun OutlineInput(
     value: String,
@@ -92,6 +116,28 @@ fun OutlineInput(
     interactionSource = interactionSource
 )
 
+/**
+ * A composable function that creates a plain input field with various customization options.
+ *
+ * @param value The current value of the input field.
+ * @param onValueChange A callback that is invoked when the value of the input field changes.
+ * @param modifier The [Modifier] to be applied to the input field.
+ * @param enabled Whether the input field is enabled or disabled.
+ * @param isError Whether the input field is in an error state.
+ * @param isValid Whether the input field is in a valid state.
+ * @param readOnly Whether the input field is read-only.
+ * @param placeholder The placeholder text to be displayed when the input field is empty.
+ * @param transformation The visual transformation to be applied to the input field.
+ * @param colors The colors to be used for the input field.
+ * @param sizes The sizes to be used for the input field.
+ * @param leadingIcon The leading icon to be displayed in the input field.
+ * @param trailingIcon The trailing icon to be displayed in the input field.
+ * @param onTrailingIconClick A callback that is invoked when the trailing icon is clicked.
+ * @param suffix The suffix text to be displayed in the input field.
+ * @param keyboardOptions The keyboard options for the input field.
+ * @param keyboardActions The keyboard actions for the input field.
+ * @param interactionSource The [MutableInteractionSource] to be used for the input field.
+ */
 @Composable
 fun PlainInput(
     value: String,
@@ -134,11 +180,35 @@ fun PlainInput(
     interactionSource = interactionSource
 )
 
+/**
+ * An object that provides predefined visual transformations for input fields.
+ *
+ * @property none A visual transformation that does not alter the input text.
+ * @property password A visual transformation that masks the input text, typically used for password fields.
+ */
 object InputsTransformations {
+    /**
+     * A visual transformation that does not alter the input text.
+     */
     val none = VisualTransformation.None
+
+    /**
+     * A visual transformation that masks the input text, typically used for password fields.
+     */
     val password = PasswordVisualTransformation()
 }
 
+/**
+ * A composable function that animates the border stroke of an input field based on its state.
+ *
+ * @param enabled Whether the input field is enabled or disabled.
+ * @param isError Whether the input field is in an error state.
+ * @param isSuccess Whether the input field is in a valid state.
+ * @param interactionSource The [InteractionSource] to be used for the input field.
+ * @param colors The colors to be used for the input field.
+ * @param focusedBorderThickness The thickness of the border when the input field is focused.
+ * @param unfocusedBorderThickness The thickness of the border when the input field is not focused.
+ */
 @Composable
 private fun animateBorderStrokeAsState(
     enabled: Boolean,
@@ -170,7 +240,29 @@ private fun animateBorderStrokeAsState(
     )
 }
 
-
+/**
+ * A composable function that implements the core functionality of an input field with various customization options.
+ *
+ * @param value The current value of the input field.
+ * @param onValueChange A callback that is invoked when the value of the input field changes.
+ * @param modifier The [Modifier] to be applied to the input field.
+ * @param enabled Whether the input field is enabled or disabled.
+ * @param isError Whether the input field is in an error state.
+ * @param isValid Whether the input field is in a valid state.
+ * @param readOnly Whether the input field is read-only.
+ * @param placeholder The placeholder text to be displayed when the input field is empty.
+ * @param transformation The visual transformation to be applied to the input field.
+ * @param colors The colors to be used for the input field.
+ * @param sizes The sizes to be used for the input field.
+ * @param leadingIcon The leading icon to be displayed in the input field.
+ * @param trailingIcon The trailing icon to be displayed in the input field.
+ * @param onTrailingIconClick A callback that is invoked when the trailing icon is clicked.
+ * @param suffix The suffix text to be displayed in the input field.
+ * @param border The border stroke to be applied to the input field.
+ * @param keyboardOptions The keyboard options for the input field.
+ * @param keyboardActions The keyboard actions for the input field.
+ * @param interactionSource The [MutableInteractionSource] to be used for the input field.
+ */
 @Composable
 private fun InputImpl(
     value: String,

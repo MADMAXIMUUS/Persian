@@ -353,6 +353,60 @@ object InputsDefaults {
         )
 }
 
+/**
+ * A class that defines the colors and icons for an input field.
+ *
+ * @property errorStateIcon The icon to be displayed when the input field is in an error state.
+ * @property successStateIcon The icon to be displayed when the input field is in a valid state.
+ * @property errorStateIconColor The color of the icon when the input field is in an error state.
+ * @property successStateIconColor The color of the icon when the input field is in a valid state.
+ * @property defaultTextColor The default color of the text in the input field.
+ * @property hoveredTextColor The color of the text when the input field is hovered.
+ * @property focusedTextColor The color of the text when the input field is focused.
+ * @property validTextColor The color of the text when the input field is in a valid state.
+ * @property errorTextColor The color of the text when the input field is in an error state.
+ * @property disabledTextColor The color of the text when the input field is disabled.
+ * @property defaultContainerColor The default color of the input field container.
+ * @property hoveredContainerColor The color of the input field container when it is hovered.
+ * @property focusedContainerColor The color of the input field container when it is focused.
+ * @property validContainerColor The color of the input field container when it is in a valid state.
+ * @property errorContainerColor The color of the input field container when it is in an error state.
+ * @property disabledContainerColor The color of the input field container when it is disabled.
+ * @property defaultCursorColor The default color of the cursor in the input field.
+ * @property validCursorColor The color of the cursor when the input field is in a valid state.
+ * @property errorCursorColor The color of the cursor when the input field is in an error state.
+ * @property textSelectionColors The colors used for text selection in the input field.
+ * @property defaultIndicatorColor The default color of the indicator in the input field.
+ * @property hoveredIndicatorColor The color of the indicator when the input field is hovered.
+ * @property focusedIndicatorColor The color of the indicator when the input field is focused.
+ * @property validIndicatorColor The color of the indicator when the input field is in a valid state.
+ * @property errorIndicatorColor The color of the indicator when the input field is in an error state.
+ * @property disabledIndicatorColor The color of the indicator when the input field is disabled.
+ * @property defaultLeadingIconColor The default color of the leading icon in the input field.
+ * @property hoveredLeadingIconColor The color of the leading icon when the input field is hovered.
+ * @property focusedLeadingIconColor The color of the leading icon when the input field is focused.
+ * @property validLeadingIconColor The color of the leading icon when the input field is in a valid state.
+ * @property errorLeadingIconColor The color of the leading icon when the input field is in an error state.
+ * @property disabledLeadingIconColor The color of the leading icon when the input field is disabled.
+ * @property defaultTrailingIconColor The default color of the trailing icon in the input field.
+ * @property hoveredTrailingIconColor The color of the trailing icon when the input field is hovered.
+ * @property focusedTrailingIconColor The color of the trailing icon when the input field is focused.
+ * @property validTrailingIconColor The color of the trailing icon when the input field is in a valid state.
+ * @property errorTrailingIconColor The color of the trailing icon when the input field is in an error state.
+ * @property disabledTrailingIconColor The color of the trailing icon when the input field is disabled.
+ * @property defaultPlaceholderColor The default color of the placeholder text in the input field.
+ * @property hoveredPlaceholderColor The color of the placeholder text when the input field is hovered.
+ * @property focusedPlaceholderColor The color of the placeholder text when the input field is focused.
+ * @property validPlaceholderColor The color of the placeholder text when the input field is in a valid state.
+ * @property errorPlaceholderColor The color of the placeholder text when the input field is in an error state.
+ * @property disabledPlaceholderColor The color of the placeholder text when the input field is disabled.
+ * @property defaultSuffixColor The default color of the suffix text in the input field.
+ * @property hoveredSuffixColor The color of the suffix text when the input field is hovered.
+ * @property focusedSuffixColor The color of the suffix text when the input field is focused.
+ * @property validSuffixColor The color of the suffix text when the input field is in a valid state.
+ * @property errorSuffixColor The color of the suffix text when the input field is in an error state.
+ * @property disabledSuffixColor The color of the suffix text when the input field is disabled.
+ */
 @Immutable
 class InputColors internal constructor(
 
@@ -426,6 +480,13 @@ class InputColors internal constructor(
     private val errorSuffixColor: Color,
     private val disabledSuffixColor: Color,
 ) {
+    /**
+     * Returns the state icon based on the enabled, success, and error states.
+     *
+     * @param enabled Whether the input field is enabled.
+     * @param isSuccess Whether the input field is in a valid state.
+     * @param isError Whether the input field is in an error state.
+     */
     @Composable
     internal fun stateIcon(
         enabled: Boolean,
@@ -443,6 +504,13 @@ class InputColors internal constructor(
         return rememberUpdatedState(targetValue)
     }
 
+    /**
+     * Returns the color of the state icon based on the enabled, valid, and error states.
+     *
+     * @param enabled Whether the input field is enabled.
+     * @param isValid Whether the input field is in a valid state.
+     * @param isError Whether the input field is in an error state.
+     */
     @Composable
     internal fun stateIconColor(
         enabled: Boolean,
@@ -460,6 +528,14 @@ class InputColors internal constructor(
         return rememberUpdatedState(targetValue)
     }
 
+    /**
+     * Returns the text color based on the enabled, valid, error, and interaction states.
+     *
+     * @param enabled Whether the input field is enabled.
+     * @param isValid Whether the input field is in a valid state.
+     * @param isError Whether the input field is in an error state.
+     * @param interactionSource The [InteractionSource] to be used for the input field.
+     */
     @Composable
     internal fun textColor(
         enabled: Boolean,
@@ -482,6 +558,14 @@ class InputColors internal constructor(
         return rememberUpdatedState(targetValue)
     }
 
+    /**
+     * Returns the container color based on the enabled, valid, error, and interaction states.
+     *
+     * @param enabled Whether the input field is enabled.
+     * @param isValid Whether the input field is in a valid state.
+     * @param isError Whether the input field is in an error state.
+     * @param interactionSource The [InteractionSource] to be used for the input field.
+     */
     @Composable
     internal fun containerColor(
         enabled: Boolean,
@@ -503,6 +587,12 @@ class InputColors internal constructor(
         return rememberUpdatedState(targetValue)
     }
 
+    /**
+     * Returns the cursor color based on the error and valid states.
+     *
+     * @param isError Whether the input field is in an error state.
+     * @param isValid Whether the input field is in a valid state.
+     */
     @Composable
     internal fun cursorColor(isError: Boolean, isValid: Boolean): State<Color> {
         val targetValue = when {
@@ -513,9 +603,20 @@ class InputColors internal constructor(
         return rememberUpdatedState(targetValue)
     }
 
+    /**
+     * Returns the text selection colors.
+     */
     internal val selectionColors: TextSelectionColors
         @Composable get() = textSelectionColors
 
+    /**
+     * Returns the indicator color based on the enabled, valid, error, and interaction states.
+     *
+     * @param enabled Whether the input field is enabled.
+     * @param isValid Whether the input field is in a valid state.
+     * @param isError Whether the input field is in an error state.
+     * @param interactionSource The [InteractionSource] to be used for the input field.
+     */
     @Composable
     internal fun indicatorColor(
         enabled: Boolean,
@@ -544,6 +645,14 @@ class InputColors internal constructor(
         }
     }
 
+    /**
+     * Returns the leading icon color based on the enabled, valid, error, and interaction states.
+     *
+     * @param enabled Whether the input field is enabled.
+     * @param isValid Whether the input field is in a valid state.
+     * @param isError Whether the input field is in an error state.
+     * @param interactionSource The [InteractionSource] to be used for the input field.
+     */
     @Composable
     internal fun leadingIconColor(
         enabled: Boolean,
@@ -566,6 +675,14 @@ class InputColors internal constructor(
         )
     }
 
+    /**
+     * Returns the trailing icon color based on the enabled, valid, error, and interaction states.
+     *
+     * @param enabled Whether the input field is enabled.
+     * @param isValid Whether the input field is in a valid state.
+     * @param isError Whether the input field is in an error state.
+     * @param interactionSource The [InteractionSource] to be used for the input field.
+     */
     @Composable
     internal fun trailingIconColor(
         enabled: Boolean,
@@ -588,6 +705,14 @@ class InputColors internal constructor(
         )
     }
 
+    /**
+     * Returns the placeholder color based on the enabled, valid, error, and interaction states.
+     *
+     * @param enabled Whether the input field is enabled.
+     * @param isError Whether the input field is in an error state.
+     * @param isValid Whether the input field is in a valid state.
+     * @param interactionSource The [InteractionSource] to be used for the input field.
+     */
     @Composable
     internal fun placeholderColor(
         enabled: Boolean,
@@ -609,6 +734,14 @@ class InputColors internal constructor(
         return rememberUpdatedState(targetValue)
     }
 
+    /**
+     * Returns the suffix color based on the enabled, valid, error, and interaction states.
+     *
+     * @param enabled Whether the input field is enabled.
+     * @param isValid Whether the input field is in a valid state.
+     * @param isError Whether the input field is in an error state.
+     * @param interactionSource The [InteractionSource] to be used for the input field.
+     */
     @Composable
     internal fun suffixColor(
         enabled: Boolean,
@@ -767,7 +900,20 @@ class InputColors internal constructor(
     }
 }
 
-
+/**
+ * A class that defines the sizes and styles for an input field.
+ *
+ * @property unfocusedBorderThickness The thickness of the border when the input field is not focused.
+ * @property focusedBorderThickness The thickness of the border when the input field is focused.
+ * @property shape The shape of the input field container.
+ * @property contentPaddingValues The padding values for the content inside the input field.
+ * @property leadingIconSizes The sizes for the leading icon in the input field.
+ * @property trailingIconSizes The sizes for the trailing icon in the input field.
+ * @property stateIconSizes The sizes for the state icon in the input field.
+ * @property placeholderTextStyle The text style for the placeholder text in the input field.
+ * @property inputTextStyle The text style for the input text in the input field.
+ * @property suffixTextStyle The text style for the suffix text in the input field.
+ */
 @Stable
 class InputSizes(
     internal val unfocusedBorderThickness: Dp,
