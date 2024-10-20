@@ -17,8 +17,25 @@ import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.icon.Icon
 import io.github.madmaximuus.persian.surface.Surface
 
+/**
+ * A composable function that creates a toggle icon button.
+ *
+ * This button is designed to be used as a toggle action button with an icon. It supports customization
+ * through various parameters such as size, colors, and interaction source. The button can switch between
+ * two icons based on its checked state.
+ *
+ * @param modifier The [Modifier] to be applied to the button.
+ * @param icon The [Painter] that represents the icon to be displayed when the button is not checked.
+ * @param checkedIcon The [Painter] that represents the icon to be displayed when the button is checked.
+ * @param checked Whether the button is checked or not.
+ * @param onCheckedChange The callback to be invoked when the checked state of the button changes.
+ * @param enabled Whether the button is enabled or disabled.
+ * @param sizes The [IconButtonSizes] that define the size and shape of the button.
+ * @param colors The [ToggleIconButtonColors] that define the colors of the button.
+ * @param interactionSource The [MutableInteractionSource] that handles the interaction state of the button.
+ */
 @Composable
-fun ToggleIconButton(
+fun PrimaryToggleIconButton(
     modifier: Modifier = Modifier,
     icon: Painter,
     checkedIcon: Painter,
@@ -51,6 +68,23 @@ fun ToggleIconButton(
     }
 }
 
+/**
+ * A composable function that creates a secondary toggle icon button.
+ *
+ * This button is designed to be used as a secondary toggle action button with an icon. It supports customization
+ * through various parameters such as size, colors, and interaction source. The button can switch between
+ * two icons based on its checked state.
+ *
+ * @param modifier The [Modifier] to be applied to the button.
+ * @param icon The [Painter] that represents the icon to be displayed when the button is not checked.
+ * @param checkedIcon The [Painter] that represents the icon to be displayed when the button is checked.
+ * @param checked Whether the button is checked or not.
+ * @param onCheckedChange The callback to be invoked when the checked state of the button changes.
+ * @param enabled Whether the button is enabled or disabled.
+ * @param sizes The [IconButtonSizes] that define the size and shape of the button.
+ * @param colors The [ToggleIconButtonColors] that define the colors of the button.
+ * @param interactionSource The [MutableInteractionSource] that handles the interaction state of the button.
+ */
 @Composable
 fun SecondaryToggleIconButton(
     modifier: Modifier = Modifier,
@@ -85,6 +119,23 @@ fun SecondaryToggleIconButton(
     }
 }
 
+/**
+ * A composable function that creates a tertiary toggle icon button.
+ *
+ * This button is designed to be used as a tertiary toggle action button with an icon. It supports customization
+ * through various parameters such as size, colors, and interaction source. The button can switch between
+ * two icons based on its checked state.
+ *
+ * @param modifier The [Modifier] to be applied to the button.
+ * @param icon The [Painter] that represents the icon to be displayed when the button is not checked.
+ * @param checkedIcon The [Painter] that represents the icon to be displayed when the button is checked.
+ * @param checked Whether the button is checked or not.
+ * @param onCheckedChange The callback to be invoked when the checked state of the button changes.
+ * @param enabled Whether the button is enabled or disabled.
+ * @param sizes The [IconButtonSizes] that define the size and shape of the button.
+ * @param colors The [ToggleIconButtonColors] that define the colors of the button.
+ * @param interactionSource The [MutableInteractionSource] that handles the interaction state of the button.
+ */
 @Composable
 fun TertiaryToggleIconButton(
     modifier: Modifier = Modifier,
@@ -119,6 +170,23 @@ fun TertiaryToggleIconButton(
     }
 }
 
+/**
+ * A composable function that creates an outlined toggle icon button.
+ *
+ * This button is designed to be used as an outlined toggle action button with an icon. It supports customization
+ * through various parameters such as size, colors, and interaction source. The button can switch between
+ * two icons based on its checked state and has an outlined border when not checked.
+ *
+ * @param modifier The [Modifier] to be applied to the button.
+ * @param icon The [Painter] that represents the icon to be displayed when the button is not checked.
+ * @param checkedIcon The [Painter] that represents the icon to be displayed when the button is checked.
+ * @param checked Whether the button is checked or not.
+ * @param onCheckedChange The callback to be invoked when the checked state of the button changes.
+ * @param enabled Whether the button is enabled or disabled.
+ * @param sizes The [IconButtonSizes] that define the size and shape of the button.
+ * @param colors The [ToggleIconButtonColors] that define the colors of the button.
+ * @param interactionSource The [MutableInteractionSource] that handles the interaction state of the button.
+ */
 @Composable
 fun OutlinedToggleIconButton(
     modifier: Modifier = Modifier,
