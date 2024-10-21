@@ -28,6 +28,24 @@ import io.github.madmaximuus.persianSymbols.arrow.left.base.ArrowLeft
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import kotlinx.coroutines.flow.filter
 
+/**
+ * Composable function to create a submenu.
+ *
+ * This function provides a way to define a submenu with various customization options, including an anchor,
+ * modifier, expanded state, interaction source, dismiss request callback, scroll state, colors, sizes,
+ * offset, and children content.
+ *
+ * @param anchor The composable content that serves as the anchor for the submenu.
+ * @param modifier The modifier to be applied to the submenu.
+ * @param expanded Whether the submenu is initially expanded.
+ * @param interactionSource The interaction source to be used for the submenu.
+ * @param onDismissRequest The callback to be invoked when the submenu is dismissed.
+ * @param scrollState The scroll state to be used for the submenu.
+ * @param colors The colors to be used for the submenu.
+ * @param sizes The sizes to be used for the submenu.
+ * @param offset The offset to be applied to the submenu.
+ * @param children The composable content to be displayed within the submenu.
+ */
 @Composable
 fun Submenu(
     anchor: @Composable () -> Unit,
@@ -74,6 +92,24 @@ fun Submenu(
     }
 }
 
+/**
+ * Internal composable function to create a submenu.
+ *
+ * This function provides a way to define a submenu with various customization options, including expanded state,
+ * dismiss request callback, modifier, offset, scroll state, popup properties, shadow elevation, colors, sizes,
+ * and content.
+ *
+ * @param expanded Whether the submenu is expanded.
+ * @param onDismissRequest The callback to be invoked when the submenu is dismissed.
+ * @param modifier The modifier to be applied to the submenu.
+ * @param offset The offset to be applied to the submenu.
+ * @param scrollState The scroll state to be used for the submenu.
+ * @param properties The popup properties to be used for the submenu.
+ * @param shadowElevation The shadow elevation to be applied to the submenu.
+ * @param colors The colors to be used for the submenu.
+ * @param sizes The sizes to be used for the submenu.
+ * @param content The composable content to be displayed within the submenu.
+ */
 @Composable
 internal fun Submenu(
     expanded: Boolean,

@@ -23,6 +23,25 @@ import io.github.madmaximuus.persian.menu.util.DropdownMenuPositionProvider
 import io.github.madmaximuus.persian.menu.util.calculateTransformOrigin
 import kotlinx.coroutines.flow.filter
 
+/**
+ * Composable function to create a dropdown menu.
+ *
+ * This function provides a way to define a dropdown menu with various customization options, including an anchor,
+ * modifier, expanded state, interaction source, dismiss request callback, scroll state, colors, sizes, offset,
+ * header, and children content.
+ *
+ * @param anchor The composable content that serves as the anchor for the dropdown menu.
+ * @param modifier The modifier to be applied to the dropdown menu. Default is [Modifier].
+ * @param expanded Whether the dropdown menu is initially expanded. Default is `false`.
+ * @param interactionSource The interaction source to be used for the dropdown menu. Default is a remembered [MutableInteractionSource].
+ * @param onDismissRequest The callback to be invoked when the dropdown menu is dismissed. Default is an empty function.
+ * @param scrollState The scroll state to be used for the dropdown menu. Default is a remembered [ScrollState].
+ * @param colors The colors to be used for the dropdown menu. Default is [MenuDefaults.colors].
+ * @param sizes The sizes to be used for the dropdown menu. Default is [MenuDefaults.sizes].
+ * @param offset The offset to be applied to the dropdown menu. Default is [DpOffset((-8).dp, (-40).dp)].
+ * @param header The optional composable content to be displayed as the header of the dropdown menu.
+ * @param children The composable content to be displayed within the dropdown menu.
+ */
 @Composable
 fun DropdownMenu(
     anchor: @Composable () -> Unit,
@@ -69,6 +88,25 @@ fun DropdownMenu(
     }
 }
 
+/**
+ * Composable function to create a dropdown menu.
+ *
+ * This function provides a way to define a dropdown menu with various customization options, including expanded state,
+ * dismiss request callback, modifier, offset, scroll state, popup properties, shadow elevation, colors, sizes,
+ * header, and content.
+ *
+ * @param expanded Whether the dropdown menu is expanded.
+ * @param onDismissRequest The callback to be invoked when the dropdown menu is dismissed.
+ * @param modifier The modifier to be applied to the dropdown menu.
+ * @param offset The offset to be applied to the dropdown menu.
+ * @param scrollState The scroll state to be used for the dropdown menu.
+ * @param properties The popup properties to be used for the dropdown menu.
+ * @param shadowElevation The shadow elevation to be applied to the dropdown menu.
+ * @param colors The colors to be used for the dropdown menu.
+ * @param sizes The sizes to be used for the dropdown menu.
+ * @param header The optional composable content to be displayed as the header of the dropdown menu.
+ * @param content The composable content to be displayed within the dropdown menu.
+ */
 @Composable
 fun DropdownMenu(
     expanded: Boolean,
@@ -116,7 +154,6 @@ fun DropdownMenu(
         }
     }
 }
-
 
 // Size defaults.
 internal val MenuVerticalMargin = 48.dp

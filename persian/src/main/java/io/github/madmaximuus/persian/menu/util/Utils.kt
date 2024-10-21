@@ -5,6 +5,15 @@ import androidx.compose.ui.unit.IntRect
 import kotlin.math.max
 import kotlin.math.min
 
+/**
+ * Calculates the transform origin for a menu based on the anchor and menu bounds.
+ *
+ * This function determines the pivot points (pivotX and pivotY) for transforming a menu relative to
+ * an anchor. The pivot points are calculated based on the intersection of the anchor and menu bounds.
+ *
+ * @param anchorBounds The bounds of the anchor element.
+ * @param menuBounds The bounds of the menu element.
+ */
 internal fun calculateTransformOrigin(anchorBounds: IntRect, menuBounds: IntRect): TransformOrigin {
     val pivotX =
         when {

@@ -2,6 +2,7 @@ package io.github.madmaximuus.persian.menu
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.Stable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
@@ -15,8 +16,20 @@ import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persian.icon.IconSizes
 
+/**
+ * Contains all default values used by dropdown menu
+ */
 object MenuDefaults {
 
+    /**
+     * Composable function to create and remember a [MenuColors] instance.
+     *
+     * This function provides a convenient way to define and remember the colors used in a menu, including the background color
+     * and the item colors.
+     *
+     * @param backgroundColor The background color of the menu container.
+     * @param itemColors The colors used for the menu items.
+     */
     @Composable
     fun colors(
         backgroundColor: Color = PersianTheme.colorScheme.surfaceContainer,
@@ -28,6 +41,27 @@ object MenuDefaults {
         )
     }
 
+    /**
+     * Composable function to create a [MenuItemColors] instance.
+     *
+     * This function provides a convenient way to define the colors used for menu items, including title colors,
+     * leading icon colors, expand icon colors, new label colors, and divider colors.
+     *
+     * @param titleColor The default color of the menu item title.
+     * @param negativeTitleColor The color of the menu item title when it is in a negative state.
+     * @param disabledTitleColor The color of the menu item title when it is disabled.
+     * @param leadingIconColor The default color of the leading icon in the menu item.
+     * @param selectedLeadingIconColor The color of the leading icon when the menu item is selected.
+     * @param negativeLeadingIconColor The color of the leading icon when the menu item is in a negative state.
+     * @param disabledLeadingIconColor The color of the leading icon when the menu item is disabled.
+     * @param expendIconColor The default color of the expand icon in the menu item.
+     * @param disabledExpandIconColor The color of the expand icon when the menu item is disabled.
+     * @param newLabelColor The default color of the "new" label in the menu item.
+     * @param disabledNewLabelColor The color of the "new" label when the menu item is disabled.
+     * @param newLabelContainerColor The default color of the container for the "new" label.
+     * @param disabledNewLabelContainerColor The color of the container for the "new" label when the menu item is disabled.
+     * @param dividerColor The color of the divider in the menu item.
+     */
     @Composable
     fun itemColors(
         titleColor: Color = PersianTheme.colorScheme.onSurface,
@@ -72,6 +106,15 @@ object MenuDefaults {
             dividerColor = dividerColor
         )
 
+    /**
+     * Composable function to create a [MenuSizes] instance.
+     *
+     * This function provides a convenient way to define the sizes and shapes used in a menu, including the container shape
+     * and the sizes used for the menu items.
+     *
+     * @param containerShape The shape of the menu container.
+     * @param itemSizes The sizes used for the menu items.
+     */
     @Composable
     fun sizes(
         containerShape: Shape = PersianTheme.shapes.shape16,
@@ -81,6 +124,20 @@ object MenuDefaults {
         itemSizes = itemSizes
     )
 
+    /**
+     * Composable function to create a [MenuItemSizes] instance.
+     *
+     * This function provides a convenient way to define the sizes used for menu items, including text styles, icon sizes,
+     * label styles, container shapes, and divider sizes.
+     *
+     * @param titleTextStyle The text style used for the title of the menu item.
+     * @param leadingIconSizes The sizes used for the leading icon in the menu item.
+     * @param expendIconSizes The sizes used for the expand icon in the menu item.
+     * @param newLabelTextStyle The text style used for the "new" label in the menu item.
+     * @param newLabelContainerShape The shape of the container for the "new" label.
+     * @param dividerSizes The sizes used for the divider in the menu item.
+     * @param groupDividerSizes The sizes used for the group divider in the menu item.
+     */
     @Composable
     fun itemSizes(
         titleTextStyle: TextStyle = PersianTheme.typography.bodyLarge,
@@ -105,18 +162,48 @@ object MenuDefaults {
         )
 }
 
+/**
+ * Immutable class representing the colors used in a menu.
+ *
+ * This class encapsulates the container color and the item colors for a menu.
+ *
+ * @property containerColor The background color of the menu container.
+ * @property itemColors The colors used for the menu items.
+ */
 @Immutable
 class MenuColors(
     val containerColor: Color,
     val itemColors: MenuItemColors
 )
 
+/**
+ * Immutable class representing the sizes and shapes used in a menu.
+ *
+ * This class encapsulates the shape of the menu container and the sizes used for the menu items.
+ *
+ * @property containerShape The shape of the menu container.
+ * @property itemSizes The sizes used for the menu items.
+ */
 @Immutable
 class MenuSizes(
     val containerShape: Shape,
     val itemSizes: MenuItemSizes
 )
 
+/**
+ * Immutable class representing the sizes used for menu items.
+ *
+ * This class encapsulates various size-related properties for menu items, including text styles, icon sizes,
+ * and divider sizes.
+ *
+ * @property titleTextStyle The text style used for the title of the menu item.
+ * @property leadingIconSizes The sizes used for the leading icon of the menu item.
+ * @property expendIconSizes The sizes used for the expand icon of the menu item.
+ * @property newLabelTextStyle The text style used for the "new" label of the menu item.
+ * @property newLabelContainerShape The shape of the container for the "new" label.
+ * @property dividerSizes The sizes used for the divider of the menu item.
+ * @property groupDividerSizes The sizes used for the group divider of the menu item.
+ */
 @Immutable
 class MenuItemSizes internal constructor(
     internal val titleTextStyle: TextStyle,
@@ -171,6 +258,27 @@ class MenuItemSizes internal constructor(
     }
 }
 
+/**
+ * Immutable class representing the colors used for menu items.
+ *
+ * This class encapsulates various color-related properties for menu items, including title colors,
+ * leading icon colors, expand icon colors, new label colors, and divider colors.
+ *
+ * @property titleColor The default color of the menu item title.
+ * @property negativeTitleColor The color of the menu item title when it is in a negative state.
+ * @property disabledTitleColor The color of the menu item title when it is disabled.
+ * @property leadingIconColor The default color of the leading icon in the menu item.
+ * @property selectedLeadingIconColor The color of the leading icon when the menu item is selected.
+ * @property negativeLeadingIconColor The color of the leading icon when the menu item is in a negative state.
+ * @property disabledLeadingIconColor The color of the leading icon when the menu item is disabled.
+ * @property expendIconColor The default color of the expand icon in the menu item.
+ * @property disabledExpandIconColor The color of the expand icon when the menu item is disabled.
+ * @property newLabelColor The default color of the "new" label in the menu item.
+ * @property disabledNewLabelColor The color of the "new" label when the menu item is disabled.
+ * @property newLabelContainerColor The default color of the container for the "new" label.
+ * @property disabledNewLabelContainerColor The color of the container for the "new" label when the menu item is disabled.
+ * @property dividerColor The color of the divider in the menu item.
+ */
 @Immutable
 class MenuItemColors internal constructor(
     //Title Color
@@ -198,7 +306,13 @@ class MenuItemColors internal constructor(
 
     internal val dividerColor: Color
 ) {
-    @Composable
+    /**
+     * Returns the appropriate title color based on the enabled and negative states.
+     *
+     * @param enabled Whether the menu item is enabled.
+     * @param negative Whether the menu item is in a negative state.
+     */
+    @Stable
     internal fun titleColor(
         enabled: Boolean,
         negative: Boolean
@@ -208,7 +322,14 @@ class MenuItemColors internal constructor(
         else -> titleColor
     }
 
-    @Composable
+    /**
+     * Returns the appropriate leading icon color based on the enabled, negative, and selected states.
+     *
+     * @param enabled Whether the menu item is enabled.
+     * @param negative Whether the menu item is in a negative state.
+     * @param selected Whether the menu item is selected.
+     */
+    @Stable
     internal fun leadingIconColor(
         enabled: Boolean,
         negative: Boolean,
@@ -220,7 +341,12 @@ class MenuItemColors internal constructor(
         else -> leadingIconColor
     }
 
-    @Composable
+    /**
+     * Returns the appropriate expand icon color based on the enabled state.
+     *
+     * @param enabled Whether the menu item is enabled.
+     */
+    @Stable
     internal fun expandIconColor(
         enabled: Boolean
     ): Color = when {
@@ -228,16 +354,30 @@ class MenuItemColors internal constructor(
         else -> expendIconColor
     }
 
-    @Composable
+    /**
+     * Returns the appropriate new label color based on the enabled state.
+     *
+     * @param enabled Whether the menu item is enabled.
+     */
+    @Stable
     internal fun newLabelColor(
         enabled: Boolean
     ): Color = if (enabled) newLabelColor else disabledNewLabelColor
 
-    @Composable
+    /**
+     * Returns the appropriate new label container color based on the enabled state.
+     *
+     * @param enabled Whether the menu item is enabled.
+     * @return The appropriate new label container color.
+     */
+    @Stable
     internal fun newLabelContainerColor(
         enabled: Boolean
     ): Color = if (enabled) newLabelContainerColor else disabledNewLabelContainerColor
 
+    /**
+     * Creates a copy of this [MenuItemColors] instance with the specified properties.
+     */
     fun copy(
         titleColor: Color = this.titleColor,
         negativeTitleColor: Color = this.negativeTitleColor,

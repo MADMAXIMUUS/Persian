@@ -26,18 +26,51 @@ import io.github.madmaximuus.persianSymbols.check.base.Check
 import io.github.madmaximuus.persianSymbols.chevronRight.base.ChevronRight
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
+/**
+ * Interface representing the scope for a dropdown menu item.
+ *
+ * This interface extends [ColumnScope] and provides additional properties specific to dropdown menu items.
+ *
+ * @property colors The colors used in the dropdown menu item.
+ * @property sizes The sizes used in the dropdown menu item.
+ */
 interface DropdownMenuItemScope : ColumnScope {
     val colors: MenuItemColors
     val sizes: MenuItemSizes
 }
 
+/**
+ * Internal wrapper class for [DropdownMenuItemScope].
+ *
+ * This class encapsulates a [ColumnScope] and provides implementations for the properties defined in [DropdownMenuItemScope].
+ *
+ * @param scope The underlying [ColumnScope] instance.
+ * @param colors The colors used in the dropdown menu item.
+ * @param sizes The sizes used in the dropdown menu item.
+ */
 internal class DropdownMenuItemScopeWrapper(
     val scope: ColumnScope,
     override val colors: MenuItemColors,
     override val sizes: MenuItemSizes
 ) : DropdownMenuItemScope, ColumnScope by scope
 
-
+/**
+ * Composable function to create a dropdown menu item.
+ *
+ * This function provides a flexible way to define a dropdown menu item with various customization options.
+ *
+ * @param text The text to be displayed in the dropdown menu item.
+ * @param onClick The callback to be invoked when the dropdown menu item is clicked.
+ * @param modifier The modifier to be applied to the dropdown menu item.
+ * @param leadingIcon The optional leading icon to be displayed in the dropdown menu item.
+ * @param expandIcon The expand icon to be displayed in the dropdown menu item.
+ * @param enabled Whether the dropdown menu item is enabled.
+ * @param selected Whether the dropdown menu item is selected.
+ * @param negative Whether the dropdown menu item is in a negative state.
+ * @param showNewLabel Whether to show a new label in the dropdown menu item.
+ * @param showExpandIcon Whether to show the expand icon in the dropdown menu item.
+ * @param interactionSource The interaction source to be used for the dropdown menu item.
+ */
 @Composable
 fun DropdownMenuItemScope.DropdownMenuItem(
     text: String,
@@ -69,6 +102,26 @@ fun DropdownMenuItemScope.DropdownMenuItem(
     )
 }
 
+/**
+ * Internal composable function to create the content of a dropdown menu item.
+ *
+ * This function is responsible for rendering the visual elements of a dropdown menu item, including text, icons,
+ * and various customization options.
+ *
+ * @param text The text to be displayed in the dropdown menu item.
+ * @param onClick The callback to be invoked when the dropdown menu item is clicked.
+ * @param leadingIcon The optional leading icon to be displayed in the dropdown menu item.
+ * @param modifier The modifier to be applied to the dropdown menu item.
+ * @param expandIcon The expand icon to be displayed in the dropdown menu item.
+ * @param enabled Whether the dropdown menu item is enabled.
+ * @param selected Whether the dropdown menu item is selected.
+ * @param negative Whether the dropdown menu item is in a negative state.
+ * @param showNewLabel Whether to show a new label in the dropdown menu item.
+ * @param showExpandIcon Whether to show the expand icon in the dropdown menu item.
+ * @param colors The colors used in the dropdown menu item.
+ * @param sizes The sizes used in the dropdown menu item.
+ * @param interactionSource The interaction source to be used for the dropdown menu item.
+ */
 @Composable
 internal fun DropdownMenuItemContent(
     text: String,
@@ -165,6 +218,13 @@ internal fun DropdownMenuItemContent(
     }
 }
 
+/**
+ * Composable function to create a horizontal divider within the dropdown menu item scope.
+ *
+ * This function provides a simple way to add a divider line to separate items within a dropdown menu.
+ *
+ * @param modifier The modifier to be applied to the divider.
+ */
 @Composable
 fun DropdownMenuItemScope.Divider(
     modifier: Modifier = Modifier
@@ -176,6 +236,13 @@ fun DropdownMenuItemScope.Divider(
     )
 }
 
+/**
+ * Composable function to create a horizontal group divider within the dropdown menu item scope.
+ *
+ * This function provides a way to add a divider line to separate groups of items within a dropdown menu.
+ *
+ * @param modifier The modifier to be applied to the group divider.
+ */
 @Composable
 fun DropdownMenuItemScope.GroupDivider(
     modifier: Modifier = Modifier

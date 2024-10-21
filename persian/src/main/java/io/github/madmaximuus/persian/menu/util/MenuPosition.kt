@@ -11,10 +11,10 @@ import androidx.compose.ui.unit.IntRect
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.window.PopupPositionProvider
+import io.github.madmaximuus.persian.menu.DropdownMenu
 import io.github.madmaximuus.persian.menu.MenuVerticalMargin
 import io.github.madmaximuus.persian.menu.util.MenuPosition.Horizontal
 import io.github.madmaximuus.persian.menu.util.MenuPosition.Vertical
-
 
 /**
  * Interfaces for positioning a menu within a window. This is the same purpose as the interface
@@ -316,16 +316,17 @@ internal data class DropdownMenuPositionProvider(
     val onPositionCalculated: (anchorBounds: IntRect, menuBounds: IntRect) -> Unit = { _, _ -> }
 ) : PopupPositionProvider {
     // Horizontal position
-    private val startToAnchorStart: MenuPosition.Horizontal
-    private val endToAnchorEnd: MenuPosition.Horizontal
-    private val leftToWindowLeft: MenuPosition.Horizontal
-    private val rightToWindowRight: MenuPosition.Horizontal
+    private val startToAnchorStart: Horizontal
+    private val endToAnchorEnd: Horizontal
+    private val leftToWindowLeft: Horizontal
+    private val rightToWindowRight: Horizontal
+
     // Vertical position
-    private val topToAnchorBottom: MenuPosition.Vertical
-    private val bottomToAnchorTop: MenuPosition.Vertical
-    private val centerToAnchorTop: MenuPosition.Vertical
-    private val topToWindowTop: MenuPosition.Vertical
-    private val bottomToWindowBottom: MenuPosition.Vertical
+    private val topToAnchorBottom: Vertical
+    private val bottomToAnchorTop: Vertical
+    private val centerToAnchorTop: Vertical
+    private val topToWindowTop: Vertical
+    private val bottomToWindowBottom: Vertical
 
     init {
         // Horizontal position
