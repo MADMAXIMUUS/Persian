@@ -42,7 +42,6 @@ import io.github.madmaximuus.persian.switch.SwitchSizes
 
 /**
  * Contains all default values used by list item
- * .
  */
 object ListItemDefaults {
 
