@@ -14,6 +14,17 @@ import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
 
+/**
+ * Creates a Persian-styled page dot indicator item within a [LazyListScope].
+ *
+ * This function generates a list of items representing page indicators, with customizable
+ * appearance based on the current item and its position relative to the visible indicator count.
+ *
+ * @param itemCount The total number of items in the list.
+ * @param currentItem The index of the currently selected item.
+ * @param visibleIndicatorCount The number of indicators that are visible at a time.
+ * @param colors The colors to be used for the indicators.
+ */
 internal fun LazyListScope.persianPageDotIndicatorItem(
     itemCount: Int,
     currentItem: Int,
@@ -72,6 +83,16 @@ internal fun LazyListScope.persianPageDotIndicatorItem(
     }
 }
 
+/**
+ * Creates a Persian-styled page line indicator item within a [LazyListScope].
+ *
+ * This function generates a list of items representing page indicators, with customizable
+ * appearance based on the current item. Each indicator is displayed as a horizontal line.
+ *
+ * @param itemCount The total number of items in the list.
+ * @param currentItem The index of the currently selected item.
+ * @param colors The colors to be used for the indicators.
+ */
 internal fun LazyListScope.persianPageLineIndicatorItem(
     itemCount: Int,
     currentItem: Int,
