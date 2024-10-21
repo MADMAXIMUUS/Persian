@@ -102,7 +102,7 @@ class PageState(
      *   gesture interaction or another programmatic interaction like a [animateTo] or [snapTo]
      *   call.
      */
-    internal suspend fun animateTo(
+    private suspend fun animateTo(
         targetValue: DragAnchor,
         velocity: Float = anchoredDraggableState.lastVelocity
     ) {
@@ -117,7 +117,7 @@ class PageState(
      *   gesture interaction or another programmatic interaction like a [animateTo] or [snapTo]
      *   call.
      */
-    internal suspend fun snapTo(targetValue: DragAnchor) {
+    private suspend fun snapTo(targetValue: DragAnchor) {
         anchoredDraggableState.snapTo(targetValue)
     }
 
@@ -137,7 +137,7 @@ class PageState(
             velocityThreshold = { with(density) { 125.dp.toPx() } },
         )
 
-    internal val offset: Float?
+    internal val offset: Float
         get() = anchoredDraggableState.offset
 
     companion object {
@@ -161,22 +161,7 @@ class PageState(
     }
 }
 
-/** Possible values of [PageState]. */
-/*enum class SheetValue {
-    */
-/** The sheet is not visible. *//*
-    Hidden,
-
-    */
-/** The sheet is visible at full height. *//*
-    Expanded,
-
-    */
-/** The sheet is partially visible. *//*
-    PartiallyExpanded,
-}*/
-
-/** The default animation spec used by [SheetState]. */
+/** The default animation spec used by [PageState]. */
 private val BottomSheetAnimationSpec: AnimationSpec<Float> =
     tween(durationMillis = 300, easing = FastOutSlowInEasing)
 

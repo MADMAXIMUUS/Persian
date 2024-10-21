@@ -5,7 +5,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.takeOrElse
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.takeOrElse
@@ -16,9 +15,25 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.modalPage.util.DragAnchor
 import io.github.madmaximuus.persian.topAppBar.TopAppBarColors
 import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
+import io.github.madmaximuus.persian.topAppBar.TopAppBarSizes
 
+/**
+ * Contains all default values used by modal page
+ */
 object ModalPageDefaults {
 
+    /**
+     * A composable function that creates a [ModalPageColors] instance with the specified colors.
+     *
+     * This function allows customization of the colors for various components of a modal page, including
+     * the container, top app bar, drag handle, and action buttons. Default values are provided for each
+     * color, which can be overridden as needed.
+     *
+     * @param containerColor The color of the modal page container.
+     * @param topAppBarColors The colors of the top app bar.
+     * @param dragHandleColor The color of the drag handle.
+     * @param actionColors The colors of the action buttons.
+     */
     @Composable
     fun colors(
         containerColor: Color = PersianTheme.colorScheme.surface,
@@ -32,10 +47,22 @@ object ModalPageDefaults {
         actionColors = actionColors
     )
 
+    /**
+     * A composable function that creates a [ModalPageSizes] instance with the specified sizes.
+     *
+     * This function allows customization of the sizes for various components of a modal page, including
+     * the container shape, top app bar, drag handle, and action buttons. Default values are provided for each
+     * size, which can be overridden as needed.
+     *
+     * @param containerShape The shape of the modal page container.
+     * @param topAppBarSizes The sizes of the top app bar.
+     * @param dragHandleSizes The size of the drag handle.
+     * @param actionSizes The sizes of the action buttons.
+     */
     @Composable
     fun sizes(
         containerShape: RoundedCornerShape = PersianTheme.shapes.shape12,
-        topAppBarSizes: Dp = 0.dp,
+        topAppBarSizes: TopAppBarSizes = TopAppBarDefaults.sizes(),
         dragHandleSizes: DpSize = DpSize(40.dp, 6.dp),
         actionSizes: ButtonSizes = ButtonDefaults.largeSizes()
     ): ModalPageSizes = ModalPageSizes(
@@ -87,17 +114,32 @@ class ModalPageColors(
     }
 }
 
+/**
+ * An immutable class that defines the sizes for various components of a modal page.
+ *
+ * This class encapsulates the sizes for the container shape, top app bar, drag handle, and action buttons.
+ * It provides a `copy` method to create a new instance with modified properties and overrides the `equals`
+ * and `hashCode` methods for proper comparison.
+ *
+ * @property containerShape The shape of the modal page container.
+ * @property topAppBarSizes The size of the top app bar.
+ * @property dragHandleSizes The size of the drag handle.
+ * @property actionSizes The sizes of the action buttons.
+ */
 @Immutable
 class ModalPageSizes(
     internal val containerShape: RoundedCornerShape,
-    internal val topAppBarSizes: Dp,
+    internal val topAppBarSizes: TopAppBarSizes,
     internal val dragHandleSizes: DpSize,
     internal val actionSizes: ButtonSizes
 ) {
 
+    /**
+     * Creates a copy of this [ModalPageSizes] instance with the specified properties.
+     */
     fun copy(
         containerShape: RoundedCornerShape = this.containerShape,
-        topAppBarSizes: Dp = this.topAppBarSizes, //TODO: Refactor after TopAppBar
+        topAppBarSizes: TopAppBarSizes = this.topAppBarSizes,
         dragHandleSizes: DpSize = this.dragHandleSizes,
         actionSizes: ButtonSizes = this.actionSizes
     ): ModalPageSizes = ModalPageSizes(

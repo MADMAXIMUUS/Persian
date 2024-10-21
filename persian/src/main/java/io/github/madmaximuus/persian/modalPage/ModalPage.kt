@@ -77,6 +77,23 @@ fun ModalPage(
     }
 }
 
+/**
+ * A private composable function that displays a modal page optimized for compact window sizes.
+ *
+ * This function handles the presentation of a modal page with specific properties, including dragging and dismissing behavior.
+ * It uses a [ModalPageDialog] to present the modal page and manages the state of the page using [PageState].
+ *
+ * @param onDismissRequest A callback to be invoked when the modal page is dismissed.
+ * @param modifier The modifier to be applied to the modal page.
+ * @param pageState The state of the modal page, including drag anchors and visibility.
+ * @param top An optional composable function that defines the content for the top section of the modal page.
+ * @param bottom An optional composable function that defines the content for the bottom section of the modal page.
+ * @param contentWindowInsets The window insets to be applied to the content of the modal page.
+ * @param properties The properties to be used for the modal page.
+ * @param colors The colors to be used for the modal page.
+ * @param sizes The sizes to be used for the modal page.
+ * @param content A composable function that defines the main content of the modal page, receiving padding values.
+ */
 @Composable
 private fun CompactModalPage(
     onDismissRequest: () -> Unit,

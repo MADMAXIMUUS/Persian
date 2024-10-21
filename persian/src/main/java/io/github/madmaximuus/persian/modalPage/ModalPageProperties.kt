@@ -5,7 +5,7 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.ui.window.SecureFlagPolicy
 
 /**
- * Properties used to customize the behavior of a [ModalBottomSheet].
+ * Properties used to customize the behavior of a [ModalPage].
  *
  * @param securePolicy Policy for setting [WindowManager.LayoutParams.FLAG_SECURE] on the bottom
  *   sheet's window.

@@ -23,6 +23,20 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.scafold.Scaffold
 import io.github.madmaximuus.persian.surface.Surface
 
+/**
+ * A composable function that displays a full-screen modal page.
+ *
+ * This function adapts the layout based on the current window size class, providing different layouts
+ * for compact and medium window sizes.
+ *
+ * @param onDismissRequest A callback to be invoked when the modal page is dismissed.
+ * @param colors The colors to be used for the modal page.
+ * @param sizes The sizes to be used for the modal page.
+ * @param top A composable function that defines the content for the top section of the modal page.
+ * @param bottom An optional composable function that defines the content for the bottom section of the modal page.
+ * @param contentWindowInsets The window insets to be applied to the content of the modal page.
+ * @param content A composable function that defines the main content of the modal page, receiving padding values.
+ */
 @Composable
 fun FullScreenModalPage(
     onDismissRequest: () -> Unit,
@@ -58,6 +72,20 @@ fun FullScreenModalPage(
     }
 }
 
+/**
+ * A private composable function that displays a full-screen modal page optimized for compact window sizes.
+ *
+ * This function uses a [Dialog] to present the modal page, with specific properties and layout settings
+ * tailored for compact window sizes.
+ *
+ * @param onDismissRequest A callback to be invoked when the modal page is dismissed.
+ * @param colors The colors to be used for the modal page.
+ * @param sizes The sizes to be used for the modal page.
+ * @param top An optional composable function that defines the content for the top section of the modal page.
+ * @param bottom An optional composable function that defines the content for the bottom section of the modal page.
+ * @param contentWindowInsets The window insets to be applied to the content of the modal page.
+ * @param content A composable function that defines the main content of the modal page, receiving padding values.
+ */
 @Composable
 private fun CompactFullScreenModalPage(
     onDismissRequest: () -> Unit,
@@ -105,6 +133,20 @@ private fun CompactFullScreenModalPage(
     )
 }
 
+/**
+ * An internal composable function that displays a modal page optimized for medium window sizes.
+ *
+ * This function uses a [Dialog] to present the modal page, with specific properties and layout settings
+ * tailored for medium window sizes. The size of the dialog is adjusted based on the current window size class.
+ *
+ * @param onDismissRequest A callback to be invoked when the modal page is dismissed.
+ * @param colors The colors to be used for the modal page.
+ * @param sizes The sizes to be used for the modal page.
+ * @param top An optional composable function that defines the content for the top section of the modal page.
+ * @param bottom An optional composable function that defines the content for the bottom section of the modal page.
+ * @param contentWindowInsets The window insets to be applied to the content of the modal page.
+ * @param content A composable function that defines the main content of the modal page, receiving padding values.
+ */
 @Composable
 internal fun MediumModalPage(
     onDismissRequest: () -> Unit,

@@ -1,8 +1,21 @@
 package io.github.madmaximuus.persian.modalPage.util
 
+import io.github.madmaximuus.persian.modalPage.util.DragAnchor.Expanded
+import io.github.madmaximuus.persian.modalPage.util.DragAnchor.Fraction
+import io.github.madmaximuus.persian.modalPage.util.DragAnchor.Half
+import io.github.madmaximuus.persian.modalPage.util.DragAnchor.Hidden
 import java.io.Serializable
 
-
+/**
+ * A sealed class representing different types of drag anchors.
+ *
+ * This class implements the [Comparable] interface to allow comparison between different types of drag anchors.
+ *
+ * @property Half A singleton object representing a half drag anchor.
+ * @property Expanded A singleton object representing an expanded drag anchor.
+ * @property Fraction A data class representing a fractional drag anchor with a specific value.
+ * @property Hidden An internal singleton object representing a hidden drag anchor.
+ */
 sealed class DragAnchor : Comparable<DragAnchor> {
     data object Half : DragAnchor(), Serializable {
         private fun readResolve(): Any = Half

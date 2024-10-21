@@ -56,6 +56,17 @@ import io.github.madmaximuus.persian.surface.Surface
 import kotlin.math.max
 import kotlin.math.min
 
+/**
+ * An internal composable function that creates a scrim (overlay) for a modal page.
+ *
+ * This function animates the alpha value of the scrim based on the page state's offset and visibility.
+ * The scrim can be dismissed by tapping on it, invoking the [onDismissRequest] callback.
+ *
+ * @param color The color of the scrim.
+ * @param onDismissRequest A callback to be invoked when the scrim is dismissed.
+ * @param pageState The state of the modal page, including the offset.
+ * @param visible A boolean indicating whether the scrim is visible.
+ */
 @Composable
 internal fun Scrim(
     color: Color,
@@ -106,7 +117,24 @@ internal fun Scrim(
     }
 }
 
-
+/**
+ * An internal composable function that creates the content for a modal bottom sheet.
+ *
+ * This function handles the layout and behavior of the modal bottom sheet, including dragging,
+ * dismissing, and animating the content. It uses the provided [PageState] to manage the state of the sheet.
+ *
+ * @param predictiveBackProgress An [Animatable] that represents the progress of the predictive back animation.
+ * @param settleToDismiss A function that handles the settling of the sheet when it is dismissed.
+ * @param onDismissRequest A callback to be invoked when the modal sheet is dismissed.
+ * @param modifier The modifier to be applied to the modal sheet.
+ * @param pageState The state of the modal page, including drag anchors and visibility.
+ * @param colors The colors to be used for the modal page.
+ * @param sizes The sizes to be used for the modal page.
+ * @param top An optional composable function that defines the content for the top section of the modal page.
+ * @param bottom An optional composable function that defines the content for the bottom section of the modal page.
+ * @param contentWindowInsets The window insets to be applied to the content of the modal page.
+ * @param content A composable function that defines the main content of the modal page, receiving padding values.
+ */
 @Composable
 internal fun BoxScope.ModalBottomSheetContent(
     predictiveBackProgress: Animatable<Float, AnimationVector1D>,
@@ -263,6 +291,14 @@ internal fun BoxScope.ModalBottomSheetContent(
     }
 }
 
+/**
+ * Calculates the predictive back scale for the X-axis based on the given progress.
+ *
+ * This function computes the scale factor for the X-axis used in predictive back animations.
+ * The scale factor is calculated based on the current width of the component and the progress value.
+ *
+ * @param progress The progress value used to calculate the scale factor, ranging from 0 to 1.
+ */
 private fun GraphicsLayerScope.calculatePredictiveBackScaleX(progress: Float): Float {
     val width = size.width
     return if (width.isNaN() || width == 0f) {
@@ -272,6 +308,14 @@ private fun GraphicsLayerScope.calculatePredictiveBackScaleX(progress: Float): F
     }
 }
 
+/**
+ * Calculates the predictive back scale for the Y-axis based on the given progress.
+ *
+ * This function computes the scale factor for the Y-axis used in predictive back animations.
+ * The scale factor is calculated based on the current height of the component and the progress value.
+ *
+ * @param progress The progress value used to calculate the scale factor, ranging from 0 to 1.
+ */
 private fun GraphicsLayerScope.calculatePredictiveBackScaleY(progress: Float): Float {
     val height = size.height
     return if (height.isNaN() || height == 0f) {
@@ -281,6 +325,16 @@ private fun GraphicsLayerScope.calculatePredictiveBackScaleY(progress: Float): F
     }
 }
 
+/**
+ * Creates a [NestedScrollConnection] that consumes swipe gestures within the bounds of a bottom sheet.
+ *
+ * This connection handles pre-scroll, post-scroll, pre-fling, and post-fling events to manage the dragging
+ * and flinging behavior of the bottom sheet. It uses the provided [PageState] to manage the state of the sheet.
+ *
+ * @param sheetState The state of the modal page, including drag anchors and visibility.
+ * @param orientation The orientation of the scroll, either [Orientation.Horizontal] or [Orientation.Vertical].
+ * @param onFling A function that handles the fling gesture, receiving the velocity as a parameter.
+ */
 internal fun ConsumeSwipeWithinBottomSheetBoundsNestedScrollConnection(
     sheetState: PageState,
     orientation: Orientation,
