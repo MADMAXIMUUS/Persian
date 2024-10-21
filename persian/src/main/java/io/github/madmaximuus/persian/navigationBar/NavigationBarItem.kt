@@ -47,11 +47,28 @@ import io.github.madmaximuus.persian.icon.Icon
 import io.github.madmaximuus.persian.text.Text
 import kotlin.math.roundToInt
 
+/**
+ * An interface that defines the scope for a row within a navigation bar.
+ *
+ * This interface extends [RowScope] and provides additional properties for sizes and colors specific to the navigation bar.
+ *
+ * @property sizes The sizes to be used for the navigation bar.
+ * @property colors The colors to be used for the navigation bar items.
+ */
 interface NavigationBarRowScope : RowScope {
     val sizes: NavigationBarSizes
     val colors: NavigationBarItemColors
 }
 
+/**
+ * An internal class that wraps a [RowScope] to provide additional properties for the navigation bar.
+ *
+ * This class implements the [NavigationBarRowScope] interface and delegates the [RowScope] methods to the provided scope.
+ *
+ * @param scope The [RowScope] to be wrapped.
+ * @param sizes The sizes to be used for the navigation bar.
+ * @param colors The colors to be used for the navigation bar items.
+ */
 internal class NavigationBarScopeWrapper(
     scope: RowScope,
     override val sizes: NavigationBarSizes,

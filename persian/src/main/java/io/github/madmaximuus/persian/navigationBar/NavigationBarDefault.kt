@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.systemBars
-import androidx.compose.material3.NavigationBarItem
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
@@ -18,8 +17,21 @@ import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persian.icon.IconSizes
 
+/**
+ * Contains all default values used by navigation bar
+ */
 object NavigationBarDefaults {
 
+    /**
+     * A composable function that creates a [NavigationBarColors] instance with the specified colors.
+     *
+     * This function allows customization of the colors for various components of a navigation bar,
+     * including the background color and the colors for the navigation bar items. Default values are provided
+     * for each property, which can be overridden as needed.
+     *
+     * @param backgroundColor The background color of the navigation bar.
+     * @param itemColors The colors to be used for the navigation bar items.
+     */
     @Composable
     fun colors(
         backgroundColor: Color = PersianTheme.colorScheme.surfaceContainer,
@@ -30,6 +42,18 @@ object NavigationBarDefaults {
             backgroundColor = backgroundColor
         )
 
+    /**
+     * A composable function that creates a [NavigationBarSizes] instance with the specified sizes and styles.
+     *
+     * This function allows customization of the sizes and styles for various components of a navigation bar,
+     * including the text style, icon sizes, and padding values. Default values are provided for each property,
+     * which can be overridden as needed.
+     *
+     * @param textStyle The text style to be used for the text in the navigation bar.
+     * @param iconSize The size of the icons in the navigation bar.
+     * @param selectedIconSize The size of the selected icon in the navigation bar.
+     * @param paddingValues The padding values to be applied to the navigation bar.
+     */
     @Composable
     fun sizes(
         textStyle: TextStyle = PersianTheme.typography.labelMedium,
@@ -86,12 +110,30 @@ object NavigationBarDefaults {
             .only(WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom)
 }
 
+/**
+ * An immutable data class that defines the colors for a navigation bar.
+ *
+ * This class encapsulates the colors for the navigation bar items and the background of the navigation bar.
+ *
+ * @property itemColors The colors to be used for the navigation bar items.
+ * @property backgroundColor The background color of the navigation bar.
+ */
 @Immutable
 data class NavigationBarColors(
     val itemColors: NavigationBarItemColors,
     val backgroundColor: Color
 )
 
+/**
+ * An immutable data class that defines the sizes and styles for a navigation bar.
+ *
+ * This class encapsulates the padding values, icon sizes, and text style to be used for the navigation bar.
+ *
+ * @property paddingValues The padding values to be applied to the navigation bar.
+ * @property selectedIconSize The size of the selected icon in the navigation bar.
+ * @property iconSize The size of the icons in the navigation bar.
+ * @property textStyle The text style to be used for the text in the navigation bar.
+ */
 @Immutable
 data class NavigationBarSizes(
     val paddingValues: PaddingValues,
