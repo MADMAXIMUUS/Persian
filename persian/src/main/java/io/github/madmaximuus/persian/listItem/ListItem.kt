@@ -17,13 +17,33 @@ import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.dividers.InsetHorizontalDivider
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
+/**
+ * Composable function to display a list item with various sections: edit, left, middle, and right.
+ *
+ * This function creates a [Column] that contains a [Row] with optional sections for editing, left
+ * content, middle content, and right content. The list item can also include a divider and supports
+ * click events. The appearance and behavior of the list item are customized based on the provided
+ * sizes, colors, and other properties.
+ *
+ * @param modifier The modifier to be applied to the [Column].
+ * @param edit A composable function that defines the content for the edit section.
+ * @param left A composable function that defines the content for the left section.
+ * @param middle A composable function that defines the content for the middle section.
+ * @param right A composable function that defines the content for the right section.
+ * @param divider A boolean indicating whether to display a divider below the list item.
+ * @param enabled A boolean indicating whether the list item is enabled.
+ * @param checked A boolean indicating whether the list item is checked.
+ * @param sizes The sizes of the list item, encapsulated in a [ListItemSizes] object.
+ * @param colors The colors of the list item, encapsulated in a [ListItemColors] object.
+ * @param onClick The callback to be invoked when the list item is clicked.
+ */
 @Composable
 fun ListItem(
     modifier: Modifier = Modifier,
-    edit: (@Composable ListItemEdit.() -> Unit)? = null,
-    left: (@Composable ListItemLeft.() -> Unit)? = null,
-    middle: @Composable ListItemMiddle.() -> Unit,
-    right: (@Composable ListItemRight.() -> Unit)? = null,
+    edit: (@Composable ListItemEditScope.() -> Unit)? = null,
+    left: (@Composable ListItemLeftScope.() -> Unit)? = null,
+    middle: @Composable ListItemMiddleScope.() -> Unit,
+    right: (@Composable ListItemRightScope.() -> Unit)? = null,
     divider: Boolean = false,
     enabled: Boolean = true,
     checked: Boolean = false,
@@ -54,7 +74,7 @@ fun ListItem(
             if (edit != null) {
                 val scope =
                     remember(sizes, colors, enabled, checked) {
-                        ListItemEditWrapper(
+                        ListItemEditScopeWrapper(
                             scope = this,
                             sizes = sizes,
                             colors = colors,
@@ -67,7 +87,7 @@ fun ListItem(
             if (left != null) {
                 val scope =
                     remember(sizes, colors, enabled) {
-                        ListItemLeftWrapper(
+                        ListItemLeftScopeWrapper(
                             scope = this,
                             sizes = sizes,
                             colors = colors,
@@ -78,7 +98,7 @@ fun ListItem(
             }
             val middleScope =
                 remember(sizes, colors, enabled) {
-                    ListItemMiddleWrapper(
+                    ListItemMiddleScopeWrapper(
                         scope = this,
                         sizes = sizes,
                         colors = colors,
@@ -89,7 +109,7 @@ fun ListItem(
             if (right != null) {
                 val scope =
                     remember(sizes, colors, enabled, checked) {
-                        ListItemRightWrapper(
+                        ListItemRightScopeWrapper(
                             scope = this,
                             sizes = sizes,
                             colors = colors,

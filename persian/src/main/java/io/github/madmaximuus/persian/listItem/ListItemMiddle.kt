@@ -14,21 +14,56 @@ import androidx.compose.ui.text.style.TextOverflow
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.text.Text
 
-interface ListItemMiddle : RowScope {
+/**
+ * Interface representing the scope for the middle section of a list item.
+ *
+ * This interface extends [RowScope] and provides properties for managing the appearance and state
+ * of the middle section of a list item within a row.
+ *
+ * @property sizes The sizes of the list item, encapsulated in a [ListItemSizes] object.
+ * @property colors The colors of the list item, encapsulated in a [ListItemColors] object.
+ * @property enabled A boolean indicating whether the list item is enabled.
+ */
+interface ListItemMiddleScope : RowScope {
     val sizes: ListItemSizes
     val colors: ListItemColors
     val enabled: Boolean
 }
 
-internal class ListItemMiddleWrapper(
+/**
+ * Internal class that wraps a [RowScope] and implements [ListItemMiddleScope].
+ *
+ * This class provides a way to encapsulate a [RowScope] and add additional properties related to
+ * the middle section of a list item, such as sizes, colors, and enabled state.
+ *
+ * @param scope The underlying [RowScope] being wrapped.
+ * @param sizes The sizes of the list item, encapsulated in a [ListItemSizes] object.
+ * @param colors The colors of the list item, encapsulated in a [ListItemColors] object.
+ * @param enabled A boolean indicating whether the list item is enabled.
+ */
+internal class ListItemMiddleScopeWrapper(
     scope: RowScope,
     override val sizes: ListItemSizes,
     override val colors: ListItemColors,
     override val enabled: Boolean,
-) : ListItemMiddle, RowScope by scope
+) : ListItemMiddleScope, RowScope by scope
 
+/**
+ * Composable function to display the middle section of a list item.
+ *
+ * This function creates a [Column] with vertical padding and contains various text elements
+ * such as title, subhead, and body. The appearance of these text elements is customized based on
+ * the enabled state and the provided sizes, colors, and other properties.
+ *
+ * @param modifier The modifier to be applied to the [Column].
+ * @param title The main title text to be displayed.
+ * @param subhead The optional subhead text to be displayed above the title.
+ * @param body The optional body text to be displayed below the title.
+ * @param multiline A boolean indicating whether the text elements should support multiple lines.
+ * @param newLabel A boolean indicating whether to display a "New" label next to the title.
+ */
 @Composable
-fun ListItemMiddle.Middle(
+fun ListItemMiddleScope.Middle(
     modifier: Modifier = Modifier,
     title: String,
     subhead: String? = null,
@@ -93,5 +128,4 @@ fun ListItemMiddle.Middle(
             )
         }
     }
-
 }

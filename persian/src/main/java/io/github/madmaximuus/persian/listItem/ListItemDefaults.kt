@@ -40,8 +40,51 @@ import io.github.madmaximuus.persian.switch.SwitchColors
 import io.github.madmaximuus.persian.switch.SwitchDefaults
 import io.github.madmaximuus.persian.switch.SwitchSizes
 
+/**
+ * Contains all default values used by list item
+ * .
+ */
 object ListItemDefaults {
 
+    /**
+     * Composable function to create a [ListItemColors] instance with the specified colors.
+     *
+     * This function provides default colors for various components within a list item, such as text,
+     * icons, images, buttons, and dividers. The colors can be customized by passing specific values
+     * for each parameter.
+     *
+     * @param titleColor The color of the title text when enabled.
+     * @param disabledTitleColor The color of the title text when disabled.
+     * @param bodyColor The color of the body text when enabled.
+     * @param disabledBodyColor The color of the body text when disabled.
+     * @param subheadColor The color of the subhead text when enabled.
+     * @param disabledSubheadColor The color of the subhead text when disabled.
+     * @param newLabelColor The color of the new label text when enabled.
+     * @param disabledNewLabelColor The color of the new label text when disabled.
+     * @param newLabelContainerColor The background color of the new label container when enabled.
+     * @param disabledNewLabelContainerColor The background color of the new label container when disabled.
+     * @param editRadioButtonColors The colors for the radio button in the edit section.
+     * @param editCheckboxToggleColors The colors for the checkbox in the edit section.
+     * @param editAddColor The colors for the add icon button in the edit section.
+     * @param editRemoveColor The colors for the remove icon button in the edit section.
+     * @param editDragColor The color of the drag icon in the edit section when enabled.
+     * @param disabledEditDragColor The color of the drag icon in the edit section when disabled.
+     * @param leftIconColor The color of the icon in the left section when enabled.
+     * @param disabledLeftIconColor The color of the icon in the left section when disabled.
+     * @param leftAvatarColors The colors for the avatar in the left section.
+     * @param leftImageColors The colors for the image in the left section.
+     * @param rightSwitchColors The colors for the switch in the right section.
+     * @param rightButtonColors The colors for the button in the right section.
+     * @param rightIconButtonColors The colors for the icon button in the right section.
+     * @param rightCounterColors The colors for the counter in the right section.
+     * @param rightRadioButtonColors The colors for the radio button in the right section.
+     * @param rightCheckboxToggleColors The colors for the checkbox in the right section.
+     * @param rightSuffixColor The color of the suffix text in the right section when enabled.
+     * @param disabledRightSuffixColor The color of the suffix text in the right section when disabled.
+     * @param rightIconColor The color of the icon in the right section when enabled.
+     * @param disabledRightIconColor The color of the icon in the right section when disabled.
+     * @param dividerColor The color of the divider.
+     */
     @Composable
     fun colors(
         titleColor: Color = PersianTheme.colorScheme.onSurface,
@@ -133,6 +176,37 @@ object ListItemDefaults {
         dividerColor = dividerColor
     )
 
+    /**
+     * Composable function to create a [ListItemSizes] instance with the specified sizes.
+     *
+     * This function provides default sizes for various components within a list item, such as icons,
+     * images, text styles, buttons, and dividers. The sizes can be customized by passing specific values
+     * for each parameter.
+     *
+     * @param shape The shape of the list item.
+     * @param editDragIconSizes The sizes for the drag icon in the edit section.
+     * @param editCheckboxSizes The sizes for the checkbox in the edit section.
+     * @param editRadioButtonSizes The sizes for the radio button in the edit section.
+     * @param editAddIconButtonSizes The sizes for the add icon button in the edit section.
+     * @param editRemoveIconButtonSizes The sizes for the remove icon button in the edit section.
+     * @param leftIconSizes The sizes for the icon in the left section.
+     * @param leftImageSizes The sizes for the image in the left section.
+     * @param leftAvatarSizes The sizes for the avatar in the left section.
+     * @param titleTextStyle The text style for the title in the middle section.
+     * @param bodyTextStyle The text style for the body text in the middle section.
+     * @param subheadTextStyle The text style for the subhead text in the middle section.
+     * @param newLabelTextStyle The text style for the new label in the middle section.
+     * @param newLabelShape The shape for the new label in the middle section.
+     * @param rightIconSizes The sizes for the icon in the right section.
+     * @param rightSwitchSizes The sizes for the switch in the right section.
+     * @param rightCounterSizes The sizes for the counter in the right section.
+     * @param rightSuffixTextStyle The text style for the suffix text in the right section.
+     * @param rightButtonSizes The sizes for the button in the right section.
+     * @param rightIconButtonSizes The sizes for the icon button in the right section.
+     * @param rightCheckboxSizes The sizes for the checkbox in the right section.
+     * @param rightRadioButtonSizes The sizes for the radio button in the right section.
+     * @param dividerSizes The sizes for the divider.
+     */
     @Composable
     fun sizes(
         shape: Shape = RoundedCornerShape(0.dp),
@@ -195,6 +269,45 @@ object ListItemDefaults {
     )
 }
 
+/**
+ * Immutable class representing the colors for various components within a list item.
+ *
+ * This class encapsulates the colors for different UI elements such as text, icons, images, buttons,
+ * and dividers. It provides a way to customize the appearance of a list item by specifying the colors
+ * for each component.
+ *
+ * @property titleColor The color of the title text when enabled.
+ * @property disabledTitleColor The color of the title text when disabled.
+ * @property bodyColor The color of the body text when enabled.
+ * @property disabledBodyColor The color of the body text when disabled.
+ * @property subheadColor The color of the subhead text when enabled.
+ * @property disabledSubheadColor The color of the subhead text when disabled.
+ * @property newLabelColor The color of the new label text when enabled.
+ * @property disabledNewLabelColor The color of the new label text when disabled.
+ * @property newLabelContainerColor The background color of the new label container when enabled.
+ * @property disabledNewLabelContainerColor The background color of the new label container when disabled.
+ * @property editDragColor The color of the drag icon in the edit section when enabled.
+ * @property disabledEditDragColor The color of the drag icon in the edit section when disabled.
+ * @property editRadioButtonColors The colors for the radio button in the edit section.
+ * @property editCheckboxToggleColors The colors for the checkbox in the edit section.
+ * @property editAddColors The colors for the add icon button in the edit section.
+ * @property editRemoveColors The colors for the remove icon button in the edit section.
+ * @property leftIconColor The color of the icon in the left section when enabled.
+ * @property disabledLeftIconColor The color of the icon in the left section when disabled.
+ * @property leftAvatarColors The colors for the avatar in the left section.
+ * @property leftImageColors The colors for the image in the left section.
+ * @property rightSwitchColors The colors for the switch in the right section.
+ * @property rightButtonColors The colors for the button in the right section.
+ * @property rightIconButtonColors The colors for the icon button in the right section.
+ * @property rightCounterColors The colors for the counter in the right section.
+ * @property rightRadioButtonColors The colors for the radio button in the right section.
+ * @property rightCheckboxToggleColors The colors for the checkbox in the right section.
+ * @property rightSuffixColor The color of the suffix text in the right section when enabled.
+ * @property disabledRightSuffixColor The color of the suffix text in the right section when disabled.
+ * @property rightIconColor The color of the icon in the right section when enabled.
+ * @property disabledRightIconColor The color of the icon in the right section when disabled.
+ * @property dividerColor The color of the divider.
+ */
 @Immutable
 class ListItemColors(
     private val titleColor: Color,
@@ -241,42 +354,90 @@ class ListItemColors(
 
     internal val dividerColor: Color
 ) {
+    /**
+     * Returns the color of the title text based on the enabled state.
+     *
+     * @param enabled A boolean indicating whether the title text is enabled.
+     */
     @Stable
     fun titleColor(enabled: Boolean): Color =
         if (enabled) titleColor else disabledTitleColor
 
+    /**
+     * Returns the color of the body text based on the enabled state.
+     *
+     * @param enabled A boolean indicating whether the body text is enabled.
+     */
     @Stable
     fun bodyColor(enabled: Boolean): Color =
         if (enabled) bodyColor else disabledBodyColor
 
+    /**
+     * Returns the color of the subhead text based on the enabled state.
+     *
+     * @param enabled A boolean indicating whether the subhead text is enabled.
+     */
     @Stable
     fun subheadColor(enabled: Boolean): Color =
         if (enabled) subheadColor else disabledSubheadColor
 
+    /**
+     * Returns the color of the new label text based on the enabled state.
+     *
+     * @param enabled A boolean indicating whether the new label text is enabled.
+     */
     @Stable
     fun newLabelColor(enabled: Boolean): Color =
         if (enabled) newLabelColor else disabledNewLabelColor
 
+    /**
+     * Returns the background color of the new label container based on the enabled state.
+     *
+     * @param enabled A boolean indicating whether the new label container is enabled.
+     */
     @Stable
     fun newLabelContainerColor(enabled: Boolean): Color =
         if (enabled) newLabelContainerColor else disabledNewLabelContainerColor
 
+    /**
+     * Returns the color of the drag icon based on the enabled state.
+     *
+     * @param enabled A boolean indicating whether the drag icon is enabled.
+     */
     @Stable
     fun dragColor(enabled: Boolean): Color =
         if (enabled) editDragColor else disabledEditDragColor
 
+    /**
+     * Returns the color of the icon in the left section based on the enabled state.
+     *
+     * @param enabled A boolean indicating whether the left icon is enabled.
+     */
     @Stable
     fun leftIconColor(enabled: Boolean): Color =
         if (enabled) leftIconColor else disabledLeftIconColor
 
+    /**
+     * Returns the color of the suffix text in the right section based on the enabled state.
+     *
+     * @param enabled A boolean indicating whether the suffix text is enabled.
+     */
     @Stable
     fun suffixColor(enabled: Boolean): Color =
         if (enabled) rightSuffixColor else disabledRightSuffixColor
 
+    /**
+     * Returns the color of the icon in the right section based on the enabled state.
+     *
+     * @param enabled A boolean indicating whether the right icon is enabled.
+     */
     @Stable
     fun rightIconColor(enabled: Boolean): Color =
         if (enabled) rightIconColor else disabledRightIconColor
 
+    /**
+     * Creates a copy of this [ListItemColors] instance with the specified properties.
+     */
     fun copy(
         titleColor: Color = this.titleColor,
         disabledTitleColor: Color = this.disabledTitleColor,
@@ -462,6 +623,37 @@ class ListItemColors(
     }
 }
 
+/**
+ * Immutable class representing the sizes for various components within a list item.
+ *
+ * This class encapsulates the sizes for different UI elements such as icons, images, text styles,
+ * buttons, and dividers. It provides a way to customize the appearance of a list item by specifying
+ * the sizes for each component.
+ *
+ * @property shape The shape of the list item.
+ * @property editDragIconSizes The sizes for the drag icon in the edit section.
+ * @property editCheckboxSizes The sizes for the checkbox in the edit section.
+ * @property editRadioButtonSizes The sizes for the radio button in the edit section.
+ * @property editAddIconButtonSizes The sizes for the add icon button in the edit section.
+ * @property editRemoveIconButtonSizes The sizes for the remove icon button in the edit section.
+ * @property leftIconSizes The sizes for the icon in the left section.
+ * @property leftImageSizes The sizes for the image in the left section.
+ * @property leftAvatarSizes The sizes for the avatar in the left section.
+ * @property titleTextStyle The text style for the title in the middle section.
+ * @property bodyTextStyle The text style for the body text in the middle section.
+ * @property subheadTextStyle The text style for the subhead text in the middle section.
+ * @property newLabelTextStyle The text style for the new label in the middle section.
+ * @property newLabelShape The shape for the new label in the middle section.
+ * @property rightIconSizes The sizes for the icon in the right section.
+ * @property rightSwitchSizes The sizes for the switch in the right section.
+ * @property rightCounterSizes The sizes for the counter in the right section.
+ * @property rightSuffixTextStyle The text style for the suffix text in the right section.
+ * @property rightButtonSizes The sizes for the button in the right section.
+ * @property rightIconButtonSizes The sizes for the icon button in the right section.
+ * @property rightCheckboxSizes The sizes for the checkbox in the right section.
+ * @property rightRadioButtonSizes The sizes for the radio button in the right section.
+ * @property dividerSizes The sizes for the divider.
+ */
 @Immutable
 class ListItemSizes(
     internal val shape: Shape,
@@ -493,6 +685,9 @@ class ListItemSizes(
 
     internal val dividerSizes: DividerSizes
 ) {
+    /**
+     * Creates a copy of this [ListItemSizes] instance with the specified properties.
+     */
     fun copy(
         shape: Shape = this.shape,
 
