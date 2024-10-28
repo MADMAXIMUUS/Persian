@@ -9,7 +9,6 @@ import androidx.compose.foundation.gestures.awaitEachGesture
 import androidx.compose.foundation.gestures.awaitFirstDown
 import androidx.compose.foundation.gestures.waitForUpOrCancellation
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.rememberScrollState
@@ -59,6 +58,7 @@ import androidx.compose.ui.window.Popup
 import androidx.compose.ui.window.PopupPositionProvider
 import androidx.compose.ui.window.PopupProperties
 import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.input.OutlineInput
 import io.github.madmaximuus.persian.internal.BackHandler
 import io.github.madmaximuus.persian.menu.DropdownMenuContent
 import io.github.madmaximuus.persian.menu.DropdownMenuItemScope
@@ -72,9 +72,6 @@ import kotlin.math.max
 import kotlin.math.roundToInt
 
 /**
- * <a href="https://m3.material.io/components/menus/overview" class="external"
- * target="_blank">Material Design Exposed Dropdown Menu</a>.
- *
  * Menus display a list of choices on a temporary surface. They appear when users interact with a
  * button, action, or other control.
  *
@@ -83,10 +80,7 @@ import kotlin.math.roundToInt
  * display user input (whether or not it’s listed as a menu choice), in which case it may be used to
  * implement autocomplete.
  *
- * ![Exposed dropdown menu
- * image](https://developer.android.com/images/reference/androidx/compose/material3/exposed-dropdown-menu.png)
- *
- * The [ExposedDropdownMenuBox] is expected to contain a [TextField] (or [OutlinedTextField]) and
+ * The [ExposedDropdownMenuBox] is expected to contain a [OutlineInput] and
  * [ExposedDropdownMenu][ExposedDropdownMenuBoxScope.ExposedDropdownMenu] as content. The
  * [menuAnchor][ExposedDropdownMenuBoxScope.menuAnchor] modifier should be passed to the text field.
  *
@@ -94,7 +88,7 @@ import kotlin.math.roundToInt
  * @param onExpandedChange called when the exposed dropdown menu is clicked and the expansion state
  *   changes.
  * @param modifier the [Modifier] to be applied to this ExposedDropdownMenuBox
- * @param content the content of this ExposedDropdownMenuBox, typically a [TextField] and an
+ * @param content the content of this ExposedDropdownMenuBox, typically a [OutlineInput] and an
  *   [ExposedDropdownMenu][ExposedDropdownMenuBoxScope.ExposedDropdownMenu].
  */
 @Composable
@@ -248,7 +242,7 @@ sealed class ExposedDropdownMenuBoxScope {
      * @param enabled controls the enabled state. When `false`, the component will not expand or
      *   collapse the menu in response to user input, and menu semantics will be invisible to
      *   accessibility services. Note that this value only controls interactions with the menu. It
-     *   does not affect the enabled state of other kinds of interactions, such as [TextField]'s
+     *   does not affect the enabled state of other kinds of interactions, such as [OutlineInput]'s
      *   `enabled` parameter.
      */
     abstract fun Modifier.menuAnchor(type: MenuAnchorType, enabled: Boolean = true): Modifier
@@ -383,13 +377,6 @@ value class MenuAnchorType private constructor(private val name: String) {
 object ExposedDropdownMenuDefaults {
 
     /**
-     * Padding for [DropdownMenuItem]s within [ExposedDropdownMenuBoxScope.ExposedDropdownMenu] to
-     * align them properly with [TextField] components.
-     */
-    val ItemContentPadding: PaddingValues =
-        PaddingValues(horizontal = ExposedDropdownMenuItemHorizontalPadding, vertical = 0.dp)
-
-    /**
      * Creates a [PopupProperties] used for [ExposedDropdownMenuBoxScope.ExposedDropdownMenu].
      *
      * @param anchorType the type of element that is anchoring the menu. See [MenuAnchorType].
@@ -420,7 +407,7 @@ internal class ExposedDropdownMenuPositionProvider(
     val density: Density,
     val topWindowInsets: Int,
     val keyboardSignalState: State<Unit>? = null,
-    val verticalMargin: Int = with(density) { MenuVerticalMargin.roundToPx() },
+    verticalMargin: Int = with(density) { MenuVerticalMargin.roundToPx() },
     val onPositionCalculated: (anchorBounds: IntRect, menuBounds: IntRect) -> Unit = { _, _ -> }
 ) : PopupPositionProvider {
     // Horizontal position
@@ -538,10 +525,10 @@ private fun Modifier.expandable(
         }
     }
         .semantics {
-            if (anchorType == MenuAnchorType.SecondaryEditable) {
-                role = Role.Button
+            role = if (anchorType == MenuAnchorType.SecondaryEditable) {
+                Role.Button
             } else {
-                role = Role.DropdownList
+                Role.DropdownList
             }
             onClick {
                 onExpandedChange()
@@ -583,5 +570,3 @@ private fun LayoutCoordinates?.getAnchorBounds(): Rect {
     // Don't use `boundsInWindow()` because it can report 0 when the window is animating/resizing
     return if (this == null) Rect.Zero else Rect(positionInWindow(), size.toSize())
 }
-
-private val ExposedDropdownMenuItemHorizontalPadding = 16.dp

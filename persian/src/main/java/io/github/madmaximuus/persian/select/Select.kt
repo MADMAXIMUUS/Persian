@@ -17,6 +17,22 @@ import io.github.madmaximuus.persianSymbols.chevronDown.base.ChevronDown
 import io.github.madmaximuus.persianSymbols.chevronUp.base.ChevronUp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
+/**
+ * A composable function that creates a dropdown selection menu.
+ *
+ * @param selected The currently selected item in the dropdown.
+ * @param modifier The [Modifier] to be applied to this composable.
+ * @param expanded Whether the dropdown menu is currently expanded.
+ * @param onExpandedChange A callback to be invoked when the expanded state changes.
+ * @param enabled Whether the dropdown is enabled or disabled.
+ * @param placeholder An optional placeholder text to be shown when no item is selected.
+ * @param isError Whether the input is in an error state.
+ * @param isValid Whether the input is in a valid state.
+ * @param leadingIcon An optional leading icon to be shown in the input field.
+ * @param inputColors The colors to be used for the input field.
+ * @param menuColors The colors to be used for the dropdown menu.
+ * @param menuItems A composable lambda that defines the items to be displayed in the dropdown menu.
+ */
 @Composable
 fun Select(
     selected: String,
