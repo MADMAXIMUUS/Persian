@@ -8,8 +8,10 @@ import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.exclude
 import androidx.compose.foundation.layout.onConsumedWindowInsetsChanged
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.Immutable
@@ -30,10 +32,17 @@ import androidx.compose.ui.util.fastForEach
 import androidx.compose.ui.util.fastMap
 import androidx.compose.ui.util.fastMapNotNull
 import androidx.compose.ui.util.fastMaxBy
+import io.github.madmaximuus.persian.fab.Fab
+import io.github.madmaximuus.persian.foundation.LocalContentColor
 import io.github.madmaximuus.persian.foundation.MutableWindowInsets
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.contentColorFor
+import io.github.madmaximuus.persian.navigationBar.NavigationBar
+import io.github.madmaximuus.persian.snackbar.Snackbar
+import io.github.madmaximuus.persian.snackbar.SnackbarHost
+import io.github.madmaximuus.persian.snackbar.SnackbarHostState
 import io.github.madmaximuus.persian.surface.Surface
+import io.github.madmaximuus.persian.topAppBar.CenteredTopAppBar
 
 /**
  * Scaffold implements the basic material design visual layout structure.
@@ -42,18 +51,12 @@ import io.github.madmaximuus.persian.surface.Surface
  * screen, by ensuring proper layout strategy for them and collecting necessary data so these
  * components will work together correctly.
  *
- * Simple example of a Scaffold with [SmallTopAppBar], [FloatingActionButton]:
- *
- * To show a [Snackbar], use [SnackbarHostState.showSnackbar].
- *
- * @sample androidx.compose.material3.samples.ScaffoldWithSimpleSnackbar
- *
  * @param modifier the [Modifier] to be applied to this scaffold
- * @param topBar top app bar of the screen, typically a [SmallTopAppBar]
+ * @param topBar top app bar of the screen, typically a [CenteredTopAppBar]
  * @param bottomBar bottom bar of the screen, typically a [NavigationBar]
  * @param snackbarHost component to host [Snackbar]s that are pushed to be shown via
  * [SnackbarHostState.showSnackbar], typically a [SnackbarHost]
- * @param floatingActionButton Main action button of the screen, typically a [FloatingActionButton]
+ * @param fab Main action button of the screen, typically a [Fab]
  * @param fabPosition position of the FAB on the screen. See [FabPosition].
  * @param containerColor the color used for the background of this scaffold. Use [Color.Transparent]
  * to have no color.
@@ -76,7 +79,7 @@ fun Scaffold(
     topBar: @Composable () -> Unit = {},
     bottomBar: @Composable () -> Unit = {},
     snackbarHost: @Composable () -> Unit = {},
-    floatingActionButton: @Composable () -> Unit = {},
+    fab: @Composable () -> Unit = {},
     fabPosition: FabPosition = FabPosition.End,
     containerColor: Color = PersianTheme.colorScheme.surface,
     contentColor: Color = contentColorFor(containerColor),
@@ -103,7 +106,7 @@ fun Scaffold(
             snackbar = snackbarHost,
             contentWindowInsets = safeInsets,
             shape = shape,
-            fab = floatingActionButton
+            fab = fab
         )
     }
 }
@@ -112,10 +115,10 @@ fun Scaffold(
  * Layout for a [Scaffold]'s content.
  *
  * @param fabPosition [FabPosition] for the FAB (if present)
- * @param topBar the content to place at the top of the [Scaffold], typically a [SmallTopAppBar]
+ * @param topBar the content to place at the top of the [Scaffold], typically a [CenteredTopAppBar]
  * @param content the main 'body' of the [Scaffold]
  * @param snackbar the [Snackbar] displayed on top of the [content]
- * @param fab the [FloatingActionButton] displayed on top of the [content], below the [snackbar]
+ * @param fab the [Fab] displayed on top of the [content], below the [snackbar]
  * and above the [bottomBar]
  * @param bottomBar the content to place at the bottom of the [Scaffold], on top of the
  * [content], typically a [NavigationBar].
@@ -508,7 +511,7 @@ object ScaffoldDefaults {
 }
 
 /**
- * The possible positions for a [FloatingActionButton] attached to a [Scaffold].
+ * The possible positions for a [Fab] attached to a [Scaffold].
  */
 @JvmInline
 value class FabPosition internal constructor(@Suppress("unused") private val value: Int) {
@@ -556,13 +559,12 @@ value class FabPosition internal constructor(@Suppress("unused") private val val
  * <b>This flag will be removed in Compose 1.6.0-beta01.</b> If you encounter any issues with the
  * new behavior, please file an issue at: issuetracker.google.com/issues/new?component=742043
  */
-// TODO(b/299621062): Remove flag before beta
 @Suppress("GetterSetterNames", "OPT_IN_MARKER_ON_WRONG_TARGET")
 @get:Suppress("GetterSetterNames")
 var ScaffoldSubcomposeInMeasureFix by mutableStateOf(true)
 
 /**
- * Placement information for a [FloatingActionButton] inside a [Scaffold].
+ * Placement information for a [Fab] inside a [Scaffold].
  *
  * @property left the FAB's offset from the left edge of the bottom bar, already adjusted for RTL
  * support
