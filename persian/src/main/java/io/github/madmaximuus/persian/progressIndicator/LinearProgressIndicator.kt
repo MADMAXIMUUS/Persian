@@ -250,6 +250,18 @@ fun LinearProgressIndicator(
     }
 }
 
+/**
+ * Draws a linear indicator on the [DrawScope].
+ *
+ * This function draws a horizontal line representing a linear indicator with the specified [startFraction], [endFraction],
+ * [color], [strokeWidth], and [strokeCap]. The line is centered vertically within the [DrawScope]'s height.
+ *
+ * @param startFraction The starting fraction of the indicator, ranging from 0 to 1.
+ * @param endFraction The ending fraction of the indicator, ranging from 0 to 1.
+ * @param color The color of the indicator.
+ * @param strokeWidth The width of the stroke for the indicator.
+ * @param strokeCap The stroke cap style for the indicator.
+ */
 private fun DrawScope.drawLinearIndicator(
     startFraction: Float,
     endFraction: Float,

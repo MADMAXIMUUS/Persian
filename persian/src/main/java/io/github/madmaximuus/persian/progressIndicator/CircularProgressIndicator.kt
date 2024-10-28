@@ -201,6 +201,17 @@ fun CircularProgressIndicator(
     }
 }
 
+/**
+ * Draws a circular indicator on the [DrawScope].
+ *
+ * This function draws an arc with the specified [startAngle], [sweep], [color], and [stroke].
+ * The arc is centered within the [DrawScope]'s size, with the diameter adjusted to account for the stroke width.
+ *
+ * @param startAngle The starting angle of the arc in degrees.
+ * @param sweep The sweep angle of the arc in degrees.
+ * @param color The color of the arc.
+ * @param stroke The stroke style of the arc.
+ */
 private fun DrawScope.drawCircularIndicator(
     startAngle: Float,
     sweep: Float,
@@ -222,9 +233,29 @@ private fun DrawScope.drawCircularIndicator(
     )
 }
 
+/**
+ * Draws a full circular track on the [DrawScope].
+ *
+ * This function draws a complete circle (360 degrees) with the specified [color] and [stroke].
+ * It utilizes the [drawCircularIndicator] function to achieve this.
+ *
+ * @param color The color of the circular track.
+ * @param stroke The stroke style of the circular track.
+ */
 private fun DrawScope.drawCircularIndicatorTrack(color: Color, stroke: Stroke) =
     drawCircularIndicator(0f, 360f, color, stroke)
 
+/**
+ * Draws a determinate circular indicator on the [DrawScope].
+ *
+ * This function draws an arc with the specified [startAngle], [sweep], [color], and [stroke].
+ * It utilizes the [drawCircularIndicator] function to achieve this.
+ *
+ * @param startAngle The starting angle of the arc in degrees.
+ * @param sweep The sweep angle of the arc in degrees.
+ * @param color The color of the arc.
+ * @param stroke The stroke style of the arc.
+ */
 private fun DrawScope.drawDeterminateCircularIndicator(
     startAngle: Float,
     sweep: Float,
@@ -232,6 +263,18 @@ private fun DrawScope.drawDeterminateCircularIndicator(
     stroke: Stroke
 ) = drawCircularIndicator(startAngle, sweep, color, stroke)
 
+/**
+ * Draws an indeterminate circular indicator on the [DrawScope].
+ *
+ * This function draws an arc with the specified [startAngle], [strokeWidth], [sweep], [color], and [stroke].
+ * It adjusts the starting angle and sweep to account for the stroke cap, ensuring the arc visually appears in the correct place.
+ *
+ * @param startAngle The starting angle of the arc in degrees.
+ * @param strokeWidth The width of the stroke in Dp.
+ * @param sweep The sweep angle of the arc in degrees.
+ * @param color The color of the arc.
+ * @param stroke The stroke style of the arc.
+ */
 private fun DrawScope.drawIndeterminateCircularIndicator(
     startAngle: Float,
     strokeWidth: Dp,
@@ -292,6 +335,13 @@ private val CircularEasing = CubicBezierEasing(0.4f, 0f, 0.2f, 1f)
 // After the 5th rotation, we are back at the beginning of the circle.
 private const val RotationsPerCycle = 5
 
+/**
+ * Converts a float value to a formatted string representing a percentage.
+ *
+ * This function formats the float value to one decimal place and trims any trailing zeros and decimal points.
+ *
+ * @return A formatted string representing the percentage.
+ */
 @SuppressWarnings("MagicNumber")
 internal fun Float.getProgressInPercent(): String = "%.1f".format(this)
     .trimEnd { it == '0' }
