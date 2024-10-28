@@ -1,9 +1,7 @@
 package io.github.madmaximuus.persian.radioButton
 
-import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -13,12 +11,21 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.surface.Surface
 import io.github.madmaximuus.persian.text.Text
 
+/**
+ * A composable function that creates a radio button with a text label.
+ *
+ * @param modifier The modifier to be applied to the radio button.
+ * @param text The text to be displayed next to the radio button.
+ * @param checked The current checked state of the radio button.
+ * @param enabled Whether the radio button is enabled or not. Default is true.
+ * @param onCheckedChange A callback that is invoked when the checked state changes.
+ * @param radioButtonColors The colors to be used for the radio button.
+ * @param radioButtonSizes The sizes to be used for the radio button.
+ */
 @Composable
 fun RadioButton(
     modifier: Modifier = Modifier,
@@ -57,21 +64,5 @@ fun RadioButton(
             color = radioButtonColors.textColor(enabled),
             style = radioButtonSizes.textStyle
         )
-    }
-}
-
-@Preview
-@Preview(uiMode = UI_MODE_NIGHT_YES)
-@Composable
-private fun RadioButtonPreview() {
-    PersianTheme {
-        Surface {
-            RadioButton(
-                modifier = Modifier.fillMaxWidth(),
-                text = "Radio Button",
-                checked = true,
-                onCheckedChange = {}
-            )
-        }
     }
 }

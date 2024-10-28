@@ -5,6 +5,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.Stable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.graphics.Color
@@ -16,8 +17,21 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state38
 
+/**
+ * Contains all default values used by radio button
+ */
 object RadioButtonDefaults {
 
+    /**
+     * A composable function that creates a [RadioButtonToggleColors] object with the specified colors.
+     *
+     * @param selectedColor The color to be used for the selected state of the radio button toggle.
+     * @param unselectedColor The color to be used for the unselected state of the radio button toggle.
+     * @param disabledSelectedColor The color to be used for the selected state of the radio button toggle
+     * when it is disabled.
+     * @param disabledUnselectedColor The color to be used for the unselected state of the radio button toggle
+     * when it is disabled.
+     */
     @Composable
     fun toggleColors(
         selectedColor: Color = PersianTheme.colorScheme.primary,
@@ -31,6 +45,13 @@ object RadioButtonDefaults {
         disabledUnselectedColor = disabledUnselectedColor,
     )
 
+    /**
+     * A composable function that creates a [RadioButtonColors] object with the specified colors.
+     *
+     * @param toggleColor The colors to be used for the radio button toggle. Default is the result of [toggleColors].
+     * @param textColor The color to be used for the radio button's text label when it is enabled.
+     * @param disabledTextColor The color to be used for the radio button's text label when it is disabled.
+     */
     @Composable
     fun colors(
         toggleColor: RadioButtonToggleColors = toggleColors(),
@@ -42,6 +63,13 @@ object RadioButtonDefaults {
         disabledTextColor = disabledTextColor
     )
 
+    /**
+     * A composable function that creates a [RadioButtonSizes] object with the specified sizes and styles.
+     *
+     * @param toggleSize The size of the radio button toggle. Default is 24.dp.
+     * @param textStyle The text style to be applied to the radio button's text label.
+     * @param contentPadding The padding values to be applied around the content of the radio button.
+     */
     @Composable
     fun sizes(
         toggleSize: Dp = 24.dp,
@@ -54,9 +82,7 @@ object RadioButtonDefaults {
         textStyle = textStyle,
         contentPadding = contentPadding
     )
-
 }
-
 
 /**
  * Represents the color used by a [RadioButton] in different states.
@@ -142,13 +168,26 @@ class RadioButtonToggleColors(
     }
 }
 
+/**
+ * An immutable class that defines the colors for a radio button.
+ *
+ * @property toggleColor The colors to be used for the radio button toggle.
+ * @property textColor The color to be used for the radio button's text label when it is enabled.
+ * @property disabledTextColor The color to be used for the radio button's text label when it is disabled.
+ */
 @Immutable
-class RadioButtonColors(
+class RadioButtonColors internal constructor(
     internal val toggleColor: RadioButtonToggleColors,
     private val textColor: Color,
     private val disabledTextColor: Color
 ) {
-    fun textColor(enabled: Boolean): Color =
+    /**
+     * Returns the color for the radio button's text label based on its enabled state.
+     *
+     * @param enabled Whether the radio button is enabled.
+     */
+    @Stable
+    internal fun textColor(enabled: Boolean): Color =
         if (enabled) textColor else disabledTextColor
 
     override fun equals(other: Any?): Boolean {
@@ -168,8 +207,15 @@ class RadioButtonColors(
     }
 }
 
+/**
+ * An immutable data class that defines the sizes and styles for a radio button.
+ *
+ * @property toggleSize The size of the radio button toggle.
+ * @property textStyle The text style to be applied to the radio button's text label.
+ * @property contentPadding The padding values to be applied around the content of the radio button.
+ */
 @Immutable
-data class RadioButtonSizes(
+class RadioButtonSizes internal constructor(
     internal val toggleSize: Dp,
     internal val textStyle: TextStyle,
     internal val contentPadding: PaddingValues

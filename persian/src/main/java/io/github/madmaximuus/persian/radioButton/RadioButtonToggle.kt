@@ -19,6 +19,7 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.minimumInteractiveComponentSize
 import io.github.madmaximuus.persian.foundation.ripple.ripple
+import io.github.madmaximuus.persian.text.Text
 
 /**
  * Radio buttons allow users to select one option from a set.
