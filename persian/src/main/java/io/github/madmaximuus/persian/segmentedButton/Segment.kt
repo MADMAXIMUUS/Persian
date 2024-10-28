@@ -417,6 +417,20 @@ fun MultiChoiceSegmentedButtonRowScope.EndSegment(
     }
 }
 
+/**
+ * A composable function that creates the content for a segmented button.
+ *
+ * This function configures the content of a segmented button, including an icon, a selected icon, and a label.
+ * The content is displayed based on the selected state and enabled state of the button.
+ *
+ * @param icon The optional icon [Painter] for the icon.
+ * @param selectedIcon The [Painter] for the selected icon.
+ * @param label The optional text label for the segmented button.
+ * @param selected A boolean indicating whether the segmented button is selected.
+ * @param enabled A boolean indicating whether the segmented button is enabled.
+ * @param sizes The sizes configuration for the segmented button.
+ * @param colors The colors configuration for the segmented button.
+ */
 @Composable
 private fun SegmentContent(
     icon: Painter?,

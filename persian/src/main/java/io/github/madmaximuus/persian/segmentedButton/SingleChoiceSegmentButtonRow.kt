@@ -13,13 +13,33 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 
-/** Scope for the children of a [SingleChoiceSegmentedButtonRow] */
+/**
+ * A scope interface for a row of single-choice segmented buttons.
+ *
+ * This interface extends [RowScope] and provides additional properties for configuring the appearance and behavior
+ * of segmented buttons within a row.
+ *
+ * @property sizes The sizes configuration for the segmented buttons.
+ * @property colors The colors configuration for the segmented buttons.
+ * @property enabled A boolean indicating whether the segmented buttons are enabled.
+ */
 interface SingleChoiceSegmentedButtonRowScope : RowScope {
     val sizes: SegmentedButtonSizes
     val colors: SegmentedButtonColors
     val enabled: Boolean
 }
 
+/**
+ * A wrapper class that implements [SingleChoiceSegmentedButtonRowScope] by delegating to a [RowScope].
+ *
+ * This class is used to wrap a [RowScope] instance and provide additional properties required by
+ * [SingleChoiceSegmentedButtonRowScope], such as sizes, colors, and enabled state.
+ *
+ * @param scope The [RowScope] instance to delegate to.
+ * @param sizes The sizes configuration for the segmented buttons.
+ * @param colors The colors configuration for the segmented buttons.
+ * @param enabled A boolean indicating whether the segmented buttons are enabled.
+ */
 private class SingleChoiceSegmentedButtonScopeWrapper(
     scope: RowScope,
     override val sizes: SegmentedButtonSizes,

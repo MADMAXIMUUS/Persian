@@ -15,8 +15,30 @@ import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persian.icon.IconSizes
 
+/**
+ * Contains all default values used by segmented button
+ */
 object SegmentedButtonDefaults {
 
+    /**
+     * A composable function that creates a [SegmentedButtonColors] instance with customizable color configurations.
+     *
+     * This function allows you to define the colors for different states of segmented buttons, including active,
+     * inactive, and disabled states. Each state can have its own container, content, and border colors.
+     *
+     * @param activeContainerColor The container color for active buttons.
+     * @param activeContentColor The content color for active buttons.
+     * @param activeBorderColor The border color for active buttons.
+     * @param inactiveContainerColor The container color for inactive buttons.
+     * @param inactiveContentColor The content color for inactive buttons.
+     * @param inactiveBorderColor The border color for inactive buttons.
+     * @param disabledActiveContainerColor The container color for disabled active buttons.
+     * @param disabledActiveContentColor The content color for disabled active buttons.
+     * @param disabledActiveBorderColor The border color for disabled active buttons.
+     * @param disabledInactiveContainerColor The container color for disabled inactive buttons.
+     * @param disabledInactiveContentColor The content color for disabled inactive buttons.
+     * @param disabledInactiveBorderColor The border color for disabled inactive buttons.
+     */
     @Composable
     fun colors(
         activeContainerColor: Color = PersianTheme.colorScheme.secondaryContainer,
@@ -47,6 +69,19 @@ object SegmentedButtonDefaults {
             disabledInactiveBorderColor = disabledInactiveBorderColor
         )
 
+    /**
+     * A composable function that creates a [SegmentedButtonSizes] instance with small size configurations.
+     *
+     * This function allows you to define the sizes for segmented buttons, including height, icon sizes, label text style,
+     * base shape, and border width. These configurations are typically used for small-sized segmented buttons.
+     *
+     * @param height The height of the segmented buttons.
+     * @param iconSize The size of the default icons.
+     * @param selectedIconSizes The size of the selected icons.
+     * @param labelTextStyle The text style for the labels.
+     * @param baseShape The base shape of the segmented buttons.
+     * @param border The border width of the segmented buttons.
+     */
     @Composable
     fun smallSizes(
         height: Dp = 36.dp,
@@ -65,6 +100,19 @@ object SegmentedButtonDefaults {
             border = border
         )
 
+    /**
+     * A composable function that creates a [SegmentedButtonSizes] instance with medium size configurations.
+     *
+     * This function allows you to define the sizes for segmented buttons, including height, icon sizes, label text style,
+     * base shape, and border width. These configurations are typically used for medium-sized segmented buttons.
+     *
+     * @param height The height of the segmented buttons.
+     * @param iconSize The size of the default icons.
+     * @param selectedIconSizes The size of the selected icons.
+     * @param labelTextStyle The text style for the labels.
+     * @param baseShape The base shape of the segmented buttons.
+     * @param border The border width of the segmented buttons.
+     */
     @Composable
     fun mediumSizes(
         height: Dp = 44.dp,
@@ -83,6 +131,19 @@ object SegmentedButtonDefaults {
             border = border
         )
 
+    /**
+     * A composable function that creates a [SegmentedButtonSizes] instance with large size configurations.
+     *
+     * This function allows you to define the sizes for segmented buttons, including height, icon sizes, label text style,
+     * base shape, and border width. These configurations are typically used for large-sized segmented buttons.
+     *
+     * @param height The height of the segmented buttons.
+     * @param iconSize The size of the default icons.
+     * @param selectedIconSizes The size of the selected icons.
+     * @param labelTextStyle The text style for the labels.
+     * @param baseShape The base shape of the segmented buttons.
+     * @param border The border width of the segmented buttons.
+     */
     @Composable
     fun largeSizes(
         height: Dp = 52.dp,
@@ -121,7 +182,7 @@ object SegmentedButtonDefaults {
  *   factory method using the default material3 spec
  */
 @Immutable
-class SegmentedButtonColors(
+class SegmentedButtonColors internal constructor(
     // enabled & active
     private val activeContainerColor: Color,
     private val activeContentColor: Color,
@@ -270,7 +331,7 @@ class SegmentedButtonColors(
  * @param baseShape the base shape used for segment
  */
 @Immutable
-class SegmentedButtonSizes(
+class SegmentedButtonSizes internal constructor(
     internal val height: Dp,
     internal val iconSize: IconSizes,
     internal val selectedIconSizes: IconSizes,
@@ -288,7 +349,7 @@ class SegmentedButtonSizes(
         labelTextStyle: TextStyle = this.labelTextStyle,
         baseShape: CornerBasedShape = this.baseShape,
         border: Dp = this.border
-    ) =
+    ): SegmentedButtonSizes =
         SegmentedButtonSizes(
             height = height,
             iconSize = iconSize,

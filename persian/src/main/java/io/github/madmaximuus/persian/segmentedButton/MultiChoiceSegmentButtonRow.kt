@@ -11,13 +11,33 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
-/** Scope for the children of a [MultiChoiceSegmentedButtonRow] */
+/**
+ * A scope interface for a row of multi-choice segmented buttons.
+ *
+ * This interface extends [RowScope] and provides additional properties for configuring the appearance and behavior
+ * of segmented buttons within a row.
+ *
+ * @property sizes The sizes configuration for the segmented buttons.
+ * @property colors The colors configuration for the segmented buttons.
+ * @property enabled A boolean indicating whether the segmented buttons are enabled.
+ */
 interface MultiChoiceSegmentedButtonRowScope : RowScope {
     val sizes: SegmentedButtonSizes
     val colors: SegmentedButtonColors
     val enabled: Boolean
 }
 
+/**
+ * A wrapper class that implements [MultiChoiceSegmentedButtonRowScope] by delegating to a [RowScope].
+ *
+ * This class is used to wrap a [RowScope] instance and provide additional properties required by
+ * [MultiChoiceSegmentedButtonRowScope], such as sizes, colors, and enabled state.
+ *
+ * @param scope The [RowScope] instance to delegate to.
+ * @param sizes The sizes configuration for the segmented buttons.
+ * @param colors The colors configuration for the segmented buttons.
+ * @param enabled A boolean indicating whether the segmented buttons are enabled.
+ */
 private class MultiChoiceSegmentedButtonScopeWrapper(
     scope: RowScope,
     override val sizes: SegmentedButtonSizes,
@@ -25,6 +45,18 @@ private class MultiChoiceSegmentedButtonScopeWrapper(
     override val enabled: Boolean
 ) : MultiChoiceSegmentedButtonRowScope, RowScope by scope
 
+/**
+ * A composable function that creates a row of multi-choice segmented buttons.
+ *
+ * This function configures a row of segmented buttons with customizable sizes, colors, and enabled state.
+ * It uses the [MultiChoiceSegmentedButtonRowScope] to provide additional properties for the buttons.
+ *
+ * @param modifier The [Modifier] to be applied to the row.
+ * @param enabled A boolean indicating whether the segmented buttons are enabled.
+ * @param sizes The sizes configuration for the segmented buttons.
+ * @param colors The colors configuration for the segmented buttons.
+ * @param content A composable lambda that defines the content of the row within the [MultiChoiceSegmentedButtonRowScope].
+ */
 @Composable
 fun MultiChoiceSegmentedButtonRow(
     modifier: Modifier = Modifier,

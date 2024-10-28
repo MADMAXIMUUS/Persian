@@ -16,6 +16,16 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.unit.dp
 
+/**
+ * Modifies the [Modifier] to adjust the z-index of the layout based on the interaction count and a checked state.
+ *
+ * This function takes a [checked] boolean and an [interactionCount] state, and adjusts the z-index of the layout
+ * accordingly. If [checked] is true, the z-index is increased by 5. Otherwise, it remains the same as the interaction
+ * count.
+ *
+ * @param checked A boolean indicating whether the item is checked.
+ * @param interactionCount A [State] holding the current interaction count.
+ */
 internal fun Modifier.interactionZIndex(checked: Boolean, interactionCount: State<Int>) =
     this.layout { measurable, constraints ->
         val placeable = measurable.measure(constraints)
@@ -25,6 +35,13 @@ internal fun Modifier.interactionZIndex(checked: Boolean, interactionCount: Stat
         }
     }
 
+/**
+ * Creates a [State] that tracks the number of active interactions for the given [InteractionSource].
+ *
+ * This function listens to the interactions emitted by the [InteractionSource] and updates the interaction count
+ * accordingly. The count is incremented for [PressInteraction.Press] and [FocusInteraction.Focus] interactions,
+ * and decremented for [PressInteraction.Release], [FocusInteraction.Unfocus], and [PressInteraction.Cancel] interactions.
+ */
 @Composable
 internal fun InteractionSource.interactionCountAsState(): State<Int> {
     val interactionCount = remember { mutableIntStateOf(0) }
