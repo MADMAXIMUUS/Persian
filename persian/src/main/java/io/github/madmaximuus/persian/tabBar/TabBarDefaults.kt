@@ -7,6 +7,7 @@ import androidx.compose.animation.core.updateTransition
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
@@ -23,8 +24,24 @@ import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persian.icon.IconSizes
 import io.github.madmaximuus.persian.tabBar.tab.IconSide
 
+/**
+ * Contains all default values used by tab bar
+ */
 object TabBarDefaults {
 
+    /**
+     * Composable function to create a [TabColors] instance with default values from the theme.
+     *
+     * This function provides default values for the tab colors based on the current theme's color scheme.
+     *
+     * @param containerColor The color of the tab container when it is not selected.
+     * @param activeContainerColor The color of the tab container when it is selected.
+     * @param indicatorColor The color of the tab indicator.
+     * @param contentColor The color of the tab content when it is not selected.
+     * @param activeContentColor The color of the tab content when it is selected.
+     * @param counterColors The colors for the counter when the icon is on the left side.
+     * @param badgeColors The colors for the badge when the icon is on the top side.
+     */
     @Composable
     fun tabColors(
         containerColor: Color = PersianTheme.colorScheme.surface,
@@ -50,6 +67,19 @@ object TabBarDefaults {
         badgeColors = badgeColors
     )
 
+    /**
+     * Composable function to create a [TabSizes] instance with default values.
+     *
+     * This function provides default values for the tab sizes based on the current theme's shapes and typography.
+     *
+     * @param indicatorThickness The thickness of the tab indicator.
+     * @param indicatorShape The shape of the tab indicator.
+     * @param iconSizes The sizes of the icons in the tabs.
+     * @param textStyle The text style for the tab text.
+     * @param counterSizes The sizes for the counter when the icon is on the left side.
+     * @param badgeSizes The sizes for the badge when the icon is on the top side.
+     * @param edgePadding The padding at the edges of the tab row.
+     */
     @Composable
     fun tabSizes(
         indicatorThickness: Dp = 3.dp,
@@ -80,6 +110,20 @@ object TabBarDefaults {
 
 }
 
+/**
+ * Immutable class representing the colors for tabs.
+ *
+ * This class encapsulates various color properties for tabs, including container colors,
+ * indicator color, content colors, and counter colors.
+ *
+ * @param containerColor The color of the tab container when it is not selected.
+ * @param activeContainerColor The color of the tab container when it is selected.
+ * @param indicatorColor The color of the tab indicator.
+ * @param contentColor The color of the tab content when it is not selected.
+ * @param activeContentColor The color of the tab content when it is selected.
+ * @param counterColors The colors for the counter when the icon is on the left side.
+ * @param badgeColors The colors for the badge when the icon is on the top side.
+ */
 @Immutable
 class TabColors internal constructor(
     private val containerColor: Color,
@@ -94,14 +138,29 @@ class TabColors internal constructor(
     private val badgeColors: CounterColors
 ) {
 
-    @Composable
+    /**
+     * Returns the container color based on the selected state.
+     *
+     * @param selected Whether the tab is selected.
+     */
+    @Stable
     fun containerColor(selected: Boolean): Color =
         if (selected) activeContainerColor else containerColor
 
-    @Composable
+    /**
+     * Returns the content color based on the selected state.
+     *
+     * @param selected Whether the tab is selected.
+     */
+    @Stable
     fun contentColor(selected: Boolean): Color =
         if (selected) activeContentColor else contentColor
 
+    /**
+     * Returns the animated content color based on the selected state.
+     *
+     * @param selected Whether the tab is selected.
+     */
     @Composable
     fun contentColorAnimated(selected: Boolean): Color {
         val transition = updateTransition(selected, label = "")
@@ -124,6 +183,11 @@ class TabColors internal constructor(
         return color
     }
 
+    /**
+     * Returns the counter colors based on the icon side.
+     *
+     * @param side The side on which the icon is placed.
+     */
     @Composable
     fun counterColors(side: IconSide): CounterColors =
         when (side) {
@@ -131,6 +195,17 @@ class TabColors internal constructor(
             IconSide.TOP -> badgeColors
         }
 
+    /**
+     * Creates a copy of the [TabColors] instance with the specified properties.
+     *
+     * @param containerColor The color of the tab container when it is not selected.
+     * @param activeContainerColor The color of the tab container when it is selected.
+     * @param indicatorColor The color of the tab indicator.
+     * @param contentColor The color of the tab content when it is not selected.
+     * @param activeContentColor The color of the tab content when it is selected.
+     * @param counterColors The colors for the counter when the icon is on the left side.
+     * @param badgeColors The colors for the badge when the icon is on the top side.
+     */
     fun copy(
         containerColor: Color = this.containerColor,
         activeContainerColor: Color = this.activeContainerColor,
