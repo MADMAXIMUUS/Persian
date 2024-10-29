@@ -283,7 +283,7 @@ sealed class ExposedDropdownMenuBoxScope {
         modifier: Modifier = Modifier,
         scrollState: ScrollState = rememberScrollState(),
         matchTextFieldWidth: Boolean = true,
-        shadowElevation: Dp = PersianTheme.elevation.large,
+        shadowElevation: Dp = PersianTheme.elevation.elevation4,
         colors: MenuColors = MenuDefaults.colors(),
         sizes: MenuSizes = MenuDefaults.sizes(),
         content: @Composable DropdownMenuItemScope.() -> Unit,
