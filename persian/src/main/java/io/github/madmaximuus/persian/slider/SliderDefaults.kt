@@ -10,6 +10,9 @@ import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.slider.continuous.Slider
 
+/**
+ * Contains all default values used by slider
+ */
 object SliderDefaults {
 
     /**
