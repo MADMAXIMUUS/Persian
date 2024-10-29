@@ -1,6 +1,5 @@
 package io.github.madmaximuus.persian.switch
 
-import androidx.compose.material3.Switch
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
@@ -16,8 +15,34 @@ import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persian.icon.IconSizes
 
+/**
+ * Contains all default values used by switch
+ */
 object SwitchDefaults {
 
+    /**
+     * Composable function to create a [SwitchColors] instance with customizable color properties.
+     *
+     * This function allows you to specify the colors for various states of a switch component,
+     * including checked, unchecked, and disabled states for the thumb, track, border, and icon.
+     *
+     * @param checkedThumbColor The color of the thumb when the switch is checked.
+     * @param checkedTrackColor The color of the track when the switch is checked.
+     * @param checkedBorderColor The color of the border when the switch is checked.
+     * @param checkedIconColor The color of the icon when the switch is checked.
+     * @param uncheckedThumbColor The color of the thumb when the switch is unchecked.
+     * @param uncheckedTrackColor The color of the track when the switch is unchecked.
+     * @param uncheckedBorderColor The color of the border when the switch is unchecked.
+     * @param uncheckedIconColor The color of the icon when the switch is unchecked.
+     * @param disabledCheckedThumbColor The color of the thumb when the switch is checked and disabled.
+     * @param disabledCheckedTrackColor The color of the track when the switch is checked and disabled.
+     * @param disabledCheckedBorderColor The color of the border when the switch is checked and disabled.
+     * @param disabledCheckedIconColor The color of the icon when the switch is checked and disabled.
+     * @param disabledUncheckedThumbColor The color of the thumb when the switch is unchecked and disabled.
+     * @param disabledUncheckedTrackColor The color of the track when the switch is unchecked and disabled.
+     * @param disabledUncheckedBorderColor The color of the border when the switch is unchecked and disabled.
+     * @param disabledUncheckedIconColor The color of the icon when the switch is unchecked and disabled.
+     */
     @Composable
     fun colors(
         checkedThumbColor: Color = PersianTheme.colorScheme.onPrimary,
@@ -55,6 +80,19 @@ object SwitchDefaults {
         disabledUncheckedTrackColor = disabledUncheckedTrackColor
     )
 
+    /**
+     * Composable function to create a [SwitchSizes] instance with customizable size and shape properties.
+     *
+     * This function allows you to specify the sizes and shapes for various parts of a switch component,
+     * including the toggle (thumb), icon, track, and track border.
+     *
+     * @param toggleSize The size of the toggle (thumb) when the switch is checked.
+     * @param uncheckedToggleSizes The size of the toggle (thumb) when the switch is unchecked.
+     * @param iconSizes The sizes of the icon within the switch.
+     * @param toggleShape The shape of the toggle (thumb).
+     * @param trackShape The shape of the track.
+     * @param trackBorderWith The width of the border around the track.
+     */
     @Composable
     fun sizes(
         toggleSize: Dp = 24.dp,
@@ -73,6 +111,29 @@ object SwitchDefaults {
     )
 }
 
+/**
+ * Immutable class representing the colors for a switch UI component.
+ *
+ * This class encapsulates the various color states for a switch, including checked, unchecked,
+ * and disabled states for the thumb, track, border, and icon.
+ *
+ * @param checkedThumbColor The color of the thumb when the switch is checked.
+ * @param checkedTrackColor The color of the track when the switch is checked.
+ * @param checkedBorderColor The color of the border when the switch is checked.
+ * @param checkedIconColor The color of the icon when the switch is checked.
+ * @param uncheckedThumbColor The color of the thumb when the switch is unchecked.
+ * @param uncheckedTrackColor The color of the track when the switch is unchecked.
+ * @param uncheckedBorderColor The color of the border when the switch is unchecked.
+ * @param uncheckedIconColor The color of the icon when the switch is unchecked.
+ * @param disabledCheckedThumbColor The color of the thumb when the switch is checked and disabled.
+ * @param disabledCheckedTrackColor The color of the track when the switch is checked and disabled.
+ * @param disabledCheckedBorderColor The color of the border when the switch is checked and disabled.
+ * @param disabledCheckedIconColor The color of the icon when the switch is checked and disabled.
+ * @param disabledUncheckedThumbColor The color of the thumb when the switch is unchecked and disabled.
+ * @param disabledUncheckedTrackColor The color of the track when the switch is unchecked and disabled.
+ * @param disabledUncheckedBorderColor The color of the border when the switch is unchecked and disabled.
+ * @param disabledUncheckedIconColor The color of the icon when the switch is unchecked and disabled.
+ */
 @Immutable
 class SwitchColors internal constructor(
     private val checkedThumbColor: Color,
@@ -93,8 +154,7 @@ class SwitchColors internal constructor(
     private val disabledUncheckedIconColor: Color
 ) {
     /**
-     * Returns a copy of this SwitchColors, optionally overriding some of the values. This uses the
-     * Color.Unspecified to mean “use the value from the source”
+     * Returns a copy of this SwitchColors, optionally overriding some of the values.
      */
     fun copy(
         checkedThumbColor: Color = this.checkedThumbColor,
@@ -113,7 +173,7 @@ class SwitchColors internal constructor(
         disabledUncheckedTrackColor: Color = this.disabledUncheckedTrackColor,
         disabledUncheckedBorderColor: Color = this.disabledUncheckedBorderColor,
         disabledUncheckedIconColor: Color = this.disabledUncheckedIconColor,
-    ) =
+    ): SwitchColors =
         SwitchColors(
             checkedThumbColor.takeOrElse { this.checkedThumbColor },
             checkedTrackColor.takeOrElse { this.checkedTrackColor },
@@ -234,6 +294,20 @@ class SwitchColors internal constructor(
     }
 }
 
+/**
+ * Immutable class representing the sizes and shapes for a switch UI component.
+ *
+ * This class encapsulates the various size and shape properties for a switch, including the sizes
+ * of the toggle, icon, and track, as well as the shapes of the toggle and track, and the width of
+ * the track border.
+ *
+ * @param toggleSize The size of the toggle (thumb) when the switch is checked.
+ * @param uncheckedToggleSizes The size of the toggle (thumb) when the switch is unchecked.
+ * @param iconSizes The sizes of the icon within the switch.
+ * @param toggleShape The shape of the toggle (thumb).
+ * @param trackShape The shape of the track.
+ * @param trackBorderWith The width of the border around the track.
+ */
 @Immutable
 class SwitchSizes(
     internal val toggleSize: Dp,
@@ -244,8 +318,7 @@ class SwitchSizes(
     internal val trackBorderWith: Dp
 ) {
     /**
-     * Returns a copy of this SwitchColors, optionally overriding some of the values. This uses the
-     * Color.Unspecified to mean “use the value from the source”
+     * Returns a copy of this SwitchS, optionally overriding some of the values.
      */
     fun copy(
         toggleSize: Dp = this.toggleSize,

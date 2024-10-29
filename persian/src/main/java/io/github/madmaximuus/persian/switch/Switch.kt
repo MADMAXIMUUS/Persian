@@ -45,11 +45,15 @@ import kotlinx.coroutines.launch
  * @param onCheckedChange called when this switch is clicked. If `null`, then this switch will not
  *   be interactable, unless something else handles its input events and updates its state.
  * @param modifier the [Modifier] to be applied to this switch
+ * @param checkedIcon the optional icon that was displayed in switch thumb in checked state
+ * @param uncheckedIcon the optional icon that was displayed in switch thumb in unchecked state
  * @param enabled controls the enabled state of this switch. When `false`, this component will not
  *   respond to user input, and it will appear visually disabled and disabled to accessibility
  *   services.
  * @param colors [SwitchColors] that will be used to resolve the colors used for this switch in
- *   different states. See [SwitchDefaults.colors].
+ * different states. See [SwitchDefaults.colors].
+ * @param sizes [SwitchSizes] that will be used to resolve the sizes used for this switch in
+ * different states. See [SwitchDefaults.sizes].
  * @param interactionSource an optional hoisted [MutableInteractionSource] for observing and
  *   emitting [Interaction]s for this switch. You can use this to change the switch's appearance or
  *   preview the switch in different states. Note that if `null` is provided, interactions will
@@ -121,6 +125,20 @@ fun Switch(
     )
 }
 
+/**
+ * Composable function to create a custom switch UI component.
+ *
+ * This function constructs a switch with customizable properties such as modifier, checked state,
+ * enabled state, colors, sizes, thumb content, and interaction source.
+ *
+ * @param modifier The [Modifier] to be applied to the switch.
+ * @param checked The current checked state of the switch.
+ * @param enabled The current enabled state of the switch.
+ * @param colors The [SwitchColors] object defining the colors for different states of the switch.
+ * @param sizes The [SwitchSizes] object defining the sizes for different parts of the switch.
+ * @param thumbContent Optional composable content to be displayed inside the thumb of the switch.
+ * @param interactionSource The [InteractionSource] to handle interactions with the switch.
+ */
 @Composable
 @Suppress("ComposableLambdaParameterNaming", "ComposableLambdaParameterPosition")
 private fun SwitchImpl(
@@ -173,6 +191,17 @@ private fun SwitchImpl(
     }
 }
 
+/**
+ * Data class representing a thumb element for a switch UI component.
+ *
+ * This class encapsulates the properties and behavior of the thumb element within a switch. It implements
+ * [ModifierNodeElement] to create and update a [ThumbNode] based on the provided parameters.
+ *
+ * @param interactionSource The [InteractionSource] to handle interactions with the thumb.
+ * @param checked The current checked state of the switch.
+ * @param thumbSize The size of the thumb when the switch is checked.
+ * @param uncheckedThumbSize The size of the thumb when the switch is unchecked.
+ */
 private data class ThumbElement(
     val interactionSource: InteractionSource,
     val checked: Boolean,
@@ -197,6 +226,18 @@ private data class ThumbElement(
     }
 }
 
+/**
+ * Class representing a thumb node for a switch UI component.
+ *
+ * This class extends [Modifier.Node] and implements [LayoutModifierNode] to handle the layout and
+ * measurement of the thumb element within a switch. It manages the state and animations of the thumb
+ * based on the interaction source and checked state.
+ *
+ * @param interactionSource The [InteractionSource] to handle interactions with the thumb.
+ * @param checked The current checked state of the switch.
+ * @param thumbSize The size of the thumb when the switch is checked.
+ * @param uncheckedThumbSize The size of the thumb when the switch is unchecked.
+ */
 private class ThumbNode(
     var interactionSource: InteractionSource,
     var checked: Boolean,
@@ -231,6 +272,12 @@ private class ThumbNode(
         }
     }
 
+    /**
+     * Called when the node is attached to the composition.
+     *
+     * This method sets up a coroutine to collect interactions from the [interactionSource] and
+     * updates the pressed state accordingly.
+     */
     override fun MeasureScope.measure(
         measurable: Measurable,
         constraints: Constraints,
@@ -289,6 +336,9 @@ private class ThumbNode(
         }
     }
 
+    /**
+     * Updates the thumb node to initialize animations if they are not already set.
+     */
     fun update() {
         if (sizeAnim == null && !initialSize.isNaN()) {
             sizeAnim = Animatable(initialSize)
