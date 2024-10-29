@@ -20,19 +20,17 @@ import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
 import io.github.madmaximuus.persian.tabBar.TabColors
 import io.github.madmaximuus.persian.tabBar.TabSizes
+import io.github.madmaximuus.persian.tabBar.default.TabBar
 import io.github.madmaximuus.persian.tabBar.util.TabPosition
 import io.github.madmaximuus.persian.tabBar.util.TabRowIndicatorSpec
 import kotlinx.coroutines.launch
 
 /**
- * Primary indicator, which will be positioned at the bottom of the [TabRow], on top of the
+ * Primary indicator, which will be positioned at the bottom of the [TabBar], on top of the
  * divider.
  *
  * @param modifier modifier for the indicator's layout
  * @param width width of the indicator
- * @param height height of the indicator
- * @param color color of the indicator
- * @param shape shape of the indicator
  */
 @Composable
 fun TabIndicatorScope.Indicator(
@@ -49,8 +47,7 @@ fun TabIndicatorScope.Indicator(
 
 /**
  * Scope for the composable used to render a Tab indicator, this can be used for more complex
- * indicators requiring layout information about the tabs like [TabRowDefaults.PrimaryIndicator] and
- * [TabRowDefaults.SecondaryIndicator]
+ * indicators requiring layout information about the tabs like [Indicator].
  */
 interface TabIndicatorScope {
 

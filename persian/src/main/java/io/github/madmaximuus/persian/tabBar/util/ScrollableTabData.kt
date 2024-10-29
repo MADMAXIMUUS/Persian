@@ -2,10 +2,11 @@ package io.github.madmaximuus.persian.tabBar.util
 
 import androidx.compose.foundation.ScrollState
 import androidx.compose.ui.unit.Density
+import io.github.madmaximuus.persian.tabBar.scrollable.ScrollableTabBar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-/** Class holding onto state needed for [ScrollableTabRow] */
+/** Class holding onto state needed for [ScrollableTabBar] */
 internal class ScrollableTabData(
     private val scrollState: ScrollState,
     private val coroutineScope: CoroutineScope

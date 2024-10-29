@@ -25,18 +25,42 @@ import io.github.madmaximuus.persian.foundation.ripple.ripple
 import io.github.madmaximuus.persian.icon.Icon
 import io.github.madmaximuus.persian.tabBar.TabColors
 import io.github.madmaximuus.persian.tabBar.TabSizes
+import io.github.madmaximuus.persian.tabBar.default.TabBar
+import io.github.madmaximuus.persian.tabBar.tab.IconSide.LEFT
+import io.github.madmaximuus.persian.tabBar.tab.IconSide.TOP
 import io.github.madmaximuus.persian.text.Text
 
+/**
+ * Enum class representing the side on which the icon should be placed in a tab.
+ *
+ * @property LEFT The icon is placed on the left side of the tab.
+ * @property TOP The icon is placed on the top side of the tab.
+ */
 enum class IconSide {
     LEFT, TOP
 }
 
+/**
+ * Interface defining the scope for a tab bar item.
+ *
+ * This interface provides access to the icon side, colors, and sizes for a tab bar item.
+ */
 interface TabBarItemScope {
     val iconSide: IconSide
     val colors: TabColors
     val sizes: TabSizes
 }
 
+/**
+ * Wrapper class implementing the [TabBarItemScope] interface.
+ *
+ * This class provides a concrete implementation of the [TabBarItemScope] interface,
+ * encapsulating the icon side, colors, and sizes for a tab bar item.
+ *
+ * @param iconSide The side on which the icon should be placed.
+ * @param colors The colors to be used for the tab.
+ * @param sizes The sizes to be used for the tab.
+ */
 class TabBarItemScopeWrapper(
     override val iconSide: IconSide,
     override val colors: TabColors,
@@ -81,7 +105,7 @@ fun TabBarItemScope.Tab(
     when {
         icon != null && text != null -> {
             when (iconSide) {
-                IconSide.LEFT -> {
+                LEFT -> {
                     LeadingIconTab(
                         onClick = onClick,
                         selected = selected,
@@ -93,7 +117,7 @@ fun TabBarItemScope.Tab(
                     )
                 }
 
-                IconSide.TOP -> {
+                TOP -> {
                     TopIconTab(
                         onClick = onClick,
                         selected = selected,
@@ -136,10 +160,9 @@ fun TabBarItemScope.Tab(
  * Tabs organize content across different screens, data sets, and other interactions.
  *
  * A LeadingIconTab represents a single page of content using a text label and an icon in front of
- * the label. It represents its selected state by tinting the text label and icon with
- * [selectedContentColor].
+ * the label.
  *
- * This should typically be used inside of a [TabRow], see the corresponding documentation for
+ * This should typically be used inside of a [TabBar], see the corresponding documentation for
  * example usage.
  *
  * @param selected whether this tab is selected or not
@@ -208,8 +231,8 @@ private fun TabBarItemScope.LeadingIconTab(
             if (count != 0) {
                 Counter(
                     count = count,
-                    sizes = sizes.counterSizes(side = IconSide.LEFT),
-                    colors = colors.counterColors(side = IconSide.LEFT)
+                    sizes = sizes.counterSizes(side = LEFT),
+                    colors = colors.counterColors(side = LEFT)
                 )
             }
         }
@@ -278,8 +301,8 @@ private fun TabBarItemScope.TopIconTab(
                     } else {
                         Badge(
                             count = count,
-                            sizes = sizes.counterSizes(IconSide.TOP),
-                            colors = colors.counterColors(IconSide.TOP)
+                            sizes = sizes.counterSizes(TOP),
+                            colors = colors.counterColors(TOP)
                         ) {
                             Icon(
                                 painter = icon,
@@ -305,15 +328,13 @@ private fun TabBarItemScope.TopIconTab(
  * Tabs organize content across different screens, data sets, and other interactions.
  *
  * A LeadingIconTab represents a single page of content using a text label and an icon in front of
- * the label. It represents its selected state by tinting the text label and icon with
- * [selectedContentColor].
+ * the label.
  *
- * This should typically be used inside of a [TabRow], see the corresponding documentation for
+ * This should typically be used inside of a [TabBar], see the corresponding documentation for
  * example usage.
  *
  * @param selected whether this tab is selected or not
  * @param onClick called when this tab is clicked
- * @param text the text label displayed in this tab
  * @param icon the icon displayed in this tab. Should be 24.dp.
  * @param modifier the [Modifier] to be applied to this tab
  * @param interactionSource an optional hoisted [MutableInteractionSource] for observing and
@@ -367,8 +388,8 @@ private fun TabBarItemScope.OnlyIconTab(
             } else {
                 Badge(
                     count = count,
-                    sizes = sizes.counterSizes(IconSide.TOP),
-                    colors = colors.counterColors(IconSide.TOP)
+                    sizes = sizes.counterSizes(TOP),
+                    colors = colors.counterColors(TOP)
                 ) {
                     Icon(
                         painter = icon,
@@ -384,16 +405,14 @@ private fun TabBarItemScope.OnlyIconTab(
  * Tabs organize content across different screens, data sets, and other interactions.
  *
  * A LeadingIconTab represents a single page of content using a text label and an icon in front of
- * the label. It represents its selected state by tinting the text label and icon with
- * [selectedContentColor].
+ * the label.
  *
- * This should typically be used inside of a [TabRow], see the corresponding documentation for
+ * This should typically be used inside of a [TabBar], see the corresponding documentation for
  * example usage.
  *
  * @param selected whether this tab is selected or not
  * @param onClick called when this tab is clicked
  * @param text the text label displayed in this tab
- * @param icon the icon displayed in this tab. Should be 24.dp.
  * @param modifier the [Modifier] to be applied to this tab
  * @param interactionSource an optional hoisted [MutableInteractionSource] for observing and
  *   emitting [Interaction]s for this tab. You can use this to change the tab's appearance or
@@ -447,8 +466,8 @@ private fun TabBarItemScope.OnlyTextTab(
             if (count != 0) {
                 Counter(
                     count = count,
-                    sizes = sizes.counterSizes(side = IconSide.LEFT),
-                    colors = colors.counterColors(side = IconSide.LEFT)
+                    sizes = sizes.counterSizes(side = LEFT),
+                    colors = colors.counterColors(side = LEFT)
                 )
             }
         }

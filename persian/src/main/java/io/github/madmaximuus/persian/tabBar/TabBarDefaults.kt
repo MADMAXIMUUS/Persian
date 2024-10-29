@@ -183,6 +183,20 @@ class TabColors internal constructor(
     }
 }
 
+/**
+ * Immutable class representing the sizes and styles for tabs.
+ *
+ * This class encapsulates various size and style properties for tabs, including indicator thickness,
+ * indicator shape, icon sizes, text style, counter sizes, badge sizes, and edge padding.
+ *
+ * @param indicatorThickness The thickness of the tab indicator.
+ * @param indicatorShape The shape of the tab indicator.
+ * @param iconSizes The sizes of the icons in the tabs.
+ * @param textStyle The text style for the tab text.
+ * @param counterSizes The sizes for the counter when the icon is on the left side.
+ * @param badgeSizes The sizes for the badge when the icon is on the top side.
+ * @param edgePadding The padding at the edges of the tab row.
+ */
 @Immutable
 class TabSizes internal constructor(
     internal val indicatorThickness: Dp,
@@ -197,6 +211,12 @@ class TabSizes internal constructor(
     internal val edgePadding: Dp
 ) {
 
+    /**
+     * Returns the counter sizes based on the icon side.
+     *
+     * @param side The side on which the icon is placed.
+     * @return The counter sizes corresponding to the icon side.
+     */
     @Composable
     fun counterSizes(side: IconSide): CounterSizes =
         when (side) {
@@ -204,6 +224,17 @@ class TabSizes internal constructor(
             IconSide.TOP -> badgeSizes
         }
 
+    /**
+     * Creates a copy of the [TabSizes] instance with the specified properties.
+     *
+     * @param indicatorThickness The thickness of the tab indicator.
+     * @param indicatorShape The shape of the tab indicator.
+     * @param iconSizes The sizes of the icons in the tabs.
+     * @param textStyle The text style for the tab text.
+     * @param counterSizes The sizes for the counter when the icon is on the left side.
+     * @param badgeSizes The sizes for the badge when the icon is on the top side.
+     * @param edgePadding The padding at the edges of the tab row.
+     */
     fun copy(
         indicatorThickness: Dp = this.indicatorThickness,
         indicatorShape: Shape = this.indicatorShape,

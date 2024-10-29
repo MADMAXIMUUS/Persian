@@ -35,6 +35,24 @@ import io.github.madmaximuus.persian.tabBar.util.TabPosition
 import io.github.madmaximuus.persian.tabBar.util.TabPositionsHolder
 import kotlin.math.max
 
+/**
+ * Internal composable function to implement a scrollable tab row.
+ *
+ * This function creates a scrollable tab row with customizable colors, sizes, icon placement,
+ * indicator, and divider. It uses a [Surface] as the base container and manages the layout
+ * of the tabs, divider, and indicator using a [Layout] composable. The tab row can be scrolled
+ * horizontally using the provided [ScrollState].
+ *
+ * @param selectedTabIndex The index of the currently selected tab.
+ * @param modifier The modifier to be applied to the tab row.
+ * @param colors The colors to be used for the tabs.
+ * @param sizes The sizes to be used for the tabs.
+ * @param iconSide The side on which the icon should be placed.
+ * @param scrollState The scroll state for horizontal scrolling.
+ * @param indicator A composable function that defines the tab indicator.
+ * @param divider A composable function that defines the divider between tabs.
+ * @param tabs A composable function that defines the content of the tabs.
+ */
 @Composable
 internal fun ScrollableTabRowImpl(
     selectedTabIndex: Int,
