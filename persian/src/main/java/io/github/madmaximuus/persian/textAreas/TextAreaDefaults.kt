@@ -12,30 +12,60 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state08
 import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state16
 import io.github.madmaximuus.persian.foundation.state38
-import io.github.madmaximuus.persianSymbols.check.circle.CheckCircle
-import io.github.madmaximuus.persianSymbols.exclamation.circle.ExclamationCircle
-import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
-import io.github.madmaximuus.persianSymbols.xmark.circle.XMarkCircle
 
+/**
+ * Contains all default values used by text area
+ */
 object TextAreaDefaults {
 
+    /**
+     * Composable function to create a [TextAreaColors] instance with outline-style default values from the theme.
+     *
+     * This function provides default values for the text area colors based on the current theme's color scheme,
+     * with a focus on outline-style colors.
+     *
+     * @param defaultTextColor The default color of the text.
+     * @param hoveredTextColor The color of the text when hovered.
+     * @param focusedTextColor The color of the text when focused.
+     * @param validTextColor The color of the text when valid.
+     * @param errorTextColor The color of the text when there is an error.
+     * @param disabledTextColor The color of the text when disabled.
+     * @param defaultContainerColor The default color of the container.
+     * @param hoveredContainerColor The color of the container when hovered.
+     * @param focusedContainerColor The color of the container when focused.
+     * @param validContainerColor The color of the container when valid.
+     * @param errorContainerColor The color of the container when there is an error.
+     * @param disabledContainerColor The color of the container when disabled.
+     * @param defaultCursorColor The default color of the cursor.
+     * @param validCursorColor The color of the cursor when valid.
+     * @param errorCursorColor The color of the cursor when there is an error.
+     * @param textSelectionColors The colors for text selection.
+     * @param defaultIndicatorColor The default color of the indicator.
+     * @param hoveredIndicatorColor The color of the indicator when hovered.
+     * @param focusedIndicatorColor The color of the indicator when focused.
+     * @param validIndicatorColor The color of the indicator when valid.
+     * @param errorIndicatorColor The color of the indicator when there is an error.
+     * @param disabledIndicatorColor The color of the indicator when disabled.
+     * @param defaultLeadingIconColor The default color of the leading icon.
+     * @param hoveredLeadingIconColor The color of the leading icon when hovered.
+     * @param focusedLeadingIconColor The color of the leading icon when focused.
+     * @param validLeadingIconColor The color of the leading icon when valid.
+     * @param errorLeadingIconColor The color of the leading icon when there is an error.
+     * @param disabledLeadingIconColor The color of the leading icon when disabled.
+     * @param defaultPlaceholderColor The default color of the placeholder.
+     * @param hoveredPlaceholderColor The color of the placeholder when hovered.
+     * @param focusedPlaceholderColor The color of the placeholder when focused.
+     * @param validPlaceholderColor The color of the placeholder when valid.
+     * @param errorPlaceholderColor The color of the placeholder when there is an error.
+     * @param disabledPlaceholderColor The color of the placeholder when disabled.
+     */
     @Composable
     fun outlineColors(
-        //State Icon
-        validStateIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.CheckCircle),
-        errorStateIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.ExclamationCircle),
-
-        //State Icon Colors
-        validStateIconColor: Color = PersianTheme.colorScheme.valid,
-        errorStateIconColor: Color = PersianTheme.colorScheme.error,
-
         //Text Colors
         defaultTextColor: Color = PersianTheme.colorScheme.onSurface,
         hoveredTextColor: Color = PersianTheme.colorScheme.onSurface,
@@ -86,13 +116,6 @@ object TextAreaDefaults {
         disabledPlaceholderColor: Color = PersianTheme.colorScheme.onSurface.state38,
     ): TextAreaColors =
         TextAreaColors(
-            //State Icon
-            errorStateIcon = errorStateIcon,
-            successStateIcon = validStateIcon,
-
-            //State Icon Colors
-            errorStateIconColor = errorStateIconColor,
-            successStateIconColor = validStateIconColor,
 
             //Text Colors
             defaultTextColor = defaultTextColor,
@@ -141,16 +164,42 @@ object TextAreaDefaults {
             disabledPlaceholderColor = disabledPlaceholderColor,
         )
 
+    /**
+     * Composable function to create a [TextAreaColors] instance with default values from the theme.
+     *
+     * This function provides default values for the text area colors based on the current theme's color scheme.
+     *
+     * @param defaultTextColor The default color of the text.
+     * @param hoveredTextColor The color of the text when hovered.
+     * @param focusedTextColor The color of the text when focused.
+     * @param validTextColor The color of the text when valid.
+     * @param errorTextColor The color of the text when there is an error.
+     * @param disabledTextColor The color of the text when disabled.
+     * @param defaultContainerColor The default color of the container.
+     * @param hoveredContainerColor The color of the container when hovered.
+     * @param focusedContainerColor The color of the container when focused.
+     * @param validContainerColor The color of the container when valid.
+     * @param errorContainerColor The color of the container when there is an error.
+     * @param disabledContainerColor The color of the container when disabled.
+     * @param defaultCursorColor The default color of the cursor.
+     * @param validCursorColor The color of the cursor when valid.
+     * @param errorCursorColor The color of the cursor when there is an error.
+     * @param textSelectionColors The colors for text selection.
+     * @param defaultLeadingIconColor The default color of the leading icon.
+     * @param hoveredLeadingIconColor The color of the leading icon when hovered.
+     * @param focusedLeadingIconColor The color of the leading icon when focused.
+     * @param validLeadingIconColor The color of the leading icon when valid.
+     * @param errorLeadingIconColor The color of the leading icon when there is an error.
+     * @param disabledLeadingIconColor The color of the leading icon when disabled.
+     * @param defaultPlaceholderColor The default color of the placeholder.
+     * @param hoveredPlaceholderColor The color of the placeholder when hovered.
+     * @param focusedPlaceholderColor The color of the placeholder when focused.
+     * @param validPlaceholderColor The color of the placeholder when valid.
+     * @param errorPlaceholderColor The color of the placeholder when there is an error.
+     * @param disabledPlaceholderColor The color of the placeholder when disabled.
+     */
     @Composable
     fun plainColors(
-        //State Icon
-        validStateIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.CheckCircle),
-        errorStateIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.XMarkCircle),
-
-        //State Icon Colors
-        validStateIconColor: Color = PersianTheme.colorScheme.valid,
-        errorStateIconColor: Color = PersianTheme.colorScheme.error,
-
         //Text Colors
         defaultTextColor: Color = PersianTheme.colorScheme.onSurface,
         hoveredTextColor: Color = PersianTheme.colorScheme.onSurface,
@@ -193,14 +242,6 @@ object TextAreaDefaults {
         disabledPlaceholderColor: Color = PersianTheme.colorScheme.onSurface.state38,
     ): TextAreaColors =
         TextAreaColors(
-            //State Icon
-            errorStateIcon = errorStateIcon,
-            successStateIcon = validStateIcon,
-
-            //State Icon Colors
-            errorStateIconColor = errorStateIconColor,
-            successStateIconColor = validStateIconColor,
-
             //Text Colors
             defaultTextColor = defaultTextColor,
             hoveredTextColor = hoveredTextColor,
@@ -249,17 +290,49 @@ object TextAreaDefaults {
         )
 }
 
+/**
+ * Immutable class representing the colors for a text area.
+ *
+ * This class encapsulates various color properties for a text area, including text colors,
+ * container colors, cursor colors, indicator colors, leading icon colors, and placeholder colors.
+ *
+ * @param defaultTextColor The default color of the text.
+ * @param hoveredTextColor The color of the text when hovered.
+ * @param focusedTextColor The color of the text when focused.
+ * @param validTextColor The color of the text when valid.
+ * @param errorTextColor The color of the text when there is an error.
+ * @param disabledTextColor The color of the text when disabled.
+ * @param defaultContainerColor The default color of the container.
+ * @param hoveredContainerColor The color of the container when hovered.
+ * @param focusedContainerColor The color of the container when focused.
+ * @param validContainerColor The color of the container when valid.
+ * @param errorContainerColor The color of the container when there is an error.
+ * @param disabledContainerColor The color of the container when disabled.
+ * @param defaultCursorColor The default color of the cursor.
+ * @param validCursorColor The color of the cursor when valid.
+ * @param errorCursorColor The color of the cursor when there is an error.
+ * @param textSelectionColors The colors for text selection.
+ * @param defaultIndicatorColor The default color of the indicator.
+ * @param hoveredIndicatorColor The color of the indicator when hovered.
+ * @param focusedIndicatorColor The color of the indicator when focused.
+ * @param validIndicatorColor The color of the indicator when valid.
+ * @param errorIndicatorColor The color of the indicator when there is an error.
+ * @param disabledIndicatorColor The color of the indicator when disabled.
+ * @param defaultLeadingIconColor The default color of the leading icon.
+ * @param hoveredLeadingIconColor The color of the leading icon when hovered.
+ * @param focusedLeadingIconColor The color of the leading icon when focused.
+ * @param validLeadingIconColor The color of the leading icon when valid.
+ * @param errorLeadingIconColor The color of the leading icon when there is an error.
+ * @param disabledLeadingIconColor The color of the leading icon when disabled.
+ * @param defaultPlaceholderColor The default color of the placeholder.
+ * @param hoveredPlaceholderColor The color of the placeholder when hovered.
+ * @param focusedPlaceholderColor The color of the placeholder when focused.
+ * @param validPlaceholderColor The color of the placeholder when valid.
+ * @param errorPlaceholderColor The color of the placeholder when there is an error.
+ * @param disabledPlaceholderColor The color of the placeholder when disabled.
+ */
 @Immutable
 class TextAreaColors internal constructor(
-
-    //State Icon
-    private val errorStateIcon: Painter,
-    private val successStateIcon: Painter,
-
-    //State Icon Colors
-    private val errorStateIconColor: Color,
-    private val successStateIconColor: Color,
-
     //Text Colors
     private val defaultTextColor: Color,
     private val hoveredTextColor: Color,
@@ -306,40 +379,14 @@ class TextAreaColors internal constructor(
     private val errorPlaceholderColor: Color,
     private val disabledPlaceholderColor: Color,
 ) {
-    @Composable
-    internal fun stateIcon(
-        enabled: Boolean,
-        isSuccess: Boolean,
-        isError: Boolean
-    ): State<Painter?> {
-
-        val targetValue = when {
-            !enabled -> null
-            isError -> errorStateIcon
-            isSuccess -> successStateIcon
-
-            else -> null
-        }
-        return rememberUpdatedState(targetValue)
-    }
-
-    @Composable
-    internal fun stateIconColor(
-        enabled: Boolean,
-        isValid: Boolean,
-        isError: Boolean
-    ): State<Color> {
-
-        val targetValue = when {
-            !enabled -> Color.Transparent
-            isError -> errorStateIconColor
-            isValid -> successStateIconColor
-
-            else -> Color.Transparent
-        }
-        return rememberUpdatedState(targetValue)
-    }
-
+    /**
+     * Returns the text color based on the enabled state, validity, error state, and interaction source.
+     *
+     * @param enabled Whether the text area is enabled.
+     * @param isValid Whether the text area is valid.
+     * @param isError Whether the text area has an error.
+     * @param interactionSource The interaction source for the text area.
+     */
     @Composable
     internal fun textColor(
         enabled: Boolean,
@@ -362,6 +409,14 @@ class TextAreaColors internal constructor(
         return rememberUpdatedState(targetValue)
     }
 
+    /**
+     * Returns the container color based on the enabled state, validity, error state, and interaction source.
+     *
+     * @param enabled Whether the text area is enabled.
+     * @param isValid Whether the text area is valid.
+     * @param isError Whether the text area has an error.
+     * @param interactionSource The interaction source for the text area.
+     */
     @Composable
     internal fun containerColor(
         enabled: Boolean,
@@ -383,6 +438,12 @@ class TextAreaColors internal constructor(
         return rememberUpdatedState(targetValue)
     }
 
+    /**
+     * Returns the cursor color based on the error state and validity.
+     *
+     * @param isError Whether the text area has an error.
+     * @param isValid Whether the text area is valid.
+     */
     @Composable
     internal fun cursorColor(isError: Boolean, isValid: Boolean): State<Color> {
         val targetValue = when {
@@ -393,9 +454,20 @@ class TextAreaColors internal constructor(
         return rememberUpdatedState(targetValue)
     }
 
+    /**
+     * Returns the text selection colors.
+     */
     internal val selectionColors: TextSelectionColors
         @Composable get() = textSelectionColors
 
+    /**
+     * Returns the indicator color based on the enabled state, validity, error state, and interaction source.
+     *
+     * @param enabled Whether the text area is enabled.
+     * @param isValid Whether the text area is valid.
+     * @param isError Whether the text area has an error.
+     * @param interactionSource The interaction source for the text area.
+     */
     @Composable
     internal fun indicatorColor(
         enabled: Boolean,
@@ -422,28 +494,6 @@ class TextAreaColors internal constructor(
         } else {
             rememberUpdatedState(targetValue)
         }
-    }
-
-    @Composable
-    internal fun leadingIconColor(
-        enabled: Boolean,
-        isValid: Boolean,
-        isError: Boolean,
-        interactionSource: InteractionSource
-    ): State<Color> {
-        val focused by interactionSource.collectIsFocusedAsState()
-        val hovered by interactionSource.collectIsHoveredAsState()
-
-        return rememberUpdatedState(
-            when {
-                !enabled -> disabledLeadingIconColor
-                isError -> errorLeadingIconColor
-                isValid -> validLeadingIconColor
-                focused -> focusedLeadingIconColor
-                hovered -> hoveredLeadingIconColor
-                else -> defaultLeadingIconColor
-            }
-        )
     }
 
     @Composable

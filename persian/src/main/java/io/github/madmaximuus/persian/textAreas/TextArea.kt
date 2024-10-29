@@ -1,6 +1,5 @@
 package io.github.madmaximuus.persian.textAreas
 
-import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.BorderStroke
@@ -30,13 +29,28 @@ import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.BaselineShift
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.surface.Surface
 import io.github.madmaximuus.persian.text.Text
 
+/**
+ * A composable function that creates an outlined text area with customizable properties.
+ *
+ * @param value The current text value of the text area.
+ * @param onValueChange A callback that is invoked when the text value changes.
+ * @param modifier The modifier to be applied to the text area.
+ * @param enabled Whether the text area is enabled or disabled.
+ * @param isError Whether the text area is in an error state.
+ * @param isValid Whether the text area is in a valid state.
+ * @param readOnly Whether the text area is read-only.
+ * @param textStyle The text style to be applied to the text area.
+ * @param placeholder The placeholder text to be displayed when the text area is empty.
+ * @param colors The colors to be applied to the text area.
+ * @param keyboardOptions The keyboard options for the text area.
+ * @param keyboardActions The keyboard actions for the text area.
+ * @param interactionSource The interaction source for the text area.
+ */
 @Composable
 fun OutlineTextArea(
     value: String,
@@ -133,6 +147,23 @@ fun OutlineTextArea(
     }
 }
 
+/**
+ * A composable function that creates a plain text area with customizable properties.
+ *
+ * @param value The current text value of the text area.
+ * @param onValueChange A callback that is invoked when the text value changes.
+ * @param modifier The modifier to be applied to the text area.
+ * @param enabled Whether the text area is enabled or disabled.
+ * @param isError Whether the text area is in an error state.
+ * @param isValid Whether the text area is in a valid state.
+ * @param readOnly Whether the text area is read-only.
+ * @param textStyle The text style to be applied to the text area.
+ * @param placeholder The placeholder text to be displayed when the text area is empty.
+ * @param colors The colors to be applied to the text area.
+ * @param keyboardOptions The keyboard options for the text area.
+ * @param keyboardActions The keyboard actions for the text area.
+ * @param interactionSource The interaction source for the text area.
+ */
 @Composable
 fun PlainTextArea(
     value: String,
@@ -232,7 +263,17 @@ fun PlainTextArea(
     }
 }
 
-
+/**
+ * A composable function that animates the border stroke of a text area based on its state.
+ *
+ * @param enabled Whether the text area is enabled or disabled.
+ * @param isError Whether the text area is in an error state.
+ * @param isSuccess Whether the text area is in a success state.
+ * @param interactionSource The interaction source for the text area.
+ * @param colors The colors to be applied to the text area.
+ * @param focusedBorderThickness The thickness of the border when the text area is focused.
+ * @param unfocusedBorderThickness The thickness of the border when the text area is not focused.
+ */
 @Suppress("UNUSED")
 @Composable
 private fun animateBorderStrokeAsState(
@@ -258,21 +299,4 @@ private fun animateBorderStrokeAsState(
     return rememberUpdatedState(
         BorderStroke(animatedThickness.value, SolidColor(indicatorColor.value))
     )
-}
-
-@Preview
-@Preview(uiMode = UI_MODE_NIGHT_YES)
-@Composable
-fun TextAreaPreview() {
-    PersianTheme {
-        Surface {
-            OutlineTextArea(
-                modifier = Modifier
-                    .padding(10.dp),
-                value = "",
-                placeholder = "Я текст",
-                onValueChange = {}
-            )
-        }
-    }
 }
