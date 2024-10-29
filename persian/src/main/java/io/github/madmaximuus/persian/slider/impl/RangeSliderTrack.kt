@@ -3,8 +3,6 @@ package io.github.madmaximuus.persian.slider.impl
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.material3.SliderDefaults.TickSize
-import androidx.compose.material3.SliderDefaults.TrackStopIndicatorSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
@@ -17,8 +15,8 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.slider.SliderColors
 import io.github.madmaximuus.persian.slider.SliderDefaults
+import io.github.madmaximuus.persian.slider.range.RangeSlider
 import io.github.madmaximuus.persian.slider.state.RangeSliderState
-
 
 /**
  * The Default track for [RangeSlider]
@@ -47,7 +45,7 @@ fun RangeSliderTrack(
             drawScope = this,
             offset = offset,
             color = color,
-            size = TrackStopIndicatorSize
+            size = 4.dp
         )
     },
     drawTick: DrawScope.(Offset, Color) -> Unit = { offset, color ->
@@ -55,7 +53,7 @@ fun RangeSliderTrack(
             drawScope = this,
             offset = offset,
             color = color,
-            size = TickSize
+            size = 4.dp
         )
     },
     thumbTrackGapSize: Dp = ThumbTrackGapSize,

@@ -37,6 +37,7 @@ import io.github.madmaximuus.persian.slider.state.SliderState
  *   slider will behave continuously and allow any value from the range. Must not be negative.
  * @param valueRange range of values that this slider can take. The passed [value] will be coerced
  *   to this range.
+ * @param showLabel when `true` value label showed on top of slider thumb.
  */
 @Composable
 fun DiscreteSlider(
@@ -48,7 +49,7 @@ fun DiscreteSlider(
     colors: SliderColors = SliderDefaults.colors(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     @IntRange(from = 0) steps: Int = 0,
-    isValueEnabled: Boolean = false,
+    showLabel: Boolean = false,
     valueRange: ClosedFloatingPointRange<Float> = 0f..1f
 ) {
     val state =
@@ -64,6 +65,6 @@ fun DiscreteSlider(
         enabled = enabled,
         interactionSource = interactionSource,
         colors = colors,
-        isValueEnabled = isValueEnabled
+        showLabel = showLabel
     )
 }

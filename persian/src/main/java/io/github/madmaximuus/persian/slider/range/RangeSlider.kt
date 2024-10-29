@@ -7,9 +7,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import io.github.madmaximuus.persian.slider.SliderColors
 import io.github.madmaximuus.persian.slider.SliderDefaults
+import io.github.madmaximuus.persian.slider.continuous.Slider
 import io.github.madmaximuus.persian.slider.impl.RangeSliderImpl
 import io.github.madmaximuus.persian.slider.state.RangeSliderState
-
 
 /**
  * Range Sliders expand upon [Slider] using the same concepts but allow the user to select 2 values.
@@ -34,6 +34,7 @@ import io.github.madmaximuus.persian.slider.state.RangeSliderState
  *   observe.
  * @param valueRange range of values that Range Slider values can take. Passed [value] will be
  *   coerced to this range.
+ * @param showLabel when `true` value label showed on top of slider thumb.
  */
 @Composable
 fun RangeSlider(
@@ -46,7 +47,7 @@ fun RangeSlider(
     colors: SliderColors = SliderDefaults.colors(),
     startInteractionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     endInteractionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    isValueEnabled: Boolean = false
+    showLabel: Boolean = false
 ) {
     val state =
         remember(0, valueRange) {
@@ -71,6 +72,6 @@ fun RangeSlider(
         startInteractionSource = startInteractionSource,
         endInteractionSource = endInteractionSource,
         colors = colors,
-        isValueEnabled = isValueEnabled
+        isValueEnabled = showLabel
     )
 }

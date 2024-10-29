@@ -8,11 +8,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import io.github.madmaximuus.persian.slider.SliderColors
 import io.github.madmaximuus.persian.slider.SliderDefaults
+import io.github.madmaximuus.persian.slider.continuous.DiscreteSlider
 import io.github.madmaximuus.persian.slider.impl.RangeSliderImpl
 import io.github.madmaximuus.persian.slider.state.RangeSliderState
 
 /**
- * Range Sliders expand upon [Slider] using the same concepts but allow the user to select 2 values.
+ * Range Sliders expand upon [DiscreteSlider] using the same concepts but allow the user to select 2 values.
  *
  * The two values are still bounded by the value range but they also cannot cross each other.
  *
@@ -37,6 +38,7 @@ import io.github.madmaximuus.persian.slider.state.RangeSliderState
  *   range slider will behave continuously and allow any value from the range. Must not be negative.
  * @param valueRange range of values that Range Slider values can take. Passed [value] will be
  *   coerced to this range.
+ * @param showLabel when `true` value label showed on top of slider thumb.
  */
 @Composable
 fun DiscreteRangeSlider(
@@ -50,7 +52,7 @@ fun DiscreteRangeSlider(
     startInteractionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     endInteractionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     @IntRange(from = 0) steps: Int = 0,
-    isValueEnabled: Boolean = false,
+    showLabel: Boolean = false,
 ) {
     val state =
         remember(steps, valueRange) {
@@ -75,6 +77,6 @@ fun DiscreteRangeSlider(
         startInteractionSource = startInteractionSource,
         endInteractionSource = endInteractionSource,
         colors = colors,
-        isValueEnabled = isValueEnabled
+        isValueEnabled = showLabel
     )
 }

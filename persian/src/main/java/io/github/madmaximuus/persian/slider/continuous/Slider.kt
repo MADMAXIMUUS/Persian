@@ -33,6 +33,7 @@ import io.github.madmaximuus.persian.slider.state.SliderState
  *   [Interaction]s and customize the appearance / behavior of this slider in different states.
  * @param valueRange range of values that this slider can take. The passed [value] will be coerced
  *   to this range.
+ * @param showLabel when `true` value label showed on top of slider thumb.
  */
 @Composable
 fun Slider(
@@ -44,7 +45,7 @@ fun Slider(
     colors: SliderColors = SliderDefaults.colors(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     valueRange: ClosedFloatingPointRange<Float> = 0f..1f,
-    isValueEnabled: Boolean = false
+    showLabel: Boolean = false
 ) {
     val state =
         remember(0, valueRange) { SliderState(value, 0, onValueChangeFinished, valueRange) }
@@ -59,6 +60,6 @@ fun Slider(
         enabled = enabled,
         interactionSource = interactionSource,
         colors = colors,
-        isValueEnabled = isValueEnabled
+        showLabel = showLabel
     )
 }

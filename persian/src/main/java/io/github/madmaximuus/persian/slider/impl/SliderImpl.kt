@@ -46,13 +46,26 @@ import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.roundToInt
 
+/**
+ * Composable function to create a slider with customizable states and interactions.
+ *
+ * This function creates a slider with a thumb, label, and track. It handles interactions such as
+ * tap and drag gestures, and updates the slider state accordingly.
+ *
+ * @param modifier The modifier to be applied to the layout.
+ * @param state The state of the slider.
+ * @param enabled Whether the slider is enabled or not.
+ * @param colors The colors to be used for the slider components.
+ * @param showLabel Whether to show the label or not.
+ * @param interactionSource The interaction source for handling user interactions.
+ */
 @Composable
 internal fun SliderImpl(
     modifier: Modifier,
     state: SliderState,
     enabled: Boolean,
     colors: SliderColors,
-    isValueEnabled: Boolean,
+    showLabel: Boolean,
     interactionSource: MutableInteractionSource,
 ) {
     state.isRtl = LocalLayoutDirection.current == LayoutDirection.Rtl
@@ -83,7 +96,7 @@ internal fun SliderImpl(
         }
     }
     LaunchedEffect(interactions.size) {
-        currentState = if (interactions.isNotEmpty() && isValueEnabled) LabelState.SHOW
+        currentState = if (interactions.isNotEmpty() && showLabel) LabelState.SHOW
         else LabelState.HIDE
     }
 
@@ -178,6 +191,16 @@ internal fun SliderImpl(
     }
 }
 
+/**
+ * Extension function to create a modifier for handling tap gestures on a slider.
+ *
+ * This modifier detects tap gestures and updates the state of the slider accordingly.
+ * If the slider is enabled, it will handle tap gestures; otherwise, it will return the original modifier.
+ *
+ * @param state The state of the slider.
+ * @param interactionSource The interaction source for handling user interactions.
+ * @param enabled Whether the slider is enabled or not.
+ */
 @Stable
 private fun Modifier.sliderTapModifier(
     state: SliderState,
@@ -198,12 +221,24 @@ private fun Modifier.sliderTapModifier(
         this
     }
 
+/**
+ * Enum class representing the different components of a slider.
+ *
+ * These components include the thumb, track, and label. Each component is identified by a unique value,
+ * which can be used to apply specific modifiers or styles to the corresponding UI elements.
+ */
 internal enum class SliderComponents {
     THUMB,
     TRACK,
     LABEL
 }
 
+/**
+ * Enum class representing the different states of a label in a slider.
+ *
+ * These states indicate whether the label should be hidden or shown. Each state is identified by a unique value,
+ * which can be used to control the visibility of the label in the UI.
+ */
 internal enum class LabelState {
     HIDE,
     SHOW
@@ -213,6 +248,16 @@ internal val TrackHeight = 16.dp
 internal val ThumbWidth = 4.dp
 internal val ThumbHeight = 44.dp
 
+/**
+ * Extension function to add semantics for a slider.
+ *
+ * This modifier adds accessibility semantics to the slider, including progress and disabled state.
+ * It handles the progress action, ensuring the value is within the specified range and steps,
+ * and updates the slider state accordingly.
+ *
+ * @param state The state of the slider.
+ * @param enabled Whether the slider is enabled or not.
+ */
 private fun Modifier.sliderSemantics(
     state: SliderState,
     enabled: Boolean

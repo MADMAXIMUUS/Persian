@@ -8,6 +8,7 @@ import androidx.compose.ui.graphics.takeOrElse
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state38
+import io.github.madmaximuus.persian.slider.continuous.Slider
 
 object SliderDefaults {
 
@@ -29,6 +30,8 @@ object SliderDefaults {
      * @param inactiveTickColor colors to be used to draw tick marks on the inactive track, if
      *   `steps` are specified on the Slider is specified
      * @param disabledThumbColor thumb colors when disabled
+     * @param labelTextColor label text color
+     * @param labelContainerColor container color of label
      * @param disabledActiveTrackColor color of the track in the "active" part when the Slider is
      *   disabled
      * @param disabledActiveTickColor colors to be used to draw tick marks on the active track when
@@ -46,7 +49,7 @@ object SliderDefaults {
         inactiveTrackColor: Color = PersianTheme.colorScheme.secondaryContainer,
         inactiveTickColor: Color = PersianTheme.colorScheme.primary,
         labelTextColor: Color = PersianTheme.colorScheme.onSurface,
-        labelBackgroundColor: Color = PersianTheme.colorScheme.surfaceContainerHighest,
+        labelContainerColor: Color = PersianTheme.colorScheme.surfaceContainerHighest,
         disabledThumbColor: Color = PersianTheme.colorScheme.onSurface.state38,
         disabledActiveTrackColor: Color = PersianTheme.colorScheme.onSurface.state38,
         disabledActiveTickColor: Color = PersianTheme.colorScheme.surface.state38,
@@ -60,7 +63,7 @@ object SliderDefaults {
             inactiveTrackColor = inactiveTrackColor,
             inactiveTickColor = inactiveTickColor,
             labelTextColor = labelTextColor,
-            labelBackgroundColor = labelBackgroundColor,
+            labelContainerColor = labelContainerColor,
             disabledThumbColor = disabledThumbColor,
             disabledActiveTrackColor = disabledActiveTrackColor,
             disabledActiveTickColor = disabledActiveTickColor,
@@ -83,6 +86,8 @@ object SliderDefaults {
  *   thumb is before it
  * @param inactiveTickColor colors to be used to draw tick marks on the inactive track, if `steps`
  *   are specified on the Slider is specified
+ * @param labelTextColor label text color
+ * @param labelContainerColor container color of label
  * @param disabledThumbColor thumb colors when disabled
  * @param disabledActiveTrackColor color of the track in the "active" part when the Slider is
  *   disabled
@@ -103,7 +108,7 @@ class SliderColors internal constructor(
     private val inactiveTrackColor: Color,
     private val inactiveTickColor: Color,
     internal val labelTextColor: Color,
-    internal val labelBackgroundColor: Color,
+    internal val labelContainerColor: Color,
     private val disabledThumbColor: Color,
     private val disabledActiveTrackColor: Color,
     private val disabledActiveTickColor: Color,
@@ -136,7 +141,7 @@ class SliderColors internal constructor(
             inactiveTrackColor.takeOrElse { this.inactiveTrackColor },
             inactiveTickColor.takeOrElse { this.inactiveTickColor },
             labelTextColor.takeOrElse { this.labelTextColor },
-            labelBackgroundColor.takeOrElse { this.labelBackgroundColor },
+            labelBackgroundColor.takeOrElse { this.labelContainerColor },
             disabledThumbColor.takeOrElse { this.disabledThumbColor },
             disabledActiveTrackColor.takeOrElse { this.disabledActiveTrackColor },
             disabledActiveTickColor.takeOrElse { this.disabledActiveTickColor },
@@ -144,10 +149,21 @@ class SliderColors internal constructor(
             disabledInactiveTickColor.takeOrElse { this.disabledInactiveTickColor },
         )
 
+    /**
+     * Returns the color of the thumb based on its enabled state.
+     *
+     * @param enabled The state of the thumb. If `true`, the thumb is enabled; otherwise, it is disabled.
+     */
     @Stable
     internal fun thumbColor(enabled: Boolean): Color =
         if (enabled) thumbColor else disabledThumbColor
 
+    /**
+     * Returns the color of the track based on its enabled and active states.
+     *
+     * @param enabled The state of the track.
+     * @param active The activity state of the track.
+     */
     @Stable
     internal fun trackColor(enabled: Boolean, active: Boolean): Color =
         if (enabled) {
@@ -156,6 +172,12 @@ class SliderColors internal constructor(
             if (active) disabledActiveTrackColor else disabledInactiveTrackColor
         }
 
+    /**
+     * Returns the color of the tick based on its enabled and active states.
+     *
+     * @param enabled The state of the tick.
+     * @param active The activity state of the tick.
+     */
     @Stable
     internal fun tickColor(enabled: Boolean, active: Boolean): Color =
         if (enabled) {
@@ -174,7 +196,7 @@ class SliderColors internal constructor(
         if (inactiveTrackColor != other.inactiveTrackColor) return false
         if (inactiveTickColor != other.inactiveTickColor) return false
         if (labelTextColor != other.labelTextColor) return false
-        if (labelBackgroundColor != other.labelBackgroundColor) return false
+        if (labelContainerColor != other.labelContainerColor) return false
         if (disabledThumbColor != other.disabledThumbColor) return false
         if (disabledActiveTrackColor != other.disabledActiveTrackColor) return false
         if (disabledActiveTickColor != other.disabledActiveTickColor) return false
@@ -191,7 +213,7 @@ class SliderColors internal constructor(
         result = 31 * result + inactiveTrackColor.hashCode()
         result = 31 * result + inactiveTickColor.hashCode()
         result = 31 * result + labelTextColor.hashCode()
-        result = 31 * result + labelBackgroundColor.hashCode()
+        result = 31 * result + labelContainerColor.hashCode()
         result = 31 * result + disabledThumbColor.hashCode()
         result = 31 * result + disabledActiveTrackColor.hashCode()
         result = 31 * result + disabledActiveTickColor.hashCode()

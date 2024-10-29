@@ -46,14 +46,23 @@ import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.roundToInt
 
-
+/**
+ * Composable function to create a centered slider with customizable states and interactions.
+ *
+ * @param modifier The modifier to be applied to the layout.
+ * @param state The state of the centered slider.
+ * @param enabled Whether the slider is enabled or not.
+ * @param colors The colors to be used for the slider components.
+ * @param showLabel Whether to show the label or not.
+ * @param interactionSource The interaction source for handling user interactions.
+ */
 @Composable
 internal fun CenteredSliderImpl(
     modifier: Modifier,
     state: CenteredSliderState,
     enabled: Boolean,
     colors: SliderColors,
-    isValueEnabled: Boolean,
+    showLabel: Boolean,
     interactionSource: MutableInteractionSource,
 ) {
     state.isRtl = LocalLayoutDirection.current == LayoutDirection.Rtl
@@ -84,7 +93,7 @@ internal fun CenteredSliderImpl(
         }
     }
     LaunchedEffect(interactions.size) {
-        currentState = if (interactions.isNotEmpty() && isValueEnabled) LabelState.SHOW
+        currentState = if (interactions.isNotEmpty() && showLabel) LabelState.SHOW
         else LabelState.HIDE
     }
 
@@ -179,6 +188,16 @@ internal fun CenteredSliderImpl(
     }
 }
 
+/**
+ * Extension function to create a modifier for handling tap gestures on a centered slider.
+ *
+ * This modifier detects tap gestures and updates the state of the slider accordingly.
+ * If the slider is enabled, it will handle tap gestures; otherwise, it will return the original modifier.
+ *
+ * @param state The state of the centered slider.
+ * @param interactionSource The interaction source for handling user interactions.
+ * @param enabled Whether the slider is enabled or not.
+ */
 @Stable
 private fun Modifier.centeredSliderTapModifier(
     state: CenteredSliderState,
@@ -199,6 +218,16 @@ private fun Modifier.centeredSliderTapModifier(
         this
     }
 
+/**
+ * Extension function to add semantics for a centered slider.
+ *
+ * This modifier adds accessibility semantics to the slider, including progress and disabled state.
+ * It handles the progress action, ensuring the value is within the specified range and steps,
+ * and updates the slider state accordingly.
+ *
+ * @param state The state of the centered slider.
+ * @param enabled Whether the slider is enabled or not.
+ */
 private fun Modifier.centeredSliderSemantics(
     state: CenteredSliderState,
     enabled: Boolean

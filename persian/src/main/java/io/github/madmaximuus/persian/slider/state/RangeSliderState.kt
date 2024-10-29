@@ -6,10 +6,10 @@ import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import io.github.madmaximuus.persian.slider.range.RangeSlider
 import kotlin.math.floor
 import kotlin.math.max
 import kotlin.math.min
-
 
 /**
  * Class that holds information about [RangeSlider]'s active range.
@@ -42,11 +42,11 @@ class RangeSliderState(
         set(newVal) {
             val coercedValue = newVal.coerceIn(valueRange.start, activeRangeEnd)
             val snappedValue = snapValueToTick(
-                    coercedValue,
-                    tickFractions,
-                    valueRange.start,
-                    valueRange.endInclusive
-                )
+                coercedValue,
+                tickFractions,
+                valueRange.start,
+                valueRange.endInclusive
+            )
             activeRangeStartState = snappedValue
         }
         get() = activeRangeStartState

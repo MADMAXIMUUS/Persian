@@ -12,6 +12,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.util.lerp
+import io.github.madmaximuus.persian.slider.continuous.Slider
 import kotlinx.coroutines.coroutineScope
 import kotlin.math.abs
 import kotlin.math.max

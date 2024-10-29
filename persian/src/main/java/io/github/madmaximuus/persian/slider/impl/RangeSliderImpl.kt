@@ -63,6 +63,20 @@ import kotlin.math.abs
 import kotlin.math.roundToInt
 import kotlin.math.sign
 
+/**
+ * Composable function to create a range slider with customizable states and interactions.
+ *
+ * This function creates a range slider with start and end thumbs, labels, and a track.
+ * It handles interactions such as press and drag gestures, and updates the slider state accordingly.
+ *
+ * @param modifier The modifier to be applied to the layout.
+ * @param state The state of the range slider.
+ * @param enabled Whether the slider is enabled or not.
+ * @param startInteractionSource The interaction source for the start thumb.
+ * @param endInteractionSource The interaction source for the end thumb.
+ * @param colors The colors to be used for the slider components.
+ * @param isValueEnabled Whether the value labels are enabled or not.
+ */
 @Composable
 internal fun RangeSliderImpl(
     modifier: Modifier,
@@ -291,6 +305,13 @@ internal fun RangeSliderImpl(
     }
 }
 
+/**
+ * Enum class representing the different components of a range slider.
+ *
+ * These components include the start and end thumbs, start and end labels, and the track.
+ * Each component is identified by a unique value, which can be used to apply specific
+ * modifiers or styles to the corresponding UI elements.
+ */
 private enum class RangeSliderComponents {
     ENDTHUMB,
     STARTTHUMB,
@@ -299,7 +320,17 @@ private enum class RangeSliderComponents {
     TRACK
 }
 
-
+/**
+ * Extension function to create a modifier for handling press and drag gestures on a range slider.
+ *
+ * This modifier detects press and drag gestures and updates the state of the range slider accordingly.
+ * If the slider is enabled, it will handle the gestures; otherwise, it will return the original modifier.
+ *
+ * @param state The state of the range slider.
+ * @param startInteractionSource The interaction source for the start thumb.
+ * @param endInteractionSource The interaction source for the end thumb.
+ * @param enabled Whether the slider is enabled or not.
+ */
 @Stable
 private fun Modifier.rangeSliderPressDragModifier(
     state: RangeSliderState,
@@ -374,20 +405,48 @@ private fun Modifier.rangeSliderPressDragModifier(
         this
     }
 
+/**
+ * A class that encapsulates the logic for handling interactions with a range slider.
+ *
+ * This class provides methods to determine the active interaction source, compare offsets,
+ * and capture thumb positions based on drag gestures.
+ *
+ * @param state The state of the range slider.
+ * @param startInteractionSource The interaction source for the start thumb.
+ * @param endInteractionSource The interaction source for the end thumb.
+ */
 private class RangeSliderLogic(
     val state: RangeSliderState,
     val startInteractionSource: MutableInteractionSource,
     val endInteractionSource: MutableInteractionSource
 ) {
+    /**
+     * Returns the active interaction source based on whether the start thumb is being dragged.
+     *
+     * @param draggingStart Whether the start thumb is being dragged.
+     */
     fun activeInteraction(draggingStart: Boolean): MutableInteractionSource =
         if (draggingStart) startInteractionSource else endInteractionSource
 
+    /**
+     * Compares the offsets of the start and end thumbs to the event position.
+     *
+     * @param eventX The x-coordinate of the event.
+     */
     fun compareOffsets(eventX: Float): Int {
         val diffStart = abs(state.rawOffsetStart - eventX)
         val diffEnd = abs(state.rawOffsetEnd - eventX)
         return diffStart.compareTo(diffEnd)
     }
 
+    /**
+     * Captures the thumb position based on the drag gesture and emits the interaction.
+     *
+     * @param draggingStart Whether the start thumb is being dragged.
+     * @param posX The x-coordinate of the drag position.
+     * @param interaction The interaction to be emitted.
+     * @param scope The coroutine scope for launching the interaction emission.
+     */
     fun captureThumb(
         draggingStart: Boolean,
         posX: Float,
@@ -402,7 +461,16 @@ private class RangeSliderLogic(
     }
 }
 
-
+/**
+ * Extension function to add semantics for the start thumb of a range slider.
+ *
+ * This modifier adds accessibility semantics to the start thumb, including progress and disabled state.
+ * It handles the progress action, ensuring the value is within the specified range and steps,
+ * and updates the slider state accordingly.
+ *
+ * @param state The state of the range slider.
+ * @param enabled Whether the slider is enabled or not.
+ */
 private fun Modifier.rangeSliderStartThumbSemantics(
     state: RangeSliderState,
     enabled: Boolean
@@ -459,6 +527,16 @@ private fun Modifier.rangeSliderStartThumbSemantics(
         .progressSemantics(state.activeRangeStart, valueRange, state.startSteps)
 }
 
+/**
+ * Extension function to add semantics for the end thumb of a range slider.
+ *
+ * This modifier adds accessibility semantics to the end thumb, including progress and disabled state.
+ * It handles the progress action, ensuring the value is within the specified range and steps,
+ * and updates the slider state accordingly.
+ *
+ * @param state The state of the range slider.
+ * @param enabled Whether the slider is enabled or not.
+ */
 private fun Modifier.rangeSliderEndThumbSemantics(
     state: RangeSliderState,
     enabled: Boolean
@@ -516,7 +594,15 @@ private fun Modifier.rangeSliderEndThumbSemantics(
         .progressSemantics(state.activeRangeEnd, valueRange, state.endSteps)
 }
 
-
+/**
+ * Suspend function to await pointer events until the pointer slop is exceeded.
+ *
+ * This function waits for horizontal pointer movements to exceed the slop threshold,
+ * consumes the pointer input, and returns the initial delta offset if the slop is exceeded.
+ *
+ * @param id The ID of the pointer.
+ * @param type The type of the pointer (e.g., touch, mouse).
+ */
 private suspend fun AwaitPointerEventScope.awaitSlop(
     id: PointerId,
     type: PointerType
@@ -530,7 +616,17 @@ private suspend fun AwaitPointerEventScope.awaitSlop(
     return if (afterSlopResult != null) afterSlopResult to initialDelta else null
 }
 
-
+/**
+ * Suspend function to await horizontal pointer events until the pointer slop is exceeded or the coroutine is cancelled.
+ *
+ * This function waits for horizontal pointer movements to exceed the slop threshold,
+ * and calls the provided `onPointerSlopReached` callback with the pointer input change and the amount over the slop.
+ *
+ * @param pointerId The ID of the pointer.
+ * @param pointerType The type of the pointer (e.g., touch, mouse).
+ * @param onPointerSlopReached A callback function that is invoked when the pointer slop is reached.
+ * It receives the pointer input change and the amount over the slop.
+ */
 internal suspend fun AwaitPointerEventScope.awaitHorizontalPointerSlopOrCancellation(
     pointerId: PointerId,
     pointerType: PointerType,
@@ -617,6 +713,14 @@ private suspend inline fun AwaitPointerEventScope.awaitPointerSlopOrCancellation
     }
 }
 
+/**
+ * Determines whether a specific pointer is in the "up" state within a pointer event.
+ *
+ * This function checks if the pointer with the given ID is no longer pressed (i.e., it is in the "up" state)
+ * within the changes of the pointer event.
+ *
+ * @param pointerId The ID of the pointer to check.
+ */
 private fun PointerEvent.isPointerUp(pointerId: PointerId): Boolean =
     changes.fastFirstOrNull { it.id == pointerId }?.pressed != true
 
@@ -624,6 +728,14 @@ private val mouseSlop = 0.125.dp
 private val defaultTouchSlop = 18.dp // The default touch slop on Android devices
 private val mouseToTouchSlopRatio = mouseSlop / defaultTouchSlop
 
+/**
+ * Extension function to get the pointer slop value based on the pointer type.
+ *
+ * This function returns the slop value for the given pointer type. The slop value is used to
+ * determine the minimum distance a pointer must move before it is considered a drag gesture.
+ *
+ * @param pointerType The type of the pointer (e.g., touch, mouse).
+ */
 internal fun ViewConfiguration.pointerSlop(pointerType: PointerType): Float {
     return when (pointerType) {
         PointerType.Mouse -> touchSlop * mouseToTouchSlopRatio

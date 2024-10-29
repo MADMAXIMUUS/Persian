@@ -12,6 +12,29 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
+/**
+ * Extension function to draw the track of a slider within a [DrawScope].
+ *
+ * This function draws the inactive and active tracks of the slider, including ticks and stop indicators.
+ * It handles different slider types (range slider, centered slider) and customizes the appearance based on the provided parameters.
+ *
+ * @param tickFractions An array of fractions representing the positions of the ticks along the track.
+ * @param activeRangeStart The start value of the active range as a fraction of the track length.
+ * @param activeRangeEnd The end value of the active range as a fraction of the track length.
+ * @param inactiveTrackColor The color of the inactive track.
+ * @param activeTrackColor The color of the active track.
+ * @param inactiveTickColor The color of the ticks in the inactive track.
+ * @param activeTickColor The color of the ticks in the active track.
+ * @param height The height of the track.
+ * @param startThumbWidth The width of the start thumb.
+ * @param endThumbWidth The width of the end thumb.
+ * @param thumbTrackGapSize The gap size between the thumb and the track.
+ * @param trackInsideCornerSize The size of the inside corners of the track.
+ * @param drawStopIndicator A function to draw the stop indicator at a given position and color.
+ * @param drawTick A function to draw a tick at a given position and color.
+ * @param isRangeSlider Whether the slider is a range slider.
+ * @param isCenteredSlider Whether the slider is a centered slider.
+ */
 internal fun DrawScope.drawTrack(
     tickFractions: FloatArray,
     activeRangeStart: Float,
@@ -141,6 +164,18 @@ internal fun DrawScope.drawTrack(
     }
 }
 
+/**
+ * Extension function to draw a rounded rectangle track path within a [DrawScope].
+ *
+ * This function creates a path for a rounded rectangle and draws it with the specified color.
+ * The corners of the rectangle can be customized with different radii for the start and end corners.
+ *
+ * @param offset The offset position of the track.
+ * @param size The size of the track.
+ * @param color The color of the track.
+ * @param startCornerRadius The radius of the start corners of the track.
+ * @param endCornerRadius The radius of the end corners of the track.
+ */
 internal fun DrawScope.drawTrackPath(
     offset: Offset,
     size: Size,
@@ -164,6 +199,17 @@ internal fun DrawScope.drawTrackPath(
     trackPath.rewind()
 }
 
+/**
+ * Function to draw a stop indicator within a [DrawScope].
+ *
+ * This function draws a circle at the specified offset with the given size and color.
+ * The circle represents a stop indicator, commonly used in sliders to indicate the end points.
+ *
+ * @param drawScope The [DrawScope] in which to draw the stop indicator.
+ * @param offset The offset position of the stop indicator.
+ * @param size The diameter of the stop indicator.
+ * @param color The color of the stop indicator.
+ */
 internal fun drawStopIndicator(drawScope: DrawScope, offset: Offset, size: Dp, color: Color) {
     with(drawScope) { drawCircle(color = color, center = offset, radius = size.toPx() / 2f) }
 }

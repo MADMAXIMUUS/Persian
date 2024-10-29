@@ -5,6 +5,7 @@ import androidx.compose.runtime.Stable
 import androidx.compose.ui.util.packFloats
 import androidx.compose.ui.util.unpackFloat1
 import androidx.compose.ui.util.unpackFloat2
+import io.github.madmaximuus.persian.slider.range.RangeSlider
 
 
 /**

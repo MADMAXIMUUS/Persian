@@ -35,6 +35,7 @@ import io.github.madmaximuus.persian.slider.state.CenteredSliderState
  *   [Interaction]s and customize the appearance / behavior of this slider in different states.
  * @param valueRange range of values that this slider can take. The passed [value] will be coerced
  *   to this range.
+ * @param showLabel when `true` value label showed on top of slider thumb.
  */
 @Composable
 fun CenteredSlider(
@@ -46,7 +47,7 @@ fun CenteredSlider(
     colors: SliderColors = SliderDefaults.colors(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     valueRange: ClosedFloatingPointRange<Float> = -1f..1f,
-    isValueEnabled: Boolean,
+    showLabel: Boolean,
 ) {
     val state =
         remember(0, valueRange) { CenteredSliderState(value, 0, onValueChangeFinished, valueRange) }
@@ -60,7 +61,7 @@ fun CenteredSlider(
         modifier = modifier,
         enabled = enabled,
         interactionSource = interactionSource,
-        isValueEnabled = isValueEnabled,
+        showLabel = showLabel,
         colors = colors.copy(activeTrackColor = Color.Unspecified)
     )
 }
