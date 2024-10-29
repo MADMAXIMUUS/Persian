@@ -1,9 +1,9 @@
 package io.github.madmaximuus.persian.snackbar
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.Stable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
@@ -15,47 +15,58 @@ import io.github.madmaximuus.persian.iconButton.TertiaryIconButton
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.xmark.base.XMark
 
+interface SnackbarRightScope : RowScope {
+    val snackbarData: SnackbarData
+    val colors: SnackbarColors
+    val sizes: SnackbarSizes
+}
 
-@Stable
-class SnackbarRightScope(
-    private val snackbarData: SnackbarData
+class SnackbarRightScopeWrapper(
+    scope: RowScope,
+    override val snackbarData: SnackbarData,
+    override val colors: SnackbarColors,
+    override val sizes: SnackbarSizes,
+) : SnackbarRightScope, RowScope by scope
+
+@Composable
+fun SnackbarRightScope.Close(
+    icon: Painter = rememberVectorPainter(image = PersianSymbols.Default.XMark),
+    onClick: (SnackbarData) -> Unit = { it.dismiss() }
 ) {
-
-    @Composable
-    fun Close(
-        customIcon: Painter? = null,
-        onClick: (SnackbarData) -> Unit = { it.dismiss() }
+    Box(
+        modifier = Modifier
+            .padding(horizontal = PersianTheme.spacing.size4)
     ) {
-        Box(
-            modifier = Modifier.padding(horizontal = PersianTheme.spacing.size4)
-        ) {
-            TertiaryIconButton(
-                icon = customIcon ?: rememberVectorPainter(image = PersianSymbols.Default.XMark),
-                colors = IconButtonDefaults.tertiaryIconButtonColors(
-                    contentColor = PersianTheme.colorScheme.onSurfaceVariant
-                ),
-                onClick = {
-                    onClick(snackbarData)
-                }
-            )
-        }
+        TertiaryIconButton(
+            icon = icon,
+            sizes = this@Close.sizes.rightCloseSizes,
+            colors = IconButtonDefaults.tertiaryIconButtonColors(
+                contentColor = this@Close.colors.rightCloseColor
+            ),
+            onClick = {
+                onClick(this@Close.snackbarData)
+            }
+        )
     }
+}
 
-    @Composable
-    fun Action(
-        text: String,
-        onClick: (SnackbarData) -> Unit
+@Composable
+fun SnackbarRightScope.Action(
+    text: String,
+    onClick: (SnackbarData) -> Unit
+) {
+    Box(
+        modifier = Modifier.padding(horizontal = PersianTheme.spacing.size2)
     ) {
-        Box(
-            modifier = Modifier.padding(horizontal = PersianTheme.spacing.size2)
-        ) {
-            TertiaryButton(
-                text = text,
-                sizes = ButtonDefaults.smallSizes(),
-                onClick = {
-                    onClick(snackbarData)
-                }
-            )
-        }
+        TertiaryButton(
+            text = text,
+            sizes = this@Action.sizes.rightActionSizes,
+            colors = ButtonDefaults.tertiaryColors(
+                contentColor = this@Action.colors.rightActionColor
+            ),
+            onClick = {
+                onClick(this@Action.snackbarData)
+            }
+        )
     }
 }
