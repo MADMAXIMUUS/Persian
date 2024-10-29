@@ -86,6 +86,7 @@ import kotlin.math.ln
  * separation from a patterned background. Note that It will not affect z index of the Surface.
  * If you want to change the drawing order you can use `Modifier.zIndex`.
  * @param border Optional border to draw on top of the surface
+ * @param needClip if `true` content was clipped by this surface
  */
 @Composable
 @NonRestartableComposable
@@ -188,6 +189,7 @@ fun Surface(
  * for this Surface. You can create and pass in your own remembered [MutableInteractionSource] if
  * you want to observe [Interaction]s and customize the appearance / behavior of this Surface in
  * different [Interaction]s.
+ * @param needClip if `true` content was clipped by this surface
  */
 @Composable
 @NonRestartableComposable
@@ -296,6 +298,7 @@ fun Surface(
  * for this Surface. You can create and pass in your own remembered [MutableInteractionSource] if
  * you want to observe [Interaction]s and customize the appearance / behavior of this Surface in
  * different [Interaction]s.
+ * @param needClip if `true` content was clipped by this surface
  */
 @Composable
 @NonRestartableComposable
@@ -406,6 +409,7 @@ fun Surface(
  * for this Surface. You can create and pass in your own remembered [MutableInteractionSource] if
  * you want to observe [Interaction]s and customize the appearance / behavior of this Surface in
  * different [Interaction]s.
+ * @param needClip if `true` content was clipped by this surface
  */
 @Composable
 @NonRestartableComposable
