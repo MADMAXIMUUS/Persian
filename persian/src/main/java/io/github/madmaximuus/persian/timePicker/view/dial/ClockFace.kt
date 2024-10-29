@@ -69,6 +69,18 @@ import kotlin.math.cos
 import kotlin.math.roundToInt
 import kotlin.math.sin
 
+/**
+ * Composable function to display the clock face.
+ *
+ * This function renders the clock face based on the provided state, colors, and sizes.
+ * It uses a crossfade animation to transition between different clock face values.
+ * The clock face includes an outer circle with clock numbers and an optional inner circle
+ * for additional hours in 24-hour mode.
+ *
+ * @param state The state of the analog time picker.
+ * @param colors The colors to use for the clock face.
+ * @param sizes The sizes to use for the clock face.
+ */
 @Composable
 internal fun ClockFace(
     state: AnalogTimePickerState,
@@ -129,7 +141,9 @@ internal fun ClockFace(
                         repeat(ExtraHours.size) { index ->
                             val innerValue = ExtraHours[index]
                             ClockText(
-                                modifier = Modifier.semantics { traversalIndex = 12 + index.toFloat() },
+                                modifier = Modifier.semantics {
+                                    traversalIndex = 12 + index.toFloat()
+                                },
                                 state = state,
                                 value = innerValue,
                                 textStyle = sizes.clockDialNumberTextStyle
@@ -141,7 +155,6 @@ internal fun ClockFace(
         }
     }
 }
-
 
 /** Distribute elements evenly on a circle of [radius] */
 @Composable
@@ -187,6 +200,16 @@ private fun CircularLayout(
     }
 }
 
+/**
+ * Extension function to draw the selector for the clock face.
+ *
+ * This function draws the selector based on the provided state, colors, and height size class.
+ * It includes drawing the selector circle, the selector line, and the small dot at the center.
+ *
+ * @param state The state of the analog time picker.
+ * @param colors The colors to use for the clock face.
+ * @param heightSizeClass The height size class of the window.
+ */
 private fun Modifier.drawSelector(
     state: AnalogTimePickerState,
     colors: DialTimePickerViewColors,
@@ -259,6 +282,17 @@ private fun Modifier.drawSelector(
         )
     }
 
+/**
+ * Composable function to display clock text.
+ *
+ * This function renders the clock text based on the provided value, state, and text style.
+ * It handles tap gestures to update the time picker state and highlights the selected text.
+ *
+ * @param modifier The modifier to apply to the clock text.
+ * @param state The state of the analog time picker.
+ * @param value The value to display in the clock text.
+ * @param textStyle The text style to use for the clock text.
+ */
 @Composable
 private fun ClockText(
     modifier: Modifier,

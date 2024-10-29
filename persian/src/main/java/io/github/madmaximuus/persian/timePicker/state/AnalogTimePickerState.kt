@@ -17,14 +17,38 @@ import io.github.madmaximuus.persian.timePicker.util.RadiansPerMinute
 import io.github.madmaximuus.persian.timePicker.util.TimePickerSelectionMode
 import kotlin.math.PI
 
+/**
+ * Internal class representing the state of an analog time picker.
+ *
+ * This class extends [TimePickerState] and provides additional functionality for managing
+ * the state of an analog time picker, including animations and gesture handling.
+ *
+ * @param state The underlying [TimePickerState] that this class delegates to.
+ */
 internal class AnalogTimePickerState(val state: TimePickerState) : TimePickerState by state {
 
+    /**
+     * Gets the current angle of the time picker.
+     */
     val currentAngle: Float
         get() = anim.value
 
+    /**
+     * The angle corresponding to the current hour, normalized to the range of a full circle.
+     */
     private var hourAngle = RadiansPerHour * (state.hour % 12) - FullCircle / 4
+
+    /**
+     * The angle corresponding to the current minute, normalized to the range of a full circle.
+     */
     private var minuteAngle = RadiansPerMinute * state.minute - FullCircle / 4
 
+    /**
+     * Animates the time picker to the current time.
+     *
+     * This function checks if the time picker needs to be updated and animates to the current
+     * hour or minute angle accordingly.
+     */
     suspend fun animateToCurrent() {
         if (!isUpdated()) {
             return
@@ -41,6 +65,9 @@ internal class AnalogTimePickerState(val state: TimePickerState) : TimePickerSta
         }
     }
 
+    /**
+     * Checks if the time picker state needs to be updated.
+     */
     private fun isUpdated(): Boolean {
         if (
             selection == TimePickerSelectionMode.Hour &&
@@ -59,9 +86,17 @@ internal class AnalogTimePickerState(val state: TimePickerState) : TimePickerSta
         return true
     }
 
+    /**
+     * Gets the list of values to be displayed on the clock face.
+     */
     val clockFaceValues: IntList
         get() = if (selection == TimePickerSelectionMode.Minute) Minutes else Hours
 
+    /**
+     * Calculates the end value for the animation.
+     *
+     * @param new The new angle to animate to.
+     */
     private fun endValueForAnimation(new: Float): Float {
         // Calculate the absolute angular difference
         var diff = anim.value - new
@@ -76,8 +111,16 @@ internal class AnalogTimePickerState(val state: TimePickerState) : TimePickerSta
         return anim.value - diff
     }
 
+    /**
+     * The animatable object used for animating the time picker.
+     */
     private var anim = Animatable(hourAngle)
 
+    /**
+     * Handles the end of a gesture.
+     *
+     * This function calculates the end value for the animation and animates to it.
+     */
     suspend fun onGestureEnd() {
         val end =
             endValueForAnimation(
@@ -91,6 +134,12 @@ internal class AnalogTimePickerState(val state: TimePickerState) : TimePickerSta
         mutex.mutate(priority = PreventUserInput) { anim.animateTo(end, spring()) }
     }
 
+    /**
+     * Rotates the time picker to a specified angle.
+     *
+     * @param angle The angle to rotate to.
+     * @param animate Whether to animate the rotation.
+     */
     suspend fun rotateTo(angle: Float, animate: Boolean = false) {
         mutex.mutate(MutatePriority.UserInput) {
             if (selection == TimePickerSelectionMode.Hour) {
@@ -110,6 +159,9 @@ internal class AnalogTimePickerState(val state: TimePickerState) : TimePickerSta
         }
     }
 
+    /**
+     * Gets or sets the current minute.
+     */
     override var minute: Int
         get() = state.minute
         set(value) {
@@ -121,8 +173,14 @@ internal class AnalogTimePickerState(val state: TimePickerState) : TimePickerSta
             updateBaseStateMinute()
         }
 
+    /**
+     * Updates the base state minute without triggering recomposition.
+     */
     private fun updateBaseStateMinute() = Snapshot.withoutReadObservation { state.minute = minute }
 
+    /**
+     * Gets or sets the current hour.
+     */
     override var hour: Int
         get() = state.hour
         set(value) {
@@ -133,6 +191,9 @@ internal class AnalogTimePickerState(val state: TimePickerState) : TimePickerSta
             }
         }
 
+    /**
+     * Normalizes an angle to the range [0, 2π).
+     */
     private fun Float.normalize(): Float {
         var normalizedAngle = this % (2 * PI)
 
@@ -143,20 +204,34 @@ internal class AnalogTimePickerState(val state: TimePickerState) : TimePickerSta
         return normalizedAngle.toFloat()
     }
 
+    /**
+     * A mutex used to prevent concurrent mutations.
+     */
     private val mutex = MutatorMutex()
 
+    /**
+     * Converts an angle to the corresponding hour.
+     */
     private fun Float.toHour(): Int {
         val hourOffset: Float = RadiansPerHour / 2
         val totalOffset = hourOffset + QuarterCircle
         return ((this + totalOffset) / RadiansPerHour).toInt() % 12
     }
 
+    /**
+     * Converts an angle to the corresponding minute.
+     */
     private fun Float.toMinute(): Int {
         val minuteOffset: Float = RadiansPerMinute / 2
         val totalOffset = minuteOffset + QuarterCircle
         return ((this + totalOffset) / RadiansPerMinute).toInt() % 60
     }
 
+    /**
+     * Offsets an angle by a quarter circle.
+     *
+     * @param angle The angle to offset.
+     */
     private fun offsetAngle(angle: Float): Float {
         val ret = angle + QuarterCircle.toFloat()
         return if (ret < 0) ret + FullCircle else ret

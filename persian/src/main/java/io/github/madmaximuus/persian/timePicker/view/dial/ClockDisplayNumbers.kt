@@ -25,6 +25,16 @@ import io.github.madmaximuus.persian.timePicker.util.TimePickerSelectionMode
 import io.github.madmaximuus.persian.timePicker.util.hourForDisplay
 import io.github.madmaximuus.persian.timePicker.util.toLocalString
 
+/**
+ * Composable function to display the clock display numbers.
+ *
+ * This function arranges the hour and minute selectors along with a separator in a row.
+ * It uses the provided state, colors, and sizes to customize the appearance of the clock display numbers.
+ *
+ * @param state The state of the time picker.
+ * @param colors The colors to use for the clock display numbers.
+ * @param sizes The sizes to use for the clock display numbers.
+ */
 @Composable
 internal fun ClockDisplayNumbers(
     state: TimePickerState,
@@ -59,6 +69,19 @@ internal fun ClockDisplayNumbers(
     }
 }
 
+/**
+ * Composable function to display a time selector.
+ *
+ * This function renders a time selector based on the provided value, state, selection mode, colors,
+ * and sizes. The selector is highlighted if it is the currently selected item.
+ *
+ * @param modifier The modifier to apply to the time selector.
+ * @param value The value to display in the time selector.
+ * @param state The state of the time picker.
+ * @param selection The current selection mode of the time picker.
+ * @param colors The colors to use for the time selector.
+ * @param sizes The sizes to use for the time selector.
+ */
 @Composable
 private fun TimeSelector(
     modifier: Modifier,
@@ -95,6 +118,16 @@ private fun TimeSelector(
     }
 }
 
+
+/**
+ * Composable function to display the separator between the hour and minute selectors.
+ *
+ * This function renders a colon (:) as the separator, centered within the provided modifier.
+ * The separator uses the specified sizes and colors from the theme.
+ *
+ * @param modifier The modifier to apply to the separator.
+ * @param sizes The sizes to use for the separator.
+ */
 @Composable
 private fun DisplaySeparator(
     modifier: Modifier,

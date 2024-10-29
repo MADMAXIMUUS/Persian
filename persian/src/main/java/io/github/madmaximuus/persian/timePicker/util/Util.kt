@@ -10,6 +10,8 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.timePicker.state.AnalogTimePickerState
 import io.github.madmaximuus.persian.timePicker.state.TimePickerState
+import io.github.madmaximuus.persian.timePicker.util.LayoutId.InnerCircle
+import io.github.madmaximuus.persian.timePicker.util.LayoutId.Selector
 import kotlinx.coroutines.delay
 import java.text.NumberFormat
 import java.util.Locale
@@ -42,6 +44,11 @@ internal val ExtraHours: IntList =
     MutableIntList(Hours.size).apply { Hours.forEach { add((it % 12 + 12)) } }
 internal val PeriodToggleMargin = 12.dp
 
+/**
+ * Extension property to get the hour in a display-friendly format.
+ *
+ * This property adjusts the hour based on the 24-hour format setting and whether it is in the afternoon.
+ */
 internal val TimePickerState.hourForDisplay: Int
     get() =
         when {
@@ -51,12 +58,35 @@ internal val TimePickerState.hourForDisplay: Int
             else -> hour
         }
 
+/**
+ * Moves the selector based on the given coordinates and maximum distance.
+ *
+ * This function updates the `isAfternoon` state if the selection mode is `Hour` and the time picker
+ * is in 24-hour format. The update is based on the distance between the given coordinates and the
+ * center of the picker.
+ *
+ * @param x The x-coordinate of the touch or gesture event.
+ * @param y The y-coordinate of the touch or gesture event.
+ * @param maxDist The maximum distance from the center to consider for updating the `isAfternoon` state.
+ * @param center The center coordinates of the picker.
+ */
 internal fun TimePickerState.moveSelector(x: Float, y: Float, maxDist: Float, center: IntOffset) {
     if (selection == TimePickerSelectionMode.Hour && is24hour) {
         isAfternoon = dist(x, y, center.x, center.y) < maxDist
     }
 }
 
+/**
+ * Handles a tap event on the analog time picker.
+ *
+ * This function calculates the angle based on the tap coordinates and updates the time picker state
+ * accordingly. It also moves the selector and rotates the picker to the calculated angle.
+ *
+ * @param x The x-coordinate of the tap event.
+ * @param y The y-coordinate of the tap event.
+ * @param maxDist The maximum distance from the center to consider for updating the `isAfternoon` state.
+ * @param center The center coordinates of the picker.
+ */
 internal suspend fun AnalogTimePickerState.onTap(
     x: Float,
     y: Float,
@@ -81,6 +111,12 @@ internal suspend fun AnalogTimePickerState.onTap(
     selection = TimePickerSelectionMode.Minute
 }
 
+/**
+ * Extension property to get the vertical selector position as a [DpOffset].
+ *
+ * This property calculates the position of the vertical selector based on the current angle,
+ * the 24-hour format setting, the afternoon state, and the selection mode.
+ */
 internal val AnalogTimePickerState.verticalSelectorPos: DpOffset
     get() {
         val handleRadiusPx = 48.dp / 2
@@ -99,6 +135,12 @@ internal val AnalogTimePickerState.verticalSelectorPos: DpOffset
         return DpOffset(offsetX, offsetY)
     }
 
+/**
+ * Extension property to get the horizontal selector position as a [DpOffset].
+ *
+ * This property calculates the position of the horizontal selector based on the current angle,
+ * the 24-hour format setting, the afternoon state, and the selection mode.
+ */
 internal val AnalogTimePickerState.horizontalSelectorPos: DpOffset
     get() {
         val handleRadiusPx = 36.dp / 2
@@ -117,17 +159,47 @@ internal val AnalogTimePickerState.horizontalSelectorPos: DpOffset
         return DpOffset(offsetX, offsetY)
     }
 
+/**
+ * Calculates the Euclidean distance between two points.
+ *
+ * This function computes the distance between two points given their coordinates.
+ *
+ * @param x1 The x-coordinate of the first point.
+ * @param y1 The y-coordinate of the first point.
+ * @param x2 The x-coordinate of the second point.
+ * @param y2 The y-coordinate of the second point.
+ */
 internal fun dist(x1: Float, y1: Float, x2: Int, y2: Int): Float {
     val x = x2 - x1
     val y = y2 - y1
     return hypot(x.toDouble(), y.toDouble()).toFloat()
 }
 
+/**
+ * Calculates the arctangent of the given coordinates, adjusted to a specific range.
+ *
+ * This function computes the arctangent of the given y and x coordinates and adjusts the result
+ * to a range that is offset by a quarter circle. If the result is negative, it adds a full circle
+ * to ensure the angle is within the desired range.
+ *
+ * @param y The y-coordinate.
+ * @param x The x-coordinate.
+ */
 internal fun atan(y: Float, x: Float): Float {
     val ret = atan2(y, x) - QuarterCircle.toFloat()
     return if (ret < 0) ret + FullCircle else ret
 }
 
+/**
+ * Converts an integer to a localized string representation.
+ *
+ * This function formats the integer according to the specified number of digits and whether grouping
+ * (e.g., thousands separators) should be used.
+ *
+ * @param minDigits The minimum number of digits to display. Default is 1.
+ * @param maxDigits The maximum number of digits to display. Default is 2.
+ * @param isGroupingUsed Whether grouping (e.g., thousands separators) should be used. Default is true.
+ */
 internal fun Int.toLocalString(
     minDigits: Int = 1,
     maxDigits: Int = 2,
@@ -143,6 +215,17 @@ internal fun Int.toLocalString(
 
 private val cachedFormatters = WeakHashMap<String, NumberFormat>()
 
+/**
+ * Retrieves a cached date-time formatter with the specified settings.
+ *
+ * This function uses a cache to store and retrieve formatters based on the specified settings
+ * and the current locale. The cache key is constructed using the minimum digits, maximum digits,
+ * grouping setting, and the language tag of the default locale.
+ *
+ * @param minDigits The minimum number of digits to display.
+ * @param maxDigits The maximum number of digits to display.
+ * @param isGroupingUsed Whether grouping (e.g., thousands separators) should be used.
+ */
 private fun getCachedDateTimeFormatter(
     minDigits: Int,
     maxDigits: Int,
@@ -160,6 +243,12 @@ private fun getCachedDateTimeFormatter(
     }
 }
 
+/**
+ * Enum class representing the layout IDs for different components of the time picker.
+ *
+ * @property Selector The layout ID for the selector component.
+ * @property InnerCircle The layout ID for the inner circle component.
+ */
 internal enum class LayoutId {
     Selector,
     InnerCircle,

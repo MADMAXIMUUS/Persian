@@ -23,6 +23,14 @@ import io.github.madmaximuus.persian.timePicker.util.moveSelector
 import io.github.madmaximuus.persian.timePicker.util.onTap
 import kotlinx.coroutines.launch
 
+/**
+ * Data class representing a modifier node element for a clock dial.
+ *
+ * This class is used to create and update a [ClockDialNode] based on the provided state and selection mode.
+ *
+ * @param state The state of the analog time picker.
+ * @param selection The current selection mode of the time picker.
+ */
 internal data class ClockDialModifier(
     private val state: AnalogTimePickerState,
     private val selection: TimePickerSelectionMode,
@@ -46,6 +54,15 @@ internal data class ClockDialModifier(
     }
 }
 
+/**
+ * Class representing a modifier node for a clock dial.
+ *
+ * This class handles pointer input events for tap and drag gestures, updates the state of the analog
+ * time picker, and manages the layout and positioning of the clock dial.
+ *
+ * @param state The state of the analog time picker.
+ * @param selection The current selection mode of the time picker.
+ */
 internal class ClockDialNode(
     private var state: AnalogTimePickerState,
     private var selection: TimePickerSelectionMode,

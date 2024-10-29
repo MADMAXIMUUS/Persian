@@ -30,6 +30,17 @@ import io.github.madmaximuus.persian.timePicker.view.dial.DialTimePickerViewColo
 import io.github.madmaximuus.persian.timePicker.view.dial.DialTimePickerViewSizes
 import io.github.madmaximuus.persian.timePicker.view.dial.PeriodToggleImpl
 
+/**
+ * Composable function to display a horizontal time picker view.
+ *
+ * This function arranges the horizontal clock display and the clock face in a row, with some spacing
+ * between them. It uses the provided state, colors, and sizes to customize the appearance of the time picker.
+ *
+ * @param state The state of the analog time picker.
+ * @param modifier The modifier to apply to the row.
+ * @param colors The colors to use for the time picker components.
+ * @param sizes The sizes to use for the time picker components.
+ */
 @Composable
 internal fun HorizontalTimePickerView(
     state: AnalogTimePickerState,
@@ -47,6 +58,16 @@ internal fun HorizontalTimePickerView(
     }
 }
 
+/**
+ * Composable function to display the horizontal clock display.
+ *
+ * This function arranges the clock display numbers and the period toggle (if applicable) in a column.
+ * The period toggle is only displayed if the time picker is not in 24-hour format.
+ *
+ * @param state The state of the time picker.
+ * @param colors The colors to use for the clock display.
+ * @param sizes The sizes to use for the clock display.
+ */
 @Composable
 private fun HorizontalClockDisplay(
     state: TimePickerState,
@@ -68,6 +89,17 @@ private fun HorizontalClockDisplay(
     }
 }
 
+/**
+ * Composable function to implement the period toggle.
+ *
+ * This function should be implemented to render the period toggle (AM/PM) based on the provided
+ * state, colors, sizes, measure policy, and shapes.
+ *
+ * @param modifier The modifier to apply to the period toggle.
+ * @param state The state of the time picker.
+ * @param colors The colors to use for the period toggle.
+ * @param sizes The sizes to use for the period toggle.
+ */
 @Composable
 private fun HorizontalPeriodToggle(
     modifier: Modifier,

@@ -12,8 +12,20 @@ import io.github.madmaximuus.persian.timePicker.view.wheel.WheelTimePickerViewCo
 import io.github.madmaximuus.persian.timePicker.view.wheel.WheelTimePickerViewDefaults
 import io.github.madmaximuus.persian.timePicker.view.wheel.WheelTimePickerViewSizes
 
+/**
+ * Contains all default values used by time picker
+ */
 object TimePickerDefaults {
 
+    /**
+     * Composable function to create and return a [TimePickerColors] instance with the specified colors.
+     *
+     * This function allows customizing the colors used in the time picker components.
+     *
+     * @param wheelTimePickerViewColors The colors for the wheel time picker view.
+     * @param dialTimePickerViewColors The colors for the dial time picker view.
+     * @param alertColors The colors for the alert dialog.
+     */
     @Composable
     fun colors(
         wheelTimePickerViewColors: WheelTimePickerViewColors = WheelTimePickerViewDefaults.colors(),
@@ -25,6 +37,15 @@ object TimePickerDefaults {
         alertColors = alertColors
     )
 
+    /**
+     * Composable function to create and return a [TimePickerSizes] instance with the specified sizes.
+     *
+     * This function allows customizing the sizes used in the time picker components.
+     *
+     * @param wheelTimePickerViewSizes The sizes for the wheel time picker view.
+     * @param dialTimePickerViewSizes The sizes for the dial time picker view.
+     * @param alertSizes The sizes for the alert dialog.
+     */
     @Composable
     fun sizes(
         wheelTimePickerViewSizes: WheelTimePickerViewSizes = WheelTimePickerViewDefaults.sizes(),
@@ -37,6 +58,15 @@ object TimePickerDefaults {
     )
 }
 
+/**
+ * Immutable class representing the colors for the time picker components.
+ *
+ * This class holds the colors for the wheel time picker view, dial time picker view, and alert dialog.
+ *
+ * @param wheelTimePickerViewColors The colors for the wheel time picker view.
+ * @param dialTimePickerViewColors The colors for the dial time picker view.
+ * @param alertColors The colors for the alert dialog.
+ */
 @Immutable
 class TimePickerColors(
     internal val wheelTimePickerViewColors: WheelTimePickerViewColors,
@@ -44,6 +74,15 @@ class TimePickerColors(
     internal val alertColors: AlertColors
 )
 
+/**
+ * Immutable class representing the sizes for the time picker components.
+ *
+ * This class holds the sizes for the wheel time picker view, dial time picker view, and alert sizes.
+ *
+ * @param wheelTimePickerViewSizes The sizes for the wheel time picker view.
+ * @param dialTimePickerViewSizes The sizes for the dial time picker view.
+ * @param alertSizes The sizes for the alert dialog.
+ */
 @Immutable
 class TimePickerSizes(
     internal val wheelTimePickerViewSizes: WheelTimePickerViewSizes,

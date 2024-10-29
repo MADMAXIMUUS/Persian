@@ -9,8 +9,31 @@ import androidx.compose.ui.graphics.takeOrElse
 import androidx.compose.ui.text.TextStyle
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
+/**
+ * Contains all default values used by time picker
+ */
 object DialTimePickerViewDefaults {
 
+    /**
+     * Composable function to create and return a [DialTimePickerViewColors] instance with the specified colors.
+     *
+     * This function allows customizing the colors used in the dial time picker view.
+     *
+     * @param clockDialColor The color of the clock dial.
+     * @param selectorColor The color of the selector.
+     * @param containerColor The color of the container.
+     * @param periodSelectorBorderColor The color of the period selector border.
+     * @param clockDialSelectedContentColor The color of the selected content on the clock dial.
+     * @param clockDialUnselectedContentColor The color of the unselected content on the clock dial.
+     * @param periodSelectorSelectedContainerColor The color of the selected container in the period selector.
+     * @param periodSelectorUnselectedContainerColor The color of the unselected container in the period selector.
+     * @param periodSelectorSelectedContentColor The color of the selected content in the period selector.
+     * @param periodSelectorUnselectedContentColor The color of the unselected content in the period selector.
+     * @param timeSelectorSelectedContainerColor The color of the selected container in the time selector.
+     * @param timeSelectorUnselectedContainerColor The color of the unselected container in the time selector.
+     * @param timeSelectorSelectedContentColor The color of the selected content in the time selector.
+     * @param timeSelectorUnselectedContentColor The color of the unselected content in the time selector..
+     */
     @Composable
     fun colors(
         clockDialColor: Color = PersianTheme.colorScheme.surfaceContainerHighest,
@@ -44,6 +67,17 @@ object DialTimePickerViewDefaults {
         timeSelectorUnselectedContentColor = timeSelectorUnselectedContentColor
     )
 
+    /**
+     * Composable function to create and return a [DialTimePickerViewSizes] instance with the specified sizes and styles.
+     *
+     * This function allows customizing the shapes and text styles used in the dial time picker view.
+     *
+     * @param clockDisplayShape The shape of the clock display.
+     * @param clockDisplayTextStyle The text style of the clock display.
+     * @param periodSelectorShape The shape of the period selector.
+     * @param periodSelectorTextStyle The text style of the period selector.
+     * @param clockDialNumberTextStyle The text style of the clock dial numbers.
+     */
     @Composable
     fun sizes(
         clockDisplayShape: Shape = PersianTheme.shapes.shape12,
@@ -62,7 +96,7 @@ object DialTimePickerViewDefaults {
 
 
 /**
- * Represents the colors used by a [TimePicker] in different states
+ * Represents the colors used by a [DialTimePickerView] in different states
  *
  * @param clockDialColor The color of the clock dial.
  * @param clockDialSelectedContentColor the color of the numbers of the clock dial when they are
@@ -87,7 +121,7 @@ object DialTimePickerViewDefaults {
  *   buttons to switch between hour and minutes
  * @param timeSelectorUnselectedContentColor color used for the unselected content of the display
  *   buttons to switch between hour and minutes
- * @constructor create an instance with arbitrary colors. See [TimePickerDefaults.colors] for the
+ * @constructor create an instance with arbitrary colors. See [DialTimePickerViewDefaults.colors] for the
  *   default implementation that follows Material specifications.
  */
 @Immutable

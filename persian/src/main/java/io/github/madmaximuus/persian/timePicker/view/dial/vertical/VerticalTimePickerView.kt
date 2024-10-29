@@ -32,6 +32,18 @@ import io.github.madmaximuus.persian.timePicker.view.dial.DialTimePickerViewColo
 import io.github.madmaximuus.persian.timePicker.view.dial.DialTimePickerViewSizes
 import io.github.madmaximuus.persian.timePicker.view.dial.PeriodToggleImpl
 
+/**
+ * Composable function to display a vertical time picker view.
+ *
+ * This function arranges the vertical clock display, clock face, and spacers in a column, with
+ * horizontal centering. It uses the provided state, colors, and sizes to customize the appearance
+ * of the time picker.
+ *
+ * @param state The state of the analog time picker.
+ * @param modifier The modifier to apply to the column.
+ * @param colors The colors to use for the time picker components.
+ * @param sizes The sizes to use for the time picker components.
+ */
 @Composable
 internal fun VerticalTimePickerView(
     state: AnalogTimePickerState,
@@ -50,6 +62,16 @@ internal fun VerticalTimePickerView(
     }
 }
 
+/**
+ * Composable function to display the vertical clock display.
+ *
+ * This function arranges the clock display numbers and the period toggle (if applicable) in a row,
+ * with horizontal centering. The period toggle is only displayed if the time picker is not in 24-hour format.
+ *
+ * @param state The state of the time picker.
+ * @param colors The colors to use for the clock display.
+ * @param sizes The sizes to use for the clock display.
+ */
 @Composable
 private fun VerticalClockDisplay(
     state: TimePickerState,
@@ -71,6 +93,18 @@ private fun VerticalClockDisplay(
     }
 }
 
+/**
+ * Composable function to display the vertical period toggle.
+ *
+ * This function arranges the period toggle (AM/PM) in a vertical layout, with a spacer between
+ * the two options. The layout is customized using a measure policy to ensure proper placement
+ * of the items.
+ *
+ * @param modifier The modifier to apply to the period toggle.
+ * @param state The state of the time picker.
+ * @param colors The colors to use for the period toggle.
+ * @param sizes The sizes to use for the period toggle.
+ */
 @Composable
 private fun VerticalPeriodToggle(
     modifier: Modifier,

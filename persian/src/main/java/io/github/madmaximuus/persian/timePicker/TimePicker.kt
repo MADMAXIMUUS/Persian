@@ -26,8 +26,9 @@ import io.github.madmaximuus.persian.timePicker.view.wheel.WheelTimePickerView
  *   and [TimePickerState.minute], and set the initial time for this input.
  * @param colors colors [TimePickerColors] that will be used to resolve the colors used for this
  *   time picker in different states. See [TimePickerDefaults.colors].
- * @param layoutType, the different [TimePickerLayoutType] supported by this time picker, it will
- *   change the position and sizing of different components of the timepicker.
+ * @param sizes sizes [TimePickerSizes] that will be used to resolve the sizes used for this
+ * time picker in different states. See [TimePickerDefaults.sizes].
+ * @param onDismissRequest invoked when dialog is closed
  */
 @Composable
 fun TimePicker(

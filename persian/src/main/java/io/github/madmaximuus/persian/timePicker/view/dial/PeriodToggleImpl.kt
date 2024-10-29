@@ -27,6 +27,21 @@ import io.github.madmaximuus.persian.text.Text
 import io.github.madmaximuus.persian.timePicker.state.TimePickerState
 import io.github.madmaximuus.persian.timePicker.util.SeparatorZIndex
 
+/**
+ * Composable function to implement the period toggle.
+ *
+ * This function renders the period toggle (AM/PM) based on the provided state, colors, sizes,
+ * measure policy, and shapes. It uses a custom layout to arrange the toggle items and a spacer
+ * between them.
+ *
+ * @param modifier The modifier to apply to the period toggle.
+ * @param state The state of the time picker.
+ * @param colors The colors to use for the period toggle.
+ * @param sizes The sizes to use for the period toggle.
+ * @param measurePolicy The measure policy to use for the period toggle layout.
+ * @param startShape The shape to use for the start of the period toggle.
+ * @param endShape The shape to use for the end of the period toggle.
+ */
 @Composable
 internal fun PeriodToggleImpl(
     modifier: Modifier,
@@ -84,6 +99,18 @@ internal fun PeriodToggleImpl(
     )
 }
 
+/**
+ * Composable function to display a toggle item.
+ *
+ * This function renders a toggle item based on the provided checked state, shape, onClick callback,
+ * colors, and content. The toggle item is highlighted if it is checked.
+ *
+ * @param checked Whether the toggle item is checked.
+ * @param shape The shape to use for the toggle item.
+ * @param onClick The callback to invoke when the toggle item is clicked.
+ * @param colors The colors to use for the toggle item.
+ * @param content The content to display inside the toggle item.
+ */
 @Composable
 private fun ToggleItem(
     checked: Boolean,

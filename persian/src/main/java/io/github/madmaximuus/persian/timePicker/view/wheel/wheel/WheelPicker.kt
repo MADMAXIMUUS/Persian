@@ -19,6 +19,18 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.flow.filter
 
+/**
+ * Composable function to display a vertical wheel picker.
+ *
+ * This function creates a vertical wheel picker with a specified number of items. It uses a
+ * [LazyColumn] to display the items and handles scrolling and snapping behavior.
+ *
+ * @param modifier The modifier to apply to the vertical wheel picker.
+ * @param count The number of items in the wheel picker.
+ * @param state The state of the lazy list.
+ * @param onScrollFinish The callback to invoke when scrolling finishes.
+ * @param content The content to display for each item in the wheel picker.
+ */
 @Composable
 internal fun VerticalWheelPicker(
     modifier: Modifier = Modifier,
