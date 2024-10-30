@@ -13,16 +13,45 @@ import io.github.madmaximuus.persian.avatarsAndImages.Avatar
 import io.github.madmaximuus.persian.iconButton.TertiaryIconButton
 import io.github.madmaximuus.persian.topAppBar.util.LayoutId
 
+/**
+ * An interface that defines the scope for the left content of a top app bar.
+ *
+ * This scope provides access to the colors and sizes used by the top app bar,
+ * allowing customization of the left content based on these properties.
+ *
+ * @property colors The colors to be used for the top app bar.
+ * @property sizes The sizes to be used for the top app bar.
+ */
 interface TopAppBarLeftScope {
     val colors: TopAppBarColors
     val sizes: TopAppBarSizes
 }
+
+/**
+ * An internal class that implements the [TopAppBarLeftScope] interface.
+ *
+ * This class wraps the colors and sizes properties, providing a concrete implementation
+ * for the scope used by the left content of a top app bar.
+ *
+ * @property colors The colors to be used for the top app bar.
+ * @property sizes The sizes to be used for the top app bar.
+ */
 
 internal class TopAppBarLeftScopeWrapper(
     override val colors: TopAppBarColors,
     override val sizes: TopAppBarSizes
 ) : TopAppBarLeftScope
 
+/**
+ * A composable function that creates an icon button within the [TopAppBarLeftScope].
+ *
+ * This function provides a simple way to add an icon button to the left side of a top app bar,
+ * with customizable modifier, icon, and click behavior.
+ *
+ * @param modifier The modifier to be applied to the icon button.
+ * @param icon The painter to be used as the icon for the button.
+ * @param onClick The lambda to be executed when the button is clicked.
+ */
 @Composable
 fun TopAppBarLeftScope.IconButton(
     modifier: Modifier = Modifier,
@@ -45,6 +74,16 @@ fun TopAppBarLeftScope.IconButton(
     }
 }
 
+/**
+ * A composable function that creates an avatar within the [TopAppBarLeftScope].
+ *
+ * This function provides a simple way to add an avatar to the left side of a top app bar,
+ * with customizable modifier, avatar URL, and click behavior.
+ *
+ * @param modifier The modifier to be applied to the avatar.
+ * @param avatarUrl The URI of the avatar image to be displayed.
+ * @param onClick The lambda to be executed when the avatar is clicked.
+ */
 @Composable
 fun TopAppBarLeftScope.Avatar(
     modifier: Modifier = Modifier,

@@ -27,7 +27,6 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.isFinite
 import androidx.compose.ui.unit.isSpecified
-import io.github.madmaximuus.persian.foundation.LocalContentColor
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.surface.Surface
 import io.github.madmaximuus.persian.text.Text
@@ -141,24 +140,12 @@ internal fun SingleRowTopAppBar(
  * @param modifier a [Modifier]
  * @param scrolledOffset a [ScrolledOffset] that provides the app bar offset in pixels (note that
  *   when the app bar is scrolled, the lambda will output negative values)
- * @param navigationIconContentColor the content color that will be applied via a
- *   [LocalContentColor] when composing the navigation icon
- * @param titleContentColor the color that will be applied via a [LocalContentColor] when composing
- *   the title
- * @param actionIconContentColor the content color that will be applied via a [LocalContentColor]
- *   when composing the action icons
  * @param title the top app bar title (header)
- * @param titleTextStyle the title's text style
- * @param titleAlpha the title's alpha
- * @param titleVerticalArrangement the title's vertical arrangement
  * @param titleHorizontalArrangement the title's horizontal arrangement
- * @param titleBottomPadding the title's bottom padding
- * @param hideTitleSemantics hides the title node from the semantic tree. Apply this boolean when
- *   this layout is part of a [TwoRowsTopAppBar] to hide the title's semantics from accessibility
- *   services. This is needed to avoid having multiple titles visible to accessibility services at
- *   the same time, when animating between collapsed / expanded states.
- * @param navigationIcon a navigation icon [Composable]
- * @param actions actions [Composable]
+ * @param colors the [TopAppBarColors] that used by [TopAppBar] or [CenteredTopAppBar]
+ * @param sizes the [TopAppBarSizes] that used by [TopAppBar] or [CenteredTopAppBar]
+ * @param left the optional content that will be displayed in left side of [TopAppBar] or [CenteredTopAppBar]
+ * @param right the optional content that will be displayed in right side of [TopAppBar] or [CenteredTopAppBar]
  */
 @Composable
 private fun TopAppBarLayout(

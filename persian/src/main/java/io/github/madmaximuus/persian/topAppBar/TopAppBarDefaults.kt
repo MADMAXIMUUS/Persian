@@ -35,6 +35,23 @@ import io.github.madmaximuus.persian.menu.MenuSizes
 
 object TopAppBarDefaults {
 
+    /**
+     * A composable function that creates a [TopAppBarColors] instance with customizable color properties.
+     *
+     * This function allows you to specify various color properties for the top app bar,
+     * including container colors, icon button colors, avatar colors, title text color,
+     * action button colors, menu colors, and badge colors.
+     *
+     * @param containerColor The background color of the top app bar container.
+     * @param scrolledContainerColor The background color of the top app bar container when scrolled.
+     * @param leftIconButtonColors The colors for the icon buttons on the left side of the top app bar.
+     * @param leftAvatarColors The colors for the avatar on the left side of the top app bar.
+     * @param titleTextColor The color of the title text in the top app bar. Default is the on-surface color from the theme.
+     * @param rightActionButtonColors The colors for the action buttons on the right side of the top app bar.
+     * @param rightIconButtonColors The colors for the icon buttons on the right side of the top app bar.
+     * @param menuColors The colors for the dropdown menu in the top app bar.
+     * @param badgeColors The colors for the badges in the top app bar.
+     */
     @Composable
     fun colors(
         containerColor: Color = PersianTheme.colorScheme.surface,
@@ -63,6 +80,21 @@ object TopAppBarDefaults {
             badgeColors = badgeColors,
         )
 
+    /**
+     * A composable function that creates a [TopAppBarSizes] instance with customizable size properties.
+     *
+     * This function allows you to specify various size properties for the top app bar,
+     * including icon button sizes, avatar sizes, title text style, action button sizes,
+     * menu sizes, and badge sizes.
+     *
+     * @param leftIconButtonSizes The sizes for the icon buttons on the left side of the top app bar. Default is the medium icon button sizes.
+     * @param leftAvatarSizes The sizes for the avatar on the left side of the top app bar.
+     * @param titleTextStyle The text style for the title text in the top app bar.
+     * @param rightActionButtonSizes The sizes for the action buttons on the right side of the top app bar.
+     * @param rightIconButtonSizes The sizes for the icon buttons on the right side of the top app bar.
+     * @param menuSizes The sizes for the dropdown menu in the top app bar.
+     * @param badgeSizes The sizes for the badges in the top app bar.
+     */
     @Composable
     fun sizes(
         leftIconButtonSizes: IconButtonSizes = IconButtonDefaults.mediumSizes(),
@@ -171,14 +203,17 @@ object TopAppBarDefaults {
  * container color according to the top app bar scroll state. It does not animate the leading,
  * headline, or trailing colors.
  *
- * @param containerColor the color used for the background of this BottomAppBar. Use
- *   [Color.Transparent] to have no color.
- * @param scrolledContainerColor the container color when content is scrolled behind it
- * @param navigationIconContentColor the content color used for the navigation icon
- * @param titleContentColor the content color used for the title
- * @param actionIconContentColor the content color used for actions
+ * @property containerColor The background color of the top app bar container.
+ * @property scrolledContainerColor The background color of the top app bar container when scrolled.
+ * @property leftIconButtonColors The colors for the icon buttons on the left side of the top app bar.
+ * @property leftAvatarColors The colors for the avatar on the left side of the top app bar.
+ * @property titleTextColor The color of the title text in the top app bar.
+ * @property rightActionButtonColors The colors for the action buttons on the right side of the top app bar.
+ * @property rightIconButtonColors The colors for the icon buttons on the right side of the top app bar.
+ * @property menuColors The colors for the dropdown menu in the top app bar.
+ * @property badgeColors The colors for the badges in the top app bar.
  * @constructor create an instance with arbitrary colors, see [TopAppBarColors] for a factory method
- *   using the default material3 spec
+ *   using the default Persian spec
  */
 @Stable
 class TopAppBarColors internal constructor(
@@ -272,17 +307,18 @@ class TopAppBarColors internal constructor(
 
 /**
  * Represents the colors used by a top app bar in different states. This implementation animates the
- * container color according to the top app bar scroll state. It does not animate the leading,
- * headline, or trailing colors.
+ * container sizes according to the top app bar scroll state. It does not animate the leading,
+ * headline, or trailing sizes.
  *
- * @param containerColor the color used for the background of this BottomAppBar. Use
- *   [Color.Transparent] to have no color.
- * @param scrolledContainerColor the container color when content is scrolled behind it
- * @param navigationIconContentColor the content color used for the navigation icon
- * @param titleContentColor the content color used for the title
- * @param actionIconContentColor the content color used for actions
- * @constructor create an instance with arbitrary colors, see [TopAppBarColors] for a factory method
- *   using the default material3 spec
+ * @property leftIconButtonSizes The sizes for the icon buttons on the left side of the top app bar.
+ * @property leftAvatarSizes The sizes for the avatar on the left side of the top app bar.
+ * @property titleTextStyle The text style for the title text in the top app bar.
+ * @property rightActionButtonSizes The sizes for the action buttons on the right side of the top app bar.
+ * @property rightIconButtonSizes The sizes for the icon buttons on the right side of the top app bar.
+ * @property menuSizes The sizes for the dropdown menu in the top app bar.
+ * @property badgeSizes The sizes for the badges in the top app bar.
+ * @constructor create an instance with arbitrary sizes, see [TopAppBarSizes] for a factory method
+ *   using the default Persian spec
  */
 @Stable
 class TopAppBarSizes internal constructor(
@@ -295,8 +331,7 @@ class TopAppBarSizes internal constructor(
     internal val badgeSizes: CounterSizes
 ) {
     /**
-     * Returns a copy of this TopAppBarColors, optionally overriding some of the values. This uses
-     * the Color.Unspecified to mean “use the value from the source”
+     * Returns a copy of this TopAppBarSizes, optionally overriding some of the values.
      */
     fun copy(
         leftIconButtonSizes: IconButtonSizes = this.leftIconButtonSizes,

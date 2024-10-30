@@ -7,6 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.Velocity
 import io.github.madmaximuus.persian.topAppBar.util.settleAppBar
 
@@ -206,7 +207,7 @@ internal class ExitUntilCollapsedScrollBehavior(
                 if (available.y < 0f || consumed.y < 0f) {
                     // When scrolling up, just update the state's height offset.
                     val oldHeightOffset = state.heightOffset
-                    state.heightOffset = state.heightOffset + consumed.y
+                    state.heightOffset += consumed.y
                     return Offset(0f, state.heightOffset - oldHeightOffset)
                 }
 

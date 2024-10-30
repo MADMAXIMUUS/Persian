@@ -15,6 +15,7 @@ import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.button.TertiaryButton
 import io.github.madmaximuus.persian.counter.Badge
+import io.github.madmaximuus.persian.counter.utils.BadgeStyle
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.iconButton.TertiaryIconButton
 import io.github.madmaximuus.persian.menu.DropdownMenu
@@ -23,16 +24,44 @@ import io.github.madmaximuus.persian.topAppBar.util.LayoutId
 import io.github.madmaximuus.persianSymbols.ellepsis.vert.EllipsisVert
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
+/**
+ * An interface that defines the scope for the right content of a top app bar.
+ *
+ * This scope provides access to the colors and sizes used by the top app bar,
+ * allowing customization of the right content based on these properties.
+ *
+ * @property colors The colors to be used for the top app bar.
+ * @property sizes The sizes to be used for the top app bar.
+ */
 interface TopAppBarRightScope {
     val colors: TopAppBarColors
     val sizes: TopAppBarSizes
 }
 
+/**
+ * An internal class that implements the [TopAppBarRightScope] interface.
+ *
+ * This class wraps the colors and sizes properties, providing a concrete implementation
+ * for the scope used by the right content of a top app bar.
+ *
+ * @property colors The colors to be used for the top app bar.
+ * @property sizes The sizes to be used for the top app bar.
+ */
 internal class TopAppBarRightScopeWrapper(
     override val colors: TopAppBarColors,
     override val sizes: TopAppBarSizes
 ) : TopAppBarRightScope
 
+/**
+ * A composable function that creates an action button within the [TopAppBarRightScope].
+ *
+ * This function provides a simple way to add an action button to the right side of a top app bar,
+ * with customizable modifier, text, and click behavior.
+ *
+ * @param modifier The modifier to be applied to the action button.
+ * @param text The text to be displayed on the action button.
+ * @param onClick The lambda to be executed when the action button is clicked.
+ */
 @Composable
 fun TopAppBarRightScope.Action(
     modifier: Modifier = Modifier,
@@ -53,10 +82,23 @@ fun TopAppBarRightScope.Action(
     }
 }
 
+/**
+ * A composable function that creates an icon button with an optional badge within the [TopAppBarRightScope].
+ *
+ * This function provides a simple way to add an icon button to the right side of a top app bar,
+ * with customizable modifier, badge style, counter, icon, and click behavior.
+ *
+ * @param modifier The modifier to be applied to the icon button.
+ * @param style The style of the badge to be displayed on the icon button.
+ * @param counter The counter value to be displayed in the badge.
+ * @param icon The painter to be used as the icon for the button.
+ * @param onClick The lambda to be executed when the icon button is clicked.
+ */
 @Composable
 fun TopAppBarRightScope.IconButton(
     modifier: Modifier = Modifier,
-    counter: Int = -1,
+    style: BadgeStyle = BadgeStyle.DOT,
+    counter: Int = 0,
     icon: Painter,
     onClick: () -> Unit,
 ) {
@@ -67,23 +109,10 @@ fun TopAppBarRightScope.IconButton(
         contentAlignment = Alignment.Center
     ) {
         when {
-            counter == 0 -> {
-                Badge(
-                    colors = this@IconButton.colors.badgeColors,
-                    sizes = this@IconButton.sizes.badgeSizes
-                ) {
-                    TertiaryIconButton(
-                        icon = icon,
-                        colors = this@IconButton.colors.rightIconButtonColors,
-                        sizes = this@IconButton.sizes.rightIconButtonSizes,
-                        onClick = onClick,
-                    )
-                }
-            }
-
-            counter > 0 -> {
+            counter != 0 -> {
                 Badge(
                     count = counter,
+                    style = style,
                     colors = this@IconButton.colors.badgeColors,
                     sizes = this@IconButton.sizes.badgeSizes
                 ) {
@@ -108,8 +137,21 @@ fun TopAppBarRightScope.IconButton(
     }
 }
 
+/**
+ * A composable function that creates a dropdown menu with an overflow icon within the [TopAppBarRightScope].
+ *
+ * This function provides a simple way to add an overflow menu to the right side of a top app bar,
+ * with customizable modifier, icon, expanded state, interaction source, dismiss request handler, and menu items.
+ *
+ * @param modifier The modifier to be applied to the overflow menu.
+ * @param icon The painter to be used as the icon for the overflow button.
+ * @param expanded The initial expanded state of the dropdown menu.
+ * @param interactionSource The interaction source for the dropdown menu.
+ * @param onDismissRequest The lambda to be executed when the dropdown menu is dismissed.
+ * @param menuItems The composable lambda that defines the content of the dropdown menu.
+ */
 @Composable
-fun TopAppBarRightScope.Overflow(
+fun TopAppBarRightScope.More(
     modifier: Modifier = Modifier,
     icon: Painter = rememberVectorPainter(PersianSymbols.Default.EllipsisVert),
     expanded: Boolean = false,
@@ -128,16 +170,16 @@ fun TopAppBarRightScope.Overflow(
             expanded = expandedState.targetState,
             modifier = modifier,
             interactionSource = interactionSource,
-            colors = this@Overflow.colors.menuColors,
-            sizes = this@Overflow.sizes.menuSizes,
+            colors = this@More.colors.menuColors,
+            sizes = this@More.sizes.menuSizes,
             onDismissRequest = {
                 onDismissRequest?.let { it() }
             },
             anchor = {
                 TertiaryIconButton(
                     icon = icon,
-                    colors = this@Overflow.colors.rightIconButtonColors,
-                    sizes = this@Overflow.sizes.rightIconButtonSizes,
+                    colors = this@More.colors.rightIconButtonColors,
+                    sizes = this@More.sizes.rightIconButtonSizes,
                     onClick = {
                         expandedState.targetState = true
                     }
@@ -147,69 +189,3 @@ fun TopAppBarRightScope.Overflow(
         )
     }
 }
-
-/*
-@Composable
-internal fun PersianTopAppBarRightIcons(
-    actions: List<ActionItem>,
-    expanded: Boolean = false
-) {
-    val colors = LocalPersianTopAppBarColors.current
-    val showAsActionItemsCount =
-        if (actions.size > MAX_ACTIONS) MAX_ACTIONS - 1 else MAX_ACTIONS
-    val showAsActionItems = actions.take(showAsActionItemsCount)
-    val overflowItems = actions.subtract(showAsActionItems.toSet()).toList()
-    showAsActionItems.forEach { action ->
-        if (action.badgeCount > 0) {
-            Badge(
-                count = action.badgeCount
-            ) {
-                TertiaryIconButton(
-                    icon = action.icon,
-                    sizes = IconButtonDefaults.mediumSizes(),
-                    colors = IconButtonDefaults.tertiaryIconButtonColors(
-                        contentColor = colors.iconColor
-                    ),
-                    onClick = action.onClick
-                )
-            }
-        } else {
-            TertiaryIconButton(
-                icon = action.icon,
-                sizes = IconButtonDefaults.mediumSizes(),
-                colors = IconButtonDefaults.tertiaryIconButtonColors(
-                    contentColor = colors.iconColor
-                ),
-                onClick = action.onClick
-            )
-        }
-    }
-    if (overflowItems.isNotEmpty()) {
-        OverflowMenu(
-            actions = overflowItems,
-            expanded = expanded,
-            overflowIcon = rememberVectorPainter(image = PersianSymbols.Default.EllipsisVert)
-        )
-    }
-}
-
-@Composable
-internal fun PersianTopAppBarRightButton(
-    modifier: Modifier = Modifier,
-    text: String,
-    onClick: () -> Unit
-) {
-    TertiaryButton(
-        modifier = modifier,
-        text = text,
-        onClick = onClick,
-    )
-}
-
-data class ActionItem(
-    val icon: Painter,
-    val title: String,
-    val contentDescription: String,
-    val badgeCount: Int = 0,
-    val onClick: () -> Unit,
-)*/
