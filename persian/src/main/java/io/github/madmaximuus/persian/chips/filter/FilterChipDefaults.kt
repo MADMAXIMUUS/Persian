@@ -63,27 +63,28 @@ object FilterChipDefaults {
         selectedBorderColor: Color = Color.Transparent,
         disabledBorderColor: Color = PersianTheme.colorScheme.onSurface.state12,
         disabledSelectedBorderColor: Color = Color.Transparent
-    ): SelectableChipColors = SelectableChipColors(
-        containerColor = containerColor,
-        labelColor = labelColor,
-        leadingIconColor = leadingIconColor,
-        trailingIconColor = trailingIconColor,
-        disabledContainerColor = disabledContainerColor,
-        disabledLabelColor = disabledLabelColor,
-        disabledLeadingIconColor = disabledLeadingIconColor,
-        disabledSelectedContainerColor = disabledTrailingIconColor,
-        selectedContainerColor = selectedContainerColor,
-        disabledTrailingIconColor = disabledSelectedContainerColor,
-        selectedLabelColor = selectedLabelColor,
-        selectedLeadingIconColor = selectedLeadingIconColor,
-        selectedTrailingIconColor = selectedTrailingIconColor,
-        borderColor = borderColor,
-        selectedBorderColor = selectedBorderColor,
-        disabledBorderColor = disabledBorderColor,
-        disabledSelectedBorderColor = disabledSelectedBorderColor,
-        avatarColors = AvatarDefaults.colors(),
-        imageColors = ImageDefaults.colors()
-    )
+    ): SelectableChipColors =
+        SelectableChipColors(
+            containerColor = containerColor,
+            labelColor = labelColor,
+            leadingIconColor = leadingIconColor,
+            trailingIconColor = trailingIconColor,
+            disabledContainerColor = disabledContainerColor,
+            disabledLabelColor = disabledLabelColor,
+            disabledLeadingIconColor = disabledLeadingIconColor,
+            disabledSelectedContainerColor = disabledTrailingIconColor,
+            selectedContainerColor = selectedContainerColor,
+            disabledTrailingIconColor = disabledSelectedContainerColor,
+            selectedLabelColor = selectedLabelColor,
+            selectedLeadingIconColor = selectedLeadingIconColor,
+            selectedTrailingIconColor = selectedTrailingIconColor,
+            borderColor = borderColor,
+            selectedBorderColor = selectedBorderColor,
+            disabledBorderColor = disabledBorderColor,
+            disabledSelectedBorderColor = disabledSelectedBorderColor,
+            avatarColors = AvatarDefaults.colors(),
+            imageColors = ImageDefaults.colors()
+        )
 
     /**
      * Creates a [SelectableChipSizes] that represents the default container and content sizes used in a
@@ -108,18 +109,19 @@ object FilterChipDefaults {
         shape: Shape = PersianTheme.shapes.shape10,
         disabledBorderWith: Dp = 1.dp,
         selectedDisabledBorderWith: Dp = 0.dp
-    ): SelectableChipSizes = SelectableChipSizes(
-        trailingIconSizes = trailingIconSizes,
-        leadingIconSizes = leadingIconSizes,
-        labelStyle = labelStyle,
-        borderWidth = borderWidth,
-        selectedBorderWith = selectedBorderWith,
-        shape = shape,
-        disabledBorderWith = disabledBorderWith,
-        selectedDisabledBorderWith = selectedDisabledBorderWith,
-        avatarSizes = AvatarDefaults.size24(),
-        imageSizes = ImageDefaults.size24()
-    )
+    ): SelectableChipSizes =
+        SelectableChipSizes(
+            trailingIconSizes = trailingIconSizes,
+            leadingIconSizes = leadingIconSizes,
+            labelStyle = labelStyle,
+            borderWidth = borderWidth,
+            selectedBorderWith = selectedBorderWith,
+            shape = shape,
+            disabledBorderWith = disabledBorderWith,
+            selectedDisabledBorderWith = selectedDisabledBorderWith,
+            avatarSizes = AvatarDefaults.size24(),
+            imageSizes = ImageDefaults.size24()
+        )
 
     /**
      * Creates a [SelectableChipElevation] that represents the default chip elevation used in a
@@ -137,16 +139,17 @@ object FilterChipDefaults {
         elevation: Dp = PersianTheme.elevation.none,
         pressedElevation: Dp = PersianTheme.elevation.none,
         focusedElevation: Dp = PersianTheme.elevation.none,
-        hoveredElevation: Dp = PersianTheme.elevation.extraSmall,
-        draggedElevation: Dp = PersianTheme.elevation.large,
+        hoveredElevation: Dp = PersianTheme.elevation.elevation1,
+        draggedElevation: Dp = PersianTheme.elevation.elevation4,
         disabledElevation: Dp = elevation
-    ): SelectableChipElevation = SelectableChipElevation(
-        elevation = elevation,
-        pressedElevation = pressedElevation,
-        focusedElevation = focusedElevation,
-        hoveredElevation = hoveredElevation,
-        draggedElevation = draggedElevation,
-        disabledElevation = disabledElevation
-    )
+    ): SelectableChipElevation =
+        SelectableChipElevation(
+            elevation = elevation,
+            pressedElevation = pressedElevation,
+            focusedElevation = focusedElevation,
+            hoveredElevation = hoveredElevation,
+            draggedElevation = draggedElevation,
+            disabledElevation = disabledElevation
+        )
 
 }

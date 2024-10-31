@@ -44,18 +44,19 @@ object SuggestionChipDefaults {
         disabledLeadingIconContentColor: Color = PersianTheme.colorScheme.onSurface.state38,
         borderColor: Color = PersianTheme.colorScheme.primary,
         disabledBorderColor: Color = PersianTheme.colorScheme.onSurface.state38,
-    ): ChipColors = ChipColors(
-        containerColor = containerColor,
-        labelColor = labelColor,
-        leadingIconContentColor = leadingIconColor,
-        disabledContainerColor = disabledContainerColor,
-        disabledLabelColor = disabledLabelColor,
-        disabledLeadingIconContentColor = disabledLeadingIconContentColor,
-        borderColor = borderColor,
-        disabledBorderColor = disabledBorderColor,
-        imageColors = ImageDefaults.colors(),
-        avatarColors = AvatarDefaults.colors()
-    )
+    ): ChipColors =
+        ChipColors(
+            containerColor = containerColor,
+            labelColor = labelColor,
+            leadingIconContentColor = leadingIconColor,
+            disabledContainerColor = disabledContainerColor,
+            disabledLabelColor = disabledLabelColor,
+            disabledLeadingIconContentColor = disabledLeadingIconContentColor,
+            borderColor = borderColor,
+            disabledBorderColor = disabledBorderColor,
+            imageColors = ImageDefaults.colors(),
+            avatarColors = AvatarDefaults.colors()
+        )
 
     /**
      * Creates a [ChipSizes] that represents the default container and content sizes used in an
@@ -74,15 +75,16 @@ object SuggestionChipDefaults {
         borderWidth: Dp = 1.dp,
         shape: Shape = PersianTheme.shapes.shape10,
         disabledBorderWith: Dp = 0.dp,
-    ): ChipSizes = ChipSizes(
-        trailingIconSizes = trailingIconSizes,
-        leadingIconSizes = leadingIconSizes,
-        labelStyle = labelStyle,
-        borderWidth = borderWidth,
-        shape = shape,
-        disabledBorderWith = disabledBorderWith,
-        leadingImageSizes = ImageDefaults.size24(),
-    )
+    ): ChipSizes =
+        ChipSizes(
+            trailingIconSizes = trailingIconSizes,
+            leadingIconSizes = leadingIconSizes,
+            labelStyle = labelStyle,
+            borderWidth = borderWidth,
+            shape = shape,
+            disabledBorderWith = disabledBorderWith,
+            leadingImageSizes = ImageDefaults.size24(),
+        )
 
     /**
      * Creates a [ChipElevation] that represents the default elevation used in an [SuggestionChip].
@@ -100,15 +102,16 @@ object SuggestionChipDefaults {
         pressedElevation: Dp = elevation,
         focusedElevation: Dp = elevation,
         hoveredElevation: Dp = elevation,
-        draggedElevation: Dp = PersianTheme.elevation.large,
+        draggedElevation: Dp = PersianTheme.elevation.elevation4,
         disabledElevation: Dp = elevation
-    ): ChipElevation = ChipElevation(
-        elevation = elevation,
-        pressedElevation = pressedElevation,
-        focusedElevation = focusedElevation,
-        hoveredElevation = hoveredElevation,
-        draggedElevation = draggedElevation,
-        disabledElevation = disabledElevation
-    )
+    ): ChipElevation =
+        ChipElevation(
+            elevation = elevation,
+            pressedElevation = pressedElevation,
+            focusedElevation = focusedElevation,
+            hoveredElevation = hoveredElevation,
+            draggedElevation = draggedElevation,
+            disabledElevation = disabledElevation
+        )
 
 }

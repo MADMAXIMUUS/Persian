@@ -49,19 +49,20 @@ object AssistChipDefaults {
         borderColor: Color = PersianTheme.colorScheme.primary,
         disabledBorderColor: Color = PersianTheme.colorScheme.onSurface.state12,
         imageColors: ImageColors = ImageDefaults.colors()
-    ): ChipColors = ChipColors(
-        containerColor = containerColor,
-        labelColor = labelColor,
-        leadingIconContentColor = leadingIconContentColor,
-        borderColor = borderColor,
-        disabledContainerColor = disabledContainerColor,
-        disabledLabelColor = disabledLabelColor,
-        disabledLeadingIconContentColor = disabledLeadingIconColor,
-        disabledBorderColor = disabledBorderColor,
+    ): ChipColors =
+        ChipColors(
+            containerColor = containerColor,
+            labelColor = labelColor,
+            leadingIconContentColor = leadingIconContentColor,
+            borderColor = borderColor,
+            disabledContainerColor = disabledContainerColor,
+            disabledLabelColor = disabledLabelColor,
+            disabledLeadingIconContentColor = disabledLeadingIconColor,
+            disabledBorderColor = disabledBorderColor,
 
-        avatarColors = AvatarDefaults.colors(),
-        imageColors = imageColors
-    )
+            avatarColors = AvatarDefaults.colors(),
+            imageColors = imageColors
+        )
 
     /**
      * Creates a [ChipSizes] that represents the default container and content sizes used in an
@@ -81,15 +82,16 @@ object AssistChipDefaults {
         shape: Shape = PersianTheme.shapes.shape10,
         disabledBorderWith: Dp = 1.dp,
         leadingImageSizes: ImageSizes = ImageDefaults.size24(),
-    ): ChipSizes = ChipSizes(
-        trailingIconSizes = IconDefaults.size18(),
-        leadingIconSizes = leadingIconSizes,
-        labelStyle = labelStyle,
-        borderWidth = borderWidth,
-        shape = shape,
-        disabledBorderWith = disabledBorderWith,
-        leadingImageSizes = leadingImageSizes
-    )
+    ): ChipSizes =
+        ChipSizes(
+            trailingIconSizes = IconDefaults.size18(),
+            leadingIconSizes = leadingIconSizes,
+            labelStyle = labelStyle,
+            borderWidth = borderWidth,
+            shape = shape,
+            disabledBorderWith = disabledBorderWith,
+            leadingImageSizes = leadingImageSizes
+        )
 
     /**
      * Creates a [ChipElevation] that represents the default elevation used in an [AssistChip].
@@ -107,15 +109,16 @@ object AssistChipDefaults {
         pressedElevation: Dp = elevation,
         focusedElevation: Dp = elevation,
         hoveredElevation: Dp = elevation,
-        draggedElevation: Dp = PersianTheme.elevation.large,
+        draggedElevation: Dp = PersianTheme.elevation.elevation4,
         disabledElevation: Dp = elevation
-    ): ChipElevation = ChipElevation(
-        elevation = elevation,
-        pressedElevation = pressedElevation,
-        focusedElevation = focusedElevation,
-        hoveredElevation = hoveredElevation,
-        draggedElevation = draggedElevation,
-        disabledElevation = disabledElevation
-    )
+    ): ChipElevation =
+        ChipElevation(
+            elevation = elevation,
+            pressedElevation = pressedElevation,
+            focusedElevation = focusedElevation,
+            hoveredElevation = hoveredElevation,
+            draggedElevation = draggedElevation,
+            disabledElevation = disabledElevation
+        )
 
 }

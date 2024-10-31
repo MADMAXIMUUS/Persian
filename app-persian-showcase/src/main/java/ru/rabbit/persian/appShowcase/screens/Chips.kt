@@ -7,12 +7,10 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -25,12 +23,19 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.checkboxes.Checkbox
 import io.github.madmaximuus.persian.chips.assist.AssistChip
+import io.github.madmaximuus.persian.chips.assist.Image
 import io.github.madmaximuus.persian.chips.filter.FilterChip
-import io.github.madmaximuus.persian.chips.input.PersianInputShip
-import io.github.madmaximuus.persian.chips.suggestion.PersianSuggestionChip
+import io.github.madmaximuus.persian.chips.filter.Icon
+import io.github.madmaximuus.persian.chips.input.Avatar
+import io.github.madmaximuus.persian.chips.input.Icon
+import io.github.madmaximuus.persian.chips.input.InputShip
+import io.github.madmaximuus.persian.chips.suggestion.Icon
+import io.github.madmaximuus.persian.chips.suggestion.SuggestionChip
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.inputs.PersianOutlineInput
+import io.github.madmaximuus.persian.input.OutlineInput
 import io.github.madmaximuus.persian.text.Text
+import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
+import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.plus.base.Plus
 import io.github.madmaximuus.persianSymbols.xmark.base.XMark
@@ -42,7 +47,6 @@ object Chips : Screen {
 
     override val navigation: String = "chips"
 
-    @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     override fun Content(navController: NavController?) {
         val topAppBarScrollBehavior =
@@ -64,12 +68,13 @@ object Chips : Screen {
                     .fillMaxSize()
                     .nestedScroll(topAppBarScrollBehavior.nestedScrollConnection)
                     .verticalScroll(rememberScrollState())
-                    .padding(it),
+                    .padding(it)
+                    .navigationBarsPadding(),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size2)
             ) {
                 SampleRow(
-                    text = "Sample chip",
+                    text = "Sample",
                     firstItem = true
                 ) {
                     Column(
@@ -95,7 +100,7 @@ object Chips : Screen {
                             } else null,
                             onClick = { selected = !selected }
                         )
-                        PersianSuggestionChip(
+                        SuggestionChip(
                             label = suggestionChipLabel,
                             enabled = enabled,
                             leading = if (showLeadingIcon) {
@@ -115,7 +120,7 @@ object Chips : Screen {
                             } else null,
                             onClick = { }
                         )
-                        PersianInputShip(
+                        InputShip(
                             label = inputChipLabel,
                             selected = selected,
                             enabled = enabled,
@@ -135,26 +140,26 @@ object Chips : Screen {
                         )
                     }
                 }
-                SampleRow(text = "Filter Chip Label") {
-                    PersianOutlineInput(
+                SampleRow(text = "Filter chip label") {
+                    OutlineInput(
                         value = filterChipLabel,
                         onValueChange = onFilterLabelChange
                     )
                 }
-                SampleRow(text = "Suggestion Chip Label") {
-                    PersianOutlineInput(
+                SampleRow(text = "Suggestion chip label") {
+                    OutlineInput(
                         value = suggestionChipLabel,
                         onValueChange = onSuggestionLabelChange
                     )
                 }
-                SampleRow(text = "Assist Chip Label") {
-                    PersianOutlineInput(
+                SampleRow(text = "Assist chip label") {
+                    OutlineInput(
                         value = assistChipLabel,
                         onValueChange = onAssistLabelChange
                     )
                 }
-                SampleRow(text = "Input Chip Label") {
-                    PersianOutlineInput(
+                SampleRow(text = "Input chip label") {
+                    OutlineInput(
                         value = inputChipLabel,
                         onValueChange = onInputLabelChange
                     )
@@ -181,13 +186,13 @@ object Chips : Screen {
                     ) {
                         Checkbox(
                             modifier = Modifier.fillMaxWidth(),
-                            text = "Show Leading icon",
+                            text = "Show leading",
                             checked = showLeadingIcon,
                             onCheckedChange = onLeadingChange
                         )
                         Checkbox(
                             modifier = Modifier.fillMaxWidth(),
-                            text = "Show Trailing icon",
+                            text = "Show trailing",
                             checked = showTrailingIcon,
                             onCheckedChange = onTrailingChange
                         )

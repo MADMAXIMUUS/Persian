@@ -70,27 +70,28 @@ object InputChipDefaults {
         disabledSelectedBorderColor: Color = Color.Transparent,
         avatarColors: AvatarColors = AvatarDefaults.colors(),
         imageColors: ImageColors = ImageDefaults.colors()
-    ): SelectableChipColors = SelectableChipColors(
-        containerColor = containerColor,
-        labelColor = labelColor,
-        leadingIconColor = leadingIconColor,
-        trailingIconColor = trailingIconColor,
-        disabledContainerColor = disabledContainerColor,
-        disabledLabelColor = disabledLabelColor,
-        disabledLeadingIconColor = disabledLeadingIconColor,
-        disabledTrailingIconColor = disabledTrailingIconColor,
-        selectedContainerColor = selectedContainerColor,
-        disabledSelectedContainerColor = disabledSelectedContainerColor,
-        selectedLabelColor = selectedLabelColor,
-        selectedLeadingIconColor = selectedLeadingIconColor,
-        selectedTrailingIconColor = selectedTrailingIconColor,
-        borderColor = borderColor,
-        selectedBorderColor = selectedBorderColor,
-        disabledBorderColor = disabledBorderColor,
-        disabledSelectedBorderColor = disabledSelectedBorderColor,
-        avatarColors = avatarColors,
-        imageColors = imageColors
-    )
+    ): SelectableChipColors =
+        SelectableChipColors(
+            containerColor = containerColor,
+            labelColor = labelColor,
+            leadingIconColor = leadingIconColor,
+            trailingIconColor = trailingIconColor,
+            disabledContainerColor = disabledContainerColor,
+            disabledLabelColor = disabledLabelColor,
+            disabledLeadingIconColor = disabledLeadingIconColor,
+            disabledTrailingIconColor = disabledTrailingIconColor,
+            selectedContainerColor = selectedContainerColor,
+            disabledSelectedContainerColor = disabledSelectedContainerColor,
+            selectedLabelColor = selectedLabelColor,
+            selectedLeadingIconColor = selectedLeadingIconColor,
+            selectedTrailingIconColor = selectedTrailingIconColor,
+            borderColor = borderColor,
+            selectedBorderColor = selectedBorderColor,
+            disabledBorderColor = disabledBorderColor,
+            disabledSelectedBorderColor = disabledSelectedBorderColor,
+            avatarColors = avatarColors,
+            imageColors = imageColors
+        )
 
     /**
      * Creates a [SelectableChipSizes] that represents the default container and content sizes used in an
@@ -117,18 +118,19 @@ object InputChipDefaults {
         selectedDisabledBorderWith: Dp = 0.dp,
         avatarSizes: AvatarSizes = AvatarDefaults.size24(),
         imageSizes: ImageSizes = ImageDefaults.size24()
-    ): SelectableChipSizes = SelectableChipSizes(
-        trailingIconSizes = trailingIconSizes,
-        leadingIconSizes = leadingIconSizes,
-        labelStyle = labelStyle,
-        borderWidth = borderWidth,
-        selectedBorderWith = selectedBorderWith,
-        shape = shape,
-        disabledBorderWith = disabledBorderWith,
-        selectedDisabledBorderWith = selectedDisabledBorderWith,
-        avatarSizes = avatarSizes,
-        imageSizes = imageSizes
-    )
+    ): SelectableChipSizes =
+        SelectableChipSizes(
+            trailingIconSizes = trailingIconSizes,
+            leadingIconSizes = leadingIconSizes,
+            labelStyle = labelStyle,
+            borderWidth = borderWidth,
+            selectedBorderWith = selectedBorderWith,
+            shape = shape,
+            disabledBorderWith = disabledBorderWith,
+            selectedDisabledBorderWith = selectedDisabledBorderWith,
+            avatarSizes = avatarSizes,
+            imageSizes = imageSizes
+        )
 
     /**
      * Creates a [SelectableChipElevation] that represents the default chip elevation used in an
@@ -147,14 +149,15 @@ object InputChipDefaults {
         pressedElevation: Dp = elevation,
         focusedElevation: Dp = elevation,
         hoveredElevation: Dp = elevation,
-        draggedElevation: Dp = PersianTheme.elevation.large,
+        draggedElevation: Dp = PersianTheme.elevation.elevation4,
         disabledElevation: Dp = elevation
-    ): SelectableChipElevation = SelectableChipElevation(
-        elevation = elevation,
-        pressedElevation = pressedElevation,
-        focusedElevation = focusedElevation,
-        hoveredElevation = hoveredElevation,
-        draggedElevation = draggedElevation,
-        disabledElevation = disabledElevation
-    )
+    ): SelectableChipElevation =
+        SelectableChipElevation(
+            elevation = elevation,
+            pressedElevation = pressedElevation,
+            focusedElevation = focusedElevation,
+            hoveredElevation = hoveredElevation,
+            draggedElevation = draggedElevation,
+            disabledElevation = disabledElevation
+        )
 }
