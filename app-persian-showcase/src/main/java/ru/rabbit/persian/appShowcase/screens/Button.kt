@@ -1,5 +1,6 @@
 package ru.rabbit.persian.appShowcase.screens
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,9 +10,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -22,16 +20,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.navigation.NavController
+import io.github.madmaximuus.persian.button.ButtonDefaults
 import io.github.madmaximuus.persian.button.OutlinedButton
-import io.github.madmaximuus.persian.button.PersianButtonDefaults
 import io.github.madmaximuus.persian.button.PrimaryButton
 import io.github.madmaximuus.persian.button.SecondaryButton
 import io.github.madmaximuus.persian.button.TertiaryButton
 import io.github.madmaximuus.persian.checkboxes.Checkbox
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.inputs.PersianOutlineInput
-import io.github.madmaximuus.persian.radioButtons.PersianRadioButton
+import io.github.madmaximuus.persian.input.OutlineInput
+import io.github.madmaximuus.persian.radioButton.RadioButton
 import io.github.madmaximuus.persian.text.Text
+import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
+import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
 import io.github.madmaximuus.persianSymbols.chevronRight.base.ChevronRight
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.plus.base.Plus
@@ -39,11 +39,10 @@ import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object Button : Screen {
-    override val name: String = "Buttons"
+    override val name: String = "Button"
 
     override val navigation: String = "button"
 
-    @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     override fun Content(navController: NavController?) {
         val topAppBarScrollBehavior =
@@ -58,7 +57,7 @@ object Button : Screen {
             var showTrailingIcon by remember { mutableStateOf(false) }
             var showAdditionInfoLabel by remember { mutableStateOf(false) }
             var additionInfoLabelText by remember { mutableStateOf("Addition Info") }
-            val size = PersianButtonDefaults.largeSizes()
+            val size = ButtonDefaults.largeSizes()
             var sizeState by remember { mutableStateOf(size) }
             var enabled by remember { mutableStateOf(true) }
             var loading by remember { mutableStateOf(false) }
@@ -70,11 +69,12 @@ object Button : Screen {
                     .padding(it)
             ) {
                 SampleRow(
-                    text = "Sample Button",
+                    text = "Sample",
                     firstItem = true
                 ) {
                     Column(
-                        horizontalAlignment = Alignment.CenterHorizontally
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size16)
                     ) {
                         PrimaryButton(
                             text = text,
@@ -86,7 +86,6 @@ object Button : Screen {
                             trailingIcon = if (showTrailingIcon) rememberVectorPainter(image = PersianSymbols.Default.ChevronRight) else null,
                             onClick = {}
                         )
-                        Spacer(modifier = Modifier.height(PersianTheme.spacing.size16))
                         SecondaryButton(
                             text = text,
                             sizes = sizeState,
@@ -97,8 +96,7 @@ object Button : Screen {
                             trailingIcon = if (showTrailingIcon) rememberVectorPainter(image = PersianSymbols.Default.ChevronRight) else null,
                             onClick = {}
                         )
-                        Spacer(modifier = Modifier.height(PersianTheme.spacing.size16))
-                        TertiaryButton(
+                        OutlinedButton(
                             text = text,
                             sizes = sizeState,
                             enabled = enabled,
@@ -108,8 +106,7 @@ object Button : Screen {
                             trailingIcon = if (showTrailingIcon) rememberVectorPainter(image = PersianSymbols.Default.ChevronRight) else null,
                             onClick = {}
                         )
-                        Spacer(modifier = Modifier.height(PersianTheme.spacing.size16))
-                        OutlinedButton(
+                        TertiaryButton(
                             text = text,
                             sizes = sizeState,
                             enabled = enabled,
@@ -122,7 +119,7 @@ object Button : Screen {
                     }
                 }
                 SampleRow(text = "Label") {
-                    PersianOutlineInput(
+                    OutlineInput(
                         value = text,
                         onValueChange = { value ->
                             text = value
@@ -136,9 +133,9 @@ object Button : Screen {
                         mutableStateOf(false)
                     )
                 }
-                val large = PersianButtonDefaults.largeSizes()
-                val medium = PersianButtonDefaults.mediumSizes()
-                val small = PersianButtonDefaults.smallSizes()
+                val large = ButtonDefaults.largeSizes()
+                val medium = ButtonDefaults.mediumSizes()
+                val small = ButtonDefaults.smallSizes()
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -160,7 +157,7 @@ object Button : Screen {
                             .fillMaxWidth()
                             .selectableGroup()
                     ) {
-                        PersianRadioButton(
+                        RadioButton(
                             modifier = Modifier.fillMaxWidth(),
                             text = "Large",
                             checked = sizeStates[0].value,
@@ -171,7 +168,7 @@ object Button : Screen {
                                 sizeState = large
                             }
                         )
-                        PersianRadioButton(
+                        RadioButton(
                             modifier = Modifier.fillMaxWidth(),
                             text = "Medium",
                             checked = sizeStates[1].value,
@@ -182,7 +179,7 @@ object Button : Screen {
                                 sizeState = medium
                             }
                         )
-                        PersianRadioButton(
+                        RadioButton(
                             modifier = Modifier.fillMaxWidth(),
                             text = "Small",
                             checked = sizeStates[2].value,
@@ -223,7 +220,7 @@ object Button : Screen {
                             }
                         )
                         if (showAdditionInfoLabel) {
-                            PersianOutlineInput(
+                            OutlineInput(
                                 value = additionInfoLabelText,
                                 onValueChange = { label ->
                                     additionInfoLabelText = label

@@ -38,12 +38,13 @@ object ButtonDefaults {
         contentColor: Color = PersianTheme.colorScheme.onPrimary,
         disabledContainerColor: Color = PersianTheme.colorScheme.onSurface.state12,
         disabledContentColor: Color = PersianTheme.colorScheme.onSurface.state38,
-    ): ButtonColors = ButtonColors(
-        containerColor = containerColor,
-        contentColor = contentColor,
-        disabledContainerColor = disabledContainerColor,
-        disabledContentColor = disabledContentColor
-    )
+    ): ButtonColors =
+        ButtonColors(
+            containerColor = containerColor,
+            contentColor = contentColor,
+            disabledContainerColor = disabledContainerColor,
+            disabledContentColor = disabledContentColor
+        )
 
     /**
      * Creates a [ButtonColors] that represents the default container and content colors used in a
@@ -60,12 +61,13 @@ object ButtonDefaults {
         contentColor: Color = PersianTheme.colorScheme.onPrimaryContainer,
         disabledContainerColor: Color = PersianTheme.colorScheme.onSurface.state12,
         disabledContentColor: Color = PersianTheme.colorScheme.onSurface.state38,
-    ): ButtonColors = ButtonColors(
-        containerColor = containerColor,
-        contentColor = contentColor,
-        disabledContainerColor = disabledContainerColor,
-        disabledContentColor = disabledContentColor
-    )
+    ): ButtonColors =
+        ButtonColors(
+            containerColor = containerColor,
+            contentColor = contentColor,
+            disabledContainerColor = disabledContainerColor,
+            disabledContentColor = disabledContentColor
+        )
 
     /**
      * Creates a [ButtonColors] that represents the default container and content colors used in a
@@ -82,12 +84,13 @@ object ButtonDefaults {
         contentColor: Color = PersianTheme.colorScheme.primary,
         disabledContainerColor: Color = Color.Transparent,
         disabledContentColor: Color = PersianTheme.colorScheme.onSurface.state38,
-    ): ButtonColors = ButtonColors(
-        containerColor = containerColor,
-        contentColor = contentColor,
-        disabledContainerColor = disabledContainerColor,
-        disabledContentColor = disabledContentColor
-    )
+    ): ButtonColors =
+        ButtonColors(
+            containerColor = containerColor,
+            contentColor = contentColor,
+            disabledContainerColor = disabledContainerColor,
+            disabledContentColor = disabledContentColor
+        )
 
     /**
      * Creates a [ButtonColors] that represents the default container and content colors used in a
@@ -104,12 +107,13 @@ object ButtonDefaults {
         contentColor: Color = PersianTheme.colorScheme.primary,
         disabledContainerColor: Color = PersianTheme.colorScheme.onSurface.state12,
         disabledContentColor: Color = PersianTheme.colorScheme.onSurface.state38,
-    ): ButtonColors = ButtonColors(
-        containerColor = containerColor,
-        contentColor = contentColor,
-        disabledContainerColor = disabledContainerColor,
-        disabledContentColor = disabledContentColor
-    )
+    ): ButtonColors =
+        ButtonColors(
+            containerColor = containerColor,
+            contentColor = contentColor,
+            disabledContainerColor = disabledContainerColor,
+            disabledContentColor = disabledContentColor
+        )
 
     /**
      * Creates a [ButtonSizes] that represents the default container and content sizes used in a button.
@@ -133,14 +137,15 @@ object ButtonDefaults {
             horizontal = PersianTheme.spacing.size16,
             vertical = 0.dp
         )
-    ): ButtonSizes = ButtonSizes(
-        textStyle = textStyle,
-        height = height,
-        loaderSize = loaderSize,
-        iconSizes = iconSizes,
-        shape = shape,
-        contentPadding = contentPadding
-    )
+    ): ButtonSizes =
+        ButtonSizes(
+            textStyle = textStyle,
+            height = height,
+            loaderSize = loaderSize,
+            iconSizes = iconSizes,
+            shape = shape,
+            contentPadding = contentPadding
+        )
 
     /**
      * Creates a [ButtonSizes] that represents the default container and content sizes used in a button.
@@ -166,15 +171,16 @@ object ButtonDefaults {
             horizontal = PersianTheme.spacing.size20,
             vertical = 0.dp
         )
-    ): ButtonSizes = ButtonSizes(
-        textStyle = textStyle,
-        additionInfoTextStyle = additionInfoTextStyle,
-        height = height,
-        loaderSize = loaderSize,
-        iconSizes = iconSizes,
-        shape = shape,
-        contentPadding = contentPadding
-    )
+    ): ButtonSizes =
+        ButtonSizes(
+            textStyle = textStyle,
+            additionInfoTextStyle = additionInfoTextStyle,
+            height = height,
+            loaderSize = loaderSize,
+            iconSizes = iconSizes,
+            shape = shape,
+            contentPadding = contentPadding
+        )
 
     /**
      * Creates a [ButtonSizes] that represents the default container and content sizes used in a button.
@@ -200,15 +206,16 @@ object ButtonDefaults {
             horizontal = PersianTheme.spacing.size24,
             vertical = 0.dp
         )
-    ): ButtonSizes = ButtonSizes(
-        textStyle = textStyle,
-        additionInfoTextStyle = additionInfoTextStyle,
-        height = height,
-        loaderSize = loaderSize,
-        iconSizes = iconSizes,
-        shape = shape,
-        contentPadding = contentPadding
-    )
+    ): ButtonSizes =
+        ButtonSizes(
+            textStyle = textStyle,
+            additionInfoTextStyle = additionInfoTextStyle,
+            height = height,
+            loaderSize = loaderSize,
+            iconSizes = iconSizes,
+            shape = shape,
+            contentPadding = contentPadding
+        )
 
 }
 

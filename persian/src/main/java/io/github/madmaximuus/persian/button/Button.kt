@@ -46,7 +46,7 @@ import io.github.madmaximuus.persian.text.Text
  * an action is, the higher emphasis its button should be.
  * - See [SecondaryButton] for a medium-emphasis button.
  * - See [TertiaryButton] for a low-emphasis button.
- * - See [OutlinedButton] for a middle ground between [SecondaryButton] and [PrimaryButton].
+ * - See [OutlinedButton] for a middle ground between [SecondaryButton] and [TertiaryButton].
  *
  * @param text The text inside the button.
  * @param additionInfoText The second row text inside the button. Not applicable with the small button.
@@ -58,8 +58,8 @@ import io.github.madmaximuus.persian.text.Text
  *   services.
  * @param loading Controls the loading state of this button. When `true`, this component will
  *   show to user [CircularProgressIndicator] loader.
- * @param colors The colors of the background and the content in enabled and disabled.
- * @param sizes The sizes for the content, paddings, shape and height.
+ * @param colors The colors of the container and the content in enabled and disabled.
+ * @param sizes The sizes for the content, shape and height.
  * @param onClick Called when this button is clicked.
  * @param interactionSource an optional hoisted [MutableInteractionSource] for observing and
  *   emitting [Interaction]s for this button. You can use this to change the button's appearance or
@@ -95,7 +95,7 @@ fun PrimaryButton(
 )
 
 /**
- * Buttons help people initiate actions, from sending an email, to sharing a document, to liking a
+ * Buttons help people initiate actions, from sending an email, to sharing a document or liking a
  * post.
  *
  * Secondary buttons are medium-emphasis buttons that is an alternative middle ground between
@@ -107,7 +107,7 @@ fun PrimaryButton(
  * an action is, the higher emphasis its button should be.
  * - See [PrimaryButton] for a high-emphasis button.
  * - See [TertiaryButton] for a low-emphasis button.
- * - See [OutlinedButton] for a middle ground between [SecondaryButton] and [PrimaryButton].
+ * - See [OutlinedButton] for a middle ground between [SecondaryButton] and [TertiaryButton].
  *
  * @param text The text inside the button.
  * @param additionInfoText The second row text inside the button. Not applicable with the small button.
@@ -159,14 +159,15 @@ fun SecondaryButton(
  * Buttons help people initiate actions, from sending an email, to sharing a document, to liking a
  * post.
  *
- * Outlined buttons are middle-emphasis buttons. They contain actions that are important, but are
- * not the primary action in an app.
+ * Tertiary buttons are typically used for less-pronounced actions, including those located in dialogs
+ * and cards. In cards, tertiary buttons help maintain an emphasis on card content. Tertiary buttons are
+ * used for the lowest priority actions, especially when presenting multiple options.
  *
  * Choose the best button for an action based on the amount of emphasis it needs. The more important
  * an action is, the higher emphasis its button should be.
  * - See [PrimaryButton] for a high-emphasis button.
  * - See [SecondaryButton] for a medium-emphasis button.
- * - See [TertiaryButton] for a middle ground between [SecondaryButton] and [PrimaryButton].
+ * - See [OutlinedButton] for a middle ground between [SecondaryButton] and [TertiaryButton].
  *
  * @param text The text inside the button.
  * @param additionInfoText The second row text inside the button. Not applicable with the small button.
@@ -218,15 +219,14 @@ fun TertiaryButton(
  * Buttons help people initiate actions, from sending an email, to sharing a document, to liking a
  * post.
  *
- * Tertiary buttons are typically used for less-pronounced actions, including those located in dialogs
- * and cards. In cards, tertiary buttons help maintain an emphasis on card content. Tertiary buttons are
- * used for the lowest priority actions, especially when presenting multiple options.
+ * Outlined buttons are low-emphasis buttons. They contain actions that are important, but are
+ * not the primary action in an app.
  *
  * Choose the best button for an action based on the amount of emphasis it needs. The more important
  * an action is, the higher emphasis its button should be.
  * - See [PrimaryButton] for a high-emphasis button.
  * - See [SecondaryButton] for a medium-emphasis button.
- * - See [OutlinedButton] for a low-emphasis button.
+ * - See [TertiaryButton] for a low-emphasis button.
  *
  * @param text The text inside the button.
  * @param additionInfoText The second row text inside the button. Not applicable with the small button.
