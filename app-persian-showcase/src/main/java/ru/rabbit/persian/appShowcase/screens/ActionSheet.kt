@@ -5,10 +5,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -18,13 +16,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.navigation.NavController
+import io.github.madmaximuus.persian.actionSheet.Action
 import io.github.madmaximuus.persian.actionSheet.ActionSheet
-import io.github.madmaximuus.persian.button.PersianButtonDefaults
+import io.github.madmaximuus.persian.actionSheet.Header
+import io.github.madmaximuus.persian.button.ButtonDefaults
 import io.github.madmaximuus.persian.button.PrimaryButton
 import io.github.madmaximuus.persian.checkboxes.Checkbox
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.inputs.PersianOutlineInput
-import io.github.madmaximuus.persian.textAreas.PersianOutlineTextArea
+import io.github.madmaximuus.persian.input.OutlineInput
+import io.github.madmaximuus.persian.textAreas.OutlineTextArea
+import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
+import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.image.base.Image
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
@@ -34,12 +36,11 @@ object ActionSheet : Screen {
 
     override val navigation: String = "actionSheet"
 
-    @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     override fun Content(navController: NavController?) {
         var needShow by remember { mutableStateOf(false) }
         val (title, onTitleChange) = remember { mutableStateOf(false) }
-        val (subtitle, onSubtitleChange) = remember { mutableStateOf(false) }
+        val (message, onMessageChange) = remember { mutableStateOf(false) }
         val (titleValue, onTitleValueChange) = remember { mutableStateOf("Title") }
         val (subtitleValue, onSubtitleValueChange) = remember { mutableStateOf("A message should be a short, complete sentence.") }
         val (icons, onIconsChange) = remember { mutableStateOf(false) }
@@ -59,20 +60,23 @@ object ActionSheet : Screen {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(it),
+                    .padding(it)
+                    .padding(horizontal = PersianTheme.spacing.size16)
+                    .navigationBarsPadding(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 PrimaryButton(
-                    modifier = Modifier.padding(top = PersianTheme.spacing.size24),
+                    modifier = Modifier
+                        .padding(top = PersianTheme.spacing.size24),
                     text = "Show sheet",
-                    sizes = PersianButtonDefaults.largeSizes(),
-                    colors = PersianButtonDefaults.primaryColors()
+                    sizes = ButtonDefaults.largeSizes(),
+                    colors = ButtonDefaults.primaryColors()
                 ) {
                     if (title && titleValue.isEmpty()) {
                         needShow = false
                         titleError = true
                         subtitleError = false
-                    } else if (subtitle && subtitleValue.isEmpty()) {
+                    } else if (message && subtitleValue.isEmpty()) {
                         needShow = false
                         titleError = false
                         subtitleError = true
@@ -85,11 +89,7 @@ object ActionSheet : Screen {
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(
-                            top = PersianTheme.spacing.size16,
-                            start = PersianTheme.spacing.size16,
-                            end = PersianTheme.spacing.size16
-                        )
+                        .padding(top = PersianTheme.spacing.size16)
                 ) {
                     Checkbox(
                         modifier = Modifier.fillMaxWidth(),
@@ -98,7 +98,7 @@ object ActionSheet : Screen {
                         onCheckedChange = onTitleChange
                     )
                     if (title) {
-                        PersianOutlineInput(
+                        OutlineInput(
                             value = titleValue,
                             isError = titleError,
                             onValueChange = onTitleValueChange
@@ -107,12 +107,12 @@ object ActionSheet : Screen {
                     }
                     Checkbox(
                         modifier = Modifier.fillMaxWidth(),
-                        text = "Subtitle",
-                        checked = subtitle,
-                        onCheckedChange = onSubtitleChange
+                        text = "Message",
+                        checked = message,
+                        onCheckedChange = onMessageChange
                     )
-                    if (subtitle) {
-                        PersianOutlineTextArea(
+                    if (message) {
+                        OutlineTextArea(
                             value = subtitleValue,
                             isError = subtitleError,
                             onValueChange = onSubtitleValueChange
@@ -142,82 +142,82 @@ object ActionSheet : Screen {
         }
         if (needShow) {
             ActionSheet(
-                header = if (title || subtitle) {
+                header = if (title || message) {
                     {
-                        ActionSheetHeader(
+                        Header(
                             title = if (title) titleValue else null,
-                            subtitle = if (subtitle) subtitleValue else null,
+                            message = if (message) subtitleValue else null,
                         )
                     }
                 } else null,
                 actions = {
-                    ActionItem(
+                    Action(
                         text = "Action 1",
                         leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
-                        negative = negative,
+                        destructive = negative,
                         enabled = enabled,
                         onClick = {}
                     )
-                    ActionItem(
+                    Action(
                         text = "Action 2",
                         leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
-                        negative = negative,
+                        destructive = negative,
                         enabled = enabled,
                         onClick = {}
                     )
-                    ActionItem(
+                    Action(
                         text = "Action 3",
                         leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
-                        negative = negative,
+                        destructive = negative,
                         enabled = enabled,
                         onClick = {}
                     )
-                    ActionItem(
+                    Action(
                         text = "Action 4",
                         leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
-                        negative = negative,
+                        destructive = negative,
                         enabled = enabled,
                         onClick = {}
                     )
-                    ActionItem(
+                    Action(
                         text = "Action 5",
                         leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
-                        negative = negative,
+                        destructive = negative,
                         enabled = enabled,
                         onClick = {}
                     )
-                    ActionItem(
+                    Action(
                         text = "Action 6",
                         leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
-                        negative = negative,
+                        destructive = negative,
                         enabled = enabled,
                         onClick = {}
                     )
-                    ActionItem(
+                    Action(
                         text = "Action 7",
                         leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
-                        negative = negative,
+                        destructive = negative,
                         enabled = enabled,
                         onClick = {}
                     )
-                    ActionItem(
+                    Action(
                         text = "Action 8",
                         leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
-                        negative = negative,
+                        destructive = negative,
                         enabled = enabled,
                         onClick = {}
                     )
-                    ActionItem(
+                    Action(
                         text = "Action 9",
                         leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
-                        negative = negative,
+                        destructive = negative,
                         enabled = enabled,
                         onClick = {}
                     )
-                    ActionItem(
+                    Action(
                         text = "Action 10",
                         leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
-                        negative = negative,
+                        destructive = negative,
                         enabled = enabled,
                         onClick = {}
                     )

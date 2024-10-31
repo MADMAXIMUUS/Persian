@@ -13,7 +13,7 @@ import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persian.icon.IconSizes
 
 /**
- * Default values for [ActionSheet]
+ * Contains all default values used by [ActionSheet]
  */
 object ActionSheetDefaults {
 
@@ -74,25 +74,26 @@ object ActionSheetDefaults {
      * Creates an [ActionSheetSizes] that represents the default sizes used in an [ActionSheet].
      *
      * @param titleTextStyle the title text style of this [ActionSheet].
-     * @param subtitleTextStyle the subtitle text style of this [ActionSheet].
+     * @param messageTextStyle the subtitle text style of this [ActionSheet].
      * @param containerShape the container shape of this [ActionSheet].
      * @param itemSizes the [Action] sizes of this [ActionSheet].
      */
     @Composable
     fun sizes(
-        titleTextStyle: TextStyle = PersianTheme.typography.headlineSmall,
-        subtitleTextStyle: TextStyle = PersianTheme.typography.bodyMedium,
+        titleTextStyle: TextStyle = PersianTheme.typography.titleLarge,
+        messageTextStyle: TextStyle = PersianTheme.typography.bodyMedium,
         containerShape: Shape = PersianTheme.shapes.shape22,
         itemSizes: ActionSheetItemSizes = itemSizes()
-    ): ActionSheetSizes = ActionSheetSizes(
-        titleTextStyle = titleTextStyle,
-        subtitleTextStyle = subtitleTextStyle,
-        containerShape = containerShape,
-        itemSizes = itemSizes
-    )
+    ): ActionSheetSizes =
+        ActionSheetSizes(
+            titleTextStyle = titleTextStyle,
+            messageTextStyle = messageTextStyle,
+            containerShape = containerShape,
+            itemSizes = itemSizes
+        )
 
     /**
-     * Creates an [ActionSheetItemSizes] that represents the default colors used in an [Action].
+     * Creates an [ActionSheetItemSizes] that represents the default sizes used in an [Action].
      *
      * @param textStyle the text style of this [Action].
      * @param iconSize the leading icon size of this [Action].
@@ -100,11 +101,12 @@ object ActionSheetDefaults {
     @Composable
     fun itemSizes(
         textStyle: TextStyle = PersianTheme.typography.bodyLarge,
-        iconSize: IconSizes = IconDefaults.size24()
-    ): ActionSheetItemSizes = ActionSheetItemSizes(
-        textStyle = textStyle,
-        iconSize = iconSize
-    )
+        iconSize: IconSizes = IconDefaults.size28()
+    ): ActionSheetItemSizes =
+        ActionSheetItemSizes(
+            textStyle = textStyle,
+            iconSize = iconSize
+        )
 }
 
 /**
@@ -185,8 +187,7 @@ class ActionSheetItemColors internal constructor(
     }
 
     /**
-     * Returns a copy of this [ActionSheetItemColors], optionally overriding some of the values. This uses the
-     * Color.Unspecified to mean “use the value from the source”
+     * Returns a copy of this [ActionSheetItemColors], optionally overriding some of the values.
      */
     fun copy(
         defaultTextColor: Color = this.defaultTextColor,
@@ -235,7 +236,7 @@ class ActionSheetItemColors internal constructor(
  * Represents the title, subtitle, container and item sizes in an [ActionSheet] in different state.
  *
  * @param titleTextStyle the title text style of this [ActionSheet].
- * @param subtitleTextStyle the subtitle text style of this [ActionSheet].
+ * @param messageTextStyle the subtitle text style of this [ActionSheet].
  * @param containerShape the container shape of this [ActionSheet].
  * @param itemSizes the [Action] sizes of this [ActionSheet].
  * @constructor create an instance with arbitrary sizes.
@@ -246,7 +247,7 @@ class ActionSheetItemColors internal constructor(
 @Immutable
 class ActionSheetSizes internal constructor(
     internal val titleTextStyle: TextStyle,
-    internal val subtitleTextStyle: TextStyle,
+    internal val messageTextStyle: TextStyle,
     internal val containerShape: Shape,
     internal val itemSizes: ActionSheetItemSizes
 )

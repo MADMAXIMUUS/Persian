@@ -40,48 +40,39 @@ internal class ActionSheetHeaderScopeWrapper(
  *
  * @param modifier the [Modifier] to be applied to this action sheet.
  * @param title text that will be displayed in the title.
- * @param subtitle text that will be displayed in the subtitle.
+ * @param message text that will be displayed in the subtitle.
  */
 @Composable
 fun ActionSheetHeaderScope.Header(
     modifier: Modifier = Modifier,
     title: String?,
-    subtitle: String?
+    message: String?
 ) {
     Column(
         modifier = modifier
             .fillMaxWidth()
+            .padding(horizontal = PersianTheme.spacing.size24)
             .padding(
                 top = PersianTheme.spacing.size24,
                 bottom = PersianTheme.spacing.size12
             ),
-        verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size2)
+        verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8)
     ) {
         title?.let {
             Text(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(
-                        start = PersianTheme.spacing.size20,
-                        end = PersianTheme.spacing.size20
-                    ),
+                modifier = Modifier.fillMaxWidth(),
                 text = it,
                 textAlign = TextAlign.Center,
                 style = this@Header.sizes.titleTextStyle,
                 color = this@Header.colors.titleColor
             )
         }
-        subtitle?.let {
+        message?.let {
             Text(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(
-                        start = PersianTheme.spacing.size20,
-                        end = PersianTheme.spacing.size20
-                    ),
+                modifier = Modifier.fillMaxWidth(),
                 text = it,
                 textAlign = TextAlign.Justify,
-                style = this@Header.sizes.subtitleTextStyle,
+                style = this@Header.sizes.messageTextStyle,
                 color = this@Header.colors.subtitleColor
             )
         }

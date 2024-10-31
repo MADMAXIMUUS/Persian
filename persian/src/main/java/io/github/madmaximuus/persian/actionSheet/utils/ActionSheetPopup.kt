@@ -104,8 +104,8 @@ internal fun ActionSheetPopup(
     val parentComposition = rememberCompositionContext()
     val currentContent by rememberUpdatedState(content)
     val layoutDirection = LocalLayoutDirection.current
-    val modalBottomSheetWindow = remember {
-        ModalBottomSheetWindow(
+    val actionSheetWindow = remember {
+        ActionSheetWindow(
             properties = properties,
             onDismissRequest = onDismissRequest,
             composeView = view,
@@ -131,17 +131,17 @@ internal fun ActionSheetPopup(
         }
     }
 
-    DisposableEffect(modalBottomSheetWindow) {
-        modalBottomSheetWindow.show()
-        modalBottomSheetWindow.superSetLayoutDirection(layoutDirection)
+    DisposableEffect(actionSheetWindow) {
+        actionSheetWindow.show()
+        actionSheetWindow.superSetLayoutDirection(layoutDirection)
         onDispose {
-            modalBottomSheetWindow.disposeComposition()
-            modalBottomSheetWindow.dismiss()
+            actionSheetWindow.disposeComposition()
+            actionSheetWindow.dismiss()
         }
     }
 }
 
-/** Custom compose view for [ActionSheet]
+/** Custom view for [ActionSheet]
  *
  * @param properties Properties used to customize the behavior
  * @param onDismissRequest Executes when the user clicks outside of the bottom sheet, after sheet
@@ -149,7 +149,7 @@ internal fun ActionSheetPopup(
  * @param composeView Inside view
  * @param saveId Id for view
  * */
-private class ModalBottomSheetWindow(
+private class ActionSheetWindow(
     private val properties: ActionSheetProperties,
     private var onDismissRequest: () -> Unit,
     private val composeView: View,
