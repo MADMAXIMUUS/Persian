@@ -15,6 +15,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.checkboxes.toggle.BOX_IN_DURATION
 import io.github.madmaximuus.persian.checkboxes.toggle.BOX_OUT_DURATION
+import io.github.madmaximuus.persian.checkboxes.toggle.CheckboxToggle
+import io.github.madmaximuus.persian.checkboxes.toggle.TriStateCheckboxToggle
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state38
@@ -25,7 +27,7 @@ import io.github.madmaximuus.persian.foundation.state38
 object CheckboxDefaults {
 
     /**
-     * Creates a [CheckboxToggleColors] that represents the default container and content colors used in a Checkbox toggle.
+     * Creates a [CheckboxToggleColors] that represents the default container and content colors used in a [CheckboxToggle] and a [TriStateCheckboxToggle].
      *
      * @param checkedBorderColor The color of the border when the checkbox is checked.
      * @param uncheckedBorderColor The color of the border when the checkbox is unchecked.
@@ -53,25 +55,26 @@ object CheckboxDefaults {
         disabledBorderColor: Color = PersianTheme.colorScheme.onSurface.state12,
         disabledUncheckedColor: Color = PersianTheme.colorScheme.onSurface.state12,
         disabledIndeterminateColor: Color = disabledBorderColor
-    ): CheckboxToggleColors = CheckboxToggleColors(
-        checkedBorderColor = checkedBorderColor,
-        uncheckedBorderColor = uncheckedBorderColor,
-        disabledBorderColor = disabledBorderColor,
+    ): CheckboxToggleColors =
+        CheckboxToggleColors(
+            checkedBorderColor = checkedBorderColor,
+            uncheckedBorderColor = uncheckedBorderColor,
+            disabledBorderColor = disabledBorderColor,
 
-        checkedBoxColor = checkedBoxColor,
-        checkedCheckmarkColor = checkedCheckmarkColor,
+            checkedBoxColor = checkedBoxColor,
+            checkedCheckmarkColor = checkedCheckmarkColor,
 
-        uncheckedCheckmarkColor = uncheckedCheckmarkColor,
-        uncheckedBoxColor = uncheckedBoxColor,
-        disabledCheckedBoxColor = disabledCheckedBoxColor,
-        disabledUncheckedBoxColor = disabledUncheckedColor.copy(alpha = 0f),
-        disabledIndeterminateBoxColor = disabledIndeterminateColor,
+            uncheckedCheckmarkColor = uncheckedCheckmarkColor,
+            uncheckedBoxColor = uncheckedBoxColor,
+            disabledCheckedBoxColor = disabledCheckedBoxColor,
+            disabledUncheckedBoxColor = disabledUncheckedColor.copy(alpha = 0f),
+            disabledIndeterminateBoxColor = disabledIndeterminateColor,
 
-        disabledIndeterminateBorderColor = disabledIndeterminateColor
-    )
+            disabledIndeterminateBorderColor = disabledIndeterminateColor
+        )
 
     /**
-     * Creates a [CheckboxColors] that represents the default container and content colors used in a Checkbox.
+     * Creates a [CheckboxColors] that represents the default container and content colors used in a [Checkbox] and a [TriStateCheckbox].
      *
      * @param toggleColors The [CheckboxToggleColors] instance that defines the colors for the checkbox toggle.
      * @param textColor The color of the text when the checkbox is enabled.
@@ -82,14 +85,15 @@ object CheckboxDefaults {
         toggleColors: CheckboxToggleColors = toggleColors(),
         textColor: Color = PersianTheme.colorScheme.onSurface,
         disabledTextColor: Color = PersianTheme.colorScheme.onSurface.state38
-    ): CheckboxColors = CheckboxColors(
-        toggleColors = toggleColors,
-        textColor = textColor,
-        disabledTextColor = disabledTextColor
-    )
+    ): CheckboxColors =
+        CheckboxColors(
+            toggleColors = toggleColors,
+            textColor = textColor,
+            disabledTextColor = disabledTextColor
+        )
 
     /**
-     * Creates a [CheckboxSizes] that represents the default container and content sized used in a Checkbox.
+     * Creates a [CheckboxSizes] that represents the default container and content sized used in a [Checkbox] and a [TriStateCheckbox].
      *
      * @param toggleSize The size of the checkbox toggle.
      * @param textStyle The style of the text associated with the checkbox.
@@ -102,15 +106,16 @@ object CheckboxDefaults {
         contentPadding: PaddingValues = PaddingValues(
             end = PersianTheme.spacing.size12
         )
-    ): CheckboxSizes = CheckboxSizes(
-        toggleSize = toggleSize,
-        textStyle = textStyle,
-        contentPadding = contentPadding
-    )
+    ): CheckboxSizes =
+        CheckboxSizes(
+            toggleSize = toggleSize,
+            textStyle = textStyle,
+            contentPadding = contentPadding
+        )
 }
 
 /**
- * Represents the container and content sizes used in a checkbox in different states.
+ * Represents the container and content sizes used in a [Checkbox] and a [TriStateCheckbox] in different states.
  *
  * @param toggleSize The size of the checkbox toggle.
  * @param textStyle The style of the text associated with the checkbox.
@@ -118,9 +123,9 @@ object CheckboxDefaults {
  */
 @Immutable
 class CheckboxSizes internal constructor(
-    val toggleSize: Dp,
-    val textStyle: TextStyle,
-    val contentPadding: PaddingValues
+    internal val toggleSize: Dp,
+    internal val textStyle: TextStyle,
+    internal val contentPadding: PaddingValues
 )
 
 /**
@@ -148,7 +153,7 @@ class CheckboxColors internal constructor(
 }
 
 /**
- * Represents the container and content colors used in a checkbox toggle in different states.
+ * Represents the container and content colors used in a [CheckboxToggle] and a [TriStateCheckboxToggle] in different states.
  *
  * @param checkedCheckmarkColor The color of the checkmark when the checkbox is checked.
  * @param uncheckedCheckmarkColor The color of the checkmark when the checkbox is unchecked.
