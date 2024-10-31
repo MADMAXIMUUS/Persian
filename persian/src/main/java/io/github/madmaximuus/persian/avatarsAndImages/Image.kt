@@ -43,12 +43,12 @@ import io.github.madmaximuus.persianSymbols.plus.base.Plus
  * @param modifier the [Modifier] to be applied to this image.
  * @param imageUrl the Uri that used for image download.
  * @param overlay if `true` [overlayIcon] will be displayed on top of the image.
- * @param enabled controls the enabled state of this image. When `false`, this component will not
+ * @param enabled controls the enabled state of this image. When `false`, this component will not.
  * respond to user input, and it will appear visually disabled.
- * @param placeholderIcon the icon that will be displayed if the image is not loaded
- * @param overlayIcon the icon that will be displayed on top of the image, if [overlay] is `true`
- * @param colors The [AvatarColors] colors of the container, icons and text of this image.
+ * @param placeholderIcon the icon that will be displayed if the image is not loaded.
+ * @param overlayIcon the icon that will be displayed on top of the image, if [overlay] is `true`.
  * @param sizes The [AvatarSizes] sizes of the container, icons and text of this image.
+ * @param colors The [AvatarColors] colors of the container, icons and text of this image.
  * @param shape The [ImageShape] shape used in image.
  * @param onClick called when this image is clicked.
  * @param badge element to be displayed in the corner of this image.

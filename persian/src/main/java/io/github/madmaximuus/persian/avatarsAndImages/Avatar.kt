@@ -39,7 +39,7 @@ import io.github.madmaximuus.persianSymbols.plus.base.Plus
 import io.github.madmaximuus.persianSymbols.user.base.User
 
 /**
- * The avatar displays an image of the user. If there is no image, a placeholder is displayed
+ * The avatar displays an image or initials of the user. If there is no image, a placeholder is displayed
  *
  * @param modifier the [Modifier] to be applied to this avatar.
  * @param imageUrl the Uri that used for image download.
@@ -156,7 +156,7 @@ fun Avatar(
 }
 
 /**
- * The initials displays a text in this avatar.
+ * Display a text instead of image in this avatar.
  *
  * @param enabled controls the enabled state of this avatar. When `false`, this component will not
  * respond to user input, and it will appear visually disabled.
@@ -184,7 +184,7 @@ private fun Initials(
 }
 
 /**
- * The image displays an image of the user. If there is no image, a placeholder is displayed
+ * Display an image of the user. If there is no image, a placeholder is displayed
  *
  * @param imageUrl the Uri that used for image download.
  * @param enabled controls the enabled state of this avatar. When `false`, this component will not

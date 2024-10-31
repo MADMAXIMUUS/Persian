@@ -18,7 +18,7 @@ import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persian.icon.IconSizes
 
 /**
- * Contains all default values used by all alert types
+ * Contains all default values used by [Avatar].
  */
 object AvatarDefaults {
 

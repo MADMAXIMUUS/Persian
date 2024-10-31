@@ -10,9 +10,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.selectableGroup
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -26,23 +23,24 @@ import io.github.madmaximuus.persian.avatarsAndImages.Image
 import io.github.madmaximuus.persian.avatarsAndImages.ImageDefaults
 import io.github.madmaximuus.persian.avatarsAndImages.ImageShape
 import io.github.madmaximuus.persian.checkboxes.Checkbox
-import io.github.madmaximuus.persian.forms.PersianForm
-import io.github.madmaximuus.persian.forms.PersianFormContent
-import io.github.madmaximuus.persian.forms.PersianFormSubheadConfig
+import io.github.madmaximuus.persian.forms.Form
+import io.github.madmaximuus.persian.forms.Select
+import io.github.madmaximuus.persian.forms.Subhead
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.radioButtons.PersianRadioButton
-import io.github.madmaximuus.persian.select.SelectActionItem
+import io.github.madmaximuus.persian.menu.DropdownMenuItem
+import io.github.madmaximuus.persian.radioButton.RadioButton
 import io.github.madmaximuus.persian.text.Text
+import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
+import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object AvatarAndImage : Screen {
 
-    override val name: String = "Avatars and Images"
+    override val name: String = "Avatar and Image"
 
     override val navigation: String = "avatar"
 
-    @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     override fun Content(navController: NavController?) {
         val topAppBarScrollBehavior =
@@ -52,11 +50,13 @@ object AvatarAndImage : Screen {
             onBackClick = { navController?.navigateUp() },
             topAppBarScrollBehavior = topAppBarScrollBehavior
         ) {
-            val (overlay, onOverlayChange) = remember { mutableStateOf(false) }
-            val (content, onContentChange) = remember { mutableStateOf(false) }
-            val (badge, onBadgeChange) = remember { mutableStateOf(false) }
-            var shape by remember { mutableStateOf(ImageShape.LARGE) }
+            //Sizes
             var selectedSize by remember { mutableStateOf("96") }
+            val initialImageSize = ImageDefaults.size96()
+            val initialAvatarSize = AvatarDefaults.size96()
+            var imageSizeState by remember { mutableStateOf(initialImageSize) }
+            var avatarSizeState by remember { mutableStateOf(initialAvatarSize) }
+            val (expanded, onExpandedChange) = remember { mutableStateOf(false) }
             val imageSizes = listOf(
                 ImageDefaults.size96(),
                 ImageDefaults.size88(),
@@ -91,8 +91,8 @@ object AvatarAndImage : Screen {
                 AvatarDefaults.size20(),
                 AvatarDefaults.size16(),
             )
-            var imageSizeState by remember { mutableStateOf(imageSizes[0]) }
-            var avatarSizeState by remember { mutableStateOf(avatarSizes[0]) }
+
+            var shape by remember { mutableStateOf(ImageShape.LARGE) }
             val shapeStates = remember {
                 listOf(
                     mutableStateOf(true),
@@ -100,6 +100,15 @@ object AvatarAndImage : Screen {
                     mutableStateOf(false)
                 )
             }
+
+            //Other settings
+            val (overlay, onOverlayChange) = remember { mutableStateOf(false) }
+            val (content, onContentChange) = remember { mutableStateOf(false) }
+            val (initials, onInitialsChange) = remember { mutableStateOf(false) }
+            val (badge, onBadgeChange) = remember { mutableStateOf(false) }
+            val (enabled, onEnabledChange) = remember { mutableStateOf(true) }
+            val (clickable, onClickableChange) = remember { mutableStateOf(false) }
+            val clickablePlaceholder = {}
             Column(
                 modifier = Modifier
                     .fillMaxSize()
@@ -113,18 +122,21 @@ object AvatarAndImage : Screen {
                         imageUrl = if (content) Uri.parse("https://loremflickr.com/320/240") else Uri.EMPTY,
                         overlay = overlay,
                         sizes = avatarSizeState,
+                        initials = if (initials) "AB" else null,
                         badge = if (badge) {
                             {
                                 Box(
                                     modifier = Modifier
                                         .fillMaxSize()
                                         .background(
-                                            PersianTheme.colorScheme.surface5,
+                                            PersianTheme.colorScheme.surfaceContainerHighest,
                                             PersianTheme.shapes.shape6
                                         )
                                 )
                             }
-                        } else null
+                        } else null,
+                        onClick = if (clickable) clickablePlaceholder else null,
+                        enabled = enabled
                     )
                     Image(
                         imageUrl = if (content) Uri.parse("https://loremflickr.com/320/240") else Uri.EMPTY,
@@ -137,118 +149,194 @@ object AvatarAndImage : Screen {
                                     modifier = Modifier
                                         .fillMaxSize()
                                         .background(
-                                            PersianTheme.colorScheme.surface5,
+                                            PersianTheme.colorScheme.surfaceContainerHighest,
                                             PersianTheme.shapes.shape6
                                         )
                                 )
                             }
-                        } else null
+                        } else null,
+                        onClick = if (clickable) clickablePlaceholder else null,
+                        enabled = enabled
                     )
                 }
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(
-                            top = PersianTheme.spacing.size16,
-                            start = PersianTheme.spacing.size16,
-                            end = PersianTheme.spacing.size16
-                        )
+                        .padding(top = PersianTheme.spacing.size16)
+                        .padding(horizontal = PersianTheme.spacing.size16)
                 ) {
-                    Checkbox(
-                        modifier = Modifier.fillMaxWidth(),
-                        text = "Overlay",
-                        checked = overlay,
-                        onCheckedChange = onOverlayChange
+                    Text(
+                        text = "Settings",
+                        style = PersianTheme.typography.titleMedium,
+                        color = PersianTheme.colorScheme.onSurface
                     )
-                    Checkbox(
-                        modifier = Modifier.fillMaxWidth(),
-                        text = "Content",
-                        checked = content,
-                        onCheckedChange = onContentChange
-                    )
-                    Checkbox(
-                        modifier = Modifier.fillMaxWidth(),
-                        text = "Badge",
-                        checked = badge,
-                        onCheckedChange = onBadgeChange
-                    )
-                    PersianForm(
-                        subhead = PersianFormSubheadConfig(
-                            text = "Size",
-                            textStyle = PersianTheme.typography.titleMedium,
-                        ),
-                        content = PersianFormContent.Select(
-                            selected = selectedSize,
-                            values = listOf(
-                                SelectActionItem.WithoutIcon(
-                                    title = "96"
-                                ),
-                                SelectActionItem.WithoutIcon(
-                                    title = "88"
-                                ),
-                                SelectActionItem.WithoutIcon(
-                                    title = "80"
-                                ),
-                                SelectActionItem.WithoutIcon(
-                                    title = "72"
-                                ),
-                                SelectActionItem.WithoutIcon(
-                                    title = "64"
-                                ),
-                                SelectActionItem.WithoutIcon(
-                                    title = "56"
-                                ),
-                                SelectActionItem.WithoutIcon(
-                                    title = "48"
-                                ),
-                                SelectActionItem.WithoutIcon(
-                                    title = "44"
-                                ),
-                                SelectActionItem.WithoutIcon(
-                                    title = "40"
-                                ),
-                                SelectActionItem.WithoutIcon(
-                                    title = "36"
-                                ),
-                                SelectActionItem.WithoutIcon(
-                                    title = "32"
-                                ),
-                                SelectActionItem.WithoutIcon(
-                                    title = "28"
-                                ),
-                                SelectActionItem.WithoutIcon(
-                                    title = "24"
-                                ),
-                                SelectActionItem.WithoutIcon(
-                                    title = "20"
-                                ),
-                                SelectActionItem.WithoutIcon(
-                                    title = "16"
-                                ),
-                            ),
-                            onSelectedChange = { option, index ->
-                                selectedSize = option
-                                imageSizeState = imageSizes[index]
-                                avatarSizeState = avatarSizes[index]
-                            }
-                        ),
+                    Form(
+                        modifier = Modifier.padding(top = PersianTheme.spacing.size8),
+                        subhead = {
+                            Subhead(text = "Sizes")
+                        },
+                        content = {
+                            Select(
+                                selected = selectedSize,
+                                expanded = expanded,
+                                onExpandedChange = onExpandedChange,
+                                menuItems = {
+                                    DropdownMenuItem(
+                                        text = "96",
+                                        onClick = {
+                                            onExpandedChange(false)
+                                            selectedSize = "96"
+                                            avatarSizeState = avatarSizes[0]
+                                            imageSizeState = imageSizes[0]
+                                        }
+                                    )
+                                    DropdownMenuItem(
+                                        text = "88",
+                                        onClick = {
+                                            onExpandedChange(false)
+                                            selectedSize = "88"
+                                            avatarSizeState = avatarSizes[1]
+                                            imageSizeState = imageSizes[1]
+                                        }
+                                    )
+                                    DropdownMenuItem(
+                                        text = "80",
+                                        onClick = {
+                                            onExpandedChange(false)
+                                            selectedSize = "80"
+                                            avatarSizeState = avatarSizes[2]
+                                            imageSizeState = imageSizes[2]
+                                        }
+                                    )
+                                    DropdownMenuItem(
+                                        text = "72",
+                                        onClick = {
+                                            onExpandedChange(false)
+                                            selectedSize = "72"
+                                            avatarSizeState = avatarSizes[3]
+                                            imageSizeState = imageSizes[3]
+                                        }
+                                    )
+                                    DropdownMenuItem(
+                                        text = "64",
+                                        onClick = {
+                                            onExpandedChange(false)
+                                            selectedSize = "64"
+                                            avatarSizeState = avatarSizes[4]
+                                            imageSizeState = imageSizes[4]
+                                        }
+                                    )
+                                    DropdownMenuItem(
+                                        text = "56",
+                                        onClick = {
+                                            onExpandedChange(false)
+                                            selectedSize = "56"
+                                            avatarSizeState = avatarSizes[5]
+                                            imageSizeState = imageSizes[5]
+                                        }
+                                    )
+                                    DropdownMenuItem(
+                                        text = "48",
+                                        onClick = {
+                                            onExpandedChange(false)
+                                            selectedSize = "48"
+                                            avatarSizeState = avatarSizes[6]
+                                            imageSizeState = imageSizes[6]
+                                        }
+                                    )
+                                    DropdownMenuItem(
+                                        text = "44",
+                                        onClick = {
+                                            onExpandedChange(false)
+                                            selectedSize = "44"
+                                            avatarSizeState = avatarSizes[7]
+                                            imageSizeState = imageSizes[7]
+                                        }
+                                    )
+                                    DropdownMenuItem(
+                                        text = "40",
+                                        onClick = {
+                                            onExpandedChange(false)
+                                            selectedSize = "40"
+                                            avatarSizeState = avatarSizes[8]
+                                            imageSizeState = imageSizes[8]
+                                        }
+                                    )
+                                    DropdownMenuItem(
+                                        text = "36",
+                                        onClick = {
+                                            onExpandedChange(false)
+                                            selectedSize = "36"
+                                            avatarSizeState = avatarSizes[9]
+                                            imageSizeState = imageSizes[9]
+                                        }
+                                    )
+                                    DropdownMenuItem(
+                                        text = "32",
+                                        onClick = {
+                                            onExpandedChange(false)
+                                            selectedSize = "32"
+                                            avatarSizeState = avatarSizes[10]
+                                            imageSizeState = imageSizes[10]
+                                        }
+                                    )
+                                    DropdownMenuItem(
+                                        text = "28",
+                                        onClick = {
+                                            onExpandedChange(false)
+                                            selectedSize = "28"
+                                            avatarSizeState = avatarSizes[11]
+                                            imageSizeState = imageSizes[11]
+                                        }
+                                    )
+                                    DropdownMenuItem(
+                                        text = "24",
+                                        onClick = {
+                                            onExpandedChange(false)
+                                            selectedSize = "24"
+                                            avatarSizeState = avatarSizes[12]
+                                            imageSizeState = imageSizes[12]
+                                        }
+                                    )
+                                    DropdownMenuItem(
+                                        text = "20",
+                                        onClick = {
+                                            onExpandedChange(false)
+                                            selectedSize = "20"
+                                            avatarSizeState = avatarSizes[13]
+                                            imageSizeState = imageSizes[13]
+                                        }
+                                    )
+                                    DropdownMenuItem(
+                                        text = "16",
+                                        onClick = {
+                                            onExpandedChange(false)
+                                            selectedSize = "16"
+                                            avatarSizeState = avatarSizes[14]
+                                            imageSizeState = imageSizes[14]
+                                        }
+                                    )
+                                }
+                            )
+                        },
                     )
                     Column(
                         modifier = Modifier
-                            .fillMaxWidth(),
+                            .fillMaxWidth()
+                            .padding(top = PersianTheme.spacing.size16),
                     ) {
                         Text(
                             text = "Shape",
-                            style = PersianTheme.typography.titleMedium,
+                            style = PersianTheme.typography.labelLarge,
                             color = PersianTheme.colorScheme.onSurface
                         )
-                        Spacer(modifier = Modifier.height(PersianTheme.spacing.size4))
+                        Spacer(modifier = Modifier.height(PersianTheme.spacing.size2))
                         Column(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .selectableGroup()
                         ) {
-                            PersianRadioButton(
+                            RadioButton(
                                 modifier = Modifier.fillMaxWidth(),
                                 text = "Large",
                                 checked = shapeStates[0].value,
@@ -259,7 +347,7 @@ object AvatarAndImage : Screen {
                                     shape = ImageShape.LARGE
                                 }
                             )
-                            PersianRadioButton(
+                            RadioButton(
                                 modifier = Modifier.fillMaxWidth(),
                                 text = "Medium",
                                 checked = shapeStates[1].value,
@@ -270,7 +358,7 @@ object AvatarAndImage : Screen {
                                     shape = ImageShape.MEDIUM
                                 }
                             )
-                            PersianRadioButton(
+                            RadioButton(
                                 modifier = Modifier.fillMaxWidth(),
                                 text = "Small",
                                 checked = shapeStates[2].value,
@@ -282,6 +370,51 @@ object AvatarAndImage : Screen {
                                 }
                             )
                         }
+                    }
+                    Column(
+                        modifier = Modifier.padding(top = PersianTheme.spacing.size16)
+                    ) {
+                        Text(
+                            text = "Additional settings",
+                            style = PersianTheme.typography.labelLarge,
+                            color = PersianTheme.colorScheme.onSurface
+                        )
+                        Checkbox(
+                            modifier = Modifier.fillMaxWidth(),
+                            text = "Overlay",
+                            checked = overlay,
+                            onCheckedChange = onOverlayChange
+                        )
+                        Checkbox(
+                            modifier = Modifier.fillMaxWidth(),
+                            text = "Content",
+                            checked = content,
+                            onCheckedChange = onContentChange
+                        )
+                        Checkbox(
+                            modifier = Modifier.fillMaxWidth(),
+                            text = "Initials",
+                            checked = initials,
+                            onCheckedChange = onInitialsChange
+                        )
+                        Checkbox(
+                            modifier = Modifier.fillMaxWidth(),
+                            text = "Badge",
+                            checked = badge,
+                            onCheckedChange = onBadgeChange
+                        )
+                        Checkbox(
+                            modifier = Modifier.fillMaxWidth(),
+                            text = "Clickable",
+                            checked = clickable,
+                            onCheckedChange = onClickableChange
+                        )
+                        Checkbox(
+                            modifier = Modifier.fillMaxWidth(),
+                            text = "Enabled",
+                            checked = enabled,
+                            onCheckedChange = onEnabledChange
+                        )
                     }
                 }
             }
