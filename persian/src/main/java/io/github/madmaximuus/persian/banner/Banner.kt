@@ -22,15 +22,15 @@ import io.github.madmaximuus.persian.text.Text
  * messages, alerts, or notifications. It can be used to provide feedback,
  * highlight critical information, or guide users through important steps.
  *
- * @param modifier the [Modifier] to be applied to this banner.
- * @param title the text displayed in this banner as title.
- * @param message the text displayed in this banner as message.
- * @param onClick called when this banner is clicked.
- * @param left optional component in [BannerLeftScope] displayed in leading slot of this banner.
- * @param right optional component in [BannerRightScope] displayed in trailing slot of this banner.
- * @param button optional component in [BannerButtonScope] displayed in bottom slot of this banner.
- * @param sizes The [BannerSizes] sizes of the banner components of this banner.
- * @param colors The [BannerColors] colors of the banner components of this banner.
+ * @param modifier the [Modifier] to be applied to this [Banner].
+ * @param title the text displayed in this [Banner] as title.
+ * @param message the text displayed in this [Banner] as message.
+ * @param onClick called when this [Banner] is clicked.
+ * @param left optional component in [BannerLeftScope] displayed in leading slot of this [Banner].
+ * @param right optional component in [BannerRightScope] displayed in trailing slot of this [Banner].
+ * @param button optional component in [BannerButtonScope] displayed in bottom slot of this [Banner].
+ * @param sizes The [BannerSizes] sizes of the components of this [Banner].
+ * @param colors The [BannerColors] colors of the components of this [Banner].
  */
 @Composable
 fun Banner(

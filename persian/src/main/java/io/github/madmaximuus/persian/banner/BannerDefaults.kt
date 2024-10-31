@@ -10,7 +10,7 @@ import io.github.madmaximuus.persian.button.ButtonSizes
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
 /**
- * Default values for [Banner]
+ * Contains all default values used by [Banner].
  */
 object BannerDefaults {
 
@@ -30,13 +30,14 @@ object BannerDefaults {
         rightIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         titleColor: Color = PersianTheme.colorScheme.onTertiaryContainer,
         messageColor: Color = PersianTheme.colorScheme.tertiary
-    ) = BannerColors(
-        background = background,
-        leftIconColor = leftIconColor,
-        rightIconColor = rightIconColor,
-        titleColor = titleColor,
-        messageColor = messageColor
-    )
+    ): BannerColors =
+        BannerColors(
+            background = background,
+            leftIconColor = leftIconColor,
+            rightIconColor = rightIconColor,
+            titleColor = titleColor,
+            messageColor = messageColor
+        )
 
     /**
      * Creates an [BannerSizes] that represents the default sizes used in an [Banner].
@@ -52,12 +53,13 @@ object BannerDefaults {
         titleTextStyle: TextStyle = PersianTheme.typography.titleMedium,
         messageTextStyle: TextStyle = PersianTheme.typography.bodyMedium,
         buttonSizes: ButtonSizes = ButtonDefaults.smallSizes()
-    ) = BannerSizes(
-        containerShape = containerShape,
-        titleStyle = titleTextStyle,
-        messageTextStyle = messageTextStyle,
-        buttonSizes = buttonSizes
-    )
+    ): BannerSizes =
+        BannerSizes(
+            containerShape = containerShape,
+            titleStyle = titleTextStyle,
+            messageTextStyle = messageTextStyle,
+            buttonSizes = buttonSizes
+        )
 }
 
 /**
