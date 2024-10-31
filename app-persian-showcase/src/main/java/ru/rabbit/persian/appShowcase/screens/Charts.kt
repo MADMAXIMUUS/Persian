@@ -9,24 +9,25 @@ import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.charts.donut.DonutChart
-import io.github.madmaximuus.persian.charts.donut.DonutChartsDefaults
+import io.github.madmaximuus.persian.charts.donut.DonutChartDefaults
 import io.github.madmaximuus.persian.charts.pie.PieChart
+import io.github.madmaximuus.persian.charts.pie.PieChartDefaults
 import io.github.madmaximuus.persian.charts.util.ChartConfig
 import io.github.madmaximuus.persian.charts.util.ChartData
 import io.github.madmaximuus.persian.checkboxes.Checkbox
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.text.Text
+import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
+import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
@@ -35,7 +36,6 @@ object Charts : Screen {
 
     override val navigation: String = "chart"
 
-    @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     override fun Content(navController: NavController?) {
         val topAppBarScrollBehavior =
@@ -61,6 +61,7 @@ object Charts : Screen {
                 SampleRow(text = "Sample", firstItem = true) {
                     DonutChart(
                         modifier = Modifier,
+                        size = 200.dp,
                         data = listOf(
                             ChartData(
                                 10.0,
@@ -90,12 +91,11 @@ object Charts : Screen {
                         ),
                         title = if (title) "Title" else null,
                         subtitle = if (subtitle) "Subtitle" else null,
-                        style = DonutChartsDefaults.style()
+                        style = DonutChartDefaults.style()
                     )
-                }
-                SampleRow(text = "Sample", firstItem = true) {
                     PieChart(
                         modifier = Modifier,
+                        size = 200.dp,
                         data = listOf(
                             ChartData(
                                 10.0,
@@ -123,7 +123,7 @@ object Charts : Screen {
                             showTotalValueAsSubtitle = total,
                             divided = divided
                         ),
-                        style = DonutChartsDefaults.style()
+                        style = PieChartDefaults.style()
                     )
                 }
                 Column(

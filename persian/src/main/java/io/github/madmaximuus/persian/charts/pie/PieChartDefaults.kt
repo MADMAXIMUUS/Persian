@@ -12,9 +12,7 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
 object PieChartDefaults {
 
     /**
-     * Creates a default [ChartStyle] instance with the specified styling properties.
-     *
-     * This composable function allows customization of the default styles for the title, subtitle, and labels of the chart.
+     * Creates a [ChartStyle] that represents the default style used in a [PieChart].
      *
      * @param titleStyle The title text style of this pie chart.
      * @param titleColor The title color of this pie chart.
@@ -31,12 +29,13 @@ object PieChartDefaults {
         subtitleColor: Color = PersianTheme.colorScheme.onSurface,
         labelStyle: TextStyle = PersianTheme.typography.titleLarge,
         labelColor: Color = Color.White
-    ): ChartStyle = ChartStyle(
-        titleStyle = titleStyle,
-        titleColor = titleColor,
-        subtitleStyle = subtitleStyle,
-        subtitleColor = subtitleColor,
-        labelStyle = labelStyle,
-        labelColor = labelColor
-    )
+    ): ChartStyle =
+        ChartStyle(
+            titleStyle = titleStyle,
+            titleColor = titleColor,
+            subtitleStyle = subtitleStyle,
+            subtitleColor = subtitleColor,
+            labelStyle = labelStyle,
+            labelColor = labelColor
+        )
 }

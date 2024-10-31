@@ -34,7 +34,10 @@ import kotlin.math.cos
 import kotlin.math.sin
 
 /**
- * A composable function to render a Pie Chart.
+ * A pie chart is useful for visualizing proportions or shares of a whole, allowing for a clear
+ * representation of how different categories contribute to the total. It provides a straightforward
+ * way to compare parts of a whole, making it an effective tool for presenting data in a simple and
+ * intuitive manner.
  *
  * @param data A list of [ChartData] objects representing the data points to be displayed in the chart.
  * @param config A [ChartConfig] object containing the configuration settings for the chart.

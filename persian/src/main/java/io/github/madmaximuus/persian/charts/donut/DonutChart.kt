@@ -39,15 +39,18 @@ import kotlin.math.cos
 import kotlin.math.sin
 
 /**
- * A composable function to render a Donut Chart.
+ * A donut chart is useful for visualizing proportions or shares of a whole,
+ * with the added benefit of a central space for displaying additional information
+ * or key metrics. It enhances readability and aesthetic appeal, making it an effective tool
+ * for presenting data in a compact and engaging manner.
  *
  * @param data A list of [ChartData] objects representing the data points to be displayed in the chart.
  * @param config A [ChartConfig] object containing the configuration settings for the chart.
- * @param modifier A [Modifier] to apply to this composable. Defaults to [Modifier].
- * @param style A [ChartStyle] object to customize the appearance of the chart. Defaults to [DonutChartDefaults.style].
- * @param title An optional title for the chart. Defaults to null.
- * @param subtitle An optional subtitle for the chart. Defaults to null.
- * @param size The size of the chart in [Dp]. Defaults to 320.dp.
+ * @param modifier A [Modifier] to apply to this composable.
+ * @param style A [ChartStyle] object to customize the appearance of the chart.
+ * @param title An optional title for the chart.
+ * @param subtitle An optional subtitle for the chart.
+ * @param size The size of the chart in [Dp].
  */
 @Composable
 fun DonutChart(

@@ -11,18 +11,12 @@ import androidx.compose.ui.geometry.Offset
 import java.io.Serializable
 
 /**
- * An internal class representing the state of a chart.
- *
- * This class encapsulates the data, configuration, style, and optional state data of a chart.
- * It also provides methods to handle user interactions and manage the state of the chart.
+ * Class representing the state of a chart which remembered over recomposition.
  *
  * @property consData A list of [ChartData] objects representing the data points of the chart.
  * @property config A [ChartConfig] object containing the configuration settings for the chart.
  * @property style A [ChartStyle] object to customize the appearance of the chart.
  * @param stateData Optional state data for the chart.
- *
- * @property data A mutable state list representing the processed data points of the chart.
- * @property totalValue A mutable state double representing the total value of the chart data.
  */
 internal class ChartState(
     val consData: List<ChartData>,
@@ -90,7 +84,6 @@ internal class ChartState(
          * @param savedData A list of [ChartData] objects representing the saved data points of the chart.
          * @param config A [ChartConfig] object containing the configuration settings for the chart.
          * @param style A [ChartStyle] object to customize the appearance of the chart.
-         * @return A Saver for the [ChartState] class.
          */
         fun Saver(
             savedData: List<ChartData>,
@@ -110,8 +103,6 @@ internal class ChartState(
 
     /**
      * A data class representing the state data of the chart.
-     *
-     * @property data An array of [ChartData] objects representing the data points of the chart.
      */
     data class ChartStateData(
         val data: Array<ChartData>
@@ -135,13 +126,9 @@ internal class ChartState(
 /**
  * A composable function to remember the state of a Chart.
  *
- * This function uses the `rememberSaveable` composable to create and remember a [ChartState] instance,
- * ensuring that the state is preserved across recompositions and configuration changes.
- *
  * @param data A list of [ChartData] objects representing the data points of the chart.
  * @param config A [ChartConfig] object containing the configuration settings for the chart.
  * @param style A [ChartStyle] object to customize the appearance of the chart.
- * @return A remembered [ChartState] instance representing the state of the Chart.
  */
 @Composable
 internal fun rememberChartState(

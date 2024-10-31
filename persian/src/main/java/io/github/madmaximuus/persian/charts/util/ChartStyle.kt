@@ -7,8 +7,6 @@ import androidx.compose.ui.text.TextStyle
 /**
  * An immutable class representing the style of a chart.
  *
- * This class encapsulates the styling properties for various elements of the chart, such as the title, subtitle, and labels.
- *
  * @constructor Creates a new [ChartStyle] instance with the specified styling properties.
  * @param titleStyle The [TextStyle] for the chart title.
  * @param titleColor The [Color] for the chart title.
