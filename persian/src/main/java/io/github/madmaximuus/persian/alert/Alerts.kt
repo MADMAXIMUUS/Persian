@@ -59,7 +59,7 @@ fun OnlyActionAlert(
                     .padding(horizontal = PersianTheme.spacing.size20),
                 shape = sizes.containerShape,
                 color = colors.containerColor,
-                tonalElevation = PersianTheme.elevation.small,
+                tonalElevation = PersianTheme.elevation.elevation2,
                 shadowElevation = 0.dp,
                 content = {
                     Column(
@@ -71,7 +71,7 @@ fun OnlyActionAlert(
                             val scope = remember(colors, sizes) {
                                 OnlyActionScopeWrapper(
                                     scope = this,
-                                    colors = colors.actionColor,
+                                    color = colors.actionColor,
                                     sizes = sizes.actionSize
                                 )
                             }
@@ -129,7 +129,7 @@ fun Alert(
                     .padding(horizontal = PersianTheme.spacing.size20),
                 shape = sizes.containerShape,
                 color = colors.containerColor,
-                tonalElevation = PersianTheme.elevation.small,
+                tonalElevation = PersianTheme.elevation.elevation2,
                 shadowElevation = 0.dp,
                 content = {
                     Column(
@@ -208,7 +208,7 @@ fun Alert(
                                     val scope = remember(colors) {
                                         ActionScopeWrapper(
                                             scope = this,
-                                            colors = colors.actionColor,
+                                            color = colors.actionColor,
                                             sizes = sizes.actionSize
                                         )
                                     }

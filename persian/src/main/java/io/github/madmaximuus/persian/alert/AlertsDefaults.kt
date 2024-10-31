@@ -4,9 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.graphics.takeOrElse
 import androidx.compose.ui.text.TextStyle
-import io.github.madmaximuus.persian.button.ButtonColors
 import io.github.madmaximuus.persian.button.ButtonDefaults
 import io.github.madmaximuus.persian.button.ButtonSizes
 import io.github.madmaximuus.persian.dividers.DividerDefaults
@@ -25,7 +23,7 @@ object AlertsDefaults {
      * @param titleColor the title color of this [Alert].
      * @param messageColor the message color of this [Alert].
      * @param dividerColor the divider color of this [Alert].
-     * @param actionColor the actions colors of this [Alert].
+     * @param actionColor the actions color of this [Alert].
      */
     @Composable
     fun colors(
@@ -33,7 +31,7 @@ object AlertsDefaults {
         titleColor: Color = PersianTheme.colorScheme.onSurface,
         messageColor: Color = PersianTheme.colorScheme.onSurface,
         dividerColor: Color = PersianTheme.colorScheme.outlineVariant,
-        actionColor: ButtonColors = ButtonDefaults.tertiaryColors()
+        actionColor: Color = PersianTheme.colorScheme.primary
     ) = AlertColors(
         containerColor = containerColor,
         titleColor = titleColor,
@@ -110,24 +108,25 @@ class AlertColors internal constructor(
     internal val titleColor: Color,
     internal val messageColor: Color,
     internal val dividerColor: Color,
-    internal val actionColor: ButtonColors
+    internal val actionColor: Color
 ) {
     /**
      * Returns a copy of this [AlertColors], optionally overriding some of the values
      */
     fun copy(
-        backgroundColor: Color = this.containerColor,
+        containerColor: Color = this.containerColor,
         titleColor: Color = this.titleColor,
         descriptionColor: Color = this.messageColor,
         dividerColor: Color = this.dividerColor,
-        actionColor: ButtonColors = this.actionColor
-    ) = AlertColors(
-        backgroundColor.takeOrElse { this.containerColor },
-        titleColor.takeOrElse { this.titleColor },
-        descriptionColor.takeOrElse { this.messageColor },
-        dividerColor.takeOrElse { this.dividerColor },
-        actionColor
-    )
+        actionColor: Color = this.actionColor
+    ): AlertColors =
+        AlertColors(
+            containerColor = containerColor,
+            titleColor = titleColor,
+            messageColor = descriptionColor,
+            dividerColor = dividerColor,
+            actionColor = actionColor
+        )
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

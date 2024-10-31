@@ -5,18 +5,19 @@ import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import io.github.madmaximuus.persian.button.ButtonColors
+import androidx.compose.ui.graphics.Color
+import io.github.madmaximuus.persian.button.ButtonDefaults
 import io.github.madmaximuus.persian.button.ButtonSizes
 import io.github.madmaximuus.persian.button.TertiaryButton
 
 /**
- * The scope of actions in this [OnlyActionAlert].
+ * Interface representing a scope that provides action-specific properties.
  *
- * @property colors the colors used for button in this action.
+ * @property color the color used for button in this action.
  * @property sizes the sizes used for button in this action.
  */
 interface OnlyActionScope : ColumnScope {
-    val colors: ButtonColors
+    val color: Color
     val sizes: ButtonSizes
 }
 
@@ -24,23 +25,23 @@ interface OnlyActionScope : ColumnScope {
  * The wrapper class for scope of action in this [OnlyActionAlert].
  *
  * @param scope the column scope used in [OnlyActionAlert].
- * @param colors the colors used for button in this action.
+ * @param color the color used for button in this action.
  * @param sizes the sizes used for button in this action.
  */
 internal class OnlyActionScopeWrapper(
     val scope: ColumnScope,
-    override val colors: ButtonColors,
+    override val color: Color,
     override val sizes: ButtonSizes
 ) : OnlyActionScope, ColumnScope by scope
 
 /**
- * The scope of actions in this [Alert].
+ * Interface representing a scope that provides action-specific properties.
  *
- * @property colors the colors used for button in this action.
+ * @property color the color used for button in this action.
  * @property sizes the sizes used for button in this action.
  */
 interface ActionScope : RowScope {
-    val colors: ButtonColors
+    val color: Color
     val sizes: ButtonSizes
 }
 
@@ -48,12 +49,12 @@ interface ActionScope : RowScope {
  * The wrapper class for scope of action in this [Alert].
  *
  * @param scope the row scope used in [Alert].
- * @param colors the colors used for button in this action.
+ * @param color the color used for button in this action.
  * @param sizes the sizes used for button in this action.
  */
 internal class ActionScopeWrapper(
     val scope: RowScope,
-    override val colors: ButtonColors,
+    override val color: Color,
     override val sizes: ButtonSizes
 ) : ActionScope, RowScope by scope
 
@@ -71,14 +72,16 @@ fun OnlyActionScope.Action(
     TertiaryButton(
         modifier = Modifier.fillMaxWidth(),
         text = title,
-        colors = colors,
+        colors = ButtonDefaults.tertiaryColors(
+            contentColor = color
+        ),
         onClick = onClick,
         sizes = sizes
     )
 }
 
 /**
- * The extension function for [ActionScope] that represent action in this [Alert].
+ * The extension function for [ActionScope] that represent actions in this [Alert].
  *
  * @param title text that will be displayed in the action.
  * @param onClick called when this action is clicked
@@ -90,7 +93,9 @@ fun ActionScope.Action(
 ) {
     TertiaryButton(
         text = title,
-        colors = colors,
+        colors = ButtonDefaults.tertiaryColors(
+            contentColor = color
+        ),
         onClick = onClick,
         sizes = sizes
     )

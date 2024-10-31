@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.selectableGroup
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -17,14 +16,15 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import io.github.madmaximuus.persian.alert.Action
 import io.github.madmaximuus.persian.alert.Alert
 import io.github.madmaximuus.persian.alert.OnlyActionAlert
-import io.github.madmaximuus.persian.button.PersianButtonDefaults
+import io.github.madmaximuus.persian.button.ButtonDefaults
 import io.github.madmaximuus.persian.button.PrimaryButton
 import io.github.madmaximuus.persian.checkboxes.Checkbox
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.inputs.PersianOutlineInput
-import io.github.madmaximuus.persian.radioButtons.PersianRadioButton
+import io.github.madmaximuus.persian.input.OutlineInput
+import io.github.madmaximuus.persian.radioButton.RadioButton
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object Alert : Screen {
@@ -33,7 +33,6 @@ object Alert : Screen {
 
     override val navigation: String = "alert"
 
-    @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     override fun Content(navController: NavController?) {
         var showOnlyActionAlert by remember { mutableStateOf(false) }
@@ -55,14 +54,14 @@ object Alert : Screen {
                 verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size12)
             ) {
                 PrimaryButton(
-                    text = "Only Action Alert",
-                    sizes = PersianButtonDefaults.largeSizes()
+                    text = "Show only action alert",
+                    sizes = ButtonDefaults.largeSizes()
                 ) {
                     showOnlyActionAlert = true
                 }
                 PrimaryButton(
-                    text = "Primary Alert",
-                    sizes = PersianButtonDefaults.largeSizes()
+                    text = "Show alert",
+                    sizes = ButtonDefaults.largeSizes()
                 ) {
                     if (titleValue.isEmpty()) {
                         showAlert = false
@@ -87,7 +86,7 @@ object Alert : Screen {
                             end = PersianTheme.spacing.size16
                         )
                 ) {
-                    PersianOutlineInput(
+                    OutlineInput(
                         modifier = Modifier.padding(horizontal = PersianTheme.spacing.size8),
                         value = titleValue,
                         isError = titleError,
@@ -96,12 +95,12 @@ object Alert : Screen {
                     Spacer(modifier = Modifier.height(PersianTheme.spacing.size8))
                     Checkbox(
                         modifier = Modifier.fillMaxWidth(),
-                        text = "Subtitle",
+                        text = "Message",
                         checked = description,
                         onCheckedChange = onDescriptionChange
                     )
                     if (description) {
-                        PersianOutlineInput(
+                        OutlineInput(
                             modifier = Modifier.padding(horizontal = PersianTheme.spacing.size8),
                             value = descriptionValue,
                             isError = descriptionError,
@@ -121,16 +120,16 @@ object Alert : Screen {
         if (showOnlyActionAlert) {
             OnlyActionAlert(
                 actions = {
-                    ActionItem(title = "Action 1", onClick = { showOnlyActionAlert = false })
-                    ActionItem(title = "Action 2", onClick = { showOnlyActionAlert = false })
-                    ActionItem(title = "Action 3", onClick = { showOnlyActionAlert = false })
-                    ActionItem(title = "Action 4", onClick = { showOnlyActionAlert = false })
-                    ActionItem(title = "Action 5", onClick = { showOnlyActionAlert = false })
-                    ActionItem(title = "Action 6", onClick = { showOnlyActionAlert = false })
-                    ActionItem(title = "Action 7", onClick = { showOnlyActionAlert = false })
-                    ActionItem(title = "Action 8", onClick = { showOnlyActionAlert = false })
-                    ActionItem(title = "Action 9", onClick = { showOnlyActionAlert = false })
-                    ActionItem(title = "Action 10", onClick = { showOnlyActionAlert = false })
+                    Action(title = "Action 1", onClick = { showOnlyActionAlert = false })
+                    Action(title = "Action 2", onClick = { showOnlyActionAlert = false })
+                    Action(title = "Action 3", onClick = { showOnlyActionAlert = false })
+                    Action(title = "Action 4", onClick = { showOnlyActionAlert = false })
+                    Action(title = "Action 5", onClick = { showOnlyActionAlert = false })
+                    Action(title = "Action 6", onClick = { showOnlyActionAlert = false })
+                    Action(title = "Action 7", onClick = { showOnlyActionAlert = false })
+                    Action(title = "Action 8", onClick = { showOnlyActionAlert = false })
+                    Action(title = "Action 9", onClick = { showOnlyActionAlert = false })
+                    Action(title = "Action 10", onClick = { showOnlyActionAlert = false })
                 }
             ) {
                 showOnlyActionAlert = false
@@ -140,12 +139,12 @@ object Alert : Screen {
             Alert(
                 title = titleValue,
                 confirmAction = {
-                    ActionItem(title = "OK", onClick = { showAlert = false })
+                    Action(title = "OK", onClick = { showAlert = false })
                 },
                 dismissAction = {
-                    ActionItem(title = "Cancel", onClick = { showAlert = false })
+                    Action(title = "Cancel", onClick = { showAlert = false })
                 },
-                description = if (description) descriptionValue else null,
+                message = if (description) descriptionValue else null,
                 onDismiss = { showAlert = false },
                 content = if (content) {
                     {
@@ -155,19 +154,19 @@ object Alert : Screen {
                                 .selectableGroup()
                                 .padding(horizontal = PersianTheme.spacing.size12)
                         ) {
-                            PersianRadioButton(
+                            RadioButton(
                                 modifier = Modifier.fillMaxWidth(),
                                 text = "Radio Button 1",
                                 checked = false,
                                 onCheckedChange = {}
                             )
-                            PersianRadioButton(
+                            RadioButton(
                                 modifier = Modifier.fillMaxWidth(),
                                 text = "Radio Button 2",
                                 checked = true,
                                 onCheckedChange = {}
                             )
-                            PersianRadioButton(
+                            RadioButton(
                                 modifier = Modifier.fillMaxWidth(),
                                 text = "Radio Button 3",
                                 checked = false,
