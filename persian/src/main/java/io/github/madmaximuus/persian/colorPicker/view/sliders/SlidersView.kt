@@ -3,6 +3,7 @@ package io.github.madmaximuus.persian.colorPicker.view.sliders
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
@@ -34,8 +35,8 @@ internal fun SlidersView(
     val rgb = state.getRGBColor()
     Column(
         modifier = Modifier
-            .fillMaxWidth(),
-        verticalArrangement = Arrangement.SpaceEvenly
+            .fillMaxSize(),
+        verticalArrangement = Arrangement.SpaceBetween
     ) {
         SliderView(
             text = "Red",
@@ -77,7 +78,7 @@ internal fun SlidersView(
  * A composable function that represents a slider view with a label and a value display.
  *
  * @param text The label text to be displayed above the slider.
- * @param range The range of values for the slider. Defaults to 0f..255f.
+ * @param range The range of values for the slider.
  * @param colors The colors used for the slider, which includes various UI elements such as the track and thumb.
  * @param currentValue The current value of the slider, which will be displayed as a formatted integer.
  * @param onValueChange A callback function that is invoked when the slider's value changes.
