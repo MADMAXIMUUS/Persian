@@ -15,17 +15,13 @@ import io.github.madmaximuus.persian.slider.SliderDefaults
 object ColorPickerViewDefaults {
 
     /**
-     * A composable function that creates and returns a [ColorPickerViewColors] instance with the specified color properties.
-     *
-     * This function allows customizing the colors used in the color picker view by providing default values for various color properties.
-     * The default values are sourced from the [PersianTheme] color scheme and default color settings for sliders and segmented buttons.
+     * Create a [ColorPickerViewColors] that represents the default container and content colors.
      *
      * @param selectorBorderColor The color of the border for the selector.
      * @param selectorThumbBorderColor The color of the border for the selector thumb.
      * @param saturationValueThumbColor The color of the thumb for the saturation and value sliders.
      * @param slidersColors The colors used for the sliders.
      * @param segmentedButton The colors used for the segmented buttons.
-     * @return A [ColorPickerViewColors] instance with the specified color properties.
      */
     @Composable
     fun colors(
@@ -34,20 +30,18 @@ object ColorPickerViewDefaults {
         saturationValueThumbColor: Color = PersianTheme.colorScheme.primaryContainer,
         slidersColors: SliderColors = SliderDefaults.colors(),
         segmentedButton: SegmentedButtonColors = SegmentedButtonDefaults.colors(),
-    ): ColorPickerViewColors = ColorPickerViewColors(
-        selectorBorderColor = selectorBorderColor,
-        selectorThumbBorderColor = selectorThumbBorderColor,
-        saturationValueThumbColor = saturationValueThumbColor,
-        slidersColors = slidersColors,
-        segmentedButton = segmentedButton
-    )
+    ): ColorPickerViewColors =
+        ColorPickerViewColors(
+            selectorBorderColor = selectorBorderColor,
+            selectorThumbBorderColor = selectorThumbBorderColor,
+            saturationValueThumbColor = saturationValueThumbColor,
+            slidersColors = slidersColors,
+            segmentedButton = segmentedButton
+        )
 }
 
 /**
- * A class representing the colors used in the color picker view.
- *
- * This class encapsulates various color properties used in the color picker view, such as the border colors for selectors,
- * thumb colors for saturation and value sliders, colors for sliders, and colors for segmented buttons.
+ * Represents the container and content colors used in a [ColorPickerView] in different states.
  *
  * @property selectorBorderColor The color of the border for the selector.
  * @property selectorThumbBorderColor The color of the border for the selector thumb.
