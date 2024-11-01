@@ -108,7 +108,7 @@ internal fun CodeInputCell(
                 colors.cursorColor(
                     isError = isError,
                     isValid = isValid
-                ).value
+                )
             ),
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.NumberPassword

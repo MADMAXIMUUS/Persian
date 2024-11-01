@@ -8,6 +8,7 @@ import androidx.compose.foundation.interaction.collectIsHoveredAsState
 import androidx.compose.foundation.text.selection.TextSelectionColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.Stable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberUpdatedState
@@ -248,21 +249,21 @@ class CellColors(
      * @param isError Whether the cell's value is in error state.
      * @param isValid Whether the cell's value is valid.
      */
-    @Composable
-    internal fun cursorColor(isError: Boolean, isValid: Boolean): State<Color> {
+    @Stable
+    internal fun cursorColor(isError: Boolean, isValid: Boolean): Color {
         val targetValue = when {
             isError -> errorCursorColor
             isValid -> validCursorColor
             else -> defaultCursorColor
         }
-        return rememberUpdatedState(targetValue)
+        return targetValue
     }
 
     /**
      * Returns the text selection colors.
      */
     internal val selectionColors: TextSelectionColors
-        @Composable get() = textSelectionColors
+        @Stable get() = textSelectionColors
 
     /**
      * Returns the appropriate indicator color based on the cell's state.

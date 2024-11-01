@@ -18,7 +18,6 @@ class SecretTransformation : VisualTransformation {
      * Filters the input text to replace each character with a bullet character (●).
      *
      * @param text The original [AnnotatedString] to be transformed.
-     * @return A [TransformedText] containing the masked text.
      */
     override fun filter(text: AnnotatedString): TransformedText {
         val newRow = if (text.text.isEmpty()) text.toString() else "●"

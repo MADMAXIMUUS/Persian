@@ -14,9 +14,10 @@ import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.codeInput.cell.CodeInputCell
 
 /**
- * A four-digit code input field.
- *
- * This input typically used for entering a four-digit verification code.
+ * A four-digit code input is useful for enhancing security by requiring users to enter a specific
+ * numerical sequence, providing an additional layer of protection for accessing sensitive information
+ * or systems. It offers a straightforward and widely recognized method for authentication, making it
+ * an effective tool for securing accounts.
  *
  * @param modifier The [Modifier] to be applied to this composable.
  * @param values A list of strings representing the current values of the four cells.
@@ -85,9 +86,10 @@ fun FourDigitCodeInput(
 }
 
 /**
- * A six-digit code input field.
- *
- * This input typically used for entering a six-digit verification code.
+ * A six-digit code input is useful for enhancing security by requiring users to enter a specific
+ * numerical sequence, providing a robust layer of protection for accessing sensitive information
+ * or systems. It offers a straightforward and widely recognized method for authentication, making
+ * it an effective tool for securing accounts.
  *
  * @param modifier The [Modifier] to be applied to this composable.
  * @param values A list of strings representing the current values of the four cells.
