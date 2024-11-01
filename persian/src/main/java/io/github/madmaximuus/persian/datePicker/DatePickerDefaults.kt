@@ -4,16 +4,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import io.github.madmaximuus.persian.alert.AlertColors
 import io.github.madmaximuus.persian.alert.AlertsDefaults
+import io.github.madmaximuus.persian.counter.CounterColors
 import io.github.madmaximuus.persian.datePicker.view.DatePickerViewColors
 import io.github.madmaximuus.persian.datePicker.view.PersianDatePickerViewDefaults
 
 /**
- * Contains all default values used by date picker.
+ * Contains the default values used by [DatePicker].
  */
 object PersianDatePickerDefaults {
 
     /**
-     * Composable function to create a [DatePickerColors] instance with the specified colors.
+     * Create a [CounterColors] that represents the default container and content used in a [DatePicker].
      *
      * @param datePickerViewColors The colors used for the date picker view.
      * @param alertColors The colors used for the alert dialog of the date picker.
@@ -29,7 +30,7 @@ object PersianDatePickerDefaults {
 }
 
 /**
- * Immutable class representing the colors used for the date picker and its alert dialog.
+ * Represents the container and content colors used in a [DatePicker] in different states.
  *
  * @property datePickerViewColors The colors used for the date picker view.
  * @property alertColors The colors used for the alert dialog of the date picker.

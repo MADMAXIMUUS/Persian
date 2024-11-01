@@ -1,6 +1,7 @@
 package io.github.madmaximuus.persian.datePicker.view.cells
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
@@ -28,9 +29,11 @@ internal fun DatePickerDialogWeekLabelCell(
 ) {
     val windowHeightSizeClass = currentWindowAdaptiveInfo().windowSizeClass.windowHeightSizeClass
     val sizeModifier =
-        if (windowHeightSizeClass == WindowHeightSizeClass.COMPACT) modifier.size(34.dp, 24.dp)
+        if (windowHeightSizeClass == WindowHeightSizeClass.COMPACT)
+            modifier.size(34.dp, 24.dp)
         else
             modifier
+                .height(24.dp)
                 .padding(
                     horizontal = PersianTheme.spacing.size4,
                     vertical = PersianTheme.spacing.size2

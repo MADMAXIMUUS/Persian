@@ -11,7 +11,10 @@ import io.github.madmaximuus.persian.datePicker.view.util.DatePickerConfig
 import io.github.madmaximuus.persian.datePicker.view.util.DatePickerSelection
 
 /**
- * Composable function to render a date picker dialog.
+ * A date picker is useful for selecting specific dates, providing users with a convenient and
+ * intuitive interface for choosing from a calendar. It offers a straightforward and effective
+ * method for date selection, making it an essential tool for enhancing user experience and ensuring
+ * accurate data entry.
  *
  * @param selection The selection type for the date picker.
  * @param config The configuration for the date picker.

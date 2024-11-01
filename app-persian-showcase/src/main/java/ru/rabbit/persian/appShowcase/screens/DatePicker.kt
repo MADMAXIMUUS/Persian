@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -15,14 +14,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import com.maxkeppeker.sheets.core.models.base.rememberUseCaseState
-import com.maxkeppeler.sheets.calendar.CalendarDialog
-import com.maxkeppeler.sheets.calendar.models.CalendarConfig
-import com.maxkeppeler.sheets.calendar.models.CalendarSelection
-import com.maxkeppeler.sheets.calendar.models.CalendarStyle
-import io.github.madmaximuus.persian.buttons.PersianPrimaryButton
-import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
-import io.github.madmaximuus.persian.datePicker.PersianDatePicker
+import io.github.madmaximuus.persian.button.ButtonDefaults
+import io.github.madmaximuus.persian.button.PrimaryButton
+import io.github.madmaximuus.persian.checkboxes.Checkbox
+import io.github.madmaximuus.persian.datePicker.DatePicker
 import io.github.madmaximuus.persian.datePicker.view.util.DatePickerConfig
 import io.github.madmaximuus.persian.datePicker.view.util.DatePickerSelection
 import io.github.madmaximuus.persian.foundation.PersianTheme
@@ -37,7 +32,6 @@ object DatePicker : Screen {
 
     override val navigation: String = "darePicker"
 
-    @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     override fun Content(navController: NavController?) {
         var showDialogSelectDate by remember { mutableStateOf(false) }
@@ -90,20 +84,23 @@ object DatePicker : Screen {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size12)
             ) {
-                PersianPrimaryButton(
-                    text = "Date Picker Selection Date",
+                PrimaryButton(
+                    text = "Show date picker",
+                    sizes = ButtonDefaults.largeSizes(),
                     onClick = {
                         showDialogSelectDate = true
                     }
                 )
-                PersianPrimaryButton(
-                    text = "Date Picker Selection Dates",
+                PrimaryButton(
+                    text = "Show dates picker",
+                    sizes = ButtonDefaults.largeSizes(),
                     onClick = {
                         showDialogSelectDates = true
                     }
                 )
-                PersianPrimaryButton(
-                    text = "Date Picker Selection Period",
+                PrimaryButton(
+                    text = "Show period picker",
+                    sizes = ButtonDefaults.largeSizes(),
                     onClick = {
                         showDialogSelectPeriod = true
                     }
@@ -124,7 +121,7 @@ object DatePicker : Screen {
                     text = "Period: ${dateFormat.format(startDate.timeInMillis)} - " +
                             dateFormat.format(endDate.timeInMillis)
                 )
-                PersianCheckbox(
+                Checkbox(
                     modifier = Modifier
                         .fillMaxWidth(),
                     text = "Selectable Month And Year",
@@ -134,7 +131,7 @@ object DatePicker : Screen {
             }
         }
         if (showDialogSelectDate) {
-            /*PersianDatePicker(
+            DatePicker(
                 config = DatePickerConfig(
                     selectable = selectable
                 ),
@@ -147,10 +144,10 @@ object DatePicker : Screen {
                 onDismissRequest = {
                     showDialogSelectDate = false
                 },
-            )*/
+            )
         }
         if (showDialogSelectDates) {
-            PersianDatePicker(
+            DatePicker(
                 config = DatePickerConfig(
                     selectable = selectable
                 ),
@@ -166,7 +163,7 @@ object DatePicker : Screen {
             )
         }
         if (showDialogSelectPeriod) {
-            PersianDatePicker(
+            DatePicker(
                 config = DatePickerConfig(
                     selectable = selectable
                 ),
@@ -182,19 +179,5 @@ object DatePicker : Screen {
                 },
             )
         }
-
-        CalendarDialog(
-            state = rememberUseCaseState(
-                visible = true,
-                onCloseRequest = { showDialogSelectDate = false }),
-            config = CalendarConfig(
-                yearSelection = true,
-                monthSelection = true,
-                style = CalendarStyle.MONTH,
-            ),
-            selection = CalendarSelection.Dates { newDates ->
-
-            },
-        )
     }
 }
