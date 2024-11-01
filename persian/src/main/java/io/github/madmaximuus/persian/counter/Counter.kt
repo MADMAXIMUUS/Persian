@@ -14,7 +14,10 @@ import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.text.Text
 
 /**
- * Composable function to create a counter with a specified count, customizable colors, sizes, and modifier.
+ * A counter is useful for displaying important information or status updates in a compact and visually
+ * appealing manner, providing users with quick and easy access to relevant data. It offers
+ * a straightforward and effective method for conveying notifications, alerts, or achievements,
+ * making it an essential tool for enhancing user experience.
  *
  * @param count The count to be displayed in the counter.
  * @param modifier The [Modifier] to be applied to this composable.
@@ -22,11 +25,35 @@ import io.github.madmaximuus.persian.text.Text
  * @param sizes The size configurations for the counter.
  */
 @Composable
-fun Counter(
+fun ErrorCounter(
+    count: Int,
+    modifier: Modifier = Modifier,
+    colors: CounterColors = CounterDefaults.errorColors(),
+    sizes: CounterSizes = CounterDefaults.sizes()
+) = CounterImpl(
+    modifier = modifier,
+    count = count,
+    colors = colors,
+    sizes = sizes
+)
+
+/**
+ * A counter is useful for displaying important information or status updates in a compact and visually
+ * appealing manner, providing users with quick and easy access to relevant data. It offers
+ * a straightforward and effective method for conveying notifications, alerts, or achievements,
+ * making it an essential tool for enhancing user experience.
+ *
+ * @param count The count to be displayed in the counter.
+ * @param modifier The [Modifier] to be applied to this composable.
+ * @param colors The color configurations for the counter.
+ * @param sizes The size configurations for the counter.
+ */
+@Composable
+fun PrimaryCounter(
     count: Int,
     modifier: Modifier = Modifier,
     colors: CounterColors = CounterDefaults.primaryColors(),
-    sizes: CounterSizes = CounterDefaults.digitSizes()
+    sizes: CounterSizes = CounterDefaults.sizes()
 ) = CounterImpl(
     modifier = modifier,
     count = count,
@@ -35,7 +62,10 @@ fun Counter(
 )
 
 /**
- * Composable function to create a counter with a specified count, customizable colors, sizes, and modifier.
+ * A counter is useful for displaying important information or status updates in a compact and visually
+ * appealing manner, providing users with quick and easy access to relevant data. It offers
+ * a straightforward and effective method for conveying notifications, alerts, or achievements,
+ * making it an essential tool for enhancing user experience.
  *
  * @param count The count to be displayed in the counter.
  * @param modifier The [Modifier] to be applied to this composable.
@@ -43,11 +73,11 @@ fun Counter(
  * @param sizes The size configurations for the counter.
  */
 @Composable
-fun TonalCounter(
+fun SecondaryCounter(
     count: Int,
     modifier: Modifier = Modifier,
-    colors: CounterColors = CounterDefaults.tonalColors(),
-    sizes: CounterSizes = CounterDefaults.digitSizes()
+    colors: CounterColors = CounterDefaults.secondaryColors(),
+    sizes: CounterSizes = CounterDefaults.sizes()
 ) = CounterImpl(
     modifier = modifier,
     count = count,
@@ -56,7 +86,10 @@ fun TonalCounter(
 )
 
 /**
- * Composable function to create a counter with a specified count, customizable colors, sizes, and modifier.
+ * A counter is useful for displaying important information or status updates in a compact and visually
+ * appealing manner, providing users with quick and easy access to relevant data. It offers
+ * a straightforward and effective method for conveying notifications, alerts, or achievements,
+ * making it an essential tool for enhancing user experience.
  *
  * @param count The count to be displayed in the counter.
  * @param modifier The [Modifier] to be applied to this composable.
@@ -64,11 +97,11 @@ fun TonalCounter(
  * @param sizes The size configurations for the counter.
  */
 @Composable
-fun TransparentCounter(
+fun TertiaryCounter(
     count: Int,
     modifier: Modifier = Modifier,
-    colors: CounterColors = CounterDefaults.transparentColors(),
-    sizes: CounterSizes = CounterDefaults.digitSizes()
+    colors: CounterColors = CounterDefaults.tertiaryColors(),
+    sizes: CounterSizes = CounterDefaults.sizes()
 ) = CounterImpl(
     modifier = modifier,
     count = count,
@@ -77,7 +110,7 @@ fun TransparentCounter(
 )
 
 /**
- * Composable function to create a counter implementation with a specified count, customizable colors, sizes, and modifier.
+ * Base implementation for a counter.
  *
  * @param count The count to be displayed in the counter.
  * @param colors The color configurations for the counter.
@@ -85,7 +118,7 @@ fun TransparentCounter(
  * @param modifier The [Modifier] to be applied to this composable.
  */
 @Composable
-private fun CounterImpl(
+internal fun CounterImpl(
     count: Int,
     colors: CounterColors,
     sizes: CounterSizes,
@@ -96,16 +129,16 @@ private fun CounterImpl(
             .widthIn(min = 24.dp)
             .height(24.dp)
             .background(
-                color = colors.backgroundColor,
-                shape = sizes.digitCornerRadius
+                color = colors.containerColor,
+                shape = sizes.shape
             )
-            .clip(sizes.digitCornerRadius)
-            .padding(sizes.digitPadding),
+            .clip(sizes.shape)
+            .padding(sizes.contentPadding),
         contentAlignment = Alignment.Center
     ) {
         Text(
             text = if (count > 99) "99+" else count.toString(),
-            color = colors.textColor,
+            color = colors.contentColor,
             style = sizes.textStyle,
             textAlign = TextAlign.Center
         )

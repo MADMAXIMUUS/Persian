@@ -5,67 +5,55 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.layoutId
-import androidx.compose.ui.unit.dp
+import io.github.madmaximuus.persian.counter.utils.BadgeStyle
 import io.github.madmaximuus.persian.counter.utils.LayoutId
 import io.github.madmaximuus.persian.counter.utils.badgeMeasurePolicy
 
 /**
- * Composable function to create a badge with customizable colors, sizes, and content.
- *
- * @param modifier The [Modifier] to be applied to this composable.
- * @param colors The color configurations for the badge.
- * @param sizes The size configurations for the badge.
- * @param content The content to be displayed inside the badge. This is a composable lambda that
- * provides a [BoxScope] to define the content.
- */
-@Composable
-fun Badge(
-    modifier: Modifier = Modifier,
-    colors: CounterColors = CounterDefaults.badgeColors(),
-    sizes: CounterSizes = CounterDefaults.badgeSizes(),
-    content: @Composable (BoxScope.() -> Unit)
-) = EmptyBadge(
-    modifier = modifier,
-    backgroundColor = colors.backgroundColor,
-    sizes = sizes,
-    anchor = content
-)
-
-/**
- * Composable function to create a badge with a count, customizable colors, sizes, and content.
+ * A badge is useful for displaying important information or status updates in a compact and visually
+ * appealing manner, providing users with quick and easy access to relevant data. It offers
+ * a straightforward and effective method for conveying notifications, alerts, or achievements,
+ * making it an essential tool for enhancing user experience.
  *
  * @param count The count to be displayed in the badge.
- * @param modifier The [Modifier] to be applied to this composable.
+ * @param modifier The [Modifier] to be applied to this badge.
  * @param colors The color configurations for the badge.
  * @param sizes The size configurations for the badge.
- * @param content The content to be displayed inside the badge. This is a composable lambda that
- * provides a [BoxScope] to define the content.
+ * @param content The content on which the badge will be displayed.
  */
 @Composable
 fun Badge(
-    count: Int,
+    count: Int = 0,
     modifier: Modifier = Modifier,
-    colors: CounterColors = CounterDefaults.badgeColors(),
-    sizes: CounterSizes = CounterDefaults.digitSizes(),
+    style: BadgeStyle = BadgeStyle.DOT,
+    colors: CounterColors = CounterDefaults.errorColors(),
+    sizes: CounterSizes = CounterDefaults.sizes(),
     content: @Composable (BoxScope.() -> Unit)
-) = BadgeImpl(
-    modifier = modifier,
-    count = count,
-    colors = colors,
-    sizes = sizes,
-    content = content
-)
+) = when (style) {
+    BadgeStyle.DOT -> EmptyBadge(
+        modifier = modifier,
+        sizes = sizes,
+        colors = colors,
+        anchor = content
+    )
+
+    BadgeStyle.NUMBER -> BadgeImpl(
+        modifier = modifier,
+        count = count,
+        colors = colors,
+        sizes = sizes,
+        content = content
+    )
+}
 
 /**
- * Composable function to create a badge implementation with a count, customizable colors, sizes, and content.
+ * Base implementation a badge with counter inside.
  *
  * @param count The count to be displayed in the badge.
  * @param colors The color configurations for the badge.
@@ -89,7 +77,7 @@ private fun BadgeImpl(
                 contentAlignment = Alignment.Center,
                 content = content
             )
-            Counter(
+            CounterImpl(
                 modifier = Modifier
                     .layoutId(LayoutId.BADGE),
                 count = count,
@@ -104,16 +92,16 @@ private fun BadgeImpl(
             scope = this,
             measurables = measurables,
             constraints = constraints,
-            badgeHorizontalOffset = sizes.badgeHorizontalOffset.roundToPx(),
-            badgeWithContentVerticalOffset = sizes.badgeVerticalOffset.roundToPx()
+            badgeRightOffset = sizes.badgeRightOffset.roundToPx(),
+            badgeTopOffset = sizes.badgeTopOffset.roundToPx()
         )
     }
 }
 
 /**
- * Composable function to create an empty badge with customizable background color, anchor content, sizes, and modifier.
+ * Base implementation a badge without counter inside.
  *
- * @param backgroundColor The background color of the badge.
+ * @param colors The background color of the badge.
  * @param anchor The content to be displayed inside the badge. This is a composable lambda that
  * provides a [BoxScope] to define the content.
  * @param sizes The size configurations for the badge.
@@ -121,7 +109,7 @@ private fun BadgeImpl(
  */
 @Composable
 private fun EmptyBadge(
-    backgroundColor: Color,
+    colors: CounterColors,
     anchor: @Composable BoxScope.() -> Unit,
     sizes: CounterSizes,
     modifier: Modifier = Modifier,
@@ -136,9 +124,9 @@ private fun EmptyBadge(
             Box(
                 modifier = Modifier
                     .layoutId(LayoutId.BADGE)
-                    .size(8.dp)
-                    .clip(CircleShape)
-                    .background(backgroundColor)
+                    .size(sizes.size)
+                    .clip(sizes.shape)
+                    .background(colors.containerColor)
             )
         },
         modifier = modifier
@@ -148,8 +136,8 @@ private fun EmptyBadge(
                 scope = this,
                 measurables = measurables,
                 constraints = constraints,
-                badgeHorizontalOffset = sizes.badgeHorizontalOffset.roundToPx(),
-                badgeWithContentVerticalOffset = sizes.badgeVerticalOffset.roundToPx()
+                badgeRightOffset = sizes.badgeRightOffset.roundToPx(),
+                badgeTopOffset = sizes.badgeTopOffset.roundToPx()
             )
         }
     )

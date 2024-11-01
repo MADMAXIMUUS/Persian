@@ -3,7 +3,6 @@ package io.github.madmaximuus.persian.counter
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
@@ -12,146 +11,132 @@ import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
 /**
- * Contains all default values used by counter.
+ * Contains the default values used by all 4 counter styles.
  */
 object CounterDefaults {
 
     /**
-     * Composable function to create a [CounterColors] object with customizable background and text colors for a badge.
+     * Create a [CounterColors] that represents the default container and content colors in error style.
      *
-     * @param backgroundColor The background color of the badge.
-     * @param textColor The text color of the badge.
+     * @param containerColor The container color of the badge.
+     * @param contentColor The content color of the badge.
      */
     @Composable
-    fun badgeColors(
-        backgroundColor: Color = PersianTheme.colorScheme.error,
-        textColor: Color = PersianTheme.colorScheme.onError
+    fun errorColors(
+        containerColor: Color = PersianTheme.colorScheme.error,
+        contentColor: Color = PersianTheme.colorScheme.onError
     ): CounterColors =
         CounterColors(
-            backgroundColor = backgroundColor,
-            textColor = textColor
+            containerColor = containerColor,
+            contentColor = contentColor
         )
 
     /**
-     * Composable function to create a [CounterColors] object with customizable background and text colors for a badge.
+     * Create a [CounterColors] that represents the default container and content colors in error style.
      *
-     * @param backgroundColor The background color of the badge.
-     * @param textColor The text color of the badge.
+     * @param containerColor The container color of the badge.
+     * @param contentColor The content color of the badge.
      */
     @Composable
     fun primaryColors(
-        backgroundColor: Color = PersianTheme.colorScheme.primary,
-        textColor: Color = PersianTheme.colorScheme.onPrimary
-    ) = remember(backgroundColor, textColor) {
+        containerColor: Color = PersianTheme.colorScheme.primary,
+        contentColor: Color = PersianTheme.colorScheme.onPrimary
+    ): CounterColors =
         CounterColors(
-            backgroundColor = backgroundColor,
-            textColor = textColor
+            containerColor = containerColor,
+            contentColor = contentColor
         )
-    }
 
     /**
-     * Composable function to create a [CounterColors] object with customizable background and text colors for a badge.
+     * Create a [CounterColors] that represents the default container and content colors in error style.
      *
-     * @param backgroundColor The background color of the badge.
-     * @param textColor The text color of the badge.
+     * @param containerColor The container color of the badge.
+     * @param contentColor The content color of the badge.
      */
     @Composable
-    fun tonalColors(
-        backgroundColor: Color = PersianTheme.colorScheme.primaryContainer,
-        textColor: Color = PersianTheme.colorScheme.onPrimaryContainer
-    ) = remember(backgroundColor, textColor) {
+    fun secondaryColors(
+        containerColor: Color = PersianTheme.colorScheme.primaryContainer,
+        contentColor: Color = PersianTheme.colorScheme.onPrimaryContainer
+    ): CounterColors =
         CounterColors(
-            backgroundColor = backgroundColor,
-            textColor = textColor
+            containerColor = containerColor,
+            contentColor = contentColor
         )
-    }
 
     /**
-     * Composable function to create a [CounterColors] object with customizable background and text colors for a badge.
+     * Create a [CounterColors] that represents the default container and content colors in error style.
      *
-     * @param backgroundColor The background color of the badge.
-     * @param textColor The text color of the badge.
+     * @param containerColor The container color of the badge.
+     * @param contentColor The content color of the badge.
      */
     @Composable
-    fun transparentColors(
-        backgroundColor: Color = Color.Transparent,
-        textColor: Color = PersianTheme.colorScheme.onSurface
-    ) = remember(backgroundColor, textColor) {
+    fun tertiaryColors(
+        containerColor: Color = Color.Transparent,
+        contentColor: Color = PersianTheme.colorScheme.onSurface
+    ): CounterColors =
         CounterColors(
-            backgroundColor = backgroundColor,
-            textColor = textColor
-        )
-    }
-
-    /**
-     * Composable function to create a [CounterSizes] object with customizable horizontal and vertical offsets for a badge.
-     *
-     * @param badgeHorizontalOffset The horizontal offset for the badge.
-     * @param badgeVerticalOffset The vertical offset for the badge.
-     */
-    @Composable
-    fun badgeSizes(
-        badgeHorizontalOffset: Dp = (-16).dp,
-        badgeVerticalOffset: Dp = 18.dp,
-    ): CounterSizes =
-        CounterSizes(
-            digitPadding = PaddingValues(0.dp, 0.dp),
-            digitCornerRadius = PersianTheme.shapes.full,
-            badgeHorizontalOffset = badgeHorizontalOffset,
-            badgeVerticalOffset = badgeVerticalOffset,
-            textStyle = PersianTheme.typography.bodyLarge
+            containerColor = containerColor,
+            contentColor = contentColor
         )
 
     /**
-     * Composable function to create a [CounterSizes] object with customizable horizontal and vertical offsets for a badge.
+     * Composable function to create a [sizes] object with customizable horizontal and vertical offsets for a badge.
      *
-     * @param badgeHorizontalOffset The horizontal offset for the badge.
-     * @param badgeVerticalOffset The vertical offset for the badge.
+     * @param size The size of container for the dot badge.
+     * @param contentPadding The padding values for the digits in the counter.
+     * @param shape The shape defining the corner radius of the counter.
+     * @param badgeRightOffset The offset on the right side of the anchor
+     * @param badgeTopOffset The offset from the top of the anchor.
+     * @param textStyle The text style for the digits in the counter.
      */
     @Composable
-    fun digitSizes(
-        digitPadding: PaddingValues = PaddingValues(horizontal = 6.dp, vertical = 2.dp),
-        digitCornerRadius: Shape = PersianTheme.shapes.shape12,
-        badgeHorizontalOffset: Dp = (-22).dp,
-        badgeVerticalOffset: Dp = 20.dp,
+    fun sizes(
+        size: Dp = 8.dp,
+        contentPadding: PaddingValues = PaddingValues(horizontal = 6.dp, vertical = 2.dp),
+        shape: Shape = PersianTheme.shapes.shape12,
+        badgeRightOffset: Dp = 10.dp,
+        badgeTopOffset: Dp = 10.dp,
         textStyle: TextStyle = PersianTheme.typography.bodyMedium
     ): CounterSizes =
         CounterSizes(
-            digitPadding = digitPadding,
-            digitCornerRadius = digitCornerRadius,
-            badgeHorizontalOffset = badgeHorizontalOffset,
-            badgeVerticalOffset = badgeVerticalOffset,
+            size = size,
+            contentPadding = contentPadding,
+            shape = shape,
+            badgeRightOffset = badgeRightOffset,
+            badgeTopOffset = badgeTopOffset,
             textStyle = textStyle
         )
 }
 
 /**
- * An immutable class that holds the color configurations for a counter.
+ * Represents the container and content colors used in a counter in different states.
  *
- * @param backgroundColor The background color of the counter.
- * @param textColor The text color of the counter.
+ * @param containerColor The background color of the counter.
+ * @param contentColor The text color of the counter.
  */
 @Immutable
 class CounterColors internal constructor(
-    val backgroundColor: Color,
-    val textColor: Color
+    val containerColor: Color,
+    val contentColor: Color
 )
 
 /**
- * An immutable class that holds the size configurations for a counter.
+ * Represents the container and content sizes used in a counter in different states.
  *
- * @param digitPadding The padding values for the digits in the counter.
- * @param digitCornerRadius The shape defining the corner radius of the counter.
- * @param badgeHorizontalOffset The horizontal offset for the badge.
- * @param badgeVerticalOffset The vertical offset for the badge.
+ * @param size The size of container for the dot badge.
+ * @param contentPadding The padding values for the digits in the counter.
+ * @param shape The shape defining the corner radius of the counter.
+ * @param badgeRightOffset The offset on the right side of the anchor
+ * @param badgeTopOffset The offset from the top of the anchor.
  * @param textStyle The text style for the digits in the counter.
  */
 @Immutable
 class CounterSizes internal constructor(
-    internal val digitPadding: PaddingValues,
-    internal val digitCornerRadius: Shape,
-    internal val badgeHorizontalOffset: Dp,
-    internal val badgeVerticalOffset: Dp,
+    internal val size: Dp,
+    internal val contentPadding: PaddingValues,
+    internal val shape: Shape,
+    internal val badgeRightOffset: Dp,
+    internal val badgeTopOffset: Dp,
     internal val textStyle: TextStyle
 ) {
 
@@ -159,42 +144,47 @@ class CounterSizes internal constructor(
      * Creates a copy of this [CounterSizes] instance with the specified properties.
      */
     fun copy(
-        digitPadding: PaddingValues = this.digitPadding,
-        digitCornerRadius: Shape = this.digitCornerRadius,
+        size: Dp = this.size,
+        contentPadding: PaddingValues = this.contentPadding,
+        shape: Shape = this.shape,
 
-        badgeHorizontalOffset: Dp = this.badgeHorizontalOffset,
-        badgeVerticalOffset: Dp = this.badgeVerticalOffset,
+        badgeHorizontalOffset: Dp = this.badgeRightOffset,
+        badgeVerticalOffset: Dp = this.badgeTopOffset,
 
         textStyle: TextStyle = this.textStyle
-    ) = CounterSizes(
-        digitPadding = digitPadding,
-        digitCornerRadius = digitCornerRadius,
+    ): CounterSizes =
+        CounterSizes(
+            size = size,
+            contentPadding = contentPadding,
+            shape = shape,
 
-        badgeHorizontalOffset = badgeHorizontalOffset,
-        badgeVerticalOffset = badgeVerticalOffset,
+            badgeRightOffset = badgeHorizontalOffset,
+            badgeTopOffset = badgeVerticalOffset,
 
-        textStyle = textStyle
-    )
+            textStyle = textStyle
+        )
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other == null || other !is CounterSizes) return false
 
-        if (digitPadding != other.digitPadding) return false
-        if (digitCornerRadius != other.digitCornerRadius) return false
+        if (size != other.size) return false
+        if (contentPadding != other.contentPadding) return false
+        if (shape != other.shape) return false
 
-        if (badgeHorizontalOffset != other.badgeHorizontalOffset) return false
-        if (badgeVerticalOffset != other.badgeVerticalOffset) return false
+        if (badgeRightOffset != other.badgeRightOffset) return false
+        if (badgeTopOffset != other.badgeTopOffset) return false
 
         return textStyle == other.textStyle
     }
 
     override fun hashCode(): Int {
-        var result = digitPadding.hashCode()
-        result = 31 * result + digitCornerRadius.hashCode()
+        var result = size.hashCode()
+        result = 31 * result + contentPadding.hashCode()
+        result = 31 * result + shape.hashCode()
 
-        result = 31 * result + badgeHorizontalOffset.hashCode()
-        result = 31 * result + badgeVerticalOffset.hashCode()
+        result = 31 * result + badgeRightOffset.hashCode()
+        result = 31 * result + badgeTopOffset.hashCode()
 
         result = 31 * result + textStyle.hashCode()
         return result

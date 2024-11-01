@@ -2,16 +2,19 @@ package ru.rabbit.persian.appShowcase.screens
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.counter.Badge
-import io.github.madmaximuus.persian.counter.Counter
-import io.github.madmaximuus.persian.counter.TonalCounter
-import io.github.madmaximuus.persian.counter.TransparentCounter
-import io.github.madmaximuus.persian.iconButtons.PersianTertiaryIconButton
+import io.github.madmaximuus.persian.counter.CounterDefaults
+import io.github.madmaximuus.persian.counter.ErrorCounter
+import io.github.madmaximuus.persian.counter.PrimaryCounter
+import io.github.madmaximuus.persian.counter.SecondaryCounter
+import io.github.madmaximuus.persian.counter.TertiaryCounter
+import io.github.madmaximuus.persian.counter.utils.BadgeStyle
+import io.github.madmaximuus.persian.iconButton.TertiaryIconButton
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.user.base.User
 import ru.rabbit.persian.appShowcase.componets.SampleRow
@@ -23,7 +26,6 @@ object Counter : Screen {
 
     override val navigation: String = "counter"
 
-    @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     override fun Content(navController: NavController?) {
         SampleScaffold(
@@ -36,31 +38,44 @@ object Counter : Screen {
                 contentPadding = it
             ) {
                 item {
-                    SampleRow(text = "Counter Default", firstItem = true) {
-                        Counter(count = 1)
-                        Counter(count = 10)
-                        Counter(count = 100)
+                    SampleRow(text = "Error counter", firstItem = true) {
+                        ErrorCounter(count = 1)
+                        ErrorCounter(count = 10)
+                        ErrorCounter(count = 100)
                     }
                 }
                 item {
-                    SampleRow(text = "Counter Tonal") {
-                        TonalCounter(count = 1)
-                        TonalCounter(count = 10)
-                        TonalCounter(count = 100)
+                    SampleRow(text = "Primary counter") {
+                        PrimaryCounter(count = 1)
+                        PrimaryCounter(count = 10)
+                        PrimaryCounter(count = 100)
                     }
                 }
                 item {
-                    SampleRow(text = "Counter Transparent") {
-                        TransparentCounter(count = 1)
-                        TransparentCounter(count = 10)
-                        TransparentCounter(count = 100)
+                    SampleRow(text = "Secondary Counter") {
+                        SecondaryCounter(count = 1)
+                        SecondaryCounter(count = 10)
+                        SecondaryCounter(count = 100)
                     }
                 }
                 item {
-                    SampleRow(text = "Badge", lastItem = true) {
+                    SampleRow(text = "Tertiary counter") {
+                        TertiaryCounter(count = 1)
+                        TertiaryCounter(count = 10)
+                        TertiaryCounter(count = 100)
+                    }
+                }
+                item {
+                    SampleRow(text = "Error badge") {
                         Badge(
+                            count = 1,
+                            colors = CounterDefaults.errorColors(),
+                            sizes = CounterDefaults.sizes(
+                                badgeTopOffset = 16.dp,
+                                badgeRightOffset = 20.dp
+                            ),
                             content = {
-                                PersianTertiaryIconButton(
+                                TertiaryIconButton(
                                     icon = rememberVectorPainter(image = PersianSymbols.Default.User),
                                     onClick = {}
                                 )
@@ -68,8 +83,14 @@ object Counter : Screen {
                         )
                         Badge(
                             count = 1,
+                            style = BadgeStyle.NUMBER,
+                            sizes = CounterDefaults.sizes(
+                                badgeTopOffset = 19.dp,
+                                badgeRightOffset = 23.dp
+                            ),
+                            colors = CounterDefaults.errorColors(),
                             content = {
-                                PersianTertiaryIconButton(
+                                TertiaryIconButton(
                                     icon = rememberVectorPainter(image = PersianSymbols.Default.User),
                                     onClick = {}
                                 )
@@ -77,8 +98,14 @@ object Counter : Screen {
                         )
                         Badge(
                             count = 10,
+                            style = BadgeStyle.NUMBER,
+                            sizes = CounterDefaults.sizes(
+                                badgeTopOffset = 19.dp,
+                                badgeRightOffset = 23.dp
+                            ),
+                            colors = CounterDefaults.errorColors(),
                             content = {
-                                PersianTertiaryIconButton(
+                                TertiaryIconButton(
                                     icon = rememberVectorPainter(image = PersianSymbols.Default.User),
                                     onClick = {}
                                 )
@@ -86,8 +113,140 @@ object Counter : Screen {
                         )
                         Badge(
                             count = 100,
+                            style = BadgeStyle.NUMBER,
+                            sizes = CounterDefaults.sizes(
+                                badgeTopOffset = 19.dp,
+                                badgeRightOffset = 23.dp
+                            ),
+                            colors = CounterDefaults.errorColors(),
                             content = {
-                                PersianTertiaryIconButton(
+                                TertiaryIconButton(
+                                    icon = rememberVectorPainter(image = PersianSymbols.Default.User),
+                                    onClick = {}
+                                )
+                            }
+                        )
+                    }
+                }
+                item {
+                    SampleRow(text = "Error badge") {
+                        Badge(
+                            count = 1,
+                            colors = CounterDefaults.primaryColors(),
+                            sizes = CounterDefaults.sizes(
+                                badgeTopOffset = 16.dp,
+                                badgeRightOffset = 20.dp
+                            ),
+                            content = {
+                                TertiaryIconButton(
+                                    icon = rememberVectorPainter(image = PersianSymbols.Default.User),
+                                    onClick = {}
+                                )
+                            },
+                        )
+                        Badge(
+                            count = 1,
+                            style = BadgeStyle.NUMBER,
+                            sizes = CounterDefaults.sizes(
+                                badgeTopOffset = 19.dp,
+                                badgeRightOffset = 23.dp
+                            ),
+                            colors = CounterDefaults.primaryColors(),
+                            content = {
+                                TertiaryIconButton(
+                                    icon = rememberVectorPainter(image = PersianSymbols.Default.User),
+                                    onClick = {}
+                                )
+                            }
+                        )
+                        Badge(
+                            count = 10,
+                            style = BadgeStyle.NUMBER,
+                            sizes = CounterDefaults.sizes(
+                                badgeTopOffset = 19.dp,
+                                badgeRightOffset = 23.dp
+                            ),
+                            colors = CounterDefaults.primaryColors(),
+                            content = {
+                                TertiaryIconButton(
+                                    icon = rememberVectorPainter(image = PersianSymbols.Default.User),
+                                    onClick = {}
+                                )
+                            }
+                        )
+                        Badge(
+                            count = 100,
+                            style = BadgeStyle.NUMBER,
+                            sizes = CounterDefaults.sizes(
+                                badgeTopOffset = 19.dp,
+                                badgeRightOffset = 23.dp
+                            ),
+                            colors = CounterDefaults.primaryColors(),
+                            content = {
+                                TertiaryIconButton(
+                                    icon = rememberVectorPainter(image = PersianSymbols.Default.User),
+                                    onClick = {}
+                                )
+                            }
+                        )
+                    }
+                }
+                item {
+                    SampleRow(text = "Error badge", lastItem = true) {
+                        Badge(
+                            count = 1,
+                            sizes = CounterDefaults.sizes(
+                                badgeTopOffset = 16.dp,
+                                badgeRightOffset = 20.dp
+                            ),
+                            colors = CounterDefaults.secondaryColors(),
+                            content = {
+                                TertiaryIconButton(
+                                    icon = rememberVectorPainter(image = PersianSymbols.Default.User),
+                                    onClick = {}
+                                )
+                            },
+                        )
+                        Badge(
+                            count = 1,
+                            style = BadgeStyle.NUMBER,
+                            sizes = CounterDefaults.sizes(
+                                badgeTopOffset = 19.dp,
+                                badgeRightOffset = 23.dp
+                            ),
+                            colors = CounterDefaults.secondaryColors(),
+                            content = {
+                                TertiaryIconButton(
+                                    icon = rememberVectorPainter(image = PersianSymbols.Default.User),
+                                    onClick = {}
+                                )
+                            }
+                        )
+                        Badge(
+                            count = 10,
+                            style = BadgeStyle.NUMBER,
+                            sizes = CounterDefaults.sizes(
+                                badgeTopOffset = 19.dp,
+                                badgeRightOffset = 23.dp
+                            ),
+                            colors = CounterDefaults.secondaryColors(),
+                            content = {
+                                TertiaryIconButton(
+                                    icon = rememberVectorPainter(image = PersianSymbols.Default.User),
+                                    onClick = {}
+                                )
+                            }
+                        )
+                        Badge(
+                            count = 100,
+                            style = BadgeStyle.NUMBER,
+                            sizes = CounterDefaults.sizes(
+                                badgeTopOffset = 19.dp,
+                                badgeRightOffset = 23.dp
+                            ),
+                            colors = CounterDefaults.secondaryColors(),
+                            content = {
+                                TertiaryIconButton(
                                     icon = rememberVectorPainter(image = PersianSymbols.Default.User),
                                     onClick = {}
                                 )
