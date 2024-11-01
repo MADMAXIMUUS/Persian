@@ -7,7 +7,7 @@ import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
 /**
- * Contains all default values used by divider.
+ * Contains the default values used by all dividers.
  */
 object DividerDefaults {
 
@@ -30,10 +30,10 @@ object DividerDefaults {
 }
 
 /**
- * A data class that holds the sizes for a divider.
+ * Represents the inset and thickness used in dividers.
  *
- * @property inset The inset value for the divider, specified in Dp.
- * @property strokeThickness The thickness of the divider stroke, specified in Dp.
+ * @property inset The inset value for the divider.
+ * @property strokeThickness The thickness of the divider stroke.
  */
 @Immutable
 data class DividerSizes(

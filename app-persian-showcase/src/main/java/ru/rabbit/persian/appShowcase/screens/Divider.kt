@@ -10,23 +10,19 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.dividers.FullHeightVerticalDivider
-import io.github.madmaximuus.persian.dividers.FullWidthHorizontalDivider
+import io.github.madmaximuus.persian.dividers.DividerDefaults
+import io.github.madmaximuus.persian.dividers.HorizontalDivider
 import io.github.madmaximuus.persian.dividers.HorizontalInsetSide
-import io.github.madmaximuus.persian.dividers.InsetHorizontalDivider
-import io.github.madmaximuus.persian.dividers.InsetVerticalDivider
-import io.github.madmaximuus.persian.dividers.MiddleInsetsHorizontalDivider
-import io.github.madmaximuus.persian.dividers.MiddleInsetsVerticalDivider
+import io.github.madmaximuus.persian.dividers.VerticalDivider
 import io.github.madmaximuus.persian.dividers.VerticalInsetSide
 import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
+import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
@@ -36,7 +32,6 @@ object Divider : Screen {
 
     override val navigation: String = "divider"
 
-    @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     override fun Content(navController: NavController?) {
         val topAppBarScrollBehavior =
@@ -53,91 +48,102 @@ object Divider : Screen {
                 contentPadding = it
             ) {
                 item {
-                    SampleRow(text = "Full Size Horizontal", firstItem = true) {
+                    SampleRow(text = "Horizontal divider", firstItem = true) {
+                        Column(
+                            Modifier.fillMaxWidth(),
+                            verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8)
+                        ) {
+                            Box(
+                                modifier = Modifier
+                                    .size(100.dp, 4.dp)
+                                    .background(PersianTheme.colorScheme.onSurface)
+                            )
+                            Box(
+                                modifier = Modifier
+                                    .size(150.dp, 4.dp)
+                                    .background(PersianTheme.colorScheme.onSurface)
+                            )
+                            HorizontalDivider()
+                        }
+                    }
+                }
+                item {
+                    SampleRow(text = "Horizontal divider with left inset") {
                         Column(
                             Modifier.fillMaxWidth(),
                             verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8)
                         ) {
                             Box(modifier = Modifier
-                                .size(100.dp, 10.dp)
+                                .size(100.dp, 4.dp)
                                 .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
                             Box(modifier = Modifier
-                                .size(150.dp, 10.dp)
+                                .size(150.dp, 4.dp)
                                 .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
-                            FullWidthHorizontalDivider()
+                            HorizontalDivider(
+                                insetSide = HorizontalInsetSide.LEFT,
+                                sizes = DividerDefaults.sizes(
+                                    inset = PersianTheme.spacing.size24
+                                )
+                            )
                         }
                     }
                 }
                 item {
-                    SampleRow(text = "Middle Size Left Horizontal") {
+                    SampleRow(text = "horizontal divider with right inset") {
                         Column(
                             Modifier.fillMaxWidth(),
                             verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8)
                         ) {
                             Box(modifier = Modifier
-                                .size(100.dp, 10.dp)
+                                .size(100.dp, 4.dp)
                                 .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
                             Box(modifier = Modifier
-                                .size(150.dp, 10.dp)
+                                .size(150.dp, 4.dp)
                                 .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
-                            MiddleInsetsHorizontalDivider(
-                                insetSide = HorizontalInsetSide.LEFT
+                            HorizontalDivider(
+                                insetSide = HorizontalInsetSide.RIGHT,
+                                sizes = DividerDefaults.sizes(
+                                    inset = PersianTheme.spacing.size24
+                                )
                             )
                         }
                     }
                 }
                 item {
-                    SampleRow(text = "Middle Size Right Horizontal") {
+                    SampleRow(text = "Horizontal divider with both insets") {
                         Column(
                             Modifier.fillMaxWidth(),
                             verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8)
                         ) {
                             Box(modifier = Modifier
-                                .size(100.dp, 10.dp)
+                                .size(100.dp, 4.dp)
                                 .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
                             Box(modifier = Modifier
-                                .size(150.dp, 10.dp)
+                                .size(150.dp, 4.dp)
                                 .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
-                            MiddleInsetsHorizontalDivider(
-                                insetSide = HorizontalInsetSide.RIGHT
+                            HorizontalDivider(
+                                insetSide = HorizontalInsetSide.BOTH,
+                                sizes = DividerDefaults.sizes(
+                                    inset = PersianTheme.spacing.size24
+                                )
                             )
                         }
                     }
                 }
                 item {
-                    SampleRow(text = "Insets Horizontal") {
-                        Column(
-                            Modifier.fillMaxWidth(),
-                            verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8)
-                        ) {
-                            Box(modifier = Modifier
-                                .size(100.dp, 10.dp)
-                                .background(PersianTheme.colorScheme.onSurface),
-                                content = {}
-                            )
-                            Box(modifier = Modifier
-                                .size(150.dp, 10.dp)
-                                .background(PersianTheme.colorScheme.onSurface),
-                                content = {}
-                            )
-                            InsetHorizontalDivider()
-                        }
-                    }
-                }
-                item {
-                    SampleRow(text = "Full Size Vertical") {
+                    SampleRow(text = "Vertical divider") {
                         Row(
                             Modifier
                                 .fillMaxWidth()
@@ -145,21 +151,21 @@ object Divider : Screen {
                             horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8)
                         ) {
                             Box(modifier = Modifier
-                                .size(10.dp, 100.dp)
+                                .size(4.dp, 100.dp)
                                 .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
                             Box(modifier = Modifier
-                                .size(10.dp, 150.dp)
+                                .size(4.dp, 150.dp)
                                 .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
-                            FullHeightVerticalDivider()
+                            VerticalDivider()
                         }
                     }
                 }
                 item {
-                    SampleRow(text = "Middle Size Top Vertical") {
+                    SampleRow(text = "Vertical divider with top inset") {
                         Row(
                             Modifier
                                 .fillMaxWidth()
@@ -167,23 +173,26 @@ object Divider : Screen {
                             horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8)
                         ) {
                             Box(modifier = Modifier
-                                .size(10.dp, 100.dp)
+                                .size(4.dp, 100.dp)
                                 .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
                             Box(modifier = Modifier
-                                .size(10.dp, 150.dp)
+                                .size(4.dp, 150.dp)
                                 .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
-                            MiddleInsetsVerticalDivider(
-                                insetSide = VerticalInsetSide.TOP
+                            VerticalDivider(
+                                insetSide = VerticalInsetSide.TOP,
+                                sizes = DividerDefaults.sizes(
+                                    inset = PersianTheme.spacing.size24
+                                )
                             )
                         }
                     }
                 }
                 item {
-                    SampleRow(text = "Middle Size Bottom Vertical") {
+                    SampleRow(text = "Vertical divider with bottom divider") {
                         Row(
                             Modifier
                                 .fillMaxWidth()
@@ -191,23 +200,26 @@ object Divider : Screen {
                             horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8)
                         ) {
                             Box(modifier = Modifier
-                                .size(10.dp, 100.dp)
+                                .size(4.dp, 100.dp)
                                 .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
                             Box(modifier = Modifier
-                                .size(10.dp, 150.dp)
+                                .size(4.dp, 150.dp)
                                 .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
-                            MiddleInsetsVerticalDivider(
-                                insetSide = VerticalInsetSide.BOTTOM
+                            VerticalDivider(
+                                insetSide = VerticalInsetSide.BOTTOM,
+                                sizes = DividerDefaults.sizes(
+                                    inset = PersianTheme.spacing.size24
+                                )
                             )
                         }
                     }
                 }
                 item {
-                    SampleRow(text = "Insets Vertical", lastItem = true) {
+                    SampleRow(text = "Vertical divider with both insets", lastItem = true) {
                         Row(
                             Modifier
                                 .fillMaxWidth()
@@ -215,16 +227,21 @@ object Divider : Screen {
                             horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8)
                         ) {
                             Box(modifier = Modifier
-                                .size(10.dp, 100.dp)
+                                .size(4.dp, 100.dp)
                                 .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
                             Box(modifier = Modifier
-                                .size(10.dp, 150.dp)
+                                .size(4.dp, 150.dp)
                                 .background(PersianTheme.colorScheme.onSurface),
                                 content = {}
                             )
-                            InsetVerticalDivider()
+                            VerticalDivider(
+                                insetSide = VerticalInsetSide.BOTH,
+                                sizes = DividerDefaults.sizes(
+                                    inset = PersianTheme.spacing.size24
+                                )
+                            )
                         }
                     }
                 }
