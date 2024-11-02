@@ -24,7 +24,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.fab.MediumFab
+import io.github.madmaximuus.persian.fab.Fab
 import io.github.madmaximuus.persian.foundation.LocalContentColor
 import io.github.madmaximuus.persian.foundation.PersianSubcomposeLayout
 import io.github.madmaximuus.persian.foundation.ProvideTextStyle
@@ -39,7 +39,7 @@ import io.github.madmaximuus.persian.text.Text
  * post.
  *
  * Primary buttons are high-emphasis buttons. Primary buttons have the most visual impact after the
- * [MediumFab], and should be used for important, final actions that complete a flow,
+ * [Fab], and should be used for important, final actions that complete a flow,
  * like "Save", "Join now", or "Confirm".
  *
  * Choose the best button for an action based on the amount of emphasis it needs. The more important
