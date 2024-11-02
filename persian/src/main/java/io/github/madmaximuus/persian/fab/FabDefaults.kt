@@ -104,14 +104,13 @@ object FabDefaults {
     @Composable
     fun smallSizes(
         boxSize: Dp = 40.dp,
-        iconSizes: IconSizes = IconDefaults.size20(),
-        textStyle: TextStyle = PersianTheme.typography.labelLarge,
+        iconSizes: IconSizes = IconDefaults.size24(),
         cornerShape: Shape = PersianTheme.shapes.shape12
     ): FabSizes =
         FabSizes(
             boxSize = boxSize,
             iconSizes = iconSizes,
-            textStyle = textStyle,
+            textStyle = PersianTheme.typography.labelLarge,
             cornerShape = cornerShape
         )
 
@@ -124,10 +123,10 @@ object FabDefaults {
      * @param cornerShape The shape of the FAB's corners.
      */
     @Composable
-    fun mediumSizes(
+    fun defaultSizes(
         boxSize: Dp = 56.dp,
-        iconSizes: IconSizes = IconDefaults.size20(),
-        textStyle: TextStyle = PersianTheme.typography.labelLarge,
+        iconSizes: IconSizes = IconDefaults.size28(),
+        textStyle: TextStyle = PersianTheme.typography.titleMedium,
         cornerShape: Shape = PersianTheme.shapes.shape16
     ): FabSizes =
         FabSizes(
@@ -139,20 +138,20 @@ object FabDefaults {
 
     /**
      * Creates a [FabElevation] that represents the elevation of a
-     * [Fab] in different states.
+     * [FabImpl] in different states.
      *
-     * @param defaultElevation the elevation used when the [Fab] has no other
+     * @param defaultElevation the elevation used when the [FabImpl] has no other
      *   [Interaction]s.
-     * @param pressedElevation the elevation used when the [Fab] is pressed.
-     * @param focusedElevation the elevation used when the [Fab] is focused.
-     * @param hoveredElevation the elevation used when the [Fab] is hovered.
+     * @param pressedElevation the elevation used when the [FabImpl] is pressed.
+     * @param focusedElevation the elevation used when the [FabImpl] is focused.
+     * @param hoveredElevation the elevation used when the [FabImpl] is hovered.
      */
     @Composable
     fun elevation(
-        defaultElevation: Dp = PersianTheme.elevation.medium,
-        pressedElevation: Dp = PersianTheme.elevation.medium,
-        focusedElevation: Dp = PersianTheme.elevation.medium,
-        hoveredElevation: Dp = PersianTheme.elevation.large,
+        defaultElevation: Dp = PersianTheme.elevation.elevation3,
+        pressedElevation: Dp = PersianTheme.elevation.elevation3,
+        focusedElevation: Dp = PersianTheme.elevation.elevation3,
+        hoveredElevation: Dp = PersianTheme.elevation.elevation4,
     ): FabElevation =
         FabElevation(
             defaultElevation = defaultElevation,
@@ -194,7 +193,7 @@ data class FabSizes(
  * Represents the tonal and shadow elevation for a floating action button in different states.
  *
  * See [FabDefaults.elevation] for the default elevation used in a
- * [Fab] and [MediumFab].
+ * [FabImpl] and [Fab].
  */
 @Stable
 open class FabElevation internal constructor(
