@@ -104,6 +104,7 @@ fun TriStateCheckbox(
 ) {
     Row(
         modifier = modifier
+            .height(48.dp)
             .clip(PersianTheme.shapes.shape16)
             .triStateToggleable(
                 state = state,
@@ -115,8 +116,7 @@ fun TriStateCheckbox(
                     color = colors.toggleColors.boxColor(enabled = enabled, state = state).value,
                 )
             )
-            .padding(sizes.contentPadding)
-            .height(52.dp),
+            .padding(sizes.contentPadding),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size12)
     ) {
