@@ -9,6 +9,7 @@ import androidx.compose.runtime.Stable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.state.ToggleableState
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
@@ -97,19 +98,22 @@ object CheckboxDefaults {
      *
      * @param toggleSize The size of the checkbox toggle.
      * @param textStyle The style of the text associated with the checkbox.
+     * @param shape The shape of checkbox container.
      * @param contentPadding The padding values for the content of the checkbox.
      */
     @Composable
     fun sizes(
-        toggleSize: Dp = 48.dp,
+        toggleSize: Dp = 24.dp,
         textStyle: TextStyle = PersianTheme.typography.bodyLarge,
+        shape: Shape = PersianTheme.shapes.shape16,
         contentPadding: PaddingValues = PaddingValues(
-            end = PersianTheme.spacing.size12
+            horizontal = PersianTheme.spacing.size16
         )
     ): CheckboxSizes =
         CheckboxSizes(
             toggleSize = toggleSize,
             textStyle = textStyle,
+            shape = shape,
             contentPadding = contentPadding
         )
 }
@@ -125,6 +129,7 @@ object CheckboxDefaults {
 class CheckboxSizes internal constructor(
     internal val toggleSize: Dp,
     internal val textStyle: TextStyle,
+    internal val shape: Shape,
     internal val contentPadding: PaddingValues
 )
 

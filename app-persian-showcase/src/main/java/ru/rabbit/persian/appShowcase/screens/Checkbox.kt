@@ -18,9 +18,9 @@ import io.github.madmaximuus.persian.checkboxes.TriStateCheckbox
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
-object CheckBox : Screen {
+object Checkbox : Screen {
 
-    override val name: String = "Checkboxes"
+    override val name: String = "Checkbox"
 
     override val navigation: String = "checkbox"
 
@@ -34,8 +34,7 @@ object CheckBox : Screen {
         ) {
             LazyColumn(
                 modifier = Modifier
-                    .fillMaxSize()
-                    .padding(horizontal = PersianTheme.spacing.size12),
+                    .fillMaxSize(),
                 contentPadding = it,
             ) {
                 item {

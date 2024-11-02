@@ -3,6 +3,7 @@ package io.github.madmaximuus.persian.checkboxes
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.selection.toggleable
@@ -14,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.state.ToggleableState
+import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.checkboxes.toggle.CheckboxToggle
 import io.github.madmaximuus.persian.checkboxes.toggle.TriStateCheckboxToggle
 import io.github.madmaximuus.persian.foundation.PersianTheme
@@ -44,7 +46,8 @@ fun Checkbox(
 ) {
     Row(
         modifier = modifier
-            .clip(PersianTheme.shapes.shape16)
+            .height(48.dp)
+            .clip(sizes.shape)
             .toggleable(
                 value = checked,
                 enabled = enabled,
@@ -57,7 +60,7 @@ fun Checkbox(
             )
             .padding(sizes.contentPadding),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.Start
+        horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size12)
     ) {
         CheckboxToggle(
             modifier = Modifier
@@ -112,9 +115,10 @@ fun TriStateCheckbox(
                     color = colors.toggleColors.boxColor(enabled = enabled, state = state).value,
                 )
             )
-            .padding(sizes.contentPadding),
+            .padding(sizes.contentPadding)
+            .height(52.dp),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.Start
+        horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size12)
     ) {
         TriStateCheckboxToggle(
             modifier = Modifier

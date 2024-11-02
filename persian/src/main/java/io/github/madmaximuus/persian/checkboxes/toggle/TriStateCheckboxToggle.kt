@@ -91,7 +91,7 @@ fun TriStateCheckboxToggle(
                 }
             )
             .then(toggleableModifier)
-            .padding(checkboxDefaultPadding),
+            .padding(1.dp),
         colors = colors
     )
 }
@@ -274,7 +274,6 @@ internal const val BOX_IN_DURATION = 100
 internal const val BOX_OUT_DURATION = 150
 internal const val CHECK_ANIMATION_DURATION = 200
 
-internal val checkboxDefaultPadding = 4.dp
 internal val checkboxSize = 22.dp
 internal val strokeWidth = 2.5.dp
 internal val radiusSize = 6.dp
