@@ -8,8 +8,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -26,64 +24,6 @@ import io.github.madmaximuus.persian.dividers.HorizontalInsetSide
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.surface.Surface
 import io.github.madmaximuus.persian.text.Text
-
-/**
- * Only action alert is a dialog that presents several options to the user. This element requires immediate attention and provides choices for the user to select from.
- * An alert is used in situations where a decision is needed, but it does not need to be displayed permanently on the screen.
- *
- * @param modifier the [Modifier] to be applied to this alert.
- * @param actions The actions in [OnlyActionScope] of this alert.
- * @param colors The [AlertColors] colors of container and [actions] of this alert.
- * @param sizes The [AlertSizes] sizes of container and [actions] of this alert.
- * @param onDismiss Executes when the user tries to dismiss the alert.
- */
-@Composable
-fun OnlyActionAlert(
-    modifier: Modifier = Modifier,
-    colors: AlertColors = AlertsDefaults.colors(),
-    sizes: AlertSizes = AlertsDefaults.onlyActionSizes(),
-    actions: @Composable OnlyActionScope.() -> Unit,
-    onDismiss: () -> Unit
-) {
-    Dialog(
-        onDismissRequest = onDismiss,
-        properties = DialogProperties(
-            usePlatformDefaultWidth = false,
-            decorFitsSystemWindows = false
-        ),
-        content = {
-            Surface(
-                modifier = modifier
-                    .widthIn(max = 500.dp)
-                    .fillMaxWidth()
-                    .wrapContentHeight()
-                    .padding(horizontal = PersianTheme.spacing.size20),
-                shape = sizes.containerShape,
-                color = colors.containerColor,
-                tonalElevation = PersianTheme.elevation.elevation2,
-                shadowElevation = 0.dp,
-                content = {
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(PersianTheme.spacing.size16)
-                            .verticalScroll(rememberScrollState()),
-                        content = {
-                            val scope = remember(colors, sizes) {
-                                OnlyActionScopeWrapper(
-                                    scope = this,
-                                    color = colors.actionColor,
-                                    sizes = sizes.actionSize
-                                )
-                            }
-                            scope.actions()
-                        }
-                    )
-                }
-            )
-        }
-    )
-}
 
 /**
  * Alert is a dialog that presents an important message or question to the user. This element requires immediate attention and provides options for the user to respond.
