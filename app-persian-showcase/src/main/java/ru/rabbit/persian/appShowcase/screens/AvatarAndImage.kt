@@ -4,12 +4,9 @@ import android.net.Uri
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -22,14 +19,15 @@ import io.github.madmaximuus.persian.avatarsAndImages.AvatarDefaults
 import io.github.madmaximuus.persian.avatarsAndImages.Image
 import io.github.madmaximuus.persian.avatarsAndImages.ImageDefaults
 import io.github.madmaximuus.persian.avatarsAndImages.ImageShape
-import io.github.madmaximuus.persian.checkboxes.Checkbox
+import io.github.madmaximuus.persian.forms.Checkbox
+import io.github.madmaximuus.persian.forms.Checkboxes
 import io.github.madmaximuus.persian.forms.Form
+import io.github.madmaximuus.persian.forms.RadioButton
+import io.github.madmaximuus.persian.forms.RadioButtons
 import io.github.madmaximuus.persian.forms.Select
 import io.github.madmaximuus.persian.forms.Subhead
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.menu.DropdownMenuItem
-import io.github.madmaximuus.persian.radioButton.RadioButton
-import io.github.madmaximuus.persian.text.Text
 import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
 import ru.rabbit.persian.appShowcase.componets.SampleRow
@@ -163,13 +161,7 @@ object AvatarAndImage : Screen {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(top = PersianTheme.spacing.size16)
-                        .padding(horizontal = PersianTheme.spacing.size16)
                 ) {
-                    Text(
-                        text = "Settings",
-                        style = PersianTheme.typography.titleMedium,
-                        color = PersianTheme.colorScheme.onSurface
-                    )
                     Form(
                         modifier = Modifier.padding(top = PersianTheme.spacing.size8),
                         subhead = {
@@ -320,102 +312,96 @@ object AvatarAndImage : Screen {
                             )
                         },
                     )
-                    Column(
+                    Form(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(top = PersianTheme.spacing.size16),
-                    ) {
-                        Text(
-                            text = "Shape",
-                            style = PersianTheme.typography.labelLarge,
-                            color = PersianTheme.colorScheme.onSurface
-                        )
-                        Spacer(modifier = Modifier.height(PersianTheme.spacing.size2))
-                        Column(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .selectableGroup()
-                        ) {
-                            RadioButton(
+                            .padding(top = PersianTheme.spacing.size12),
+                        subhead = {
+                            Subhead(
                                 modifier = Modifier.fillMaxWidth(),
-                                text = "Large",
-                                checked = shapeStates[0].value,
-                                onCheckedChange = {
-                                    shapeStates.forEachIndexed { index, mutableState ->
-                                        mutableState.value = index == 0
-                                    }
-                                    shape = ImageShape.LARGE
-                                }
+                                text = "Shape"
                             )
-                            RadioButton(
-                                modifier = Modifier.fillMaxWidth(),
-                                text = "Medium",
-                                checked = shapeStates[1].value,
-                                onCheckedChange = {
-                                    shapeStates.forEachIndexed { index, mutableState ->
-                                        mutableState.value = index == 1
+                        },
+                        content = {
+                            RadioButtons {
+                                RadioButton(
+                                    text = "Large",
+                                    selected = shapeStates[0].value,
+                                    onSelectedChange = {
+                                        shapeStates.forEachIndexed { index, mutableState ->
+                                            mutableState.value = index == 0
+                                        }
+                                        shape = ImageShape.LARGE
                                     }
-                                    shape = ImageShape.MEDIUM
-                                }
-                            )
-                            RadioButton(
-                                modifier = Modifier.fillMaxWidth(),
-                                text = "Small",
-                                checked = shapeStates[2].value,
-                                onCheckedChange = {
-                                    shapeStates.forEachIndexed { index, mutableState ->
-                                        mutableState.value = index == 2
+                                )
+                                RadioButton(
+                                    text = "Medium",
+                                    selected = shapeStates[1].value,
+                                    onSelectedChange = {
+                                        shapeStates.forEachIndexed { index, mutableState ->
+                                            mutableState.value = index == 1
+                                        }
+                                        shape = ImageShape.MEDIUM
                                     }
-                                    shape = ImageShape.SMALL
-                                }
-                            )
+                                )
+                                RadioButton(
+                                    text = "Small",
+                                    selected = shapeStates[2].value,
+                                    onSelectedChange = {
+                                        shapeStates.forEachIndexed { index, mutableState ->
+                                            mutableState.value = index == 2
+                                        }
+                                        shape = ImageShape.SMALL
+                                    }
+                                )
+                            }
                         }
-                    }
-                    Column(
-                        modifier = Modifier.padding(top = PersianTheme.spacing.size16)
-                    ) {
-                        Text(
-                            text = "Additional settings",
-                            style = PersianTheme.typography.labelLarge,
-                            color = PersianTheme.colorScheme.onSurface
-                        )
-                        Checkbox(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Overlay",
-                            checked = overlay,
-                            onCheckedChange = onOverlayChange
-                        )
-                        Checkbox(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Content",
-                            checked = content,
-                            onCheckedChange = onContentChange
-                        )
-                        Checkbox(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Initials",
-                            checked = initials,
-                            onCheckedChange = onInitialsChange
-                        )
-                        Checkbox(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Badge",
-                            checked = badge,
-                            onCheckedChange = onBadgeChange
-                        )
-                        Checkbox(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Clickable",
-                            checked = clickable,
-                            onCheckedChange = onClickableChange
-                        )
-                        Checkbox(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Enabled",
-                            checked = enabled,
-                            onCheckedChange = onEnabledChange
-                        )
-                    }
+                    )
+                    Form(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = PersianTheme.spacing.size20),
+                        subhead = {
+                            Subhead(
+                                modifier = Modifier.fillMaxWidth(),
+                                text = "Settings"
+                            )
+                        },
+                        content = {
+                            Checkboxes {
+                                Checkbox(
+                                    text = "Overlay",
+                                    checked = overlay,
+                                    onCheckedChange = onOverlayChange
+                                )
+                                Checkbox(
+                                    text = "Content",
+                                    checked = content,
+                                    onCheckedChange = onContentChange
+                                )
+                                Checkbox(
+                                    text = "Initials",
+                                    checked = initials,
+                                    onCheckedChange = onInitialsChange
+                                )
+                                Checkbox(
+                                    text = "Badge",
+                                    checked = badge,
+                                    onCheckedChange = onBadgeChange
+                                )
+                                Checkbox(
+                                    text = "Clickable",
+                                    checked = clickable,
+                                    onCheckedChange = onClickableChange
+                                )
+                                Checkbox(
+                                    text = "Enabled",
+                                    checked = enabled,
+                                    onCheckedChange = onEnabledChange
+                                )
+                            }
+                        }
+                    )
                 }
             }
         }
