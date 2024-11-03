@@ -277,7 +277,7 @@ object Banner : Screen {
                                         }
                                     )
                                     RadioButton(
-                                        text = "Medium",
+                                        text = "Secondary",
                                         selected = buttonStyleStates[1].value,
                                         onSelectedChange = {
                                             buttonStyleStates.forEachIndexed { index, mutableState ->
@@ -287,7 +287,7 @@ object Banner : Screen {
                                         }
                                     )
                                     RadioButton(
-                                        text = "Small",
+                                        text = "Tertiary",
                                         selected = buttonStyleStates[2].value,
                                         onSelectedChange = {
                                             buttonStyleStates.forEachIndexed { index, mutableState ->
