@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -28,11 +27,14 @@ import io.github.madmaximuus.persian.banner.Open
 import io.github.madmaximuus.persian.banner.Primary
 import io.github.madmaximuus.persian.banner.Secondary
 import io.github.madmaximuus.persian.banner.Tertiary
-import io.github.madmaximuus.persian.checkboxes.Checkbox
+import io.github.madmaximuus.persian.forms.Checkbox
+import io.github.madmaximuus.persian.forms.Checkboxes
+import io.github.madmaximuus.persian.forms.Form
+import io.github.madmaximuus.persian.forms.RadioButton
+import io.github.madmaximuus.persian.forms.RadioButtons
+import io.github.madmaximuus.persian.forms.Subhead
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.input.OutlineInput
-import io.github.madmaximuus.persian.radioButton.RadioButton
-import io.github.madmaximuus.persian.text.Text
 import io.github.madmaximuus.persian.textAreas.OutlineTextArea
 import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
@@ -81,7 +83,7 @@ object Banner : Screen {
                 )
             }
 
-            val (button, onButtonChecked) = remember { mutableStateOf(false) }
+            val (button, onButtonChange) = remember { mutableStateOf(false) }
             var buttonStyle by remember { mutableStateOf("Primary") }
             val buttonStyleStates = remember {
                 listOf(
@@ -91,7 +93,7 @@ object Banner : Screen {
                 )
             }
 
-            val (clickable, onClickableChecked) = remember { mutableStateOf(false) }
+            val (clickable, onClickableChange) = remember { mutableStateOf(false) }
             val onClick = {}
             Column(
                 modifier = Modifier
@@ -177,230 +179,211 @@ object Banner : Screen {
                 }
                 Column(
                     modifier = Modifier
+                        .fillMaxWidth()
                         .verticalScroll(rememberScrollState())
                         .navigationBarsPadding()
                 ) {
-                    Checkbox(
-                        modifier = Modifier
-                            .padding(horizontal = PersianTheme.spacing.size16)
-                            .fillMaxWidth(),
-                        text = "Title",
-                        checked = title,
-                        onCheckedChange = { isChecked ->
-                            title = isChecked
-                            if (!description && !isChecked) description = true
-                        }
-                    )
                     if (title) {
                         OutlineInput(
-                            modifier = Modifier.padding(horizontal = PersianTheme.spacing.size16),
+                            modifier = Modifier
+                                .padding(horizontal = PersianTheme.spacing.size16)
+                                .padding(top = PersianTheme.spacing.size12),
                             value = titleValue,
                             onValueChange = onTitleValueChange
                         )
-                        Spacer(modifier = Modifier.height(PersianTheme.spacing.size8))
                     }
-                    Checkbox(
-                        modifier = Modifier
-                            .padding(horizontal = PersianTheme.spacing.size16)
-                            .fillMaxWidth(),
-                        text = "Description",
-                        checked = description,
-                        onCheckedChange = { isChecked ->
-                            description = isChecked
-                            if (!title && !isChecked) title = true
-                        }
-                    )
                     if (description) {
                         OutlineTextArea(
-                            modifier = Modifier.padding(horizontal = PersianTheme.spacing.size16),
+                            modifier = Modifier
+                                .padding(horizontal = PersianTheme.spacing.size16)
+                                .padding(top = PersianTheme.spacing.size12),
                             value = descriptionValue,
                             onValueChange = onDescriptionValueChange
                         )
                         Spacer(modifier = Modifier.height(PersianTheme.spacing.size8))
                     }
-                    Checkbox(
+                    Form(
                         modifier = Modifier
-                            .padding(horizontal = PersianTheme.spacing.size16)
-                            .fillMaxWidth(),
-                        text = "Left",
-                        checked = left,
-                        onCheckedChange = onLeftChange
-                    )
-                    if (left) {
-                        Column(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(top = PersianTheme.spacing.size4)
-                                .padding(horizontal = PersianTheme.spacing.size20),
-                        ) {
-                            Text(
-                                text = "Left content",
-                                style = PersianTheme.typography.labelLarge,
-                                color = PersianTheme.colorScheme.onSurface
+                            .fillMaxWidth()
+                            .padding(top = PersianTheme.spacing.size20),
+                        subhead = {
+                            Subhead(
+                                modifier = Modifier.fillMaxWidth(),
+                                text = "Settings"
                             )
-                            Spacer(modifier = Modifier.height(PersianTheme.spacing.size2))
-                            Column(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .selectableGroup()
-                            ) {
-                                RadioButton(
-                                    modifier = Modifier.fillMaxWidth(),
-                                    text = "Icon",
-                                    checked = leftStates[0].value,
-                                    onCheckedChange = {
-                                        leftStates.forEachIndexed { index, mutableState ->
-                                            mutableState.value = index == 0
-                                        }
-                                        selectedLeft = "Icon"
+                        },
+                        content = {
+                            Checkboxes {
+                                Checkbox(
+                                    text = "Title",
+                                    checked = title,
+                                    onCheckedChange = { isChecked ->
+                                        title = isChecked
+                                        if (!description && !isChecked) description = true
                                     }
                                 )
-                                RadioButton(
-                                    modifier = Modifier.fillMaxWidth(),
-                                    text = "Avatar",
-                                    checked = leftStates[1].value,
-                                    onCheckedChange = {
-                                        leftStates.forEachIndexed { index, mutableState ->
-                                            mutableState.value = index == 1
-                                        }
-                                        selectedLeft = "Avatar"
+                                Checkbox(
+                                    text = "Description",
+                                    checked = description,
+                                    onCheckedChange = { isChecked ->
+                                        description = isChecked
+                                        if (!title && !isChecked) title = true
                                     }
                                 )
-                                RadioButton(
-                                    modifier = Modifier.fillMaxWidth(),
-                                    text = "Image",
-                                    checked = leftStates[2].value,
-                                    onCheckedChange = {
-                                        leftStates.forEachIndexed { index, mutableState ->
-                                            mutableState.value = index == 2
-                                        }
-                                        selectedLeft = "Image"
-                                    }
+                                Checkbox(
+                                    text = "Left",
+                                    checked = left,
+                                    onCheckedChange = onLeftChange
+                                )
+                                Checkbox(
+                                    text = "Right",
+                                    checked = right,
+                                    onCheckedChange = onRightChange
+                                )
+                                Checkbox(
+                                    text = "Button",
+                                    checked = button,
+                                    onCheckedChange = onButtonChange
+                                )
+                                Checkbox(
+                                    text = "Clickable",
+                                    checked = clickable,
+                                    onCheckedChange = onClickableChange
                                 )
                             }
                         }
-                    }
-                    Checkbox(
-                        modifier = Modifier
-                            .padding(horizontal = PersianTheme.spacing.size16)
-                            .fillMaxWidth(),
-                        text = "Right",
-                        checked = right,
-                        onCheckedChange = onRightChange
-                    )
-                    if (right) {
-                        Column(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(top = PersianTheme.spacing.size4)
-                                .padding(horizontal = PersianTheme.spacing.size20),
-                        ) {
-                            Text(
-                                text = "Right content",
-                                style = PersianTheme.typography.labelLarge,
-                                color = PersianTheme.colorScheme.onSurface
-                            )
-                            Spacer(modifier = Modifier.height(PersianTheme.spacing.size2))
-                            Column(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .selectableGroup()
-                            ) {
-                                RadioButton(
-                                    modifier = Modifier.fillMaxWidth(),
-                                    text = "Close",
-                                    checked = rightStates[0].value,
-                                    onCheckedChange = {
-                                        rightStates.forEachIndexed { index, mutableState ->
-                                            mutableState.value = index == 0
-                                        }
-                                        selectedRight = "Close"
-                                    }
-                                )
-                                RadioButton(
-                                    modifier = Modifier.fillMaxWidth(),
-                                    text = "Open",
-                                    checked = rightStates[1].value,
-                                    onCheckedChange = {
-                                        rightStates.forEachIndexed { index, mutableState ->
-                                            mutableState.value = index == 1
-                                        }
-                                        selectedRight = "Open"
-                                    }
-                                )
-                            }
-                        }
-                    }
-                    Checkbox(
-                        modifier = Modifier
-                            .padding(horizontal = PersianTheme.spacing.size16)
-                            .fillMaxWidth(),
-                        text = "Button",
-                        checked = button,
-                        onCheckedChange = onButtonChecked
                     )
                     if (button) {
-                        Column(
+                        Form(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(top = PersianTheme.spacing.size4)
-                                .padding(horizontal = PersianTheme.spacing.size20),
-                        ) {
-                            Text(
-                                text = "Button style",
-                                style = PersianTheme.typography.labelLarge,
-                                color = PersianTheme.colorScheme.onSurface
-                            )
-                            Spacer(modifier = Modifier.height(PersianTheme.spacing.size2))
-                            Column(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .selectableGroup()
-                            ) {
-                                RadioButton(
+                                .padding(top = PersianTheme.spacing.size12),
+                            subhead = {
+                                Subhead(
                                     modifier = Modifier.fillMaxWidth(),
-                                    text = "Primary",
-                                    checked = buttonStyleStates[0].value,
-                                    onCheckedChange = {
-                                        buttonStyleStates.forEachIndexed { index, mutableState ->
-                                            mutableState.value = index == 0
-                                        }
-                                        buttonStyle = "Primary"
-                                    }
+                                    text = "Button"
                                 )
-                                RadioButton(
-                                    modifier = Modifier.fillMaxWidth(),
-                                    text = "Secondary",
-                                    checked = buttonStyleStates[1].value,
-                                    onCheckedChange = {
-                                        buttonStyleStates.forEachIndexed { index, mutableState ->
-                                            mutableState.value = index == 1
+                            },
+                            content = {
+                                RadioButtons {
+                                    RadioButton(
+                                        text = "Primary",
+                                        selected = buttonStyleStates[0].value,
+                                        onSelectedChange = {
+                                            buttonStyleStates.forEachIndexed { index, mutableState ->
+                                                mutableState.value = index == 0
+                                            }
+                                            buttonStyle = "Primary"
                                         }
-                                        buttonStyle = "Secondary"
-                                    }
-                                )
-                                RadioButton(
-                                    modifier = Modifier.fillMaxWidth(),
-                                    text = "Tertiary",
-                                    checked = buttonStyleStates[2].value,
-                                    onCheckedChange = {
-                                        buttonStyleStates.forEachIndexed { index, mutableState ->
-                                            mutableState.value = index == 2
+                                    )
+                                    RadioButton(
+                                        text = "Medium",
+                                        selected = buttonStyleStates[1].value,
+                                        onSelectedChange = {
+                                            buttonStyleStates.forEachIndexed { index, mutableState ->
+                                                mutableState.value = index == 1
+                                            }
+                                            buttonStyle = "Secondary"
                                         }
-                                        buttonStyle = "Tertiary"
-                                    }
-                                )
+                                    )
+                                    RadioButton(
+                                        text = "Small",
+                                        selected = buttonStyleStates[2].value,
+                                        onSelectedChange = {
+                                            buttonStyleStates.forEachIndexed { index, mutableState ->
+                                                mutableState.value = index == 2
+                                            }
+                                            buttonStyle = "Tertiary"
+                                        }
+                                    )
+                                }
                             }
-                        }
+                        )
                     }
-                    Checkbox(
-                        modifier = Modifier
-                            .padding(horizontal = PersianTheme.spacing.size16)
-                            .fillMaxWidth(),
-                        text = "Clickable",
-                        checked = clickable,
-                        onCheckedChange = onClickableChecked
-                    )
+                    if (left) {
+                        Form(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(top = PersianTheme.spacing.size12),
+                            subhead = {
+                                Subhead(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    text = "Left content"
+                                )
+                            },
+                            content = {
+                                RadioButtons {
+                                    RadioButton(
+                                        text = "Icon",
+                                        selected = leftStates[0].value,
+                                        onSelectedChange = {
+                                            leftStates.forEachIndexed { index, mutableState ->
+                                                mutableState.value = index == 0
+                                            }
+                                            selectedLeft = "Icon"
+                                        }
+                                    )
+                                    RadioButton(
+                                        text = "Avatar",
+                                        selected = leftStates[1].value,
+                                        onSelectedChange = {
+                                            leftStates.forEachIndexed { index, mutableState ->
+                                                mutableState.value = index == 1
+                                            }
+                                            selectedLeft = "Avatar"
+                                        }
+                                    )
+                                    RadioButton(
+                                        text = "Image",
+                                        selected = leftStates[2].value,
+                                        onSelectedChange = {
+                                            leftStates.forEachIndexed { index, mutableState ->
+                                                mutableState.value = index == 2
+                                            }
+                                            selectedLeft = "Image"
+                                        }
+                                    )
+                                }
+                            }
+                        )
+                    }
+                    if (right) {
+                        Form(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(top = PersianTheme.spacing.size12),
+                            subhead = {
+                                Subhead(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    text = "Right content"
+                                )
+                            },
+                            content = {
+                                RadioButtons {
+                                    RadioButton(
+                                        text = "Close",
+                                        selected = rightStates[0].value,
+                                        onSelectedChange = {
+                                            rightStates.forEachIndexed { index, mutableState ->
+                                                mutableState.value = index == 0
+                                            }
+                                            selectedRight = "Close"
+                                        }
+                                    )
+                                    RadioButton(
+                                        text = "Open",
+                                        selected = rightStates[1].value,
+                                        onSelectedChange = {
+                                            rightStates.forEachIndexed { index, mutableState ->
+                                                mutableState.value = index == 1
+                                            }
+                                            selectedRight = "Open"
+                                        }
+                                    )
+                                }
+                            }
+                        )
+                    }
                 }
             }
         }
