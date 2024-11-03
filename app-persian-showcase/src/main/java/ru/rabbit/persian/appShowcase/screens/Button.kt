@@ -1,21 +1,17 @@
 package ru.rabbit.persian.appShowcase.screens
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -25,11 +21,14 @@ import io.github.madmaximuus.persian.button.OutlinedButton
 import io.github.madmaximuus.persian.button.PrimaryButton
 import io.github.madmaximuus.persian.button.SecondaryButton
 import io.github.madmaximuus.persian.button.TertiaryButton
-import io.github.madmaximuus.persian.checkboxes.Checkbox
+import io.github.madmaximuus.persian.forms.Checkbox
+import io.github.madmaximuus.persian.forms.Checkboxes
+import io.github.madmaximuus.persian.forms.Form
+import io.github.madmaximuus.persian.forms.Input
+import io.github.madmaximuus.persian.forms.RadioButton
+import io.github.madmaximuus.persian.forms.RadioButtons
+import io.github.madmaximuus.persian.forms.Subhead
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.input.OutlineInput
-import io.github.madmaximuus.persian.radioButton.RadioButton
-import io.github.madmaximuus.persian.text.Text
 import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
 import io.github.madmaximuus.persianSymbols.chevronRight.base.ChevronRight
@@ -52,147 +51,281 @@ object Button : Screen {
             onBackClick = { navController?.navigateUp() },
             topAppBarScrollBehavior = topAppBarScrollBehavior,
         ) {
-            var text by remember { mutableStateOf("Button") }
-            var showLeadingIcon by remember { mutableStateOf(false) }
-            var showTrailingIcon by remember { mutableStateOf(false) }
-            var showAdditionInfoLabel by remember { mutableStateOf(false) }
-            var additionInfoLabelText by remember { mutableStateOf("Addition Info") }
+            val (text, onTextChange) = remember { mutableStateOf("Button") }
+            val (leading, onLeadingChange) = remember { mutableStateOf(false) }
+            val (trailing, onTrailingChange) = remember { mutableStateOf(false) }
+            val (additionInfo, onAdditionalInfoChange) = remember { mutableStateOf(false) }
+            val (additionInfoValue, onAdditionalInfoValueChange) = remember { mutableStateOf("Addition info") }
             val size = ButtonDefaults.largeSizes()
             var sizeState by remember { mutableStateOf(size) }
-            var enabled by remember { mutableStateOf(true) }
-            var loading by remember { mutableStateOf(false) }
+            val (enabled, onEnabledChange) = remember { mutableStateOf(true) }
+            val (loading, onLoadingChange) = remember { mutableStateOf(false) }
+            var selectedButtonStyle by remember { mutableStateOf("Primary") }
+            val buttonStyleStates = remember {
+                listOf(
+                    mutableStateOf(true),
+                    mutableStateOf(false),
+                    mutableStateOf(false),
+                    mutableStateOf(false)
+                )
+            }
+
+            val sizeStates = remember {
+                listOf(
+                    mutableStateOf(true),
+                    mutableStateOf(false),
+                    mutableStateOf(false)
+                )
+            }
+            val large = ButtonDefaults.largeSizes()
+            val medium = ButtonDefaults.mediumSizes()
+            val small = ButtonDefaults.smallSizes()
             Column(
                 Modifier
                     .fillMaxSize()
                     .nestedScroll(topAppBarScrollBehavior.nestedScrollConnection)
                     .verticalScroll(rememberScrollState())
                     .padding(it)
+                    .navigationBarsPadding()
             ) {
                 SampleRow(
                     text = "Sample",
                     firstItem = true
                 ) {
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size16)
-                    ) {
-                        PrimaryButton(
-                            text = text,
-                            sizes = sizeState,
-                            enabled = enabled,
-                            loading = loading,
-                            additionInfoText = if (showAdditionInfoLabel) additionInfoLabelText else null,
-                            leadingIcon = if (showLeadingIcon) rememberVectorPainter(image = PersianSymbols.Default.Plus) else null,
-                            trailingIcon = if (showTrailingIcon) rememberVectorPainter(image = PersianSymbols.Default.ChevronRight) else null,
-                            onClick = {}
-                        )
-                        SecondaryButton(
-                            text = text,
-                            sizes = sizeState,
-                            enabled = enabled,
-                            loading = loading,
-                            additionInfoText = if (showAdditionInfoLabel) additionInfoLabelText else null,
-                            leadingIcon = if (showLeadingIcon) rememberVectorPainter(image = PersianSymbols.Default.Plus) else null,
-                            trailingIcon = if (showTrailingIcon) rememberVectorPainter(image = PersianSymbols.Default.ChevronRight) else null,
-                            onClick = {}
-                        )
-                        OutlinedButton(
-                            text = text,
-                            sizes = sizeState,
-                            enabled = enabled,
-                            loading = loading,
-                            additionInfoText = if (showAdditionInfoLabel) additionInfoLabelText else null,
-                            leadingIcon = if (showLeadingIcon) rememberVectorPainter(image = PersianSymbols.Default.Plus) else null,
-                            trailingIcon = if (showTrailingIcon) rememberVectorPainter(image = PersianSymbols.Default.ChevronRight) else null,
-                            onClick = {}
-                        )
-                        TertiaryButton(
-                            text = text,
-                            sizes = sizeState,
-                            enabled = enabled,
-                            loading = loading,
-                            additionInfoText = if (showAdditionInfoLabel) additionInfoLabelText else null,
-                            leadingIcon = if (showLeadingIcon) rememberVectorPainter(image = PersianSymbols.Default.Plus) else null,
-                            trailingIcon = if (showTrailingIcon) rememberVectorPainter(image = PersianSymbols.Default.ChevronRight) else null,
-                            onClick = {}
-                        )
+                    when (selectedButtonStyle) {
+                        "Primary" -> {
+                            PrimaryButton(
+                                text = text,
+                                sizes = sizeState,
+                                enabled = enabled,
+                                loading = loading,
+                                additionInfoText = if (additionInfo) additionInfoValue else null,
+                                leadingIcon = if (leading)
+                                    rememberVectorPainter(image = PersianSymbols.Default.Plus)
+                                else null,
+                                trailingIcon = if (trailing)
+                                    rememberVectorPainter(image = PersianSymbols.Default.ChevronRight)
+                                else null,
+                                onClick = {}
+                            )
+                        }
+
+                        "Secondary" -> {
+                            SecondaryButton(
+                                text = text,
+                                sizes = sizeState,
+                                enabled = enabled,
+                                loading = loading,
+                                additionInfoText = if (additionInfo) additionInfoValue else null,
+                                leadingIcon = if (leading)
+                                    rememberVectorPainter(image = PersianSymbols.Default.Plus)
+                                else null,
+                                trailingIcon = if (trailing)
+                                    rememberVectorPainter(image = PersianSymbols.Default.ChevronRight)
+                                else null,
+                                onClick = {}
+                            )
+                        }
+
+                        "Tertiary" -> {
+                            TertiaryButton(
+                                text = text,
+                                sizes = sizeState,
+                                enabled = enabled,
+                                loading = loading,
+                                additionInfoText = if (additionInfo) additionInfoValue else null,
+                                leadingIcon = if (leading)
+                                    rememberVectorPainter(image = PersianSymbols.Default.Plus)
+                                else null,
+                                trailingIcon = if (trailing)
+                                    rememberVectorPainter(image = PersianSymbols.Default.ChevronRight)
+                                else null,
+                                onClick = {}
+                            )
+                        }
+
+                        "Outlined" -> {
+                            OutlinedButton(
+                                text = text,
+                                sizes = sizeState,
+                                enabled = enabled,
+                                loading = loading,
+                                additionInfoText = if (additionInfo) additionInfoValue else null,
+                                leadingIcon = if (leading)
+                                    rememberVectorPainter(image = PersianSymbols.Default.Plus)
+                                else null,
+                                trailingIcon = if (trailing)
+                                    rememberVectorPainter(image = PersianSymbols.Default.ChevronRight)
+                                else null,
+                                onClick = {}
+                            )
+                        }
                     }
                 }
-                SampleRow(text = "Label") {
-                    OutlineInput(
-                        value = text,
-                        onValueChange = { value ->
-                            text = value
+                Form(
+                    subhead = {
+                        Subhead(text = "Label")
+                    },
+                    content = {
+                        Input(
+                            value = text,
+                            onValueChange = onTextChange
+                        )
+                    }
+                )
+                if (additionInfo) {
+                    Form(
+                        modifier = Modifier
+                            .padding(top = PersianTheme.spacing.size12),
+                        subhead = {
+                            Subhead(text = "Additional info")
+                        },
+                        content = {
+                            Input(
+                                value = additionInfoValue,
+                                onValueChange = onAdditionalInfoValueChange
+                            )
                         }
                     )
                 }
-                val sizeStates = remember {
-                    listOf(
-                        mutableStateOf(true),
-                        mutableStateOf(false),
-                        mutableStateOf(false)
-                    )
-                }
-                val large = ButtonDefaults.largeSizes()
-                val medium = ButtonDefaults.mediumSizes()
-                val small = ButtonDefaults.smallSizes()
-                Column(
+                Form(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(
-                            top = PersianTheme.spacing.size8,
-                            bottom = PersianTheme.spacing.size8,
-                            start = PersianTheme.spacing.size12,
-                            end = PersianTheme.spacing.size12
-                        ),
-                ) {
-                    Text(
-                        text = "Size",
-                        style = PersianTheme.typography.titleMedium,
-                        color = PersianTheme.colorScheme.onSurface
-                    )
-                    Spacer(modifier = Modifier.height(PersianTheme.spacing.size4))
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .selectableGroup()
-                    ) {
-                        RadioButton(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Large",
-                            checked = sizeStates[0].value,
-                            onCheckedChange = {
-                                sizeStates.forEachIndexed { index, mutableState ->
-                                    mutableState.value = index == 0
+                        .padding(top = PersianTheme.spacing.size12),
+                    subhead = {
+                        Subhead(text = "Style")
+                    },
+                    content = {
+                        RadioButtons {
+                            RadioButton(
+                                text = "Primary",
+                                selected = buttonStyleStates[0].value,
+                                onSelectedChange = {
+                                    buttonStyleStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 0
+                                    }
+                                    selectedButtonStyle = "Primary"
                                 }
-                                sizeState = large
-                            }
-                        )
-                        RadioButton(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Medium",
-                            checked = sizeStates[1].value,
-                            onCheckedChange = {
-                                sizeStates.forEachIndexed { index, mutableState ->
-                                    mutableState.value = index == 1
+                            )
+                            RadioButton(
+                                text = "Secondary",
+                                selected = buttonStyleStates[1].value,
+                                onSelectedChange = {
+                                    buttonStyleStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 1
+                                    }
+                                    selectedButtonStyle = "Secondary"
                                 }
-                                sizeState = medium
-                            }
-                        )
-                        RadioButton(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Small",
-                            checked = sizeStates[2].value,
-                            onCheckedChange = {
-                                sizeStates.forEachIndexed { index, mutableState ->
-                                    mutableState.value = index == 2
+                            )
+                            RadioButton(
+                                text = "Tertiary",
+                                selected = buttonStyleStates[2].value,
+                                onSelectedChange = {
+                                    buttonStyleStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 2
+                                    }
+                                    selectedButtonStyle = "Tertiary"
                                 }
-                                sizeState = small
-                            }
-                        )
+                            )
+                            RadioButton(
+                                text = "Outlined",
+                                selected = buttonStyleStates[3].value,
+                                onSelectedChange = {
+                                    buttonStyleStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 3
+                                    }
+                                    selectedButtonStyle = "Outlined"
+                                }
+                            )
+                        }
                     }
-                }
-                Column(
+                )
+                Form(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = PersianTheme.spacing.size12),
+                    subhead = {
+                        Subhead(
+                            modifier = Modifier.fillMaxWidth(),
+                            text = "Size"
+                        )
+                    },
+                    content = {
+                        RadioButtons {
+                            RadioButton(
+                                text = "Large",
+                                selected = sizeStates[0].value,
+                                onSelectedChange = {
+                                    sizeStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 0
+                                    }
+                                    sizeState = large
+                                }
+                            )
+                            RadioButton(
+                                text = "Medium",
+                                selected = sizeStates[1].value,
+                                onSelectedChange = {
+                                    sizeStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 1
+                                    }
+                                    sizeState = medium
+                                }
+                            )
+                            RadioButton(
+                                text = "Small",
+                                selected = sizeStates[2].value,
+                                onSelectedChange = {
+                                    sizeStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 2
+                                    }
+                                    sizeState = small
+                                }
+                            )
+                        }
+                    }
+                )
+                Form(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = PersianTheme.spacing.size20),
+                    subhead = {
+                        Subhead(
+                            modifier = Modifier.fillMaxWidth(),
+                            text = "Additional settings"
+                        )
+                    },
+                    content = {
+                        Checkboxes {
+                            Checkbox(
+                                text = "Additional info",
+                                checked = additionInfo,
+                                onCheckedChange = onAdditionalInfoChange
+                            )
+                            Checkbox(
+                                text = "Leading",
+                                checked = leading,
+                                onCheckedChange = onLeadingChange
+                            )
+                            Checkbox(
+                                text = "Trailing",
+                                checked = trailing,
+                                onCheckedChange = onTrailingChange
+                            )
+                            Checkbox(
+                                text = "Loading",
+                                checked = loading,
+                                onCheckedChange = onLoadingChange
+                            )
+                            Checkbox(
+                                text = "Enabled",
+                                checked = enabled,
+                                onCheckedChange = onEnabledChange
+                            )
+                        }
+                    }
+                )
+                /*Column(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(
@@ -214,19 +347,13 @@ object Button : Screen {
                     ) {
                         Checkbox(
                             text = "Addition info",
-                            checked = showAdditionInfoLabel,
-                            onCheckedChange = { isChecked ->
-                                showAdditionInfoLabel = isChecked
-                            }
-                        )
-                        if (showAdditionInfoLabel) {
-                            OutlineInput(
-                                value = additionInfoLabelText,
-                                onValueChange = { label ->
-                                    additionInfoLabelText = label
-                                }
-                            )
+                            checked = additionInfo, onAdditionalInfoChange
+                        ),
+                        onCheckedChange = { isChecked ->
+                            additionInfo, onAdditionaInfoLabelChange) = isChecked
                         }
+                        )
+
                         Checkbox(
                             modifier = Modifier.fillMaxWidth(),
                             text = "Show Leading icon",
@@ -260,7 +387,7 @@ object Button : Screen {
                             }
                         )
                     }
-                }
+                }*/
             }
         }
     }
