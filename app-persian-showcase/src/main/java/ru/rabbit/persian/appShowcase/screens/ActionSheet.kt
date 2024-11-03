@@ -1,10 +1,8 @@
 package ru.rabbit.persian.appShowcase.screens
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
@@ -21,7 +19,10 @@ import io.github.madmaximuus.persian.actionSheet.ActionSheet
 import io.github.madmaximuus.persian.actionSheet.Header
 import io.github.madmaximuus.persian.button.ButtonDefaults
 import io.github.madmaximuus.persian.button.PrimaryButton
-import io.github.madmaximuus.persian.checkboxes.Checkbox
+import io.github.madmaximuus.persian.forms.Checkbox
+import io.github.madmaximuus.persian.forms.Checkboxes
+import io.github.madmaximuus.persian.forms.Form
+import io.github.madmaximuus.persian.forms.Subhead
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.input.OutlineInput
 import io.github.madmaximuus.persian.textAreas.OutlineTextArea
@@ -61,14 +62,75 @@ object ActionSheet : Screen {
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(it)
-                    .padding(horizontal = PersianTheme.spacing.size16)
                     .navigationBarsPadding(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
+                if (title) {
+                    OutlineInput(
+                        modifier = Modifier
+                            .padding(horizontal = PersianTheme.spacing.size16)
+                            .padding(top = PersianTheme.spacing.size8),
+                        value = titleValue,
+                        isError = titleError,
+                        onValueChange = onTitleValueChange
+                    )
+                }
+                if (message) {
+                    OutlineTextArea(
+                        modifier = Modifier
+                            .padding(horizontal = PersianTheme.spacing.size16)
+                            .padding(top = PersianTheme.spacing.size12),
+                        value = subtitleValue,
+                        isError = subtitleError,
+                        onValueChange = onSubtitleValueChange
+                    )
+                }
+                Form(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = PersianTheme.spacing.size20),
+                    subhead = {
+                        Subhead(
+                            modifier = Modifier.fillMaxWidth(),
+                            text = "Settings"
+                        )
+                    },
+                    content = {
+                        Checkboxes {
+                            Checkbox(
+                                text = "Title",
+                                checked = title,
+                                onCheckedChange = onTitleChange
+                            )
+                            Checkbox(
+                                text = "Message",
+                                checked = message,
+                                onCheckedChange = onMessageChange
+                            )
+                            Checkbox(
+                                text = "Icons",
+                                checked = icons,
+                                onCheckedChange = onIconsChange
+                            )
+                            Checkbox(
+                                text = "Negative",
+                                checked = negative,
+                                onCheckedChange = onNegativeChange
+                            )
+                            Checkbox(
+                                text = "Enabled",
+                                checked = enabled,
+                                onCheckedChange = onEnabledChange
+                            )
+                        }
+                    }
+                )
                 PrimaryButton(
                     modifier = Modifier
-                        .padding(top = PersianTheme.spacing.size24),
-                    text = "Show sheet",
+                        .fillMaxWidth()
+                        .padding(top = PersianTheme.spacing.size8)
+                        .padding(horizontal = PersianTheme.spacing.size16),
+                    text = "Show Action sheet",
                     sizes = ButtonDefaults.largeSizes(),
                     colors = ButtonDefaults.primaryColors()
                 ) {
@@ -85,58 +147,6 @@ object ActionSheet : Screen {
                         titleError = false
                         subtitleError = false
                     }
-                }
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = PersianTheme.spacing.size16)
-                ) {
-                    Checkbox(
-                        modifier = Modifier.fillMaxWidth(),
-                        text = "Title",
-                        checked = title,
-                        onCheckedChange = onTitleChange
-                    )
-                    if (title) {
-                        OutlineInput(
-                            value = titleValue,
-                            isError = titleError,
-                            onValueChange = onTitleValueChange
-                        )
-                        Spacer(modifier = Modifier.height(PersianTheme.spacing.size8))
-                    }
-                    Checkbox(
-                        modifier = Modifier.fillMaxWidth(),
-                        text = "Message",
-                        checked = message,
-                        onCheckedChange = onMessageChange
-                    )
-                    if (message) {
-                        OutlineTextArea(
-                            value = subtitleValue,
-                            isError = subtitleError,
-                            onValueChange = onSubtitleValueChange
-                        )
-                        Spacer(modifier = Modifier.height(PersianTheme.spacing.size8))
-                    }
-                    Checkbox(
-                        modifier = Modifier.fillMaxWidth(),
-                        text = "Icons",
-                        checked = icons,
-                        onCheckedChange = onIconsChange
-                    )
-                    Checkbox(
-                        modifier = Modifier.fillMaxWidth(),
-                        text = "Negative",
-                        checked = negative,
-                        onCheckedChange = onNegativeChange
-                    )
-                    Checkbox(
-                        modifier = Modifier.fillMaxWidth(),
-                        text = "Enabled",
-                        checked = enabled,
-                        onCheckedChange = onEnabledChange
-                    )
                 }
             }
         }
