@@ -6,7 +6,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.text.TextStyle
+import io.github.madmaximuus.persian.forms.utils.LayoutId
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.text.Text
 
@@ -31,17 +33,15 @@ interface FormSubheadScope {
  * This class implements [FormSubheadScope] and delegates [ColumnScope] functionality to the provided scope.
  * It encapsulates the properties required for a form subhead, such as colors, text style, and enabled state.
  *
- * @param scope The [ColumnScope] to delegate functionality to.
  * @param colors The colors associated with the form subhead.
  * @param textStyle The text style to be applied to the form subhead.
  * @param enabled Indicates whether the form subhead is enabled.
  */
 internal class FormSubheadScopeWrapper(
-    scope: ColumnScope,
     override val colors: SubheadColors,
     override val textStyle: TextStyle,
     override val enabled: Boolean,
-) : FormSubheadScope, ColumnScope by scope
+) : FormSubheadScope
 
 /**
  * Composable function to display a subhead within a form.
@@ -62,7 +62,7 @@ fun FormSubheadScope.Subhead(
     val resolvedColors = this@Subhead.colors
     val resolvedTextStyle = this@Subhead.textStyle
     Row(
-        modifier = modifier,
+        modifier = modifier.layoutId(LayoutId.SUBHEAD),
         horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size2)
     ) {
         Text(

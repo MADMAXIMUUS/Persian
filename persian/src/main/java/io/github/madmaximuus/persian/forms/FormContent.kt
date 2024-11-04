@@ -1,15 +1,23 @@
 package io.github.madmaximuus.persian.forms
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.VisualTransformation
-import io.github.madmaximuus.persian.codeInput.FourDigitCodeInput
-import io.github.madmaximuus.persian.codeInput.SixDigitCodeInput
+import io.github.madmaximuus.persian.checkboxes.Checkbox
+import io.github.madmaximuus.persian.checkboxes.CheckboxColors
+import io.github.madmaximuus.persian.checkboxes.CheckboxDefaults
+import io.github.madmaximuus.persian.checkboxes.CheckboxSizes
+import io.github.madmaximuus.persian.forms.utils.LayoutId
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.input.InputColors
 import io.github.madmaximuus.persian.input.InputSizes
@@ -18,6 +26,10 @@ import io.github.madmaximuus.persian.input.OutlineInput
 import io.github.madmaximuus.persian.menu.DropdownMenuItemScope
 import io.github.madmaximuus.persian.menu.MenuColors
 import io.github.madmaximuus.persian.menu.MenuDefaults
+import io.github.madmaximuus.persian.radioButton.RadioButton
+import io.github.madmaximuus.persian.radioButton.RadioButtonColors
+import io.github.madmaximuus.persian.radioButton.RadioButtonDefaults
+import io.github.madmaximuus.persian.radioButton.RadioButtonSizes
 import io.github.madmaximuus.persian.select.Select
 import io.github.madmaximuus.persian.textAreas.OutlineTextArea
 import io.github.madmaximuus.persian.textAreas.TextAreaColors
@@ -33,7 +45,7 @@ import io.github.madmaximuus.persian.textAreas.TextAreaDefaults
  * @property isError Indicates whether the form content is in an error state.
  * @property isValid Indicates whether the form content is valid.
  */
-interface FormContentScope : ColumnScope {
+interface FormContentScope {
     val enabled: Boolean
     val isError: Boolean
     val isValid: Boolean
@@ -45,17 +57,15 @@ interface FormContentScope : ColumnScope {
  * This class implements [FormContentScope] and delegates [ColumnScope] functionality to the provided [scope].
  * It encapsulates the properties required for form content, such as enabled state, error status, and validity.
  *
- * @param scope The [ColumnScope] to delegate functionality to.
  * @param enabled Indicates whether the form content is enabled.
  * @param isError Indicates whether the form content is in an error state.
  * @param isValid Indicates whether the form content is valid.
  */
 internal class FormContentScopeWrapper(
-    scope: ColumnScope,
     override val enabled: Boolean,
     override val isError: Boolean,
     override val isValid: Boolean
-) : FormContentScope, ColumnScope by scope
+) : FormContentScope
 
 /**
  * Composable function to display an input field within a form.
@@ -92,12 +102,12 @@ fun FormContentScope.Input(
     trailingIcon: Painter? = null,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
-    onTrailingIconClick: (() -> Unit)?
+    onTrailingIconClick: (() -> Unit)? = null
 ) {
     OutlineInput(
         value = value,
         onValueChange = onValueChange,
-        modifier = modifier,
+        modifier = modifier.layoutId(LayoutId.INPUT),
         enabled = this@Input.enabled,
         isError = this@Input.isError,
         isValid = this@Input.isValid,
@@ -144,7 +154,7 @@ fun FormContentScope.TextArea(
     OutlineTextArea(
         value = value,
         onValueChange = onValueChange,
-        modifier = modifier,
+        modifier = modifier.layoutId(LayoutId.TEXT_AREA),
         enabled = this@TextArea.enabled,
         isError = this@TextArea.isError,
         isValid = this@TextArea.isValid,
@@ -153,68 +163,6 @@ fun FormContentScope.TextArea(
         colors = colors,
         keyboardOptions = keyboardOptions,
         keyboardActions = keyboardActions
-    )
-}
-
-/**
- * Composable function to display a six-digit code input within a form.
- *
- * This function uses the properties from the [FormContentScope] to determine the appearance and behavior
- * of the six-digit code input. It provides customization options such as values, password mode, and a callback
- * for value changes.
- *
- * @param modifier The modifier to be applied to the six-digit code input.
- * @param values The list of current values for each digit in the code input.
- * @param isPassword Indicates whether the input should be treated as a password (hidden).
- * @param onValueChange The callback to be invoked when the value of a digit changes. It provides the new value
- * and the index of the changed digit.
- */
-@Composable
-fun FormContentScope.SixDigitCodeInput(
-    modifier: Modifier = Modifier,
-    values: List<String>,
-    isPassword: Boolean = false,
-    onValueChange: (value: String, index: Int) -> Unit
-) {
-    SixDigitCodeInput(
-        values = values,
-        onValueChange = onValueChange,
-        modifier = modifier,
-        enabled = this@SixDigitCodeInput.enabled,
-        isError = this@SixDigitCodeInput.isError,
-        isValid = this@SixDigitCodeInput.isValid,
-        isPassword = isPassword
-    )
-}
-
-/**
- * Composable function to display a four-digit code input within a form.
- *
- * This function uses the properties from the [FormContentScope] to determine the appearance and behavior
- * of the four-digit code input. It provides customization options such as values, password mode, and a callback
- * for value changes.
- *
- * @param modifier The modifier to be applied to the four-digit code input.
- * @param values The list of current values for each digit in the code input.
- * @param isPassword Indicates whether the input should be treated as a password (hidden).
- * @param onValueChange The callback to be invoked when the value of a digit changes. It provides the new value
- * and the index of the changed digit.
- */
-@Composable
-fun FormContentScope.FourDigitCodeInput(
-    modifier: Modifier = Modifier,
-    values: List<String>,
-    isPassword: Boolean = false,
-    onValueChange: (value: String, index: Int) -> Unit
-) {
-    FourDigitCodeInput(
-        values = values,
-        onValueChange = onValueChange,
-        modifier = modifier,
-        enabled = this@FourDigitCodeInput.enabled,
-        isError = this@FourDigitCodeInput.isError,
-        isValid = this@FourDigitCodeInput.isValid,
-        isPassword = isPassword
     )
 }
 
@@ -249,7 +197,7 @@ fun FormContentScope.Select(
 ) {
     Select(
         selected = selected,
-        modifier = modifier,
+        modifier = modifier.layoutId(LayoutId.SELECT),
         expanded = expanded,
         onExpandedChange = onExpandedChange,
         isValid = this@Select.isValid,
@@ -260,5 +208,118 @@ fun FormContentScope.Select(
         inputColors = inputColors,
         menuColors = menuColors,
         menuItems = menuItems
+    )
+}
+
+@Composable
+fun FormContentScope.RadioButtons(
+    modifier: Modifier = Modifier,
+    colors: RadioButtonColors = RadioButtonDefaults.colors(),
+    sizes: RadioButtonSizes = RadioButtonDefaults.sizes(),
+    content: @Composable FormRadioButtonScope.() -> Unit
+) {
+    Column(
+        modifier = modifier
+            .layoutId(LayoutId.RADIO_BUTTONS)
+            .fillMaxWidth()
+            .selectableGroup(),
+        content = {
+            val scope = remember(colors, sizes) {
+                FormRadioButtonScopeWrapper(
+                    scope = this,
+                    colors = colors,
+                    sizes = sizes,
+                    enabled = this@RadioButtons.enabled
+                )
+            }
+            scope.content()
+        }
+    )
+}
+
+interface FormRadioButtonScope : ColumnScope {
+    val enabled: Boolean
+    val colors: RadioButtonColors
+    val sizes: RadioButtonSizes
+}
+
+internal class FormRadioButtonScopeWrapper(
+    val scope: ColumnScope,
+    override val enabled: Boolean,
+    override val colors: RadioButtonColors,
+    override val sizes: RadioButtonSizes
+) : FormRadioButtonScope, ColumnScope by scope
+
+@Composable
+fun FormRadioButtonScope.RadioButton(
+    modifier: Modifier = Modifier,
+    text: String,
+    selected: Boolean,
+    onSelectedChange: (Boolean) -> Unit
+) {
+    RadioButton(
+        modifier = modifier.fillMaxWidth(),
+        text = text,
+        selected = selected,
+        enabled = this@RadioButton.enabled,
+        colors = this@RadioButton.colors,
+        sizes = this@RadioButton.sizes,
+        onSelectedChange = onSelectedChange
+    )
+}
+
+@Composable
+fun FormContentScope.Checkboxes(
+    modifier: Modifier = Modifier,
+    colors: CheckboxColors = CheckboxDefaults.colors(),
+    sizes: CheckboxSizes = CheckboxDefaults.sizes(),
+    content: @Composable FormCheckboxScope.() -> Unit
+) {
+    Column(
+        modifier = modifier
+            .layoutId(LayoutId.CHECKBOXES)
+            .fillMaxWidth(),
+        content = {
+            val scope = remember(colors, sizes) {
+                FormCheckboxScopeWrapper(
+                    scope = this,
+                    colors = colors,
+                    sizes = sizes,
+                    enabled = this@Checkboxes.enabled
+                )
+            }
+            scope.content()
+        }
+    )
+}
+
+interface FormCheckboxScope : ColumnScope {
+    val enabled: Boolean
+    val colors: CheckboxColors
+    val sizes: CheckboxSizes
+}
+
+internal class FormCheckboxScopeWrapper(
+    val scope: ColumnScope,
+    override val enabled: Boolean,
+    override val colors: CheckboxColors,
+    override val sizes: CheckboxSizes
+) : FormCheckboxScope, ColumnScope by scope
+
+@Composable
+fun FormCheckboxScope.Checkbox(
+    modifier: Modifier = Modifier,
+    text: String,
+    checked: Boolean,
+    onCheckedChange: (Boolean) -> Unit
+) {
+    Checkbox(
+        modifier = modifier.fillMaxWidth(),
+        text = text,
+        checked = checked,
+        enabled = this@Checkbox.enabled,
+        colors = this@Checkbox.colors,
+        sizes = this@Checkbox.sizes,
+        onCheckedChange = onCheckedChange
     )
 }

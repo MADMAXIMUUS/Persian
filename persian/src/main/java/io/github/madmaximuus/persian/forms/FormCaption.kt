@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.layoutId
+import io.github.madmaximuus.persian.forms.utils.LayoutId
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.text.Text
 
@@ -20,8 +22,9 @@ import io.github.madmaximuus.persian.text.Text
  * @property enabled Indicates whether the form caption is enabled.
  * @property isError Indicates whether the form caption is in an error state.
  */
-interface FormCaptionScope : ColumnScope {
+interface FormCaptionScope {
     val colors: CaptionColors
+    val sizes: CaptionSizes
     val enabled: Boolean
     val isError: Boolean
 }
@@ -29,20 +32,19 @@ interface FormCaptionScope : ColumnScope {
 /**
  * Internal wrapper class for [FormCaptionScope].
  *
- * This class implements [FormCaptionScope] and delegates [ColumnScope] functionality to the provided [scope].
+ * This class implements [FormCaptionScope] and delegates [ColumnScope] functionality to the provided scope.
  * It encapsulates the properties required for a form caption, such as colors, enabled state, and error status.
  *
- * @param scope The [ColumnScope] to delegate functionality to.
  * @param colors The colors associated with the form caption.
  * @param enabled Indicates whether the form caption is enabled.
  * @param isError Indicates whether the form caption is in an error state.
  */
 internal class FormCaptionScopeWrapper(
-    scope: ColumnScope,
     override val colors: CaptionColors,
+    override val sizes: CaptionSizes,
     override val enabled: Boolean,
-    override val isError: Boolean
-) : FormCaptionScope, ColumnScope by scope
+    override val isError: Boolean,
+) : FormCaptionScope
 
 /**
  * Composable function to display a caption within a form.
@@ -60,17 +62,15 @@ fun FormCaptionScope.Caption(
     text: String,
     errorText: String? = null,
 ) {
-    val resolvedColors = this@Caption.colors
-    val resolvedTextStyle = PersianTheme.typography.bodySmall
     Row(
-        modifier = modifier,
+        modifier = modifier.layoutId(LayoutId.CAPTION),
         horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size2),
         verticalAlignment = Alignment.Top
     ) {
         Text(
             text = if (this@Caption.isError && errorText != null) errorText else text,
-            style = resolvedTextStyle,
-            color = resolvedColors.textColor(
+            style = this@Caption.sizes.captionTextStyle,
+            color = this@Caption.colors.textColor(
                 enabled = this@Caption.enabled,
                 isError = this@Caption.isError
             ).value,
@@ -100,18 +100,15 @@ fun FormCaptionScope.Caption(
     counterMax: Int = 0,
     errorText: String? = null,
 ) {
-    val resolvedColors = this@Caption.colors
-    val resolvedTextStyle = PersianTheme.typography.bodySmall
-    val resolvedCounterTextStyle = PersianTheme.typography.bodySmall
     Row(
-        modifier = modifier,
+        modifier = modifier.layoutId(LayoutId.CAPTION),
         horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size2),
         verticalAlignment = Alignment.Top
     ) {
         Text(
             text = if (this@Caption.isError && errorText != null) errorText else text,
-            style = resolvedTextStyle,
-            color = resolvedColors.textColor(
+            style = this@Caption.sizes.captionTextStyle,
+            color = this@Caption.colors.textColor(
                 enabled = this@Caption.enabled,
                 isError = this@Caption.isError
             ).value,
@@ -119,8 +116,8 @@ fun FormCaptionScope.Caption(
         Spacer(modifier = Modifier.weight(1f))
         Text(
             text = "$counter / $counterMax",
-            style = resolvedCounterTextStyle,
-            color = resolvedColors.counterColor(
+            style = this@Caption.sizes.counterTextStyle,
+            color = this@Caption.colors.counterColor(
                 this@Caption.enabled,
                 this@Caption.isError
             ).value

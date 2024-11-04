@@ -5,6 +5,7 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state38
 
@@ -12,6 +13,26 @@ import io.github.madmaximuus.persian.foundation.state38
  * Contains all default values used by form.
  */
 object FormDefaults {
+
+    @Composable
+    fun formColors(
+        subheadColors: SubheadColors = subheadColors(),
+        captionColors: CaptionColors = captionColors()
+    ): FormColors =
+        FormColors(
+            subheadColors = subheadColors,
+            captionColors = captionColors
+        )
+
+    @Composable
+    fun formSizes(
+        subheadTextStyle: TextStyle = PersianTheme.typography.labelLarge,
+        captionSizes: CaptionSizes = captionSizes()
+    ): FormSizes =
+        FormSizes(
+            subheadTextStyle = subheadTextStyle,
+            captionSizes = captionSizes
+        )
 
     /**
      * Composable function to create an instance of [CaptionColors] with customizable colors.
@@ -35,14 +56,25 @@ object FormDefaults {
         counterColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         errorCounterColor: Color = PersianTheme.colorScheme.error,
         disabledCounterColor: Color = PersianTheme.colorScheme.onSurface.state38,
-    ): CaptionColors = CaptionColors(
-        textColor = textColor,
-        errorColor = errorColor,
-        disabledColor = disabledColor,
-        counterColor = counterColor,
-        errorCounterColor = errorCounterColor,
-        disabledCounterColor = disabledCounterColor
-    )
+    ): CaptionColors =
+        CaptionColors(
+            textColor = textColor,
+            errorColor = errorColor,
+            disabledColor = disabledColor,
+            counterColor = counterColor,
+            errorCounterColor = errorCounterColor,
+            disabledCounterColor = disabledCounterColor
+        )
+
+    @Composable
+    fun captionSizes(
+        captionTextStyle: TextStyle = PersianTheme.typography.bodySmall,
+        counterTextStyle: TextStyle = PersianTheme.typography.bodySmall
+    ): CaptionSizes =
+        CaptionSizes(
+            captionTextStyle = captionTextStyle,
+            counterTextStyle = counterTextStyle
+        )
 
     /**
      * Composable function to create an instance of [SubheadColors] with customizable colors.
@@ -63,13 +95,32 @@ object FormDefaults {
 
         requiredColor: Color = PersianTheme.colorScheme.error,
         requiredDisabledColor: Color = PersianTheme.colorScheme.error.state38,
-    ): SubheadColors = SubheadColors(
-        textColor = textColor,
-        disabledColor = disabledColor,
-        requiredColor = requiredColor,
-        requiredDisabledColor = requiredDisabledColor,
-    )
+    ): SubheadColors =
+        SubheadColors(
+            textColor = textColor,
+            disabledColor = disabledColor,
+            requiredColor = requiredColor,
+            requiredDisabledColor = requiredDisabledColor,
+        )
 }
+
+@Immutable
+class FormColors internal constructor(
+    internal val subheadColors: SubheadColors,
+    internal val captionColors: CaptionColors
+)
+
+@Immutable
+class FormSizes internal constructor(
+    internal val subheadTextStyle: TextStyle,
+    internal val captionSizes: CaptionSizes
+)
+
+@Immutable
+class CaptionSizes internal constructor(
+    internal val captionTextStyle: TextStyle,
+    internal val counterTextStyle: TextStyle
+)
 
 /**
  * Immutable class representing the colors for a form caption.

@@ -1,10 +1,10 @@
 package io.github.madmaximuus.persian.forms
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.Layout
+import io.github.madmaximuus.persian.forms.utils.formMeasurePolicy
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
 /**
@@ -24,22 +24,69 @@ fun Form(
     enabled: Boolean = true,
     isError: Boolean = false,
     isValid: Boolean = false,
+    colors: FormColors = FormDefaults.formColors(),
+    sizes: FormSizes = FormDefaults.formSizes(),
     subhead: @Composable (FormSubheadScope.() -> Unit)? = null,
     content: @Composable FormContentScope.() -> Unit,
     caption: @Composable (FormCaptionScope.() -> Unit)? = null,
 ) {
-    Column(
+    val padding = PersianTheme.spacing.size16
+    val spacer = PersianTheme.spacing.size2
+    Layout(
         modifier = modifier,
+        measurePolicy = { measurables, constraints ->
+            formMeasurePolicy(
+                scope = this,
+                measurables = measurables,
+                constraints = constraints,
+                horizontalPadding = padding.roundToPx(),
+                spaceHeight = spacer.roundToPx()
+            )
+        },
+        content = {
+            subhead?.let { subhead ->
+                val subheadScope = remember(colors.subheadColors, enabled, isError) {
+                    FormSubheadScopeWrapper(
+                        colors = colors.subheadColors,
+                        textStyle = sizes.subheadTextStyle,
+                        enabled = enabled,
+                    )
+                }
+                subheadScope.subhead()
+            }
+            val contentScope = remember(enabled, isError, isValid) {
+                FormContentScopeWrapper(
+                    enabled = enabled,
+                    isError = isError,
+                    isValid = isValid
+                )
+            }
+            contentScope.content()
+            caption?.let { caption ->
+                val captionScope = remember(colors, enabled, isError) {
+                    FormCaptionScopeWrapper(
+                        colors = colors.captionColors,
+                        sizes = sizes.captionSizes,
+                        enabled = enabled,
+                        isError = isError
+                    )
+                }
+                captionScope.caption()
+            }
+        }
+    )
+
+    /*Column(
+        modifier = modifier
+            *//*.padding(horizontal = PersianTheme.spacing.size16)*//*,
         verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size2)
     ) {
-        val subheadColors = FormDefaults.subheadColors()
-        val subheadTextStyle = PersianTheme.typography.labelMedium
         subhead?.let { subhead ->
-            val subheadScope = remember(subheadColors, enabled, isError) {
+            val subheadScope = remember(colors.subheadColors, enabled, isError) {
                 FormSubheadScopeWrapper(
                     scope = this,
-                    colors = subheadColors,
-                    textStyle = subheadTextStyle,
+                    colors = colors.subheadColors,
+                    textStyle = sizes.subheadTextStyle,
                     enabled = enabled,
                 )
             }
@@ -54,17 +101,17 @@ fun Form(
             )
         }
         contentScope.content()
-        val colors = FormDefaults.captionColors()
         caption?.let { caption ->
             val captionScope = remember(colors, enabled, isError) {
                 FormCaptionScopeWrapper(
                     scope = this,
-                    colors = colors,
+                    colors = colors.captionColors,
+                    sizes = sizes.captionSizes,
                     enabled = enabled,
                     isError = isError
                 )
             }
             captionScope.caption()
         }
-    }
+    }*/
 }
