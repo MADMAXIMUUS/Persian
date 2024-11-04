@@ -297,11 +297,13 @@ object Button : Screen {
                     },
                     content = {
                         Checkboxes {
-                            Checkbox(
-                                text = "Additional info",
-                                checked = additionInfo,
-                                onCheckedChange = onAdditionalInfoChange
-                            )
+                            if (sizeState != small) {
+                                Checkbox(
+                                    text = "Additional info",
+                                    checked = additionInfo,
+                                    onCheckedChange = onAdditionalInfoChange
+                                )
+                            }
                             Checkbox(
                                 text = "Leading",
                                 checked = leading,
