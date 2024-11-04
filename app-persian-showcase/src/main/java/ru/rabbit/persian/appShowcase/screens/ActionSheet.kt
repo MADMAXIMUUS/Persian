@@ -33,7 +33,7 @@ import io.github.madmaximuus.persianSymbols.image.base.Image
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object ActionSheet : Screen {
-    override val name: String = "Action Sheet"
+    override val name: String = "Action sheet"
 
     override val navigation: String = "actionSheet"
 
