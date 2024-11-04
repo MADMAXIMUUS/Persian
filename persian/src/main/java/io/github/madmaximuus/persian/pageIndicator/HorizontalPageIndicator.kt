@@ -3,7 +3,6 @@ package io.github.madmaximuus.persian.pageIndicator
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.pager.PagerState
@@ -23,24 +22,21 @@ import io.github.madmaximuus.persian.pageIndicator.IndicatorStyle.DOT
 import io.github.madmaximuus.persian.pageIndicator.IndicatorStyle.LINE
 
 /**
- * Creates a Persian-styled page indicator for a pager.
- *
- * This composable function generates a page indicator based on the provided [PagerState].
- * The indicator can be customized with different styles (dot or line), orientations (horizontal or vertical),
- * and colors. It also handles the visibility of indicators based on the `visibleIndicatorCount`.
+ * A page indicator is useful for showing the current position within a sequence of pages,
+ * providing users with a clear and visual cue of their progress. It offers a straightforward
+ * and effective method for enhancing navigation and orientation, making it an essential tool
+ * for improving user experience and usability.
  *
  * @param pagerState The state of the pager, containing information about the current page and total pages.
  * @param modifier The modifier to be applied to the indicator.
- * @param orientation The orientation of the indicator (horizontal or vertical).
  * @param style The style of the indicator (dot or line).
  * @param visibleIndicatorCount The number of indicators that are visible at a time.
  * @param colors The colors to be used for the indicators.
  */
 @Composable
-fun PersianPageIndicator(
+fun HorizontalPageIndicator(
     pagerState: PagerState,
     modifier: Modifier = Modifier,
-    orientation: IndicatorOrientation = HORIZONTAL,
     style: IndicatorStyle = LINE,
     visibleIndicatorCount: Int = 5,
     colors: PageIndicatorColors = PageIndicatorDefaults.indicatorColor()
@@ -69,68 +65,39 @@ fun PersianPageIndicator(
 
     LaunchedEffect(key1 = currentItem) {
         val viewportSize = listState.layoutInfo.viewportSize
-        when (orientation) {
-            HORIZONTAL -> listState.animateScrollToItem(
-                currentItem,
-                (widthInPx / 2 - viewportSize.width / 2).toInt()
-            )
-
-            VERTICAL -> listState.animateScrollToItem(
-                currentItem,
-                (widthInPx / 2 - viewportSize.height / 2).toInt()
-            )
-        }
+        listState.animateScrollToItem(
+            currentItem,
+            (widthInPx / 2 - viewportSize.width / 2).toInt()
+        )
     }
 
     val height = when (style) {
         DOT -> 24.dp
         LINE -> 4.dp
     }
-    when (orientation) {
-        HORIZONTAL -> {
-            LazyRow(
-                modifier = modifier
-                    .width(totalWidth)
-                    .height(height),
-                state = listState,
-                horizontalArrangement = Arrangement.spacedBy(space),
-                userScrollEnabled = false
-            ) {
-                when (style) {
-                    DOT -> persianPageDotIndicatorItem(
-                        itemCount,
-                        currentItem,
-                        correctedIndicatorCount,
-                        colors
-                    )
+    LazyRow(
+        modifier = modifier
+            .width(totalWidth)
+            .height(height),
+        state = listState,
+        horizontalArrangement = Arrangement.spacedBy(space),
+        userScrollEnabled = false
+    ) {
+        when (style) {
+            DOT -> persianPageDotIndicatorItem(
+                itemCount,
+                currentItem,
+                correctedIndicatorCount,
+                colors
+            )
 
-                    LINE -> persianPageLineIndicatorItem(
-                        itemCount,
-                        currentItem,
-                        colors
-                    )
-                }
-
-            }
+            LINE -> persianPageLineIndicatorItem(
+                itemCount,
+                currentItem,
+                colors
+            )
         }
 
-        VERTICAL -> {
-            LazyColumn(
-                modifier = modifier
-                    .width(24.dp)
-                    .height(totalWidth),
-                state = listState,
-                verticalArrangement = Arrangement.spacedBy(space),
-                userScrollEnabled = false
-            ) {
-                persianPageDotIndicatorItem(
-                    itemCount,
-                    currentItem,
-                    correctedIndicatorCount,
-                    colors
-                )
-            }
-        }
     }
 }
 

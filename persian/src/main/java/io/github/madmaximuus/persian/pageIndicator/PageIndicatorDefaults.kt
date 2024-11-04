@@ -2,8 +2,7 @@ package io.github.madmaximuus.persian.pageIndicator
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
-import androidx.compose.runtime.State
-import androidx.compose.runtime.rememberUpdatedState
+import androidx.compose.runtime.Stable
 import androidx.compose.ui.graphics.Color
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state38
@@ -52,15 +51,15 @@ class PageIndicatorColors internal constructor(
      *
      * @param selected A boolean indicating whether the indicator is selected.
      */
-    @Composable
+    @Stable
     fun indicatorColor(
         selected: Boolean
-    ): State<Color> {
+    ): Color {
         val target = when {
             selected -> selectedIndicatorColor
             else -> defaultIndicatorColor
         }
 
-        return rememberUpdatedState(newValue = target)
+        return target
     }
 }

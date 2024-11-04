@@ -77,7 +77,7 @@ internal fun LazyListScope.persianPageDotIndicatorItem(
                     }
                     .size(12.dp)
                     .clip(PersianTheme.shapes.full)
-                    .background(colors.indicatorColor(isSelected).value)
+                    .background(colors.indicatorColor(isSelected))
             )
         }
     }
@@ -99,16 +99,40 @@ internal fun LazyListScope.persianPageLineIndicatorItem(
     colors: PageIndicatorColors
 ) {
     items(itemCount) { index ->
-
         val isSelected = (index == currentItem)
         Box(
             modifier = Modifier
                 .width(24.dp)
                 .height(4.dp)
                 .clip(PersianTheme.shapes.full)
-                .background(
-                    colors.indicatorColor(isSelected).value
-                )
+                .background(colors.indicatorColor(isSelected))
+        )
+    }
+}
+
+/**
+ * Creates a Persian-styled page line indicator item within a [LazyListScope].
+ *
+ * This function generates a list of items representing page indicators, with customizable
+ * appearance based on the current item. Each indicator is displayed as a horizontal line.
+ *
+ * @param itemCount The total number of items in the list.
+ * @param currentItem The index of the currently selected item.
+ * @param colors The colors to be used for the indicators.
+ */
+internal fun LazyListScope.persianPageLineVerticalIndicatorItem(
+    itemCount: Int,
+    currentItem: Int,
+    colors: PageIndicatorColors
+) {
+    items(itemCount) { index ->
+        val isSelected = (index == currentItem)
+        Box(
+            modifier = Modifier
+                .width(4.dp)
+                .height(24.dp)
+                .clip(PersianTheme.shapes.full)
+                .background(colors.indicatorColor(isSelected))
         )
     }
 }
