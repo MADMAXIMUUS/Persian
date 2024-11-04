@@ -19,7 +19,7 @@ import androidx.compose.ui.semantics.semantics
 import io.github.madmaximuus.persian.foundation.LocalContentColor
 
 /**
- * A composable function to display an icon with customizable properties.
+ * Display an icon with different sizes.
  *
  * @param modifier The [Modifier] to be applied to the icon.
  * @param painter The [Painter] used to draw the icon.
