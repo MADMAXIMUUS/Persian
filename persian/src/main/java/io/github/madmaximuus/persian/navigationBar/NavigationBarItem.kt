@@ -40,7 +40,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastFirst
 import androidx.compose.ui.util.fastFirstOrNull
 import io.github.madmaximuus.persian.counter.Badge
-import io.github.madmaximuus.persian.counter.CounterDefaults
+import io.github.madmaximuus.persian.counter.utils.BadgeStyle
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.ripple.ripple
 import io.github.madmaximuus.persian.icon.Icon
@@ -117,6 +117,7 @@ fun NavigationBarRowScope.NavigationBarItem(
     enabled: Boolean = true,
     label: String? = null,
     @IntRange(from = 0) badge: Int = 0,
+    badgeStyle: BadgeStyle = BadgeStyle.NUMBER,
     alwaysShowLabel: Boolean = true,
     interactionSource: MutableInteractionSource? = null
 ) {
@@ -135,11 +136,9 @@ fun NavigationBarRowScope.NavigationBarItem(
             Box(modifier = if (clearSemantics) Modifier.clearAndSetSemantics {} else Modifier) {
                 if (badge != 0) {
                     Badge(
+                        style = badgeStyle,
                         count = badge,
-                        sizes = CounterDefaults.digitSizes(
-                            badgeHorizontalOffset = (-6).dp,
-                            badgeVerticalOffset = (-5).dp
-                        )
+                        sizes = this@NavigationBarItem.sizes.badgeSizes
                     ) {
                         if (selected) {
                             Icon(
@@ -463,7 +462,7 @@ private fun MeasureScope.placeLabelAndIcon(
         indicatorPlaceable?.let {
             val indicatorX = (containerWidth - it.width) / 2
             val indicatorY = selectedIconY - IndicatorVerticalPadding.roundToPx()
-            it.placeRelative(indicatorX, (indicatorY + offset).roundToInt(),0f)
+            it.placeRelative(indicatorX, (indicatorY + offset).roundToInt(), 0f)
         }
         if (alwaysShowLabel || animationProgress != 0f) {
             labelPlaceable.placeRelative(labelX, (labelY + offset).roundToInt(), 1f)

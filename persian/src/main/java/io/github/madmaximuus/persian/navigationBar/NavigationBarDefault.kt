@@ -12,13 +12,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.takeOrElse
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
+import io.github.madmaximuus.persian.counter.CounterDefaults
+import io.github.madmaximuus.persian.counter.CounterSizes
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persian.icon.IconSizes
 
 /**
- * Contains all default values used by navigation bar
+ * Contains all default values used by [NavigationBar]
  */
 object NavigationBarDefaults {
 
@@ -62,13 +64,17 @@ object NavigationBarDefaults {
         paddingValues: PaddingValues = PaddingValues(
             horizontal = 0.dp,
             vertical = PersianTheme.spacing.size12,
+        ),
+        badgeSizes: CounterSizes = CounterDefaults.sizes(
+
         )
     ): NavigationBarSizes =
         NavigationBarSizes(
             iconSize = iconSize,
             selectedIconSize = selectedIconSize,
             paddingValues = paddingValues,
-            textStyle = textStyle
+            textStyle = textStyle,
+            badgeSizes = badgeSizes
         )
 
     /**
@@ -139,7 +145,8 @@ data class NavigationBarSizes(
     val paddingValues: PaddingValues,
     val selectedIconSize: IconSizes,
     val iconSize: IconSizes,
-    val textStyle: TextStyle
+    val textStyle: TextStyle,
+    val badgeSizes: CounterSizes
 )
 
 /**
@@ -152,7 +159,6 @@ data class NavigationBarSizes(
  * @param unselectedTextColor the color to use for the text label when the item is unselected.
  * @param disabledIconColor the color to use for the icon when the item is disabled.
  * @param disabledTextColor the color to use for the text label when the item is disabled.
- * @constructor create an instance with arbitrary colors.
  */
 @Immutable
 class NavigationBarItemColors internal constructor(
