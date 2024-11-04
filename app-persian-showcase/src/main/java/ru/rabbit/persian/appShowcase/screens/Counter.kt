@@ -1,19 +1,27 @@
 package ru.rabbit.persian.appShowcase.screens
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.counter.Badge
+import io.github.madmaximuus.persian.counter.Counter
 import io.github.madmaximuus.persian.counter.CounterDefaults
-import io.github.madmaximuus.persian.counter.ErrorCounter
-import io.github.madmaximuus.persian.counter.PrimaryCounter
-import io.github.madmaximuus.persian.counter.SecondaryCounter
-import io.github.madmaximuus.persian.counter.TertiaryCounter
 import io.github.madmaximuus.persian.counter.utils.BadgeStyle
+import io.github.madmaximuus.persian.forms.Form
+import io.github.madmaximuus.persian.forms.Input
+import io.github.madmaximuus.persian.forms.RadioButton
+import io.github.madmaximuus.persian.forms.RadioButtons
+import io.github.madmaximuus.persian.forms.Subhead
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.iconButton.TertiaryIconButton
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.user.base.User
@@ -22,7 +30,7 @@ import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object Counter : Screen {
 
-    override val name: String = "Counters"
+    override val name: String = "Counter"
 
     override val navigation: String = "counter"
 
@@ -32,228 +40,210 @@ object Counter : Screen {
             title = name,
             onBackClick = { navController?.navigateUp() }
         ) {
-            LazyColumn(
+            val (count, onCountChange) = remember { mutableStateOf("1") }
+            val typeStates = remember {
+                listOf(
+                    mutableStateOf(true),
+                    mutableStateOf(false)
+                )
+            }
+            val badgeStyleStates = remember {
+                listOf(
+                    mutableStateOf(true),
+                    mutableStateOf(false)
+                )
+            }
+            val styleStates = remember {
+                listOf(
+                    mutableStateOf(true),
+                    mutableStateOf(false),
+                    mutableStateOf(false),
+                    mutableStateOf(false)
+                )
+            }
+            Column(
                 modifier = Modifier
-                    .fillMaxSize(),
-                contentPadding = it
+                    .fillMaxSize()
+                    .padding(it)
             ) {
-                item {
-                    SampleRow(text = "Error counter", firstItem = true) {
-                        ErrorCounter(count = 1)
-                        ErrorCounter(count = 10)
-                        ErrorCounter(count = 100)
+                SampleRow(
+                    text = "Sample"
+                ) {
+                    if (count.isNotEmpty()) {
+                        when {
+                            typeStates[0].value -> {
+                                Counter(
+                                    count = count.toInt(),
+                                    colors = when {
+                                        styleStates[0].value -> CounterDefaults.errorColors()
+                                        styleStates[1].value -> CounterDefaults.primaryColors()
+                                        styleStates[2].value -> CounterDefaults.secondaryColors()
+                                        styleStates[3].value -> CounterDefaults.tertiaryColors()
+                                        else -> CounterDefaults.errorColors()
+                                    }
+                                )
+                            }
+
+                            typeStates[1].value -> {
+                                Badge(
+                                    count = count.toInt(),
+                                    colors = when {
+                                        styleStates[0].value -> CounterDefaults.errorColors()
+                                        styleStates[1].value -> CounterDefaults.primaryColors()
+                                        styleStates[2].value -> CounterDefaults.secondaryColors()
+                                        else -> CounterDefaults.errorColors()
+                                    },
+                                    style = when {
+                                        badgeStyleStates[0].value -> BadgeStyle.DOT
+                                        badgeStyleStates[1].value -> BadgeStyle.NUMBER
+                                        else -> BadgeStyle.NUMBER
+                                    },
+                                    sizes = when {
+                                        badgeStyleStates[0].value -> CounterDefaults.sizes(
+                                            badgeTopOffset = 16.dp,
+                                            badgeRightOffset = 20.dp
+                                        )
+
+                                        badgeStyleStates[1].value -> CounterDefaults.sizes(
+                                            badgeTopOffset = 19.dp,
+                                            badgeRightOffset = 23.dp
+                                        )
+
+                                        else -> CounterDefaults.sizes(
+                                            badgeTopOffset = 19.dp,
+                                            badgeRightOffset = 23.dp
+                                        )
+                                    },
+                                ) {
+                                    TertiaryIconButton(
+                                        icon = rememberVectorPainter(image = PersianSymbols.Default.User),
+                                        onClick = {}
+                                    )
+                                }
+                            }
+                        }
                     }
                 }
-                item {
-                    SampleRow(text = "Primary counter") {
-                        PrimaryCounter(count = 1)
-                        PrimaryCounter(count = 10)
-                        PrimaryCounter(count = 100)
-                    }
-                }
-                item {
-                    SampleRow(text = "Secondary Counter") {
-                        SecondaryCounter(count = 1)
-                        SecondaryCounter(count = 10)
-                        SecondaryCounter(count = 100)
-                    }
-                }
-                item {
-                    SampleRow(text = "Tertiary counter") {
-                        TertiaryCounter(count = 1)
-                        TertiaryCounter(count = 10)
-                        TertiaryCounter(count = 100)
-                    }
-                }
-                item {
-                    SampleRow(text = "Error badge") {
-                        Badge(
-                            count = 1,
-                            colors = CounterDefaults.errorColors(),
-                            sizes = CounterDefaults.sizes(
-                                badgeTopOffset = 16.dp,
-                                badgeRightOffset = 20.dp
-                            ),
-                            content = {
-                                TertiaryIconButton(
-                                    icon = rememberVectorPainter(image = PersianSymbols.Default.User),
-                                    onClick = {}
-                                )
-                            },
-                        )
-                        Badge(
-                            count = 1,
-                            style = BadgeStyle.NUMBER,
-                            sizes = CounterDefaults.sizes(
-                                badgeTopOffset = 19.dp,
-                                badgeRightOffset = 23.dp
-                            ),
-                            colors = CounterDefaults.errorColors(),
-                            content = {
-                                TertiaryIconButton(
-                                    icon = rememberVectorPainter(image = PersianSymbols.Default.User),
-                                    onClick = {}
-                                )
-                            }
-                        )
-                        Badge(
-                            count = 10,
-                            style = BadgeStyle.NUMBER,
-                            sizes = CounterDefaults.sizes(
-                                badgeTopOffset = 19.dp,
-                                badgeRightOffset = 23.dp
-                            ),
-                            colors = CounterDefaults.errorColors(),
-                            content = {
-                                TertiaryIconButton(
-                                    icon = rememberVectorPainter(image = PersianSymbols.Default.User),
-                                    onClick = {}
-                                )
-                            }
-                        )
-                        Badge(
-                            count = 100,
-                            style = BadgeStyle.NUMBER,
-                            sizes = CounterDefaults.sizes(
-                                badgeTopOffset = 19.dp,
-                                badgeRightOffset = 23.dp
-                            ),
-                            colors = CounterDefaults.errorColors(),
-                            content = {
-                                TertiaryIconButton(
-                                    icon = rememberVectorPainter(image = PersianSymbols.Default.User),
-                                    onClick = {}
-                                )
-                            }
+                Form(
+                    modifier = Modifier.padding(top = PersianTheme.spacing.size12),
+                    subhead = {
+                        Subhead(text = "Count")
+                    },
+                    content = {
+                        Input(
+                            value = count,
+                            onValueChange = onCountChange,
+                            keyboardOptions = KeyboardOptions(
+                                keyboardType = KeyboardType.Number
+                            )
                         )
                     }
-                }
-                item {
-                    SampleRow(text = "Error badge") {
-                        Badge(
-                            count = 1,
-                            colors = CounterDefaults.primaryColors(),
-                            sizes = CounterDefaults.sizes(
-                                badgeTopOffset = 16.dp,
-                                badgeRightOffset = 20.dp
-                            ),
-                            content = {
-                                TertiaryIconButton(
-                                    icon = rememberVectorPainter(image = PersianSymbols.Default.User),
-                                    onClick = {}
-                                )
-                            },
-                        )
-                        Badge(
-                            count = 1,
-                            style = BadgeStyle.NUMBER,
-                            sizes = CounterDefaults.sizes(
-                                badgeTopOffset = 19.dp,
-                                badgeRightOffset = 23.dp
-                            ),
-                            colors = CounterDefaults.primaryColors(),
-                            content = {
-                                TertiaryIconButton(
-                                    icon = rememberVectorPainter(image = PersianSymbols.Default.User),
-                                    onClick = {}
-                                )
-                            }
-                        )
-                        Badge(
-                            count = 10,
-                            style = BadgeStyle.NUMBER,
-                            sizes = CounterDefaults.sizes(
-                                badgeTopOffset = 19.dp,
-                                badgeRightOffset = 23.dp
-                            ),
-                            colors = CounterDefaults.primaryColors(),
-                            content = {
-                                TertiaryIconButton(
-                                    icon = rememberVectorPainter(image = PersianSymbols.Default.User),
-                                    onClick = {}
-                                )
-                            }
-                        )
-                        Badge(
-                            count = 100,
-                            style = BadgeStyle.NUMBER,
-                            sizes = CounterDefaults.sizes(
-                                badgeTopOffset = 19.dp,
-                                badgeRightOffset = 23.dp
-                            ),
-                            colors = CounterDefaults.primaryColors(),
-                            content = {
-                                TertiaryIconButton(
-                                    icon = rememberVectorPainter(image = PersianSymbols.Default.User),
-                                    onClick = {}
-                                )
-                            }
-                        )
+                )
+                Form(
+                    modifier = Modifier.padding(top = PersianTheme.spacing.size12),
+                    subhead = {
+                        Subhead(text = "Type")
+                    },
+                    content = {
+                        RadioButtons {
+                            RadioButton(
+                                text = "Counter",
+                                selected = typeStates[0].value,
+                                onSelectedChange = {
+                                    typeStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 0
+                                    }
+                                }
+                            )
+                            RadioButton(
+                                text = "Badge",
+                                selected = typeStates[1].value,
+                                onSelectedChange = {
+                                    typeStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 1
+                                    }
+                                }
+                            )
+                        }
                     }
+                )
+                if (typeStates[1].value) {
+                    Form(
+                        modifier = Modifier.padding(top = PersianTheme.spacing.size12),
+                        subhead = {
+                            Subhead(text = "Badge style")
+                        },
+                        content = {
+                            RadioButtons {
+                                RadioButton(
+                                    text = "Dot",
+                                    selected = badgeStyleStates[0].value,
+                                    onSelectedChange = {
+                                        badgeStyleStates.forEachIndexed { index, mutableState ->
+                                            mutableState.value = index == 0
+                                        }
+                                    }
+                                )
+                                RadioButton(
+                                    text = "Number",
+                                    selected = badgeStyleStates[1].value,
+                                    onSelectedChange = {
+                                        badgeStyleStates.forEachIndexed { index, mutableState ->
+                                            mutableState.value = index == 1
+                                        }
+                                    }
+                                )
+                            }
+                        }
+                    )
                 }
-                item {
-                    SampleRow(text = "Error badge", lastItem = true) {
-                        Badge(
-                            count = 1,
-                            sizes = CounterDefaults.sizes(
-                                badgeTopOffset = 16.dp,
-                                badgeRightOffset = 20.dp
-                            ),
-                            colors = CounterDefaults.secondaryColors(),
-                            content = {
-                                TertiaryIconButton(
-                                    icon = rememberVectorPainter(image = PersianSymbols.Default.User),
-                                    onClick = {}
+                Form(
+                    modifier = Modifier.padding(top = PersianTheme.spacing.size12),
+                    subhead = {
+                        Subhead(text = "Style")
+                    },
+                    content = {
+                        RadioButtons {
+                            RadioButton(
+                                text = "Error",
+                                selected = styleStates[0].value,
+                                onSelectedChange = {
+                                    styleStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 0
+                                    }
+                                }
+                            )
+                            RadioButton(
+                                text = "Primary",
+                                selected = styleStates[1].value,
+                                onSelectedChange = {
+                                    styleStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 1
+                                    }
+                                }
+                            )
+                            RadioButton(
+                                text = "Secondary",
+                                selected = styleStates[2].value,
+                                onSelectedChange = {
+                                    styleStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 2
+                                    }
+                                }
+                            )
+                            if (!typeStates[1].value)
+                                RadioButton(
+                                    text = "Tertiary",
+                                    selected = styleStates[3].value,
+                                    onSelectedChange = {
+                                        styleStates.forEachIndexed { index, mutableState ->
+                                            mutableState.value = index == 3
+                                        }
+                                    }
                                 )
-                            },
-                        )
-                        Badge(
-                            count = 1,
-                            style = BadgeStyle.NUMBER,
-                            sizes = CounterDefaults.sizes(
-                                badgeTopOffset = 19.dp,
-                                badgeRightOffset = 23.dp
-                            ),
-                            colors = CounterDefaults.secondaryColors(),
-                            content = {
-                                TertiaryIconButton(
-                                    icon = rememberVectorPainter(image = PersianSymbols.Default.User),
-                                    onClick = {}
-                                )
-                            }
-                        )
-                        Badge(
-                            count = 10,
-                            style = BadgeStyle.NUMBER,
-                            sizes = CounterDefaults.sizes(
-                                badgeTopOffset = 19.dp,
-                                badgeRightOffset = 23.dp
-                            ),
-                            colors = CounterDefaults.secondaryColors(),
-                            content = {
-                                TertiaryIconButton(
-                                    icon = rememberVectorPainter(image = PersianSymbols.Default.User),
-                                    onClick = {}
-                                )
-                            }
-                        )
-                        Badge(
-                            count = 100,
-                            style = BadgeStyle.NUMBER,
-                            sizes = CounterDefaults.sizes(
-                                badgeTopOffset = 19.dp,
-                                badgeRightOffset = 23.dp
-                            ),
-                            colors = CounterDefaults.secondaryColors(),
-                            content = {
-                                TertiaryIconButton(
-                                    icon = rememberVectorPainter(image = PersianSymbols.Default.User),
-                                    onClick = {}
-                                )
-                            }
-                        )
+                        }
                     }
-                }
+                )
             }
         }
     }

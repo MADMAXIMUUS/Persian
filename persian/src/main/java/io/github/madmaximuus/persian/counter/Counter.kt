@@ -25,82 +25,10 @@ import io.github.madmaximuus.persian.text.Text
  * @param sizes The size configurations for the counter.
  */
 @Composable
-fun ErrorCounter(
+fun Counter(
     count: Int,
     modifier: Modifier = Modifier,
     colors: CounterColors = CounterDefaults.errorColors(),
-    sizes: CounterSizes = CounterDefaults.sizes()
-) = CounterImpl(
-    modifier = modifier,
-    count = count,
-    colors = colors,
-    sizes = sizes
-)
-
-/**
- * A counter is useful for displaying important information or status updates in a compact and visually
- * appealing manner, providing users with quick and easy access to relevant data. It offers
- * a straightforward and effective method for conveying notifications, alerts, or achievements,
- * making it an essential tool for enhancing user experience.
- *
- * @param count The count to be displayed in the counter.
- * @param modifier The [Modifier] to be applied to this composable.
- * @param colors The color configurations for the counter.
- * @param sizes The size configurations for the counter.
- */
-@Composable
-fun PrimaryCounter(
-    count: Int,
-    modifier: Modifier = Modifier,
-    colors: CounterColors = CounterDefaults.primaryColors(),
-    sizes: CounterSizes = CounterDefaults.sizes()
-) = CounterImpl(
-    modifier = modifier,
-    count = count,
-    colors = colors,
-    sizes = sizes
-)
-
-/**
- * A counter is useful for displaying important information or status updates in a compact and visually
- * appealing manner, providing users with quick and easy access to relevant data. It offers
- * a straightforward and effective method for conveying notifications, alerts, or achievements,
- * making it an essential tool for enhancing user experience.
- *
- * @param count The count to be displayed in the counter.
- * @param modifier The [Modifier] to be applied to this composable.
- * @param colors The color configurations for the counter.
- * @param sizes The size configurations for the counter.
- */
-@Composable
-fun SecondaryCounter(
-    count: Int,
-    modifier: Modifier = Modifier,
-    colors: CounterColors = CounterDefaults.secondaryColors(),
-    sizes: CounterSizes = CounterDefaults.sizes()
-) = CounterImpl(
-    modifier = modifier,
-    count = count,
-    colors = colors,
-    sizes = sizes
-)
-
-/**
- * A counter is useful for displaying important information or status updates in a compact and visually
- * appealing manner, providing users with quick and easy access to relevant data. It offers
- * a straightforward and effective method for conveying notifications, alerts, or achievements,
- * making it an essential tool for enhancing user experience.
- *
- * @param count The count to be displayed in the counter.
- * @param modifier The [Modifier] to be applied to this composable.
- * @param colors The color configurations for the counter.
- * @param sizes The size configurations for the counter.
- */
-@Composable
-fun TertiaryCounter(
-    count: Int,
-    modifier: Modifier = Modifier,
-    colors: CounterColors = CounterDefaults.tertiaryColors(),
     sizes: CounterSizes = CounterDefaults.sizes()
 ) = CounterImpl(
     modifier = modifier,
