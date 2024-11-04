@@ -10,10 +10,16 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state38
 
 /**
- * Contains all default values used by form.
+ * Contains all default values used by [Form].
  */
 object FormDefaults {
 
+    /**
+     * Composable function that creates and returns a [FormColors] instance.
+     *
+     * @param subheadColors The colors for the subhead.
+     * @param captionColors The colors for the caption.
+     */
     @Composable
     fun formColors(
         subheadColors: SubheadColors = subheadColors(),
@@ -24,6 +30,14 @@ object FormDefaults {
             captionColors = captionColors
         )
 
+    /**
+     * Composable function that creates and returns a [FormSizes] instance.
+     *
+     * This function allows customization of subhead text style and caption sizes for forms.
+     *
+     * @param subheadTextStyle The text style for the subhead.
+     * @param captionSizes The sizes for the caption.
+     */
     @Composable
     fun formSizes(
         subheadTextStyle: TextStyle = PersianTheme.typography.labelLarge,
@@ -104,18 +118,38 @@ object FormDefaults {
         )
 }
 
+/**
+ * An immutable class that holds the colors for form elements.
+ *
+ * This class is intended for internal use and provides properties for subhead colors and caption colors.
+ *
+ * @property subheadColors The colors for the subhead, encapsulated in a [SubheadColors] instance.
+ * @property captionColors The colors for the caption, encapsulated in a [CaptionColors] instance.
+ */
 @Immutable
 class FormColors internal constructor(
     internal val subheadColors: SubheadColors,
     internal val captionColors: CaptionColors
 )
 
+/**
+ * An immutable class that holds the sizes for form elements.
+ *
+ * @property subheadTextStyle The text style for the subhead.
+ * @property captionSizes The sizes for the caption, encapsulated in a [CaptionSizes] instance.
+ */
 @Immutable
 class FormSizes internal constructor(
     internal val subheadTextStyle: TextStyle,
     internal val captionSizes: CaptionSizes
 )
 
+/**
+ * An immutable class that holds the sizes for caption text styles.
+ *ø
+ * @property captionTextStyle The text style for the caption.
+ * @property counterTextStyle The text style for the counter.
+ */
 @Immutable
 class CaptionSizes internal constructor(
     internal val captionTextStyle: TextStyle,
