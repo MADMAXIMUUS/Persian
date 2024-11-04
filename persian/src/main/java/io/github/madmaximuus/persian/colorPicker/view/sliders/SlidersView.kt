@@ -36,7 +36,7 @@ internal fun SlidersView(
     Column(
         modifier = Modifier
             .fillMaxSize(),
-        verticalArrangement = Arrangement.SpaceBetween
+        verticalArrangement = Arrangement.SpaceEvenly
     ) {
         SliderView(
             text = "Red",

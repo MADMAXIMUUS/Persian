@@ -34,7 +34,7 @@ import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object ColorPicker : Screen {
-    override val name: String = "Color Picker"
+    override val name: String = "Color picker"
 
     override val navigation: String = "colorPicker"
 
@@ -67,7 +67,7 @@ object ColorPicker : Screen {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(top = PersianTheme.spacing.size20),
-                    text = "Select Background Color",
+                    text = "Select background color",
                     textAlign = TextAlign.Center,
                     style = PersianTheme.typography.titleLarge,
                     color = PersianTheme.colorScheme.onSurface
@@ -81,9 +81,9 @@ object ColorPicker : Screen {
                         .size(60.dp)
                         .background(color, RoundedCornerShape(1000.dp))
                         .border(
-                            4.dp,
-                            PersianTheme.colorScheme.onSurface,
-                            RoundedCornerShape(1000.dp)
+                            width = 4.dp,
+                            color = PersianTheme.colorScheme.onSurface,
+                            shape = RoundedCornerShape(1000.dp)
                         )
                         .clip(RoundedCornerShape(1000.dp))
                         .clickable {
