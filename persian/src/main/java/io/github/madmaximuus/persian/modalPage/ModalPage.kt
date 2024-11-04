@@ -20,11 +20,10 @@ import io.github.madmaximuus.persian.modalPage.util.DragAnchor
 import kotlinx.coroutines.launch
 
 /**
- * Modal bottom sheets are used as an alternative to inline menus or simple dialogs on mobile,
- * especially when offering a long list of action items, or when items require longer descriptions
- * and icons. Like dialogs, modal bottom sheets appear in front of app content, disabling all other
- * app functionality when they appear, and remaining on screen until confirmed, dismissed, or a
- * required action has been taken.
+ * A modal page is useful for displaying important information or requiring user interaction in
+ * a focused and overlaying manner, providing a dedicated interface for specific tasks. It offers
+ * a straightforward and effective method for capturing user attention and ensuring critical actions
+ * are completed, making it an essential tool for enhancing user experience and workflow management.
  *
  * @param onDismissRequest Executes when the user clicks outside of the bottom sheet, after sheet
  *   animates to [DragAnchor.Hidden].
@@ -131,7 +130,7 @@ private fun CompactModalPage(
         ModalPageDialog(
             properties = properties,
             onDismissRequest = {
-                if (pageState.currentValue == DragAnchor.Expanded) {
+                if (pageState.currentValue == DragAnchor.Full) {
                     // Smoothly animate away predictive back transformations since we are not fully
                     // dismissing. We don't need to do this in the else below because we want to
                     // preserve the predictive back transformations (scale) during the hide animation.

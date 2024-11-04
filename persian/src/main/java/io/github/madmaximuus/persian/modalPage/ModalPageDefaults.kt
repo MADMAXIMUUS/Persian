@@ -18,12 +18,12 @@ import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.TopAppBarSizes
 
 /**
- * Contains all default values used by modal page
+ * Contains all default values used by [ModalPage] and [FullScreenModalPage]
  */
 object ModalPageDefaults {
 
     /**
-     * A composable function that creates a [ModalPageColors] instance with the specified colors.
+     * Creates a [ModalPageColors] instance with the specified colors.
      *
      * This function allows customization of the colors for various components of a modal page, including
      * the container, top app bar, drag handle, and action buttons. Default values are provided for each
@@ -48,7 +48,7 @@ object ModalPageDefaults {
     )
 
     /**
-     * A composable function that creates a [ModalPageSizes] instance with the specified sizes.
+     * Creates a [ModalPageSizes] instance with the specified sizes.
      *
      * This function allows customization of the sizes for various components of a modal page, including
      * the container shape, top app bar, drag handle, and action buttons. Default values are provided for each
@@ -72,7 +72,7 @@ object ModalPageDefaults {
         actionSizes = actionSizes
     )
 
-    val defaultDraggableAnchors = setOf<DragAnchor>(DragAnchor.Expanded)
+    val defaultDraggableAnchors = setOf<DragAnchor>(DragAnchor.Full)
 }
 
 @Immutable

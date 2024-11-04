@@ -191,7 +191,7 @@ internal fun BoxScope.ModalBottomSheetContent(
                     DragAnchor.Hidden at fullHeight
                     dragAnchor.forEach {
                         it at when (it) {
-                            DragAnchor.Expanded -> max(0f, fullHeight - sheetSize.height)
+                            DragAnchor.Full -> max(0f, fullHeight - sheetSize.height)
                             is DragAnchor.Fraction ->
                                 fullHeight - fullHeight * (it.value.coerceIn(0.1f, 1f))
 
@@ -203,9 +203,9 @@ internal fun BoxScope.ModalBottomSheetContent(
                 }
                 val newTarget =
                     when (val value = pageState.anchoredDraggableState.targetValue) {
-                        DragAnchor.Expanded ->
-                            if (newAnchors.hasAnchorFor(DragAnchor.Expanded))
-                                DragAnchor.Expanded
+                        DragAnchor.Full ->
+                            if (newAnchors.hasAnchorFor(DragAnchor.Full))
+                                DragAnchor.Full
                             else
                                 DragAnchor.Hidden
 

@@ -24,10 +24,10 @@ import io.github.madmaximuus.persian.scafold.Scaffold
 import io.github.madmaximuus.persian.surface.Surface
 
 /**
- * A composable function that displays a full-screen modal page.
- *
- * This function adapts the layout based on the current window size class, providing different layouts
- * for compact and medium window sizes.
+ * A modal page is useful for displaying important information or requiring user interaction in
+ * a focused and overlaying manner, providing a dedicated interface for specific tasks. It offers
+ * a straightforward and effective method for capturing user attention and ensuring critical actions
+ * are completed, making it an essential tool for enhancing user experience and workflow management.
  *
  * @param onDismissRequest A callback to be invoked when the modal page is dismissed.
  * @param colors The colors to be used for the modal page.
