@@ -37,7 +37,7 @@ object CodeInput : Screen {
             TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
 
         SampleScaffold(
-            title = Input.name,
+            title = name,
             onBackClick = { navController?.navigateUp() },
             topAppBarScrollBehavior = topAppBarScrollBehavior
         ) {
