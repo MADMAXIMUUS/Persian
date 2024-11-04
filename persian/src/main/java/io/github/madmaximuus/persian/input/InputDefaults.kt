@@ -32,64 +32,64 @@ import io.github.madmaximuus.persianSymbols.exclamation.circle.ExclamationCircle
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
 /**
- * Contains all default values used by input.
+ * Contains all default values used by [OutlineInput] or [PlainInput].
  */
 object InputsDefaults {
 
+    /**
+     * Creates an [InputColors] instance with default colors.
+     *
+     * @param validStateIcon The icon to be displayed when the input field is in a valid state.
+     * @param validStateIconColor The color of the icon when the input field is in a valid state.
+     * @param errorStateIconColor The color of the icon when the input field is in an error state.
+     * @param defaultTextColor The default color of the text in the input field.
+     * @param hoveredTextColor The color of the text when the input field is hovered.
+     * @param focusedTextColor The color of the text when the input field is focused.
+     * @param validTextColor The color of the text when the input field is in a valid state.
+     * @param errorTextColor The color of the text when the input field is in an error state.
+     * @param disabledTextColor The color of the text when the input field is disabled.
+     * @param defaultContainerColor The default color of the input field container.
+     * @param hoveredContainerColor The color of the input field container when it is hovered.
+     * @param focusedContainerColor The color of the input field container when it is focused.
+     * @param validContainerColor The color of the input field container when it is in a valid state.
+     * @param errorContainerColor The color of the input field container when it is in an error state.
+     * @param disabledContainerColor The color of the input field container when it is disabled.
+     * @param defaultCursorColor The default color of the cursor in the input field.
+     * @param validCursorColor The color of the cursor when the input field is in a valid state.
+     * @param errorCursorColor The color of the cursor when the input field is in an error state.
+     * @param textSelectionColors The colors used for text selection in the input field.
+     * @param defaultIndicatorColor The default color of the indicator in the input field.
+     * @param hoveredIndicatorColor The color of the indicator when the input field is hovered.
+     * @param focusedIndicatorColor The color of the indicator when the input field is focused.
+     * @param validIndicatorColor The color of the indicator when the input field is in a valid state.
+     * @param errorIndicatorColor The color of the indicator when the input field is in an error state.
+     * @param disabledIndicatorColor The color of the indicator when the input field is disabled.
+     * @param defaultLeadingIconColor The default color of the leading icon in the input field.
+     * @param hoveredLeadingIconColor The color of the leading icon when the input field is hovered.
+     * @param focusedLeadingIconColor The color of the leading icon when the input field is focused.
+     * @param validLeadingIconColor The color of the leading icon when the input field is in a valid state.
+     * @param errorLeadingIconColor The color of the leading icon when the input field is in an error state.
+     * @param disabledLeadingIconColor The color of the leading icon when the input field is disabled.
+     * @param defaultTrailingIconColor The default color of the trailing icon in the input field.
+     * @param hoveredTrailingIconColor The color of the trailing icon when the input field is hovered.
+     * @param focusedTrailingIconColor The color of the trailing icon when the input field is focused.
+     * @param validTrailingIconColor The color of the trailing icon when the input field is in a valid state.
+     * @param errorTrailingIconColor The color of the trailing icon when the input field is in an error state.
+     * @param disabledTrailingIconColor The color of the trailing icon when the input field is disabled.
+     * @param defaultPlaceholderColor The default color of the placeholder text in the input field.
+     * @param hoveredPlaceholderColor The color of the placeholder text when the input field is hovered.
+     * @param focusedPlaceholderColor The color of the placeholder text when the input field is focused.
+     * @param validPlaceholderColor The color of the placeholder text when the input field is in a valid state.
+     * @param errorPlaceholderColor The color of the placeholder text when the input field is in an error state.
+     * @param disabledPlaceholderColor The color of the placeholder text when the input field is disabled.
+     * @param defaultSuffixColor The default color of the suffix text in the input field.
+     * @param hoveredSuffixColor The color of the suffix text when the input field is hovered.
+     * @param focusedSuffixColor The color of the suffix text when the input field is focused.
+     * @param validSuffixColor The color of the suffix text when the input field is in a valid state.
+     * @param errorSuffixColor The color of the suffix text when the input field is in an error state.
+     * @param disabledSuffixColor The color of the suffix text when the input field is disabled.
+     */
     @Composable
-            /**
-             * A composable function that creates an [InputColors] instance with default outline colors.
-             *
-             * @param validStateIcon The icon to be displayed when the input field is in a valid state.
-             * @param validStateIconColor The color of the icon when the input field is in a valid state.
-             * @param errorStateIconColor The color of the icon when the input field is in an error state.
-             * @param defaultTextColor The default color of the text in the input field.
-             * @param hoveredTextColor The color of the text when the input field is hovered.
-             * @param focusedTextColor The color of the text when the input field is focused.
-             * @param validTextColor The color of the text when the input field is in a valid state.
-             * @param errorTextColor The color of the text when the input field is in an error state.
-             * @param disabledTextColor The color of the text when the input field is disabled.
-             * @param defaultContainerColor The default color of the input field container.
-             * @param hoveredContainerColor The color of the input field container when it is hovered.
-             * @param focusedContainerColor The color of the input field container when it is focused.
-             * @param validContainerColor The color of the input field container when it is in a valid state.
-             * @param errorContainerColor The color of the input field container when it is in an error state.
-             * @param disabledContainerColor The color of the input field container when it is disabled.
-             * @param defaultCursorColor The default color of the cursor in the input field.
-             * @param validCursorColor The color of the cursor when the input field is in a valid state.
-             * @param errorCursorColor The color of the cursor when the input field is in an error state.
-             * @param textSelectionColors The colors used for text selection in the input field.
-             * @param defaultIndicatorColor The default color of the indicator in the input field.
-             * @param hoveredIndicatorColor The color of the indicator when the input field is hovered.
-             * @param focusedIndicatorColor The color of the indicator when the input field is focused.
-             * @param validIndicatorColor The color of the indicator when the input field is in a valid state.
-             * @param errorIndicatorColor The color of the indicator when the input field is in an error state.
-             * @param disabledIndicatorColor The color of the indicator when the input field is disabled.
-             * @param defaultLeadingIconColor The default color of the leading icon in the input field.
-             * @param hoveredLeadingIconColor The color of the leading icon when the input field is hovered.
-             * @param focusedLeadingIconColor The color of the leading icon when the input field is focused.
-             * @param validLeadingIconColor The color of the leading icon when the input field is in a valid state.
-             * @param errorLeadingIconColor The color of the leading icon when the input field is in an error state.
-             * @param disabledLeadingIconColor The color of the leading icon when the input field is disabled.
-             * @param defaultTrailingIconColor The default color of the trailing icon in the input field.
-             * @param hoveredTrailingIconColor The color of the trailing icon when the input field is hovered.
-             * @param focusedTrailingIconColor The color of the trailing icon when the input field is focused.
-             * @param validTrailingIconColor The color of the trailing icon when the input field is in a valid state.
-             * @param errorTrailingIconColor The color of the trailing icon when the input field is in an error state.
-             * @param disabledTrailingIconColor The color of the trailing icon when the input field is disabled.
-             * @param defaultPlaceholderColor The default color of the placeholder text in the input field.
-             * @param hoveredPlaceholderColor The color of the placeholder text when the input field is hovered.
-             * @param focusedPlaceholderColor The color of the placeholder text when the input field is focused.
-             * @param validPlaceholderColor The color of the placeholder text when the input field is in a valid state.
-             * @param errorPlaceholderColor The color of the placeholder text when the input field is in an error state.
-             * @param disabledPlaceholderColor The color of the placeholder text when the input field is disabled.
-             * @param defaultSuffixColor The default color of the suffix text in the input field.
-             * @param hoveredSuffixColor The color of the suffix text when the input field is hovered.
-             * @param focusedSuffixColor The color of the suffix text when the input field is focused.
-             * @param validSuffixColor The color of the suffix text when the input field is in a valid state.
-             * @param errorSuffixColor The color of the suffix text when the input field is in an error state.
-             * @param disabledSuffixColor The color of the suffix text when the input field is disabled.
-             */
     fun outlineColors(
         //State Icon
         validStateIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.CheckCircle),
@@ -237,7 +237,7 @@ object InputsDefaults {
         )
 
     /**
-     * A composable function that creates an [InputColors] instance with default plain colors.
+     * Creates an [InputColors] instance with default colors.
      *
      * @param validStateIcon The icon to be displayed when the input field is in a valid state.
      * @param validStateIconColor The color of the icon when the input field is in a valid state.
@@ -423,7 +423,7 @@ object InputsDefaults {
         )
 
     /**
-     * A composable function that returns an [InputSizes] object with customizable properties for an input field.
+     * Create an [InputSizes] object with customizable properties for an input field.
      *
      * @param unfocusedBorderThickness The thickness of the border when the input field is not focused.
      * @param focusedBorderThickness The thickness of the border when the input field is focused.

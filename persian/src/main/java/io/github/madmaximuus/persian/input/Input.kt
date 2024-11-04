@@ -45,7 +45,7 @@ import io.github.madmaximuus.persian.input.InputsTransformations.password
 import io.github.madmaximuus.persian.text.Text
 
 /**
- * A composable function that creates an outlined input field with various customization options.
+ * Display an input field in outline style.
  *
  * @param value The current value of the input field.
  * @param onValueChange A callback that is invoked when the value of the input field changes.
@@ -76,7 +76,7 @@ fun OutlineInput(
     isValid: Boolean = false,
     readOnly: Boolean = false,
     placeholder: String? = null,
-    transformation: VisualTransformation = InputsTransformations.none,
+    transformation: VisualTransformation = none,
     colors: InputColors = InputsDefaults.outlineColors(),
     sizes: InputSizes = InputsDefaults.sizes(),
     leadingIcon: Painter? = null,
@@ -117,7 +117,7 @@ fun OutlineInput(
 )
 
 /**
- * A composable function that creates a plain input field with various customization options.
+ * Display an input field in plain style.
  *
  * @param value The current value of the input field.
  * @param onValueChange A callback that is invoked when the value of the input field changes.
@@ -148,7 +148,7 @@ fun PlainInput(
     isValid: Boolean = false,
     readOnly: Boolean = false,
     placeholder: String? = null,
-    transformation: VisualTransformation = InputsTransformations.none,
+    transformation: VisualTransformation = none,
     colors: InputColors = InputsDefaults.plainColors(),
     sizes: InputSizes = InputsDefaults.sizes(),
     leadingIcon: Painter? = null,
@@ -241,7 +241,7 @@ private fun animateBorderStrokeAsState(
 }
 
 /**
- * A composable function that implements the core functionality of an input field with various customization options.
+ * A base implementation of input
  *
  * @param value The current value of the input field.
  * @param onValueChange A callback that is invoked when the value of the input field changes.
