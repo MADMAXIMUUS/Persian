@@ -1,24 +1,23 @@
 package ru.rabbit.persian.appShowcase.screens
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.layout.FlowRow
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.checkboxes.Checkbox
 import io.github.madmaximuus.persian.fab.Fab
 import io.github.madmaximuus.persian.fab.FabDefaults
 import io.github.madmaximuus.persian.fab.SmallFab
+import io.github.madmaximuus.persian.forms.Checkbox
+import io.github.madmaximuus.persian.forms.Checkboxes
+import io.github.madmaximuus.persian.forms.Form
+import io.github.madmaximuus.persian.forms.RadioButton
+import io.github.madmaximuus.persian.forms.RadioButtons
+import io.github.madmaximuus.persian.forms.Subhead
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.plus.base.Plus
@@ -31,122 +30,166 @@ object Fab : Screen {
 
     override val navigation: String = "fab"
 
-    @OptIn(ExperimentalLayoutApi::class)
     @Composable
     override fun Content(navController: NavController?) {
+
+        val (expandable, onExpandableChange) = remember { mutableStateOf(true) }
+
+        val sizeStates = remember {
+            listOf(
+                mutableStateOf(true),
+                mutableStateOf(false)
+            )
+        }
+
+        val styleStates = remember {
+            listOf(
+                mutableStateOf(true),
+                mutableStateOf(false),
+                mutableStateOf(false),
+                mutableStateOf(false)
+            )
+        }
+
         SampleScaffold(
             title = name,
             onBackClick = { navController?.navigateUp() }
         ) {
-            LazyColumn(
-                modifier = Modifier.fillMaxSize(),
-                contentPadding = it
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(it)
             ) {
-                item {
-                    SampleRow(text = "Small FAB", firstItem = true) {
-                        SmallFab(
-                            icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
-                            colors = FabDefaults.neutralColors(),
-                            onClick = {}
-                        )
-                        SmallFab(
-                            icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
-                            colors = FabDefaults.primaryColors(),
-                            onClick = {}
-                        )
-                        SmallFab(
-                            icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
-                            colors = FabDefaults.secondaryColors(),
-                            onClick = {}
-                        )
-                        SmallFab(
-                            icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
-                            colors = FabDefaults.tertiaryColors(),
-                            onClick = {}
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "FAB") {
-                        Fab(
-                            icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
-                            colors = FabDefaults.neutralColors(),
-                            onClick = {}
-                        )
-                        Fab(
-                            icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
-                            colors = FabDefaults.primaryColors(),
-                            onClick = {}
-                        )
-                        Fab(
-                            icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
-                            colors = FabDefaults.secondaryColors(),
-                            onClick = {}
-                        )
-                        Fab(
-                            icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
-                            colors = FabDefaults.tertiaryColors(),
-                            onClick = {}
-                        )
-                    }
-                }
-                item {
-                    SampleRow(text = "FAB with text") {
-                        val (expandable, onExpandableChange) = remember { mutableStateOf(true) }
-                        Column(
-                            Modifier.fillMaxWidth()
-                        ) {
-                            FlowRow(
-                                modifier = Modifier.fillMaxWidth(),
-                                maxItemsInEachRow = 2,
-                                horizontalArrangement = Arrangement.spacedBy(
-                                    PersianTheme.spacing.size24,
-                                    Alignment.CenterHorizontally
-                                ),
-                                verticalArrangement = Arrangement.spacedBy(
-                                    PersianTheme.spacing.size24,
-                                    Alignment.CenterVertically
-                                ),
-                            ) {
-                                Fab(
-                                    icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
-                                    title = "Add",
-                                    expanded = expandable,
-                                    colors = FabDefaults.neutralColors(),
-                                    onClick = {}
-                                )
-                                Fab(
-                                    icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
-                                    title = "Add",
-                                    expanded = expandable,
-                                    colors = FabDefaults.primaryColors(),
-                                    onClick = {}
-                                )
-                                Fab(
-                                    icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
-                                    title = "Add",
-                                    expanded = expandable,
-                                    colors = FabDefaults.secondaryColors(),
-                                    onClick = {}
-                                )
-                                Fab(
-                                    icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
-                                    title = "Add",
-                                    expanded = expandable,
-                                    colors = FabDefaults.tertiaryColors(),
-                                    onClick = {}
-                                )
-                            }
-                            Checkbox(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(top = PersianTheme.spacing.size8),
-                                text = "Expandable",
-                                checked = expandable,
-                                onCheckedChange = onExpandableChange
+                SampleRow(text = "Sample", firstItem = true) {
+                    when {
+                        sizeStates[0].value -> {
+                            Fab(
+                                icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
+                                title = "Add",
+                                expanded = expandable,
+                                colors = when {
+                                    styleStates[0].value -> FabDefaults.neutralColors()
+                                    styleStates[1].value -> FabDefaults.primaryColors()
+                                    styleStates[2].value -> FabDefaults.secondaryColors()
+                                    styleStates[3].value -> FabDefaults.tertiaryColors()
+                                    else -> FabDefaults.neutralColors()
+                                },
+                                onClick = {}
+                            )
+
+                        }
+
+                        sizeStates[1].value -> {
+                            SmallFab(
+                                icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
+                                colors = when {
+                                    styleStates[0].value -> FabDefaults.neutralColors()
+                                    styleStates[1].value -> FabDefaults.primaryColors()
+                                    styleStates[2].value -> FabDefaults.secondaryColors()
+                                    styleStates[3].value -> FabDefaults.tertiaryColors()
+                                    else -> FabDefaults.neutralColors()
+                                },
+                                onClick = {}
                             )
                         }
                     }
+                }
+                Form(
+                    modifier = Modifier.padding(top = PersianTheme.spacing.size12),
+                    subhead = {
+                        Subhead(
+                            text = "Size"
+                        )
+                    },
+                    content = {
+                        RadioButtons {
+                            RadioButton(
+                                text = "Default",
+                                selected = sizeStates[0].value,
+                                onSelectedChange = {
+                                    sizeStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 0
+                                    }
+                                }
+                            )
+                            RadioButton(
+                                text = "Small",
+                                selected = sizeStates[1].value,
+                                onSelectedChange = {
+                                    sizeStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 1
+                                    }
+                                }
+                            )
+                        }
+                    }
+                )
+                Form(
+                    modifier = Modifier.padding(top = PersianTheme.spacing.size12),
+                    subhead = {
+                        Subhead(
+                            text = "Size"
+                        )
+                    },
+                    content = {
+                        RadioButtons {
+                            RadioButton(
+                                text = "Neutral",
+                                selected = styleStates[0].value,
+                                onSelectedChange = {
+                                    styleStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 0
+                                    }
+                                }
+                            )
+                            RadioButton(
+                                text = "Primary",
+                                selected = styleStates[1].value,
+                                onSelectedChange = {
+                                    styleStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 1
+                                    }
+                                }
+                            )
+                            RadioButton(
+                                text = "Secondary",
+                                selected = styleStates[2].value,
+                                onSelectedChange = {
+                                    styleStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 2
+                                    }
+                                }
+                            )
+                            RadioButton(
+                                text = "Tertiary",
+                                selected = styleStates[3].value,
+                                onSelectedChange = {
+                                    styleStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 3
+                                    }
+                                }
+                            )
+                        }
+                    }
+                )
+                if (sizeStates[0].value) {
+                    Form(
+                        modifier = Modifier.padding(top = PersianTheme.spacing.size12),
+                        subhead = {
+                            Subhead(
+                                text = "Settings"
+                            )
+                        },
+                        content = {
+                            Checkboxes {
+                                Checkbox(
+                                    text = "Expanded",
+                                    checked = expandable,
+                                    onCheckedChange = onExpandableChange
+                                )
+                            }
+                        }
+                    )
                 }
             }
         }
