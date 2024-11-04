@@ -48,9 +48,10 @@ private class SingleChoiceSegmentedButtonScopeWrapper(
 ) : SingleChoiceSegmentedButtonRowScope, RowScope by scope
 
 /**
- * A Layout to correctly position and size [SingleChoiceSegmentedButtonRowScope.StartSegment], [SingleChoiceSegmentedButtonRowScope.MiddleSegment], [SingleChoiceSegmentedButtonRowScope.EndSegment] in a Row. It handles overlapping items
- * so that strokes of the item are correctly on top of each other. [SingleChoiceSegmentedButtonRow]
- * is used when the selection only allows one value, for correct semantics.
+ * A segmented button is useful for allowing users to select one option from a set of related choices,
+ * providing a clear and intuitive interface for making single-selection decisions. It offers
+ * a straightforward and effective method for capturing user preferences, making it an essential tool
+ * for enhancing user experience and data collection.
  *
  * @param modifier the [Modifier] to be applied to this row
  * @param content the content of this Segmented Button Row, typically a sequence of

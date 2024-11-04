@@ -46,10 +46,10 @@ private class MultiChoiceSegmentedButtonScopeWrapper(
 ) : MultiChoiceSegmentedButtonRowScope, RowScope by scope
 
 /**
- * A composable function that creates a row of multi-choice segmented buttons.
- *
- * This function configures a row of segmented buttons with customizable sizes, colors, and enabled state.
- * It uses the [MultiChoiceSegmentedButtonRowScope] to provide additional properties for the buttons.
+ * A segmented button is useful for allowing users to select one option from a set of related choices,
+ * providing a clear and intuitive interface for making multiple-selection decisions. It offers
+ * a straightforward and effective method for capturing user preferences, making it an essential tool
+ * for enhancing user experience and data collection.
  *
  * @param modifier The [Modifier] to be applied to the row.
  * @param enabled A boolean indicating whether the segmented buttons are enabled.
