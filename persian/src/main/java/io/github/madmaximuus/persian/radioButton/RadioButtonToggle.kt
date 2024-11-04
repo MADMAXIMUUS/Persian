@@ -24,7 +24,7 @@ import io.github.madmaximuus.persian.text.Text
 /**
  * Radio buttons allow users to select one option from a set.
  *
- * [RadioButton]s can be combined together with [Text] in the desired layout (e.g. [Column] or
+ * [RadioButtonToggle]s can be combined together with [Text] in the desired layout (e.g. [Column] or
  * [Row]) to achieve radio group-like behaviour, where the entire layout is selectable:
  *
  * @param selected whether this radio button is selected or not

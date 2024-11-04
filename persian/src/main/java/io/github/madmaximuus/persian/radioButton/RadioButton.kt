@@ -16,53 +16,56 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.text.Text
 
 /**
- * A composable function that creates a radio button with a text label.
+ * A radio button is useful for allowing users to select one option from a set of mutually exclusive
+ * choices, providing a clear and intuitive interface for making single-selection decisions. It offers
+ * a straightforward and effective method for capturing user preferences, making it an essential tool
+ * for enhancing user experience and data collection.
  *
  * @param modifier The modifier to be applied to the radio button.
  * @param text The text to be displayed next to the radio button.
- * @param checked The current checked state of the radio button.
+ * @param selected The current checked state of the radio button.
  * @param enabled Whether the radio button is enabled or not. Default is true.
- * @param onCheckedChange A callback that is invoked when the checked state changes.
- * @param radioButtonColors The colors to be used for the radio button.
- * @param radioButtonSizes The sizes to be used for the radio button.
+ * @param onSelectedChange A callback that is invoked when the checked state changes.
+ * @param colors The colors to be used for the radio button.
+ * @param sizes The sizes to be used for the radio button.
  */
 @Composable
 fun RadioButton(
     modifier: Modifier = Modifier,
     text: String,
-    checked: Boolean,
+    selected: Boolean,
     enabled: Boolean = true,
-    onCheckedChange: (Boolean) -> Unit,
-    radioButtonColors: RadioButtonColors = RadioButtonDefaults.colors(),
-    radioButtonSizes: RadioButtonSizes = RadioButtonDefaults.sizes()
+    onSelectedChange: (Boolean) -> Unit,
+    colors: RadioButtonColors = RadioButtonDefaults.colors(),
+    sizes: RadioButtonSizes = RadioButtonDefaults.sizes()
 ) {
     Row(
         modifier = modifier
-            .clip(PersianTheme.shapes.shape16)
+            .clip(sizes.shape)
             .selectable(
                 enabled = enabled,
-                selected = checked,
-                onClick = { onCheckedChange(!checked) },
+                selected = selected,
+                onClick = { onSelectedChange(!selected) },
                 role = Role.RadioButton
             )
-            .padding(radioButtonSizes.contentPadding)
+            .padding(sizes.contentPadding)
             .height(48.dp),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8)
+        horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size12)
     ) {
         RadioButtonToggle(
             modifier = Modifier
-                .size(radioButtonSizes.toggleSize),
-            selected = checked,
+                .size(sizes.toggleSize),
+            selected = selected,
             enabled = enabled,
             onClick = null,
-            colors = radioButtonColors.toggleColor
+            colors = colors.toggleColor
         )
         Text(
             modifier = Modifier,
             text = text,
-            color = radioButtonColors.textColor(enabled),
-            style = radioButtonSizes.textStyle
+            color = colors.textColor(enabled),
+            style = sizes.textStyle
         )
     }
 }

@@ -9,6 +9,7 @@ import androidx.compose.runtime.Stable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.takeOrElse
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
@@ -18,12 +19,12 @@ import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state38
 
 /**
- * Contains all default values used by radio button
+ * Contains all default values used by [RadioButton]
  */
 object RadioButtonDefaults {
 
     /**
-     * A composable function that creates a [RadioButtonToggleColors] object with the specified colors.
+     * Creates a [RadioButtonToggleColors] object with the specified colors.
      *
      * @param selectedColor The color to be used for the selected state of the radio button toggle.
      * @param unselectedColor The color to be used for the unselected state of the radio button toggle.
@@ -38,15 +39,16 @@ object RadioButtonDefaults {
         unselectedColor: Color = PersianTheme.colorScheme.outline,
         disabledSelectedColor: Color = PersianTheme.colorScheme.onSurface.state12,
         disabledUnselectedColor: Color = PersianTheme.colorScheme.onSurface.state12
-    ) = RadioButtonToggleColors(
-        selectedColor = selectedColor,
-        unselectedColor = unselectedColor,
-        disabledSelectedColor = disabledSelectedColor,
-        disabledUnselectedColor = disabledUnselectedColor,
-    )
+    ): RadioButtonToggleColors =
+        RadioButtonToggleColors(
+            selectedColor = selectedColor,
+            unselectedColor = unselectedColor,
+            disabledSelectedColor = disabledSelectedColor,
+            disabledUnselectedColor = disabledUnselectedColor,
+        )
 
     /**
-     * A composable function that creates a [RadioButtonColors] object with the specified colors.
+     * Creates a [RadioButtonColors] object with the specified colors.
      *
      * @param toggleColor The colors to be used for the radio button toggle. Default is the result of [toggleColors].
      * @param textColor The color to be used for the radio button's text label when it is enabled.
@@ -57,14 +59,15 @@ object RadioButtonDefaults {
         toggleColor: RadioButtonToggleColors = toggleColors(),
         textColor: Color = PersianTheme.colorScheme.onSurface,
         disabledTextColor: Color = PersianTheme.colorScheme.onSurface.state38
-    ) = RadioButtonColors(
-        toggleColor = toggleColor,
-        textColor = textColor,
-        disabledTextColor = disabledTextColor
-    )
+    ): RadioButtonColors =
+        RadioButtonColors(
+            toggleColor = toggleColor,
+            textColor = textColor,
+            disabledTextColor = disabledTextColor
+        )
 
     /**
-     * A composable function that creates a [RadioButtonSizes] object with the specified sizes and styles.
+     * Creates a [RadioButtonSizes] object with the specified sizes and styles.
      *
      * @param toggleSize The size of the radio button toggle. Default is 24.dp.
      * @param textStyle The text style to be applied to the radio button's text label.
@@ -74,14 +77,17 @@ object RadioButtonDefaults {
     fun sizes(
         toggleSize: Dp = 24.dp,
         textStyle: TextStyle = PersianTheme.typography.bodyLarge,
+        shape: Shape = PersianTheme.shapes.shape16,
         contentPadding: PaddingValues = PaddingValues(
-            horizontal = PersianTheme.spacing.size12
+            horizontal = PersianTheme.spacing.size16
         )
-    ): RadioButtonSizes = RadioButtonSizes(
-        toggleSize = toggleSize,
-        textStyle = textStyle,
-        contentPadding = contentPadding
-    )
+    ): RadioButtonSizes =
+        RadioButtonSizes(
+            toggleSize = toggleSize,
+            textStyle = textStyle,
+            shape = shape,
+            contentPadding = contentPadding
+        )
 }
 
 /**
@@ -212,12 +218,14 @@ class RadioButtonColors internal constructor(
  *
  * @property toggleSize The size of the radio button toggle.
  * @property textStyle The text style to be applied to the radio button's text label.
+ * @property shape The shape of radio button container.
  * @property contentPadding The padding values to be applied around the content of the radio button.
  */
 @Immutable
 class RadioButtonSizes internal constructor(
     internal val toggleSize: Dp,
     internal val textStyle: TextStyle,
+    internal val shape: Shape,
     internal val contentPadding: PaddingValues
 )
 
