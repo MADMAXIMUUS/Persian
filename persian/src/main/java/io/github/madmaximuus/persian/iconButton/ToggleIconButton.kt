@@ -1,6 +1,7 @@
 package io.github.madmaximuus.persian.iconButton
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.interaction.Interaction
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,25 +15,37 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
+import io.github.madmaximuus.persian.fab.Fab
 import io.github.madmaximuus.persian.icon.Icon
 import io.github.madmaximuus.persian.surface.Surface
 
 /**
- * A composable function that creates a toggle icon button.
+ * Buttons help people initiate actions, from sending an email, to sharing a document, to liking a
+ * post.
  *
- * This button is designed to be used as a toggle action button with an icon. It supports customization
- * through various parameters such as size, colors, and interaction source. The button can switch between
- * two icons based on its checked state.
+ * Primary buttons are high-emphasis buttons. Primary buttons have the most visual impact after the
+ * [Fab], and should be used for important, final actions that complete a flow,
+ * like "Save", "Join now", or "Confirm".
  *
- * @param modifier The [Modifier] to be applied to the button.
- * @param icon The [Painter] that represents the icon to be displayed when the button is not checked.
- * @param checkedIcon The [Painter] that represents the icon to be displayed when the button is checked.
- * @param checked Whether the button is checked or not.
- * @param onCheckedChange The callback to be invoked when the checked state of the button changes.
- * @param enabled Whether the button is enabled or disabled.
- * @param sizes The [IconButtonSizes] that define the size and shape of the button.
- * @param colors The [ToggleIconButtonColors] that define the colors of the button.
- * @param interactionSource The [MutableInteractionSource] that handles the interaction state of the button.
+ * Choose the best button for an action based on the amount of emphasis it needs. The more important
+ * an action is, the higher emphasis its button should be.
+ * - See [SecondaryIconButton] for a medium-emphasis button.
+ * - See [TertiaryIconButton] for a low-emphasis button.
+ * - See [OutlinedIconButton] for a middle ground between [SecondaryIconButton] and [TertiaryIconButton].
+ *
+ * @param icon The [Painter] that represents the icon to be displayed in the button.
+ * @param modifier The [Modifier] to be applied to this button.
+ * @param enabled controls the enabled state of this button. When `false`, this component will not
+ *   respond to user input, and it will appear visually disabled and disabled to accessibility
+ *   services.
+ * @param colors The colors of the container and the content in enabled and disabled.
+ * @param sizes The sizes for the content, shape and height.
+ * @param checked The checked state of this icon button
+ * @param onCheckedChange Called when this button is clicked.
+ * @param interactionSource an optional hoisted [MutableInteractionSource] for observing and
+ *   emitting [Interaction]s for this button. You can use this to change the button's appearance or
+ *   preview the button in different states. Note that if `null` is provided, interactions will
+ *   still happen internally.
  */
 @Composable
 fun PrimaryToggleIconButton(
@@ -69,21 +82,27 @@ fun PrimaryToggleIconButton(
 }
 
 /**
- * A composable function that creates a secondary toggle icon button.
+ * Buttons help people initiate actions, from sending an email, to sharing a document or liking a
+ * post.
  *
- * This button is designed to be used as a secondary toggle action button with an icon. It supports customization
- * through various parameters such as size, colors, and interaction source. The button can switch between
- * two icons based on its checked state.
+ * Secondary buttons are medium-emphasis buttons that is an alternative middle ground between
+ * default [PrimaryIconButton]s and [TertiaryIconButton]s. They can be used in contexts where
+ * lower-priority button requires slightly more emphasis than [TertiaryIconButton], such as "Next"
+ * in an onboarding flow. Secondary buttons use the primary container color mapping.
  *
- * @param modifier The [Modifier] to be applied to the button.
- * @param icon The [Painter] that represents the icon to be displayed when the button is not checked.
- * @param checkedIcon The [Painter] that represents the icon to be displayed when the button is checked.
- * @param checked Whether the button is checked or not.
- * @param onCheckedChange The callback to be invoked when the checked state of the button changes.
- * @param enabled Whether the button is enabled or disabled.
- * @param sizes The [IconButtonSizes] that define the size and shape of the button.
- * @param colors The [ToggleIconButtonColors] that define the colors of the button.
- * @param interactionSource The [MutableInteractionSource] that handles the interaction state of the button.
+ * @param icon The [Painter] that represents the icon to be displayed in the button.
+ * @param modifier The [Modifier] to be applied to this button.
+ * @param enabled controls the enabled state of this button. When `false`, this component will not
+ *   respond to user input, and it will appear visually disabled and disabled to accessibility
+ *   services.
+ * @param colors The colors of the container and the content in enabled and disabled.
+ * @param sizes The sizes for the content, shape and height.
+ * @param checked The checked state of this icon button
+ * @param onCheckedChange Called when this button is clicked.
+ * @param interactionSource an optional hoisted [MutableInteractionSource] for observing and
+ *   emitting [Interaction]s for this button. You can use this to change the button's appearance or
+ *   preview the button in different states. Note that if `null` is provided, interactions will
+ *   still happen internally.
  */
 @Composable
 fun SecondaryToggleIconButton(
@@ -120,21 +139,32 @@ fun SecondaryToggleIconButton(
 }
 
 /**
- * A composable function that creates a tertiary toggle icon button.
+ * Buttons help people initiate actions, from sending an email, to sharing a document, to liking a
+ * post.
  *
- * This button is designed to be used as a tertiary toggle action button with an icon. It supports customization
- * through various parameters such as size, colors, and interaction source. The button can switch between
- * two icons based on its checked state.
+ * Tertiary buttons are typically used for less-pronounced actions, including those located in dialogs
+ * and cards. In cards, tertiary buttons help maintain an emphasis on card content. Tertiary buttons are
+ * used for the lowest priority actions, especially when presenting multiple options.
  *
- * @param modifier The [Modifier] to be applied to the button.
- * @param icon The [Painter] that represents the icon to be displayed when the button is not checked.
- * @param checkedIcon The [Painter] that represents the icon to be displayed when the button is checked.
- * @param checked Whether the button is checked or not.
- * @param onCheckedChange The callback to be invoked when the checked state of the button changes.
- * @param enabled Whether the button is enabled or disabled.
- * @param sizes The [IconButtonSizes] that define the size and shape of the button.
- * @param colors The [ToggleIconButtonColors] that define the colors of the button.
- * @param interactionSource The [MutableInteractionSource] that handles the interaction state of the button.
+ * Choose the best button for an action based on the amount of emphasis it needs. The more important
+ * an action is, the higher emphasis its button should be.
+ * - See [PrimaryIconButton] for a high-emphasis button.
+ * - See [SecondaryIconButton] for a medium-emphasis button.
+ * - See [OutlinedIconButton] for a middle ground between [SecondaryIconButton] and [TertiaryIconButton].
+ *
+ * @param icon The [Painter] that represents the icon to be displayed in the button.
+ * @param modifier The [Modifier] to be applied to this button.
+ * @param enabled controls the enabled state of this button. When `false`, this component will not
+ *   respond to user input, and it will appear visually disabled and disabled to accessibility
+ *   services.
+ * @param colors The colors of the container and the content in enabled and disabled.
+ * @param sizes The sizes for the content, shape and height.
+ * @param checked The checked state of this icon button
+ * @param onCheckedChange Called when this button is clicked.
+ * @param interactionSource an optional hoisted [MutableInteractionSource] for observing and
+ *   emitting [Interaction]s for this button. You can use this to change the button's appearance or
+ *   preview the button in different states. Note that if `null` is provided, interactions will
+ *   still happen internally.
  */
 @Composable
 fun TertiaryToggleIconButton(
@@ -171,21 +201,31 @@ fun TertiaryToggleIconButton(
 }
 
 /**
- * A composable function that creates an outlined toggle icon button.
+ * Buttons help people initiate actions, from sending an email, to sharing a document, to liking a
+ * post.
  *
- * This button is designed to be used as an outlined toggle action button with an icon. It supports customization
- * through various parameters such as size, colors, and interaction source. The button can switch between
- * two icons based on its checked state and has an outlined border when not checked.
+ * Outlined buttons are low-emphasis buttons. They contain actions that are important, but are
+ * not the primary action in an app.
  *
- * @param modifier The [Modifier] to be applied to the button.
- * @param icon The [Painter] that represents the icon to be displayed when the button is not checked.
- * @param checkedIcon The [Painter] that represents the icon to be displayed when the button is checked.
- * @param checked Whether the button is checked or not.
- * @param onCheckedChange The callback to be invoked when the checked state of the button changes.
- * @param enabled Whether the button is enabled or disabled.
- * @param sizes The [IconButtonSizes] that define the size and shape of the button.
- * @param colors The [ToggleIconButtonColors] that define the colors of the button.
- * @param interactionSource The [MutableInteractionSource] that handles the interaction state of the button.
+ * Choose the best button for an action based on the amount of emphasis it needs. The more important
+ * an action is, the higher emphasis its button should be.
+ * - See [PrimaryIconButton] for a high-emphasis button.
+ * - See [SecondaryIconButton] for a medium-emphasis button.
+ * - See [TertiaryIconButton] for a low-emphasis button.
+ *
+ * @param icon The [Painter] that represents the icon to be displayed in the button.
+ * @param modifier The [Modifier] to be applied to this button.
+ * @param enabled controls the enabled state of this button. When `false`, this component will not
+ *   respond to user input, and it will appear visually disabled and disabled to accessibility
+ *   services.
+ * @param colors The colors of the container and the content in enabled and disabled.
+ * @param sizes The sizes for the content, shape and height.
+ * @param checked The checked state of this icon button
+ * @param onCheckedChange Called when this button is clicked.
+ * @param interactionSource an optional hoisted [MutableInteractionSource] for observing and
+ *   emitting [Interaction]s for this button. You can use this to change the button's appearance or
+ *   preview the button in different states. Note that if `null` is provided, interactions will
+ *   still happen internally.
  */
 @Composable
 fun OutlinedToggleIconButton(
