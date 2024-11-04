@@ -19,19 +19,19 @@ import androidx.compose.ui.unit.dp
  * Data class representing different elevation levels.
  *
  * @property none The elevation level representing no elevation.
- * @property extraSmall The elevation level representing extra small elevation.
- * @property small The elevation level representing small elevation.
- * @property medium The elevation level representing medium elevation.
- * @property large The elevation level representing large elevation.
- * @property extraLarge The elevation level representing extra large elevation.
+ * @property elevation1 The elevation level representing extra small elevation.
+ * @property elevation2 The elevation level representing small elevation.
+ * @property elevation3 The elevation level representing medium elevation.
+ * @property elevation4 The elevation level representing large elevation.
+ * @property elevation5 The elevation level representing extra large elevation.
  */
 data class Elevation(
     val none: Dp = 0.dp,
-    val extraSmall: Dp = 1.dp,
-    val small: Dp = 3.dp,
-    val medium: Dp = 6.dp,
-    val large: Dp = 8.dp,
-    val extraLarge: Dp = 12.dp
+    val elevation1: Dp = 1.dp,
+    val elevation2: Dp = 3.dp,
+    val elevation3: Dp = 6.dp,
+    val elevation4: Dp = 8.dp,
+    val elevation5: Dp = 12.dp
 )
 
 /**
