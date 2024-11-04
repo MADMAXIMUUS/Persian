@@ -27,7 +27,7 @@ import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object CodeInput : Screen {
-    override val name: String = "Code Input"
+    override val name: String = "Code input"
 
     override val navigation: String = "codeInput"
 
