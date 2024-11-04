@@ -8,7 +8,10 @@ import io.github.madmaximuus.persian.forms.utils.formMeasurePolicy
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
 /**
- * Composable function to display a form with optional subhead, content, and caption.
+ * A form containing input fields, subheads, and captions is useful for collecting
+ * and submitting user input, providing a structured and interactive interface for gathering information.
+ * It offers a straightforward and effective method for data entry, making it an essential tool for enhancing
+ * user experience and data collection.
  *
  * @param modifier The modifier to be applied to the form.
  * @param enabled Indicates whether the form is enabled.
@@ -75,43 +78,4 @@ fun Form(
             }
         }
     )
-
-    /*Column(
-        modifier = modifier
-            *//*.padding(horizontal = PersianTheme.spacing.size16)*//*,
-        verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size2)
-    ) {
-        subhead?.let { subhead ->
-            val subheadScope = remember(colors.subheadColors, enabled, isError) {
-                FormSubheadScopeWrapper(
-                    scope = this,
-                    colors = colors.subheadColors,
-                    textStyle = sizes.subheadTextStyle,
-                    enabled = enabled,
-                )
-            }
-            subheadScope.subhead()
-        }
-        val contentScope = remember(enabled, isError, isValid) {
-            FormContentScopeWrapper(
-                scope = this,
-                enabled = enabled,
-                isError = isError,
-                isValid = isValid
-            )
-        }
-        contentScope.content()
-        caption?.let { caption ->
-            val captionScope = remember(colors, enabled, isError) {
-                FormCaptionScopeWrapper(
-                    scope = this,
-                    colors = colors.captionColors,
-                    sizes = sizes.captionSizes,
-                    enabled = enabled,
-                    isError = isError
-                )
-            }
-            captionScope.caption()
-        }
-    }*/
 }

@@ -68,11 +68,7 @@ internal class FormContentScopeWrapper(
 ) : FormContentScope
 
 /**
- * Composable function to display an input field within a form.
- *
- * This function uses the properties from the [FormContentScope] to determine the appearance and behavior
- * of the input field. It provides various customization options such as value, placeholder, icons,
- * keyboard options, and more.
+ * Display an [OutlineInput] within a form.
  *
  * @param value The current value of the input field.
  * @param onValueChange The callback to be invoked when the value of the input field changes.
@@ -125,11 +121,7 @@ fun FormContentScope.Input(
 }
 
 /**
- * Composable function to display a text area within a form.
- *
- * This function uses the properties from the [FormContentScope] to determine the appearance and behavior
- * of the text area. It provides various customization options such as value, placeholder, text style,
- * colors, keyboard options, and more.
+ * Display a [TextArea] within a form.
  *
  * @param value The current value of the text area.
  * @param onValueChange The callback to be invoked when the value of the text area changes.
@@ -167,11 +159,7 @@ fun FormContentScope.TextArea(
 }
 
 /**
- * Composable function to display a select dropdown within a form.
- *
- * This function uses the properties from the [FormContentScope] to determine the appearance and behavior
- * of the select dropdown. It provides customization options such as the selected value, expanded state,
- * icons, placeholder, colors, and menu items.
+ * Display a [Select] within a form.
  *
  * @param selected The currently selected value in the dropdown.
  * @param modifier The modifier to be applied to the select dropdown.
@@ -211,6 +199,14 @@ fun FormContentScope.Select(
     )
 }
 
+/**
+ * Display a [RadioButton] list within a form.
+ *
+ * @param modifier The modifier to be applied to the column.
+ * @param colors The colors to be used for radio buttons inside this column.
+ * @param sizes The colors to be used for radio buttons inside this column.
+ * @param content Composable for provide a [RadioButton] to this column.
+ */
 @Composable
 fun FormContentScope.RadioButtons(
     modifier: Modifier = Modifier,
@@ -250,6 +246,14 @@ internal class FormRadioButtonScopeWrapper(
     override val sizes: RadioButtonSizes
 ) : FormRadioButtonScope, ColumnScope by scope
 
+/**
+ * Display a [RadioButton] inside [RadioButtons] within a form.
+ *
+ * @param modifier The modifier to be applied to the column.
+ * @param text The text to be displayed in this radio button.
+ * @param selected The selected state of this radio button.
+ * @param onSelectedChange The call to be called when this or other radio buttons was clicked.
+ */
 @Composable
 fun FormRadioButtonScope.RadioButton(
     modifier: Modifier = Modifier,
@@ -268,6 +272,14 @@ fun FormRadioButtonScope.RadioButton(
     )
 }
 
+/**
+ * Display a [Checkbox] list within a form.
+ *
+ * @param modifier The modifier to be applied to the column.
+ * @param colors The colors to be used for checkboxes inside this column.
+ * @param sizes The colors to be used for checkboxes inside this column.
+ * @param content Composable for provide a [Checkbox] to this column.
+ */
 @Composable
 fun FormContentScope.Checkboxes(
     modifier: Modifier = Modifier,
@@ -306,6 +318,14 @@ internal class FormCheckboxScopeWrapper(
     override val sizes: CheckboxSizes
 ) : FormCheckboxScope, ColumnScope by scope
 
+/**
+ * Display a [Checkbox] inside [Checkboxes] within a form.
+ *
+ * @param modifier The modifier to be applied to the column.
+ * @param text The text to be displayed in this radio button.
+ * @param checked The checked state of this radio button.
+ * @param onCheckedChange The call to be called when this checkbox was clicked.
+ */
 @Composable
 fun FormCheckboxScope.Checkbox(
     modifier: Modifier = Modifier,
