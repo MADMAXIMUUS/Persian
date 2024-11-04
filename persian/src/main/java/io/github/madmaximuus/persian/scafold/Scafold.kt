@@ -32,7 +32,7 @@ import androidx.compose.ui.util.fastForEach
 import androidx.compose.ui.util.fastMap
 import androidx.compose.ui.util.fastMapNotNull
 import androidx.compose.ui.util.fastMaxBy
-import io.github.madmaximuus.persian.fab.Fab
+import io.github.madmaximuus.persian.fab.FabImpl
 import io.github.madmaximuus.persian.foundation.LocalContentColor
 import io.github.madmaximuus.persian.foundation.MutableWindowInsets
 import io.github.madmaximuus.persian.foundation.PersianTheme
@@ -56,7 +56,7 @@ import io.github.madmaximuus.persian.topAppBar.CenteredTopAppBar
  * @param bottomBar bottom bar of the screen, typically a [NavigationBar]
  * @param snackbarHost component to host [Snackbar]s that are pushed to be shown via
  * [SnackbarHostState.showSnackbar], typically a [SnackbarHost]
- * @param fab Main action button of the screen, typically a [Fab]
+ * @param fab Main action button of the screen, typically a [FabImpl]
  * @param fabPosition position of the FAB on the screen. See [FabPosition].
  * @param containerColor the color used for the background of this scaffold. Use [Color.Transparent]
  * to have no color.
@@ -118,7 +118,7 @@ fun Scaffold(
  * @param topBar the content to place at the top of the [Scaffold], typically a [CenteredTopAppBar]
  * @param content the main 'body' of the [Scaffold]
  * @param snackbar the [Snackbar] displayed on top of the [content]
- * @param fab the [Fab] displayed on top of the [content], below the [snackbar]
+ * @param fab the [FabImpl] displayed on top of the [content], below the [snackbar]
  * and above the [bottomBar]
  * @param bottomBar the content to place at the bottom of the [Scaffold], on top of the
  * [content], typically a [NavigationBar].
@@ -511,7 +511,7 @@ object ScaffoldDefaults {
 }
 
 /**
- * The possible positions for a [Fab] attached to a [Scaffold].
+ * The possible positions for a [FabImpl] attached to a [Scaffold].
  */
 @JvmInline
 value class FabPosition internal constructor(@Suppress("unused") private val value: Int) {
@@ -564,7 +564,7 @@ value class FabPosition internal constructor(@Suppress("unused") private val val
 var ScaffoldSubcomposeInMeasureFix by mutableStateOf(true)
 
 /**
- * Placement information for a [Fab] inside a [Scaffold].
+ * Placement information for a [FabImpl] inside a [Scaffold].
  *
  * @property left the FAB's offset from the left edge of the bottom bar, already adjusted for RTL
  * support
