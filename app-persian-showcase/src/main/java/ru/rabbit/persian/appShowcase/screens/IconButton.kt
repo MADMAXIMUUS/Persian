@@ -1,42 +1,37 @@
 package ru.rabbit.persian.appShowcase.screens
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.checkboxes.Checkbox
+import io.github.madmaximuus.persian.forms.Checkboxes
+import io.github.madmaximuus.persian.forms.Form
+import io.github.madmaximuus.persian.forms.RadioButton
+import io.github.madmaximuus.persian.forms.RadioButtons
+import io.github.madmaximuus.persian.forms.Subhead
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.iconButton.IconButtonDefaults
 import io.github.madmaximuus.persian.iconButton.OutlinedIconButton
 import io.github.madmaximuus.persian.iconButton.OutlinedToggleIconButton
 import io.github.madmaximuus.persian.iconButton.PrimaryIconButton
+import io.github.madmaximuus.persian.iconButton.PrimaryToggleIconButton
 import io.github.madmaximuus.persian.iconButton.SecondaryIconButton
 import io.github.madmaximuus.persian.iconButton.SecondaryToggleIconButton
 import io.github.madmaximuus.persian.iconButton.TertiaryIconButton
 import io.github.madmaximuus.persian.iconButton.TertiaryToggleIconButton
-import io.github.madmaximuus.persian.iconButton.ToggleIconButton
-import io.github.madmaximuus.persian.radioButtons.PersianRadioButton
-import io.github.madmaximuus.persian.text.Text
+import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
+import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.user.base.User
 import ru.rabbit.persian.appShowcase.componets.SampleRow
@@ -44,15 +39,15 @@ import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object IconButton : Screen {
 
-    override val name: String = "Icon Buttons"
+    override val name: String = "Icon button"
 
     override val navigation: String = "iconButton"
 
-    @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     override fun Content(navController: NavController?) {
         val topAppBarScrollBehavior =
             TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
+
         SampleScaffold(
             title = name,
             onBackClick = { navController?.navigateUp() },
@@ -60,8 +55,36 @@ object IconButton : Screen {
         ) {
             val size = IconButtonDefaults.largeSizes()
             var sizeState by remember { mutableStateOf(size) }
-            var enabled by remember { mutableStateOf(true) }
+            val (enabled, onEnabledChange) = remember { mutableStateOf(true) }
             val (checked, onCheckedChange) = remember { mutableStateOf(false) }
+
+            val typeStates = remember {
+                listOf(
+                    mutableStateOf(true),
+                    mutableStateOf(false)
+                )
+            }
+
+            val styleStates = remember {
+                listOf(
+                    mutableStateOf(true),
+                    mutableStateOf(false),
+                    mutableStateOf(false),
+                    mutableStateOf(false)
+                )
+            }
+
+            val sizeStates = remember {
+                listOf(
+                    mutableStateOf(true),
+                    mutableStateOf(false),
+                    mutableStateOf(false)
+                )
+            }
+            val large = IconButtonDefaults.largeSizes()
+            val medium = IconButtonDefaults.mediumSizes()
+            val small = IconButtonDefaults.smallSizes()
+
             Column(
                 Modifier
                     .fillMaxSize()
@@ -70,177 +93,236 @@ object IconButton : Screen {
                     .padding(it)
             ) {
                 SampleRow(
-                    text = "Sample Icon Buttons",
+                    text = "Sample",
                     firstItem = true
                 ) {
-                    Column(modifier = Modifier.padding(top = PersianTheme.spacing.size4)) {
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.SpaceEvenly
-                        ) {
-                            PrimaryIconButton(
-                                sizes = sizeState,
-                                enabled = enabled,
-                                icon = rememberVectorPainter(image = PersianSymbols.Default.User),
-                                onClick = {}
+                    when {
+                        typeStates[0].value -> {
+                            when {
+                                styleStates[0].value -> {
+                                    PrimaryIconButton(
+                                        sizes = sizeState,
+                                        enabled = enabled,
+                                        icon = rememberVectorPainter(image = PersianSymbols.Default.User),
+                                        onClick = {}
+                                    )
+                                }
+
+                                styleStates[1].value -> {
+                                    SecondaryIconButton(
+                                        sizes = sizeState,
+                                        enabled = enabled,
+                                        icon = rememberVectorPainter(image = PersianSymbols.Default.User),
+                                        onClick = {}
+                                    )
+                                }
+
+                                styleStates[2].value -> {
+                                    TertiaryIconButton(
+                                        sizes = sizeState,
+                                        enabled = enabled,
+                                        icon = rememberVectorPainter(image = PersianSymbols.Default.User),
+                                        onClick = {}
+                                    )
+                                }
+
+                                styleStates[3].value -> {
+                                    OutlinedIconButton(
+                                        sizes = sizeState,
+                                        enabled = enabled,
+                                        icon = rememberVectorPainter(image = PersianSymbols.Default.User),
+                                        onClick = {}
+                                    )
+                                }
+                            }
+                        }
+
+                        typeStates[1].value -> {
+                            when {
+                                styleStates[0].value -> {
+                                    PrimaryToggleIconButton(
+                                        icon = rememberVectorPainter(image = PersianSymbols.Default.User),
+                                        checkedIcon = rememberVectorPainter(image = PersianSymbols.Filled.User),
+                                        checked = checked,
+                                        sizes = sizeState,
+                                        enabled = enabled,
+                                        onCheckedChange = onCheckedChange
+                                    )
+                                }
+
+                                styleStates[1].value -> {
+                                    SecondaryToggleIconButton(
+                                        icon = rememberVectorPainter(image = PersianSymbols.Default.User),
+                                        checkedIcon = rememberVectorPainter(image = PersianSymbols.Filled.User),
+                                        checked = checked,
+                                        sizes = sizeState,
+                                        enabled = enabled,
+                                        onCheckedChange = onCheckedChange
+                                    )
+                                }
+
+                                styleStates[2].value -> {
+                                    TertiaryToggleIconButton(
+                                        icon = rememberVectorPainter(image = PersianSymbols.Default.User),
+                                        checkedIcon = rememberVectorPainter(image = PersianSymbols.Filled.User),
+                                        checked = checked,
+                                        sizes = sizeState,
+                                        enabled = enabled,
+                                        onCheckedChange = onCheckedChange
+                                    )
+                                }
+
+                                styleStates[3].value -> {
+                                    OutlinedToggleIconButton(
+                                        icon = rememberVectorPainter(image = PersianSymbols.Default.User),
+                                        checkedIcon = rememberVectorPainter(image = PersianSymbols.Filled.User),
+                                        checked = checked,
+                                        sizes = sizeState,
+                                        enabled = enabled,
+                                        onCheckedChange = onCheckedChange
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
+                Form(
+                    modifier = Modifier.padding(top = PersianTheme.spacing.size12),
+                    subhead = {
+                        Subhead(
+                            text = "Type"
+                        )
+                    },
+                    content = {
+                        RadioButtons {
+                            RadioButton(
+                                text = "Default",
+                                selected = typeStates[0].value,
+                                onSelectedChange = {
+                                    typeStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 0
+                                    }
+                                }
                             )
-                            SecondaryIconButton(
-                                sizes = sizeState,
-                                enabled = enabled,
-                                icon = rememberVectorPainter(image = PersianSymbols.Default.User),
-                                onClick = {}
-                            )
-                            TertiaryIconButton(
-                                sizes = sizeState,
-                                enabled = enabled,
-                                icon = rememberVectorPainter(image = PersianSymbols.Default.User),
-                                onClick = {}
-                            )
-                            OutlinedIconButton(
-                                sizes = sizeState,
-                                enabled = enabled,
-                                icon = rememberVectorPainter(image = PersianSymbols.Default.User),
-                                onClick = {}
+                            RadioButton(
+                                text = "Toggle",
+                                selected = typeStates[1].value,
+                                onSelectedChange = {
+                                    typeStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 1
+                                    }
+                                }
                             )
                         }
-                        Spacer(modifier = Modifier.height(PersianTheme.spacing.size24))
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.SpaceEvenly
-                        ) {
-                            ToggleIconButton(
-                                icon = rememberVectorPainter(image = PersianSymbols.Default.User),
-                                checkedIcon = rememberVectorPainter(image = PersianSymbols.Filled.User),
-                                checked = checked,
-                                sizes = sizeState,
-                                enabled = enabled,
-                                onCheckedChange = onCheckedChange
+                    }
+                )
+                Form(
+                    modifier = Modifier.padding(top = PersianTheme.spacing.size12),
+                    subhead = {
+                        Subhead(
+                            text = "Style"
+                        )
+                    },
+                    content = {
+                        RadioButtons {
+                            RadioButton(
+                                text = "Primary",
+                                selected = styleStates[0].value,
+                                onSelectedChange = {
+                                    styleStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 0
+                                    }
+                                }
                             )
-                            SecondaryToggleIconButton(
-                                icon = rememberVectorPainter(image = PersianSymbols.Default.User),
-                                checkedIcon = rememberVectorPainter(image = PersianSymbols.Filled.User),
-                                checked = checked,
-                                sizes = sizeState,
-                                enabled = enabled,
-                                onCheckedChange = onCheckedChange
+                            RadioButton(
+                                text = "Secondary",
+                                selected = styleStates[1].value,
+                                onSelectedChange = {
+                                    styleStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 1
+                                    }
+                                }
                             )
-                            TertiaryToggleIconButton(
-                                icon = rememberVectorPainter(image = PersianSymbols.Default.User),
-                                checkedIcon = rememberVectorPainter(image = PersianSymbols.Filled.User),
-                                checked = checked,
-                                sizes = sizeState,
-                                enabled = enabled,
-                                onCheckedChange = onCheckedChange
+                            RadioButton(
+                                text = "Tertiary",
+                                selected = styleStates[2].value,
+                                onSelectedChange = {
+                                    styleStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 2
+                                    }
+                                }
                             )
-                            OutlinedToggleIconButton(
-                                icon = rememberVectorPainter(image = PersianSymbols.Default.User),
-                                checkedIcon = rememberVectorPainter(image = PersianSymbols.Filled.User),
-                                checked = checked,
-                                sizes = sizeState,
-                                enabled = enabled,
-                                onCheckedChange = onCheckedChange
+                            RadioButton(
+                                text = "Outlined",
+                                selected = styleStates[3].value,
+                                onSelectedChange = {
+                                    styleStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 3
+                                    }
+                                }
                             )
                         }
                     }
-                }
-                val sizeStates = remember {
-                    listOf(
-                        mutableStateOf(true),
-                        mutableStateOf(false),
-                        mutableStateOf(false)
-                    )
-                }
-                val large = IconButtonDefaults.largeSizes()
-                val medium = IconButtonDefaults.mediumSizes()
-                val small = IconButtonDefaults.smallSizes()
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(
-                            top = PersianTheme.spacing.size8,
-                            bottom = PersianTheme.spacing.size8,
-                            start = PersianTheme.spacing.size12,
-                            end = PersianTheme.spacing.size12
-                        ),
-                ) {
-                    Text(
-                        text = "Size",
-                        style = PersianTheme.typography.titleMedium,
-                        color = PersianTheme.colorScheme.onSurface
-                    )
-                    Spacer(modifier = Modifier.height(PersianTheme.spacing.size4))
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .selectableGroup()
-                    ) {
-                        PersianRadioButton(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Large",
-                            checked = sizeStates[0].value,
-                            onCheckedChange = {
-                                sizeStates.forEachIndexed { index, mutableState ->
-                                    mutableState.value = index == 0
-                                }
-                                sizeState = large
-                            }
+                )
+                Form(
+                    modifier = Modifier.padding(top = PersianTheme.spacing.size12),
+                    subhead = {
+                        Subhead(
+                            text = "Size"
                         )
-                        PersianRadioButton(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Medium",
-                            checked = sizeStates[1].value,
-                            onCheckedChange = {
-                                sizeStates.forEachIndexed { index, mutableState ->
-                                    mutableState.value = index == 1
+                    },
+                    content = {
+                        RadioButtons {
+                            RadioButton(
+                                text = "Large",
+                                selected = sizeStates[0].value,
+                                onSelectedChange = {
+                                    sizeStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 0
+                                    }
+                                    sizeState = large
                                 }
-                                sizeState = medium
-                            }
-                        )
-                        PersianRadioButton(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Small",
-                            checked = sizeStates[2].value,
-                            onCheckedChange = {
-                                sizeStates.forEachIndexed { index, mutableState ->
-                                    mutableState.value = index == 2
+                            )
+                            RadioButton(
+                                text = "Medium",
+                                selected = sizeStates[1].value,
+                                onSelectedChange = {
+                                    sizeStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 1
+                                    }
+                                    sizeState = medium
                                 }
-                                sizeState = small
-                            }
-                        )
+                            )
+                            RadioButton(
+                                text = "Small",
+                                selected = sizeStates[2].value,
+                                onSelectedChange = {
+                                    sizeStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 2
+                                    }
+                                    sizeState = small
+                                }
+                            )
+                        }
                     }
-                }
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(
-                            top = PersianTheme.spacing.size8,
-                            bottom = PersianTheme.spacing.size8,
-                            start = PersianTheme.spacing.size12,
-                            end = PersianTheme.spacing.size12
-                        ),
-                ) {
-                    Text(
-                        text = "Additional settings",
-                        style = PersianTheme.typography.titleMedium,
-                        color = PersianTheme.colorScheme.onSurface
-                    )
-                    Spacer(modifier = Modifier.height(PersianTheme.spacing.size4))
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                    ) {
-                        Checkbox(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Enabled",
-                            checked = enabled,
-                            onCheckedChange = {
-                                enabled = !enabled
-                            }
+                )
+                Form(
+                    modifier = Modifier.padding(top = PersianTheme.spacing.size12),
+                    subhead = {
+                        Subhead(
+                            text = "Settings"
                         )
+                    },
+                    content = {
+                        Checkboxes {
+                            Checkbox(
+                                text = "Enabled",
+                                checked = enabled,
+                                onCheckedChange = onEnabledChange
+                            )
+                        }
                     }
-                }
+                )
             }
         }
     }
