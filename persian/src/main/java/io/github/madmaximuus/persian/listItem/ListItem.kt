@@ -14,16 +14,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.dividers.InsetHorizontalDivider
+import io.github.madmaximuus.persian.dividers.HorizontalDivider
+import io.github.madmaximuus.persian.dividers.HorizontalInsetSide
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
 /**
- * Composable function to display a list item with various sections: edit, left, middle, and right.
- *
- * This function creates a [Column] that contains a [Row] with optional sections for editing, left
- * content, middle content, and right content. The list item can also include a divider and supports
- * click events. The appearance and behavior of the list item are customized based on the provided
- * sizes, colors, and other properties.
+ * A list item is useful for organizing and displaying individual elements within a list, providing
+ * a structured and easily navigable format for presenting information. It offers a straightforward
+ * and effective method for grouping related data, making it an essential tool for enhancing
+ * user experience and data organization.
  *
  * @param modifier The modifier to be applied to the [Column].
  * @param edit A composable function that defines the content for the edit section.
@@ -121,8 +120,9 @@ fun ListItem(
             }
         }
         if (divider)
-            InsetHorizontalDivider(
+            HorizontalDivider(
                 modifier = Modifier.fillMaxWidth(),
+                insetSide = HorizontalInsetSide.BOTH,
                 sizes = sizes.dividerSizes,
                 strokeColor = colors.dividerColor
             )

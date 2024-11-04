@@ -41,16 +41,13 @@ import io.github.madmaximuus.persian.switch.SwitchDefaults
 import io.github.madmaximuus.persian.switch.SwitchSizes
 
 /**
- * Contains all default values used by list item
+ * Contains all default values used by [ListItem]
  */
 object ListItemDefaults {
 
     /**
-     * Composable function to create a [ListItemColors] instance with the specified colors.
+     * Create a [ListItemColors] instance with the specified colors.
      *
-     * This function provides default colors for various components within a list item, such as text,
-     * icons, images, buttons, and dividers. The colors can be customized by passing specific values
-     * for each parameter.
      *
      * @param titleColor The color of the title text when enabled.
      * @param disabledTitleColor The color of the title text when disabled.
@@ -129,58 +126,55 @@ object ListItemDefaults {
         disabledRightIconColor: Color = PersianTheme.colorScheme.onSurface.state38,
 
         dividerColor: Color = PersianTheme.colorScheme.outlineVariant
-    ): ListItemColors = ListItemColors(
-        titleColor = titleColor,
-        disabledTitleColor = disabledTitleColor,
+    ): ListItemColors =
+        ListItemColors(
+            titleColor = titleColor,
+            disabledTitleColor = disabledTitleColor,
 
-        bodyColor = bodyColor,
-        disabledBodyColor = disabledBodyColor,
+            bodyColor = bodyColor,
+            disabledBodyColor = disabledBodyColor,
 
-        subheadColor = subheadColor,
-        disabledSubheadColor = disabledSubheadColor,
+            subheadColor = subheadColor,
+            disabledSubheadColor = disabledSubheadColor,
 
-        newLabelColor = newLabelColor,
-        disabledNewLabelColor = disabledNewLabelColor,
+            newLabelColor = newLabelColor,
+            disabledNewLabelColor = disabledNewLabelColor,
 
-        newLabelContainerColor = newLabelContainerColor,
-        disabledNewLabelContainerColor = disabledNewLabelContainerColor,
+            newLabelContainerColor = newLabelContainerColor,
+            disabledNewLabelContainerColor = disabledNewLabelContainerColor,
 
-        editRadioButtonColors = editRadioButtonColors,
-        editCheckboxToggleColors = editCheckboxToggleColors,
-        editAddColors = editAddColor,
-        editRemoveColors = editRemoveColor,
+            editRadioButtonColors = editRadioButtonColors,
+            editCheckboxToggleColors = editCheckboxToggleColors,
+            editAddColors = editAddColor,
+            editRemoveColors = editRemoveColor,
 
-        editDragColor = editDragColor,
-        disabledEditDragColor = disabledEditDragColor,
+            editDragColor = editDragColor,
+            disabledEditDragColor = disabledEditDragColor,
 
-        leftIconColor = leftIconColor,
-        disabledLeftIconColor = disabledLeftIconColor,
+            leftIconColor = leftIconColor,
+            disabledLeftIconColor = disabledLeftIconColor,
 
-        leftAvatarColors = leftAvatarColors,
-        leftImageColors = leftImageColors,
+            leftAvatarColors = leftAvatarColors,
+            leftImageColors = leftImageColors,
 
-        rightSwitchColors = rightSwitchColors,
-        rightButtonColors = rightButtonColors,
-        rightIconButtonColors = rightIconButtonColors,
-        rightCounterColors = rightCounterColors,
-        rightRadioButtonColors = rightRadioButtonColors,
-        rightCheckboxToggleColors = rightCheckboxToggleColors,
+            rightSwitchColors = rightSwitchColors,
+            rightButtonColors = rightButtonColors,
+            rightIconButtonColors = rightIconButtonColors,
+            rightCounterColors = rightCounterColors,
+            rightRadioButtonColors = rightRadioButtonColors,
+            rightCheckboxToggleColors = rightCheckboxToggleColors,
 
-        rightSuffixColor = rightSuffixColor,
-        disabledRightSuffixColor = disabledRightSuffixColor,
+            rightSuffixColor = rightSuffixColor,
+            disabledRightSuffixColor = disabledRightSuffixColor,
 
-        rightIconColor = rightIconColor,
-        disabledRightIconColor = disabledRightIconColor,
+            rightIconColor = rightIconColor,
+            disabledRightIconColor = disabledRightIconColor,
 
-        dividerColor = dividerColor
-    )
+            dividerColor = dividerColor
+        )
 
     /**
-     * Composable function to create a [ListItemSizes] instance with the specified sizes.
-     *
-     * This function provides default sizes for various components within a list item, such as icons,
-     * images, text styles, buttons, and dividers. The sizes can be customized by passing specific values
-     * for each parameter.
+     * Create a [ListItemSizes] instance with the specified sizes.
      *
      * @param shape The shape of the list item.
      * @param editDragIconSizes The sizes for the drag icon in the edit section.
@@ -228,7 +222,7 @@ object ListItemDefaults {
 
         rightIconSizes: IconSizes = IconDefaults.size24(),
         rightSwitchSizes: SwitchSizes = SwitchDefaults.sizes(),
-        rightCounterSizes: CounterSizes = CounterDefaults.digitSizes(),
+        rightCounterSizes: CounterSizes = CounterDefaults.sizes(),
         rightSuffixTextStyle: TextStyle = PersianTheme.typography.bodyMedium,
         rightButtonSizes: ButtonSizes = ButtonDefaults.smallSizes(),
         rightIconButtonSizes: IconButtonSizes = IconButtonDefaults.smallSizes(),
@@ -236,36 +230,37 @@ object ListItemDefaults {
         rightRadioButtonSizes: RadioButtonSizes = RadioButtonDefaults.sizes(),
 
         dividerSizes: DividerSizes = DividerDefaults.sizes(),
-    ): ListItemSizes = ListItemSizes(
-        shape = shape,
+    ): ListItemSizes =
+        ListItemSizes(
+            shape = shape,
 
-        editDragIconSizes = editDragIconSizes,
-        editCheckboxSizes = editCheckboxSizes,
-        editRadioButtonSizes = editRadioButtonSizes,
-        editAddIconButtonSizes = editAddIconButtonSizes,
-        editRemoveIconButtonSizes = editRemoveIconButtonSizes,
+            editDragIconSizes = editDragIconSizes,
+            editCheckboxSizes = editCheckboxSizes,
+            editRadioButtonSizes = editRadioButtonSizes,
+            editAddIconButtonSizes = editAddIconButtonSizes,
+            editRemoveIconButtonSizes = editRemoveIconButtonSizes,
 
-        leftIconSizes = leftIconSizes,
-        leftImageSizes = leftImageSizes,
-        leftAvatarSizes = leftAvatarSizes,
+            leftIconSizes = leftIconSizes,
+            leftImageSizes = leftImageSizes,
+            leftAvatarSizes = leftAvatarSizes,
 
-        titleTextStyle = titleTextStyle,
-        bodyTextStyle = bodyTextStyle,
-        subheadTextStyle = subheadTextStyle,
-        newLabelTextStyle = newLabelTextStyle,
-        newLabelShape = newLabelShape,
+            titleTextStyle = titleTextStyle,
+            bodyTextStyle = bodyTextStyle,
+            subheadTextStyle = subheadTextStyle,
+            newLabelTextStyle = newLabelTextStyle,
+            newLabelShape = newLabelShape,
 
-        rightIconSizes = rightIconSizes,
-        rightSwitchSizes = rightSwitchSizes,
-        rightCounterSizes = rightCounterSizes,
-        rightSuffixTextStyle = rightSuffixTextStyle,
-        rightButtonSizes = rightButtonSizes,
-        rightIconButtonSizes = rightIconButtonSizes,
-        rightCheckboxSizes = rightCheckboxSizes,
-        rightRadioButtonSizes = rightRadioButtonSizes,
+            rightIconSizes = rightIconSizes,
+            rightSwitchSizes = rightSwitchSizes,
+            rightCounterSizes = rightCounterSizes,
+            rightSuffixTextStyle = rightSuffixTextStyle,
+            rightButtonSizes = rightButtonSizes,
+            rightIconButtonSizes = rightIconButtonSizes,
+            rightCheckboxSizes = rightCheckboxSizes,
+            rightRadioButtonSizes = rightRadioButtonSizes,
 
-        dividerSizes = dividerSizes
-    )
+            dividerSizes = dividerSizes
+        )
 }
 
 /**
@@ -481,51 +476,52 @@ class ListItemColors(
         disabledRightIconColor: Color = this.disabledRightIconColor,
 
         dividerColor: Color = this.dividerColor
-    ): ListItemColors = ListItemColors(
-        titleColor = titleColor.takeOrElse { this.titleColor },
-        disabledTitleColor = disabledTitleColor.takeOrElse { this.disabledTitleColor },
+    ): ListItemColors =
+        ListItemColors(
+            titleColor = titleColor.takeOrElse { this.titleColor },
+            disabledTitleColor = disabledTitleColor.takeOrElse { this.disabledTitleColor },
 
-        bodyColor = bodyColor.takeOrElse { this.bodyColor },
-        disabledBodyColor = disabledBodyColor.takeOrElse { this.disabledBodyColor },
+            bodyColor = bodyColor.takeOrElse { this.bodyColor },
+            disabledBodyColor = disabledBodyColor.takeOrElse { this.disabledBodyColor },
 
-        subheadColor = subheadColor.takeOrElse { this.subheadColor },
-        disabledSubheadColor = disabledSubheadColor.takeOrElse { this.disabledSubheadColor },
+            subheadColor = subheadColor.takeOrElse { this.subheadColor },
+            disabledSubheadColor = disabledSubheadColor.takeOrElse { this.disabledSubheadColor },
 
-        newLabelColor = newLabelColor.takeOrElse { this.newLabelColor },
-        disabledNewLabelColor = disabledNewLabelColor.takeOrElse { this.disabledNewLabelColor },
+            newLabelColor = newLabelColor.takeOrElse { this.newLabelColor },
+            disabledNewLabelColor = disabledNewLabelColor.takeOrElse { this.disabledNewLabelColor },
 
-        newLabelContainerColor = newLabelContainerColor.takeOrElse { this.newLabelContainerColor },
-        disabledNewLabelContainerColor = disabledNewLabelContainerColor.takeOrElse { this.disabledNewLabelContainerColor },
+            newLabelContainerColor = newLabelContainerColor.takeOrElse { this.newLabelContainerColor },
+            disabledNewLabelContainerColor = disabledNewLabelContainerColor.takeOrElse { this.disabledNewLabelContainerColor },
 
-        editDragColor = editDragColor.takeOrElse { this.editDragColor },
-        disabledEditDragColor = disabledEditDragColor.takeOrElse { this.disabledEditDragColor },
+            editDragColor = editDragColor.takeOrElse { this.editDragColor },
+            disabledEditDragColor = disabledEditDragColor.takeOrElse { this.disabledEditDragColor },
 
-        editRadioButtonColors = editRadioButtonColors,
-        editCheckboxToggleColors = editCheckboxToggleColors,
-        editAddColors = editAddColors,
-        editRemoveColors = editRemoveColors,
+            editRadioButtonColors = editRadioButtonColors,
+            editCheckboxToggleColors = editCheckboxToggleColors,
+            editAddColors = editAddColors,
+            editRemoveColors = editRemoveColors,
 
-        leftIconColor = leftIconColor.takeOrElse { this.leftIconColor },
-        disabledLeftIconColor = disabledLeftIconColor.takeOrElse { this.disabledLeftIconColor },
+            leftIconColor = leftIconColor.takeOrElse { this.leftIconColor },
+            disabledLeftIconColor = disabledLeftIconColor.takeOrElse { this.disabledLeftIconColor },
 
-        leftAvatarColors = leftAvatarColors,
-        leftImageColors = leftImageColors,
+            leftAvatarColors = leftAvatarColors,
+            leftImageColors = leftImageColors,
 
-        rightSwitchColors = rightSwitchColors,
-        rightButtonColors = rightButtonColors,
-        rightIconButtonColors = rightIconButtonColors,
-        rightCounterColors = rightCounterColors,
-        rightRadioButtonColors = rightRadioButtonColors,
-        rightCheckboxToggleColors = rightCheckboxToggleColors,
+            rightSwitchColors = rightSwitchColors,
+            rightButtonColors = rightButtonColors,
+            rightIconButtonColors = rightIconButtonColors,
+            rightCounterColors = rightCounterColors,
+            rightRadioButtonColors = rightRadioButtonColors,
+            rightCheckboxToggleColors = rightCheckboxToggleColors,
 
-        rightSuffixColor = rightSuffixColor,
-        disabledRightSuffixColor = disabledRightSuffixColor,
+            rightSuffixColor = rightSuffixColor,
+            disabledRightSuffixColor = disabledRightSuffixColor,
 
-        rightIconColor = rightIconColor,
-        disabledRightIconColor = disabledRightIconColor,
+            rightIconColor = rightIconColor,
+            disabledRightIconColor = disabledRightIconColor,
 
-        dividerColor = dividerColor
-    )
+            dividerColor = dividerColor
+        )
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -716,36 +712,37 @@ class ListItemSizes(
         rightRadioButtonSizes: RadioButtonSizes = this.rightRadioButtonSizes,
 
         dividerSizes: DividerSizes = this.dividerSizes,
-    ): ListItemSizes = ListItemSizes(
-        shape = shape,
+    ): ListItemSizes =
+        ListItemSizes(
+            shape = shape,
 
-        editDragIconSizes = editDragIconSizes,
-        editCheckboxSizes = editCheckboxSizes,
-        editRadioButtonSizes = editRadioButtonSizes,
-        editAddIconButtonSizes = editAddIconButtonSizes,
-        editRemoveIconButtonSizes = editRemoveIconButtonSizes,
+            editDragIconSizes = editDragIconSizes,
+            editCheckboxSizes = editCheckboxSizes,
+            editRadioButtonSizes = editRadioButtonSizes,
+            editAddIconButtonSizes = editAddIconButtonSizes,
+            editRemoveIconButtonSizes = editRemoveIconButtonSizes,
 
-        leftIconSizes = leftIconSizes,
-        leftImageSizes = leftImageSizes,
-        leftAvatarSizes = leftAvatarSizes,
+            leftIconSizes = leftIconSizes,
+            leftImageSizes = leftImageSizes,
+            leftAvatarSizes = leftAvatarSizes,
 
-        titleTextStyle = titleTextStyle,
-        bodyTextStyle = bodyTextStyle,
-        subheadTextStyle = subheadTextStyle,
-        newLabelTextStyle = newLabelTextStyle,
-        newLabelShape = newLabelShape,
+            titleTextStyle = titleTextStyle,
+            bodyTextStyle = bodyTextStyle,
+            subheadTextStyle = subheadTextStyle,
+            newLabelTextStyle = newLabelTextStyle,
+            newLabelShape = newLabelShape,
 
-        rightIconSizes = rightIconSizes,
-        rightSwitchSizes = rightSwitchSizes,
-        rightCounterSizes = rightCounterSizes,
-        rightSuffixTextStyle = rightSuffixTextStyle,
-        rightButtonSizes = rightButtonSizes,
-        rightIconButtonSizes = rightIconButtonSizes,
-        rightCheckboxSizes = rightCheckboxSizes,
-        rightRadioButtonSizes = rightRadioButtonSizes,
+            rightIconSizes = rightIconSizes,
+            rightSwitchSizes = rightSwitchSizes,
+            rightCounterSizes = rightCounterSizes,
+            rightSuffixTextStyle = rightSuffixTextStyle,
+            rightButtonSizes = rightButtonSizes,
+            rightIconButtonSizes = rightIconButtonSizes,
+            rightCheckboxSizes = rightCheckboxSizes,
+            rightRadioButtonSizes = rightRadioButtonSizes,
 
-        dividerSizes = dividerSizes
-    )
+            dividerSizes = dividerSizes
+        )
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
