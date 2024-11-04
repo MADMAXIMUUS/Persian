@@ -132,7 +132,9 @@ object Counter : Screen {
                     content = {
                         Input(
                             value = count,
-                            onValueChange = onCountChange,
+                            onValueChange = { newText ->
+                                if (newText.length <= 5) onCountChange(newText)
+                            },
                             keyboardOptions = KeyboardOptions(
                                 keyboardType = KeyboardType.Number
                             )
