@@ -53,8 +53,7 @@ internal fun DropdownMenuContent(
         if (expanded) ExpandedScaleTarget else ClosedScaleTarget
     }
 
-    val alpha by
-    transition.animateFloat(
+    val alpha by transition.animateFloat(
         transitionSpec = {
             if (false isTransitioningTo true) {
                 // Dismissed to expanded
@@ -76,13 +75,16 @@ internal fun DropdownMenuContent(
             .graphicsLayer {
                 scaleX =
                     if (!isInspecting) scale
-                    else if (expandedState.targetState) ExpandedScaleTarget else ClosedScaleTarget
+                    else if (expandedState.targetState) ExpandedScaleTarget
+                    else ClosedScaleTarget
                 scaleY =
                     if (!isInspecting) scale
-                    else if (expandedState.targetState) ExpandedScaleTarget else ClosedScaleTarget
+                    else if (expandedState.targetState) ExpandedScaleTarget
+                    else ClosedScaleTarget
                 this.alpha =
                     if (!isInspecting) alpha
-                    else if (expandedState.targetState) ExpandedAlphaTarget else ClosedAlphaTarget
+                    else if (expandedState.targetState) ExpandedAlphaTarget
+                    else ClosedAlphaTarget
                 transformOrigin = transformOriginState.value
             }
             .then(widthModifier),

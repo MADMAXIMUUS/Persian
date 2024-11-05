@@ -24,11 +24,10 @@ import io.github.madmaximuus.persian.menu.util.calculateTransformOrigin
 import kotlinx.coroutines.flow.filter
 
 /**
- * Composable function to create a dropdown menu.
- *
- * This function provides a way to define a dropdown menu with various customization options, including an anchor,
- * modifier, expanded state, interaction source, dismiss request callback, scroll state, colors, sizes, offset,
- * header, and children content.
+ * A dropdown menu is useful for providing users with a list of options to choose from, offering
+ * a compact and interactive interface for selecting items. It offers a straightforward and
+ * effective method for navigation and data entry, making it an essential tool for enhancing user
+ * experience and usability.
  *
  * @param anchor The composable content that serves as the anchor for the dropdown menu.
  * @param modifier The modifier to be applied to the dropdown menu. Default is [Modifier].
@@ -80,7 +79,7 @@ fun DropdownMenu(
             colors = colors,
             sizes = sizes,
             scrollState = scrollState,
-            shadowElevation = PersianTheme.elevation.small,
+            shadowElevation = PersianTheme.elevation.elevation2,
             properties = PopupProperties(clippingEnabled = false),
             header = header,
             content = children
@@ -115,7 +114,7 @@ fun DropdownMenu(
     offset: DpOffset = DpOffset.Zero,
     scrollState: ScrollState = rememberScrollState(),
     properties: PopupProperties = PopupProperties(),
-    shadowElevation: Dp = PersianTheme.elevation.large,
+    shadowElevation: Dp = PersianTheme.elevation.elevation4,
     colors: MenuColors = MenuDefaults.colors(),
     sizes: MenuSizes = MenuDefaults.sizes(),
     header: (@Composable DropdownMenuHeaderScope.() -> Unit)? = null,
@@ -157,4 +156,3 @@ fun DropdownMenu(
 
 // Size defaults.
 internal val MenuVerticalMargin = 48.dp
-internal val DropdownMenuItemHorizontalPadding = 12.dp

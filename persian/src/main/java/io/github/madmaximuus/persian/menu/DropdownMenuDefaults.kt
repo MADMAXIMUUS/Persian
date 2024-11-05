@@ -3,7 +3,6 @@ package io.github.madmaximuus.persian.menu
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.takeOrElse
@@ -17,15 +16,12 @@ import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persian.icon.IconSizes
 
 /**
- * Contains all default values used by dropdown menu
+ * Contains all default values used by [DropdownMenu].
  */
 object MenuDefaults {
 
     /**
-     * Composable function to create and remember a [MenuColors] instance.
-     *
-     * This function provides a convenient way to define and remember the colors used in a menu, including the background color
-     * and the item colors.
+     * Create and remember a [MenuColors] instance.
      *
      * @param backgroundColor The background color of the menu container.
      * @param itemColors The colors used for the menu items.
@@ -34,18 +30,14 @@ object MenuDefaults {
     fun colors(
         backgroundColor: Color = PersianTheme.colorScheme.surfaceContainer,
         itemColors: MenuItemColors = itemColors()
-    ) = remember(backgroundColor, itemColors) {
+    ): MenuColors =
         MenuColors(
             containerColor = backgroundColor,
             itemColors = itemColors
         )
-    }
 
     /**
-     * Composable function to create a [MenuItemColors] instance.
-     *
-     * This function provides a convenient way to define the colors used for menu items, including title colors,
-     * leading icon colors, expand icon colors, new label colors, and divider colors.
+     * Create a [MenuItemColors] instance.
      *
      * @param titleColor The default color of the menu item title.
      * @param negativeTitleColor The color of the menu item title when it is in a negative state.
@@ -107,10 +99,7 @@ object MenuDefaults {
         )
 
     /**
-     * Composable function to create a [MenuSizes] instance.
-     *
-     * This function provides a convenient way to define the sizes and shapes used in a menu, including the container shape
-     * and the sizes used for the menu items.
+     * Create a [MenuSizes] instance.
      *
      * @param containerShape The shape of the menu container.
      * @param itemSizes The sizes used for the menu items.
@@ -119,16 +108,14 @@ object MenuDefaults {
     fun sizes(
         containerShape: Shape = PersianTheme.shapes.shape16,
         itemSizes: MenuItemSizes = itemSizes()
-    ): MenuSizes = MenuSizes(
-        containerShape = containerShape,
-        itemSizes = itemSizes
-    )
+    ): MenuSizes =
+        MenuSizes(
+            containerShape = containerShape,
+            itemSizes = itemSizes
+        )
 
     /**
-     * Composable function to create a [MenuItemSizes] instance.
-     *
-     * This function provides a convenient way to define the sizes used for menu items, including text styles, icon sizes,
-     * label styles, container shapes, and divider sizes.
+     * Create a [MenuItemSizes] instance.
      *
      * @param titleTextStyle The text style used for the title of the menu item.
      * @param leadingIconSizes The sizes used for the leading icon in the menu item.
@@ -222,15 +209,16 @@ class MenuItemSizes internal constructor(
         newLabelContainerShape: Shape = this.newLabelContainerShape,
         dividerSizes: DividerSizes = this.dividerSizes,
         groupDividerSizes: DividerSizes = this.groupDividerSizes
-    ) = MenuItemSizes(
-        titleTextStyle = titleTextStyle,
-        leadingIconSizes = leadingIconSizes,
-        expendIconSizes = expendIconSizes,
-        newLabelTextStyle = newLabelTextStyle,
-        newLabelContainerShape = newLabelContainerShape,
-        dividerSizes = dividerSizes,
-        groupDividerSizes = groupDividerSizes
-    )
+    ): MenuItemSizes =
+        MenuItemSizes(
+            titleTextStyle = titleTextStyle,
+            leadingIconSizes = leadingIconSizes,
+            expendIconSizes = expendIconSizes,
+            newLabelTextStyle = newLabelTextStyle,
+            newLabelContainerShape = newLabelContainerShape,
+            dividerSizes = dividerSizes,
+            groupDividerSizes = groupDividerSizes
+        )
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -398,27 +386,28 @@ class MenuItemColors internal constructor(
         disabledNewLabelContainerColor: Color = this.disabledNewLabelContainerColor,
 
         dividerColor: Color = this.dividerColor
-    ) = MenuItemColors(
-        titleColor = titleColor.takeOrElse { this.titleColor },
-        negativeTitleColor = negativeTitleColor.takeOrElse { this.negativeTitleColor },
-        selectedLeadingIconColor = selectedLeadingIconColor.takeOrElse { this.selectedLeadingIconColor },
-        disabledTitleColor = disabledTitleColor.takeOrElse { this.disabledTitleColor },
+    ): MenuItemColors =
+        MenuItemColors(
+            titleColor = titleColor.takeOrElse { this.titleColor },
+            negativeTitleColor = negativeTitleColor.takeOrElse { this.negativeTitleColor },
+            selectedLeadingIconColor = selectedLeadingIconColor.takeOrElse { this.selectedLeadingIconColor },
+            disabledTitleColor = disabledTitleColor.takeOrElse { this.disabledTitleColor },
 
-        leadingIconColor = leadingIconColor.takeOrElse { this.leadingIconColor },
-        negativeLeadingIconColor = negativeLeadingIconColor.takeOrElse { this.negativeLeadingIconColor },
-        disabledLeadingIconColor = disabledLeadingIconColor.takeOrElse { this.disabledLeadingIconColor },
+            leadingIconColor = leadingIconColor.takeOrElse { this.leadingIconColor },
+            negativeLeadingIconColor = negativeLeadingIconColor.takeOrElse { this.negativeLeadingIconColor },
+            disabledLeadingIconColor = disabledLeadingIconColor.takeOrElse { this.disabledLeadingIconColor },
 
-        expendIconColor = expendIconColor.takeOrElse { this.expendIconColor },
-        disabledExpandIconColor = disabledExpandIconColor.takeOrElse { this.disabledExpandIconColor },
+            expendIconColor = expendIconColor.takeOrElse { this.expendIconColor },
+            disabledExpandIconColor = disabledExpandIconColor.takeOrElse { this.disabledExpandIconColor },
 
-        newLabelColor = newLabelColor.takeOrElse { this.newLabelColor },
-        disabledNewLabelColor = disabledNewLabelColor.takeOrElse { this.disabledNewLabelColor },
+            newLabelColor = newLabelColor.takeOrElse { this.newLabelColor },
+            disabledNewLabelColor = disabledNewLabelColor.takeOrElse { this.disabledNewLabelColor },
 
-        newLabelContainerColor = newLabelContainerColor.takeOrElse { this.newLabelContainerColor },
-        disabledNewLabelContainerColor = disabledNewLabelContainerColor.takeOrElse { this.disabledNewLabelContainerColor },
+            newLabelContainerColor = newLabelContainerColor.takeOrElse { this.newLabelContainerColor },
+            disabledNewLabelContainerColor = disabledNewLabelContainerColor.takeOrElse { this.disabledNewLabelContainerColor },
 
-        dividerColor = dividerColor.takeOrElse { this.dividerColor }
-    )
+            dividerColor = dividerColor.takeOrElse { this.dividerColor }
+        )
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

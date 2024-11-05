@@ -3,6 +3,7 @@ package io.github.madmaximuus.persian.menu
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
@@ -17,7 +18,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.dividers.InsetHorizontalDivider
+import io.github.madmaximuus.persian.dividers.HorizontalDivider
+import io.github.madmaximuus.persian.dividers.HorizontalInsetSide
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.ripple.ripple
 import io.github.madmaximuus.persian.icon.Icon
@@ -158,7 +160,8 @@ internal fun DropdownMenuItemContent(
             .height(48.dp)
             .width(220.dp)
             .padding(paddingValues),
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size12)
     ) {
         if (leadingIcon != null) {
             Box {
@@ -173,18 +176,6 @@ internal fun DropdownMenuItemContent(
         Row(
             modifier = Modifier
                 .weight(1f)
-                .padding(
-                    start = if (leadingIcon != null) {
-                        DropdownMenuItemHorizontalPadding
-                    } else {
-                        0.dp
-                    },
-                    end = if (showExpandIcon) {
-                        DropdownMenuItemHorizontalPadding
-                    } else {
-                        0.dp
-                    }
-                )
         ) {
             Text(
                 text = text,
@@ -229,8 +220,9 @@ internal fun DropdownMenuItemContent(
 fun DropdownMenuItemScope.Divider(
     modifier: Modifier = Modifier
 ) {
-    InsetHorizontalDivider(
+    HorizontalDivider(
         modifier = modifier,
+        insetSide = HorizontalInsetSide.BOTH,
         strokeColor = this@Divider.colors.dividerColor,
         sizes = this@Divider.sizes.dividerSizes
     )
@@ -247,8 +239,9 @@ fun DropdownMenuItemScope.Divider(
 fun DropdownMenuItemScope.GroupDivider(
     modifier: Modifier = Modifier
 ) {
-    InsetHorizontalDivider(
+    HorizontalDivider(
         modifier = modifier,
+        insetSide = HorizontalInsetSide.BOTH,
         strokeColor = this@GroupDivider.colors.dividerColor,
         sizes = this@GroupDivider.sizes.groupDividerSizes
     )

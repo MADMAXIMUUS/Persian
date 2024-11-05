@@ -85,7 +85,7 @@ fun Submenu(
             colors = colors,
             sizes = sizes,
             scrollState = scrollState,
-            shadowElevation = PersianTheme.elevation.small,
+            shadowElevation = PersianTheme.elevation.elevation2,
             properties = PopupProperties(clippingEnabled = false),
             content = children
         )
