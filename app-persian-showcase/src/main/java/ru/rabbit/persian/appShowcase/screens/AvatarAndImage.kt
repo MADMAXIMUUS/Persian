@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.input.rememberTextFieldState
+import androidx.compose.foundation.text.input.setTextAndPlaceCursorAtEnd
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -49,7 +51,7 @@ object AvatarAndImage : Screen {
             topAppBarScrollBehavior = topAppBarScrollBehavior
         ) {
             //Sizes
-            var selectedSize by remember { mutableStateOf("96") }
+            val selectedSizeState = rememberTextFieldState("96")
             val initialImageSize = ImageDefaults.size96()
             val initialAvatarSize = AvatarDefaults.size96()
             var imageSizeState by remember { mutableStateOf(initialImageSize) }
@@ -160,16 +162,15 @@ object AvatarAndImage : Screen {
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(top = PersianTheme.spacing.size16)
+                        .padding(top = PersianTheme.spacing.size12)
                 ) {
                     Form(
-                        modifier = Modifier.padding(top = PersianTheme.spacing.size8),
                         subhead = {
                             Subhead(text = "Sizes")
                         },
                         content = {
                             Select(
-                                selected = selectedSize,
+                                state = selectedSizeState,
                                 expanded = expanded,
                                 onExpandedChange = onExpandedChange,
                                 menuItems = {
@@ -177,7 +178,7 @@ object AvatarAndImage : Screen {
                                         text = "96",
                                         onClick = {
                                             onExpandedChange(false)
-                                            selectedSize = "96"
+                                            selectedSizeState.setTextAndPlaceCursorAtEnd("96")
                                             avatarSizeState = avatarSizes[0]
                                             imageSizeState = imageSizes[0]
                                         }
@@ -186,7 +187,7 @@ object AvatarAndImage : Screen {
                                         text = "88",
                                         onClick = {
                                             onExpandedChange(false)
-                                            selectedSize = "88"
+                                            selectedSizeState.setTextAndPlaceCursorAtEnd("88")
                                             avatarSizeState = avatarSizes[1]
                                             imageSizeState = imageSizes[1]
                                         }
@@ -195,7 +196,7 @@ object AvatarAndImage : Screen {
                                         text = "80",
                                         onClick = {
                                             onExpandedChange(false)
-                                            selectedSize = "80"
+                                            selectedSizeState.setTextAndPlaceCursorAtEnd("80")
                                             avatarSizeState = avatarSizes[2]
                                             imageSizeState = imageSizes[2]
                                         }
@@ -204,7 +205,7 @@ object AvatarAndImage : Screen {
                                         text = "72",
                                         onClick = {
                                             onExpandedChange(false)
-                                            selectedSize = "72"
+                                            selectedSizeState.setTextAndPlaceCursorAtEnd("72")
                                             avatarSizeState = avatarSizes[3]
                                             imageSizeState = imageSizes[3]
                                         }
@@ -213,7 +214,7 @@ object AvatarAndImage : Screen {
                                         text = "64",
                                         onClick = {
                                             onExpandedChange(false)
-                                            selectedSize = "64"
+                                            selectedSizeState.setTextAndPlaceCursorAtEnd("64")
                                             avatarSizeState = avatarSizes[4]
                                             imageSizeState = imageSizes[4]
                                         }
@@ -222,7 +223,7 @@ object AvatarAndImage : Screen {
                                         text = "56",
                                         onClick = {
                                             onExpandedChange(false)
-                                            selectedSize = "56"
+                                            selectedSizeState.setTextAndPlaceCursorAtEnd("56")
                                             avatarSizeState = avatarSizes[5]
                                             imageSizeState = imageSizes[5]
                                         }
@@ -231,7 +232,7 @@ object AvatarAndImage : Screen {
                                         text = "48",
                                         onClick = {
                                             onExpandedChange(false)
-                                            selectedSize = "48"
+                                            selectedSizeState.setTextAndPlaceCursorAtEnd("48")
                                             avatarSizeState = avatarSizes[6]
                                             imageSizeState = imageSizes[6]
                                         }
@@ -240,7 +241,7 @@ object AvatarAndImage : Screen {
                                         text = "44",
                                         onClick = {
                                             onExpandedChange(false)
-                                            selectedSize = "44"
+                                            selectedSizeState.setTextAndPlaceCursorAtEnd("44")
                                             avatarSizeState = avatarSizes[7]
                                             imageSizeState = imageSizes[7]
                                         }
@@ -249,7 +250,7 @@ object AvatarAndImage : Screen {
                                         text = "40",
                                         onClick = {
                                             onExpandedChange(false)
-                                            selectedSize = "40"
+                                            selectedSizeState.setTextAndPlaceCursorAtEnd("40")
                                             avatarSizeState = avatarSizes[8]
                                             imageSizeState = imageSizes[8]
                                         }
@@ -258,7 +259,7 @@ object AvatarAndImage : Screen {
                                         text = "36",
                                         onClick = {
                                             onExpandedChange(false)
-                                            selectedSize = "36"
+                                            selectedSizeState.setTextAndPlaceCursorAtEnd("36")
                                             avatarSizeState = avatarSizes[9]
                                             imageSizeState = imageSizes[9]
                                         }
@@ -267,7 +268,7 @@ object AvatarAndImage : Screen {
                                         text = "32",
                                         onClick = {
                                             onExpandedChange(false)
-                                            selectedSize = "32"
+                                            selectedSizeState.setTextAndPlaceCursorAtEnd("32")
                                             avatarSizeState = avatarSizes[10]
                                             imageSizeState = imageSizes[10]
                                         }
@@ -276,7 +277,7 @@ object AvatarAndImage : Screen {
                                         text = "28",
                                         onClick = {
                                             onExpandedChange(false)
-                                            selectedSize = "28"
+                                            selectedSizeState.setTextAndPlaceCursorAtEnd("28")
                                             avatarSizeState = avatarSizes[11]
                                             imageSizeState = imageSizes[11]
                                         }
@@ -285,7 +286,7 @@ object AvatarAndImage : Screen {
                                         text = "24",
                                         onClick = {
                                             onExpandedChange(false)
-                                            selectedSize = "24"
+                                            selectedSizeState.setTextAndPlaceCursorAtEnd("24")
                                             avatarSizeState = avatarSizes[12]
                                             imageSizeState = imageSizes[12]
                                         }
@@ -294,7 +295,7 @@ object AvatarAndImage : Screen {
                                         text = "20",
                                         onClick = {
                                             onExpandedChange(false)
-                                            selectedSize = "20"
+                                            selectedSizeState.setTextAndPlaceCursorAtEnd("20")
                                             avatarSizeState = avatarSizes[13]
                                             imageSizeState = imageSizes[13]
                                         }
@@ -303,7 +304,7 @@ object AvatarAndImage : Screen {
                                         text = "16",
                                         onClick = {
                                             onExpandedChange(false)
-                                            selectedSize = "16"
+                                            selectedSizeState.setTextAndPlaceCursorAtEnd("16")
                                             avatarSizeState = avatarSizes[14]
                                             imageSizeState = imageSizes[14]
                                         }
@@ -360,7 +361,7 @@ object AvatarAndImage : Screen {
                     Form(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(top = PersianTheme.spacing.size20),
+                            .padding(top = PersianTheme.spacing.size12),
                         subhead = {
                             Subhead(
                                 modifier = Modifier.fillMaxWidth(),
