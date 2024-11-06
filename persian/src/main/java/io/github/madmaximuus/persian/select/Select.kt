@@ -1,18 +1,19 @@
 package io.github.madmaximuus.persian.select
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
-import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.input.InputColors
+import io.github.madmaximuus.persian.input.InputSizes
 import io.github.madmaximuus.persian.input.InputsDefaults
 import io.github.madmaximuus.persian.input.OutlineInput
 import io.github.madmaximuus.persian.menu.DropdownMenuItemScope
 import io.github.madmaximuus.persian.menu.MenuColors
 import io.github.madmaximuus.persian.menu.MenuDefaults
+import io.github.madmaximuus.persian.menu.MenuSizes
 import io.github.madmaximuus.persianSymbols.chevronDown.base.ChevronDown
 import io.github.madmaximuus.persianSymbols.chevronUp.base.ChevronUp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
@@ -20,7 +21,7 @@ import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 /**
  * A composable function that creates a dropdown selection menu.
  *
- * @param selected The currently selected item in the dropdown.
+ * @param state The currently selected item in the dropdown.
  * @param modifier The [Modifier] to be applied to this composable.
  * @param expanded Whether the dropdown menu is currently expanded.
  * @param onExpandedChange A callback to be invoked when the expanded state changes.
@@ -35,7 +36,7 @@ import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
  */
 @Composable
 fun Select(
-    selected: String,
+    state: TextFieldState,
     modifier: Modifier = Modifier,
     expanded: Boolean,
     onExpandedChange: (Boolean) -> Unit,
@@ -45,7 +46,9 @@ fun Select(
     isValid: Boolean = false,
     leadingIcon: Painter? = null,
     inputColors: InputColors = InputsDefaults.outlineColors(),
+    inputSizes: InputSizes = InputsDefaults.sizes(),
     menuColors: MenuColors = MenuDefaults.colors(),
+    menuSizes: MenuSizes = MenuDefaults.sizes(),
     menuItems: @Composable (DropdownMenuItemScope.() -> Unit)
 ) {
     ExposedDropdownMenuBox(
@@ -57,24 +60,24 @@ fun Select(
             modifier = Modifier
                 .fillMaxWidth()
                 .menuAnchor(MenuAnchorType.PrimaryNotEditable, enabled),
-            value = selected,
+            state = state,
             leadingIcon = leadingIcon,
             placeholder = placeholder,
-            onValueChange = {},
             readOnly = true,
             isError = isError,
             isValid = isValid,
             enabled = enabled,
             colors = inputColors,
+            sizes = inputSizes,
             trailingIcon = if (expanded) rememberVectorPainter(image = PersianSymbols.Default.ChevronUp)
             else rememberVectorPainter(image = PersianSymbols.Default.ChevronDown),
         )
         ExposedDropdownMenu(
-            modifier = Modifier
-                .exposedDropdownSize()
-                .background(menuColors.containerColor, PersianTheme.shapes.shape16),
+            modifier = Modifier.exposedDropdownSize(),
             expanded = expanded,
             onDismissRequest = { onExpandedChange(false) },
+            colors = menuColors,
+            sizes = menuSizes,
             content = menuItems
         )
     }

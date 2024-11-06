@@ -122,7 +122,6 @@ fun ExposedDropdownMenuBox(
                             if (!enabled) Modifier
                             else
                                 Modifier.expandable(
-                                    expanded = expanded,
                                     onExpandedChange = {
                                         anchorTypeState.value = type
                                         onExpandedChange(!expanded)
@@ -141,10 +140,10 @@ fun ExposedDropdownMenuBox(
                         val menuConstraints =
                             constraints.copy(
                                 maxHeight = constraints.constrainHeight(menuMaxHeight),
-                                minWidth =
-                                if (matchTextFieldWidth) menuWidth else constraints.minWidth,
-                                maxWidth =
-                                if (matchTextFieldWidth) menuWidth else constraints.maxWidth,
+                                minWidth = if (matchTextFieldWidth) menuWidth
+                                else constraints.minWidth,
+                                maxWidth = if (matchTextFieldWidth) menuWidth
+                                else constraints.maxWidth,
                             )
                         val placeable = measurable.measure(menuConstraints)
                         layout(placeable.width, placeable.height) { placeable.place(0, 0) }
@@ -504,7 +503,6 @@ internal class ExposedDropdownMenuPositionProvider(
 }
 
 private fun Modifier.expandable(
-    expanded: Boolean,
     onExpandedChange: () -> Unit,
     anchorType: MenuAnchorType,
     keyboardController: SoftwareKeyboardController?,
