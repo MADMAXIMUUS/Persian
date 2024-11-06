@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -22,10 +23,10 @@ import io.github.madmaximuus.persian.button.PrimaryButton
 import io.github.madmaximuus.persian.forms.Checkbox
 import io.github.madmaximuus.persian.forms.Checkboxes
 import io.github.madmaximuus.persian.forms.Form
+import io.github.madmaximuus.persian.forms.Input
 import io.github.madmaximuus.persian.forms.Subhead
+import io.github.madmaximuus.persian.forms.TextArea
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.input.OutlineInput
-import io.github.madmaximuus.persian.textAreas.OutlineTextArea
 import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
@@ -42,8 +43,9 @@ object ActionSheet : Screen {
         var needShow by remember { mutableStateOf(false) }
         val (title, onTitleChange) = remember { mutableStateOf(false) }
         val (message, onMessageChange) = remember { mutableStateOf(false) }
-        val (titleValue, onTitleValueChange) = remember { mutableStateOf("Title") }
-        val (subtitleValue, onSubtitleValueChange) = remember { mutableStateOf("A message should be a short, complete sentence.") }
+        val titleState = rememberTextFieldState("Title")
+        val subtitleState =
+            rememberTextFieldState("A message should be a short, complete sentence.")
         val (icons, onIconsChange) = remember { mutableStateOf(false) }
         val (negative, onNegativeChange) = remember { mutableStateOf(false) }
         var titleError by remember { mutableStateOf(false) }
@@ -66,29 +68,33 @@ object ActionSheet : Screen {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 if (title) {
-                    OutlineInput(
-                        modifier = Modifier
-                            .padding(horizontal = PersianTheme.spacing.size16)
-                            .padding(top = PersianTheme.spacing.size8),
-                        value = titleValue,
+                    Form(
+                        modifier = Modifier.padding(top = PersianTheme.spacing.size8),
+                        subhead = {
+                            Subhead(text = "Title")
+                        },
+                        content = {
+                            Input(state = titleState)
+                        },
                         isError = titleError,
-                        onValueChange = onTitleValueChange
                     )
                 }
                 if (message) {
-                    OutlineTextArea(
-                        modifier = Modifier
-                            .padding(horizontal = PersianTheme.spacing.size16)
-                            .padding(top = PersianTheme.spacing.size12),
-                        value = subtitleValue,
+                    Form(
+                        modifier = Modifier.padding(top = PersianTheme.spacing.size12),
+                        subhead = {
+                            Subhead(text = "Message")
+                        },
+                        content = {
+                            TextArea(state = subtitleState)
+                        },
                         isError = subtitleError,
-                        onValueChange = onSubtitleValueChange
                     )
                 }
                 Form(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(top = PersianTheme.spacing.size20),
+                        .padding(top = PersianTheme.spacing.size12),
                     subhead = {
                         Subhead(
                             modifier = Modifier.fillMaxWidth(),
@@ -134,11 +140,11 @@ object ActionSheet : Screen {
                     sizes = ButtonDefaults.largeSizes(),
                     colors = ButtonDefaults.primaryColors()
                 ) {
-                    if (title && titleValue.isEmpty()) {
+                    if (title && titleState.text.isEmpty()) {
                         needShow = false
                         titleError = true
                         subtitleError = false
-                    } else if (message && subtitleValue.isEmpty()) {
+                    } else if (message && subtitleState.text.isEmpty()) {
                         needShow = false
                         titleError = false
                         subtitleError = true
@@ -155,8 +161,8 @@ object ActionSheet : Screen {
                 header = if (title || message) {
                     {
                         Header(
-                            title = if (title) titleValue else null,
-                            message = if (message) subtitleValue else null,
+                            title = if (title) titleState.text.toString() else null,
+                            message = if (message) subtitleState.text.toString() else null,
                         )
                     }
                 } else null,
