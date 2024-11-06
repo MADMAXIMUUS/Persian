@@ -1,10 +1,10 @@
 package ru.rabbit.persian.appShowcase.screens
 
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -21,6 +21,7 @@ import io.github.madmaximuus.persian.forms.RadioButton
 import io.github.madmaximuus.persian.forms.RadioButtons
 import io.github.madmaximuus.persian.forms.Subhead
 import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.internal.SecureInputSettings
 import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
 import ru.rabbit.persian.appShowcase.componets.SampleRow
@@ -50,29 +51,21 @@ object CodeInput : Screen {
                 var isError by remember { mutableStateOf(false) }
                 var enabled by remember { mutableStateOf(true) }
                 var secret by remember { mutableStateOf(false) }
-                var fourInputs by remember {
-                    mutableStateOf(
-                        listOf(
-                            "",
-                            "",
-                            "",
-                            ""
-                        )
-                    )
-                }
+                val fourInputs = listOf(
+                    rememberTextFieldState(""),
+                    rememberTextFieldState(""),
+                    rememberTextFieldState(""),
+                    rememberTextFieldState("")
+                )
 
-                var sixInputs by remember {
-                    mutableStateOf(
-                        listOf(
-                            "",
-                            "",
-                            "",
-                            "",
-                            "",
-                            ""
-                        )
-                    )
-                }
+                val sixInputs = listOf(
+                    rememberTextFieldState(""),
+                    rememberTextFieldState(""),
+                    rememberTextFieldState(""),
+                    rememberTextFieldState(""),
+                    rememberTextFieldState(""),
+                    rememberTextFieldState("")
+                )
 
                 var selectedStyle by remember { mutableStateOf("Four") }
                 val styleState = remember {
@@ -83,43 +76,27 @@ object CodeInput : Screen {
                 }
 
                 SampleRow(text = "Sample") {
-                    Box(Modifier.fillMaxWidth()) {
-                        when (selectedStyle) {
-                            "Four" -> {
-                                FourDigitCodeInput(
-                                    modifier = Modifier.fillMaxWidth(),
-                                    values = fourInputs,
-                                    enabled = enabled,
-                                    isValid = isSuccess,
-                                    isError = isError,
-                                    isPassword = secret,
-                                    onValueChange = { value, index ->
-                                        if (fourInputs[index].length != 1 || value.isEmpty()) {
-                                            val tempList = fourInputs.toMutableList()
-                                            tempList[index] = value
-                                            fourInputs = tempList.toList()
-                                        }
-                                    }
-                                )
-                            }
+                    when (selectedStyle) {
+                        "Four" -> {
+                            FourDigitCodeInput(
+                                modifier = Modifier.fillMaxWidth(),
+                                values = fourInputs,
+                                enabled = enabled,
+                                isValid = isSuccess,
+                                isError = isError,
+                                secure = if (secret) SecureInputSettings.Secure() else SecureInputSettings.NotSecure,
+                            )
+                        }
 
-                            "Six" -> {
-                                SixDigitCodeInput(
-                                    modifier = Modifier.fillMaxWidth(),
-                                    values = sixInputs,
-                                    enabled = enabled,
-                                    isValid = isSuccess,
-                                    isError = isError,
-                                    isPassword = secret,
-                                    onValueChange = { value, index ->
-                                        if (sixInputs[index].length != 1 || value.isEmpty()) {
-                                            val tempList = sixInputs.toMutableList()
-                                            tempList[index] = value
-                                            sixInputs = tempList.toList()
-                                        }
-                                    }
-                                )
-                            }
+                        "Six" -> {
+                            SixDigitCodeInput(
+                                modifier = Modifier.fillMaxWidth(),
+                                values = sixInputs,
+                                enabled = enabled,
+                                isValid = isSuccess,
+                                isError = isError,
+                                secure = if (secret) SecureInputSettings.Secure() else SecureInputSettings.NotSecure,
+                            )
                         }
                     }
                 }
