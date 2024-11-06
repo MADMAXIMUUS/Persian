@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.selectableGroup
+import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -20,11 +21,11 @@ import io.github.madmaximuus.persian.button.PrimaryButton
 import io.github.madmaximuus.persian.forms.Checkbox
 import io.github.madmaximuus.persian.forms.Checkboxes
 import io.github.madmaximuus.persian.forms.Form
+import io.github.madmaximuus.persian.forms.Input
 import io.github.madmaximuus.persian.forms.Subhead
+import io.github.madmaximuus.persian.forms.TextArea
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.input.OutlineInput
 import io.github.madmaximuus.persian.radioButton.RadioButton
-import io.github.madmaximuus.persian.textAreas.OutlineTextArea
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object Alert : Screen {
@@ -40,10 +41,9 @@ object Alert : Screen {
         var titleError by remember { mutableStateOf(false) }
         var descriptionError by remember { mutableStateOf(false) }
         val (content, onContentChange) = remember { mutableStateOf(false) }
-        val (titleValue, onTitleValueChange) = remember { mutableStateOf("Alert title") }
-        val (descriptionValue, onDescriptionValueChange) = remember {
-            mutableStateOf("A dialog is a type of modal window that appears in front of app content to provide critical information, or prompt for a decision to be made.")
-        }
+        val titleState = rememberTextFieldState("Alert title")
+        val messageState =
+            rememberTextFieldState("A dialog is a type of modal window that appears in front of app content to provide critical information, or prompt for a decision to be made.")
         SampleScaffold(title = name, onBackClick = { navController?.navigateUp() }) {
             Column(
                 modifier = Modifier
@@ -51,31 +51,30 @@ object Alert : Screen {
                     .padding(it),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                OutlineInput(
-                    modifier = Modifier
-                        .padding(horizontal = PersianTheme.spacing.size16)
-                        .padding(top = PersianTheme.spacing.size8),
-                    value = titleValue,
+                Form(
+                    modifier = Modifier.padding(top = PersianTheme.spacing.size8),
+                    subhead = {
+                        Subhead(text = "Title")
+                    },
+                    content = {
+                        Input(state = titleState)
+                    },
                     isError = titleError,
-                    onValueChange = onTitleValueChange
                 )
                 if (description) {
-                    OutlineTextArea(
-                        modifier = Modifier
-                            .padding(horizontal = PersianTheme.spacing.size16)
-                            .padding(top = PersianTheme.spacing.size12),
-                        value = descriptionValue,
+                    Form(
+                        modifier = Modifier.padding(top = PersianTheme.spacing.size12),
+                        subhead = { Subhead(text = "Title") },
+                        content = { TextArea(state = messageState) },
                         isError = descriptionError,
-                        onValueChange = onDescriptionValueChange
                     )
                 }
                 Form(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(top = PersianTheme.spacing.size16),
+                        .padding(top = PersianTheme.spacing.size12),
                     subhead = {
                         Subhead(
-                            modifier = Modifier.fillMaxWidth(),
                             text = "Settings"
                         )
                     },
@@ -98,15 +97,15 @@ object Alert : Screen {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = PersianTheme.spacing.size16)
-                        .padding(top = PersianTheme.spacing.size8),
+                        .padding(top = PersianTheme.spacing.size12),
                     text = "Show alert",
                     sizes = ButtonDefaults.largeSizes()
                 ) {
-                    if (titleValue.isEmpty()) {
+                    if (titleState.text.isEmpty()) {
                         showAlert = false
                         titleError = true
                         descriptionError = false
-                    } else if (description && descriptionValue.isEmpty()) {
+                    } else if (description && messageState.text.isEmpty()) {
                         showAlert = false
                         titleError = false
                         descriptionError = false
@@ -120,14 +119,14 @@ object Alert : Screen {
         }
         if (showAlert) {
             Alert(
-                title = titleValue,
+                title = titleState.text.toString(),
                 confirmAction = {
                     Action(title = "OK", onClick = { showAlert = false })
                 },
                 dismissAction = {
                     Action(title = "Cancel", onClick = { showAlert = false })
                 },
-                message = if (description) descriptionValue else null,
+                message = if (description) messageState.text.toString() else null,
                 onDismiss = { showAlert = false },
                 content = if (content) {
                     {
