@@ -4,15 +4,16 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.selection.selectableGroup
-import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.text.input.InputTransformation
+import androidx.compose.foundation.text.input.KeyboardActionHandler
+import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.input.VisualTransformation
 import io.github.madmaximuus.persian.checkboxes.Checkbox
 import io.github.madmaximuus.persian.checkboxes.CheckboxColors
 import io.github.madmaximuus.persian.checkboxes.CheckboxDefaults
@@ -23,6 +24,7 @@ import io.github.madmaximuus.persian.input.InputColors
 import io.github.madmaximuus.persian.input.InputSizes
 import io.github.madmaximuus.persian.input.InputsDefaults
 import io.github.madmaximuus.persian.input.OutlineInput
+import io.github.madmaximuus.persian.input.SecureInputSettings
 import io.github.madmaximuus.persian.menu.DropdownMenuItemScope
 import io.github.madmaximuus.persian.menu.MenuColors
 import io.github.madmaximuus.persian.menu.MenuDefaults
@@ -54,7 +56,7 @@ interface FormContentScope {
 /**
  * Internal wrapper class for [FormContentScope].
  *
- * This class implements [FormContentScope] and delegates [ColumnScope] functionality to the provided [scope].
+ * This class implements [FormContentScope].
  * It encapsulates the properties required for form content, such as enabled state, error status, and validity.
  *
  * @param enabled Indicates whether the form content is enabled.
@@ -70,8 +72,7 @@ internal class FormContentScopeWrapper(
 /**
  * Display an [OutlineInput] within a form.
  *
- * @param value The current value of the input field.
- * @param onValueChange The callback to be invoked when the value of the input field changes.
+ * @param state
  * @param modifier The modifier to be applied to the input field.
  * @param readOnly Indicates whether the input field is read-only.
  * @param placeholder The placeholder text to be displayed when the input field is empty.
@@ -81,28 +82,27 @@ internal class FormContentScopeWrapper(
  * @param leadingIcon The leading icon to be displayed in the input field.
  * @param trailingIcon The trailing icon to be displayed in the input field.
  * @param keyboardOptions The keyboard options to be used for the input field.
- * @param keyboardActions The keyboard actions to be used for the input field.
+ * @param keyboardActionHandler The keyboard actions to be used for the input field.
  * @param onTrailingIconClick The callback to be invoked when the trailing icon is clicked.
  */
 @Composable
 fun FormContentScope.Input(
-    value: String,
-    onValueChange: (String) -> Unit,
+    state: TextFieldState,
     modifier: Modifier = Modifier,
     readOnly: Boolean = false,
     placeholder: String? = null,
-    transformation: VisualTransformation = VisualTransformation.None,
+    transformation: InputTransformation? = null,
+    secure: SecureInputSettings = SecureInputSettings.NotSecure,
     colors: InputColors = InputsDefaults.outlineColors(),
     sizes: InputSizes = InputsDefaults.sizes(),
     leadingIcon: Painter? = null,
     trailingIcon: Painter? = null,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
-    keyboardActions: KeyboardActions = KeyboardActions.Default,
+    keyboardActionHandler: KeyboardActionHandler? = null,
     onTrailingIconClick: (() -> Unit)? = null
 ) {
     OutlineInput(
-        value = value,
-        onValueChange = onValueChange,
+        state = state,
         modifier = modifier.layoutId(LayoutId.INPUT),
         enabled = this@Input.enabled,
         isError = this@Input.isError,
@@ -110,12 +110,13 @@ fun FormContentScope.Input(
         readOnly = readOnly,
         placeholder = placeholder,
         transformation = transformation,
+        secure = secure,
         colors = colors,
         sizes = sizes,
         leadingIcon = leadingIcon,
         trailingIcon = trailingIcon,
         keyboardOptions = keyboardOptions,
-        keyboardActions = keyboardActions,
+        keyboardActionHandler = keyboardActionHandler,
         onTrailingIconClick = onTrailingIconClick
     )
 }
@@ -123,29 +124,26 @@ fun FormContentScope.Input(
 /**
  * Display a [TextArea] within a form.
  *
- * @param value The current value of the text area.
- * @param onValueChange The callback to be invoked when the value of the text area changes.
+ * @param state
  * @param modifier The modifier to be applied to the text area.
  * @param textStyle The text style to be applied to the text area.
  * @param placeholder The placeholder text to be displayed when the text area is empty.
  * @param colors The colors to be used for the text area.
  * @param keyboardOptions The keyboard options to be used for the text area.
- * @param keyboardActions The keyboard actions to be used for the text area.
+ * @param keyboardActionHandler The keyboard actions to be used for the text area.
  */
 @Composable
 fun FormContentScope.TextArea(
-    value: String,
-    onValueChange: (String) -> Unit,
+    state: TextFieldState,
     modifier: Modifier = Modifier,
     textStyle: TextStyle = PersianTheme.typography.bodyLarge,
     placeholder: String? = null,
     colors: TextAreaColors = TextAreaDefaults.outlineColors(),
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
-    keyboardActions: KeyboardActions = KeyboardActions.Default
+    keyboardActionHandler: KeyboardActionHandler? = null
 ) {
     OutlineTextArea(
-        value = value,
-        onValueChange = onValueChange,
+        state = state,
         modifier = modifier.layoutId(LayoutId.TEXT_AREA),
         enabled = this@TextArea.enabled,
         isError = this@TextArea.isError,
@@ -154,14 +152,14 @@ fun FormContentScope.TextArea(
         placeholder = placeholder,
         colors = colors,
         keyboardOptions = keyboardOptions,
-        keyboardActions = keyboardActions
+        keyboardActionHandler = keyboardActionHandler
     )
 }
 
 /**
  * Display a [Select] within a form.
  *
- * @param selected The currently selected value in the dropdown.
+ * @param state The currently selected value in the dropdown.
  * @param modifier The modifier to be applied to the select dropdown.
  * @param expanded Indicates whether the dropdown is expanded.
  * @param onExpandedChange The callback to be invoked when the expanded state of the dropdown changes.
@@ -173,7 +171,7 @@ fun FormContentScope.TextArea(
  */
 @Composable
 fun FormContentScope.Select(
-    selected: String,
+    state: TextFieldState,
     modifier: Modifier = Modifier,
     expanded: Boolean,
     onExpandedChange: (Boolean) -> Unit,
@@ -184,7 +182,7 @@ fun FormContentScope.Select(
     menuItems: @Composable (DropdownMenuItemScope.() -> Unit)
 ) {
     Select(
-        selected = selected,
+        state = state,
         modifier = modifier.layoutId(LayoutId.SELECT),
         expanded = expanded,
         onExpandedChange = onExpandedChange,
