@@ -14,8 +14,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.BasicTextField
-import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.text.input.KeyboardActionHandler
+import androidx.compose.foundation.text.input.TextFieldLineLimits
+import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.foundation.text.selection.LocalTextSelectionColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -48,13 +50,12 @@ import io.github.madmaximuus.persian.text.Text
  * @param placeholder The placeholder text to be displayed when the text area is empty.
  * @param colors The colors to be applied to the text area.
  * @param keyboardOptions The keyboard options for the text area.
- * @param keyboardActions The keyboard actions for the text area.
+ * @param keyboardActionHandler The keyboard actions for the text area.
  * @param interactionSource The interaction source for the text area.
  */
 @Composable
 fun OutlineTextArea(
-    value: String,
-    onValueChange: (String) -> Unit,
+    state: TextFieldState,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     isError: Boolean = false,
@@ -64,15 +65,14 @@ fun OutlineTextArea(
     placeholder: String? = null,
     colors: TextAreaColors = TextAreaDefaults.outlineColors(),
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
-    keyboardActions: KeyboardActions = KeyboardActions.Default,
+    keyboardActionHandler: KeyboardActionHandler? = null,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
 ) {
     val textColor = colors.textColor(enabled, isValid, isError, interactionSource).value
     val mergedTextStyle = textStyle.merge(
         TextStyle(
             color = textColor,
-            textAlign = TextAlign.Justify,
-            //baselineShift = BaselineShift.Superscript
+            textAlign = TextAlign.Justify
         )
     )
 
@@ -87,14 +87,17 @@ fun OutlineTextArea(
     ).value
     CompositionLocalProvider(LocalTextSelectionColors provides colors.selectionColors) {
         BasicTextField(
-            value = value,
-            onValueChange = onValueChange,
+            state = state,
             modifier = modifier,
             enabled = enabled,
             readOnly = readOnly,
             textStyle = mergedTextStyle,
             keyboardOptions = keyboardOptions,
-            keyboardActions = keyboardActions,
+            onKeyboardAction = keyboardActionHandler,
+            lineLimits = TextFieldLineLimits.MultiLine(
+                minHeightInLines = 2,
+                maxHeightInLines = 6
+            ),
             interactionSource = interactionSource,
             cursorBrush = SolidColor(
                 colors.cursorColor(
@@ -102,7 +105,7 @@ fun OutlineTextArea(
                     isValid = isValid
                 ).value
             ),
-            decorationBox = { innerTextField ->
+            decorator = { innerTextField ->
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -120,13 +123,13 @@ fun OutlineTextArea(
                             shape = PersianTheme.shapes.shape16
                         )
                         .padding(PersianTheme.spacing.size12)
-                        .heightIn(min = 44.dp, max = 144.dp),
+                        .heightIn(min = 48.dp, max = 144.dp),
                     verticalAlignment = Alignment.Top
                 ) {
                     Box(
                         modifier = Modifier.fillMaxWidth()
                     ) {
-                        if (value.isEmpty() && placeholder != null) {
+                        if (state.text.isEmpty() && placeholder != null) {
                             Text(
                                 text = placeholder,
                                 color = colors.placeholderColor(
@@ -161,13 +164,12 @@ fun OutlineTextArea(
  * @param placeholder The placeholder text to be displayed when the text area is empty.
  * @param colors The colors to be applied to the text area.
  * @param keyboardOptions The keyboard options for the text area.
- * @param keyboardActions The keyboard actions for the text area.
+ * @param keyboardActionHandler The keyboard actions for the text area.
  * @param interactionSource The interaction source for the text area.
  */
 @Composable
 fun PlainTextArea(
-    value: String,
-    onValueChange: (String) -> Unit,
+    state: TextFieldState,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     isError: Boolean = false,
@@ -177,7 +179,7 @@ fun PlainTextArea(
     placeholder: String? = null,
     colors: TextAreaColors = TextAreaDefaults.plainColors(),
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
-    keyboardActions: KeyboardActions = KeyboardActions.Default,
+    keyboardActionHandler: KeyboardActionHandler? = null,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
 ) {
     val textColor = colors.textColor(enabled, isValid, isError, interactionSource).value
@@ -200,22 +202,25 @@ fun PlainTextArea(
     ).value
     CompositionLocalProvider(LocalTextSelectionColors provides colors.selectionColors) {
         BasicTextField(
-            value = value,
-            onValueChange = onValueChange,
+            state = state,
             modifier = modifier,
             enabled = enabled,
             readOnly = readOnly,
             textStyle = mergedTextStyle,
             keyboardOptions = keyboardOptions,
-            keyboardActions = keyboardActions,
+            onKeyboardAction = keyboardActionHandler,
             interactionSource = interactionSource,
+            lineLimits = TextFieldLineLimits.MultiLine(
+                minHeightInLines = 2,
+                maxHeightInLines = 6
+            ),
             cursorBrush = SolidColor(
                 colors.cursorColor(
                     isError = isError,
                     isValid = isValid
                 ).value
             ),
-            decorationBox = { innerTextField ->
+            decorator = { innerTextField ->
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -233,7 +238,7 @@ fun PlainTextArea(
                             shape = PersianTheme.shapes.shape16
                         )
                         .padding(PersianTheme.spacing.size12)
-                        .heightIn(min = 44.dp, max = 144.dp),
+                        .heightIn(min = 48.dp, max = 144.dp),
                     verticalAlignment = Alignment.Top
                 ) {
                     Box(
@@ -242,7 +247,7 @@ fun PlainTextArea(
                             .padding(horizontal = PersianTheme.spacing.size4)
                             .weight(1f)
                     ) {
-                        if (value.isEmpty() && placeholder != null) {
+                        if (state.text.isEmpty() && placeholder != null) {
                             Text(
                                 text = placeholder,
                                 color = colors.placeholderColor(
