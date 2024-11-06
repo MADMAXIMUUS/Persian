@@ -443,8 +443,7 @@ object InputsDefaults {
 
         shape: Shape = PersianTheme.shapes.shape16,
         contentPaddingValues: PaddingValues = PaddingValues(
-            start = PersianTheme.spacing.size12,
-            end = PersianTheme.spacing.size4
+            horizontal = PersianTheme.spacing.size12
         ),
 
         leadingIconSizes: IconSizes = IconDefaults.size24(),
