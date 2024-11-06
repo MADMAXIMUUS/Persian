@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -60,12 +61,10 @@ object Chips : Screen {
             onBackClick = { navController?.navigateUp() }
         ) {
             var selected by remember { mutableStateOf(false) }
-            val (chipLabel, onChipLabelChange) = remember { mutableStateOf("Chip") }
+            val labelState = rememberTextFieldState("Chip")
             val (leading, onLeadingChange) = remember { mutableStateOf(true) }
             val (trailing, onTrailingChange) = remember { mutableStateOf(true) }
             val (enabled, onEnabledChane) = remember { mutableStateOf(true) }
-
-            var selectedStyle by remember { mutableStateOf("Filter") }
 
             val styleStates = remember {
                 listOf(
@@ -76,7 +75,6 @@ object Chips : Screen {
                 )
             }
 
-            var selectedLeading by remember { mutableStateOf("Icon") }
             val leadingStates = remember {
                 listOf(
                     mutableStateOf(true),
@@ -103,10 +101,10 @@ object Chips : Screen {
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8)
                     ) {
-                        when (selectedStyle) {
-                            "Filter" -> {
+                        when {
+                            styleStates[0].value -> {
                                 FilterChip(
-                                    label = chipLabel,
+                                    label = labelState.text.toString(),
                                     selected = selected,
                                     enabled = enabled,
                                     leading = if (leading) {
@@ -130,9 +128,9 @@ object Chips : Screen {
                                 )
                             }
 
-                            "Suggestion" -> {
+                            styleStates[1].value -> {
                                 SuggestionChip(
-                                    label = chipLabel,
+                                    label = labelState.text.toString(),
                                     enabled = enabled,
                                     leading = if (leading) {
                                         {
@@ -147,14 +145,14 @@ object Chips : Screen {
                                 )
                             }
 
-                            "Assist" -> {
+                            styleStates[2].value -> {
                                 AssistChip(
-                                    label = chipLabel,
+                                    label = labelState.text.toString(),
                                     enabled = enabled,
                                     leading = if (leading) {
                                         {
-                                            when (selectedLeading) {
-                                                "Icon" -> {
+                                            when {
+                                                leadingStates[0].value -> {
                                                     Icon(
                                                         painter = rememberVectorPainter(
                                                             PersianSymbols.Default.Globe
@@ -162,7 +160,7 @@ object Chips : Screen {
                                                     )
                                                 }
 
-                                                "Image" -> {
+                                                leadingStates[2].value -> {
                                                     Image(imageUrl = Uri.parse("https://loremflickr.com/320/240"))
                                                 }
                                             }
@@ -172,15 +170,15 @@ object Chips : Screen {
                                 )
                             }
 
-                            "Input" -> {
+                            styleStates[3].value -> {
                                 InputShip(
-                                    label = chipLabel,
+                                    label = labelState.text.toString(),
                                     selected = selected,
                                     enabled = enabled,
                                     leading = if (leading) {
                                         {
-                                            when (selectedLeading) {
-                                                "Icon" -> {
+                                            when {
+                                                leadingStates[0].value -> {
                                                     Icon(
                                                         icon = rememberVectorPainter(
                                                             PersianSymbols.Default.Globe
@@ -188,11 +186,11 @@ object Chips : Screen {
                                                     )
                                                 }
 
-                                                "Avatar" -> {
+                                                leadingStates[1].value -> {
                                                     Avatar(avatarUrl = Uri.parse("https://loremflickr.com/320/240"))
                                                 }
 
-                                                "Image" -> {
+                                                leadingStates[2].value -> {
                                                     Image(imageUrl = Uri.parse("https://loremflickr.com/320/240"))
                                                 }
                                             }
@@ -212,21 +210,12 @@ object Chips : Screen {
                     }
                 }
                 Form(
-                    subhead = {
-                        Subhead(text = "Label")
-                    },
-                    content = {
-                        Input(
-                            value = chipLabel,
-                            onValueChange = onChipLabelChange
-                        )
-                    }
+                    subhead = { Subhead(text = "Label") },
+                    content = { Input(state = labelState) }
                 )
                 Form(
                     modifier = Modifier.padding(top = PersianTheme.spacing.size12),
-                    subhead = {
-                        Subhead(text = "Style")
-                    },
+                    subhead = { Subhead(text = "Style") },
                     content = {
                         RadioButtons {
                             RadioButton(
@@ -236,7 +225,6 @@ object Chips : Screen {
                                     styleStates.forEachIndexed { index, mutableState ->
                                         mutableState.value = index == 0
                                     }
-                                    selectedStyle = "Filter"
                                 }
                             )
                             RadioButton(
@@ -246,7 +234,6 @@ object Chips : Screen {
                                     styleStates.forEachIndexed { index, mutableState ->
                                         mutableState.value = index == 1
                                     }
-                                    selectedStyle = "Suggestion"
                                 }
                             )
                             RadioButton(
@@ -256,12 +243,10 @@ object Chips : Screen {
                                     styleStates.forEachIndexed { index, mutableState ->
                                         mutableState.value = index == 2
                                     }
-                                    selectedStyle = "Assist"
-                                    if (selectedLeading == "Avatar") {
+                                    if (leadingStates[1].value) {
                                         leadingStates.forEachIndexed { index, mutableState ->
                                             mutableState.value = index == 0
                                         }
-                                        selectedLeading = "Icon"
                                     }
                                 }
                             )
@@ -272,7 +257,6 @@ object Chips : Screen {
                                     styleStates.forEachIndexed { index, mutableState ->
                                         mutableState.value = index == 3
                                     }
-                                    selectedStyle = "Input"
                                 }
                             )
                         }
@@ -291,7 +275,7 @@ object Chips : Screen {
                                 checked = leading,
                                 onCheckedChange = onLeadingChange
                             )
-                            if (selectedStyle == "Filter" || selectedStyle == "Input") {
+                            if (styleStates[0].value || styleStates[3].value) {
                                 Checkbox(
                                     modifier = Modifier.fillMaxWidth(),
                                     text = "Trailing",
@@ -308,7 +292,7 @@ object Chips : Screen {
                         }
                     }
                 )
-                if (leading && selectedStyle != "Filter" && selectedStyle != "Suggestion") {
+                if (leading && !styleStates[0].value && !styleStates[1].value) {
                     Form(
                         modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                         subhead = {
@@ -323,10 +307,9 @@ object Chips : Screen {
                                         leadingStates.forEachIndexed { index, mutableState ->
                                             mutableState.value = index == 0
                                         }
-                                        selectedLeading = "Icon"
                                     }
                                 )
-                                if (selectedStyle == "Input") {
+                                if (styleStates[3].value) {
                                     RadioButton(
                                         text = "Avatar",
                                         selected = leadingStates[1].value,
@@ -334,11 +317,10 @@ object Chips : Screen {
                                             leadingStates.forEachIndexed { index, mutableState ->
                                                 mutableState.value = index == 1
                                             }
-                                            selectedLeading = "Avatar"
                                         }
                                     )
                                 }
-                                if (selectedStyle == "Input" || selectedStyle == "Assist") {
+                                if (styleStates[3].value || styleStates[2].value) {
                                     RadioButton(
                                         text = "Image",
                                         selected = leadingStates[2].value,
@@ -346,7 +328,6 @@ object Chips : Screen {
                                             leadingStates.forEachIndexed { index, mutableState ->
                                                 mutableState.value = index == 2
                                             }
-                                            selectedLeading = "Image"
                                         }
                                     )
                                 }
