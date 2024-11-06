@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -51,11 +52,11 @@ object Button : Screen {
             onBackClick = { navController?.navigateUp() },
             topAppBarScrollBehavior = topAppBarScrollBehavior,
         ) {
-            val (text, onTextChange) = remember { mutableStateOf("Button") }
+            val labelState = rememberTextFieldState("Button")
             val (leading, onLeadingChange) = remember { mutableStateOf(false) }
             val (trailing, onTrailingChange) = remember { mutableStateOf(false) }
             val (additionInfo, onAdditionalInfoChange) = remember { mutableStateOf(false) }
-            val (additionInfoValue, onAdditionalInfoValueChange) = remember { mutableStateOf("Addition info") }
+            val additionalInfoState = rememberTextFieldState("Addition info")
             val size = ButtonDefaults.largeSizes()
             var sizeState by remember { mutableStateOf(size) }
             val (enabled, onEnabledChange) = remember { mutableStateOf(true) }
@@ -95,11 +96,11 @@ object Button : Screen {
                     when (selectedButtonStyle) {
                         "Primary" -> {
                             PrimaryButton(
-                                text = text,
+                                text = labelState.text.toString(),
                                 sizes = sizeState,
                                 enabled = enabled,
                                 loading = loading,
-                                additionInfoText = if (additionInfo) additionInfoValue else null,
+                                additionInfoText = if (additionInfo) additionalInfoState.text.toString() else null,
                                 leadingIcon = if (leading)
                                     rememberVectorPainter(image = PersianSymbols.Default.Plus)
                                 else null,
@@ -112,11 +113,11 @@ object Button : Screen {
 
                         "Secondary" -> {
                             SecondaryButton(
-                                text = text,
+                                text = labelState.text.toString(),
                                 sizes = sizeState,
                                 enabled = enabled,
                                 loading = loading,
-                                additionInfoText = if (additionInfo) additionInfoValue else null,
+                                additionInfoText = if (additionInfo) additionalInfoState.text.toString() else null,
                                 leadingIcon = if (leading)
                                     rememberVectorPainter(image = PersianSymbols.Default.Plus)
                                 else null,
@@ -129,11 +130,11 @@ object Button : Screen {
 
                         "Tertiary" -> {
                             TertiaryButton(
-                                text = text,
+                                text = labelState.text.toString(),
                                 sizes = sizeState,
                                 enabled = enabled,
                                 loading = loading,
-                                additionInfoText = if (additionInfo) additionInfoValue else null,
+                                additionInfoText = if (additionInfo) additionalInfoState.text.toString() else null,
                                 leadingIcon = if (leading)
                                     rememberVectorPainter(image = PersianSymbols.Default.Plus)
                                 else null,
@@ -146,11 +147,11 @@ object Button : Screen {
 
                         "Outlined" -> {
                             OutlinedButton(
-                                text = text,
+                                text = labelState.text.toString(),
                                 sizes = sizeState,
                                 enabled = enabled,
                                 loading = loading,
-                                additionInfoText = if (additionInfo) additionInfoValue else null,
+                                additionInfoText = if (additionInfo) additionalInfoState.text.toString() else null,
                                 leadingIcon = if (leading)
                                     rememberVectorPainter(image = PersianSymbols.Default.Plus)
                                 else null,
@@ -163,38 +164,21 @@ object Button : Screen {
                     }
                 }
                 Form(
-                    subhead = {
-                        Subhead(text = "Label")
-                    },
-                    content = {
-                        Input(
-                            value = text,
-                            onValueChange = onTextChange
-                        )
-                    }
+                    subhead = { Subhead(text = "Label") },
+                    content = { Input(state = labelState) }
                 )
                 if (additionInfo) {
                     Form(
-                        modifier = Modifier
-                            .padding(top = PersianTheme.spacing.size12),
-                        subhead = {
-                            Subhead(text = "Additional info")
-                        },
-                        content = {
-                            Input(
-                                value = additionInfoValue,
-                                onValueChange = onAdditionalInfoValueChange
-                            )
-                        }
+                        modifier = Modifier.padding(top = PersianTheme.spacing.size12),
+                        subhead = { Subhead(text = "Additional info") },
+                        content = { Input(state = additionalInfoState) }
                     )
                 }
                 Form(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(top = PersianTheme.spacing.size12),
-                    subhead = {
-                        Subhead(text = "Style")
-                    },
+                    subhead = { Subhead(text = "Style") },
                     content = {
                         RadioButtons {
                             RadioButton(
@@ -244,12 +228,7 @@ object Button : Screen {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(top = PersianTheme.spacing.size12),
-                    subhead = {
-                        Subhead(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Size"
-                        )
-                    },
+                    subhead = { Subhead(text = "Size") },
                     content = {
                         RadioButtons {
                             RadioButton(
@@ -292,7 +271,7 @@ object Button : Screen {
                     subhead = {
                         Subhead(
                             modifier = Modifier.fillMaxWidth(),
-                            text = "Additional settings"
+                            text = "Settings"
                         )
                     },
                     content = {
@@ -327,69 +306,6 @@ object Button : Screen {
                         }
                     }
                 )
-                /*Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(
-                            top = PersianTheme.spacing.size8,
-                            bottom = PersianTheme.spacing.size8,
-                            start = PersianTheme.spacing.size12,
-                            end = PersianTheme.spacing.size12
-                        ),
-                ) {
-                    Text(
-                        text = "Additional settings",
-                        style = PersianTheme.typography.titleMedium,
-                        color = PersianTheme.colorScheme.onSurface
-                    )
-                    Spacer(modifier = Modifier.height(PersianTheme.spacing.size4))
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                    ) {
-                        Checkbox(
-                            text = "Addition info",
-                            checked = additionInfo, onAdditionalInfoChange
-                        ),
-                        onCheckedChange = { isChecked ->
-                            additionInfo, onAdditionaInfoLabelChange) = isChecked
-                        }
-                        )
-
-                        Checkbox(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Show Leading icon",
-                            checked = showLeadingIcon,
-                            onCheckedChange = {
-                                showLeadingIcon = !showLeadingIcon
-                            }
-                        )
-                        Checkbox(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Show Trailing icon",
-                            checked = showTrailingIcon,
-                            onCheckedChange = {
-                                showTrailingIcon = !showTrailingIcon
-                            }
-                        )
-                        Checkbox(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Enabled",
-                            checked = enabled,
-                            onCheckedChange = {
-                                enabled = !enabled
-                            }
-                        )
-                        Checkbox(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Loading",
-                            checked = loading,
-                            onCheckedChange = {
-                                loading = !loading
-                            }
-                        )
-                    }
-                }*/
             }
         }
     }
