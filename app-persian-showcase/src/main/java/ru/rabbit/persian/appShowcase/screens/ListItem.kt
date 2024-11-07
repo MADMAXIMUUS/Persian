@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -19,7 +20,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.forms.Checkbox
 import io.github.madmaximuus.persian.forms.Checkboxes
-import io.github.madmaximuus.persian.forms.Form
+import io.github.madmaximuus.persian.forms.FormItem
 import io.github.madmaximuus.persian.forms.Input
 import io.github.madmaximuus.persian.forms.RadioButton
 import io.github.madmaximuus.persian.forms.RadioButtons
@@ -65,9 +66,10 @@ object ListItem : Screen {
             onBackClick = { navController?.navigateUp() },
             topAppBarScrollBehavior = topAppBarScrollBehavior,
         ) {
-            val (titleValue, onTitleValueChange) = remember { mutableStateOf("Title") }
-            val (bodyValue, onBodyValueChange) = remember { mutableStateOf("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed laoreet imperdiet consectetur. Nam vitae massa a metus dignissim malesuada. Duis.") }
-            val (subheadValue, onSubheadValueChange) = remember { mutableStateOf("Subhead") }
+            val titleState = rememberTextFieldState("Title")
+            val bodyState =
+                rememberTextFieldState("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed laoreet imperdiet consectetur. Nam vitae massa a metus dignissim malesuada. Duis.")
+            val subheadState = rememberTextFieldState("Subhead")
             val (body, onBodyChange) = remember { mutableStateOf(false) }
             val (subhead, onSubheadChange) = remember { mutableStateOf(false) }
             val (newLabel, onNewLabelChange) = remember { mutableStateOf(false) }
@@ -173,9 +175,9 @@ object ListItem : Screen {
                         } else null,
                         middle = {
                             Middle(
-                                title = titleValue,
-                                subhead = if (subhead) subheadValue else null,
-                                body = if (body) bodyValue else null,
+                                title = titleState.text.toString(),
+                                subhead = if (subhead) subheadState.text.toString() else null,
+                                body = if (body) bodyState.text.toString() else null,
                                 multiline = false,
                                 newLabel = newLabel
                             )
@@ -231,59 +233,28 @@ object ListItem : Screen {
                         .navigationBarsPadding(),
                 ) {
                     if (subhead) {
-                        Form(
+                        FormItem(
                             modifier = Modifier.padding(top = PersianTheme.spacing.size12),
-                            subhead = {
-                                Subhead(
-                                    text = "Subhead"
-                                )
-                            },
-                            content = {
-                                Input(
-                                    value = subheadValue,
-                                    onValueChange = onSubheadValueChange
-                                )
-                            }
+                            subhead = { Subhead(text = "Subhead") },
+                            content = { Input(state = subheadState) }
                         )
                     }
-                    Form(
+                    FormItem(
                         modifier = Modifier.padding(top = PersianTheme.spacing.size12),
-                        subhead = {
-                            Subhead(
-                                text = "Title"
-                            )
-                        },
-                        content = {
-                            Input(
-                                value = titleValue,
-                                onValueChange = onTitleValueChange
-                            )
-                        }
+                        subhead = { Subhead(text = "Title") },
+                        content = { Input(state = titleState) }
                     )
                     if (body) {
-                        Form(
+                        FormItem(
                             modifier = Modifier.padding(top = PersianTheme.spacing.size12),
-                            subhead = {
-                                Subhead(
-                                    text = "Body"
-                                )
-                            },
-                            content = {
-                                TextArea(
-                                    value = bodyValue,
-                                    onValueChange = onBodyValueChange
-                                )
-                            }
+                            subhead = { Subhead(text = "Body") },
+                            content = { TextArea(state = bodyState) }
                         )
                     }
                     if (edit) {
-                        Form(
+                        FormItem(
                             modifier = Modifier.padding(top = PersianTheme.spacing.size12),
-                            subhead = {
-                                Subhead(
-                                    text = "Edit"
-                                )
-                            },
+                            subhead = { Subhead(text = "Edit") },
                             content = {
                                 RadioButtons {
                                     RadioButton(
@@ -336,13 +307,9 @@ object ListItem : Screen {
                         )
                     }
                     if (left) {
-                        Form(
+                        FormItem(
                             modifier = Modifier.padding(top = PersianTheme.spacing.size12),
-                            subhead = {
-                                Subhead(
-                                    text = "Left"
-                                )
-                            },
+                            subhead = { Subhead(text = "Left") },
                             content = {
                                 RadioButtons {
                                     RadioButton(
@@ -377,13 +344,9 @@ object ListItem : Screen {
                         )
                     }
                     if (right) {
-                        Form(
+                        FormItem(
                             modifier = Modifier.padding(top = PersianTheme.spacing.size12),
-                            subhead = {
-                                Subhead(
-                                    text = "Right"
-                                )
-                            },
+                            subhead = { Subhead(text = "Right") },
                             content = {
                                 RadioButtons {
                                     RadioButton(
@@ -462,13 +425,9 @@ object ListItem : Screen {
                             }
                         )
                     }
-                    Form(
+                    FormItem(
                         modifier = Modifier.padding(top = PersianTheme.spacing.size12),
-                        subhead = {
-                            Subhead(
-                                text = "Settings"
-                            )
-                        },
+                        subhead = { Subhead(text = "Settings") },
                         content = {
                             Checkboxes {
                                 Checkbox(
