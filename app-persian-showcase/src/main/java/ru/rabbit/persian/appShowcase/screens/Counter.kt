@@ -19,7 +19,7 @@ import io.github.madmaximuus.persian.counter.Badge
 import io.github.madmaximuus.persian.counter.Counter
 import io.github.madmaximuus.persian.counter.CounterDefaults
 import io.github.madmaximuus.persian.counter.utils.BadgeStyle
-import io.github.madmaximuus.persian.forms.Form
+import io.github.madmaximuus.persian.forms.FormItem
 import io.github.madmaximuus.persian.forms.Input
 import io.github.madmaximuus.persian.forms.RadioButton
 import io.github.madmaximuus.persian.forms.RadioButtons
@@ -127,7 +127,7 @@ object Counter : Screen {
                         }
                     }
                 }
-                Form(
+                FormItem(
                     modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                     subhead = {
                         Subhead(text = "Count")
@@ -142,7 +142,7 @@ object Counter : Screen {
                         )
                     }
                 )
-                Form(
+                FormItem(
                     modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                     subhead = {
                         Subhead(text = "Type")
@@ -171,7 +171,7 @@ object Counter : Screen {
                     }
                 )
                 if (typeStates[1].value) {
-                    Form(
+                    FormItem(
                         modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                         subhead = {
                             Subhead(text = "Badge style")
@@ -200,7 +200,7 @@ object Counter : Screen {
                         }
                     )
                 }
-                Form(
+                FormItem(
                     modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                     subhead = {
                         Subhead(text = "Style")

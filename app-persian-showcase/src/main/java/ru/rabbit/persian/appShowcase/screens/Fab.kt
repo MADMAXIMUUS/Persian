@@ -16,7 +16,7 @@ import io.github.madmaximuus.persian.fab.FabDefaults
 import io.github.madmaximuus.persian.fab.SmallFab
 import io.github.madmaximuus.persian.forms.Checkbox
 import io.github.madmaximuus.persian.forms.Checkboxes
-import io.github.madmaximuus.persian.forms.Form
+import io.github.madmaximuus.persian.forms.FormItem
 import io.github.madmaximuus.persian.forms.Input
 import io.github.madmaximuus.persian.forms.RadioButton
 import io.github.madmaximuus.persian.forms.RadioButtons
@@ -100,12 +100,12 @@ object Fab : Screen {
                     }
                 }
                 if (sizeStates[0].value) {
-                    Form(
+                    FormItem(
                         subhead = { Subhead(text = "Label") },
                         content = { Input(state = labelState) }
                     )
                 }
-                Form(
+                FormItem(
                     modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                     subhead = { Subhead(text = "Size") },
                     content = {
@@ -131,7 +131,7 @@ object Fab : Screen {
                         }
                     }
                 )
-                Form(
+                FormItem(
                     modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                     subhead = { Subhead(text = "Size") },
                     content = {
@@ -176,7 +176,7 @@ object Fab : Screen {
                     }
                 )
                 if (sizeStates[0].value) {
-                    Form(
+                    FormItem(
                         modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                         subhead = { Subhead(text = "Settings") },
                         content = {

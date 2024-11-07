@@ -22,7 +22,7 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
  * @param caption The composable content to be displayed as the caption of the form.
  */
 @Composable
-fun Form(
+fun FormItem(
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     isError: Boolean = false,

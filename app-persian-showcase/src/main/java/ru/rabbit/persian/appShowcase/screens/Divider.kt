@@ -25,7 +25,7 @@ import io.github.madmaximuus.persian.dividers.HorizontalDivider
 import io.github.madmaximuus.persian.dividers.HorizontalInsetSide
 import io.github.madmaximuus.persian.dividers.VerticalDivider
 import io.github.madmaximuus.persian.dividers.VerticalInsetSide
-import io.github.madmaximuus.persian.forms.Form
+import io.github.madmaximuus.persian.forms.FormItem
 import io.github.madmaximuus.persian.forms.RadioButton
 import io.github.madmaximuus.persian.forms.RadioButtons
 import io.github.madmaximuus.persian.forms.Subhead
@@ -167,7 +167,7 @@ object Divider : Screen {
                 }
                 when {
                     orientationState[0].value -> {
-                        Form(
+                        FormItem(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(top = PersianTheme.spacing.size12),
@@ -220,7 +220,7 @@ object Divider : Screen {
                     }
 
                     orientationState[1].value -> {
-                        Form(
+                        FormItem(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(top = PersianTheme.spacing.size12),
@@ -272,7 +272,7 @@ object Divider : Screen {
                         )
                     }
                 }
-                Form(
+                FormItem(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(top = PersianTheme.spacing.size12),

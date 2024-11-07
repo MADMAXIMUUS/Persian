@@ -24,7 +24,7 @@ import io.github.madmaximuus.persian.button.SecondaryButton
 import io.github.madmaximuus.persian.button.TertiaryButton
 import io.github.madmaximuus.persian.forms.Checkbox
 import io.github.madmaximuus.persian.forms.Checkboxes
-import io.github.madmaximuus.persian.forms.Form
+import io.github.madmaximuus.persian.forms.FormItem
 import io.github.madmaximuus.persian.forms.Input
 import io.github.madmaximuus.persian.forms.RadioButton
 import io.github.madmaximuus.persian.forms.RadioButtons
@@ -163,18 +163,18 @@ object Button : Screen {
                         }
                     }
                 }
-                Form(
+                FormItem(
                     subhead = { Subhead(text = "Label") },
                     content = { Input(state = labelState) }
                 )
                 if (additionInfo) {
-                    Form(
+                    FormItem(
                         modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                         subhead = { Subhead(text = "Additional info") },
                         content = { Input(state = additionalInfoState) }
                     )
                 }
-                Form(
+                FormItem(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(top = PersianTheme.spacing.size12),
@@ -224,7 +224,7 @@ object Button : Screen {
                         }
                     }
                 )
-                Form(
+                FormItem(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(top = PersianTheme.spacing.size12),
@@ -264,7 +264,7 @@ object Button : Screen {
                         }
                     }
                 )
-                Form(
+                FormItem(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(top = PersianTheme.spacing.size20),

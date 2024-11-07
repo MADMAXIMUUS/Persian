@@ -33,7 +33,7 @@ import io.github.madmaximuus.persian.chips.input.InputShip
 import io.github.madmaximuus.persian.chips.suggestion.Icon
 import io.github.madmaximuus.persian.chips.suggestion.SuggestionChip
 import io.github.madmaximuus.persian.forms.Checkboxes
-import io.github.madmaximuus.persian.forms.Form
+import io.github.madmaximuus.persian.forms.FormItem
 import io.github.madmaximuus.persian.forms.Input
 import io.github.madmaximuus.persian.forms.RadioButton
 import io.github.madmaximuus.persian.forms.RadioButtons
@@ -209,11 +209,11 @@ object Chips : Screen {
                         }
                     }
                 }
-                Form(
+                FormItem(
                     subhead = { Subhead(text = "Label") },
                     content = { Input(state = labelState) }
                 )
-                Form(
+                FormItem(
                     modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                     subhead = { Subhead(text = "Style") },
                     content = {
@@ -262,7 +262,7 @@ object Chips : Screen {
                         }
                     }
                 )
-                Form(
+                FormItem(
                     modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                     subhead = {
                         Subhead(text = "Settings")
@@ -293,7 +293,7 @@ object Chips : Screen {
                     }
                 )
                 if (leading && !styleStates[0].value && !styleStates[1].value) {
-                    Form(
+                    FormItem(
                         modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                         subhead = {
                             Subhead(text = "Leading")

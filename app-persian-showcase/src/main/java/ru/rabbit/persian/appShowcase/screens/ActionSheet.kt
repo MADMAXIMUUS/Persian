@@ -22,7 +22,7 @@ import io.github.madmaximuus.persian.button.ButtonDefaults
 import io.github.madmaximuus.persian.button.PrimaryButton
 import io.github.madmaximuus.persian.forms.Checkbox
 import io.github.madmaximuus.persian.forms.Checkboxes
-import io.github.madmaximuus.persian.forms.Form
+import io.github.madmaximuus.persian.forms.FormItem
 import io.github.madmaximuus.persian.forms.Input
 import io.github.madmaximuus.persian.forms.Subhead
 import io.github.madmaximuus.persian.forms.TextArea
@@ -68,7 +68,7 @@ object ActionSheet : Screen {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 if (title) {
-                    Form(
+                    FormItem(
                         modifier = Modifier.padding(top = PersianTheme.spacing.size8),
                         subhead = {
                             Subhead(text = "Title")
@@ -80,7 +80,7 @@ object ActionSheet : Screen {
                     )
                 }
                 if (message) {
-                    Form(
+                    FormItem(
                         modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                         subhead = {
                             Subhead(text = "Message")
@@ -91,7 +91,7 @@ object ActionSheet : Screen {
                         isError = subtitleError,
                     )
                 }
-                Form(
+                FormItem(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(top = PersianTheme.spacing.size12),

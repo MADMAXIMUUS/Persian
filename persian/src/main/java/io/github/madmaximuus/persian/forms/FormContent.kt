@@ -24,7 +24,7 @@ import io.github.madmaximuus.persian.input.InputColors
 import io.github.madmaximuus.persian.input.InputSizes
 import io.github.madmaximuus.persian.input.InputsDefaults
 import io.github.madmaximuus.persian.input.OutlineInput
-import io.github.madmaximuus.persian.input.SecureInputSettings
+import io.github.madmaximuus.persian.internal.SecureInputSettings
 import io.github.madmaximuus.persian.menu.DropdownMenuItemScope
 import io.github.madmaximuus.persian.menu.MenuColors
 import io.github.madmaximuus.persian.menu.MenuDefaults
@@ -72,7 +72,7 @@ internal class FormContentScopeWrapper(
 /**
  * Display an [OutlineInput] within a form.
  *
- * @param state
+ * @param state The state of the text field.
  * @param modifier The modifier to be applied to the input field.
  * @param readOnly Indicates whether the input field is read-only.
  * @param placeholder The placeholder text to be displayed when the input field is empty.
@@ -124,7 +124,7 @@ fun FormContentScope.Input(
 /**
  * Display a [TextArea] within a form.
  *
- * @param state
+ * @param state The state of the text area.
  * @param modifier The modifier to be applied to the text area.
  * @param textStyle The text style to be applied to the text area.
  * @param placeholder The placeholder text to be displayed when the text area is empty.

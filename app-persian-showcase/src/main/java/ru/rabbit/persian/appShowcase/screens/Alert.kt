@@ -20,7 +20,7 @@ import io.github.madmaximuus.persian.button.ButtonDefaults
 import io.github.madmaximuus.persian.button.PrimaryButton
 import io.github.madmaximuus.persian.forms.Checkbox
 import io.github.madmaximuus.persian.forms.Checkboxes
-import io.github.madmaximuus.persian.forms.Form
+import io.github.madmaximuus.persian.forms.FormItem
 import io.github.madmaximuus.persian.forms.Input
 import io.github.madmaximuus.persian.forms.Subhead
 import io.github.madmaximuus.persian.forms.TextArea
@@ -51,7 +51,7 @@ object Alert : Screen {
                     .padding(it),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                Form(
+                FormItem(
                     modifier = Modifier.padding(top = PersianTheme.spacing.size8),
                     subhead = {
                         Subhead(text = "Title")
@@ -62,14 +62,14 @@ object Alert : Screen {
                     isError = titleError,
                 )
                 if (description) {
-                    Form(
+                    FormItem(
                         modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                         subhead = { Subhead(text = "Title") },
                         content = { TextArea(state = messageState) },
                         isError = descriptionError,
                     )
                 }
-                Form(
+                FormItem(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(top = PersianTheme.spacing.size12),

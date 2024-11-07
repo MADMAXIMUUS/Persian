@@ -1,21 +1,21 @@
 package ru.rabbit.persian.appShowcase.screens
 
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.imeNestedScroll
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.input.clearText
+import androidx.compose.foundation.text.input.rememberTextFieldState
+import androidx.compose.foundation.text.input.setTextAndPlaceCursorAtEnd
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -23,7 +23,7 @@ import androidx.navigation.NavController
 import io.github.madmaximuus.persian.forms.Caption
 import io.github.madmaximuus.persian.forms.Checkbox
 import io.github.madmaximuus.persian.forms.Checkboxes
-import io.github.madmaximuus.persian.forms.Form
+import io.github.madmaximuus.persian.forms.FormItem
 import io.github.madmaximuus.persian.forms.Input
 import io.github.madmaximuus.persian.forms.RadioButton
 import io.github.madmaximuus.persian.forms.RadioButtons
@@ -31,8 +31,9 @@ import io.github.madmaximuus.persian.forms.Select
 import io.github.madmaximuus.persian.forms.Subhead
 import io.github.madmaximuus.persian.forms.TextArea
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.input.InputsTransformations
+import io.github.madmaximuus.persian.internal.SecureInputSettings
 import io.github.madmaximuus.persian.menu.DropdownMenuItem
+import io.github.madmaximuus.persian.text.Text
 import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
@@ -40,9 +41,9 @@ import io.github.madmaximuus.persianSymbols.user.base.User
 import io.github.madmaximuus.persianSymbols.xmark.base.XMark
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
-object Forms : Screen {
+object FormItem : Screen {
 
-    override val name: String = "Forms"
+    override val name: String = "Form item"
 
     override val navigation: String = "form"
 
@@ -51,11 +52,11 @@ object Forms : Screen {
     override fun Content(navController: NavController?) {
         val topAppBarScrollBehavior =
             TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
-        val (value, onValueChange) = remember { mutableStateOf("") }
+        val inputState = rememberTextFieldState()
 
-        var selectedOption by remember { mutableStateOf("") }
+        val selectedOption = rememberTextFieldState()
 
-        val (placeholderValue, onPlaceholderValueChange) = remember { mutableStateOf("Placeholder") }
+        val placeholderState = rememberTextFieldState("Placeholder")
         val (enabled, onEnabledChange) = remember { mutableStateOf(true) }
         val (expanded, onExpandChange) = remember { mutableStateOf(false) }
         val (isError, onIsErrorChange) = remember { mutableStateOf(false) }
@@ -106,6 +107,7 @@ object Forms : Screen {
         ) {
             Column(
                 modifier = Modifier
+                    .animateContentSize()
                     .nestedScroll(topAppBarScrollBehavior.nestedScrollConnection)
                     .fillMaxSize()
                     .verticalScroll(rememberScrollState())
@@ -113,7 +115,17 @@ object Forms : Screen {
                     .navigationBarsPadding()
                     .imeNestedScroll(),
             ) {
-                Form(
+                Text(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = PersianTheme.spacing.size16)
+                        .padding(top = PersianTheme.spacing.size8),
+                    text = "Sample",
+                    style = PersianTheme.typography.labelLarge,
+                    color = PersianTheme.colorScheme.onSurfaceVariant
+                )
+                FormItem(
+                    modifier = Modifier.padding(top = PersianTheme.spacing.size2),
                     enabled = enabled,
                     isError = isError,
                     isValid = isValid,
@@ -121,50 +133,48 @@ object Forms : Screen {
                         when {
                             contentState[0].value -> {
                                 Input(
-                                    value = value,
-                                    onValueChange = onValueChange,
-                                    placeholder = if (placeholder) placeholderValue else null,
+                                    state = inputState,
+                                    placeholder = if (placeholder) placeholderState.text.toString() else null,
                                     leadingIcon = if (leading) rememberVectorPainter(image = PersianSymbols.Default.User) else null,
-                                    transformation = if (password) InputsTransformations.password else InputsTransformations.none,
+                                    secure = if (password) SecureInputSettings.Secure() else SecureInputSettings.NotSecure,
                                     trailingIcon = if (trailing) rememberVectorPainter(image = PersianSymbols.Default.XMark) else null,
-                                    onTrailingIconClick = {}
+                                    onTrailingIconClick = { inputState.clearText() }
                                 )
                             }
 
                             contentState[1].value -> {
                                 TextArea(
-                                    value = value,
-                                    onValueChange = onValueChange,
-                                    placeholder = if (placeholder) placeholderValue else null,
+                                    inputState,
+                                    placeholder = if (placeholder) placeholderState.text.toString() else null,
                                 )
                             }
 
                             contentState[2].value -> {
                                 Select(
-                                    selected = selectedOption,
+                                    state = selectedOption,
                                     expanded = expanded,
                                     onExpandedChange = onExpandChange,
-                                    placeholder = if (placeholder) placeholderValue else null,
+                                    placeholder = if (placeholder) placeholderState.text.toString() else null,
                                     leadingIcon = if (leading) rememberVectorPainter(image = PersianSymbols.Default.User) else null,
                                 ) {
                                     DropdownMenuItem(
                                         text = "Option 1",
                                         onClick = {
-                                            selectedOption = "Option 1"
+                                            selectedOption.setTextAndPlaceCursorAtEnd("Option 1")
                                             onExpandChange(false)
                                         }
                                     )
                                     DropdownMenuItem(
                                         text = "Option 2",
                                         onClick = {
-                                            selectedOption = "Option 2"
+                                            selectedOption.setTextAndPlaceCursorAtEnd("Option 2")
                                             onExpandChange(false)
                                         }
                                     )
                                     DropdownMenuItem(
                                         text = "Option 3",
                                         onClick = {
-                                            selectedOption = "Option 3"
+                                            selectedOption.setTextAndPlaceCursorAtEnd("Option 3")
                                             onExpandChange(false)
                                         }
                                     )
@@ -288,15 +298,9 @@ object Forms : Screen {
                         }
                     } else null
                 )
-                Spacer(modifier = Modifier.height(PersianTheme.spacing.size20))
-                Form(
-                    modifier = Modifier.fillMaxWidth(),
-                    subhead = {
-                        Subhead(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Content"
-                        )
-                    },
+                FormItem(
+                    modifier = Modifier.padding(top = PersianTheme.spacing.size12),
+                    subhead = { Subhead(text = "Content") },
                     content = {
                         RadioButtons {
                             RadioButton(
@@ -348,28 +352,14 @@ object Forms : Screen {
                     }
                 )
                 if (placeholder) {
-                    Form(
-                        subhead = {
-                            Subhead(text = "Placeholder")
-                        },
-                        content = {
-                            Input(
-                                value = placeholderValue,
-                                onValueChange = onPlaceholderValueChange
-                            )
-                        }
+                    FormItem(
+                        subhead = { Subhead(text = "Placeholder") },
+                        content = { Input(state = placeholderState) }
                     )
                 }
-                Form(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = PersianTheme.spacing.size12),
-                    subhead = {
-                        Subhead(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Settings"
-                        )
-                    },
+                FormItem(
+                    modifier = Modifier.padding(top = PersianTheme.spacing.size12),
+                    subhead = { Subhead(text = "Settings") },
                     content = {
                         Checkboxes {
                             Checkbox(
@@ -418,16 +408,9 @@ object Forms : Screen {
                         }
                     }
                 )
-                Form(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = PersianTheme.spacing.size12),
-                    subhead = {
-                        Subhead(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Subhead"
-                        )
-                    },
+                FormItem(
+                    modifier = Modifier.padding(top = PersianTheme.spacing.size12),
+                    subhead = { Subhead(text = "Subhead") },
                     content = {
                         Checkboxes {
                             Checkbox(
@@ -443,16 +426,9 @@ object Forms : Screen {
                         }
                     }
                 )
-                Form(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = PersianTheme.spacing.size12),
-                    subhead = {
-                        Subhead(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Caption"
-                        )
-                    },
+                FormItem(
+                    modifier = Modifier.padding(top = PersianTheme.spacing.size12),
+                    subhead = { Subhead(text = "Caption") },
                     content = {
                         Checkboxes {
                             Checkbox(

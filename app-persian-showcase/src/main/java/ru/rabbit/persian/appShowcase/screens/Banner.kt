@@ -28,7 +28,7 @@ import io.github.madmaximuus.persian.banner.Secondary
 import io.github.madmaximuus.persian.banner.Tertiary
 import io.github.madmaximuus.persian.forms.Checkbox
 import io.github.madmaximuus.persian.forms.Checkboxes
-import io.github.madmaximuus.persian.forms.Form
+import io.github.madmaximuus.persian.forms.FormItem
 import io.github.madmaximuus.persian.forms.Input
 import io.github.madmaximuus.persian.forms.RadioButton
 import io.github.madmaximuus.persian.forms.RadioButtons
@@ -185,20 +185,20 @@ object Banner : Screen {
                         .padding(top = PersianTheme.spacing.size12)
                 ) {
                     if (title) {
-                        Form(
+                        FormItem(
                             subhead = { Subhead(text = "Title") },
                             content = { Input(state = titleState) }
                         )
                     }
                     if (description) {
-                        Form(
+                        FormItem(
                             modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                             subhead = { Subhead(text = "Message") },
                             content = { TextArea(state = descriptionState) }
                         )
                     }
                     if (left) {
-                        Form(
+                        FormItem(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(top = PersianTheme.spacing.size12),
@@ -245,7 +245,7 @@ object Banner : Screen {
                         )
                     }
                     if (right) {
-                        Form(
+                        FormItem(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(top = PersianTheme.spacing.size12),
@@ -282,7 +282,7 @@ object Banner : Screen {
                         )
                     }
                     if (button) {
-                        Form(
+                        FormItem(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(top = PersianTheme.spacing.size12),
@@ -328,7 +328,7 @@ object Banner : Screen {
                             }
                         )
                     }
-                    Form(
+                    FormItem(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(top = PersianTheme.spacing.size12),

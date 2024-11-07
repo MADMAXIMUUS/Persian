@@ -10,7 +10,7 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state38
 
 /**
- * Contains all default values used by [Form].
+ * Contains all default values used by [FormItem].
  */
 object FormDefaults {
 

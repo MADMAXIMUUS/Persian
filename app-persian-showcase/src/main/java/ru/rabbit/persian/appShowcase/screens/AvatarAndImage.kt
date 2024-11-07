@@ -23,7 +23,7 @@ import io.github.madmaximuus.persian.avatarsAndImages.ImageDefaults
 import io.github.madmaximuus.persian.avatarsAndImages.ImageShape
 import io.github.madmaximuus.persian.forms.Checkbox
 import io.github.madmaximuus.persian.forms.Checkboxes
-import io.github.madmaximuus.persian.forms.Form
+import io.github.madmaximuus.persian.forms.FormItem
 import io.github.madmaximuus.persian.forms.RadioButton
 import io.github.madmaximuus.persian.forms.RadioButtons
 import io.github.madmaximuus.persian.forms.Select
@@ -164,7 +164,7 @@ object AvatarAndImage : Screen {
                         .fillMaxWidth()
                         .padding(top = PersianTheme.spacing.size12)
                 ) {
-                    Form(
+                    FormItem(
                         subhead = {
                             Subhead(text = "Sizes")
                         },
@@ -313,7 +313,7 @@ object AvatarAndImage : Screen {
                             )
                         },
                     )
-                    Form(
+                    FormItem(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(top = PersianTheme.spacing.size12),
@@ -358,7 +358,7 @@ object AvatarAndImage : Screen {
                             }
                         }
                     )
-                    Form(
+                    FormItem(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(top = PersianTheme.spacing.size12),
