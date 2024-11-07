@@ -1,10 +1,14 @@
 package io.github.madmaximuus.persian.codeInput
 
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.text.input.TextFieldState
+import androidx.compose.foundation.text.input.clearText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.input.key.Key
@@ -12,6 +16,8 @@ import androidx.compose.ui.input.key.key
 import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.codeInput.cell.CodeInputCell
+import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.internal.SecureInputSettings
 
 /**
  * A four-digit code input is useful for enhancing security by requiring users to enter a specific
@@ -19,24 +25,24 @@ import io.github.madmaximuus.persian.codeInput.cell.CodeInputCell
  * or systems. It offers a straightforward and widely recognized method for authentication, making it
  * an effective tool for securing accounts.
  *
- * @param modifier The [Modifier] to be applied to this composable.
- * @param values A list of strings representing the current values of the four cells.
- * @param enabled Whether the input cells are enabled or disabled.
- * @param isError Whether the input cells are in an error state.
- * @param isValid Whether the input cells are in a valid state.
- * @param isPassword Whether the input cells should mask their input as a password.
- * @param onValueChange Callback invoked when the value of any cell changes. The callback receives
- * the new value and the index of the cell that changed.
+ * @param modifier The modifier to be applied to the input field.
+ * @param values The list of [TextFieldState] representing the state of each digit input cell.
+ * This list must contain exactly four items.
+ * @param enabled Whether the input field is enabled.
+ * @param isError Whether the input field is in an error state.
+ * @param isValid Whether the input field is in a valid state.
+ * @param colors The color settings for the input cells.
+ * @param secure The security settings for the input field.
  */
 @Composable
 fun FourDigitCodeInput(
     modifier: Modifier = Modifier,
-    values: List<String>,
+    values: List<TextFieldState>,
     enabled: Boolean = true,
     isError: Boolean = false,
     isValid: Boolean = false,
-    isPassword: Boolean = false,
-    onValueChange: (value: String, index: Int) -> Unit
+    colors: CellColors = CodeInputDefaults.cellColors(),
+    secure: SecureInputSettings = SecureInputSettings.NotSecure,
 ) {
     LaunchedEffect(Unit) {
         if (values.size != 4) {
@@ -44,12 +50,7 @@ fun FourDigitCodeInput(
         }
     }
 
-    val focusRequesters = listOf(
-        FocusRequester(),
-        FocusRequester(),
-        FocusRequester(),
-        FocusRequester()
-    )
+    val focusRequesters = List(4) { FocusRequester() }
 
     Row(
         modifier = Modifier
@@ -57,30 +58,35 @@ fun FourDigitCodeInput(
             .then(modifier),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        repeat(4) { index ->
+        values.forEachIndexed { index, textFieldState ->
             CodeInputCell(
                 modifier = Modifier
                     .onKeyEvent {
-                        if (it.key == Key.Backspace && values[index].isEmpty()) {
+                        if (it.key == Key.Backspace && textFieldState.text.isEmpty()) {
                             if (index > 0) {
                                 focusRequesters[index - 1].requestFocus()
                                 return@onKeyEvent true
                             }
                             return@onKeyEvent false
+                        } else if (it.key == Key.Backspace && textFieldState.text.isNotEmpty()) {
+                            textFieldState.clearText()
+                            return@onKeyEvent true
                         }
                         return@onKeyEvent false
                     },
-                value = values[index],
+                state = textFieldState,
                 focusRequester = focusRequesters[index],
                 isValid = isValid,
                 enabled = enabled,
                 isError = isError,
-                isPassword = isPassword,
-                onValueChange = { value ->
-                    onValueChange(value, index)
-                    nextFocus(index, value, focusRequesters)
-                }
+                secure = secure,
+                colors = colors,
+                textStyle = PersianTheme.typography.bodyLarge,
+                interactionSource = remember { MutableInteractionSource() }
             )
+            LaunchedEffect(textFieldState.text.isNotEmpty()) {
+                nextFocus(index, textFieldState.text.toString(), focusRequesters)
+            }
         }
     }
 }
@@ -91,24 +97,25 @@ fun FourDigitCodeInput(
  * or systems. It offers a straightforward and widely recognized method for authentication, making
  * it an effective tool for securing accounts.
  *
- * @param modifier The [Modifier] to be applied to this composable.
- * @param values A list of strings representing the current values of the four cells.
- * @param enabled Whether the input cells are enabled or disabled.
- * @param isError Whether the input cells are in an error state.
- * @param isValid Whether the input cells are in a valid state.
- * @param isPassword Whether the input cells should mask their input as a password.
- * @param onValueChange Callback invoked when the value of any cell changes. The callback receives
- * the new value and the index of the cell that changed.
+ * @param modifier The modifier to be applied to the input field.
+ * @param values The list of [TextFieldState] representing the state of each digit input cell.
+ * This list must contain exactly six items.
+ * @param enabled Whether the input field is enabled.
+ * @param isError Whether the input field is in an error state
+ * @param isValid Whether the input field is in a valid state.
+ * @param colors The color settings for the input cells.
+ * @param secure The security settings for the input field.
+
  */
 @Composable
 fun SixDigitCodeInput(
     modifier: Modifier = Modifier,
-    values: List<String>,
+    values: List<TextFieldState>,
     enabled: Boolean = true,
     isError: Boolean = false,
     isValid: Boolean = false,
-    isPassword: Boolean = false,
-    onValueChange: (value: String, index: Int) -> Unit
+    colors: CellColors = CodeInputDefaults.cellColors(),
+    secure: SecureInputSettings = SecureInputSettings.NotSecure,
 ) {
     LaunchedEffect(Unit) {
         if (values.size != 6) {
@@ -116,14 +123,7 @@ fun SixDigitCodeInput(
         }
     }
 
-    val focusRequesters = listOf(
-        FocusRequester(),
-        FocusRequester(),
-        FocusRequester(),
-        FocusRequester(),
-        FocusRequester(),
-        FocusRequester()
-    )
+    val focusRequesters = List(6) { FocusRequester() }
 
     Row(
         modifier = Modifier
@@ -131,30 +131,35 @@ fun SixDigitCodeInput(
             .then(modifier),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        repeat(6) { index ->
+        values.forEachIndexed { index, textFieldState ->
             CodeInputCell(
                 modifier = Modifier
                     .onKeyEvent {
-                        if (it.key == Key.Backspace && values[index].isEmpty()) {
+                        if (it.key == Key.Backspace && textFieldState.text.isEmpty()) {
                             if (index > 0) {
                                 focusRequesters[index - 1].requestFocus()
                                 return@onKeyEvent true
                             }
                             return@onKeyEvent false
+                        } else if (it.key == Key.Backspace && textFieldState.text.isNotEmpty()) {
+                            textFieldState.clearText()
+                            return@onKeyEvent true
                         }
                         return@onKeyEvent false
                     },
-                value = values[index],
+                state = textFieldState,
                 focusRequester = focusRequesters[index],
                 isValid = isValid,
                 enabled = enabled,
                 isError = isError,
-                isPassword = isPassword,
-                onValueChange = { value ->
-                    onValueChange(value, index)
-                    nextFocus(index, value, focusRequesters)
-                }
+                secure = secure,
+                colors = colors,
+                textStyle = PersianTheme.typography.bodyLarge,
+                interactionSource = remember { MutableInteractionSource() }
             )
+            LaunchedEffect(textFieldState.text.isNotEmpty()) {
+                nextFocus(index, textFieldState.text.toString(), focusRequesters)
+            }
         }
     }
 }
