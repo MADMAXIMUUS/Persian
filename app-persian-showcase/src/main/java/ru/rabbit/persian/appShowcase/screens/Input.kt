@@ -3,30 +3,33 @@ package ru.rabbit.persian.appShowcase.screens
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.nestedscroll.nestedScroll
-import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.forms.Checkbox
 import io.github.madmaximuus.persian.forms.Checkboxes
-import io.github.madmaximuus.persian.forms.Form
+import io.github.madmaximuus.persian.forms.FormItem
 import io.github.madmaximuus.persian.forms.Input
 import io.github.madmaximuus.persian.forms.RadioButton
 import io.github.madmaximuus.persian.forms.RadioButtons
 import io.github.madmaximuus.persian.forms.Subhead
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.input.InputsTransformations
 import io.github.madmaximuus.persian.input.OutlineInput
 import io.github.madmaximuus.persian.input.PlainInput
+import io.github.madmaximuus.persian.internal.SecureInputSettings
 import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
+import io.github.madmaximuus.persianSymbols.eye.base.Eye
+import io.github.madmaximuus.persianSymbols.eye.slash.EyeSlash
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.user.base.User
-import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
@@ -39,8 +42,9 @@ object Input : Screen {
     override fun Content(navController: NavController?) {
         val topAppBarScrollBehavior =
             TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
-        val (value, onValueChange) = remember { mutableStateOf("") }
-        val (placeholderValue, onPlaceholderValueChange) = remember { mutableStateOf("Placeholder") }
+        val placeholderValue = rememberTextFieldState("Placeholder")
+        val input = rememberTextFieldState()
+        var visible by remember { mutableStateOf(false) }
         val (enabled, onEnabledChange) = remember { mutableStateOf(true) }
         val (isError, onIsErrorChange) = remember { mutableStateOf(false) }
         val (isSuccess, onIsSuccessChange) = remember { mutableStateOf(false) }
@@ -72,38 +76,36 @@ object Input : Screen {
                     when {
                         styleStates[0].value -> {
                             OutlineInput(
-                                value = value,
-                                onValueChange = onValueChange,
+                                state = input,
                                 enabled = enabled,
                                 isError = isError,
                                 isValid = isSuccess,
-                                placeholder = if (placeholder) placeholderValue else null,
-                                transformation = if (password) InputsTransformations.password else InputsTransformations.none,
+                                placeholder = if (placeholder) placeholderValue.text.toString() else null,
+                                secure = if (password) SecureInputSettings.Secure(visible = visible) else SecureInputSettings.NotSecure,
                                 leadingIcon = if (leading) rememberVectorPainter(image = PersianSymbols.Default.User) else null,
-                                trailingIcon = if (trailing) painterResource(id = R.drawable.ic_visibility) else null,
+                                trailingIcon = if (trailing) rememberVectorPainter(image = if (visible) PersianSymbols.Default.EyeSlash else PersianSymbols.Default.Eye) else null,
                                 suffix = if (suffix) "12" else null,
-                                onTrailingIconClick = {}
+                                onTrailingIconClick = { visible = !visible }
                             )
                         }
 
                         styleStates[1].value -> {
                             PlainInput(
-                                value = value,
-                                onValueChange = onValueChange,
+                                state = input,
                                 enabled = enabled,
                                 isError = isError,
                                 isValid = isSuccess,
-                                placeholder = if (placeholder) placeholderValue else null,
-                                transformation = if (password) InputsTransformations.password else InputsTransformations.none,
+                                placeholder = if (placeholder) placeholderValue.text.toString() else null,
+                                secure = if (password) SecureInputSettings.Secure(visible = visible) else SecureInputSettings.NotSecure,
                                 leadingIcon = if (leading) rememberVectorPainter(image = PersianSymbols.Default.User) else null,
-                                trailingIcon = if (trailing) painterResource(id = R.drawable.ic_visibility) else null,
+                                trailingIcon = if (trailing) rememberVectorPainter(image = if (visible) PersianSymbols.Default.EyeSlash else PersianSymbols.Default.Eye) else null,
                                 suffix = if (suffix) "12" else null,
-                                onTrailingIconClick = {}
+                                onTrailingIconClick = { visible = !visible }
                             )
                         }
                     }
                 }
-                Form(
+                FormItem(
                     modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                     subhead = {
                         Subhead(text = "Style")
@@ -132,20 +134,13 @@ object Input : Screen {
                     }
                 )
                 if (placeholder) {
-                    Form(
+                    FormItem(
                         modifier = Modifier.padding(top = PersianTheme.spacing.size12),
-                        subhead = {
-                            Subhead(text = "Placeholder")
-                        },
-                        content = {
-                            Input(
-                                value = placeholderValue,
-                                onValueChange = onPlaceholderValueChange
-                            )
-                        }
+                        subhead = { Subhead(text = "Placeholder") },
+                        content = { Input(state = placeholderValue) }
                     )
                 }
-                Form(
+                FormItem(
                     modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                     subhead = {
                         Subhead(text = "Style")

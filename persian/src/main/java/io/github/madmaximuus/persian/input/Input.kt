@@ -43,29 +43,30 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.icon.Icon
 import io.github.madmaximuus.persian.iconButton.IconButtonDefaults
 import io.github.madmaximuus.persian.iconButton.TertiaryIconButton
+import io.github.madmaximuus.persian.internal.SecureInputSettings
 import io.github.madmaximuus.persian.text.Text
 
 /**
  * Display an input field in outline style.
  *
- * @param state The [TextFieldState] The state of the input field, which contains information
- * about the text in this input field.
- * @param modifier The [Modifier] to be applied to the input field.
- * @param enabled Whether the input field is enabled or disabled.
+ * @param state The state of the text field.
+ * @param modifier The modifier to be applied to the input field.
+ * @param enabled Whether the input field is enabled.
  * @param isError Whether the input field is in an error state.
  * @param isValid Whether the input field is in a valid state.
  * @param readOnly Whether the input field is read-only.
  * @param placeholder The placeholder text to be displayed when the input field is empty.
- * @param transformation The visual transformation to be applied to the input field.
- * @param colors The colors to be used for the input field.
- * @param sizes The sizes to be used for the input field.
+ * @param transformation The transformation to be applied to the input text.
+ * @param secure The security settings for the input field.
+ * @param colors The color settings for the input field.
+ * @param sizes The size settings for the input field.
  * @param leadingIcon The leading icon to be displayed in the input field.
  * @param trailingIcon The trailing icon to be displayed in the input field.
- * @param onTrailingIconClick A callback that is invoked when the trailing icon is clicked.
+ * @param onTrailingIconClick The callback to be invoked when the trailing icon is clicked.
  * @param suffix The suffix text to be displayed in the input field.
  * @param keyboardOptions The keyboard options for the input field.
- * @param keyboardActionHandler The keyboard actions for the input field.
- * @param interactionSource The [MutableInteractionSource] to be used for the input field.
+ * @param keyboardActionHandler The handler for keyboard actions.
+ * @param interactionSource The interaction source for the input field.
  */
 @Composable
 fun OutlineInput(
@@ -120,24 +121,24 @@ fun OutlineInput(
 /**
  * Display an input field in plain style.
  *
- * @param state The [TextFieldState] The state of the input field, which contains information
- * about the text in this input field.
- * @param modifier The [Modifier] to be applied to the input field.
- * @param enabled Whether the input field is enabled or disabled.
+ * @param state The state of the text field.
+ * @param modifier The modifier to be applied to the input field.
+ * @param enabled Whether the input field is enabled.
  * @param isError Whether the input field is in an error state.
  * @param isValid Whether the input field is in a valid state.
  * @param readOnly Whether the input field is read-only.
  * @param placeholder The placeholder text to be displayed when the input field is empty.
- * @param transformation The visual transformation to be applied to the input field.
- * @param colors The colors to be used for the input field.
- * @param sizes The sizes to be used for the input field.
+ * @param transformation The transformation to be applied to the input text.
+ * @param secure The security settings for the input field.
+ * @param colors The color settings for the input field.
+ * @param sizes The size settings for the input field.
  * @param leadingIcon The leading icon to be displayed in the input field.
  * @param trailingIcon The trailing icon to be displayed in the input field.
- * @param onTrailingIconClick A callback that is invoked when the trailing icon is clicked.
+ * @param onTrailingIconClick The callback to be invoked when the trailing icon is clicked.
  * @param suffix The suffix text to be displayed in the input field.
  * @param keyboardOptions The keyboard options for the input field.
- * @param keyboardActionHandler The keyboard actions for the input field.
- * @param interactionSource The [MutableInteractionSource] to be used for the input field.
+ * @param keyboardActionHandler The handler for keyboard actions.
+ * @param interactionSource The interaction source for the input field.
  */
 @Composable
 fun PlainInput(
@@ -227,24 +228,24 @@ private fun animateBorderStrokeAsState(
 /**
  * A base implementation of input
  *
- * @param state
- * @param modifier The [Modifier] to be applied to the input field.
- * @param enabled Whether the input field is enabled or disabled.
+ * @param state The state of the text field.
+ * @param modifier The modifier to be applied to the input field.
+ * @param enabled Whether the input field is enabled.
  * @param isError Whether the input field is in an error state.
  * @param isValid Whether the input field is in a valid state.
  * @param readOnly Whether the input field is read-only.
  * @param placeholder The placeholder text to be displayed when the input field is empty.
- * @param transformation The visual transformation to be applied to the input field.
- * @param colors The colors to be used for the input field.
- * @param sizes The sizes to be used for the input field.
+ * @param transformation The transformation to be applied to the input text.
+ * @param secret The security settings for the input field.
+ * @param colors The color settings for the input field.
+ * @param sizes The size settings for the input field.
  * @param leadingIcon The leading icon to be displayed in the input field.
  * @param trailingIcon The trailing icon to be displayed in the input field.
- * @param onTrailingIconClick A callback that is invoked when the trailing icon is clicked.
+ * @param onTrailingIconClick The callback to be invoked when the trailing icon is clicked.
  * @param suffix The suffix text to be displayed in the input field.
- * @param border The border stroke to be applied to the input field.
  * @param keyboardOptions The keyboard options for the input field.
- * @param keyboardActions The keyboard actions for the input field.
- * @param interactionSource The [MutableInteractionSource] to be used for the input field.
+ * @param keyboardActions The handler for keyboard actions.
+ * @param interactionSource The interaction source for the input field.
  */
 @Composable
 private fun InputImpl(

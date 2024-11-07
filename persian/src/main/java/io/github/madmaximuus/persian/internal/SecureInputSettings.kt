@@ -1,9 +1,9 @@
-package io.github.madmaximuus.persian.input
+package io.github.madmaximuus.persian.internal
 
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
-import io.github.madmaximuus.persian.input.SecureInputSettings.NotSecure
-import io.github.madmaximuus.persian.input.SecureInputSettings.Secure
+import io.github.madmaximuus.persian.internal.SecureInputSettings.NotSecure
+import io.github.madmaximuus.persian.internal.SecureInputSettings.Secure
 
 /**
  * A sealed interface representing the security settings for input fields.
