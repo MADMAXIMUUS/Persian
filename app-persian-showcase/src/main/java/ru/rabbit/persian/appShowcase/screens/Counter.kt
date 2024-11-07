@@ -4,6 +4,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.text.input.InputTransformation
+import androidx.compose.foundation.text.input.maxLength
+import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -40,7 +43,7 @@ object Counter : Screen {
             title = name,
             onBackClick = { navController?.navigateUp() }
         ) {
-            val (count, onCountChange) = remember { mutableStateOf("1") }
+            val count = rememberTextFieldState("1")
             val typeStates = remember {
                 listOf(
                     mutableStateOf(true),
@@ -69,11 +72,11 @@ object Counter : Screen {
                 SampleRow(
                     text = "Sample"
                 ) {
-                    if (count.isNotEmpty()) {
+                    if (count.text.isNotEmpty()) {
                         when {
                             typeStates[0].value -> {
                                 Counter(
-                                    count = count.toInt(),
+                                    count = count.text.toString().toInt(),
                                     colors = when {
                                         styleStates[0].value -> CounterDefaults.errorColors()
                                         styleStates[1].value -> CounterDefaults.primaryColors()
@@ -86,7 +89,7 @@ object Counter : Screen {
 
                             typeStates[1].value -> {
                                 Badge(
-                                    count = count.toInt(),
+                                    count = count.text.toString().toInt(),
                                     colors = when {
                                         styleStates[0].value -> CounterDefaults.errorColors()
                                         styleStates[1].value -> CounterDefaults.primaryColors()
@@ -131,10 +134,8 @@ object Counter : Screen {
                     },
                     content = {
                         Input(
-                            value = count,
-                            onValueChange = { newText ->
-                                if (newText.length <= 5) onCountChange(newText)
-                            },
+                            state = count,
+                            transformation = InputTransformation.maxLength(5),
                             keyboardOptions = KeyboardOptions(
                                 keyboardType = KeyboardType.Number
                             )
