@@ -1,8 +1,10 @@
 package ru.rabbit.persian.appShowcase.screens
 
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -15,6 +17,7 @@ import io.github.madmaximuus.persian.fab.SmallFab
 import io.github.madmaximuus.persian.forms.Checkbox
 import io.github.madmaximuus.persian.forms.Checkboxes
 import io.github.madmaximuus.persian.forms.Form
+import io.github.madmaximuus.persian.forms.Input
 import io.github.madmaximuus.persian.forms.RadioButton
 import io.github.madmaximuus.persian.forms.RadioButtons
 import io.github.madmaximuus.persian.forms.Subhead
@@ -34,6 +37,7 @@ object Fab : Screen {
     override fun Content(navController: NavController?) {
 
         val (expandable, onExpandableChange) = remember { mutableStateOf(true) }
+        val labelState = rememberTextFieldState("Fab")
 
         val sizeStates = remember {
             listOf(
@@ -57,6 +61,7 @@ object Fab : Screen {
         ) {
             Column(
                 modifier = Modifier
+                    .animateContentSize()
                     .fillMaxWidth()
                     .padding(it)
             ) {
@@ -94,13 +99,15 @@ object Fab : Screen {
                         }
                     }
                 }
+                if (sizeStates[0].value) {
+                    Form(
+                        subhead = { Subhead(text = "Label") },
+                        content = { Input(state = labelState) }
+                    )
+                }
                 Form(
                     modifier = Modifier.padding(top = PersianTheme.spacing.size12),
-                    subhead = {
-                        Subhead(
-                            text = "Size"
-                        )
-                    },
+                    subhead = { Subhead(text = "Size") },
                     content = {
                         RadioButtons {
                             RadioButton(
@@ -126,11 +133,7 @@ object Fab : Screen {
                 )
                 Form(
                     modifier = Modifier.padding(top = PersianTheme.spacing.size12),
-                    subhead = {
-                        Subhead(
-                            text = "Size"
-                        )
-                    },
+                    subhead = { Subhead(text = "Size") },
                     content = {
                         RadioButtons {
                             RadioButton(
@@ -175,11 +178,7 @@ object Fab : Screen {
                 if (sizeStates[0].value) {
                     Form(
                         modifier = Modifier.padding(top = PersianTheme.spacing.size12),
-                        subhead = {
-                            Subhead(
-                                text = "Settings"
-                            )
-                        },
+                        subhead = { Subhead(text = "Settings") },
                         content = {
                             Checkboxes {
                                 Checkbox(
