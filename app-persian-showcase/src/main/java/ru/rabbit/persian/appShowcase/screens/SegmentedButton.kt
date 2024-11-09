@@ -17,7 +17,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.forms.Checkbox
 import io.github.madmaximuus.persian.forms.Checkboxes
-import io.github.madmaximuus.persian.forms.Form
+import io.github.madmaximuus.persian.forms.FormItem
 import io.github.madmaximuus.persian.forms.RadioButton
 import io.github.madmaximuus.persian.forms.RadioButtons
 import io.github.madmaximuus.persian.forms.Subhead
@@ -174,7 +174,7 @@ object SegmentedButton : Screen {
                         }
                     }
                 }
-                Form(
+                FormItem(
                     modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                     subhead = {
                         Subhead(
@@ -204,7 +204,7 @@ object SegmentedButton : Screen {
                         }
                     }
                 )
-                Form(
+                FormItem(
                     modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                     subhead = {
                         Subhead(
@@ -246,7 +246,7 @@ object SegmentedButton : Screen {
                         }
                     }
                 )
-                Form(
+                FormItem(
                     modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                     subhead = {
                         Subhead(
