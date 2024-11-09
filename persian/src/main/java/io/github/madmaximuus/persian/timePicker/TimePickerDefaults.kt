@@ -13,12 +13,12 @@ import io.github.madmaximuus.persian.timePicker.view.wheel.WheelTimePickerViewDe
 import io.github.madmaximuus.persian.timePicker.view.wheel.WheelTimePickerViewSizes
 
 /**
- * Contains all default values used by time picker
+ * Contains all default values used by [TimePicker]
  */
 object TimePickerDefaults {
 
     /**
-     * Composable function to create and return a [TimePickerColors] instance with the specified colors.
+     * Create and return a [TimePickerColors] instance with the specified colors.
      *
      * This function allows customizing the colors used in the time picker components.
      *
@@ -38,7 +38,7 @@ object TimePickerDefaults {
     )
 
     /**
-     * Composable function to create and return a [TimePickerSizes] instance with the specified sizes.
+     * Create and return a [TimePickerSizes] instance with the specified sizes.
      *
      * This function allows customizing the sizes used in the time picker components.
      *

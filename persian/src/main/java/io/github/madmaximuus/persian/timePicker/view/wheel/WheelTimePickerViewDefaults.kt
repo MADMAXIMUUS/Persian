@@ -10,14 +10,12 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state38
 
 /**
- * Contains all default values used by time picker
+ * Contains all default values used by [WheelTimePickerView].
  */
 object WheelTimePickerViewDefaults {
 
     /**
-     * Composable function to create and return a [WheelTimePickerViewColors] instance with the specified colors.
-     *
-     * This function allows customizing the text colors used in the wheel time picker view.
+     * Create and return a [WheelTimePickerViewColors] instance with the specified colors.
      *
      * @param textColor The default text color for the items in the wheel time picker.
      * @param selectedTextColor The text color for the selected item in the wheel time picker.
@@ -26,24 +24,24 @@ object WheelTimePickerViewDefaults {
     fun colors(
         textColor: Color = PersianTheme.colorScheme.onSurface.state38,
         selectedTextColor: Color = PersianTheme.colorScheme.onSurface
-    ): WheelTimePickerViewColors = WheelTimePickerViewColors(
-        textColor = textColor,
-        selectedTextColor = selectedTextColor
-    )
+    ): WheelTimePickerViewColors =
+        WheelTimePickerViewColors(
+            textColor = textColor,
+            selectedTextColor = selectedTextColor
+        )
 
     /**
-     * Composable function to create and return a [WheelTimePickerViewSizes] instance with the specified text style.
-     *
-     * This function allows customizing the text style used in the wheel time picker view.
+     * Create and return a [WheelTimePickerViewSizes] instance with the specified text style.
      *
      * @param textStyle The text style to use for the items in the wheel time picker.
      */
     @Composable
     fun sizes(
         textStyle: TextStyle = PersianTheme.typography.titleMedium,
-    ): WheelTimePickerViewSizes = WheelTimePickerViewSizes(
-        textStyle = textStyle,
-    )
+    ): WheelTimePickerViewSizes =
+        WheelTimePickerViewSizes(
+            textStyle = textStyle
+        )
 }
 
 /**

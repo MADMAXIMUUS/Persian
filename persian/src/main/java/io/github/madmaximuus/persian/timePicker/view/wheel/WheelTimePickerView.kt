@@ -18,11 +18,7 @@ import io.github.madmaximuus.persian.timePicker.view.wheel.wheel.VerticalWheelPi
 import java.util.Locale
 
 /**
- * Composable function to display the wheel time picker view.
- *
- * This function arranges the hour, minute, and period (AM/PM) selectors in a row, with spacing
- * between them. It uses the provided state, colors, and sizes to customize the appearance of the
- * time picker.
+ * Display the wheel time picker view.
  *
  * @param state The state of the time picker.
  * @param colors The colors to use for the time picker components.

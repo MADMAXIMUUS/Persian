@@ -9,11 +9,7 @@ import io.github.madmaximuus.persian.timePicker.view.dial.horizontal.HorizontalT
 import io.github.madmaximuus.persian.timePicker.view.dial.vertical.VerticalTimePickerView
 
 /**
- * Composable function to display the dial time picker view.
- *
- * This function determines whether to display the horizontal or vertical time picker view based on
- * the window height size class. It uses the provided state, modifier, colors, and sizes to customize
- * the appearance of the time picker.
+ * Display the dial time picker view.
  *
  * @param analogState The state of the analog time picker.
  * @param modifier The modifier to apply to the time picker view.

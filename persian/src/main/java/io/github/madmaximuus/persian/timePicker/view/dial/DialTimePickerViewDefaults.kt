@@ -10,14 +10,12 @@ import androidx.compose.ui.text.TextStyle
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
 /**
- * Contains all default values used by time picker
+ * Contains all default values used by [DialTimePickerView].
  */
 object DialTimePickerViewDefaults {
 
     /**
-     * Composable function to create and return a [DialTimePickerViewColors] instance with the specified colors.
-     *
-     * This function allows customizing the colors used in the dial time picker view.
+     * Create and return a [DialTimePickerViewColors] instance with the specified colors.
      *
      * @param clockDialColor The color of the clock dial.
      * @param selectorColor The color of the selector.
@@ -50,27 +48,26 @@ object DialTimePickerViewDefaults {
         timeSelectorUnselectedContainerColor: Color = PersianTheme.colorScheme.surfaceContainerHighest,
         timeSelectorSelectedContentColor: Color = PersianTheme.colorScheme.onPrimaryContainer,
         timeSelectorUnselectedContentColor: Color = PersianTheme.colorScheme.onSurface,
-    ): DialTimePickerViewColors = DialTimePickerViewColors(
-        clockDialColor = clockDialColor,
-        selectorColor = selectorColor,
-        containerColor = containerColor,
-        periodSelectorBorderColor = periodSelectorBorderColor,
-        clockDialSelectedContentColor = clockDialSelectedContentColor,
-        clockDialUnselectedContentColor = clockDialUnselectedContentColor,
-        periodSelectorSelectedContainerColor = periodSelectorSelectedContainerColor,
-        periodSelectorUnselectedContainerColor = periodSelectorUnselectedContainerColor,
-        periodSelectorSelectedContentColor = periodSelectorSelectedContentColor,
-        periodSelectorUnselectedContentColor = periodSelectorUnselectedContentColor,
-        timeSelectorSelectedContainerColor = timeSelectorSelectedContainerColor,
-        timeSelectorUnselectedContainerColor = timeSelectorUnselectedContainerColor,
-        timeSelectorSelectedContentColor = timeSelectorSelectedContentColor,
-        timeSelectorUnselectedContentColor = timeSelectorUnselectedContentColor
-    )
+    ): DialTimePickerViewColors =
+        DialTimePickerViewColors(
+            clockDialColor = clockDialColor,
+            selectorColor = selectorColor,
+            containerColor = containerColor,
+            periodSelectorBorderColor = periodSelectorBorderColor,
+            clockDialSelectedContentColor = clockDialSelectedContentColor,
+            clockDialUnselectedContentColor = clockDialUnselectedContentColor,
+            periodSelectorSelectedContainerColor = periodSelectorSelectedContainerColor,
+            periodSelectorUnselectedContainerColor = periodSelectorUnselectedContainerColor,
+            periodSelectorSelectedContentColor = periodSelectorSelectedContentColor,
+            periodSelectorUnselectedContentColor = periodSelectorUnselectedContentColor,
+            timeSelectorSelectedContainerColor = timeSelectorSelectedContainerColor,
+            timeSelectorUnselectedContainerColor = timeSelectorUnselectedContainerColor,
+            timeSelectorSelectedContentColor = timeSelectorSelectedContentColor,
+            timeSelectorUnselectedContentColor = timeSelectorUnselectedContentColor
+        )
 
     /**
-     * Composable function to create and return a [DialTimePickerViewSizes] instance with the specified sizes and styles.
-     *
-     * This function allows customizing the shapes and text styles used in the dial time picker view.
+     * Create and return a [DialTimePickerViewSizes] instance with the specified sizes and styles.
      *
      * @param clockDisplayShape The shape of the clock display.
      * @param clockDisplayTextStyle The text style of the clock display.
@@ -85,13 +82,14 @@ object DialTimePickerViewDefaults {
         periodSelectorShape: Shape = PersianTheme.shapes.shape12,
         periodSelectorTextStyle: TextStyle = PersianTheme.typography.bodyLarge,
         clockDialNumberTextStyle: TextStyle = PersianTheme.typography.bodyLarge,
-    ): DialTimePickerViewSizes = DialTimePickerViewSizes(
-        clockDisplayShape = clockDisplayShape,
-        clockDisplayTextStyle = clockDisplayTextStyle,
-        periodSelectorShape = periodSelectorShape,
-        periodSelectorTextStyle = periodSelectorTextStyle,
-        clockDialNumberTextStyle = clockDialNumberTextStyle
-    )
+    ): DialTimePickerViewSizes =
+        DialTimePickerViewSizes(
+            clockDisplayShape = clockDisplayShape,
+            clockDisplayTextStyle = clockDisplayTextStyle,
+            periodSelectorShape = periodSelectorShape,
+            periodSelectorTextStyle = periodSelectorTextStyle,
+            clockDialNumberTextStyle = clockDialNumberTextStyle
+        )
 }
 
 
