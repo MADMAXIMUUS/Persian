@@ -16,12 +16,12 @@ import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persian.icon.IconSizes
 
 /**
- * Contains all default values used by switch
+ * Contains all default values used by [Switch]
  */
 object SwitchDefaults {
 
     /**
-     * Composable function to create a [SwitchColors] instance with customizable color properties.
+     * Create a [SwitchColors] instance with customizable color properties.
      *
      * This function allows you to specify the colors for various states of a switch component,
      * including checked, unchecked, and disabled states for the thumb, track, border, and icon.
@@ -61,27 +61,28 @@ object SwitchDefaults {
         disabledUncheckedTrackColor: Color = PersianTheme.colorScheme.onSurface.state12,
         disabledUncheckedBorderColor: Color = PersianTheme.colorScheme.onSurface.state12,
         disabledUncheckedIconColor: Color = PersianTheme.colorScheme.onSurface.state38,
-    ): SwitchColors = SwitchColors(
-        checkedThumbColor = checkedThumbColor,
-        checkedTrackColor = checkedTrackColor,
-        checkedBorderColor = checkedBorderColor,
-        checkedIconColor = checkedIconColor,
-        uncheckedThumbColor = uncheckedThumbColor,
-        uncheckedTrackColor = uncheckedTrackColor,
-        uncheckedBorderColor = uncheckedBorderColor,
-        uncheckedIconColor = uncheckedIconColor,
-        disabledCheckedThumbColor = disabledCheckedThumbColor,
-        disabledCheckedTrackColor = disabledCheckedTrackColor,
-        disabledCheckedBorderColor = disabledCheckedBorderColor,
-        disabledCheckedIconColor = disabledCheckedIconColor,
-        disabledUncheckedBorderColor = disabledUncheckedBorderColor,
-        disabledUncheckedIconColor = disabledUncheckedIconColor,
-        disabledUncheckedThumbColor = disabledUncheckedThumbColor,
-        disabledUncheckedTrackColor = disabledUncheckedTrackColor
-    )
+    ): SwitchColors =
+        SwitchColors(
+            checkedThumbColor = checkedThumbColor,
+            checkedTrackColor = checkedTrackColor,
+            checkedBorderColor = checkedBorderColor,
+            checkedIconColor = checkedIconColor,
+            uncheckedThumbColor = uncheckedThumbColor,
+            uncheckedTrackColor = uncheckedTrackColor,
+            uncheckedBorderColor = uncheckedBorderColor,
+            uncheckedIconColor = uncheckedIconColor,
+            disabledCheckedThumbColor = disabledCheckedThumbColor,
+            disabledCheckedTrackColor = disabledCheckedTrackColor,
+            disabledCheckedBorderColor = disabledCheckedBorderColor,
+            disabledCheckedIconColor = disabledCheckedIconColor,
+            disabledUncheckedBorderColor = disabledUncheckedBorderColor,
+            disabledUncheckedIconColor = disabledUncheckedIconColor,
+            disabledUncheckedThumbColor = disabledUncheckedThumbColor,
+            disabledUncheckedTrackColor = disabledUncheckedTrackColor
+        )
 
     /**
-     * Composable function to create a [SwitchSizes] instance with customizable size and shape properties.
+     * Create a [SwitchSizes] instance with customizable size and shape properties.
      *
      * This function allows you to specify the sizes and shapes for various parts of a switch component,
      * including the toggle (thumb), icon, track, and track border.
