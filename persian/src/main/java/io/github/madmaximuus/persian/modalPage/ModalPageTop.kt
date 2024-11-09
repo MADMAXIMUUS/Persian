@@ -61,12 +61,14 @@ internal class ModalPageTopScopeWrapper(
  */
 @Composable
 fun ModalPageTopScope.TopBar(
+    modifier: Modifier = Modifier,
     title: String,
     actionTitle: String,
     onActionClick: () -> Unit
 ) {
     CenteredTopAppBar(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
+        colors = colors.topAppBarColors,
         sizes = sizes.topAppBarSizes,
         left = {
             IconButton(

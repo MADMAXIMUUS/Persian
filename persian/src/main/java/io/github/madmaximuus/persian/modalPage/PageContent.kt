@@ -1,37 +1,31 @@
 package io.github.madmaximuus.persian.modalPage
 
+import android.util.Log
 import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.AnimationVector1D
 import androidx.compose.animation.core.TweenSpec
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.draggable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.navigationBars
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.GraphicsLayerScope
-import androidx.compose.ui.graphics.TransformOrigin
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.isSpecified
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
@@ -43,10 +37,8 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.onClick
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.Velocity
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.util.lerp
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.internal.DraggableAnchors
 import io.github.madmaximuus.persian.internal.draggableAnchors
@@ -54,7 +46,6 @@ import io.github.madmaximuus.persian.modalPage.util.DragAnchor
 import io.github.madmaximuus.persian.scafold.Scaffold
 import io.github.madmaximuus.persian.surface.Surface
 import kotlin.math.max
-import kotlin.math.min
 
 /**
  * An internal composable function that creates a scrim (overlay) for a modal page.
@@ -137,7 +128,6 @@ internal fun Scrim(
  */
 @Composable
 internal fun BoxScope.ModalBottomSheetContent(
-    predictiveBackProgress: Animatable<Float, AnimationVector1D>,
     settleToDismiss: (velocity: Float) -> Unit,
     onDismissRequest: () -> Unit,
     modifier: Modifier = Modifier,
@@ -150,29 +140,14 @@ internal fun BoxScope.ModalBottomSheetContent(
     content: @Composable (PaddingValues) -> Unit
 ) {
     val dragAnchor = pageState.dragAnchors
-    var modalHeight by remember { mutableIntStateOf(0) }
+    var modalHeight by remember { mutableFloatStateOf(0f) }
     var footerHeight by remember { mutableIntStateOf(0) }
-    val bottomPadding = WindowInsets.navigationBars.getBottom(LocalDensity.current)
+    var headerHeight by remember { mutableIntStateOf(0) }
     Surface(
         modifier = modifier
             .statusBarsPadding()
             .padding(top = PersianTheme.spacing.size8)
-            .onGloballyPositioned {
-                modalHeight = it.size.height
-            }
-            .align(Alignment.BottomCenter)
             .fillMaxWidth()
-            .graphicsLayer {
-                val sheetOffset = pageState.anchoredDraggableState.offset
-                val sheetHeight = size.height
-                if (!sheetOffset.isNaN() && !sheetHeight.isNaN() && sheetHeight != 0f) {
-                    val progress = predictiveBackProgress.value
-                    scaleX = calculatePredictiveBackScaleX(progress)
-                    scaleY = calculatePredictiveBackScaleY(progress)
-                    transformOrigin =
-                        TransformOrigin(0.5f, (sheetOffset + sheetHeight) / sheetHeight)
-                }
-            }
             .nestedScroll(
                 remember(pageState) {
                     ConsumeSwipeWithinBottomSheetBoundsNestedScrollConnection(
@@ -187,11 +162,13 @@ internal fun BoxScope.ModalBottomSheetContent(
                 Orientation.Vertical
             ) { sheetSize, constraints ->
                 val fullHeight = constraints.maxHeight.toFloat()
+                modalHeight = fullHeight
                 val newAnchors = DraggableAnchors {
                     DragAnchor.Hidden at fullHeight
                     dragAnchor.forEach {
                         it at when (it) {
                             DragAnchor.Full -> max(0f, fullHeight - sheetSize.height)
+
                             is DragAnchor.Fraction ->
                                 fullHeight - fullHeight * (it.value.coerceIn(0.1f, 1f))
 
@@ -238,90 +215,57 @@ internal fun BoxScope.ModalBottomSheetContent(
         ),
         color = colors.containerColor,
     ) {
-        Column(
-            Modifier
-                .fillMaxWidth()
-                .windowInsetsPadding(contentWindowInsets)
-                .graphicsLayer {
-                    val progress = predictiveBackProgress.value
-                    val predictiveBackScaleX = calculatePredictiveBackScaleX(progress)
-                    val predictiveBackScaleY = calculatePredictiveBackScaleY(progress)
-
-                    // Preserve the original aspect ratio and alignment of the child content.
-                    scaleY = if (predictiveBackScaleY != 0f)
-                        predictiveBackScaleX / predictiveBackScaleY
-                    else 1f
-                    transformOrigin = PredictiveBackChildTransformOrigin
-                }
-        ) {
-            Scaffold(
-                modifier = Modifier.fillMaxSize(),
-                topBar = {
+        Scaffold(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(
+                    bottom = with(LocalDensity.current) {
+                        Log.e(
+                            "ANCHOR padding",
+                            (modalHeight - (modalHeight - pageState.offset)).toString()
+                        )
+                        Log.e(
+                            "ANCHOR height",
+                            modalHeight.toString()
+                        )
+                        (modalHeight - (modalHeight - pageState.offset))
+                            .coerceIn(0f, modalHeight - footerHeight - headerHeight)
+                            .toDp()
+                    }
+                ),
+            topBar = {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .onGloballyPositioned {
+                            headerHeight = it.size.height
+                        }
+                ) {
                     val scope = remember(colors, sizes) {
                         ModalPageTopScopeWrapper(sizes, colors, onDismissRequest)
                     }
                     top?.let { scope.it() }
-                },
-            ) { paddingValues ->
-                Column(
-                    modifier = Modifier
-                        .offset {
-                            IntOffset(
-                                0,
-                                (modalHeight - pageState.requireOffset() - footerHeight).toInt()
-                            )
-                        }
-                        .onGloballyPositioned {
-                            footerHeight = it.size.height + bottomPadding
-                        }
-                ) {
-                    content(paddingValues)
-                    ActionRow(
-                        modifier = Modifier.fillMaxWidth(),
-                        paddingValues = PaddingValues(
-                            PersianTheme.spacing.size12
-                        ),
-                        colors = colors,
-                        sizes = sizes,
-                        bottom = bottom
-                    )
                 }
-            }
+            },
+            bottomBar = {
+                ActionRow(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .onGloballyPositioned {
+                            footerHeight = it.size.height
+                        },
+                    paddingValues = PaddingValues(
+                        PersianTheme.spacing.size12
+                    ),
+                    colors = colors,
+                    sizes = sizes,
+                    bottom = bottom
+                )
+            },
+            contentWindowInsets = contentWindowInsets
+        ) { paddingValues ->
+            content(paddingValues)
         }
-    }
-}
-
-/**
- * Calculates the predictive back scale for the X-axis based on the given progress.
- *
- * This function computes the scale factor for the X-axis used in predictive back animations.
- * The scale factor is calculated based on the current width of the component and the progress value.
- *
- * @param progress The progress value used to calculate the scale factor, ranging from 0 to 1.
- */
-private fun GraphicsLayerScope.calculatePredictiveBackScaleX(progress: Float): Float {
-    val width = size.width
-    return if (width.isNaN() || width == 0f) {
-        1f
-    } else {
-        1f - lerp(0f, min(PredictiveBackMaxScaleXDistance.toPx(), width), progress) / width
-    }
-}
-
-/**
- * Calculates the predictive back scale for the Y-axis based on the given progress.
- *
- * This function computes the scale factor for the Y-axis used in predictive back animations.
- * The scale factor is calculated based on the current height of the component and the progress value.
- *
- * @param progress The progress value used to calculate the scale factor, ranging from 0 to 1.
- */
-private fun GraphicsLayerScope.calculatePredictiveBackScaleY(progress: Float): Float {
-    val height = size.height
-    return if (height.isNaN() || height == 0f) {
-        1f
-    } else {
-        1f - lerp(0f, min(PredictiveBackMaxScaleYDistance.toPx(), height), progress) / height
     }
 }
 
@@ -392,7 +336,3 @@ internal fun ConsumeSwipeWithinBottomSheetBoundsNestedScrollConnection(
         @JvmName("offsetToFloat")
         private fun Offset.toFloat(): Float = if (orientation == Orientation.Horizontal) x else y
     }
-
-private val PredictiveBackMaxScaleXDistance = 48.dp
-private val PredictiveBackMaxScaleYDistance = 24.dp
-private val PredictiveBackChildTransformOrigin = TransformOrigin(0.5f, 0f)

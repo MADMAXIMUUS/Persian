@@ -1,10 +1,12 @@
 package io.github.madmaximuus.persian.modalPage
 
 import android.view.WindowManager
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
@@ -96,17 +98,15 @@ private fun CompactFullScreenModalPage(
     contentWindowInsets: WindowInsets,
     content: @Composable (PaddingValues) -> Unit
 ) {
-    Dialog(
+    ModalPageDialog(
         onDismissRequest = onDismissRequest,
-        properties = DialogProperties(
-            decorFitsSystemWindows = false,
-            usePlatformDefaultWidth = false
-        ),
+        properties = ModalPageProperties(),
         content = {
             val dialogWindowProvider = LocalView.current.parent as? DialogWindowProvider
             dialogWindowProvider?.window?.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
             Scaffold(
                 modifier = Modifier.fillMaxSize(),
+                containerColor = colors.containerColor,
                 topBar = {
                     val scope = remember(colors, sizes) {
                         ModalPageTopScopeWrapper(sizes, colors, onDismissRequest)
@@ -202,7 +202,11 @@ internal fun MediumModalPage(
                     },
                     contentWindowInsets = contentWindowInsets
                 ) { paddingValues ->
-                    content(paddingValues)
+                    Box(
+                        modifier = Modifier.padding(paddingValues)
+                    ) {
+                        content(paddingValues)
+                    }
                 }
             }
         }

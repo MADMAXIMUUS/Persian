@@ -102,21 +102,24 @@ internal fun ActionRow(
     val widthSizeClass = currentWindowAdaptiveInfo().windowSizeClass.windowWidthSizeClass
     val navModifier =
         if (widthSizeClass == WindowWidthSizeClass.COMPACT || heightSizeClass == WindowHeightSizeClass.COMPACT)
-            Modifier.navigationBarsPadding()
+            Modifier
+                .navigationBarsPadding()
         else Modifier
-    Row(
-        modifier
-            .fillMaxWidth()
-            .padding(paddingValues)
-            .then(navModifier),
-        horizontalArrangement = Arrangement.spacedBy(
-            PersianTheme.spacing.size12,
-            horizontalAlignment
-        )
-    ) {
-        val scope = remember(colors, sizes) {
-            ModalPageBottomScopeWrapper(this, sizes, colors)
+    bottom?.let {
+        Row(
+            modifier = modifier
+                .fillMaxWidth()
+                .padding(paddingValues)
+                .then(navModifier),
+            horizontalArrangement = Arrangement.spacedBy(
+                PersianTheme.spacing.size12,
+                horizontalAlignment
+            )
+        ) {
+            val scope = remember(colors, sizes) {
+                ModalPageBottomScopeWrapper(this, sizes, colors)
+            }
+            scope.it()
         }
-        bottom?.let { scope.it() }
     }
 }

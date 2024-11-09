@@ -1,6 +1,5 @@
 package io.github.madmaximuus.persian.modalPage
 
-import androidx.compose.animation.core.Animatable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
@@ -10,7 +9,6 @@ import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.window.core.layout.WindowHeightSizeClass
@@ -124,22 +122,12 @@ private fun CompactModalPage(
             .invokeOnCompletion { if (!pageState.isVisible) onDismissRequest() }
     }
 
-    val predictiveBackProgress = remember { Animatable(initialValue = 0f) }
-
     if (pageState.dragAnchors.isNotEmpty()) {
         ModalPageDialog(
             properties = properties,
             onDismissRequest = {
-                if (pageState.currentValue == DragAnchor.Full) {
-                    // Smoothly animate away predictive back transformations since we are not fully
-                    // dismissing. We don't need to do this in the else below because we want to
-                    // preserve the predictive back transformations (scale) during the hide animation.
-                    scope.launch { predictiveBackProgress.animateTo(0f) }
-                } else { // Is expanded without collapsed state or is collapsed.
-                    scope.launch { pageState.hide() }.invokeOnCompletion { onDismissRequest() }
-                }
+                scope.launch { pageState.hide() }.invokeOnCompletion { onDismissRequest() }
             },
-            predictiveBackProgress = predictiveBackProgress,
         ) {
             Box(
                 modifier = Modifier
@@ -153,7 +141,6 @@ private fun CompactModalPage(
                     visible = pageState.targetValue != DragAnchor.Hidden
                 )
                 ModalBottomSheetContent(
-                    predictiveBackProgress,
                     settleToDismiss,
                     onDismissRequest,
                     modifier,

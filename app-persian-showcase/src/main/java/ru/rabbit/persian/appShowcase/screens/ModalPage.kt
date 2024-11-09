@@ -1,7 +1,10 @@
 package ru.rabbit.persian.appShowcase.screens
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
@@ -15,12 +18,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.button.ButtonDefaults
 import io.github.madmaximuus.persian.button.PrimaryButton
 import io.github.madmaximuus.persian.forms.Checkbox
 import io.github.madmaximuus.persian.forms.Checkboxes
-import io.github.madmaximuus.persian.forms.Form
+import io.github.madmaximuus.persian.forms.FormItem
 import io.github.madmaximuus.persian.forms.RadioButton
 import io.github.madmaximuus.persian.forms.RadioButtons
 import io.github.madmaximuus.persian.forms.Subhead
@@ -32,6 +36,7 @@ import io.github.madmaximuus.persian.modalPage.ModalPage
 import io.github.madmaximuus.persian.modalPage.TopBar
 import io.github.madmaximuus.persian.modalPage.rememberPageState
 import io.github.madmaximuus.persian.modalPage.util.DragAnchor
+import io.github.madmaximuus.persian.text.Text
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object ModalPage : Screen {
@@ -86,18 +91,18 @@ object ModalPage : Screen {
         }
         SampleScaffold(
             title = name,
-            onBackClick = { navController?.navigateUp() }
+            onBackClick = { navController?.navigateUp() },
         ) {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
                     .verticalScroll(rememberScrollState())
-                    .navigationBarsPadding()
-                    .padding(it),
+                    .padding(it)
+                    .navigationBarsPadding(),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size12)
             ) {
-                Form(
+                FormItem(
                     modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                     subhead = {
                         Subhead(text = "Mode")
@@ -125,10 +130,8 @@ object ModalPage : Screen {
                         }
                     }
                 )
-                Form(
-                    subhead = {
-                        Subhead(text = "Settings")
-                    },
+                FormItem(
+                    subhead = { Subhead(text = "Settings") },
                     content = {
                         Checkboxes {
                             Checkbox(
@@ -145,11 +148,9 @@ object ModalPage : Screen {
                     }
                 )
                 if (top) {
-                    Form(
+                    FormItem(
                         modifier = Modifier.padding(top = PersianTheme.spacing.size12),
-                        subhead = {
-                            Subhead(text = "Top")
-                        },
+                        subhead = { Subhead(text = "Top") },
                         content = {
                             RadioButtons {
                                 RadioButton(
@@ -175,7 +176,7 @@ object ModalPage : Screen {
                     )
                 }
                 if (modeStates[0].value) {
-                    Form(
+                    FormItem(
                         modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                         subhead = {
                             Subhead(text = "States")
@@ -256,6 +257,7 @@ object ModalPage : Screen {
                         pageState = rememberPageState(
                             dragAnchors = dragAnchors
                         ),
+                        contentWindowInsets = WindowInsets(0, 0, 0, 0),
                         top = {
                             if (top) {
                                 when {
@@ -275,15 +277,23 @@ object ModalPage : Screen {
                                 }
                             }
                         },
-                        bottom = {
-                            if (action) {
+                        bottom = if (action) {
+                            {
                                 Action(text = "Amazing action") {
                                     showModal = false
                                 }
                             }
-                        },
-                        content = {
-
+                        } else null,
+                        content = { contentPadding ->
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .padding(contentPadding)
+                                    .background(Color.Cyan),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Text(text = "123")
+                            }
                         }
                     )
                 }
@@ -312,7 +322,17 @@ object ModalPage : Screen {
                                 }
                             }
                         },
-                        content = {}
+                        content = { contentPadding ->
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .padding(contentPadding)
+                                    .background(Color.Cyan),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Text(text = "123")
+                            }
+                        }
                     )
                 }
             }

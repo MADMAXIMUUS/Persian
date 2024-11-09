@@ -9,16 +9,12 @@ import android.view.View
 import android.view.ViewOutlineProvider
 import android.view.Window
 import android.view.WindowManager
-import android.window.BackEvent
-import android.window.OnBackAnimationCallback
 import android.window.OnBackInvokedCallback
 import android.window.OnBackInvokedDispatcher
 import androidx.activity.ComponentDialog
 import androidx.activity.addCallback
 import androidx.annotation.DoNotInline
 import androidx.annotation.RequiresApi
-import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.AnimationVector1D
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.Composable
@@ -29,7 +25,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCompositionContext
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -54,9 +49,6 @@ import androidx.lifecycle.setViewTreeViewModelStoreOwner
 import androidx.savedstate.findViewTreeSavedStateRegistryOwner
 import androidx.savedstate.setViewTreeSavedStateRegistryOwner
 import io.github.madmaximuus.persian.R
-import io.github.madmaximuus.persian.internal.PredictiveBack
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
 import java.util.UUID
 
 
@@ -66,7 +58,6 @@ import java.util.UUID
 internal fun ModalPageDialog(
     onDismissRequest: () -> Unit,
     properties: ModalPageProperties,
-    predictiveBackProgress: Animatable<Float, AnimationVector1D>,
     content: @Composable () -> Unit
 ) {
     val view = LocalView.current
@@ -75,7 +66,6 @@ internal fun ModalPageDialog(
     val composition = rememberCompositionContext()
     val currentContent by rememberUpdatedState(content)
     val dialogId = rememberSaveable { UUID.randomUUID() }
-    val scope = rememberCoroutineScope()
     val darkThemeEnabled = isSystemInDarkTheme()
     val dialog = remember(view, density) {
         ModalBottomSheetDialogWrapper(
@@ -85,8 +75,6 @@ internal fun ModalPageDialog(
             layoutDirection,
             density,
             dialogId,
-            predictiveBackProgress,
-            scope,
             darkThemeEnabled,
         ).apply {
             setContent(composition) {
@@ -125,8 +113,6 @@ private class ModalBottomSheetDialogLayout(
     override val window: Window,
     val shouldDismissOnBackPress: Boolean,
     private val onDismissRequest: () -> Unit,
-    private val predictiveBackProgress: Animatable<Float, AnimationVector1D>,
-    private val scope: CoroutineScope,
 ) : AbstractComposeView(context), DialogWindowProvider {
 
     private var content: @Composable () -> Unit by mutableStateOf({})
@@ -168,12 +154,7 @@ private class ModalBottomSheetDialogLayout(
             return
         }
         if (backCallback == null) {
-            backCallback =
-                if (Build.VERSION.SDK_INT >= 34) {
-                    Api34Impl.createBackCallback(onDismissRequest, predictiveBackProgress, scope)
-                } else {
-                    Api33Impl.createBackCallback(onDismissRequest)
-                }
+            backCallback = Api33Impl.createBackCallback(onDismissRequest)
         }
         Api33Impl.maybeRegisterBackCallback(this, backCallback)
     }
@@ -183,42 +164,6 @@ private class ModalBottomSheetDialogLayout(
             Api33Impl.maybeUnregisterBackCallback(this, backCallback)
         }
         backCallback = null
-    }
-
-    @RequiresApi(34)
-    private object Api34Impl {
-        @JvmStatic
-        @DoNotInline
-        fun createBackCallback(
-            onDismissRequest: () -> Unit,
-            predictiveBackProgress: Animatable<Float, AnimationVector1D>,
-            scope: CoroutineScope
-        ) =
-            object : OnBackAnimationCallback {
-                override fun onBackStarted(backEvent: BackEvent) {
-                    scope.launch {
-                        predictiveBackProgress.snapTo(
-                            PredictiveBack.transform(backEvent.progress)
-                        )
-                    }
-                }
-
-                override fun onBackProgressed(backEvent: BackEvent) {
-                    scope.launch {
-                        predictiveBackProgress.snapTo(
-                            PredictiveBack.transform(backEvent.progress)
-                        )
-                    }
-                }
-
-                override fun onBackInvoked() {
-                    onDismissRequest()
-                }
-
-                override fun onBackCancelled() {
-                    scope.launch { predictiveBackProgress.animateTo(0f) }
-                }
-            }
     }
 
     @RequiresApi(33)
@@ -261,8 +206,6 @@ private class ModalBottomSheetDialogWrapper(
     layoutDirection: LayoutDirection,
     density: Density,
     dialogId: UUID,
-    predictiveBackProgress: Animatable<Float, AnimationVector1D>,
-    scope: CoroutineScope,
     darkThemeEnabled: Boolean,
 ) :
     ComponentDialog(
@@ -292,8 +235,6 @@ private class ModalBottomSheetDialogWrapper(
             window,
             properties.shouldDismissOnBackPress,
             onDismissRequest,
-            predictiveBackProgress,
-            scope,
         ).apply {
             // Set unique id for AbstractComposeView. This allows state restoration for the
             // state
