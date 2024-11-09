@@ -37,10 +37,12 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.text.Text
 
 /**
- * A composable function that creates an outlined text area with customizable properties.
+ * A text area is useful for allowing users to enter and edit large amounts of text, providing
+ * a flexible and interactive interface for input. It offers a straightforward and effective method
+ * for collecting detailed information, making it an essential tool for enhancing user experience
+ * and data collection.
  *
- * @param value The current text value of the text area.
- * @param onValueChange A callback that is invoked when the text value changes.
+ * @param state The state of the text field.
  * @param modifier The modifier to be applied to the text area.
  * @param enabled Whether the text area is enabled or disabled.
  * @param isError Whether the text area is in an error state.
@@ -67,16 +69,17 @@ fun OutlineTextArea(
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActionHandler: KeyboardActionHandler? = null,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
-) {
-    val textColor = colors.textColor(enabled, isValid, isError, interactionSource).value
-    val mergedTextStyle = textStyle.merge(
-        TextStyle(
-            color = textColor,
-            textAlign = TextAlign.Justify
-        )
-    )
-
-    val border = animateBorderStrokeAsState(
+) = TextAreaImpl(
+    state = state,
+    modifier = modifier,
+    enabled = enabled,
+    isError = isError,
+    isValid = isValid,
+    readOnly = readOnly,
+    textStyle = textStyle,
+    colors = colors,
+    placeholder = placeholder,
+    border = animateBorderStrokeAsState(
         enabled = enabled,
         isError = isError,
         isSuccess = isValid,
@@ -84,77 +87,19 @@ fun OutlineTextArea(
         colors = colors,
         focusedBorderThickness = 2.dp,
         unfocusedBorderThickness = 1.dp
-    ).value
-    CompositionLocalProvider(LocalTextSelectionColors provides colors.selectionColors) {
-        BasicTextField(
-            state = state,
-            modifier = modifier,
-            enabled = enabled,
-            readOnly = readOnly,
-            textStyle = mergedTextStyle,
-            keyboardOptions = keyboardOptions,
-            onKeyboardAction = keyboardActionHandler,
-            lineLimits = TextFieldLineLimits.MultiLine(
-                minHeightInLines = 2,
-                maxHeightInLines = 6
-            ),
-            interactionSource = interactionSource,
-            cursorBrush = SolidColor(
-                colors.cursorColor(
-                    isError = isError,
-                    isValid = isValid
-                ).value
-            ),
-            decorator = { innerTextField ->
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .background(
-                            color = colors.containerColor(
-                                enabled = enabled,
-                                isValid = isValid,
-                                isError = isError,
-                                interactionSource = interactionSource
-                            ).value,
-                            shape = PersianTheme.shapes.shape16
-                        )
-                        .border(
-                            border = border,
-                            shape = PersianTheme.shapes.shape16
-                        )
-                        .padding(PersianTheme.spacing.size12)
-                        .heightIn(min = 48.dp, max = 144.dp),
-                    verticalAlignment = Alignment.Top
-                ) {
-                    Box(
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        if (state.text.isEmpty() && placeholder != null) {
-                            Text(
-                                text = placeholder,
-                                color = colors.placeholderColor(
-                                    enabled = enabled,
-                                    isError = isError,
-                                    isValid = isValid,
-                                    interactionSource = interactionSource
-                                ).value,
-                                style = PersianTheme.typography.bodyLarge
-                                    .copy(baselineShift = BaselineShift.Superscript)
-                            )
-                        }
-                        innerTextField()
-                    }
-                }
-            }
-        )
-    }
-}
+    ).value,
+    keyboardOptions = keyboardOptions,
+    keyboardActionHandler = keyboardActionHandler,
+    interactionSource = interactionSource
+)
 
 /**
- * A composable function that creates a plain text area with customizable properties.
+ * A text area is useful for allowing users to enter and edit large amounts of text, providing
+ * a flexible and interactive interface for input. It offers a straightforward and effective method
+ * for collecting detailed information, making it an essential tool for enhancing user experience
+ * and data collection.
  *
- * @param value The current text value of the text area.
- * @param onValueChange A callback that is invoked when the text value changes.
+ * @param state The state of the text field.
  * @param modifier The modifier to be applied to the text area.
  * @param enabled Whether the text area is enabled or disabled.
  * @param isError Whether the text area is in an error state.
@@ -181,92 +126,21 @@ fun PlainTextArea(
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActionHandler: KeyboardActionHandler? = null,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
-) {
-    val textColor = colors.textColor(enabled, isValid, isError, interactionSource).value
-    val mergedTextStyle = textStyle.merge(
-        TextStyle(
-            color = textColor,
-            textAlign = TextAlign.Justify,
-            baselineShift = BaselineShift.Superscript
-        )
-    )
-
-    val border = animateBorderStrokeAsState(
-        enabled = enabled,
-        isError = isError,
-        isSuccess = isValid,
-        interactionSource = interactionSource,
-        colors = colors,
-        focusedBorderThickness = 2.dp,
-        unfocusedBorderThickness = 1.dp
-    ).value
-    CompositionLocalProvider(LocalTextSelectionColors provides colors.selectionColors) {
-        BasicTextField(
-            state = state,
-            modifier = modifier,
-            enabled = enabled,
-            readOnly = readOnly,
-            textStyle = mergedTextStyle,
-            keyboardOptions = keyboardOptions,
-            onKeyboardAction = keyboardActionHandler,
-            interactionSource = interactionSource,
-            lineLimits = TextFieldLineLimits.MultiLine(
-                minHeightInLines = 2,
-                maxHeightInLines = 6
-            ),
-            cursorBrush = SolidColor(
-                colors.cursorColor(
-                    isError = isError,
-                    isValid = isValid
-                ).value
-            ),
-            decorator = { innerTextField ->
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .background(
-                            color = colors.containerColor(
-                                enabled = enabled,
-                                isValid = isValid,
-                                isError = isError,
-                                interactionSource = interactionSource
-                            ).value,
-                            shape = PersianTheme.shapes.shape16
-                        )
-                        .border(
-                            border = border,
-                            shape = PersianTheme.shapes.shape16
-                        )
-                        .padding(PersianTheme.spacing.size12)
-                        .heightIn(min = 48.dp, max = 144.dp),
-                    verticalAlignment = Alignment.Top
-                ) {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = PersianTheme.spacing.size4)
-                            .weight(1f)
-                    ) {
-                        if (state.text.isEmpty() && placeholder != null) {
-                            Text(
-                                text = placeholder,
-                                color = colors.placeholderColor(
-                                    enabled = enabled,
-                                    isError = isError,
-                                    isValid = isValid,
-                                    interactionSource = interactionSource
-                                ).value,
-                                style = PersianTheme.typography.bodyLarge
-                                    .copy(baselineShift = BaselineShift.Superscript)
-                            )
-                        }
-                        innerTextField()
-                    }
-                }
-            }
-        )
-    }
-}
+) = TextAreaImpl(
+    state = state,
+    modifier = modifier,
+    enabled = enabled,
+    isError = isError,
+    isValid = isValid,
+    readOnly = readOnly,
+    textStyle = textStyle,
+    colors = colors,
+    placeholder = placeholder,
+    border = null,
+    keyboardOptions = keyboardOptions,
+    keyboardActionHandler = keyboardActionHandler,
+    interactionSource = interactionSource
+)
 
 /**
  * A composable function that animates the border stroke of a text area based on its state.
@@ -304,4 +178,110 @@ private fun animateBorderStrokeAsState(
     return rememberUpdatedState(
         BorderStroke(animatedThickness.value, SolidColor(indicatorColor.value))
     )
+}
+
+@Composable
+private fun TextAreaImpl(
+    state: TextFieldState,
+    modifier: Modifier,
+    enabled: Boolean,
+    isError: Boolean,
+    isValid: Boolean,
+    readOnly: Boolean,
+    textStyle: TextStyle,
+    placeholder: String?,
+    border: BorderStroke?,
+    colors: TextAreaColors,
+    keyboardOptions: KeyboardOptions,
+    keyboardActionHandler: KeyboardActionHandler?,
+    interactionSource: MutableInteractionSource
+) {
+    val textColor = colors.textColor(enabled, isValid, isError, interactionSource).value
+    val mergedTextStyle = textStyle.merge(
+        TextStyle(
+            color = textColor,
+            textAlign = TextAlign.Justify
+        )
+    )
+
+    val rowModifier = if (border == null)
+        Modifier
+            .fillMaxWidth()
+            .background(
+                color = colors.containerColor(
+                    enabled = enabled,
+                    isValid = isValid,
+                    isError = isError,
+                    interactionSource = interactionSource
+                ).value,
+                shape = PersianTheme.shapes.shape16
+            )
+            .padding(PersianTheme.spacing.size12)
+            .heightIn(min = 48.dp, max = 144.dp)
+    else
+        Modifier
+            .fillMaxWidth()
+            .background(
+                color = colors.containerColor(
+                    enabled = enabled,
+                    isValid = isValid,
+                    isError = isError,
+                    interactionSource = interactionSource
+                ).value,
+                shape = PersianTheme.shapes.shape16
+            )
+            .border(
+                border = border,
+                shape = PersianTheme.shapes.shape16
+            )
+            .padding(PersianTheme.spacing.size12)
+            .heightIn(min = 48.dp, max = 144.dp)
+
+    CompositionLocalProvider(LocalTextSelectionColors provides colors.selectionColors) {
+        BasicTextField(
+            state = state,
+            modifier = modifier,
+            enabled = enabled,
+            readOnly = readOnly,
+            textStyle = mergedTextStyle,
+            keyboardOptions = keyboardOptions,
+            onKeyboardAction = keyboardActionHandler,
+            lineLimits = TextFieldLineLimits.MultiLine(
+                minHeightInLines = 2,
+                maxHeightInLines = 6
+            ),
+            interactionSource = interactionSource,
+            cursorBrush = SolidColor(
+                colors.cursorColor(
+                    isError = isError,
+                    isValid = isValid
+                ).value
+            ),
+            decorator = { innerTextField ->
+                Row(
+                    modifier = rowModifier,
+                    verticalAlignment = Alignment.Top
+                ) {
+                    Box(
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        if (state.text.isEmpty() && placeholder != null) {
+                            Text(
+                                text = placeholder,
+                                color = colors.placeholderColor(
+                                    enabled = enabled,
+                                    isError = isError,
+                                    isValid = isValid,
+                                    interactionSource = interactionSource
+                                ).value,
+                                style = PersianTheme.typography.bodyLarge
+                                    .copy(baselineShift = BaselineShift.Superscript)
+                            )
+                        }
+                        innerTextField()
+                    }
+                }
+            }
+        )
+    }
 }

@@ -19,15 +19,12 @@ import io.github.madmaximuus.persian.foundation.state16
 import io.github.madmaximuus.persian.foundation.state38
 
 /**
- * Contains all default values used by text area
+ * Contains all default values used by [OutlineTextArea] and [PlainTextArea]
  */
 object TextAreaDefaults {
 
     /**
-     * Composable function to create a [TextAreaColors] instance with outline-style default values from the theme.
-     *
-     * This function provides default values for the text area colors based on the current theme's color scheme,
-     * with a focus on outline-style colors.
+     * Create a [TextAreaColors] instance with outline-style default values from the theme.
      *
      * @param defaultTextColor The default color of the text.
      * @param hoveredTextColor The color of the text when hovered.
@@ -165,9 +162,7 @@ object TextAreaDefaults {
         )
 
     /**
-     * Composable function to create a [TextAreaColors] instance with default values from the theme.
-     *
-     * This function provides default values for the text area colors based on the current theme's color scheme.
+     * Create a [TextAreaColors] instance with default values from the theme.
      *
      * @param defaultTextColor The default color of the text.
      * @param hoveredTextColor The color of the text when hovered.
