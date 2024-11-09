@@ -3,11 +3,18 @@ package io.github.madmaximuus.persian.slider.continuous
 import androidx.annotation.IntRange
 import androidx.compose.foundation.interaction.Interaction
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.slider.SliderColors
 import io.github.madmaximuus.persian.slider.SliderDefaults
+import io.github.madmaximuus.persian.slider.content.SliderContentScope
+import io.github.madmaximuus.persian.slider.content.SliderContentScopeWrapper
 import io.github.madmaximuus.persian.slider.impl.SliderImpl
 import io.github.madmaximuus.persian.slider.state.SliderState
 
@@ -50,7 +57,9 @@ fun DiscreteSlider(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     @IntRange(from = 0) steps: Int = 0,
     showLabel: Boolean = false,
-    valueRange: ClosedFloatingPointRange<Float> = 0f..1f
+    valueRange: ClosedFloatingPointRange<Float> = 0f..1f,
+    leading: (@Composable SliderContentScope.() -> Unit)? = null,
+    trailing: (@Composable SliderContentScope.() -> Unit)? = null,
 ) {
     val state =
         remember(steps, valueRange) { SliderState(value, steps, onValueChangeFinished, valueRange) }
@@ -59,12 +68,27 @@ fun DiscreteSlider(
     state.onValueChange = onValueChange
     state.value = value
 
-    SliderImpl(
-        state = state,
-        modifier = modifier,
-        enabled = enabled,
-        interactionSource = interactionSource,
-        colors = colors,
-        showLabel = showLabel
-    )
+    Row(
+        modifier = modifier.padding(horizontal = PersianTheme.spacing.size2),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8)
+    ) {
+        val contentScope = remember(enabled, colors) {
+            SliderContentScopeWrapper(enabled, colors)
+        }
+        leading?.let { leading ->
+            contentScope.leading()
+        }
+        SliderImpl(
+            state = state,
+            modifier = Modifier.weight(1f),
+            enabled = enabled,
+            interactionSource = interactionSource,
+            colors = colors,
+            showLabel = showLabel
+        )
+        trailing?.let { trailing ->
+            contentScope.trailing()
+        }
+    }
 }

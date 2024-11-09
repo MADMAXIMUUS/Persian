@@ -2,12 +2,19 @@ package io.github.madmaximuus.persian.slider.centered
 
 import androidx.compose.foundation.interaction.Interaction
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.slider.SliderColors
 import io.github.madmaximuus.persian.slider.SliderDefaults
+import io.github.madmaximuus.persian.slider.content.SliderContentScope
+import io.github.madmaximuus.persian.slider.content.SliderContentScopeWrapper
 import io.github.madmaximuus.persian.slider.impl.CenteredSliderImpl
 import io.github.madmaximuus.persian.slider.state.CenteredSliderState
 
@@ -48,6 +55,8 @@ fun CenteredSlider(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     valueRange: ClosedFloatingPointRange<Float> = -1f..1f,
     showLabel: Boolean,
+    leading: (@Composable SliderContentScope.() -> Unit)? = null,
+    trailing: (@Composable SliderContentScope.() -> Unit)? = null
 ) {
     val state =
         remember(0, valueRange) { CenteredSliderState(value, 0, onValueChangeFinished, valueRange) }
@@ -56,12 +65,27 @@ fun CenteredSlider(
     state.onValueChange = onValueChange
     state.value = value
 
-    CenteredSliderImpl(
-        state = state,
-        modifier = modifier,
-        enabled = enabled,
-        interactionSource = interactionSource,
-        showLabel = showLabel,
-        colors = colors.copy(activeTrackColor = Color.Unspecified)
-    )
+    Row(
+        modifier = modifier.padding(horizontal = PersianTheme.spacing.size2),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8)
+    ) {
+        val contentScope = remember(enabled, colors) {
+            SliderContentScopeWrapper(enabled, colors)
+        }
+        leading?.let { leading ->
+            contentScope.leading()
+        }
+        CenteredSliderImpl(
+            state = state,
+            modifier = Modifier.weight(1f),
+            enabled = enabled,
+            interactionSource = interactionSource,
+            showLabel = showLabel,
+            colors = colors.copy(activeTrackColor = Color.Unspecified)
+        )
+        trailing?.let { trailing ->
+            contentScope.trailing()
+        }
+    }
 }

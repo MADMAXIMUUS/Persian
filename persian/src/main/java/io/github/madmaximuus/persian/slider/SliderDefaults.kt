@@ -4,14 +4,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.takeOrElse
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.slider.continuous.Slider
 
 /**
- * Contains all default values used by slider
+ * Contains all default values used by all type of slider
  */
 object SliderDefaults {
 
@@ -53,11 +52,13 @@ object SliderDefaults {
         inactiveTickColor: Color = PersianTheme.colorScheme.primary,
         labelTextColor: Color = PersianTheme.colorScheme.onSurface,
         labelContainerColor: Color = PersianTheme.colorScheme.surfaceContainerHighest,
+        contentColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         disabledThumbColor: Color = PersianTheme.colorScheme.onSurface.state38,
         disabledActiveTrackColor: Color = PersianTheme.colorScheme.onSurface.state38,
         disabledActiveTickColor: Color = PersianTheme.colorScheme.surface.state38,
         disabledInactiveTrackColor: Color = PersianTheme.colorScheme.onSurface.state12,
-        disabledInactiveTickColor: Color = PersianTheme.colorScheme.onSurface.state38
+        disabledInactiveTickColor: Color = PersianTheme.colorScheme.onSurface.state38,
+        disabledContentColor: Color = PersianTheme.colorScheme.onSurface.state38
     ): SliderColors =
         SliderColors(
             thumbColor = thumbColor,
@@ -67,11 +68,13 @@ object SliderDefaults {
             inactiveTickColor = inactiveTickColor,
             labelTextColor = labelTextColor,
             labelContainerColor = labelContainerColor,
+            contentColor = contentColor,
             disabledThumbColor = disabledThumbColor,
             disabledActiveTrackColor = disabledActiveTrackColor,
             disabledActiveTickColor = disabledActiveTickColor,
             disabledInactiveTrackColor = disabledInactiveTrackColor,
-            disabledInactiveTickColor = disabledInactiveTickColor
+            disabledInactiveTickColor = disabledInactiveTickColor,
+            disabledContentColor = disabledContentColor
         )
 
 
@@ -112,11 +115,13 @@ class SliderColors internal constructor(
     private val inactiveTickColor: Color,
     internal val labelTextColor: Color,
     internal val labelContainerColor: Color,
+    private val contentColor: Color,
     private val disabledThumbColor: Color,
     private val disabledActiveTrackColor: Color,
     private val disabledActiveTickColor: Color,
     private val disabledInactiveTrackColor: Color,
-    private val disabledInactiveTickColor: Color
+    private val disabledInactiveTickColor: Color,
+    private val disabledContentColor: Color
 ) {
 
     /**
@@ -130,26 +135,30 @@ class SliderColors internal constructor(
         inactiveTrackColor: Color = this.inactiveTrackColor,
         inactiveTickColor: Color = this.inactiveTickColor,
         labelTextColor: Color = this.inactiveTickColor,
-        labelBackgroundColor: Color = this.inactiveTickColor,
+        labelContainerColor: Color = this.inactiveTickColor,
+        contentColor: Color = this.contentColor,
         disabledThumbColor: Color = this.disabledThumbColor,
         disabledActiveTrackColor: Color = this.disabledActiveTrackColor,
         disabledActiveTickColor: Color = this.disabledActiveTickColor,
         disabledInactiveTrackColor: Color = this.disabledInactiveTrackColor,
         disabledInactiveTickColor: Color = this.disabledInactiveTickColor,
-    ) =
+        disabledContentColor: Color = this.disabledContentColor
+    ): SliderColors =
         SliderColors(
-            thumbColor.takeOrElse { this.thumbColor },
-            activeTrackColor.takeOrElse { this.activeTrackColor },
-            activeTickColor.takeOrElse { this.activeTickColor },
-            inactiveTrackColor.takeOrElse { this.inactiveTrackColor },
-            inactiveTickColor.takeOrElse { this.inactiveTickColor },
-            labelTextColor.takeOrElse { this.labelTextColor },
-            labelBackgroundColor.takeOrElse { this.labelContainerColor },
-            disabledThumbColor.takeOrElse { this.disabledThumbColor },
-            disabledActiveTrackColor.takeOrElse { this.disabledActiveTrackColor },
-            disabledActiveTickColor.takeOrElse { this.disabledActiveTickColor },
-            disabledInactiveTrackColor.takeOrElse { this.disabledInactiveTrackColor },
-            disabledInactiveTickColor.takeOrElse { this.disabledInactiveTickColor },
+            thumbColor = thumbColor,
+            activeTrackColor = activeTrackColor,
+            activeTickColor = activeTickColor,
+            inactiveTrackColor = inactiveTrackColor,
+            inactiveTickColor = inactiveTickColor,
+            labelTextColor = labelTextColor,
+            labelContainerColor = labelContainerColor,
+            contentColor = contentColor,
+            disabledThumbColor = disabledThumbColor,
+            disabledActiveTrackColor = disabledActiveTrackColor,
+            disabledActiveTickColor = disabledActiveTickColor,
+            disabledInactiveTrackColor = disabledInactiveTrackColor,
+            disabledInactiveTickColor = disabledInactiveTickColor,
+            disabledContentColor = disabledContentColor
         )
 
     /**
@@ -176,6 +185,15 @@ class SliderColors internal constructor(
         }
 
     /**
+     * Returns the color of the content(icon/text) based on its enabled state.
+     *
+     * @param enabled The state of the track.
+     */
+    @Stable
+    internal fun contentColor(enabled: Boolean): Color =
+        if (enabled) contentColor else disabledContentColor
+
+    /**
      * Returns the color of the tick based on its enabled and active states.
      *
      * @param enabled The state of the tick.
@@ -200,11 +218,13 @@ class SliderColors internal constructor(
         if (inactiveTickColor != other.inactiveTickColor) return false
         if (labelTextColor != other.labelTextColor) return false
         if (labelContainerColor != other.labelContainerColor) return false
+        if (contentColor != other.contentColor) return false
         if (disabledThumbColor != other.disabledThumbColor) return false
         if (disabledActiveTrackColor != other.disabledActiveTrackColor) return false
         if (disabledActiveTickColor != other.disabledActiveTickColor) return false
         if (disabledInactiveTrackColor != other.disabledInactiveTrackColor) return false
         if (disabledInactiveTickColor != other.disabledInactiveTickColor) return false
+        if (disabledContentColor != other.disabledContentColor) return false
 
         return true
     }
@@ -217,11 +237,13 @@ class SliderColors internal constructor(
         result = 31 * result + inactiveTickColor.hashCode()
         result = 31 * result + labelTextColor.hashCode()
         result = 31 * result + labelContainerColor.hashCode()
+        result = 31 * result + contentColor.hashCode()
         result = 31 * result + disabledThumbColor.hashCode()
         result = 31 * result + disabledActiveTrackColor.hashCode()
         result = 31 * result + disabledActiveTickColor.hashCode()
         result = 31 * result + disabledInactiveTrackColor.hashCode()
         result = 31 * result + disabledInactiveTickColor.hashCode()
+        result = 31 * result + disabledContentColor.hashCode()
         return result
     }
 }
