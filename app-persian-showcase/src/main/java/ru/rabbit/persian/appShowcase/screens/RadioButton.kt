@@ -1,17 +1,18 @@
 package ru.rabbit.persian.appShowcase.screens
 
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import io.github.madmaximuus.persian.forms.FormItem
+import io.github.madmaximuus.persian.forms.RadioButton
+import io.github.madmaximuus.persian.forms.RadioButtons
+import io.github.madmaximuus.persian.forms.Subhead
 import io.github.madmaximuus.persian.radioButton.RadioButton
-import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object RadioButton : Screen {
@@ -68,51 +69,47 @@ object RadioButton : Screen {
                     )
                 }
                 item {
-                    SampleRow(text = "Selected group", firstItem = true) {
-                        val states = remember {
-                            listOf(
-                                mutableStateOf(true),
-                                mutableStateOf(false),
-                                mutableStateOf(false)
-                            )
-                        }
-                        Column(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .selectableGroup()
-                        ) {
-                            RadioButton(
-                                modifier = Modifier.fillMaxWidth(),
-                                text = "Radio Button 1",
-                                selected = states[0].value,
-                                onSelectedChange = {
-                                    states.forEachIndexed { index, mutableState ->
-                                        mutableState.value = index == 0
-                                    }
-                                }
-                            )
-                            RadioButton(
-                                modifier = Modifier.fillMaxWidth(),
-                                text = "Radio Button 2",
-                                selected = states[1].value,
-                                onSelectedChange = {
-                                    states.forEachIndexed { index, mutableState ->
-                                        mutableState.value = index == 1
-                                    }
-                                }
-                            )
-                            RadioButton(
-                                modifier = Modifier.fillMaxWidth(),
-                                text = "Radio Button 3",
-                                selected = states[2].value,
-                                onSelectedChange = {
-                                    states.forEachIndexed { index, mutableState ->
-                                        mutableState.value = index == 2
-                                    }
-                                }
-                            )
-                        }
+                    val states = remember {
+                        listOf(
+                            mutableStateOf(true),
+                            mutableStateOf(false),
+                            mutableStateOf(false)
+                        )
                     }
+                    FormItem(
+                        subhead = { Subhead(text = "Selected group") },
+                        content = {
+                            RadioButtons {
+                                RadioButton(
+                                    text = "Radio Button 1",
+                                    selected = states[0].value,
+                                    onSelectedChange = {
+                                        states.forEachIndexed { index, mutableState ->
+                                            mutableState.value = index == 0
+                                        }
+                                    }
+                                )
+                                RadioButton(
+                                    text = "Radio Button 2",
+                                    selected = states[1].value,
+                                    onSelectedChange = {
+                                        states.forEachIndexed { index, mutableState ->
+                                            mutableState.value = index == 1
+                                        }
+                                    }
+                                )
+                                RadioButton(
+                                    text = "Radio Button 3",
+                                    selected = states[2].value,
+                                    onSelectedChange = {
+                                        states.forEachIndexed { index, mutableState ->
+                                            mutableState.value = index == 2
+                                        }
+                                    }
+                                )
+                            }
+                        }
+                    )
                 }
             }
         }
