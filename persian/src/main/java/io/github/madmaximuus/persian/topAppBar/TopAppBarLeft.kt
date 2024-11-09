@@ -43,10 +43,7 @@ internal class TopAppBarLeftScopeWrapper(
 ) : TopAppBarLeftScope
 
 /**
- * A composable function that creates an icon button within the [TopAppBarLeftScope].
- *
- * This function provides a simple way to add an icon button to the left side of a top app bar,
- * with customizable modifier, icon, and click behavior.
+ * Display an icon button within the [TopAppBarLeftScope].
  *
  * @param modifier The modifier to be applied to the icon button.
  * @param icon The painter to be used as the icon for the button.
@@ -75,10 +72,7 @@ fun TopAppBarLeftScope.IconButton(
 }
 
 /**
- * A composable function that creates an avatar within the [TopAppBarLeftScope].
- *
- * This function provides a simple way to add an avatar to the left side of a top app bar,
- * with customizable modifier, avatar URL, and click behavior.
+ * Display an avatar within the [TopAppBarLeftScope].
  *
  * @param modifier The modifier to be applied to the avatar.
  * @param avatarUrl The URI of the avatar image to be displayed.

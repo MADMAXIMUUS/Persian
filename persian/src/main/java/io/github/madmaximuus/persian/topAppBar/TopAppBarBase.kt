@@ -3,10 +3,6 @@ package io.github.madmaximuus.persian.topAppBar
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
-import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.draggable
-import androidx.compose.foundation.gestures.rememberDraggableState
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.heightIn
@@ -32,24 +28,16 @@ import io.github.madmaximuus.persian.surface.Surface
 import io.github.madmaximuus.persian.text.Text
 import io.github.madmaximuus.persian.topAppBar.util.LayoutId
 import io.github.madmaximuus.persian.topAppBar.util.ScrolledOffset
-import io.github.madmaximuus.persian.topAppBar.util.TopAppBarTitleInset
-import io.github.madmaximuus.persian.topAppBar.util.settleAppBar
-import kotlin.math.max
 import kotlin.math.roundToInt
 
 /**
  * A single-row top app bar that is designed to be called by the small and center aligned top app
  * bar composables.
- *
- * This SingleRowTopAppBar has slots for a title, navigation icon, and actions. When the
- * [centeredTitle] flag is true, the title will be horizontally aligned to the center of the top app
- * bar width.
  */
 @Composable
-internal fun SingleRowTopAppBar(
+internal fun TopAppBarImpl(
     modifier: Modifier = Modifier,
     title: String,
-    centeredTitle: Boolean,
     left: (@Composable TopAppBarLeftScope.() -> Unit)?,
     right: (@Composable TopAppBarRightScope.() -> Unit)?,
     expandedHeight: Dp,
@@ -87,30 +75,7 @@ internal fun SingleRowTopAppBar(
         label = "Top App Bar Container Animation"
     )
 
-    // Set up support for resizing the top app bar when vertically dragging the bar itself.
-    val appBarDragModifier =
-        if (scrollBehavior != null && !scrollBehavior.isPinned) {
-            Modifier.draggable(
-                orientation = Orientation.Vertical,
-                state = rememberDraggableState { delta -> scrollBehavior.state.heightOffset += delta },
-                onDragStopped = { velocity ->
-                    settleAppBar(
-                        scrollBehavior.state,
-                        velocity,
-                        scrollBehavior.flingAnimationSpec,
-                        scrollBehavior.snapAnimationSpec
-                    )
-                }
-            )
-        } else {
-            Modifier
-        }
-
-    // Compose a Surface with a TopAppBarLayout content.
-    // The surface's background color is animated as specified above.
-    // The height of the app bar is determined by subtracting the bar's height offset from the
-    // app bar's defined constant height value (i.e. the ContainerHeight token).
-    Surface(modifier = modifier.then(appBarDragModifier), color = appBarContainerColor) {
+    Surface(modifier = modifier, color = appBarContainerColor) {
         TopAppBarLayout(
             modifier = Modifier
                 .windowInsetsPadding(windowInsets)
@@ -124,7 +89,6 @@ internal fun SingleRowTopAppBar(
             title = title,
             colors = colors,
             sizes = sizes,
-            titleHorizontalArrangement = if (centeredTitle) Arrangement.Center else Arrangement.Start,
             left = left,
             right = right
         )
@@ -141,11 +105,10 @@ internal fun SingleRowTopAppBar(
  * @param scrolledOffset a [ScrolledOffset] that provides the app bar offset in pixels (note that
  *   when the app bar is scrolled, the lambda will output negative values)
  * @param title the top app bar title (header)
- * @param titleHorizontalArrangement the title's horizontal arrangement
- * @param colors the [TopAppBarColors] that used by [TopAppBar] or [CenteredTopAppBar]
- * @param sizes the [TopAppBarSizes] that used by [TopAppBar] or [CenteredTopAppBar]
- * @param left the optional content that will be displayed in left side of [TopAppBar] or [CenteredTopAppBar]
- * @param right the optional content that will be displayed in right side of [TopAppBar] or [CenteredTopAppBar]
+ * @param colors the [TopAppBarColors] that used by [TopAppBar] or [TopAppBar]
+ * @param sizes the [TopAppBarSizes] that used by [TopAppBar] or [TopAppBar]
+ * @param left the optional content that will be displayed in left side of [TopAppBar] or [TopAppBar]
+ * @param right the optional content that will be displayed in right side of [TopAppBar] or [TopAppBar]
  */
 @Composable
 private fun TopAppBarLayout(
@@ -154,7 +117,6 @@ private fun TopAppBarLayout(
     scrolledOffset: ScrolledOffset,
     colors: TopAppBarColors,
     sizes: TopAppBarSizes,
-    titleHorizontalArrangement: Arrangement.Horizontal,
     left: (@Composable TopAppBarLeftScope.() -> Unit)?,
     right: (@Composable TopAppBarRightScope.() -> Unit)?,
 ) {
@@ -164,6 +126,7 @@ private fun TopAppBarLayout(
     val rightScope = remember {
         TopAppBarRightScopeWrapper(colors, sizes)
     }
+    val padding = with(LocalDensity.current) { 8.dp.roundToPx() }
     Layout(
         content = {
             left?.let { leftScope.it() }
@@ -206,6 +169,7 @@ private fun TopAppBarLayout(
 
         val leftWidth = leftPlaceable?.width ?: 0
         val rightActionWidth = rightAction?.width ?: 0
+        val rightIconWidth = rightIcons.firstOrNull()?.width ?: 0
         val rightIconsWidth = rightIcons.sumOf { it.width }
         val rightOverflowWidth = rightOverflow?.width ?: 0
 
@@ -217,6 +181,7 @@ private fun TopAppBarLayout(
                     - rightActionWidth
                     - rightIcons.sumOf { it.width }
                     - rightOverflowWidth
+                    - padding * 2
                     ).coerceAtLeast(0)
         }
         val titlePlaceable = measurables
@@ -242,43 +207,6 @@ private fun TopAppBarLayout(
                 y = (layoutHeight - leftPlaceable.height) / 2
             )
 
-            // Title
-            titlePlaceable.placeRelative(
-                x = when (titleHorizontalArrangement) {
-                    Arrangement.Center -> {
-                        var baseX = (constraints.maxWidth - titlePlaceable.width) / 2
-                        if (baseX < leftWidth) {
-                            // May happen if the navigation is wider than the actions and the
-                            // title is long. In this case, prioritize showing more of the title
-                            // by
-                            // offsetting it to the right.
-                            baseX += (leftWidth - baseX)
-                        } else if (
-                            baseX + titlePlaceable.width >
-                            constraints.maxWidth - rightIconsWidth - rightActionWidth - rightOverflowWidth
-                        ) {
-                            // May happen if the actions are wider than the navigation and the
-                            // title
-                            // is long. In this case, offset to the left.
-                            baseX +=
-                                ((constraints.maxWidth - rightIconsWidth - rightActionWidth - rightOverflowWidth) -
-                                        (baseX + titlePlaceable.width))
-                        }
-                        baseX
-                    }
-
-                    Arrangement.End ->
-                        constraints.maxWidth - titlePlaceable.width - rightIconsWidth - rightActionWidth - rightOverflowWidth
-                    // Arrangement.Start.
-                    // An TopAppBarTitleInset will make sure the title is offset in case the
-                    // navigation icon is missing.
-                    else -> {
-                        max(TopAppBarTitleInset.roundToPx(), leftWidth) + 8.dp.roundToPx()
-                    }
-                },
-                y = (layoutHeight - titlePlaceable.height) / 2
-            )
-
             // Action icons
             rightAction?.placeRelative(
                 x = constraints.maxWidth - rightActionWidth,
@@ -286,18 +214,52 @@ private fun TopAppBarLayout(
             )
 
             var x =
-                constraints.maxWidth - rightIconsWidth - rightOverflowWidth /*+ 8.dp.roundToPx()*/
-            rightIcons.forEach { action ->
-                action.placeRelative(
+                constraints.maxWidth - rightIconsWidth - rightOverflowWidth
+            rightIcons.forEach { icon ->
+                icon.placeRelative(
                     x = x,
-                    y = (layoutHeight - action.height) / 2
+                    y = (layoutHeight - icon.height) / 2
                 )
-                x += action.width
+                x += icon.width
             }
 
             rightOverflow?.placeRelative(
                 x = x,
                 y = (layoutHeight - rightOverflow.height) / 2
+            )
+
+            val isCentered = rightActionWidth != 0
+                    || rightIconsWidth != rightIconWidth * 3
+                    && rightIconsWidth + rightOverflowWidth != rightIconWidth * 3
+                    || right == null
+
+            // Title
+            titlePlaceable.placeRelative(
+                x = if (isCentered) {
+                    var baseX = (constraints.maxWidth - titlePlaceable.width) / 2
+                    if (baseX < leftWidth) {
+                        // May happen if the navigation is wider than the actions and the
+                        // title is long. In this case, prioritize showing more of the title
+                        // by
+                        // offsetting it to the right.
+                        baseX += (leftWidth - baseX)
+                    } else if (
+                        baseX + titlePlaceable.width >
+                        constraints.maxWidth - rightIconsWidth - rightActionWidth - rightOverflowWidth
+                    ) {
+                        // May happen if the actions are wider than the navigation and the
+                        // title
+                        // is long. In this case, offset to the left.
+                        baseX +=
+                            ((constraints.maxWidth - rightIconsWidth - rightActionWidth - rightOverflowWidth) -
+                                    (baseX + titlePlaceable.width))
+                    }
+                    baseX
+                } else {
+                    leftWidth + padding
+                    /*constraints.maxWidth - titlePlaceable.width - rightIconsWidth - rightActionWidth - rightOverflowWidth*/
+                },
+                y = (layoutHeight - titlePlaceable.height) / 2
             )
         }
     }

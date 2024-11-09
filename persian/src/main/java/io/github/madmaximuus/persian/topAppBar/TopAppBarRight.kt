@@ -13,6 +13,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.unit.dp
+import io.github.madmaximuus.persian.button.ButtonDefaults
 import io.github.madmaximuus.persian.button.TertiaryButton
 import io.github.madmaximuus.persian.counter.Badge
 import io.github.madmaximuus.persian.counter.utils.BadgeStyle
@@ -53,10 +54,7 @@ internal class TopAppBarRightScopeWrapper(
 ) : TopAppBarRightScope
 
 /**
- * A composable function that creates an action button within the [TopAppBarRightScope].
- *
- * This function provides a simple way to add an action button to the right side of a top app bar,
- * with customizable modifier, text, and click behavior.
+ * Display an action button within the [TopAppBarRightScope].
  *
  * @param modifier The modifier to be applied to the action button.
  * @param text The text to be displayed on the action button.
@@ -75,7 +73,9 @@ fun TopAppBarRightScope.Action(
     ) {
         TertiaryButton(
             text = text,
-            colors = this@Action.colors.rightActionButtonColors,
+            colors = ButtonDefaults.tertiaryColors(
+                contentColor = this@Action.colors.rightActionButtonColor
+            ),
             sizes = this@Action.sizes.rightActionButtonSizes,
             onClick = onClick,
         )
@@ -83,10 +83,7 @@ fun TopAppBarRightScope.Action(
 }
 
 /**
- * A composable function that creates an icon button with an optional badge within the [TopAppBarRightScope].
- *
- * This function provides a simple way to add an icon button to the right side of a top app bar,
- * with customizable modifier, badge style, counter, icon, and click behavior.
+ * Display an icon button with an optional badge within the [TopAppBarRightScope].
  *
  * @param modifier The modifier to be applied to the icon button.
  * @param style The style of the badge to be displayed on the icon button.
@@ -138,10 +135,7 @@ fun TopAppBarRightScope.IconButton(
 }
 
 /**
- * A composable function that creates a dropdown menu with an overflow icon within the [TopAppBarRightScope].
- *
- * This function provides a simple way to add an overflow menu to the right side of a top app bar,
- * with customizable modifier, icon, expanded state, interaction source, dismiss request handler, and menu items.
+ * Display a dropdown menu with an overflow icon within the [TopAppBarRightScope].
  *
  * @param modifier The modifier to be applied to the overflow menu.
  * @param icon The painter to be used as the icon for the overflow button.

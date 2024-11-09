@@ -14,8 +14,8 @@ import androidx.window.core.layout.WindowHeightSizeClass
 import androidx.window.core.layout.WindowWidthSizeClass
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.topAppBar.Action
-import io.github.madmaximuus.persian.topAppBar.CenteredTopAppBar
 import io.github.madmaximuus.persian.topAppBar.IconButton
+import io.github.madmaximuus.persian.topAppBar.TopAppBar
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.xmark.base.XMark
 
@@ -52,7 +52,7 @@ internal class ModalPageTopScopeWrapper(
 /**
  * A composable function that defines the top bar for a modal page.
  *
- * This function creates a [CenteredTopAppBar] with a title, a dismiss icon button on the left, and an action button on the right.
+ * This function creates a [TopAppBar] with a title, a dismiss icon button on the left, and an action button on the right.
  * The dismiss icon button invokes the [ModalPageTopScope.onDismiss] callback, and the action button invokes the [onActionClick] callback.
  *
  * @param title The title to be displayed in the top bar.
@@ -66,7 +66,7 @@ fun ModalPageTopScope.TopBar(
     actionTitle: String,
     onActionClick: () -> Unit
 ) {
-    CenteredTopAppBar(
+    TopAppBar(
         modifier = modifier.fillMaxWidth(),
         colors = colors.topAppBarColors,
         sizes = sizes.topAppBarSizes,

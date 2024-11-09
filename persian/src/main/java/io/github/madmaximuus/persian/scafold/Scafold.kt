@@ -42,7 +42,7 @@ import io.github.madmaximuus.persian.snackbar.Snackbar
 import io.github.madmaximuus.persian.snackbar.SnackbarHost
 import io.github.madmaximuus.persian.snackbar.SnackbarHostState
 import io.github.madmaximuus.persian.surface.Surface
-import io.github.madmaximuus.persian.topAppBar.CenteredTopAppBar
+import io.github.madmaximuus.persian.topAppBar.TopAppBar
 
 /**
  * Scaffold implements the basic material design visual layout structure.
@@ -52,7 +52,7 @@ import io.github.madmaximuus.persian.topAppBar.CenteredTopAppBar
  * components will work together correctly.
  *
  * @param modifier the [Modifier] to be applied to this scaffold
- * @param topBar top app bar of the screen, typically a [CenteredTopAppBar]
+ * @param topBar top app bar of the screen, typically a [TopAppBar]
  * @param bottomBar bottom bar of the screen, typically a [NavigationBar]
  * @param snackbarHost component to host [Snackbar]s that are pushed to be shown via
  * [SnackbarHostState.showSnackbar], typically a [SnackbarHost]
@@ -115,7 +115,7 @@ fun Scaffold(
  * Layout for a [Scaffold]'s content.
  *
  * @param fabPosition [FabPosition] for the FAB (if present)
- * @param topBar the content to place at the top of the [Scaffold], typically a [CenteredTopAppBar]
+ * @param topBar the content to place at the top of the [Scaffold], typically a [TopAppBar]
  * @param content the main 'body' of the [Scaffold]
  * @param snackbar the [Snackbar] displayed on top of the [content]
  * @param fab the [FabImpl] displayed on top of the [content], below the [snackbar]
