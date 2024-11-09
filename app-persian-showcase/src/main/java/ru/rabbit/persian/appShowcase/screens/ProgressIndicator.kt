@@ -19,14 +19,14 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.forms.Checkbox
 import io.github.madmaximuus.persian.forms.Checkboxes
-import io.github.madmaximuus.persian.forms.Form
+import io.github.madmaximuus.persian.forms.FormItem
+import io.github.madmaximuus.persian.forms.RadioButton
 import io.github.madmaximuus.persian.forms.RadioButtons
 import io.github.madmaximuus.persian.forms.Subhead
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.progressIndicator.CircularProgressIndicator
 import io.github.madmaximuus.persian.progressIndicator.LinearProgressIndicator
 import io.github.madmaximuus.persian.progressIndicator.ProgressIndicatorDefaults
-import io.github.madmaximuus.persian.radioButton.RadioButton
 import io.github.madmaximuus.persian.slider.continuous.Slider
 import io.github.madmaximuus.persian.text.Text
 import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
@@ -95,9 +95,7 @@ object ProgressIndicator : Screen {
                         when {
                             typeStates[0].value -> {
                                 if (indeterminate) {
-                                    CircularProgressIndicator(
-                                        sizes = circularSizeState
-                                    )
+                                    CircularProgressIndicator(sizes = circularSizeState)
                                 } else {
                                     CircularProgressIndicator(
                                         progress = { progress },
@@ -146,13 +144,9 @@ object ProgressIndicator : Screen {
                         valueRange = 0f..10f
                     )
                 }
-                Form(
+                FormItem(
                     modifier = Modifier.padding(top = PersianTheme.spacing.size12),
-                    subhead = {
-                        Subhead(
-                            text = "Type"
-                        )
-                    },
+                    subhead = { Subhead(text = "Type") },
                     content = {
                         RadioButtons {
                             RadioButton(
@@ -176,13 +170,9 @@ object ProgressIndicator : Screen {
                         }
                     }
                 )
-                Form(
+                FormItem(
                     modifier = Modifier.padding(top = PersianTheme.spacing.size12),
-                    subhead = {
-                        Subhead(
-                            text = "Size"
-                        )
-                    },
+                    subhead = { Subhead(text = "Size") },
                     content = {
                         RadioButtons {
                             RadioButton(
@@ -221,13 +211,9 @@ object ProgressIndicator : Screen {
                         }
                     }
                 )
-                Form(
+                FormItem(
                     modifier = Modifier.padding(top = PersianTheme.spacing.size12),
-                    subhead = {
-                        Subhead(
-                            text = "Settings"
-                        )
-                    },
+                    subhead = { Subhead(text = "Settings") },
                     content = {
                         Checkboxes {
                             Checkbox(
