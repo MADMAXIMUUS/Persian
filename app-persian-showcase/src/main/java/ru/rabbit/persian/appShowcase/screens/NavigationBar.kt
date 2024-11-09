@@ -16,7 +16,7 @@ import androidx.navigation.NavController
 import io.github.madmaximuus.persian.counter.utils.BadgeStyle
 import io.github.madmaximuus.persian.forms.Checkbox
 import io.github.madmaximuus.persian.forms.Checkboxes
-import io.github.madmaximuus.persian.forms.Form
+import io.github.madmaximuus.persian.forms.FormItem
 import io.github.madmaximuus.persian.forms.RadioButton
 import io.github.madmaximuus.persian.forms.RadioButtons
 import io.github.madmaximuus.persian.forms.Subhead
@@ -169,7 +169,7 @@ object NavigationBar : Screen {
                     .fillMaxWidth()
                     .padding(it)
             ) {
-                Form(
+                FormItem(
                     subhead = {
                         Subhead(
                             text = "Elements"
@@ -210,7 +210,7 @@ object NavigationBar : Screen {
                         }
                     }
                 )
-                Form(
+                FormItem(
                     modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                     subhead = {
                         Subhead(
@@ -238,7 +238,7 @@ object NavigationBar : Screen {
                     }
                 )
                 if (badge) {
-                    Form(
+                    FormItem(
                         modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                         subhead = {
                             Subhead(
