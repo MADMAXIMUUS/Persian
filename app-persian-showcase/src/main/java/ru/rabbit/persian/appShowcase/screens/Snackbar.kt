@@ -1,39 +1,40 @@
 package ru.rabbit.persian.appShowcase.screens
 
-import androidx.compose.foundation.layout.Arrangement
+import android.net.Uri
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.selection.selectableGroup
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.SnackbarDuration
-import androidx.compose.material3.SnackbarHostState
+import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
-import io.github.madmaximuus.persian.buttons.PersianPrimaryButton
+import io.github.madmaximuus.persian.button.ButtonDefaults
+import io.github.madmaximuus.persian.button.PrimaryButton
+import io.github.madmaximuus.persian.forms.Checkbox
+import io.github.madmaximuus.persian.forms.Checkboxes
+import io.github.madmaximuus.persian.forms.FormItem
+import io.github.madmaximuus.persian.forms.Input
+import io.github.madmaximuus.persian.forms.RadioButton
+import io.github.madmaximuus.persian.forms.RadioButtons
+import io.github.madmaximuus.persian.forms.Subhead
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.inputs.PersianOutlineInput
-import io.github.madmaximuus.persian.radioButtons.PersianRadioButton
-import io.github.madmaximuus.persian.snackbar.PersianSnackbarLeft
-import io.github.madmaximuus.persian.snackbar.PersianSnackbarRight
-import io.github.madmaximuus.persian.snackbar.PersianSnackbarVisuals
-import io.github.madmaximuus.persian.text.Text
+import io.github.madmaximuus.persian.snackbar.Action
+import io.github.madmaximuus.persian.snackbar.Avatar
+import io.github.madmaximuus.persian.snackbar.Close
+import io.github.madmaximuus.persian.snackbar.Icon
+import io.github.madmaximuus.persian.snackbar.Image
+import io.github.madmaximuus.persian.snackbar.SnackbarDuration
+import io.github.madmaximuus.persian.snackbar.SnackbarHostState
+import io.github.madmaximuus.persian.snackbar.SnackbarPosition
+import io.github.madmaximuus.persian.snackbar.Timer
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.wifi.slash.WifiSlash
 import kotlinx.coroutines.launch
-import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object Snackbar : Screen {
@@ -42,15 +43,31 @@ object Snackbar : Screen {
 
     override val navigation: String = "snackbar"
 
-    @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     override fun Content(navController: NavController?) {
         val snackbarHostState = remember { SnackbarHostState() }
         val coroutineScope = rememberCoroutineScope()
+        val (showOnTop, showOnTopChange) = remember { mutableStateOf(false) }
 
-        val (text, onTextChange) = remember { mutableStateOf("Message") }
-        var left by remember { mutableStateOf<PersianSnackbarLeft?>(null) }
-        var right by remember { mutableStateOf<PersianSnackbarRight?>(null) }
+        val messageState = rememberTextFieldState("Message")
+
+        val (left, onLeftChange) = remember { mutableStateOf(false) }
+        val leftStates = remember {
+            listOf(
+                mutableStateOf(true),
+                mutableStateOf(false),
+                mutableStateOf(false),
+                mutableStateOf(false),
+            )
+        }
+
+        val (right, onRightChange) = remember { mutableStateOf(false) }
+        val rightStates = remember {
+            listOf(
+                mutableStateOf(true),
+                mutableStateOf(false),
+            )
+        }
 
         SampleScaffold(
             title = name,
@@ -63,192 +80,171 @@ object Snackbar : Screen {
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(it),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size12)
             ) {
-                PersianPrimaryButton(
-                    text = "Show snackbar",
-                    sizes = PersianButtonDefaults.largeSizes()
-                ) {
-                    coroutineScope.launch {
-                        snackbarHostState.currentSnackbarData?.dismiss()
-                        snackbarHostState.showSnackbar(
-                            PersianSnackbarVisuals(
-                                message = text,
-                                duration = SnackbarDuration.Short,
-                                left = left,
-                                right = right
+                FormItem(
+                    subhead = { Subhead(text = "Message") },
+                    content = { Input(state = messageState) }
+                )
+                if (left) {
+                    FormItem(
+                        modifier = Modifier.padding(top = PersianTheme.spacing.size12),
+                        subhead = { Subhead(text = "Left") },
+                        content = {
+                            RadioButtons {
+                                RadioButton(
+                                    text = "Icon",
+                                    selected = leftStates[0].value,
+                                    onSelectedChange = {
+                                        leftStates.forEachIndexed { index, mutableState ->
+                                            mutableState.value = index == 0
+                                        }
+                                    }
+                                )
+                                RadioButton(
+                                    text = "Avatar",
+                                    selected = leftStates[1].value,
+                                    onSelectedChange = {
+                                        leftStates.forEachIndexed { index, mutableState ->
+                                            mutableState.value = index == 1
+                                        }
+                                    }
+                                )
+                                RadioButton(
+                                    text = "Image",
+                                    selected = leftStates[2].value,
+                                    onSelectedChange = {
+                                        leftStates.forEachIndexed { index, mutableState ->
+                                            mutableState.value = index == 2
+                                        }
+                                    }
+                                )
+                                RadioButton(
+                                    text = "Timer",
+                                    selected = leftStates[3].value,
+                                    onSelectedChange = {
+                                        leftStates.forEachIndexed { index, mutableState ->
+                                            mutableState.value = index == 3
+                                        }
+                                    }
+                                )
+                            }
+                        }
+                    )
+                }
+                if (right) {
+                    FormItem(
+                        modifier = Modifier.padding(top = PersianTheme.spacing.size12),
+                        subhead = { Subhead(text = "Right") },
+                        content = {
+                            RadioButtons {
+                                RadioButton(
+                                    text = "Action",
+                                    selected = rightStates[0].value,
+                                    onSelectedChange = {
+                                        rightStates.forEachIndexed { index, mutableState ->
+                                            mutableState.value = index == 0
+                                        }
+                                    }
+                                )
+                                RadioButton(
+                                    text = "Close",
+                                    selected = rightStates[1].value,
+                                    onSelectedChange = {
+                                        rightStates.forEachIndexed { index, mutableState ->
+                                            mutableState.value = index == 1
+                                        }
+                                    }
+                                )
+                            }
+                        }
+                    )
+                }
+                FormItem(
+                    modifier = Modifier.padding(top = PersianTheme.spacing.size12),
+                    subhead = { Subhead(text = "Settings") },
+                    content = {
+                        Checkboxes {
+                            Checkbox(
+                                text = "Left",
+                                checked = left,
+                                onCheckedChange = onLeftChange
                             )
-                        )
+                            Checkbox(
+                                text = "Right",
+                                checked = right,
+                                onCheckedChange = onRightChange
+                            )
+                            Checkbox(
+                                text = "On top",
+                                checked = showOnTop,
+                                onCheckedChange = showOnTopChange
+                            )
+                        }
                     }
-                }
-                SampleRow(text = "Message") {
-                    PersianOutlineInput(
-                        value = text,
-                        onValueChange = onTextChange
-                    )
-                }
-                val leftStates = remember {
-                    listOf(
-                        mutableStateOf(true),
-                        mutableStateOf(false),
-                        mutableStateOf(false),
-                        mutableStateOf(false),
-                        mutableStateOf(false),
-                    )
-                }
-                Column(
+                )
+                PrimaryButton(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(
-                            top = PersianTheme.spacing.size8,
-                            bottom = PersianTheme.spacing.size8,
-                            start = PersianTheme.spacing.size12,
-                            end = PersianTheme.spacing.size12
-                        ),
+                        .padding(horizontal = PersianTheme.spacing.size16)
+                        .padding(top = PersianTheme.spacing.size12),
+                    text = "Show snackbar",
+                    sizes = ButtonDefaults.largeSizes()
                 ) {
-                    Text(
-                        text = "Left",
-                        style = PersianTheme.typography.titleMedium,
-                        color = PersianTheme.colorScheme.onSurface
-                    )
-                    Spacer(modifier = Modifier.height(PersianTheme.spacing.size4))
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .selectableGroup()
-                    ) {
-                        val icon = rememberVectorPainter(image = PersianSymbols.Default.WifiSlash)
-                        val color = PersianTheme.colorScheme.primary
-                        PersianRadioButton(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "None",
-                            checked = leftStates[0].value,
-                            onCheckedChange = {
-                                leftStates.forEachIndexed { index, mutableState ->
-                                    mutableState.value = index == 0
+                    snackbarHostState.currentSnackbarData?.dismiss()
+                    coroutineScope.launch {
+                        snackbarHostState.showSnackbar(
+                            message = messageState.text.toString(),
+                            duration = SnackbarDuration.Short,
+                            hasProgress = leftStates[3].value,
+                            snackbarPosition = if (showOnTop) SnackbarPosition.Top else SnackbarPosition.Bottom,
+                            left = if (left) {
+                                {
+                                    when {
+                                        leftStates[0].value -> {
+                                            Icon(
+                                                icon = rememberVectorPainter(image = PersianSymbols.Default.WifiSlash),
+                                                contentDescription = ""
+                                            )
+                                        }
+
+                                        leftStates[1].value -> {
+                                            Avatar(
+                                                avatarUrl = Uri.parse("https://loremflickr.com/320/240")
+                                            )
+                                        }
+
+                                        leftStates[2].value -> {
+                                            Image(
+                                                imageUrl = Uri.parse("https://loremflickr.com/320/240")
+                                            )
+                                        }
+
+                                        leftStates[3].value -> {
+                                            Timer(
+                                                progress = 5f
+                                            )
+                                        }
+                                    }
                                 }
-                                left = null
-                            }
-                        )
-                        PersianRadioButton(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Icon",
-                            checked = leftStates[1].value,
-                            onCheckedChange = {
-                                leftStates.forEachIndexed { index, mutableState ->
-                                    mutableState.value = index == 1
+                            } else null,
+                            right = if (right) {
+                                {
+                                    when {
+                                        rightStates[0].value -> {
+                                            Action(
+                                                text = "Action",
+                                                onClick = { data -> data.dismiss() }
+                                            )
+                                        }
+
+                                        rightStates[1].value -> {
+                                            Close()
+                                        }
+
+                                        else -> {}
+                                    }
                                 }
-                                left = PersianSnackbarLeft.Icon(
-                                    icon = icon,
-                                    color = color
-                                )
-                            }
-                        )
-                        PersianRadioButton(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Avatar",
-                            checked = leftStates[2].value,
-                            onCheckedChange = {
-                                leftStates.forEachIndexed { index, mutableState ->
-                                    mutableState.value = index == 2
-                                }
-                                left = PersianSnackbarLeft.Avatar(
-                                    avatarUrl = "https://loremflickr.com/320/240"
-                                )
-                            }
-                        )
-                        PersianRadioButton(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Image",
-                            checked = leftStates[3].value,
-                            onCheckedChange = {
-                                leftStates.forEachIndexed { index, mutableState ->
-                                    mutableState.value = index == 3
-                                }
-                                left = PersianSnackbarLeft.Image(
-                                    imageUrl = "https://loremflickr.com/320/240"
-                                )
-                            }
-                        )
-                        PersianRadioButton(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Progress",
-                            checked = leftStates[4].value,
-                            onCheckedChange = {
-                                leftStates.forEachIndexed { index, mutableState ->
-                                    mutableState.value = index == 4
-                                }
-                                left = PersianSnackbarLeft.Progress(
-                                    progress = 0.5f
-                                )
-                            }
-                        )
-                    }
-                }
-                val rightStates = remember {
-                    listOf(
-                        mutableStateOf(true),
-                        mutableStateOf(false),
-                        mutableStateOf(false),
-                    )
-                }
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(
-                            top = PersianTheme.spacing.size8,
-                            bottom = PersianTheme.spacing.size8,
-                            start = PersianTheme.spacing.size12,
-                            end = PersianTheme.spacing.size12
-                        ),
-                ) {
-                    Text(
-                        text = "Right",
-                        style = PersianTheme.typography.titleMedium,
-                        color = PersianTheme.colorScheme.onSurface
-                    )
-                    Spacer(modifier = Modifier.height(PersianTheme.spacing.size4))
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .selectableGroup()
-                    ) {
-                        PersianRadioButton(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "None",
-                            checked = rightStates[0].value,
-                            onCheckedChange = {
-                                rightStates.forEachIndexed { index, mutableState ->
-                                    mutableState.value = index == 0
-                                }
-                                right = null
-                            }
-                        )
-                        PersianRadioButton(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Action",
-                            checked = rightStates[1].value,
-                            onCheckedChange = {
-                                rightStates.forEachIndexed { index, mutableState ->
-                                    mutableState.value = index == 1
-                                }
-                                right = PersianSnackbarRight.Action(
-                                    text = "Aciton",
-                                    onClick = {}
-                                )
-                            }
-                        )
-                        PersianRadioButton(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Close",
-                            checked = rightStates[2].value,
-                            onCheckedChange = {
-                                rightStates.forEachIndexed { index, mutableState ->
-                                    mutableState.value = index == 2
-                                }
-                                right = PersianSnackbarRight.Close(onClick = {})
-                            }
+                            } else null,
                         )
                     }
                 }

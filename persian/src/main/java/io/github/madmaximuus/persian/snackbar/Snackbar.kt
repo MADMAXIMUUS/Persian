@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.runtime.Composable
@@ -32,10 +33,11 @@ fun Snackbar(
 ) {
     Surface(
         modifier = modifier
-            .padding(horizontal = PersianTheme.spacing.size12)
+            .padding(horizontal = PersianTheme.spacing.size16)
             .widthIn(max = 500.dp)
             .fillMaxWidth()
-            .heightIn(min = 52.dp),
+            .heightIn(min = 52.dp)
+            .imePadding(),
         shape = sizes.containerShape,
         color = colors.containerColor,
         content = {

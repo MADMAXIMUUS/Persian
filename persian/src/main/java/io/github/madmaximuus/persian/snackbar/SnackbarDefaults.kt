@@ -23,16 +23,12 @@ import io.github.madmaximuus.persian.progressIndicator.ProgressBarColors
 import io.github.madmaximuus.persian.progressIndicator.ProgressIndicatorDefaults
 
 /**
- * Contains all default values used by snackbar
+ * Contains all default values used by [Snackbar]
  */
 object SnackbarDefaults {
 
     /**
-     * A composable function to create a [SnackbarColors] instance with customizable color properties.
-     *
-     * This function allows you to specify the colors for various elements of the Snackbar, including
-     * the container, message text, left visual elements (icon, avatar, timer, image), and right visual
-     * elements (close button, action button).
+     * Create a [SnackbarColors] instance with customizable color properties.
      *
      * @param containerColor The background color of the Snackbar container. Defaults to
      * @param messageColor The color of the message text displayed in the Snackbar. Defaults to
@@ -69,11 +65,7 @@ object SnackbarDefaults {
         )
 
     /**
-     * A composable function to create a [SnackbarSizes] instance with customizable size and style properties.
-     *
-     * This function allows you to specify the sizes and styles for various elements of the Snackbar, including
-     * the container shape, message text style, left visual elements (icon, avatar, timer, image), and right
-     * visual elements (close button, action button).
+     * Create a [SnackbarSizes] instance with customizable size and style properties.
      *
      * @param containerShape The shape of the Snackbar container.
      * @param messageTextStyle The text style for the message displayed in the Snackbar.
@@ -96,26 +88,23 @@ object SnackbarDefaults {
 
         rightCloseSizes: IconButtonSizes = IconButtonDefaults.smallSizes(),
         rightActionSizes: ButtonSizes = ButtonDefaults.smallSizes()
-    ): SnackbarSizes = SnackbarSizes(
-        containerShape = containerShape,
-        messageTextStyle = messageTextStyle,
+    ): SnackbarSizes =
+        SnackbarSizes(
+            containerShape = containerShape,
+            messageTextStyle = messageTextStyle,
 
-        leftIconSizes = leftIconSizes,
-        leftAvatarSizes = leftAvatarSizes,
-        leftTimerSizes = leftTimerSizes,
-        leftImageSizes = leftImageSizes,
+            leftIconSizes = leftIconSizes,
+            leftAvatarSizes = leftAvatarSizes,
+            leftTimerSizes = leftTimerSizes,
+            leftImageSizes = leftImageSizes,
 
-        rightCloseSizes = rightCloseSizes,
-        rightActionSizes = rightActionSizes
-    )
+            rightCloseSizes = rightCloseSizes,
+            rightActionSizes = rightActionSizes
+        )
 }
 
 /**
  * An immutable class representing the color scheme for a Snackbar.
- *
- * This class encapsulates various color properties used in different parts of the Snackbar,
- * including the container, message, left visual elements (icon, avatar, timer, image),
- * and right visual elements (close button, action button).
  *
  * @property containerColor The background color of the Snackbar container.
  * @property messageColor The color of the message text displayed in the Snackbar.
@@ -154,18 +143,19 @@ class SnackbarColors internal constructor(
 
         rightCloseColor: Color = this.rightCloseColor,
         rightActionColor: Color = this.rightActionColor
-    ): SnackbarColors = SnackbarColors(
-        containerColor = containerColor,
-        messageColor = messageColor,
+    ): SnackbarColors =
+        SnackbarColors(
+            containerColor = containerColor,
+            messageColor = messageColor,
 
-        leftIconColor = leftIconColor,
-        leftAvatarColors = leftAvatarColors,
-        leftTimerColors = leftTimerColors,
-        leftImageColors = leftImageColors,
+            leftIconColor = leftIconColor,
+            leftAvatarColors = leftAvatarColors,
+            leftTimerColors = leftTimerColors,
+            leftImageColors = leftImageColors,
 
-        rightCloseColor = rightCloseColor,
-        rightActionColor = rightActionColor
-    )
+            rightCloseColor = rightCloseColor,
+            rightActionColor = rightActionColor
+        )
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -239,18 +229,19 @@ class SnackbarSizes internal constructor(
 
         rightCloseSizes: IconButtonSizes = this.rightCloseSizes,
         rightActionSizes: ButtonSizes = this.rightActionSizes
-    ): SnackbarSizes = SnackbarSizes(
-        containerShape = containerShape,
-        messageTextStyle = messageTextStyle,
+    ): SnackbarSizes =
+        SnackbarSizes(
+            containerShape = containerShape,
+            messageTextStyle = messageTextStyle,
 
-        leftIconSizes = leftIconSizes,
-        leftAvatarSizes = leftAvatarSizes,
-        leftTimerSizes = leftTimerSizes,
-        leftImageSizes = leftIMageSizes,
+            leftIconSizes = leftIconSizes,
+            leftAvatarSizes = leftAvatarSizes,
+            leftTimerSizes = leftTimerSizes,
+            leftImageSizes = leftIMageSizes,
 
-        rightCloseSizes = rightCloseSizes,
-        rightActionSizes = rightActionSizes
-    )
+            rightCloseSizes = rightCloseSizes,
+            rightActionSizes = rightActionSizes
+        )
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

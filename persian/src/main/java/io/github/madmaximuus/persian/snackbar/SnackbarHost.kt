@@ -20,7 +20,7 @@ import androidx.compose.ui.platform.LocalAccessibilityManager
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.fab.Fab
+import io.github.madmaximuus.persian.fab.FabImpl
 import io.github.madmaximuus.persian.navigationBar.NavigationBar
 import io.github.madmaximuus.persian.scafold.Scaffold
 import io.github.madmaximuus.persian.topAppBar.TopAppBar
@@ -362,7 +362,7 @@ value class SnackbarPosition internal constructor(@Suppress("unused") private va
 
         /**
          * Position Snackbar at the bottom of the screen, above the [NavigationBar] (if it
-         * exists) or [Fab] (if it exists)
+         * exists) or [FabImpl] (if it exists)
          */
         val Bottom = SnackbarPosition(1)
     }
