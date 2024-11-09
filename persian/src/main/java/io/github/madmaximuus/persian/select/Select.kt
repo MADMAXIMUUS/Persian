@@ -19,7 +19,10 @@ import io.github.madmaximuus.persianSymbols.chevronUp.base.ChevronUp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
 /**
- * A composable function that creates a dropdown selection menu.
+ * A select element is useful for providing users with a list of options to choose from, offering
+ * a compact and interactive interface for selecting items. It offers a straightforward
+ * and effective method for data entry and navigation, making it an essential tool for enhancing
+ * user experience and usability.
  *
  * @param state The currently selected item in the dropdown.
  * @param modifier The [Modifier] to be applied to this composable.
