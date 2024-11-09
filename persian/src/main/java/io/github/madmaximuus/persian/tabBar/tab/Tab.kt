@@ -19,6 +19,7 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.counter.Badge
 import io.github.madmaximuus.persian.counter.Counter
+import io.github.madmaximuus.persian.counter.utils.BadgeStyle
 import io.github.madmaximuus.persian.foundation.LocalContentColor
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.ripple.ripple
@@ -47,6 +48,7 @@ enum class IconSide {
  */
 interface TabBarItemScope {
     val iconSide: IconSide
+    val badgeStyle: BadgeStyle
     val colors: TabColors
     val sizes: TabSizes
 }
@@ -63,6 +65,7 @@ interface TabBarItemScope {
  */
 class TabBarItemScopeWrapper(
     override val iconSide: IconSide,
+    override val badgeStyle: BadgeStyle,
     override val colors: TabColors,
     override val sizes: TabSizes
 ) : TabBarItemScope
@@ -207,7 +210,8 @@ private fun TabBarItemScope.LeadingIconTab(
                     top = PersianTheme.spacing.size8,
                     bottom = PersianTheme.spacing.size8
                 )
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .padding(horizontal = PersianTheme.spacing.size2),
             horizontalArrangement = Arrangement.spacedBy(
                 PersianTheme.spacing.size4,
                 Alignment.CenterHorizontally
@@ -285,7 +289,8 @@ private fun TabBarItemScope.TopIconTab(
                     top = PersianTheme.spacing.size10,
                     bottom = PersianTheme.spacing.size8
                 )
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .padding(horizontal = PersianTheme.spacing.size2),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(
                 PersianTheme.spacing.size2,
@@ -301,6 +306,7 @@ private fun TabBarItemScope.TopIconTab(
                     } else {
                         Badge(
                             count = count,
+                            style = badgeStyle,
                             sizes = sizes.counterSizes(TOP),
                             colors = colors.counterColors(TOP)
                         ) {
@@ -373,7 +379,8 @@ private fun TabBarItemScope.OnlyIconTab(
                     top = PersianTheme.spacing.size12,
                     bottom = PersianTheme.spacing.size12
                 )
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .padding(horizontal = PersianTheme.spacing.size2),
             horizontalArrangement = Arrangement.spacedBy(
                 PersianTheme.spacing.size4,
                 Alignment.CenterHorizontally
@@ -388,6 +395,7 @@ private fun TabBarItemScope.OnlyIconTab(
             } else {
                 Badge(
                     count = count,
+                    style = badgeStyle,
                     sizes = sizes.counterSizes(TOP),
                     colors = colors.counterColors(TOP)
                 ) {
@@ -450,7 +458,8 @@ private fun TabBarItemScope.OnlyTextTab(
                     top = PersianTheme.spacing.size12,
                     bottom = PersianTheme.spacing.size12
                 )
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .padding(horizontal = PersianTheme.spacing.size2),
             horizontalArrangement = Arrangement.spacedBy(
                 PersianTheme.spacing.size4,
                 Alignment.CenterHorizontally

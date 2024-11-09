@@ -22,6 +22,7 @@ import androidx.compose.ui.util.fastFold
 import androidx.compose.ui.util.fastForEach
 import androidx.compose.ui.util.fastForEachIndexed
 import androidx.compose.ui.util.fastMap
+import io.github.madmaximuus.persian.counter.utils.BadgeStyle
 import io.github.madmaximuus.persian.surface.Surface
 import io.github.madmaximuus.persian.tabBar.TabColors
 import io.github.madmaximuus.persian.tabBar.TabSizes
@@ -60,6 +61,7 @@ internal fun ScrollableTabRowImpl(
     colors: TabColors,
     sizes: TabSizes,
     iconSide: IconSide,
+    badgeStyle: BadgeStyle,
     scrollState: ScrollState,
     indicator: @Composable TabIndicatorScope.() -> Unit,
     divider: @Composable () -> Unit,
@@ -82,8 +84,8 @@ internal fun ScrollableTabRowImpl(
                 )
             }
 
-        val tabScope = remember(colors, sizes, iconSide) {
-            TabBarItemScopeWrapper(iconSide, colors, sizes)
+        val tabScope = remember(colors, sizes, iconSide, badgeStyle) {
+            TabBarItemScopeWrapper(iconSide, badgeStyle, colors, sizes)
         }
 
         val indicatorScope = remember {

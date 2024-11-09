@@ -22,15 +22,17 @@ import io.github.madmaximuus.persian.counter.CounterSizes
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persian.icon.IconSizes
+import io.github.madmaximuus.persian.tabBar.default.TabBar
+import io.github.madmaximuus.persian.tabBar.scrollable.ScrollableTabBar
 import io.github.madmaximuus.persian.tabBar.tab.IconSide
 
 /**
- * Contains all default values used by tab bar
+ * Contains all default values used by [TabBar] and [ScrollableTabBar]
  */
 object TabBarDefaults {
 
     /**
-     * Composable function to create a [TabColors] instance with default values from the theme.
+     * Create a [TabColors] instance with default values from the theme.
      *
      * This function provides default values for the tab colors based on the current theme's color scheme.
      *
@@ -53,22 +55,23 @@ object TabBarDefaults {
         activeContentColor: Color = PersianTheme.colorScheme.primary,
 
         counterColors: CounterColors = CounterDefaults.primaryColors(),
-        badgeColors: CounterColors = CounterDefaults.badgeColors()
-    ): TabColors = TabColors(
-        containerColor = containerColor,
-        activeContainerColor = activeContainerColor,
+        badgeColors: CounterColors = CounterDefaults.errorColors()
+    ): TabColors =
+        TabColors(
+            containerColor = containerColor,
+            activeContainerColor = activeContainerColor,
 
-        indicatorColor = indicatorColor,
+            indicatorColor = indicatorColor,
 
-        contentColor = contentColor,
-        activeContentColor = activeContentColor,
+            contentColor = contentColor,
+            activeContentColor = activeContentColor,
 
-        counterColors = counterColors,
-        badgeColors = badgeColors
-    )
+            counterColors = counterColors,
+            badgeColors = badgeColors
+        )
 
     /**
-     * Composable function to create a [TabSizes] instance with default values.
+     * Create a [TabSizes] instance with default values.
      *
      * This function provides default values for the tab sizes based on the current theme's shapes and typography.
      *
@@ -91,22 +94,20 @@ object TabBarDefaults {
         iconSizes: IconSizes = IconDefaults.size24(),
         textStyle: TextStyle = PersianTheme.typography.labelLarge,
 
-        counterSizes: CounterSizes = CounterDefaults.digitSizes(),
-        badgeSizes: CounterSizes = CounterDefaults.badgeSizes(
-            badgeHorizontalOffset = (-12).dp,
-            badgeVerticalOffset = 2.dp
-        ),
+        counterSizes: CounterSizes = CounterDefaults.sizes(),
+        badgeSizes: CounterSizes = CounterDefaults.sizes(),
 
         edgePadding: Dp = 52.dp
-    ): TabSizes = TabSizes(
-        indicatorThickness = indicatorThickness,
-        indicatorShape = indicatorShape,
-        iconSizes = iconSizes,
-        textStyle = textStyle,
-        counterSizes = counterSizes,
-        badgeSizes = badgeSizes,
-        edgePadding = edgePadding
-    )
+    ): TabSizes =
+        TabSizes(
+            indicatorThickness = indicatorThickness,
+            indicatorShape = indicatorShape,
+            iconSizes = iconSizes,
+            textStyle = textStyle,
+            counterSizes = counterSizes,
+            badgeSizes = badgeSizes,
+            edgePadding = edgePadding
+        )
 
 }
 
@@ -321,15 +322,16 @@ class TabSizes internal constructor(
         badgeSizes: CounterSizes = this.badgeSizes,
 
         edgePadding: Dp = this.edgePadding
-    ): TabSizes = TabSizes(
-        indicatorThickness = indicatorThickness.takeOrElse { this.indicatorThickness },
-        indicatorShape = indicatorShape,
-        iconSizes = iconSizes,
-        textStyle = textStyle,
-        counterSizes = counterSizes,
-        badgeSizes = badgeSizes,
-        edgePadding = edgePadding.takeOrElse { this.edgePadding }
-    )
+    ): TabSizes =
+        TabSizes(
+            indicatorThickness = indicatorThickness.takeOrElse { this.indicatorThickness },
+            indicatorShape = indicatorShape,
+            iconSizes = iconSizes,
+            textStyle = textStyle,
+            counterSizes = counterSizes,
+            badgeSizes = badgeSizes,
+            edgePadding = edgePadding.takeOrElse { this.edgePadding }
+        )
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

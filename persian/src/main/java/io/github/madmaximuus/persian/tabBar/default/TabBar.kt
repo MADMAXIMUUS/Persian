@@ -2,7 +2,8 @@ package io.github.madmaximuus.persian.tabBar.default
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import io.github.madmaximuus.persian.dividers.FullWidthHorizontalDivider
+import io.github.madmaximuus.persian.counter.utils.BadgeStyle
+import io.github.madmaximuus.persian.dividers.HorizontalDivider
 import io.github.madmaximuus.persian.tabBar.TabBarDefaults
 import io.github.madmaximuus.persian.tabBar.TabColors
 import io.github.madmaximuus.persian.tabBar.TabSizes
@@ -28,6 +29,8 @@ import io.github.madmaximuus.persian.tabBar.tab.TabBarItemScope
  * @param modifier the [Modifier] to be applied to this tab row
  * @param colors the [TabColors] colors that used by tabs
  * @param sizes the [TabSizes] sizes that used by tabs
+ * @param iconSide The optional [IconSide] that determines whether the icons are displayed above or below the text in the tabs.
+ * @param badgeStyle The optional [BadgeStyle] that determines the style of the badges that are displayed in the tabs.
  * @param indicator the indicator that represents which tab is currently selected. By default this
  *   will be a [Indicator], using a [Modifier.tabIndicatorOffset]
  *   modifier to animate its position.
@@ -49,7 +52,8 @@ fun TabBar(
     colors: TabColors = TabBarDefaults.tabColors(),
     sizes: TabSizes = TabBarDefaults.tabSizes(),
     iconSide: IconSide = IconSide.TOP,
-    divider: @Composable () -> Unit = @Composable { FullWidthHorizontalDivider() },
+    badgeStyle: BadgeStyle = BadgeStyle.NUMBER,
+    divider: @Composable () -> Unit = @Composable { HorizontalDivider() },
     tabs: @Composable TabBarItemScope.() -> Unit
 ) {
     TabRowImpl(
@@ -57,6 +61,7 @@ fun TabBar(
         colors = colors,
         sizes = sizes,
         iconSide = iconSide,
+        badgeStyle = badgeStyle,
         indicator = indicator,
         divider = divider,
         tabs = tabs

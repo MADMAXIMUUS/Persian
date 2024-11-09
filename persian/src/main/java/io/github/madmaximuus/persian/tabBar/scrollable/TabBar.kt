@@ -4,7 +4,8 @@ import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import io.github.madmaximuus.persian.dividers.FullWidthHorizontalDivider
+import io.github.madmaximuus.persian.counter.utils.BadgeStyle
+import io.github.madmaximuus.persian.dividers.HorizontalDivider
 import io.github.madmaximuus.persian.tabBar.TabBarDefaults
 import io.github.madmaximuus.persian.tabBar.TabColors
 import io.github.madmaximuus.persian.tabBar.TabSizes
@@ -26,9 +27,13 @@ import io.github.madmaximuus.persian.tabBar.tab.TabBarItemScope
  * scrolling to tabs that are placed off screen. For a fixed tab row that does not allow scrolling,
  * and evenly places its tabs, see [TabBar].
  *
+ * @param iconSide The optional [IconSide] that determines whether the icons are displayed above or below the text in the tabs.
+ * @param badgeStyle The optional [BadgeStyle] that determines the style of the badges that are displayed in the tabs.
  * @param selectedTabIndex the index of the currently selected tab
  * @param modifier the [Modifier] to be applied to this tab row
  * @param scrollState the [ScrollState] of this tab row
+ * @param iconSide The optional [IconSide] that determines whether the icons are displayed above or below the text in the tabs.
+ * @param badgeStyle The optional [BadgeStyle] that determines the style of the badges that are displayed in the tabs.
  * @param colors the [TabColors] colors that used by tabs
  * @param sizes the [TabSizes] sizes that used by tabs
  * @param indicator the indicator that represents which tab is currently selected. By default this
@@ -46,6 +51,7 @@ fun ScrollableTabBar(
     modifier: Modifier = Modifier,
     scrollState: ScrollState = rememberScrollState(),
     iconSide: IconSide = IconSide.TOP,
+    badgeStyle: BadgeStyle = BadgeStyle.NUMBER,
     colors: TabColors = TabBarDefaults.tabColors(),
     sizes: TabSizes = TabBarDefaults.tabSizes(),
     indicator: @Composable TabIndicatorScope.() -> Unit =
@@ -54,7 +60,7 @@ fun ScrollableTabBar(
                 Modifier.tabIndicatorOffset(selectedTabIndex, matchContentSize = true),
             )
         },
-    divider: @Composable () -> Unit = @Composable { FullWidthHorizontalDivider() },
+    divider: @Composable () -> Unit = @Composable { HorizontalDivider() },
     tabs: @Composable TabBarItemScope.() -> Unit
 ) {
     ScrollableTabRowImpl(
@@ -62,6 +68,7 @@ fun ScrollableTabBar(
         indicator = indicator,
         modifier = modifier,
         iconSide = iconSide,
+        badgeStyle = badgeStyle,
         colors = colors,
         sizes = sizes,
         divider = divider,
