@@ -13,7 +13,7 @@ android {
         applicationId "ru.rabbit.persian.appShowcase"
         minSdk 26
         targetSdk 35
-        versionCode 8
+        versionCode 9
         versionName "6.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
