@@ -45,7 +45,6 @@ android {
 dependencies {
     implementation libs.core.ktx
     implementation libs.bundles.compose
-    implementation libs.material3
 
     debugImplementation libs.ui.tooling
 }

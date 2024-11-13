@@ -49,7 +49,6 @@ dependencies {
     implementation libs.bundles.compose
     implementation libs.adaptive.android
     implementation libs.compose.animation
-    implementation libs.activity
     implementation libs.datastore.preferences
     implementation libs.serialization
 
