@@ -1,19 +1,10 @@
 package io.github.madmaximuus.persianSymbols.arrow.right.circle
 
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
@@ -29,53 +20,40 @@ val PersianSymbols.Default.ArrowRightCircle: ImageVector
             viewportWidth = 24f,
             viewportHeight = 24f
         ).apply {
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = StrokeCap.Butt,
-                strokeLineJoin = StrokeJoin.Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = PathFillType.NonZero
-            ) {
-                moveTo(11.2091f, 8.4033f)
-                curveTo(11.5387f, 7.9601f, 12.1651f, 7.868f, 12.6083f, 8.1976f)
-                lineTo(16.6122f, 11.175f)
-                curveTo(16.7758f, 11.2967f, 16.8962f, 11.4638f, 16.961f, 11.6519f)
-                curveTo(17.0015f, 11.761f, 17.0235f, 11.8791f, 17.0232f, 12.0023f)
-                curveTo(17.0222f, 12.4041f, 16.7845f, 12.7499f, 16.4424f, 12.9081f)
-                lineTo(12.6141f, 15.7981f)
-                curveTo(12.1733f, 16.1309f, 11.5462f, 16.0433f, 11.2134f, 15.6025f)
-                curveTo(10.8807f, 15.1617f, 10.9683f, 14.5346f, 11.4091f, 14.2019f)
-                lineTo(13.0108f, 12.9927f)
-                lineTo(8.013f, 12.9807f)
-                curveTo(7.4608f, 12.9794f, 7.0141f, 12.5306f, 7.0154f, 11.9783f)
-                curveTo(7.0168f, 11.426f, 7.4656f, 10.9794f, 8.0178f, 10.9807f)
-                lineTo(13.0154f, 10.9927f)
-                lineTo(11.4148f, 9.8024f)
-                curveTo(10.9717f, 9.4729f, 10.8796f, 8.8464f, 11.2091f, 8.4033f)
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(11.7f, 7.99f)
+                curveTo(11.982f, 7.686f, 12.457f, 7.669f, 12.76f, 7.95f)
+                lineTo(16.504f, 11.428f)
+                curveTo(16.597f, 11.514f, 16.665f, 11.621f, 16.705f, 11.738f)
+                curveTo(16.735f, 11.82f, 16.752f, 11.909f, 16.751f, 12.002f)
+                curveTo(16.751f, 12.281f, 16.597f, 12.525f, 16.37f, 12.653f)
+                lineTo(12.764f, 16.046f)
+                curveTo(12.462f, 16.33f, 11.988f, 16.316f, 11.704f, 16.014f)
+                curveTo(11.42f, 15.712f, 11.434f, 15.238f, 11.736f, 14.954f)
+                lineTo(14.083f, 12.745f)
+                lineTo(7.998f, 12.731f)
+                curveTo(7.584f, 12.73f, 7.249f, 12.393f, 7.25f, 11.979f)
+                curveTo(7.251f, 11.565f, 7.587f, 11.23f, 8.002f, 11.231f)
+                lineTo(14.104f, 11.245f)
+                lineTo(11.74f, 9.05f)
+                curveTo(11.436f, 8.768f, 11.418f, 8.293f, 11.7f, 7.99f)
                 close()
             }
             path(
                 fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = StrokeCap.Butt,
-                strokeLineJoin = StrokeJoin.Miter,
-                strokeLineMiter = 4.0f,
                 pathFillType = PathFillType.EvenOdd
             ) {
-                moveTo(11.9999f, 2.0f)
-                curveTo(6.477f, 2.0f, 1.9999f, 6.4771f, 1.9999f, 12.0f)
-                curveTo(1.9999f, 17.5228f, 6.477f, 22.0f, 11.9999f, 22.0f)
-                curveTo(17.5227f, 22.0f, 21.9999f, 17.5228f, 21.9999f, 12.0f)
-                curveTo(21.9999f, 6.4771f, 17.5227f, 2.0f, 11.9999f, 2.0f)
+                moveTo(12f, 2f)
+                curveTo(6.477f, 2f, 2f, 6.477f, 2f, 12f)
+                curveTo(2f, 17.523f, 6.477f, 22f, 12f, 22f)
+                curveTo(17.523f, 22f, 22f, 17.523f, 22f, 12f)
+                curveTo(22f, 6.477f, 17.523f, 2f, 12f, 2f)
                 close()
-                moveTo(3.9999f, 12.0f)
-                curveTo(3.9999f, 7.5817f, 7.5816f, 4.0f, 11.9999f, 4.0f)
-                curveTo(16.4182f, 4.0f, 19.9999f, 7.5817f, 19.9999f, 12.0f)
-                curveTo(19.9999f, 16.4183f, 16.4182f, 20.0f, 11.9999f, 20.0f)
-                curveTo(7.5816f, 20.0f, 3.9999f, 16.4183f, 3.9999f, 12.0f)
+                moveTo(4f, 12f)
+                curveTo(4f, 7.582f, 7.582f, 4f, 12f, 4f)
+                curveTo(16.418f, 4f, 20f, 7.582f, 20f, 12f)
+                curveTo(20f, 16.418f, 16.418f, 20f, 12f, 20f)
+                curveTo(7.582f, 20f, 4f, 16.418f, 4f, 12f)
                 close()
             }
         }.build()
@@ -83,17 +61,3 @@ val PersianSymbols.Default.ArrowRightCircle: ImageVector
     }
 
 private var arrowRightCircle: ImageVector? = null
-
-@Preview
-@Composable
-private fun IconPreview() {
-    MaterialTheme {
-        Surface {
-            Icon(
-                modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Default.ArrowRightCircle,
-                contentDescription = ""
-            )
-        }
-    }
-}

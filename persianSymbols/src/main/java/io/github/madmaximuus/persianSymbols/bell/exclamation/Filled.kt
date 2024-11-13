@@ -1,21 +1,11 @@
 package io.github.madmaximuus.persianSymbols.bell.exclamation
 
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType.Companion.EvenOdd
-import androidx.compose.ui.graphics.PathFillType.Companion.NonZero
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap.Companion.Butt
-import androidx.compose.ui.graphics.StrokeJoin.Companion.Miter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.ImageVector.Builder
 import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
@@ -33,60 +23,47 @@ val PersianSymbols.Filled.BellExclamation: ImageVector
         ).apply {
             path(
                 fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = EvenOdd
+                pathFillType = PathFillType.EvenOdd
             ) {
-                moveTo(12.0f, 2.0f)
-                curveTo(12.5523f, 2.0f, 13.0f, 2.4477f, 13.0f, 3.0f)
+                moveTo(12f, 2f)
+                curveTo(12.552f, 2f, 13f, 2.448f, 13f, 3f)
                 verticalLineTo(3.083f)
-                curveTo(15.8377f, 3.559f, 18.0f, 6.027f, 18.0f, 9.0f)
-                verticalLineTo(17.0f)
-                horizontalLineTo(19.0f)
-                curveTo(19.5523f, 17.0f, 20.0f, 17.4477f, 20.0f, 18.0f)
-                curveTo(20.0f, 18.5523f, 19.5523f, 19.0f, 19.0f, 19.0f)
-                lineTo(5.0f, 19.0f)
-                curveTo(4.4477f, 19.0f, 4.0f, 18.5523f, 4.0f, 18.0f)
-                curveTo(4.0f, 17.4477f, 4.4477f, 17.0f, 5.0f, 17.0f)
-                horizontalLineTo(6.0f)
-                verticalLineTo(9.0f)
-                curveTo(6.0f, 6.027f, 8.1623f, 3.559f, 11.0f, 3.083f)
-                verticalLineTo(3.0f)
-                curveTo(11.0f, 2.4477f, 11.4477f, 2.0f, 12.0f, 2.0f)
+                curveTo(15.838f, 3.559f, 18f, 6.027f, 18f, 9f)
+                verticalLineTo(17f)
+                horizontalLineTo(19f)
+                curveTo(19.552f, 17f, 20f, 17.448f, 20f, 18f)
+                curveTo(20f, 18.552f, 19.552f, 19f, 19f, 19f)
+                lineTo(5f, 19f)
+                curveTo(4.448f, 19f, 4f, 18.552f, 4f, 18f)
+                curveTo(4f, 17.448f, 4.448f, 17f, 5f, 17f)
+                horizontalLineTo(6f)
+                verticalLineTo(9f)
+                curveTo(6f, 6.027f, 8.162f, 3.559f, 11f, 3.083f)
+                verticalLineTo(3f)
+                curveTo(11f, 2.448f, 11.448f, 2f, 12f, 2f)
                 close()
-                moveTo(12.0f, 7.0f)
-                curveTo(12.5523f, 7.0f, 13.0f, 7.4477f, 13.0f, 8.0f)
-                verticalLineTo(12.0f)
-                curveTo(13.0f, 12.5523f, 12.5523f, 13.0f, 12.0f, 13.0f)
-                curveTo(11.4477f, 13.0f, 11.0f, 12.5523f, 11.0f, 12.0f)
-                verticalLineTo(8.0f)
-                curveTo(11.0f, 7.4477f, 11.4477f, 7.0f, 12.0f, 7.0f)
+                moveTo(12f, 6.621f)
+                curveTo(12.414f, 6.621f, 12.75f, 6.957f, 12.75f, 7.371f)
+                lineTo(12.75f, 12.844f)
+                curveTo(12.75f, 13.259f, 12.414f, 13.594f, 12f, 13.594f)
+                curveTo(11.586f, 13.594f, 11.25f, 13.259f, 11.25f, 12.844f)
+                lineTo(11.25f, 7.371f)
+                curveTo(11.25f, 6.957f, 11.586f, 6.621f, 12f, 6.621f)
                 close()
-                moveTo(11.0f, 15.0f)
-                curveTo(11.0f, 15.5523f, 11.4477f, 16.0f, 12.0f, 16.0f)
-                curveTo(12.5523f, 16.0f, 13.0f, 15.5523f, 13.0f, 15.0f)
-                curveTo(13.0f, 14.4477f, 12.5523f, 14.0f, 12.0f, 14.0f)
-                curveTo(11.4477f, 14.0f, 11.0f, 14.4477f, 11.0f, 15.0f)
+                moveTo(13.002f, 15.21f)
+                curveTo(13.002f, 15.763f, 12.554f, 16.211f, 12.002f, 16.211f)
+                curveTo(11.45f, 16.211f, 11.002f, 15.763f, 11.002f, 15.21f)
+                curveTo(11.002f, 14.658f, 11.45f, 14.21f, 12.002f, 14.21f)
+                curveTo(12.554f, 14.21f, 13.002f, 14.658f, 13.002f, 15.21f)
                 close()
             }
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = NonZero
-            ) {
-                moveTo(12.0f, 22.0f)
-                curveTo(11.1993f, 22.0f, 10.4718f, 21.6863f, 9.9338f, 21.1751f)
-                curveTo(9.4335f, 20.6997f, 9.8946f, 20.0f, 10.5848f, 20.0f)
-                horizontalLineTo(13.4152f)
-                curveTo(14.1054f, 20.0f, 14.5665f, 20.6997f, 14.0662f, 21.1751f)
-                curveTo(13.5282f, 21.6863f, 12.8007f, 22.0f, 12.0f, 22.0f)
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(12f, 22f)
+                curveTo(11.199f, 22f, 10.472f, 21.686f, 9.934f, 21.175f)
+                curveTo(9.434f, 20.7f, 9.895f, 20f, 10.585f, 20f)
+                horizontalLineTo(13.415f)
+                curveTo(14.105f, 20f, 14.566f, 20.7f, 14.066f, 21.175f)
+                curveTo(13.528f, 21.686f, 12.801f, 22f, 12f, 22f)
                 close()
             }
         }.build()
@@ -94,17 +71,3 @@ val PersianSymbols.Filled.BellExclamation: ImageVector
     }
 
 private var bellExclamation: ImageVector? = null
-
-@Preview
-@Composable
-private fun IconPreview() {
-    MaterialTheme {
-        Surface {
-            Icon(
-                modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Filled.BellExclamation,
-                contentDescription = ""
-            )
-        }
-    }
-}

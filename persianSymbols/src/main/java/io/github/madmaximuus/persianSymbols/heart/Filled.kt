@@ -1,19 +1,9 @@
 package io.github.madmaximuus.persianSymbols.heart
 
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType.Companion.NonZero
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap.Companion.Round
-import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
@@ -29,30 +19,23 @@ val PersianSymbols.Filled.Heart: ImageVector
             viewportWidth = 24f,
             viewportHeight = 24f
         ).apply {
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                stroke = SolidColor(Color(0xFF000000)),
-                strokeLineWidth = 2.0f,
-                strokeLineCap = Round,
-                strokeLineJoin = StrokeJoin.Companion.Round,
-                strokeLineMiter = 4.0f,
-                pathFillType = NonZero
-            ) {
-                moveTo(11.6621f, 5.4964f)
-                curveTo(11.7732f, 5.6075f, 11.8779f, 5.7225f, 11.9764f, 5.841f)
-                lineTo(11.9914f, 5.8259f)
-                lineTo(12.0159f, 5.8503f)
-                curveTo(12.1166f, 5.7286f, 12.2239f, 5.6104f, 12.3379f, 5.4964f)
-                curveTo(14.2905f, 3.5438f, 17.4563f, 3.5438f, 19.4089f, 5.4964f)
-                curveTo(21.3616f, 7.4491f, 21.3616f, 10.6149f, 19.4089f, 12.5675f)
-                curveTo(19.295f, 12.6815f, 19.1768f, 12.7888f, 19.0551f, 12.8895f)
-                lineTo(19.0625f, 12.897f)
-                lineTo(11.9914f, 19.9681f)
-                lineTo(4.9204f, 12.897f)
-                lineTo(4.9356f, 12.8818f)
-                curveTo(4.8171f, 12.7833f, 4.7021f, 12.6786f, 4.5911f, 12.5675f)
-                curveTo(2.6384f, 10.6149f, 2.6384f, 7.4491f, 4.5911f, 5.4964f)
-                curveTo(6.5437f, 3.5438f, 9.7095f, 3.5438f, 11.6621f, 5.4964f)
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(11.619f, 4.49f)
+                curveTo(11.744f, 4.622f, 11.862f, 4.759f, 11.973f, 4.9f)
+                lineTo(11.99f, 4.882f)
+                lineTo(12.018f, 4.911f)
+                curveTo(12.131f, 4.766f, 12.252f, 4.626f, 12.381f, 4.49f)
+                curveTo(14.581f, 2.17f, 18.149f, 2.17f, 20.35f, 4.49f)
+                curveTo(22.55f, 6.81f, 22.55f, 10.572f, 20.35f, 12.892f)
+                curveTo(20.221f, 13.028f, 20.088f, 13.155f, 19.951f, 13.275f)
+                lineTo(19.959f, 13.284f)
+                lineTo(12.708f, 20.929f)
+                curveTo(12.315f, 21.344f, 11.666f, 21.344f, 11.273f, 20.929f)
+                lineTo(4.022f, 13.284f)
+                lineTo(4.039f, 13.266f)
+                curveTo(3.905f, 13.149f, 3.776f, 13.024f, 3.65f, 12.892f)
+                curveTo(1.45f, 10.572f, 1.45f, 6.81f, 3.65f, 4.49f)
+                curveTo(5.851f, 2.17f, 9.419f, 2.17f, 11.619f, 4.49f)
                 close()
             }
         }.build()
@@ -60,17 +43,3 @@ val PersianSymbols.Filled.Heart: ImageVector
     }
 
 private var heart: ImageVector? = null
-
-@Preview
-@Composable
-private fun IconPreview() {
-    MaterialTheme {
-        Surface {
-            Icon(
-                modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Filled.Heart,
-                contentDescription = ""
-            )
-        }
-    }
-}

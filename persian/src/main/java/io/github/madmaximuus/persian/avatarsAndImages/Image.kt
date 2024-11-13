@@ -34,8 +34,8 @@ import io.github.madmaximuus.persian.foundation.ripple.ripple
 import io.github.madmaximuus.persian.foundation.shimmer
 import io.github.madmaximuus.persian.icon.Icon
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
-import io.github.madmaximuus.persianSymbols.image.base.Image
-import io.github.madmaximuus.persianSymbols.plus.base.Plus
+import io.github.madmaximuus.persianSymbols.image.Image
+import io.github.madmaximuus.persianSymbols.plus.Plus
 
 /**
  * The image displays an image via imageUri. If there is no image, a placeholder is displayed

@@ -43,7 +43,7 @@ import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.globe.Globe
-import io.github.madmaximuus.persianSymbols.xmark.base.XMark
+import io.github.madmaximuus.persianSymbols.xmark.XMark
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
@@ -111,7 +111,7 @@ object Chips : Screen {
                                         {
                                             Icon(
                                                 icon = rememberVectorPainter(
-                                                    PersianSymbols.Default.Globe
+                                                    PersianSymbols.Filled.Globe
                                                 )
                                             )
                                         }
@@ -136,7 +136,7 @@ object Chips : Screen {
                                         {
                                             Icon(
                                                 painter = rememberVectorPainter(
-                                                    PersianSymbols.Default.Globe
+                                                    PersianSymbols.Filled.Globe
                                                 )
                                             )
                                         }
@@ -155,7 +155,7 @@ object Chips : Screen {
                                                 leadingStates[0].value -> {
                                                     Icon(
                                                         painter = rememberVectorPainter(
-                                                            PersianSymbols.Default.Globe
+                                                            PersianSymbols.Filled.Globe
                                                         )
                                                     )
                                                 }
@@ -181,7 +181,7 @@ object Chips : Screen {
                                                 leadingStates[0].value -> {
                                                     Icon(
                                                         icon = rememberVectorPainter(
-                                                            PersianSymbols.Default.Globe
+                                                            PersianSymbols.Filled.Globe
                                                         )
                                                     )
                                                 }

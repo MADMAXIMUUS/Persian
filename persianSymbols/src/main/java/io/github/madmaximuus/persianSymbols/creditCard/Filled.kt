@@ -1,20 +1,10 @@
 package io.github.madmaximuus.persianSymbols.creditCard
 
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType.Companion.NonZero
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap.Companion.Butt
-import androidx.compose.ui.graphics.StrokeJoin.Companion.Miter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.ImageVector.Builder
 import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
@@ -30,38 +20,22 @@ val PersianSymbols.Filled.CreditCard: ImageVector
             viewportWidth = 24.0f,
             viewportHeight = 24.0f
         ).apply {
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = NonZero
-            ) {
-                moveTo(6.4f, 4.0f)
-                curveTo(4.1048f, 4.0f, 2.22f, 5.7574f, 2.0179f, 8.0f)
-                horizontalLineTo(21.9821f)
-                curveTo(21.78f, 5.7574f, 19.8952f, 4.0f, 17.6f, 4.0f)
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(6.4f, 4f)
+                curveTo(4.02f, 4f, 2.082f, 5.889f, 2.003f, 8.25f)
+                horizontalLineTo(21.997f)
+                curveTo(21.918f, 5.889f, 19.98f, 4f, 17.6f, 4f)
                 horizontalLineTo(6.4f)
                 close()
             }
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = NonZero
-            ) {
-                moveTo(22.0f, 10.0f)
-                horizontalLineTo(2.0f)
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(22f, 9.75f)
+                horizontalLineTo(2f)
                 verticalLineTo(15.6f)
-                curveTo(2.0f, 18.0301f, 3.9699f, 20.0f, 6.4f, 20.0f)
+                curveTo(2f, 18.03f, 3.97f, 20f, 6.4f, 20f)
                 horizontalLineTo(17.6f)
-                curveTo(20.0301f, 20.0f, 22.0f, 18.0301f, 22.0f, 15.6f)
-                verticalLineTo(10.0f)
+                curveTo(20.03f, 20f, 22f, 18.03f, 22f, 15.6f)
+                verticalLineTo(9.75f)
                 close()
             }
         }.build()
@@ -69,17 +43,3 @@ val PersianSymbols.Filled.CreditCard: ImageVector
     }
 
 private var creditCard: ImageVector? = null
-
-@Preview
-@Composable
-private fun IconPreview() {
-    MaterialTheme {
-        Surface {
-            Icon(
-                modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Filled.CreditCard,
-                contentDescription = ""
-            )
-        }
-    }
-}

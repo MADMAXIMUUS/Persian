@@ -13,7 +13,7 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.iconButton.IconButtonDefaults
 import io.github.madmaximuus.persian.iconButton.TertiaryIconButton
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
-import io.github.madmaximuus.persianSymbols.xmark.base.XMark
+import io.github.madmaximuus.persianSymbols.xmark.XMark
 
 /**
  * An interface that represents the scope for a Snackbar that is aligned to the right.

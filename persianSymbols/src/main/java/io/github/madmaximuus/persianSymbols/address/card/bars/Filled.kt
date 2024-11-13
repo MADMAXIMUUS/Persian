@@ -1,21 +1,11 @@
 package io.github.madmaximuus.persianSymbols.address.card.bars
 
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType.Companion.EvenOdd
-import androidx.compose.ui.graphics.PathFillType.Companion.NonZero
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap.Companion.Butt
-import androidx.compose.ui.graphics.StrokeJoin.Companion.Miter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.ImageVector.Builder
 import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
@@ -31,84 +21,63 @@ val PersianSymbols.Filled.AddressCardBars: ImageVector
             viewportWidth = 24.0f,
             viewportHeight = 24.0f
         ).apply {
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = NonZero
-            ) {
-                moveTo(7.8469f, 12.0f)
-                curveTo(7.8469f, 11.4477f, 8.2946f, 11.0f, 8.8469f, 11.0f)
-                curveTo(9.3992f, 11.0f, 9.8469f, 11.4477f, 9.8469f, 12.0f)
-                curveTo(9.8469f, 12.5523f, 9.3992f, 13.0f, 8.8469f, 13.0f)
-                curveTo(8.2946f, 13.0f, 7.8469f, 12.5523f, 7.8469f, 12.0f)
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(7.597f, 12.5f)
+                curveTo(7.597f, 11.81f, 8.157f, 11.25f, 8.847f, 11.25f)
+                curveTo(9.537f, 11.25f, 10.097f, 11.81f, 10.097f, 12.5f)
+                curveTo(10.097f, 13.19f, 9.537f, 13.75f, 8.847f, 13.75f)
+                curveTo(8.157f, 13.75f, 7.597f, 13.19f, 7.597f, 12.5f)
                 close()
             }
             path(
                 fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = EvenOdd
+                pathFillType = PathFillType.EvenOdd
             ) {
-                moveTo(2.0f, 8.4f)
-                curveTo(2.0f, 5.97f, 3.9699f, 4.0f, 6.4f, 4.0f)
+                moveTo(2f, 8.4f)
+                curveTo(2f, 5.97f, 3.97f, 4f, 6.4f, 4f)
                 horizontalLineTo(17.6f)
-                curveTo(20.0301f, 4.0f, 22.0f, 5.97f, 22.0f, 8.4f)
+                curveTo(20.03f, 4f, 22f, 5.97f, 22f, 8.4f)
                 verticalLineTo(15.6f)
-                curveTo(22.0f, 18.0301f, 20.0301f, 20.0f, 17.6f, 20.0f)
-                horizontalLineTo(13.8469f)
-                curveTo(13.8469f, 18.7862f, 13.1886f, 17.7636f, 12.2754f, 17.0787f)
-                curveTo(11.3624f, 16.3939f, 10.1469f, 16.0f, 8.8469f, 16.0f)
-                curveTo(7.5469f, 16.0f, 6.3315f, 16.3939f, 5.4185f, 17.0787f)
-                curveTo(4.7017f, 17.6163f, 4.1419f, 18.3619f, 3.9343f, 19.2447f)
-                curveTo(2.767f, 18.4535f, 2.0f, 17.1163f, 2.0f, 15.6f)
+                curveTo(22f, 18.03f, 20.03f, 20f, 17.6f, 20f)
+                horizontalLineTo(13.597f)
+                curveTo(13.597f, 18.883f, 12.991f, 17.928f, 12.125f, 17.279f)
+                curveTo(11.26f, 16.629f, 10.098f, 16.25f, 8.847f, 16.25f)
+                curveTo(7.596f, 16.25f, 6.434f, 16.629f, 5.569f, 17.279f)
+                curveTo(4.866f, 17.806f, 4.334f, 18.534f, 4.159f, 19.387f)
+                curveTo(2.866f, 18.621f, 2f, 17.212f, 2f, 15.6f)
                 verticalLineTo(8.4f)
                 close()
-                moveTo(8.8469f, 9.0f)
-                curveTo(7.1901f, 9.0f, 5.8469f, 10.3431f, 5.8469f, 12.0f)
-                curveTo(5.8469f, 13.6569f, 7.1901f, 15.0f, 8.8469f, 15.0f)
-                curveTo(10.5038f, 15.0f, 11.8469f, 13.6569f, 11.8469f, 12.0f)
-                curveTo(11.8469f, 10.3431f, 10.5038f, 9.0f, 8.8469f, 9.0f)
+                moveTo(8.847f, 9.75f)
+                curveTo(7.328f, 9.75f, 6.097f, 10.981f, 6.097f, 12.5f)
+                curveTo(6.097f, 14.019f, 7.328f, 15.25f, 8.847f, 15.25f)
+                curveTo(10.366f, 15.25f, 11.597f, 14.019f, 11.597f, 12.5f)
+                curveTo(11.597f, 10.981f, 10.366f, 9.75f, 8.847f, 9.75f)
                 close()
-                moveTo(14.0f, 10.0f)
-                curveTo(14.0f, 9.4477f, 14.4477f, 9.0f, 15.0f, 9.0f)
-                horizontalLineTo(19.0f)
-                curveTo(19.5523f, 9.0f, 20.0f, 9.4477f, 20.0f, 10.0f)
-                curveTo(20.0f, 10.5523f, 19.5523f, 11.0f, 19.0f, 11.0f)
-                horizontalLineTo(15.0f)
-                curveTo(14.4477f, 11.0f, 14.0f, 10.5523f, 14.0f, 10.0f)
+                moveTo(14.25f, 10f)
+                curveTo(14.25f, 9.586f, 14.586f, 9.25f, 15f, 9.25f)
+                horizontalLineTo(19f)
+                curveTo(19.414f, 9.25f, 19.75f, 9.586f, 19.75f, 10f)
+                curveTo(19.75f, 10.414f, 19.414f, 10.75f, 19f, 10.75f)
+                horizontalLineTo(15f)
+                curveTo(14.586f, 10.75f, 14.25f, 10.414f, 14.25f, 10f)
                 close()
-                moveTo(14.0f, 13.0f)
-                curveTo(14.0f, 12.4477f, 14.4477f, 12.0f, 15.0f, 12.0f)
-                horizontalLineTo(17.0f)
-                curveTo(17.5523f, 12.0f, 18.0f, 12.4477f, 18.0f, 13.0f)
-                curveTo(18.0f, 13.5523f, 17.5523f, 14.0f, 17.0f, 14.0f)
-                horizontalLineTo(15.0f)
-                curveTo(14.4477f, 14.0f, 14.0f, 13.5523f, 14.0f, 13.0f)
+                moveTo(14.25f, 13f)
+                curveTo(14.25f, 12.586f, 14.586f, 12.25f, 15f, 12.25f)
+                horizontalLineTo(17f)
+                curveTo(17.414f, 12.25f, 17.75f, 12.586f, 17.75f, 13f)
+                curveTo(17.75f, 13.414f, 17.414f, 13.75f, 17f, 13.75f)
+                horizontalLineTo(15f)
+                curveTo(14.586f, 13.75f, 14.25f, 13.414f, 14.25f, 13f)
                 close()
             }
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = NonZero
-            ) {
-                moveTo(11.0754f, 18.6787f)
-                curveTo(11.6098f, 19.0795f, 11.8469f, 19.5569f, 11.8469f, 20.0f)
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(11.225f, 18.479f)
+                curveTo(11.807f, 18.915f, 12.097f, 19.461f, 12.097f, 20f)
                 horizontalLineTo(6.4f)
-                curveTo(6.2128f, 20.0f, 6.0284f, 19.9883f, 5.8474f, 19.9656f)
-                curveTo(5.8594f, 19.5323f, 6.0978f, 19.0692f, 6.6185f, 18.6787f)
-                curveTo(7.1532f, 18.2776f, 7.9378f, 18.0f, 8.8469f, 18.0f)
-                curveTo(9.7561f, 18.0f, 10.5406f, 18.2776f, 11.0754f, 18.6787f)
+                curveTo(6.126f, 20f, 5.859f, 19.975f, 5.599f, 19.927f)
+                curveTo(5.624f, 19.412f, 5.913f, 18.895f, 6.469f, 18.479f)
+                curveTo(7.051f, 18.042f, 7.889f, 17.75f, 8.847f, 17.75f)
+                curveTo(9.805f, 17.75f, 10.643f, 18.042f, 11.225f, 18.479f)
                 close()
             }
         }.build()
@@ -116,17 +85,3 @@ val PersianSymbols.Filled.AddressCardBars: ImageVector
     }
 
 private var addressCardBars: ImageVector? = null
-
-@Preview
-@Composable
-private fun IconPreview() {
-    MaterialTheme {
-        Surface {
-            Icon(
-                modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Filled.AddressCardBars,
-                contentDescription = ""
-            )
-        }
-    }
-}

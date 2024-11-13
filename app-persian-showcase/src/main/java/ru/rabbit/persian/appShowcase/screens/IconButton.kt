@@ -33,7 +33,7 @@ import io.github.madmaximuus.persian.iconButton.TertiaryToggleIconButton
 import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
-import io.github.madmaximuus.persianSymbols.user.base.User
+import io.github.madmaximuus.persianSymbols.user.User
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
@@ -142,7 +142,7 @@ object IconButton : Screen {
                                 styleStates[0].value -> {
                                     PrimaryToggleIconButton(
                                         icon = rememberVectorPainter(image = PersianSymbols.Default.User),
-                                        checkedIcon = rememberVectorPainter(image = PersianSymbols.Filled.User),
+                                        checkedIcon = rememberVectorPainter(image = PersianSymbols.Default.User),
                                         checked = checked,
                                         sizes = sizeState,
                                         enabled = enabled,
@@ -153,7 +153,7 @@ object IconButton : Screen {
                                 styleStates[1].value -> {
                                     SecondaryToggleIconButton(
                                         icon = rememberVectorPainter(image = PersianSymbols.Default.User),
-                                        checkedIcon = rememberVectorPainter(image = PersianSymbols.Filled.User),
+                                        checkedIcon = rememberVectorPainter(image = PersianSymbols.Default.User),
                                         checked = checked,
                                         sizes = sizeState,
                                         enabled = enabled,
@@ -164,7 +164,7 @@ object IconButton : Screen {
                                 styleStates[2].value -> {
                                     TertiaryToggleIconButton(
                                         icon = rememberVectorPainter(image = PersianSymbols.Default.User),
-                                        checkedIcon = rememberVectorPainter(image = PersianSymbols.Filled.User),
+                                        checkedIcon = rememberVectorPainter(image = PersianSymbols.Default.User),
                                         checked = checked,
                                         sizes = sizeState,
                                         enabled = enabled,
@@ -175,7 +175,7 @@ object IconButton : Screen {
                                 styleStates[3].value -> {
                                     OutlinedToggleIconButton(
                                         icon = rememberVectorPainter(image = PersianSymbols.Default.User),
-                                        checkedIcon = rememberVectorPainter(image = PersianSymbols.Filled.User),
+                                        checkedIcon = rememberVectorPainter(image = PersianSymbols.Default.User),
                                         checked = checked,
                                         sizes = sizeState,
                                         enabled = enabled,

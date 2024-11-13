@@ -1,21 +1,11 @@
 package io.github.madmaximuus.persianSymbols.minus.circle
 
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType.Companion.EvenOdd
-import androidx.compose.ui.graphics.PathFillType.Companion.NonZero
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap.Companion.Butt
-import androidx.compose.ui.graphics.StrokeJoin.Companion.Miter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.ImageVector.Builder
 import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
@@ -31,44 +21,31 @@ val PersianSymbols.Default.MinusCircle: ImageVector
             viewportWidth = 24.0f,
             viewportHeight = 24.0f
         ).apply {
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = NonZero
-            ) {
-                moveTo(7.9999f, 10.9999f)
-                curveTo(7.4476f, 10.9999f, 6.9999f, 11.4476f, 6.9999f, 11.9999f)
-                curveTo(6.9999f, 12.5522f, 7.4476f, 12.9999f, 7.9999f, 12.9999f)
-                horizontalLineTo(15.9999f)
-                curveTo(16.5522f, 12.9999f, 16.9999f, 12.5522f, 16.9999f, 11.9999f)
-                curveTo(16.9999f, 11.4476f, 16.5522f, 10.9999f, 15.9999f, 10.9999f)
-                horizontalLineTo(7.9999f)
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(8.5f, 11.25f)
+                curveTo(8.086f, 11.25f, 7.75f, 11.586f, 7.75f, 12f)
+                curveTo(7.75f, 12.414f, 8.086f, 12.75f, 8.5f, 12.75f)
+                horizontalLineTo(15.5f)
+                curveTo(15.914f, 12.75f, 16.25f, 12.414f, 16.25f, 12f)
+                curveTo(16.25f, 11.586f, 15.914f, 11.25f, 15.5f, 11.25f)
+                horizontalLineTo(8.5f)
                 close()
             }
             path(
                 fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = EvenOdd
+                pathFillType = PathFillType.EvenOdd
             ) {
-                moveTo(12.0f, 1.9999f)
-                curveTo(6.4771f, 1.9999f, 2.0f, 6.477f, 2.0f, 11.9999f)
-                curveTo(2.0f, 17.5227f, 6.4771f, 21.9999f, 12.0f, 21.9999f)
-                curveTo(17.5228f, 21.9999f, 22.0f, 17.5227f, 22.0f, 11.9999f)
-                curveTo(22.0f, 6.477f, 17.5228f, 1.9999f, 12.0f, 1.9999f)
+                moveTo(12f, 2f)
+                curveTo(6.477f, 2f, 2f, 6.477f, 2f, 12f)
+                curveTo(2f, 17.523f, 6.477f, 22f, 12f, 22f)
+                curveTo(17.523f, 22f, 22f, 17.523f, 22f, 12f)
+                curveTo(22f, 6.477f, 17.523f, 2f, 12f, 2f)
                 close()
-                moveTo(4.0f, 11.9999f)
-                curveTo(4.0f, 7.5816f, 7.5817f, 3.9999f, 12.0f, 3.9999f)
-                curveTo(16.4183f, 3.9999f, 20.0f, 7.5816f, 20.0f, 11.9999f)
-                curveTo(20.0f, 16.4182f, 16.4183f, 19.9999f, 12.0f, 19.9999f)
-                curveTo(7.5817f, 19.9999f, 4.0f, 16.4182f, 4.0f, 11.9999f)
+                moveTo(4f, 12f)
+                curveTo(4f, 7.582f, 7.582f, 4f, 12f, 4f)
+                curveTo(16.418f, 4f, 20f, 7.582f, 20f, 12f)
+                curveTo(20f, 16.418f, 16.418f, 20f, 12f, 20f)
+                curveTo(7.582f, 20f, 4f, 16.418f, 4f, 12f)
                 close()
             }
         }.build()
@@ -76,17 +53,3 @@ val PersianSymbols.Default.MinusCircle: ImageVector
     }
 
 private var minusCircle: ImageVector? = null
-
-@Preview
-@Composable
-private fun IconPreview() {
-    MaterialTheme {
-        Surface {
-            Icon(
-                modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Default.MinusCircle,
-                contentDescription = ""
-            )
-        }
-    }
-}

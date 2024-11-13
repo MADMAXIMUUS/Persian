@@ -1,20 +1,11 @@
 package io.github.madmaximuus.persianSymbols.pin
 
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType.Companion.EvenOdd
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap.Companion.Butt
-import androidx.compose.ui.graphics.StrokeJoin.Companion.Miter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.ImageVector.Builder
 import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
@@ -32,38 +23,33 @@ val PersianSymbols.Default.Pin: ImageVector
         ).apply {
             path(
                 fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = EvenOdd
+                pathFillType = PathFillType.EvenOdd
             ) {
-                moveTo(8.0f, 6.0f)
-                verticalLineTo(12.0f)
-                horizontalLineTo(7.0f)
-                curveTo(6.4477f, 12.0f, 6.0f, 12.4477f, 6.0f, 13.0f)
-                curveTo(6.0f, 13.5523f, 6.4477f, 14.0f, 7.0f, 14.0f)
-                horizontalLineTo(11.0f)
-                verticalLineTo(20.3636f)
-                lineTo(11.8293f, 21.7207f)
-                curveTo(11.9073f, 21.8484f, 12.0927f, 21.8484f, 12.1707f, 21.7207f)
-                lineTo(13.0f, 20.3636f)
-                verticalLineTo(14.0f)
-                lineTo(17.0f, 14.0f)
-                curveTo(17.5523f, 14.0f, 18.0f, 13.5523f, 18.0f, 13.0f)
-                curveTo(18.0f, 12.4477f, 17.5523f, 12.0f, 17.0f, 12.0f)
-                horizontalLineTo(16.0f)
-                verticalLineTo(6.0f)
-                curveTo(16.0f, 3.7909f, 14.2091f, 2.0f, 12.0f, 2.0f)
-                curveTo(9.7909f, 2.0f, 8.0f, 3.7909f, 8.0f, 6.0f)
+                moveTo(8f, 6f)
+                verticalLineTo(12f)
+                horizontalLineTo(7f)
+                curveTo(6.448f, 12f, 6f, 12.448f, 6f, 13f)
+                curveTo(6f, 13.552f, 6.448f, 14f, 7f, 14f)
+                horizontalLineTo(11f)
+                verticalLineTo(20.364f)
+                lineTo(11.829f, 21.721f)
+                curveTo(11.907f, 21.848f, 12.093f, 21.848f, 12.171f, 21.721f)
+                lineTo(13f, 20.364f)
+                verticalLineTo(14f)
+                lineTo(17f, 14f)
+                curveTo(17.552f, 14f, 18f, 13.552f, 18f, 13f)
+                curveTo(18f, 12.448f, 17.552f, 12f, 17f, 12f)
+                horizontalLineTo(16f)
+                verticalLineTo(6f)
+                curveTo(16f, 3.791f, 14.209f, 2f, 12f, 2f)
+                curveTo(9.791f, 2f, 8f, 3.791f, 8f, 6f)
                 close()
-                moveTo(12.0f, 4.0f)
-                curveTo(10.8954f, 4.0f, 10.0f, 4.8954f, 10.0f, 6.0f)
-                verticalLineTo(12.0f)
-                horizontalLineTo(14.0f)
-                verticalLineTo(6.0f)
-                curveTo(14.0f, 4.8954f, 13.1046f, 4.0f, 12.0f, 4.0f)
+                moveTo(12f, 4f)
+                curveTo(10.895f, 4f, 10f, 4.895f, 10f, 6f)
+                verticalLineTo(12f)
+                horizontalLineTo(14f)
+                verticalLineTo(6f)
+                curveTo(14f, 4.895f, 13.105f, 4f, 12f, 4f)
                 close()
             }
         }.build()
@@ -71,17 +57,3 @@ val PersianSymbols.Default.Pin: ImageVector
     }
 
 private var pin: ImageVector? = null
-
-@Preview
-@Composable
-private fun IconPreview() {
-    MaterialTheme {
-        Surface {
-            Icon(
-                modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Default.Pin,
-                contentDescription = ""
-            )
-        }
-    }
-}

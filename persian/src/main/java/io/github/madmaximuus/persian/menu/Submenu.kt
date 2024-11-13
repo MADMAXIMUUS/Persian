@@ -24,7 +24,7 @@ import androidx.compose.ui.window.PopupProperties
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.menu.util.DropdownMenuPositionProvider
 import io.github.madmaximuus.persian.menu.util.calculateTransformOrigin
-import io.github.madmaximuus.persianSymbols.arrow.left.base.ArrowLeft
+import io.github.madmaximuus.persianSymbols.arrow.left.ArrowLeft
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import kotlinx.coroutines.flow.filter
 

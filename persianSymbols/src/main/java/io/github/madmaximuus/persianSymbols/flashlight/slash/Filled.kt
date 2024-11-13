@@ -1,20 +1,10 @@
 package io.github.madmaximuus.persianSymbols.flashlight.slash
 
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType.Companion.NonZero
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap.Companion.Butt
-import androidx.compose.ui.graphics.StrokeJoin.Companion.Miter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.ImageVector.Builder
 import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
@@ -30,78 +20,50 @@ val PersianSymbols.Filled.FlashlightSlash: ImageVector
             viewportWidth = 24.0f,
             viewportHeight = 24.0f
         ).apply {
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = NonZero
-            ) {
-                moveTo(3.7071f, 2.2929f)
-                curveTo(3.3166f, 1.9024f, 2.6834f, 1.9024f, 2.2929f, 2.2929f)
-                curveTo(1.9024f, 2.6834f, 1.9024f, 3.3166f, 2.2929f, 3.7071f)
-                lineTo(20.2929f, 21.7071f)
-                curveTo(20.6834f, 22.0976f, 21.3166f, 22.0976f, 21.7071f, 21.7071f)
-                curveTo(22.0976f, 21.3166f, 22.0976f, 20.6834f, 21.7071f, 20.2929f)
-                lineTo(3.7071f, 2.2929f)
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(3.707f, 2.293f)
+                curveTo(3.317f, 1.902f, 2.683f, 1.902f, 2.293f, 2.293f)
+                curveTo(1.902f, 2.683f, 1.902f, 3.317f, 2.293f, 3.707f)
+                lineTo(20.293f, 21.707f)
+                curveTo(20.683f, 22.098f, 21.317f, 22.098f, 21.707f, 21.707f)
+                curveTo(22.098f, 21.317f, 22.098f, 20.683f, 21.707f, 20.293f)
+                lineTo(3.707f, 2.293f)
                 close()
             }
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = NonZero
-            ) {
-                moveTo(6.0f, 3.5f)
-                lineTo(6.5f, 4.0f)
-                lineTo(18.0f, 4.0f)
-                verticalLineTo(3.0f)
-                curveTo(18.0f, 2.4477f, 17.5523f, 2.0f, 17.0f, 2.0f)
-                horizontalLineTo(7.0f)
-                curveTo(6.4477f, 2.0f, 6.0f, 2.4477f, 6.0f, 3.0f)
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(6f, 3.5f)
+                lineTo(6.75f, 4.25f)
+                lineTo(18f, 4.25f)
+                verticalLineTo(3f)
+                curveTo(18f, 2.448f, 17.552f, 2f, 17f, 2f)
+                horizontalLineTo(7f)
+                curveTo(6.448f, 2f, 6f, 2.448f, 6f, 3f)
                 verticalLineTo(3.5f)
                 close()
             }
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = NonZero
-            ) {
-                moveTo(8.4f, 20.0f)
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(8.4f, 20f)
                 verticalLineTo(10.9f)
+                lineTo(11.25f, 13.75f)
+                verticalLineTo(14f)
+                curveTo(11.25f, 14.414f, 11.586f, 14.75f, 12f, 14.75f)
+                curveTo(12.076f, 14.75f, 12.149f, 14.739f, 12.218f, 14.718f)
                 lineTo(15.6f, 18.1f)
-                verticalLineTo(20.0f)
-                curveTo(15.6f, 21.1046f, 14.7046f, 22.0f, 13.6f, 22.0f)
+                verticalLineTo(20f)
+                curveTo(15.6f, 21.105f, 14.705f, 22f, 13.6f, 22f)
                 horizontalLineTo(10.4f)
-                curveTo(9.2954f, 22.0f, 8.4f, 21.1046f, 8.4f, 20.0f)
+                curveTo(9.295f, 22f, 8.4f, 21.105f, 8.4f, 20f)
                 close()
             }
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = NonZero
-            ) {
-                moveTo(8.5f, 6.0f)
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(8.25f, 5.75f)
                 lineTo(15.6f, 13.1f)
-                verticalLineTo(10.6516f)
-                curveTo(15.6f, 10.0945f, 15.8324f, 9.5626f, 16.2412f, 9.1841f)
-                lineTo(17.3588f, 8.1492f)
-                curveTo(17.7676f, 7.7707f, 18.0f, 7.2389f, 18.0f, 6.6817f)
-                verticalLineTo(6.0f)
-                lineTo(8.5f, 6.0f)
+                verticalLineTo(10.652f)
+                curveTo(15.6f, 10.094f, 15.832f, 9.563f, 16.241f, 9.184f)
+                lineTo(17.359f, 8.149f)
+                curveTo(17.768f, 7.771f, 18f, 7.239f, 18f, 6.682f)
+                verticalLineTo(5.75f)
+                lineTo(8.25f, 5.75f)
                 close()
             }
         }.build()
@@ -109,17 +71,3 @@ val PersianSymbols.Filled.FlashlightSlash: ImageVector
     }
 
 private var flashlightSlash: ImageVector? = null
-
-@Preview
-@Composable
-private fun IconPreview() {
-    MaterialTheme {
-        Surface {
-            Icon(
-                modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Filled.FlashlightSlash,
-                contentDescription = ""
-            )
-        }
-    }
-}

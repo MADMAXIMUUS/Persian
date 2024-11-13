@@ -26,12 +26,12 @@ import io.github.madmaximuus.persian.topAppBar.Avatar
 import io.github.madmaximuus.persian.topAppBar.IconButton
 import io.github.madmaximuus.persian.topAppBar.More
 import io.github.madmaximuus.persian.topAppBar.TopAppBar
-import io.github.madmaximuus.persianSymbols.arrow.left.base.ArrowLeft
-import io.github.madmaximuus.persianSymbols.bell.base.Bell
+import io.github.madmaximuus.persianSymbols.arrow.left.ArrowLeft
+import io.github.madmaximuus.persianSymbols.bell.Bell
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.magnifyingGlass.MagnifyingGlass
 import io.github.madmaximuus.persianSymbols.nfc.Nfc
-import io.github.madmaximuus.persianSymbols.xmark.base.XMark
+import io.github.madmaximuus.persianSymbols.xmark.XMark
 
 object TopAppBar : Screen {
     override val name: String = "Top app bar"

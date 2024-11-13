@@ -14,8 +14,8 @@ import io.github.madmaximuus.persian.menu.DropdownMenuItemScope
 import io.github.madmaximuus.persian.menu.MenuColors
 import io.github.madmaximuus.persian.menu.MenuDefaults
 import io.github.madmaximuus.persian.menu.MenuSizes
-import io.github.madmaximuus.persianSymbols.chevronDown.base.ChevronDown
-import io.github.madmaximuus.persianSymbols.chevronUp.base.ChevronUp
+import io.github.madmaximuus.persianSymbols.chevronDown.ChevronDown
+import io.github.madmaximuus.persianSymbols.chevronUp.ChevronUp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
 /**

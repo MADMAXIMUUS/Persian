@@ -29,7 +29,7 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.icon.Icon
 import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persian.text.Text
-import io.github.madmaximuus.persianSymbols.arrow.down.base.ArrowDown
+import io.github.madmaximuus.persianSymbols.arrow.down.ArrowDown
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 

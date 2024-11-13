@@ -14,7 +14,7 @@ import io.github.madmaximuus.persian.chips.founfation.SelectableChipSizes
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.icon.Icon
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
-import io.github.madmaximuus.persianSymbols.xmark.base.XMark
+import io.github.madmaximuus.persianSymbols.xmark.XMark
 
 /**
  * An interface that defines the scope for the trailing content of an InputChip.

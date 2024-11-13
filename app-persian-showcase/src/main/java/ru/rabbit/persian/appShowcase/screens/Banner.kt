@@ -128,7 +128,7 @@ object Banner : Screen {
                             "Icon" -> {
                                 {
                                     Icon(
-                                        icon = rememberVectorPainter(image = PersianSymbols.Default.Globe),
+                                        icon = rememberVectorPainter(image = PersianSymbols.Filled.Globe),
                                     )
                                 }
                             }

@@ -1,21 +1,11 @@
 package io.github.madmaximuus.persianSymbols.device.mobile.arrowDown.top
 
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType.Companion.EvenOdd
-import androidx.compose.ui.graphics.PathFillType.Companion.NonZero
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap.Companion.Butt
-import androidx.compose.ui.graphics.StrokeJoin.Companion.Miter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.ImageVector.Builder
 import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
@@ -31,85 +21,69 @@ val PersianSymbols.Default.DeviceMobileArrowDownTop: ImageVector
             viewportWidth = 24.0f,
             viewportHeight = 24.0f
         ).apply {
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = NonZero
-            ) {
-                moveTo(17.5303f, 6.7197f)
-                curveTo(17.8232f, 7.0126f, 17.8232f, 7.4874f, 17.5303f, 7.7803f)
-                lineTo(16.5303f, 8.7803f)
-                curveTo(16.2374f, 9.0732f, 15.7626f, 9.0732f, 15.4697f, 8.7803f)
-                lineTo(14.4697f, 7.7803f)
-                curveTo(14.1768f, 7.4874f, 14.1768f, 7.0126f, 14.4697f, 6.7197f)
-                curveTo(14.6807f, 6.5086f, 14.9862f, 6.4497f, 15.25f, 6.5427f)
-                verticalLineTo(5.25f)
-                curveTo(15.25f, 4.8358f, 15.5858f, 4.5f, 16.0f, 4.5f)
-                curveTo(16.4142f, 4.5f, 16.75f, 4.8358f, 16.75f, 5.25f)
-                verticalLineTo(6.5427f)
-                curveTo(17.0138f, 6.4497f, 17.3193f, 6.5086f, 17.5303f, 6.7197f)
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(18.75f, 5.793f)
+                curveTo(19.014f, 5.7f, 19.319f, 5.759f, 19.53f, 5.97f)
+                curveTo(19.823f, 6.263f, 19.823f, 6.737f, 19.53f, 7.03f)
+                lineTo(18.53f, 8.03f)
+                curveTo(18.237f, 8.323f, 17.763f, 8.323f, 17.47f, 8.03f)
+                lineTo(16.47f, 7.03f)
+                curveTo(16.177f, 6.737f, 16.177f, 6.263f, 16.47f, 5.97f)
+                curveTo(16.681f, 5.759f, 16.986f, 5.7f, 17.25f, 5.793f)
+                verticalLineTo(4.5f)
+                curveTo(17.25f, 4.086f, 17.586f, 3.75f, 18f, 3.75f)
+                curveTo(18.414f, 3.75f, 18.75f, 4.086f, 18.75f, 4.5f)
+                verticalLineTo(5.793f)
                 close()
             }
             path(
                 fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = EvenOdd
+                pathFillType = PathFillType.EvenOdd
             ) {
-                moveTo(11.25f, 6.75f)
-                curveTo(11.25f, 4.1266f, 13.3766f, 2.0f, 16.0f, 2.0f)
-                curveTo(18.6234f, 2.0f, 20.75f, 4.1266f, 20.75f, 6.75f)
-                curveTo(20.75f, 9.3734f, 18.6234f, 11.5f, 16.0f, 11.5f)
-                curveTo(13.3766f, 11.5f, 11.25f, 9.3734f, 11.25f, 6.75f)
+                moveTo(13.25f, 6f)
+                curveTo(13.25f, 3.377f, 15.377f, 1.25f, 18f, 1.25f)
+                curveTo(20.623f, 1.25f, 22.75f, 3.377f, 22.75f, 6f)
+                curveTo(22.75f, 8.623f, 20.623f, 10.75f, 18f, 10.75f)
+                curveTo(15.377f, 10.75f, 13.25f, 8.623f, 13.25f, 6f)
                 close()
-                moveTo(16.0f, 3.5f)
-                curveTo(14.2051f, 3.5f, 12.75f, 4.9551f, 12.75f, 6.75f)
-                curveTo(12.75f, 8.5449f, 14.2051f, 10.0f, 16.0f, 10.0f)
-                curveTo(17.7949f, 10.0f, 19.25f, 8.5449f, 19.25f, 6.75f)
-                curveTo(19.25f, 4.9551f, 17.7949f, 3.5f, 16.0f, 3.5f)
+                moveTo(18f, 2.75f)
+                curveTo(16.205f, 2.75f, 14.75f, 4.205f, 14.75f, 6f)
+                curveTo(14.75f, 7.795f, 16.205f, 9.25f, 18f, 9.25f)
+                curveTo(19.795f, 9.25f, 21.25f, 7.795f, 21.25f, 6f)
+                curveTo(21.25f, 4.205f, 19.795f, 2.75f, 18f, 2.75f)
                 close()
             }
             path(
                 fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = EvenOdd
+                pathFillType = PathFillType.EvenOdd
             ) {
-                moveTo(7.0f, 2.75f)
-                horizontalLineTo(11.5278f)
-                curveTo(11.0113f, 3.3271f, 10.6048f, 4.0048f, 10.3414f, 4.75f)
-                horizontalLineTo(7.0f)
-                curveTo(6.4477f, 4.75f, 6.0f, 5.1977f, 6.0f, 5.75f)
-                horizontalLineTo(10.083f)
-                curveTo(10.0284f, 6.0752f, 10.0f, 6.4093f, 10.0f, 6.75f)
-                curveTo(10.0f, 7.0907f, 10.0284f, 7.4248f, 10.083f, 7.75f)
-                horizontalLineTo(6.0f)
-                verticalLineTo(17.75f)
-                horizontalLineTo(14.0f)
-                verticalLineTo(12.4086f)
-                curveTo(14.6256f, 12.6297f, 15.2987f, 12.75f, 16.0f, 12.75f)
-                verticalLineTo(19.75f)
-                curveTo(16.0f, 21.4069f, 14.6569f, 22.75f, 13.0f, 22.75f)
-                horizontalLineTo(7.0f)
-                curveTo(5.3432f, 22.75f, 4.0f, 21.4069f, 4.0f, 19.75f)
-                verticalLineTo(5.75f)
-                curveTo(4.0f, 4.0932f, 5.3432f, 2.75f, 7.0f, 2.75f)
+                moveTo(9f, 2f)
+                horizontalLineTo(13.528f)
+                curveTo(13.011f, 2.577f, 12.605f, 3.255f, 12.341f, 4f)
+                horizontalLineTo(9f)
+                curveTo(8.448f, 4f, 8f, 4.448f, 8f, 5f)
+                horizontalLineTo(12.083f)
+                curveTo(12.028f, 5.325f, 12f, 5.659f, 12f, 6f)
+                curveTo(12f, 6.168f, 12.007f, 6.335f, 12.021f, 6.5f)
+                horizontalLineTo(8f)
+                verticalLineTo(17f)
+                horizontalLineTo(16f)
+                verticalLineTo(11.659f)
+                curveTo(16.626f, 11.88f, 17.299f, 12f, 18f, 12f)
+                verticalLineTo(19f)
+                curveTo(18f, 20.657f, 16.657f, 22f, 15f, 22f)
+                horizontalLineTo(9f)
+                curveTo(7.343f, 22f, 6f, 20.657f, 6f, 19f)
+                verticalLineTo(5f)
+                curveTo(6f, 3.343f, 7.343f, 2f, 9f, 2f)
                 close()
-                moveTo(6.0f, 19.75f)
-                curveTo(6.0f, 20.3023f, 6.4477f, 20.75f, 7.0f, 20.75f)
-                horizontalLineTo(13.0f)
-                curveTo(13.5523f, 20.75f, 14.0f, 20.3023f, 14.0f, 19.75f)
-                horizontalLineTo(6.0f)
+                moveTo(8f, 18.5f)
+                verticalLineTo(19f)
+                curveTo(8f, 19.552f, 8.448f, 20f, 9f, 20f)
+                horizontalLineTo(15f)
+                curveTo(15.552f, 20f, 16f, 19.552f, 16f, 19f)
+                verticalLineTo(18.5f)
+                horizontalLineTo(8f)
                 close()
             }
         }.build()
@@ -117,17 +91,3 @@ val PersianSymbols.Default.DeviceMobileArrowDownTop: ImageVector
     }
 
 private var deviceMobileUnknownArrowDownTop: ImageVector? = null
-
-@Preview
-@Composable
-private fun IconPreview() {
-    MaterialTheme {
-        Surface {
-            Icon(
-                modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Default.DeviceMobileArrowDownTop,
-                contentDescription = ""
-            )
-        }
-    }
-}

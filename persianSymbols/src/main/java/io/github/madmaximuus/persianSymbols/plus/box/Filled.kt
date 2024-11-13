@@ -1,19 +1,10 @@
 package io.github.madmaximuus.persianSymbols.plus.box
 
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType.Companion.EvenOdd
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap.Companion.Butt
-import androidx.compose.ui.graphics.StrokeJoin.Companion.Miter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
@@ -23,7 +14,7 @@ val PersianSymbols.Filled.PlusBox: ImageVector
             return plusBox!!
         }
         plusBox = ImageVector.Builder(
-            name = "add-box-filled",
+            name = "plus-box-filled",
             defaultWidth = 24.dp,
             defaultHeight = 24.dp,
             viewportWidth = 24f,
@@ -31,40 +22,35 @@ val PersianSymbols.Filled.PlusBox: ImageVector
         ).apply {
             path(
                 fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = EvenOdd
+                pathFillType = PathFillType.EvenOdd
             ) {
-                moveTo(7.4f, 3.0f)
-                curveTo(4.97f, 3.0f, 3.0f, 4.97f, 3.0f, 7.4f)
+                moveTo(7.4f, 3f)
+                curveTo(4.97f, 3f, 3f, 4.97f, 3f, 7.4f)
                 verticalLineTo(16.6f)
-                curveTo(3.0f, 19.0301f, 4.97f, 21.0f, 7.4f, 21.0f)
+                curveTo(3f, 19.03f, 4.97f, 21f, 7.4f, 21f)
                 horizontalLineTo(16.6f)
-                curveTo(19.0301f, 21.0f, 21.0f, 19.0301f, 21.0f, 16.6f)
+                curveTo(19.03f, 21f, 21f, 19.03f, 21f, 16.6f)
                 verticalLineTo(7.4f)
-                curveTo(21.0f, 4.97f, 19.0301f, 3.0f, 16.6f, 3.0f)
+                curveTo(21f, 4.97f, 19.03f, 3f, 16.6f, 3f)
                 horizontalLineTo(7.4f)
                 close()
-                moveTo(13.0212f, 8.0f)
-                curveTo(13.0212f, 7.4477f, 12.5735f, 7.0f, 12.0212f, 7.0f)
-                curveTo(11.4689f, 7.0f, 11.0212f, 7.4477f, 11.0212f, 8.0f)
-                verticalLineTo(11.0642f)
-                horizontalLineTo(8.0f)
-                curveTo(7.4478f, 11.0642f, 7.0f, 11.5119f, 7.0f, 12.0642f)
-                curveTo(7.0f, 12.6165f, 7.4478f, 13.0642f, 8.0f, 13.0642f)
-                horizontalLineTo(11.0212f)
-                verticalLineTo(16.0f)
-                curveTo(11.0212f, 16.5523f, 11.4689f, 17.0f, 12.0212f, 17.0f)
-                curveTo(12.5735f, 17.0f, 13.0212f, 16.5523f, 13.0212f, 16.0f)
-                verticalLineTo(13.0642f)
-                horizontalLineTo(16.0f)
-                curveTo(16.5523f, 13.0642f, 17.0f, 12.6165f, 17.0f, 12.0642f)
-                curveTo(17.0f, 11.5119f, 16.5523f, 11.0642f, 16.0f, 11.0642f)
-                horizontalLineTo(13.0212f)
-                verticalLineTo(8.0f)
+                moveTo(12f, 6.75f)
+                curveTo(12.414f, 6.75f, 12.75f, 7.086f, 12.75f, 7.5f)
+                verticalLineTo(11.25f)
+                horizontalLineTo(16.5f)
+                curveTo(16.914f, 11.25f, 17.25f, 11.586f, 17.25f, 12f)
+                curveTo(17.25f, 12.414f, 16.914f, 12.75f, 16.5f, 12.75f)
+                horizontalLineTo(12.75f)
+                verticalLineTo(16.5f)
+                curveTo(12.75f, 16.914f, 12.414f, 17.25f, 12f, 17.25f)
+                curveTo(11.586f, 17.25f, 11.25f, 16.914f, 11.25f, 16.5f)
+                verticalLineTo(12.75f)
+                horizontalLineTo(7.5f)
+                curveTo(7.086f, 12.75f, 6.75f, 12.414f, 6.75f, 12f)
+                curveTo(6.75f, 11.586f, 7.086f, 11.25f, 7.5f, 11.25f)
+                horizontalLineTo(11.25f)
+                verticalLineTo(7.5f)
+                curveTo(11.25f, 7.086f, 11.586f, 6.75f, 12f, 6.75f)
                 close()
             }
         }.build()
@@ -72,17 +58,3 @@ val PersianSymbols.Filled.PlusBox: ImageVector
     }
 
 private var plusBox: ImageVector? = null
-
-@Preview
-@Composable
-private fun IconPreview() {
-    MaterialTheme {
-        Surface {
-            Icon(
-                modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Filled.PlusBox,
-                contentDescription = ""
-            )
-        }
-    }
-}

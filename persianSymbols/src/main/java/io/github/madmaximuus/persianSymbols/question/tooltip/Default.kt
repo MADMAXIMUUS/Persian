@@ -1,21 +1,11 @@
 package io.github.madmaximuus.persianSymbols.question.tooltip
 
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType.Companion.EvenOdd
-import androidx.compose.ui.graphics.PathFillType.Companion.NonZero
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap.Companion.Butt
-import androidx.compose.ui.graphics.StrokeJoin.Companion.Miter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.ImageVector.Builder
 import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
@@ -31,101 +21,66 @@ val PersianSymbols.Default.QuestionTooltip: ImageVector
             viewportWidth = 24.0f,
             viewportHeight = 24.0f
         ).apply {
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = NonZero
-            ) {
-                moveTo(11.8328f, 14.1782f)
-                curveTo(12.2547f, 14.1782f, 12.5833f, 13.8342f, 12.6793f, 13.4232f)
-                curveTo(12.6966f, 13.3491f, 12.7165f, 13.2774f, 12.7391f, 13.2082f)
-                curveTo(12.8312f, 12.9208f, 13.0061f, 12.6549f, 13.264f, 12.4106f)
-                curveTo(13.5633f, 12.1184f, 13.8419f, 11.8262f, 14.0998f, 11.534f)
-                curveTo(14.3576f, 11.237f, 14.5671f, 10.9184f, 14.7283f, 10.5783f)
-                curveTo(14.8894f, 10.2334f, 14.97f, 9.8502f, 14.97f, 9.4286f)
-                curveTo(14.97f, 8.8442f, 14.8526f, 8.346f, 14.6178f, 7.9341f)
-                curveTo(14.3875f, 7.5173f, 14.0537f, 7.2011f, 13.6163f, 6.9856f)
-                curveTo(13.1788f, 6.7652f, 12.6516f, 6.655f, 12.0346f, 6.655f)
-                curveTo(11.4774f, 6.655f, 10.9732f, 6.758f, 10.5219f, 6.964f)
-                curveTo(10.0707f, 7.17f, 9.7115f, 7.479f, 9.4445f, 7.8909f)
-                curveTo(9.3122f, 8.0949f, 9.2116f, 8.3223f, 9.1426f, 8.5732f)
-                curveTo(9.0185f, 9.0242f, 9.4215f, 9.4143f, 9.8893f, 9.4143f)
-                curveTo(10.3334f, 9.4143f, 10.6532f, 9.0251f, 10.8949f, 8.6526f)
-                curveTo(11.0192f, 8.4562f, 11.1827f, 8.3125f, 11.3853f, 8.2215f)
-                curveTo(11.5879f, 8.1257f, 11.8043f, 8.0778f, 12.0346f, 8.0778f)
-                curveTo(12.3108f, 8.0778f, 12.5411f, 8.1328f, 12.7253f, 8.243f)
-                curveTo(12.9141f, 8.3532f, 13.0568f, 8.5137f, 13.1535f, 8.7245f)
-                curveTo(13.2502f, 8.9352f, 13.2985f, 9.1915f, 13.2985f, 9.4933f)
-                curveTo(13.2985f, 9.7711f, 13.2479f, 10.0178f, 13.1466f, 10.2334f)
-                curveTo(13.0453f, 10.4442f, 12.9094f, 10.6454f, 12.7391f, 10.837f)
-                curveTo(12.5687f, 11.0238f, 12.3776f, 11.2226f, 12.1658f, 11.4334f)
-                curveTo(11.8941f, 11.7112f, 11.6754f, 11.9747f, 11.5096f, 12.2238f)
-                curveTo(11.3485f, 12.4729f, 11.2334f, 12.7507f, 11.1643f, 13.0573f)
-                curveTo(11.1401f, 13.1631f, 11.1198f, 13.2778f, 11.1035f, 13.4013f)
-                curveTo(11.0474f, 13.8265f, 11.4038f, 14.1782f, 11.8328f, 14.1782f)
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(13f, 16.602f)
+                curveTo(13f, 17.154f, 12.552f, 17.602f, 12f, 17.602f)
+                curveTo(11.448f, 17.602f, 11f, 17.154f, 11f, 16.602f)
+                curveTo(11f, 16.049f, 11.448f, 15.602f, 12f, 15.602f)
+                curveTo(12.552f, 15.602f, 13f, 16.049f, 13f, 16.602f)
                 close()
             }
             path(
                 fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = NonZero
+                pathFillType = PathFillType.EvenOdd
             ) {
-                moveTo(11.1712f, 15.7662f)
-                curveTo(11.0008f, 15.9435f, 10.9156f, 16.1614f, 10.9156f, 16.4201f)
-                curveTo(10.9156f, 16.6788f, 11.0008f, 16.8991f, 11.1712f, 17.0812f)
-                curveTo(11.3416f, 17.2584f, 11.5741f, 17.347f, 11.8688f, 17.347f)
-                curveTo(12.1635f, 17.347f, 12.396f, 17.2584f, 12.5664f, 17.0812f)
-                curveTo(12.7368f, 16.8991f, 12.822f, 16.6788f, 12.822f, 16.4201f)
-                curveTo(12.822f, 16.1614f, 12.7368f, 15.9435f, 12.5664f, 15.7662f)
-                curveTo(12.396f, 15.5842f, 12.1635f, 15.4932f, 11.8688f, 15.4932f)
-                curveTo(11.5741f, 15.4932f, 11.3416f, 15.5842f, 11.1712f, 15.7662f)
+                moveTo(7.5f, 3f)
+                curveTo(5.015f, 3f, 3f, 5.015f, 3f, 7.5f)
+                verticalLineTo(16.5f)
+                curveTo(3f, 18.985f, 5.015f, 21f, 7.5f, 21f)
+                horizontalLineTo(9.586f)
+                lineTo(11.293f, 22.707f)
+                curveTo(11.683f, 23.098f, 12.317f, 23.098f, 12.707f, 22.707f)
+                lineTo(14.414f, 21f)
+                horizontalLineTo(16.5f)
+                curveTo(18.985f, 21f, 21f, 18.985f, 21f, 16.5f)
+                verticalLineTo(7.5f)
+                curveTo(21f, 5.015f, 18.985f, 3f, 16.5f, 3f)
+                horizontalLineTo(7.5f)
+                close()
+                moveTo(5f, 7.5f)
+                curveTo(5f, 6.119f, 6.119f, 5f, 7.5f, 5f)
+                horizontalLineTo(16.5f)
+                curveTo(17.881f, 5f, 19f, 6.119f, 19f, 7.5f)
+                verticalLineTo(16.5f)
+                curveTo(19f, 17.881f, 17.881f, 19f, 16.5f, 19f)
+                horizontalLineTo(14.414f)
+                curveTo(13.884f, 19f, 13.375f, 19.211f, 13f, 19.586f)
+                lineTo(12f, 20.586f)
+                lineTo(11f, 19.586f)
+                curveTo(10.625f, 19.211f, 10.116f, 19f, 9.586f, 19f)
+                horizontalLineTo(7.5f)
+                curveTo(6.119f, 19f, 5f, 17.881f, 5f, 16.5f)
+                verticalLineTo(7.5f)
                 close()
             }
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = EvenOdd
-            ) {
-                moveTo(7.5f, 3.0f)
-                curveTo(5.0147f, 3.0f, 3.0f, 5.0147f, 3.0f, 7.5f)
-                verticalLineTo(16.5f)
-                curveTo(3.0f, 18.9853f, 5.0147f, 21.0f, 7.5f, 21.0f)
-                horizontalLineTo(9.5858f)
-                lineTo(11.2929f, 22.7071f)
-                curveTo(11.6834f, 23.0976f, 12.3166f, 23.0976f, 12.7071f, 22.7071f)
-                lineTo(14.4142f, 21.0f)
-                horizontalLineTo(16.5f)
-                curveTo(18.9853f, 21.0f, 21.0f, 18.9853f, 21.0f, 16.5f)
-                verticalLineTo(7.5f)
-                curveTo(21.0f, 5.0147f, 18.9853f, 3.0f, 16.5f, 3.0f)
-                horizontalLineTo(7.5f)
-                close()
-                moveTo(5.0f, 7.5f)
-                curveTo(5.0f, 6.1193f, 6.1193f, 5.0f, 7.5f, 5.0f)
-                horizontalLineTo(16.5f)
-                curveTo(17.8807f, 5.0f, 19.0f, 6.1193f, 19.0f, 7.5f)
-                verticalLineTo(16.5f)
-                curveTo(19.0f, 17.8807f, 17.8807f, 19.0f, 16.5f, 19.0f)
-                horizontalLineTo(14.4142f)
-                curveTo(13.8838f, 19.0f, 13.3751f, 19.2107f, 13.0f, 19.5858f)
-                lineTo(12.0f, 20.5858f)
-                lineTo(11.0f, 19.5858f)
-                curveTo(10.6249f, 19.2107f, 10.1162f, 19.0f, 9.5858f, 19.0f)
-                horizontalLineTo(7.5f)
-                curveTo(6.1193f, 19.0f, 5.0f, 17.8807f, 5.0f, 16.5f)
-                verticalLineTo(7.5f)
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(9.904f, 9.995f)
+                curveTo(9.904f, 8.837f, 10.842f, 7.898f, 12f, 7.898f)
+                curveTo(13.158f, 7.898f, 14.096f, 8.837f, 14.096f, 9.995f)
+                curveTo(14.096f, 10.527f, 13.698f, 10.984f, 13.046f, 11.364f)
+                curveTo(12.741f, 11.542f, 12.43f, 11.671f, 12.191f, 11.757f)
+                lineTo(11.818f, 11.875f)
+                curveTo(11.484f, 11.959f, 11.25f, 12.259f, 11.25f, 12.603f)
+                verticalLineTo(14.148f)
+                curveTo(11.25f, 14.563f, 11.586f, 14.898f, 12f, 14.898f)
+                curveTo(12.414f, 14.898f, 12.75f, 14.563f, 12.75f, 14.148f)
+                verticalLineTo(13.15f)
+                curveTo(13.039f, 13.044f, 13.417f, 12.884f, 13.8f, 12.66f)
+                curveTo(14.571f, 12.212f, 15.596f, 11.365f, 15.596f, 9.995f)
+                curveTo(15.596f, 8.008f, 13.986f, 6.398f, 12f, 6.398f)
+                curveTo(10.014f, 6.398f, 8.404f, 8.008f, 8.404f, 9.995f)
+                curveTo(8.404f, 10.409f, 8.74f, 10.745f, 9.154f, 10.745f)
+                curveTo(9.568f, 10.745f, 9.904f, 10.409f, 9.904f, 9.995f)
                 close()
             }
         }.build()
@@ -133,17 +88,3 @@ val PersianSymbols.Default.QuestionTooltip: ImageVector
     }
 
 private var questionTooltip: ImageVector? = null
-
-@Preview
-@Composable
-private fun IconPreview() {
-    MaterialTheme {
-        Surface {
-            Icon(
-                modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Default.QuestionTooltip,
-                contentDescription = ""
-            )
-        }
-    }
-}

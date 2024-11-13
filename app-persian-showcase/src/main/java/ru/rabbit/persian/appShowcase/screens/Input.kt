@@ -26,10 +26,10 @@ import io.github.madmaximuus.persian.input.PlainInput
 import io.github.madmaximuus.persian.internal.SecureInputSettings
 import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
-import io.github.madmaximuus.persianSymbols.eye.base.Eye
+import io.github.madmaximuus.persianSymbols.eye.Eye
 import io.github.madmaximuus.persianSymbols.eye.slash.EyeSlash
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
-import io.github.madmaximuus.persianSymbols.user.base.User
+import io.github.madmaximuus.persianSymbols.user.User
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
@@ -83,7 +83,7 @@ object Input : Screen {
                                 placeholder = if (placeholder) placeholderValue.text.toString() else null,
                                 secure = if (password) SecureInputSettings.Secure(visible = visible) else SecureInputSettings.NotSecure,
                                 leadingIcon = if (leading) rememberVectorPainter(image = PersianSymbols.Default.User) else null,
-                                trailingIcon = if (trailing) rememberVectorPainter(image = if (visible) PersianSymbols.Default.EyeSlash else PersianSymbols.Default.Eye) else null,
+                                trailingIcon = if (trailing) rememberVectorPainter(image = if (visible) PersianSymbols.Filled.EyeSlash else PersianSymbols.Filled.Eye) else null,
                                 suffix = if (suffix) "12" else null,
                                 onTrailingIconClick = { visible = !visible }
                             )
@@ -98,7 +98,7 @@ object Input : Screen {
                                 placeholder = if (placeholder) placeholderValue.text.toString() else null,
                                 secure = if (password) SecureInputSettings.Secure(visible = visible) else SecureInputSettings.NotSecure,
                                 leadingIcon = if (leading) rememberVectorPainter(image = PersianSymbols.Default.User) else null,
-                                trailingIcon = if (trailing) rememberVectorPainter(image = if (visible) PersianSymbols.Default.EyeSlash else PersianSymbols.Default.Eye) else null,
+                                trailingIcon = if (trailing) rememberVectorPainter(image = if (visible) PersianSymbols.Filled.EyeSlash else PersianSymbols.Filled.Eye) else null,
                                 suffix = if (suffix) "12" else null,
                                 onTrailingIconClick = { visible = !visible }
                             )

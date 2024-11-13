@@ -1,20 +1,10 @@
 package io.github.madmaximuus.persianSymbols.chart.donut.simple
 
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType.Companion.NonZero
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap.Companion.Butt
-import androidx.compose.ui.graphics.StrokeJoin.Companion.Miter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.ImageVector.Builder
 import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
@@ -30,44 +20,28 @@ val PersianSymbols.Default.ChartDonutSimple: ImageVector
             viewportWidth = 24.0f,
             viewportHeight = 24.0f
         ).apply {
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = NonZero
-            ) {
-                moveTo(10.2213f, 4.1982f)
-                curveTo(10.7599f, 4.076f, 11.0974f, 3.5403f, 10.9752f, 3.0017f)
-                curveTo(10.853f, 2.4631f, 10.3173f, 2.1256f, 9.7787f, 2.2478f)
-                curveTo(5.3253f, 3.2583f, 2.0f, 7.2396f, 2.0f, 12.0f)
-                curveTo(2.0f, 17.5228f, 6.4771f, 22.0f, 12.0f, 22.0f)
-                curveTo(16.7603f, 22.0f, 20.7416f, 18.6747f, 21.7522f, 14.2213f)
-                curveTo(21.8744f, 13.6827f, 21.5369f, 13.147f, 20.9983f, 13.0248f)
-                curveTo(20.4597f, 12.9026f, 19.924f, 13.2401f, 19.8018f, 13.7787f)
-                curveTo(18.9934f, 17.3412f, 15.806f, 20.0f, 12.0f, 20.0f)
-                curveTo(7.5817f, 20.0f, 4.0f, 16.4183f, 4.0f, 12.0f)
-                curveTo(4.0f, 8.194f, 6.6588f, 5.0066f, 10.2213f, 4.1982f)
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(10.221f, 4.198f)
+                curveTo(10.76f, 4.076f, 11.097f, 3.54f, 10.975f, 3.002f)
+                curveTo(10.853f, 2.463f, 10.317f, 2.126f, 9.779f, 2.248f)
+                curveTo(5.325f, 3.258f, 2f, 7.24f, 2f, 12f)
+                curveTo(2f, 17.523f, 6.477f, 22f, 12f, 22f)
+                curveTo(16.76f, 22f, 20.742f, 18.675f, 21.752f, 14.221f)
+                curveTo(21.874f, 13.683f, 21.537f, 13.147f, 20.998f, 13.025f)
+                curveTo(20.46f, 12.903f, 19.924f, 13.24f, 19.802f, 13.779f)
+                curveTo(18.993f, 17.341f, 15.806f, 20f, 12f, 20f)
+                curveTo(7.582f, 20f, 4f, 16.418f, 4f, 12f)
+                curveTo(4f, 8.194f, 6.659f, 5.007f, 10.221f, 4.198f)
                 close()
             }
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = NonZero
-            ) {
-                moveTo(14.2213f, 2.2478f)
-                curveTo(13.6827f, 2.1256f, 13.147f, 2.4631f, 13.0248f, 3.0017f)
-                curveTo(12.9026f, 3.5403f, 13.2401f, 4.076f, 13.7787f, 4.1982f)
-                curveTo(16.768f, 4.8765f, 19.1235f, 7.232f, 19.8018f, 10.2213f)
-                curveTo(19.924f, 10.7599f, 20.4597f, 11.0974f, 20.9983f, 10.9752f)
-                curveTo(21.5369f, 10.853f, 21.8744f, 10.3173f, 21.7522f, 9.7787f)
-                curveTo(20.9035f, 6.0384f, 17.9615f, 3.0965f, 14.2213f, 2.2478f)
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(14.221f, 2.248f)
+                curveTo(13.683f, 2.126f, 13.147f, 2.463f, 13.025f, 3.002f)
+                curveTo(12.903f, 3.54f, 13.24f, 4.076f, 13.779f, 4.198f)
+                curveTo(16.768f, 4.877f, 19.124f, 7.232f, 19.802f, 10.221f)
+                curveTo(19.924f, 10.76f, 20.46f, 11.097f, 20.998f, 10.975f)
+                curveTo(21.537f, 10.853f, 21.874f, 10.317f, 21.752f, 9.779f)
+                curveTo(20.903f, 6.038f, 17.962f, 3.096f, 14.221f, 2.248f)
                 close()
             }
         }.build()
@@ -75,17 +49,3 @@ val PersianSymbols.Default.ChartDonutSimple: ImageVector
     }
 
 private var chartDonutSimple: ImageVector? = null
-
-@Preview
-@Composable
-private fun IconPreview() {
-    MaterialTheme {
-        Surface {
-            Icon(
-                modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Default.ChartDonutSimple,
-                contentDescription = ""
-            )
-        }
-    }
-}

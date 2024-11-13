@@ -1,20 +1,11 @@
 package io.github.madmaximuus.persianSymbols.minus.box
 
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType.Companion.EvenOdd
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap.Companion.Butt
-import androidx.compose.ui.graphics.StrokeJoin.Companion.Miter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.ImageVector.Builder
 import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
@@ -32,30 +23,25 @@ val PersianSymbols.Filled.MinusBox: ImageVector
         ).apply {
             path(
                 fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = EvenOdd
+                pathFillType = PathFillType.EvenOdd
             ) {
-                moveTo(7.4f, 3.0f)
-                curveTo(4.97f, 3.0f, 3.0f, 4.97f, 3.0f, 7.4f)
+                moveTo(7.4f, 3f)
+                curveTo(4.97f, 3f, 3f, 4.97f, 3f, 7.4f)
                 verticalLineTo(16.6f)
-                curveTo(3.0f, 19.0301f, 4.97f, 21.0f, 7.4f, 21.0f)
+                curveTo(3f, 19.03f, 4.97f, 21f, 7.4f, 21f)
                 horizontalLineTo(16.6f)
-                curveTo(19.0301f, 21.0f, 21.0f, 19.0301f, 21.0f, 16.6f)
+                curveTo(19.03f, 21f, 21f, 19.03f, 21f, 16.6f)
                 verticalLineTo(7.4f)
-                curveTo(21.0f, 4.97f, 19.0301f, 3.0f, 16.6f, 3.0f)
+                curveTo(21f, 4.97f, 19.03f, 3f, 16.6f, 3f)
                 horizontalLineTo(7.4f)
                 close()
-                moveTo(8.0f, 11.0f)
-                curveTo(7.4477f, 11.0f, 7.0f, 11.4477f, 7.0f, 12.0f)
-                curveTo(7.0f, 12.5523f, 7.4477f, 13.0f, 8.0f, 13.0f)
-                horizontalLineTo(16.0038f)
-                curveTo(16.5561f, 13.0f, 17.0038f, 12.5523f, 17.0038f, 12.0f)
-                curveTo(17.0038f, 11.4477f, 16.5561f, 11.0f, 16.0038f, 11.0f)
-                horizontalLineTo(8.0f)
+                moveTo(8.5f, 11.25f)
+                curveTo(8.086f, 11.25f, 7.75f, 11.586f, 7.75f, 12f)
+                curveTo(7.75f, 12.414f, 8.086f, 12.75f, 8.5f, 12.75f)
+                horizontalLineTo(15.5f)
+                curveTo(15.914f, 12.75f, 16.25f, 12.414f, 16.25f, 12f)
+                curveTo(16.25f, 11.586f, 15.914f, 11.25f, 15.5f, 11.25f)
+                horizontalLineTo(8.5f)
                 close()
             }
         }.build()
@@ -63,17 +49,3 @@ val PersianSymbols.Filled.MinusBox: ImageVector
     }
 
 private var minusBox: ImageVector? = null
-
-@Preview
-@Composable
-private fun IconPreview() {
-    MaterialTheme {
-        Surface {
-            Icon(
-                modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Filled.MinusBox,
-                contentDescription = ""
-            )
-        }
-    }
-}

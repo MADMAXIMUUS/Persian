@@ -25,7 +25,7 @@ import io.github.madmaximuus.persian.tabBar.scrollable.ScrollableTabBar
 import io.github.madmaximuus.persian.tabBar.tab.IconSide
 import io.github.madmaximuus.persian.tabBar.tab.Tab
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
-import io.github.madmaximuus.persianSymbols.user.base.User
+import io.github.madmaximuus.persianSymbols.user.User
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 

@@ -1,20 +1,10 @@
 package io.github.madmaximuus.persianSymbols.bookmark
 
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType.Companion.NonZero
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap.Companion.Butt
-import androidx.compose.ui.graphics.StrokeJoin.Companion.Miter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.ImageVector.Builder
 import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
@@ -30,26 +20,18 @@ val PersianSymbols.Filled.Bookmark: ImageVector
             viewportWidth = 24.0f,
             viewportHeight = 24.0f
         ).apply {
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = NonZero
-            ) {
-                moveTo(15.6f, 2.0f)
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(15.6f, 2f)
                 horizontalLineTo(8.4f)
-                curveTo(5.97f, 2.0f, 4.0f, 3.9699f, 4.0f, 6.4f)
-                verticalLineTo(20.3005f)
-                curveTo(4.0f, 21.063f, 4.8191f, 21.5449f, 5.4856f, 21.1746f)
-                lineTo(11.5144f, 17.8254f)
-                curveTo(11.8164f, 17.6576f, 12.1836f, 17.6576f, 12.4856f, 17.8254f)
-                lineTo(18.5144f, 21.1746f)
-                curveTo(19.1809f, 21.5449f, 20.0f, 21.063f, 20.0f, 20.3005f)
+                curveTo(5.97f, 2f, 4f, 3.97f, 4f, 6.4f)
+                verticalLineTo(20.301f)
+                curveTo(4f, 21.063f, 4.819f, 21.545f, 5.486f, 21.175f)
+                lineTo(11.514f, 17.825f)
+                curveTo(11.816f, 17.658f, 12.184f, 17.658f, 12.486f, 17.825f)
+                lineTo(18.514f, 21.175f)
+                curveTo(19.181f, 21.545f, 20f, 21.063f, 20f, 20.301f)
                 verticalLineTo(6.4f)
-                curveTo(20.0f, 3.9699f, 18.0301f, 2.0f, 15.6f, 2.0f)
+                curveTo(20f, 3.97f, 18.03f, 2f, 15.6f, 2f)
                 close()
             }
         }.build()
@@ -57,17 +39,3 @@ val PersianSymbols.Filled.Bookmark: ImageVector
     }
 
 private var bookmark: ImageVector? = null
-
-@Preview
-@Composable
-private fun IconPreview() {
-    MaterialTheme {
-        Surface {
-            Icon(
-                modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Filled.Bookmark,
-                contentDescription = ""
-            )
-        }
-    }
-}

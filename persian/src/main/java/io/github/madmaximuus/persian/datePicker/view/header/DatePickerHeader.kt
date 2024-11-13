@@ -30,10 +30,10 @@ import io.github.madmaximuus.persian.datePicker.view.util.DatePickerDisplayMode
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.iconButton.PrimaryIconButton
 import io.github.madmaximuus.persian.text.Text
-import io.github.madmaximuus.persianSymbols.chevronDown.base.ChevronDown
-import io.github.madmaximuus.persianSymbols.chevronLeft.base.ChevronLeft
-import io.github.madmaximuus.persianSymbols.chevronRight.base.ChevronRight
-import io.github.madmaximuus.persianSymbols.chevronUp.base.ChevronUp
+import io.github.madmaximuus.persianSymbols.chevronDown.ChevronDown
+import io.github.madmaximuus.persianSymbols.chevronLeft.ChevronLeft
+import io.github.madmaximuus.persianSymbols.chevronRight.ChevronRight
+import io.github.madmaximuus.persianSymbols.chevronUp.ChevronUp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import java.text.SimpleDateFormat
 import java.util.Locale

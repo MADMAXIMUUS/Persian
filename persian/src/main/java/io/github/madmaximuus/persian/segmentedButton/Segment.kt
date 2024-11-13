@@ -26,7 +26,7 @@ import io.github.madmaximuus.persian.segmentedButton.util.interactionZIndex
 import io.github.madmaximuus.persian.segmentedButton.util.itemShape
 import io.github.madmaximuus.persian.surface.Surface
 import io.github.madmaximuus.persian.text.Text
-import io.github.madmaximuus.persianSymbols.check.base.Check
+import io.github.madmaximuus.persianSymbols.check.Check
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
 /**

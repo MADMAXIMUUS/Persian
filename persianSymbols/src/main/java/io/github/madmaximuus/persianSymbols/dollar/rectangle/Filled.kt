@@ -1,20 +1,11 @@
 package io.github.madmaximuus.persianSymbols.dollar.rectangle
 
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType.Companion.EvenOdd
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap.Companion.Butt
-import androidx.compose.ui.graphics.StrokeJoin.Companion.Miter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.ImageVector.Builder
 import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
@@ -32,48 +23,43 @@ val PersianSymbols.Filled.DollarRectangle: ImageVector
         ).apply {
             path(
                 fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = EvenOdd
+                pathFillType = PathFillType.EvenOdd
             ) {
-                moveTo(6.4f, 4.0f)
-                curveTo(3.9699f, 4.0f, 2.0f, 5.97f, 2.0f, 8.4f)
+                moveTo(6.4f, 4f)
+                curveTo(3.97f, 4f, 2f, 5.97f, 2f, 8.4f)
                 verticalLineTo(15.6f)
-                curveTo(2.0f, 18.0301f, 3.9699f, 20.0f, 6.4f, 20.0f)
+                curveTo(2f, 18.03f, 3.97f, 20f, 6.4f, 20f)
                 horizontalLineTo(17.6f)
-                curveTo(20.0301f, 20.0f, 22.0f, 18.0301f, 22.0f, 15.6f)
+                curveTo(20.03f, 20f, 22f, 18.03f, 22f, 15.6f)
                 verticalLineTo(8.4f)
-                curveTo(22.0f, 5.97f, 20.0301f, 4.0f, 17.6f, 4.0f)
+                curveTo(22f, 5.97f, 20.03f, 4f, 17.6f, 4f)
                 horizontalLineTo(6.4f)
                 close()
-                moveTo(13.0f, 8.0f)
-                curveTo(13.0f, 7.4477f, 12.5523f, 7.0f, 12.0f, 7.0f)
-                curveTo(11.4477f, 7.0f, 11.0f, 7.4477f, 11.0f, 8.0f)
-                horizontalLineTo(10.5f)
-                curveTo(9.6716f, 8.0f, 9.0f, 8.6716f, 9.0f, 9.5f)
-                verticalLineTo(11.5f)
-                curveTo(9.0f, 12.3284f, 9.6716f, 13.0f, 10.5f, 13.0f)
-                horizontalLineTo(13.0f)
-                verticalLineTo(14.0f)
-                horizontalLineTo(10.0f)
-                curveTo(9.4477f, 14.0f, 9.0f, 14.4477f, 9.0f, 15.0f)
-                curveTo(9.0f, 15.5523f, 9.4477f, 16.0f, 10.0f, 16.0f)
-                horizontalLineTo(11.0f)
-                curveTo(11.0f, 16.5523f, 11.4477f, 17.0f, 12.0f, 17.0f)
-                curveTo(12.5523f, 17.0f, 13.0f, 16.5523f, 13.0f, 16.0f)
-                horizontalLineTo(13.5f)
-                curveTo(14.3284f, 16.0f, 15.0f, 15.3284f, 15.0f, 14.5f)
-                verticalLineTo(12.5f)
-                curveTo(15.0f, 11.6716f, 14.3284f, 11.0f, 13.5f, 11.0f)
-                horizontalLineTo(11.0f)
-                verticalLineTo(10.0f)
-                horizontalLineTo(14.0f)
-                curveTo(14.5523f, 10.0f, 15.0f, 9.5523f, 15.0f, 9.0f)
-                curveTo(15.0f, 8.4477f, 14.5523f, 8.0f, 14.0f, 8.0f)
-                horizontalLineTo(13.0f)
+                moveTo(12.75f, 7.833f)
+                curveTo(12.75f, 7.419f, 12.414f, 7.083f, 12f, 7.083f)
+                curveTo(11.586f, 7.083f, 11.25f, 7.419f, 11.25f, 7.833f)
+                verticalLineTo(7.909f)
+                curveTo(10.121f, 8.182f, 9.167f, 9.058f, 9.167f, 10.285f)
+                curveTo(9.167f, 11.776f, 10.578f, 12.75f, 12f, 12.75f)
+                curveTo(12.879f, 12.75f, 13.333f, 13.312f, 13.333f, 13.716f)
+                curveTo(13.333f, 14.12f, 12.879f, 14.682f, 12f, 14.682f)
+                curveTo(11.366f, 14.682f, 10.911f, 14.363f, 10.745f, 14.037f)
+                curveTo(10.558f, 13.668f, 10.107f, 13.52f, 9.737f, 13.707f)
+                curveTo(9.368f, 13.894f, 9.22f, 14.346f, 9.407f, 14.715f)
+                curveTo(9.763f, 15.416f, 10.452f, 15.905f, 11.25f, 16.094f)
+                verticalLineTo(16.167f)
+                curveTo(11.25f, 16.581f, 11.586f, 16.917f, 12f, 16.917f)
+                curveTo(12.414f, 16.917f, 12.75f, 16.581f, 12.75f, 16.167f)
+                verticalLineTo(16.092f)
+                curveTo(13.88f, 15.819f, 14.833f, 14.942f, 14.833f, 13.716f)
+                curveTo(14.833f, 12.225f, 13.422f, 11.25f, 12f, 11.25f)
+                curveTo(11.121f, 11.25f, 10.667f, 10.688f, 10.667f, 10.285f)
+                curveTo(10.667f, 9.881f, 11.121f, 9.319f, 12f, 9.319f)
+                curveTo(12.642f, 9.319f, 13.099f, 9.644f, 13.26f, 9.974f)
+                curveTo(13.441f, 10.347f, 13.891f, 10.501f, 14.263f, 10.32f)
+                curveTo(14.635f, 10.138f, 14.79f, 9.689f, 14.608f, 9.317f)
+                curveTo(14.258f, 8.599f, 13.56f, 8.099f, 12.75f, 7.906f)
+                verticalLineTo(7.833f)
                 close()
             }
         }.build()
@@ -81,17 +67,3 @@ val PersianSymbols.Filled.DollarRectangle: ImageVector
     }
 
 private var dollarRectangle: ImageVector? = null
-
-@Preview
-@Composable
-private fun IconPreview() {
-    MaterialTheme {
-        Surface {
-            Icon(
-                modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Filled.DollarRectangle,
-                contentDescription = ""
-            )
-        }
-    }
-}

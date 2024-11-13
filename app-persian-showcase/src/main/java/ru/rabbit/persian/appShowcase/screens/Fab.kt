@@ -23,7 +23,7 @@ import io.github.madmaximuus.persian.forms.RadioButtons
 import io.github.madmaximuus.persian.forms.Subhead
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
-import io.github.madmaximuus.persianSymbols.plus.base.Plus
+import io.github.madmaximuus.persianSymbols.plus.Plus
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 

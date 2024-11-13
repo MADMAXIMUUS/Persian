@@ -1,20 +1,10 @@
 package io.github.madmaximuus.persianSymbols.wifi.two
 
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType.Companion.NonZero
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap.Companion.Butt
-import androidx.compose.ui.graphics.StrokeJoin.Companion.Miter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.ImageVector.Builder
 import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
@@ -30,40 +20,24 @@ val PersianSymbols.Default.Wifi2: ImageVector
             viewportWidth = 24.0f,
             viewportHeight = 24.0f
         ).apply {
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = NonZero
-            ) {
-                moveTo(9.2505f, 15.1664f)
-                curveTo(9.9583f, 14.4426f, 10.9289f, 14.001f, 11.9983f, 14.001f)
-                curveTo(13.0646f, 14.001f, 14.0327f, 14.4401f, 14.74f, 15.1602f)
-                curveTo(15.127f, 15.5542f, 15.7601f, 15.5599f, 16.1541f, 15.1729f)
-                curveTo(16.5481f, 14.7859f, 16.5538f, 14.1527f, 16.1668f, 13.7587f)
-                curveTo(15.1036f, 12.6762f, 13.6292f, 12.001f, 11.9983f, 12.001f)
-                curveTo(10.3626f, 12.001f, 8.8845f, 12.6801f, 7.8206f, 13.7681f)
-                curveTo(7.4344f, 14.1629f, 7.4415f, 14.7961f, 7.8364f, 15.1822f)
-                curveTo(8.2312f, 15.5683f, 8.8643f, 15.5613f, 9.2505f, 15.1664f)
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(9.25f, 15.166f)
+                curveTo(9.958f, 14.443f, 10.929f, 14.001f, 11.998f, 14.001f)
+                curveTo(13.065f, 14.001f, 14.033f, 14.44f, 14.74f, 15.16f)
+                curveTo(15.127f, 15.554f, 15.76f, 15.56f, 16.154f, 15.173f)
+                curveTo(16.548f, 14.786f, 16.554f, 14.153f, 16.167f, 13.759f)
+                curveTo(15.104f, 12.676f, 13.629f, 12.001f, 11.998f, 12.001f)
+                curveTo(10.363f, 12.001f, 8.885f, 12.68f, 7.821f, 13.768f)
+                curveTo(7.434f, 14.163f, 7.442f, 14.796f, 7.836f, 15.182f)
+                curveTo(8.231f, 15.568f, 8.864f, 15.561f, 9.25f, 15.166f)
                 close()
             }
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = NonZero
-            ) {
-                moveTo(11.9982f, 20.0f)
-                curveTo(13.0794f, 20.0f, 13.9559f, 19.1047f, 13.9559f, 18.0002f)
-                curveTo(13.9559f, 16.8958f, 13.0794f, 16.0005f, 11.9982f, 16.0005f)
-                curveTo(10.9169f, 16.0005f, 10.0404f, 16.8958f, 10.0404f, 18.0002f)
-                curveTo(10.0404f, 19.1047f, 10.9169f, 20.0f, 11.9982f, 20.0f)
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(11.998f, 20f)
+                curveTo(13.079f, 20f, 13.956f, 19.105f, 13.956f, 18f)
+                curveTo(13.956f, 16.896f, 13.079f, 16f, 11.998f, 16f)
+                curveTo(10.917f, 16f, 10.04f, 16.896f, 10.04f, 18f)
+                curveTo(10.04f, 19.105f, 10.917f, 20f, 11.998f, 20f)
                 close()
             }
         }.build()
@@ -71,17 +45,3 @@ val PersianSymbols.Default.Wifi2: ImageVector
     }
 
 private var wifi2: ImageVector? = null
-
-@Preview
-@Composable
-private fun IconPreview() {
-    MaterialTheme {
-        Surface {
-            Icon(
-                modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Default.Wifi2,
-                contentDescription = ""
-            )
-        }
-    }
-}

@@ -45,10 +45,10 @@ import io.github.madmaximuus.persian.listItem.Suffix
 import io.github.madmaximuus.persian.listItem.Switch
 import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
-import io.github.madmaximuus.persianSymbols.chevronRight.base.ChevronRight
+import io.github.madmaximuus.persianSymbols.chevronRight.ChevronRight
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.globe.Globe
-import io.github.madmaximuus.persianSymbols.image.base.Image
+import io.github.madmaximuus.persianSymbols.image.Image
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
@@ -160,7 +160,7 @@ object ListItem : Screen {
                             {
                                 when {
                                     leftStates[0].value -> {
-                                        Icon(icon = rememberVectorPainter(image = PersianSymbols.Default.Globe))
+                                        Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.Globe))
                                     }
 
                                     leftStates[1].value -> {

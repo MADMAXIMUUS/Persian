@@ -1,21 +1,11 @@
 package io.github.madmaximuus.persianSymbols.shield.xmark
 
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType.Companion.EvenOdd
-import androidx.compose.ui.graphics.PathFillType.Companion.NonZero
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap.Companion.Butt
-import androidx.compose.ui.graphics.StrokeJoin.Companion.Miter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.ImageVector.Builder
 import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
@@ -31,58 +21,45 @@ val PersianSymbols.Default.ShieldXMark: ImageVector
             viewportWidth = 24.0f,
             viewportHeight = 24.0f
         ).apply {
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = NonZero
-            ) {
-                moveTo(8.9253f, 14.4448f)
-                curveTo(8.533f, 14.056f, 8.5314f, 13.4241f, 8.9218f, 13.0334f)
-                lineTo(10.5857f, 11.3677f)
-                lineTo(8.9217f, 9.702f)
-                curveTo(8.5314f, 9.3113f, 8.533f, 8.6794f, 8.9252f, 8.2906f)
-                curveTo(9.3175f, 7.9018f, 9.9519f, 7.9034f, 10.3422f, 8.2942f)
-                lineTo(11.9991f, 9.9528f)
-                lineTo(13.6561f, 8.2941f)
-                curveTo(14.0464f, 7.9034f, 14.6808f, 7.9018f, 15.0731f, 8.2906f)
-                curveTo(15.4654f, 8.6793f, 15.4669f, 9.3112f, 15.0766f, 9.702f)
-                lineTo(13.4126f, 11.3677f)
-                lineTo(15.0766f, 13.0335f)
-                curveTo(15.4669f, 13.4242f, 15.4653f, 14.0561f, 15.0731f, 14.4449f)
-                curveTo(14.6808f, 14.8337f, 14.0464f, 14.8321f, 13.6561f, 14.4414f)
-                lineTo(11.9991f, 12.7827f)
-                lineTo(10.3423f, 14.4413f)
-                curveTo(9.952f, 14.832f, 9.3175f, 14.8336f, 8.9253f, 14.4448f)
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(8.995f, 8.16f)
+                curveTo(9.289f, 7.868f, 9.765f, 7.869f, 10.057f, 8.162f)
+                lineTo(12f, 10.105f)
+                lineTo(13.943f, 8.162f)
+                curveTo(14.235f, 7.869f, 14.711f, 7.868f, 15.005f, 8.16f)
+                curveTo(15.299f, 8.452f, 15.3f, 8.926f, 15.007f, 9.219f)
+                lineTo(13.061f, 11.165f)
+                lineTo(15.007f, 13.112f)
+                curveTo(15.3f, 13.405f, 15.299f, 13.879f, 15.005f, 14.17f)
+                curveTo(14.711f, 14.462f, 14.235f, 14.461f, 13.942f, 14.168f)
+                lineTo(12f, 12.226f)
+                lineTo(10.057f, 14.168f)
+                curveTo(9.765f, 14.461f, 9.289f, 14.462f, 8.995f, 14.17f)
+                curveTo(8.701f, 13.879f, 8.7f, 13.405f, 8.993f, 13.112f)
+                lineTo(10.939f, 11.165f)
+                lineTo(8.993f, 9.219f)
+                curveTo(8.7f, 8.926f, 8.701f, 8.452f, 8.995f, 8.16f)
                 close()
             }
             path(
                 fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = EvenOdd
+                pathFillType = PathFillType.EvenOdd
             ) {
-                moveTo(12.3417f, 3.0602f)
-                curveTo(12.121f, 2.9799f, 11.879f, 2.9799f, 11.6583f, 3.0602f)
-                lineTo(3.6583f, 5.9693f)
-                curveTo(3.2631f, 6.113f, 3.0f, 6.4886f, 3.0f, 6.9091f)
-                curveTo(3.0f, 12.6952f, 6.2671f, 18.0121f, 11.5211f, 20.8779f)
-                curveTo(11.8196f, 21.0407f, 12.1804f, 21.0407f, 12.4789f, 20.8779f)
-                curveTo(17.7329f, 18.0121f, 21.0f, 12.6952f, 21.0f, 6.9091f)
-                curveTo(21.0f, 6.4886f, 20.7369f, 6.113f, 20.3417f, 5.9693f)
-                lineTo(12.3417f, 3.0602f)
+                moveTo(12.342f, 3.06f)
+                curveTo(12.121f, 2.98f, 11.879f, 2.98f, 11.658f, 3.06f)
+                lineTo(3.658f, 5.969f)
+                curveTo(3.263f, 6.113f, 3f, 6.489f, 3f, 6.909f)
+                curveTo(3f, 12.695f, 6.267f, 18.012f, 11.521f, 20.878f)
+                curveTo(11.82f, 21.041f, 12.18f, 21.041f, 12.479f, 20.878f)
+                curveTo(17.733f, 18.012f, 21f, 12.695f, 21f, 6.909f)
+                curveTo(21f, 6.489f, 20.737f, 6.113f, 20.342f, 5.969f)
+                lineTo(12.342f, 3.06f)
                 close()
-                moveTo(12.0f, 18.8496f)
-                curveTo(7.8474f, 16.3863f, 5.257f, 12.1777f, 5.0181f, 7.6029f)
-                lineTo(12.0f, 5.0641f)
-                lineTo(18.9819f, 7.6029f)
-                curveTo(18.743f, 12.1777f, 16.1526f, 16.3863f, 12.0f, 18.8496f)
+                moveTo(12f, 18.85f)
+                curveTo(7.847f, 16.386f, 5.257f, 12.178f, 5.018f, 7.603f)
+                lineTo(12f, 5.064f)
+                lineTo(18.982f, 7.603f)
+                curveTo(18.743f, 12.178f, 16.153f, 16.386f, 12f, 18.85f)
                 close()
             }
         }.build()
@@ -90,17 +67,3 @@ val PersianSymbols.Default.ShieldXMark: ImageVector
     }
 
 private var shieldXMark: ImageVector? = null
-
-@Preview
-@Composable
-private fun IconPreview() {
-    MaterialTheme {
-        Surface {
-            Icon(
-                modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Default.ShieldXMark,
-                contentDescription = ""
-            )
-        }
-    }
-}

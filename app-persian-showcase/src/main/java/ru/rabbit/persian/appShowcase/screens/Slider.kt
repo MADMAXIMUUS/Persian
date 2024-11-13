@@ -125,7 +125,7 @@ object Slider : Screen {
                                                         }
 
                                                         contentStates[1].value -> {
-                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Default.VolumeOff))
+                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.VolumeOff))
                                                         }
                                                     }
                                                 }
@@ -138,7 +138,7 @@ object Slider : Screen {
                                                         }
 
                                                         contentStates[1].value -> {
-                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Default.VolumeHigh))
+                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.VolumeHigh))
                                                         }
                                                     }
                                                 }
@@ -179,7 +179,7 @@ object Slider : Screen {
                                                         }
 
                                                         contentStates[1].value -> {
-                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Default.VolumeOff))
+                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.VolumeOff))
                                                         }
                                                     }
                                                 }
@@ -192,7 +192,7 @@ object Slider : Screen {
                                                         }
 
                                                         contentStates[1].value -> {
-                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Default.VolumeHigh))
+                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.VolumeHigh))
                                                         }
                                                     }
                                                 }
@@ -236,7 +236,7 @@ object Slider : Screen {
                                                         }
 
                                                         contentStates[1].value -> {
-                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Default.VolumeOff))
+                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.VolumeOff))
                                                         }
                                                     }
                                                 }
@@ -249,7 +249,7 @@ object Slider : Screen {
                                                         }
 
                                                         contentStates[1].value -> {
-                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Default.VolumeHigh))
+                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.VolumeHigh))
                                                         }
                                                     }
                                                 }
@@ -290,7 +290,7 @@ object Slider : Screen {
                                                         }
 
                                                         contentStates[1].value -> {
-                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Default.VolumeOff))
+                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.VolumeOff))
                                                         }
                                                     }
                                                 }
@@ -303,7 +303,7 @@ object Slider : Screen {
                                                         }
 
                                                         contentStates[1].value -> {
-                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Default.VolumeHigh))
+                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.VolumeHigh))
                                                         }
                                                     }
                                                 }
@@ -365,7 +365,7 @@ object Slider : Screen {
                                                         }
 
                                                         contentStates[1].value -> {
-                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Default.VolumeOff))
+                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.VolumeOff))
                                                         }
                                                     }
                                                 }
@@ -378,7 +378,7 @@ object Slider : Screen {
                                                         }
 
                                                         contentStates[1].value -> {
-                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Default.VolumeHigh))
+                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.VolumeHigh))
                                                         }
                                                     }
                                                 }
@@ -437,7 +437,7 @@ object Slider : Screen {
                                                         }
 
                                                         contentStates[1].value -> {
-                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Default.VolumeOff))
+                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.VolumeOff))
                                                         }
                                                     }
                                                 }
@@ -450,7 +450,7 @@ object Slider : Screen {
                                                         }
 
                                                         contentStates[1].value -> {
-                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Default.VolumeHigh))
+                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.VolumeHigh))
                                                         }
                                                     }
                                                 }

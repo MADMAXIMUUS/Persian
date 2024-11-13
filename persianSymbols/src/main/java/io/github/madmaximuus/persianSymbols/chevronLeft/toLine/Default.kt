@@ -1,20 +1,10 @@
 package io.github.madmaximuus.persianSymbols.chevronLeft.toLine
 
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType.Companion.NonZero
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap.Companion.Butt
-import androidx.compose.ui.graphics.StrokeJoin.Companion.Miter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.ImageVector.Builder
 import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
@@ -30,44 +20,28 @@ val PersianSymbols.Default.ChevronLeftToLine: ImageVector
             viewportWidth = 24.0f,
             viewportHeight = 24.0f
         ).apply {
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = NonZero
-            ) {
-                moveTo(9.0f, 7.0f)
-                curveTo(9.0f, 6.4477f, 8.5523f, 6.0f, 8.0f, 6.0f)
-                curveTo(7.4477f, 6.0f, 7.0f, 6.4477f, 7.0f, 7.0f)
-                verticalLineTo(17.0f)
-                curveTo(7.0f, 17.5523f, 7.4477f, 18.0f, 8.0f, 18.0f)
-                curveTo(8.5523f, 18.0f, 9.0f, 17.5523f, 9.0f, 17.0f)
-                verticalLineTo(7.0f)
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(9f, 7f)
+                curveTo(9f, 6.448f, 8.552f, 6f, 8f, 6f)
+                curveTo(7.448f, 6f, 7f, 6.448f, 7f, 7f)
+                verticalLineTo(17f)
+                curveTo(7f, 17.552f, 7.448f, 18f, 8f, 18f)
+                curveTo(8.552f, 18f, 9f, 17.552f, 9f, 17f)
+                verticalLineTo(7f)
                 close()
             }
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = NonZero
-            ) {
-                moveTo(15.8284f, 16.9496f)
-                curveTo(15.4338f, 17.3359f, 14.7973f, 17.3326f, 14.4067f, 16.942f)
-                lineTo(10.1641f, 12.6994f)
-                curveTo(9.7736f, 12.3089f, 9.7769f, 11.6791f, 10.1716f, 11.2927f)
-                lineTo(10.1758f, 11.2886f)
-                lineTo(14.4067f, 7.0577f)
-                curveTo(14.7972f, 6.6672f, 15.4337f, 6.6638f, 15.8284f, 7.0501f)
-                curveTo(16.2231f, 7.4365f, 16.2264f, 8.0662f, 15.8359f, 8.4568f)
-                lineTo(12.2928f, 11.9999f)
-                lineTo(15.8359f, 15.5429f)
-                curveTo(16.2265f, 15.9335f, 16.2231f, 16.5633f, 15.8284f, 16.9496f)
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(15.828f, 16.95f)
+                curveTo(15.434f, 17.336f, 14.797f, 17.333f, 14.407f, 16.942f)
+                lineTo(10.164f, 12.699f)
+                curveTo(9.774f, 12.309f, 9.777f, 11.679f, 10.172f, 11.293f)
+                lineTo(10.176f, 11.289f)
+                lineTo(14.407f, 7.058f)
+                curveTo(14.797f, 6.667f, 15.434f, 6.664f, 15.828f, 7.05f)
+                curveTo(16.223f, 7.436f, 16.226f, 8.066f, 15.836f, 8.457f)
+                lineTo(12.293f, 12f)
+                lineTo(15.836f, 15.543f)
+                curveTo(16.226f, 15.934f, 16.223f, 16.563f, 15.828f, 16.95f)
                 close()
             }
         }.build()
@@ -75,17 +49,3 @@ val PersianSymbols.Default.ChevronLeftToLine: ImageVector
     }
 
 private var chevronLeftToLine: ImageVector? = null
-
-@Preview
-@Composable
-private fun IconPreview() {
-    MaterialTheme {
-        Surface {
-            Icon(
-                modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Default.ChevronLeftToLine,
-                contentDescription = ""
-            )
-        }
-    }
-}

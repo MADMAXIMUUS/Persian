@@ -10,7 +10,7 @@ import io.github.madmaximuus.persian.chips.founfation.SelectableChipColors
 import io.github.madmaximuus.persian.chips.founfation.SelectableChipSizes
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.icon.Icon
-import io.github.madmaximuus.persianSymbols.check.base.Check
+import io.github.madmaximuus.persianSymbols.check.Check
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
 /**

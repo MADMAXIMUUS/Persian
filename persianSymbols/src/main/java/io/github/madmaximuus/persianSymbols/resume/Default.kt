@@ -1,21 +1,11 @@
 package io.github.madmaximuus.persianSymbols.resume
 
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType.Companion.EvenOdd
-import androidx.compose.ui.graphics.PathFillType.Companion.NonZero
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap.Companion.Butt
-import androidx.compose.ui.graphics.StrokeJoin.Companion.Miter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.ImageVector.Builder
 import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
@@ -31,45 +21,32 @@ val PersianSymbols.Default.Resume: ImageVector
             viewportWidth = 24.0f,
             viewportHeight = 24.0f
         ).apply {
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = NonZero
-            ) {
-                moveTo(8.0f, 7.0f)
-                curveTo(8.0f, 6.4477f, 7.5523f, 6.0f, 7.0f, 6.0f)
-                curveTo(6.4477f, 6.0f, 6.0f, 6.4477f, 6.0f, 7.0f)
-                verticalLineTo(17.0f)
-                curveTo(6.0f, 17.5523f, 6.4477f, 18.0f, 7.0f, 18.0f)
-                curveTo(7.5523f, 18.0f, 8.0f, 17.5523f, 8.0f, 17.0f)
-                lineTo(8.0f, 7.0f)
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(8f, 7f)
+                curveTo(8f, 6.448f, 7.552f, 6f, 7f, 6f)
+                curveTo(6.448f, 6f, 6f, 6.448f, 6f, 7f)
+                verticalLineTo(17f)
+                curveTo(6f, 17.552f, 6.448f, 18f, 7f, 18f)
+                curveTo(7.552f, 18f, 8f, 17.552f, 8f, 17f)
+                lineTo(8f, 7f)
                 close()
             }
             path(
                 fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = EvenOdd
+                pathFillType = PathFillType.EvenOdd
             ) {
-                moveTo(12.53f, 6.8639f)
-                curveTo(11.471f, 6.1075f, 10.0f, 6.8645f, 10.0f, 8.1659f)
-                verticalLineTo(15.8341f)
-                curveTo(10.0f, 17.1354f, 11.471f, 17.8924f, 12.53f, 17.136f)
-                lineTo(17.8977f, 13.3019f)
-                curveTo(18.7911f, 12.6638f, 18.7911f, 11.3361f, 17.8977f, 10.698f)
-                lineTo(12.53f, 6.8639f)
+                moveTo(12.53f, 6.864f)
+                curveTo(11.471f, 6.107f, 10f, 6.864f, 10f, 8.166f)
+                verticalLineTo(15.834f)
+                curveTo(10f, 17.135f, 11.471f, 17.892f, 12.53f, 17.136f)
+                lineTo(17.898f, 13.302f)
+                curveTo(18.791f, 12.664f, 18.791f, 11.336f, 17.898f, 10.698f)
+                lineTo(12.53f, 6.864f)
                 close()
-                moveTo(16.2795f, 12.0f)
-                lineTo(12.0f, 15.0568f)
-                verticalLineTo(8.9431f)
-                lineTo(16.2795f, 12.0f)
+                moveTo(16.279f, 12f)
+                lineTo(12f, 15.057f)
+                verticalLineTo(8.943f)
+                lineTo(16.279f, 12f)
                 close()
             }
         }.build()
@@ -77,17 +54,3 @@ val PersianSymbols.Default.Resume: ImageVector
     }
 
 private var resume: ImageVector? = null
-
-@Preview
-@Composable
-private fun IconPreview() {
-    MaterialTheme {
-        Surface {
-            Icon(
-                modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Default.Resume,
-                contentDescription = ""
-            )
-        }
-    }
-}

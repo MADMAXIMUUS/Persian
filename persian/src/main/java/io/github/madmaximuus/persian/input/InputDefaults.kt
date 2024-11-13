@@ -92,8 +92,8 @@ object InputsDefaults {
     @Composable
     fun outlineColors(
         //State Icon
-        validStateIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.CheckCircle),
-        errorStateIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.ExclamationCircle),
+        validStateIcon: Painter = rememberVectorPainter(image = PersianSymbols.Filled.CheckCircle),
+        errorStateIcon: Painter = rememberVectorPainter(image = PersianSymbols.Filled.ExclamationCircle),
 
         //State Icon Colors
         validStateIconColor: Color = PersianTheme.colorScheme.valid,
@@ -286,8 +286,8 @@ object InputsDefaults {
     @Composable
     fun plainColors(
         //State Icon
-        validStateIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.CheckCircle),
-        errorStateIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.ExclamationCircle),
+        validStateIcon: Painter = rememberVectorPainter(image = PersianSymbols.Filled.CheckCircle),
+        errorStateIcon: Painter = rememberVectorPainter(image = PersianSymbols.Filled.ExclamationCircle),
 
         //State Icon Colors
         validStateIconColor: Color = PersianTheme.colorScheme.valid,

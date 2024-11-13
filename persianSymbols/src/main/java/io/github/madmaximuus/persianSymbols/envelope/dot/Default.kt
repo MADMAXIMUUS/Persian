@@ -1,20 +1,10 @@
 package io.github.madmaximuus.persianSymbols.envelope.dot
 
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType.Companion.NonZero
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap.Companion.Butt
-import androidx.compose.ui.graphics.StrokeJoin.Companion.Miter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.ImageVector.Builder
 import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
@@ -30,62 +20,46 @@ val PersianSymbols.Default.EnvelopeDot: ImageVector
             viewportWidth = 24.0f,
             viewportHeight = 24.0f
         ).apply {
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = NonZero
-            ) {
-                moveTo(19.0f, 7.0f)
-                curveTo(20.1046f, 7.0f, 21.0f, 6.1046f, 21.0f, 5.0f)
-                curveTo(21.0f, 3.8954f, 20.1046f, 3.0f, 19.0f, 3.0f)
-                curveTo(17.8954f, 3.0f, 17.0f, 3.8954f, 17.0f, 5.0f)
-                curveTo(17.0f, 6.1046f, 17.8954f, 7.0f, 19.0f, 7.0f)
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(19f, 7f)
+                curveTo(20.105f, 7f, 21f, 6.105f, 21f, 5f)
+                curveTo(21f, 3.895f, 20.105f, 3f, 19f, 3f)
+                curveTo(17.895f, 3f, 17f, 3.895f, 17f, 5f)
+                curveTo(17f, 6.105f, 17.895f, 7f, 19f, 7f)
                 close()
             }
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = NonZero
-            ) {
-                moveTo(6.5f, 4.0f)
-                horizontalLineTo(16.1707f)
-                curveTo(16.0602f, 4.3128f, 16.0f, 4.6494f, 16.0f, 5.0f)
-                curveTo(16.0f, 5.3506f, 16.0602f, 5.6872f, 16.1707f, 6.0f)
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(6.5f, 4f)
+                horizontalLineTo(16.171f)
+                curveTo(16.06f, 4.313f, 16f, 4.649f, 16f, 5f)
+                curveTo(16f, 5.351f, 16.06f, 5.687f, 16.171f, 6f)
                 horizontalLineTo(6.5f)
-                curveTo(6.2568f, 6.0f, 6.0217f, 6.0347f, 5.7993f, 6.0995f)
+                curveTo(6.257f, 6f, 6.022f, 6.035f, 5.799f, 6.1f)
                 lineTo(11.4f, 10.3f)
-                curveTo(11.7556f, 10.5667f, 12.2444f, 10.5667f, 12.6f, 10.3f)
-                lineTo(16.8614f, 7.1039f)
-                curveTo(17.4056f, 7.657f, 18.1628f, 8.0f, 19.0f, 8.0f)
+                curveTo(11.756f, 10.567f, 12.244f, 10.567f, 12.6f, 10.3f)
+                lineTo(16.861f, 7.104f)
+                curveTo(17.406f, 7.657f, 18.163f, 8f, 19f, 8f)
                 lineTo(13.8f, 11.9f)
-                curveTo(12.7333f, 12.7f, 11.2667f, 12.7f, 10.2f, 11.9f)
-                lineTo(4.2399f, 7.43f)
-                curveTo(4.0861f, 7.7543f, 4.0f, 8.1171f, 4.0f, 8.5f)
+                curveTo(12.733f, 12.7f, 11.267f, 12.7f, 10.2f, 11.9f)
+                lineTo(4.24f, 7.43f)
+                curveTo(4.086f, 7.754f, 4f, 8.117f, 4f, 8.5f)
                 verticalLineTo(15.5f)
-                curveTo(4.0f, 16.8807f, 5.1193f, 18.0f, 6.5f, 18.0f)
+                curveTo(4f, 16.881f, 5.119f, 18f, 6.5f, 18f)
                 horizontalLineTo(17.5f)
-                curveTo(18.8807f, 18.0f, 20.0f, 16.8807f, 20.0f, 15.5f)
+                curveTo(18.881f, 18f, 20f, 16.881f, 20f, 15.5f)
                 verticalLineTo(8.5f)
-                curveTo(20.0f, 8.2778f, 19.971f, 8.0624f, 19.9166f, 7.8574f)
-                curveTo(20.6082f, 7.6357f, 21.1905f, 7.1699f, 21.5622f, 6.5614f)
-                curveTo(21.8428f, 7.1485f, 22.0f, 7.8059f, 22.0f, 8.5f)
+                curveTo(20f, 8.278f, 19.971f, 8.062f, 19.917f, 7.857f)
+                curveTo(20.608f, 7.636f, 21.191f, 7.17f, 21.562f, 6.561f)
+                curveTo(21.843f, 7.148f, 22f, 7.806f, 22f, 8.5f)
                 verticalLineTo(15.5f)
-                curveTo(22.0f, 17.9853f, 19.9853f, 20.0f, 17.5f, 20.0f)
+                curveTo(22f, 17.985f, 19.985f, 20f, 17.5f, 20f)
                 horizontalLineTo(6.5f)
-                curveTo(4.0147f, 20.0f, 2.0f, 17.9853f, 2.0f, 15.5f)
+                curveTo(4.015f, 20f, 2f, 17.985f, 2f, 15.5f)
                 verticalLineTo(8.5f)
-                curveTo(2.0f, 7.3647f, 2.4204f, 6.3276f, 3.114f, 5.5359f)
-                curveTo(3.1386f, 5.4891f, 3.1673f, 5.4436f, 3.2f, 5.4f)
-                curveTo(3.2925f, 5.2766f, 3.4081f, 5.1807f, 3.5362f, 5.1138f)
-                curveTo(4.3278f, 4.4203f, 5.3648f, 4.0f, 6.5f, 4.0f)
+                curveTo(2f, 7.365f, 2.42f, 6.328f, 3.114f, 5.536f)
+                curveTo(3.139f, 5.489f, 3.167f, 5.444f, 3.2f, 5.4f)
+                curveTo(3.293f, 5.277f, 3.408f, 5.181f, 3.536f, 5.114f)
+                curveTo(4.328f, 4.42f, 5.365f, 4f, 6.5f, 4f)
                 close()
             }
         }.build()
@@ -93,17 +67,3 @@ val PersianSymbols.Default.EnvelopeDot: ImageVector
     }
 
 private var envelopeDot: ImageVector? = null
-
-@Preview
-@Composable
-private fun IconPreview() {
-    MaterialTheme {
-        Surface {
-            Icon(
-                modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Default.EnvelopeDot,
-                contentDescription = ""
-            )
-        }
-    }
-}

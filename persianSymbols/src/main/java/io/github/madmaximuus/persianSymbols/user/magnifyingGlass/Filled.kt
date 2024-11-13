@@ -1,20 +1,11 @@
 package io.github.madmaximuus.persianSymbols.user.magnifyingGlass
 
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType.Companion.EvenOdd
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap.Companion.Butt
-import androidx.compose.ui.graphics.StrokeJoin.Companion.Miter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.ImageVector.Builder
 import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
@@ -30,47 +21,46 @@ val PersianSymbols.Filled.UserMagnifyingGlass: ImageVector
             viewportWidth = 24.0f,
             viewportHeight = 24.0f
         ).apply {
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(12f, 12f)
+                curveTo(14.485f, 12f, 16.5f, 9.985f, 16.5f, 7.5f)
+                curveTo(16.5f, 5.015f, 14.485f, 3f, 12f, 3f)
+                curveTo(9.515f, 3f, 7.5f, 5.015f, 7.5f, 7.5f)
+                curveTo(7.5f, 9.985f, 9.515f, 12f, 12f, 12f)
+                close()
+            }
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(5.178f, 16.818f)
+                curveTo(6.585f, 14.528f, 9.113f, 13f, 11.999f, 13f)
+                curveTo(12.709f, 13f, 13.397f, 13.092f, 14.052f, 13.266f)
+                curveTo(13.104f, 14.045f, 12.5f, 15.227f, 12.5f, 16.55f)
+                curveTo(12.5f, 18.897f, 14.403f, 20.8f, 16.75f, 20.8f)
+                curveTo(16.796f, 20.8f, 16.842f, 20.799f, 16.888f, 20.798f)
+                curveTo(16.483f, 20.928f, 16.047f, 21f, 15.599f, 21f)
+                horizontalLineTo(8.399f)
+                curveTo(5.969f, 21f, 3.906f, 18.889f, 5.178f, 16.818f)
+                close()
+            }
             path(
                 fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = EvenOdd
+                pathFillType = PathFillType.EvenOdd
             ) {
-                moveTo(11.9989f, 12.0f)
-                curveTo(14.7604f, 12.0f, 16.9989f, 9.7614f, 16.9989f, 7.0f)
-                curveTo(16.9989f, 4.2386f, 14.7604f, 2.0f, 11.9989f, 2.0f)
-                curveTo(9.2375f, 2.0f, 6.9989f, 4.2386f, 6.9989f, 7.0f)
-                curveTo(6.9989f, 9.7614f, 9.2375f, 12.0f, 11.9989f, 12.0f)
+                moveTo(13.293f, 16.594f)
+                curveTo(13.293f, 14.655f, 14.865f, 13.084f, 16.804f, 13.084f)
+                curveTo(18.743f, 13.084f, 20.314f, 14.655f, 20.314f, 16.594f)
+                curveTo(20.314f, 17.346f, 20.078f, 18.043f, 19.675f, 18.614f)
+                lineTo(21.612f, 20.551f)
+                curveTo(21.905f, 20.844f, 21.905f, 21.319f, 21.612f, 21.612f)
+                curveTo(21.319f, 21.904f, 20.844f, 21.904f, 20.552f, 21.612f)
+                lineTo(18.569f, 19.629f)
+                curveTo(18.05f, 19.931f, 17.447f, 20.104f, 16.804f, 20.104f)
+                curveTo(14.865f, 20.104f, 13.293f, 18.533f, 13.293f, 16.594f)
                 close()
-                moveTo(5.1776f, 16.8182f)
-                curveTo(6.5848f, 14.5276f, 9.1135f, 13.0f, 11.9989f, 13.0f)
-                curveTo(12.7087f, 13.0f, 13.3969f, 13.0924f, 14.0522f, 13.2659f)
-                curveTo(13.1044f, 14.0454f, 12.5f, 15.2271f, 12.5f, 16.5501f)
-                curveTo(12.5f, 18.8973f, 14.4028f, 20.8001f, 16.75f, 20.8001f)
-                curveTo(16.7962f, 20.8001f, 16.8422f, 20.7993f, 16.888f, 20.7979f)
-                curveTo(16.4832f, 20.9281f, 16.0473f, 21.0f, 15.5989f, 21.0f)
-                horizontalLineTo(8.3989f)
-                curveTo(5.9689f, 21.0f, 3.9056f, 18.8887f, 5.1776f, 16.8182f)
-                close()
-                moveTo(16.8038f, 14.5836f)
-                curveTo(15.6935f, 14.5836f, 14.7935f, 15.4837f, 14.7935f, 16.594f)
-                curveTo(14.7935f, 17.7043f, 15.6935f, 18.6044f, 16.8038f, 18.6044f)
-                curveTo(17.9141f, 18.6044f, 18.8142f, 17.7043f, 18.8142f, 16.594f)
-                curveTo(18.8142f, 15.4837f, 17.9141f, 14.5836f, 16.8038f, 14.5836f)
-                close()
-                moveTo(13.2935f, 16.594f)
-                curveTo(13.2935f, 14.6553f, 14.8651f, 13.0836f, 16.8038f, 13.0836f)
-                curveTo(18.7426f, 13.0836f, 20.3142f, 14.6553f, 20.3142f, 16.594f)
-                curveTo(20.3142f, 17.346f, 20.0778f, 18.0427f, 19.6752f, 18.614f)
-                lineTo(21.6122f, 20.551f)
-                curveTo(21.9051f, 20.8439f, 21.9051f, 21.3187f, 21.6122f, 21.6116f)
-                curveTo(21.3193f, 21.9045f, 20.8444f, 21.9045f, 20.5515f, 21.6116f)
-                lineTo(18.5689f, 19.629f)
-                curveTo(18.0504f, 19.9313f, 17.4473f, 20.1044f, 16.8038f, 20.1044f)
-                curveTo(14.8651f, 20.1044f, 13.2935f, 18.5327f, 13.2935f, 16.594f)
+                moveTo(16.804f, 14.584f)
+                curveTo(15.693f, 14.584f, 14.793f, 15.484f, 14.793f, 16.594f)
+                curveTo(14.793f, 17.704f, 15.693f, 18.604f, 16.804f, 18.604f)
+                curveTo(17.914f, 18.604f, 18.814f, 17.704f, 18.814f, 16.594f)
+                curveTo(18.814f, 15.484f, 17.914f, 14.584f, 16.804f, 14.584f)
                 close()
             }
         }.build()
@@ -78,17 +68,3 @@ val PersianSymbols.Filled.UserMagnifyingGlass: ImageVector
     }
 
 private var userMagnifyingGlass: ImageVector? = null
-
-@Preview
-@Composable
-private fun IconPreview() {
-    MaterialTheme {
-        Surface {
-            Icon(
-                modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Filled.UserMagnifyingGlass,
-                contentDescription = ""
-            )
-        }
-    }
-}

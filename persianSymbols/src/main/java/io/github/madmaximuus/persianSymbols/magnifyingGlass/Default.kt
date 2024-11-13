@@ -1,19 +1,10 @@
 package io.github.madmaximuus.persianSymbols.magnifyingGlass
 
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType.Companion.EvenOdd
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap.Companion.Butt
-import androidx.compose.ui.graphics.StrokeJoin.Companion.Miter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
@@ -32,29 +23,24 @@ val PersianSymbols.Default.MagnifyingGlass: ImageVector
         ).apply {
             path(
                 fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = EvenOdd
+                pathFillType = PathFillType.EvenOdd
             ) {
-                moveTo(10.3506f, 3.1233f)
-                curveTo(6.4846f, 3.1233f, 3.3506f, 6.2573f, 3.3506f, 10.1233f)
-                curveTo(3.3506f, 13.9893f, 6.4846f, 17.1233f, 10.3506f, 17.1233f)
-                curveTo(11.806f, 17.1233f, 13.1577f, 16.6791f, 14.2774f, 15.919f)
-                lineTo(18.9423f, 20.5838f)
-                curveTo(19.3328f, 20.9743f, 19.966f, 20.9743f, 20.3565f, 20.5838f)
-                curveTo(20.747f, 20.1933f, 20.747f, 19.5601f, 20.3565f, 19.1696f)
-                lineTo(15.757f, 14.5701f)
-                curveTo(16.7527f, 13.3609f, 17.3506f, 11.8119f, 17.3506f, 10.1233f)
-                curveTo(17.3506f, 6.2573f, 14.2166f, 3.1233f, 10.3506f, 3.1233f)
+                moveTo(10.351f, 3.123f)
+                curveTo(6.485f, 3.123f, 3.351f, 6.257f, 3.351f, 10.123f)
+                curveTo(3.351f, 13.989f, 6.485f, 17.123f, 10.351f, 17.123f)
+                curveTo(11.806f, 17.123f, 13.158f, 16.679f, 14.277f, 15.919f)
+                lineTo(18.942f, 20.584f)
+                curveTo(19.333f, 20.974f, 19.966f, 20.974f, 20.357f, 20.584f)
+                curveTo(20.747f, 20.193f, 20.747f, 19.56f, 20.357f, 19.17f)
+                lineTo(15.757f, 14.57f)
+                curveTo(16.753f, 13.361f, 17.351f, 11.812f, 17.351f, 10.123f)
+                curveTo(17.351f, 6.257f, 14.217f, 3.123f, 10.351f, 3.123f)
                 close()
-                moveTo(5.3506f, 10.1233f)
-                curveTo(5.3506f, 7.3619f, 7.5892f, 5.1233f, 10.3506f, 5.1233f)
-                curveTo(13.1121f, 5.1233f, 15.3506f, 7.3619f, 15.3506f, 10.1233f)
-                curveTo(15.3506f, 12.8847f, 13.1121f, 15.1233f, 10.3506f, 15.1233f)
-                curveTo(7.5892f, 15.1233f, 5.3506f, 12.8847f, 5.3506f, 10.1233f)
+                moveTo(5.351f, 10.123f)
+                curveTo(5.351f, 7.362f, 7.589f, 5.123f, 10.351f, 5.123f)
+                curveTo(13.112f, 5.123f, 15.351f, 7.362f, 15.351f, 10.123f)
+                curveTo(15.351f, 12.885f, 13.112f, 15.123f, 10.351f, 15.123f)
+                curveTo(7.589f, 15.123f, 5.351f, 12.885f, 5.351f, 10.123f)
                 close()
             }
         }.build()
@@ -62,17 +48,3 @@ val PersianSymbols.Default.MagnifyingGlass: ImageVector
     }
 
 private var magnifyingGlass: ImageVector? = null
-
-@Preview
-@Composable
-private fun IconPreview() {
-    MaterialTheme {
-        Surface {
-            Icon(
-                modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Default.MagnifyingGlass,
-                contentDescription = ""
-            )
-        }
-    }
-}

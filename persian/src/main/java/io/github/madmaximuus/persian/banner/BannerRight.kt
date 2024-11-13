@@ -11,9 +11,9 @@ import io.github.madmaximuus.persian.icon.Icon
 import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persian.iconButton.IconButtonDefaults
 import io.github.madmaximuus.persian.iconButton.TertiaryIconButton
-import io.github.madmaximuus.persianSymbols.chevronRight.base.ChevronRight
+import io.github.madmaximuus.persianSymbols.chevronRight.ChevronRight
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
-import io.github.madmaximuus.persianSymbols.xmark.base.XMark
+import io.github.madmaximuus.persianSymbols.xmark.XMark
 
 /**
  * The banner right scope for trailing content slot in banner.

@@ -35,8 +35,8 @@ import io.github.madmaximuus.persian.foundation.shimmer
 import io.github.madmaximuus.persian.icon.Icon
 import io.github.madmaximuus.persian.text.Text
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
-import io.github.madmaximuus.persianSymbols.plus.base.Plus
-import io.github.madmaximuus.persianSymbols.user.base.User
+import io.github.madmaximuus.persianSymbols.plus.Plus
+import io.github.madmaximuus.persianSymbols.user.User
 
 /**
  * The avatar displays an image or initials of the user. If there is no image, a placeholder is displayed

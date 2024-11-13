@@ -110,7 +110,7 @@ object SegmentedButton : Screen {
                                 StartSegment(
                                     selected = singleChoiceSelectedState[0].value,
                                     label = if (label) "Label 1" else null,
-                                    icon = if (icon) rememberVectorPainter(image = PersianSymbols.Default.DeviceMobileIPhone1) else null,
+                                    icon = if (icon) rememberVectorPainter(image = PersianSymbols.Filled.DeviceMobileIPhone1) else null,
                                     onClick = {
                                         singleChoiceSelectedState.forEachIndexed { index, mutableState ->
                                             mutableState.value = index == 0
@@ -120,7 +120,7 @@ object SegmentedButton : Screen {
                                 MiddleSegment(
                                     selected = singleChoiceSelectedState[1].value,
                                     label = if (label) "Label 2" else null,
-                                    icon = if (icon) rememberVectorPainter(image = PersianSymbols.Default.DeviceTabletIPad) else null,
+                                    icon = if (icon) rememberVectorPainter(image = PersianSymbols.Filled.DeviceTabletIPad) else null,
                                     onClick = {
                                         singleChoiceSelectedState.forEachIndexed { index, mutableState ->
                                             mutableState.value = index == 1
@@ -130,7 +130,7 @@ object SegmentedButton : Screen {
                                 EndSegment(
                                     selected = singleChoiceSelectedState[2].value,
                                     label = if (label) "Label 3" else null,
-                                    icon = if (icon) rememberVectorPainter(image = PersianSymbols.Default.DeviceLaptopMacbook) else null,
+                                    icon = if (icon) rememberVectorPainter(image = PersianSymbols.Filled.DeviceLaptopMacbook) else null,
                                     onClick = {
                                         singleChoiceSelectedState.forEachIndexed { index, mutableState ->
                                             mutableState.value = index == 2
@@ -149,7 +149,7 @@ object SegmentedButton : Screen {
                                 StartSegment(
                                     checked = multipleChoiceSelectedState[0].value,
                                     label = if (label) "Label 1" else null,
-                                    icon = if (icon) rememberVectorPainter(image = PersianSymbols.Default.DeviceMobileIPhone1) else null,
+                                    icon = if (icon) rememberVectorPainter(image = PersianSymbols.Filled.DeviceMobileIPhone1) else null,
                                     onCheckedChange = { isChecked ->
                                         multipleChoiceSelectedState[0].value = isChecked
                                     }
@@ -157,7 +157,7 @@ object SegmentedButton : Screen {
                                 MiddleSegment(
                                     checked = multipleChoiceSelectedState[1].value,
                                     label = if (label) "Label 2" else null,
-                                    icon = if (icon) rememberVectorPainter(image = PersianSymbols.Default.DeviceTabletIPad) else null,
+                                    icon = if (icon) rememberVectorPainter(image = PersianSymbols.Filled.DeviceTabletIPad) else null,
                                     onCheckedChange = { isChecked ->
                                         multipleChoiceSelectedState[1].value = isChecked
                                     }
@@ -165,7 +165,7 @@ object SegmentedButton : Screen {
                                 EndSegment(
                                     checked = multipleChoiceSelectedState[2].value,
                                     label = if (label) "Label 3" else null,
-                                    icon = if (icon) rememberVectorPainter(image = PersianSymbols.Default.DeviceLaptopMacbook) else null,
+                                    icon = if (icon) rememberVectorPainter(image = PersianSymbols.Filled.DeviceLaptopMacbook) else null,
                                     onCheckedChange = { isChecked ->
                                         multipleChoiceSelectedState[2].value = isChecked
                                     }

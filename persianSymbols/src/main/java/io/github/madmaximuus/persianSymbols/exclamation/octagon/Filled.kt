@@ -1,20 +1,11 @@
 package io.github.madmaximuus.persianSymbols.exclamation.octagon
 
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType.Companion.EvenOdd
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap.Companion.Butt
-import androidx.compose.ui.graphics.StrokeJoin.Companion.Miter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.ImageVector.Builder
 import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
@@ -32,44 +23,39 @@ val PersianSymbols.Filled.ExclamationOctagon: ImageVector
         ).apply {
             path(
                 fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = EvenOdd
+                pathFillType = PathFillType.EvenOdd
             ) {
-                moveTo(2.0f, 8.384f)
+                moveTo(2f, 8.384f)
                 verticalLineTo(15.616f)
-                curveTo(2.0f, 16.1465f, 2.2107f, 16.6552f, 2.5858f, 17.0302f)
-                lineTo(6.9698f, 21.4142f)
-                curveTo(7.3448f, 21.7893f, 7.8535f, 22.0f, 8.384f, 22.0f)
+                curveTo(2f, 16.146f, 2.211f, 16.655f, 2.586f, 17.03f)
+                lineTo(6.97f, 21.414f)
+                curveTo(7.345f, 21.789f, 7.854f, 22f, 8.384f, 22f)
                 horizontalLineTo(15.616f)
-                curveTo(16.1465f, 22.0f, 16.6552f, 21.7893f, 17.0302f, 21.4142f)
-                lineTo(21.4142f, 17.0302f)
-                curveTo(21.7893f, 16.6552f, 22.0f, 16.1465f, 22.0f, 15.616f)
+                curveTo(16.146f, 22f, 16.655f, 21.789f, 17.03f, 21.414f)
+                lineTo(21.414f, 17.03f)
+                curveTo(21.789f, 16.655f, 22f, 16.146f, 22f, 15.616f)
                 verticalLineTo(8.384f)
-                curveTo(22.0f, 7.8535f, 21.7893f, 7.3448f, 21.4142f, 6.9698f)
-                lineTo(17.0302f, 2.5858f)
-                curveTo(16.6552f, 2.2107f, 16.1465f, 2.0f, 15.616f, 2.0f)
+                curveTo(22f, 7.854f, 21.789f, 7.345f, 21.414f, 6.97f)
+                lineTo(17.03f, 2.586f)
+                curveTo(16.655f, 2.211f, 16.146f, 2f, 15.616f, 2f)
                 horizontalLineTo(8.384f)
-                curveTo(7.8535f, 2.0f, 7.3448f, 2.2107f, 6.9698f, 2.5858f)
-                lineTo(2.5858f, 6.9698f)
-                curveTo(2.2107f, 7.3448f, 2.0f, 7.8535f, 2.0f, 8.384f)
+                curveTo(7.854f, 2f, 7.345f, 2.211f, 6.97f, 2.586f)
+                lineTo(2.586f, 6.97f)
+                curveTo(2.211f, 7.345f, 2f, 7.854f, 2f, 8.384f)
                 close()
-                moveTo(12.0f, 7.5f)
-                curveTo(12.5523f, 7.5f, 13.0f, 7.9477f, 13.0f, 8.5f)
-                verticalLineTo(12.5f)
-                curveTo(13.0f, 13.0523f, 12.5523f, 13.5f, 12.0f, 13.5f)
-                curveTo(11.4477f, 13.5f, 11.0f, 13.0523f, 11.0f, 12.5f)
-                verticalLineTo(8.5f)
-                curveTo(11.0f, 7.9477f, 11.4477f, 7.5f, 12.0f, 7.5f)
+                moveTo(12f, 7.205f)
+                curveTo(12.414f, 7.205f, 12.75f, 7.541f, 12.75f, 7.955f)
+                lineTo(12.75f, 13.429f)
+                curveTo(12.75f, 13.843f, 12.414f, 14.179f, 12f, 14.179f)
+                curveTo(11.586f, 14.179f, 11.25f, 13.843f, 11.25f, 13.429f)
+                lineTo(11.25f, 7.955f)
+                curveTo(11.25f, 7.541f, 11.586f, 7.205f, 12f, 7.205f)
                 close()
-                moveTo(11.0f, 15.5f)
-                curveTo(11.0f, 16.0523f, 11.4477f, 16.5f, 12.0f, 16.5f)
-                curveTo(12.5523f, 16.5f, 13.0f, 16.0523f, 13.0f, 15.5f)
-                curveTo(13.0f, 14.9477f, 12.5523f, 14.5f, 12.0f, 14.5f)
-                curveTo(11.4477f, 14.5f, 11.0f, 14.9477f, 11.0f, 15.5f)
+                moveTo(13.002f, 15.795f)
+                curveTo(13.002f, 16.347f, 12.554f, 16.795f, 12.002f, 16.795f)
+                curveTo(11.45f, 16.795f, 11.002f, 16.347f, 11.002f, 15.795f)
+                curveTo(11.002f, 15.243f, 11.45f, 14.795f, 12.002f, 14.795f)
+                curveTo(12.554f, 14.795f, 13.002f, 15.243f, 13.002f, 15.795f)
                 close()
             }
         }.build()
@@ -77,17 +63,3 @@ val PersianSymbols.Filled.ExclamationOctagon: ImageVector
     }
 
 private var exclamationOctagon: ImageVector? = null
-
-@Preview
-@Composable
-private fun IconPreview() {
-    MaterialTheme {
-        Surface {
-            Icon(
-                modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Filled.ExclamationOctagon,
-                contentDescription = ""
-            )
-        }
-    }
-}

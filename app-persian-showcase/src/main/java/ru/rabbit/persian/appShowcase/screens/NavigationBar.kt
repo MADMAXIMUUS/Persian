@@ -27,8 +27,8 @@ import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.gear.Gear
 import io.github.madmaximuus.persianSymbols.house.House
 import io.github.madmaximuus.persianSymbols.magnifyingGlass.MagnifyingGlass
-import io.github.madmaximuus.persianSymbols.message.base.Message
-import io.github.madmaximuus.persianSymbols.user.base.User
+import io.github.madmaximuus.persianSymbols.message.Message
+import io.github.madmaximuus.persianSymbols.user.User
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object NavigationBar : Screen {

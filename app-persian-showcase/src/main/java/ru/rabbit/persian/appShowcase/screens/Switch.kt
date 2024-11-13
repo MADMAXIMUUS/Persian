@@ -15,9 +15,9 @@ import io.github.madmaximuus.persian.forms.FormItem
 import io.github.madmaximuus.persian.forms.Subhead
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.switch.Switch
-import io.github.madmaximuus.persianSymbols.check.base.Check
+import io.github.madmaximuus.persianSymbols.check.Check
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
-import io.github.madmaximuus.persianSymbols.xmark.base.XMark
+import io.github.madmaximuus.persianSymbols.xmark.XMark
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 

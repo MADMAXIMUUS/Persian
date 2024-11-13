@@ -1,20 +1,10 @@
 package io.github.madmaximuus.persianSymbols.cart.shopping
 
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType.Companion.NonZero
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap.Companion.Butt
-import androidx.compose.ui.graphics.StrokeJoin.Companion.Miter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.ImageVector.Builder
 import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
@@ -30,67 +20,43 @@ val PersianSymbols.Filled.CartShopping: ImageVector
             viewportWidth = 24.0f,
             viewportHeight = 24.0f
         ).apply {
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = NonZero
-            ) {
-                moveTo(3.237f, 2.7222f)
-                curveTo(2.6847f, 2.7222f, 2.237f, 3.1699f, 2.237f, 3.7222f)
-                curveTo(2.237f, 4.2744f, 2.6847f, 4.7222f, 3.237f, 4.7222f)
-                horizontalLineTo(3.9582f)
-                lineTo(6.821f, 12.4406f)
-                lineTo(5.5017f, 15.243f)
-                curveTo(5.0333f, 16.2379f, 5.7592f, 17.3819f, 6.8588f, 17.3819f)
-                horizontalLineTo(18.3505f)
-                curveTo(18.9028f, 17.3819f, 19.3505f, 16.9342f, 19.3505f, 16.3819f)
-                curveTo(19.3505f, 15.8297f, 18.9028f, 15.3819f, 18.3505f, 15.3819f)
-                horizontalLineTo(7.6468f)
-                lineTo(8.5222f, 13.5226f)
-                horizontalLineTo(18.6616f)
-                curveTo(19.6173f, 13.5226f, 20.4395f, 12.8464f, 20.6239f, 11.9086f)
-                lineTo(21.7439f, 6.2156f)
-                curveTo(21.8654f, 5.5977f, 21.3924f, 5.0226f, 20.7627f, 5.0226f)
-                horizontalLineTo(6.2028f)
-                lineTo(5.8334f, 4.0267f)
-                curveTo(5.5426f, 3.2425f, 4.7945f, 2.7222f, 3.9582f, 2.7222f)
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(3.237f, 2.722f)
+                curveTo(2.685f, 2.722f, 2.237f, 3.17f, 2.237f, 3.722f)
+                curveTo(2.237f, 4.274f, 2.685f, 4.722f, 3.237f, 4.722f)
+                horizontalLineTo(3.958f)
+                lineTo(6.821f, 12.441f)
+                lineTo(5.502f, 15.243f)
+                curveTo(5.033f, 16.238f, 5.759f, 17.382f, 6.859f, 17.382f)
+                horizontalLineTo(18.351f)
+                curveTo(18.903f, 17.382f, 19.351f, 16.934f, 19.351f, 16.382f)
+                curveTo(19.351f, 15.83f, 18.903f, 15.382f, 18.351f, 15.382f)
+                horizontalLineTo(7.647f)
+                lineTo(8.522f, 13.523f)
+                horizontalLineTo(18.662f)
+                curveTo(19.617f, 13.523f, 20.44f, 12.846f, 20.624f, 11.909f)
+                lineTo(21.744f, 6.216f)
+                curveTo(21.865f, 5.598f, 21.392f, 5.023f, 20.763f, 5.023f)
+                horizontalLineTo(6.203f)
+                lineTo(5.833f, 4.027f)
+                curveTo(5.543f, 3.243f, 4.795f, 2.722f, 3.958f, 2.722f)
                 horizontalLineTo(3.237f)
                 close()
             }
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = NonZero
-            ) {
-                moveTo(9.2686f, 19.7778f)
-                curveTo(9.2686f, 20.6062f, 8.597f, 21.2778f, 7.7686f, 21.2778f)
-                curveTo(6.9402f, 21.2778f, 6.2686f, 20.6062f, 6.2686f, 19.7778f)
-                curveTo(6.2686f, 18.9493f, 6.9402f, 18.2778f, 7.7686f, 18.2778f)
-                curveTo(8.597f, 18.2778f, 9.2686f, 18.9493f, 9.2686f, 19.7778f)
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(9.27f, 19.44f)
+                curveTo(9.27f, 20.13f, 8.71f, 20.69f, 8.02f, 20.69f)
+                curveTo(7.33f, 20.69f, 6.77f, 20.13f, 6.77f, 19.44f)
+                curveTo(6.77f, 18.75f, 7.33f, 18.19f, 8.02f, 18.19f)
+                curveTo(8.71f, 18.19f, 9.27f, 18.75f, 9.27f, 19.44f)
                 close()
             }
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = NonZero
-            ) {
-                moveTo(17.4666f, 21.2779f)
-                curveTo(18.295f, 21.2779f, 18.9666f, 20.6063f, 18.9666f, 19.7779f)
-                curveTo(18.9666f, 18.9495f, 18.295f, 18.2779f, 17.4666f, 18.2779f)
-                curveTo(16.6381f, 18.2779f, 15.9666f, 18.9495f, 15.9666f, 19.7779f)
-                curveTo(15.9666f, 20.6063f, 16.6381f, 21.2779f, 17.4666f, 21.2779f)
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(17.25f, 20.69f)
+                curveTo(17.94f, 20.69f, 18.5f, 20.13f, 18.5f, 19.44f)
+                curveTo(18.5f, 18.75f, 17.94f, 18.19f, 17.25f, 18.19f)
+                curveTo(16.56f, 18.19f, 16f, 18.75f, 16f, 19.44f)
+                curveTo(16f, 20.13f, 16.56f, 20.69f, 17.25f, 20.69f)
                 close()
             }
         }.build()
@@ -98,17 +64,3 @@ val PersianSymbols.Filled.CartShopping: ImageVector
     }
 
 private var cartShopping: ImageVector? = null
-
-@Preview
-@Composable
-private fun IconPreview() {
-    MaterialTheme {
-        Surface {
-            Icon(
-                modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Filled.CartShopping,
-                contentDescription = ""
-            )
-        }
-    }
-}

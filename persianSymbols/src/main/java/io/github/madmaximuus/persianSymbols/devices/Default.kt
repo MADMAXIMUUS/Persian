@@ -1,21 +1,11 @@
 package io.github.madmaximuus.persianSymbols.devices
 
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType.Companion.EvenOdd
-import androidx.compose.ui.graphics.PathFillType.Companion.NonZero
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap.Companion.Butt
-import androidx.compose.ui.graphics.StrokeJoin.Companion.Miter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.ImageVector.Builder
 import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
@@ -33,71 +23,60 @@ val PersianSymbols.Default.Devices: ImageVector
         ).apply {
             path(
                 fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = NonZero
+                pathFillType = PathFillType.EvenOdd
             ) {
-                moveTo(6.5f, 4.0f)
-                curveTo(4.0147f, 4.0f, 2.0f, 6.0147f, 2.0f, 8.5f)
+                moveTo(6.5f, 4f)
+                curveTo(4.015f, 4f, 2f, 6.015f, 2f, 8.5f)
                 verticalLineTo(15.5f)
-                curveTo(2.0f, 16.9136f, 2.6518f, 18.175f, 3.6713f, 19.0f)
+                curveTo(2f, 16.914f, 2.652f, 18.175f, 3.671f, 19f)
                 horizontalLineTo(2.4f)
-                curveTo(2.1791f, 19.0f, 2.0f, 19.1791f, 2.0f, 19.4f)
-                verticalLineTo(20.0f)
-                curveTo(2.0f, 20.5523f, 2.4477f, 21.0f, 3.0f, 21.0f)
-                horizontalLineTo(13.1478f)
-                curveTo(13.052f, 20.7175f, 13.0f, 20.4148f, 13.0f, 20.1f)
-                verticalLineTo(18.0f)
+                curveTo(2.179f, 19f, 2f, 19.179f, 2f, 19.4f)
+                verticalLineTo(20f)
+                curveTo(2f, 20.552f, 2.448f, 21f, 3f, 21f)
+                horizontalLineTo(13.148f)
+                curveTo(13.052f, 20.718f, 13f, 20.415f, 13f, 20.1f)
+                verticalLineTo(18f)
                 horizontalLineTo(6.5f)
-                curveTo(5.1193f, 18.0f, 4.0f, 16.8807f, 4.0f, 15.5f)
+                curveTo(5.119f, 18f, 4f, 16.881f, 4f, 15.5f)
                 verticalLineTo(8.5f)
-                curveTo(4.0f, 7.1193f, 5.1193f, 6.0f, 6.5f, 6.0f)
+                curveTo(4f, 7.119f, 5.119f, 6f, 6.5f, 6f)
                 horizontalLineTo(17.5f)
-                curveTo(18.6739f, 6.0f, 19.6588f, 6.8091f, 19.9275f, 7.9f)
+                curveTo(18.674f, 6f, 19.659f, 6.809f, 19.927f, 7.9f)
                 horizontalLineTo(20.2f)
-                curveTo(20.8854f, 7.9f, 21.5133f, 8.1463f, 22.0f, 8.5552f)
+                curveTo(20.885f, 7.9f, 21.513f, 8.146f, 22f, 8.555f)
                 verticalLineTo(8.5f)
-                curveTo(22.0f, 6.0147f, 19.9853f, 4.0f, 17.5f, 4.0f)
+                curveTo(22f, 6.015f, 19.985f, 4f, 17.5f, 4f)
                 horizontalLineTo(6.5f)
                 close()
-            }
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = EvenOdd
-            ) {
-                moveTo(14.0f, 10.85f)
-                curveTo(14.0f, 9.7179f, 14.9178f, 8.8f, 16.05f, 8.8f)
+                moveTo(14f, 10.85f)
+                curveTo(14f, 9.718f, 14.918f, 8.8f, 16.05f, 8.8f)
                 horizontalLineTo(19.95f)
-                curveTo(21.0822f, 8.8f, 22.0f, 9.7179f, 22.0f, 10.85f)
-                verticalLineTo(19.9501f)
-                curveTo(22.0f, 21.0822f, 21.0822f, 22.0f, 19.95f, 22.0f)
+                curveTo(21.082f, 8.8f, 22f, 9.718f, 22f, 10.85f)
+                verticalLineTo(11.3f)
+                horizontalLineTo(22f)
+                verticalLineTo(12.8f)
+                horizontalLineTo(22f)
+                verticalLineTo(19.95f)
+                curveTo(22f, 21.082f, 21.082f, 22f, 19.95f, 22f)
                 horizontalLineTo(16.05f)
-                curveTo(14.9178f, 22.0f, 14.0f, 21.0822f, 14.0f, 19.95f)
+                curveTo(14.918f, 22f, 14f, 21.082f, 14f, 19.95f)
                 verticalLineTo(10.85f)
                 close()
                 moveTo(20.5f, 10.85f)
                 verticalLineTo(11.3f)
                 horizontalLineTo(15.5f)
                 verticalLineTo(10.85f)
-                curveTo(15.5f, 10.5463f, 15.7462f, 10.3f, 16.05f, 10.3f)
+                curveTo(15.5f, 10.546f, 15.746f, 10.3f, 16.05f, 10.3f)
                 horizontalLineTo(19.95f)
-                curveTo(20.2538f, 10.3f, 20.5f, 10.5463f, 20.5f, 10.85f)
+                curveTo(20.254f, 10.3f, 20.5f, 10.546f, 20.5f, 10.85f)
                 close()
                 moveTo(15.5f, 19.95f)
                 verticalLineTo(12.8f)
                 horizontalLineTo(20.5f)
-                verticalLineTo(19.9501f)
-                curveTo(20.5f, 20.2538f, 20.2538f, 20.5f, 19.95f, 20.5f)
+                verticalLineTo(19.95f)
+                curveTo(20.5f, 20.254f, 20.254f, 20.5f, 19.95f, 20.5f)
                 horizontalLineTo(16.05f)
-                curveTo(15.7462f, 20.5f, 15.5f, 20.2538f, 15.5f, 19.95f)
+                curveTo(15.746f, 20.5f, 15.5f, 20.254f, 15.5f, 19.95f)
                 close()
             }
         }.build()
@@ -105,17 +84,3 @@ val PersianSymbols.Default.Devices: ImageVector
     }
 
 private var devices: ImageVector? = null
-
-@Preview
-@Composable
-private fun IconPreview() {
-    MaterialTheme {
-        Surface {
-            Icon(
-                modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Default.Devices,
-                contentDescription = ""
-            )
-        }
-    }
-}

@@ -7,10 +7,8 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType.Companion.EvenOdd
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap.Companion.Round
-import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.ImageVector.Builder
 import androidx.compose.ui.graphics.vector.path
@@ -32,31 +30,28 @@ val PersianSymbols.Filled.Key: ImageVector
         ).apply {
             path(
                 fill = SolidColor(Color(0xFF000000)),
-                stroke = SolidColor(Color(0xFF000000)),
-                strokeLineWidth = 2.0f,
-                strokeLineCap = Round,
-                strokeLineJoin = StrokeJoin.Companion.Round,
-                strokeLineMiter = 4.0f,
-                pathFillType = EvenOdd
+                pathFillType = PathFillType.EvenOdd
             ) {
-                moveTo(6.9981f, 16.0128f)
-                curveTo(4.7889f, 16.0128f, 2.998f, 14.222f, 2.998f, 12.0128f)
-                curveTo(2.998f, 9.8037f, 4.7889f, 8.0128f, 6.9981f, 8.0128f)
-                curveTo(8.4753f, 8.0128f, 9.7655f, 8.8136f, 10.4583f, 10.0049f)
-                horizontalLineTo(21.0f)
-                verticalLineTo(12.0128f)
-                lineTo(19.0f, 16.0f)
-                lineTo(17.0f, 14.0f)
-                lineTo(15.0f, 16.0f)
-                lineTo(13.0f, 14.0f)
-                horizontalLineTo(10.4583f)
-                curveTo(9.7655f, 15.1912f, 8.4753f, 16.0128f, 6.9981f, 16.0128f)
+                moveTo(2f, 12f)
+                curveTo(2f, 14.761f, 4.238f, 17f, 7f, 17f)
+                curveTo(8.848f, 17f, 10.463f, 15.996f, 11.328f, 14.504f)
+                horizontalLineTo(13.114f)
+                lineTo(14.604f, 16.166f)
+                curveTo(15.003f, 16.611f, 15.7f, 16.609f, 16.096f, 16.163f)
+                lineTo(17.569f, 14.504f)
+                lineTo(18.737f, 15.831f)
+                curveTo(19.218f, 16.378f, 20.103f, 16.244f, 20.4f, 15.579f)
+                lineTo(22.001f, 12f)
+                verticalLineTo(9.496f)
+                horizontalLineTo(11.328f)
+                curveTo(10.463f, 8.004f, 8.848f, 7f, 7f, 7f)
+                curveTo(4.238f, 7f, 2f, 9.239f, 2f, 12f)
                 close()
-                moveTo(7.0f, 15.0f)
-                curveTo(8.6568f, 15.0f, 10.0f, 13.6569f, 10.0f, 12.0f)
-                curveTo(10.0f, 10.3431f, 8.6568f, 9.0f, 7.0f, 9.0f)
-                curveTo(5.3432f, 9.0f, 4.0f, 10.3431f, 4.0f, 12.0f)
-                curveTo(4.0f, 13.6569f, 5.3432f, 15.0f, 7.0f, 15.0f)
+                moveTo(7.004f, 13.75f)
+                curveTo(7.97f, 13.75f, 8.754f, 12.967f, 8.754f, 12f)
+                curveTo(8.754f, 11.033f, 7.97f, 10.25f, 7.004f, 10.25f)
+                curveTo(6.037f, 10.25f, 5.254f, 11.033f, 5.254f, 12f)
+                curveTo(5.254f, 12.967f, 6.037f, 13.75f, 7.004f, 13.75f)
                 close()
             }
         }.build()

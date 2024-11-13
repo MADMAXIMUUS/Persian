@@ -30,7 +30,7 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
-import io.github.madmaximuus.persianSymbols.image.base.Image
+import io.github.madmaximuus.persianSymbols.image.Image
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object ActionSheet : Screen {

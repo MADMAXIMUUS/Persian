@@ -1,19 +1,10 @@
 package io.github.madmaximuus.persianSymbols.circle.dot
 
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType.Companion.EvenOdd
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap.Companion.Butt
-import androidx.compose.ui.graphics.StrokeJoin.Companion.Miter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
@@ -31,24 +22,19 @@ val PersianSymbols.Filled.CircleDot: ImageVector
         ).apply {
             path(
                 fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = EvenOdd
+                pathFillType = PathFillType.EvenOdd
             ) {
-                moveTo(12.0f, 22.0f)
-                curveTo(17.5228f, 22.0f, 22.0f, 17.5228f, 22.0f, 12.0f)
-                curveTo(22.0f, 6.4771f, 17.5228f, 2.0f, 12.0f, 2.0f)
-                curveTo(6.4771f, 2.0f, 2.0f, 6.4771f, 2.0f, 12.0f)
-                curveTo(2.0f, 17.5228f, 6.4771f, 22.0f, 12.0f, 22.0f)
+                moveTo(12f, 22f)
+                curveTo(17.523f, 22f, 22f, 17.523f, 22f, 12f)
+                curveTo(22f, 6.477f, 17.523f, 2f, 12f, 2f)
+                curveTo(6.477f, 2f, 2f, 6.477f, 2f, 12f)
+                curveTo(2f, 17.523f, 6.477f, 22f, 12f, 22f)
                 close()
-                moveTo(11.9999f, 17.0f)
-                curveTo(14.7613f, 17.0f, 16.9999f, 14.7614f, 16.9999f, 12.0f)
-                curveTo(16.9999f, 9.2386f, 14.7613f, 7.0f, 11.9999f, 7.0f)
-                curveTo(9.2385f, 7.0f, 6.9999f, 9.2386f, 6.9999f, 12.0f)
-                curveTo(6.9999f, 14.7614f, 9.2385f, 17.0f, 11.9999f, 17.0f)
+                moveTo(12f, 17f)
+                curveTo(14.761f, 17f, 17f, 14.761f, 17f, 12f)
+                curveTo(17f, 9.239f, 14.761f, 7f, 12f, 7f)
+                curveTo(9.238f, 7f, 7f, 9.239f, 7f, 12f)
+                curveTo(7f, 14.761f, 9.238f, 17f, 12f, 17f)
                 close()
             }
         }.build()
@@ -56,17 +42,3 @@ val PersianSymbols.Filled.CircleDot: ImageVector
     }
 
 private var circleDot: ImageVector? = null
-
-@Preview
-@Composable
-private fun IconPreview() {
-    MaterialTheme {
-        Surface {
-            Icon(
-                modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Filled.CircleDot,
-                contentDescription = ""
-            )
-        }
-    }
-}

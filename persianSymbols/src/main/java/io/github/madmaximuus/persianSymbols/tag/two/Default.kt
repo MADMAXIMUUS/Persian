@@ -1,20 +1,11 @@
 package io.github.madmaximuus.persianSymbols.tag.two
 
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType.Companion.NonZero
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap.Companion.Butt
-import androidx.compose.ui.graphics.StrokeJoin.Companion.Round
+import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.ImageVector.Builder
 import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
@@ -31,21 +22,17 @@ val PersianSymbols.Default.Tag2: ImageVector
             viewportHeight = 24.0f
         ).apply {
             path(
-                fill = SolidColor(Color(0x00000000)),
                 stroke = SolidColor(Color(0xFF000000)),
-                strokeLineWidth = 2.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Round,
-                strokeLineMiter = 4.0f,
-                pathFillType = NonZero
+                strokeLineWidth = 2f,
+                strokeLineJoin = StrokeJoin.Round
             ) {
-                moveTo(14.3684f, 5.0f)
-                horizontalLineTo(3.0f)
-                lineTo(9.5f, 12.0f)
-                lineTo(3.0f, 19.0f)
-                horizontalLineTo(14.3684f)
-                lineTo(21.0f, 12.0f)
-                lineTo(14.3684f, 5.0f)
+                moveTo(14.368f, 5f)
+                horizontalLineTo(3f)
+                lineTo(9.5f, 12f)
+                lineTo(3f, 19f)
+                horizontalLineTo(14.368f)
+                lineTo(21f, 12f)
+                lineTo(14.368f, 5f)
                 close()
             }
         }.build()
@@ -53,17 +40,3 @@ val PersianSymbols.Default.Tag2: ImageVector
     }
 
 private var tag2: ImageVector? = null
-
-@Preview
-@Composable
-private fun IconPreview() {
-    MaterialTheme {
-        Surface {
-            Icon(
-                modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Default.Tag2,
-                contentDescription = ""
-            )
-        }
-    }
-}

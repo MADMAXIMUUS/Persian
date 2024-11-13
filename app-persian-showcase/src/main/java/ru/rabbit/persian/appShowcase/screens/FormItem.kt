@@ -37,8 +37,8 @@ import io.github.madmaximuus.persian.text.Text
 import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
-import io.github.madmaximuus.persianSymbols.user.base.User
-import io.github.madmaximuus.persianSymbols.xmark.base.XMark
+import io.github.madmaximuus.persianSymbols.user.User
+import io.github.madmaximuus.persianSymbols.xmark.XMark
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object FormItem : Screen {

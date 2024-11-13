@@ -17,7 +17,7 @@ import io.github.madmaximuus.persian.topAppBar.Action
 import io.github.madmaximuus.persian.topAppBar.IconButton
 import io.github.madmaximuus.persian.topAppBar.TopAppBar
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
-import io.github.madmaximuus.persianSymbols.xmark.base.XMark
+import io.github.madmaximuus.persianSymbols.xmark.XMark
 
 /**
  * An interface that defines the scope for the top section of a modal page.

@@ -1,23 +1,14 @@
 package io.github.madmaximuus.persianSymbols.gear
 
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType.Companion.EvenOdd
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap.Companion.Round
-import androidx.compose.ui.graphics.StrokeJoin.Companion.Miter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
-public val PersianSymbols.Filled.Gear: ImageVector
+val PersianSymbols.Filled.Gear: ImageVector
     get() {
         if (gear != null) {
             return gear!!
@@ -31,58 +22,53 @@ public val PersianSymbols.Filled.Gear: ImageVector
         ).apply {
             path(
                 fill = SolidColor(Color(0xFF000000)),
-                stroke = SolidColor(Color(0xFF000000)),
-                strokeLineWidth = 2.0f,
-                strokeLineCap = Round,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = EvenOdd
+                pathFillType = PathFillType.EvenOdd
             ) {
-                moveTo(9.5f, 3.9999f)
-                curveTo(9.5f, 3.4476f, 9.9477f, 2.9999f, 10.5f, 2.9999f)
-                horizontalLineTo(13.5f)
-                curveTo(14.0523f, 2.9999f, 14.5f, 3.4476f, 14.5f, 3.9999f)
-                verticalLineTo(5.4595f)
-                curveTo(15.1981f, 5.7265f, 15.8425f, 6.1021f, 16.4126f, 6.5655f)
-                lineTo(17.6764f, 5.8358f)
-                curveTo(18.1547f, 5.5597f, 18.7681f, 5.7226f, 19.0442f, 6.2009f)
-                lineTo(20.5442f, 8.7989f)
-                curveTo(20.8204f, 9.2772f, 20.6565f, 9.8888f, 20.1782f, 10.165f)
-                lineTo(18.9133f, 10.8952f)
-                curveTo(18.9704f, 11.2551f, 19.0f, 11.624f, 19.0f, 11.9999f)
-                curveTo(19.0f, 12.3758f, 18.9704f, 12.7447f, 18.9133f, 13.1046f)
-                lineTo(20.1782f, 13.8348f)
-                curveTo(20.6565f, 14.111f, 20.8204f, 14.7226f, 20.5442f, 15.2009f)
-                lineTo(19.0442f, 17.7989f)
-                curveTo(18.7681f, 18.2772f, 18.1565f, 18.4411f, 17.6782f, 18.165f)
-                lineTo(16.4126f, 17.4343f)
-                curveTo(15.8425f, 17.8977f, 15.1981f, 18.2733f, 14.5f, 18.5402f)
-                verticalLineTo(19.9999f)
-                curveTo(14.5f, 20.5522f, 14.0523f, 20.9999f, 13.5f, 20.9999f)
-                horizontalLineTo(10.5f)
-                curveTo(9.9477f, 20.9999f, 9.5f, 20.5522f, 9.5f, 19.9999f)
-                verticalLineTo(18.5402f)
-                curveTo(8.8019f, 18.2733f, 8.1575f, 17.8977f, 7.5874f, 17.4342f)
-                lineTo(6.3218f, 18.165f)
-                curveTo(5.8435f, 18.4411f, 5.2319f, 18.2772f, 4.9558f, 17.7989f)
-                lineTo(3.4558f, 15.2009f)
-                curveTo(3.1796f, 14.7226f, 3.3452f, 14.11f, 3.8235f, 13.8338f)
-                lineTo(5.0867f, 13.1046f)
-                curveTo(5.0296f, 12.7447f, 5.0f, 12.3758f, 5.0f, 11.9999f)
-                curveTo(5.0f, 11.624f, 5.0296f, 11.2551f, 5.0867f, 10.8952f)
-                lineTo(3.8218f, 10.165f)
-                curveTo(3.3435f, 9.8888f, 3.1796f, 9.2772f, 3.4558f, 8.7989f)
-                lineTo(4.9558f, 6.2009f)
-                curveTo(5.2319f, 5.7226f, 5.8435f, 5.5587f, 6.3218f, 5.8348f)
-                lineTo(7.5874f, 6.5655f)
-                curveTo(8.1575f, 6.1021f, 8.8019f, 5.7265f, 9.5f, 5.4595f)
-                verticalLineTo(3.9999f)
+                moveTo(8.4f, 4f)
+                curveTo(8.4f, 2.895f, 9.295f, 2f, 10.4f, 2f)
+                horizontalLineTo(13.6f)
+                curveTo(14.705f, 2f, 15.6f, 2.895f, 15.6f, 4f)
+                verticalLineTo(4.854f)
+                curveTo(15.872f, 4.991f, 16.135f, 5.143f, 16.388f, 5.31f)
+                lineTo(17.128f, 4.882f)
+                curveTo(18.085f, 4.33f, 19.308f, 4.658f, 19.86f, 5.614f)
+                lineTo(21.46f, 8.386f)
+                curveTo(22.013f, 9.342f, 21.685f, 10.565f, 20.728f, 11.118f)
+                lineTo(19.987f, 11.545f)
+                curveTo(19.996f, 11.696f, 20f, 11.847f, 20f, 12f)
+                curveTo(20f, 12.153f, 19.996f, 12.304f, 19.987f, 12.455f)
+                lineTo(20.728f, 12.882f)
+                curveTo(21.685f, 13.435f, 22.013f, 14.658f, 21.46f, 15.614f)
+                lineTo(19.86f, 18.386f)
+                curveTo(19.308f, 19.342f, 18.085f, 19.67f, 17.128f, 19.118f)
+                lineTo(16.388f, 18.69f)
+                curveTo(16.135f, 18.857f, 15.872f, 19.009f, 15.6f, 19.146f)
+                verticalLineTo(20f)
+                curveTo(15.6f, 21.105f, 14.705f, 22f, 13.6f, 22f)
+                horizontalLineTo(10.4f)
+                curveTo(9.295f, 22f, 8.4f, 21.105f, 8.4f, 20f)
+                verticalLineTo(19.146f)
+                curveTo(8.128f, 19.009f, 7.865f, 18.857f, 7.612f, 18.69f)
+                lineTo(6.872f, 19.118f)
+                curveTo(5.915f, 19.67f, 4.692f, 19.342f, 4.14f, 18.386f)
+                lineTo(2.54f, 15.614f)
+                curveTo(1.987f, 14.658f, 2.315f, 13.435f, 3.272f, 12.882f)
+                lineTo(4.013f, 12.455f)
+                curveTo(4.004f, 12.304f, 4f, 12.153f, 4f, 12f)
+                curveTo(4f, 11.847f, 4.004f, 11.696f, 4.013f, 11.545f)
+                lineTo(3.272f, 11.118f)
+                curveTo(2.315f, 10.565f, 1.987f, 9.342f, 2.54f, 8.386f)
+                lineTo(4.14f, 5.614f)
+                curveTo(4.692f, 4.658f, 5.915f, 4.33f, 6.872f, 4.882f)
+                lineTo(7.612f, 5.31f)
+                curveTo(7.865f, 5.143f, 8.128f, 4.991f, 8.4f, 4.854f)
+                verticalLineTo(4f)
                 close()
-                moveTo(12.0f, 16.0f)
-                curveTo(14.2091f, 16.0f, 16.0f, 14.2091f, 16.0f, 12.0f)
-                curveTo(16.0f, 9.7909f, 14.2091f, 8.0f, 12.0f, 8.0f)
-                curveTo(9.7909f, 8.0f, 8.0f, 9.7909f, 8.0f, 12.0f)
-                curveTo(8.0f, 14.2091f, 9.7909f, 16.0f, 12.0f, 16.0f)
+                moveTo(12f, 15.5f)
+                curveTo(13.933f, 15.5f, 15.5f, 13.933f, 15.5f, 12f)
+                curveTo(15.5f, 10.067f, 13.933f, 8.5f, 12f, 8.5f)
+                curveTo(10.067f, 8.5f, 8.5f, 10.067f, 8.5f, 12f)
+                curveTo(8.5f, 13.933f, 10.067f, 15.5f, 12f, 15.5f)
                 close()
             }
         }.build()
@@ -90,17 +76,3 @@ public val PersianSymbols.Filled.Gear: ImageVector
     }
 
 private var gear: ImageVector? = null
-
-@Preview
-@Composable
-private fun IconPreview() {
-    MaterialTheme {
-        Surface {
-            Icon(
-                modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Filled.Gear,
-                contentDescription = ""
-            )
-        }
-    }
-}

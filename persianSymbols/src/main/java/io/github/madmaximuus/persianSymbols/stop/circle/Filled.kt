@@ -7,10 +7,8 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType.Companion.EvenOdd
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap.Companion.Butt
-import androidx.compose.ui.graphics.StrokeJoin.Companion.Miter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.ImageVector.Builder
 import androidx.compose.ui.graphics.vector.path
@@ -32,28 +30,23 @@ val PersianSymbols.Filled.StopCircle: ImageVector
         ).apply {
             path(
                 fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = EvenOdd
+                pathFillType = PathFillType.EvenOdd
             ) {
-                moveTo(12.0f, 22.0f)
-                curveTo(17.5228f, 22.0f, 22.0f, 17.5228f, 22.0f, 12.0f)
-                curveTo(22.0f, 6.4771f, 17.5228f, 2.0f, 12.0f, 2.0f)
-                curveTo(6.4771f, 2.0f, 2.0f, 6.4771f, 2.0f, 12.0f)
-                curveTo(2.0f, 17.5228f, 6.4771f, 22.0f, 12.0f, 22.0f)
+                moveTo(12f, 22f)
+                curveTo(17.523f, 22f, 22f, 17.523f, 22f, 12f)
+                curveTo(22f, 6.477f, 17.523f, 2f, 12f, 2f)
+                curveTo(6.477f, 2f, 2f, 6.477f, 2f, 12f)
+                curveTo(2f, 17.523f, 6.477f, 22f, 12f, 22f)
                 close()
-                moveTo(10.0f, 8.0f)
-                curveTo(8.8954f, 8.0f, 8.0f, 8.8954f, 8.0f, 10.0f)
-                verticalLineTo(14.0f)
-                curveTo(8.0f, 15.1046f, 8.8954f, 16.0f, 10.0f, 16.0f)
-                horizontalLineTo(14.0f)
-                curveTo(15.1046f, 16.0f, 16.0f, 15.1046f, 16.0f, 14.0f)
-                verticalLineTo(10.0f)
-                curveTo(16.0f, 8.8954f, 15.1046f, 8.0f, 14.0f, 8.0f)
-                horizontalLineTo(10.0f)
+                moveTo(10f, 8f)
+                curveTo(8.895f, 8f, 8f, 8.895f, 8f, 10f)
+                verticalLineTo(14f)
+                curveTo(8f, 15.105f, 8.895f, 16f, 10f, 16f)
+                horizontalLineTo(14f)
+                curveTo(15.105f, 16f, 16f, 15.105f, 16f, 14f)
+                verticalLineTo(10f)
+                curveTo(16f, 8.895f, 15.105f, 8f, 14f, 8f)
+                horizontalLineTo(10f)
                 close()
             }
         }.build()

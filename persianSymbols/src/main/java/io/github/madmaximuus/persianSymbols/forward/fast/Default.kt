@@ -1,19 +1,10 @@
 package io.github.madmaximuus.persianSymbols.forward.fast
 
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
@@ -31,44 +22,37 @@ val PersianSymbols.Default.ForwardFast: ImageVector
         ).apply {
             path(
                 fill = SolidColor(Color(0xFF000000)),
-                fillAlpha = 1.0f,
-                stroke = null,
-                strokeAlpha = 1.0f,
-                strokeLineWidth = 1.0f,
-                strokeLineCap = StrokeCap.Butt,
-                strokeLineJoin = StrokeJoin.Miter,
-                strokeLineMiter = 1.0f,
                 pathFillType = PathFillType.EvenOdd
             ) {
                 moveTo(21f, 7f)
-                curveTo(21f, 6.4477f, 20.5523f, 6f, 20f, 6f)
-                curveTo(19.4477f, 6f, 19f, 6.4477f, 19f, 7f)
-                verticalLineTo(9.96383f)
-                lineTo(13.5036f, 6.71137f)
-                curveTo(12.5037f, 6.1197f, 11.2397f, 6.8404f, 11.2397f, 8.0023f)
-                verticalLineTo(10.2476f)
-                lineTo(5.2639f, 6.71137f)
-                curveTo(4.264f, 6.1197f, 3f, 6.8404f, 3f, 8.0023f)
-                verticalLineTo(16.0003f)
-                curveTo(3f, 17.1621f, 4.264f, 17.8829f, 5.2639f, 17.2912f)
-                lineTo(11.2397f, 13.755f)
-                verticalLineTo(16.0003f)
-                curveTo(11.2397f, 17.1621f, 12.5037f, 17.8829f, 13.5036f, 17.2912f)
-                lineTo(19f, 14.0387f)
+                curveTo(21f, 6.448f, 20.552f, 6f, 20f, 6f)
+                curveTo(19.448f, 6f, 19f, 6.448f, 19f, 7f)
+                verticalLineTo(9.964f)
+                lineTo(13.504f, 6.711f)
+                curveTo(12.504f, 6.12f, 11.24f, 6.84f, 11.24f, 8.002f)
+                verticalLineTo(10.248f)
+                lineTo(5.264f, 6.711f)
+                curveTo(4.264f, 6.12f, 3f, 6.84f, 3f, 8.002f)
+                verticalLineTo(16f)
+                curveTo(3f, 17.162f, 4.264f, 17.883f, 5.264f, 17.291f)
+                lineTo(11.24f, 13.755f)
+                verticalLineTo(16f)
+                curveTo(11.24f, 17.162f, 12.504f, 17.883f, 13.504f, 17.291f)
+                lineTo(19f, 14.039f)
                 verticalLineTo(17f)
-                curveTo(19f, 17.5523f, 19.4477f, 18f, 20f, 18f)
-                curveTo(20.5523f, 18f, 21f, 17.5523f, 21f, 17f)
+                curveTo(19f, 17.552f, 19.448f, 18f, 20f, 18f)
+                curveTo(20.552f, 18f, 21f, 17.552f, 21f, 17f)
                 verticalLineTo(7f)
                 close()
-                moveTo(13.2397f, 15.1234f)
-                lineTo(18.5158f, 12.0013f)
-                lineTo(13.2397f, 8.87915f)
-                verticalLineTo(15.1234f)
+                moveTo(13.24f, 15.123f)
+                lineTo(18.516f, 12.001f)
+                lineTo(13.24f, 8.879f)
+                verticalLineTo(15.123f)
                 close()
-                moveTo(5f, 15.1234f)
-                lineTo(10.2761f, 12.0013f)
-                lineTo(5f, 8.87915f)
-                verticalLineTo(15.1234f)
+                moveTo(5f, 15.123f)
+                lineTo(10.276f, 12.001f)
+                lineTo(5f, 8.879f)
+                verticalLineTo(15.123f)
                 close()
             }
         }.build()
@@ -76,17 +60,3 @@ val PersianSymbols.Default.ForwardFast: ImageVector
     }
 
 private var forwardFast: ImageVector? = null
-
-@Preview
-@Composable
-private fun IconPreview() {
-    MaterialTheme {
-        Surface {
-            Icon(
-                modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Default.ForwardFast,
-                contentDescription = ""
-            )
-        }
-    }
-}

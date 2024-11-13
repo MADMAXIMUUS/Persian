@@ -1,19 +1,10 @@
 package io.github.madmaximuus.persianSymbols.xmark.circle
 
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType.Companion.EvenOdd
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap.Companion.Butt
-import androidx.compose.ui.graphics.StrokeJoin.Companion.Miter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
@@ -31,36 +22,60 @@ val PersianSymbols.Filled.XMarkCircle: ImageVector
         ).apply {
             path(
                 fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = EvenOdd
+                pathFillType = PathFillType.EvenOdd
             ) {
-                moveTo(12.0f, 22.0f)
-                curveTo(17.5228f, 22.0f, 22.0f, 17.5228f, 22.0f, 12.0f)
-                curveTo(22.0f, 6.4771f, 17.5228f, 2.0f, 12.0f, 2.0f)
-                curveTo(6.4771f, 2.0f, 2.0f, 6.4771f, 2.0f, 12.0f)
-                curveTo(2.0f, 17.5228f, 6.4771f, 22.0f, 12.0f, 22.0f)
+                moveTo(12f, 22f)
+                curveTo(17.523f, 22f, 22f, 17.523f, 22f, 12f)
+                curveTo(22f, 6.477f, 17.523f, 2f, 12f, 2f)
+                curveTo(6.477f, 2f, 2f, 6.477f, 2f, 12f)
+                curveTo(2f, 17.523f, 6.477f, 22f, 12f, 22f)
                 close()
-                moveTo(9.7071f, 8.2929f)
-                curveTo(9.3166f, 7.9024f, 8.6834f, 7.9024f, 8.2929f, 8.2929f)
-                curveTo(7.9024f, 8.6834f, 7.9024f, 9.3166f, 8.2929f, 9.7071f)
-                lineTo(10.5858f, 12.0f)
-                lineTo(8.2929f, 14.2929f)
-                curveTo(7.9024f, 14.6834f, 7.9024f, 15.3166f, 8.2929f, 15.7071f)
-                curveTo(8.6834f, 16.0976f, 9.3166f, 16.0976f, 9.7071f, 15.7071f)
-                lineTo(12.0f, 13.4142f)
-                lineTo(14.2929f, 15.7071f)
-                curveTo(14.6834f, 16.0976f, 15.3166f, 16.0976f, 15.7071f, 15.7071f)
-                curveTo(16.0976f, 15.3166f, 16.0976f, 14.6834f, 15.7071f, 14.2929f)
-                lineTo(13.4142f, 12.0f)
-                lineTo(15.7071f, 9.7071f)
-                curveTo(16.0976f, 9.3166f, 16.0976f, 8.6834f, 15.7071f, 8.2929f)
-                curveTo(15.3166f, 7.9024f, 14.6834f, 7.9024f, 14.2929f, 8.2929f)
-                lineTo(12.0f, 10.5858f)
-                lineTo(9.7071f, 8.2929f)
+                moveTo(9.03f, 7.97f)
+                curveTo(8.737f, 7.677f, 8.262f, 7.677f, 7.97f, 7.97f)
+                curveTo(7.677f, 8.263f, 7.677f, 8.737f, 7.97f, 9.03f)
+                lineTo(10.939f, 12f)
+                lineTo(7.97f, 14.97f)
+                curveTo(7.677f, 15.263f, 7.677f, 15.737f, 7.97f, 16.03f)
+                curveTo(8.262f, 16.323f, 8.737f, 16.323f, 9.03f, 16.03f)
+                lineTo(12f, 13.061f)
+                lineTo(14.969f, 16.03f)
+                curveTo(15.262f, 16.323f, 15.737f, 16.323f, 16.03f, 16.03f)
+                curveTo(16.323f, 15.737f, 16.323f, 15.263f, 16.03f, 14.97f)
+                lineTo(13.061f, 12f)
+                lineTo(16.03f, 9.03f)
+                curveTo(16.323f, 8.737f, 16.323f, 8.263f, 16.03f, 7.97f)
+                curveTo(15.737f, 7.677f, 15.262f, 7.677f, 14.969f, 7.97f)
+                lineTo(12f, 10.939f)
+                lineTo(9.03f, 7.97f)
+                close()
+            }
+            path(
+                fill = SolidColor(Color(0xFF000000)),
+                pathFillType = PathFillType.EvenOdd
+            ) {
+                moveTo(12f, 22f)
+                curveTo(17.523f, 22f, 22f, 17.523f, 22f, 12f)
+                curveTo(22f, 6.477f, 17.523f, 2f, 12f, 2f)
+                curveTo(6.477f, 2f, 2f, 6.477f, 2f, 12f)
+                curveTo(2f, 17.523f, 6.477f, 22f, 12f, 22f)
+                close()
+                moveTo(9.03f, 7.97f)
+                curveTo(8.737f, 7.677f, 8.262f, 7.677f, 7.97f, 7.97f)
+                curveTo(7.677f, 8.263f, 7.677f, 8.737f, 7.97f, 9.03f)
+                lineTo(10.939f, 12f)
+                lineTo(7.97f, 14.97f)
+                curveTo(7.677f, 15.263f, 7.677f, 15.737f, 7.97f, 16.03f)
+                curveTo(8.262f, 16.323f, 8.737f, 16.323f, 9.03f, 16.03f)
+                lineTo(12f, 13.061f)
+                lineTo(14.969f, 16.03f)
+                curveTo(15.262f, 16.323f, 15.737f, 16.323f, 16.03f, 16.03f)
+                curveTo(16.323f, 15.737f, 16.323f, 15.263f, 16.03f, 14.97f)
+                lineTo(13.061f, 12f)
+                lineTo(16.03f, 9.03f)
+                curveTo(16.323f, 8.737f, 16.323f, 8.263f, 16.03f, 7.97f)
+                curveTo(15.737f, 7.677f, 15.262f, 7.677f, 14.969f, 7.97f)
+                lineTo(12f, 10.939f)
+                lineTo(9.03f, 7.97f)
                 close()
             }
         }.build()
@@ -68,17 +83,3 @@ val PersianSymbols.Filled.XMarkCircle: ImageVector
     }
 
 private var xMarkCircle: ImageVector? = null
-
-@Preview
-@Composable
-private fun IconPreview() {
-    MaterialTheme {
-        Surface {
-            Icon(
-                modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Filled.XMarkCircle,
-                contentDescription = ""
-            )
-        }
-    }
-}

@@ -44,7 +44,7 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.icon.Icon
 import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
-import io.github.madmaximuus.persianSymbols.plus.base.Plus
+import io.github.madmaximuus.persianSymbols.plus.Plus
 import kotlinx.coroutines.launch
 
 /**

@@ -13,10 +13,10 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.icon.Icon
 import io.github.madmaximuus.persian.iconButton.TertiaryIconButton
 import io.github.madmaximuus.persian.radioButton.RadioButtonToggle
-import io.github.madmaximuus.persianSymbols.bars.base.Bars
+import io.github.madmaximuus.persianSymbols.bars.Bars
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
-import io.github.madmaximuus.persianSymbols.minus.base.Minus
-import io.github.madmaximuus.persianSymbols.plus.base.Plus
+import io.github.madmaximuus.persianSymbols.minus.Minus
+import io.github.madmaximuus.persianSymbols.plus.Plus
 
 /**
  * Interface representing the scope for editing a list item.

@@ -1,20 +1,11 @@
 package io.github.madmaximuus.persianSymbols.device.tablet.unknown
 
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType.Companion.EvenOdd
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap.Companion.Butt
-import androidx.compose.ui.graphics.StrokeJoin.Companion.Miter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.ImageVector.Builder
 import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
@@ -32,30 +23,25 @@ val PersianSymbols.Filled.DeviceTabletUnknown: ImageVector
         ).apply {
             path(
                 fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = EvenOdd
+                pathFillType = PathFillType.EvenOdd
             ) {
-                moveTo(8.4f, 2.0f)
-                curveTo(5.97f, 2.0f, 4.0f, 3.9699f, 4.0f, 6.4f)
+                moveTo(8.4f, 2f)
+                curveTo(5.97f, 2f, 4f, 3.97f, 4f, 6.4f)
                 verticalLineTo(17.6f)
-                curveTo(4.0f, 20.0301f, 5.97f, 22.0f, 8.4f, 22.0f)
+                curveTo(4f, 20.03f, 5.97f, 22f, 8.4f, 22f)
                 horizontalLineTo(15.6f)
-                curveTo(18.0301f, 22.0f, 20.0f, 20.0301f, 20.0f, 17.6f)
+                curveTo(18.03f, 22f, 20f, 20.03f, 20f, 17.6f)
                 verticalLineTo(6.4f)
-                curveTo(20.0f, 3.9699f, 18.0301f, 2.0f, 15.6f, 2.0f)
+                curveTo(20f, 3.97f, 18.03f, 2f, 15.6f, 2f)
                 horizontalLineTo(8.4f)
                 close()
-                moveTo(9.0f, 19.25f)
-                curveTo(8.8619f, 19.25f, 8.75f, 19.3619f, 8.75f, 19.5f)
-                curveTo(8.75f, 19.6381f, 8.8619f, 19.75f, 9.0f, 19.75f)
-                horizontalLineTo(15.0f)
-                curveTo(15.1381f, 19.75f, 15.25f, 19.6381f, 15.25f, 19.5f)
-                curveTo(15.25f, 19.3619f, 15.1381f, 19.25f, 15.0f, 19.25f)
-                horizontalLineTo(9.0f)
+                moveTo(9f, 19.25f)
+                curveTo(8.862f, 19.25f, 8.75f, 19.362f, 8.75f, 19.5f)
+                curveTo(8.75f, 19.638f, 8.862f, 19.75f, 9f, 19.75f)
+                horizontalLineTo(15f)
+                curveTo(15.138f, 19.75f, 15.25f, 19.638f, 15.25f, 19.5f)
+                curveTo(15.25f, 19.362f, 15.138f, 19.25f, 15f, 19.25f)
+                horizontalLineTo(9f)
                 close()
             }
         }.build()
@@ -63,17 +49,3 @@ val PersianSymbols.Filled.DeviceTabletUnknown: ImageVector
     }
 
 private var deviceTabletUnknown: ImageVector? = null
-
-@Preview
-@Composable
-private fun IconPreview() {
-    MaterialTheme {
-        Surface {
-            Icon(
-                modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Filled.DeviceTabletUnknown,
-                contentDescription = ""
-            )
-        }
-    }
-}

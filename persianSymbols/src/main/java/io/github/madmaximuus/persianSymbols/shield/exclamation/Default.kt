@@ -1,21 +1,11 @@
 package io.github.madmaximuus.persianSymbols.shield.exclamation
 
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType.Companion.EvenOdd
-import androidx.compose.ui.graphics.PathFillType.Companion.NonZero
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap.Companion.Butt
-import androidx.compose.ui.graphics.StrokeJoin.Companion.Miter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.ImageVector.Builder
 import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
@@ -31,64 +21,43 @@ val PersianSymbols.Default.ShieldExclamation: ImageVector
             viewportWidth = 24.0f,
             viewportHeight = 24.0f
         ).apply {
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = NonZero
-            ) {
-                moveTo(12.0f, 7.0f)
-                curveTo(12.5523f, 7.0f, 13.0f, 7.4477f, 13.0f, 8.0f)
-                verticalLineTo(13.0f)
-                curveTo(13.0f, 13.5523f, 12.5523f, 14.0f, 12.0f, 14.0f)
-                curveTo(11.4477f, 14.0f, 11.0f, 13.5523f, 11.0f, 13.0f)
-                verticalLineTo(8.0f)
-                curveTo(11.0f, 7.4477f, 11.4477f, 7.0f, 12.0f, 7.0f)
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(12f, 7.205f)
+                curveTo(12.414f, 7.205f, 12.75f, 7.541f, 12.75f, 7.955f)
+                lineTo(12.75f, 13.429f)
+                curveTo(12.75f, 13.843f, 12.414f, 14.179f, 12f, 14.179f)
+                curveTo(11.586f, 14.179f, 11.25f, 13.843f, 11.25f, 13.429f)
+                lineTo(11.25f, 7.955f)
+                curveTo(11.25f, 7.541f, 11.586f, 7.205f, 12f, 7.205f)
+                close()
+            }
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(13.002f, 15.795f)
+                curveTo(13.002f, 16.347f, 12.554f, 16.795f, 12.002f, 16.795f)
+                curveTo(11.45f, 16.795f, 11.002f, 16.347f, 11.002f, 15.795f)
+                curveTo(11.002f, 15.243f, 11.45f, 14.795f, 12.002f, 14.795f)
+                curveTo(12.554f, 14.795f, 13.002f, 15.243f, 13.002f, 15.795f)
                 close()
             }
             path(
                 fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = NonZero
+                pathFillType = PathFillType.EvenOdd
             ) {
-                moveTo(13.0f, 16.0f)
-                curveTo(13.0f, 16.5523f, 12.5523f, 17.0f, 12.0f, 17.0f)
-                curveTo(11.4477f, 17.0f, 11.0f, 16.5523f, 11.0f, 16.0f)
-                curveTo(11.0f, 15.4477f, 11.4477f, 15.0f, 12.0f, 15.0f)
-                curveTo(12.5523f, 15.0f, 13.0f, 15.4477f, 13.0f, 16.0f)
+                moveTo(12.342f, 3.06f)
+                curveTo(12.121f, 2.98f, 11.879f, 2.98f, 11.658f, 3.06f)
+                lineTo(3.658f, 5.969f)
+                curveTo(3.263f, 6.113f, 3f, 6.489f, 3f, 6.909f)
+                curveTo(3f, 12.695f, 6.267f, 18.012f, 11.521f, 20.878f)
+                curveTo(11.82f, 21.041f, 12.18f, 21.041f, 12.479f, 20.878f)
+                curveTo(17.733f, 18.012f, 21f, 12.695f, 21f, 6.909f)
+                curveTo(21f, 6.489f, 20.737f, 6.113f, 20.342f, 5.969f)
+                lineTo(12.342f, 3.06f)
                 close()
-            }
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
-                pathFillType = EvenOdd
-            ) {
-                moveTo(12.3417f, 3.0602f)
-                curveTo(12.121f, 2.9799f, 11.879f, 2.9799f, 11.6583f, 3.0602f)
-                lineTo(3.6583f, 5.9693f)
-                curveTo(3.2631f, 6.113f, 3.0f, 6.4886f, 3.0f, 6.9091f)
-                curveTo(3.0f, 12.6952f, 6.2671f, 18.0121f, 11.5211f, 20.8779f)
-                curveTo(11.8196f, 21.0407f, 12.1804f, 21.0407f, 12.4789f, 20.8779f)
-                curveTo(17.7329f, 18.0121f, 21.0f, 12.6952f, 21.0f, 6.9091f)
-                curveTo(21.0f, 6.4886f, 20.7369f, 6.113f, 20.3417f, 5.9693f)
-                lineTo(12.3417f, 3.0602f)
-                close()
-                moveTo(12.0f, 18.8496f)
-                curveTo(7.8474f, 16.3863f, 5.257f, 12.1777f, 5.0181f, 7.6029f)
-                lineTo(12.0f, 5.0641f)
-                lineTo(18.9819f, 7.6029f)
-                curveTo(18.743f, 12.1777f, 16.1526f, 16.3863f, 12.0f, 18.8496f)
+                moveTo(12f, 18.85f)
+                curveTo(7.847f, 16.386f, 5.257f, 12.178f, 5.018f, 7.603f)
+                lineTo(12f, 5.064f)
+                lineTo(18.982f, 7.603f)
+                curveTo(18.743f, 12.178f, 16.153f, 16.386f, 12f, 18.85f)
                 close()
             }
         }.build()
@@ -96,17 +65,3 @@ val PersianSymbols.Default.ShieldExclamation: ImageVector
     }
 
 private var shieldExclamation: ImageVector? = null
-
-@Preview
-@Composable
-private fun IconPreview() {
-    MaterialTheme {
-        Surface {
-            Icon(
-                modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Default.ShieldExclamation,
-                contentDescription = ""
-            )
-        }
-    }
-}

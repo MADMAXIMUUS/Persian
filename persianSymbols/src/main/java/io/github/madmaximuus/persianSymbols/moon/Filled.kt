@@ -1,20 +1,11 @@
 package io.github.madmaximuus.persianSymbols.moon
 
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType.Companion.NonZero
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap.Companion.Butt
-import androidx.compose.ui.graphics.StrokeJoin.Companion.Round
+import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.ImageVector.Builder
 import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
@@ -33,19 +24,16 @@ val PersianSymbols.Filled.Moon: ImageVector
             path(
                 fill = SolidColor(Color(0xFF000000)),
                 stroke = SolidColor(Color(0xFF000000)),
-                strokeLineWidth = 2.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Round,
-                strokeLineMiter = 4.0f,
-                pathFillType = NonZero
+                strokeLineWidth = 2f,
+                strokeLineJoin = StrokeJoin.Round
             ) {
-                moveTo(20.8232f, 13.783f)
-                curveTo(19.4645f, 15.1521f, 17.5812f, 15.9999f, 15.4999f, 15.9999f)
-                curveTo(11.3577f, 15.9999f, 7.9999f, 12.642f, 7.9999f, 8.4999f)
-                curveTo(7.9999f, 6.4186f, 8.8477f, 4.5353f, 10.2167f, 3.1765f)
-                curveTo(6.1003f, 4.0039f, 2.9999f, 7.6398f, 2.9999f, 11.9999f)
-                curveTo(2.9999f, 16.9704f, 7.0293f, 20.9999f, 11.9999f, 20.9999f)
-                curveTo(16.36f, 20.9999f, 19.9959f, 17.8995f, 20.8232f, 13.783f)
+                moveTo(20.823f, 13.783f)
+                curveTo(19.465f, 15.152f, 17.581f, 16f, 15.5f, 16f)
+                curveTo(11.358f, 16f, 8f, 12.642f, 8f, 8.5f)
+                curveTo(8f, 6.419f, 8.848f, 4.535f, 10.217f, 3.177f)
+                curveTo(6.1f, 4.004f, 3f, 7.64f, 3f, 12f)
+                curveTo(3f, 16.97f, 7.029f, 21f, 12f, 21f)
+                curveTo(16.36f, 21f, 19.996f, 17.899f, 20.823f, 13.783f)
                 close()
             }
         }.build()
@@ -53,17 +41,3 @@ val PersianSymbols.Filled.Moon: ImageVector
     }
 
 private var moon: ImageVector? = null
-
-@Preview
-@Composable
-private fun IconPreview() {
-    MaterialTheme {
-        Surface {
-            Icon(
-                modifier = Modifier.size(100.dp),
-                imageVector = PersianSymbols.Filled.Moon,
-                contentDescription = ""
-            )
-        }
-    }
-}
