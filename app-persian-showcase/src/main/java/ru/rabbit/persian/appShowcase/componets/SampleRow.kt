@@ -1,5 +1,6 @@
 package ru.rabbit.persian.appShowcase.componets
 
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -23,18 +24,18 @@ fun SampleRow(
 ) {
     Column(
         modifier = Modifier
+            .animateContentSize()
             .fillMaxWidth()
             .padding(
                 top = if (firstItem) PersianTheme.spacing.size12 else PersianTheme.spacing.size8,
                 bottom = if (lastItem) PersianTheme.spacing.size12 else PersianTheme.spacing.size8,
-                start = PersianTheme.spacing.size12,
-                end = PersianTheme.spacing.size12
-            ),
+            )
+            .padding(horizontal = PersianTheme.spacing.size16)
     ) {
         Text(
             text = text,
-            style = PersianTheme.typography.titleMedium,
-            color = PersianTheme.colorScheme.onSurface
+            style = PersianTheme.typography.labelLarge,
+            color = PersianTheme.colorScheme.onSurfaceVariant
         )
         Spacer(modifier = Modifier.height(PersianTheme.spacing.size4))
         Row(

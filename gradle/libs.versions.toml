@@ -1,21 +1,22 @@
 [versions]
-coreKtx = "1.13.1"
+coreKtx = "1.15.0"
 kotlinGradlePlugin = "1.9.23"
-navigation = "2.7.7"
-compose = "1.6.7"
-activityCompose = "1.9.0"
-material3 = "1.2.1"
+navigation = "2.8.3"
+compose = "1.7.5"
+activity-compose = "1.9.3"
+material3 = "1.3.1"
 glide = "1.0.0-beta01"
 splash = "1.0.1"
-agp = "8.3.2"
-nexus = "1.1.0"
+agp = "8.7.2"
+nexus = "1.3.0"
 dokka = "1.9.0"
-adaptive-android = "1.0.0-beta03"
-sheets-dialog = "1.3.0"
+adaptive-android = "1.0.0"
+datastore-preferences = "1.1.1"
+serialization = "1.7.3"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlinGradlePlugin" }
 material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "material3" }
 compose-foundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "compose" }
@@ -24,12 +25,14 @@ compose-navigation = { group = "androidx.navigation", name = "navigation-compose
 compose-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "compose" }
 compose-ripple = { group = "androidx.compose.material", name = "material-ripple-android", version.ref = "compose" }
 compose-ui-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview", version.ref = "compose" }
+compose-animation = { group = "androidx.compose.animation", name = "animation", version.ref = "compose" }
 ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling", version.ref = "compose" }
 glide = { group = "com.github.bumptech.glide", name = "compose", version.ref = "glide" }
 splash = { group = "androidx.core", name = "core-splashscreen", version.ref = "splash" }
 adaptive-android = { group = "androidx.compose.material3.adaptive", name = "adaptive-android", version.ref = "adaptive-android" }
-sheets-dialog-core = { group = "com.maxkeppeler.sheets-compose-dialogs", name = "core", version.ref = "sheets-dialog" }
-sheets-dialog-calendar = { group = "com.maxkeppeler.sheets-compose-dialogs", name = "calendar", version.ref = "sheets-dialog" }
+activity = { group = "androidx.activity", name = "activity-ktx", version.ref = "activity-compose" }
+datastore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore-preferences" }
+serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json-jvm", version.ref = "serialization" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -7,12 +7,12 @@ apply from: 'signing.gradle'
 
 android {
     namespace 'ru.rabbit.persian.appShowcase'
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         applicationId "ru.rabbit.persian.appShowcase"
         minSdk 26
-        targetSdk 34
+        targetSdk 35
         versionCode 8
         versionName "6.0.0"
 
@@ -53,11 +53,9 @@ dependencies {
     implementation libs.core.ktx
     implementation libs.activity.compose
     implementation libs.bundles.compose
-    implementation libs.material3
+    /*implementation libs.material3*/
     implementation libs.adaptive.android
     implementation libs.splash
-    implementation libs.sheets.dialog.core
-    implementation libs.sheets.dialog.calendar
 
 
     implementation libs.compose.navigation
