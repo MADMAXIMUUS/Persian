@@ -1,7 +1,6 @@
 package io.github.madmaximuus.persian.modalPage
 
 import android.util.Log
-import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.TweenSpec
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Canvas
@@ -68,7 +67,7 @@ internal fun Scrim(
     val height = with(LocalDensity.current) {
         LocalConfiguration.current.screenHeightDp.dp.toPx()
     }
-    val target = (pageState.offset ?: 1f) / height
+    val target = (pageState.offset) / height
     if (color.isSpecified) {
         val alpha by animateFloatAsState(
             targetValue = when (target) {
@@ -114,7 +113,6 @@ internal fun Scrim(
  * This function handles the layout and behavior of the modal bottom sheet, including dragging,
  * dismissing, and animating the content. It uses the provided [PageState] to manage the state of the sheet.
  *
- * @param predictiveBackProgress An [Animatable] that represents the progress of the predictive back animation.
  * @param settleToDismiss A function that handles the settling of the sheet when it is dismissed.
  * @param onDismissRequest A callback to be invoked when the modal sheet is dismissed.
  * @param modifier The modifier to be applied to the modal sheet.

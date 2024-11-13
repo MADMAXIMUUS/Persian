@@ -3,14 +3,16 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
 }
 
-ext{
+ext {
     PUBLISH_GROUP_ID = 'io.github.madmaximuus.persian'
     PUBLISH_VERSION = '1.0.0'
-    PUBLISH_ARTIFACT_ID = 'persian-icons'
+    PUBLISH_ARTIFACT_ID = 'persian-symbols'
 }
 
+apply from: "${rootProject.projectDir}/scripts/publish-module.gradle"
+
 android {
-    namespace 'io.github.madmaximuus.persianIcons'
+    namespace 'io.github.madmaximuus.persianSymbols'
     compileSdk 35
 
     defaultConfig {
