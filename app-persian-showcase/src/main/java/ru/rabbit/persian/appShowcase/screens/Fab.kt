@@ -1,16 +1,29 @@
 package ru.rabbit.persian.appShowcase.screens
 
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.animation.animateContentSize
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.fab.PersianFabDefaults
-import io.github.madmaximuus.persian.fab.PersianMediumFab
-import io.github.madmaximuus.persian.fab.PersianSmallFab
-import io.github.madmaximuus.persian.foundation.icons
+import io.github.madmaximuus.persian.fab.Fab
+import io.github.madmaximuus.persian.fab.FabDefaults
+import io.github.madmaximuus.persian.fab.SmallFab
+import io.github.madmaximuus.persian.forms.Checkbox
+import io.github.madmaximuus.persian.forms.Checkboxes
+import io.github.madmaximuus.persian.forms.FormItem
+import io.github.madmaximuus.persian.forms.Input
+import io.github.madmaximuus.persian.forms.RadioButton
+import io.github.madmaximuus.persian.forms.RadioButtons
+import io.github.madmaximuus.persian.forms.Subhead
+import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
+import io.github.madmaximuus.persianSymbols.plus.Plus
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
@@ -20,100 +33,162 @@ object Fab : Screen {
 
     override val navigation: String = "fab"
 
-    @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     override fun Content(navController: NavController?) {
+
+        val (expandable, onExpandableChange) = remember { mutableStateOf(true) }
+        val labelState = rememberTextFieldState("Fab")
+
+        val sizeStates = remember {
+            listOf(
+                mutableStateOf(true),
+                mutableStateOf(false)
+            )
+        }
+
+        val styleStates = remember {
+            listOf(
+                mutableStateOf(true),
+                mutableStateOf(false),
+                mutableStateOf(false),
+                mutableStateOf(false)
+            )
+        }
+
         SampleScaffold(
             title = name,
             onBackClick = { navController?.navigateUp() }
         ) {
-            LazyColumn(
-                modifier = Modifier.fillMaxSize(),
-                contentPadding = it
+            Column(
+                modifier = Modifier
+                    .animateContentSize()
+                    .fillMaxWidth()
+                    .padding(it)
             ) {
-                item {
-                    SampleRow(text = "Small FAB", firstItem = true) {
-                        PersianSmallFab(
-                            icon = MaterialTheme.icons.add,
-                            colors = PersianFabDefaults.neutralColors(),
-                            onClick = {}
-                        )
-                        PersianSmallFab(
-                            icon = MaterialTheme.icons.add,
-                            colors = PersianFabDefaults.primaryColors(),
-                            onClick = {}
-                        )
-                        PersianSmallFab(
-                            icon = MaterialTheme.icons.add,
-                            colors = PersianFabDefaults.secondaryColors(),
-                            onClick = {}
-                        )
-                        PersianSmallFab(
-                            icon = MaterialTheme.icons.add,
-                            colors = PersianFabDefaults.tertiaryColors(),
-                            onClick = {}
-                        )
+                SampleRow(text = "Sample", firstItem = true) {
+                    when {
+                        sizeStates[0].value -> {
+                            Fab(
+                                icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
+                                title = "Add",
+                                expanded = expandable,
+                                colors = when {
+                                    styleStates[0].value -> FabDefaults.neutralColors()
+                                    styleStates[1].value -> FabDefaults.primaryColors()
+                                    styleStates[2].value -> FabDefaults.secondaryColors()
+                                    styleStates[3].value -> FabDefaults.tertiaryColors()
+                                    else -> FabDefaults.neutralColors()
+                                },
+                                onClick = {}
+                            )
+
+                        }
+
+                        sizeStates[1].value -> {
+                            SmallFab(
+                                icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
+                                colors = when {
+                                    styleStates[0].value -> FabDefaults.neutralColors()
+                                    styleStates[1].value -> FabDefaults.primaryColors()
+                                    styleStates[2].value -> FabDefaults.secondaryColors()
+                                    styleStates[3].value -> FabDefaults.tertiaryColors()
+                                    else -> FabDefaults.neutralColors()
+                                },
+                                onClick = {}
+                            )
+                        }
                     }
                 }
-                item {
-                    SampleRow(text = "Medium FAB") {
-                        PersianMediumFab(
-                            icon = MaterialTheme.icons.add,
-                            colors = PersianFabDefaults.neutralColors(),
-                            onClick = {}
-                        )
-                        PersianMediumFab(
-                            icon = MaterialTheme.icons.add,
-                            colors = PersianFabDefaults.primaryColors(),
-                            onClick = {}
-                        )
-                        PersianMediumFab(
-                            icon = MaterialTheme.icons.add,
-                            colors = PersianFabDefaults.secondaryColors(),
-                            onClick = {}
-                        )
-                        PersianMediumFab(
-                            icon = MaterialTheme.icons.add,
-                            colors = PersianFabDefaults.tertiaryColors(),
-                            onClick = {}
-                        )
-                    }
+                if (sizeStates[0].value) {
+                    FormItem(
+                        subhead = { Subhead(text = "Label") },
+                        content = { Input(state = labelState) }
+                    )
                 }
-                item {
-                    SampleRow(text = "Medium Expanded FAB") {
-                        PersianMediumFab(
-                            icon = MaterialTheme.icons.add,
-                            title = "Add",
-                            expanded = true,
-                            colors = PersianFabDefaults.neutralColors(),
-                            onClick = {}
-                        )
-                        PersianMediumFab(
-                            icon = MaterialTheme.icons.add,
-                            title = "Add",
-                            expanded = true,
-                            colors = PersianFabDefaults.primaryColors(),
-                            onClick = {}
-                        )
+                FormItem(
+                    modifier = Modifier.padding(top = PersianTheme.spacing.size12),
+                    subhead = { Subhead(text = "Size") },
+                    content = {
+                        RadioButtons {
+                            RadioButton(
+                                text = "Default",
+                                selected = sizeStates[0].value,
+                                onSelectedChange = {
+                                    sizeStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 0
+                                    }
+                                }
+                            )
+                            RadioButton(
+                                text = "Small",
+                                selected = sizeStates[1].value,
+                                onSelectedChange = {
+                                    sizeStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 1
+                                    }
+                                }
+                            )
+                        }
                     }
-                }
-                item {
-                    SampleRow(text = "Medium Expanded FAB", lastItem = true) {
-                        PersianMediumFab(
-                            icon = MaterialTheme.icons.add,
-                            title = "Add",
-                            expanded = true,
-                            colors = PersianFabDefaults.secondaryColors(),
-                            onClick = {}
-                        )
-                        PersianMediumFab(
-                            icon = MaterialTheme.icons.add,
-                            title = "Add",
-                            expanded = true,
-                            colors = PersianFabDefaults.tertiaryColors(),
-                            onClick = {}
-                        )
+                )
+                FormItem(
+                    modifier = Modifier.padding(top = PersianTheme.spacing.size12),
+                    subhead = { Subhead(text = "Size") },
+                    content = {
+                        RadioButtons {
+                            RadioButton(
+                                text = "Neutral",
+                                selected = styleStates[0].value,
+                                onSelectedChange = {
+                                    styleStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 0
+                                    }
+                                }
+                            )
+                            RadioButton(
+                                text = "Primary",
+                                selected = styleStates[1].value,
+                                onSelectedChange = {
+                                    styleStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 1
+                                    }
+                                }
+                            )
+                            RadioButton(
+                                text = "Secondary",
+                                selected = styleStates[2].value,
+                                onSelectedChange = {
+                                    styleStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 2
+                                    }
+                                }
+                            )
+                            RadioButton(
+                                text = "Tertiary",
+                                selected = styleStates[3].value,
+                                onSelectedChange = {
+                                    styleStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 3
+                                    }
+                                }
+                            )
+                        }
                     }
+                )
+                if (sizeStates[0].value) {
+                    FormItem(
+                        modifier = Modifier.padding(top = PersianTheme.spacing.size12),
+                        subhead = { Subhead(text = "Settings") },
+                        content = {
+                            Checkboxes {
+                                Checkbox(
+                                    text = "Expanded",
+                                    checked = expandable,
+                                    onCheckedChange = onExpandableChange
+                                )
+                            }
+                        }
+                    )
                 }
             }
         }

@@ -1,5 +1,6 @@
 package ru.rabbit.persian.appShowcase.componets
 
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -8,12 +9,11 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.text.Text
 
 @Composable
 fun SampleRow(
@@ -24,20 +24,20 @@ fun SampleRow(
 ) {
     Column(
         modifier = Modifier
+            .animateContentSize()
             .fillMaxWidth()
             .padding(
-                top = if (firstItem) MaterialTheme.spacing.medium else MaterialTheme.spacing.small,
-                bottom = if (lastItem) MaterialTheme.spacing.medium else MaterialTheme.spacing.small,
-                start = MaterialTheme.spacing.medium,
-                end = MaterialTheme.spacing.medium
-            ),
+                top = if (firstItem) PersianTheme.spacing.size12 else PersianTheme.spacing.size8,
+                bottom = if (lastItem) PersianTheme.spacing.size12 else PersianTheme.spacing.size8,
+            )
+            .padding(horizontal = PersianTheme.spacing.size16)
     ) {
         Text(
             text = text,
-            style = MaterialTheme.typography.titleMedium,
-            color = MaterialTheme.colorScheme.onSurface
+            style = PersianTheme.typography.labelLarge,
+            color = PersianTheme.colorScheme.onSurfaceVariant
         )
-        Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraSmall))
+        Spacer(modifier = Modifier.height(PersianTheme.spacing.size4))
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceAround,

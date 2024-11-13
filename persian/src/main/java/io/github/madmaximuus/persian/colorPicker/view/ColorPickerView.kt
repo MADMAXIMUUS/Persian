@@ -1,156 +1,132 @@
 package io.github.madmaximuus.persian.colorPicker.view
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.colorPicker.view.inputs.HexInput
-import io.github.madmaximuus.persian.colorPicker.view.inputs.HsvInput
-import io.github.madmaximuus.persian.colorPicker.view.inputs.RgbInput
-import io.github.madmaximuus.persian.colorPicker.view.panels.AlphaBar
-import io.github.madmaximuus.persian.colorPicker.view.panels.HueBar
-import io.github.madmaximuus.persian.colorPicker.view.saturation.SatValPanel
+import androidx.compose.ui.platform.LocalContext
+import androidx.window.core.layout.WindowHeightSizeClass
+import io.github.madmaximuus.persian.colorPicker.view.root.ColorPickersView
+import io.github.madmaximuus.persian.colorPicker.view.root.HorizontalColorView
+import io.github.madmaximuus.persian.colorPicker.view.root.VerticalColorView
+import io.github.madmaximuus.persian.colorPicker.view.toolsPanel.ToolsPanelView
 import io.github.madmaximuus.persian.colorPicker.view.util.ColorPickerDisplayMode
 import io.github.madmaximuus.persian.colorPicker.view.util.ColorPickerState
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.colorPicker.view.util.ColorPreferences
+import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.segmentedButton.EndSegment
+import io.github.madmaximuus.persian.segmentedButton.MiddleSegment
+import io.github.madmaximuus.persian.segmentedButton.SingleChoiceSegmentedButtonRow
+import io.github.madmaximuus.persian.segmentedButton.StartSegment
+import kotlinx.coroutines.launch
 
+/**
+ * A composable function that represents the main view of a color picker.
+ *
+ * This function displays the color picker interface, including a segmented button row for selecting the display mode,
+ * and either a horizontal or vertical layout for the color picker and tools panel, depending on the window height size class.
+ * The color picker state and colors are managed by the provided [state] and [colors] parameters.
+ *
+ * @param state The state of the color picker, which contains information about the selected color, display mode, and other configurations.
+ * @param colors The colors used for the view, which includes various UI elements such as the background, text, and borders.
+ */
 @Composable
 internal fun ColorPickerView(
     state: ColorPickerState,
     colors: ColorPickerViewColors
 ) {
+    val windowHeightSizeClass = currentWindowAdaptiveInfo().windowSizeClass.windowHeightSizeClass
+    val context = LocalContext.current
+    val colorsPreferences = remember { ColorPreferences(context) }
+    val scope = rememberCoroutineScope()
+    LaunchedEffect(Unit) {
+        scope.launch {
+            val newList = colorsPreferences.loadColors()
+            state.savedColors = newList.ifEmpty {
+                listOf(
+                    Color.Red,
+                    Color.Cyan,
+                    Color.Yellow,
+                    Color.Blue,
+                    Color.Magenta,
+                    Color.Green,
+                )
+            }.toMutableList().apply {
+                add(Color.Unspecified)
+            }
+        }
+    }
     Column(
         modifier = Modifier
-            .padding(MaterialTheme.spacing.medium)
+            .padding(PersianTheme.spacing.size12)
             .fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.medium)
     ) {
-        SatValPanel(
-            hsvColor = state.color,
-            setSatVal = state::updateSatVal,
-            colors = colors
-        )
-        Column(
-            verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.extraSmall)
+        SingleChoiceSegmentedButtonRow(
+            modifier = Modifier.fillMaxWidth(),
+            colors = colors.segmentedButton
         ) {
-            HueBar(
-                value = state.color.first,
-                setColor = state::updateColor,
-                colors = colors
+            StartSegment(
+                selected = state.mode == ColorPickerDisplayMode.GRID,
+                label = "Grid",
+                onClick = state::moveToGrid
             )
-            AlphaBar(
-                color = state.color,
-                alpha = state.alpha,
-                setAlpha = state::updateAlpha,
-                colors = colors
+            MiddleSegment(
+                selected = state.mode == ColorPickerDisplayMode.SPECTRUM,
+                label = "Spectrum",
+                onClick = state::moveToSpectrum
+            )
+            EndSegment(
+                selected = state.mode == ColorPickerDisplayMode.SLIDERS,
+                label = "Sliders",
+                onClick = state::moveToSliders
             )
         }
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.extraSmall)
-        ) {
-            when (state.mode) {
-                ColorPickerDisplayMode.HEX -> {
-                    HexInput(
-                        modifier = Modifier.weight(0.7f),
-                        value = state.getHexColor()
+        Spacer(modifier = Modifier.height(PersianTheme.spacing.size8))
+        if (windowHeightSizeClass == WindowHeightSizeClass.COMPACT) {
+            HorizontalColorView(
+                leftColumn = {
+                    ColorPickersView(
+                        modifier = Modifier.weight(1f),
+                        state = state,
+                        colors = colors
                     )
-                    Spacer(modifier = Modifier.weight(0.5f))
-                }
-
-                ColorPickerDisplayMode.RGB -> {
-                    RgbInput(
-                        modifier = Modifier.weight(3f),
-                        value = state.getRGBColor()
-                    )
-                    Spacer(modifier = Modifier.weight(0.5f))
-                }
-
-                ColorPickerDisplayMode.HSV -> {
-                    HsvInput(
-                        modifier = Modifier.weight(3f),
-                        value = state.color
+                },
+                rightColumn = {
+                    ToolsPanelView(
+                        modifier = Modifier.weight(1.2f),
+                        state = state,
+                        colors = colors,
+                        colorsPreferences = colorsPreferences
                     )
                 }
-            }
-            Column {
-                Text(
-                    modifier = Modifier
-                        .clip(MaterialTheme.shapes.extraSmall)
-                        .clickable {
-                            state.setRGB()
-                        }
-                        .padding(
-                            vertical = MaterialTheme.spacing.extraSmall,
-                            horizontal = MaterialTheme.spacing.small
-                        ),
-                    text = "RGB",
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = if (state.mode == ColorPickerDisplayMode.RGB)
-                        colors.colorModeTitleSelectedColor
-                    else colors.colorModeTitleColor
-                )
-                Text(
-                    modifier = Modifier
-                        .clip(MaterialTheme.shapes.extraSmall)
-                        .clickable {
-                            state.setHEX()
-                        }
-                        .padding(
-                            vertical = MaterialTheme.spacing.extraSmall,
-                            horizontal = MaterialTheme.spacing.small
-                        ),
-                    text = "HEX",
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = if (state.mode == ColorPickerDisplayMode.HEX)
-                        colors.colorModeTitleSelectedColor
-                    else colors.colorModeTitleColor
-                )
-                Text(
-                    modifier = Modifier
-                        .clip(MaterialTheme.shapes.extraSmall)
-                        .clickable {
-                            state.setHSV()
-                        }
-                        .padding(
-                            vertical = MaterialTheme.spacing.extraSmall,
-                            horizontal = MaterialTheme.spacing.small
-                        ),
-                    text = "HSV",
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = if (state.mode == ColorPickerDisplayMode.HSV)
-                        colors.colorModeTitleSelectedColor
-                    else colors.colorModeTitleColor
-                )
-            }
-            Box(
-                modifier = Modifier
-                    .size(48.dp)
-                    .background(
-                        Color.hsv(
-                            hue = state.color.first,
-                            saturation = state.color.second,
-                            value = state.color.third,
-                            alpha = state.alpha
-                        ),
-                        MaterialTheme.shapes.extraSmall
+            )
+        } else {
+            VerticalColorView(
+                topRow = {
+                    ColorPickersView(
+                        modifier = Modifier,
+                        state = state,
+                        colors = colors
                     )
+                },
+                bottomRow = {
+                    ToolsPanelView(
+                        modifier = Modifier,
+                        state = state,
+                        colors = colors,
+                        colorsPreferences = colorsPreferences
+                    )
+                }
             )
         }
     }

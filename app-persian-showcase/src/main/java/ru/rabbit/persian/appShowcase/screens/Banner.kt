@@ -1,35 +1,44 @@
 package ru.rabbit.persian.appShowcase.screens
 
+import android.net.Uri
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.rememberTopAppBarState
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.input.rememberTextFieldState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.banners.PersianBanner
-import io.github.madmaximuus.persian.banners.PersianBannerLeft
-import io.github.madmaximuus.persian.banners.PersianBannerRight
-import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
-import io.github.madmaximuus.persian.forms.PersianForm
-import io.github.madmaximuus.persian.forms.PersianFormContent
-import io.github.madmaximuus.persian.forms.PersianFormSubheadConfig
-import io.github.madmaximuus.persian.foundation.spacing
-import io.github.madmaximuus.persian.inputs.PersianInput
-import io.github.madmaximuus.persian.select.SelectActionItem
-import io.github.madmaximuus.persian.textAreas.PersianTextArea
-import ru.rabbit.persian.appShowcase.R
+import io.github.madmaximuus.persian.banner.Avatar
+import io.github.madmaximuus.persian.banner.Banner
+import io.github.madmaximuus.persian.banner.Close
+import io.github.madmaximuus.persian.banner.Icon
+import io.github.madmaximuus.persian.banner.Image
+import io.github.madmaximuus.persian.banner.Open
+import io.github.madmaximuus.persian.banner.Primary
+import io.github.madmaximuus.persian.banner.Secondary
+import io.github.madmaximuus.persian.banner.Tertiary
+import io.github.madmaximuus.persian.forms.Checkbox
+import io.github.madmaximuus.persian.forms.Checkboxes
+import io.github.madmaximuus.persian.forms.FormItem
+import io.github.madmaximuus.persian.forms.Input
+import io.github.madmaximuus.persian.forms.RadioButton
+import io.github.madmaximuus.persian.forms.RadioButtons
+import io.github.madmaximuus.persian.forms.Subhead
+import io.github.madmaximuus.persian.forms.TextArea
+import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
+import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
+import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
+import io.github.madmaximuus.persianSymbols.globe.Globe
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
@@ -39,7 +48,6 @@ object Banner : Screen {
 
     override val navigation: String = "banner"
 
-    @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     override fun Content(navController: NavController?) {
         val topAppBarScrollBehavior =
@@ -49,135 +57,327 @@ object Banner : Screen {
             onBackClick = { navController?.navigateUp() },
             topAppBarScrollBehavior = topAppBarScrollBehavior
         ) {
-            val (titleValue, onTitleValueChange) = remember { mutableStateOf("Some Title") }
-            val (descriptionValue, onDescriptionValueChange) = remember { mutableStateOf("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed laoreet imperdiet consectetur. Nam vitae massa a metus dignissim malesuada. Duis.") }
             var title by remember { mutableStateOf(true) }
+            val titleState = rememberTextFieldState("Title")
+
             var description by remember { mutableStateOf(true) }
+            val descriptionState =
+                rememberTextFieldState("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed laoreet imperdiet consectetur. Nam vitae massa a metus dignissim malesuada. Duis.")
 
-            val leftImage = PersianBannerLeft.Image("https://loremflickr.com/320/240")
-            val leftAvatar = PersianBannerLeft.Avatar("https://loremflickr.com/320/240")
-            val leftIcon = PersianBannerLeft.Icon(painterResource(id = R.drawable.ic_person_filled))
-            var left by remember { mutableStateOf<PersianBannerLeft?>(null) }
-            val leftOptions = listOf(
-                SelectActionItem.WithoutIcon("None"),
-                SelectActionItem.WithoutIcon("Image"),
-                SelectActionItem.WithoutIcon("Icon"),
-                SelectActionItem.WithoutIcon("Avatar")
-            )
-            var selectedLeft by remember { mutableStateOf("None") }
+            val (left, onLeftChange) = remember { mutableStateOf(false) }
+            var selectedLeft by remember { mutableStateOf("Icon") }
+            val leftStates = remember {
+                listOf(
+                    mutableStateOf(true),
+                    mutableStateOf(false),
+                    mutableStateOf(false)
+                )
+            }
 
-            val rightOpen = PersianBannerRight.Open(onClick = {})
-            val rightClose = PersianBannerRight.Close(onClick = {})
-            var right by remember { mutableStateOf<PersianBannerRight?>(null) }
-            val rightOptions = listOf(
-                SelectActionItem.WithoutIcon("None"),
-                SelectActionItem.WithoutIcon("Close"),
-                SelectActionItem.WithoutIcon("Open")
-            )
-            var selectedRight by remember { mutableStateOf("None") }
+            val (right, onRightChange) = remember { mutableStateOf(false) }
+            var selectedRight by remember { mutableStateOf("Close") }
+            val rightStates = remember {
+                listOf(
+                    mutableStateOf(true),
+                    mutableStateOf(false),
+                )
+            }
+
+            val (button, onButtonChange) = remember { mutableStateOf(false) }
+            var buttonStyle by remember { mutableStateOf("Primary") }
+            val buttonStyleStates = remember {
+                listOf(
+                    mutableStateOf(true),
+                    mutableStateOf(false),
+                    mutableStateOf(false)
+                )
+            }
+
+            val (clickable, onClickableChange) = remember { mutableStateOf(false) }
+            val onClick = {}
             Column(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(it)
             ) {
                 SampleRow(
-                    text = "Sample Banner",
+                    text = "Sample",
                     firstItem = true
                 ) {
-                    PersianBanner(
-                        title = if (title) titleValue else null,
-                        description = if (description) descriptionValue else null,
-                        left = left,
-                        right = right
+                    Banner(
+                        title = if (title) titleState.text.toString() else null,
+                        message = if (description) descriptionState.text.toString() else null,
+                        onClick = if (clickable) onClick else null,
+                        left = if (left) when (selectedLeft) {
+                            "Image" -> {
+                                {
+                                    Image(
+                                        image = Uri.parse("https://loremflickr.com/320/240")
+                                    )
+                                }
+                            }
+
+                            "Avatar" -> {
+                                {
+                                    Avatar(
+                                        image = Uri.parse("https://loremflickr.com/320/240")
+                                    )
+                                }
+                            }
+
+                            "Icon" -> {
+                                {
+                                    Icon(
+                                        icon = rememberVectorPainter(image = PersianSymbols.Filled.Globe),
+                                    )
+                                }
+                            }
+
+                            else -> null
+                        } else null,
+                        right = if (right) when (selectedRight) {
+                            "Open" -> {
+                                {
+                                    Open()
+                                }
+                            }
+
+                            "Close" -> {
+                                {
+                                    Close {}
+                                }
+                            }
+
+                            else -> null
+                        } else null,
+                        button = if (button) {
+                            {
+                                when (buttonStyle) {
+                                    "Primary" -> Primary(
+                                        text = "Button",
+                                        onClick = {}
+                                    )
+
+                                    "Secondary" -> Secondary(
+                                        text = "Button",
+                                        onClick = {}
+                                    )
+
+                                    "Tertiary" -> Tertiary(
+                                        text = "Button",
+                                        onClick = {}
+                                    )
+
+                                    else -> Tertiary(
+                                        text = "Button",
+                                        onClick = {}
+                                    )
+                                }
+                            }
+                        } else null,
                     )
                 }
                 Column(
                     modifier = Modifier
-                        .padding(
-                            horizontal = MaterialTheme.spacing.large,
-                            vertical = MaterialTheme.spacing.large
-                        )
+                        .fillMaxWidth()
+                        .verticalScroll(rememberScrollState())
+                        .navigationBarsPadding()
+                        .padding(top = PersianTheme.spacing.size12)
                 ) {
-                    PersianCheckbox(
-                        modifier = Modifier.fillMaxWidth(),
-                        text = "Title",
-                        checked = title,
-                        onCheckedChange = { isChecked ->
-                            title = isChecked
-                            if (!description && !isChecked) description = true
-                        }
-                    )
                     if (title) {
-                        PersianInput(
-                            modifier = Modifier.padding(horizontal = MaterialTheme.spacing.small),
-                            value = titleValue,
-                            onValueChange = onTitleValueChange
+                        FormItem(
+                            subhead = { Subhead(text = "Title") },
+                            content = { Input(state = titleState) }
                         )
-                        Spacer(modifier = Modifier.height(MaterialTheme.spacing.small))
                     }
-                    PersianCheckbox(
-                        modifier = Modifier.fillMaxWidth(),
-                        text = "Description",
-                        checked = description,
-                        onCheckedChange = { isChecked ->
-                            description = isChecked
-                            if (!title && !isChecked) title = true
-                        }
-                    )
                     if (description) {
-                        PersianTextArea(
-                            modifier = Modifier.padding(horizontal = MaterialTheme.spacing.small),
-                            value = descriptionValue,
-                            onValueChange = onDescriptionValueChange
+                        FormItem(
+                            modifier = Modifier.padding(top = PersianTheme.spacing.size12),
+                            subhead = { Subhead(text = "Message") },
+                            content = { TextArea(state = descriptionState) }
                         )
-                        Spacer(modifier = Modifier.height(MaterialTheme.spacing.small))
                     }
-                    /*PersianForm(
-                        subhead = PersianFormSubheadConfig(
-                            text = "Description",
-                            textStyle = MaterialTheme.typography.titleMedium
-                        ),
-                        content = PersianFormContent.TextArea(
-                            value = descriptionValue,
-                            onValueChange = onDescriptionValueChange
-                        )
-                    )*/
-                    PersianForm(
-                        subhead = PersianFormSubheadConfig(
-                            text = "Left",
-                            textStyle = MaterialTheme.typography.titleMedium
-                        ),
-                        content = PersianFormContent.Select(
-                            selected = selectedLeft,
-                            values = leftOptions,
-                            onSelectedChange = { option, index ->
-                                selectedLeft = option
-                                when (index) {
-                                    0 -> left = null
-                                    1 -> left = leftImage
-                                    2 -> left = leftIcon
-                                    3 -> left = leftAvatar
+                    if (left) {
+                        FormItem(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(top = PersianTheme.spacing.size12),
+                            subhead = {
+                                Subhead(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    text = "Left content"
+                                )
+                            },
+                            content = {
+                                RadioButtons {
+                                    RadioButton(
+                                        text = "Icon",
+                                        selected = leftStates[0].value,
+                                        onSelectedChange = {
+                                            leftStates.forEachIndexed { index, mutableState ->
+                                                mutableState.value = index == 0
+                                            }
+                                            selectedLeft = "Icon"
+                                        }
+                                    )
+                                    RadioButton(
+                                        text = "Avatar",
+                                        selected = leftStates[1].value,
+                                        onSelectedChange = {
+                                            leftStates.forEachIndexed { index, mutableState ->
+                                                mutableState.value = index == 1
+                                            }
+                                            selectedLeft = "Avatar"
+                                        }
+                                    )
+                                    RadioButton(
+                                        text = "Image",
+                                        selected = leftStates[2].value,
+                                        onSelectedChange = {
+                                            leftStates.forEachIndexed { index, mutableState ->
+                                                mutableState.value = index == 2
+                                            }
+                                            selectedLeft = "Image"
+                                        }
+                                    )
                                 }
                             }
                         )
-                    )
-                    PersianForm(
-                        subhead = PersianFormSubheadConfig(
-                            text = "Right",
-                            textStyle = MaterialTheme.typography.titleMedium
-                        ),
-                        content = PersianFormContent.Select(
-                            selected = selectedRight,
-                            values = rightOptions,
-                            onSelectedChange = { option, index ->
-                                selectedRight = option
-                                when (index) {
-                                    0 -> right = null
-                                    1 -> right = rightClose
-                                    2 -> right = rightOpen
+                    }
+                    if (right) {
+                        FormItem(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(top = PersianTheme.spacing.size12),
+                            subhead = {
+                                Subhead(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    text = "Right content"
+                                )
+                            },
+                            content = {
+                                RadioButtons {
+                                    RadioButton(
+                                        text = "Close",
+                                        selected = rightStates[0].value,
+                                        onSelectedChange = {
+                                            rightStates.forEachIndexed { index, mutableState ->
+                                                mutableState.value = index == 0
+                                            }
+                                            selectedRight = "Close"
+                                        }
+                                    )
+                                    RadioButton(
+                                        text = "Open",
+                                        selected = rightStates[1].value,
+                                        onSelectedChange = {
+                                            rightStates.forEachIndexed { index, mutableState ->
+                                                mutableState.value = index == 1
+                                            }
+                                            selectedRight = "Open"
+                                        }
+                                    )
                                 }
                             }
                         )
+                    }
+                    if (button) {
+                        FormItem(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(top = PersianTheme.spacing.size12),
+                            subhead = {
+                                Subhead(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    text = "Button"
+                                )
+                            },
+                            content = {
+                                RadioButtons {
+                                    RadioButton(
+                                        text = "Primary",
+                                        selected = buttonStyleStates[0].value,
+                                        onSelectedChange = {
+                                            buttonStyleStates.forEachIndexed { index, mutableState ->
+                                                mutableState.value = index == 0
+                                            }
+                                            buttonStyle = "Primary"
+                                        }
+                                    )
+                                    RadioButton(
+                                        text = "Secondary",
+                                        selected = buttonStyleStates[1].value,
+                                        onSelectedChange = {
+                                            buttonStyleStates.forEachIndexed { index, mutableState ->
+                                                mutableState.value = index == 1
+                                            }
+                                            buttonStyle = "Secondary"
+                                        }
+                                    )
+                                    RadioButton(
+                                        text = "Tertiary",
+                                        selected = buttonStyleStates[2].value,
+                                        onSelectedChange = {
+                                            buttonStyleStates.forEachIndexed { index, mutableState ->
+                                                mutableState.value = index == 2
+                                            }
+                                            buttonStyle = "Tertiary"
+                                        }
+                                    )
+                                }
+                            }
+                        )
+                    }
+                    FormItem(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = PersianTheme.spacing.size12),
+                        subhead = {
+                            Subhead(
+                                modifier = Modifier.fillMaxWidth(),
+                                text = "Settings"
+                            )
+                        },
+                        content = {
+                            Checkboxes {
+                                Checkbox(
+                                    text = "Title",
+                                    checked = title,
+                                    onCheckedChange = { isChecked ->
+                                        title = isChecked
+                                        if (!description && !isChecked) description = true
+                                    }
+                                )
+                                Checkbox(
+                                    text = "Message",
+                                    checked = description,
+                                    onCheckedChange = { isChecked ->
+                                        description = isChecked
+                                        if (!title && !isChecked) title = true
+                                    }
+                                )
+                                Checkbox(
+                                    text = "Left",
+                                    checked = left,
+                                    onCheckedChange = onLeftChange
+                                )
+                                Checkbox(
+                                    text = "Right",
+                                    checked = right,
+                                    onCheckedChange = onRightChange
+                                )
+                                Checkbox(
+                                    text = "Button",
+                                    checked = button,
+                                    onCheckedChange = onButtonChange
+                                )
+                                Checkbox(
+                                    text = "Clickable",
+                                    checked = clickable,
+                                    onCheckedChange = onClickableChange
+                                )
+                            }
+                        }
                     )
                 }
             }

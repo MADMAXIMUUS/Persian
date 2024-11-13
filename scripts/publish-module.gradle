@@ -25,13 +25,17 @@ tasks.register('javadocJar', Jar) {
     from dokkaJavadoc.outputDirectory
 }
 
-android{
+artifacts {
+    archives androidSourcesJar
+}
+
+/*android{
     publishing {
         singleVariant("release") {
 
         }
     }
-}
+}*/
 
 group = PUBLISH_GROUP_ID
 version = PUBLISH_VERSION
@@ -40,6 +44,7 @@ afterEvaluate {
     publishing {
         publications {
             release(MavenPublication) {
+                tasks.named("generateMetadataFileForReleasePublication").configure { dependsOn("androidSourcesJar") }
                 groupId PUBLISH_GROUP_ID
                 artifactId PUBLISH_ARTIFACT_ID
                 version PUBLISH_VERSION
@@ -49,12 +54,11 @@ afterEvaluate {
                     from components.java
                 }
 
-                artifact androidSourcesJar
                 artifact javadocJar
 
                 pom {
                     name = PUBLISH_ARTIFACT_ID
-                    description = 'Persian design system'
+                    description = 'Persian design system UiKit'
                     url = 'https://github.com/madmaximuus/persian'
                     licenses {
                         license {

@@ -1,14 +1,10 @@
 package ru.rabbit.persian.appShowcase.screens
 
 import android.icu.util.Calendar
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -17,29 +13,41 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.buttons.PersianPrimaryButton
-import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
-import io.github.madmaximuus.persian.datePicker.PersianDatePicker
+import io.github.madmaximuus.persian.button.ButtonDefaults
+import io.github.madmaximuus.persian.button.PrimaryButton
+import io.github.madmaximuus.persian.datePicker.DatePicker
 import io.github.madmaximuus.persian.datePicker.view.util.DatePickerConfig
 import io.github.madmaximuus.persian.datePicker.view.util.DatePickerSelection
-import io.github.madmaximuus.persian.foundation.spacing
+import io.github.madmaximuus.persian.forms.Checkbox
+import io.github.madmaximuus.persian.forms.Checkboxes
+import io.github.madmaximuus.persian.forms.FormItem
+import io.github.madmaximuus.persian.forms.RadioButton
+import io.github.madmaximuus.persian.forms.RadioButtons
+import io.github.madmaximuus.persian.forms.Subhead
+import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.text.Text
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 import java.text.SimpleDateFormat
 import java.util.Locale
 
 object DatePicker : Screen {
 
-    override val name: String = "Date Picker"
+    override val name: String = "Date picker"
 
     override val navigation: String = "darePicker"
 
-    @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     override fun Content(navController: NavController?) {
-        var showDialogSelectDate by remember { mutableStateOf(false) }
-        var showDialogSelectDates by remember { mutableStateOf(false) }
-        var showDialogSelectPeriod by remember { mutableStateOf(false) }
+        var showDialog by remember { mutableStateOf(false) }
         val (selectable, selectionChange) = remember { mutableStateOf(false) }
+
+        val selectionTypeState = remember {
+            listOf(
+                mutableStateOf(true),
+                mutableStateOf(false),
+                mutableStateOf(false)
+            )
+        }
 
         var selected by remember {
             mutableStateOf(
@@ -81,100 +89,137 @@ object DatePicker : Screen {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(it)
-                    .padding(horizontal = MaterialTheme.spacing.extraLarge),
+                    .padding(it),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.medium)
             ) {
-                PersianPrimaryButton(
-                    text = "Date Picker Selection Date",
-                    onClick = {
-                        showDialogSelectDate = true
-                    }
-                )
-                PersianPrimaryButton(
-                    text = "Date Picker Selection Dates",
-                    onClick = {
-                        showDialogSelectDates = true
-                    }
-                )
-                PersianPrimaryButton(
-                    text = "Date Picker Selection Period",
-                    onClick = {
-                        showDialogSelectPeriod = true
-                    }
-                )
                 Text(
                     modifier = Modifier
-                        .fillMaxWidth(),
+                        .fillMaxWidth()
+                        .padding(horizontal = PersianTheme.spacing.size16)
+                        .padding(top = PersianTheme.spacing.size4),
                     text = "Date: ${dateFormat.format(selected.timeInMillis)}"
                 )
                 Text(
                     modifier = Modifier
-                        .fillMaxWidth(),
+                        .fillMaxWidth()
+                        .padding(horizontal = PersianTheme.spacing.size16)
+                        .padding(top = PersianTheme.spacing.size4),
                     text = "Dates: $dates"
                 )
                 Text(
                     modifier = Modifier
-                        .fillMaxWidth(),
+                        .fillMaxWidth()
+                        .padding(horizontal = PersianTheme.spacing.size16)
+                        .padding(top = PersianTheme.spacing.size4),
                     text = "Period: ${dateFormat.format(startDate.timeInMillis)} - " +
                             dateFormat.format(endDate.timeInMillis)
                 )
-                PersianCheckbox(
+                FormItem(
                     modifier = Modifier
-                        .fillMaxWidth(),
-                    text = "Selectable Month And Year",
-                    checked = selectable,
-                    onCheckedChange = selectionChange
+                        .fillMaxWidth()
+                        .padding(top = PersianTheme.spacing.size12),
+                    subhead = {
+                        Subhead(text = "Selection type")
+                    },
+                    content = {
+                        RadioButtons {
+                            RadioButton(
+                                text = "Date selection",
+                                selected = selectionTypeState[0].value,
+                                onSelectedChange = {
+                                    selectionTypeState.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 0
+                                    }
+                                }
+                            )
+                            RadioButton(
+                                text = "Dates selection",
+                                selected = selectionTypeState[1].value,
+                                onSelectedChange = {
+                                    selectionTypeState.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 1
+                                    }
+                                }
+                            )
+                            RadioButton(
+                                text = "Range selection",
+                                selected = selectionTypeState[2].value,
+                                onSelectedChange = {
+                                    selectionTypeState.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 2
+                                    }
+                                }
+                            )
+                        }
+                    }
+                )
+                FormItem(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = PersianTheme.spacing.size12),
+                    subhead = {
+                        Subhead(text = "Settings")
+                    },
+                    content = {
+                        Checkboxes {
+                            Checkbox(
+                                text = "Selectable Month And Year",
+                                checked = selectable,
+                                onCheckedChange = selectionChange
+                            )
+                        }
+                    }
+                )
+                PrimaryButton(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = PersianTheme.spacing.size16)
+                        .padding(top = PersianTheme.spacing.size16),
+                    text = "Show date picker",
+                    sizes = ButtonDefaults.largeSizes(),
+                    onClick = {
+                        showDialog = true
+                    }
                 )
             }
         }
-        if (showDialogSelectDate) {
-            PersianDatePicker(
+        if (showDialog) {
+            DatePicker(
                 config = DatePickerConfig(
                     selectable = selectable
                 ),
-                selection = DatePickerSelection.Date(
-                    selectedDate = selected,
-                    onDateSelected = {
-                        selected = it
-                    }
-                ),
-                onDismissRequest = {
-                    showDialogSelectDate = false
+                selection = when {
+                    selectionTypeState[0].value -> DatePickerSelection.Date(
+                        selectedDate = selected,
+                        onDateSelected = {
+                            selected = it
+                        }
+                    )
+
+                    selectionTypeState[1].value -> DatePickerSelection.Dates(
+                        selectedDates = selectedDates,
+                        onDatesSelected = {
+                            selectedDates = it
+                        }
+                    )
+
+                    selectionTypeState[2].value -> DatePickerSelection.Period(
+                        selectedRange = startDate..endDate,
+                        onRangeSelected = { first: Calendar, second: Calendar ->
+                            startDate = first
+                            endDate = second
+                        }
+                    )
+
+                    else -> DatePickerSelection.Date(
+                        selectedDate = selected,
+                        onDateSelected = {
+                            selected = it
+                        }
+                    )
                 },
-            )
-        }
-        if (showDialogSelectDates) {
-            PersianDatePicker(
-                config = DatePickerConfig(
-                    selectable = selectable
-                ),
-                selection = DatePickerSelection.Dates(
-                    selectedDates = selectedDates,
-                    onDatesSelected = {
-                        selectedDates = it
-                    }
-                ),
                 onDismissRequest = {
-                    showDialogSelectDates = false
-                },
-            )
-        }
-        if (showDialogSelectPeriod) {
-            PersianDatePicker(
-                config = DatePickerConfig(
-                    selectable = selectable
-                ),
-                selection = DatePickerSelection.Period(
-                    selectedRange = startDate..endDate,
-                    onRangeSelected = { first: Calendar, second: Calendar ->
-                        startDate = first
-                        endDate = second
-                    }
-                ),
-                onDismissRequest = {
-                    showDialogSelectPeriod = false
+                    showDialog = false
                 },
             )
         }

@@ -1,333 +1,371 @@
 package ru.rabbit.persian.appShowcase.screens
 
+import android.net.Uri
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.selection.selectableGroup
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.foundation.icons
-import io.github.madmaximuus.persian.foundation.spacing
-import io.github.madmaximuus.persian.radioButtons.PersianRadioButton
-import io.github.madmaximuus.persian.topAppBar.ActionItem
-import io.github.madmaximuus.persian.topAppBar.PersianTopAppBar
-import io.github.madmaximuus.persian.topAppBar.PersianTopAppBarLeft
-import io.github.madmaximuus.persian.topAppBar.PersianTopAppBarRight
+import io.github.madmaximuus.persian.forms.Checkbox
+import io.github.madmaximuus.persian.forms.Checkboxes
+import io.github.madmaximuus.persian.forms.FormItem
+import io.github.madmaximuus.persian.forms.RadioButton
+import io.github.madmaximuus.persian.forms.RadioButtons
+import io.github.madmaximuus.persian.forms.Subhead
+import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.menu.DropdownMenuItem
+import io.github.madmaximuus.persian.scafold.Scaffold
+import io.github.madmaximuus.persian.topAppBar.Action
+import io.github.madmaximuus.persian.topAppBar.Avatar
+import io.github.madmaximuus.persian.topAppBar.IconButton
+import io.github.madmaximuus.persian.topAppBar.More
+import io.github.madmaximuus.persian.topAppBar.TopAppBar
+import io.github.madmaximuus.persianSymbols.arrow.left.ArrowLeft
+import io.github.madmaximuus.persianSymbols.bell.Bell
+import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
+import io.github.madmaximuus.persianSymbols.magnifyingGlass.MagnifyingGlass
+import io.github.madmaximuus.persianSymbols.nfc.Nfc
+import io.github.madmaximuus.persianSymbols.xmark.XMark
 
 object TopAppBar : Screen {
-    override val name: String = "Top App Bar"
+    override val name: String = "Top app bar"
+
     override val navigation: String = "topAppBar"
 
-    @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     override fun Content(navController: NavController?) {
-        var left by remember {
-            mutableStateOf<PersianTopAppBarLeft?>(
-                PersianTopAppBarLeft.Navigation(
-                    onClick = { navController?.navigateUp() }
-                )
+        val (left, onLeftChange) = remember { mutableStateOf(false) }
+        val leftStates = remember {
+            listOf(
+                mutableStateOf(true),
+                mutableStateOf(false),
+                mutableStateOf(false),
             )
         }
-        var right by remember { mutableStateOf<PersianTopAppBarRight?>(null) }
 
+        val (right, onRightChange) = remember { mutableStateOf(false) }
         val rightStates = remember {
             listOf(
                 mutableStateOf(true),
                 mutableStateOf(false),
                 mutableStateOf(false),
                 mutableStateOf(false),
-                mutableStateOf(false),
             )
         }
-        val expanded = remember { mutableStateOf(false) }
+        var expanded by remember { mutableStateOf(false) }
+
         Scaffold(
             topBar = {
-                PersianTopAppBar(
-                    left = left,
+                TopAppBar(
+                    left = if (left) {
+                        {
+                            when {
+                                leftStates[0].value -> {
+                                    IconButton(
+                                        icon = rememberVectorPainter(PersianSymbols.Default.ArrowLeft),
+                                        onClick = {
+                                            navController?.navigateUp()
+                                        }
+                                    )
+                                }
+
+                                leftStates[1].value -> {
+                                    IconButton(
+                                        icon = rememberVectorPainter(PersianSymbols.Default.XMark),
+                                        onClick = {
+                                            navController?.navigateUp()
+                                        }
+                                    )
+                                }
+
+                                leftStates[2].value -> {
+                                    Avatar(
+                                        avatarUrl = Uri.parse("https://loremflickr.com/320/240"),
+                                        onClick = { navController?.navigateUp() }
+                                    )
+                                }
+                            }
+                        }
+                    } else null,
                     title = name,
-                    right = right
+                    right = if (right) {
+                        {
+                            when {
+                                rightStates[0].value -> {
+                                    Action(
+                                        text = "Action",
+                                        onClick = {}
+                                    )
+                                }
+
+                                rightStates[1].value -> {
+                                    IconButton(
+                                        icon = rememberVectorPainter(PersianSymbols.Default.Bell),
+                                        onClick = {}
+                                    )
+                                }
+
+                                rightStates[2].value -> {
+                                    IconButton(
+                                        icon = rememberVectorPainter(PersianSymbols.Default.Bell),
+                                        onClick = {}
+                                    )
+                                    IconButton(
+                                        icon = rememberVectorPainter(PersianSymbols.Default.MagnifyingGlass),
+                                        onClick = {}
+                                    )
+                                    IconButton(
+                                        icon = rememberVectorPainter(PersianSymbols.Default.Nfc),
+                                        onClick = {}
+                                    )
+                                }
+
+                                rightStates[3].value -> {
+                                    IconButton(
+                                        icon = rememberVectorPainter(PersianSymbols.Default.Bell),
+                                        onClick = {}
+                                    )
+                                    IconButton(
+                                        icon = rememberVectorPainter(PersianSymbols.Default.MagnifyingGlass),
+                                        onClick = {}
+                                    )
+                                    More(
+                                        expanded = expanded,
+                                        onDismissRequest = { expanded = false },
+                                        menuItems = {
+                                            DropdownMenuItem(
+                                                text = "Menu Action 1",
+                                                onClick = { expanded = false }
+                                            )
+                                            DropdownMenuItem(
+                                                text = "Menu Action 1",
+                                                onClick = { expanded = false }
+                                            )
+                                            DropdownMenuItem(
+                                                text = "Menu Action 1",
+                                                onClick = { expanded = false }
+                                            )
+                                            DropdownMenuItem(
+                                                text = "Menu Action 1",
+                                                onClick = { expanded = false }
+                                            )
+                                            DropdownMenuItem(
+                                                text = "Menu Action 1",
+                                                onClick = { expanded = false }
+                                            )
+                                        }
+                                    )
+                                }
+                            }
+                        }
+                    } else null
                 )
+                /*if (rightStates[3].value || rightStates[4].value) {
+                    TopAppBar(
+                        left = {
+                            when {
+                                leftStates[0].value -> {
+                                    IconButton(
+                                        icon = rememberVectorPainter(PersianSymbols.Default.ArrowLeft),
+                                        onClick = {
+                                            navController?.navigateUp()
+                                        }
+                                    )
+                                }
+
+                                leftStates[1].value -> {
+                                    IconButton(
+                                        icon = rememberVectorPainter(PersianSymbols.Default.XMark),
+                                        onClick = {
+                                            navController?.navigateUp()
+                                        }
+                                    )
+                                }
+
+                                leftStates[2].value -> {
+                                    Avatar(
+                                        avatarUrl = Uri.parse("https://loremflickr.com/320/240"),
+                                        onClick = { navController?.navigateUp() }
+                                    )
+                                }
+                            }
+                        },
+                        title = name,
+                        right = {
+                            when {
+                                rightStates[3].value -> {
+                                    IconButton(
+                                        icon = rememberVectorPainter(PersianSymbols.Default.Bell),
+                                        onClick = {}
+                                    )
+                                    IconButton(
+                                        icon = rememberVectorPainter(PersianSymbols.Default.MagnifyingGlass),
+                                        onClick = {}
+                                    )
+                                    IconButton(
+                                        icon = rememberVectorPainter(PersianSymbols.Default.Nfc),
+                                        onClick = {}
+                                    )
+                                }
+
+                                rightStates[4].value -> {
+                                    IconButton(
+                                        icon = rememberVectorPainter(PersianSymbols.Default.Bell),
+                                        onClick = {}
+                                    )
+                                    IconButton(
+                                        icon = rememberVectorPainter(PersianSymbols.Default.MagnifyingGlass),
+                                        onClick = {}
+                                    )
+                                    More(
+                                        expanded = expanded,
+                                        onDismissRequest = { expanded = false },
+                                        menuItems = {
+                                            DropdownMenuItem(
+                                                text = "Menu Action 1",
+                                                onClick = { expanded = false }
+                                            )
+                                            DropdownMenuItem(
+                                                text = "Menu Action 1",
+                                                onClick = { expanded = false }
+                                            )
+                                            DropdownMenuItem(
+                                                text = "Menu Action 1",
+                                                onClick = { expanded = false }
+                                            )
+                                            DropdownMenuItem(
+                                                text = "Menu Action 1",
+                                                onClick = { expanded = false }
+                                            )
+                                            DropdownMenuItem(
+                                                text = "Menu Action 1",
+                                                onClick = { expanded = false }
+                                            )
+                                        }
+                                    )
+                                }
+                            }
+                        }
+                    )
+                } else {
+
+                }*/
             }
-        ) {
+        )
+        {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(it)
             ) {
-                val leftStates = remember {
-                    listOf(
-                        mutableStateOf(false),
-                        mutableStateOf(true),
-                        mutableStateOf(false),
-                        mutableStateOf(false),
+                if (left) {
+                    FormItem(
+                        modifier = Modifier.padding(top = PersianTheme.spacing.size8),
+                        subhead = { Subhead(text = "Left") },
+                        content = {
+                            RadioButtons {
+                                RadioButton(
+                                    text = "Navigation",
+                                    selected = leftStates[0].value,
+                                    onSelectedChange = {
+                                        leftStates.forEachIndexed { index, mutableState ->
+                                            mutableState.value = index == 0
+                                        }
+                                    }
+                                )
+                                RadioButton(
+                                    text = "Close",
+                                    selected = leftStates[1].value,
+                                    onSelectedChange = {
+                                        leftStates.forEachIndexed { index, mutableState ->
+                                            mutableState.value = index == 1
+                                        }
+                                    }
+                                )
+                                RadioButton(
+                                    text = "Avatar",
+                                    selected = leftStates[2].value,
+                                    onSelectedChange = {
+                                        leftStates.forEachIndexed { index, mutableState ->
+                                            mutableState.value = index == 2
+                                        }
+                                    }
+                                )
+                            }
+                        }
                     )
                 }
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(
-                            top = MaterialTheme.spacing.small,
-                            bottom = MaterialTheme.spacing.small,
-                            start = MaterialTheme.spacing.medium,
-                            end = MaterialTheme.spacing.medium
-                        ),
-                ) {
-                    Text(
-                        text = "Left",
-                        style = MaterialTheme.typography.titleMedium,
-                        color = MaterialTheme.colorScheme.onSurface
+                if (right) {
+                    FormItem(
+                        modifier = Modifier.padding(top = PersianTheme.spacing.size12),
+                        subhead = { Subhead(text = "Right") },
+                        content = {
+                            RadioButtons {
+                                RadioButton(
+                                    text = "Action",
+                                    selected = rightStates[0].value,
+                                    onSelectedChange = {
+                                        rightStates.forEachIndexed { index, mutableState ->
+                                            mutableState.value = index == 0
+                                        }
+                                    }
+                                )
+                                RadioButton(
+                                    text = "Icon",
+                                    selected = rightStates[1].value,
+                                    onSelectedChange = {
+                                        rightStates.forEachIndexed { index, mutableState ->
+                                            mutableState.value = index == 1
+                                        }
+                                    }
+                                )
+                                RadioButton(
+                                    text = "Icons",
+                                    selected = rightStates[2].value,
+                                    onSelectedChange = {
+                                        rightStates.forEachIndexed { index, mutableState ->
+                                            mutableState.value = index == 2
+                                        }
+                                    }
+                                )
+                                RadioButton(
+                                    text = "Icons with overflow",
+                                    selected = rightStates[3].value,
+                                    onSelectedChange = {
+                                        rightStates.forEachIndexed { index, mutableState ->
+                                            mutableState.value = index == 3
+                                        }
+                                    }
+                                )
+                            }
+                        }
                     )
-                    Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraSmall))
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .selectableGroup()
-                    ) {
-                        PersianRadioButton(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "None",
-                            checked = leftStates[0].value,
-                            onCheckedChange = {
-                                leftStates.forEachIndexed { index, mutableState ->
-                                    mutableState.value = index == 0
-                                }
-                                left = null
-                            }
-                        )
-                        PersianRadioButton(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Navigation",
-                            checked = leftStates[1].value,
-                            onCheckedChange = {
-                                leftStates.forEachIndexed { index, mutableState ->
-                                    mutableState.value = index == 1
-                                }
-                                left = PersianTopAppBarLeft
-                                    .Navigation(onClick = { navController?.navigateUp() })
-                            }
-                        )
-                        PersianRadioButton(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Close",
-                            checked = leftStates[2].value,
-                            onCheckedChange = {
-                                leftStates.forEachIndexed { index, mutableState ->
-                                    mutableState.value = index == 2
-                                }
-                                left = PersianTopAppBarLeft
-                                    .Close(onClick = { navController?.navigateUp() })
-                            }
-                        )
-                        PersianRadioButton(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Small",
-                            checked = leftStates[3].value,
-                            onCheckedChange = {
-                                leftStates.forEachIndexed { index, mutableState ->
-                                    mutableState.value = index == 3
-                                }
-                                left = PersianTopAppBarLeft
-                                    .Avatar(
-                                        "https://loremflickr.com/320/240",
-                                        onClick = { navController?.navigateUp() }
-                                    )
-                            }
-                        )
+                }
+                FormItem(
+                    modifier = Modifier.padding(top = PersianTheme.spacing.size12),
+                    subhead = { Subhead(text = "Settings") },
+                    content = {
+                        Checkboxes {
+                            Checkbox(
+                                text = "Left",
+                                checked = left,
+                                onCheckedChange = onLeftChange
+                            )
+                            Checkbox(
+                                text = "Right",
+                                checked = right,
+                                onCheckedChange = onRightChange
+                            )
+                        }
                     }
-                }
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(
-                            top = MaterialTheme.spacing.small,
-                            bottom = MaterialTheme.spacing.small,
-                            start = MaterialTheme.spacing.medium,
-                            end = MaterialTheme.spacing.medium
-                        ),
-                ) {
-                    Text(
-                        text = "Right",
-                        style = MaterialTheme.typography.titleMedium,
-                        color = MaterialTheme.colorScheme.onSurface
-                    )
-                    Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraSmall))
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .selectableGroup()
-                    ) {
-                        PersianRadioButton(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "None",
-                            checked = rightStates[0].value,
-                            onCheckedChange = {
-                                rightStates.forEachIndexed { index, mutableState ->
-                                    mutableState.value = index == 0
-                                }
-                                right = null
-                            }
-                        )
-                        PersianRadioButton(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Action",
-                            checked = rightStates[1].value,
-                            onCheckedChange = {
-                                rightStates.forEachIndexed { index, mutableState ->
-                                    mutableState.value = index == 1
-                                }
-                                right = PersianTopAppBarRight
-                                    .Action(
-                                        text = "Action",
-                                        onClick = {}
-                                    )
-                            }
-                        )
-                        val icon = MaterialTheme.icons.person
-                        PersianRadioButton(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Icon",
-                            checked = rightStates[2].value,
-                            onCheckedChange = {
-                                rightStates.forEachIndexed { index, mutableState ->
-                                    mutableState.value = index == 2
-                                }
-                                right = PersianTopAppBarRight
-                                    .Icons(
-                                        actionItem = listOf(
-                                            ActionItem(
-                                                icon = icon,
-                                                title = "Notification",
-                                                contentDescription = "",
-                                                badgeCount = 10,
-                                                onClick = {}
-                                            )
-                                        ),
-                                        expanded = mutableStateOf(false)
-                                    )
-                            }
-                        )
-                        PersianRadioButton(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Icons",
-                            checked = rightStates[3].value,
-                            onCheckedChange = {
-                                rightStates.forEachIndexed { index, mutableState ->
-                                    mutableState.value = index == 3
-                                }
-                                right = PersianTopAppBarRight
-                                    .Icons(
-                                        actionItem = listOf(
-                                            ActionItem(
-                                                icon = icon,
-                                                title = "Notification",
-                                                contentDescription = "",
-                                                onClick = {}
-                                            ),
-                                            ActionItem(
-                                                icon = icon,
-                                                title = "Notification",
-                                                contentDescription = "",
-                                                onClick = {}
-                                            ),
-                                            ActionItem(
-                                                icon = icon,
-                                                title = "Notification",
-                                                contentDescription = "",
-                                                badgeCount = 10,
-                                                onClick = {}
-                                            ),
-                                        ),
-                                        expanded = mutableStateOf(false)
-                                    )
-                            }
-                        )
-                        PersianRadioButton(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Icons Overflow",
-                            checked = rightStates[4].value,
-                            onCheckedChange = {
-                                rightStates.forEachIndexed { index, mutableState ->
-                                    mutableState.value = index == 4
-                                }
-                                right = PersianTopAppBarRight
-                                    .Icons(
-                                        actionItem = listOf(
-                                            ActionItem(
-                                                icon = icon,
-                                                title = "Notification",
-                                                contentDescription = "",
-                                                badgeCount = 10,
-                                                onClick = {}
-                                            ),
-                                            ActionItem(
-                                                icon = icon,
-                                                title = "Notification",
-                                                contentDescription = "",
-                                                onClick = {}
-                                            ),
-                                            ActionItem(
-                                                icon = icon,
-                                                title = "Notification",
-                                                contentDescription = "",
-                                                badgeCount = 0,
-                                                onClick = {}
-                                            ),
-                                            ActionItem(
-                                                icon = icon,
-                                                title = "Notification",
-                                                contentDescription = "",
-                                                badgeCount = 10,
-                                                onClick = {}
-                                            ),
-                                            ActionItem(
-                                                icon = icon,
-                                                title = "Notification",
-                                                contentDescription = "",
-                                                badgeCount = 10,
-                                                onClick = {}
-                                            ),
-                                            ActionItem(
-                                                icon = icon,
-                                                title = "Notification",
-                                                contentDescription = "",
-                                                badgeCount = 10,
-                                                onClick = {}
-                                            ),
-                                            ActionItem(
-                                                icon = icon,
-                                                title = "Notification",
-                                                contentDescription = "",
-                                                badgeCount = 10,
-                                                onClick = {}
-                                            ),
-                                            ActionItem(
-                                                icon = icon,
-                                                title = "Notification",
-                                                contentDescription = "",
-                                                badgeCount = 10,
-                                                onClick = {}
-                                            ),
-                                        ),
-                                        expanded = expanded
-                                    )
-                            }
-                        )
-                    }
-                }
+                )
             }
-
         }
     }
 }

@@ -9,7 +9,9 @@ File secretPropsFile = project.rootProject.file('varible.properties')
 if (secretPropsFile.exists()) {
     Properties p = new Properties()
     new FileInputStream(secretPropsFile).withCloseable { is -> p.load(is) }
-    p.each { name, value -> ext[name] = value }
+    p.each { name, value ->
+        ext[name] = value
+    }
 } else {
     ext["ossrhUsername"] = System.getenv('OSSRH_USERNAME')
     ext["ossrhPassword"] = System.getenv('OSSRH_PASSWORD')

@@ -1,11 +1,16 @@
 package ru.rabbit.persian.appShowcase.screens
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -13,102 +18,324 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
-import io.github.madmaximuus.persian.buttons.PersianPrimaryButton
-import io.github.madmaximuus.persian.foundation.spacing
-import io.github.madmaximuus.persian.modalPage.PersianDynamicHeightModalPage
-import io.github.madmaximuus.persian.modalPage.PersianExtendedModalPage
-import io.github.madmaximuus.persian.modalPage.PersianFullScreenModalPage
-import io.github.madmaximuus.persian.modalPage.PersianModalPageTop
+import io.github.madmaximuus.persian.button.ButtonDefaults
+import io.github.madmaximuus.persian.button.PrimaryButton
+import io.github.madmaximuus.persian.forms.Checkbox
+import io.github.madmaximuus.persian.forms.Checkboxes
+import io.github.madmaximuus.persian.forms.FormItem
+import io.github.madmaximuus.persian.forms.RadioButton
+import io.github.madmaximuus.persian.forms.RadioButtons
+import io.github.madmaximuus.persian.forms.Subhead
+import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.modalPage.Action
+import io.github.madmaximuus.persian.modalPage.FullScreenModalPage
+import io.github.madmaximuus.persian.modalPage.Handle
+import io.github.madmaximuus.persian.modalPage.ModalPage
+import io.github.madmaximuus.persian.modalPage.TopBar
+import io.github.madmaximuus.persian.modalPage.rememberPageState
+import io.github.madmaximuus.persian.modalPage.util.DragAnchor
+import io.github.madmaximuus.persian.text.Text
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object ModalPage : Screen {
 
-    override val name: String = "Modal Pages"
+    override val name: String = "Modal pages"
 
     override val navigation: String = "modalPage"
 
-    @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     override fun Content(navController: NavController?) {
-        var showHalfExpandedTop by remember { mutableStateOf(false) }
-        var showHalfExpandedHandle by remember { mutableStateOf(false) }
-        var showExpanded by remember { mutableStateOf(false) }
-        var showFullScreen by remember { mutableStateOf(false) }
-        SampleScaffold(title = name,
-            onBackClick = { navController?.navigateUp() }
+        var showModal by remember { mutableStateOf(false) }
+
+        val (top, onTopChange) = remember { mutableStateOf(false) }
+        val (action, onActionChange) = remember { mutableStateOf(false) }
+
+        val topStates = remember {
+            listOf(
+                mutableStateOf(true),
+                mutableStateOf(false)
+            )
+        }
+
+        val modeStates = remember {
+            listOf(
+                mutableStateOf(true),
+                mutableStateOf(false)
+            )
+        }
+
+        val (tenPercent, onTenPercentChange) = remember { mutableStateOf(false) }
+        val (twelvePercent, onTwelvePercentChange) = remember { mutableStateOf(false) }
+        val (thirtyPercent, onThirtyPercentChange) = remember { mutableStateOf(false) }
+        val (fortyPercent, onFortyPercentChange) = remember { mutableStateOf(false) }
+        val (fiftyPercent, onFiftyPercentChange) = remember { mutableStateOf(false) }
+        val (sixtyPercent, onSixtyPercentChange) = remember { mutableStateOf(false) }
+        val (seventyPercent, onSeventyPercentChange) = remember { mutableStateOf(false) }
+        val (eightyPercent, onEightyPercentChange) = remember { mutableStateOf(false) }
+        val (ninetyPercent, onNinetyPercentChange) = remember { mutableStateOf(false) }
+        val (extended, onExtendedPercentChange) = remember { mutableStateOf(true) }
+
+        val dragAnchors = mutableSetOf<DragAnchor>().apply {
+            if (tenPercent) add(DragAnchor.Fraction(0.1f))
+            if (twelvePercent) add(DragAnchor.Fraction(0.2f))
+            if (thirtyPercent) add(DragAnchor.Fraction(0.3f))
+            if (fortyPercent) add(DragAnchor.Fraction(0.4f))
+            if (fiftyPercent) add(DragAnchor.Half)
+            if (sixtyPercent) add(DragAnchor.Fraction(0.6f))
+            if (seventyPercent) add(DragAnchor.Fraction(0.7f))
+            if (eightyPercent) add(DragAnchor.Fraction(0.8f))
+            if (ninetyPercent) add(DragAnchor.Fraction(0.9f))
+            if (extended) add(DragAnchor.Full)
+        }
+        SampleScaffold(
+            title = name,
+            onBackClick = { navController?.navigateUp() },
         ) {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(it),
+                    .verticalScroll(rememberScrollState())
+                    .padding(it)
+                    .navigationBarsPadding(),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.medium)
+                verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size12)
             ) {
-                PersianPrimaryButton(
-                    text = "Half Expended with TopBar",
-                    sizes = PersianButtonDefaults.largeSizes()
-                ) {
-                    showHalfExpandedTop = true
+                FormItem(
+                    modifier = Modifier.padding(top = PersianTheme.spacing.size12),
+                    subhead = {
+                        Subhead(text = "Mode")
+                    },
+                    content = {
+                        RadioButtons {
+                            RadioButton(
+                                text = "Modal",
+                                selected = modeStates[0].value,
+                                onSelectedChange = {
+                                    modeStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 0
+                                    }
+                                }
+                            )
+                            RadioButton(
+                                text = "Full screen",
+                                selected = modeStates[1].value,
+                                onSelectedChange = {
+                                    modeStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 1
+                                    }
+                                }
+                            )
+                        }
+                    }
+                )
+                FormItem(
+                    subhead = { Subhead(text = "Settings") },
+                    content = {
+                        Checkboxes {
+                            Checkbox(
+                                text = "Top",
+                                checked = top,
+                                onCheckedChange = onTopChange
+                            )
+                            Checkbox(
+                                text = "Action",
+                                checked = action,
+                                onCheckedChange = onActionChange
+                            )
+                        }
+                    }
+                )
+                if (top) {
+                    FormItem(
+                        modifier = Modifier.padding(top = PersianTheme.spacing.size12),
+                        subhead = { Subhead(text = "Top") },
+                        content = {
+                            RadioButtons {
+                                RadioButton(
+                                    text = "Top app bar",
+                                    selected = topStates[0].value,
+                                    onSelectedChange = {
+                                        topStates.forEachIndexed { index, mutableState ->
+                                            mutableState.value = index == 0
+                                        }
+                                    }
+                                )
+                                RadioButton(
+                                    text = "Handle",
+                                    selected = topStates[1].value,
+                                    onSelectedChange = {
+                                        topStates.forEachIndexed { index, mutableState ->
+                                            mutableState.value = index == 1
+                                        }
+                                    }
+                                )
+                            }
+                        }
+                    )
                 }
-                PersianPrimaryButton(
-                    text = "Half Expended with Handle",
-                    sizes = PersianButtonDefaults.largeSizes()
-                ) {
-                    showHalfExpandedHandle = true
+                if (modeStates[0].value) {
+                    FormItem(
+                        modifier = Modifier.padding(top = PersianTheme.spacing.size12),
+                        subhead = {
+                            Subhead(text = "States")
+                        },
+                        content = {
+                            Checkboxes {
+                                Checkbox(
+                                    text = "10%",
+                                    checked = tenPercent,
+                                    onCheckedChange = onTenPercentChange
+                                )
+                                Checkbox(
+                                    text = "20%",
+                                    checked = twelvePercent,
+                                    onCheckedChange = onTwelvePercentChange
+                                )
+                                Checkbox(
+                                    text = "30%",
+                                    checked = thirtyPercent,
+                                    onCheckedChange = onThirtyPercentChange
+                                )
+                                Checkbox(
+                                    text = "40%",
+                                    checked = fortyPercent,
+                                    onCheckedChange = onFortyPercentChange
+                                )
+                                Checkbox(
+                                    text = "50%",
+                                    checked = fiftyPercent,
+                                    onCheckedChange = onFiftyPercentChange
+                                )
+                                Checkbox(
+                                    text = "60%",
+                                    checked = sixtyPercent,
+                                    onCheckedChange = onSixtyPercentChange
+                                )
+                                Checkbox(
+                                    text = "70%",
+                                    checked = seventyPercent,
+                                    onCheckedChange = onSeventyPercentChange
+                                )
+                                Checkbox(
+                                    text = "80%",
+                                    checked = eightyPercent,
+                                    onCheckedChange = onEightyPercentChange
+                                )
+                                Checkbox(
+                                    text = "90%",
+                                    checked = ninetyPercent,
+                                    onCheckedChange = onNinetyPercentChange
+                                )
+                                Checkbox(
+                                    text = "Full",
+                                    checked = extended,
+                                    onCheckedChange = onExtendedPercentChange
+                                )
+                            }
+                        }
+                    )
                 }
-                PersianPrimaryButton(
-                    text = "Expanded",
-                    sizes = PersianButtonDefaults.largeSizes()
+                PrimaryButton(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = PersianTheme.spacing.size16)
+                        .padding(top = PersianTheme.spacing.size12),
+                    text = "Show page",
+                    sizes = ButtonDefaults.largeSizes()
                 ) {
-                    showExpanded = true
-                }
-                PersianPrimaryButton(
-                    text = "Full Screen",
-                    sizes = PersianButtonDefaults.largeSizes()
-                ) {
-                    showFullScreen = true
+                    showModal = true
                 }
             }
         }
-        if (showHalfExpandedTop) {
-            PersianDynamicHeightModalPage(
-                onDismissRequest = { showHalfExpandedTop = false },
-                top = PersianModalPageTop.TopBar(
-                    title = "Half Expended",
-                    actionTitle = "Action",
-                    onActionClick = { }
-                ),
-                content = {
+        if (showModal) {
+            when {
+                modeStates[0].value -> {
+                    ModalPage(
+                        onDismissRequest = { showModal = false },
+                        pageState = rememberPageState(
+                            dragAnchors = dragAnchors
+                        ),
+                        contentWindowInsets = WindowInsets(0, 0, 0, 0),
+                        top = {
+                            if (top) {
+                                when {
+                                    topStates[0].value -> {
+                                        TopBar(
+                                            title = "Dynamic height",
+                                            actionTitle = "Action",
+                                            onActionClick = {
+                                                showModal = false
+                                            }
+                                        )
+                                    }
+
+                                    topStates[1].value -> {
+                                        Handle()
+                                    }
+                                }
+                            }
+                        },
+                        bottom = if (action) {
+                            {
+                                Action(text = "Amazing action") {
+                                    showModal = false
+                                }
+                            }
+                        } else null,
+                        content = { contentPadding ->
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .padding(contentPadding)
+                                    .background(Color.Cyan),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Text(text = "123")
+                            }
+                        }
+                    )
                 }
-            )
-        }
-        if (showHalfExpandedHandle) {
-            PersianDynamicHeightModalPage(
-                onDismissRequest = { showHalfExpandedHandle = false },
-                top = PersianModalPageTop.Handle,
-                content = {
+
+                modeStates[1].value -> {
+                    FullScreenModalPage(
+                        onDismissRequest = { showModal = false },
+                        top = {
+                            if (top) {
+                                TopBar(
+                                    title = "Full screen",
+                                    actionTitle = "Action",
+                                    onActionClick = {
+                                        showModal = false
+                                    }
+                                )
+                            }
+                        },
+                        bottom = {
+                            if (action) {
+                                Action(text = "Amazing action") {
+                                    showModal = false
+                                }
+                                Action(text = "Amazing action") {
+                                    showModal = false
+                                }
+                            }
+                        },
+                        content = { contentPadding ->
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .padding(contentPadding)
+                                    .background(Color.Cyan),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Text(text = "123")
+                            }
+                        }
+                    )
                 }
-            )
-        }
-        if (showExpanded) {
-            PersianExtendedModalPage(
-                onDismissRequest = { showExpanded = false },
-                title = "Expended",
-                actionTitle = "Action",
-                onActionClick = { },
-                content = {}
-            )
-        }
-        if (showFullScreen) {
-            PersianFullScreenModalPage(
-                onDismissRequest = { showFullScreen = false },
-                title = "Full Screen",
-                actionTitle = "Action",
-                onActionClick = { },
-                content = {}
-            )
+            }
         }
     }
 }

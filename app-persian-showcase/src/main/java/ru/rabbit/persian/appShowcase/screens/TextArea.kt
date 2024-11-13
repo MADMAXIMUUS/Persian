@@ -1,35 +1,36 @@
 package ru.rabbit.persian.appShowcase.screens
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.rememberTopAppBarState
+import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
-import io.github.madmaximuus.persian.foundation.icons
-import io.github.madmaximuus.persian.inputs.PersianInput
-import io.github.madmaximuus.persian.textAreas.PersianTextArea
+import io.github.madmaximuus.persian.forms.Checkbox
+import io.github.madmaximuus.persian.forms.Checkboxes
+import io.github.madmaximuus.persian.forms.FormItem
+import io.github.madmaximuus.persian.forms.Input
+import io.github.madmaximuus.persian.forms.RadioButton
+import io.github.madmaximuus.persian.forms.RadioButtons
+import io.github.madmaximuus.persian.forms.Subhead
+import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.textAreas.OutlineTextArea
+import io.github.madmaximuus.persian.textAreas.PlainTextArea
+import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
+import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
+import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object TextArea : Screen {
 
-    override val name: String = "Text Areas"
+    override val name: String = "Text area"
 
     override val navigation: String = "textArea"
 
-    @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     override fun Content(navController: NavController?) {
         val topAppBarScrollBehavior =
@@ -39,15 +40,21 @@ object TextArea : Screen {
             onBackClick = { navController?.navigateUp() },
             topAppBarScrollBehavior = topAppBarScrollBehavior
         ) {
-            val (value, onValueChange) = remember { mutableStateOf("") }
-            val (placeholderValue, onPlaceholderValueChange) = remember { mutableStateOf("") }
+            val input = rememberTextFieldState()
+            val placeholderState = rememberTextFieldState("Placeholder")
             val (enabled, onEnabledChange) = remember { mutableStateOf(true) }
             val (isError, onIsErrorChange) = remember { mutableStateOf(false) }
-            val (isSuccess, onIsSuccessChange) = remember { mutableStateOf(false) }
+            val (isValid, onIsValidChange) = remember { mutableStateOf(false) }
             val (placeholder, onPlaceholderChange) = remember { mutableStateOf(false) }
-            val (leading, onLeadingChange) = remember { mutableStateOf(false) }
+
+            val styleStates = remember {
+                listOf(
+                    mutableStateOf(true),
+                    mutableStateOf(false)
+                )
+            }
             SampleScaffold(
-                title = Inputs.name,
+                title = Input.name,
                 onBackClick = { navController?.navigateUp() },
                 topAppBarScrollBehavior = topAppBarScrollBehavior
             ) {
@@ -57,57 +64,89 @@ object TextArea : Screen {
                         .nestedScroll(topAppBarScrollBehavior.nestedScrollConnection)
                         .padding(it),
                 ) {
-                    PersianTextArea(
-                        modifier = Modifier.padding(horizontal = 20.dp),
-                        value = value,
-                        onValueChange = onValueChange,
-                        enabled = enabled,
-                        isError = isError,
-                        isSuccess = isSuccess,
-                        placeholder = if (placeholder) placeholderValue else null,
-                        leadingIcon = if (leading) MaterialTheme.icons.person else null,
-                    )
-                    Spacer(modifier = Modifier.height(20.dp))
-                    Text(
-                        modifier = Modifier.padding(horizontal = 20.dp),
-                        text = "Settings"
-                    )
-                    PersianCheckbox(
-                        modifier = Modifier.padding(horizontal = 20.dp),
-                        text = "Enabled",
-                        checked = enabled,
-                        onCheckedChange = onEnabledChange
-                    )
-                    PersianCheckbox(
-                        modifier = Modifier.padding(horizontal = 20.dp),
-                        text = "Is Error State",
-                        checked = isError,
-                        onCheckedChange = onIsErrorChange
-                    )
-                    PersianCheckbox(
-                        modifier = Modifier.padding(horizontal = 20.dp),
-                        text = "Is Success State",
-                        checked = isSuccess,
-                        onCheckedChange = onIsSuccessChange
-                    )
-                    PersianCheckbox(
-                        modifier = Modifier.padding(horizontal = 20.dp),
-                        text = "Placeholder",
-                        checked = placeholder,
-                        onCheckedChange = onPlaceholderChange
-                    )
+                    SampleRow(text = "Sample", firstItem = true) {
+                        when {
+                            styleStates[0].value -> {
+                                OutlineTextArea(
+                                    state = input,
+                                    enabled = enabled,
+                                    isError = isError,
+                                    isValid = isValid,
+                                    placeholder = if (placeholder) placeholderState.text.toString() else null,
+                                )
+                            }
+
+                            styleStates[1].value -> {
+                                PlainTextArea(
+                                    state = input,
+                                    enabled = enabled,
+                                    isError = isError,
+                                    isValid = isValid,
+                                    placeholder = if (placeholder) placeholderState.text.toString() else null,
+                                )
+                            }
+                        }
+                    }
                     if (placeholder) {
-                        PersianInput(
-                            modifier = Modifier.padding(horizontal = 20.dp),
-                            value = placeholderValue,
-                            onValueChange = onPlaceholderValueChange
+                        FormItem(
+                            modifier = Modifier.padding(top = PersianTheme.spacing.size12),
+                            subhead = { Subhead(text = "Placeholder") },
+                            content = { Input(state = placeholderState) }
                         )
                     }
-                    PersianCheckbox(
-                        modifier = Modifier.padding(horizontal = 20.dp),
-                        text = "Leading Icon",
-                        checked = leading,
-                        onCheckedChange = onLeadingChange
+                    FormItem(
+                        modifier = Modifier.padding(top = PersianTheme.spacing.size12),
+                        subhead = { Subhead(text = "Style") },
+                        content = {
+                            RadioButtons {
+                                RadioButton(
+                                    text = "Outline",
+                                    selected = styleStates[0].value,
+                                    onSelectedChange = {
+                                        styleStates.forEachIndexed { index, mutableState ->
+                                            mutableState.value = index == 0
+                                        }
+                                    }
+                                )
+                                RadioButton(
+                                    text = "Plain",
+                                    selected = styleStates[1].value,
+                                    onSelectedChange = {
+                                        styleStates.forEachIndexed { index, mutableState ->
+                                            mutableState.value = index == 1
+                                        }
+                                    }
+                                )
+                            }
+                        }
+                    )
+                    FormItem(
+                        modifier = Modifier.padding(top = PersianTheme.spacing.size12),
+                        subhead = { Subhead(text = "Settings") },
+                        content = {
+                            Checkboxes {
+                                Checkbox(
+                                    text = "Enabled",
+                                    checked = enabled,
+                                    onCheckedChange = onEnabledChange
+                                )
+                                Checkbox(
+                                    text = "Placeholder",
+                                    checked = placeholder,
+                                    onCheckedChange = onPlaceholderChange
+                                )
+                                Checkbox(
+                                    text = "Error",
+                                    checked = isError,
+                                    onCheckedChange = onIsErrorChange
+                                )
+                                Checkbox(
+                                    text = "Valid",
+                                    checked = isValid,
+                                    onCheckedChange = onIsValidChange
+                                )
+                            }
+                        }
                     )
                 }
             }

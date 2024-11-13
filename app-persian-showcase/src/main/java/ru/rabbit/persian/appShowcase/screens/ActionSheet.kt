@@ -1,13 +1,11 @@
 package ru.rabbit.persian.appShowcase.screens
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -15,59 +13,138 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.actionSheet.ActionSheetItem
-import io.github.madmaximuus.persian.actionSheet.PersianActionSheet
-import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
-import io.github.madmaximuus.persian.buttons.PersianPrimaryButton
-import io.github.madmaximuus.persian.checkboxes.PersianCheckbox
-import io.github.madmaximuus.persian.foundation.spacing
-import io.github.madmaximuus.persian.inputs.PersianInput
-import ru.rabbit.persian.appShowcase.R
+import io.github.madmaximuus.persian.actionSheet.Action
+import io.github.madmaximuus.persian.actionSheet.ActionSheet
+import io.github.madmaximuus.persian.actionSheet.Header
+import io.github.madmaximuus.persian.button.ButtonDefaults
+import io.github.madmaximuus.persian.button.PrimaryButton
+import io.github.madmaximuus.persian.forms.Checkbox
+import io.github.madmaximuus.persian.forms.Checkboxes
+import io.github.madmaximuus.persian.forms.FormItem
+import io.github.madmaximuus.persian.forms.Input
+import io.github.madmaximuus.persian.forms.Subhead
+import io.github.madmaximuus.persian.forms.TextArea
+import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
+import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
+import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
+import io.github.madmaximuus.persianSymbols.image.Image
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object ActionSheet : Screen {
-    override val name: String = "Action Sheets"
+    override val name: String = "Action sheet"
 
-    override val navigation: String = "actionSheets"
+    override val navigation: String = "actionSheet"
 
-    @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     override fun Content(navController: NavController?) {
         var needShow by remember { mutableStateOf(false) }
         val (title, onTitleChange) = remember { mutableStateOf(false) }
-        val (subtitle, onSubtitleChange) = remember { mutableStateOf(false) }
-        val (titleValue, onTitleValueChange) = remember { mutableStateOf("Title") }
-        val (subtitleValue, onSubtitleValueChange) = remember { mutableStateOf("A message should be a short, complete sentence.") }
+        val (message, onMessageChange) = remember { mutableStateOf(false) }
+        val titleState = rememberTextFieldState("Title")
+        val subtitleState =
+            rememberTextFieldState("A message should be a short, complete sentence.")
         val (icons, onIconsChange) = remember { mutableStateOf(false) }
         val (negative, onNegativeChange) = remember { mutableStateOf(false) }
         var titleError by remember { mutableStateOf(false) }
         var subtitleError by remember { mutableStateOf(false) }
         val (enabled, onEnabledChange) = remember { mutableStateOf(true) }
+        val topAppBarScrollBehavior =
+            TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
         SampleScaffold(
             title = name,
             onBackClick = {
                 navController?.navigateUp()
-            }
+            },
+            topAppBarScrollBehavior = topAppBarScrollBehavior
         ) {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(it),
+                    .padding(it)
+                    .navigationBarsPadding(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                PersianPrimaryButton(
-                    modifier = Modifier.padding(top = MaterialTheme.spacing.extraExtraLarge),
-                    text = "Show sheet",
-                    sizes = PersianButtonDefaults.largeSizes(),
-                    colors = PersianButtonDefaults.primaryColors()
+                if (title) {
+                    FormItem(
+                        modifier = Modifier.padding(top = PersianTheme.spacing.size8),
+                        subhead = {
+                            Subhead(text = "Title")
+                        },
+                        content = {
+                            Input(state = titleState)
+                        },
+                        isError = titleError,
+                    )
+                }
+                if (message) {
+                    FormItem(
+                        modifier = Modifier.padding(top = PersianTheme.spacing.size12),
+                        subhead = {
+                            Subhead(text = "Message")
+                        },
+                        content = {
+                            TextArea(state = subtitleState)
+                        },
+                        isError = subtitleError,
+                    )
+                }
+                FormItem(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = PersianTheme.spacing.size12),
+                    subhead = {
+                        Subhead(
+                            modifier = Modifier.fillMaxWidth(),
+                            text = "Settings"
+                        )
+                    },
+                    content = {
+                        Checkboxes {
+                            Checkbox(
+                                text = "Title",
+                                checked = title,
+                                onCheckedChange = onTitleChange
+                            )
+                            Checkbox(
+                                text = "Message",
+                                checked = message,
+                                onCheckedChange = onMessageChange
+                            )
+                            Checkbox(
+                                text = "Icons",
+                                checked = icons,
+                                onCheckedChange = onIconsChange
+                            )
+                            Checkbox(
+                                text = "Negative",
+                                checked = negative,
+                                onCheckedChange = onNegativeChange
+                            )
+                            Checkbox(
+                                text = "Enabled",
+                                checked = enabled,
+                                onCheckedChange = onEnabledChange
+                            )
+                        }
+                    }
+                )
+                PrimaryButton(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = PersianTheme.spacing.size8)
+                        .padding(horizontal = PersianTheme.spacing.size16),
+                    text = "Show Action sheet",
+                    sizes = ButtonDefaults.largeSizes(),
+                    colors = ButtonDefaults.primaryColors()
                 ) {
-                    if (title && titleValue.isEmpty()) {
+                    if (title && titleState.text.isEmpty()) {
                         needShow = false
                         titleError = true
                         subtitleError = false
-                    } else if (subtitle && subtitleValue.isEmpty()) {
+                    } else if (message && subtitleState.text.isEmpty()) {
                         needShow = false
                         titleError = false
                         subtitleError = true
@@ -77,135 +154,90 @@ object ActionSheet : Screen {
                         subtitleError = false
                     }
                 }
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(
-                            top = MaterialTheme.spacing.large,
-                            start = MaterialTheme.spacing.large,
-                            end = MaterialTheme.spacing.large
-                        )
-                ) {
-                    PersianCheckbox(
-                        modifier = Modifier.fillMaxWidth(),
-                        text = "Title",
-                        checked = title,
-                        onCheckedChange = onTitleChange
-                    )
-                    if (title) {
-                        PersianInput(
-                            modifier = Modifier.padding(horizontal = MaterialTheme.spacing.small),
-                            value = titleValue,
-                            isError = titleError,
-                            onValueChange = onTitleValueChange
-                        )
-                        Spacer(modifier = Modifier.height(MaterialTheme.spacing.small))
-                    }
-                    PersianCheckbox(
-                        modifier = Modifier.fillMaxWidth(),
-                        text = "Subtitle",
-                        checked = subtitle,
-                        onCheckedChange = onSubtitleChange
-                    )
-                    if (subtitle) {
-                        PersianInput(
-                            modifier = Modifier.padding(horizontal = MaterialTheme.spacing.small),
-                            value = subtitleValue,
-                            isError = subtitleError,
-                            onValueChange = onSubtitleValueChange
-                        )
-                        Spacer(modifier = Modifier.height(MaterialTheme.spacing.small))
-                    }
-                    PersianCheckbox(
-                        modifier = Modifier.fillMaxWidth(),
-                        text = "Icons",
-                        checked = icons,
-                        onCheckedChange = onIconsChange
-                    )
-                    PersianCheckbox(
-                        modifier = Modifier.fillMaxWidth(),
-                        text = "Negative",
-                        checked = negative,
-                        onCheckedChange = onNegativeChange
-                    )
-                    PersianCheckbox(
-                        modifier = Modifier.fillMaxWidth(),
-                        text = "Enabled",
-                        checked = enabled,
-                        onCheckedChange = onEnabledChange
-                    )
-                }
             }
         }
         if (needShow) {
-            PersianActionSheet(
-                title = if (title) titleValue else null,
-                subtitle = if (subtitle) subtitleValue else null,
-                actions = listOf(
-                    ActionSheetItem(
+            ActionSheet(
+                header = if (title || message) {
+                    {
+                        Header(
+                            title = if (title) titleState.text.toString() else null,
+                            message = if (message) subtitleState.text.toString() else null,
+                        )
+                    }
+                } else null,
+                actions = {
+                    Action(
                         text = "Action 1",
-                        leadingIcon = if (icons) painterResource(id = R.drawable.pentagon) else null,
-                        negative = negative,
+                        leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
+                        destructive = negative,
                         enabled = enabled,
                         onClick = {}
-                    ),
-                    ActionSheetItem(
+                    )
+                    Action(
                         text = "Action 2",
-                        leadingIcon = if (icons) painterResource(id = R.drawable.pentagon) else null,
-                        negative = negative,
+                        leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
+                        destructive = negative,
                         enabled = enabled,
                         onClick = {}
-                    ),
-                    ActionSheetItem(
+                    )
+                    Action(
                         text = "Action 3",
-                        leadingIcon = if (icons) painterResource(id = R.drawable.pentagon) else null,
-                        negative = negative,
+                        leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
+                        destructive = negative,
                         enabled = enabled,
                         onClick = {}
-                    ),
-                    ActionSheetItem(
+                    )
+                    Action(
                         text = "Action 4",
-                        leadingIcon = if (icons) painterResource(id = R.drawable.pentagon) else null,
-                        negative = negative,
+                        leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
+                        destructive = negative,
                         enabled = enabled,
                         onClick = {}
-                    ),
-                    ActionSheetItem(
+                    )
+                    Action(
                         text = "Action 5",
-                        leadingIcon = if (icons) painterResource(id = R.drawable.pentagon) else null,
-                        negative = negative,
+                        leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
+                        destructive = negative,
                         enabled = enabled,
                         onClick = {}
-                    ),
-                    ActionSheetItem(
+                    )
+                    Action(
                         text = "Action 6",
-                        leadingIcon = if (icons) painterResource(id = R.drawable.pentagon) else null,
-                        negative = negative,
+                        leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
+                        destructive = negative,
                         enabled = enabled,
                         onClick = {}
-                    ),
-                    ActionSheetItem(
+                    )
+                    Action(
                         text = "Action 7",
-                        leadingIcon = if (icons) painterResource(id = R.drawable.pentagon) else null,
-                        negative = negative,
+                        leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
+                        destructive = negative,
                         enabled = enabled,
                         onClick = {}
-                    ),
-                    ActionSheetItem(
+                    )
+                    Action(
                         text = "Action 8",
-                        leadingIcon = if (icons) painterResource(id = R.drawable.pentagon) else null,
-                        negative = negative,
+                        leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
+                        destructive = negative,
                         enabled = enabled,
                         onClick = {}
-                    ),
-                    ActionSheetItem(
+                    )
+                    Action(
                         text = "Action 9",
-                        leadingIcon = if (icons) painterResource(id = R.drawable.pentagon) else null,
-                        negative = negative,
+                        leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
+                        destructive = negative,
                         enabled = enabled,
                         onClick = {}
-                    ),
-                ),
+                    )
+                    Action(
+                        text = "Action 10",
+                        leadingIcon = if (icons) rememberVectorPainter(PersianSymbols.Default.Image) else null,
+                        destructive = negative,
+                        enabled = enabled,
+                        onClick = {}
+                    )
+                },
                 onDismissRequest = { needShow = false }
             )
         }

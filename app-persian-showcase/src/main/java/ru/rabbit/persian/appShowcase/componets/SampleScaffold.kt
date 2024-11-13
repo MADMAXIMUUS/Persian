@@ -3,22 +3,23 @@ package ru.rabbit.persian.appShowcase.componets
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Snackbar
-import androidx.compose.material3.SnackbarHost
-import androidx.compose.material3.SnackbarHostState
-import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.TopAppBarScrollBehavior
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import io.github.madmaximuus.persian.snackbar.PersianSnackbar
-import io.github.madmaximuus.persian.snackbar.PersianSnackbarVisuals
-import io.github.madmaximuus.persian.topAppBar.PersianTopAppBar
-import io.github.madmaximuus.persian.topAppBar.PersianTopAppBarLeft
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.unit.dp
+import io.github.madmaximuus.persian.scafold.Scaffold
+import io.github.madmaximuus.persian.snackbar.Snackbar
+import io.github.madmaximuus.persian.snackbar.SnackbarHost
+import io.github.madmaximuus.persian.snackbar.SnackbarHostState
+import io.github.madmaximuus.persian.topAppBar.IconButton
+import io.github.madmaximuus.persian.topAppBar.TopAppBar
+import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
+import io.github.madmaximuus.persian.topAppBar.TopAppBarScrollBehavior
+import io.github.madmaximuus.persianSymbols.arrow.left.ArrowLeft
+import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SampleScaffold(
     title: String,
@@ -26,15 +27,19 @@ fun SampleScaffold(
     onBackClick: (() -> Unit)? = null,
     snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
     topAppBarScrollBehavior: TopAppBarScrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(),
+    navigationBar: @Composable () -> Unit = {},
     content: @Composable (padding: PaddingValues) -> Unit,
 ) {
     Scaffold(
         topBar = {
-            PersianTopAppBar(
+            TopAppBar(
                 left = onBackClick?.let {
-                    PersianTopAppBarLeft.Navigation(
-                        onClick = onBackClick
-                    )
+                    {
+                        IconButton(
+                            icon = rememberVectorPainter(PersianSymbols.Default.ArrowLeft),
+                            onClick = onBackClick
+                        )
+                    }
                 },
                 title = title,
                 scrollBehavior = topAppBarScrollBehavior,
@@ -45,17 +50,12 @@ fun SampleScaffold(
         content = { content(it) },
         snackbarHost = {
             SnackbarHost(hostState = snackbarHostState) { snackbarData ->
-                val customVisuals = snackbarData.visuals as? PersianSnackbarVisuals
-                if (customVisuals != null) {
-                    PersianSnackbar(
-                        text = customVisuals.message,
-                        left = customVisuals.left,
-                        right = customVisuals.right,
-                    )
-                } else {
-                    Snackbar(snackbarData = snackbarData)
-                }
+                Snackbar(
+                    snackbarData,
+                    modifier = Modifier.padding(bottom = 40.dp)
+                )
             }
-        }
+        },
+        bottomBar = navigationBar
     )
 }
