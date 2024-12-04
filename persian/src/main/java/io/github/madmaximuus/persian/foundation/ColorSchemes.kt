@@ -13,12 +13,13 @@ import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.runtime.structuralEqualityPolicy
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.takeOrElse
+import io.github.madmaximuus.persian.button.PrimaryButton
 
 /**
  * Class representing a color scheme for a UI theme.
  *
  * This class encapsulates various colors used in a UI theme, including primary, secondary, tertiary,
- * surface, error, valid, outline, and other related colors. Each color can be individually accessed
+ * surface, error, valid, warning, outline, and other related colors. Each color can be individually accessed
  * and modified.
  *
  * @property primary The primary color.
@@ -33,9 +34,6 @@ import androidx.compose.ui.graphics.takeOrElse
  * @property onTertiary The color to use on top of the tertiary color.
  * @property tertiaryContainer The container color for the tertiary color.
  * @property onTertiaryContainer The color to use on top of the tertiary container color.
- * @property surface The surface color.
- * @property onSurface The color to use on top of the surface color.
- * @property onSurfaceVariant The variant color to use on top of the surface color.
  * @property error The error color.
  * @property onError The color to use on top of the error color.
  * @property errorContainer The container color for the error color.
@@ -44,6 +42,13 @@ import androidx.compose.ui.graphics.takeOrElse
  * @property onValid The color to use on top of the valid color.
  * @property validContainer The container color for the valid color.
  * @property onValidContainer The color to use on top of the valid container color.
+ * @property warning The warning color.
+ * @property onWarning The color to use on top of the warning color.
+ * @property warningContainer The container color for the warning color.
+ * @property onWarningContainer The color to use on top of the warning container color.
+ * @property surface The surface color.
+ * @property onSurface The color to use on top of the surface color.
+ * @property onSurfaceVariant The variant color to use on top of the surface color.
  * @property outline The outline color.
  * @property outlineVariant The variant color for the outline.
  * @property scrim The scrim color.
@@ -68,9 +73,6 @@ class ColorScheme(
     onTertiary: Color,
     tertiaryContainer: Color,
     onTertiaryContainer: Color,
-    surface: Color,
-    onSurface: Color,
-    onSurfaceVariant: Color,
     error: Color,
     onError: Color,
     errorContainer: Color,
@@ -79,6 +81,13 @@ class ColorScheme(
     onValid: Color,
     validContainer: Color,
     onValidContainer: Color,
+    warning: Color,
+    onWarning: Color,
+    warningContainer: Color,
+    onWarningContainer: Color,
+    surface: Color,
+    onSurface: Color,
+    onSurfaceVariant: Color,
     outline: Color,
     outlineVariant: Color,
     scrim: Color,
@@ -114,12 +123,6 @@ class ColorScheme(
         internal set
     var onTertiaryContainer by mutableStateOf(onTertiaryContainer, structuralEqualityPolicy())
         internal set
-    var surface by mutableStateOf(surface, structuralEqualityPolicy())
-        internal set
-    var onSurface by mutableStateOf(onSurface, structuralEqualityPolicy())
-        internal set
-    var onSurfaceVariant by mutableStateOf(onSurfaceVariant, structuralEqualityPolicy())
-        internal set
     var error by mutableStateOf(error, structuralEqualityPolicy())
         internal set
     var onError by mutableStateOf(onError, structuralEqualityPolicy())
@@ -135,6 +138,20 @@ class ColorScheme(
     var validContainer by mutableStateOf(validContainer, structuralEqualityPolicy())
         internal set
     var onValidContainer by mutableStateOf(onValidContainer, structuralEqualityPolicy())
+        internal set
+    var warning by mutableStateOf(warning, structuralEqualityPolicy())
+        internal set
+    var onWarning by mutableStateOf(onWarning, structuralEqualityPolicy())
+        internal set
+    var warningContainer by mutableStateOf(warningContainer, structuralEqualityPolicy())
+        internal set
+    var onWarningContainer by mutableStateOf(onWarningContainer, structuralEqualityPolicy())
+        internal set
+    var surface by mutableStateOf(surface, structuralEqualityPolicy())
+        internal set
+    var onSurface by mutableStateOf(onSurface, structuralEqualityPolicy())
+        internal set
+    var onSurfaceVariant by mutableStateOf(onSurfaceVariant, structuralEqualityPolicy())
         internal set
     var outline by mutableStateOf(outline, structuralEqualityPolicy())
         internal set
@@ -154,7 +171,10 @@ class ColorScheme(
         internal set
     var surfaceContainerHigh by mutableStateOf(surfaceContainerHigh, structuralEqualityPolicy())
         internal set
-    var surfaceContainerHighest by mutableStateOf(surfaceContainerHighest, structuralEqualityPolicy())
+    var surfaceContainerHighest by mutableStateOf(
+        surfaceContainerHighest,
+        structuralEqualityPolicy()
+    )
         internal set
 
     /** Returns a copy of this ColorScheme, optionally overriding some of the values. */
@@ -171,9 +191,6 @@ class ColorScheme(
         onTertiary: Color = this.onTertiary,
         tertiaryContainer: Color = this.tertiaryContainer,
         onTertiaryContainer: Color = this.onTertiaryContainer,
-        surface: Color = this.surface,
-        onSurface: Color = this.onSurface,
-        onSurfaceVariant: Color = this.onSurfaceVariant,
         error: Color = this.error,
         onError: Color = this.onError,
         errorContainer: Color = this.errorContainer,
@@ -182,8 +199,15 @@ class ColorScheme(
         onValid: Color = this.onValid,
         validContainer: Color = this.validContainer,
         onValidContainer: Color = this.onValidContainer,
+        warning: Color = this.warning,
+        onWarning: Color = this.onWarning,
+        warningContainer: Color = this.warningContainer,
+        onWarningContainer: Color = this.onWarningContainer,
         outline: Color = this.outline,
         outlineVariant: Color = this.outlineVariant,
+        surface: Color = this.surface,
+        onSurface: Color = this.onSurface,
+        onSurfaceVariant: Color = this.onSurfaceVariant,
         scrim: Color = this.scrim,
         surfaceDim: Color = this.surfaceDim,
         surfaceBright: Color = this.surfaceBright,
@@ -194,39 +218,43 @@ class ColorScheme(
         surfaceContainerHighest: Color = this.surfaceContainerHighest
     ): ColorScheme =
         ColorScheme(
-            primary = primary.takeOrElse { this.primary },
-            onPrimary = onPrimary.takeOrElse { this.onPrimary },
-            primaryContainer = primaryContainer.takeOrElse { this.primaryContainer },
-            onPrimaryContainer = onPrimaryContainer.takeOrElse { this.onPrimaryContainer },
-            secondary = secondary.takeOrElse { this.secondary },
-            onSecondary = onSecondary.takeOrElse { this.onSecondary },
-            secondaryContainer = secondaryContainer.takeOrElse { this.secondaryContainer },
-            onSecondaryContainer = onSecondaryContainer.takeOrElse { this.onSecondaryContainer },
-            tertiary = tertiary.takeOrElse { this.tertiary },
-            onTertiary = onTertiary.takeOrElse { this.onTertiary },
-            tertiaryContainer = tertiaryContainer.takeOrElse { this.tertiaryContainer },
-            onTertiaryContainer = onTertiaryContainer.takeOrElse { this.onTertiaryContainer },
-            surface = surface.takeOrElse { this.surface },
-            onSurface = onSurface.takeOrElse { this.onSurface },
-            onSurfaceVariant = onSurfaceVariant.takeOrElse { this.onSurfaceVariant },
-            error = error.takeOrElse { this.error },
-            onError = onError.takeOrElse { this.onError },
-            errorContainer = errorContainer.takeOrElse { this.errorContainer },
-            onErrorContainer = onErrorContainer.takeOrElse { this.onErrorContainer },
-            valid = valid.takeOrElse { this.valid },
-            onValid = onValid.takeOrElse { this.onValid },
-            validContainer = validContainer.takeOrElse { this.validContainer },
-            onValidContainer = onValidContainer.takeOrElse { this.onValidContainer },
-            outline = outline.takeOrElse { this.outline },
-            outlineVariant = outlineVariant.takeOrElse { this.outlineVariant },
-            scrim = scrim.takeOrElse { this.scrim },
-            surfaceDim = surfaceDim.takeOrElse { this.surfaceDim },
-            surfaceBright = surfaceBright.takeOrElse { this.surfaceBright },
-            surfaceContainerLowest = surfaceContainerLowest.takeOrElse { this.surfaceContainerLowest },
-            surfaceContainerLow = surfaceContainerLow.takeOrElse { this.surfaceContainerLow },
-            surfaceContainer = surfaceContainer.takeOrElse { this.surfaceContainer },
-            surfaceContainerHigh = surfaceContainerHigh.takeOrElse { this.surfaceContainerHigh },
-            surfaceContainerHighest = surfaceContainerHighest.takeOrElse { this.surfaceContainerHighest },
+            primary = primary,
+            onPrimary = onPrimary,
+            primaryContainer = primaryContainer,
+            onPrimaryContainer = onPrimaryContainer,
+            secondary = secondary,
+            onSecondary = onSecondary,
+            secondaryContainer = secondaryContainer,
+            onSecondaryContainer = onSecondaryContainer,
+            tertiary = tertiary,
+            onTertiary = onTertiary,
+            tertiaryContainer = tertiaryContainer,
+            onTertiaryContainer = onTertiaryContainer,
+            error = error,
+            onError = onError,
+            errorContainer = errorContainer,
+            onErrorContainer = onErrorContainer,
+            valid = valid,
+            onValid = onValid,
+            validContainer = validContainer,
+            onValidContainer = onValidContainer,
+            warning = warning,
+            onWarning = onWarning,
+            warningContainer = warningContainer,
+            onWarningContainer = onWarningContainer,
+            surface = surface,
+            onSurface = onSurface,
+            onSurfaceVariant = onSurfaceVariant,
+            outline = outline,
+            outlineVariant = outlineVariant,
+            scrim = scrim,
+            surfaceDim = surfaceDim,
+            surfaceBright = surfaceBright,
+            surfaceContainerLowest = surfaceContainerLowest,
+            surfaceContainerLow = surfaceContainerLow,
+            surfaceContainer = surfaceContainer,
+            surfaceContainerHigh = surfaceContainerHigh,
+            surfaceContainerHighest = surfaceContainerHighest,
         )
 
     override fun toString(): String {
@@ -243,17 +271,21 @@ class ColorScheme(
                 "\tonTertiary = $onTertiary\n" +
                 "\ttertiaryContainer = $tertiaryContainer\n" +
                 "\tonTertiaryContainer = $onTertiaryContainer\n" +
-                "\tsurface = $surface\n" +
-                "\tonSurface = $onSurface\n" +
-                "\tsurfaceVariant = $onSurfaceVariant\n" +
                 "\terror = $error\n" +
                 "\tonError = $onError\n" +
                 "\terrorContainer = $errorContainer\n" +
                 "\tonErrorContainer = $onErrorContainer\n" +
-                "\tcorrect = $valid\n" +
-                "\tonCorrect = $onValid\n" +
-                "\tcorrectContainer = $validContainer\n" +
-                "\tonCorrectContainer = $onValidContainer\n" +
+                "\tvalid = $valid\n" +
+                "\tonValid = $onValid\n" +
+                "\tvalidContainer = $validContainer\n" +
+                "\tonValidContainer = $onValidContainer\n" +
+                "\twarning = $warning\n" +
+                "\tonWarning = $onWarning\n" +
+                "\twarningContainer = $warningContainer\n" +
+                "\tonWarningContainer = $onWarningContainer\n" +
+                "\tsurface = $surface\n" +
+                "\tonSurface = $onSurface\n" +
+                "\tsurfaceVariant = $onSurfaceVariant\n" +
                 "\toutline = $outline\n" +
                 "\toutlineVariant = $outlineVariant\n" +
                 "\tscrim=$scrim\n" +
@@ -269,35 +301,39 @@ class ColorScheme(
 }
 
 /**
- * Returns a light Material color scheme.
+ * Returns a light Persian color scheme.
  */
 fun lightColorScheme(
     primary: Color = Color(0xFF6F528A),
     onPrimary: Color = Color(0xFFFFFFFF),
     primaryContainer: Color = Color(0xFFF0DBFF),
-    onPrimaryContainer: Color =  Color(0xFF280D42),
-    secondary: Color =  Color(0xFF665A6F),
-    onSecondary: Color =  Color(0xFFFFFFFF),
-    secondaryContainer: Color =  Color(0xFFEDDDF6),
-    onSecondaryContainer: Color =  Color(0xFF211829),
-    tertiary: Color =  Color(0xFF805157),
-    onTertiary: Color =  Color(0xFFFFFFFF),
-    tertiaryContainer: Color =  Color(0xFFFFD9DD),
-    onTertiaryContainer: Color =  Color(0xFF321016),
-    surface: Color =  Color(0xFFFFF7FE),
-    onSurface: Color =  Color(0xFF1E1A20),
-    onSurfaceVariant: Color =  Color(0xFF4A454E),
-    error: Color =  Color(0xFFBA1A1A),
-    onError: Color =  Color(0xFFFFFFFF),
-    errorContainer: Color =  Color(0xFFFFDAD6),
-    onErrorContainer: Color =  Color(0xFF410002),
-    valid: Color =  Color(0xFF36693E),
-    onValid: Color =  Color(0xFFFFFFFF),
-    validContainer: Color =  Color(0xFFB7F1BA),
-    onValidContainer: Color =  Color(0xFF002108),
-    outline: Color =  Color(0xFF7C757E),
-    outlineVariant: Color =  Color(0xFFCCC4CE),
-    scrim: Color =  Color(0xFF000000),
+    onPrimaryContainer: Color = Color(0xFF280D42),
+    secondary: Color = Color(0xFF665A6F),
+    onSecondary: Color = Color(0xFFFFFFFF),
+    secondaryContainer: Color = Color(0xFFEDDDF6),
+    onSecondaryContainer: Color = Color(0xFF211829),
+    tertiary: Color = Color(0xFF805157),
+    onTertiary: Color = Color(0xFFFFFFFF),
+    tertiaryContainer: Color = Color(0xFFFFD9DD),
+    onTertiaryContainer: Color = Color(0xFF321016),
+    error: Color = Color(0xFFBA1A1A),
+    onError: Color = Color(0xFFFFFFFF),
+    errorContainer: Color = Color(0xFFFFDAD6),
+    onErrorContainer: Color = Color(0xFF410002),
+    valid: Color = Color(0xFF36693E),
+    onValid: Color = Color(0xFFFFFFFF),
+    validContainer: Color = Color(0xFFB7F1BA),
+    onValidContainer: Color = Color(0xFF002108),
+    warning: Color = Color(0xFF735C0C),
+    onWarning: Color = Color(0xFFFFFFFF),
+    warningContainer: Color = Color(0xFFFFE089),
+    onWarningContainer: Color = Color(0xFF241A00),
+    surface: Color = Color(0xFFFFF7FE),
+    onSurface: Color = Color(0xFF1E1A20),
+    onSurfaceVariant: Color = Color(0xFF4A454E),
+    outline: Color = Color(0xFF7C757E),
+    outlineVariant: Color = Color(0xFFCCC4CE),
+    scrim: Color = Color(0xFF000000),
     surfaceDim: Color = Color(0xFFDFD8DF),
     surfaceBright: Color = Color(0xFFFFF7FE),
     surfaceContainerLowest: Color = Color(0xFFFFFFFF),
@@ -319,9 +355,6 @@ fun lightColorScheme(
         onTertiary = onTertiary,
         tertiaryContainer = tertiaryContainer,
         onTertiaryContainer = onTertiaryContainer,
-        surface = surface,
-        onSurface = onSurface,
-        onSurfaceVariant = onSurfaceVariant,
         error = error,
         onError = onError,
         errorContainer = errorContainer,
@@ -330,6 +363,13 @@ fun lightColorScheme(
         onValid = onValid,
         validContainer = validContainer,
         onValidContainer = onValidContainer,
+        warning = warning,
+        onWarning = onWarning,
+        warningContainer = warningContainer,
+        onWarningContainer = onWarningContainer,
+        surface = surface,
+        onSurface = onSurface,
+        onSurfaceVariant = onSurfaceVariant,
         outline = outline,
         outlineVariant = outlineVariant,
         scrim = scrim,
@@ -358,9 +398,6 @@ fun darkColorScheme(
     onTertiary: Color = Color(0xFF4B252B),
     tertiaryContainer: Color = Color(0xFF653A40),
     onTertiaryContainer: Color = Color(0xFFFFD9DD),
-    surface: Color = Color(0xFF151218),
-    onSurface: Color = Color(0xFFE8E0E8),
-    onSurfaceVariant: Color = Color(0xFFCCC4CE),
     error: Color = Color(0xFFFFB4AB),
     onError: Color = Color(0xFF690005),
     errorContainer: Color = Color(0xFF93000A),
@@ -369,6 +406,13 @@ fun darkColorScheme(
     onValid: Color = Color(0xFF003914),
     validContainer: Color = Color(0xFF1D5128),
     onValidContainer: Color = Color(0xFFB7F1BA),
+    warning: Color = Color(0xFFE2C46D),
+    onWarning: Color = Color(0xFF3D2F00),
+    warningContainer: Color = Color(0xFF574400),
+    onWarningContainer: Color = Color(0xFFFFE089),
+    surface: Color = Color(0xFF151218),
+    onSurface: Color = Color(0xFFE8E0E8),
+    onSurfaceVariant: Color = Color(0xFFCCC4CE),
     outline: Color = Color(0xFF968E98),
     outlineVariant: Color = Color(0xFF4A454E),
     scrim: Color = Color(0xFF000000),
@@ -393,9 +437,6 @@ fun darkColorScheme(
         onTertiary = onTertiary,
         tertiaryContainer = tertiaryContainer,
         onTertiaryContainer = onTertiaryContainer,
-        surface = surface,
-        onSurface = onSurface,
-        onSurfaceVariant = onSurfaceVariant,
         error = error,
         onError = onError,
         errorContainer = errorContainer,
@@ -404,6 +445,13 @@ fun darkColorScheme(
         onValid = onValid,
         validContainer = validContainer,
         onValidContainer = onValidContainer,
+        warning = warning,
+        onWarning = onWarning,
+        warningContainer = warningContainer,
+        onWarningContainer = onWarningContainer,
+        surface = surface,
+        onSurface = onSurface,
+        onSurfaceVariant = onSurfaceVariant,
         outline = outline,
         outlineVariant = outlineVariant,
         scrim = scrim,
@@ -443,8 +491,8 @@ internal fun rememberTextSelectionColors(colorScheme: ColorScheme): TextSelectio
 }
 
 /**
- * The Material color system contains pairs of colors that are typically used for the background and
- * content color inside a component. For example, a [Button] typically uses `primary` for its
+ * The Persian color system contains pairs of colors that are typically used for the background and
+ * content color inside a component. For example, a [PrimaryButton] typically uses `primary` for its
  * background, and `onPrimary` for the color of its content (usually text or iconography).
  *
  * This function tries to match the provided [backgroundColor] to a 'background' color in this
@@ -472,6 +520,8 @@ fun ColorScheme.contentColorFor(backgroundColor: Color): Color =
         tertiaryContainer -> onTertiaryContainer
         errorContainer -> onErrorContainer
         validContainer -> onValidContainer
+        warning -> onWarning
+        warningContainer -> onWarningContainer
         surface -> onSurface
         surfaceDim -> onSurface
         surfaceBright -> onSurface
@@ -484,8 +534,8 @@ fun ColorScheme.contentColorFor(backgroundColor: Color): Color =
     }
 
 /**
- * The Material color system contains pairs of colors that are typically used for the background and
- * content color inside a component. For example, a [Button] typically uses `primary` for its
+ * The Persian color system contains pairs of colors that are typically used for the background and
+ * content color inside a component. For example, a [PrimaryButton] typically uses `primary` for its
  * background, and `onPrimary` for the color of its content (usually text or iconography).
  *
  * This function tries to match the provided [backgroundColor] to a 'background' color in this

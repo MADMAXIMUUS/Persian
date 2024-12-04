@@ -7,9 +7,11 @@ import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.runtime.structuralEqualityPolicy
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import io.github.madmaximuus.persian.R
 
 /**
  * An immutable class representing a set of typographic styles.
@@ -38,63 +40,74 @@ import androidx.compose.ui.unit.sp
 @Immutable
 class Typography(
     val displayLarge: TextStyle = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
+        fontFamily = FontFamily(
+            Font(R.font.nunito_semi_bold, FontWeight.SemiBold),
+        ),
         fontSize = 57.sp,
         lineHeight = 64.sp,
-        letterSpacing = (-0.25).sp
-    ),
+        letterSpacing = (-0.25).sp,
+
+        ),
     val displayMedium: TextStyle = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
+        fontFamily = FontFamily(
+            Font(R.font.nunito_semi_bold, FontWeight.SemiBold)
+        ),
         fontSize = 45.sp,
         lineHeight = 52.sp,
-        letterSpacing = 0.sp
+        letterSpacing = (-0.25).sp
     ),
     val displaySmall: TextStyle = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
+        fontFamily = FontFamily(
+            Font(R.font.nunito_semi_bold, FontWeight.SemiBold)
+        ),
         fontSize = 36.sp,
         lineHeight = 44.sp,
-        letterSpacing = 0.sp
+        letterSpacing = (-0.25).sp
     ),
     val headlineLarge: TextStyle = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
+        fontFamily = FontFamily(
+            Font(R.font.nunito_medium, FontWeight.Medium)
+        ),
         fontSize = 32.sp,
         lineHeight = 40.sp,
         letterSpacing = 0.sp
     ),
     val headlineMedium: TextStyle = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
+        fontFamily = FontFamily(
+            Font(R.font.nunito_medium, FontWeight.Medium)
+        ),
         fontSize = 28.sp,
         lineHeight = 36.sp,
         letterSpacing = 0.sp
     ),
     val headlineSmall: TextStyle = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
+        fontFamily = FontFamily(
+            Font(R.font.nunito_medium, FontWeight.Medium)
+        ),
         fontSize = 24.sp,
         lineHeight = 32.sp,
         letterSpacing = 0.sp
     ),
     val titleLarge: TextStyle = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
+        fontFamily = FontFamily(
+            Font(R.font.nunito_semi_bold, FontWeight.SemiBold)
+        ),
         fontSize = 22.sp,
         lineHeight = 28.sp,
         letterSpacing = 0.sp
     ),
     val titleMedium: TextStyle = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Medium,
+        fontFamily = FontFamily(
+            Font(R.font.nunito_semi_bold, FontWeight.SemiBold)
+        ),
         fontSize = 16.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.15.sp
     ),
     val titleSmall: TextStyle = TextStyle(
-        fontFamily = FontFamily.Default,
+        fontFamily = FontFamily(
+            Font(R.font.nunito_semi_bold, FontWeight.Medium)
+        ),
         fontWeight = FontWeight.Medium,
         fontSize = 14.sp,
         lineHeight = 20.sp,
@@ -122,22 +135,25 @@ class Typography(
         letterSpacing = 0.4.sp
     ),
     val labelLarge: TextStyle = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Medium,
+        fontFamily = FontFamily(
+            Font(R.font.nunito_bold, FontWeight.Bold)
+        ),
         fontSize = 14.sp,
         lineHeight = 20.sp,
         letterSpacing = 0.1.sp
     ),
     val labelMedium: TextStyle = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Medium,
+        fontFamily = FontFamily(
+            Font(R.font.nunito_bold, FontWeight.Bold)
+        ),
         fontSize = 12.sp,
         lineHeight = 16.sp,
         letterSpacing = 0.5.sp
     ),
     val labelSmall: TextStyle = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Medium,
+        fontFamily = FontFamily(
+            Font(R.font.nunito_bold, FontWeight.Bold)
+        ),
         fontSize = 11.sp,
         lineHeight = 16.sp,
         letterSpacing = 0.5.sp
