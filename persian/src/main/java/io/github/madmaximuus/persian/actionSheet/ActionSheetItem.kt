@@ -12,10 +12,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.actionSheet.utils.AnimatedTransitionDialogHelper
+import io.github.madmaximuus.persian.foundation.PersianState38
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.ripple.ripple
 import io.github.madmaximuus.persian.icon.Icon
@@ -69,6 +71,9 @@ fun ActionSheetItemScope.Action(
 ) {
     Row(
         modifier = Modifier
+            .graphicsLayer {
+                alpha = if (enabled) 1f else PersianState38
+            }
             .fillMaxWidth()
             .height(52.dp)
             .clickable(
@@ -81,7 +86,6 @@ fun ActionSheetItemScope.Action(
                 interactionSource = remember { MutableInteractionSource() },
                 indication = ripple(
                     color = this@Action.colors.textColor(
-                        enabled = enabled,
                         destructive = destructive
                     )
                 )
@@ -96,13 +100,13 @@ fun ActionSheetItemScope.Action(
             Icon(
                 painter = it,
                 sizes = this@Action.sizes.iconSize,
-                tint = this@Action.colors.iconColor(enabled, destructive)
+                tint = this@Action.colors.iconColor(destructive)
             )
         }
         Text(
             text = text,
             style = this@Action.sizes.textStyle,
-            color = this@Action.colors.textColor(enabled = enabled, destructive = destructive),
+            color = this@Action.colors.textColor(destructive = destructive),
         )
     }
 }

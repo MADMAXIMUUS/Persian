@@ -5,10 +5,8 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.graphics.takeOrElse
 import androidx.compose.ui.text.TextStyle
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persian.icon.IconSizes
 
@@ -44,30 +42,24 @@ object ActionSheetDefaults {
      *
      * @param defaultTextColor the text color of this [Action] when enabled.
      * @param destructiveTextColor the text color of this [Action] when destructive.
-     * @param disabledTextColor the text color of this [Action] when not enabled.
      *
      * @param defaultIconColor the leading icon color of this [Action] when enabled.
      * @param destructiveIconColor the leading icon color colors of this [Action] when destructive.
-     * @param disabledIconColor the leading icon color colors of this [Action] when not enabled.
      */
     @Composable
     fun itemColors(
         defaultTextColor: Color = PersianTheme.colorScheme.onSurface,
         destructiveTextColor: Color = PersianTheme.colorScheme.error,
-        disabledTextColor: Color = PersianTheme.colorScheme.onSurface.state38,
 
         defaultIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         destructiveIconColor: Color = PersianTheme.colorScheme.error,
-        disabledIconColor: Color = PersianTheme.colorScheme.onSurface.state38,
     ): ActionSheetItemColors =
         ActionSheetItemColors(
             defaultTextColor = defaultTextColor,
             destructiveTextColor = destructiveTextColor,
-            disabledTextColor = disabledTextColor,
 
             defaultIconColor = defaultIconColor,
             destructiveIconColor = destructiveIconColor,
-            disabledIconColor = disabledIconColor,
         )
 
     /**
@@ -133,11 +125,9 @@ class ActionSheetColors internal constructor(
  * Represents the text and icon colors in an [Action] in different state.
  *
  * @param defaultTextColor the text color of this [Action] when enabled.
- * @param disabledTextColor the text color of this [Action] when not enabled.
  * @param destructiveTextColor the text color of this [Action] when destructive.
  *
  * @param defaultIconColor the leading icon color of this [Action] when enabled.
- * @param disabledIconColor the leading icon color of this [Action] when not enabled.
  * @param destructiveIconColor the leading icon color of this [Action] when destructive.
  *
  * @constructor create an instance with arbitrary colors.
@@ -147,41 +137,33 @@ class ActionSheetColors internal constructor(
 @Immutable
 class ActionSheetItemColors internal constructor(
     internal val defaultTextColor: Color,
-    private val disabledTextColor: Color,
     private val destructiveTextColor: Color,
 
     internal val defaultIconColor: Color,
-    private val disabledIconColor: Color,
     private val destructiveIconColor: Color,
 ) {
     /**
-     * Represents the text color for this action, depending on [enabled] and [destructive].
+     * Represents the text color for this action, depending on [destructive].
      *
-     * @param enabled whether the action is enabled
      * @param destructive whether the action is destructive
      */
     @Stable
     internal fun textColor(
-        enabled: Boolean,
         destructive: Boolean
     ): Color = when {
-        !enabled -> disabledTextColor
         destructive -> destructiveTextColor
         else -> defaultTextColor
     }
 
     /**
-     * Represents the leading icon color for this action, depending on [enabled] and [destructive].
+     * Represents the leading icon color for this action, depending [destructive].
      *
-     * @param enabled whether the action is enabled
      * @param destructive whether the action is destructive
      */
     @Stable
     internal fun iconColor(
-        enabled: Boolean,
         destructive: Boolean
     ): Color = when {
-        !enabled -> disabledIconColor
         destructive -> destructiveIconColor
         else -> defaultIconColor
     }
@@ -191,20 +173,16 @@ class ActionSheetItemColors internal constructor(
      */
     fun copy(
         defaultTextColor: Color = this.defaultTextColor,
-        disabledTextColor: Color = this.disabledTextColor,
         destructiveTextColor: Color = this.destructiveTextColor,
 
         defaultIconColor: Color = this.defaultIconColor,
-        disabledIconColor: Color = this.disabledIconColor,
         destructiveIconColor: Color = this.destructiveIconColor,
     ) = ActionSheetItemColors(
-        defaultTextColor.takeOrElse { this.defaultTextColor },
-        disabledTextColor.takeOrElse { this.disabledTextColor },
-        destructiveTextColor.takeOrElse { this.destructiveTextColor },
+        defaultTextColor = defaultTextColor,
+        destructiveTextColor = destructiveTextColor,
 
-        defaultIconColor.takeOrElse { this.defaultIconColor },
-        disabledIconColor.takeOrElse { this.disabledIconColor },
-        destructiveIconColor.takeOrElse { this.destructiveIconColor },
+        defaultIconColor = defaultIconColor,
+        destructiveIconColor = destructiveIconColor,
     )
 
     override fun equals(other: Any?): Boolean {
@@ -212,21 +190,17 @@ class ActionSheetItemColors internal constructor(
         if (other == null || other !is ActionSheetItemColors) return false
 
         if (defaultTextColor != other.defaultTextColor) return false
-        if (disabledTextColor != other.disabledTextColor) return false
         if (destructiveTextColor != other.destructiveTextColor) return false
 
         if (defaultIconColor != other.defaultIconColor) return false
-        if (disabledIconColor != other.disabledIconColor) return false
         return destructiveIconColor == other.destructiveIconColor
     }
 
     override fun hashCode(): Int {
         var result = defaultTextColor.hashCode()
         result = 31 * result + destructiveTextColor.hashCode()
-        result = 31 * result + disabledTextColor.hashCode()
 
         result = 31 * result + defaultIconColor.hashCode()
-        result = 31 * result + disabledIconColor.hashCode()
         result = 31 * result + destructiveIconColor.hashCode()
         return result
     }
