@@ -55,6 +55,7 @@ dependencies {
     implementation libs.bundles.compose
     implementation libs.adaptive.android
     implementation libs.splash
+    implementation libs.datastore.preferences
 
 
     implementation libs.compose.navigation

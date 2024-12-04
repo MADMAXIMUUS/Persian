@@ -8,6 +8,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.animation.AnimatedContentTransitionScope.SlideDirection.Companion.Left
 import androidx.compose.animation.AnimatedContentTransitionScope.SlideDirection.Companion.Right
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
@@ -17,11 +18,14 @@ import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -60,13 +64,19 @@ import ru.rabbit.persian.appShowcase.screens.Tabs
 import ru.rabbit.persian.appShowcase.screens.TextArea
 import ru.rabbit.persian.appShowcase.screens.TimePicker
 import ru.rabbit.persian.appShowcase.screens.TopAppBar
+import ru.rabbit.persian.appShowcase.util.LocalAppSettingsManager
+import ru.rabbit.persian.appShowcase.util.SettingsManager
+import ru.rabbit.persian.appShowcase.util.Theme
 
 class MainActivity : ComponentActivity() {
+
+    private lateinit var appSettingsManager: SettingsManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         installSplashScreen()
         super.onCreate(savedInstanceState)
+        appSettingsManager = SettingsManager(this)
 
         enableEdgeToEdge(
             statusBarStyle = SystemBarStyle.auto(
@@ -80,7 +90,17 @@ class MainActivity : ComponentActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
         setContent {
-            PersianTheme {
+            val theme by appSettingsManager.theme.collectAsStateWithLifecycle(
+                initialValue = Theme.SYSTEM,
+                lifecycle = this.lifecycle
+            )
+            PersianTheme(
+                darkTheme = when (theme) {
+                    Theme.SYSTEM -> isSystemInDarkTheme()
+                    Theme.LIGHT -> false
+                    Theme.DARK -> true
+                }
+            ) {
                 val navController = rememberNavController()
                 val screens = remember {
                     arrayListOf(
@@ -120,47 +140,22 @@ class MainActivity : ComponentActivity() {
                         SegmentedButton
                     )
                 }
-                NavHost(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(PaddingValues(0.dp))
-                        .consumeWindowInsets(PaddingValues(0.dp))
-                        .windowInsetsPadding(
-                            WindowInsets.safeDrawing.only(
-                                WindowInsetsSides.Horizontal,
+                CompositionLocalProvider(LocalAppSettingsManager provides appSettingsManager) {
+                    NavHost(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(PaddingValues(0.dp))
+                            .consumeWindowInsets(PaddingValues(0.dp))
+                            .windowInsetsPadding(
+                                WindowInsets.safeDrawing.only(
+                                    WindowInsetsSides.Horizontal,
+                                ),
                             ),
-                        ),
-                    navController = navController,
-                    startDestination = "dashboard"
-                ) {
-                    composable(
-                        "dashboard",
-                        enterTransition = {
-                            slideIntoContainer(
-                                towards = Left,
-                            )
-                        },
-                        exitTransition = {
-                            slideOutOfContainer(
-                                towards = Left,
-                            )
-                        },
-                        popEnterTransition = {
-                            slideIntoContainer(
-                                towards = Right,
-                            )
-                        },
-                        popExitTransition = {
-                            slideOutOfContainer(
-                                towards = Right,
-                            )
-                        }
-                    ) { _ ->
-                        DashboardScreen(navController, screens.sortedBy { it.name })
-                    }
-                    screens.forEach { screen ->
+                        navController = navController,
+                        startDestination = "dashboard"
+                    ) {
                         composable(
-                            screen.navigation,
+                            "dashboard",
                             enterTransition = {
                                 slideIntoContainer(
                                     towards = Left,
@@ -181,7 +176,37 @@ class MainActivity : ComponentActivity() {
                                     towards = Right,
                                 )
                             }
-                        ) { screen.Content(navController) }
+                        ) { _ ->
+                            DashboardScreen(
+                                navController,
+                                screens.sortedBy { it.name }
+                            )
+                        }
+                        screens.forEach { screen ->
+                            composable(
+                                screen.navigation,
+                                enterTransition = {
+                                    slideIntoContainer(
+                                        towards = Left,
+                                    )
+                                },
+                                exitTransition = {
+                                    slideOutOfContainer(
+                                        towards = Left,
+                                    )
+                                },
+                                popEnterTransition = {
+                                    slideIntoContainer(
+                                        towards = Right,
+                                    )
+                                },
+                                popExitTransition = {
+                                    slideOutOfContainer(
+                                        towards = Right,
+                                    )
+                                }
+                            ) { screen.Content(navController) }
+                        }
                     }
                 }
             }
