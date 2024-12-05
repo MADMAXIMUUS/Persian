@@ -17,6 +17,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.role
@@ -26,6 +27,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.fab.Fab
 import io.github.madmaximuus.persian.foundation.LocalContentColor
+import io.github.madmaximuus.persian.foundation.PersianState38
 import io.github.madmaximuus.persian.foundation.PersianSubcomposeLayout
 import io.github.madmaximuus.persian.foundation.ProvideTextStyle
 import io.github.madmaximuus.persian.icon.Icon
@@ -271,7 +273,7 @@ fun OutlinedButton(
     trailingIcon = trailingIcon,
     border = BorderStroke(
         1.dp,
-        color = colors.contentColor(enabled),
+        color = colors.contentColor,
     ),
     interactionSource = interactionSource,
     onClick = onClick
@@ -313,12 +315,17 @@ private fun ButtonImpl(
     interactionSource: MutableInteractionSource,
     onClick: () -> Unit
 ) {
-    val containerColor = colors.containerColor(enabled)
-    val contentColor = colors.contentColor(enabled)
+    val containerColor = colors.containerColor
+    val contentColor = colors.contentColor
     CompositionLocalProvider(LocalContentColor provides contentColor) {
         Surface(
             onClick = onClick,
-            modifier = modifier.semantics { role = Role.Button },
+            modifier = modifier
+                .semantics { role = Role.Button }
+                .graphicsLayer {
+                    alpha = if (enabled) 1f
+                    else PersianState38
+                },
             enabled = enabled,
             shape = sizes.shape,
             color = containerColor,
@@ -356,7 +363,7 @@ private fun ButtonImpl(
                                     style = sizes.textStyle,
                                     overflow = TextOverflow.Ellipsis,
                                     textAlign = TextAlign.Center,
-                                    color = colors.contentColor(enabled),
+                                    color = colors.contentColor,
                                     maxLines = 1
                                 )
                                 if (sizes.additionInfoTextStyle != null && additionInfoText != null)
@@ -366,7 +373,7 @@ private fun ButtonImpl(
                                         style = sizes.additionInfoTextStyle,
                                         overflow = TextOverflow.Ellipsis,
                                         textAlign = TextAlign.Center,
-                                        color = colors.contentColor(enabled),
+                                        color = colors.contentColor,
                                         maxLines = 1
                                     )
                             }
@@ -389,7 +396,7 @@ private fun ButtonImpl(
                                 sizes = sizes.loaderSize,
                                 colors = ProgressIndicatorDefaults.colors(
                                     trackColor = Color.Transparent,
-                                    progressColor = colors.contentColor(enabled)
+                                    progressColor = colors.contentColor
                                 )
                             )
                         }
