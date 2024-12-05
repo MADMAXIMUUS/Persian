@@ -5,7 +5,6 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
-import androidx.compose.runtime.Stable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.graphics.Color
@@ -19,8 +18,6 @@ import io.github.madmaximuus.persian.checkboxes.toggle.BOX_OUT_DURATION
 import io.github.madmaximuus.persian.checkboxes.toggle.CheckboxToggle
 import io.github.madmaximuus.persian.checkboxes.toggle.TriStateCheckboxToggle
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.foundation.state12
-import io.github.madmaximuus.persian.foundation.state38
 
 /**
  * Contains the default values used by [Checkbox].
@@ -34,12 +31,8 @@ object CheckboxDefaults {
      * @param uncheckedBorderColor The color of the border when the checkbox is unchecked.
      * @param checkedBoxColor The color of the box when the checkbox is checked.
      * @param uncheckedBoxColor The color of the box when the checkbox is unchecked.
-     * @param disabledCheckedBoxColor The color of the box when the checkbox is checked and disabled.
      * @param checkedCheckmarkColor The color of the checkmark when the checkbox is checked.
      * @param uncheckedCheckmarkColor The color of the checkmark when the checkbox is unchecked.
-     * @param disabledBorderColor The color of the border when the checkbox is disabled.
-     * @param disabledUncheckedColor The color of the box when the checkbox is unchecked and disabled.
-     * @param disabledIndeterminateColor The color of the box when the checkbox is in an indeterminate state and disabled.
      */
     @Composable
     fun toggleColors(
@@ -48,30 +41,19 @@ object CheckboxDefaults {
 
         checkedBoxColor: Color = PersianTheme.colorScheme.primary,
         uncheckedBoxColor: Color = Color.Transparent,
-        disabledCheckedBoxColor: Color = PersianTheme.colorScheme.onSurface.state12,
 
         checkedCheckmarkColor: Color = PersianTheme.colorScheme.surface,
         uncheckedCheckmarkColor: Color = Color.Transparent,
-
-        disabledBorderColor: Color = PersianTheme.colorScheme.onSurface.state12,
-        disabledUncheckedColor: Color = PersianTheme.colorScheme.onSurface.state12,
-        disabledIndeterminateColor: Color = disabledBorderColor
     ): CheckboxToggleColors =
         CheckboxToggleColors(
             checkedBorderColor = checkedBorderColor,
             uncheckedBorderColor = uncheckedBorderColor,
-            disabledBorderColor = disabledBorderColor,
 
             checkedBoxColor = checkedBoxColor,
             checkedCheckmarkColor = checkedCheckmarkColor,
 
             uncheckedCheckmarkColor = uncheckedCheckmarkColor,
             uncheckedBoxColor = uncheckedBoxColor,
-            disabledCheckedBoxColor = disabledCheckedBoxColor,
-            disabledUncheckedBoxColor = disabledUncheckedColor.copy(alpha = 0f),
-            disabledIndeterminateBoxColor = disabledIndeterminateColor,
-
-            disabledIndeterminateBorderColor = disabledIndeterminateColor
         )
 
     /**
@@ -79,18 +61,15 @@ object CheckboxDefaults {
      *
      * @param toggleColors The [CheckboxToggleColors] instance that defines the colors for the checkbox toggle.
      * @param textColor The color of the text when the checkbox is enabled.
-     * @param disabledTextColor The color of the text when the checkbox is disabled.
      */
     @Composable
     fun colors(
         toggleColors: CheckboxToggleColors = toggleColors(),
         textColor: Color = PersianTheme.colorScheme.onSurface,
-        disabledTextColor: Color = PersianTheme.colorScheme.onSurface.state38
     ): CheckboxColors =
         CheckboxColors(
             toggleColors = toggleColors,
-            textColor = textColor,
-            disabledTextColor = disabledTextColor
+            textColor = textColor
         )
 
     /**
@@ -103,8 +82,8 @@ object CheckboxDefaults {
      */
     @Composable
     fun sizes(
-        toggleSize: Dp = 24.dp,
-        textStyle: TextStyle = PersianTheme.typography.bodyLarge,
+        toggleSize: Dp = 26.dp,
+        textStyle: TextStyle = PersianTheme.typography.titleMedium,
         shape: Shape = PersianTheme.shapes.shape16,
         contentPadding: PaddingValues = PaddingValues(
             horizontal = PersianTheme.spacing.size16
@@ -138,24 +117,12 @@ class CheckboxSizes internal constructor(
  *
  * @param toggleColors The [CheckboxToggleColors] instance that defines the colors for the checkbox toggle.
  * @param textColor The color of the text when the checkbox is enabled.
- * @param disabledTextColor The color of the text when the checkbox is disabled.
  */
 @Immutable
 class CheckboxColors internal constructor(
     internal val toggleColors: CheckboxToggleColors,
-    private val textColor: Color,
-    private val disabledTextColor: Color
-) {
-
-    /**
-     * Returns the color of the text based on the enabled status of the checkbox.
-     *
-     * @param enabled Whether the checkbox is enabled.
-     */
-    @Stable
-    internal fun textColor(enabled: Boolean): Color =
-        if (enabled) textColor else disabledTextColor
-}
+    internal val textColor: Color
+)
 
 /**
  * Represents the container and content colors used in a [CheckboxToggle] and a [TriStateCheckboxToggle] in different states.
@@ -164,13 +131,8 @@ class CheckboxColors internal constructor(
  * @param uncheckedCheckmarkColor The color of the checkmark when the checkbox is unchecked.
  * @param checkedBoxColor The color of the box when the checkbox is checked.
  * @param uncheckedBoxColor The color of the box when the checkbox is unchecked.
- * @param disabledCheckedBoxColor The color of the box when the checkbox is checked and disabled.
- * @param disabledUncheckedBoxColor The color of the box when the checkbox is unchecked and disabled.
- * @param disabledIndeterminateBoxColor The color of the box when the checkbox is in an indeterminate state and disabled.
  * @param checkedBorderColor The color of the border when the checkbox is checked.
  * @param uncheckedBorderColor The color of the border when the checkbox is unchecked.
- * @param disabledBorderColor The color of the border when the checkbox is disabled.
- * @param disabledIndeterminateBorderColor The color of the border when the checkbox is in an indeterminate state and disabled.
  *
  * @constructor create an instance with arbitrary colors.
  * - See [CheckboxDefaults.toggleColors] for the default colors used in a Checkbox toggle.
@@ -182,14 +144,9 @@ class CheckboxToggleColors internal constructor(
 
     private val checkedBoxColor: Color,
     private val uncheckedBoxColor: Color,
-    private val disabledCheckedBoxColor: Color,
-    private val disabledUncheckedBoxColor: Color,
-    private val disabledIndeterminateBoxColor: Color,
 
     private val checkedBorderColor: Color,
     private val uncheckedBorderColor: Color,
-    private val disabledBorderColor: Color,
-    private val disabledIndeterminateBorderColor: Color
 ) {
 
     /**
@@ -221,19 +178,10 @@ class CheckboxToggleColors internal constructor(
      */
     @Composable
     internal fun boxColor(enabled: Boolean, state: ToggleableState): State<Color> {
-        val target = if (enabled) {
-            when (state) {
-                ToggleableState.On, ToggleableState.Indeterminate -> checkedBoxColor
-                ToggleableState.Off -> uncheckedBoxColor
-            }
-        } else {
-            when (state) {
-                ToggleableState.On -> disabledCheckedBoxColor
-                ToggleableState.Indeterminate -> disabledIndeterminateBoxColor
-                ToggleableState.Off -> disabledUncheckedBoxColor
-            }
+        val target = when (state) {
+            ToggleableState.On, ToggleableState.Indeterminate -> checkedBoxColor
+            ToggleableState.Off -> uncheckedBoxColor
         }
-
 
         return if (enabled) {
             val duration = if (state == ToggleableState.Off) BOX_OUT_DURATION else BOX_IN_DURATION
@@ -255,16 +203,9 @@ class CheckboxToggleColors internal constructor(
      */
     @Composable
     internal fun borderColor(enabled: Boolean, state: ToggleableState): State<Color> {
-        val target = if (enabled) {
-            when (state) {
-                ToggleableState.On, ToggleableState.Indeterminate -> checkedBorderColor
-                ToggleableState.Off -> uncheckedBorderColor
-            }
-        } else {
-            when (state) {
-                ToggleableState.Indeterminate -> disabledIndeterminateBorderColor
-                ToggleableState.On, ToggleableState.Off -> disabledBorderColor
-            }
+        val target = when (state) {
+            ToggleableState.On, ToggleableState.Indeterminate -> checkedBorderColor
+            ToggleableState.Off -> uncheckedBorderColor
         }
 
         return if (enabled) {
@@ -287,13 +228,8 @@ class CheckboxToggleColors internal constructor(
         if (uncheckedCheckmarkColor != other.uncheckedCheckmarkColor) return false
         if (checkedBoxColor != other.checkedBoxColor) return false
         if (uncheckedBoxColor != other.uncheckedBoxColor) return false
-        if (disabledCheckedBoxColor != other.disabledCheckedBoxColor) return false
-        if (disabledUncheckedBoxColor != other.disabledUncheckedBoxColor) return false
-        if (disabledIndeterminateBoxColor != other.disabledIndeterminateBoxColor) return false
         if (checkedBorderColor != other.checkedBorderColor) return false
-        if (uncheckedBorderColor != other.uncheckedBorderColor) return false
-        if (disabledBorderColor != other.disabledBorderColor) return false
-        return disabledIndeterminateBorderColor == other.disabledIndeterminateBorderColor
+        return uncheckedBorderColor == other.uncheckedBorderColor
     }
 
     override fun hashCode(): Int {
@@ -301,13 +237,8 @@ class CheckboxToggleColors internal constructor(
         result = 31 * result + uncheckedCheckmarkColor.hashCode()
         result = 31 * result + checkedBoxColor.hashCode()
         result = 31 * result + uncheckedBoxColor.hashCode()
-        result = 31 * result + disabledCheckedBoxColor.hashCode()
-        result = 31 * result + disabledUncheckedBoxColor.hashCode()
-        result = 31 * result + disabledIndeterminateBoxColor.hashCode()
         result = 31 * result + checkedBorderColor.hashCode()
         result = 31 * result + uncheckedBorderColor.hashCode()
-        result = 31 * result + disabledBorderColor.hashCode()
-        result = 31 * result + disabledIndeterminateBorderColor.hashCode()
         return result
     }
 }

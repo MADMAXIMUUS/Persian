@@ -13,11 +13,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.state.ToggleableState
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.checkboxes.toggle.CheckboxToggle
 import io.github.madmaximuus.persian.checkboxes.toggle.TriStateCheckboxToggle
+import io.github.madmaximuus.persian.foundation.PersianState38
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.ripple.ripple
 import io.github.madmaximuus.persian.text.Text
@@ -55,10 +57,16 @@ fun Checkbox(
                 role = Role.Checkbox,
                 interactionSource = remember { MutableInteractionSource() },
                 indication = ripple(
-                    color = colors.textColor(enabled)
+                    color = colors.textColor
                 )
             )
-            .padding(sizes.contentPadding),
+            .padding(sizes.contentPadding)
+            .graphicsLayer {
+                alpha = if (enabled)
+                    1f
+                else
+                    PersianState38
+            },
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size12)
     ) {
@@ -66,13 +74,12 @@ fun Checkbox(
             modifier = Modifier
                 .size(sizes.toggleSize),
             checked = checked,
-            enabled = enabled,
             onCheckedChange = null,
             colors = colors.toggleColors
         )
         Text(
             text = text,
-            color = colors.textColor(enabled),
+            color = colors.textColor,
             style = sizes.textStyle
         )
     }
@@ -116,7 +123,13 @@ fun TriStateCheckbox(
                     color = colors.toggleColors.boxColor(enabled = enabled, state = state).value,
                 )
             )
-            .padding(sizes.contentPadding),
+            .padding(sizes.contentPadding)
+            .graphicsLayer {
+                alpha = if (enabled)
+                    1f
+                else
+                    PersianState38
+            },
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size12)
     ) {
@@ -124,13 +137,12 @@ fun TriStateCheckbox(
             modifier = Modifier
                 .size(sizes.toggleSize),
             state = state,
-            enabled = enabled,
             onClick = null,
             colors = colors.toggleColors
         )
         Text(
             text = text,
-            color = colors.textColor(enabled),
+            color = colors.textColor,
             style = sizes.textStyle
         )
     }

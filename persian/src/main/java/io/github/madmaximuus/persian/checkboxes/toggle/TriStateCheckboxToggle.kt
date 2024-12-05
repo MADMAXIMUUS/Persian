@@ -28,11 +28,13 @@ import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.state.ToggleableState
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.checkboxes.CheckboxDefaults
 import io.github.madmaximuus.persian.checkboxes.CheckboxToggleColors
+import io.github.madmaximuus.persian.foundation.PersianState38
 import io.github.madmaximuus.persian.foundation.minimumInteractiveComponentSize
 import io.github.madmaximuus.persian.foundation.ripple.ripple
 import kotlin.math.floor
@@ -151,19 +153,24 @@ private fun CheckboxImpl(
         modifier
             .wrapContentSize(Alignment.Center)
             .requiredSize(checkboxSize)
+            .graphicsLayer {
+                alpha = if (enabled)
+                    1f
+                else
+                    PersianState38
+            }
     ) {
-        val strokeWidthPx = floor(strokeWidth.toPx())
         drawBox(
             boxColor = boxColor.value,
             borderColor = borderColor.value,
             radius = radiusSize.toPx(),
-            strokeWidth = strokeWidthPx
+            strokeWidth = floor(boxStroke.toPx())
         )
         drawCheck(
             checkColor = checkColor.value,
             checkFraction = checkDrawFraction.value,
             crossCenterGravitation = checkCenterGravitationShiftFraction.value,
-            strokeWidthPx = strokeWidthPx,
+            strokeWidthPx = floor(strokeWidth.toPx()),
             drawingCache = checkCache
         )
     }
@@ -229,12 +236,12 @@ private fun DrawScope.drawCheck(
 ) {
     val stroke = Stroke(width = strokeWidthPx, cap = StrokeCap.Round, join = StrokeJoin.Round)
     val width = size.width
-    val checkCrossX = 0.42f
-    val checkCrossY = 0.67f
-    val leftX = 0.25f
-    val leftY = 0.5f
-    val rightX = 0.76f
-    val rightY = 0.3f
+    val checkCrossX = 0.46f
+    val checkCrossY = 0.68f
+    val leftX = 0.27f
+    val leftY = 0.56f
+    val rightX = 0.73f
+    val rightY = 0.33f
 
     val gravitatedCrossX = lerp(checkCrossX, 0.5f, crossCenterGravitation)
     val gravitatedCrossY = lerp(checkCrossY, 0.5f, crossCenterGravitation)
@@ -274,9 +281,10 @@ internal const val BOX_IN_DURATION = 100
 internal const val BOX_OUT_DURATION = 150
 internal const val CHECK_ANIMATION_DURATION = 200
 
-internal val checkboxSize = 22.dp
-internal val strokeWidth = 2.5.dp
-internal val radiusSize = 6.dp
+internal val checkboxSize = 24.dp
+internal val strokeWidth = 3.dp
+internal val boxStroke = 2.dp
+internal val radiusSize = 8.dp
 
 /**
  * Performs a linear interpolation between two values.
