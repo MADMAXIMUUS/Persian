@@ -32,37 +32,14 @@ object AlertsDefaults {
         messageColor: Color = PersianTheme.colorScheme.onSurface,
         dividerColor: Color = PersianTheme.colorScheme.outlineVariant,
         actionColor: Color = PersianTheme.colorScheme.primary
-    ) = AlertColors(
-        containerColor = containerColor,
-        titleColor = titleColor,
-        messageColor = messageColor,
-        dividerColor = dividerColor,
-        actionColor = actionColor
-    )
-
-    /**
-     * Creates an [AlertSizes] that represents the default sizes used in an [OnlyActionAlert].
-     *
-     * @param containerShape the container shape size of this [OnlyActionAlert].
-     * @param titleTextStyle the title text style of this [OnlyActionAlert].
-     * @param messageTextStyle the message text style of this [OnlyActionAlert].
-     * @param dividerSizes the divider thickness and padding of this [OnlyActionAlert].
-     * @param actionSize the actions sizes of this [OnlyActionAlert].
-     */
-    @Composable
-    fun onlyActionSizes(
-        containerShape: Shape = PersianTheme.shapes.shape20,
-        titleTextStyle: TextStyle = PersianTheme.typography.headlineSmall,
-        messageTextStyle: TextStyle = PersianTheme.typography.bodyMedium,
-        dividerSizes: DividerSizes = DividerDefaults.sizes(),
-        actionSize: ButtonSizes = ButtonDefaults.largeSizes()
-    ): AlertSizes = AlertSizes(
-        containerShape = containerShape,
-        titleTextStyle = titleTextStyle,
-        messageTextStyle = messageTextStyle,
-        dividerSizes = dividerSizes,
-        actionSize = actionSize
-    )
+    ): AlertColors =
+        AlertColors(
+            containerColor = containerColor,
+            titleColor = titleColor,
+            messageColor = messageColor,
+            dividerColor = dividerColor,
+            actionColor = actionColor
+        )
 
     /**
      * Creates an [AlertSizes] that represents the default sizes used in an [Alert].
@@ -76,11 +53,12 @@ object AlertsDefaults {
     @Composable
     fun alertSizes(
         containerShape: Shape = PersianTheme.shapes.shape20,
-        titleTextStyle: TextStyle = PersianTheme.typography.headlineSmall,
+        titleTextStyle: TextStyle = PersianTheme.typography.titleLarge,
         messageTextStyle: TextStyle = PersianTheme.typography.bodyMedium,
         dividerSizes: DividerSizes = DividerDefaults.sizes(),
         actionSize: ButtonSizes = ButtonDefaults.smallSizes()
-    ): AlertSizes = AlertSizes(
+    ): AlertSizes =
+        AlertSizes(
         containerShape = containerShape,
         titleTextStyle = titleTextStyle,
         messageTextStyle = messageTextStyle,
@@ -159,8 +137,6 @@ class AlertColors internal constructor(
  * @param actionSize the actions sizes of this alert.
  *
  * @constructor create an instance with arbitrary sizes.
- *
- * - See [AlertsDefaults.onlyActionSizes] for the default sizes used in an [OnlyActionAlert].
  * - See [AlertsDefaults.alertSizes] for the default sizes user in an [Alert].
  */
 @Immutable
@@ -180,13 +156,14 @@ class AlertSizes internal constructor(
         descriptionTextStyle: TextStyle = this.messageTextStyle,
         dividerSizes: DividerSizes = this.dividerSizes,
         actionSize: ButtonSizes = this.actionSize,
-    ): AlertSizes = AlertSizes(
-        containerShape = containerShape,
-        titleTextStyle = titleTextStyle,
-        messageTextStyle = descriptionTextStyle,
-        dividerSizes = dividerSizes,
-        actionSize = actionSize,
-    )
+    ): AlertSizes =
+        AlertSizes(
+            containerShape = containerShape,
+            titleTextStyle = titleTextStyle,
+            messageTextStyle = descriptionTextStyle,
+            dividerSizes = dividerSizes,
+            actionSize = actionSize,
+        )
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
