@@ -16,6 +16,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
@@ -29,6 +30,7 @@ import com.bumptech.glide.integration.compose.RequestState
 import io.github.madmaximuus.persian.avatarsAndImages.utils.LayoutId
 import io.github.madmaximuus.persian.avatarsAndImages.utils.badgeMeasurePolicy
 import io.github.madmaximuus.persian.foundation.LocalContentColor
+import io.github.madmaximuus.persian.foundation.PersianState38
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.ripple.ripple
 import io.github.madmaximuus.persian.foundation.shimmer
@@ -82,17 +84,17 @@ fun Image(
                             .size(sizes.boxSizes)
                             .clip(sizes.shape(shape))
                             .background(
-                                colors.container(enabled),
+                                colors.placeholderContainerColor,
                                 sizes.shape(shape)
                             )
-                            .border(1.dp, colors.border(enabled), sizes.shape(shape))
+                            .border(1.dp, colors.borderColor, sizes.shape(shape))
                             .clickable(
                                 enabled = onClick != null && enabled,
                                 onClick = { onClick?.invoke() },
                                 role = Role.Image,
                                 interactionSource = remember { MutableInteractionSource() },
                                 indication = ripple(
-                                    color = colors.overlayIcon(enabled)
+                                    color = colors.overlayIconColor
                                 )
                             )
                     ) {
@@ -110,7 +112,7 @@ fun Image(
                                             Icon(
                                                 painter = placeholderIcon,
                                                 sizes = sizes.placeholderIconSizes,
-                                                tint = colors.placeholderIcon(enabled)
+                                                tint = colors.placeholderIconColor
                                             )
                                         }
                                     }
@@ -144,7 +146,7 @@ fun Image(
                                 contentAlignment = Alignment.Center
                             ) {
                                 CompositionLocalProvider(
-                                    LocalContentColor provides colors.overlayIcon(enabled)
+                                    LocalContentColor provides colors.overlayIconColor
                                 ) {
                                     Icon(
                                         painter = overlayIcon,
@@ -166,7 +168,13 @@ fun Image(
             }
         },
         modifier = Modifier
-            .wrapContentSize(),
+            .wrapContentSize()
+            .graphicsLayer {
+                alpha = if (enabled)
+                    1f
+                else
+                    PersianState38
+            },
         measurePolicy = { measurables, constraints ->
             badgeMeasurePolicy(
                 scope = this,

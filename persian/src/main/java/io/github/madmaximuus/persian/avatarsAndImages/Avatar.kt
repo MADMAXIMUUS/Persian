@@ -16,6 +16,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
@@ -29,6 +30,7 @@ import com.bumptech.glide.integration.compose.RequestState
 import io.github.madmaximuus.persian.avatarsAndImages.utils.LayoutId
 import io.github.madmaximuus.persian.avatarsAndImages.utils.badgeMeasurePolicy
 import io.github.madmaximuus.persian.foundation.LocalContentColor
+import io.github.madmaximuus.persian.foundation.PersianState38
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.ripple.ripple
 import io.github.madmaximuus.persian.foundation.shimmer
@@ -81,17 +83,17 @@ fun Avatar(
                             .size(sizes.boxSizes)
                             .clip(PersianTheme.shapes.full)
                             .background(
-                                colors.container(enabled, initials != null),
+                                colors.container(initials != null),
                                 PersianTheme.shapes.full
                             )
-                            .border(1.dp, colors.border(enabled), PersianTheme.shapes.full)
+                            .border(1.dp, colors.borderColor, PersianTheme.shapes.full)
                             .clickable(
                                 enabled = onClick != null && enabled,
                                 onClick = { onClick?.invoke() },
                                 role = Role.Image,
                                 interactionSource = remember { MutableInteractionSource() },
                                 indication = ripple(
-                                    color = colors.overlayIcon(enabled)
+                                    color = colors.overlayIconColor
                                 )
                             ),
                         contentAlignment = Alignment.Center
@@ -100,16 +102,14 @@ fun Avatar(
                             Initials(
                                 initials = initials,
                                 sizes = sizes,
-                                colors = colors,
-                                enabled = enabled
+                                colors = colors
                             )
                         } else {
                             Image(
                                 imageUrl = imageUrl,
                                 placeholderIcon = placeholderIcon,
                                 sizes = sizes,
-                                colors = colors,
-                                enabled = enabled
+                                colors = colors
                             )
                         }
                         if (overlay && sizes.overlayIconSizes != null) {
@@ -120,7 +120,7 @@ fun Avatar(
                                 contentAlignment = Alignment.Center
                             ) {
                                 CompositionLocalProvider(
-                                    LocalContentColor provides colors.overlayIcon(enabled)
+                                    LocalContentColor provides colors.overlayIconColor
                                 ) {
                                     Icon(
                                         painter = overlayIcon,
@@ -142,7 +142,13 @@ fun Avatar(
             }
         },
         modifier = Modifier
-            .wrapContentSize(),
+            .wrapContentSize()
+            .graphicsLayer {
+                alpha = if (enabled)
+                    1f
+                else
+                    PersianState38
+            },
         measurePolicy = { measurables, constraints ->
             badgeMeasurePolicy(
                 scope = this,
@@ -158,8 +164,6 @@ fun Avatar(
 /**
  * Display a text instead of image in this avatar.
  *
- * @param enabled controls the enabled state of this avatar. When `false`, this component will not
- * respond to user input, and it will appear visually disabled.
  * @param initials the text that will be displayed if the image is not loaded.
  * @param colors The [AvatarColors] colors of the container, icons and text of this avatar.
  * @param sizes The [AvatarSizes] sizes of the container, icons and text of this avatar.
@@ -169,7 +173,6 @@ private fun Initials(
     initials: String,
     sizes: AvatarSizes,
     colors: AvatarColors,
-    enabled: Boolean,
 ) {
     Box(
         modifier = Modifier.fillMaxSize(),
@@ -178,7 +181,7 @@ private fun Initials(
         Text(
             text = initials,
             style = sizes.initialsTextStyle,
-            color = colors.initials(enabled)
+            color = colors.initialsTextColor
         )
     }
 }
@@ -187,8 +190,6 @@ private fun Initials(
  * Display an image of the user. If there is no image, a placeholder is displayed
  *
  * @param imageUrl the Uri that used for image download.
- * @param enabled controls the enabled state of this avatar. When `false`, this component will not
- * respond to user input, and it will appear visually disabled.
  * @param placeholderIcon the icon that will be displayed if the image is not loaded
  * @param colors The [AvatarColors] colors of the container, icons and text of this avatar.
  * @param sizes The [AvatarSizes] sizes of the container, icons and text of this avatar.
@@ -200,7 +201,6 @@ private fun Image(
     placeholderIcon: Painter,
     sizes: AvatarSizes,
     colors: AvatarColors,
-    enabled: Boolean
 ) {
     GlideSubcomposition(
         model = imageUrl,
@@ -216,7 +216,7 @@ private fun Image(
                         Icon(
                             painter = placeholderIcon,
                             sizes = sizes.placeholderIconSizes,
-                            tint = colors.placeholderIcon(enabled)
+                            tint = colors.placeholderIconColor
                         )
                     }
                 }
@@ -235,7 +235,7 @@ private fun Image(
                             .fillMaxSize(),
                         contentScale = ContentScale.Crop,
                         painter = painter,
-                        alpha = if (!enabled) .38f else 1f,
+                        alpha = 1f,
                         contentDescription = ""
                     )
                 }

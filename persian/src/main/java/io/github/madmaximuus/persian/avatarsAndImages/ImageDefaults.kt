@@ -6,13 +6,9 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.graphics.takeOrElse
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.takeOrElse
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.foundation.state08
-import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persian.icon.IconSizes
@@ -46,17 +42,18 @@ object ImageDefaults {
         badgeSize: Dp = 28.dp,
         horizontalBadgeOffset: Dp = 5.dp,
         verticalBadgeOffset: Dp = 5.dp,
-    ): ImageSizes = ImageSizes(
-        boxSizes,
-        placeholderIconSizes,
-        overlayIconSizes,
-        smallShape,
-        mediumShape,
-        largeShape,
-        badgeSize,
-        horizontalBadgeOffset,
-        verticalBadgeOffset
-    )
+    ): ImageSizes =
+        ImageSizes(
+            boxSizes = boxSizes,
+            placeholderIconSizes = placeholderIconSizes,
+            overlayIconSizes = overlayIconSizes,
+            smallShape = smallShape,
+            mediumShape = mediumShape,
+            largeShape = largeShape,
+            badgeSize = badgeSize,
+            horizontalBadgeOffset = horizontalBadgeOffset,
+            verticalBadgeOffset = verticalBadgeOffset
+        )
 
     /**
      * Creates an [ImageSizes] that represents the default sizes used in an image.
@@ -82,17 +79,18 @@ object ImageDefaults {
         badgeSize: Dp = 28.dp,
         horizontalBadgeOffset: Dp = 5.dp,
         verticalBadgeOffset: Dp = 5.dp,
-    ): ImageSizes = ImageSizes(
-        boxSizes,
-        placeholderIconSizes,
-        overlayIconSizes,
-        smallShape,
-        mediumShape,
-        largeShape,
-        badgeSize,
-        horizontalBadgeOffset,
-        verticalBadgeOffset
-    )
+    ): ImageSizes =
+        ImageSizes(
+            boxSizes = boxSizes,
+            placeholderIconSizes = placeholderIconSizes,
+            overlayIconSizes = overlayIconSizes,
+            smallShape = smallShape,
+            mediumShape = mediumShape,
+            largeShape = largeShape,
+            badgeSize = badgeSize,
+            horizontalBadgeOffset = horizontalBadgeOffset,
+            verticalBadgeOffset = verticalBadgeOffset
+        )
 
     /**
      * Creates an [ImageSizes] that represents the default sizes used in an image.
@@ -118,17 +116,18 @@ object ImageDefaults {
         badgeSize: Dp = 28.dp,
         horizontalBadgeOffset: Dp = 5.dp,
         verticalBadgeOffset: Dp = 5.dp,
-    ): ImageSizes = ImageSizes(
-        boxSizes,
-        placeholderIconSizes,
-        overlayIconSizes,
-        smallShape,
-        mediumShape,
-        largeShape,
-        badgeSize,
-        horizontalBadgeOffset,
-        verticalBadgeOffset
-    )
+    ): ImageSizes =
+        ImageSizes(
+            boxSizes = boxSizes,
+            placeholderIconSizes = placeholderIconSizes,
+            overlayIconSizes = overlayIconSizes,
+            smallShape = smallShape,
+            mediumShape = mediumShape,
+            largeShape = largeShape,
+            badgeSize = badgeSize,
+            horizontalBadgeOffset = horizontalBadgeOffset,
+            verticalBadgeOffset = verticalBadgeOffset
+        )
 
     /**
      * Creates an [ImageSizes] that represents the default sizes used in an image.
@@ -154,17 +153,18 @@ object ImageDefaults {
         badgeSize: Dp = 28.dp,
         horizontalBadgeOffset: Dp = 5.dp,
         verticalBadgeOffset: Dp = 5.dp,
-    ): ImageSizes = ImageSizes(
-        boxSizes,
-        placeholderIconSizes,
-        overlayIconSizes,
-        smallShape,
-        mediumShape,
-        largeShape,
-        badgeSize,
-        horizontalBadgeOffset,
-        verticalBadgeOffset
-    )
+    ): ImageSizes =
+        ImageSizes(
+            boxSizes = boxSizes,
+            placeholderIconSizes = placeholderIconSizes,
+            overlayIconSizes = overlayIconSizes,
+            smallShape = smallShape,
+            mediumShape = mediumShape,
+            largeShape = largeShape,
+            badgeSize = badgeSize,
+            horizontalBadgeOffset = horizontalBadgeOffset,
+            verticalBadgeOffset = verticalBadgeOffset
+        )
 
     /**
      * Creates an [ImageSizes] that represents the default sizes used in an image.
@@ -190,17 +190,18 @@ object ImageDefaults {
         badgeSize: Dp = 24.dp,
         horizontalBadgeOffset: Dp = 4.dp,
         verticalBadgeOffset: Dp = 4.dp,
-    ): ImageSizes = ImageSizes(
-        boxSizes,
-        placeholderIconSizes,
-        overlayIconSizes,
-        smallShape,
-        mediumShape,
-        largeShape,
-        badgeSize,
-        horizontalBadgeOffset,
-        verticalBadgeOffset
-    )
+    ): ImageSizes =
+        ImageSizes(
+            boxSizes = boxSizes,
+            placeholderIconSizes = placeholderIconSizes,
+            overlayIconSizes = overlayIconSizes,
+            smallShape = smallShape,
+            mediumShape = mediumShape,
+            largeShape = largeShape,
+            badgeSize = badgeSize,
+            horizontalBadgeOffset = horizontalBadgeOffset,
+            verticalBadgeOffset = verticalBadgeOffset
+        )
 
     /**
      * Creates an [ImageSizes] that represents the default sizes used in an image.
@@ -226,17 +227,18 @@ object ImageDefaults {
         badgeSize: Dp = 24.dp,
         horizontalBadgeOffset: Dp = 4.dp,
         verticalBadgeOffset: Dp = 4.dp,
-    ): ImageSizes = ImageSizes(
-        boxSizes,
-        placeholderIconSizes,
-        overlayIconSizes,
-        smallShape,
-        mediumShape,
-        largeShape,
-        badgeSize,
-        horizontalBadgeOffset,
-        verticalBadgeOffset
-    )
+    ): ImageSizes =
+        ImageSizes(
+            boxSizes = boxSizes,
+            placeholderIconSizes = placeholderIconSizes,
+            overlayIconSizes = overlayIconSizes,
+            smallShape = smallShape,
+            mediumShape = mediumShape,
+            largeShape = largeShape,
+            badgeSize = badgeSize,
+            horizontalBadgeOffset = horizontalBadgeOffset,
+            verticalBadgeOffset = verticalBadgeOffset
+        )
 
     /**
      * Creates an [ImageSizes] that represents the default sizes used in an image.
@@ -262,17 +264,18 @@ object ImageDefaults {
         badgeSize: Dp = 20.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
-    ): ImageSizes = ImageSizes(
-        boxSizes,
-        placeholderIconSizes,
-        overlayIconSizes,
-        smallShape,
-        mediumShape,
-        largeShape,
-        badgeSize,
-        horizontalBadgeOffset,
-        verticalBadgeOffset
-    )
+    ): ImageSizes =
+        ImageSizes(
+            boxSizes = boxSizes,
+            placeholderIconSizes = placeholderIconSizes,
+            overlayIconSizes = overlayIconSizes,
+            smallShape = smallShape,
+            mediumShape = mediumShape,
+            largeShape = largeShape,
+            badgeSize = badgeSize,
+            horizontalBadgeOffset = horizontalBadgeOffset,
+            verticalBadgeOffset = verticalBadgeOffset
+        )
 
     /**
      * Creates an [ImageSizes] that represents the default sizes used in an image.
@@ -298,17 +301,18 @@ object ImageDefaults {
         badgeSize: Dp = 20.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
-    ): ImageSizes = ImageSizes(
-        boxSizes,
-        placeholderIconSizes,
-        overlayIconSizes,
-        smallShape,
-        mediumShape,
-        largeShape,
-        badgeSize,
-        horizontalBadgeOffset,
-        verticalBadgeOffset
-    )
+    ): ImageSizes =
+        ImageSizes(
+            boxSizes = boxSizes,
+            placeholderIconSizes = placeholderIconSizes,
+            overlayIconSizes = overlayIconSizes,
+            smallShape = smallShape,
+            mediumShape = mediumShape,
+            largeShape = largeShape,
+            badgeSize = badgeSize,
+            horizontalBadgeOffset = horizontalBadgeOffset,
+            verticalBadgeOffset = verticalBadgeOffset
+        )
 
     /**
      * Creates an [ImageSizes] that represents the default sizes used in an image.
@@ -334,17 +338,18 @@ object ImageDefaults {
         badgeSize: Dp = 20.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
-    ): ImageSizes = ImageSizes(
-        boxSizes,
-        placeholderIconSizes,
-        overlayIconSizes,
-        smallShape,
-        mediumShape,
-        largeShape,
-        badgeSize,
-        horizontalBadgeOffset,
-        verticalBadgeOffset
-    )
+    ): ImageSizes =
+        ImageSizes(
+            boxSizes = boxSizes,
+            placeholderIconSizes = placeholderIconSizes,
+            overlayIconSizes = overlayIconSizes,
+            smallShape = smallShape,
+            mediumShape = mediumShape,
+            largeShape = largeShape,
+            badgeSize = badgeSize,
+            horizontalBadgeOffset = horizontalBadgeOffset,
+            verticalBadgeOffset = verticalBadgeOffset
+        )
 
     /**
      * Creates an [ImageSizes] that represents the default sizes used in an image.
@@ -370,17 +375,18 @@ object ImageDefaults {
         badgeSize: Dp = 16.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
-    ): ImageSizes = ImageSizes(
-        boxSizes,
-        placeholderIconSizes,
-        overlayIconSizes,
-        smallShape,
-        mediumShape,
-        largeShape,
-        badgeSize,
-        horizontalBadgeOffset,
-        verticalBadgeOffset
-    )
+    ): ImageSizes =
+        ImageSizes(
+            boxSizes = boxSizes,
+            placeholderIconSizes = placeholderIconSizes,
+            overlayIconSizes = overlayIconSizes,
+            smallShape = smallShape,
+            mediumShape = mediumShape,
+            largeShape = largeShape,
+            badgeSize = badgeSize,
+            horizontalBadgeOffset = horizontalBadgeOffset,
+            verticalBadgeOffset = verticalBadgeOffset
+        )
 
     /**
      * Creates an [ImageSizes] that represents the default sizes used in an image.
@@ -406,17 +412,18 @@ object ImageDefaults {
         badgeSize: Dp = 16.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
-    ): ImageSizes = ImageSizes(
-        boxSizes,
-        placeholderIconSizes,
-        overlayIconSizes,
-        smallShape,
-        mediumShape,
-        largeShape,
-        badgeSize,
-        horizontalBadgeOffset,
-        verticalBadgeOffset
-    )
+    ): ImageSizes =
+        ImageSizes(
+            boxSizes = boxSizes,
+            placeholderIconSizes = placeholderIconSizes,
+            overlayIconSizes = overlayIconSizes,
+            smallShape = smallShape,
+            mediumShape = mediumShape,
+            largeShape = largeShape,
+            badgeSize = badgeSize,
+            horizontalBadgeOffset = horizontalBadgeOffset,
+            verticalBadgeOffset = verticalBadgeOffset
+        )
 
     /**
      * Creates an [ImageSizes] that represents the default sizes used in an image.
@@ -442,17 +449,18 @@ object ImageDefaults {
         badgeSize: Dp = 16.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
-    ): ImageSizes = ImageSizes(
-        boxSizes,
-        placeholderIconSizes,
-        overlayIconSizes,
-        smallShape,
-        mediumShape,
-        largeShape,
-        badgeSize,
-        horizontalBadgeOffset,
-        verticalBadgeOffset
-    )
+    ): ImageSizes =
+        ImageSizes(
+            boxSizes = boxSizes,
+            placeholderIconSizes = placeholderIconSizes,
+            overlayIconSizes = overlayIconSizes,
+            smallShape = smallShape,
+            mediumShape = mediumShape,
+            largeShape = largeShape,
+            badgeSize = badgeSize,
+            horizontalBadgeOffset = horizontalBadgeOffset,
+            verticalBadgeOffset = verticalBadgeOffset
+        )
 
     /**
      * Creates an [ImageSizes] that represents the default sizes used in an image.
@@ -478,17 +486,18 @@ object ImageDefaults {
         badgeSize: Dp = 16.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
-    ): ImageSizes = ImageSizes(
-        boxSizes,
-        placeholderIconSizes,
-        overlayIconSizes,
-        smallShape,
-        mediumShape,
-        largeShape,
-        badgeSize,
-        horizontalBadgeOffset,
-        verticalBadgeOffset
-    )
+    ): ImageSizes =
+        ImageSizes(
+            boxSizes = boxSizes,
+            placeholderIconSizes = placeholderIconSizes,
+            overlayIconSizes = overlayIconSizes,
+            smallShape = smallShape,
+            mediumShape = mediumShape,
+            largeShape = largeShape,
+            badgeSize = badgeSize,
+            horizontalBadgeOffset = horizontalBadgeOffset,
+            verticalBadgeOffset = verticalBadgeOffset
+        )
 
     /**
      * Creates an [ImageSizes] that represents the default sizes used in an image.
@@ -506,17 +515,18 @@ object ImageDefaults {
         smallShape: Shape = RoundedCornerShape(2.dp),
         mediumShape: Shape = RoundedCornerShape(6.dp),
         largeShape: Shape = RoundedCornerShape(8.dp)
-    ): ImageSizes = ImageSizes(
-        boxSizes,
-        placeholderIconSizes,
-        null,
-        smallShape,
-        mediumShape,
-        largeShape,
-        null,
-        0.dp,
-        0.dp
-    )
+    ): ImageSizes =
+        ImageSizes(
+            boxSizes = boxSizes,
+            placeholderIconSizes = placeholderIconSizes,
+            overlayIconSizes = null,
+            smallShape = smallShape,
+            mediumShape = mediumShape,
+            largeShape = largeShape,
+            badgeSize = null,
+            horizontalBadgeOffset = 0.dp,
+            verticalBadgeOffset = 0.dp
+        )
 
     /**
      * Creates an [ImageSizes] that represents the default sizes used in an image.
@@ -534,50 +544,40 @@ object ImageDefaults {
         smallShape: Shape = RoundedCornerShape(2.dp),
         mediumShape: Shape = RoundedCornerShape(4.dp),
         largeShape: Shape = RoundedCornerShape(6.dp)
-    ): ImageSizes = ImageSizes(
-        boxSizes,
-        placeholderIconSizes,
-        null,
-        smallShape,
-        mediumShape,
-        largeShape,
-        null,
-        0.dp,
-        0.dp
-    )
+    ): ImageSizes =
+        ImageSizes(
+            boxSizes = boxSizes,
+            placeholderIconSizes = placeholderIconSizes,
+            overlayIconSizes = null,
+            smallShape = smallShape,
+            mediumShape = mediumShape,
+            largeShape = largeShape,
+            badgeSize = null,
+            horizontalBadgeOffset = 0.dp,
+            verticalBadgeOffset = 0.dp
+        )
 
     /**
      * Creates an [ImageColors] that represents the default sizes used in an avatar.
      *
-     * @param placeholderContainerColor the container color of this avatar when enabled when placeholder is displayed.
-     * @param disabledPlaceholderContainerColor the container color of this avatar when not enabled when placeholder is displayed.
-     * @param borderColor the border color of this avatar when enabled.
-     * @param disabledBorderColor the border color of this avatar when not enabled.
-     * @param placeholderIconColor the placeholder icon color of this avatar when enabled.
-     * @param disabledPlaceholderIconColor the placeholder icon color of this avatar when not enabled.
-     * @param overlayIconColor the overlay icon color of this avatar when enabled.
-     * @param disabledOverlayIconColor the overlay icon color of this avatar when not enabled.
+     * @param placeholderContainerColor the container color of this avatar when placeholder is displayed
+     * @param borderColor the border color of this avatar
+     * @param placeholderIconColor the placeholder icon color of this avatar
+     * @param overlayIconColor the overlay icon color of this avatar
      */
     @Composable
     fun colors(
         placeholderContainerColor: Color = PersianTheme.colorScheme.surfaceContainer,
-        disabledPlaceholderContainerColor: Color = PersianTheme.colorScheme.onSurface.state08,
         borderColor: Color = PersianTheme.colorScheme.outlineVariant,
-        disabledBorderColor: Color = PersianTheme.colorScheme.onSurface.state12,
         placeholderIconColor: Color = PersianTheme.colorScheme.onSurface.state38,
-        disabledPlaceholderIconColor: Color = PersianTheme.colorScheme.onSurface.state38,
         overlayIconColor: Color = PersianTheme.colorScheme.primary,
-        disabledOverlayIconColor: Color = PersianTheme.colorScheme.onSurface.state38
-    ): ImageColors = ImageColors(
-        placeholderContainerColor = placeholderContainerColor,
-        disabledPlaceholderContainerColor = disabledPlaceholderContainerColor,
-        borderColor = borderColor,
-        disabledBorderColor = disabledBorderColor,
-        placeholderIconColor = placeholderIconColor,
-        disabledPlaceholderIconColor = disabledPlaceholderIconColor,
-        overlayIconColor = overlayIconColor,
-        disabledOverlayIconColor = disabledOverlayIconColor
-    )
+    ): ImageColors =
+        ImageColors(
+            placeholderContainerColor = placeholderContainerColor,
+            borderColor = borderColor,
+            placeholderIconColor = placeholderIconColor,
+            overlayIconColor = overlayIconColor,
+        )
 }
 
 enum class ImageShape {
@@ -640,17 +640,18 @@ class ImageSizes internal constructor(
         badgeSize: Dp? = this.badgeSize,
         horizontalBadgeOffset: Dp = this.horizontalBadgeOffset,
         verticalBadgeOffset: Dp = this.verticalBadgeOffset
-    ) = ImageSizes(
-        boxSizes.takeOrElse { this.boxSizes },
-        placeholderSize,
-        overlayIconSizes,
-        smallShape,
-        mediumShape,
-        largeShape,
-        badgeSize,
-        horizontalBadgeOffset.takeOrElse { this.horizontalBadgeOffset },
-        verticalBadgeOffset.takeOrElse { this.verticalBadgeOffset }
-    )
+    ): ImageSizes =
+        ImageSizes(
+            boxSizes = boxSizes,
+            placeholderIconSizes = placeholderSize,
+            overlayIconSizes = overlayIconSizes,
+            smallShape = smallShape,
+            mediumShape = mediumShape,
+            largeShape = largeShape,
+            badgeSize = badgeSize,
+            horizontalBadgeOffset = horizontalBadgeOffset,
+            verticalBadgeOffset = verticalBadgeOffset
+        )
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -685,13 +686,9 @@ class ImageSizes internal constructor(
  * Represents the container and contents colors in different state.
  *
  * @param placeholderContainerColor the container color of this avatar when enabled when placeholder is displayed.
- * @param disabledPlaceholderContainerColor the container color of this avatar when not enabled when placeholder is displayed.
  * @param borderColor the border color of this avatar when enabled.
- * @param disabledBorderColor the border color of this avatar when not enabled.
  * @param placeholderIconColor the placeholder icon color of this avatar when enabled.
- * @param disabledPlaceholderIconColor the placeholder icon color of this avatar when not enabled.
  * @param overlayIconColor the overlay icon color of this avatar when enabled.
- * @param disabledOverlayIconColor the overlay icon color of this avatar when not enabled.
  *
  * @constructor create an instance with arbitrary colors.
  *
@@ -699,73 +696,24 @@ class ImageSizes internal constructor(
  */
 @Immutable
 class ImageColors internal constructor(
-    private val placeholderContainerColor: Color,
-    private val disabledPlaceholderContainerColor: Color,
-    private val borderColor: Color,
-    private val disabledBorderColor: Color,
-    private val placeholderIconColor: Color,
-    private val disabledPlaceholderIconColor: Color,
-    private val overlayIconColor: Color,
-    private val disabledOverlayIconColor: Color
+    internal val placeholderContainerColor: Color,
+    internal val borderColor: Color,
+    internal val placeholderIconColor: Color,
+    internal val overlayIconColor: Color,
 ) {
-
-    /**
-     * Represents the container color for this avatar, depending on [enabled].
-     *
-     * @param enabled whether the avatar is enabled
-     */
-    @Stable
-    internal fun container(enabled: Boolean): Color =
-        if (enabled) placeholderContainerColor else disabledPlaceholderContainerColor
-
-    /**
-     * Represents the border color for this avatar, depending on [enabled].
-     *
-     * @param enabled whether the avatar is enabled.
-     */
-    @Stable
-    internal fun border(enabled: Boolean): Color =
-        if (enabled) borderColor else disabledBorderColor
-
-    /**
-     * Represents the placeholder icon color for this avatar, depending on [enabled].
-     *
-     * @param enabled whether the avatar is enabled.
-     */
-    @Stable
-    internal fun placeholderIcon(enabled: Boolean): Color =
-        if (enabled) placeholderIconColor else disabledPlaceholderIconColor
-
-    /**
-     * Represents the overlay icon color for this avatar, depending on [enabled].
-     *
-     * @param enabled whether the avatar is enabled.
-     */
-    @Stable
-    internal fun overlayIcon(enabled: Boolean): Color =
-        if (enabled) overlayIconColor else disabledOverlayIconColor
-
     /**
      * Returns a copy of this [ImageColors], optionally overriding some of the values
      */
     fun copy(
         placeholderContainerColor: Color = this.placeholderContainerColor,
-        disabledPlaceholderContainerColor: Color = this.disabledPlaceholderContainerColor,
         borderColor: Color = this.borderColor,
-        disabledBorderColor: Color = this.disabledBorderColor,
         placeholderIconColor: Color = this.placeholderIconColor,
-        disabledPlaceholderIconColor: Color = this.disabledPlaceholderIconColor,
         overlayIconColor: Color = this.overlayIconColor,
-        disabledOverlayIconColor: Color = this.disabledOverlayIconColor
     ): ImageColors = ImageColors(
-        placeholderContainerColor = placeholderContainerColor.takeOrElse { this.placeholderContainerColor },
-        disabledPlaceholderContainerColor = disabledPlaceholderContainerColor.takeOrElse { this.disabledPlaceholderContainerColor },
-        borderColor = borderColor.takeOrElse { this.borderColor },
-        disabledBorderColor = disabledBorderColor.takeOrElse { this.disabledBorderColor },
-        placeholderIconColor = placeholderIconColor.takeOrElse { this.placeholderIconColor },
-        disabledPlaceholderIconColor = disabledPlaceholderIconColor.takeOrElse { this.disabledPlaceholderIconColor },
-        overlayIconColor = overlayIconColor.takeOrElse { this.overlayIconColor },
-        disabledOverlayIconColor = disabledOverlayIconColor.takeOrElse { this.disabledOverlayIconColor }
+        placeholderContainerColor = placeholderContainerColor,
+        borderColor = borderColor,
+        placeholderIconColor = placeholderIconColor,
+        overlayIconColor = overlayIconColor
     )
 
     override fun equals(other: Any?): Boolean {
@@ -773,24 +721,16 @@ class ImageColors internal constructor(
         if (other == null || other !is ImageColors) return false
 
         if (placeholderContainerColor != other.placeholderContainerColor) return false
-        if (disabledPlaceholderContainerColor != other.disabledPlaceholderContainerColor) return false
         if (borderColor != other.borderColor) return false
-        if (disabledBorderColor != other.disabledBorderColor) return false
         if (placeholderIconColor != other.placeholderIconColor) return false
-        if (disabledPlaceholderIconColor != other.disabledPlaceholderIconColor) return false
-        if (overlayIconColor != other.overlayIconColor) return false
-        return disabledOverlayIconColor == other.disabledOverlayIconColor
+        return overlayIconColor == other.overlayIconColor
     }
 
     override fun hashCode(): Int {
         var result = placeholderContainerColor.hashCode()
-        result = 31 * result + disabledPlaceholderContainerColor.hashCode()
         result = 31 * result + placeholderIconColor.hashCode()
         result = 31 * result + borderColor.hashCode()
-        result = 31 * result + disabledBorderColor.hashCode()
-        result = 31 * result + disabledPlaceholderIconColor.hashCode()
         result = 31 * result + overlayIconColor.hashCode()
-        result = 31 * result + disabledOverlayIconColor.hashCode()
         return result
     }
 }

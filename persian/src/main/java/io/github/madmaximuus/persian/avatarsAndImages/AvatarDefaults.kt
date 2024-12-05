@@ -4,15 +4,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.takeOrElse
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.unit.takeOrElse
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.foundation.state08
-import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persian.icon.IconSizes
@@ -41,18 +37,20 @@ object AvatarDefaults {
         badgeSize: Dp = 28.dp,
         horizontalBadgeOffset: Dp = 0.dp,
         verticalBadgeOffset: Dp = 0.dp,
-        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
-            fontSize = 30.sp
+        initialsTextStyle: TextStyle = PersianTheme.typography.titleLarge.copy(
+            fontSize = 30.sp,
+            lineHeight = 36.sp
         )
-    ) = AvatarSizes(
-        boxSizes,
-        placeholderIconSizes,
-        overlayIconSizes,
-        badgeSize,
-        horizontalBadgeOffset,
-        verticalBadgeOffset,
-        initialsTextStyle
-    )
+    ): AvatarSizes =
+        AvatarSizes(
+            boxSizes = boxSizes,
+            placeholderIconSizes = placeholderIconSizes,
+            overlayIconSizes = overlayIconSizes,
+            badgeSize = badgeSize,
+            horizontalBadgeOffset = horizontalBadgeOffset,
+            verticalBadgeOffset = verticalBadgeOffset,
+            initialsTextStyle = initialsTextStyle
+        )
 
     /**
      * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
@@ -73,18 +71,20 @@ object AvatarDefaults {
         badgeSize: Dp = 28.dp,
         horizontalBadgeOffset: Dp = 1.dp,
         verticalBadgeOffset: Dp = 1.dp,
-        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
-            fontSize = 30.sp
+        initialsTextStyle: TextStyle = PersianTheme.typography.titleLarge.copy(
+            fontSize = 30.sp,
+            lineHeight = 36.sp
         )
-    ) = AvatarSizes(
-        boxSizes,
-        placeholderIconSizes,
-        overlayIconSizes,
-        badgeSize,
-        horizontalBadgeOffset,
-        verticalBadgeOffset,
-        initialsTextStyle
-    )
+    ): AvatarSizes =
+        AvatarSizes(
+            boxSizes = boxSizes,
+            placeholderIconSizes = placeholderIconSizes,
+            overlayIconSizes = overlayIconSizes,
+            badgeSize = badgeSize,
+            horizontalBadgeOffset = horizontalBadgeOffset,
+            verticalBadgeOffset = verticalBadgeOffset,
+            initialsTextStyle = initialsTextStyle
+        )
 
     /**
      * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
@@ -105,18 +105,20 @@ object AvatarDefaults {
         badgeSize: Dp = 28.dp,
         horizontalBadgeOffset: Dp = 0.dp,
         verticalBadgeOffset: Dp = 4.dp,
-        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
-            fontSize = 26.sp
+        initialsTextStyle: TextStyle = PersianTheme.typography.titleLarge.copy(
+            fontSize = 26.sp,
+            lineHeight = 32.sp
         )
-    ) = AvatarSizes(
-        boxSizes,
-        placeholderIconSizes,
-        overlayIconSizes,
-        badgeSize,
-        horizontalBadgeOffset,
-        verticalBadgeOffset,
-        initialsTextStyle
-    )
+    ): AvatarSizes =
+        AvatarSizes(
+            boxSizes = boxSizes,
+            placeholderIconSizes = placeholderIconSizes,
+            overlayIconSizes = overlayIconSizes,
+            badgeSize = badgeSize,
+            horizontalBadgeOffset = horizontalBadgeOffset,
+            verticalBadgeOffset = verticalBadgeOffset,
+            initialsTextStyle = initialsTextStyle
+        )
 
     /**
      * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
@@ -137,18 +139,20 @@ object AvatarDefaults {
         badgeSize: Dp = 28.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
-        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
-            fontSize = 26.sp
+        initialsTextStyle: TextStyle = PersianTheme.typography.titleLarge.copy(
+            fontSize = 26.sp,
+            lineHeight = 32.sp
         )
-    ) = AvatarSizes(
-        boxSizes,
-        placeholderIconSizes,
-        overlayIconSizes,
-        badgeSize,
-        horizontalBadgeOffset,
-        verticalBadgeOffset,
-        initialsTextStyle
-    )
+    ): AvatarSizes =
+        AvatarSizes(
+            boxSizes = boxSizes,
+            placeholderIconSizes = placeholderIconSizes,
+            overlayIconSizes = overlayIconSizes,
+            badgeSize = badgeSize,
+            horizontalBadgeOffset = horizontalBadgeOffset,
+            verticalBadgeOffset = verticalBadgeOffset,
+            initialsTextStyle = initialsTextStyle
+        )
 
     /**
      * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
@@ -169,18 +173,20 @@ object AvatarDefaults {
         badgeSize: Dp = 24.dp,
         horizontalBadgeOffset: Dp = 2.dp,
         verticalBadgeOffset: Dp = 2.dp,
-        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
-            fontSize = 21.sp
+        initialsTextStyle: TextStyle = PersianTheme.typography.titleLarge.copy(
+            fontSize = 21.sp,
+            lineHeight = 27.sp
         )
-    ) = AvatarSizes(
-        boxSizes,
-        placeholderIconSizes,
-        overlayIconSizes,
-        badgeSize,
-        horizontalBadgeOffset,
-        verticalBadgeOffset,
-        initialsTextStyle
-    )
+    ): AvatarSizes =
+        AvatarSizes(
+            boxSizes = boxSizes,
+            placeholderIconSizes = placeholderIconSizes,
+            overlayIconSizes = overlayIconSizes,
+            badgeSize = badgeSize,
+            horizontalBadgeOffset = horizontalBadgeOffset,
+            verticalBadgeOffset = verticalBadgeOffset,
+            initialsTextStyle = initialsTextStyle
+        )
 
     /**
      * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
@@ -201,18 +207,20 @@ object AvatarDefaults {
         badgeSize: Dp = 24.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
-        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
-            fontSize = 18.sp
+        initialsTextStyle: TextStyle = PersianTheme.typography.titleLarge.copy(
+            fontSize = 18.sp,
+            lineHeight = 24.sp
         )
-    ) = AvatarSizes(
-        boxSizes,
-        placeholderIconSizes,
-        overlayIconSizes,
-        badgeSize,
-        horizontalBadgeOffset,
-        verticalBadgeOffset,
-        initialsTextStyle
-    )
+    ): AvatarSizes =
+        AvatarSizes(
+            boxSizes = boxSizes,
+            placeholderIconSizes = placeholderIconSizes,
+            overlayIconSizes = overlayIconSizes,
+            badgeSize = badgeSize,
+            horizontalBadgeOffset = horizontalBadgeOffset,
+            verticalBadgeOffset = verticalBadgeOffset,
+            initialsTextStyle = initialsTextStyle
+        )
 
     /**
      * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
@@ -233,18 +241,20 @@ object AvatarDefaults {
         badgeSize: Dp = 20.dp,
         horizontalBadgeOffset: Dp = 2.dp,
         verticalBadgeOffset: Dp = 2.dp,
-        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
-            fontSize = 17.sp
+        initialsTextStyle: TextStyle = PersianTheme.typography.titleLarge.copy(
+            fontSize = 17.sp,
+            lineHeight = 23.sp
         )
-    ) = AvatarSizes(
-        boxSizes,
-        placeholderIconSizes,
-        overlayIconSizes,
-        badgeSize,
-        horizontalBadgeOffset,
-        verticalBadgeOffset,
-        initialsTextStyle
-    )
+    ): AvatarSizes =
+        AvatarSizes(
+            boxSizes = boxSizes,
+            placeholderIconSizes = placeholderIconSizes,
+            overlayIconSizes = overlayIconSizes,
+            badgeSize = badgeSize,
+            horizontalBadgeOffset = horizontalBadgeOffset,
+            verticalBadgeOffset = verticalBadgeOffset,
+            initialsTextStyle = initialsTextStyle
+        )
 
     /**
      * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
@@ -265,18 +275,20 @@ object AvatarDefaults {
         badgeSize: Dp = 20.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
-        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
-            fontSize = 14.sp
+        initialsTextStyle: TextStyle = PersianTheme.typography.titleLarge.copy(
+            fontSize = 14.sp,
+            lineHeight = 20.sp
         )
-    ) = AvatarSizes(
-        boxSizes,
-        placeholderIconSizes,
-        overlayIconSizes,
-        badgeSize,
-        horizontalBadgeOffset,
-        verticalBadgeOffset,
-        initialsTextStyle
-    )
+    ): AvatarSizes =
+        AvatarSizes(
+            boxSizes = boxSizes,
+            placeholderIconSizes = placeholderIconSizes,
+            overlayIconSizes = overlayIconSizes,
+            badgeSize = badgeSize,
+            horizontalBadgeOffset = horizontalBadgeOffset,
+            verticalBadgeOffset = verticalBadgeOffset,
+            initialsTextStyle = initialsTextStyle
+        )
 
     /**
      * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
@@ -297,18 +309,20 @@ object AvatarDefaults {
         badgeSize: Dp = 20.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
-        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
-            fontSize = 14.sp
+        initialsTextStyle: TextStyle = PersianTheme.typography.titleLarge.copy(
+            fontSize = 14.sp,
+            lineHeight = 20.sp
         )
-    ) = AvatarSizes(
-        boxSizes,
-        placeholderIconSizes,
-        overlayIconSizes,
-        badgeSize,
-        horizontalBadgeOffset,
-        verticalBadgeOffset,
-        initialsTextStyle
-    )
+    ): AvatarSizes =
+        AvatarSizes(
+            boxSizes = boxSizes,
+            placeholderIconSizes = placeholderIconSizes,
+            overlayIconSizes = overlayIconSizes,
+            badgeSize = badgeSize,
+            horizontalBadgeOffset = horizontalBadgeOffset,
+            verticalBadgeOffset = verticalBadgeOffset,
+            initialsTextStyle = initialsTextStyle
+        )
 
     /**
      * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
@@ -329,18 +343,20 @@ object AvatarDefaults {
         badgeSize: Dp = 16.dp,
         horizontalBadgeOffset: Dp = 2.dp,
         verticalBadgeOffset: Dp = 2.dp,
-        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
-            fontSize = 13.sp
+        initialsTextStyle: TextStyle = PersianTheme.typography.titleLarge.copy(
+            fontSize = 13.sp,
+            lineHeight = 19.sp
         )
-    ) = AvatarSizes(
-        boxSizes,
-        placeholderIconSizes,
-        overlayIconSizes,
-        badgeSize,
-        horizontalBadgeOffset,
-        verticalBadgeOffset,
-        initialsTextStyle
-    )
+    ): AvatarSizes =
+        AvatarSizes(
+            boxSizes = boxSizes,
+            placeholderIconSizes = placeholderIconSizes,
+            overlayIconSizes = overlayIconSizes,
+            badgeSize = badgeSize,
+            horizontalBadgeOffset = horizontalBadgeOffset,
+            verticalBadgeOffset = verticalBadgeOffset,
+            initialsTextStyle = initialsTextStyle
+        )
 
     /**
      * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
@@ -361,18 +377,20 @@ object AvatarDefaults {
         badgeSize: Dp = 16.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
-        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
-            fontSize = 10.sp
+        initialsTextStyle: TextStyle = PersianTheme.typography.titleLarge.copy(
+            fontSize = 10.sp,
+            lineHeight = 16.sp
         )
-    ) = AvatarSizes(
-        boxSizes,
-        placeholderIconSizes,
-        overlayIconSizes,
-        badgeSize,
-        horizontalBadgeOffset,
-        verticalBadgeOffset,
-        initialsTextStyle
-    )
+    ): AvatarSizes =
+        AvatarSizes(
+            boxSizes = boxSizes,
+            placeholderIconSizes = placeholderIconSizes,
+            overlayIconSizes = overlayIconSizes,
+            badgeSize = badgeSize,
+            horizontalBadgeOffset = horizontalBadgeOffset,
+            verticalBadgeOffset = verticalBadgeOffset,
+            initialsTextStyle = initialsTextStyle
+        )
 
     /**
      * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
@@ -393,18 +411,20 @@ object AvatarDefaults {
         badgeSize: Dp = 16.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
-        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
-            fontSize = 10.sp
+        initialsTextStyle: TextStyle = PersianTheme.typography.titleLarge.copy(
+            fontSize = 10.sp,
+            lineHeight = 16.sp
         )
-    ) = AvatarSizes(
-        boxSizes,
-        placeholderIconSizes,
-        overlayIconSizes,
-        badgeSize,
-        horizontalBadgeOffset,
-        verticalBadgeOffset,
-        initialsTextStyle
-    )
+    ): AvatarSizes =
+        AvatarSizes(
+            boxSizes = boxSizes,
+            placeholderIconSizes = placeholderIconSizes,
+            overlayIconSizes = overlayIconSizes,
+            badgeSize = badgeSize,
+            horizontalBadgeOffset = horizontalBadgeOffset,
+            verticalBadgeOffset = verticalBadgeOffset,
+            initialsTextStyle = initialsTextStyle
+        )
 
     /**
      * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
@@ -425,18 +445,20 @@ object AvatarDefaults {
         badgeSize: Dp = 16.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
-        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
-            fontSize = 8.sp
+        initialsTextStyle: TextStyle = PersianTheme.typography.titleLarge.copy(
+            fontSize = 8.sp,
+            lineHeight = 14.sp
         )
-    ) = AvatarSizes(
-        boxSizes,
-        placeholderIconSizes,
-        overlayIconSizes,
-        badgeSize,
-        horizontalBadgeOffset,
-        verticalBadgeOffset,
-        initialsTextStyle
-    )
+    ): AvatarSizes =
+        AvatarSizes(
+            boxSizes = boxSizes,
+            placeholderIconSizes = placeholderIconSizes,
+            overlayIconSizes = overlayIconSizes,
+            badgeSize = badgeSize,
+            horizontalBadgeOffset = horizontalBadgeOffset,
+            verticalBadgeOffset = verticalBadgeOffset,
+            initialsTextStyle = initialsTextStyle
+        )
 
     /**
      * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
@@ -449,18 +471,20 @@ object AvatarDefaults {
     fun size20(
         boxSizes: Dp = 20.dp,
         placeholderIconSizes: IconSizes = IconDefaults.size16(),
-        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
-            fontSize = 8.sp
+        initialsTextStyle: TextStyle = PersianTheme.typography.labelLarge.copy(
+            fontSize = 8.sp,
+            lineHeight = 14.sp
         )
-    ) = AvatarSizes(
-        boxSizes,
-        placeholderIconSizes,
-        null,
-        null,
-        0.dp,
-        0.dp,
-        initialsTextStyle
-    )
+    ): AvatarSizes =
+        AvatarSizes(
+            boxSizes = boxSizes,
+            placeholderIconSizes = placeholderIconSizes,
+            overlayIconSizes = null,
+            badgeSize = null,
+            horizontalBadgeOffset = 0.dp,
+            verticalBadgeOffset = 0.dp,
+            initialsTextStyle = initialsTextStyle
+        )
 
     /**
      * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
@@ -473,74 +497,49 @@ object AvatarDefaults {
     fun size16(
         boxSizes: Dp = 16.dp,
         placeholderIconSizes: IconSizes = IconDefaults.size12(),
-        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
-            fontSize = 5.sp
+        initialsTextStyle: TextStyle = PersianTheme.typography.titleLarge.copy(
+            fontSize = 5.sp,
+            lineHeight = 11.sp
         )
-    ) = AvatarSizes(
-        boxSizes,
-        placeholderIconSizes,
-        null,
-        null,
-        0.dp,
-        0.dp,
-        initialsTextStyle
-    )
+    ): AvatarSizes =
+        AvatarSizes(
+            boxSizes = boxSizes,
+            placeholderIconSizes = placeholderIconSizes,
+            overlayIconSizes = null,
+            badgeSize = null,
+            horizontalBadgeOffset = 0.dp,
+            verticalBadgeOffset = 0.dp,
+            initialsTextStyle = initialsTextStyle
+        )
 
 
     /**
      * Creates an [AvatarColors] that represents the default sizes used in an avatar.
      *
-     * @param placeholderContainerColor the container color of this avatar when enabled when placeholder is displayed.
-     * @param disabledPlaceholderContainerColor the container color of this avatar when not enabled when placeholder is displayed.
-     * @param borderColor the border color of this avatar when enabled.
-     * @param disabledBorderColor the border color of this avatar when not enabled.
-     * @param placeholderIconColor the placeholder icon color of this avatar when enabled.
-     * @param disabledPlaceholderIconColor the placeholder icon color of this avatar when not enabled.
-     * @param overlayIconColor the overlay icon color of this avatar when enabled.
-     * @param disabledOverlayIconColor the overlay icon color of this avatar when not enabled.
-     * @param initialsTextColor the initials color of this avatar when enabled.
-     * @param disabledInitialsTextColor the initials text color of this avatar when not enabled.
-     * @param initialsContainerColor the initials container color of this avatar when enabled.
-     * @param disabledInitialsContainerColor the initials container color of this avatar when not enabled.
+     * @param placeholderContainerColor the container color of this avatar when placeholder is displayed.
+     * @param borderColor the border color of this avatar
+     * @param placeholderIconColor the placeholder icon color of this avatar
+     * @param overlayIconColor the overlay icon color of this avatar
+     * @param initialsTextColor the initials color of this avatar
+     * @param initialsContainerColor the initials container color of this avatar
      */
     @Composable
     fun colors(
         placeholderContainerColor: Color = PersianTheme.colorScheme.surfaceContainer,
-        disabledPlaceholderContainerColor: Color = PersianTheme.colorScheme.onSurface.state08,
-
         borderColor: Color = PersianTheme.colorScheme.outlineVariant,
-        disabledBorderColor: Color = PersianTheme.colorScheme.onSurface.state12,
-
-        placeholderIconColor: Color = PersianTheme.colorScheme.onSurface.state38,
-        disabledPlaceholderIconColor: Color = PersianTheme.colorScheme.onSurface.state38,
-
+        placeholderIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant.state38,
         overlayIconColor: Color = PersianTheme.colorScheme.primary,
-        disabledOverlayIconColor: Color = PersianTheme.colorScheme.onSurface.state38,
-
         initialsTextColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
-        disabledInitialsTextColor: Color = PersianTheme.colorScheme.onSurface.state38,
-
         initialsContainerColor: Color = PersianTheme.colorScheme.surfaceContainerHighest,
-        disabledInitialsContainerColor: Color = disabledPlaceholderContainerColor
-    ): AvatarColors = AvatarColors(
-        placeholderContainerColor = placeholderContainerColor,
-        disabledPlaceholderContainerColor = disabledPlaceholderContainerColor,
-
-        borderColor = borderColor,
-        disabledBorderColor = disabledBorderColor,
-
-        placeholderIconColor = placeholderIconColor,
-        disabledPlaceholderIconColor = disabledPlaceholderIconColor,
-
-        overlayIconColor = overlayIconColor,
-        disabledOverlayIconColor = disabledOverlayIconColor,
-
-        initialsTextColor = initialsTextColor,
-        disabledInitialsTextColor = disabledInitialsTextColor,
-
-        initialsContainerColor = initialsContainerColor,
-        disabledInitialsContainerColor = disabledInitialsContainerColor
-    )
+    ): AvatarColors =
+        AvatarColors(
+            placeholderContainerColor = placeholderContainerColor,
+            borderColor = borderColor,
+            placeholderIconColor = placeholderIconColor,
+            overlayIconColor = overlayIconColor,
+            initialsTextColor = initialsTextColor,
+            initialsContainerColor = initialsContainerColor,
+        )
 }
 
 /**
@@ -579,15 +578,16 @@ class AvatarSizes internal constructor(
         horizontalBadgeOffset: Dp = this.horizontalBadgeOffset,
         verticalBadgeOffset: Dp = this.verticalBadgeOffset,
         initialsTextStyle: TextStyle = this.initialsTextStyle
-    ) = AvatarSizes(
-        boxSizes.takeOrElse { this.boxSizes },
-        placeholderSize,
-        overlayIconSizes,
-        badgeSize,
-        horizontalBadgeOffset.takeOrElse { this.horizontalBadgeOffset },
-        verticalBadgeOffset.takeOrElse { this.verticalBadgeOffset },
-        initialsTextStyle
-    )
+    ): AvatarSizes =
+        AvatarSizes(
+            boxSizes = boxSizes,
+            placeholderIconSizes = placeholderSize,
+            overlayIconSizes = overlayIconSizes,
+            badgeSize = badgeSize,
+            horizontalBadgeOffset = horizontalBadgeOffset,
+            verticalBadgeOffset = verticalBadgeOffset,
+            initialsTextStyle = initialsTextStyle
+        )
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -618,17 +618,11 @@ class AvatarSizes internal constructor(
  * Represents the container and contents colors in different state.
  *
  * @param placeholderContainerColor the container color of this avatar when enabled when placeholder is displayed.
- * @param disabledPlaceholderContainerColor the container color of this avatar when not enabled when placeholder is displayed.
  * @param borderColor the border color of this avatar when enabled.
- * @param disabledBorderColor the border color of this avatar when not enabled.
  * @param placeholderIconColor the placeholder icon color of this avatar when enabled.
- * @param disabledPlaceholderIconColor the placeholder icon color of this avatar when not enabled.
  * @param overlayIconColor the overlay icon color of this avatar when enabled.
- * @param disabledOverlayIconColor the overlay icon color of this avatar when not enabled.
  * @param initialsTextColor the initials color of this avatar when enabled.
- * @param disabledInitialsTextColor the initials text color of this avatar when not enabled.
  * @param initialsContainerColor the initials container color of this avatar when enabled.
- * @param disabledInitialsContainerColor the initials container color of this avatar when not enabled.
  *
  * @constructor create an instance with arbitrary colors.
  *
@@ -636,146 +630,62 @@ class AvatarSizes internal constructor(
  */
 @Immutable
 class AvatarColors internal constructor(
+    internal val borderColor: Color,
+    internal val placeholderIconColor: Color,
     private val placeholderContainerColor: Color,
-    private val disabledPlaceholderContainerColor: Color,
-
-    private val borderColor: Color,
-    private val disabledBorderColor: Color,
-
-    private val placeholderIconColor: Color,
-    private val disabledPlaceholderIconColor: Color,
-
-    private val overlayIconColor: Color,
-    private val disabledOverlayIconColor: Color,
-
-    private val initialsTextColor: Color,
-    private val disabledInitialsTextColor: Color,
-
+    internal val overlayIconColor: Color,
+    internal val initialsTextColor: Color,
     private val initialsContainerColor: Color,
-    private val disabledInitialsContainerColor: Color,
 ) {
 
     /**
-     * Represents the container color for this avatar, depending on [enabled] and [initials].
+     * Represents the container color for this avatar, depending on [initials].
      *
-     * @param enabled whether the avatar is enabled
      * @param initials whether the initials is displayed in avatar.
      */
     @Stable
-    internal fun container(enabled: Boolean, initials: Boolean): Color =
-        if (enabled)
-            if (initials) initialsContainerColor else placeholderContainerColor
-        else
-            if (initials) disabledInitialsContainerColor else disabledPlaceholderContainerColor
-
-    /**
-     * Represents the border color for this avatar, depending on [enabled].
-     *
-     * @param enabled whether the avatar is enabled.
-     */
-    @Stable
-    internal fun border(enabled: Boolean): Color =
-        if (enabled) borderColor else disabledBorderColor
-
-    /**
-     * Represents the placeholder icon color for this avatar, depending on [enabled].
-     *
-     * @param enabled whether the avatar is enabled.
-     */
-    @Stable
-    internal fun placeholderIcon(enabled: Boolean): Color =
-        if (enabled) placeholderIconColor else disabledPlaceholderIconColor
-
-    /**
-     * Represents the overlay icon color for this avatar, depending on [enabled].
-     *
-     * @param enabled whether the avatar is enabled.
-     */
-    @Stable
-    internal fun overlayIcon(enabled: Boolean): Color =
-        if (enabled) overlayIconColor else disabledOverlayIconColor
-
-    /**
-     * Represents the initials color for this avatar, depending on [enabled].
-     *
-     * @param enabled whether the avatar is enabled.
-     */
-    @Stable
-    internal fun initials(enabled: Boolean): Color =
-        if (enabled) initialsTextColor else disabledInitialsTextColor
+    internal fun container(initials: Boolean): Color =
+        if (initials) initialsContainerColor else placeholderContainerColor
 
     /**
      * Returns a copy of this [AvatarColors], optionally overriding some of the values
      */
     fun copy(
         placeholderContainerColor: Color = this.placeholderContainerColor,
-        disabledPlaceholderContainerColor: Color = this.disabledPlaceholderContainerColor,
-
         borderColor: Color = this.borderColor,
-        disabledBorderColor: Color = this.disabledBorderColor,
-
         placeholderIconColor: Color = this.placeholderIconColor,
-        disabledPlaceholderIconColor: Color = this.disabledPlaceholderIconColor,
-
         overlayIconColor: Color = this.overlayIconColor,
-        disabledOverlayIconColor: Color = this.disabledOverlayIconColor,
-
         initialsTextColor: Color = this.initialsTextColor,
-        disabledInitialsColor: Color = this.initialsTextColor,
-
         initialsContainerColor: Color = this.initialsContainerColor,
-        disabledInitialsContainerColor: Color = this.disabledInitialsContainerColor
-    ): AvatarColors = AvatarColors(
-        placeholderContainerColor = placeholderContainerColor.takeOrElse { this.placeholderContainerColor },
-        disabledPlaceholderContainerColor = disabledPlaceholderContainerColor.takeOrElse { this.disabledPlaceholderContainerColor },
-
-        borderColor = borderColor.takeOrElse { this.borderColor },
-        disabledBorderColor = disabledBorderColor.takeOrElse { this.disabledBorderColor },
-
-        placeholderIconColor = placeholderIconColor.takeOrElse { this.placeholderIconColor },
-        disabledPlaceholderIconColor = disabledPlaceholderIconColor.takeOrElse { this.disabledPlaceholderIconColor },
-
-        overlayIconColor = overlayIconColor.takeOrElse { this.overlayIconColor },
-        disabledOverlayIconColor = disabledOverlayIconColor.takeOrElse { this.disabledOverlayIconColor },
-
-        initialsTextColor = initialsTextColor.takeOrElse { this.initialsTextColor },
-        disabledInitialsTextColor = disabledInitialsColor.takeOrElse { this.disabledInitialsTextColor },
-
-        initialsContainerColor = initialsContainerColor.takeOrElse { this.initialsContainerColor },
-        disabledInitialsContainerColor = disabledInitialsContainerColor.takeOrElse { this.disabledInitialsContainerColor }
-    )
+    ): AvatarColors =
+        AvatarColors(
+            placeholderContainerColor = placeholderContainerColor,
+            borderColor = borderColor,
+            placeholderIconColor = placeholderIconColor,
+            overlayIconColor = overlayIconColor,
+            initialsTextColor = initialsTextColor,
+            initialsContainerColor = initialsContainerColor
+        )
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other == null || other !is AvatarColors) return false
 
         if (placeholderContainerColor != other.placeholderContainerColor) return false
-        if (disabledPlaceholderContainerColor != other.disabledPlaceholderContainerColor) return false
         if (borderColor != other.borderColor) return false
-        if (disabledBorderColor != other.disabledBorderColor) return false
         if (placeholderIconColor != other.placeholderIconColor) return false
-        if (disabledPlaceholderIconColor != other.disabledPlaceholderIconColor) return false
         if (overlayIconColor != other.overlayIconColor) return false
         if (initialsTextColor != other.initialsTextColor) return false
-        if (disabledInitialsTextColor != other.disabledInitialsTextColor) return false
-        if (initialsContainerColor != other.initialsContainerColor) return false
-        if (disabledInitialsContainerColor != other.disabledInitialsContainerColor) return false
-        return disabledOverlayIconColor == other.disabledOverlayIconColor
+        return initialsContainerColor == other.initialsContainerColor
     }
 
     override fun hashCode(): Int {
         var result = placeholderContainerColor.hashCode()
-        result = 31 * result + disabledPlaceholderContainerColor.hashCode()
         result = 31 * result + placeholderIconColor.hashCode()
         result = 31 * result + borderColor.hashCode()
-        result = 31 * result + disabledBorderColor.hashCode()
-        result = 31 * result + disabledPlaceholderIconColor.hashCode()
         result = 31 * result + overlayIconColor.hashCode()
-        result = 31 * result + disabledOverlayIconColor.hashCode()
         result = 31 * result + initialsTextColor.hashCode()
-        result = 31 * result + disabledInitialsTextColor.hashCode()
         result = 31 * result + initialsContainerColor.hashCode()
-        result = 31 * result + disabledInitialsContainerColor.hashCode()
         return result
     }
 }
