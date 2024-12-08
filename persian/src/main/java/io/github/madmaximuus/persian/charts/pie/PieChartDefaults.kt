@@ -14,27 +14,19 @@ object PieChartDefaults {
     /**
      * Creates a [ChartStyle] that represents the default style used in a [PieChart].
      *
-     * @param titleStyle The title text style of this pie chart.
-     * @param titleColor The title color of this pie chart.
-     * @param subtitleStyle The subtitle text style of this pie chart.
-     * @param subtitleColor The subtitle color of this pie chart.
      * @param labelStyle The label text style of this pie chart.
      * @param labelColor The label color of this pie chart.
      */
     @Composable
     fun style(
-        titleStyle: TextStyle = PersianTheme.typography.titleMedium,
-        titleColor: Color = PersianTheme.colorScheme.onSurface,
-        subtitleStyle: TextStyle = PersianTheme.typography.headlineMedium,
-        subtitleColor: Color = PersianTheme.colorScheme.onSurface,
-        labelStyle: TextStyle = PersianTheme.typography.titleMedium,
+        labelStyle: TextStyle = PersianTheme.typography.labelLarge,
         labelColor: Color = Color.White
     ): ChartStyle =
         ChartStyle(
-            titleStyle = titleStyle,
-            titleColor = titleColor,
-            subtitleStyle = subtitleStyle,
-            subtitleColor = subtitleColor,
+            titleStyle = PersianTheme.typography.titleMedium,
+            titleColor = PersianTheme.colorScheme.onSurface,
+            subtitleStyle = PersianTheme.typography.headlineMedium,
+            subtitleColor = PersianTheme.colorScheme.onSurface,
             labelStyle = labelStyle,
             labelColor = labelColor
         )

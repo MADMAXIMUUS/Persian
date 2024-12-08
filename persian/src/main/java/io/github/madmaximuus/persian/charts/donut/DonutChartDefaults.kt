@@ -23,11 +23,11 @@ object DonutChartDefaults {
      */
     @Composable
     fun style(
-        titleStyle: TextStyle = PersianTheme.typography.titleMedium,
+        titleStyle: TextStyle = PersianTheme.typography.titleSmall,
         titleColor: Color = PersianTheme.colorScheme.onSurface,
         subtitleStyle: TextStyle = PersianTheme.typography.headlineMedium,
         subtitleColor: Color = PersianTheme.colorScheme.onSurface,
-        labelStyle: TextStyle = PersianTheme.typography.titleMedium,
+        labelStyle: TextStyle = PersianTheme.typography.labelLarge,
         labelColor: Color = Color.White
     ): ChartStyle =
         ChartStyle(
