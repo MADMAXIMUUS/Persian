@@ -277,9 +277,9 @@ private class CheckDrawingCache(
     val pathToDraw: Path = Path()
 )
 
-internal const val BOX_IN_DURATION = 100
+internal const val BOX_IN_DURATION = 200
 internal const val BOX_OUT_DURATION = 150
-internal const val CHECK_ANIMATION_DURATION = 200
+internal const val CHECK_ANIMATION_DURATION = 300
 
 internal val checkboxSize = 24.dp
 internal val strokeWidth = 3.dp

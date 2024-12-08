@@ -83,7 +83,7 @@ object CheckboxDefaults {
     @Composable
     fun sizes(
         toggleSize: Dp = 26.dp,
-        textStyle: TextStyle = PersianTheme.typography.titleMedium,
+        textStyle: TextStyle = PersianTheme.typography.labelLarge,
         shape: Shape = PersianTheme.shapes.shape16,
         contentPadding: PaddingValues = PaddingValues(
             horizontal = PersianTheme.spacing.size16
