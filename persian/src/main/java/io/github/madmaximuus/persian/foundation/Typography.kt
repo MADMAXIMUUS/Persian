@@ -138,11 +138,19 @@ class Typography(
         fontFamily = FontFamily(
             Font(R.font.nunito_bold, FontWeight.Bold)
         ),
-        fontSize = 14.sp,
-        lineHeight = 20.sp,
-        letterSpacing = 0.1.sp
+        fontSize = 16.sp,
+        lineHeight = 24.sp,
+        letterSpacing = 0.5.sp
     ),
     val labelMedium: TextStyle = TextStyle(
+        fontFamily = FontFamily(
+            Font(R.font.nunito_bold, FontWeight.Bold)
+        ),
+        fontSize = 14.sp,
+        lineHeight = 20.sp,
+        letterSpacing = 0.5.sp
+    ),
+    val labelSmall: TextStyle = TextStyle(
         fontFamily = FontFamily(
             Font(R.font.nunito_bold, FontWeight.Bold)
         ),
@@ -150,14 +158,14 @@ class Typography(
         lineHeight = 16.sp,
         letterSpacing = 0.5.sp
     ),
-    val labelSmall: TextStyle = TextStyle(
+    val labelExtraSmall: TextStyle = TextStyle(
         fontFamily = FontFamily(
             Font(R.font.nunito_bold, FontWeight.Bold)
         ),
         fontSize = 11.sp,
-        lineHeight = 16.sp,
+        lineHeight = 14.sp,
         letterSpacing = 0.5.sp
-    ),
+    )
 ) {
 
     /** Returns a copy of this Typography, optionally overriding some of the values. */
@@ -177,6 +185,7 @@ class Typography(
         labelLarge: TextStyle = this.labelLarge,
         labelMedium: TextStyle = this.labelMedium,
         labelSmall: TextStyle = this.labelSmall,
+        labelExtraSmall: TextStyle = this.labelExtraSmall
     ): Typography =
         Typography(
             displayLarge = displayLarge,
@@ -193,7 +202,8 @@ class Typography(
             bodySmall = bodySmall,
             labelLarge = labelLarge,
             labelMedium = labelMedium,
-            labelSmall = labelSmall
+            labelSmall = labelSmall,
+            labelExtraSmall = labelExtraSmall
         )
 
     override fun equals(other: Any?): Boolean {
@@ -215,6 +225,7 @@ class Typography(
         if (labelLarge != other.labelLarge) return false
         if (labelMedium != other.labelMedium) return false
         if (labelSmall != other.labelSmall) return false
+        if (labelExtraSmall != other.labelExtraSmall) return false
         return true
     }
 
@@ -234,17 +245,28 @@ class Typography(
         result = 31 * result + labelLarge.hashCode()
         result = 31 * result + labelMedium.hashCode()
         result = 31 * result + labelSmall.hashCode()
+        result = 31 * result + labelExtraSmall.hashCode()
         return result
     }
 
     override fun toString(): String {
-        return "Typography(displayLarge=$displayLarge, displayMedium=$displayMedium," +
+        return "Typography(" +
+                "displayLarge=$displayLarge, " +
+                "displayMedium=$displayMedium," +
                 "displaySmall=$displaySmall, " +
-                "headlineLarge=$headlineLarge, headlineMedium=$headlineMedium," +
-                " headlineSmall=$headlineSmall, " +
-                "titleLarge=$titleLarge, titleMedium=$titleMedium, titleSmall=$titleSmall, " +
-                "bodyLarge=$bodyLarge, bodyMedium=$bodyMedium, bodySmall=$bodySmall, " +
-                "labelLarge=$labelLarge, labelMedium=$labelMedium, labelSmall=$labelSmall)"
+                "headlineLarge=$headlineLarge, " +
+                "headlineMedium=$headlineMedium, " +
+                "headlineSmall=$headlineSmall, " +
+                "titleLarge=$titleLarge, " +
+                "titleMedium=$titleMedium, " +
+                "titleSmall=$titleSmall, " +
+                "bodyLarge=$bodyLarge, " +
+                "bodyMedium=$bodyMedium, " +
+                "bodySmall=$bodySmall, " +
+                "labelLarge=$labelLarge, " +
+                "labelMedium=$labelMedium, " +
+                "labelSmall=$labelSmall, " +
+                "labelExtraSmall=$labelExtraSmall)"
     }
 }
 
