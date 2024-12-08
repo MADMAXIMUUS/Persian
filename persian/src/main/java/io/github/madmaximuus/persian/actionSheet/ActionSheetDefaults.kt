@@ -92,7 +92,7 @@ object ActionSheetDefaults {
      */
     @Composable
     fun itemSizes(
-        textStyle: TextStyle = PersianTheme.typography.bodyLarge,
+        textStyle: TextStyle = PersianTheme.typography.labelLarge,
         iconSize: IconSizes = IconDefaults.size28()
     ): ActionSheetItemSizes =
         ActionSheetItemSizes(
