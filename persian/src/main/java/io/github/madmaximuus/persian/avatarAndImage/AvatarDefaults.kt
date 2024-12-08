@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.avatarsAndImages
+package io.github.madmaximuus.persian.avatarAndImage
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable

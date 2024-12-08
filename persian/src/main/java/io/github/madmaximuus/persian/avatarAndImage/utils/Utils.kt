@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.avatarsAndImages.utils
+package io.github.madmaximuus.persian.avatarAndImage.utils
 
 import androidx.compose.ui.layout.FirstBaseline
 import androidx.compose.ui.layout.LastBaseline

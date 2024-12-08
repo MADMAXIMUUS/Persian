@@ -16,11 +16,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.avatarsAndImages.Avatar
-import io.github.madmaximuus.persian.avatarsAndImages.AvatarDefaults
-import io.github.madmaximuus.persian.avatarsAndImages.Image
-import io.github.madmaximuus.persian.avatarsAndImages.ImageDefaults
-import io.github.madmaximuus.persian.avatarsAndImages.ImageShape
+import io.github.madmaximuus.persian.avatarAndImage.Avatar
+import io.github.madmaximuus.persian.avatarAndImage.AvatarDefaults
+import io.github.madmaximuus.persian.avatarAndImage.Image
+import io.github.madmaximuus.persian.avatarAndImage.ImageDefaults
+import io.github.madmaximuus.persian.avatarAndImage.ImageShape
 import io.github.madmaximuus.persian.forms.Checkbox
 import io.github.madmaximuus.persian.forms.Checkboxes
 import io.github.madmaximuus.persian.forms.FormItem
@@ -106,7 +106,6 @@ object AvatarAndImage : Screen {
             val (content, onContentChange) = remember { mutableStateOf(false) }
             val (initials, onInitialsChange) = remember { mutableStateOf(false) }
             val (badge, onBadgeChange) = remember { mutableStateOf(false) }
-            val (enabled, onEnabledChange) = remember { mutableStateOf(true) }
             val (clickable, onClickableChange) = remember { mutableStateOf(false) }
             val clickablePlaceholder = {}
             Column(
@@ -135,8 +134,7 @@ object AvatarAndImage : Screen {
                                 )
                             }
                         } else null,
-                        onClick = if (clickable) clickablePlaceholder else null,
-                        enabled = enabled
+                        onClick = if (clickable) clickablePlaceholder else null
                     )
                     Image(
                         imageUrl = if (content) Uri.parse("https://loremflickr.com/320/240") else Uri.EMPTY,
@@ -155,8 +153,7 @@ object AvatarAndImage : Screen {
                                 )
                             }
                         } else null,
-                        onClick = if (clickable) clickablePlaceholder else null,
-                        enabled = enabled
+                        onClick = if (clickable) clickablePlaceholder else null
                     )
                 }
                 Column(
@@ -394,11 +391,6 @@ object AvatarAndImage : Screen {
                                     text = "Clickable",
                                     checked = clickable,
                                     onCheckedChange = onClickableChange
-                                )
-                                Checkbox(
-                                    text = "Enabled",
-                                    checked = enabled,
-                                    onCheckedChange = onEnabledChange
                                 )
                             }
                         }

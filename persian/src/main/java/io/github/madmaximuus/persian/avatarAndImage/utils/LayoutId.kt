@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.avatarsAndImages.utils
+package io.github.madmaximuus.persian.avatarAndImage.utils
 
 /**
  * The view id used by badgeMeasurePolicy.

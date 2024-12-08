@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.avatarsAndImages
+package io.github.madmaximuus.persian.avatarAndImage
 
 import android.net.Uri
 import androidx.compose.foundation.Image
@@ -11,12 +11,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
@@ -27,10 +25,8 @@ import androidx.compose.ui.unit.dp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideSubcomposition
 import com.bumptech.glide.integration.compose.RequestState
-import io.github.madmaximuus.persian.avatarsAndImages.utils.LayoutId
-import io.github.madmaximuus.persian.avatarsAndImages.utils.badgeMeasurePolicy
-import io.github.madmaximuus.persian.foundation.LocalContentColor
-import io.github.madmaximuus.persian.foundation.PersianState38
+import io.github.madmaximuus.persian.avatarAndImage.utils.LayoutId
+import io.github.madmaximuus.persian.avatarAndImage.utils.badgeMeasurePolicy
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.ripple.ripple
 import io.github.madmaximuus.persian.foundation.shimmer
@@ -45,8 +41,6 @@ import io.github.madmaximuus.persianSymbols.plus.Plus
  * @param modifier the [Modifier] to be applied to this image.
  * @param imageUrl the Uri that used for image download.
  * @param overlay if `true` [overlayIcon] will be displayed on top of the image.
- * @param enabled controls the enabled state of this image. When `false`, this component will not.
- * respond to user input, and it will appear visually disabled.
  * @param placeholderIcon the icon that will be displayed if the image is not loaded.
  * @param overlayIcon the icon that will be displayed on top of the image, if [overlay] is `true`.
  * @param sizes The [AvatarSizes] sizes of the container, icons and text of this image.
@@ -61,7 +55,6 @@ fun Image(
     modifier: Modifier = Modifier,
     imageUrl: Uri,
     overlay: Boolean = false,
-    enabled: Boolean = true,
     placeholderIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.Image),
     overlayIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.Plus),
     sizes: ImageSizes = ImageDefaults.size64(),
@@ -79,7 +72,6 @@ fun Image(
                 contentAlignment = Alignment.Center,
                 content = {
                     Box(
-                        contentAlignment = Alignment.Center,
                         modifier = modifier
                             .size(sizes.boxSizes)
                             .clip(sizes.shape(shape))
@@ -89,14 +81,15 @@ fun Image(
                             )
                             .border(1.dp, colors.borderColor, sizes.shape(shape))
                             .clickable(
-                                enabled = onClick != null && enabled,
+                                enabled = onClick != null,
                                 onClick = { onClick?.invoke() },
                                 role = Role.Image,
                                 interactionSource = remember { MutableInteractionSource() },
                                 indication = ripple(
                                     color = colors.overlayIconColor
                                 )
-                            )
+                            ),
+                        contentAlignment = Alignment.Center,
                     ) {
                         GlideSubcomposition(
                             model = imageUrl,
@@ -131,7 +124,6 @@ fun Image(
                                                 .fillMaxSize(),
                                             contentScale = ContentScale.Crop,
                                             painter = painter,
-                                            alpha = if (!enabled) .38f else 1f,
                                             contentDescription = ""
                                         )
                                     }
@@ -145,14 +137,11 @@ fun Image(
                                     .background(PersianTheme.colorScheme.surface.copy(alpha = 0.8f)),
                                 contentAlignment = Alignment.Center
                             ) {
-                                CompositionLocalProvider(
-                                    LocalContentColor provides colors.overlayIconColor
-                                ) {
-                                    Icon(
-                                        painter = overlayIcon,
-                                        sizes = sizes.overlayIconSizes,
-                                    )
-                                }
+                                Icon(
+                                    painter = overlayIcon,
+                                    tint = colors.overlayIconColor,
+                                    sizes = sizes.overlayIconSizes,
+                                )
                             }
                         }
                     }
@@ -168,13 +157,7 @@ fun Image(
             }
         },
         modifier = Modifier
-            .wrapContentSize()
-            .graphicsLayer {
-                alpha = if (enabled)
-                    1f
-                else
-                    PersianState38
-            },
+            .wrapContentSize(),
         measurePolicy = { measurables, constraints ->
             badgeMeasurePolicy(
                 scope = this,
