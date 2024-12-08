@@ -36,8 +36,8 @@ class Shapes(
     val shape16: RoundedCornerShape = RoundedCornerShape(16.dp),
     val shape18: RoundedCornerShape = RoundedCornerShape(18.dp),
     val shape20: RoundedCornerShape = RoundedCornerShape(20.dp),
-    val shape22: RoundedCornerShape = RoundedCornerShape(20.dp),
-    val shape24: RoundedCornerShape = RoundedCornerShape(20.dp),
+    val shape22: RoundedCornerShape = RoundedCornerShape(22.dp),
+    val shape24: RoundedCornerShape = RoundedCornerShape(24.dp),
     val full: RoundedCornerShape = CircleShape,
 )
 
