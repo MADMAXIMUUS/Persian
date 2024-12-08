@@ -90,7 +90,8 @@ object ButtonDefaults {
     /**
      * Creates a [ButtonSizes] that represents the default container and content sizes used in a button.
      *
-     * @param textStyle the main text style of this button.
+     * @param textStyle the primary text style of this button.
+     * @param additionInfoTextStyle the secondary text style of this button.
      * @param height the height of this button.
      * @param loaderSize the size of inner loader of this button.
      * @param iconSizes the icon size color of this button.
@@ -99,19 +100,21 @@ object ButtonDefaults {
      * content of this button.
      */
     @Composable
-    fun smallSizes(
-        textStyle: TextStyle = PersianTheme.typography.labelSmall,
-        height: Dp = 36.dp,
-        loaderSize: CircularProgressBarSizes = ProgressIndicatorDefaults.circularSmall(),
-        iconSizes: IconSizes = IconDefaults.size18(),
-        shape: Shape = PersianTheme.shapes.shape12,
+    fun largeSizes(
+        textStyle: TextStyle = PersianTheme.typography.labelLarge,
+        additionInfoTextStyle: TextStyle = PersianTheme.typography.labelMedium,
+        height: Dp = 52.dp,
+        loaderSize: CircularProgressBarSizes = ProgressIndicatorDefaults.circularLarge(),
+        iconSizes: IconSizes = IconDefaults.size28(),
+        shape: Shape = PersianTheme.shapes.shape16,
         contentPadding: PaddingValues = PaddingValues(
-            horizontal = PersianTheme.spacing.size16,
+            horizontal = PersianTheme.spacing.size24,
             vertical = 0.dp
         )
     ): ButtonSizes =
         ButtonSizes(
             textStyle = textStyle,
+            additionInfoTextStyle = additionInfoTextStyle,
             height = height,
             loaderSize = loaderSize,
             iconSizes = iconSizes,
@@ -157,8 +160,7 @@ object ButtonDefaults {
     /**
      * Creates a [ButtonSizes] that represents the default container and content sizes used in a button.
      *
-     * @param textStyle the primary text style of this button.
-     * @param additionInfoTextStyle the secondary text style of this button.
+     * @param textStyle the main text style of this button.
      * @param height the height of this button.
      * @param loaderSize the size of inner loader of this button.
      * @param iconSizes the icon size color of this button.
@@ -167,28 +169,25 @@ object ButtonDefaults {
      * content of this button.
      */
     @Composable
-    fun largeSizes(
-        textStyle: TextStyle = PersianTheme.typography.labelLarge,
-        additionInfoTextStyle: TextStyle = PersianTheme.typography.labelMedium,
-        height: Dp = 52.dp,
-        loaderSize: CircularProgressBarSizes = ProgressIndicatorDefaults.circularLarge(),
-        iconSizes: IconSizes = IconDefaults.size28(),
-        shape: Shape = PersianTheme.shapes.shape16,
+    fun smallSizes(
+        textStyle: TextStyle = PersianTheme.typography.labelSmall,
+        height: Dp = 36.dp,
+        loaderSize: CircularProgressBarSizes = ProgressIndicatorDefaults.circularSmall(),
+        iconSizes: IconSizes = IconDefaults.size18(),
+        shape: Shape = PersianTheme.shapes.shape12,
         contentPadding: PaddingValues = PaddingValues(
-            horizontal = PersianTheme.spacing.size24,
+            horizontal = PersianTheme.spacing.size16,
             vertical = 0.dp
         )
     ): ButtonSizes =
         ButtonSizes(
             textStyle = textStyle,
-            additionInfoTextStyle = additionInfoTextStyle,
             height = height,
             loaderSize = loaderSize,
             iconSizes = iconSizes,
             shape = shape,
             contentPadding = contentPadding
         )
-
 }
 
 /**
