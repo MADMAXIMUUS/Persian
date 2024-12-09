@@ -101,8 +101,8 @@ object ButtonDefaults {
      */
     @Composable
     fun largeSizes(
-        textStyle: TextStyle = PersianTheme.typography.labelLarge,
-        additionInfoTextStyle: TextStyle = PersianTheme.typography.labelMedium,
+        textStyle: TextStyle = PersianTheme.typography.buttonLarge,
+        additionInfoTextStyle: TextStyle = PersianTheme.typography.buttonMedium,
         height: Dp = 52.dp,
         loaderSize: CircularProgressBarSizes = ProgressIndicatorDefaults.circularLarge(),
         iconSizes: IconSizes = IconDefaults.size28(),
@@ -136,8 +136,8 @@ object ButtonDefaults {
      */
     @Composable
     fun mediumSizes(
-        textStyle: TextStyle = PersianTheme.typography.labelMedium,
-        additionInfoTextStyle: TextStyle = PersianTheme.typography.labelSmall,
+        textStyle: TextStyle = PersianTheme.typography.buttonMedium,
+        additionInfoTextStyle: TextStyle = PersianTheme.typography.buttonSmall,
         height: Dp = 44.dp,
         loaderSize: CircularProgressBarSizes = ProgressIndicatorDefaults.circularMedium(),
         iconSizes: IconSizes = IconDefaults.size20(),
@@ -170,7 +170,7 @@ object ButtonDefaults {
      */
     @Composable
     fun smallSizes(
-        textStyle: TextStyle = PersianTheme.typography.labelSmall,
+        textStyle: TextStyle = PersianTheme.typography.buttonSmall,
         height: Dp = 36.dp,
         loaderSize: CircularProgressBarSizes = ProgressIndicatorDefaults.circularSmall(),
         iconSizes: IconSizes = IconDefaults.size18(),
