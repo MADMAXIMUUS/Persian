@@ -134,9 +134,33 @@ class Typography(
         lineHeight = 16.sp,
         letterSpacing = 0.4.sp
     ),
+    val buttonLarge: TextStyle = TextStyle(
+        fontFamily = FontFamily(
+            Font(R.font.nunito_extra_bold, FontWeight.ExtraBold)
+        ),
+        fontSize = 16.sp,
+        lineHeight = 24.sp,
+        letterSpacing = 0.5.sp
+    ),
+    val buttonMedium: TextStyle = TextStyle(
+        fontFamily = FontFamily(
+            Font(R.font.nunito_extra_bold, FontWeight.ExtraBold)
+        ),
+        fontSize = 14.sp,
+        lineHeight = 20.sp,
+        letterSpacing = 0.5.sp
+    ),
+    val buttonSmall: TextStyle = TextStyle(
+        fontFamily = FontFamily(
+            Font(R.font.nunito_extra_bold, FontWeight.ExtraBold)
+        ),
+        fontSize = 12.sp,
+        lineHeight = 16.sp,
+        letterSpacing = 0.5.sp
+    ),
     val labelLarge: TextStyle = TextStyle(
         fontFamily = FontFamily(
-            Font(R.font.nunito_bold, FontWeight.Bold)
+            Font(R.font.nunito_semi_bold, FontWeight.SemiBold)
         ),
         fontSize = 16.sp,
         lineHeight = 24.sp,
@@ -144,7 +168,7 @@ class Typography(
     ),
     val labelMedium: TextStyle = TextStyle(
         fontFamily = FontFamily(
-            Font(R.font.nunito_bold, FontWeight.Bold)
+            Font(R.font.nunito_semi_bold, FontWeight.SemiBold)
         ),
         fontSize = 14.sp,
         lineHeight = 20.sp,
@@ -152,7 +176,7 @@ class Typography(
     ),
     val labelSmall: TextStyle = TextStyle(
         fontFamily = FontFamily(
-            Font(R.font.nunito_bold, FontWeight.Bold)
+            Font(R.font.nunito_semi_bold, FontWeight.SemiBold)
         ),
         fontSize = 12.sp,
         lineHeight = 16.sp,
@@ -160,7 +184,7 @@ class Typography(
     ),
     val labelExtraSmall: TextStyle = TextStyle(
         fontFamily = FontFamily(
-            Font(R.font.nunito_bold, FontWeight.Bold)
+            Font(R.font.nunito_semi_bold, FontWeight.SemiBold)
         ),
         fontSize = 11.sp,
         lineHeight = 14.sp,
