@@ -23,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.BaselineShift
@@ -31,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.codeInput.CellColors
 import io.github.madmaximuus.persian.codeInput.FourDigitCodeInput
 import io.github.madmaximuus.persian.codeInput.SixDigitCodeInput
+import io.github.madmaximuus.persian.foundation.PersianState38
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.internal.SecureInputSettings
 
@@ -67,7 +69,7 @@ internal fun CodeInputCell(
 ) {
     val focused by interactionSource.collectIsFocusedAsState()
 
-    val textColor = colors.textColor(enabled, isValid, isError, interactionSource).value
+    val textColor = colors.textColor(isValid, isError, interactionSource).value
 
     val mergedTextStyle = textStyle.merge(
         TextStyle(
@@ -80,14 +82,12 @@ internal fun CodeInputCell(
     val borderThickness = if (enabled && (focused || isError || isValid)) 2.dp else 1.dp
 
     val containerColor = colors.containerColor(
-        enabled = enabled,
         isValid = isValid,
         isError = isError,
         interactionSource = interactionSource
     ).value
 
     val borderColor = colors.indicatorColor(
-        enabled = enabled,
         isValid = isValid,
         isError = isError,
         interactionSource = interactionSource
@@ -96,6 +96,10 @@ internal fun CodeInputCell(
     CompositionLocalProvider(LocalTextSelectionColors provides colors.selectionColors) {
         Box(
             modifier = Modifier
+                .graphicsLayer {
+                    alpha = if (enabled) 1f
+                    else PersianState38
+                }
                 .width(48.dp)
                 .height(52.dp)
                 .border(
