@@ -160,7 +160,7 @@ class Typography(
     ),
     val labelLarge: TextStyle = TextStyle(
         fontFamily = FontFamily(
-            Font(R.font.nunito_semi_bold, FontWeight.SemiBold)
+            Font(R.font.nunito_medium, FontWeight.Medium)
         ),
         fontSize = 16.sp,
         lineHeight = 24.sp,
@@ -176,7 +176,7 @@ class Typography(
     ),
     val labelSmall: TextStyle = TextStyle(
         fontFamily = FontFamily(
-            Font(R.font.nunito_semi_bold, FontWeight.SemiBold)
+            Font(R.font.nunito_bold, FontWeight.Bold)
         ),
         fontSize = 12.sp,
         lineHeight = 16.sp,
@@ -184,7 +184,7 @@ class Typography(
     ),
     val labelExtraSmall: TextStyle = TextStyle(
         fontFamily = FontFamily(
-            Font(R.font.nunito_semi_bold, FontWeight.SemiBold)
+            Font(R.font.nunito_medium, FontWeight.Medium)
         ),
         fontSize = 11.sp,
         lineHeight = 14.sp,
