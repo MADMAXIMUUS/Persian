@@ -96,7 +96,7 @@ object CounterDefaults {
         shape: Shape = PersianTheme.shapes.shape12,
         badgeRightOffset: Dp = 10.dp,
         badgeTopOffset: Dp = 10.dp,
-        textStyle: TextStyle = PersianTheme.typography.bodyMedium
+        textStyle: TextStyle = PersianTheme.typography.labelMedium
     ): CounterSizes =
         CounterSizes(
             size = size,
