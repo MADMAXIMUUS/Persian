@@ -9,6 +9,7 @@ import androidx.compose.runtime.structuralEqualityPolicy
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import io.github.madmaximuus.persian.R
@@ -31,84 +32,87 @@ import io.github.madmaximuus.persian.R
  * @property bodyLarge The largest body text style.
  * @property bodyMedium The medium body text style.
  * @property bodySmall The smallest body text style.
+ * @property buttonLarge The largest button label text style.
+ * @property buttonMedium The medium button label text style.
+ * @property buttonSmall The smallest button label text style.
  * @property labelLarge The largest label text style.
  * @property labelMedium The medium label text style.
- * @property labelSmall The smallest label text style.
+ * @property labelSmall The small label text style.
+ * @property labelExtraSmall The smallest label text style.
  *
  * @constructor Creates a new Typography instance with the specified text styles.
  */
 @Immutable
 class Typography(
     val displayLarge: TextStyle = TextStyle(
-        fontFamily = FontFamily(
-            Font(R.font.nunito_semi_bold, FontWeight.SemiBold),
-        ),
+        fontFamily = nunitoFontFamily,
+        fontWeight = FontWeight.SemiBold,
+        fontStyle = FontStyle.Normal,
         fontSize = 57.sp,
         lineHeight = 64.sp,
         letterSpacing = (-0.25).sp,
 
         ),
     val displayMedium: TextStyle = TextStyle(
-        fontFamily = FontFamily(
-            Font(R.font.nunito_semi_bold, FontWeight.SemiBold)
-        ),
+        fontFamily = nunitoFontFamily,
+        fontWeight = FontWeight.SemiBold,
+        fontStyle = FontStyle.Normal,
         fontSize = 45.sp,
         lineHeight = 52.sp,
         letterSpacing = (-0.25).sp
     ),
     val displaySmall: TextStyle = TextStyle(
-        fontFamily = FontFamily(
-            Font(R.font.nunito_semi_bold, FontWeight.SemiBold)
-        ),
+        fontFamily = nunitoFontFamily,
+        fontWeight = FontWeight.SemiBold,
+        fontStyle = FontStyle.Normal,
         fontSize = 36.sp,
         lineHeight = 44.sp,
         letterSpacing = (-0.25).sp
     ),
     val headlineLarge: TextStyle = TextStyle(
-        fontFamily = FontFamily(
-            Font(R.font.nunito_medium, FontWeight.Medium)
-        ),
+        fontFamily = nunitoFontFamily,
+        fontWeight = FontWeight.Medium,
+        fontStyle = FontStyle.Normal,
         fontSize = 32.sp,
         lineHeight = 40.sp,
         letterSpacing = 0.sp
     ),
     val headlineMedium: TextStyle = TextStyle(
-        fontFamily = FontFamily(
-            Font(R.font.nunito_medium, FontWeight.Medium)
-        ),
+        fontFamily = nunitoFontFamily,
+        fontWeight = FontWeight.Medium,
+        fontStyle = FontStyle.Normal,
         fontSize = 28.sp,
         lineHeight = 36.sp,
         letterSpacing = 0.sp
     ),
     val headlineSmall: TextStyle = TextStyle(
-        fontFamily = FontFamily(
-            Font(R.font.nunito_medium, FontWeight.Medium)
-        ),
+        fontFamily = nunitoFontFamily,
+        fontWeight = FontWeight.Medium,
+        fontStyle = FontStyle.Normal,
         fontSize = 24.sp,
         lineHeight = 32.sp,
         letterSpacing = 0.sp
     ),
     val titleLarge: TextStyle = TextStyle(
-        fontFamily = FontFamily(
-            Font(R.font.nunito_semi_bold, FontWeight.SemiBold)
-        ),
+        fontFamily = nunitoFontFamily,
+        fontWeight = FontWeight.SemiBold,
+        fontStyle = FontStyle.Normal,
         fontSize = 22.sp,
         lineHeight = 28.sp,
         letterSpacing = 0.sp
     ),
     val titleMedium: TextStyle = TextStyle(
-        fontFamily = FontFamily(
-            Font(R.font.nunito_semi_bold, FontWeight.SemiBold)
-        ),
+        fontFamily = nunitoFontFamily,
+        fontWeight = FontWeight.SemiBold,
+        fontStyle = FontStyle.Normal,
         fontSize = 16.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.15.sp
     ),
     val titleSmall: TextStyle = TextStyle(
-        fontFamily = FontFamily(
-            Font(R.font.nunito_semi_bold, FontWeight.Medium)
-        ),
-        fontWeight = FontWeight.Medium,
+        fontFamily = nunitoFontFamily,
+        fontWeight = FontWeight.SemiBold,
+        fontStyle = FontStyle.Normal,
         fontSize = 14.sp,
         lineHeight = 20.sp,
         letterSpacing = 0.1.sp
@@ -116,6 +120,7 @@ class Typography(
     val bodyLarge: TextStyle = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Normal,
+        fontStyle = FontStyle.Normal,
         fontSize = 16.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
@@ -123,6 +128,7 @@ class Typography(
     val bodyMedium: TextStyle = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Normal,
+        fontStyle = FontStyle.Normal,
         fontSize = 14.sp,
         lineHeight = 20.sp,
         letterSpacing = 0.25.sp
@@ -130,62 +136,63 @@ class Typography(
     val bodySmall: TextStyle = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Normal,
+        fontStyle = FontStyle.Normal,
         fontSize = 12.sp,
         lineHeight = 16.sp,
         letterSpacing = 0.4.sp
     ),
     val buttonLarge: TextStyle = TextStyle(
-        fontFamily = FontFamily(
-            Font(R.font.nunito_extra_bold, FontWeight.ExtraBold)
-        ),
+        fontFamily = nunitoFontFamily,
+        fontWeight = FontWeight.ExtraBold,
+        fontStyle = FontStyle.Normal,
         fontSize = 16.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
     ),
     val buttonMedium: TextStyle = TextStyle(
-        fontFamily = FontFamily(
-            Font(R.font.nunito_extra_bold, FontWeight.ExtraBold)
-        ),
+        fontFamily = nunitoFontFamily,
+        fontWeight = FontWeight.ExtraBold,
+        fontStyle = FontStyle.Normal,
         fontSize = 14.sp,
         lineHeight = 20.sp,
         letterSpacing = 0.5.sp
     ),
     val buttonSmall: TextStyle = TextStyle(
-        fontFamily = FontFamily(
-            Font(R.font.nunito_extra_bold, FontWeight.ExtraBold)
-        ),
+        fontFamily = nunitoFontFamily,
+        fontWeight = FontWeight.ExtraBold,
+        fontStyle = FontStyle.Normal,
         fontSize = 12.sp,
         lineHeight = 16.sp,
         letterSpacing = 0.5.sp
     ),
     val labelLarge: TextStyle = TextStyle(
-        fontFamily = FontFamily(
-            Font(R.font.nunito_medium, FontWeight.Medium)
-        ),
+        fontFamily = nunitoFontFamily,
+        fontWeight = FontWeight.Medium,
+        fontStyle = FontStyle.Normal,
         fontSize = 16.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
     ),
     val labelMedium: TextStyle = TextStyle(
-        fontFamily = FontFamily(
-            Font(R.font.nunito_semi_bold, FontWeight.SemiBold)
-        ),
+        fontFamily = nunitoFontFamily,
+        fontWeight = FontWeight.Medium,
+        fontStyle = FontStyle.Normal,
         fontSize = 14.sp,
         lineHeight = 20.sp,
         letterSpacing = 0.5.sp
     ),
     val labelSmall: TextStyle = TextStyle(
-        fontFamily = FontFamily(
-            Font(R.font.nunito_bold, FontWeight.Bold)
-        ),
+        fontFamily = nunitoFontFamily,
+        fontWeight = FontWeight.Bold,
+        fontStyle = FontStyle.Normal,
         fontSize = 12.sp,
         lineHeight = 16.sp,
         letterSpacing = 0.5.sp
     ),
     val labelExtraSmall: TextStyle = TextStyle(
-        fontFamily = FontFamily(
-            Font(R.font.nunito_medium, FontWeight.Medium)
-        ),
+        fontFamily = nunitoFontFamily,
+        fontWeight = FontWeight.SemiBold,
+        fontStyle = FontStyle.Normal,
         fontSize = 11.sp,
         lineHeight = 14.sp,
         letterSpacing = 0.5.sp
@@ -321,3 +328,86 @@ fun ProvideTextStyle(value: TextStyle, content: @Composable () -> Unit) {
     val mergedStyle = LocalTextStyle.current.merge(value)
     CompositionLocalProvider(LocalTextStyle provides mergedStyle, content = content)
 }
+
+val nunitoFontFamily = FontFamily(
+    Font(
+        resId = R.font.nunito_extra_light,
+        weight = FontWeight.ExtraLight,
+        style = FontStyle.Normal
+    ),
+    Font(
+        resId = R.font.nunito_extra_light_italic,
+        weight = FontWeight.ExtraLight,
+        style = FontStyle.Italic
+    ),
+    Font(
+        resId = R.font.nunito_light,
+        weight = FontWeight.Light,
+        style = FontStyle.Normal
+    ),
+    Font(
+        resId = R.font.nunito_light_italic,
+        weight = FontWeight.Light,
+        style = FontStyle.Italic
+    ),
+    Font(
+        resId = R.font.nunito_regular,
+        weight = FontWeight.Normal,
+        style = FontStyle.Normal
+    ),
+    Font(
+        resId = R.font.nunito_italic,
+        weight = FontWeight.Normal,
+        style = FontStyle.Italic
+    ),
+    Font(
+        resId = R.font.nunito_medium,
+        weight = FontWeight.Medium,
+        style = FontStyle.Normal
+    ),
+    Font(
+        resId = R.font.nunito_medium_italic,
+        weight = FontWeight.Medium,
+        style = FontStyle.Italic
+    ),
+    Font(
+        resId = R.font.nunito_semi_bold,
+        weight = FontWeight.SemiBold,
+        style = FontStyle.Normal
+    ),
+    Font(
+        resId = R.font.nunito_semi_bold_italic,
+        weight = FontWeight.SemiBold,
+        style = FontStyle.Italic
+    ),
+    Font(
+        resId = R.font.nunito_bold,
+        weight = FontWeight.Bold,
+        style = FontStyle.Normal
+    ),
+    Font(
+        resId = R.font.nunito_bold_italic,
+        weight = FontWeight.Bold,
+        style = FontStyle.Italic
+    ),
+    Font(
+        resId = R.font.nunito_extra_bold,
+        weight = FontWeight.ExtraBold,
+        style = FontStyle.Normal
+    ),
+    Font(
+        resId = R.font.nunito_extra_bold_italic,
+        weight = FontWeight.ExtraBold,
+        style = FontStyle.Italic
+    ),
+    Font(
+        resId = R.font.nunito_black,
+        weight = FontWeight.Black,
+        style = FontStyle.Normal
+    ),
+    Font(
+        resId = R.font.nunito_black_italic,
+        weight = FontWeight.Black,
+        style = FontStyle.Italic
+    )
+)
