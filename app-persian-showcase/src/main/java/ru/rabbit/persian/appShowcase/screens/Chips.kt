@@ -111,7 +111,7 @@ object Chips : Screen {
                                         {
                                             Icon(
                                                 icon = rememberVectorPainter(
-                                                    PersianSymbols.Filled.Globe
+                                                    PersianSymbols.Default.Globe
                                                 )
                                             )
                                         }
@@ -136,7 +136,7 @@ object Chips : Screen {
                                         {
                                             Icon(
                                                 painter = rememberVectorPainter(
-                                                    PersianSymbols.Filled.Globe
+                                                    PersianSymbols.Default.Globe
                                                 )
                                             )
                                         }
@@ -155,7 +155,7 @@ object Chips : Screen {
                                                 leadingStates[0].value -> {
                                                     Icon(
                                                         painter = rememberVectorPainter(
-                                                            PersianSymbols.Filled.Globe
+                                                            PersianSymbols.Default.Globe
                                                         )
                                                     )
                                                 }
@@ -181,7 +181,7 @@ object Chips : Screen {
                                                 leadingStates[0].value -> {
                                                     Icon(
                                                         icon = rememberVectorPainter(
-                                                            PersianSymbols.Filled.Globe
+                                                            PersianSymbols.Default.Globe
                                                         )
                                                     )
                                                 }

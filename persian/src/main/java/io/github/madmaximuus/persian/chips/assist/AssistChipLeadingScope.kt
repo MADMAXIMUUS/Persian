@@ -6,8 +6,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
-import io.github.madmaximuus.persian.avatarsAndImages.Image
-import io.github.madmaximuus.persian.avatarsAndImages.ImageShape
+import io.github.madmaximuus.persian.avatarAndImage.Image
+import io.github.madmaximuus.persian.avatarAndImage.ImageShape
 import io.github.madmaximuus.persian.chips.founfation.ChipColors
 import io.github.madmaximuus.persian.chips.founfation.ChipSizes
 import io.github.madmaximuus.persian.foundation.PersianTheme
@@ -64,7 +64,7 @@ fun AssistChipLeadingScope.Icon(
         Icon(
             painter = painter,
             sizes = sizes.leadingIconSizes,
-            tint = colors.leadingIconContentColor(enabled)
+            tint = colors.leadingIconContentColor
         )
     }
 }
@@ -91,7 +91,6 @@ fun AssistChipLeadingScope.Image(
             imageUrl = imageUrl,
             sizes = sizes.leadingImageSizes,
             colors = colors.imageColors,
-            enabled = enabled,
             shape = ImageShape.MEDIUM
         )
     }

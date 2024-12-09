@@ -13,7 +13,6 @@ import androidx.compose.foundation.interaction.PressInteraction
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.Stable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
@@ -23,15 +22,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.graphics.takeOrElse
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
-import io.github.madmaximuus.persian.avatarsAndImages.AvatarColors
-import io.github.madmaximuus.persian.avatarsAndImages.ImageColors
-import io.github.madmaximuus.persian.avatarsAndImages.ImageSizes
+import io.github.madmaximuus.persian.avatarAndImage.AvatarColors
+import io.github.madmaximuus.persian.avatarAndImage.ImageColors
+import io.github.madmaximuus.persian.avatarAndImage.ImageSizes
 import io.github.madmaximuus.persian.chips.assist.AssistChip
 import io.github.madmaximuus.persian.chips.assist.AssistChipDefaults
 import io.github.madmaximuus.persian.chips.suggestion.SuggestionChip
@@ -75,12 +73,12 @@ internal fun BaseChip(
         modifier = modifier.semantics { role = Role.Button },
         enabled = enabled,
         shape = sizes.shape,
-        color = colors.containerColor(enabled),
+        color = colors.containerColor,
         border = BorderStroke(
-            sizes.borderWidth(enabled),
-            colors.borderColor(enabled)
+            sizes.borderWidth,
+            colors.borderColor
         ),
-        tonalElevation = elevation.tonalElevation(enabled),
+        tonalElevation = elevation.elevation,
         shadowElevation = elevation.shadowElevation(
             enabled = enabled,
             interactionSource = interactionSource
@@ -92,7 +90,7 @@ internal fun BaseChip(
             labelTextStyle = sizes.labelStyle,
             leading = leading,
             trailing = trailing,
-            labelColor = colors.labelColor(enabled),
+            labelColor = colors.labelColor,
         )
     }
 }
@@ -101,13 +99,9 @@ internal fun BaseChip(
  * Represents the container and content colors used in a chip in different states.
  *
  * @property containerColor The color of the chip's container when it is enabled.
- * @property disabledContainerColor The color of the chip's container when it is disabled.
  * @property labelColor The color of the chip's label text when it is enabled.
- * @property disabledLabelColor The color of the chip's label text when it is disabled.
  * @property leadingIconContentColor The color of the leading icon content when it is enabled.
- * @property disabledLeadingIconContentColor The color of the leading icon content when it is disabled.
  * @property borderColor The color of the chip's border when it is enabled.
- * @property disabledBorderColor The color of the chip's border when it is disabled.
  * @property avatarColors The colors to be used for avatars within the chip.
  * @property imageColors The colors to be used for images within the chip.
  * @constructor create an instance with arbitrary colors.
@@ -116,18 +110,10 @@ internal fun BaseChip(
  */
 @Immutable
 class ChipColors internal constructor(
-    private val containerColor: Color,
-    private val disabledContainerColor: Color,
-
-    private val labelColor: Color,
-    private val disabledLabelColor: Color,
-
-    private val leadingIconContentColor: Color,
-    private val disabledLeadingIconContentColor: Color,
-
-    private val borderColor: Color,
-    private val disabledBorderColor: Color,
-
+    internal val containerColor: Color,
+    internal val labelColor: Color,
+    internal val leadingIconContentColor: Color,
+    internal val borderColor: Color,
     internal val avatarColors: AvatarColors,
     internal val imageColors: ImageColors
 ) {
@@ -138,10 +124,6 @@ class ChipColors internal constructor(
      * @param labelColor The color of the chip's label text when it is enabled.
      * @param leadingIconContentColor The color of the leading icon content when it is enabled.
      * @param borderColor The color of the chip's border when it is enabled.
-     * @param disabledContainerColor The color of the chip's container when it is disabled.
-     * @param disabledLabelColor The color of the chip's label text when it is disabled.
-     * @param disabledLeadingIconContentColor The color of the leading icon content when it is disabled.
-     * @param disabledBorderColor The color of the chip's border when it is disabled.
      * @param imageColors The colors to be used for images within the chip.
      * @param avatarColors The colors to be used for avatars within the chip.
      */
@@ -150,60 +132,17 @@ class ChipColors internal constructor(
         labelColor: Color = this.labelColor,
         leadingIconContentColor: Color = this.leadingIconContentColor,
         borderColor: Color = this.borderColor,
-        disabledContainerColor: Color = this.disabledContainerColor,
-        disabledLabelColor: Color = this.disabledLabelColor,
-        disabledLeadingIconContentColor: Color = this.disabledLeadingIconContentColor,
-        disabledBorderColor: Color = this.disabledBorderColor,
         imageColors: ImageColors,
         avatarColors: AvatarColors,
-    ) = ChipColors(
-        containerColor.takeOrElse { this.containerColor },
-        labelColor.takeOrElse { this.labelColor },
-        leadingIconContentColor.takeOrElse { this.leadingIconContentColor },
-        borderColor.takeOrElse { this.borderColor },
-        disabledContainerColor.takeOrElse { this.disabledContainerColor },
-        disabledLabelColor.takeOrElse { this.disabledLabelColor },
-        disabledLeadingIconContentColor.takeOrElse { this.disabledLeadingIconContentColor },
-        disabledBorderColor.takeOrElse { this.disabledBorderColor },
-        imageColors = imageColors,
-        avatarColors = avatarColors
-    )
-
-    /**
-     * Returns the color of the chip's container based on its enabled state.
-     *
-     * @param enabled Whether the chip is enabled or disabled.
-     */
-    @Stable
-    internal fun containerColor(enabled: Boolean): Color =
-        if (enabled) containerColor else disabledContainerColor
-
-    /**
-     * Returns the color of the chip's label text based on its enabled state.
-     *
-     * @param enabled Whether the chip is enabled or disabled.
-     */
-    @Stable
-    internal fun labelColor(enabled: Boolean): Color =
-        if (enabled) labelColor else disabledLabelColor
-
-    /**
-     * Returns the color of the leading icon content based on its enabled state.
-     *
-     * @param enabled Whether the chip is enabled or disabled.
-     */
-    @Stable
-    internal fun leadingIconContentColor(enabled: Boolean): Color =
-        if (enabled) leadingIconContentColor else disabledLeadingIconContentColor
-
-    /**
-     * Returns the color of the chip's border based on its enabled state.
-     *
-     * @param enabled Whether the chip is enabled or disabled.
-     */
-    @Stable
-    internal fun borderColor(enabled: Boolean): Color =
-        if (enabled) borderColor else disabledBorderColor
+    ): ChipColors =
+        ChipColors(
+            containerColor = containerColor,
+            labelColor = labelColor,
+            leadingIconContentColor = leadingIconContentColor,
+            borderColor = borderColor,
+            imageColors = imageColors,
+            avatarColors = avatarColors
+        )
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -212,9 +151,6 @@ class ChipColors internal constructor(
         if (containerColor != other.containerColor) return false
         if (labelColor != other.labelColor) return false
         if (leadingIconContentColor != other.leadingIconContentColor) return false
-        if (disabledContainerColor != other.disabledContainerColor) return false
-        if (disabledLabelColor != other.disabledLabelColor) return false
-        if (disabledLeadingIconContentColor != other.disabledLeadingIconContentColor) return false
         if (imageColors != other.imageColors) return false
         return avatarColors == other.avatarColors
     }
@@ -223,9 +159,6 @@ class ChipColors internal constructor(
         var result = containerColor.hashCode()
         result = 31 * result + labelColor.hashCode()
         result = 31 * result + leadingIconContentColor.hashCode()
-        result = 31 * result + disabledContainerColor.hashCode()
-        result = 31 * result + disabledLabelColor.hashCode()
-        result = 31 * result + disabledLeadingIconContentColor.hashCode()
         result = 31 * result + imageColors.hashCode()
         result = 31 * result + avatarColors.hashCode()
 
@@ -242,7 +175,6 @@ class ChipColors internal constructor(
  * @property leadingImageSizes The sizes to be used for the leading image.
  * @property labelStyle The text style to be used for the chip's label.
  * @property borderWidth The width of the chip's border when it is enabled.
- * @property disabledBorderWith The width of the chip's border when it is disabled.
  */
 @Immutable
 class ChipSizes internal constructor(
@@ -252,18 +184,7 @@ class ChipSizes internal constructor(
     internal val leadingImageSizes: ImageSizes,
     internal val labelStyle: TextStyle,
     internal val borderWidth: Dp,
-    internal val disabledBorderWith: Dp,
 ) {
-
-    /**
-     * Returns the width of the chip's border based on its enabled state.
-     *
-     * @param enabled Whether the chip is enabled or disabled.
-     * @return The width of the chip's border.
-     */
-    @Stable
-    internal fun borderWidth(enabled: Boolean): Dp =
-        if (enabled) borderWidth else disabledBorderWith
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -273,8 +194,7 @@ class ChipSizes internal constructor(
         if (leadingIconSizes != other.leadingIconSizes) return false
         if (labelStyle != other.labelStyle) return false
         if (borderWidth != other.borderWidth) return false
-        if (shape != other.shape) return false
-        return disabledBorderWith == other.disabledBorderWith
+        return shape == other.shape
     }
 
     override fun hashCode(): Int {
@@ -282,7 +202,6 @@ class ChipSizes internal constructor(
         result = 31 * result + leadingIconSizes.hashCode()
         result = 31 * result + labelStyle.hashCode()
         result = 31 * result + borderWidth.hashCode()
-        result = 31 * result + disabledBorderWith.hashCode()
         result = 31 * result + shape.hashCode()
 
         return result
@@ -297,7 +216,6 @@ class ChipSizes internal constructor(
  * @property focusedElevation The elevation of the chip when it is focused.
  * @property hoveredElevation The elevation of the chip when it is hovered.
  * @property draggedElevation The elevation of the chip when it is dragged.
- * @property disabledElevation The elevation of the chip when it is disabled.
  */
 @Immutable
 class ChipElevation internal constructor(
@@ -306,18 +224,7 @@ class ChipElevation internal constructor(
     private val focusedElevation: Dp,
     private val hoveredElevation: Dp,
     private val draggedElevation: Dp,
-    private val disabledElevation: Dp
 ) {
-
-    /**
-     * Returns the tonal elevation of the chip based on its enabled state.
-     *
-     * @param enabled Whether the chip is enabled or disabled.
-     */
-    @Stable
-    internal fun tonalElevation(enabled: Boolean): Dp {
-        return if (enabled) elevation else disabledElevation
-    }
 
     /**
      * Returns the shadow elevation of the chip based on its enabled state and interaction source.
@@ -395,16 +302,12 @@ class ChipElevation internal constructor(
 
         val interaction = interactions.lastOrNull()
 
-        val target = if (!enabled) {
-            disabledElevation
-        } else {
-            when (interaction) {
-                is PressInteraction.Press -> pressedElevation
-                is HoverInteraction.Enter -> hoveredElevation
-                is FocusInteraction.Focus -> focusedElevation
-                is DragInteraction.Start -> draggedElevation
-                else -> elevation
-            }
+        val target = when (interaction) {
+            is PressInteraction.Press -> pressedElevation
+            is HoverInteraction.Enter -> hoveredElevation
+            is FocusInteraction.Focus -> focusedElevation
+            is DragInteraction.Start -> draggedElevation
+            else -> elevation
         }
 
         val animatable = remember { Animatable(target, Dp.VectorConverter) }
@@ -432,8 +335,7 @@ class ChipElevation internal constructor(
         if (elevation != other.elevation) return false
         if (pressedElevation != other.pressedElevation) return false
         if (focusedElevation != other.focusedElevation) return false
-        if (hoveredElevation != other.hoveredElevation) return false
-        return disabledElevation == other.disabledElevation
+        return hoveredElevation == other.hoveredElevation
     }
 
     override fun hashCode(): Int {
@@ -441,7 +343,6 @@ class ChipElevation internal constructor(
         result = 31 * result + pressedElevation.hashCode()
         result = 31 * result + focusedElevation.hashCode()
         result = 31 * result + hoveredElevation.hashCode()
-        result = 31 * result + disabledElevation.hashCode()
         return result
     }
 }

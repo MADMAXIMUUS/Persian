@@ -74,13 +74,13 @@ fun InputChipTrailingScope.Icon(
             Modifier
                 .clip(PersianTheme.shapes.shape4)
                 .clickable(
-                    enabled,
+                    enabled = enabled,
                     onClick = onClick,
-                    role = Role.Image
+                    role = Role.Button
                 ),
             painter = icon,
             sizes = sizes.trailingIconSizes,
-            tint = colors.trailingIconContentColor(enabled, selected),
+            tint = colors.trailingIconContentColor(selected),
         )
     }
 }

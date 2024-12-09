@@ -6,13 +6,12 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.avatarsAndImages.AvatarDefaults
-import io.github.madmaximuus.persian.avatarsAndImages.ImageDefaults
+import io.github.madmaximuus.persian.avatarAndImage.AvatarDefaults
+import io.github.madmaximuus.persian.avatarAndImage.ImageDefaults
 import io.github.madmaximuus.persian.chips.founfation.ChipColors
 import io.github.madmaximuus.persian.chips.founfation.ChipElevation
 import io.github.madmaximuus.persian.chips.founfation.ChipSizes
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persian.icon.IconSizes
 
@@ -28,32 +27,20 @@ object SuggestionChipDefaults {
      * @param containerColor The color of the chip's container.
      * @param labelColor The color of the chip's label text.
      * @param leadingIconColor The color of the leading icon content.
-     * @param disabledContainerColor The color of the chip's container when it is disabled.
-     * @param disabledLabelColor The color of the chip's label text when it is disabled.
-     * @param disabledLeadingIconContentColor The color of the leading icon content when the chip is disabled.
      * @param borderColor The color of the chip's border.
-     * @param disabledBorderColor The color of the chip's border when it is disabled.
      */
     @Composable
     fun chipColors(
         containerColor: Color = Color.Transparent,
         labelColor: Color = PersianTheme.colorScheme.onSurface,
         leadingIconColor: Color = PersianTheme.colorScheme.primary,
-        disabledContainerColor: Color = Color.Transparent,
-        disabledLabelColor: Color = PersianTheme.colorScheme.onSurface.state38,
-        disabledLeadingIconContentColor: Color = PersianTheme.colorScheme.onSurface.state38,
-        borderColor: Color = PersianTheme.colorScheme.primary,
-        disabledBorderColor: Color = PersianTheme.colorScheme.onSurface.state38,
+        borderColor: Color = PersianTheme.colorScheme.primary
     ): ChipColors =
         ChipColors(
             containerColor = containerColor,
             labelColor = labelColor,
             leadingIconContentColor = leadingIconColor,
-            disabledContainerColor = disabledContainerColor,
-            disabledLabelColor = disabledLabelColor,
-            disabledLeadingIconContentColor = disabledLeadingIconContentColor,
             borderColor = borderColor,
-            disabledBorderColor = disabledBorderColor,
             imageColors = ImageDefaults.colors(),
             avatarColors = AvatarDefaults.colors()
         )
@@ -65,16 +52,14 @@ object SuggestionChipDefaults {
      * @param labelStyle The text style to be used for the chip's label.
      * @param borderWidth The width of the chip's border.
      * @param shape The shape to be used for the chip.
-     * @param disabledBorderWith The width of the chip's border when it is disabled.
      */
     @Composable
     fun chipSizes(
         trailingIconSizes: IconSizes = IconDefaults.size18(),
         leadingIconSizes: IconSizes = IconDefaults.size18(),
-        labelStyle: TextStyle = PersianTheme.typography.labelLarge,
+        labelStyle: TextStyle = PersianTheme.typography.labelMedium,
         borderWidth: Dp = 1.dp,
-        shape: Shape = PersianTheme.shapes.shape10,
-        disabledBorderWith: Dp = 0.dp,
+        shape: Shape = PersianTheme.shapes.shape10
     ): ChipSizes =
         ChipSizes(
             trailingIconSizes = trailingIconSizes,
@@ -82,7 +67,6 @@ object SuggestionChipDefaults {
             labelStyle = labelStyle,
             borderWidth = borderWidth,
             shape = shape,
-            disabledBorderWith = disabledBorderWith,
             leadingImageSizes = ImageDefaults.size24(),
         )
 
@@ -94,7 +78,6 @@ object SuggestionChipDefaults {
      * @param focusedElevation The elevation of the chip when it is focused.
      * @param hoveredElevation The elevation of the chip when it is hovered.
      * @param draggedElevation The elevation of the chip when it is dragged.
-     * @param disabledElevation The elevation of the chip when it is disabled.
      */
     @Composable
     fun chipElevation(
@@ -102,16 +85,14 @@ object SuggestionChipDefaults {
         pressedElevation: Dp = elevation,
         focusedElevation: Dp = elevation,
         hoveredElevation: Dp = elevation,
-        draggedElevation: Dp = PersianTheme.elevation.elevation4,
-        disabledElevation: Dp = elevation
+        draggedElevation: Dp = PersianTheme.elevation.elevation4
     ): ChipElevation =
         ChipElevation(
             elevation = elevation,
             pressedElevation = pressedElevation,
             focusedElevation = focusedElevation,
             hoveredElevation = hoveredElevation,
-            draggedElevation = draggedElevation,
-            disabledElevation = disabledElevation
+            draggedElevation = draggedElevation
         )
 
 }

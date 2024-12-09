@@ -6,14 +6,12 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.avatarsAndImages.AvatarDefaults
-import io.github.madmaximuus.persian.avatarsAndImages.ImageDefaults
+import io.github.madmaximuus.persian.avatarAndImage.AvatarDefaults
+import io.github.madmaximuus.persian.avatarAndImage.ImageDefaults
 import io.github.madmaximuus.persian.chips.founfation.SelectableChipColors
 import io.github.madmaximuus.persian.chips.founfation.SelectableChipElevation
 import io.github.madmaximuus.persian.chips.founfation.SelectableChipSizes
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.foundation.state12
-import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persian.icon.IconSizes
 
@@ -30,19 +28,12 @@ object FilterChipDefaults {
      * @param labelColor The color of the chip's label text.
      * @param leadingIconColor The color of the leading icon.
      * @param trailingIconColor The color of the trailing icon.
-     * @param disabledContainerColor The color of the chip's container when it is disabled.
-     * @param disabledLabelColor The color of the chip's label text when it is disabled.
-     * @param disabledLeadingIconColor The color of the leading icon when the chip is disabled.
-     * @param disabledTrailingIconColor The color of the trailing icon when the chip is disabled.
      * @param selectedContainerColor The color of the chip's container when it is selected.
-     * @param disabledSelectedContainerColor The color of the chip's container when it is disabled and selected.
      * @param selectedLabelColor The color of the chip's label text when it is selected.
      * @param selectedLeadingIconColor The color of the leading icon when the chip is selected.
      * @param selectedTrailingIconColor The color of the trailing icon when the chip is selected.
      * @param borderColor The color of the chip's border.
      * @param selectedBorderColor The color of the chip's border when it is selected.
-     * @param disabledBorderColor The color of the chip's border when it is disabled.
-     * @param disabledSelectedBorderColor The color of the chip's border when it is disabled and selected.
      */
     @Composable
     fun chipColors(
@@ -50,38 +41,24 @@ object FilterChipDefaults {
         labelColor: Color = PersianTheme.colorScheme.onSurface,
         leadingIconColor: Color = PersianTheme.colorScheme.primary,
         trailingIconColor: Color = PersianTheme.colorScheme.primary,
-        disabledContainerColor: Color = Color.Transparent,
-        disabledLabelColor: Color = PersianTheme.colorScheme.onSurface.state38,
-        disabledLeadingIconColor: Color = PersianTheme.colorScheme.onSurface.state38,
-        disabledTrailingIconColor: Color = disabledLeadingIconColor,
         selectedContainerColor: Color = PersianTheme.colorScheme.secondaryContainer,
-        disabledSelectedContainerColor: Color = PersianTheme.colorScheme.onSurface.state12,
         selectedLabelColor: Color = PersianTheme.colorScheme.onSecondaryContainer,
         selectedLeadingIconColor: Color = PersianTheme.colorScheme.onSecondaryContainer,
         selectedTrailingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         borderColor: Color = PersianTheme.colorScheme.primary,
         selectedBorderColor: Color = Color.Transparent,
-        disabledBorderColor: Color = PersianTheme.colorScheme.onSurface.state12,
-        disabledSelectedBorderColor: Color = Color.Transparent
     ): SelectableChipColors =
         SelectableChipColors(
             containerColor = containerColor,
             labelColor = labelColor,
             leadingIconColor = leadingIconColor,
             trailingIconColor = trailingIconColor,
-            disabledContainerColor = disabledContainerColor,
-            disabledLabelColor = disabledLabelColor,
-            disabledLeadingIconColor = disabledLeadingIconColor,
-            disabledSelectedContainerColor = disabledTrailingIconColor,
             selectedContainerColor = selectedContainerColor,
-            disabledTrailingIconColor = disabledSelectedContainerColor,
             selectedLabelColor = selectedLabelColor,
             selectedLeadingIconColor = selectedLeadingIconColor,
             selectedTrailingIconColor = selectedTrailingIconColor,
             borderColor = borderColor,
             selectedBorderColor = selectedBorderColor,
-            disabledBorderColor = disabledBorderColor,
-            disabledSelectedBorderColor = disabledSelectedBorderColor,
             avatarColors = AvatarDefaults.colors(),
             imageColors = ImageDefaults.colors()
         )
@@ -96,19 +73,15 @@ object FilterChipDefaults {
      * @param borderWidth The width of the chip's border.
      * @param selectedBorderWith The width of the chip's border when it is selected.
      * @param shape The shape to be used for the chip.
-     * @param disabledBorderWith The width of the chip's border when it is disabled.
-     * @param selectedDisabledBorderWith The width of the chip's border when it is disabled and selected.
      */
     @Composable
     fun chipSizes(
         trailingIconSizes: IconSizes = IconDefaults.size18(),
         leadingIconSizes: IconSizes = IconDefaults.size18(),
-        labelStyle: TextStyle = PersianTheme.typography.labelLarge,
+        labelStyle: TextStyle = PersianTheme.typography.labelMedium,
         borderWidth: Dp = 1.dp,
         selectedBorderWith: Dp = 0.dp,
-        shape: Shape = PersianTheme.shapes.shape10,
-        disabledBorderWith: Dp = 1.dp,
-        selectedDisabledBorderWith: Dp = 0.dp
+        shape: Shape = PersianTheme.shapes.shape12,
     ): SelectableChipSizes =
         SelectableChipSizes(
             trailingIconSizes = trailingIconSizes,
@@ -117,8 +90,6 @@ object FilterChipDefaults {
             borderWidth = borderWidth,
             selectedBorderWith = selectedBorderWith,
             shape = shape,
-            disabledBorderWith = disabledBorderWith,
-            selectedDisabledBorderWith = selectedDisabledBorderWith,
             avatarSizes = AvatarDefaults.size24(),
             imageSizes = ImageDefaults.size24()
         )
@@ -132,7 +103,6 @@ object FilterChipDefaults {
      * @param focusedElevation The elevation of the chip when it is focused.
      * @param hoveredElevation The elevation of the chip when it is hovered.
      * @param draggedElevation The elevation of the chip when it is dragged.
-     * @param disabledElevation The elevation of the chip when it is disabled.
      */
     @Composable
     fun chipElevation(
@@ -141,7 +111,6 @@ object FilterChipDefaults {
         focusedElevation: Dp = PersianTheme.elevation.none,
         hoveredElevation: Dp = PersianTheme.elevation.elevation1,
         draggedElevation: Dp = PersianTheme.elevation.elevation4,
-        disabledElevation: Dp = elevation
     ): SelectableChipElevation =
         SelectableChipElevation(
             elevation = elevation,
@@ -149,7 +118,6 @@ object FilterChipDefaults {
             focusedElevation = focusedElevation,
             hoveredElevation = hoveredElevation,
             draggedElevation = draggedElevation,
-            disabledElevation = disabledElevation
         )
 
 }

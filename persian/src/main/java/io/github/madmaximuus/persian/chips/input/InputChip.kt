@@ -5,10 +5,12 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
 import io.github.madmaximuus.persian.chips.founfation.BaseSelectableChip
 import io.github.madmaximuus.persian.chips.founfation.SelectableChipColors
 import io.github.madmaximuus.persian.chips.founfation.SelectableChipElevation
 import io.github.madmaximuus.persian.chips.founfation.SelectableChipSizes
+import io.github.madmaximuus.persian.foundation.PersianState38
 
 /**
  * Chips help people enter information, make selections, filter content, or trigger actions. Chips
@@ -47,7 +49,11 @@ fun InputShip(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
 ) = BaseSelectableChip(
     selected = selected,
-    modifier = modifier,
+    modifier = modifier
+        .graphicsLayer {
+            alpha = if (enabled) 1f
+            else PersianState38
+        },
     onClick = onClick,
     enabled = enabled,
     label = label,
@@ -56,9 +62,8 @@ fun InputShip(
     sizes = sizes,
     leading = if (leading != null) {
         {
-            val scope = remember(enabled, selected, colors, sizes) {
+            val scope = remember(selected, colors, sizes) {
                 InputChipLeadingScopeWrapper(
-                    enabled = enabled,
                     selected = selected,
                     sizes = sizes,
                     colors = colors

@@ -21,13 +21,11 @@ import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
  *
  * @property colors The colors to be used for the chip.
  * @property sizes The sizes to be used for the chip.
- * @property enabled Whether the chip is enabled or disabled.
  * @property selected Whether the chip is selected or not.
  */
 interface FilterChipLeadingScope {
     val colors: SelectableChipColors
     val sizes: SelectableChipSizes
-    val enabled: Boolean
     val selected: Boolean
 }
 
@@ -40,13 +38,11 @@ interface FilterChipLeadingScope {
  *
  * @param colors The colors to be used for the chip.
  * @param sizes The sizes to be used for the chip.
- * @param enabled Whether the chip is enabled or disabled.
  * @param selected Whether the chip is selected or not.
  */
 internal class FilterChipLeadingScopeWrapper(
     override val colors: SelectableChipColors,
     override val sizes: SelectableChipSizes,
-    override val enabled: Boolean,
     override val selected: Boolean
 ) : FilterChipLeadingScope
 
@@ -70,7 +66,7 @@ fun FilterChipLeadingScope.Icon(
         Icon(
             painter = if (selected) selectedIcon else icon,
             sizes = sizes.leadingIconSizes,
-            tint = colors.leadingIconContentColor(enabled, selected)
+            tint = colors.leadingIconContentColor(selected)
         )
     }
 }

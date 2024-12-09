@@ -71,13 +71,13 @@ fun FilterChipTrailingScope.Icon(
             Modifier
                 .clip(PersianTheme.shapes.shape4)
                 .clickable(
-                    enabled,
+                    enabled = enabled,
                     onClick = onClick,
-                    role = Role.Image
+                    role = Role.Button
                 ),
             painter = icon,
             sizes = sizes.leadingIconSizes,
-            tint = colors.leadingIconContentColor(enabled, selected),
+            tint = colors.leadingIconContentColor(selected),
         )
     }
 }

@@ -18,12 +18,10 @@ import io.github.madmaximuus.persian.icon.Icon
  *
  * @property colors The colors to be used for the chip.
  * @property sizes The sizes to be used for the chip.
- * @property enabled Whether the chip is enabled or disabled.
  */
 interface SuggestionChipLeadingScope {
     val colors: ChipColors
     val sizes: ChipSizes
-    val enabled: Boolean
 }
 
 /**
@@ -35,12 +33,10 @@ interface SuggestionChipLeadingScope {
  *
  * @param colors The colors to be used for the chip.
  * @param sizes The sizes to be used for the chip.
- * @param enabled Whether the chip is enabled or disabled.
  */
 internal class SuggestionChipLeadingScopeWrapper(
     override val colors: ChipColors,
-    override val sizes: ChipSizes,
-    override val enabled: Boolean
+    override val sizes: ChipSizes
 ) : SuggestionChipLeadingScope
 
 /**
@@ -61,7 +57,7 @@ fun SuggestionChipLeadingScope.Icon(
         Icon(
             painter = painter,
             sizes = sizes.leadingIconSizes,
-            tint = colors.leadingIconContentColor(enabled)
+            tint = colors.leadingIconContentColor
         )
     }
 }

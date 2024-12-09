@@ -5,10 +5,12 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
 import io.github.madmaximuus.persian.chips.founfation.BaseChip
 import io.github.madmaximuus.persian.chips.founfation.ChipColors
 import io.github.madmaximuus.persian.chips.founfation.ChipElevation
 import io.github.madmaximuus.persian.chips.founfation.ChipSizes
+import io.github.madmaximuus.persian.foundation.PersianState38
 
 /**
  * Chips help people enter information, make selections, filter content, or trigger actions. Chips
@@ -43,7 +45,11 @@ fun SuggestionChip(
     elevation: ChipElevation = SuggestionChipDefaults.chipElevation(),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
 ) = BaseChip(
-    modifier = modifier,
+    modifier = modifier
+        .graphicsLayer {
+            alpha = if (enabled) 1f
+            else PersianState38
+        },
     onClick = onClick,
     enabled = enabled,
     label = label,
@@ -53,11 +59,10 @@ fun SuggestionChip(
     interactionSource = interactionSource,
     leading = if (leading != null) {
         {
-            val scope = remember(enabled, colors, sizes) {
+            val scope = remember(colors, sizes) {
                 SuggestionChipLeadingScopeWrapper(
                     sizes = sizes,
-                    colors = colors,
-                    enabled = enabled
+                    colors = colors
                 )
             }
             scope.leading()

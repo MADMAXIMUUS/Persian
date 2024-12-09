@@ -7,9 +7,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
-import io.github.madmaximuus.persian.avatarsAndImages.Avatar
-import io.github.madmaximuus.persian.avatarsAndImages.Image
-import io.github.madmaximuus.persian.avatarsAndImages.ImageShape
+import io.github.madmaximuus.persian.avatarAndImage.Avatar
+import io.github.madmaximuus.persian.avatarAndImage.Image
+import io.github.madmaximuus.persian.avatarAndImage.ImageShape
 import io.github.madmaximuus.persian.chips.founfation.SelectableChipColors
 import io.github.madmaximuus.persian.chips.founfation.SelectableChipSizes
 import io.github.madmaximuus.persian.foundation.PersianTheme
@@ -25,13 +25,11 @@ import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
  *
  * @property colors The colors to be used for the chip.
  * @property sizes The sizes to be used for the chip.
- * @property enabled Whether the chip is enabled or disabled.
  * @property selected Whether the chip is selected or not.
  */
 interface InputChipLeadingScope {
     val colors: SelectableChipColors
     val sizes: SelectableChipSizes
-    val enabled: Boolean
     val selected: Boolean
 }
 
@@ -44,13 +42,11 @@ interface InputChipLeadingScope {
  *
  * @param colors The colors to be used for the chip.
  * @param sizes The sizes to be used for the chip.
- * @param enabled Whether the chip is enabled or disabled.
  * @param selected Whether the chip is selected or not.
  */
 internal class InputChipLeadingScopeWrapper(
     override val colors: SelectableChipColors,
     override val sizes: SelectableChipSizes,
-    override val enabled: Boolean,
     override val selected: Boolean
 ) : InputChipLeadingScope
 
@@ -74,7 +70,7 @@ fun InputChipLeadingScope.Icon(
         Icon(
             painter = if (selected) selectedIcon else icon,
             sizes = sizes.leadingIconSizes,
-            tint = colors.leadingIconContentColor(enabled, selected)
+            tint = colors.leadingIconContentColor(selected)
         )
     }
 }
@@ -105,7 +101,6 @@ fun InputChipLeadingScope.Image(
             overlay = selected,
             colors = colors.imageColors,
             overlayIcon = selectedIcon,
-            enabled = enabled,
             shape = ImageShape.MEDIUM
         )
     }
@@ -137,7 +132,6 @@ fun InputChipLeadingScope.Avatar(
             overlay = selected,
             overlayIcon = selectedIcon,
             colors = colors.avatarColors,
-            enabled = enabled,
         )
     }
 }
