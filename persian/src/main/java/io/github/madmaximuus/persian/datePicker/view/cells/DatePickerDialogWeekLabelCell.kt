@@ -8,6 +8,7 @@ import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.window.core.layout.WindowHeightSizeClass
 import io.github.madmaximuus.persian.datePicker.view.DatePickerDayOfWeekCellColors
@@ -45,7 +46,7 @@ internal fun DatePickerDialogWeekLabelCell(
     ) {
         Text(
             text = label,
-            style = PersianTheme.typography.labelLarge,
+            style = PersianTheme.typography.labelMedium.copy(fontWeight = FontWeight.ExtraBold),
             color = colors.dayOfWeekLabelColor
         )
     }

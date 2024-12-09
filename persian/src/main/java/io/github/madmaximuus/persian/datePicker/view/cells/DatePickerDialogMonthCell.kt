@@ -5,13 +5,20 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.datePicker.view.DatePickerMonthCellColors
 import io.github.madmaximuus.persian.foundation.PersianTheme
@@ -41,13 +48,8 @@ internal fun DatePickerDialogMonthCell(
     modifier: Modifier = Modifier
 ) {
 
-    val textStyle = when {
-        selected -> PersianTheme.typography.bodyMedium
-
-        currentMonth -> PersianTheme.typography.labelLarge
-
-        else -> PersianTheme.typography.bodyMedium
-    }
+    var todayIndicatorSize by remember { mutableStateOf(IntSize.Zero) }
+    val sizeDp = with(LocalDensity.current) { todayIndicatorSize.width.toDp() }
 
     Column(
         modifier = modifier
@@ -60,23 +62,22 @@ internal fun DatePickerDialogMonthCell(
             .padding(
                 horizontal = PersianTheme.spacing.size4,
                 vertical = PersianTheme.spacing.size8
-            ),
+            )
+            .onSizeChanged {
+                todayIndicatorSize = it
+            },
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
             text = month,
-            style = textStyle,
+            style = PersianTheme.typography.labelMedium,
             color = colors.contentColor(selected = selected, enabled = enabled).value
         )
         Box(
             modifier = Modifier
-                .padding(
-                    top = PersianTheme.spacing.size2,
-                    start = PersianTheme.spacing.size12,
-                    end = PersianTheme.spacing.size12
-                )
-                .fillMaxWidth()
+                .padding(top = PersianTheme.spacing.size2)
+                .width(sizeDp * 0.6f)
                 .height(2.dp)
                 .background(
                     color = colors.indicatorColor(selected = selected, currentMonth).value,

@@ -199,7 +199,7 @@ internal fun DatePickerViewPortraitHeader(
                     trailingIcon = if (monthIconDown) rememberVectorPainter(image = PersianSymbols.Default.ChevronDown)
                     else rememberVectorPainter(image = PersianSymbols.Default.ChevronUp),
                     colors = colors.selectedMonthColor,
-                    sizes = ButtonDefaults.smallSizes(),
+                    sizes = ButtonDefaults.mediumSizes(),
                     onClick = onMonthClick
                 )
                 TertiaryButton(
@@ -207,7 +207,7 @@ internal fun DatePickerViewPortraitHeader(
                     trailingIcon = if (yearIconDown) rememberVectorPainter(image = PersianSymbols.Default.ChevronDown)
                     else rememberVectorPainter(image = PersianSymbols.Default.ChevronUp),
                     colors = colors.selectedYearColor,
-                    sizes = ButtonDefaults.smallSizes(),
+                    sizes = ButtonDefaults.mediumSizes(),
                     onClick = onYearClick
                 )
             }
@@ -219,12 +219,12 @@ internal fun DatePickerViewPortraitHeader(
                 Text(
                     text = month,
                     color = colors.monthLabelColor,
-                    style = PersianTheme.typography.labelLarge
+                    style = PersianTheme.typography.buttonMedium
                 )
                 Text(
                     text = year,
                     color = colors.yearLabelColor,
-                    style = PersianTheme.typography.labelLarge
+                    style = PersianTheme.typography.buttonMedium
                 )
             }
         }
@@ -327,7 +327,7 @@ internal fun DatePickerViewLandscapeHeader(
                     trailingIcon = if (monthIconDown) rememberVectorPainter(image = PersianSymbols.Default.ChevronDown)
                     else rememberVectorPainter(image = PersianSymbols.Default.ChevronUp),
                     colors = colors.selectedMonthColor,
-                    sizes = ButtonDefaults.smallSizes(),
+                    sizes = ButtonDefaults.mediumSizes(),
                     onClick = onMonthClick
                 )
                 TertiaryButton(
@@ -335,7 +335,7 @@ internal fun DatePickerViewLandscapeHeader(
                     trailingIcon = if (yearIconDown) rememberVectorPainter(image = PersianSymbols.Default.ChevronDown)
                     else rememberVectorPainter(image = PersianSymbols.Default.ChevronUp),
                     colors = colors.selectedYearColor,
-                    sizes = ButtonDefaults.smallSizes(),
+                    sizes = ButtonDefaults.mediumSizes(),
                     onClick = onYearClick
                 )
             }
@@ -347,12 +347,12 @@ internal fun DatePickerViewLandscapeHeader(
                 Text(
                     text = month,
                     color = colors.monthLabelColor,
-                    style = PersianTheme.typography.labelLarge
+                    style = PersianTheme.typography.buttonMedium
                 )
                 Text(
                     text = year,
                     color = colors.yearLabelColor,
-                    style = PersianTheme.typography.labelLarge
+                    style = PersianTheme.typography.buttonMedium
                 )
             }
         }
