@@ -98,7 +98,6 @@ object FabDefaults {
      *
      * @param boxSize The size of the FAB's box.
      * @param iconSizes The sizes of the icon displayed within the FAB.
-     * @param textStyle The text style applied to any text within the FAB.
      * @param cornerShape The shape of the FAB's corners.
      */
     @Composable
@@ -126,7 +125,7 @@ object FabDefaults {
     fun defaultSizes(
         boxSize: Dp = 56.dp,
         iconSizes: IconSizes = IconDefaults.size28(),
-        textStyle: TextStyle = PersianTheme.typography.titleMedium,
+        textStyle: TextStyle = PersianTheme.typography.buttonLarge,
         cornerShape: Shape = PersianTheme.shapes.shape16
     ): FabSizes =
         FabSizes(

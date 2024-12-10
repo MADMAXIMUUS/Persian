@@ -70,7 +70,7 @@ object Fab : Screen {
                         sizeStates[0].value -> {
                             Fab(
                                 icon = rememberVectorPainter(image = PersianSymbols.Default.Plus),
-                                title = "Add",
+                                title = labelState.text.toString(),
                                 expanded = expandable,
                                 colors = when {
                                     styleStates[0].value -> FabDefaults.neutralColors()
