@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.dividers
+package io.github.madmaximuus.persian.divider
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
@@ -7,7 +7,7 @@ import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
 /**
- * Contains the default values used by all dividers.
+ * Contains the default values used by [Divider].
  */
 object DividerDefaults {
 
@@ -26,7 +26,6 @@ object DividerDefaults {
             inset = inset,
             strokeThickness = strokeThickness
         )
-
 }
 
 /**

@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.dividers
+package io.github.madmaximuus.persian.divider
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -19,21 +19,21 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
  *
  * @param modifier The [Modifier] to be applied to the divider.
  * @param sizes The [DividerSizes] that define the thickness of the divider.
- * @param insetSide The [HorizontalInsetSide] that specifies which side of the divider should have the inset.
+ * @param insetSide The [InsetSide] that specifies which side of the divider should have the inset.
  * @param strokeColor The [Color] of the divider.
  */
 @Composable
-fun HorizontalDivider(
+fun Divider(
     modifier: Modifier = Modifier,
     sizes: DividerSizes = DividerDefaults.sizes(),
-    insetSide: HorizontalInsetSide = HorizontalInsetSide.NONE,
+    insetSide: InsetSide = InsetSide.NONE,
     strokeColor: Color = PersianTheme.colorScheme.outlineVariant
 ) {
     val padding = when (insetSide) {
-        HorizontalInsetSide.LEFT -> PaddingValues(start = sizes.inset)
-        HorizontalInsetSide.RIGHT -> PaddingValues(end = sizes.inset)
-        HorizontalInsetSide.NONE -> PaddingValues(0.dp)
-        HorizontalInsetSide.BOTH -> PaddingValues(horizontal = sizes.inset)
+        InsetSide.LEFT -> PaddingValues(start = sizes.inset)
+        InsetSide.RIGHT -> PaddingValues(end = sizes.inset)
+        InsetSide.NONE -> PaddingValues(0.dp)
+        InsetSide.BOTH -> PaddingValues(horizontal = sizes.inset)
     }
     Box(
         modifier = modifier
@@ -47,4 +47,4 @@ fun HorizontalDivider(
 /**
  * An enumeration that specifies the side of the horizontal inset.
  */
-enum class HorizontalInsetSide { NONE, LEFT, RIGHT, BOTH }
+enum class InsetSide { NONE, LEFT, RIGHT, BOTH }
