@@ -8,8 +8,6 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.foundation.state12
-import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persian.icon.IconSizes
 
@@ -92,20 +90,14 @@ object IconButtonDefaults {
      *
      * @param containerColor The background color of the button when it is enabled.
      * @param contentColor The color of the icon within the button when it is enabled.
-     * @param disabledContainerColor The background color of the button when it is disabled.
-     * @param disabledContentColor The color of the icon within the button when it is disabled.
      */
     @Composable
     fun primaryIconButtonColors(
         containerColor: Color = PersianTheme.colorScheme.primary,
         contentColor: Color = PersianTheme.colorScheme.onPrimary,
-        disabledContainerColor: Color = PersianTheme.colorScheme.onSurface.state12,
-        disabledContentColor: Color = PersianTheme.colorScheme.onSurface.state38,
     ): IconButtonColors = IconButtonColors(
         containerColor = containerColor,
         contentColor = contentColor,
-        disabledContainerColor = disabledContainerColor,
-        disabledContentColor = disabledContentColor
     )
 
     /**
@@ -116,20 +108,14 @@ object IconButtonDefaults {
      *
      * @param containerColor The background color of the button when it is enabled.
      * @param contentColor The color of the icon within the button when it is enabled.
-     * @param disabledContainerColor The background color of the button when it is disabled.
-     * @param disabledContentColor The color of the icon within the button when it is disabled.
      */
     @Composable
     fun secondaryIconButtonColors(
         containerColor: Color = PersianTheme.colorScheme.primaryContainer,
         contentColor: Color = PersianTheme.colorScheme.onPrimaryContainer,
-        disabledContainerColor: Color = PersianTheme.colorScheme.onSurface.state12,
-        disabledContentColor: Color = PersianTheme.colorScheme.onSurface.state38,
     ): IconButtonColors = IconButtonColors(
         containerColor = containerColor,
         contentColor = contentColor,
-        disabledContainerColor = disabledContainerColor,
-        disabledContentColor = disabledContentColor
     )
 
     /**
@@ -140,20 +126,14 @@ object IconButtonDefaults {
      *
      * @param containerColor The background color of the button when it is enabled.
      * @param contentColor The color of the icon within the button when it is enabled.
-     * @param disabledContainerColor The background color of the button when it is disabled.
-     * @param disabledContentColor The color of the icon within the button when it is disabled.
      */
     @Composable
     fun tertiaryIconButtonColors(
         containerColor: Color = Color.Transparent,
         contentColor: Color = PersianTheme.colorScheme.primary,
-        disabledContainerColor: Color = Color.Transparent,
-        disabledContentColor: Color = PersianTheme.colorScheme.onSurface.state38,
     ): IconButtonColors = IconButtonColors(
         containerColor = containerColor,
         contentColor = contentColor,
-        disabledContainerColor = disabledContainerColor,
-        disabledContentColor = disabledContentColor
     )
 
     /**
@@ -164,20 +144,14 @@ object IconButtonDefaults {
      *
      * @param containerColor The background color of the button when it is enabled.
      * @param contentColor The color of the icon within the button when it is enabled.
-     * @param disabledContainerColor The background color of the button when it is disabled.
-     * @param disabledContentColor The color of the icon within the button when it is disabled.
      */
     @Composable
     fun outlinedIconButtonColors(
         containerColor: Color = Color.Transparent,
         contentColor: Color = PersianTheme.colorScheme.primary,
-        disabledContainerColor: Color = Color.Transparent,
-        disabledContentColor: Color = PersianTheme.colorScheme.onSurface.state38
     ): IconButtonColors = IconButtonColors(
         containerColor = containerColor,
         contentColor = contentColor,
-        disabledContainerColor = disabledContainerColor,
-        disabledContentColor = disabledContentColor
     )
 
     /**
@@ -188,8 +162,6 @@ object IconButtonDefaults {
      *
      * @param containerColor The background color of the button when it is enabled and unchecked.
      * @param contentColor The color of the icon within the button when it is enabled and unchecked.
-     * @param disabledContainerColor The background color of the button when it is disabled.
-     * @param disabledContentColor The color of the icon within the button when it is disabled.
      * @param checkedContainerColor The background color of the button when it is enabled and checked.
      * @param checkedContentColor The color of the icon within the button when it is enabled and checked.
      */
@@ -197,15 +169,11 @@ object IconButtonDefaults {
     fun primaryToggleIconButtonColors(
         containerColor: Color = PersianTheme.colorScheme.surfaceContainerHighest,
         contentColor: Color = PersianTheme.colorScheme.primary,
-        disabledContainerColor: Color = PersianTheme.colorScheme.onSurface.state12,
-        disabledContentColor: Color = PersianTheme.colorScheme.onSurface.state38,
         checkedContainerColor: Color = PersianTheme.colorScheme.primary,
         checkedContentColor: Color = PersianTheme.colorScheme.onPrimary,
     ): ToggleIconButtonColors = ToggleIconButtonColors(
         containerColor = containerColor,
         contentColor = contentColor,
-        disabledContainerColor = disabledContainerColor,
-        disabledContentColor = disabledContentColor,
         checkedContentColor = checkedContentColor,
         checkedContainerColor = checkedContainerColor
     )
@@ -218,8 +186,6 @@ object IconButtonDefaults {
      *
      * @param containerColor The background color of the button when it is enabled and unchecked.
      * @param contentColor The color of the icon within the button when it is enabled and unchecked.
-     * @param disabledContainerColor The background color of the button when it is disabled.
-     * @param disabledContentColor The color of the icon within the button when it is disabled.
      * @param checkedContainerColor The background color of the button when it is enabled and checked.
      * @param checkedContentColor The color of the icon within the button when it is enabled and checked.
      */
@@ -227,15 +193,11 @@ object IconButtonDefaults {
     fun secondaryToggleIconButtonColors(
         containerColor: Color = PersianTheme.colorScheme.surfaceContainerHighest,
         contentColor: Color = PersianTheme.colorScheme.onSurface,
-        disabledContainerColor: Color = PersianTheme.colorScheme.onSurface.state12,
-        disabledContentColor: Color = PersianTheme.colorScheme.onSurface.state38,
         checkedContainerColor: Color = PersianTheme.colorScheme.primaryContainer,
         checkedContentColor: Color = PersianTheme.colorScheme.onPrimaryContainer,
     ): ToggleIconButtonColors = ToggleIconButtonColors(
         containerColor = containerColor,
         contentColor = contentColor,
-        disabledContainerColor = disabledContainerColor,
-        disabledContentColor = disabledContentColor,
         checkedContentColor = checkedContentColor,
         checkedContainerColor = checkedContainerColor
     )
@@ -249,8 +211,6 @@ object IconButtonDefaults {
      *
      * @param containerColor The background color of the button when it is enabled and unchecked.
      * @param contentColor The color of the icon within the button when it is enabled and unchecked.
-     * @param disabledContainerColor The background color of the button when it is disabled.
-     * @param disabledContentColor The color of the icon within the button when it is disabled.
      * @param checkedContainerColor The background color of the button when it is enabled and checked.
      * @param checkedContentColor The color of the icon within the button when it is enabled and checked.
      */
@@ -258,15 +218,11 @@ object IconButtonDefaults {
     fun tertiaryToggleIconButtonColors(
         containerColor: Color = Color.Transparent,
         contentColor: Color = PersianTheme.colorScheme.primary,
-        disabledContainerColor: Color = PersianTheme.colorScheme.onSurface.state12,
-        disabledContentColor: Color = PersianTheme.colorScheme.onSurface.state38,
         checkedContainerColor: Color = Color.Transparent,
         checkedContentColor: Color = PersianTheme.colorScheme.primary,
     ): ToggleIconButtonColors = ToggleIconButtonColors(
         containerColor = containerColor,
         contentColor = contentColor,
-        disabledContainerColor = disabledContainerColor,
-        disabledContentColor = disabledContentColor,
         checkedContentColor = checkedContentColor,
         checkedContainerColor = checkedContainerColor
     )
@@ -280,8 +236,6 @@ object IconButtonDefaults {
      *
      * @param containerColor The background color of the button when it is enabled and unchecked.
      * @param contentColor The color of the icon within the button when it is enabled and unchecked.
-     * @param disabledContainerColor The background color of the button when it is disabled.
-     * @param disabledContentColor The color of the icon within the button when it is disabled.
      * @param checkedContainerColor The background color of the button when it is enabled and checked.
      * @param checkedContentColor The color of the icon within the button when it is enabled and checked.
      */
@@ -289,15 +243,11 @@ object IconButtonDefaults {
     fun outlinedToggleIconButtonColors(
         containerColor: Color = Color.Transparent,
         contentColor: Color = PersianTheme.colorScheme.primary,
-        disabledContainerColor: Color = PersianTheme.colorScheme.onSurface.state12,
-        disabledContentColor: Color = PersianTheme.colorScheme.onSurface.state38,
         checkedContainerColor: Color = PersianTheme.colorScheme.primary,
         checkedContentColor: Color = PersianTheme.colorScheme.onPrimary,
     ): ToggleIconButtonColors = ToggleIconButtonColors(
         containerColor = containerColor,
         contentColor = contentColor,
-        disabledContainerColor = disabledContainerColor,
-        disabledContentColor = disabledContentColor,
         checkedContentColor = checkedContentColor,
         checkedContainerColor = checkedContainerColor
     )
@@ -328,51 +278,24 @@ class IconButtonSizes internal constructor(
  *
  * @property containerColor The background color of the button when it is enabled.
  * @property contentColor The color of the icon within the button when it is enabled.
- * @property disabledContainerColor The background color of the button when it is disabled.
- * @property disabledContentColor The color of the icon within the button when it is disabled.
  */
 @Immutable
 class IconButtonColors internal constructor(
-    private val containerColor: Color,
-    private val contentColor: Color,
-    private val disabledContainerColor: Color,
-    private val disabledContentColor: Color,
+    internal val containerColor: Color,
+    internal val contentColor: Color,
 ) {
-    /**
-     * Returns the container color based on the enabled state of the button.
-     *
-     * @param enabled Whether the button is enabled.
-     */
-    @Stable
-    internal fun containerColor(enabled: Boolean): Color {
-        return if (enabled) containerColor else disabledContainerColor
-    }
-
-    /**
-     * Returns the content color based on the enabled state of the button.
-     *
-     * @param enabled Whether the button is enabled.
-     */
-    @Stable
-    internal fun contentColor(enabled: Boolean): Color {
-        return if (enabled) contentColor else disabledContentColor
-    }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other == null || other !is IconButtonColors) return false
 
         if (containerColor != other.containerColor) return false
-        if (contentColor != other.contentColor) return false
-        if (disabledContainerColor != other.disabledContainerColor) return false
-        return disabledContentColor == other.disabledContentColor
+        return contentColor == other.contentColor
     }
 
     override fun hashCode(): Int {
         var result = containerColor.hashCode()
         result = 31 * result + contentColor.hashCode()
-        result = 31 * result + disabledContainerColor.hashCode()
-        result = 31 * result + disabledContentColor.hashCode()
 
         return result
     }
@@ -387,8 +310,6 @@ class IconButtonColors internal constructor(
  *
  * @property containerColor The background color of the button when it is enabled and unchecked.
  * @property contentColor The color of the icon within the button when it is enabled and unchecked.
- * @property disabledContainerColor The background color of the button when it is disabled.
- * @property disabledContentColor The color of the icon within the button when it is disabled.
  * @property checkedContainerColor The background color of the button when it is enabled and checked.
  * @property checkedContentColor The color of the icon within the button when it is enabled and checked.
  */
@@ -396,8 +317,6 @@ class IconButtonColors internal constructor(
 class ToggleIconButtonColors internal constructor(
     private val containerColor: Color,
     private val contentColor: Color,
-    private val disabledContainerColor: Color,
-    private val disabledContentColor: Color,
     private val checkedContainerColor: Color,
     private val checkedContentColor: Color,
 ) {
@@ -405,14 +324,12 @@ class ToggleIconButtonColors internal constructor(
     /**
      * Returns the container color based on the enabled and checked states of the button.
      *
-     * @param enabled Whether the button is enabled.
      * @param checked Whether the button is checked.
      */
     @Stable
-    internal fun containerColor(enabled: Boolean, checked: Boolean): Color {
+    internal fun containerColor(checked: Boolean): Color {
 
         return when {
-            !enabled -> disabledContainerColor
             !checked -> containerColor
             else -> checkedContainerColor
         }
@@ -421,13 +338,11 @@ class ToggleIconButtonColors internal constructor(
     /**
      * Returns the content color based on the enabled and checked states of the button.
      *
-     * @param enabled Whether the button is enabled.
      * @param checked Whether the button is checked.
      */
     @Stable
-    internal fun contentColor(enabled: Boolean, checked: Boolean): Color {
+    internal fun contentColor(checked: Boolean): Color {
         return when {
-            !enabled -> disabledContentColor
             !checked -> contentColor
             else -> checkedContentColor
         }
@@ -439,8 +354,6 @@ class ToggleIconButtonColors internal constructor(
 
         if (containerColor != other.containerColor) return false
         if (contentColor != other.contentColor) return false
-        if (disabledContainerColor != other.disabledContainerColor) return false
-        if (disabledContentColor != other.disabledContentColor) return false
         if (checkedContainerColor != other.checkedContainerColor) return false
         return checkedContentColor == other.checkedContentColor
     }
@@ -448,8 +361,6 @@ class ToggleIconButtonColors internal constructor(
     override fun hashCode(): Int {
         var result = containerColor.hashCode()
         result = 31 * result + contentColor.hashCode()
-        result = 31 * result + disabledContainerColor.hashCode()
-        result = 31 * result + disabledContentColor.hashCode()
         result = 31 * result + checkedContainerColor.hashCode()
         result = 31 * result + checkedContentColor.hashCode()
 

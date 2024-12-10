@@ -10,12 +10,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.fab.Fab
+import io.github.madmaximuus.persian.foundation.PersianState38
 import io.github.madmaximuus.persian.icon.Icon
 import io.github.madmaximuus.persian.surface.Surface
 
@@ -60,11 +62,15 @@ fun PrimaryIconButton(
     onClick = onClick,
     modifier = modifier
         .semantics { role = Role.Button }
-        .size(sizes.size),
+        .size(sizes.size)
+        .graphicsLayer {
+            alpha = if (enabled) 1f
+            else PersianState38
+        },
     enabled = enabled,
     shape = sizes.shape,
-    color = colors.containerColor(enabled),
-    contentColor = colors.contentColor(enabled),
+    color = colors.containerColor,
+    contentColor = colors.contentColor,
     interactionSource = interactionSource
 ) {
     Box(
@@ -74,7 +80,7 @@ fun PrimaryIconButton(
         Icon(
             painter = icon,
             sizes = sizes.iconSizes,
-            tint = colors.contentColor(enabled = enabled)
+            tint = colors.contentColor
         )
     }
 }
@@ -120,11 +126,15 @@ fun SecondaryIconButton(
     onClick = onClick,
     modifier = modifier
         .semantics { role = Role.Button }
-        .size(sizes.size),
+        .size(sizes.size)
+        .graphicsLayer {
+            alpha = if (enabled) 1f
+            else PersianState38
+        },
     enabled = enabled,
     shape = sizes.shape,
-    color = colors.containerColor(enabled),
-    contentColor = colors.contentColor(enabled),
+    color = colors.containerColor,
+    contentColor = colors.contentColor,
     interactionSource = interactionSource
 ) {
     Box(
@@ -178,11 +188,15 @@ fun TertiaryIconButton(
     onClick = onClick,
     modifier = modifier
         .semantics { role = Role.Button }
-        .size(sizes.size),
+        .size(sizes.size)
+        .graphicsLayer {
+            alpha = if (enabled) 1f
+            else PersianState38
+        },
     enabled = enabled,
     shape = sizes.shape,
-    color = colors.containerColor(enabled),
-    contentColor = colors.contentColor(enabled),
+    color = colors.containerColor,
+    contentColor = colors.contentColor,
     interactionSource = interactionSource
 ) {
     Box(
@@ -235,14 +249,18 @@ fun OutlinedIconButton(
     onClick = onClick,
     modifier = modifier
         .semantics { role = Role.Button }
-        .size(sizes.size),
+        .size(sizes.size)
+        .graphicsLayer {
+            alpha = if (enabled) 1f
+            else PersianState38
+        },
     enabled = enabled,
     shape = sizes.shape,
-    color = colors.containerColor(enabled),
-    contentColor = colors.contentColor(enabled),
+    color = colors.containerColor,
+    contentColor = colors.contentColor,
     border = BorderStroke(
         1.dp,
-        colors.contentColor(enabled)
+        colors.contentColor
     ),
     interactionSource = interactionSource
 ) {

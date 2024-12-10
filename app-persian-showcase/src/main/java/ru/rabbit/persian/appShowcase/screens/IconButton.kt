@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.checkboxes.Checkbox
+import io.github.madmaximuus.persian.forms.Checkbox
 import io.github.madmaximuus.persian.forms.Checkboxes
 import io.github.madmaximuus.persian.forms.FormItem
 import io.github.madmaximuus.persian.forms.RadioButton
@@ -218,11 +218,7 @@ object IconButton : Screen {
                 )
                 FormItem(
                     modifier = Modifier.padding(top = PersianTheme.spacing.size12),
-                    subhead = {
-                        Subhead(
-                            text = "Style"
-                        )
-                    },
+                    subhead = { Subhead(text = "Style") },
                     content = {
                         RadioButtons {
                             RadioButton(

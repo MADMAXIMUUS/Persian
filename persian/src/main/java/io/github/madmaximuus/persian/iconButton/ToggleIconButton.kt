@@ -10,12 +10,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.fab.Fab
+import io.github.madmaximuus.persian.foundation.PersianState38
 import io.github.madmaximuus.persian.icon.Icon
 import io.github.madmaximuus.persian.surface.Surface
 
@@ -63,11 +65,15 @@ fun PrimaryToggleIconButton(
     onCheckedChange = onCheckedChange,
     modifier = modifier
         .semantics { role = Role.Checkbox }
-        .size(sizes.size),
+        .size(sizes.size)
+        .graphicsLayer {
+            alpha = if (enabled) 1f
+            else PersianState38
+        },
     enabled = enabled,
     shape = sizes.shape,
-    color = colors.containerColor(enabled, checked),
-    contentColor = colors.contentColor(enabled, checked),
+    color = colors.containerColor(checked),
+    contentColor = colors.contentColor(checked),
     interactionSource = interactionSource
 ) {
     Box(
@@ -120,11 +126,15 @@ fun SecondaryToggleIconButton(
     onCheckedChange = onCheckedChange,
     modifier = modifier
         .semantics { role = Role.Checkbox }
-        .size(sizes.size),
+        .size(sizes.size)
+        .graphicsLayer {
+            alpha = if (enabled) 1f
+            else PersianState38
+        },
     enabled = enabled,
     shape = sizes.shape,
-    color = colors.containerColor(enabled, checked),
-    contentColor = colors.contentColor(enabled, checked),
+    color = colors.containerColor(checked),
+    contentColor = colors.contentColor(checked),
     interactionSource = interactionSource
 ) {
     Box(
@@ -182,11 +192,15 @@ fun TertiaryToggleIconButton(
     onCheckedChange = onCheckedChange,
     modifier = modifier
         .semantics { role = Role.Checkbox }
-        .size(sizes.size),
+        .size(sizes.size)
+        .graphicsLayer {
+            alpha = if (enabled) 1f
+            else PersianState38
+        },
     enabled = enabled,
     shape = sizes.shape,
-    color = colors.containerColor(enabled, checked),
-    contentColor = colors.contentColor(enabled, checked),
+    color = colors.containerColor(checked),
+    contentColor = colors.contentColor(checked),
     interactionSource = interactionSource
 ) {
     Box(
@@ -243,14 +257,18 @@ fun OutlinedToggleIconButton(
     onCheckedChange = onCheckedChange,
     modifier = modifier
         .semantics { role = Role.Checkbox }
-        .size(sizes.size),
+        .size(sizes.size)
+        .graphicsLayer {
+            alpha = if (enabled) 1f
+            else PersianState38
+        },
     enabled = enabled,
     shape = sizes.shape,
-    color = colors.containerColor(enabled, checked),
-    contentColor = colors.contentColor(enabled, checked),
+    color = colors.containerColor(checked),
+    contentColor = colors.contentColor(checked),
     border = if (checked) null else BorderStroke(
         1.dp,
-        colors.contentColor(enabled, false)
+        colors.contentColor(false)
     ),
     interactionSource = interactionSource
 ) {
