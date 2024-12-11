@@ -34,7 +34,7 @@ import io.github.madmaximuus.persian.pageIndicator.IndicatorStyle.LINE
  * @param colors The colors to be used for the indicators.
  */
 @Composable
-fun HorizontalPageIndicator(
+fun PageIndicator(
     pagerState: PagerState,
     modifier: Modifier = Modifier,
     style: IndicatorStyle = LINE,
