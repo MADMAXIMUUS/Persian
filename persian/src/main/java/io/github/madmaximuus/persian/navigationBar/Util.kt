@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.map
 
 /**
  * Adapts an [InteractionSource] from one component to another by mapping any interactions by a
- * given offset. Namely used for the pill indicator in [NavigationBarItem] and [NavigationRailItem].
+ * given offset. Namely used for the pill indicator in [NavigationBarItem].
  */
 internal class MappedInteractionSource(
     underlyingInteractionSource: InteractionSource,
@@ -24,6 +24,7 @@ internal class MappedInteractionSource(
                     mappedPresses[interaction] = mappedPress
                     mappedPress
                 }
+
                 is PressInteraction.Cancel -> {
                     val mappedPress = mappedPresses.remove(interaction.press)
                     if (mappedPress == null) {
@@ -32,6 +33,7 @@ internal class MappedInteractionSource(
                         PressInteraction.Cancel(mappedPress)
                     }
                 }
+
                 is PressInteraction.Release -> {
                     val mappedPress = mappedPresses.remove(interaction.press)
                     if (mappedPress == null) {
@@ -40,6 +42,7 @@ internal class MappedInteractionSource(
                         PressInteraction.Release(mappedPress)
                     }
                 }
+
                 else -> interaction
             }
         }

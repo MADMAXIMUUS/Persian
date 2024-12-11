@@ -41,6 +41,7 @@ import androidx.compose.ui.util.fastFirst
 import androidx.compose.ui.util.fastFirstOrNull
 import io.github.madmaximuus.persian.counter.Badge
 import io.github.madmaximuus.persian.counter.utils.BadgeStyle
+import io.github.madmaximuus.persian.foundation.PersianState38
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.ripple.ripple
 import io.github.madmaximuus.persian.icon.Icon
@@ -127,7 +128,7 @@ fun NavigationBarRowScope.NavigationBarItem(
         @Composable {
             val iconColor by
             animateColorAsState(
-                targetValue = colors.iconColor(selected = selected, enabled = enabled),
+                targetValue = colors.iconColor(selected = selected),
                 animationSpec = tween(ItemAnimationDurationMillis),
                 label = ""
             )
@@ -178,7 +179,7 @@ fun NavigationBarRowScope.NavigationBarItem(
                 val style = sizes.textStyle
                 val textColor by
                 animateColorAsState(
-                    targetValue = colors.textColor(selected = selected, enabled = enabled),
+                    targetValue = colors.textColor(selected = selected),
                     animationSpec = tween(ItemAnimationDurationMillis),
                     label = ""
                 )
@@ -204,7 +205,11 @@ fun NavigationBarRowScope.NavigationBarItem(
             )
             .defaultMinSize(minHeight = NavigationBarHeight)
             .weight(1f)
-            .onSizeChanged { itemWidth = it.width },
+            .onSizeChanged { itemWidth = it.width }
+            .graphicsLayer {
+                alpha = if (enabled) 1f
+                else PersianState38
+            },
         contentAlignment = Alignment.Center,
         propagateMinConstraints = true,
     ) {
