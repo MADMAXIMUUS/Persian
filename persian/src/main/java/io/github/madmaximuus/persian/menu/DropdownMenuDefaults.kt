@@ -100,7 +100,7 @@ object MenuDefaults {
      */
     @Composable
     fun itemSizes(
-        titleTextStyle: TextStyle = PersianTheme.typography.bodyLarge,
+        titleTextStyle: TextStyle = PersianTheme.typography.labelLarge,
         leadingIconSizes: IconSizes = IconDefaults.size24(),
         expendIconSizes: IconSizes = IconDefaults.size24(),
         newLabelTextStyle: TextStyle = PersianTheme.typography.labelSmall,
