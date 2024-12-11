@@ -11,9 +11,10 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import io.github.madmaximuus.persian.checkboxes.toggle.CheckboxToggle
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.icon.Icon
+import io.github.madmaximuus.persian.iconButton.IconButtonDefaults
 import io.github.madmaximuus.persian.iconButton.TertiaryIconButton
 import io.github.madmaximuus.persian.radioButton.RadioButtonToggle
-import io.github.madmaximuus.persianSymbols.bars.Bars
+import io.github.madmaximuus.persianSymbols.ellepsis.grip.EllipsisGripVertical
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.minus.Minus
 import io.github.madmaximuus.persianSymbols.plus.Plus
@@ -127,7 +128,7 @@ fun ListItemEditScope.Radio(
 @Composable
 fun ListItemEditScope.Drag(
     modifier: Modifier = Modifier,
-    icon: Painter = rememberVectorPainter(image = PersianSymbols.Default.Bars)
+    icon: Painter = rememberVectorPainter(image = PersianSymbols.Default.EllipsisGripVertical)
 ) {
     Box(
         modifier = modifier
@@ -137,7 +138,7 @@ fun ListItemEditScope.Drag(
     ) {
         Icon(
             painter = icon,
-            tint = this@Drag.colors.dragColor(this@Drag.enabled),
+            tint = this@Drag.colors.editDragColor,
             sizes = this@Drag.sizes.editDragIconSizes,
         )
     }
@@ -171,7 +172,9 @@ fun ListItemEditScope.Add(
             icon = icon,
             enabled = this@Add.enabled,
             sizes = this@Add.sizes.editAddIconButtonSizes,
-            colors = this@Add.colors.editAddColors
+            colors = IconButtonDefaults.tertiaryIconButtonColors(
+                contentColor = this@Add.colors.editAddColors
+            )
         )
     }
 }
@@ -204,7 +207,9 @@ fun ListItemEditScope.Remove(
             icon = icon,
             enabled = this@Remove.enabled,
             sizes = this@Remove.sizes.editRemoveIconButtonSizes,
-            colors = this@Remove.colors.editRemoveColors
+            colors = IconButtonDefaults.tertiaryIconButtonColors(
+                contentColor = this@Remove.colors.editRemoveColors
+            )
         )
     }
 }

@@ -77,7 +77,7 @@ fun ListItemRightScope.Icon(
     ) {
         Icon(
             painter = icon,
-            tint = this@Icon.colors.rightIconColor(this@Icon.enabled),
+            tint = this@Icon.colors.rightIconColor,
             sizes = this@Icon.sizes.rightIconSizes
         )
     }
@@ -113,7 +113,7 @@ fun ListItemRightScope.Switch(
 /**
  * Composable function to display a counter within the right scope of a list item.
  *
- * This function creates a [Box] with padding and contains a [PrimaryCounter] that displays the given count.
+ * This function creates a [Box] with padding and contains a [Counter] that displays the given count.
  * The counter's appearance is customized based on the provided sizes and colors.
  *
  * @param modifier The modifier to be applied to the [Box].
@@ -157,7 +157,7 @@ fun ListItemRightScope.Suffix(
         Text(
             text = value,
             style = this@Suffix.sizes.rightSuffixTextStyle.copy(baselineShift = BaselineShift.None),
-            color = this@Suffix.colors.suffixColor(this@Suffix.enabled)
+            color = this@Suffix.colors.rightSuffixColor
         )
     }
 }

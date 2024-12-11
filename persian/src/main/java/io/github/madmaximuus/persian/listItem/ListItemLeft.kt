@@ -7,9 +7,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
-import io.github.madmaximuus.persian.avatarsAndImages.Avatar
-import io.github.madmaximuus.persian.avatarsAndImages.Image
-import io.github.madmaximuus.persian.avatarsAndImages.ImageShape
+import io.github.madmaximuus.persian.avatarAndImage.Avatar
+import io.github.madmaximuus.persian.avatarAndImage.Image
+import io.github.madmaximuus.persian.avatarAndImage.ImageShape
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.icon.Icon
 
@@ -71,7 +71,7 @@ fun ListItemLeftScope.Icon(
         Icon(
             painter = icon,
             sizes = this@Icon.sizes.leftIconSizes,
-            tint = this@Icon.colors.leftIconColor(this@Icon.enabled),
+            tint = this@Icon.colors.leftIconColor,
             contentDescription = "List Leading Icon"
         )
     }
@@ -102,7 +102,6 @@ fun ListItemLeftScope.Image(
             imageUrl = imageUrl,
             sizes = this@Image.sizes.leftImageSizes,
             colors = this@Image.colors.leftImageColors,
-            enabled = this@Image.enabled,
             shape = ImageShape.LARGE
         )
     }
@@ -131,7 +130,6 @@ fun ListItemLeftScope.Avatar(
         Avatar(
             imageUrl = avatarUrl,
             colors = this@Avatar.colors.leftAvatarColors,
-            enabled = this@Avatar.enabled,
             sizes = this@Avatar.sizes.leftAvatarSizes,
         )
     }

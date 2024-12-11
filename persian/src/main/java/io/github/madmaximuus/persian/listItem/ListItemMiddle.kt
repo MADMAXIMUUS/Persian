@@ -22,12 +22,10 @@ import io.github.madmaximuus.persian.text.Text
  *
  * @property sizes The sizes of the list item, encapsulated in a [ListItemSizes] object.
  * @property colors The colors of the list item, encapsulated in a [ListItemColors] object.
- * @property enabled A boolean indicating whether the list item is enabled.
  */
 interface ListItemMiddleScope : RowScope {
     val sizes: ListItemSizes
     val colors: ListItemColors
-    val enabled: Boolean
 }
 
 /**
@@ -39,13 +37,11 @@ interface ListItemMiddleScope : RowScope {
  * @param scope The underlying [RowScope] being wrapped.
  * @param sizes The sizes of the list item, encapsulated in a [ListItemSizes] object.
  * @param colors The colors of the list item, encapsulated in a [ListItemColors] object.
- * @param enabled A boolean indicating whether the list item is enabled.
  */
 internal class ListItemMiddleScopeWrapper(
     scope: RowScope,
     override val sizes: ListItemSizes,
     override val colors: ListItemColors,
-    override val enabled: Boolean,
 ) : ListItemMiddleScope, RowScope by scope
 
 /**
@@ -85,7 +81,7 @@ fun ListItemMiddleScope.Middle(
                 modifier = Modifier.fillMaxWidth(),
                 text = it,
                 style = this@Middle.sizes.subheadTextStyle,
-                color = this@Middle.colors.subheadColor(this@Middle.enabled),
+                color = this@Middle.colors.subheadColor,
                 maxLines = if (multiline) 2 else 1,
                 overflow = TextOverflow.Ellipsis
             )
@@ -97,14 +93,14 @@ fun ListItemMiddleScope.Middle(
             Text(
                 text = title,
                 style = this@Middle.sizes.titleTextStyle,
-                color = this@Middle.colors.titleColor(this@Middle.enabled),
+                color = this@Middle.colors.titleColor,
                 overflow = TextOverflow.Ellipsis
             )
             if (newLabel) {
                 Text(
                     modifier = Modifier
                         .background(
-                            color = this@Middle.colors.newLabelContainerColor(this@Middle.enabled),
+                            color = this@Middle.colors.newLabelContainerColor,
                             shape = this@Middle.sizes.newLabelShape
                         )
                         .padding(
@@ -113,7 +109,7 @@ fun ListItemMiddleScope.Middle(
                         ),
                     text = "New",
                     style = this@Middle.sizes.newLabelTextStyle,
-                    color = this@Middle.colors.newLabelColor(this@Middle.enabled)
+                    color = this@Middle.colors.newLabelColor
                 )
             }
         }
@@ -122,7 +118,7 @@ fun ListItemMiddleScope.Middle(
                 modifier = Modifier.fillMaxWidth(),
                 text = it,
                 style = this@Middle.sizes.bodyTextStyle,
-                color = this@Middle.colors.bodyColor(this@Middle.enabled),
+                color = this@Middle.colors.bodyColor,
                 maxLines = if (multiline) 2 else 1,
                 overflow = TextOverflow.Ellipsis
             )

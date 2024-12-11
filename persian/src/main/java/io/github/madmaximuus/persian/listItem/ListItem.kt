@@ -12,10 +12,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.dividers.HorizontalDivider
-import io.github.madmaximuus.persian.dividers.HorizontalInsetSide
+import io.github.madmaximuus.persian.divider.Divider
+import io.github.madmaximuus.persian.divider.InsetSide
+import io.github.madmaximuus.persian.foundation.PersianState38
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
 /**
@@ -46,6 +48,7 @@ fun ListItem(
     divider: Boolean = false,
     enabled: Boolean = true,
     checked: Boolean = false,
+    selected: Boolean = false,
     sizes: ListItemSizes = ListItemDefaults.sizes(),
     colors: ListItemColors = ListItemDefaults.colors(),
     onClick: (() -> Unit)? = null
@@ -67,18 +70,22 @@ fun ListItem(
         Row(
             Modifier
                 .fillMaxWidth()
-                .padding(padding),
+                .padding(padding)
+                .graphicsLayer {
+                    alpha = if (enabled) 1f
+                    else PersianState38
+                },
             verticalAlignment = Alignment.CenterVertically
         ) {
             if (edit != null) {
                 val scope =
-                    remember(sizes, colors, enabled, checked) {
+                    remember(sizes, colors, enabled, selected) {
                         ListItemEditScopeWrapper(
                             scope = this,
                             sizes = sizes,
                             colors = colors,
                             enabled = enabled,
-                            checked = checked
+                            checked = selected
                         )
                     }
                 scope.edit()
@@ -100,8 +107,7 @@ fun ListItem(
                     ListItemMiddleScopeWrapper(
                         scope = this,
                         sizes = sizes,
-                        colors = colors,
-                        enabled = enabled
+                        colors = colors
                     )
                 }
             middleScope.middle()
@@ -120,9 +126,9 @@ fun ListItem(
             }
         }
         if (divider)
-            HorizontalDivider(
+            Divider(
                 modifier = Modifier.fillMaxWidth(),
-                insetSide = HorizontalInsetSide.BOTH,
+                insetSide = InsetSide.BOTH,
                 sizes = sizes.dividerSizes,
                 strokeColor = colors.dividerColor
             )
