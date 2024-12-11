@@ -5,6 +5,7 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.PersianTheme
@@ -56,7 +57,7 @@ object ProgressIndicatorDefaults {
         gapSize: Dp = 4.dp,
         stopSize: Dp = 4.dp,
         strokeCap: StrokeCap = StrokeCap.Round,
-        contentTextStyle: TextStyle = PersianTheme.typography.bodyLarge
+        contentTextStyle: TextStyle = PersianTheme.typography.labelLarge
     ): LinearProgressBarSizes =
         LinearProgressBarSizes(
             strokeSize = strokeSize,
@@ -85,7 +86,7 @@ object ProgressIndicatorDefaults {
         gapSize: Dp = 4.dp,
         stopSize: Dp = 3.dp,
         strokeCap: StrokeCap = StrokeCap.Round,
-        contentTextStyle: TextStyle = PersianTheme.typography.bodyMedium
+        contentTextStyle: TextStyle = PersianTheme.typography.labelMedium
     ): LinearProgressBarSizes =
         LinearProgressBarSizes(
             strokeSize = strokeSize,
@@ -114,7 +115,7 @@ object ProgressIndicatorDefaults {
         gapSize: Dp = 4.dp,
         stopSize: Dp = 2.dp,
         strokeCap: StrokeCap = StrokeCap.Round,
-        contentTextStyle: TextStyle = PersianTheme.typography.bodySmall
+        contentTextStyle: TextStyle = PersianTheme.typography.labelSmall.copy(fontWeight = FontWeight.Medium)
     ): LinearProgressBarSizes =
         LinearProgressBarSizes(
             strokeSize = strokeSize,
@@ -143,7 +144,7 @@ object ProgressIndicatorDefaults {
         strokeSize: Dp = 4.dp,
         gapSize: Dp = 4.dp,
         strokeCap: StrokeCap = StrokeCap.Round,
-        contentTextStyle: TextStyle = PersianTheme.typography.bodyLarge
+        contentTextStyle: TextStyle = PersianTheme.typography.labelLarge
     ): CircularProgressBarSizes =
         CircularProgressBarSizes(
             diameter = diameter,
@@ -172,7 +173,7 @@ object ProgressIndicatorDefaults {
         strokeSize: Dp = 3.dp,
         gapSize: Dp = 4.dp,
         strokeCap: StrokeCap = StrokeCap.Round,
-        contentTextStyle: TextStyle = PersianTheme.typography.bodyMedium
+        contentTextStyle: TextStyle = PersianTheme.typography.labelMedium
     ): CircularProgressBarSizes =
         CircularProgressBarSizes(
             diameter = diameter,
@@ -201,7 +202,7 @@ object ProgressIndicatorDefaults {
         strokeSize: Dp = 2.dp,
         gapSize: Dp = 4.dp,
         strokeCap: StrokeCap = StrokeCap.Round,
-        contentTextStyle: TextStyle = PersianTheme.typography.bodySmall
+        contentTextStyle: TextStyle = PersianTheme.typography.labelSmall.copy(fontWeight = FontWeight.Medium)
     ): CircularProgressBarSizes =
         CircularProgressBarSizes(
             diameter = diameter,
