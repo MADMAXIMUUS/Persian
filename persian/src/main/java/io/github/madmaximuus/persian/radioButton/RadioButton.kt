@@ -10,8 +10,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
+import io.github.madmaximuus.persian.foundation.PersianState38
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.text.Text
 
@@ -49,7 +51,11 @@ fun RadioButton(
                 role = Role.RadioButton
             )
             .padding(sizes.contentPadding)
-            .height(48.dp),
+            .height(48.dp)
+            .graphicsLayer {
+                alpha = if (enabled) 1f
+                else PersianState38
+            },
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size12)
     ) {
@@ -57,14 +63,13 @@ fun RadioButton(
             modifier = Modifier
                 .size(sizes.toggleSize),
             selected = selected,
-            enabled = enabled,
             onClick = null,
             colors = colors.toggleColor
         )
         Text(
             modifier = Modifier,
             text = text,
-            color = colors.textColor(enabled),
+            color = colors.textColor,
             style = sizes.textStyle
         )
     }

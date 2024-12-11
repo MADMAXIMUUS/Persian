@@ -5,18 +5,13 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
-import androidx.compose.runtime.Stable
 import androidx.compose.runtime.State
-import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.graphics.takeOrElse
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.foundation.state12
-import io.github.madmaximuus.persian.foundation.state38
 
 /**
  * Contains all default values used by [RadioButton]
@@ -28,23 +23,15 @@ object RadioButtonDefaults {
      *
      * @param selectedColor The color to be used for the selected state of the radio button toggle.
      * @param unselectedColor The color to be used for the unselected state of the radio button toggle.
-     * @param disabledSelectedColor The color to be used for the selected state of the radio button toggle
-     * when it is disabled.
-     * @param disabledUnselectedColor The color to be used for the unselected state of the radio button toggle
-     * when it is disabled.
      */
     @Composable
     fun toggleColors(
         selectedColor: Color = PersianTheme.colorScheme.primary,
         unselectedColor: Color = PersianTheme.colorScheme.outline,
-        disabledSelectedColor: Color = PersianTheme.colorScheme.onSurface.state12,
-        disabledUnselectedColor: Color = PersianTheme.colorScheme.onSurface.state12
     ): RadioButtonToggleColors =
         RadioButtonToggleColors(
             selectedColor = selectedColor,
             unselectedColor = unselectedColor,
-            disabledSelectedColor = disabledSelectedColor,
-            disabledUnselectedColor = disabledUnselectedColor,
         )
 
     /**
@@ -52,18 +39,15 @@ object RadioButtonDefaults {
      *
      * @param toggleColor The colors to be used for the radio button toggle. Default is the result of [toggleColors].
      * @param textColor The color to be used for the radio button's text label when it is enabled.
-     * @param disabledTextColor The color to be used for the radio button's text label when it is disabled.
      */
     @Composable
     fun colors(
         toggleColor: RadioButtonToggleColors = toggleColors(),
         textColor: Color = PersianTheme.colorScheme.onSurface,
-        disabledTextColor: Color = PersianTheme.colorScheme.onSurface.state38
     ): RadioButtonColors =
         RadioButtonColors(
             toggleColor = toggleColor,
             textColor = textColor,
-            disabledTextColor = disabledTextColor
         )
 
     /**
@@ -76,7 +60,7 @@ object RadioButtonDefaults {
     @Composable
     fun sizes(
         toggleSize: Dp = 24.dp,
-        textStyle: TextStyle = PersianTheme.typography.bodyLarge,
+        textStyle: TextStyle = PersianTheme.typography.labelLarge,
         shape: Shape = PersianTheme.shapes.shape16,
         contentPadding: PaddingValues = PaddingValues(
             horizontal = PersianTheme.spacing.size16
@@ -95,9 +79,6 @@ object RadioButtonDefaults {
  *
  * @param selectedColor the color to use for the RadioButton when selected and enabled.
  * @param unselectedColor the color to use for the RadioButton when unselected and enabled.
- * @param disabledSelectedColor the color to use for the RadioButton when disabled and selected.
- * @param disabledUnselectedColor the color to use for the RadioButton when disabled and not
- *   selected.
  * @constructor create an instance with arbitrary colors. See [RadioButtonDefaults.colors] for the
  *   default implementation that follows Material specifications.
  */
@@ -105,8 +86,6 @@ object RadioButtonDefaults {
 class RadioButtonToggleColors(
     internal val selectedColor: Color,
     internal val unselectedColor: Color,
-    internal val disabledSelectedColor: Color,
-    internal val disabledUnselectedColor: Color
 ) {
     /**
      * Returns a copy of this SelectableChipColors, optionally overriding some of the values. This
@@ -115,44 +94,29 @@ class RadioButtonToggleColors(
     fun copy(
         selectedColor: Color = this.selectedColor,
         unselectedColor: Color = this.unselectedColor,
-        disabledSelectedColor: Color = this.disabledSelectedColor,
-        disabledUnselectedColor: Color = this.disabledUnselectedColor,
-    ) =
+    ): RadioButtonToggleColors =
         RadioButtonToggleColors(
-            selectedColor.takeOrElse { this.selectedColor },
-            unselectedColor.takeOrElse { this.unselectedColor },
-            disabledSelectedColor.takeOrElse { this.disabledSelectedColor },
-            disabledUnselectedColor.takeOrElse { this.disabledUnselectedColor },
+            selectedColor = selectedColor,
+            unselectedColor = unselectedColor
         )
 
     /**
      * Represents the main color used to draw the outer and inner circles, depending on whether the
-     * [RadioButton] is [enabled] / [selected].
+     * [RadioButton] is [selected].
      *
-     * @param enabled whether the [RadioButton] is enabled
      * @param selected whether the [RadioButton] is selected
      */
     @Composable
-    internal fun radioColor(enabled: Boolean, selected: Boolean): State<Color> {
-        val target =
-            when {
-                enabled && selected -> selectedColor
-                enabled && !selected -> unselectedColor
-                !enabled && selected -> disabledSelectedColor
-                else -> disabledUnselectedColor
-            }
+    internal fun radioColor(selected: Boolean): State<Color> {
+        val target = if (selected) selectedColor else unselectedColor
 
         // If not enabled 'snap' to the disabled state, as there should be no animations between
         // enabled / disabled.
-        return if (enabled) {
-            animateColorAsState(
-                target,
-                tween(durationMillis = RadioAnimationDuration),
-                label = ""
-            )
-        } else {
-            rememberUpdatedState(target)
-        }
+        return animateColorAsState(
+            target,
+            tween(durationMillis = RadioAnimationDuration),
+            label = "Radio toggle animation"
+        )
     }
 
     override fun equals(other: Any?): Boolean {
@@ -160,16 +124,12 @@ class RadioButtonToggleColors(
         if (other == null || other !is RadioButtonToggleColors) return false
 
         if (selectedColor != other.selectedColor) return false
-        if (unselectedColor != other.unselectedColor) return false
-        if (disabledSelectedColor != other.disabledSelectedColor) return false
-        return disabledUnselectedColor != other.disabledUnselectedColor
+        return unselectedColor != other.unselectedColor
     }
 
     override fun hashCode(): Int {
         var result = selectedColor.hashCode()
         result = 31 * result + unselectedColor.hashCode()
-        result = 31 * result + disabledSelectedColor.hashCode()
-        result = 31 * result + disabledUnselectedColor.hashCode()
         return result
     }
 }
@@ -179,36 +139,24 @@ class RadioButtonToggleColors(
  *
  * @property toggleColor The colors to be used for the radio button toggle.
  * @property textColor The color to be used for the radio button's text label when it is enabled.
- * @property disabledTextColor The color to be used for the radio button's text label when it is disabled.
  */
 @Immutable
 class RadioButtonColors internal constructor(
     internal val toggleColor: RadioButtonToggleColors,
-    private val textColor: Color,
-    private val disabledTextColor: Color
+    internal val textColor: Color,
 ) {
-    /**
-     * Returns the color for the radio button's text label based on its enabled state.
-     *
-     * @param enabled Whether the radio button is enabled.
-     */
-    @Stable
-    internal fun textColor(enabled: Boolean): Color =
-        if (enabled) textColor else disabledTextColor
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other == null || other !is RadioButtonColors) return false
 
         if (toggleColor != other.toggleColor) return false
-        if (textColor != other.textColor) return false
-        return disabledTextColor != other.disabledTextColor
+        return textColor != other.textColor
     }
 
     override fun hashCode(): Int {
         var result = toggleColor.hashCode()
         result = 31 * result + textColor.hashCode()
-        result = 31 * result + disabledTextColor.hashCode()
         return result
     }
 }

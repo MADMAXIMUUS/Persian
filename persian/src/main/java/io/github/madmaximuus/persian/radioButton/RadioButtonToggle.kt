@@ -15,8 +15,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
+import io.github.madmaximuus.persian.foundation.PersianState38
 import io.github.madmaximuus.persian.foundation.minimumInteractiveComponentSize
 import io.github.madmaximuus.persian.foundation.ripple.ripple
 import io.github.madmaximuus.persian.text.Text
@@ -56,7 +58,7 @@ fun RadioButtonToggle(
             animationSpec = tween(durationMillis = RadioAnimationDuration),
             label = ""
         )
-    val radioColor = colors.radioColor(enabled, selected)
+    val radioColor = colors.radioColor(selected)
     val selectableModifier =
         if (onClick != null) {
             Modifier.selectable(
@@ -84,13 +86,17 @@ fun RadioButtonToggle(
             )
             .then(selectableModifier)
             .wrapContentSize(Alignment.Center)
-            .size(24.dp)
+            .size(26.dp)
+            .graphicsLayer {
+                alpha = if (enabled) 1f
+                else PersianState38
+            }
     ) {
         // Draw the radio button
         val strokeWidth = RadioStrokeWidth.toPx()
         drawCircle(
             radioColor.value,
-            radius = 11.dp.toPx() - strokeWidth / 2,
+            radius = 12.dp.toPx() - strokeWidth / 2,
             style = Stroke(strokeWidth)
         )
         if (dotRadius.value > 0.dp) {
@@ -99,7 +105,7 @@ fun RadioButtonToggle(
     }
 }
 
-private val RadioButtonDotSize = 13.dp
+private val RadioButtonDotSize = 14.dp
 private val RadioStrokeWidth = 2.dp
 
 private const val RadioAnimationDuration = 100
