@@ -34,11 +34,13 @@ import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.BaselineShift
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import io.github.madmaximuus.persian.foundation.PersianState38
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.icon.Icon
 import io.github.madmaximuus.persian.iconButton.IconButtonDefaults
@@ -180,7 +182,6 @@ fun PlainInput(
     keyboardActions = keyboardActionHandler,
     interactionSource = interactionSource,
     secret = secure
-
 )
 
 /**
@@ -404,7 +405,11 @@ internal fun DecorationBox(
             .height(52.dp)
             .padding(sizes.contentPaddingValues)
     Row(
-        modifier = rowModifier,
+        modifier = rowModifier
+            .graphicsLayer {
+                alpha = if (enabled) 1f
+                else PersianState38
+            },
         verticalAlignment = Alignment.CenterVertically
     ) {
         colors.stateIcon(
@@ -475,10 +480,7 @@ internal fun DecorationBox(
         trailingIcon?.let { icon ->
             TertiaryIconButton(
                 icon = icon,
-                onClick = {
-                    onTrailingIconClick?.invoke()
-                },
-                enabled = onTrailingIconClick != null,
+                onClick = { onTrailingIconClick?.invoke() },
                 colors = IconButtonDefaults.tertiaryIconButtonColors(
                     contentColor = colors.trailingIconColor(
                         enabled = enabled,
@@ -486,12 +488,6 @@ internal fun DecorationBox(
                         isError = isError,
                         interactionSource = interactionSource
                     ).value,
-                    disabledContentColor = colors.trailingIconColor(
-                        enabled = enabled,
-                        isValid = isValid,
-                        isError = isError,
-                        interactionSource = interactionSource
-                    ).value
                 )
             )
         } ?: Spacer(modifier = Modifier.height(PersianTheme.spacing.size8))

@@ -24,7 +24,6 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state08
 import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state16
-import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persian.icon.IconSizes
 import io.github.madmaximuus.persianSymbols.check.circle.CheckCircle
@@ -47,13 +46,11 @@ object InputsDefaults {
      * @param focusedTextColor The color of the text when the input field is focused.
      * @param validTextColor The color of the text when the input field is in a valid state.
      * @param errorTextColor The color of the text when the input field is in an error state.
-     * @param disabledTextColor The color of the text when the input field is disabled.
      * @param defaultContainerColor The default color of the input field container.
      * @param hoveredContainerColor The color of the input field container when it is hovered.
      * @param focusedContainerColor The color of the input field container when it is focused.
      * @param validContainerColor The color of the input field container when it is in a valid state.
      * @param errorContainerColor The color of the input field container when it is in an error state.
-     * @param disabledContainerColor The color of the input field container when it is disabled.
      * @param defaultCursorColor The default color of the cursor in the input field.
      * @param validCursorColor The color of the cursor when the input field is in a valid state.
      * @param errorCursorColor The color of the cursor when the input field is in an error state.
@@ -63,37 +60,32 @@ object InputsDefaults {
      * @param focusedIndicatorColor The color of the indicator when the input field is focused.
      * @param validIndicatorColor The color of the indicator when the input field is in a valid state.
      * @param errorIndicatorColor The color of the indicator when the input field is in an error state.
-     * @param disabledIndicatorColor The color of the indicator when the input field is disabled.
      * @param defaultLeadingIconColor The default color of the leading icon in the input field.
      * @param hoveredLeadingIconColor The color of the leading icon when the input field is hovered.
      * @param focusedLeadingIconColor The color of the leading icon when the input field is focused.
      * @param validLeadingIconColor The color of the leading icon when the input field is in a valid state.
      * @param errorLeadingIconColor The color of the leading icon when the input field is in an error state.
-     * @param disabledLeadingIconColor The color of the leading icon when the input field is disabled.
      * @param defaultTrailingIconColor The default color of the trailing icon in the input field.
      * @param hoveredTrailingIconColor The color of the trailing icon when the input field is hovered.
      * @param focusedTrailingIconColor The color of the trailing icon when the input field is focused.
      * @param validTrailingIconColor The color of the trailing icon when the input field is in a valid state.
      * @param errorTrailingIconColor The color of the trailing icon when the input field is in an error state.
-     * @param disabledTrailingIconColor The color of the trailing icon when the input field is disabled.
      * @param defaultPlaceholderColor The default color of the placeholder text in the input field.
      * @param hoveredPlaceholderColor The color of the placeholder text when the input field is hovered.
      * @param focusedPlaceholderColor The color of the placeholder text when the input field is focused.
      * @param validPlaceholderColor The color of the placeholder text when the input field is in a valid state.
      * @param errorPlaceholderColor The color of the placeholder text when the input field is in an error state.
-     * @param disabledPlaceholderColor The color of the placeholder text when the input field is disabled.
      * @param defaultSuffixColor The default color of the suffix text in the input field.
      * @param hoveredSuffixColor The color of the suffix text when the input field is hovered.
      * @param focusedSuffixColor The color of the suffix text when the input field is focused.
      * @param validSuffixColor The color of the suffix text when the input field is in a valid state.
      * @param errorSuffixColor The color of the suffix text when the input field is in an error state.
-     * @param disabledSuffixColor The color of the suffix text when the input field is disabled.
      */
     @Composable
     fun outlineColors(
         //State Icon
-        validStateIcon: Painter = rememberVectorPainter(image = PersianSymbols.Filled.CheckCircle),
-        errorStateIcon: Painter = rememberVectorPainter(image = PersianSymbols.Filled.ExclamationCircle),
+        validStateIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.CheckCircle),
+        errorStateIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.ExclamationCircle),
 
         //State Icon Colors
         validStateIconColor: Color = PersianTheme.colorScheme.valid,
@@ -105,7 +97,6 @@ object InputsDefaults {
         focusedTextColor: Color = PersianTheme.colorScheme.onSurface,
         validTextColor: Color = PersianTheme.colorScheme.valid,
         errorTextColor: Color = PersianTheme.colorScheme.error,
-        disabledTextColor: Color = PersianTheme.colorScheme.onSurface.state38,
 
         //Container Colors
         defaultContainerColor: Color = PersianTheme.colorScheme.primaryContainer.state08,
@@ -113,7 +104,6 @@ object InputsDefaults {
         focusedContainerColor: Color = PersianTheme.colorScheme.primaryContainer.state16,
         validContainerColor: Color = PersianTheme.colorScheme.validContainer.state12,
         errorContainerColor: Color = PersianTheme.colorScheme.errorContainer.state12,
-        disabledContainerColor: Color = PersianTheme.colorScheme.onSurface.state08,
 
         //Cursor Colors
         defaultCursorColor: Color = PersianTheme.colorScheme.primary,
@@ -130,7 +120,6 @@ object InputsDefaults {
         focusedIndicatorColor: Color = PersianTheme.colorScheme.primary,
         validIndicatorColor: Color = PersianTheme.colorScheme.valid,
         errorIndicatorColor: Color = PersianTheme.colorScheme.error,
-        disabledIndicatorColor: Color = PersianTheme.colorScheme.onSurface.state12,
 
         //Leading Icon Colors
         defaultLeadingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
@@ -138,7 +127,6 @@ object InputsDefaults {
         focusedLeadingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         validLeadingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         errorLeadingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
-        disabledLeadingIconColor: Color = PersianTheme.colorScheme.onSurface.state38,
 
         //Trailing Icon Colors
         defaultTrailingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
@@ -146,7 +134,6 @@ object InputsDefaults {
         focusedTrailingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         validTrailingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         errorTrailingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
-        disabledTrailingIconColor: Color = PersianTheme.colorScheme.onSurface.state38,
 
         //Placeholder Colors
         defaultPlaceholderColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
@@ -154,7 +141,6 @@ object InputsDefaults {
         focusedPlaceholderColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         validPlaceholderColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         errorPlaceholderColor: Color = PersianTheme.colorScheme.error,
-        disabledPlaceholderColor: Color = PersianTheme.colorScheme.onSurface.state38,
 
         //Suffix Colors
         defaultSuffixColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
@@ -162,7 +148,6 @@ object InputsDefaults {
         focusedSuffixColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         validSuffixColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         errorSuffixColor: Color = PersianTheme.colorScheme.error,
-        disabledSuffixColor: Color = PersianTheme.colorScheme.onSurface.state38,
     ): InputColors =
         InputColors(
             //State Icon
@@ -179,7 +164,6 @@ object InputsDefaults {
             focusedTextColor = focusedTextColor,
             validTextColor = validTextColor,
             errorTextColor = errorTextColor,
-            disabledTextColor = disabledTextColor,
 
             //Container Colors
             defaultContainerColor = defaultContainerColor,
@@ -187,7 +171,6 @@ object InputsDefaults {
             focusedContainerColor = focusedContainerColor,
             validContainerColor = validContainerColor,
             errorContainerColor = errorContainerColor,
-            disabledContainerColor = disabledContainerColor,
 
             //Cursor Colors
             defaultCursorColor = defaultCursorColor,
@@ -201,7 +184,6 @@ object InputsDefaults {
             focusedIndicatorColor = focusedIndicatorColor,
             validIndicatorColor = validIndicatorColor,
             errorIndicatorColor = errorIndicatorColor,
-            disabledIndicatorColor = disabledIndicatorColor,
 
             //Leading Icon Colors
             defaultLeadingIconColor = defaultLeadingIconColor,
@@ -209,7 +191,6 @@ object InputsDefaults {
             focusedLeadingIconColor = focusedLeadingIconColor,
             validLeadingIconColor = validLeadingIconColor,
             errorLeadingIconColor = errorLeadingIconColor,
-            disabledLeadingIconColor = disabledLeadingIconColor,
 
             //Trailing Icon Colors
             defaultTrailingIconColor = defaultTrailingIconColor,
@@ -217,7 +198,6 @@ object InputsDefaults {
             focusedTrailingIconColor = focusedTrailingIconColor,
             validTrailingIconColor = validTrailingIconColor,
             errorTrailingIconColor = errorTrailingIconColor,
-            disabledTrailingIconColor = disabledTrailingIconColor,
 
             //Placeholder Colors
             defaultPlaceholderColor = defaultPlaceholderColor,
@@ -225,7 +205,6 @@ object InputsDefaults {
             focusedPlaceholderColor = focusedPlaceholderColor,
             errorPlaceholderColor = errorPlaceholderColor,
             validPlaceholderColor = validPlaceholderColor,
-            disabledPlaceholderColor = disabledPlaceholderColor,
 
             //Suffix Colors
             defaultSuffixColor = defaultSuffixColor,
@@ -233,7 +212,6 @@ object InputsDefaults {
             focusedSuffixColor = focusedSuffixColor,
             validSuffixColor = validSuffixColor,
             errorSuffixColor = errorSuffixColor,
-            disabledSuffixColor = disabledSuffixColor,
         )
 
     /**
@@ -247,13 +225,11 @@ object InputsDefaults {
      * @param focusedTextColor The color of the text when the input field is focused.
      * @param validTextColor The color of the text when the input field is in a valid state.
      * @param errorTextColor The color of the text when the input field is in an error state.
-     * @param disabledTextColor The color of the text when the input field is disabled.
      * @param defaultContainerColor The default color of the input field container.
      * @param hoveredContainerColor The color of the input field container when it is hovered.
      * @param focusedContainerColor The color of the input field container when it is focused.
      * @param validContainerColor The color of the input field container when it is in a valid state.
      * @param errorContainerColor The color of the input field container when it is in an error state.
-     * @param disabledContainerColor The color of the input field container when it is disabled.
      * @param defaultCursorColor The default color of the cursor in the input field.
      * @param validCursorColor The color of the cursor when the input field is in a valid state.
      * @param errorCursorColor The color of the cursor when the input field is in an error state.
@@ -263,25 +239,21 @@ object InputsDefaults {
      * @param focusedLeadingIconColor The color of the leading icon when the input field is focused.
      * @param validLeadingIconColor The color of the leading icon when the input field is in a valid state.
      * @param errorLeadingIconColor The color of the leading icon when the input field is in an error state.
-     * @param disabledLeadingIconColor The color of the leading icon when the input field is disabled.
      * @param defaultTrailingIconColor The default color of the trailing icon in the input field.
      * @param hoveredTrailingIconColor The color of the trailing icon when the input field is hovered.
      * @param focusedTrailingIconColor The color of the trailing icon when the input field is focused.
      * @param validTrailingIconColor The color of the trailing icon when the input field is in a valid state.
      * @param errorTrailingIconColor The color of the trailing icon when the input field is in an error state.
-     * @param disabledTrailingIconColor The color of the trailing icon when the input field is disabled.
      * @param defaultPlaceholderColor The default color of the placeholder text in the input field.
      * @param hoveredPlaceholderColor The color of the placeholder text when the input field is hovered.
      * @param focusedPlaceholderColor The color of the placeholder text when the input field is focused.
      * @param validPlaceholderColor The color of the placeholder text when the input field is in a valid state.
      * @param errorPlaceholderColor The color of the placeholder text when the input field is in an error state.
-     * @param disabledPlaceholderColor The color of the placeholder text when the input field is disabled.
      * @param defaultSuffixColor The default color of the suffix text in the input field.
      * @param hoveredSuffixColor The color of the suffix text when the input field is hovered.
      * @param focusedSuffixColor The color of the suffix text when the input field is focused.
      * @param validSuffixColor The color of the suffix text when the input field is in a valid state.
      * @param errorSuffixColor The color of the suffix text when the input field is in an error state.
-     * @param disabledSuffixColor The color of the suffix text when the input field is disabled.
      */
     @Composable
     fun plainColors(
@@ -299,7 +271,6 @@ object InputsDefaults {
         focusedTextColor: Color = PersianTheme.colorScheme.onSurface,
         validTextColor: Color = PersianTheme.colorScheme.valid,
         errorTextColor: Color = PersianTheme.colorScheme.error,
-        disabledTextColor: Color = PersianTheme.colorScheme.onSurface.state38,
 
         //Container Colors
         defaultContainerColor: Color = Color.Transparent,
@@ -307,7 +278,6 @@ object InputsDefaults {
         focusedContainerColor: Color = PersianTheme.colorScheme.primaryContainer.state16,
         validContainerColor: Color = PersianTheme.colorScheme.validContainer.state12,
         errorContainerColor: Color = PersianTheme.colorScheme.errorContainer.state12,
-        disabledContainerColor: Color = PersianTheme.colorScheme.onSurface.state08,
 
         //Cursor Colors
         defaultCursorColor: Color = PersianTheme.colorScheme.primary,
@@ -324,7 +294,6 @@ object InputsDefaults {
         focusedLeadingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         validLeadingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         errorLeadingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
-        disabledLeadingIconColor: Color = PersianTheme.colorScheme.onSurface.state38,
 
         //Trailing Icon Colors
         defaultTrailingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
@@ -332,7 +301,6 @@ object InputsDefaults {
         focusedTrailingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         validTrailingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         errorTrailingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
-        disabledTrailingIconColor: Color = PersianTheme.colorScheme.onSurface.state38,
 
         //Placeholder Colors
         defaultPlaceholderColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
@@ -340,7 +308,6 @@ object InputsDefaults {
         focusedPlaceholderColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         validPlaceholderColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         errorPlaceholderColor: Color = PersianTheme.colorScheme.error,
-        disabledPlaceholderColor: Color = PersianTheme.colorScheme.onSurface.state38,
 
         //Suffix Colors
         defaultSuffixColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
@@ -348,7 +315,6 @@ object InputsDefaults {
         focusedSuffixColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         validSuffixColor: Color = PersianTheme.colorScheme.valid,
         errorSuffixColor: Color = PersianTheme.colorScheme.error,
-        disabledSuffixColor: Color = PersianTheme.colorScheme.onSurface.state38,
     ): InputColors =
         InputColors(
             //State Icon
@@ -365,7 +331,6 @@ object InputsDefaults {
             focusedTextColor = focusedTextColor,
             validTextColor = validTextColor,
             errorTextColor = errorTextColor,
-            disabledTextColor = disabledTextColor,
 
             //Container Colors
             defaultContainerColor = defaultContainerColor,
@@ -373,7 +338,6 @@ object InputsDefaults {
             focusedContainerColor = focusedContainerColor,
             validContainerColor = validContainerColor,
             errorContainerColor = errorContainerColor,
-            disabledContainerColor = disabledContainerColor,
 
             //Cursor Colors
             defaultCursorColor = defaultCursorColor,
@@ -387,7 +351,6 @@ object InputsDefaults {
             focusedIndicatorColor = Color.Transparent,
             validIndicatorColor = Color.Transparent,
             errorIndicatorColor = Color.Transparent,
-            disabledIndicatorColor = Color.Transparent,
 
             //Leading Icon Colors
             defaultLeadingIconColor = defaultLeadingIconColor,
@@ -395,7 +358,6 @@ object InputsDefaults {
             focusedLeadingIconColor = focusedLeadingIconColor,
             validLeadingIconColor = validLeadingIconColor,
             errorLeadingIconColor = errorLeadingIconColor,
-            disabledLeadingIconColor = disabledLeadingIconColor,
 
             //Trailing Icon Colors
             defaultTrailingIconColor = defaultTrailingIconColor,
@@ -403,7 +365,6 @@ object InputsDefaults {
             focusedTrailingIconColor = focusedTrailingIconColor,
             validTrailingIconColor = validTrailingIconColor,
             errorTrailingIconColor = errorTrailingIconColor,
-            disabledTrailingIconColor = disabledTrailingIconColor,
 
             //Placeholder Colors
             defaultPlaceholderColor = defaultPlaceholderColor,
@@ -411,7 +372,6 @@ object InputsDefaults {
             focusedPlaceholderColor = focusedPlaceholderColor,
             errorPlaceholderColor = errorPlaceholderColor,
             validPlaceholderColor = validPlaceholderColor,
-            disabledPlaceholderColor = disabledPlaceholderColor,
 
             //Suffix Colors
             defaultSuffixColor = defaultSuffixColor,
@@ -419,7 +379,6 @@ object InputsDefaults {
             focusedSuffixColor = focusedSuffixColor,
             validSuffixColor = validSuffixColor,
             errorSuffixColor = errorSuffixColor,
-            disabledSuffixColor = disabledSuffixColor,
         )
 
     /**
@@ -481,13 +440,11 @@ object InputsDefaults {
  * @property focusedTextColor The color of the text when the input field is focused.
  * @property validTextColor The color of the text when the input field is in a valid state.
  * @property errorTextColor The color of the text when the input field is in an error state.
- * @property disabledTextColor The color of the text when the input field is disabled.
  * @property defaultContainerColor The default color of the input field container.
  * @property hoveredContainerColor The color of the input field container when it is hovered.
  * @property focusedContainerColor The color of the input field container when it is focused.
  * @property validContainerColor The color of the input field container when it is in a valid state.
  * @property errorContainerColor The color of the input field container when it is in an error state.
- * @property disabledContainerColor The color of the input field container when it is disabled.
  * @property defaultCursorColor The default color of the cursor in the input field.
  * @property validCursorColor The color of the cursor when the input field is in a valid state.
  * @property errorCursorColor The color of the cursor when the input field is in an error state.
@@ -497,31 +454,26 @@ object InputsDefaults {
  * @property focusedIndicatorColor The color of the indicator when the input field is focused.
  * @property validIndicatorColor The color of the indicator when the input field is in a valid state.
  * @property errorIndicatorColor The color of the indicator when the input field is in an error state.
- * @property disabledIndicatorColor The color of the indicator when the input field is disabled.
  * @property defaultLeadingIconColor The default color of the leading icon in the input field.
  * @property hoveredLeadingIconColor The color of the leading icon when the input field is hovered.
  * @property focusedLeadingIconColor The color of the leading icon when the input field is focused.
  * @property validLeadingIconColor The color of the leading icon when the input field is in a valid state.
  * @property errorLeadingIconColor The color of the leading icon when the input field is in an error state.
- * @property disabledLeadingIconColor The color of the leading icon when the input field is disabled.
  * @property defaultTrailingIconColor The default color of the trailing icon in the input field.
  * @property hoveredTrailingIconColor The color of the trailing icon when the input field is hovered.
  * @property focusedTrailingIconColor The color of the trailing icon when the input field is focused.
  * @property validTrailingIconColor The color of the trailing icon when the input field is in a valid state.
  * @property errorTrailingIconColor The color of the trailing icon when the input field is in an error state.
- * @property disabledTrailingIconColor The color of the trailing icon when the input field is disabled.
  * @property defaultPlaceholderColor The default color of the placeholder text in the input field.
  * @property hoveredPlaceholderColor The color of the placeholder text when the input field is hovered.
  * @property focusedPlaceholderColor The color of the placeholder text when the input field is focused.
  * @property validPlaceholderColor The color of the placeholder text when the input field is in a valid state.
  * @property errorPlaceholderColor The color of the placeholder text when the input field is in an error state.
- * @property disabledPlaceholderColor The color of the placeholder text when the input field is disabled.
  * @property defaultSuffixColor The default color of the suffix text in the input field.
  * @property hoveredSuffixColor The color of the suffix text when the input field is hovered.
  * @property focusedSuffixColor The color of the suffix text when the input field is focused.
  * @property validSuffixColor The color of the suffix text when the input field is in a valid state.
  * @property errorSuffixColor The color of the suffix text when the input field is in an error state.
- * @property disabledSuffixColor The color of the suffix text when the input field is disabled.
  */
 @Immutable
 class InputColors internal constructor(
@@ -540,7 +492,6 @@ class InputColors internal constructor(
     private val focusedTextColor: Color,
     private val validTextColor: Color,
     private val errorTextColor: Color,
-    private val disabledTextColor: Color,
 
     //Container Colors
     private val defaultContainerColor: Color,
@@ -548,7 +499,6 @@ class InputColors internal constructor(
     private val focusedContainerColor: Color,
     private val validContainerColor: Color,
     private val errorContainerColor: Color,
-    private val disabledContainerColor: Color,
 
     //Cursor Colors
     private val defaultCursorColor: Color,
@@ -562,7 +512,6 @@ class InputColors internal constructor(
     private val focusedIndicatorColor: Color,
     private val validIndicatorColor: Color,
     private val errorIndicatorColor: Color,
-    private val disabledIndicatorColor: Color,
 
     //Leading Icon Colors
     private val defaultLeadingIconColor: Color,
@@ -570,7 +519,6 @@ class InputColors internal constructor(
     private val focusedLeadingIconColor: Color,
     private val validLeadingIconColor: Color,
     private val errorLeadingIconColor: Color,
-    private val disabledLeadingIconColor: Color,
 
     //Trailing Icon Colors
     private val defaultTrailingIconColor: Color,
@@ -578,7 +526,6 @@ class InputColors internal constructor(
     private val focusedTrailingIconColor: Color,
     private val validTrailingIconColor: Color,
     private val errorTrailingIconColor: Color,
-    private val disabledTrailingIconColor: Color,
 
     //Placeholder Colors
     private val defaultPlaceholderColor: Color,
@@ -586,7 +533,6 @@ class InputColors internal constructor(
     private val focusedPlaceholderColor: Color,
     private val validPlaceholderColor: Color,
     private val errorPlaceholderColor: Color,
-    private val disabledPlaceholderColor: Color,
 
     //Suffix Colors
     private val defaultSuffixColor: Color,
@@ -594,7 +540,6 @@ class InputColors internal constructor(
     private val focusedSuffixColor: Color,
     private val validSuffixColor: Color,
     private val errorSuffixColor: Color,
-    private val disabledSuffixColor: Color,
 ) {
     /**
      * Returns the state icon based on the enabled, success, and error states.
@@ -663,7 +608,7 @@ class InputColors internal constructor(
         val hovered by interactionSource.collectIsHoveredAsState()
 
         val targetValue = when {
-            !enabled -> disabledTextColor
+            !enabled -> defaultTextColor
             isError -> errorTextColor
             isValid -> validTextColor
             hovered -> hoveredTextColor
@@ -693,7 +638,7 @@ class InputColors internal constructor(
         val hovered by interactionSource.collectIsHoveredAsState()
 
         val targetValue = when {
-            !enabled -> disabledContainerColor
+            !enabled -> defaultContainerColor
             isError -> errorContainerColor
             isValid -> validContainerColor
             hovered -> hoveredContainerColor
@@ -744,21 +689,17 @@ class InputColors internal constructor(
         val hovered by interactionSource.collectIsHoveredAsState()
 
         val targetValue = when {
-            !enabled -> disabledIndicatorColor
+            !enabled -> defaultIndicatorColor
             isError -> errorIndicatorColor
             isValid -> validIndicatorColor
             hovered -> hoveredIndicatorColor
             focused -> focusedIndicatorColor
             else -> defaultIndicatorColor
         }
-        return if (enabled) {
-            animateColorAsState(
-                targetValue, tween(durationMillis = ANIMATION_DURATION),
-                label = "Indicator Color Animation"
-            )
-        } else {
-            rememberUpdatedState(targetValue)
-        }
+        return animateColorAsState(
+            targetValue, tween(durationMillis = ANIMATION_DURATION),
+            label = "Indicator Color Animation"
+        )
     }
 
     /**
@@ -781,7 +722,7 @@ class InputColors internal constructor(
 
         return rememberUpdatedState(
             when {
-                !enabled -> disabledLeadingIconColor
+                !enabled -> defaultLeadingIconColor
                 isError -> errorLeadingIconColor
                 isValid -> validLeadingIconColor
                 focused -> focusedLeadingIconColor
@@ -811,7 +752,7 @@ class InputColors internal constructor(
 
         return rememberUpdatedState(
             when {
-                !enabled -> disabledTrailingIconColor
+                !enabled -> defaultTrailingIconColor
                 isError -> errorTrailingIconColor
                 isValid -> validTrailingIconColor
                 focused -> focusedTrailingIconColor
@@ -840,7 +781,7 @@ class InputColors internal constructor(
         val hovered by interactionSource.collectIsHoveredAsState()
 
         val targetValue = when {
-            !enabled -> disabledPlaceholderColor
+            !enabled -> defaultPlaceholderColor
             isError -> errorPlaceholderColor
             isValid -> validPlaceholderColor
             focused -> focusedPlaceholderColor
@@ -869,7 +810,7 @@ class InputColors internal constructor(
         val hovered by interactionSource.collectIsHoveredAsState()
 
         val targetValue = when {
-            !enabled -> disabledSuffixColor
+            !enabled -> defaultSuffixColor
             isError -> errorSuffixColor
             isValid -> validSuffixColor
             focused -> focusedSuffixColor
@@ -889,7 +830,6 @@ class InputColors internal constructor(
         if (focusedTextColor != other.focusedTextColor) return false
         if (validTextColor != other.validTextColor) return false
         if (errorTextColor != other.errorTextColor) return false
-        if (disabledTextColor != other.disabledTextColor) return false
 
         //Container Colors
         if (defaultContainerColor != other.defaultContainerColor) return false
@@ -897,7 +837,6 @@ class InputColors internal constructor(
         if (focusedContainerColor != other.focusedContainerColor) return false
         if (errorContainerColor != other.errorContainerColor) return false
         if (validContainerColor != other.validContainerColor) return false
-        if (disabledContainerColor != other.disabledContainerColor) return false
 
         //Cursor Colors
         if (defaultCursorColor != other.defaultCursorColor) return false
@@ -911,7 +850,6 @@ class InputColors internal constructor(
         if (hoveredIndicatorColor != other.hoveredIndicatorColor) return false
         if (validIndicatorColor != other.validIndicatorColor) return false
         if (errorIndicatorColor != other.errorIndicatorColor) return false
-        if (disabledIndicatorColor != other.disabledIndicatorColor) return false
 
         //Leading Icon Colors
         if (defaultLeadingIconColor != other.defaultLeadingIconColor) return false
@@ -919,7 +857,6 @@ class InputColors internal constructor(
         if (focusedLeadingIconColor != other.focusedLeadingIconColor) return false
         if (validLeadingIconColor != other.validLeadingIconColor) return false
         if (errorLeadingIconColor != other.errorLeadingIconColor) return false
-        if (disabledLeadingIconColor != other.disabledLeadingIconColor) return false
 
         //Trailing Icon Colors
         if (defaultTrailingIconColor != other.defaultTrailingIconColor) return false
@@ -927,7 +864,6 @@ class InputColors internal constructor(
         if (focusedTrailingIconColor != other.focusedTrailingIconColor) return false
         if (validTrailingIconColor != other.validTrailingIconColor) return false
         if (errorTrailingIconColor != other.errorTrailingIconColor) return false
-        if (disabledTrailingIconColor != other.disabledTrailingIconColor) return false
 
         //Placeholder Colors
         if (defaultPlaceholderColor != other.defaultPlaceholderColor) return false
@@ -935,15 +871,13 @@ class InputColors internal constructor(
         if (focusedPlaceholderColor != other.focusedPlaceholderColor) return false
         if (validPlaceholderColor != other.validPlaceholderColor) return false
         if (errorPlaceholderColor != other.errorPlaceholderColor) return false
-        if (disabledPlaceholderColor != other.disabledPlaceholderColor) return false
 
         //Suffix Colors
         if (defaultSuffixColor != other.defaultSuffixColor) return false
         if (validSuffixColor != other.validSuffixColor) return false
         if (focusedSuffixColor != other.focusedSuffixColor) return false
         if (errorSuffixColor != other.errorSuffixColor) return false
-        if (validSuffixColor != other.validSuffixColor) return false
-        return disabledSuffixColor == other.disabledSuffixColor
+        return validSuffixColor == other.validSuffixColor
     }
 
     override fun hashCode(): Int {
@@ -953,7 +887,6 @@ class InputColors internal constructor(
         result = 31 * result + focusedTextColor.hashCode()
         result = 31 * result + errorTextColor.hashCode()
         result = 31 * result + validTextColor.hashCode()
-        result = 31 * result + disabledTextColor.hashCode()
 
         //Container Colors
         result = 31 * result + defaultContainerColor.hashCode()
@@ -961,7 +894,6 @@ class InputColors internal constructor(
         result = 31 * result + focusedContainerColor.hashCode()
         result = 31 * result + errorContainerColor.hashCode()
         result = 31 * result + validContainerColor.hashCode()
-        result = 31 * result + disabledContainerColor.hashCode()
 
         //Cursor Colors
         result = 31 * result + defaultCursorColor.hashCode()
@@ -975,7 +907,6 @@ class InputColors internal constructor(
         result = 31 * result + focusedIndicatorColor.hashCode()
         result = 31 * result + errorIndicatorColor.hashCode()
         result = 31 * result + validIndicatorColor.hashCode()
-        result = 31 * result + disabledIndicatorColor.hashCode()
 
         //Leading Icon Colors
         result = 31 * result + defaultLeadingIconColor.hashCode()
@@ -983,7 +914,6 @@ class InputColors internal constructor(
         result = 31 * result + focusedLeadingIconColor.hashCode()
         result = 31 * result + validLeadingIconColor.hashCode()
         result = 31 * result + errorLeadingIconColor.hashCode()
-        result = 31 * result + disabledLeadingIconColor.hashCode()
 
         //Trailing Icon Colors
         result = 31 * result + defaultTrailingIconColor.hashCode()
@@ -991,7 +921,6 @@ class InputColors internal constructor(
         result = 31 * result + focusedTrailingIconColor.hashCode()
         result = 31 * result + errorTrailingIconColor.hashCode()
         result = 31 * result + validTrailingIconColor.hashCode()
-        result = 31 * result + disabledTrailingIconColor.hashCode()
 
         //Placeholder Colors
         result = 31 * result + defaultPlaceholderColor.hashCode()
@@ -999,7 +928,6 @@ class InputColors internal constructor(
         result = 31 * result + focusedPlaceholderColor.hashCode()
         result = 31 * result + errorPlaceholderColor.hashCode()
         result = 31 * result + validPlaceholderColor.hashCode()
-        result = 31 * result + disabledPlaceholderColor.hashCode()
 
         //Placeholder Colors
         result = 31 * result + defaultSuffixColor.hashCode()
@@ -1007,7 +935,6 @@ class InputColors internal constructor(
         result = 31 * result + focusedSuffixColor.hashCode()
         result = 31 * result + errorSuffixColor.hashCode()
         result = 31 * result + validSuffixColor.hashCode()
-        result = 31 * result + disabledSuffixColor.hashCode()
         return result
     }
 
