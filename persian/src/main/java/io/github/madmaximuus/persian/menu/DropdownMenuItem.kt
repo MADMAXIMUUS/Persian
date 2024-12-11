@@ -15,11 +15,13 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.dividers.HorizontalDivider
-import io.github.madmaximuus.persian.dividers.HorizontalInsetSide
+import io.github.madmaximuus.persian.divider.Divider
+import io.github.madmaximuus.persian.divider.InsetSide
+import io.github.madmaximuus.persian.foundation.PersianState38
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.ripple.ripple
 import io.github.madmaximuus.persian.icon.Icon
@@ -159,7 +161,11 @@ internal fun DropdownMenuItemContent(
             .fillMaxWidth()
             .height(48.dp)
             .width(220.dp)
-            .padding(paddingValues),
+            .padding(paddingValues)
+            .graphicsLayer {
+                alpha = if (enabled) 1f
+                else PersianState38
+            },
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size12)
     ) {
@@ -168,7 +174,7 @@ internal fun DropdownMenuItemContent(
                 Icon(
                     painter = if (selected && !negative) rememberVectorPainter(image = PersianSymbols.Default.Check)
                     else leadingIcon,
-                    tint = colors.leadingIconColor(enabled, negative, selected),
+                    tint = colors.leadingIconColor(negative, selected),
                     sizes = sizes.leadingIconSizes
                 )
             }
@@ -180,13 +186,13 @@ internal fun DropdownMenuItemContent(
             Text(
                 text = text,
                 style = sizes.titleTextStyle,
-                color = colors.titleColor(enabled, negative)
+                color = colors.titleColor(negative)
             )
             if (showNewLabel && !negative) {
                 Text(
                     modifier = Modifier
                         .background(
-                            color = colors.newLabelContainerColor(enabled),
+                            color = colors.newLabelContainerColor,
                             shape = sizes.newLabelContainerShape
                         )
                         .padding(
@@ -195,14 +201,14 @@ internal fun DropdownMenuItemContent(
                         ),
                     text = "New",
                     style = sizes.newLabelTextStyle,
-                    color = colors.newLabelColor(enabled)
+                    color = colors.newLabelColor
                 )
             }
         }
         if (showExpandIcon && !negative) {
             Icon(
                 painter = expandIcon,
-                tint = colors.expandIconColor(enabled),
+                tint = colors.expendIconColor,
                 sizes = sizes.expendIconSizes
             )
         }
@@ -220,11 +226,11 @@ internal fun DropdownMenuItemContent(
 fun DropdownMenuItemScope.Divider(
     modifier: Modifier = Modifier
 ) {
-    HorizontalDivider(
+    Divider(
         modifier = modifier,
-        insetSide = HorizontalInsetSide.BOTH,
-        strokeColor = this@Divider.colors.dividerColor,
-        sizes = this@Divider.sizes.dividerSizes
+        insetSide = InsetSide.BOTH,
+        strokeColor = colors.dividerColor,
+        sizes = sizes.dividerSizes
     )
 }
 
@@ -239,10 +245,10 @@ fun DropdownMenuItemScope.Divider(
 fun DropdownMenuItemScope.GroupDivider(
     modifier: Modifier = Modifier
 ) {
-    HorizontalDivider(
+    Divider(
         modifier = modifier,
-        insetSide = HorizontalInsetSide.BOTH,
-        strokeColor = this@GroupDivider.colors.dividerColor,
-        sizes = this@GroupDivider.sizes.groupDividerSizes
+        insetSide = InsetSide.BOTH,
+        strokeColor = colors.dividerColor,
+        sizes = sizes.groupDividerSizes
     )
 }

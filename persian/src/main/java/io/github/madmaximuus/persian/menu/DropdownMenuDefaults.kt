@@ -5,13 +5,11 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.graphics.takeOrElse
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.dividers.DividerDefaults
-import io.github.madmaximuus.persian.dividers.DividerSizes
+import io.github.madmaximuus.persian.divider.DividerDefaults
+import io.github.madmaximuus.persian.divider.DividerSizes
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persian.icon.IconSizes
 
@@ -41,60 +39,35 @@ object MenuDefaults {
      *
      * @param titleColor The default color of the menu item title.
      * @param negativeTitleColor The color of the menu item title when it is in a negative state.
-     * @param disabledTitleColor The color of the menu item title when it is disabled.
      * @param leadingIconColor The default color of the leading icon in the menu item.
      * @param selectedLeadingIconColor The color of the leading icon when the menu item is selected.
      * @param negativeLeadingIconColor The color of the leading icon when the menu item is in a negative state.
-     * @param disabledLeadingIconColor The color of the leading icon when the menu item is disabled.
      * @param expendIconColor The default color of the expand icon in the menu item.
-     * @param disabledExpandIconColor The color of the expand icon when the menu item is disabled.
      * @param newLabelColor The default color of the "new" label in the menu item.
-     * @param disabledNewLabelColor The color of the "new" label when the menu item is disabled.
      * @param newLabelContainerColor The default color of the container for the "new" label.
-     * @param disabledNewLabelContainerColor The color of the container for the "new" label when the menu item is disabled.
      * @param dividerColor The color of the divider in the menu item.
      */
     @Composable
     fun itemColors(
         titleColor: Color = PersianTheme.colorScheme.onSurface,
         negativeTitleColor: Color = PersianTheme.colorScheme.error,
-        disabledTitleColor: Color = PersianTheme.colorScheme.onSurface.state38,
-
         leadingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         selectedLeadingIconColor: Color = PersianTheme.colorScheme.primary,
         negativeLeadingIconColor: Color = PersianTheme.colorScheme.error,
-        disabledLeadingIconColor: Color = PersianTheme.colorScheme.onSurface.state38,
-
         expendIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
-        disabledExpandIconColor: Color = PersianTheme.colorScheme.onSurface.state38,
-
         newLabelColor: Color = PersianTheme.colorScheme.onValid,
-        disabledNewLabelColor: Color = PersianTheme.colorScheme.onValid.state38,
-
         newLabelContainerColor: Color = PersianTheme.colorScheme.valid,
-        disabledNewLabelContainerColor: Color = PersianTheme.colorScheme.valid.state38,
-
         dividerColor: Color = PersianTheme.colorScheme.outlineVariant
     ): MenuItemColors =
         MenuItemColors(
             titleColor = titleColor,
             negativeTitleColor = negativeTitleColor,
-            disabledTitleColor = disabledTitleColor,
-
             leadingIconColor = leadingIconColor,
             selectedLeadingIconColor = selectedLeadingIconColor,
             negativeLeadingIconColor = negativeLeadingIconColor,
-            disabledLeadingIconColor = disabledLeadingIconColor,
-
             expendIconColor = expendIconColor,
-            disabledExpandIconColor = disabledExpandIconColor,
-
             newLabelColor = newLabelColor,
-            disabledNewLabelColor = disabledNewLabelColor,
-
             newLabelContainerColor = newLabelContainerColor,
-            disabledNewLabelContainerColor = disabledNewLabelContainerColor,
-
             dividerColor = dividerColor
         )
 
@@ -254,17 +227,12 @@ class MenuItemSizes internal constructor(
  *
  * @property titleColor The default color of the menu item title.
  * @property negativeTitleColor The color of the menu item title when it is in a negative state.
- * @property disabledTitleColor The color of the menu item title when it is disabled.
  * @property leadingIconColor The default color of the leading icon in the menu item.
  * @property selectedLeadingIconColor The color of the leading icon when the menu item is selected.
  * @property negativeLeadingIconColor The color of the leading icon when the menu item is in a negative state.
- * @property disabledLeadingIconColor The color of the leading icon when the menu item is disabled.
  * @property expendIconColor The default color of the expand icon in the menu item.
- * @property disabledExpandIconColor The color of the expand icon when the menu item is disabled.
  * @property newLabelColor The default color of the "new" label in the menu item.
- * @property disabledNewLabelColor The color of the "new" label when the menu item is disabled.
  * @property newLabelContainerColor The default color of the container for the "new" label.
- * @property disabledNewLabelContainerColor The color of the container for the "new" label when the menu item is disabled.
  * @property dividerColor The color of the divider in the menu item.
  */
 @Immutable
@@ -272,40 +240,32 @@ class MenuItemColors internal constructor(
     //Title Color
     private val titleColor: Color,
     private val negativeTitleColor: Color,
-    private val disabledTitleColor: Color,
 
     //Leading Icon Color
     private val leadingIconColor: Color,
     private val selectedLeadingIconColor: Color,
     private val negativeLeadingIconColor: Color,
-    private val disabledLeadingIconColor: Color,
 
     //Expend Icon Color
-    private val expendIconColor: Color,
-    private val disabledExpandIconColor: Color,
+    internal val expendIconColor: Color,
 
     //New Label Color
-    private val newLabelColor: Color,
-    private val disabledNewLabelColor: Color,
+    internal val newLabelColor: Color,
 
     //New Label Container Color
-    private val newLabelContainerColor: Color,
-    private val disabledNewLabelContainerColor: Color,
+    internal val newLabelContainerColor: Color,
 
     internal val dividerColor: Color
 ) {
     /**
      * Returns the appropriate title color based on the enabled and negative states.
      *
-     * @param enabled Whether the menu item is enabled.
      * @param negative Whether the menu item is in a negative state.
      */
     @Stable
     internal fun titleColor(
-        enabled: Boolean,
         negative: Boolean
     ): Color = when {
-        !enabled -> disabledTitleColor
         negative -> negativeTitleColor
         else -> titleColor
     }
@@ -313,55 +273,18 @@ class MenuItemColors internal constructor(
     /**
      * Returns the appropriate leading icon color based on the enabled, negative, and selected states.
      *
-     * @param enabled Whether the menu item is enabled.
      * @param negative Whether the menu item is in a negative state.
      * @param selected Whether the menu item is selected.
      */
     @Stable
     internal fun leadingIconColor(
-        enabled: Boolean,
         negative: Boolean,
         selected: Boolean,
     ): Color = when {
-        !enabled -> disabledLeadingIconColor
         negative -> negativeLeadingIconColor
         selected -> selectedLeadingIconColor
         else -> leadingIconColor
     }
-
-    /**
-     * Returns the appropriate expand icon color based on the enabled state.
-     *
-     * @param enabled Whether the menu item is enabled.
-     */
-    @Stable
-    internal fun expandIconColor(
-        enabled: Boolean
-    ): Color = when {
-        !enabled -> disabledExpandIconColor
-        else -> expendIconColor
-    }
-
-    /**
-     * Returns the appropriate new label color based on the enabled state.
-     *
-     * @param enabled Whether the menu item is enabled.
-     */
-    @Stable
-    internal fun newLabelColor(
-        enabled: Boolean
-    ): Color = if (enabled) newLabelColor else disabledNewLabelColor
-
-    /**
-     * Returns the appropriate new label container color based on the enabled state.
-     *
-     * @param enabled Whether the menu item is enabled.
-     * @return The appropriate new label container color.
-     */
-    @Stable
-    internal fun newLabelContainerColor(
-        enabled: Boolean
-    ): Color = if (enabled) newLabelContainerColor else disabledNewLabelContainerColor
 
     /**
      * Creates a copy of this [MenuItemColors] instance with the specified properties.
@@ -369,44 +292,24 @@ class MenuItemColors internal constructor(
     fun copy(
         titleColor: Color = this.titleColor,
         negativeTitleColor: Color = this.negativeTitleColor,
-        disabledTitleColor: Color = this.disabledTitleColor,
-
         leadingIconColor: Color = this.leadingIconColor,
         selectedLeadingIconColor: Color = this.selectedLeadingIconColor,
         negativeLeadingIconColor: Color = this.negativeLeadingIconColor,
-        disabledLeadingIconColor: Color = this.disabledLeadingIconColor,
-
         expendIconColor: Color = this.expendIconColor,
-        disabledExpandIconColor: Color = this.disabledExpandIconColor,
-
         newLabelColor: Color = this.newLabelColor,
-        disabledNewLabelColor: Color = this.disabledNewLabelColor,
-
         newLabelContainerColor: Color = this.newLabelContainerColor,
-        disabledNewLabelContainerColor: Color = this.disabledNewLabelContainerColor,
-
         dividerColor: Color = this.dividerColor
     ): MenuItemColors =
         MenuItemColors(
-            titleColor = titleColor.takeOrElse { this.titleColor },
-            negativeTitleColor = negativeTitleColor.takeOrElse { this.negativeTitleColor },
-            selectedLeadingIconColor = selectedLeadingIconColor.takeOrElse { this.selectedLeadingIconColor },
-            disabledTitleColor = disabledTitleColor.takeOrElse { this.disabledTitleColor },
-
-            leadingIconColor = leadingIconColor.takeOrElse { this.leadingIconColor },
-            negativeLeadingIconColor = negativeLeadingIconColor.takeOrElse { this.negativeLeadingIconColor },
-            disabledLeadingIconColor = disabledLeadingIconColor.takeOrElse { this.disabledLeadingIconColor },
-
-            expendIconColor = expendIconColor.takeOrElse { this.expendIconColor },
-            disabledExpandIconColor = disabledExpandIconColor.takeOrElse { this.disabledExpandIconColor },
-
-            newLabelColor = newLabelColor.takeOrElse { this.newLabelColor },
-            disabledNewLabelColor = disabledNewLabelColor.takeOrElse { this.disabledNewLabelColor },
-
-            newLabelContainerColor = newLabelContainerColor.takeOrElse { this.newLabelContainerColor },
-            disabledNewLabelContainerColor = disabledNewLabelContainerColor.takeOrElse { this.disabledNewLabelContainerColor },
-
-            dividerColor = dividerColor.takeOrElse { this.dividerColor }
+            titleColor = titleColor,
+            negativeTitleColor = negativeTitleColor,
+            selectedLeadingIconColor = selectedLeadingIconColor,
+            leadingIconColor = leadingIconColor,
+            negativeLeadingIconColor = negativeLeadingIconColor,
+            expendIconColor = expendIconColor,
+            newLabelColor = newLabelColor,
+            newLabelContainerColor = newLabelContainerColor,
+            dividerColor = dividerColor
         )
 
     override fun equals(other: Any?): Boolean {
@@ -415,42 +318,24 @@ class MenuItemColors internal constructor(
 
         if (titleColor != other.titleColor) return false
         if (negativeTitleColor != other.negativeTitleColor) return false
-        if (disabledTitleColor != other.disabledTitleColor) return false
-
         if (leadingIconColor != other.leadingIconColor) return false
         if (selectedLeadingIconColor != other.selectedLeadingIconColor) return false
         if (negativeLeadingIconColor != other.negativeLeadingIconColor) return false
-        if (disabledLeadingIconColor != other.disabledLeadingIconColor) return false
-
         if (expendIconColor != other.expendIconColor) return false
-        if (disabledExpandIconColor != other.disabledExpandIconColor) return false
-
         if (newLabelColor != other.newLabelColor) return false
-        if (disabledNewLabelColor != other.disabledNewLabelColor) return false
-
         if (newLabelContainerColor != other.newLabelContainerColor) return false
-        if (dividerColor != other.dividerColor) return false
-        return disabledNewLabelContainerColor == other.disabledNewLabelContainerColor
+        return dividerColor == other.dividerColor
     }
 
     override fun hashCode(): Int {
         var result = titleColor.hashCode()
         result = 31 * result + negativeTitleColor.hashCode()
-        result = 31 * result + disabledTitleColor.hashCode()
-
         result = 31 * result + leadingIconColor.hashCode()
         result = 31 * result + selectedLeadingIconColor.hashCode()
         result = 31 * result + negativeLeadingIconColor.hashCode()
-        result = 31 * result + disabledLeadingIconColor.hashCode()
-
         result = 31 * result + expendIconColor.hashCode()
-        result = 31 * result + disabledExpandIconColor.hashCode()
-
         result = 31 * result + newLabelColor.hashCode()
-        result = 31 * result + disabledNewLabelColor.hashCode()
-
         result = 31 * result + newLabelContainerColor.hashCode()
-        result = 31 * result + disabledNewLabelContainerColor.hashCode()
         result = 31 * result + dividerColor.hashCode()
         return result
     }
