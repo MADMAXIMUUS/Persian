@@ -31,7 +31,7 @@ fun SliderContentScope.Text(
         modifier = modifier,
         text = text,
         style = textStyle,
-        color = colors.contentColor(enabled)
+        color = colors.contentColor
     )
 }
 
@@ -45,6 +45,6 @@ fun SliderContentScope.Icon(
         modifier = modifier,
         painter = icon,
         sizes = sizes,
-        tint = colors.contentColor(enabled)
+        tint = colors.contentColor
     )
 }

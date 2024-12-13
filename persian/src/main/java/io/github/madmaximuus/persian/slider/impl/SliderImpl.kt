@@ -136,7 +136,7 @@ internal fun SliderImpl(
             ) {
                 Thumb(
                     interactionSource = interactionSource,
-                    enabled = enabled,
+                    colors = colors
                 )
             }
             Box(
@@ -145,7 +145,6 @@ internal fun SliderImpl(
                 SliderTrack(
                     sliderState = state,
                     colors = colors,
-                    enabled = enabled
                 )
             }
         },

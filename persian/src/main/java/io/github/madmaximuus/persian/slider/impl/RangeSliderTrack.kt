@@ -23,9 +23,6 @@ import io.github.madmaximuus.persian.slider.state.RangeSliderState
  *
  * @param rangeSliderState [RangeSliderState] which is used to obtain the current active track.
  * @param modifier the [Modifier] to be applied to the track.
- * @param enabled controls the enabled state of this slider. When `false`, this component will
- *   not respond to user input, and it will appear visually disabled and disabled to
- *   accessibility services.
  * @param colors [SliderColors] that will be used to resolve the colors used for this track in
  *   different states. See [SliderDefaults.colors].
  * @param drawStopIndicator lambda that will be called to draw the stop indicator at the
@@ -38,7 +35,6 @@ import io.github.madmaximuus.persian.slider.state.RangeSliderState
 fun RangeSliderTrack(
     rangeSliderState: RangeSliderState,
     modifier: Modifier = Modifier,
-    enabled: Boolean = true,
     colors: SliderColors = SliderDefaults.colors(),
     drawStopIndicator: (DrawScope.(Offset, Color) -> Unit)? = { offset, color ->
         drawStopIndicator(
@@ -59,10 +55,10 @@ fun RangeSliderTrack(
     thumbTrackGapSize: Dp = ThumbTrackGapSize,
     trackInsideCornerSize: Dp = TrackInsideCornerSize
 ) {
-    val inactiveTrackColor = colors.trackColor(enabled, active = false)
-    val activeTrackColor = colors.trackColor(enabled, active = true)
-    val inactiveTickColor = colors.tickColor(enabled, active = false)
-    val activeTickColor = colors.tickColor(enabled, active = true)
+    val inactiveTrackColor = colors.trackColor(active = false)
+    val activeTrackColor = colors.trackColor(active = true)
+    val inactiveTickColor = colors.tickColor(active = false)
+    val activeTickColor = colors.tickColor(active = true)
     Canvas(
         modifier
             .fillMaxWidth()

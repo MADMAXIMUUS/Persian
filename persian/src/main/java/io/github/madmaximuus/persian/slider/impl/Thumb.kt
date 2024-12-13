@@ -25,16 +25,12 @@ import io.github.madmaximuus.persian.slider.SliderDefaults
  *   observe
  * @param colors [SliderColors] that will be used to resolve the colors used for this thumb in
  *   different states. See [SliderDefaults.colors].
- * @param enabled controls the enabled state of this slider. When `false`, this component will
- *   not respond to user input, and it will appear visually disabled and disabled to
- *   accessibility services.
  * @param thumbSize the size of the thumb.
  */
 @Composable
 internal fun Thumb(
     interactionSource: MutableInteractionSource,
     colors: SliderColors = SliderDefaults.colors(),
-    enabled: Boolean = true,
     thumbSize: DpSize = ThumbSize
 ) {
     val interactions = remember { mutableStateListOf<Interaction>() }
@@ -61,7 +57,7 @@ internal fun Thumb(
         Modifier
             .size(size)
             .hoverable(interactionSource = interactionSource)
-            .background(colors.thumbColor(enabled), PersianTheme.shapes.full)
+            .background(colors.thumbColor, PersianTheme.shapes.full)
     )
 }
 

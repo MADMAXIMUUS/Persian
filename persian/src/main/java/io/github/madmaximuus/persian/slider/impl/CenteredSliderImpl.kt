@@ -134,7 +134,7 @@ internal fun CenteredSliderImpl(
             ) {
                 Thumb(
                     interactionSource = interactionSource,
-                    enabled = enabled
+                    colors = colors,
                 )
             }
             Box(
@@ -143,7 +143,6 @@ internal fun CenteredSliderImpl(
                 CenteredSliderTrack(
                     sliderState = state,
                     colors = colors,
-                    enabled = enabled
                 )
             }
         },

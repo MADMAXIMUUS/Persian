@@ -9,6 +9,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
+import io.github.madmaximuus.persian.foundation.PersianState38
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.slider.SliderColors
 import io.github.madmaximuus.persian.slider.SliderDefaults
@@ -75,7 +77,12 @@ fun RangeSlider(
     state.activeRangeEnd = value.endInclusive
 
     Row(
-        modifier = modifier.padding(horizontal = PersianTheme.spacing.size2),
+        modifier = modifier
+            .padding(horizontal = PersianTheme.spacing.size2)
+            .graphicsLayer {
+                alpha = if (enabled) 1f
+                else PersianState38
+            },
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8)
     ) {

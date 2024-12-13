@@ -200,7 +200,6 @@ internal fun RangeSliderImpl(
                 Thumb(
                     interactionSource = startInteractionSource,
                     colors = colors,
-                    enabled = enabled,
                 )
             }
             Box(
@@ -215,7 +214,6 @@ internal fun RangeSliderImpl(
                 Thumb(
                     interactionSource = endInteractionSource,
                     colors = colors,
-                    enabled = enabled,
                 )
             }
             Box(
@@ -224,7 +222,6 @@ internal fun RangeSliderImpl(
                 RangeSliderTrack(
                     rangeSliderState = state,
                     colors = colors,
-                    enabled = enabled
                 )
             }
         },
