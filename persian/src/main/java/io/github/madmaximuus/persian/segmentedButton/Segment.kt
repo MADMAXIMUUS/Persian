@@ -66,8 +66,8 @@ fun SingleChoiceSegmentedButtonRowScope.StartSegment(
     }
     @Suppress("NAME_SHADOWING")
     val interactionSource = interactionSource ?: remember { MutableInteractionSource() }
-    val containerColor = colors.containerColor(enabled, selected)
-    val contentColor = colors.contentColor(enabled, selected)
+    val containerColor = colors.containerColor(selected)
+    val contentColor = colors.contentColor(selected)
     val interactionCount = interactionSource.interactionCountAsState()
 
     Surface(
@@ -85,11 +85,11 @@ fun SingleChoiceSegmentedButtonRowScope.StartSegment(
         contentColor = contentColor,
         border = BorderStroke(
             sizes.border,
-            colors.borderColor(enabled, selected)
+            colors.borderColor(selected)
         ),
         interactionSource = interactionSource
     ) {
-        SegmentContent(icon, selectedIcon, label, selected, enabled, sizes, colors)
+        SegmentContent(icon, selectedIcon, label, selected, sizes, colors)
     }
 }
 
@@ -130,8 +130,8 @@ fun SingleChoiceSegmentedButtonRowScope.MiddleSegment(
     }
     @Suppress("NAME_SHADOWING")
     val interactionSource = interactionSource ?: remember { MutableInteractionSource() }
-    val containerColor = colors.containerColor(enabled, selected)
-    val contentColor = colors.contentColor(enabled, selected)
+    val containerColor = colors.containerColor(selected)
+    val contentColor = colors.contentColor(selected)
     val interactionCount = interactionSource.interactionCountAsState()
 
     Surface(
@@ -150,11 +150,11 @@ fun SingleChoiceSegmentedButtonRowScope.MiddleSegment(
         contentColor = contentColor,
         border = BorderStroke(
             sizes.border,
-            colors.borderColor(enabled, selected)
+            colors.borderColor(selected)
         ),
         interactionSource = interactionSource
     ) {
-        SegmentContent(icon, selectedIcon, label, selected, enabled, sizes, colors)
+        SegmentContent(icon, selectedIcon, label, selected, sizes, colors)
     }
 }
 
@@ -196,8 +196,8 @@ fun SingleChoiceSegmentedButtonRowScope.EndSegment(
     }
     @Suppress("NAME_SHADOWING")
     val interactionSource = interactionSource ?: remember { MutableInteractionSource() }
-    val containerColor = colors.containerColor(enabled, selected)
-    val contentColor = colors.contentColor(enabled, selected)
+    val containerColor = colors.containerColor(selected)
+    val contentColor = colors.contentColor(selected)
     val interactionCount = interactionSource.interactionCountAsState()
 
     Surface(
@@ -216,11 +216,11 @@ fun SingleChoiceSegmentedButtonRowScope.EndSegment(
         contentColor = contentColor,
         border = BorderStroke(
             sizes.border,
-            colors.borderColor(enabled, selected)
+            colors.borderColor(selected)
         ),
         interactionSource = interactionSource
     ) {
-        SegmentContent(icon, selectedIcon, label, selected, enabled, sizes, colors)
+        SegmentContent(icon, selectedIcon, label, selected, sizes, colors)
     }
 }
 
@@ -261,8 +261,8 @@ fun MultiChoiceSegmentedButtonRowScope.StartSegment(
     }
     @Suppress("NAME_SHADOWING")
     val interactionSource = interactionSource ?: remember { MutableInteractionSource() }
-    val containerColor = colors.containerColor(enabled, checked)
-    val contentColor = colors.contentColor(enabled, checked)
+    val containerColor = colors.containerColor(checked)
+    val contentColor = colors.contentColor(checked)
     val interactionCount = interactionSource.interactionCountAsState()
 
     Surface(
@@ -280,11 +280,11 @@ fun MultiChoiceSegmentedButtonRowScope.StartSegment(
         contentColor = contentColor,
         border = BorderStroke(
             sizes.border,
-            colors.borderColor(enabled, checked)
+            colors.borderColor(checked)
         ),
         interactionSource = interactionSource
     ) {
-        SegmentContent(icon, selectedIcon, label, checked, enabled, sizes, colors)
+        SegmentContent(icon, selectedIcon, label, checked, sizes, colors)
     }
 }
 
@@ -325,8 +325,8 @@ fun MultiChoiceSegmentedButtonRowScope.MiddleSegment(
     }
     @Suppress("NAME_SHADOWING")
     val interactionSource = interactionSource ?: remember { MutableInteractionSource() }
-    val containerColor = colors.containerColor(enabled, checked)
-    val contentColor = colors.contentColor(enabled, checked)
+    val containerColor = colors.containerColor(checked)
+    val contentColor = colors.contentColor(checked)
     val interactionCount = interactionSource.interactionCountAsState()
 
     Surface(
@@ -344,11 +344,11 @@ fun MultiChoiceSegmentedButtonRowScope.MiddleSegment(
         contentColor = contentColor,
         border = BorderStroke(
             sizes.border,
-            colors.borderColor(enabled, checked)
+            colors.borderColor(checked)
         ),
         interactionSource = interactionSource
     ) {
-        SegmentContent(icon, selectedIcon, label, checked, enabled, sizes, colors)
+        SegmentContent(icon, selectedIcon, label, checked, sizes, colors)
     }
 }
 
@@ -390,8 +390,8 @@ fun MultiChoiceSegmentedButtonRowScope.EndSegment(
     }
     @Suppress("NAME_SHADOWING")
     val interactionSource = interactionSource ?: remember { MutableInteractionSource() }
-    val containerColor = colors.containerColor(enabled, checked)
-    val contentColor = colors.contentColor(enabled, checked)
+    val containerColor = colors.containerColor(checked)
+    val contentColor = colors.contentColor(checked)
     val interactionCount = interactionSource.interactionCountAsState()
 
     Surface(
@@ -409,11 +409,11 @@ fun MultiChoiceSegmentedButtonRowScope.EndSegment(
         contentColor = contentColor,
         border = BorderStroke(
             sizes.border,
-            colors.borderColor(enabled, checked)
+            colors.borderColor(checked)
         ),
         interactionSource = interactionSource
     ) {
-        SegmentContent(icon, selectedIcon, label, checked, enabled, sizes, colors)
+        SegmentContent(icon, selectedIcon, label, checked, sizes, colors)
     }
 }
 
@@ -427,7 +427,6 @@ fun MultiChoiceSegmentedButtonRowScope.EndSegment(
  * @param selectedIcon The [Painter] for the selected icon.
  * @param label The optional text label for the segmented button.
  * @param selected A boolean indicating whether the segmented button is selected.
- * @param enabled A boolean indicating whether the segmented button is enabled.
  * @param sizes The sizes configuration for the segmented button.
  * @param colors The colors configuration for the segmented button.
  */
@@ -437,7 +436,6 @@ private fun SegmentContent(
     selectedIcon: Painter,
     label: String?,
     selected: Boolean,
-    enabled: Boolean,
     sizes: SegmentedButtonSizes,
     colors: SegmentedButtonColors
 ) {
@@ -453,7 +451,7 @@ private fun SegmentContent(
                 painter = selectedIcon,
                 contentDescription = "Selected Icon",
                 sizes = sizes.selectedIconSizes,
-                tint = colors.contentColor(enabled, true),
+                tint = colors.contentColor(true),
             )
         }
         if ((!selected || label == null) && icon != null) {
@@ -461,13 +459,13 @@ private fun SegmentContent(
                 painter = icon,
                 contentDescription = "Icon",
                 sizes = sizes.iconSize,
-                tint = colors.contentColor(enabled, selected),
+                tint = colors.contentColor(selected),
             )
         }
         label?.let {
             Text(
                 text = it,
-                color = colors.contentColor(enabled, selected),
+                color = colors.contentColor(selected),
                 style = sizes.labelTextStyle
             )
         }

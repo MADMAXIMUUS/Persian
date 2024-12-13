@@ -11,6 +11,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
+import io.github.madmaximuus.persian.foundation.PersianState38
 
 
 /**
@@ -74,7 +76,11 @@ fun SingleChoiceSegmentedButtonRow(
         modifier = modifier
             .selectableGroup()
             .height(sizes.height)
-            .width(IntrinsicSize.Min),
+            .width(IntrinsicSize.Min)
+            .graphicsLayer {
+                alpha = if (enabled) 1f
+                else PersianState38
+            },
         horizontalArrangement = Arrangement.spacedBy(-sizes.border),
         verticalAlignment = Alignment.CenterVertically
     ) {

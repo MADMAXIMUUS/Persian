@@ -9,7 +9,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
+import io.github.madmaximuus.persian.foundation.PersianState38
 
 /**
  * A scope interface for a row of multi-choice segmented buttons.
@@ -68,7 +70,11 @@ fun MultiChoiceSegmentedButtonRow(
     Row(
         modifier = modifier
             .height(sizes.height)
-            .widthIn(min = 90.dp),
+            .widthIn(min = 90.dp)
+            .graphicsLayer {
+                alpha = if (enabled) 1f
+                else PersianState38
+            },
         horizontalArrangement = Arrangement.spacedBy(-sizes.border),
         verticalAlignment = Alignment.CenterVertically
     ) {

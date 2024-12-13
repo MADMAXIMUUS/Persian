@@ -224,7 +224,7 @@ object SegmentedButton : Screen {
                                 }
                             )
                             RadioButton(
-                                text = "Multiple",
+                                text = "Medium",
                                 selected = sizeStates[1].value,
                                 onSelectedChange = {
                                     sizeStates.forEachIndexed { index, mutableState ->
@@ -264,7 +264,7 @@ object SegmentedButton : Screen {
                                 }
                             )
                             Checkbox(
-                                text = "Trailing",
+                                text = "Text",
                                 checked = label,
                                 onCheckedChange = { isChecked ->
                                     label = isChecked

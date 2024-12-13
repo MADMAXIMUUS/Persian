@@ -5,13 +5,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.takeOrElse
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.foundation.state12
-import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persian.icon.IconSizes
 
@@ -29,12 +26,6 @@ object SegmentedButtonDefaults {
      * @param inactiveContainerColor The container color for inactive buttons.
      * @param inactiveContentColor The content color for inactive buttons.
      * @param inactiveBorderColor The border color for inactive buttons.
-     * @param disabledActiveContainerColor The container color for disabled active buttons.
-     * @param disabledActiveContentColor The content color for disabled active buttons.
-     * @param disabledActiveBorderColor The border color for disabled active buttons.
-     * @param disabledInactiveContainerColor The container color for disabled inactive buttons.
-     * @param disabledInactiveContentColor The content color for disabled inactive buttons.
-     * @param disabledInactiveBorderColor The border color for disabled inactive buttons.
      */
     @Composable
     fun colors(
@@ -44,12 +35,6 @@ object SegmentedButtonDefaults {
         inactiveContainerColor: Color = PersianTheme.colorScheme.surface,
         inactiveContentColor: Color = PersianTheme.colorScheme.onSurface,
         inactiveBorderColor: Color = PersianTheme.colorScheme.outline,
-        disabledActiveContainerColor: Color = PersianTheme.colorScheme.surface,
-        disabledActiveContentColor: Color = PersianTheme.colorScheme.onSurface.state38,
-        disabledActiveBorderColor: Color = PersianTheme.colorScheme.onSurface.state12,
-        disabledInactiveContainerColor: Color = PersianTheme.colorScheme.surface,
-        disabledInactiveContentColor: Color = PersianTheme.colorScheme.onSurface.state38,
-        disabledInactiveBorderColor: Color = PersianTheme.colorScheme.onSurface.state12,
     ): SegmentedButtonColors =
         SegmentedButtonColors(
             activeContainerColor = activeContainerColor,
@@ -58,12 +43,6 @@ object SegmentedButtonDefaults {
             inactiveContainerColor = inactiveContainerColor,
             inactiveContentColor = inactiveContentColor,
             inactiveBorderColor = inactiveBorderColor,
-            disabledActiveContainerColor = disabledActiveContainerColor,
-            disabledActiveContentColor = disabledActiveContentColor,
-            disabledActiveBorderColor = disabledActiveBorderColor,
-            disabledInactiveContainerColor = disabledInactiveContainerColor,
-            disabledInactiveContentColor = disabledInactiveContentColor,
-            disabledInactiveBorderColor = disabledInactiveBorderColor
         )
 
     /**
@@ -81,7 +60,7 @@ object SegmentedButtonDefaults {
         height: Dp = 36.dp,
         iconSize: IconSizes = IconDefaults.size18(),
         selectedIconSizes: IconSizes = IconDefaults.size18(),
-        labelTextStyle: TextStyle = PersianTheme.typography.labelMedium,
+        labelTextStyle: TextStyle = PersianTheme.typography.buttonSmall,
         baseShape: CornerBasedShape = PersianTheme.shapes.shape12,
         border: Dp = 1.dp
     ): SegmentedButtonSizes =
@@ -109,7 +88,7 @@ object SegmentedButtonDefaults {
         height: Dp = 44.dp,
         iconSize: IconSizes = IconDefaults.size20(),
         selectedIconSizes: IconSizes = IconDefaults.size20(),
-        labelTextStyle: TextStyle = PersianTheme.typography.labelLarge,
+        labelTextStyle: TextStyle = PersianTheme.typography.buttonMedium,
         baseShape: CornerBasedShape = PersianTheme.shapes.shape14,
         border: Dp = 1.dp
     ): SegmentedButtonSizes =
@@ -137,7 +116,7 @@ object SegmentedButtonDefaults {
         height: Dp = 52.dp,
         iconSize: IconSizes = IconDefaults.size24(),
         selectedIconSizes: IconSizes = IconDefaults.size24(),
-        labelTextStyle: TextStyle = PersianTheme.typography.titleMedium,
+        labelTextStyle: TextStyle = PersianTheme.typography.buttonLarge,
         baseShape: CornerBasedShape = PersianTheme.shapes.shape16,
         border: Dp = 1.dp
     ): SegmentedButtonSizes =
@@ -160,12 +139,6 @@ object SegmentedButtonDefaults {
  * @param inactiveContainerColor the color used for the container when enabled and inactive
  * @param inactiveContentColor the color used for the content when enabled and inactive
  * @param inactiveBorderColor the color used for the border when enabled and active
- * @param disabledActiveContainerColor the color used for the container when disabled and active
- * @param disabledActiveContentColor the color used for the content when disabled and active
- * @param disabledActiveBorderColor the color used for the border when disabled and active
- * @param disabledInactiveContainerColor the color used for the container when disabled and inactive
- * @param disabledInactiveContentColor the color used for the content when disabled and inactive
- * @param disabledInactiveBorderColor the color used for the border when disabled and inactive
  */
 @Immutable
 class SegmentedButtonColors internal constructor(
@@ -176,15 +149,7 @@ class SegmentedButtonColors internal constructor(
     // enabled & inactive
     private val inactiveContainerColor: Color,
     private val inactiveContentColor: Color,
-    private val inactiveBorderColor: Color,
-    // disable & active
-    private val disabledActiveContainerColor: Color,
-    private val disabledActiveContentColor: Color,
-    private val disabledActiveBorderColor: Color,
-    // disable & inactive
-    private val disabledInactiveContainerColor: Color,
-    private val disabledInactiveContentColor: Color,
-    private val disabledInactiveBorderColor: Color
+    private val inactiveBorderColor: Color
 ) {
     /**
      * Returns a copy of this SegmentedButtonColors, optionally overriding some of the ues.
@@ -195,76 +160,50 @@ class SegmentedButtonColors internal constructor(
         activeBorderColor: Color = this.activeBorderColor,
         inactiveContainerColor: Color = this.inactiveContainerColor,
         inactiveContentColor: Color = this.inactiveContentColor,
-        inactiveBorderColor: Color = this.inactiveBorderColor,
-        disabledActiveContainerColor: Color = this.disabledActiveContainerColor,
-        disabledActiveContentColor: Color = this.disabledActiveContentColor,
-        disabledActiveBorderColor: Color = this.disabledActiveBorderColor,
-        disabledInactiveContainerColor: Color = this.disabledInactiveContainerColor,
-        disabledInactiveContentColor: Color = this.disabledInactiveContentColor,
-        disabledInactiveBorderColor: Color = this.disabledInactiveBorderColor
+        inactiveBorderColor: Color = this.inactiveBorderColor
     ): SegmentedButtonColors =
         SegmentedButtonColors(
-            activeContainerColor.takeOrElse { this.activeContainerColor },
-            activeContentColor.takeOrElse { this.activeContentColor },
-            activeBorderColor.takeOrElse { this.activeBorderColor },
-            inactiveContainerColor.takeOrElse { this.inactiveContainerColor },
-            inactiveContentColor.takeOrElse { this.inactiveContentColor },
-            inactiveBorderColor.takeOrElse { this.inactiveBorderColor },
-            disabledActiveContainerColor.takeOrElse { this.disabledActiveContainerColor },
-            disabledActiveContentColor.takeOrElse { this.disabledActiveContentColor },
-            disabledActiveBorderColor.takeOrElse { this.disabledActiveBorderColor },
-            disabledInactiveContainerColor.takeOrElse { this.disabledInactiveContainerColor },
-            disabledInactiveContentColor.takeOrElse { this.disabledInactiveContentColor },
-            disabledInactiveBorderColor.takeOrElse { this.disabledInactiveBorderColor }
+            activeContainerColor = activeContainerColor,
+            activeContentColor = activeContentColor,
+            activeBorderColor = activeBorderColor,
+            inactiveContainerColor = inactiveContainerColor,
+            inactiveContentColor = inactiveContentColor,
+            inactiveBorderColor = inactiveBorderColor
         )
 
     /**
-     * Represents the color used for the SegmentedButton's border, depending on [enabled] and
-     * [active].
+     * Represents the color used for the SegmentedButton's border, depending on [active].
      *
-     * @param enabled whether the [StartSegment], [MiddleSegment], [EndSegment] is enabled or not
      * @param active whether the [StartSegment], [MiddleSegment], [EndSegment] item is checked or not
      */
     @Stable
-    internal fun borderColor(enabled: Boolean, active: Boolean): Color {
-        return when {
-            enabled && active -> activeBorderColor
-            enabled && !active -> inactiveBorderColor
-            !enabled && active -> disabledActiveBorderColor
-            else -> disabledInactiveBorderColor
-        }
+    internal fun borderColor(active: Boolean): Color {
+        return if (active) activeBorderColor
+        else inactiveBorderColor
+
     }
 
     /**
      * Represents the content color passed to the items
      *
-     * @param enabled whether the [StartSegment], [MiddleSegment], [EndSegment] is enabled or not
      * @param checked whether the [StartSegment], [MiddleSegment], [EndSegment] item is checked or not
      */
     @Stable
-    internal fun contentColor(enabled: Boolean, checked: Boolean): Color {
-        return when {
-            enabled && checked -> activeContentColor
-            enabled && !checked -> inactiveContentColor
-            !enabled && checked -> disabledActiveContentColor
-            else -> disabledInactiveContentColor
-        }
+    internal fun contentColor(checked: Boolean): Color {
+        return if (checked) activeContentColor
+        else inactiveContentColor
     }
 
     /**
      * Represents the container color passed to the items
      *
-     * @param enabled whether the [StartSegment], [MiddleSegment], [EndSegment] is enabled or not
      * @param active whether the [StartSegment], [MiddleSegment], [EndSegment] item is active or not
      */
     @Stable
-    internal fun containerColor(enabled: Boolean, active: Boolean): Color {
-        return when {
-            enabled && active -> activeContainerColor
-            enabled && !active -> inactiveContainerColor
-            !enabled && active -> disabledActiveContainerColor
-            else -> disabledInactiveContainerColor
-        }
+    internal fun containerColor(active: Boolean): Color {
+        return if (active)
+            activeContainerColor
+        else inactiveContainerColor
     }
 
     override fun equals(other: Any?): Boolean {
@@ -280,12 +219,6 @@ class SegmentedButtonColors internal constructor(
         if (inactiveBorderColor != other.inactiveBorderColor) return false
         if (inactiveContentColor != other.inactiveContentColor) return false
         if (inactiveContainerColor != other.inactiveContainerColor) return false
-        if (disabledActiveBorderColor != other.disabledActiveBorderColor) return false
-        if (disabledActiveContentColor != other.disabledActiveContentColor) return false
-        if (disabledActiveContainerColor != other.disabledActiveContainerColor) return false
-        if (disabledInactiveBorderColor != other.disabledInactiveBorderColor) return false
-        if (disabledInactiveContentColor != other.disabledInactiveContentColor) return false
-        if (disabledInactiveContainerColor != other.disabledInactiveContainerColor) return false
 
         return true
     }
@@ -297,12 +230,6 @@ class SegmentedButtonColors internal constructor(
         result = 31 * result + inactiveBorderColor.hashCode()
         result = 31 * result + inactiveContentColor.hashCode()
         result = 31 * result + inactiveContainerColor.hashCode()
-        result = 31 * result + disabledActiveBorderColor.hashCode()
-        result = 31 * result + disabledActiveContentColor.hashCode()
-        result = 31 * result + disabledActiveContainerColor.hashCode()
-        result = 31 * result + disabledInactiveBorderColor.hashCode()
-        result = 31 * result + disabledInactiveContentColor.hashCode()
-        result = 31 * result + disabledInactiveContainerColor.hashCode()
         return result
     }
 }
