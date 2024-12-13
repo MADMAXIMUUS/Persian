@@ -104,11 +104,11 @@ fun Modifier.shimmer(
 internal fun shimmerBrush(showShimmer: Boolean, size: IntSize): Brush {
     return if (showShimmer) {
         val shimmerColors = listOf(
-            PersianTheme.colorScheme.surface,
+            PersianTheme.colorScheme.surfaceContainerLow,
             PersianTheme.colorScheme.surfaceContainerHighest,
-            PersianTheme.colorScheme.surface,
+            PersianTheme.colorScheme.surfaceContainerLow,
         )
-        val shimmerWidthPercentage = 0.8
+        val shimmerWidthPercentage = 0.2
 
         val spaceMaxWidth = size.width.toFloat()
         val spaceMaxHeight = size.height.toFloat()
