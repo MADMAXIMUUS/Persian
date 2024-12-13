@@ -15,9 +15,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.avatarsAndImages.Avatar
-import io.github.madmaximuus.persian.avatarsAndImages.Image
-import io.github.madmaximuus.persian.avatarsAndImages.ImageShape
+import io.github.madmaximuus.persian.avatarAndImage.Avatar
+import io.github.madmaximuus.persian.avatarAndImage.Image
+import io.github.madmaximuus.persian.avatarAndImage.ImageShape
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.icon.Icon
 import io.github.madmaximuus.persian.progressIndicator.CircularProgressIndicator
