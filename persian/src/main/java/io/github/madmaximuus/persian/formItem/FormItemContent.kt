@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.forms
+package io.github.madmaximuus.persian.formItem
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
@@ -18,7 +18,7 @@ import io.github.madmaximuus.persian.checkboxes.Checkbox
 import io.github.madmaximuus.persian.checkboxes.CheckboxColors
 import io.github.madmaximuus.persian.checkboxes.CheckboxDefaults
 import io.github.madmaximuus.persian.checkboxes.CheckboxSizes
-import io.github.madmaximuus.persian.forms.utils.LayoutId
+import io.github.madmaximuus.persian.formItem.utils.LayoutId
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.input.InputColors
 import io.github.madmaximuus.persian.input.InputSizes
@@ -47,27 +47,27 @@ import io.github.madmaximuus.persian.textAreas.TextAreaDefaults
  * @property isError Indicates whether the form content is in an error state.
  * @property isValid Indicates whether the form content is valid.
  */
-interface FormContentScope {
+interface FormItemContentScope {
     val enabled: Boolean
     val isError: Boolean
     val isValid: Boolean
 }
 
 /**
- * Internal wrapper class for [FormContentScope].
+ * Internal wrapper class for [FormItemContentScope].
  *
- * This class implements [FormContentScope].
+ * This class implements [FormItemContentScope].
  * It encapsulates the properties required for form content, such as enabled state, error status, and validity.
  *
  * @param enabled Indicates whether the form content is enabled.
  * @param isError Indicates whether the form content is in an error state.
  * @param isValid Indicates whether the form content is valid.
  */
-internal class FormContentScopeWrapper(
+internal class FormItemContentScopeWrapper(
     override val enabled: Boolean,
     override val isError: Boolean,
     override val isValid: Boolean
-) : FormContentScope
+) : FormItemContentScope
 
 /**
  * Display an [OutlineInput] within a form.
@@ -86,7 +86,7 @@ internal class FormContentScopeWrapper(
  * @param onTrailingIconClick The callback to be invoked when the trailing icon is clicked.
  */
 @Composable
-fun FormContentScope.Input(
+fun FormItemContentScope.Input(
     state: TextFieldState,
     modifier: Modifier = Modifier,
     readOnly: Boolean = false,
@@ -133,7 +133,7 @@ fun FormContentScope.Input(
  * @param keyboardActionHandler The keyboard actions to be used for the text area.
  */
 @Composable
-fun FormContentScope.TextArea(
+fun FormItemContentScope.TextArea(
     state: TextFieldState,
     modifier: Modifier = Modifier,
     textStyle: TextStyle = PersianTheme.typography.bodyLarge,
@@ -170,7 +170,7 @@ fun FormContentScope.TextArea(
  * @param menuItems The composable content to be displayed as menu items in the dropdown.
  */
 @Composable
-fun FormContentScope.Select(
+fun FormItemContentScope.Select(
     state: TextFieldState,
     modifier: Modifier = Modifier,
     expanded: Boolean,
@@ -206,7 +206,7 @@ fun FormContentScope.Select(
  * @param content Composable for provide a [RadioButton] to this column.
  */
 @Composable
-fun FormContentScope.RadioButtons(
+fun FormItemContentScope.RadioButtons(
     modifier: Modifier = Modifier,
     colors: RadioButtonColors = RadioButtonDefaults.colors(),
     sizes: RadioButtonSizes = RadioButtonDefaults.sizes(),
@@ -279,7 +279,7 @@ fun FormRadioButtonScope.RadioButton(
  * @param content Composable for provide a [Checkbox] to this column.
  */
 @Composable
-fun FormContentScope.Checkboxes(
+fun FormItemContentScope.Checkboxes(
     modifier: Modifier = Modifier,
     colors: CheckboxColors = CheckboxDefaults.colors(),
     sizes: CheckboxSizes = CheckboxDefaults.sizes(),

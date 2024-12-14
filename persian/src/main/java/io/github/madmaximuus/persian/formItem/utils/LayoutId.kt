@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.forms.utils
+package io.github.madmaximuus.persian.formItem.utils
 
 internal object LayoutId {
     const val SUBHEAD = "subhead"

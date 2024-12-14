@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.forms.utils
+package io.github.madmaximuus.persian.formItem.utils
 
 import androidx.compose.ui.layout.Measurable
 import androidx.compose.ui.layout.MeasureResult
@@ -53,7 +53,7 @@ internal fun formMeasurePolicy(
         .firstOrNull { it.layoutId == LayoutId.CAPTION }
         ?.measure(constraints.copy(maxWidth = constraints.maxWidth - horizontalPadding * 2))
 
-    val captionHeight = captionPlaceable?.height?.let { it + spaceHeight } ?: 0
+    val captionHeight = captionPlaceable?.height ?: 0
 
     val totalHeight = subheadHeight + inputHeight + selectHeight +
             textAreaHeight + radioButtonsHeight + captionHeight + checkboxesHeight
@@ -74,7 +74,7 @@ internal fun formMeasurePolicy(
             y += radioButtonsHeight
             checkboxesPlaceable?.placeRelative(0, y)
             y += checkboxesHeight
-            captionPlaceable?.placeRelative(horizontalPadding, y)
+            captionPlaceable?.placeRelative(horizontalPadding, y + spaceHeight)
         }
     )
 }

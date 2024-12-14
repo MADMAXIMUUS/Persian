@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.forms
+package io.github.madmaximuus.persian.formItem
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.ColumnScope
@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.text.TextStyle
-import io.github.madmaximuus.persian.forms.utils.LayoutId
+import io.github.madmaximuus.persian.formItem.utils.LayoutId
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.text.Text
 
@@ -21,32 +21,32 @@ import io.github.madmaximuus.persian.text.Text
  * @property colors The colors associated with the form subhead.
  * @property enabled Indicates whether the form subhead is enabled.
  */
-interface FormSubheadScope {
+interface FormItemSubheadScope {
     val textStyle: TextStyle
     val colors: SubheadColors
     val enabled: Boolean
 }
 
 /**
- * Internal wrapper class for [FormSubheadScope].
+ * Internal wrapper class for [FormItemSubheadScope].
  *
- * This class implements [FormSubheadScope] and delegates [ColumnScope] functionality to the provided scope.
+ * This class implements [FormItemSubheadScope] and delegates [ColumnScope] functionality to the provided scope.
  * It encapsulates the properties required for a form subhead, such as colors, text style, and enabled state.
  *
  * @param colors The colors associated with the form subhead.
  * @param textStyle The text style to be applied to the form subhead.
  * @param enabled Indicates whether the form subhead is enabled.
  */
-internal class FormSubheadScopeWrapper(
+internal class FormItemSubheadScopeWrapper(
     override val colors: SubheadColors,
     override val textStyle: TextStyle,
     override val enabled: Boolean,
-) : FormSubheadScope
+) : FormItemSubheadScope
 
 /**
  * Composable function to display a subhead within a form.
  *
- * This function uses the properties from the [FormSubheadScope] to determine the appearance and behavior
+ * This function uses the properties from the [FormItemSubheadScope] to determine the appearance and behavior
  * of the subhead. It provides customization options such as text, required indicator, and modifier.
  *
  * @param modifier The modifier to be applied to the subhead.
@@ -54,7 +54,7 @@ internal class FormSubheadScopeWrapper(
  * @param required Indicates whether the subhead should display a required indicator.
  */
 @Composable
-fun FormSubheadScope.Subhead(
+fun FormItemSubheadScope.Subhead(
     modifier: Modifier = Modifier,
     text: String,
     required: Boolean = false,
@@ -68,13 +68,13 @@ fun FormSubheadScope.Subhead(
         Text(
             text = text,
             style = resolvedTextStyle,
-            color = resolvedColors.textColor(enabled = this@Subhead.enabled).value
+            color = resolvedColors.textColor
         )
         if (required) {
             Text(
                 text = "*",
                 style = resolvedTextStyle,
-                color = resolvedColors.requiredColor(enabled = this@Subhead.enabled).value
+                color = resolvedColors.requiredColor
             )
         }
         Spacer(modifier = Modifier.weight(1f))

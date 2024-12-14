@@ -1,10 +1,12 @@
-package io.github.madmaximuus.persian.forms
+package io.github.madmaximuus.persian.formItem
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.Layout
-import io.github.madmaximuus.persian.forms.utils.formMeasurePolicy
+import io.github.madmaximuus.persian.formItem.utils.formMeasurePolicy
+import io.github.madmaximuus.persian.foundation.PersianState38
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
 /**
@@ -27,16 +29,20 @@ fun FormItem(
     enabled: Boolean = true,
     isError: Boolean = false,
     isValid: Boolean = false,
-    colors: FormColors = FormDefaults.formColors(),
-    sizes: FormSizes = FormDefaults.formSizes(),
-    subhead: @Composable (FormSubheadScope.() -> Unit)? = null,
-    content: @Composable FormContentScope.() -> Unit,
-    caption: @Composable (FormCaptionScope.() -> Unit)? = null,
+    colors: FormColors = FormItemDefaults.formColors(),
+    sizes: FormSizes = FormItemDefaults.formSizes(),
+    subhead: @Composable (FormItemSubheadScope.() -> Unit)? = null,
+    content: @Composable FormItemContentScope.() -> Unit,
+    caption: @Composable (FormItemCaptionScope.() -> Unit)? = null,
 ) {
     val padding = PersianTheme.spacing.size16
-    val spacer = PersianTheme.spacing.size2
+    val spacer = PersianTheme.spacing.size6
     Layout(
-        modifier = modifier,
+        modifier = modifier
+            .graphicsLayer {
+                alpha = if (enabled) 1f
+                else PersianState38
+            },
         measurePolicy = { measurables, constraints ->
             formMeasurePolicy(
                 scope = this,
@@ -49,7 +55,7 @@ fun FormItem(
         content = {
             subhead?.let { subhead ->
                 val subheadScope = remember(colors.subheadColors, enabled, isError) {
-                    FormSubheadScopeWrapper(
+                    FormItemSubheadScopeWrapper(
                         colors = colors.subheadColors,
                         textStyle = sizes.subheadTextStyle,
                         enabled = enabled,
@@ -58,7 +64,7 @@ fun FormItem(
                 subheadScope.subhead()
             }
             val contentScope = remember(enabled, isError, isValid) {
-                FormContentScopeWrapper(
+                FormItemContentScopeWrapper(
                     enabled = enabled,
                     isError = isError,
                     isValid = isValid
@@ -67,7 +73,7 @@ fun FormItem(
             contentScope.content()
             caption?.let { caption ->
                 val captionScope = remember(colors, enabled, isError) {
-                    FormCaptionScopeWrapper(
+                    FormItemCaptionScopeWrapper(
                         colors = colors.captionColors,
                         sizes = sizes.captionSizes,
                         enabled = enabled,

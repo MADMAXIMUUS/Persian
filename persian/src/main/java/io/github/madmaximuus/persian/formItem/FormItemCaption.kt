@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.forms
+package io.github.madmaximuus.persian.formItem
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -7,7 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.layoutId
-import io.github.madmaximuus.persian.forms.utils.LayoutId
+import io.github.madmaximuus.persian.formItem.utils.LayoutId
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.text.Text
 
@@ -18,7 +18,7 @@ import io.github.madmaximuus.persian.text.Text
  * @property enabled Indicates whether the form caption is enabled.
  * @property isError Indicates whether the form caption is in an error state.
  */
-interface FormCaptionScope {
+interface FormItemCaptionScope {
     val colors: CaptionColors
     val sizes: CaptionSizes
     val enabled: Boolean
@@ -26,18 +26,18 @@ interface FormCaptionScope {
 }
 
 /**
- * Internal wrapper class for [FormCaptionScope].
+ * Internal wrapper class for [FormItemCaptionScope].
  *
  * @param colors The colors associated with the form caption.
  * @param enabled Indicates whether the form caption is enabled.
  * @param isError Indicates whether the form caption is in an error state.
  */
-internal class FormCaptionScopeWrapper(
+internal class FormItemCaptionScopeWrapper(
     override val colors: CaptionColors,
     override val sizes: CaptionSizes,
     override val enabled: Boolean,
     override val isError: Boolean,
-) : FormCaptionScope
+) : FormItemCaptionScope
 
 /**
  * Display a caption within a form.
@@ -47,7 +47,7 @@ internal class FormCaptionScopeWrapper(
  * @param errorText The text to be displayed if the caption is in an error state.
  */
 @Composable
-fun FormCaptionScope.Caption(
+fun FormItemCaptionScope.Caption(
     modifier: Modifier = Modifier,
     text: String,
     errorText: String? = null,
@@ -63,7 +63,7 @@ fun FormCaptionScope.Caption(
             color = this@Caption.colors.textColor(
                 enabled = this@Caption.enabled,
                 isError = this@Caption.isError
-            ).value,
+            ),
         )
         Spacer(modifier = Modifier.weight(1f))
     }
@@ -79,7 +79,7 @@ fun FormCaptionScope.Caption(
  * @param errorText The text to be displayed if the caption is in an error state.
  */
 @Composable
-fun FormCaptionScope.Caption(
+fun FormItemCaptionScope.Caption(
     modifier: Modifier = Modifier,
     text: String,
     counter: Int = 0,
@@ -97,7 +97,7 @@ fun FormCaptionScope.Caption(
             color = this@Caption.colors.textColor(
                 enabled = this@Caption.enabled,
                 isError = this@Caption.isError
-            ).value,
+            ),
         )
         Spacer(modifier = Modifier.weight(1f))
         Text(
@@ -106,7 +106,7 @@ fun FormCaptionScope.Caption(
             color = this@Caption.colors.counterColor(
                 this@Caption.enabled,
                 this@Caption.isError
-            ).value
+            )
         )
     }
 }
