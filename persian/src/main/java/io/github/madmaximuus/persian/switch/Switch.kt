@@ -20,6 +20,7 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.Measurable
 import androidx.compose.ui.layout.MeasureResult
@@ -33,6 +34,7 @@ import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.LocalContentColor
+import io.github.madmaximuus.persian.foundation.PersianState38
 import io.github.madmaximuus.persian.foundation.minimumInteractiveComponentSize
 import io.github.madmaximuus.persian.foundation.ripple.ripple
 import io.github.madmaximuus.persian.icon.Icon
@@ -115,9 +117,12 @@ fun Switch(
         modifier
             .then(toggleableModifier)
             .wrapContentSize(Alignment.Center)
-            .requiredSize(SwitchWidth, SwitchHeight),
+            .requiredSize(SwitchWidth, SwitchHeight)
+            .graphicsLayer {
+                alpha = if (enabled) 1f
+                else PersianState38
+            },
         checked = checked,
-        enabled = enabled,
         colors = colors,
         sizes = sizes,
         interactionSource = interactionSource,
@@ -133,7 +138,6 @@ fun Switch(
  *
  * @param modifier The [Modifier] to be applied to the switch.
  * @param checked The current checked state of the switch.
- * @param enabled The current enabled state of the switch.
  * @param colors The [SwitchColors] object defining the colors for different states of the switch.
  * @param sizes The [SwitchSizes] object defining the sizes for different parts of the switch.
  * @param thumbContent Optional composable content to be displayed inside the thumb of the switch.
@@ -144,18 +148,17 @@ fun Switch(
 private fun SwitchImpl(
     modifier: Modifier,
     checked: Boolean,
-    enabled: Boolean,
     colors: SwitchColors,
     sizes: SwitchSizes,
     thumbContent: (@Composable () -> Unit)?,
     interactionSource: InteractionSource,
 ) {
-    val trackColor = colors.trackColor(enabled, checked)
-    val resolvedThumbColor = colors.thumbColor(enabled, checked)
+    val trackColor = colors.trackColor(checked)
+    val resolvedThumbColor = colors.thumbColor(checked)
 
     Box(
         modifier
-            .border(sizes.trackBorderWith, colors.borderColor(enabled, checked), sizes.trackShape)
+            .border(sizes.trackBorderWith, colors.borderColor(checked), sizes.trackShape)
             .background(trackColor, sizes.trackShape)
     ) {
         Box(
@@ -181,7 +184,7 @@ private fun SwitchImpl(
             contentAlignment = Alignment.Center
         ) {
             if (thumbContent != null) {
-                val iconColor = colors.iconColor(enabled, checked)
+                val iconColor = colors.iconColor(checked)
                 CompositionLocalProvider(
                     LocalContentColor provides iconColor,
                     content = thumbContent
