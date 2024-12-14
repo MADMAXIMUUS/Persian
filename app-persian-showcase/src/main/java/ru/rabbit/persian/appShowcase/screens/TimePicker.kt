@@ -11,6 +11,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.button.ButtonDefaults
 import io.github.madmaximuus.persian.button.PrimaryButton
@@ -68,8 +69,9 @@ object TimePicker : Screen {
                         .fillMaxWidth()
                         .padding(horizontal = PersianTheme.spacing.size16)
                         .padding(top = PersianTheme.spacing.size8),
-                    text = "Selected time: $time",
-                    style = PersianTheme.typography.bodyLarge,
+                    text = time,
+                    textAlign = TextAlign.Center,
+                    style = PersianTheme.typography.displayLarge,
                     color = PersianTheme.colorScheme.onSurface
                 )
                 FormItem(

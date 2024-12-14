@@ -80,8 +80,8 @@ object DialTimePickerViewDefaults {
         clockDisplayShape: Shape = PersianTheme.shapes.shape12,
         clockDisplayTextStyle: TextStyle = PersianTheme.typography.displayLarge,
         periodSelectorShape: Shape = PersianTheme.shapes.shape12,
-        periodSelectorTextStyle: TextStyle = PersianTheme.typography.bodyLarge,
-        clockDialNumberTextStyle: TextStyle = PersianTheme.typography.bodyLarge,
+        periodSelectorTextStyle: TextStyle = PersianTheme.typography.buttonLarge,
+        clockDialNumberTextStyle: TextStyle = PersianTheme.typography.labelLarge,
     ): DialTimePickerViewSizes =
         DialTimePickerViewSizes(
             clockDisplayShape = clockDisplayShape,

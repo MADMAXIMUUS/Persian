@@ -37,7 +37,7 @@ object WheelTimePickerViewDefaults {
      */
     @Composable
     fun sizes(
-        textStyle: TextStyle = PersianTheme.typography.titleMedium,
+        textStyle: TextStyle = PersianTheme.typography.labelLarge,
     ): WheelTimePickerViewSizes =
         WheelTimePickerViewSizes(
             textStyle = textStyle
