@@ -28,11 +28,13 @@ import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.BaselineShift
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import io.github.madmaximuus.persian.foundation.PersianState38
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.text.Text
 
@@ -240,7 +242,11 @@ private fun TextAreaImpl(
     CompositionLocalProvider(LocalTextSelectionColors provides colors.selectionColors) {
         BasicTextField(
             state = state,
-            modifier = modifier,
+            modifier = modifier
+                .graphicsLayer {
+                    alpha = if (enabled) 1f
+                    else PersianState38
+                },
             enabled = enabled,
             readOnly = readOnly,
             textStyle = mergedTextStyle,

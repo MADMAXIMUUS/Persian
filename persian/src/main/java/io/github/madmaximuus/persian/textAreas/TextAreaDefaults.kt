@@ -16,7 +16,6 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state08
 import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state16
-import io.github.madmaximuus.persian.foundation.state38
 
 /**
  * Contains all default values used by [OutlineTextArea] and [PlainTextArea]
@@ -31,13 +30,11 @@ object TextAreaDefaults {
      * @param focusedTextColor The color of the text when focused.
      * @param validTextColor The color of the text when valid.
      * @param errorTextColor The color of the text when there is an error.
-     * @param disabledTextColor The color of the text when disabled.
      * @param defaultContainerColor The default color of the container.
      * @param hoveredContainerColor The color of the container when hovered.
      * @param focusedContainerColor The color of the container when focused.
      * @param validContainerColor The color of the container when valid.
      * @param errorContainerColor The color of the container when there is an error.
-     * @param disabledContainerColor The color of the container when disabled.
      * @param defaultCursorColor The default color of the cursor.
      * @param validCursorColor The color of the cursor when valid.
      * @param errorCursorColor The color of the cursor when there is an error.
@@ -47,19 +44,16 @@ object TextAreaDefaults {
      * @param focusedIndicatorColor The color of the indicator when focused.
      * @param validIndicatorColor The color of the indicator when valid.
      * @param errorIndicatorColor The color of the indicator when there is an error.
-     * @param disabledIndicatorColor The color of the indicator when disabled.
      * @param defaultLeadingIconColor The default color of the leading icon.
      * @param hoveredLeadingIconColor The color of the leading icon when hovered.
      * @param focusedLeadingIconColor The color of the leading icon when focused.
      * @param validLeadingIconColor The color of the leading icon when valid.
      * @param errorLeadingIconColor The color of the leading icon when there is an error.
-     * @param disabledLeadingIconColor The color of the leading icon when disabled.
      * @param defaultPlaceholderColor The default color of the placeholder.
      * @param hoveredPlaceholderColor The color of the placeholder when hovered.
      * @param focusedPlaceholderColor The color of the placeholder when focused.
      * @param validPlaceholderColor The color of the placeholder when valid.
      * @param errorPlaceholderColor The color of the placeholder when there is an error.
-     * @param disabledPlaceholderColor The color of the placeholder when disabled.
      */
     @Composable
     fun outlineColors(
@@ -69,7 +63,6 @@ object TextAreaDefaults {
         focusedTextColor: Color = PersianTheme.colorScheme.onSurface,
         validTextColor: Color = PersianTheme.colorScheme.valid,
         errorTextColor: Color = PersianTheme.colorScheme.error,
-        disabledTextColor: Color = PersianTheme.colorScheme.onSurface.state38,
 
         //Container Colors
         defaultContainerColor: Color = PersianTheme.colorScheme.primaryContainer.state08,
@@ -77,7 +70,6 @@ object TextAreaDefaults {
         focusedContainerColor: Color = PersianTheme.colorScheme.primaryContainer.state16,
         validContainerColor: Color = PersianTheme.colorScheme.validContainer.state12,
         errorContainerColor: Color = PersianTheme.colorScheme.errorContainer.state12,
-        disabledContainerColor: Color = PersianTheme.colorScheme.onSurface.state08,
 
         //Cursor Colors
         defaultCursorColor: Color = PersianTheme.colorScheme.primary,
@@ -94,7 +86,6 @@ object TextAreaDefaults {
         focusedIndicatorColor: Color = PersianTheme.colorScheme.primary,
         validIndicatorColor: Color = PersianTheme.colorScheme.valid,
         errorIndicatorColor: Color = PersianTheme.colorScheme.error,
-        disabledIndicatorColor: Color = PersianTheme.colorScheme.onSurface.state12,
 
         //Leading Icon Colors
         defaultLeadingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
@@ -102,7 +93,6 @@ object TextAreaDefaults {
         focusedLeadingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         validLeadingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         errorLeadingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
-        disabledLeadingIconColor: Color = PersianTheme.colorScheme.onSurface.state38,
 
         //Placeholder Colors
         defaultPlaceholderColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
@@ -110,7 +100,6 @@ object TextAreaDefaults {
         focusedPlaceholderColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         validPlaceholderColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         errorPlaceholderColor: Color = PersianTheme.colorScheme.error,
-        disabledPlaceholderColor: Color = PersianTheme.colorScheme.onSurface.state38,
     ): TextAreaColors =
         TextAreaColors(
 
@@ -120,7 +109,6 @@ object TextAreaDefaults {
             focusedTextColor = focusedTextColor,
             validTextColor = validTextColor,
             errorTextColor = errorTextColor,
-            disabledTextColor = disabledTextColor,
 
             //Container Colors
             defaultContainerColor = defaultContainerColor,
@@ -128,7 +116,6 @@ object TextAreaDefaults {
             focusedContainerColor = focusedContainerColor,
             validContainerColor = validContainerColor,
             errorContainerColor = errorContainerColor,
-            disabledContainerColor = disabledContainerColor,
 
             //Cursor Colors
             defaultCursorColor = defaultCursorColor,
@@ -142,7 +129,6 @@ object TextAreaDefaults {
             focusedIndicatorColor = focusedIndicatorColor,
             validIndicatorColor = validIndicatorColor,
             errorIndicatorColor = errorIndicatorColor,
-            disabledIndicatorColor = disabledIndicatorColor,
 
             //Leading Icon Colors
             defaultLeadingIconColor = defaultLeadingIconColor,
@@ -150,7 +136,6 @@ object TextAreaDefaults {
             focusedLeadingIconColor = focusedLeadingIconColor,
             validLeadingIconColor = validLeadingIconColor,
             errorLeadingIconColor = errorLeadingIconColor,
-            disabledLeadingIconColor = disabledLeadingIconColor,
 
             //Placeholder Colors
             defaultPlaceholderColor = defaultPlaceholderColor,
@@ -158,7 +143,6 @@ object TextAreaDefaults {
             focusedPlaceholderColor = focusedPlaceholderColor,
             errorPlaceholderColor = errorPlaceholderColor,
             validPlaceholderColor = validPlaceholderColor,
-            disabledPlaceholderColor = disabledPlaceholderColor,
         )
 
     /**
@@ -169,13 +153,11 @@ object TextAreaDefaults {
      * @param focusedTextColor The color of the text when focused.
      * @param validTextColor The color of the text when valid.
      * @param errorTextColor The color of the text when there is an error.
-     * @param disabledTextColor The color of the text when disabled.
      * @param defaultContainerColor The default color of the container.
      * @param hoveredContainerColor The color of the container when hovered.
      * @param focusedContainerColor The color of the container when focused.
      * @param validContainerColor The color of the container when valid.
      * @param errorContainerColor The color of the container when there is an error.
-     * @param disabledContainerColor The color of the container when disabled.
      * @param defaultCursorColor The default color of the cursor.
      * @param validCursorColor The color of the cursor when valid.
      * @param errorCursorColor The color of the cursor when there is an error.
@@ -185,13 +167,11 @@ object TextAreaDefaults {
      * @param focusedLeadingIconColor The color of the leading icon when focused.
      * @param validLeadingIconColor The color of the leading icon when valid.
      * @param errorLeadingIconColor The color of the leading icon when there is an error.
-     * @param disabledLeadingIconColor The color of the leading icon when disabled.
      * @param defaultPlaceholderColor The default color of the placeholder.
      * @param hoveredPlaceholderColor The color of the placeholder when hovered.
      * @param focusedPlaceholderColor The color of the placeholder when focused.
      * @param validPlaceholderColor The color of the placeholder when valid.
      * @param errorPlaceholderColor The color of the placeholder when there is an error.
-     * @param disabledPlaceholderColor The color of the placeholder when disabled.
      */
     @Composable
     fun plainColors(
@@ -201,7 +181,6 @@ object TextAreaDefaults {
         focusedTextColor: Color = PersianTheme.colorScheme.onSurface,
         validTextColor: Color = PersianTheme.colorScheme.valid,
         errorTextColor: Color = PersianTheme.colorScheme.error,
-        disabledTextColor: Color = PersianTheme.colorScheme.onSurface.state38,
 
         //Container Colors
         defaultContainerColor: Color = Color.Transparent,
@@ -209,7 +188,6 @@ object TextAreaDefaults {
         focusedContainerColor: Color = PersianTheme.colorScheme.primaryContainer.state16,
         validContainerColor: Color = PersianTheme.colorScheme.validContainer.state12,
         errorContainerColor: Color = PersianTheme.colorScheme.errorContainer.state12,
-        disabledContainerColor: Color = PersianTheme.colorScheme.onSurface.state08,
 
         //Cursor Colors
         defaultCursorColor: Color = PersianTheme.colorScheme.primary,
@@ -226,7 +204,6 @@ object TextAreaDefaults {
         focusedLeadingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         validLeadingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         errorLeadingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
-        disabledLeadingIconColor: Color = PersianTheme.colorScheme.onSurface.state38,
 
         //Placeholder Colors
         defaultPlaceholderColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
@@ -234,7 +211,6 @@ object TextAreaDefaults {
         focusedPlaceholderColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         validPlaceholderColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         errorPlaceholderColor: Color = PersianTheme.colorScheme.error,
-        disabledPlaceholderColor: Color = PersianTheme.colorScheme.onSurface.state38,
     ): TextAreaColors =
         TextAreaColors(
             //Text Colors
@@ -243,7 +219,6 @@ object TextAreaDefaults {
             focusedTextColor = focusedTextColor,
             validTextColor = validTextColor,
             errorTextColor = errorTextColor,
-            disabledTextColor = disabledTextColor,
 
             //Container Colors
             defaultContainerColor = defaultContainerColor,
@@ -251,7 +226,6 @@ object TextAreaDefaults {
             focusedContainerColor = focusedContainerColor,
             validContainerColor = validContainerColor,
             errorContainerColor = errorContainerColor,
-            disabledContainerColor = disabledContainerColor,
 
             //Cursor Colors
             defaultCursorColor = defaultCursorColor,
@@ -265,7 +239,6 @@ object TextAreaDefaults {
             focusedIndicatorColor = Color.Transparent,
             validIndicatorColor = Color.Transparent,
             errorIndicatorColor = Color.Transparent,
-            disabledIndicatorColor = Color.Transparent,
 
             //Leading Icon Colors
             defaultLeadingIconColor = defaultLeadingIconColor,
@@ -273,7 +246,6 @@ object TextAreaDefaults {
             focusedLeadingIconColor = focusedLeadingIconColor,
             validLeadingIconColor = validLeadingIconColor,
             errorLeadingIconColor = errorLeadingIconColor,
-            disabledLeadingIconColor = disabledLeadingIconColor,
 
             //Placeholder Colors
             defaultPlaceholderColor = defaultPlaceholderColor,
@@ -281,7 +253,6 @@ object TextAreaDefaults {
             focusedPlaceholderColor = focusedPlaceholderColor,
             errorPlaceholderColor = errorPlaceholderColor,
             validPlaceholderColor = validPlaceholderColor,
-            disabledPlaceholderColor = disabledPlaceholderColor,
         )
 }
 
@@ -296,13 +267,11 @@ object TextAreaDefaults {
  * @param focusedTextColor The color of the text when focused.
  * @param validTextColor The color of the text when valid.
  * @param errorTextColor The color of the text when there is an error.
- * @param disabledTextColor The color of the text when disabled.
  * @param defaultContainerColor The default color of the container.
  * @param hoveredContainerColor The color of the container when hovered.
  * @param focusedContainerColor The color of the container when focused.
  * @param validContainerColor The color of the container when valid.
  * @param errorContainerColor The color of the container when there is an error.
- * @param disabledContainerColor The color of the container when disabled.
  * @param defaultCursorColor The default color of the cursor.
  * @param validCursorColor The color of the cursor when valid.
  * @param errorCursorColor The color of the cursor when there is an error.
@@ -312,19 +281,16 @@ object TextAreaDefaults {
  * @param focusedIndicatorColor The color of the indicator when focused.
  * @param validIndicatorColor The color of the indicator when valid.
  * @param errorIndicatorColor The color of the indicator when there is an error.
- * @param disabledIndicatorColor The color of the indicator when disabled.
  * @param defaultLeadingIconColor The default color of the leading icon.
  * @param hoveredLeadingIconColor The color of the leading icon when hovered.
  * @param focusedLeadingIconColor The color of the leading icon when focused.
  * @param validLeadingIconColor The color of the leading icon when valid.
  * @param errorLeadingIconColor The color of the leading icon when there is an error.
- * @param disabledLeadingIconColor The color of the leading icon when disabled.
  * @param defaultPlaceholderColor The default color of the placeholder.
  * @param hoveredPlaceholderColor The color of the placeholder when hovered.
  * @param focusedPlaceholderColor The color of the placeholder when focused.
  * @param validPlaceholderColor The color of the placeholder when valid.
  * @param errorPlaceholderColor The color of the placeholder when there is an error.
- * @param disabledPlaceholderColor The color of the placeholder when disabled.
  */
 @Immutable
 class TextAreaColors internal constructor(
@@ -334,7 +300,6 @@ class TextAreaColors internal constructor(
     private val focusedTextColor: Color,
     private val validTextColor: Color,
     private val errorTextColor: Color,
-    private val disabledTextColor: Color,
 
     //Container Colors
     private val defaultContainerColor: Color,
@@ -342,7 +307,6 @@ class TextAreaColors internal constructor(
     private val focusedContainerColor: Color,
     private val validContainerColor: Color,
     private val errorContainerColor: Color,
-    private val disabledContainerColor: Color,
 
     //Cursor Colors
     private val defaultCursorColor: Color,
@@ -356,7 +320,6 @@ class TextAreaColors internal constructor(
     private val focusedIndicatorColor: Color,
     private val validIndicatorColor: Color,
     private val errorIndicatorColor: Color,
-    private val disabledIndicatorColor: Color,
 
     //Leading Icon Colors
     private val defaultLeadingIconColor: Color,
@@ -364,7 +327,6 @@ class TextAreaColors internal constructor(
     private val focusedLeadingIconColor: Color,
     private val validLeadingIconColor: Color,
     private val errorLeadingIconColor: Color,
-    private val disabledLeadingIconColor: Color,
 
     //Placeholder Colors
     private val defaultPlaceholderColor: Color,
@@ -372,7 +334,6 @@ class TextAreaColors internal constructor(
     private val focusedPlaceholderColor: Color,
     private val validPlaceholderColor: Color,
     private val errorPlaceholderColor: Color,
-    private val disabledPlaceholderColor: Color,
 ) {
     /**
      * Returns the text color based on the enabled state, validity, error state, and interaction source.
@@ -393,7 +354,7 @@ class TextAreaColors internal constructor(
         val hovered by interactionSource.collectIsHoveredAsState()
 
         val targetValue = when {
-            !enabled -> disabledTextColor
+            !enabled -> defaultTextColor
             isError -> errorTextColor
             isValid -> validTextColor
             hovered -> hoveredTextColor
@@ -423,7 +384,7 @@ class TextAreaColors internal constructor(
         val hovered by interactionSource.collectIsHoveredAsState()
 
         val targetValue = when {
-            !enabled -> disabledContainerColor
+            !enabled -> defaultContainerColor
             isError -> errorContainerColor
             isValid -> validContainerColor
             hovered -> hoveredContainerColor
@@ -474,7 +435,7 @@ class TextAreaColors internal constructor(
         val hovered by interactionSource.collectIsHoveredAsState()
 
         val targetValue = when {
-            !enabled -> disabledIndicatorColor
+            !enabled -> defaultIndicatorColor
             isError -> errorIndicatorColor
             isValid -> validIndicatorColor
             hovered -> hoveredIndicatorColor
@@ -502,7 +463,7 @@ class TextAreaColors internal constructor(
         val hovered by interactionSource.collectIsHoveredAsState()
 
         val targetValue = when {
-            !enabled -> disabledPlaceholderColor
+            !enabled -> defaultPlaceholderColor
             isError -> errorPlaceholderColor
             isValid -> validPlaceholderColor
             focused -> focusedPlaceholderColor
@@ -522,7 +483,6 @@ class TextAreaColors internal constructor(
         if (focusedTextColor != other.focusedTextColor) return false
         if (validTextColor != other.validTextColor) return false
         if (errorTextColor != other.errorTextColor) return false
-        if (disabledTextColor != other.disabledTextColor) return false
 
         //Container Colors
         if (defaultContainerColor != other.defaultContainerColor) return false
@@ -530,7 +490,6 @@ class TextAreaColors internal constructor(
         if (focusedContainerColor != other.focusedContainerColor) return false
         if (errorContainerColor != other.errorContainerColor) return false
         if (validContainerColor != other.validContainerColor) return false
-        if (disabledContainerColor != other.disabledContainerColor) return false
 
         //Cursor Colors
         if (defaultCursorColor != other.defaultCursorColor) return false
@@ -544,7 +503,6 @@ class TextAreaColors internal constructor(
         if (hoveredIndicatorColor != other.hoveredIndicatorColor) return false
         if (validIndicatorColor != other.validIndicatorColor) return false
         if (errorIndicatorColor != other.errorIndicatorColor) return false
-        if (disabledIndicatorColor != other.disabledIndicatorColor) return false
 
         //Leading Icon Colors
         if (defaultLeadingIconColor != other.defaultLeadingIconColor) return false
@@ -552,15 +510,13 @@ class TextAreaColors internal constructor(
         if (focusedLeadingIconColor != other.focusedLeadingIconColor) return false
         if (validLeadingIconColor != other.validLeadingIconColor) return false
         if (errorLeadingIconColor != other.errorLeadingIconColor) return false
-        if (disabledLeadingIconColor != other.disabledLeadingIconColor) return false
 
         //Placeholder Colors
         if (defaultPlaceholderColor != other.defaultPlaceholderColor) return false
         if (hoveredPlaceholderColor != other.hoveredPlaceholderColor) return false
         if (focusedPlaceholderColor != other.focusedPlaceholderColor) return false
         if (validPlaceholderColor != other.validPlaceholderColor) return false
-        if (errorPlaceholderColor != other.errorPlaceholderColor) return false
-        return disabledPlaceholderColor == other.disabledPlaceholderColor
+        return errorPlaceholderColor == other.errorPlaceholderColor
     }
 
     override fun hashCode(): Int {
@@ -570,7 +526,6 @@ class TextAreaColors internal constructor(
         result = 31 * result + focusedTextColor.hashCode()
         result = 31 * result + errorTextColor.hashCode()
         result = 31 * result + validTextColor.hashCode()
-        result = 31 * result + disabledTextColor.hashCode()
 
         //Container Colors
         result = 31 * result + defaultContainerColor.hashCode()
@@ -578,7 +533,6 @@ class TextAreaColors internal constructor(
         result = 31 * result + focusedContainerColor.hashCode()
         result = 31 * result + errorContainerColor.hashCode()
         result = 31 * result + validContainerColor.hashCode()
-        result = 31 * result + disabledContainerColor.hashCode()
 
         //Cursor Colors
         result = 31 * result + defaultCursorColor.hashCode()
@@ -592,7 +546,6 @@ class TextAreaColors internal constructor(
         result = 31 * result + focusedIndicatorColor.hashCode()
         result = 31 * result + errorIndicatorColor.hashCode()
         result = 31 * result + validIndicatorColor.hashCode()
-        result = 31 * result + disabledIndicatorColor.hashCode()
 
         //Leading Icon Colors
         result = 31 * result + defaultLeadingIconColor.hashCode()
@@ -600,7 +553,6 @@ class TextAreaColors internal constructor(
         result = 31 * result + focusedLeadingIconColor.hashCode()
         result = 31 * result + validLeadingIconColor.hashCode()
         result = 31 * result + errorLeadingIconColor.hashCode()
-        result = 31 * result + disabledLeadingIconColor.hashCode()
 
         //Placeholder Colors
         result = 31 * result + defaultPlaceholderColor.hashCode()
@@ -608,7 +560,6 @@ class TextAreaColors internal constructor(
         result = 31 * result + focusedPlaceholderColor.hashCode()
         result = 31 * result + errorPlaceholderColor.hashCode()
         result = 31 * result + validPlaceholderColor.hashCode()
-        result = 31 * result + disabledPlaceholderColor.hashCode()
         return result
     }
 
