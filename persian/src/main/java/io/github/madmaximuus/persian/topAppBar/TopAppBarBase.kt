@@ -120,10 +120,10 @@ private fun TopAppBarLayout(
     left: (@Composable TopAppBarLeftScope.() -> Unit)?,
     right: (@Composable TopAppBarRightScope.() -> Unit)?,
 ) {
-    val leftScope = remember {
+    val leftScope = remember(colors, sizes) {
         TopAppBarLeftScopeWrapper(colors, sizes)
     }
-    val rightScope = remember {
+    val rightScope = remember(colors, sizes) {
         TopAppBarRightScopeWrapper(colors, sizes)
     }
     val padding = with(LocalDensity.current) { 8.dp.roundToPx() }

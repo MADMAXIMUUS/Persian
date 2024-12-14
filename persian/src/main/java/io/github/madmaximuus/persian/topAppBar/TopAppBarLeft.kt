@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.avatarsAndImages.Avatar
+import io.github.madmaximuus.persian.avatarAndImage.Avatar
 import io.github.madmaximuus.persian.iconButton.TertiaryIconButton
 import io.github.madmaximuus.persian.topAppBar.util.LayoutId
 

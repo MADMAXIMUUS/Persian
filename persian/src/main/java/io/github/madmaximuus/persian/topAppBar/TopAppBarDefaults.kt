@@ -15,9 +15,9 @@ import androidx.compose.runtime.Stable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.text.TextStyle
-import io.github.madmaximuus.persian.avatarsAndImages.AvatarColors
-import io.github.madmaximuus.persian.avatarsAndImages.AvatarDefaults
-import io.github.madmaximuus.persian.avatarsAndImages.AvatarSizes
+import io.github.madmaximuus.persian.avatarAndImage.AvatarColors
+import io.github.madmaximuus.persian.avatarAndImage.AvatarDefaults
+import io.github.madmaximuus.persian.avatarAndImage.AvatarSizes
 import io.github.madmaximuus.persian.button.ButtonDefaults
 import io.github.madmaximuus.persian.button.ButtonSizes
 import io.github.madmaximuus.persian.counter.CounterColors
