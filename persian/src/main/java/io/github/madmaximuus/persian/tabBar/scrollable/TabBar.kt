@@ -5,7 +5,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import io.github.madmaximuus.persian.counter.utils.BadgeStyle
-import io.github.madmaximuus.persian.dividers.HorizontalDivider
+import io.github.madmaximuus.persian.divider.Divider
 import io.github.madmaximuus.persian.tabBar.TabBarDefaults
 import io.github.madmaximuus.persian.tabBar.TabColors
 import io.github.madmaximuus.persian.tabBar.TabSizes
@@ -60,7 +60,7 @@ fun ScrollableTabBar(
                 Modifier.tabIndicatorOffset(selectedTabIndex, matchContentSize = true),
             )
         },
-    divider: @Composable () -> Unit = @Composable { HorizontalDivider() },
+    divider: @Composable () -> Unit = @Composable { Divider() },
     tabs: @Composable TabBarItemScope.() -> Unit
 ) {
     ScrollableTabRowImpl(
