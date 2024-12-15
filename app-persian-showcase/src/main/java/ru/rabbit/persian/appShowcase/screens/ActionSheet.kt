@@ -20,12 +20,12 @@ import io.github.madmaximuus.persian.actionSheet.ActionSheet
 import io.github.madmaximuus.persian.actionSheet.Header
 import io.github.madmaximuus.persian.button.ButtonDefaults
 import io.github.madmaximuus.persian.button.PrimaryButton
-import io.github.madmaximuus.persian.forms.Checkbox
-import io.github.madmaximuus.persian.forms.Checkboxes
-import io.github.madmaximuus.persian.forms.FormItem
-import io.github.madmaximuus.persian.forms.Input
-import io.github.madmaximuus.persian.forms.Subhead
-import io.github.madmaximuus.persian.forms.TextArea
+import io.github.madmaximuus.persian.formItem.Checkbox
+import io.github.madmaximuus.persian.formItem.Checkboxes
+import io.github.madmaximuus.persian.formItem.FormItem
+import io.github.madmaximuus.persian.formItem.Input
+import io.github.madmaximuus.persian.formItem.Subhead
+import io.github.madmaximuus.persian.formItem.TextArea
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
@@ -69,38 +69,20 @@ object ActionSheet : Screen {
             ) {
                 if (title) {
                     FormItem(
-                        modifier = Modifier.padding(top = PersianTheme.spacing.size8),
-                        subhead = {
-                            Subhead(text = "Title")
-                        },
-                        content = {
-                            Input(state = titleState)
-                        },
+                        subhead = { Subhead(text = "Title") },
+                        content = { Input(state = titleState) },
                         isError = titleError,
                     )
                 }
                 if (message) {
                     FormItem(
-                        modifier = Modifier.padding(top = PersianTheme.spacing.size12),
-                        subhead = {
-                            Subhead(text = "Message")
-                        },
-                        content = {
-                            TextArea(state = subtitleState)
-                        },
+                        subhead = { Subhead(text = "Message") },
+                        content = { TextArea(state = subtitleState) },
                         isError = subtitleError,
                     )
                 }
                 FormItem(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = PersianTheme.spacing.size12),
-                    subhead = {
-                        Subhead(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Settings"
-                        )
-                    },
+                    subhead = { Subhead(text = "Settings") },
                     content = {
                         Checkboxes {
                             Checkbox(
