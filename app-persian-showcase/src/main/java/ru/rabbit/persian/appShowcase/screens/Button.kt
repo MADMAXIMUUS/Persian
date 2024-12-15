@@ -2,7 +2,6 @@ package ru.rabbit.persian.appShowcase.screens
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -22,14 +21,13 @@ import io.github.madmaximuus.persian.button.OutlinedButton
 import io.github.madmaximuus.persian.button.PrimaryButton
 import io.github.madmaximuus.persian.button.SecondaryButton
 import io.github.madmaximuus.persian.button.TertiaryButton
-import io.github.madmaximuus.persian.forms.Checkbox
-import io.github.madmaximuus.persian.forms.Checkboxes
-import io.github.madmaximuus.persian.forms.FormItem
-import io.github.madmaximuus.persian.forms.Input
-import io.github.madmaximuus.persian.forms.RadioButton
-import io.github.madmaximuus.persian.forms.RadioButtons
-import io.github.madmaximuus.persian.forms.Subhead
-import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.formItem.Checkbox
+import io.github.madmaximuus.persian.formItem.Checkboxes
+import io.github.madmaximuus.persian.formItem.FormItem
+import io.github.madmaximuus.persian.formItem.Input
+import io.github.madmaximuus.persian.formItem.RadioButton
+import io.github.madmaximuus.persian.formItem.RadioButtons
+import io.github.madmaximuus.persian.formItem.Subhead
 import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
 import io.github.madmaximuus.persianSymbols.chevronRight.ChevronRight
@@ -169,15 +167,11 @@ object Button : Screen {
                 )
                 if (additionInfo) {
                     FormItem(
-                        modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                         subhead = { Subhead(text = "Additional info") },
                         content = { Input(state = additionalInfoState) }
                     )
                 }
                 FormItem(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = PersianTheme.spacing.size12),
                     subhead = { Subhead(text = "Style") },
                     content = {
                         RadioButtons {
@@ -225,9 +219,6 @@ object Button : Screen {
                     }
                 )
                 FormItem(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = PersianTheme.spacing.size12),
                     subhead = { Subhead(text = "Size") },
                     content = {
                         RadioButtons {
@@ -265,15 +256,7 @@ object Button : Screen {
                     }
                 )
                 FormItem(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = PersianTheme.spacing.size20),
-                    subhead = {
-                        Subhead(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Settings"
-                        )
-                    },
+                    subhead = { Subhead(text = "Settings") },
                     content = {
                         Checkboxes {
                             if (sizeState != small) {
