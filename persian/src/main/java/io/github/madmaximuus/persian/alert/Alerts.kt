@@ -19,8 +19,8 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.window.core.layout.WindowHeightSizeClass
 import androidx.window.core.layout.WindowWidthSizeClass
-import io.github.madmaximuus.persian.dividers.HorizontalDivider
-import io.github.madmaximuus.persian.dividers.HorizontalInsetSide
+import io.github.madmaximuus.persian.divider.Divider
+import io.github.madmaximuus.persian.divider.InsetSide
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.surface.Surface
 import io.github.madmaximuus.persian.text.Text
@@ -120,8 +120,8 @@ fun Alert(
                             }
                             content?.invoke()
                             if (content != null) {
-                                HorizontalDivider(
-                                    insetSide = HorizontalInsetSide.BOTH,
+                                Divider(
+                                    insetSide = InsetSide.BOTH,
                                     strokeColor = colors.dividerColor,
                                     sizes = sizes.dividerSizes
                                 )

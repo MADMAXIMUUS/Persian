@@ -7,8 +7,8 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
 import io.github.madmaximuus.persian.button.ButtonDefaults
 import io.github.madmaximuus.persian.button.ButtonSizes
-import io.github.madmaximuus.persian.dividers.DividerDefaults
-import io.github.madmaximuus.persian.dividers.DividerSizes
+import io.github.madmaximuus.persian.divider.DividerDefaults
+import io.github.madmaximuus.persian.divider.DividerSizes
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
 /**

@@ -18,12 +18,12 @@ import io.github.madmaximuus.persian.alert.Action
 import io.github.madmaximuus.persian.alert.Alert
 import io.github.madmaximuus.persian.button.ButtonDefaults
 import io.github.madmaximuus.persian.button.PrimaryButton
-import io.github.madmaximuus.persian.forms.Checkbox
-import io.github.madmaximuus.persian.forms.Checkboxes
-import io.github.madmaximuus.persian.forms.FormItem
-import io.github.madmaximuus.persian.forms.Input
-import io.github.madmaximuus.persian.forms.Subhead
-import io.github.madmaximuus.persian.forms.TextArea
+import io.github.madmaximuus.persian.formItem.Checkbox
+import io.github.madmaximuus.persian.formItem.Checkboxes
+import io.github.madmaximuus.persian.formItem.FormItem
+import io.github.madmaximuus.persian.formItem.Input
+import io.github.madmaximuus.persian.formItem.Subhead
+import io.github.madmaximuus.persian.formItem.TextArea
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.radioButton.RadioButton
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
@@ -52,32 +52,19 @@ object Alert : Screen {
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 FormItem(
-                    modifier = Modifier.padding(top = PersianTheme.spacing.size8),
-                    subhead = {
-                        Subhead(text = "Title")
-                    },
-                    content = {
-                        Input(state = titleState)
-                    },
+                    subhead = { Subhead(text = "Title") },
+                    content = { Input(state = titleState) },
                     isError = titleError,
                 )
                 if (description) {
                     FormItem(
-                        modifier = Modifier.padding(top = PersianTheme.spacing.size12),
-                        subhead = { Subhead(text = "Title") },
+                        subhead = { Subhead(text = "Message") },
                         content = { TextArea(state = messageState) },
                         isError = descriptionError,
                     )
                 }
                 FormItem(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = PersianTheme.spacing.size12),
-                    subhead = {
-                        Subhead(
-                            text = "Settings"
-                        )
-                    },
+                    subhead = { Subhead(text = "Settings") },
                     content = {
                         Checkboxes {
                             Checkbox(
@@ -97,7 +84,7 @@ object Alert : Screen {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = PersianTheme.spacing.size16)
-                        .padding(top = PersianTheme.spacing.size12),
+                        .padding(top = PersianTheme.spacing.size8),
                     text = "Show alert",
                     sizes = ButtonDefaults.largeSizes()
                 ) {
