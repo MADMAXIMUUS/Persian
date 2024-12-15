@@ -21,13 +21,13 @@ import io.github.madmaximuus.persian.avatarAndImage.AvatarDefaults
 import io.github.madmaximuus.persian.avatarAndImage.Image
 import io.github.madmaximuus.persian.avatarAndImage.ImageDefaults
 import io.github.madmaximuus.persian.avatarAndImage.ImageShape
-import io.github.madmaximuus.persian.forms.Checkbox
-import io.github.madmaximuus.persian.forms.Checkboxes
-import io.github.madmaximuus.persian.forms.FormItem
-import io.github.madmaximuus.persian.forms.RadioButton
-import io.github.madmaximuus.persian.forms.RadioButtons
-import io.github.madmaximuus.persian.forms.Select
-import io.github.madmaximuus.persian.forms.Subhead
+import io.github.madmaximuus.persian.formItem.Checkbox
+import io.github.madmaximuus.persian.formItem.Checkboxes
+import io.github.madmaximuus.persian.formItem.FormItem
+import io.github.madmaximuus.persian.formItem.RadioButton
+import io.github.madmaximuus.persian.formItem.RadioButtons
+import io.github.madmaximuus.persian.formItem.Select
+import io.github.madmaximuus.persian.formItem.Subhead
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.menu.DropdownMenuItem
 import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
@@ -159,12 +159,9 @@ object AvatarAndImage : Screen {
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(top = PersianTheme.spacing.size12)
                 ) {
                     FormItem(
-                        subhead = {
-                            Subhead(text = "Sizes")
-                        },
+                        subhead = { Subhead(text = "Sizes") },
                         content = {
                             Select(
                                 state = selectedSizeState,
@@ -311,15 +308,7 @@ object AvatarAndImage : Screen {
                         },
                     )
                     FormItem(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(top = PersianTheme.spacing.size12),
-                        subhead = {
-                            Subhead(
-                                modifier = Modifier.fillMaxWidth(),
-                                text = "Shape"
-                            )
-                        },
+                        subhead = { Subhead(text = "Shape") },
                         content = {
                             RadioButtons {
                                 RadioButton(
@@ -356,15 +345,7 @@ object AvatarAndImage : Screen {
                         }
                     )
                     FormItem(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(top = PersianTheme.spacing.size12),
-                        subhead = {
-                            Subhead(
-                                modifier = Modifier.fillMaxWidth(),
-                                text = "Settings"
-                            )
-                        },
+                        subhead = { Subhead(text = "Settings") },
                         content = {
                             Checkboxes {
                                 Checkbox(
