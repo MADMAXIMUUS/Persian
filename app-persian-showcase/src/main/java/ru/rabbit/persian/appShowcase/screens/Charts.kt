@@ -23,12 +23,11 @@ import io.github.madmaximuus.persian.charts.pie.PieChartDefaults
 import io.github.madmaximuus.persian.charts.util.ChartConfig
 import io.github.madmaximuus.persian.charts.util.ChartData
 import io.github.madmaximuus.persian.checkboxes.Checkbox
-import io.github.madmaximuus.persian.forms.Checkboxes
-import io.github.madmaximuus.persian.forms.FormItem
-import io.github.madmaximuus.persian.forms.RadioButton
-import io.github.madmaximuus.persian.forms.RadioButtons
-import io.github.madmaximuus.persian.forms.Subhead
-import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.formItem.Checkboxes
+import io.github.madmaximuus.persian.formItem.FormItem
+import io.github.madmaximuus.persian.formItem.RadioButton
+import io.github.madmaximuus.persian.formItem.RadioButtons
+import io.github.madmaximuus.persian.formItem.Subhead
 import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
 import ru.rabbit.persian.appShowcase.componets.SampleRow
@@ -143,15 +142,9 @@ object Charts : Screen {
                         }
                     }
                 }
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = PersianTheme.spacing.size12),
-                ) {
+                Column(modifier = Modifier.fillMaxWidth()) {
                     FormItem(
-                        subhead = {
-                            Subhead(text = "Style")
-                        },
+                        subhead = { Subhead(text = "Style") },
                         content = {
                             RadioButtons {
                                 RadioButton(
@@ -178,10 +171,7 @@ object Charts : Screen {
                         }
                     )
                     FormItem(
-                        modifier = Modifier.padding(top = PersianTheme.spacing.size12),
-                        subhead = {
-                            Subhead(text = "Settings")
-                        },
+                        subhead = { Subhead(text = "Settings") },
                         content = {
                             Checkboxes {
                                 Checkbox(
