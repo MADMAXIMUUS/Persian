@@ -4,7 +4,6 @@ import android.net.Uri
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -20,7 +19,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.checkboxes.Checkbox
 import io.github.madmaximuus.persian.chips.assist.AssistChip
 import io.github.madmaximuus.persian.chips.assist.Icon
 import io.github.madmaximuus.persian.chips.assist.Image
@@ -32,12 +30,13 @@ import io.github.madmaximuus.persian.chips.input.Image
 import io.github.madmaximuus.persian.chips.input.InputShip
 import io.github.madmaximuus.persian.chips.suggestion.Icon
 import io.github.madmaximuus.persian.chips.suggestion.SuggestionChip
-import io.github.madmaximuus.persian.forms.Checkboxes
-import io.github.madmaximuus.persian.forms.FormItem
-import io.github.madmaximuus.persian.forms.Input
-import io.github.madmaximuus.persian.forms.RadioButton
-import io.github.madmaximuus.persian.forms.RadioButtons
-import io.github.madmaximuus.persian.forms.Subhead
+import io.github.madmaximuus.persian.formItem.Checkbox
+import io.github.madmaximuus.persian.formItem.Checkboxes
+import io.github.madmaximuus.persian.formItem.FormItem
+import io.github.madmaximuus.persian.formItem.Input
+import io.github.madmaximuus.persian.formItem.RadioButton
+import io.github.madmaximuus.persian.formItem.RadioButtons
+import io.github.madmaximuus.persian.formItem.Subhead
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
@@ -214,7 +213,6 @@ object Chips : Screen {
                     content = { Input(state = labelState) }
                 )
                 FormItem(
-                    modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                     subhead = { Subhead(text = "Style") },
                     content = {
                         RadioButtons {
@@ -263,28 +261,22 @@ object Chips : Screen {
                     }
                 )
                 FormItem(
-                    modifier = Modifier.padding(top = PersianTheme.spacing.size12),
-                    subhead = {
-                        Subhead(text = "Settings")
-                    },
+                    subhead = { Subhead(text = "Settings") },
                     content = {
                         Checkboxes {
                             Checkbox(
-                                modifier = Modifier.fillMaxWidth(),
                                 text = "Leading",
                                 checked = leading,
                                 onCheckedChange = onLeadingChange
                             )
                             if (styleStates[0].value || styleStates[3].value) {
                                 Checkbox(
-                                    modifier = Modifier.fillMaxWidth(),
                                     text = "Trailing",
                                     checked = trailing,
                                     onCheckedChange = onTrailingChange
                                 )
                             }
                             Checkbox(
-                                modifier = Modifier.fillMaxWidth(),
                                 text = "Enabled",
                                 checked = enabled,
                                 onCheckedChange = onEnabledChane
@@ -294,7 +286,6 @@ object Chips : Screen {
                 )
                 if (leading && !styleStates[0].value && !styleStates[1].value) {
                     FormItem(
-                        modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                         subhead = {
                             Subhead(text = "Leading")
                         },
