@@ -258,8 +258,8 @@ object InputsDefaults {
     @Composable
     fun plainColors(
         //State Icon
-        validStateIcon: Painter = rememberVectorPainter(image = PersianSymbols.Filled.CheckCircle),
-        errorStateIcon: Painter = rememberVectorPainter(image = PersianSymbols.Filled.ExclamationCircle),
+        validStateIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.CheckCircle),
+        errorStateIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.ExclamationCircle),
 
         //State Icon Colors
         validStateIconColor: Color = PersianTheme.colorScheme.valid,
@@ -411,7 +411,7 @@ object InputsDefaults {
 
         placeholderTextStyle: TextStyle = PersianTheme.typography.bodyLarge,
         inputTextStyle: TextStyle = PersianTheme.typography.bodyLarge,
-        suffixTextStyle: TextStyle = PersianTheme.typography.bodyMedium
+        suffixTextStyle: TextStyle = PersianTheme.typography.labelMedium
     ): InputSizes =
         InputSizes(
             unfocusedBorderThickness = unfocusedBorderThickness,
@@ -553,7 +553,7 @@ class InputColors internal constructor(
         enabled: Boolean,
         isSuccess: Boolean,
         isError: Boolean
-    ): State<Painter?> {
+    ): Painter? {
 
         val targetValue = when {
             !enabled -> null
@@ -562,7 +562,7 @@ class InputColors internal constructor(
 
             else -> null
         }
-        return rememberUpdatedState(targetValue)
+        return targetValue
     }
 
     /**
@@ -577,7 +577,7 @@ class InputColors internal constructor(
         enabled: Boolean,
         isValid: Boolean,
         isError: Boolean
-    ): State<Color> {
+    ): Color {
 
         val targetValue = when {
             !enabled -> Color.Transparent
@@ -586,7 +586,7 @@ class InputColors internal constructor(
 
             else -> Color.Transparent
         }
-        return rememberUpdatedState(targetValue)
+        return targetValue
     }
 
     /**
@@ -603,7 +603,7 @@ class InputColors internal constructor(
         isValid: Boolean,
         isError: Boolean,
         interactionSource: InteractionSource
-    ): State<Color> {
+    ): Color {
         val focused by interactionSource.collectIsFocusedAsState()
         val hovered by interactionSource.collectIsHoveredAsState()
 
@@ -616,7 +616,7 @@ class InputColors internal constructor(
 
             else -> defaultTextColor
         }
-        return rememberUpdatedState(targetValue)
+        return targetValue
     }
 
     /**
@@ -633,7 +633,7 @@ class InputColors internal constructor(
         isValid: Boolean,
         isError: Boolean,
         interactionSource: InteractionSource
-    ): State<Color> {
+    ): Color {
         val focused by interactionSource.collectIsFocusedAsState()
         val hovered by interactionSource.collectIsHoveredAsState()
 
@@ -645,7 +645,7 @@ class InputColors internal constructor(
             focused -> focusedContainerColor
             else -> defaultContainerColor
         }
-        return rememberUpdatedState(targetValue)
+        return targetValue
     }
 
     /**
@@ -655,13 +655,13 @@ class InputColors internal constructor(
      * @param isValid Whether the input field is in a valid state.
      */
     @Composable
-    internal fun cursorColor(isError: Boolean, isValid: Boolean): State<Color> {
+    internal fun cursorColor(isError: Boolean, isValid: Boolean): Color {
         val targetValue = when {
             isError -> errorCursorColor
             isValid -> validCursorColor
             else -> defaultCursorColor
         }
-        return rememberUpdatedState(targetValue)
+        return targetValue
     }
 
     /**
@@ -696,10 +696,14 @@ class InputColors internal constructor(
             focused -> focusedIndicatorColor
             else -> defaultIndicatorColor
         }
-        return animateColorAsState(
-            targetValue, tween(durationMillis = ANIMATION_DURATION),
-            label = "Indicator Color Animation"
-        )
+        return if (enabled) {
+            animateColorAsState(
+                targetValue, tween(durationMillis = ANIMATION_DURATION),
+                label = "Indicator Color Animation"
+            )
+        } else {
+            rememberUpdatedState(targetValue)
+        }
     }
 
     /**
@@ -716,20 +720,20 @@ class InputColors internal constructor(
         isValid: Boolean,
         isError: Boolean,
         interactionSource: InteractionSource
-    ): State<Color> {
+    ): Color {
         val focused by interactionSource.collectIsFocusedAsState()
         val hovered by interactionSource.collectIsHoveredAsState()
 
-        return rememberUpdatedState(
-            when {
-                !enabled -> defaultLeadingIconColor
-                isError -> errorLeadingIconColor
-                isValid -> validLeadingIconColor
-                focused -> focusedLeadingIconColor
-                hovered -> hoveredLeadingIconColor
-                else -> defaultLeadingIconColor
-            }
-        )
+        val target = when {
+            !enabled -> defaultLeadingIconColor
+            isError -> errorLeadingIconColor
+            isValid -> validLeadingIconColor
+            focused -> focusedLeadingIconColor
+            hovered -> hoveredLeadingIconColor
+            else -> defaultLeadingIconColor
+        }
+
+        return target
     }
 
     /**
@@ -746,20 +750,20 @@ class InputColors internal constructor(
         isValid: Boolean,
         isError: Boolean,
         interactionSource: InteractionSource
-    ): State<Color> {
+    ): Color {
         val focused by interactionSource.collectIsFocusedAsState()
         val hovered by interactionSource.collectIsHoveredAsState()
 
-        return rememberUpdatedState(
-            when {
-                !enabled -> defaultTrailingIconColor
-                isError -> errorTrailingIconColor
-                isValid -> validTrailingIconColor
-                focused -> focusedTrailingIconColor
-                hovered -> hoveredTrailingIconColor
-                else -> defaultTrailingIconColor
-            }
-        )
+        val targetValue = when {
+            !enabled -> defaultTrailingIconColor
+            isError -> errorTrailingIconColor
+            isValid -> validTrailingIconColor
+            focused -> focusedTrailingIconColor
+            hovered -> hoveredTrailingIconColor
+            else -> defaultTrailingIconColor
+        }
+
+        return targetValue
     }
 
     /**
@@ -776,7 +780,7 @@ class InputColors internal constructor(
         isError: Boolean,
         isValid: Boolean,
         interactionSource: InteractionSource
-    ): State<Color> {
+    ): Color {
         val focused by interactionSource.collectIsFocusedAsState()
         val hovered by interactionSource.collectIsHoveredAsState()
 
@@ -788,7 +792,7 @@ class InputColors internal constructor(
             hovered -> hoveredPlaceholderColor
             else -> defaultPlaceholderColor
         }
-        return rememberUpdatedState(targetValue)
+        return targetValue
     }
 
     /**
@@ -805,7 +809,7 @@ class InputColors internal constructor(
         isValid: Boolean,
         isError: Boolean,
         interactionSource: InteractionSource
-    ): State<Color> {
+    ): Color {
         val focused by interactionSource.collectIsFocusedAsState()
         val hovered by interactionSource.collectIsHoveredAsState()
 
@@ -817,7 +821,7 @@ class InputColors internal constructor(
             hovered -> hoveredSuffixColor
             else -> defaultSuffixColor
         }
-        return rememberUpdatedState(targetValue)
+        return targetValue
     }
 
     override fun equals(other: Any?): Boolean {

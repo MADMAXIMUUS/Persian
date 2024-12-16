@@ -9,6 +9,7 @@ import androidx.compose.foundation.interaction.InteractionSource
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -39,6 +40,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.BaselineShift
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.PersianState38
 import io.github.madmaximuus.persian.foundation.PersianTheme
@@ -270,7 +272,7 @@ private fun InputImpl(
     keyboardActions: KeyboardActionHandler?,
     interactionSource: MutableInteractionSource,
 ) {
-    val textColor = colors.textColor(enabled, isValid, isError, interactionSource).value
+    val textColor = colors.textColor(enabled, isValid, isError, interactionSource)
     val mergedTextStyle = sizes.inputTextStyle
         .merge(TextStyle(color = textColor, baselineShift = BaselineShift.None))
 
@@ -292,7 +294,7 @@ private fun InputImpl(
                         colors.cursorColor(
                             isError = isError,
                             isValid = isValid
-                        ).value
+                        )
                     ),
                     decorator = { innerTextField ->
                         DecorationBox(
@@ -332,7 +334,7 @@ private fun InputImpl(
                         colors.cursorColor(
                             isError = isError,
                             isValid = isValid
-                        ).value
+                        )
                     ),
                     decorator = { innerTextField ->
                         DecorationBox(
@@ -375,6 +377,10 @@ internal fun DecorationBox(
     needPlaceholder: Boolean,
     onTrailingIconClick: (() -> Unit)?
 ) {
+    val padding = if (trailingIcon != null) PaddingValues(
+        start = sizes.contentPaddingValues.calculateLeftPadding(LayoutDirection.Ltr),
+        end = PersianTheme.spacing.size4
+    ) else sizes.contentPaddingValues
     val rowModifier = if (border == null)
         Modifier
             .fillMaxWidth()
@@ -384,11 +390,11 @@ internal fun DecorationBox(
                     isValid = isValid,
                     isError = isError,
                     interactionSource = interactionSource
-                ).value,
+                ),
                 shape = sizes.shape
             )
             .height(52.dp)
-            .padding(sizes.contentPaddingValues)
+            .padding(padding)
     else
         Modifier
             .fillMaxWidth()
@@ -398,12 +404,12 @@ internal fun DecorationBox(
                     isValid = isValid,
                     isError = isError,
                     interactionSource = interactionSource
-                ).value,
+                ),
                 shape = sizes.shape
             )
             .border(border, sizes.shape)
             .height(52.dp)
-            .padding(sizes.contentPaddingValues)
+            .padding(padding)
     Row(
         modifier = rowModifier
             .graphicsLayer {
@@ -416,14 +422,14 @@ internal fun DecorationBox(
             enabled = enabled,
             isError = isError,
             isSuccess = isValid
-        ).value?.let { icon ->
+        )?.let { icon ->
             Icon(
                 painter = icon,
                 tint = colors.stateIconColor(
                     enabled = enabled,
                     isValid = isValid,
                     isError = isError,
-                ).value
+                )
             )
             Spacer(modifier = Modifier.width(PersianTheme.spacing.size4))
         } ?: leadingIcon?.let { icon ->
@@ -434,7 +440,7 @@ internal fun DecorationBox(
                     isValid = isValid,
                     isError = isError,
                     interactionSource = interactionSource
-                ).value
+                )
             )
             Spacer(modifier = Modifier.width(PersianTheme.spacing.size4))
         }
@@ -451,7 +457,7 @@ internal fun DecorationBox(
                         isError = isError,
                         isValid = isValid,
                         interactionSource = interactionSource
-                    ).value,
+                    ),
                     style = sizes.placeholderTextStyle
                         .copy(baselineShift = BaselineShift.None),
                 )
@@ -463,7 +469,6 @@ internal fun DecorationBox(
                 modifier = Modifier
                     .wrapContentSize()
                     .padding(horizontal = PersianTheme.spacing.size4)
-                    .padding(end = PersianTheme.spacing.size8)
             ) {
                 Text(
                     text = suffix,
@@ -472,7 +477,7 @@ internal fun DecorationBox(
                         isValid = isValid,
                         isError = isError,
                         interactionSource = interactionSource
-                    ).value,
+                    ),
                     style = sizes.suffixTextStyle
                 )
             }
@@ -481,15 +486,16 @@ internal fun DecorationBox(
             TertiaryIconButton(
                 icon = icon,
                 onClick = { onTrailingIconClick?.invoke() },
+                enabled = enabled,
                 colors = IconButtonDefaults.tertiaryIconButtonColors(
                     contentColor = colors.trailingIconColor(
                         enabled = enabled,
                         isValid = isValid,
                         isError = isError,
                         interactionSource = interactionSource
-                    ).value,
+                    ),
                 )
             )
-        } ?: Spacer(modifier = Modifier.height(PersianTheme.spacing.size8))
+        }
     }
 }
