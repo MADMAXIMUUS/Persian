@@ -20,16 +20,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.forms.Caption
-import io.github.madmaximuus.persian.forms.Checkbox
-import io.github.madmaximuus.persian.forms.Checkboxes
-import io.github.madmaximuus.persian.forms.FormItem
-import io.github.madmaximuus.persian.forms.Input
-import io.github.madmaximuus.persian.forms.RadioButton
-import io.github.madmaximuus.persian.forms.RadioButtons
-import io.github.madmaximuus.persian.forms.Select
-import io.github.madmaximuus.persian.forms.Subhead
-import io.github.madmaximuus.persian.forms.TextArea
+import io.github.madmaximuus.persian.formItem.Caption
+import io.github.madmaximuus.persian.formItem.Checkbox
+import io.github.madmaximuus.persian.formItem.Checkboxes
+import io.github.madmaximuus.persian.formItem.FormItem
+import io.github.madmaximuus.persian.formItem.Input
+import io.github.madmaximuus.persian.formItem.RadioButton
+import io.github.madmaximuus.persian.formItem.RadioButtons
+import io.github.madmaximuus.persian.formItem.Select
+import io.github.madmaximuus.persian.formItem.Subhead
+import io.github.madmaximuus.persian.formItem.TextArea
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.internal.SecureInputSettings
 import io.github.madmaximuus.persian.menu.DropdownMenuItem
@@ -121,7 +121,7 @@ object FormItem : Screen {
                         .padding(horizontal = PersianTheme.spacing.size16)
                         .padding(top = PersianTheme.spacing.size8),
                     text = "Sample",
-                    style = PersianTheme.typography.labelLarge,
+                    style = PersianTheme.typography.labelMedium,
                     color = PersianTheme.colorScheme.onSurfaceVariant
                 )
                 FormItem(
@@ -285,21 +285,20 @@ object FormItem : Screen {
                             if (captionCounter) {
                                 Caption(
                                     text = "Caption",
-                                    errorText = "Error Message",
+                                    errorText = "Error message",
                                     counter = 10,
                                     counterMax = 20
                                 )
                             } else {
                                 Caption(
                                     text = "Caption",
-                                    errorText = "Error Message",
+                                    errorText = "Error message",
                                 )
                             }
                         }
                     } else null
                 )
                 FormItem(
-                    modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                     subhead = { Subhead(text = "Content") },
                     content = {
                         RadioButtons {
@@ -358,7 +357,6 @@ object FormItem : Screen {
                     )
                 }
                 FormItem(
-                    modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                     subhead = { Subhead(text = "Settings") },
                     content = {
                         Checkboxes {
@@ -409,7 +407,6 @@ object FormItem : Screen {
                     }
                 )
                 FormItem(
-                    modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                     subhead = { Subhead(text = "Subhead") },
                     content = {
                         Checkboxes {
@@ -427,7 +424,6 @@ object FormItem : Screen {
                     }
                 )
                 FormItem(
-                    modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                     subhead = { Subhead(text = "Caption") },
                     content = {
                         Checkboxes {

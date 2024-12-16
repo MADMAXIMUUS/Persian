@@ -3,6 +3,7 @@ package io.github.madmaximuus.persian.formItem
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.input.InputTransformation
@@ -12,13 +13,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.text.TextStyle
 import io.github.madmaximuus.persian.checkboxes.Checkbox
 import io.github.madmaximuus.persian.checkboxes.CheckboxColors
 import io.github.madmaximuus.persian.checkboxes.CheckboxDefaults
 import io.github.madmaximuus.persian.checkboxes.CheckboxSizes
-import io.github.madmaximuus.persian.formItem.utils.LayoutId
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.input.InputColors
 import io.github.madmaximuus.persian.input.InputSizes
@@ -103,7 +102,7 @@ fun FormItemContentScope.Input(
 ) {
     OutlineInput(
         state = state,
-        modifier = modifier.layoutId(LayoutId.INPUT),
+        modifier = modifier.padding(horizontal = PersianTheme.spacing.size16),
         enabled = this@Input.enabled,
         isError = this@Input.isError,
         isValid = this@Input.isValid,
@@ -144,7 +143,7 @@ fun FormItemContentScope.TextArea(
 ) {
     OutlineTextArea(
         state = state,
-        modifier = modifier.layoutId(LayoutId.TEXT_AREA),
+        modifier = modifier.padding(horizontal = PersianTheme.spacing.size16),
         enabled = this@TextArea.enabled,
         isError = this@TextArea.isError,
         isValid = this@TextArea.isValid,
@@ -183,7 +182,7 @@ fun FormItemContentScope.Select(
 ) {
     Select(
         state = state,
-        modifier = modifier.layoutId(LayoutId.SELECT),
+        modifier = modifier.padding(horizontal = PersianTheme.spacing.size16),
         expanded = expanded,
         onExpandedChange = onExpandedChange,
         isValid = this@Select.isValid,
@@ -214,7 +213,6 @@ fun FormItemContentScope.RadioButtons(
 ) {
     Column(
         modifier = modifier
-            .layoutId(LayoutId.RADIO_BUTTONS)
             .fillMaxWidth()
             .selectableGroup(),
         content = {
@@ -287,7 +285,6 @@ fun FormItemContentScope.Checkboxes(
 ) {
     Column(
         modifier = modifier
-            .layoutId(LayoutId.CHECKBOXES)
             .fillMaxWidth(),
         content = {
             val scope = remember(colors, sizes) {

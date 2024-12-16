@@ -4,11 +4,10 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.text.TextStyle
-import io.github.madmaximuus.persian.formItem.utils.LayoutId
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.text.Text
 
@@ -62,7 +61,7 @@ fun FormItemSubheadScope.Subhead(
     val resolvedColors = this@Subhead.colors
     val resolvedTextStyle = this@Subhead.textStyle
     Row(
-        modifier = modifier.layoutId(LayoutId.SUBHEAD),
+        modifier = modifier.padding(horizontal = PersianTheme.spacing.size16),
         horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size2)
     ) {
         Text(
