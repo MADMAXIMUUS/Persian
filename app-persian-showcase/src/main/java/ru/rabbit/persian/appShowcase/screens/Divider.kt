@@ -21,10 +21,10 @@ import androidx.navigation.NavController
 import io.github.madmaximuus.persian.divider.Divider
 import io.github.madmaximuus.persian.divider.DividerDefaults
 import io.github.madmaximuus.persian.divider.InsetSide
-import io.github.madmaximuus.persian.forms.FormItem
-import io.github.madmaximuus.persian.forms.RadioButton
-import io.github.madmaximuus.persian.forms.RadioButtons
-import io.github.madmaximuus.persian.forms.Subhead
+import io.github.madmaximuus.persian.formItem.FormItem
+import io.github.madmaximuus.persian.formItem.RadioButton
+import io.github.madmaximuus.persian.formItem.RadioButtons
+import io.github.madmaximuus.persian.formItem.Subhead
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.slider.content.Text
 import io.github.madmaximuus.persian.slider.continuous.Slider
@@ -95,8 +95,7 @@ object Divider : Screen {
                 }
                 Column(
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = PersianTheme.spacing.size12)
+                        .padding(vertical = PersianTheme.spacing.size6)
                         .padding(horizontal = PersianTheme.spacing.size16),
                     verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size4)
                 ) {
@@ -117,8 +116,7 @@ object Divider : Screen {
                 if (!insetSideState[0].value) {
                     Column(
                         modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(top = PersianTheme.spacing.size12)
+                            .padding(vertical = PersianTheme.spacing.size6)
                             .padding(horizontal = PersianTheme.spacing.size16),
                         verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size4)
                     ) {
@@ -138,12 +136,7 @@ object Divider : Screen {
                     }
                 }
                 FormItem(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = PersianTheme.spacing.size12),
-                    subhead = {
-                        Subhead(text = "Inset side")
-                    },
+                    subhead = { Subhead(text = "Inset side") },
                     content = {
                         RadioButtons {
                             RadioButton(
