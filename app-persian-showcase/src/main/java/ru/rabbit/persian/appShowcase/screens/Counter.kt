@@ -19,12 +19,11 @@ import io.github.madmaximuus.persian.counter.Badge
 import io.github.madmaximuus.persian.counter.Counter
 import io.github.madmaximuus.persian.counter.CounterDefaults
 import io.github.madmaximuus.persian.counter.utils.BadgeStyle
-import io.github.madmaximuus.persian.forms.FormItem
-import io.github.madmaximuus.persian.forms.Input
-import io.github.madmaximuus.persian.forms.RadioButton
-import io.github.madmaximuus.persian.forms.RadioButtons
-import io.github.madmaximuus.persian.forms.Subhead
-import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.formItem.FormItem
+import io.github.madmaximuus.persian.formItem.Input
+import io.github.madmaximuus.persian.formItem.RadioButton
+import io.github.madmaximuus.persian.formItem.RadioButtons
+import io.github.madmaximuus.persian.formItem.Subhead
 import io.github.madmaximuus.persian.iconButton.TertiaryIconButton
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.user.User
@@ -128,10 +127,7 @@ object Counter : Screen {
                     }
                 }
                 FormItem(
-                    modifier = Modifier.padding(top = PersianTheme.spacing.size12),
-                    subhead = {
-                        Subhead(text = "Count")
-                    },
+                    subhead = { Subhead(text = "Count") },
                     content = {
                         Input(
                             state = count,
@@ -143,10 +139,7 @@ object Counter : Screen {
                     }
                 )
                 FormItem(
-                    modifier = Modifier.padding(top = PersianTheme.spacing.size12),
-                    subhead = {
-                        Subhead(text = "Type")
-                    },
+                    subhead = { Subhead(text = "Type") },
                     content = {
                         RadioButtons {
                             RadioButton(
@@ -172,10 +165,7 @@ object Counter : Screen {
                 )
                 if (typeStates[1].value) {
                     FormItem(
-                        modifier = Modifier.padding(top = PersianTheme.spacing.size12),
-                        subhead = {
-                            Subhead(text = "Badge style")
-                        },
+                        subhead = { Subhead(text = "Badge style") },
                         content = {
                             RadioButtons {
                                 RadioButton(
@@ -201,10 +191,7 @@ object Counter : Screen {
                     )
                 }
                 FormItem(
-                    modifier = Modifier.padding(top = PersianTheme.spacing.size12),
-                    subhead = {
-                        Subhead(text = "Style")
-                    },
+                    subhead = { Subhead(text = "Style") },
                     content = {
                         RadioButtons {
                             RadioButton(
