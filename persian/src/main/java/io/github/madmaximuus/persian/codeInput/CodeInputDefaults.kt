@@ -177,6 +177,7 @@ class CellColors(
      */
     @Composable
     internal fun textColor(
+        enabled: Boolean,
         isValid: Boolean,
         isError: Boolean,
         interactionSource: InteractionSource
@@ -185,6 +186,7 @@ class CellColors(
         val hovered by interactionSource.collectIsHoveredAsState()
 
         val targetValue = when {
+            !enabled -> defaultTextColor
             isError -> errorTextColor
             isValid -> validTextColor
             hovered -> hoveredTextColor
@@ -204,6 +206,7 @@ class CellColors(
      */
     @Composable
     internal fun containerColor(
+        enabled: Boolean,
         isValid: Boolean,
         isError: Boolean,
         interactionSource: InteractionSource
@@ -212,6 +215,7 @@ class CellColors(
         val hovered by interactionSource.collectIsHoveredAsState()
 
         val targetValue = when {
+            !enabled -> defaultContainerColor
             isError -> errorContainerColor
             isValid -> validContainerColor
             hovered -> hoveredContainerColor
@@ -228,8 +232,9 @@ class CellColors(
      * @param isValid Whether the cell's value is valid.
      */
     @Stable
-    internal fun cursorColor(isError: Boolean, isValid: Boolean): Color {
+    internal fun cursorColor(enabled: Boolean, isError: Boolean, isValid: Boolean): Color {
         val targetValue = when {
+            !enabled -> defaultCursorColor
             isError -> errorCursorColor
             isValid -> validCursorColor
             else -> defaultCursorColor
@@ -252,6 +257,7 @@ class CellColors(
      */
     @Composable
     internal fun indicatorColor(
+        enabled: Boolean,
         isValid: Boolean,
         isError: Boolean,
         interactionSource: InteractionSource
@@ -260,16 +266,21 @@ class CellColors(
         val hovered by interactionSource.collectIsHoveredAsState()
 
         val targetValue = when {
+            !enabled -> defaultCursorColor
             isError -> errorIndicatorColor
             isValid -> validIndicatorColor
             hovered -> hoveredIndicatorColor
             focused -> focusedIndicatorColor
             else -> defaultIndicatorColor
         }
-        return animateColorAsState(
-            targetValue, tween(durationMillis = ANIMATION_DURATION),
-            label = "Indicator Color Animation"
-        )
+        return if (enabled) {
+            animateColorAsState(
+                targetValue, tween(durationMillis = ANIMATION_DURATION),
+                label = "Indicator Color Animation"
+            )
+        } else {
+            rememberUpdatedState(targetValue)
+        }
     }
 
     override fun equals(other: Any?): Boolean {

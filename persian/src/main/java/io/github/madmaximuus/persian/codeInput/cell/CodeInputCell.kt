@@ -69,7 +69,7 @@ internal fun CodeInputCell(
 ) {
     val focused by interactionSource.collectIsFocusedAsState()
 
-    val textColor = colors.textColor(isValid, isError, interactionSource).value
+    val textColor = colors.textColor(enabled, isValid, isError, interactionSource).value
 
     val mergedTextStyle = textStyle.merge(
         TextStyle(
@@ -82,12 +82,14 @@ internal fun CodeInputCell(
     val borderThickness = if (enabled && (focused || isError || isValid)) 2.dp else 1.dp
 
     val containerColor = colors.containerColor(
+        enabled = enabled,
         isValid = isValid,
         isError = isError,
         interactionSource = interactionSource
     ).value
 
     val borderColor = colors.indicatorColor(
+        enabled = enabled,
         isValid = isValid,
         isError = isError,
         interactionSource = interactionSource
@@ -128,6 +130,7 @@ internal fun CodeInputCell(
                         textStyle = mergedTextStyle,
                         cursorBrush = SolidColor(
                             colors.cursorColor(
+                                enabled = enabled,
                                 isError = isError,
                                 isValid = isValid
                             )
@@ -167,6 +170,7 @@ internal fun CodeInputCell(
                         textStyle = mergedTextStyle,
                         cursorBrush = SolidColor(
                             colors.cursorColor(
+                                enabled = enabled,
                                 isError = isError,
                                 isValid = isValid
                             )

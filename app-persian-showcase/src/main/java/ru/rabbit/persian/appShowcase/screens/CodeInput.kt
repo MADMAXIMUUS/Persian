@@ -12,15 +12,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.checkboxes.Checkbox
 import io.github.madmaximuus.persian.codeInput.FourDigitCodeInput
 import io.github.madmaximuus.persian.codeInput.SixDigitCodeInput
-import io.github.madmaximuus.persian.forms.Checkboxes
-import io.github.madmaximuus.persian.forms.FormItem
-import io.github.madmaximuus.persian.forms.RadioButton
-import io.github.madmaximuus.persian.forms.RadioButtons
-import io.github.madmaximuus.persian.forms.Subhead
-import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.formItem.Checkbox
+import io.github.madmaximuus.persian.formItem.Checkboxes
+import io.github.madmaximuus.persian.formItem.FormItem
+import io.github.madmaximuus.persian.formItem.RadioButton
+import io.github.madmaximuus.persian.formItem.RadioButtons
+import io.github.madmaximuus.persian.formItem.Subhead
 import io.github.madmaximuus.persian.internal.SecureInputSettings
 import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
@@ -101,10 +100,7 @@ object CodeInput : Screen {
                     }
                 }
                 FormItem(
-                    modifier = Modifier.padding(top = PersianTheme.spacing.size12),
-                    subhead = {
-                        Subhead(text = "Style")
-                    },
+                    subhead = { Subhead(text = "Style") },
                     content = {
                         RadioButtons {
                             RadioButton(
@@ -131,14 +127,10 @@ object CodeInput : Screen {
                     }
                 )
                 FormItem(
-                    modifier = Modifier.padding(top = PersianTheme.spacing.size12),
-                    subhead = {
-                        Subhead(text = "Settings")
-                    },
+                    subhead = { Subhead(text = "Settings") },
                     content = {
                         Checkboxes {
                             Checkbox(
-                                modifier = Modifier.fillMaxWidth(),
                                 text = "Enabled",
                                 checked = enabled,
                                 onCheckedChange = { isChecked ->
@@ -146,7 +138,6 @@ object CodeInput : Screen {
                                 }
                             )
                             Checkbox(
-                                modifier = Modifier.fillMaxWidth(),
                                 text = "Valid",
                                 checked = isSuccess,
                                 onCheckedChange = { isChecked ->
@@ -154,7 +145,6 @@ object CodeInput : Screen {
                                 }
                             )
                             Checkbox(
-                                modifier = Modifier.fillMaxWidth(),
                                 text = "Error",
                                 checked = isError,
                                 onCheckedChange = { isChecked ->
@@ -162,7 +152,6 @@ object CodeInput : Screen {
                                 }
                             )
                             Checkbox(
-                                modifier = Modifier.fillMaxWidth(),
                                 text = "Secret",
                                 checked = secret,
                                 onCheckedChange = { isChecked ->
