@@ -18,15 +18,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.forms.Checkbox
-import io.github.madmaximuus.persian.forms.Checkboxes
-import io.github.madmaximuus.persian.forms.FormItem
-import io.github.madmaximuus.persian.forms.Input
-import io.github.madmaximuus.persian.forms.RadioButton
-import io.github.madmaximuus.persian.forms.RadioButtons
-import io.github.madmaximuus.persian.forms.Subhead
-import io.github.madmaximuus.persian.forms.TextArea
-import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.formItem.Checkbox
+import io.github.madmaximuus.persian.formItem.Checkboxes
+import io.github.madmaximuus.persian.formItem.FormItem
+import io.github.madmaximuus.persian.formItem.Input
+import io.github.madmaximuus.persian.formItem.RadioButton
+import io.github.madmaximuus.persian.formItem.RadioButtons
+import io.github.madmaximuus.persian.formItem.Subhead
+import io.github.madmaximuus.persian.formItem.TextArea
 import io.github.madmaximuus.persian.listItem.Add
 import io.github.madmaximuus.persian.listItem.Avatar
 import io.github.madmaximuus.persian.listItem.Button
@@ -47,8 +46,8 @@ import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
 import io.github.madmaximuus.persianSymbols.chevronRight.ChevronRight
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
-import io.github.madmaximuus.persianSymbols.globe.Globe
 import io.github.madmaximuus.persianSymbols.image.Image
+import io.github.madmaximuus.persianSymbols.user.User
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
@@ -141,15 +140,11 @@ object ListItem : Screen {
                                     }
 
                                     editStates[3].value -> {
-                                        Add {
-
-                                        }
+                                        Add {}
                                     }
 
                                     editStates[4].value -> {
-                                        Remove {
-
-                                        }
+                                        Remove {}
                                     }
 
                                     else -> {}
@@ -160,7 +155,7 @@ object ListItem : Screen {
                             {
                                 when {
                                     leftStates[0].value -> {
-                                        Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.Globe))
+                                        Icon(icon = rememberVectorPainter(image = PersianSymbols.Default.User))
                                     }
 
                                     leftStates[1].value -> {
@@ -207,9 +202,11 @@ object ListItem : Screen {
                                     }
 
                                     rightStates[5].value -> {
-                                        IconButton(icon = rememberVectorPainter(image = PersianSymbols.Default.Image)) {
-
-                                        }
+                                        IconButton(
+                                            icon = rememberVectorPainter(
+                                                image = PersianSymbols.Default.Image
+                                            )
+                                        ) {}
                                     }
 
                                     rightStates[6].value -> {
@@ -234,26 +231,22 @@ object ListItem : Screen {
                 ) {
                     if (subhead) {
                         FormItem(
-                            modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                             subhead = { Subhead(text = "Subhead") },
                             content = { Input(state = subheadState) }
                         )
                     }
                     FormItem(
-                        modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                         subhead = { Subhead(text = "Title") },
                         content = { Input(state = titleState) }
                     )
                     if (body) {
                         FormItem(
-                            modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                             subhead = { Subhead(text = "Body") },
                             content = { TextArea(state = bodyState) }
                         )
                     }
                     if (edit) {
                         FormItem(
-                            modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                             subhead = { Subhead(text = "Edit") },
                             content = {
                                 RadioButtons {
@@ -308,7 +301,6 @@ object ListItem : Screen {
                     }
                     if (left) {
                         FormItem(
-                            modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                             subhead = { Subhead(text = "Left") },
                             content = {
                                 RadioButtons {
@@ -345,7 +337,6 @@ object ListItem : Screen {
                     }
                     if (right) {
                         FormItem(
-                            modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                             subhead = { Subhead(text = "Right") },
                             content = {
                                 RadioButtons {
@@ -426,7 +417,6 @@ object ListItem : Screen {
                         )
                     }
                     FormItem(
-                        modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                         subhead = { Subhead(text = "Settings") },
                         content = {
                             Checkboxes {
