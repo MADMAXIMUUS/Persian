@@ -20,12 +20,12 @@ import io.github.madmaximuus.persian.button.PrimaryButton
 import io.github.madmaximuus.persian.datePicker.DatePicker
 import io.github.madmaximuus.persian.datePicker.view.util.DatePickerConfig
 import io.github.madmaximuus.persian.datePicker.view.util.DatePickerSelection
-import io.github.madmaximuus.persian.forms.Checkbox
-import io.github.madmaximuus.persian.forms.Checkboxes
-import io.github.madmaximuus.persian.forms.FormItem
-import io.github.madmaximuus.persian.forms.RadioButton
-import io.github.madmaximuus.persian.forms.RadioButtons
-import io.github.madmaximuus.persian.forms.Subhead
+import io.github.madmaximuus.persian.formItem.Checkbox
+import io.github.madmaximuus.persian.formItem.Checkboxes
+import io.github.madmaximuus.persian.formItem.FormItem
+import io.github.madmaximuus.persian.formItem.RadioButton
+import io.github.madmaximuus.persian.formItem.RadioButtons
+import io.github.madmaximuus.persian.formItem.Subhead
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.text.Text
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
@@ -75,6 +75,7 @@ object DatePicker : Screen {
             mutableStateOf(
                 Calendar.getInstance().apply {
                     firstDayOfWeek = Calendar.MONDAY
+                    add(Calendar.DAY_OF_MONTH, 1)
                 }
             )
         }
@@ -118,12 +119,7 @@ object DatePicker : Screen {
                             dateFormat.format(endDate.timeInMillis)
                 )
                 FormItem(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = PersianTheme.spacing.size12),
-                    subhead = {
-                        Subhead(text = "Selection type")
-                    },
+                    subhead = { Subhead(text = "Selection type") },
                     content = {
                         RadioButtons {
                             RadioButton(
@@ -157,12 +153,7 @@ object DatePicker : Screen {
                     }
                 )
                 FormItem(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = PersianTheme.spacing.size12),
-                    subhead = {
-                        Subhead(text = "Settings")
-                    },
+                    subhead = { Subhead(text = "Settings") },
                     content = {
                         Checkboxes {
                             Checkbox(
@@ -177,7 +168,7 @@ object DatePicker : Screen {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = PersianTheme.spacing.size16)
-                        .padding(top = PersianTheme.spacing.size16),
+                        .padding(top = PersianTheme.spacing.size8),
                     text = "Show date picker",
                     sizes = ButtonDefaults.largeSizes(),
                     onClick = {
