@@ -53,6 +53,7 @@ import ru.rabbit.persian.appShowcase.screens.NavigationBar
 import ru.rabbit.persian.appShowcase.screens.PageIndicator
 import ru.rabbit.persian.appShowcase.screens.ProgressIndicator
 import ru.rabbit.persian.appShowcase.screens.RadioButton
+import ru.rabbit.persian.appShowcase.screens.Section
 import ru.rabbit.persian.appShowcase.screens.SegmentedButton
 import ru.rabbit.persian.appShowcase.screens.Select
 import ru.rabbit.persian.appShowcase.screens.Skeleton
@@ -137,7 +138,8 @@ class MainActivity : ComponentActivity() {
                         Symbols,
                         ListItem,
                         Slider,
-                        SegmentedButton
+                        SegmentedButton,
+                        Section
                     )
                 }
                 CompositionLocalProvider(LocalAppSettingsManager provides appSettingsManager) {

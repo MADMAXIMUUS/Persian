@@ -34,7 +34,7 @@ fun SampleRow(
     ) {
         Text(
             text = text,
-            style = PersianTheme.typography.labelLarge,
+            style = PersianTheme.typography.labelMedium,
             color = PersianTheme.colorScheme.onSurfaceVariant
         )
         Spacer(modifier = Modifier.height(PersianTheme.spacing.size4))
