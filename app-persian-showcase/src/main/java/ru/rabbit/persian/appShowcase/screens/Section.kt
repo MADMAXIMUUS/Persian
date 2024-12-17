@@ -18,13 +18,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.forms.Checkbox
-import io.github.madmaximuus.persian.forms.Checkboxes
-import io.github.madmaximuus.persian.forms.FormItem
-import io.github.madmaximuus.persian.forms.Input
-import io.github.madmaximuus.persian.forms.RadioButton
-import io.github.madmaximuus.persian.forms.RadioButtons
-import io.github.madmaximuus.persian.forms.Subhead
+import io.github.madmaximuus.persian.formItem.Checkbox
+import io.github.madmaximuus.persian.formItem.Checkboxes
+import io.github.madmaximuus.persian.formItem.FormItem
+import io.github.madmaximuus.persian.formItem.Input
+import io.github.madmaximuus.persian.formItem.RadioButton
+import io.github.madmaximuus.persian.formItem.RadioButtons
+import io.github.madmaximuus.persian.formItem.Subhead
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.listItem.Icon
 import io.github.madmaximuus.persian.listItem.Middle
@@ -84,8 +84,7 @@ object Section : Screen {
                 Text(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = PersianTheme.spacing.size16)
-                        .padding(top = PersianTheme.spacing.size8),
+                        .padding(horizontal = PersianTheme.spacing.size16),
                     text = "Sample",
                     style = PersianTheme.typography.labelSmall,
                     color = PersianTheme.colorScheme.onSurfaceVariant
@@ -108,30 +107,24 @@ object Section : Screen {
                 }
                 if (title) {
                     FormItem(
-                        modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                         subhead = { Subhead(text = "Title") },
                         content = { Input(state = titleState) }
                     )
                 }
                 if (details) {
                     FormItem(
-                        modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                         subhead = { Subhead(text = "Details") },
                         content = { Input(state = detailsState) }
                     )
                 }
                 if (caption) {
                     FormItem(
-                        modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                         subhead = { Subhead(text = "Caption") },
                         content = { Input(state = captionState) }
                     )
                 }
                 FormItem(
-                    modifier = Modifier.padding(top = PersianTheme.spacing.size12),
-                    subhead = {
-                        Subhead(text = "Style")
-                    },
+                    subhead = { Subhead(text = "Style") },
                     content = {
                         RadioButtons {
                             RadioButton(
@@ -156,7 +149,6 @@ object Section : Screen {
                     }
                 )
                 FormItem(
-                    modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                     subhead = { Subhead(text = "Settings") },
                     content = {
                         Checkboxes {
