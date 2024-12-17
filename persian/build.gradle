@@ -5,7 +5,7 @@ plugins {
 
 ext {
     PUBLISH_GROUP_ID = 'io.github.madmaximuus.persian'
-    PUBLISH_VERSION = '6.0.0'
+    PUBLISH_VERSION = '7.0.0'
     PUBLISH_ARTIFACT_ID = 'persian'
 }
 
