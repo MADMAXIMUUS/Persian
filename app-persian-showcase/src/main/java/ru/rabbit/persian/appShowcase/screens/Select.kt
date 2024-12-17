@@ -1,6 +1,5 @@
 package ru.rabbit.persian.appShowcase.screens
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -13,11 +12,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.forms.Checkbox
-import io.github.madmaximuus.persian.forms.Checkboxes
-import io.github.madmaximuus.persian.forms.FormItem
-import io.github.madmaximuus.persian.forms.Subhead
-import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.formItem.Checkbox
+import io.github.madmaximuus.persian.formItem.Checkboxes
+import io.github.madmaximuus.persian.formItem.FormItem
+import io.github.madmaximuus.persian.formItem.Subhead
 import io.github.madmaximuus.persian.menu.DropdownMenuItem
 import io.github.madmaximuus.persian.select.Select
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
@@ -47,7 +45,6 @@ object Select : Screen {
                     .padding(it)
                     .fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size24)
             ) {
                 SampleRow(text = "Sample", firstItem = true) {
                     Select(
@@ -102,9 +99,7 @@ object Select : Screen {
                     )
                 }
                 FormItem(
-                    subhead = {
-                        Subhead(text = "Settings")
-                    },
+                    subhead = { Subhead(text = "Settings") },
                     content = {
                         Checkboxes {
                             Checkbox(
