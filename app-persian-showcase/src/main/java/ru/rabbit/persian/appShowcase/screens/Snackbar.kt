@@ -15,13 +15,13 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.button.ButtonDefaults
 import io.github.madmaximuus.persian.button.PrimaryButton
-import io.github.madmaximuus.persian.forms.Checkbox
-import io.github.madmaximuus.persian.forms.Checkboxes
-import io.github.madmaximuus.persian.forms.FormItem
-import io.github.madmaximuus.persian.forms.Input
-import io.github.madmaximuus.persian.forms.RadioButton
-import io.github.madmaximuus.persian.forms.RadioButtons
-import io.github.madmaximuus.persian.forms.Subhead
+import io.github.madmaximuus.persian.formItem.Checkbox
+import io.github.madmaximuus.persian.formItem.Checkboxes
+import io.github.madmaximuus.persian.formItem.FormItem
+import io.github.madmaximuus.persian.formItem.Input
+import io.github.madmaximuus.persian.formItem.RadioButton
+import io.github.madmaximuus.persian.formItem.RadioButtons
+import io.github.madmaximuus.persian.formItem.Subhead
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.snackbar.Action
 import io.github.madmaximuus.persian.snackbar.Avatar
@@ -87,7 +87,6 @@ object Snackbar : Screen {
                 )
                 if (left) {
                     FormItem(
-                        modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                         subhead = { Subhead(text = "Left") },
                         content = {
                             RadioButtons {
@@ -133,7 +132,6 @@ object Snackbar : Screen {
                 }
                 if (right) {
                     FormItem(
-                        modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                         subhead = { Subhead(text = "Right") },
                         content = {
                             RadioButtons {
@@ -160,7 +158,6 @@ object Snackbar : Screen {
                     )
                 }
                 FormItem(
-                    modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                     subhead = { Subhead(text = "Settings") },
                     content = {
                         Checkboxes {
@@ -186,7 +183,7 @@ object Snackbar : Screen {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = PersianTheme.spacing.size16)
-                        .padding(top = PersianTheme.spacing.size12),
+                        .padding(top = PersianTheme.spacing.size8),
                     text = "Show snackbar",
                     sizes = ButtonDefaults.largeSizes()
                 ) {
