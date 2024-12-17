@@ -8,11 +8,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 import io.github.madmaximuus.persian.foundation.PersianTheme.elevation
 import io.github.madmaximuus.persian.foundation.PersianTheme.shapes
 import io.github.madmaximuus.persian.foundation.PersianTheme.spacing
+import io.github.madmaximuus.persian.foundation.PersianTheme.typography
 import io.github.madmaximuus.persian.foundation.ripple.ripple
 
 /**
@@ -52,14 +54,16 @@ fun PersianTheme(
 
     val colorScheme = if (darkTheme) darkColors else lightColors
 
-    PersianTheme(
-        colorScheme = colorScheme,
-        typography = LocalTypography.current,
-        spacing = spacing,
-        shapes = shapes,
-        elevation = elevation,
-        content = content,
-    )
+    CompositionLocalProvider(LocalTheme provides darkTheme) {
+        PersianTheme(
+            colorScheme = colorScheme,
+            typography = typography,
+            spacing = spacing,
+            shapes = shapes,
+            elevation = elevation,
+            content = content,
+        )
+    }
 }
 
 /**
@@ -93,7 +97,7 @@ fun PersianTheme(
         LocalSpacing provides spacing,
         LocalTextSelectionColors provides selectionColors,
         LocalTypography provides typography,
-        LocalElevation provides elevation
+        LocalElevation provides elevation,
     ) {
         ProvideTextStyle(value = typography.bodyLarge, content = content)
     }
@@ -141,6 +145,8 @@ object PersianTheme {
         get() = LocalElevation.current
 
 }
+
+internal val LocalTheme = staticCompositionLocalOf { false }
 
 /*
 @Composable

@@ -329,7 +329,7 @@ fun ProvideTextStyle(value: TextStyle, content: @Composable () -> Unit) {
     CompositionLocalProvider(LocalTextStyle provides mergedStyle, content = content)
 }
 
-val nunitoFontFamily = FontFamily(
+private val nunitoFontFamily = FontFamily(
     Font(
         resId = R.font.nunito_extra_light,
         weight = FontWeight.ExtraLight,
