@@ -125,6 +125,7 @@ private fun CompactModalPage(
     if (pageState.dragAnchors.isNotEmpty()) {
         ModalPageDialog(
             properties = properties,
+            lightStatusBar = false,
             onDismissRequest = {
                 scope.launch { pageState.hide() }.invokeOnCompletion { onDismissRequest() }
             },
@@ -141,16 +142,16 @@ private fun CompactModalPage(
                     visible = pageState.targetValue != DragAnchor.Hidden
                 )
                 ModalBottomSheetContent(
-                    settleToDismiss,
-                    onDismissRequest,
-                    modifier,
-                    pageState,
-                    colors,
-                    sizes,
-                    top,
-                    bottom,
-                    contentWindowInsets,
-                    content
+                    settleToDismiss = settleToDismiss,
+                    onDismissRequest = onDismissRequest,
+                    modifier = modifier,
+                    pageState = pageState,
+                    colors = colors,
+                    sizes = sizes,
+                    top = top,
+                    bottom = bottom,
+                    contentWindowInsets = contentWindowInsets,
+                    content = content
                 )
             }
         }

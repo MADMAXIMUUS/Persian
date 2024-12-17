@@ -15,7 +15,6 @@ import androidx.activity.ComponentDialog
 import androidx.activity.addCallback
 import androidx.annotation.DoNotInline
 import androidx.annotation.RequiresApi
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionContext
@@ -49,6 +48,7 @@ import androidx.lifecycle.setViewTreeViewModelStoreOwner
 import androidx.savedstate.findViewTreeSavedStateRegistryOwner
 import androidx.savedstate.setViewTreeSavedStateRegistryOwner
 import io.github.madmaximuus.persian.R
+import io.github.madmaximuus.persian.foundation.LocalTheme
 import java.util.UUID
 
 
@@ -58,6 +58,7 @@ import java.util.UUID
 internal fun ModalPageDialog(
     onDismissRequest: () -> Unit,
     properties: ModalPageProperties,
+    lightStatusBar: Boolean,
     content: @Composable () -> Unit
 ) {
     val view = LocalView.current
@@ -66,16 +67,17 @@ internal fun ModalPageDialog(
     val composition = rememberCompositionContext()
     val currentContent by rememberUpdatedState(content)
     val dialogId = rememberSaveable { UUID.randomUUID() }
-    val darkThemeEnabled = isSystemInDarkTheme()
+    val darkThemeEnabled = LocalTheme.current
     val dialog = remember(view, density) {
         ModalBottomSheetDialogWrapper(
-            onDismissRequest,
-            properties,
-            view,
-            layoutDirection,
-            density,
-            dialogId,
-            darkThemeEnabled,
+            onDismissRequest = onDismissRequest,
+            properties = properties,
+            composeView = view,
+            layoutDirection = layoutDirection,
+            density = density,
+            dialogId = dialogId,
+            lightStatusBar = lightStatusBar,
+            lightNavigationBar = darkThemeEnabled,
         ).apply {
             setContent(composition) {
                 Box(
@@ -206,7 +208,8 @@ private class ModalBottomSheetDialogWrapper(
     layoutDirection: LayoutDirection,
     density: Density,
     dialogId: UUID,
-    darkThemeEnabled: Boolean,
+    lightStatusBar: Boolean,
+    lightNavigationBar: Boolean
 ) :
     ComponentDialog(
         ContextThemeWrapper(
@@ -275,8 +278,8 @@ private class ModalBottomSheetDialogWrapper(
         updateParameters(onDismissRequest, properties, layoutDirection)
 
         WindowCompat.getInsetsController(window, window.decorView).apply {
-            isAppearanceLightStatusBars = !darkThemeEnabled
-            isAppearanceLightNavigationBars = !darkThemeEnabled
+            isAppearanceLightStatusBars = lightStatusBar
+            isAppearanceLightNavigationBars = lightNavigationBar
         }
         // Due to how the onDismissRequest callback works
         // (it enforces a just-in-time decision on whether to update the state to hide the dialog)

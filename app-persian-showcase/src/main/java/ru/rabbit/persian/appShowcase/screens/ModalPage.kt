@@ -1,7 +1,5 @@
 package ru.rabbit.persian.appShowcase.screens
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
@@ -18,16 +16,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.button.ButtonDefaults
 import io.github.madmaximuus.persian.button.PrimaryButton
-import io.github.madmaximuus.persian.forms.Checkbox
-import io.github.madmaximuus.persian.forms.Checkboxes
-import io.github.madmaximuus.persian.forms.FormItem
-import io.github.madmaximuus.persian.forms.RadioButton
-import io.github.madmaximuus.persian.forms.RadioButtons
-import io.github.madmaximuus.persian.forms.Subhead
+import io.github.madmaximuus.persian.formItem.Checkbox
+import io.github.madmaximuus.persian.formItem.Checkboxes
+import io.github.madmaximuus.persian.formItem.FormItem
+import io.github.madmaximuus.persian.formItem.RadioButton
+import io.github.madmaximuus.persian.formItem.RadioButtons
+import io.github.madmaximuus.persian.formItem.Subhead
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.modalPage.Action
 import io.github.madmaximuus.persian.modalPage.FullScreenModalPage
@@ -100,10 +97,8 @@ object ModalPage : Screen {
                     .padding(it)
                     .navigationBarsPadding(),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size12)
             ) {
                 FormItem(
-                    modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                     subhead = {
                         Subhead(text = "Mode")
                     },
@@ -149,7 +144,6 @@ object ModalPage : Screen {
                 )
                 if (top) {
                     FormItem(
-                        modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                         subhead = { Subhead(text = "Top") },
                         content = {
                             RadioButtons {
@@ -177,10 +171,7 @@ object ModalPage : Screen {
                 }
                 if (modeStates[0].value) {
                     FormItem(
-                        modifier = Modifier.padding(top = PersianTheme.spacing.size12),
-                        subhead = {
-                            Subhead(text = "States")
-                        },
+                        subhead = { Subhead(text = "States") },
                         content = {
                             Checkboxes {
                                 Checkbox(
@@ -241,7 +232,7 @@ object ModalPage : Screen {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = PersianTheme.spacing.size16)
-                        .padding(top = PersianTheme.spacing.size12),
+                        .padding(top = PersianTheme.spacing.size8),
                     text = "Show page",
                     sizes = ButtonDefaults.largeSizes()
                 ) {
@@ -288,8 +279,7 @@ object ModalPage : Screen {
                             Box(
                                 modifier = Modifier
                                     .fillMaxSize()
-                                    .padding(contentPadding)
-                                    .background(Color.Cyan),
+                                    .padding(contentPadding),
                                 contentAlignment = Alignment.Center
                             ) {
                                 Text(text = "123")
@@ -312,8 +302,8 @@ object ModalPage : Screen {
                                 )
                             }
                         },
-                        bottom = {
-                            if (action) {
+                        bottom = if (action) {
+                            {
                                 Action(text = "Amazing action") {
                                     showModal = false
                                 }
@@ -321,13 +311,12 @@ object ModalPage : Screen {
                                     showModal = false
                                 }
                             }
-                        },
+                        } else null,
                         content = { contentPadding ->
                             Box(
                                 modifier = Modifier
                                     .fillMaxSize()
-                                    .padding(contentPadding)
-                                    .background(Color.Cyan),
+                                    .padding(contentPadding),
                                 contentAlignment = Alignment.Center
                             ) {
                                 Text(text = "123")

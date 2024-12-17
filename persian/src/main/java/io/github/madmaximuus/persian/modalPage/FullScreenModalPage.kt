@@ -1,6 +1,5 @@
 package io.github.madmaximuus.persian.modalPage
 
-import android.view.WindowManager
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
@@ -21,6 +20,7 @@ import androidx.compose.ui.window.DialogProperties
 import androidx.compose.ui.window.DialogWindowProvider
 import androidx.window.core.layout.WindowHeightSizeClass
 import androidx.window.core.layout.WindowWidthSizeClass
+import io.github.madmaximuus.persian.foundation.LocalTheme
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.scafold.Scaffold
 import io.github.madmaximuus.persian.surface.Surface
@@ -101,9 +101,8 @@ private fun CompactFullScreenModalPage(
     ModalPageDialog(
         onDismissRequest = onDismissRequest,
         properties = ModalPageProperties(),
+        lightStatusBar = !LocalTheme.current,
         content = {
-            val dialogWindowProvider = LocalView.current.parent as? DialogWindowProvider
-            dialogWindowProvider?.window?.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
             Scaffold(
                 modifier = Modifier.fillMaxSize(),
                 containerColor = colors.containerColor,
