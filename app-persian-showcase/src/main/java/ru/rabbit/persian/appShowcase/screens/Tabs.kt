@@ -13,13 +13,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.counter.utils.BadgeStyle
-import io.github.madmaximuus.persian.forms.Checkbox
-import io.github.madmaximuus.persian.forms.Checkboxes
-import io.github.madmaximuus.persian.forms.FormItem
-import io.github.madmaximuus.persian.forms.RadioButton
-import io.github.madmaximuus.persian.forms.RadioButtons
-import io.github.madmaximuus.persian.forms.Subhead
-import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.formItem.Checkbox
+import io.github.madmaximuus.persian.formItem.Checkboxes
+import io.github.madmaximuus.persian.formItem.FormItem
+import io.github.madmaximuus.persian.formItem.RadioButton
+import io.github.madmaximuus.persian.formItem.RadioButtons
+import io.github.madmaximuus.persian.formItem.Subhead
 import io.github.madmaximuus.persian.tabBar.default.TabBar
 import io.github.madmaximuus.persian.tabBar.scrollable.ScrollableTabBar
 import io.github.madmaximuus.persian.tabBar.tab.IconSide
@@ -143,7 +142,6 @@ object Tabs : Screen {
                 }
                 if (icon) {
                     FormItem(
-                        modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                         subhead = { Subhead(text = "Icon side") },
                         content = {
                             RadioButtons {
@@ -171,7 +169,6 @@ object Tabs : Screen {
                 }
                 if (badge) {
                     FormItem(
-                        modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                         subhead = { Subhead(text = "Badge style") },
                         content = {
                             RadioButtons {
@@ -198,7 +195,6 @@ object Tabs : Screen {
                     )
                 }
                 FormItem(
-                    modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                     subhead = { Subhead(text = "Type") },
                     content = {
                         RadioButtons {
@@ -224,7 +220,6 @@ object Tabs : Screen {
                     }
                 )
                 FormItem(
-                    modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                     subhead = { Subhead(text = "Settings") },
                     content = {
                         Checkboxes {
