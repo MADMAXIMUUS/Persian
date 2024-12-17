@@ -2,13 +2,16 @@ package ru.rabbit.persian.appShowcase.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -29,30 +32,34 @@ object Skeleton : Screen {
             title = name,
             onBackClick = { navController?.navigateUp() }
         ) {
-            LazyColumn(
-                modifier = Modifier.fillMaxSize(),
-                contentPadding = it,
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(it),
+                horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size4)
             ) {
-                item {
-                    Text(
-                        modifier = Modifier.fillMaxWidth(),
-                        text = "Infinite loading",
-                        textAlign = TextAlign.Center,
-                        style = PersianTheme.typography.titleLarge,
-                        color = PersianTheme.colorScheme.onSurface
-                    )
-                }
-                item {
-                    Text(
-                        modifier = Modifier.fillMaxWidth(),
-                        text = "These loaders show one of the library's features",
-                        textAlign = TextAlign.Center,
-                        style = PersianTheme.typography.labelLarge,
-                        color = PersianTheme.colorScheme.onSurface
-                    )
-                }
-                items(4) {
+                Text(
+                    modifier = Modifier.fillMaxWidth(),
+                    text = "Infinite loading",
+                    textAlign = TextAlign.Center,
+                    style = PersianTheme.typography.titleLarge,
+                    color = PersianTheme.colorScheme.onSurface
+                )
+                Text(
+                    modifier = Modifier.fillMaxWidth(),
+                    text = "These loaders show one of the library's features",
+                    textAlign = TextAlign.Center,
+                    style = PersianTheme.typography.labelLarge,
+                    color = PersianTheme.colorScheme.onSurface
+                )
+                Box(
+                    modifier = Modifier
+                        .size(200.dp)
+                        .clip(PersianTheme.shapes.full)
+                        .shimmer(true)
+                )
+                repeat(4) {
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
