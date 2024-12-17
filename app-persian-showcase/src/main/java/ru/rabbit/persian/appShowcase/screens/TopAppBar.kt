@@ -12,13 +12,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.forms.Checkbox
-import io.github.madmaximuus.persian.forms.Checkboxes
-import io.github.madmaximuus.persian.forms.FormItem
-import io.github.madmaximuus.persian.forms.RadioButton
-import io.github.madmaximuus.persian.forms.RadioButtons
-import io.github.madmaximuus.persian.forms.Subhead
-import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.formItem.Checkbox
+import io.github.madmaximuus.persian.formItem.Checkboxes
+import io.github.madmaximuus.persian.formItem.FormItem
+import io.github.madmaximuus.persian.formItem.RadioButton
+import io.github.madmaximuus.persian.formItem.RadioButtons
+import io.github.madmaximuus.persian.formItem.Subhead
 import io.github.madmaximuus.persian.menu.DropdownMenuItem
 import io.github.madmaximuus.persian.scafold.Scaffold
 import io.github.madmaximuus.persian.topAppBar.Action
@@ -31,7 +30,9 @@ import io.github.madmaximuus.persianSymbols.bell.Bell
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.magnifyingGlass.MagnifyingGlass
 import io.github.madmaximuus.persianSymbols.nfc.Nfc
+import io.github.madmaximuus.persianSymbols.pallete.Palette
 import io.github.madmaximuus.persianSymbols.xmark.XMark
+import ru.rabbit.persian.appShowcase.componets.SettingsModalPage
 
 object TopAppBar : Screen {
     override val name: String = "Top app bar"
@@ -40,7 +41,7 @@ object TopAppBar : Screen {
 
     @Composable
     override fun Content(navController: NavController?) {
-        val (left, onLeftChange) = remember { mutableStateOf(false) }
+        val (left, onLeftChange) = remember { mutableStateOf(true) }
         val leftStates = remember {
             listOf(
                 mutableStateOf(true),
@@ -49,16 +50,18 @@ object TopAppBar : Screen {
             )
         }
 
-        val (right, onRightChange) = remember { mutableStateOf(false) }
+        val (right, onRightChange) = remember { mutableStateOf(true) }
         val rightStates = remember {
             listOf(
-                mutableStateOf(true),
                 mutableStateOf(false),
+                mutableStateOf(true),
                 mutableStateOf(false),
                 mutableStateOf(false),
             )
         }
         var expanded by remember { mutableStateOf(false) }
+
+        var showSettings by remember { mutableStateOf(false) }
 
         Scaffold(
             topBar = {
@@ -106,8 +109,10 @@ object TopAppBar : Screen {
 
                                 rightStates[1].value -> {
                                     IconButton(
-                                        icon = rememberVectorPainter(PersianSymbols.Default.Bell),
-                                        onClick = {}
+                                        icon = rememberVectorPainter(PersianSymbols.Default.Palette),
+                                        onClick = {
+                                            showSettings = true
+                                        }
                                     )
                                 }
 
@@ -166,96 +171,6 @@ object TopAppBar : Screen {
                         }
                     } else null
                 )
-                /*if (rightStates[3].value || rightStates[4].value) {
-                    TopAppBar(
-                        left = {
-                            when {
-                                leftStates[0].value -> {
-                                    IconButton(
-                                        icon = rememberVectorPainter(PersianSymbols.Default.ArrowLeft),
-                                        onClick = {
-                                            navController?.navigateUp()
-                                        }
-                                    )
-                                }
-
-                                leftStates[1].value -> {
-                                    IconButton(
-                                        icon = rememberVectorPainter(PersianSymbols.Default.XMark),
-                                        onClick = {
-                                            navController?.navigateUp()
-                                        }
-                                    )
-                                }
-
-                                leftStates[2].value -> {
-                                    Avatar(
-                                        avatarUrl = Uri.parse("https://loremflickr.com/320/240"),
-                                        onClick = { navController?.navigateUp() }
-                                    )
-                                }
-                            }
-                        },
-                        title = name,
-                        right = {
-                            when {
-                                rightStates[3].value -> {
-                                    IconButton(
-                                        icon = rememberVectorPainter(PersianSymbols.Default.Bell),
-                                        onClick = {}
-                                    )
-                                    IconButton(
-                                        icon = rememberVectorPainter(PersianSymbols.Default.MagnifyingGlass),
-                                        onClick = {}
-                                    )
-                                    IconButton(
-                                        icon = rememberVectorPainter(PersianSymbols.Default.Nfc),
-                                        onClick = {}
-                                    )
-                                }
-
-                                rightStates[4].value -> {
-                                    IconButton(
-                                        icon = rememberVectorPainter(PersianSymbols.Default.Bell),
-                                        onClick = {}
-                                    )
-                                    IconButton(
-                                        icon = rememberVectorPainter(PersianSymbols.Default.MagnifyingGlass),
-                                        onClick = {}
-                                    )
-                                    More(
-                                        expanded = expanded,
-                                        onDismissRequest = { expanded = false },
-                                        menuItems = {
-                                            DropdownMenuItem(
-                                                text = "Menu Action 1",
-                                                onClick = { expanded = false }
-                                            )
-                                            DropdownMenuItem(
-                                                text = "Menu Action 1",
-                                                onClick = { expanded = false }
-                                            )
-                                            DropdownMenuItem(
-                                                text = "Menu Action 1",
-                                                onClick = { expanded = false }
-                                            )
-                                            DropdownMenuItem(
-                                                text = "Menu Action 1",
-                                                onClick = { expanded = false }
-                                            )
-                                            DropdownMenuItem(
-                                                text = "Menu Action 1",
-                                                onClick = { expanded = false }
-                                            )
-                                        }
-                                    )
-                                }
-                            }
-                        }
-                    )
-                } else {
-
-                }*/
             }
         )
         {
@@ -266,7 +181,6 @@ object TopAppBar : Screen {
             ) {
                 if (left) {
                     FormItem(
-                        modifier = Modifier.padding(top = PersianTheme.spacing.size8),
                         subhead = { Subhead(text = "Left") },
                         content = {
                             RadioButtons {
@@ -303,7 +217,6 @@ object TopAppBar : Screen {
                 }
                 if (right) {
                     FormItem(
-                        modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                         subhead = { Subhead(text = "Right") },
                         content = {
                             RadioButtons {
@@ -348,7 +261,6 @@ object TopAppBar : Screen {
                     )
                 }
                 FormItem(
-                    modifier = Modifier.padding(top = PersianTheme.spacing.size12),
                     subhead = { Subhead(text = "Settings") },
                     content = {
                         Checkboxes {
@@ -366,6 +278,10 @@ object TopAppBar : Screen {
                     }
                 )
             }
+            if (showSettings)
+                SettingsModalPage {
+                    showSettings = false
+                }
         }
     }
 }
