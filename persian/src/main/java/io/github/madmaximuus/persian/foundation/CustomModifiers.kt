@@ -64,19 +64,15 @@ fun Modifier.dashedBorder(strokeWidth: Dp, color: Color, cornerRadiusDp: Dp) = c
 /**
  * Creates a [Modifier] that applies a shimmer effect to its content. The shimmer effect is a gradient
  * animation that moves across the content.
- *
- * @param showShimmer Whether to show the shimmer effect.
  */
-fun Modifier.shimmer(
-    showShimmer: Boolean
-) = composed(
+fun Modifier.shimmer() = composed(
     factory = {
 
         var size by remember {
             mutableStateOf(IntSize.Zero)
         }
 
-        val brush = shimmerBrush(showShimmer, size)
+        val brush = shimmerBrush(size)
 
         this.then(
             Modifier
@@ -93,52 +89,41 @@ fun Modifier.shimmer(
 )
 
 /**
- * Creates a [Brush] for the shimmer effect. If `showShimmer` is `true`, the brush will be a linear gradient
- * with an animation that moves across the content. If `showShimmer` is `false`, the brush will be transparent.
+ * Creates a [Brush] for the shimmer effect.
  *
- * @param showShimmer Whether to show the shimmer effect.
  * @param size The size of the content.
  *
  */
 @Composable
-internal fun shimmerBrush(showShimmer: Boolean, size: IntSize): Brush {
-    return if (showShimmer) {
-        val shimmerColors = listOf(
-            PersianTheme.colorScheme.surfaceContainerLow.copy(alpha = 0.6f),
-            PersianTheme.colorScheme.surfaceContainer.copy(alpha = 0.6f),
-            PersianTheme.colorScheme.surfaceContainerLow.copy(alpha = 0.6f),
-        )
-        val shimmerWidthPercentage = 5.0
+internal fun shimmerBrush(size: IntSize): Brush {
+    val shimmerColors = listOf(
+        PersianTheme.colorScheme.surfaceContainerLow.copy(alpha = 0.6f),
+        PersianTheme.colorScheme.surfaceContainer.copy(alpha = 0.6f),
+        PersianTheme.colorScheme.surfaceContainerLow.copy(alpha = 0.6f),
+    )
+    val shimmerWidthPercentage = 5.0
 
-        val spaceMaxWidth = size.width.toFloat()
-        val spaceMaxHeight = size.height.toFloat()
+    val spaceMaxWidth = size.width.toFloat()
+    val spaceMaxHeight = size.height.toFloat()
 
-        val transition = rememberInfiniteTransition(label = "Shimmer animation root")
-        val translateAnimation = transition.animateFloat(
-            initialValue = 0f,
-            targetValue = spaceMaxWidth * (1 + shimmerWidthPercentage).toFloat(),
-            animationSpec = infiniteRepeatable(
-                animation = tween(
-                    durationMillis = 1000,
-                    easing = FastOutLinearInEasing
-                ),
-                repeatMode = RepeatMode.Restart
-            ), label = "Shimmer animation"
-        )
-        Brush.linearGradient(
-            colors = shimmerColors,
-            start = Offset(
-                translateAnimation.value -
-                        (spaceMaxWidth * shimmerWidthPercentage).toFloat(), spaceMaxHeight
+    val transition = rememberInfiniteTransition(label = "Shimmer animation root")
+    val translateAnimation = transition.animateFloat(
+        initialValue = 0f,
+        targetValue = spaceMaxWidth * (1 + shimmerWidthPercentage).toFloat(),
+        animationSpec = infiniteRepeatable(
+            animation = tween(
+                durationMillis = 1000,
+                easing = FastOutLinearInEasing
             ),
-            end = Offset(translateAnimation.value, spaceMaxHeight)
-        )
-
-    } else {
-        Brush.linearGradient(
-            colors = listOf(Color.Transparent, Color.Transparent),
-            start = Offset.Zero,
-            end = Offset.Zero
-        )
-    }
+            repeatMode = RepeatMode.Restart
+        ), label = "Shimmer animation"
+    )
+    return Brush.linearGradient(
+        colors = shimmerColors,
+        start = Offset(
+            translateAnimation.value -
+                    (spaceMaxWidth * shimmerWidthPercentage).toFloat(), spaceMaxHeight
+        ),
+        end = Offset(translateAnimation.value, spaceMaxHeight)
+    )
 }
