@@ -143,7 +143,7 @@ fun Alert(
                                     .fillMaxWidth()
                                     .padding(actionPadding),
                                 horizontalArrangement = Arrangement.spacedBy(
-                                    PersianTheme.spacing.size8,
+                                    PersianTheme.spacing.size2,
                                     Alignment.End
                                 ),
                                 content = {
