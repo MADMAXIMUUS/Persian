@@ -43,7 +43,7 @@ fun FormItem(
                 alpha = if (enabled) 1f
                 else PersianState38
             },
-        verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size2)
+        verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size4)
     ) {
         subhead?.let { subhead ->
             val subheadScope = remember(colors.subheadColors, enabled, isError) {
