@@ -7,12 +7,12 @@ import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.runtime.structuralEqualityPolicy
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
-import io.github.madmaximuus.persian.R
 
 /**
  * An immutable class representing a set of typographic styles.
@@ -45,77 +45,77 @@ import io.github.madmaximuus.persian.R
 @Immutable
 class Typography(
     val displayLarge: TextStyle = TextStyle(
-        fontFamily = nunitoFontFamily,
-        fontWeight = FontWeight.SemiBold,
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Normal,
         fontStyle = FontStyle.Normal,
         fontSize = 57.sp,
         lineHeight = 64.sp,
-        letterSpacing = (-0.25).sp,
+        letterSpacing = percentToEm(57, -0.25),
 
         ),
     val displayMedium: TextStyle = TextStyle(
-        fontFamily = nunitoFontFamily,
-        fontWeight = FontWeight.SemiBold,
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Normal,
         fontStyle = FontStyle.Normal,
         fontSize = 45.sp,
         lineHeight = 52.sp,
-        letterSpacing = (-0.25).sp
+        letterSpacing = percentToEm(45, -0.25),
     ),
     val displaySmall: TextStyle = TextStyle(
-        fontFamily = nunitoFontFamily,
-        fontWeight = FontWeight.SemiBold,
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Normal,
         fontStyle = FontStyle.Normal,
         fontSize = 36.sp,
         lineHeight = 44.sp,
-        letterSpacing = (-0.25).sp
+        letterSpacing = percentToEm(36, -0.25),
     ),
     val headlineLarge: TextStyle = TextStyle(
-        fontFamily = nunitoFontFamily,
-        fontWeight = FontWeight.Medium,
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Normal,
         fontStyle = FontStyle.Normal,
         fontSize = 32.sp,
         lineHeight = 40.sp,
-        letterSpacing = 0.sp
+        letterSpacing = 0.em
     ),
     val headlineMedium: TextStyle = TextStyle(
-        fontFamily = nunitoFontFamily,
-        fontWeight = FontWeight.Medium,
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Normal,
         fontStyle = FontStyle.Normal,
         fontSize = 28.sp,
         lineHeight = 36.sp,
-        letterSpacing = 0.sp
+        letterSpacing = 0.em
     ),
     val headlineSmall: TextStyle = TextStyle(
-        fontFamily = nunitoFontFamily,
-        fontWeight = FontWeight.Medium,
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Normal,
         fontStyle = FontStyle.Normal,
         fontSize = 24.sp,
         lineHeight = 32.sp,
-        letterSpacing = 0.sp
+        letterSpacing = 0.em
     ),
     val titleLarge: TextStyle = TextStyle(
-        fontFamily = nunitoFontFamily,
-        fontWeight = FontWeight.SemiBold,
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Medium,
         fontStyle = FontStyle.Normal,
         fontSize = 22.sp,
         lineHeight = 28.sp,
-        letterSpacing = 0.sp
+        letterSpacing = percentToEm(22, 0.15),
     ),
     val titleMedium: TextStyle = TextStyle(
-        fontFamily = nunitoFontFamily,
-        fontWeight = FontWeight.SemiBold,
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Medium,
         fontStyle = FontStyle.Normal,
         fontSize = 16.sp,
         lineHeight = 24.sp,
-        letterSpacing = 0.15.sp
+        letterSpacing = percentToEm(16, 0.15)
     ),
     val titleSmall: TextStyle = TextStyle(
-        fontFamily = nunitoFontFamily,
-        fontWeight = FontWeight.SemiBold,
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Medium,
         fontStyle = FontStyle.Normal,
         fontSize = 14.sp,
         lineHeight = 20.sp,
-        letterSpacing = 0.1.sp
+        letterSpacing = percentToEm(14, 0.15),
     ),
     val bodyLarge: TextStyle = TextStyle(
         fontFamily = FontFamily.Default,
@@ -123,7 +123,7 @@ class Typography(
         fontStyle = FontStyle.Normal,
         fontSize = 16.sp,
         lineHeight = 24.sp,
-        letterSpacing = 0.5.sp
+        letterSpacing = percentToEm(16, 0.5),
     ),
     val bodyMedium: TextStyle = TextStyle(
         fontFamily = FontFamily.Default,
@@ -131,7 +131,7 @@ class Typography(
         fontStyle = FontStyle.Normal,
         fontSize = 14.sp,
         lineHeight = 20.sp,
-        letterSpacing = 0.25.sp
+        letterSpacing = percentToEm(14, 0.25),
     ),
     val bodySmall: TextStyle = TextStyle(
         fontFamily = FontFamily.Default,
@@ -139,63 +139,63 @@ class Typography(
         fontStyle = FontStyle.Normal,
         fontSize = 12.sp,
         lineHeight = 16.sp,
-        letterSpacing = 0.4.sp
+        letterSpacing = percentToEm(12, 0.4),
     ),
     val buttonLarge: TextStyle = TextStyle(
-        fontFamily = nunitoFontFamily,
-        fontWeight = FontWeight.ExtraBold,
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Black,
         fontStyle = FontStyle.Normal,
         fontSize = 16.sp,
         lineHeight = 24.sp,
-        letterSpacing = 0.5.sp
+        letterSpacing = percentToEm(16, 0.5),
     ),
     val buttonMedium: TextStyle = TextStyle(
-        fontFamily = nunitoFontFamily,
-        fontWeight = FontWeight.ExtraBold,
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Black,
         fontStyle = FontStyle.Normal,
         fontSize = 14.sp,
         lineHeight = 20.sp,
-        letterSpacing = 0.5.sp
+        letterSpacing = percentToEm(14, 0.5),
     ),
     val buttonSmall: TextStyle = TextStyle(
-        fontFamily = nunitoFontFamily,
-        fontWeight = FontWeight.ExtraBold,
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Black,
         fontStyle = FontStyle.Normal,
         fontSize = 12.sp,
         lineHeight = 16.sp,
-        letterSpacing = 0.5.sp
+        letterSpacing = percentToEm(12, 0.5),
     ),
     val labelLarge: TextStyle = TextStyle(
-        fontFamily = nunitoFontFamily,
+        fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Medium,
         fontStyle = FontStyle.Normal,
         fontSize = 16.sp,
         lineHeight = 24.sp,
-        letterSpacing = 0.5.sp
+        letterSpacing = percentToEm(16, 0.5),
     ),
     val labelMedium: TextStyle = TextStyle(
-        fontFamily = nunitoFontFamily,
+        fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Medium,
         fontStyle = FontStyle.Normal,
         fontSize = 14.sp,
         lineHeight = 20.sp,
-        letterSpacing = 0.5.sp
+        letterSpacing = percentToEm(14, 0.5),
     ),
     val labelSmall: TextStyle = TextStyle(
-        fontFamily = nunitoFontFamily,
-        fontWeight = FontWeight.Bold,
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.SemiBold,
         fontStyle = FontStyle.Normal,
         fontSize = 12.sp,
         lineHeight = 16.sp,
-        letterSpacing = 0.5.sp
+        letterSpacing = percentToEm(12, 0.5),
     ),
     val labelExtraSmall: TextStyle = TextStyle(
-        fontFamily = nunitoFontFamily,
-        fontWeight = FontWeight.SemiBold,
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Medium,
         fontStyle = FontStyle.Normal,
         fontSize = 11.sp,
         lineHeight = 14.sp,
-        letterSpacing = 0.5.sp
+        letterSpacing = percentToEm(11, 0.5),
     )
 ) {
 
@@ -329,85 +329,6 @@ fun ProvideTextStyle(value: TextStyle, content: @Composable () -> Unit) {
     CompositionLocalProvider(LocalTextStyle provides mergedStyle, content = content)
 }
 
-private val nunitoFontFamily = FontFamily(
-    Font(
-        resId = R.font.nunito_extra_light,
-        weight = FontWeight.ExtraLight,
-        style = FontStyle.Normal
-    ),
-    Font(
-        resId = R.font.nunito_extra_light_italic,
-        weight = FontWeight.ExtraLight,
-        style = FontStyle.Italic
-    ),
-    Font(
-        resId = R.font.nunito_light,
-        weight = FontWeight.Light,
-        style = FontStyle.Normal
-    ),
-    Font(
-        resId = R.font.nunito_light_italic,
-        weight = FontWeight.Light,
-        style = FontStyle.Italic
-    ),
-    Font(
-        resId = R.font.nunito_regular,
-        weight = FontWeight.Normal,
-        style = FontStyle.Normal
-    ),
-    Font(
-        resId = R.font.nunito_italic,
-        weight = FontWeight.Normal,
-        style = FontStyle.Italic
-    ),
-    Font(
-        resId = R.font.nunito_medium,
-        weight = FontWeight.Medium,
-        style = FontStyle.Normal
-    ),
-    Font(
-        resId = R.font.nunito_medium_italic,
-        weight = FontWeight.Medium,
-        style = FontStyle.Italic
-    ),
-    Font(
-        resId = R.font.nunito_semi_bold,
-        weight = FontWeight.SemiBold,
-        style = FontStyle.Normal
-    ),
-    Font(
-        resId = R.font.nunito_semi_bold_italic,
-        weight = FontWeight.SemiBold,
-        style = FontStyle.Italic
-    ),
-    Font(
-        resId = R.font.nunito_bold,
-        weight = FontWeight.Bold,
-        style = FontStyle.Normal
-    ),
-    Font(
-        resId = R.font.nunito_bold_italic,
-        weight = FontWeight.Bold,
-        style = FontStyle.Italic
-    ),
-    Font(
-        resId = R.font.nunito_extra_bold,
-        weight = FontWeight.ExtraBold,
-        style = FontStyle.Normal
-    ),
-    Font(
-        resId = R.font.nunito_extra_bold_italic,
-        weight = FontWeight.ExtraBold,
-        style = FontStyle.Italic
-    ),
-    Font(
-        resId = R.font.nunito_black,
-        weight = FontWeight.Black,
-        style = FontStyle.Normal
-    ),
-    Font(
-        resId = R.font.nunito_black_italic,
-        weight = FontWeight.Black,
-        style = FontStyle.Italic
-    )
-)
+private fun percentToEm(fontSize: Int, spacingPercent: Double): TextUnit {
+    return (spacingPercent / 100 * fontSize).em
+}
