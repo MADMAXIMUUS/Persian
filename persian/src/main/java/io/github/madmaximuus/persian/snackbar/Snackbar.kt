@@ -70,7 +70,6 @@ fun Snackbar(
                                 vertical = PersianTheme.spacing.size12
                             ),
                         text = snackbarData.visuals.message,
-                        maxLines = 1,
                         style = sizes.messageTextStyle,
                         color = colors.messageColor
                     )

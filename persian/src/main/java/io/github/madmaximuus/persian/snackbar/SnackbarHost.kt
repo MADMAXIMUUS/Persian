@@ -5,6 +5,7 @@ import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
@@ -21,6 +22,7 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.fab.FabImpl
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.navigationBar.NavigationBar
 import io.github.madmaximuus.persian.scafold.Scaffold
 import io.github.madmaximuus.persian.topAppBar.TopAppBar
@@ -225,7 +227,9 @@ fun SnackbarHost(
     }
 
     Box(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(vertical = PersianTheme.spacing.size8),
         contentAlignment = if (currentSnackbarData?.visuals?.snackbarPosition == SnackbarPosition.Top)
             Alignment.TopCenter
         else

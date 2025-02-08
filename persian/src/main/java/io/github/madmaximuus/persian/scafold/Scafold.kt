@@ -7,8 +7,10 @@ import androidx.compose.foundation.layout.calculateEndPadding
 import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.exclude
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.onConsumedWindowInsetsChanged
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -25,6 +27,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.layout.SubcomposeLayout
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.offset
@@ -173,6 +176,9 @@ private fun ScaffoldLayoutWithMeasureFix(
     shape: Shape,
     bottomBar: @Composable () -> Unit
 ) {
+    val density = LocalDensity.current
+    val navigationBarHeight = WindowInsets.navigationBars.getBottom(density)
+    val statusBarHeight = WindowInsets.statusBars.getTop(density)
     SubcomposeLayout(
         modifier = Modifier.clip(shape)
     ) { constraints ->
@@ -189,7 +195,6 @@ private fun ScaffoldLayoutWithMeasureFix(
 
         val fabPlaceables =
             subcompose(ScaffoldLayoutContent.Fab, fab).fastMapNotNull { measurable ->
-                // respect only bottom and horizontal for snackbar and fab
                 val leftInset =
                     contentWindowInsets.getLeft(this@SubcomposeLayout, layoutDirection)
                 val rightInset =
@@ -256,8 +261,10 @@ private fun ScaffoldLayoutWithMeasureFix(
             }
         }
 
-        val snackbarOffsetFromBottom = (fabOffsetFromBottom ?: bottomBarHeight
+        var snackbarOffsetFromBottom = (fabOffsetFromBottom ?: bottomBarHeight
         ?: contentWindowInsets.getBottom(this@SubcomposeLayout))
+
+        snackbarOffsetFromBottom += if (snackbarOffsetFromBottom == 0) navigationBarHeight else 0
 
         val snackbarPlaceables = subcompose(ScaffoldLayoutContent.Snackbar, snackbar).fastMap {
             // respect only bottom and horizontal for snackbar and fab
@@ -311,7 +318,7 @@ private fun ScaffoldLayoutWithMeasureFix(
                 it.place(
                     (layoutWidth - snackbarWidth) / 2 +
                             contentWindowInsets.getLeft(this@SubcomposeLayout, layoutDirection),
-                    topBarHeight,
+                    topBarHeight + if (topBarHeight == 0) statusBarHeight else 0,
                     zIndex = 3f
                 )
             }
@@ -343,6 +350,9 @@ private fun LegacyScaffoldLayout(
     shape: Shape,
     bottomBar: @Composable () -> Unit
 ) {
+    val density = LocalDensity.current
+    val navigationBarHeight = WindowInsets.navigationBars.getBottom(density)
+    val statusBarHeight = WindowInsets.statusBars.getTop(density)
     SubcomposeLayout(
         modifier = Modifier.clip(shape)
     ) { constraints ->
@@ -427,8 +437,10 @@ private fun LegacyScaffoldLayout(
                 }
             }
 
-            val snackbarOffsetFromBottom = (fabOffsetFromBottom ?: bottomBarHeight
+            var snackbarOffsetFromBottom = (fabOffsetFromBottom ?: bottomBarHeight
             ?: contentWindowInsets.getBottom(this@SubcomposeLayout))
+
+            snackbarOffsetFromBottom += if (snackbarOffsetFromBottom == 0) navigationBarHeight else 0
 
             val snackbarPlaceables = subcompose(ScaffoldLayoutContent.Snackbar, snackbar).fastMap {
                 // respect only bottom and horizontal for snackbar and fab
@@ -480,7 +492,7 @@ private fun LegacyScaffoldLayout(
                 it.place(
                     (layoutWidth - snackbarWidth) / 2 +
                             contentWindowInsets.getLeft(this@SubcomposeLayout, layoutDirection),
-                    topBarHeight,
+                    topBarHeight + if (topBarHeight == 0) statusBarHeight else 0,
                     zIndex = 3f
                 )
             }
@@ -559,7 +571,7 @@ value class FabPosition internal constructor(@Suppress("unused") private val val
  * <b>This flag will be removed in Compose 1.6.0-beta01.</b> If you encounter any issues with the
  * new behavior, please file an issue at: issuetracker.google.com/issues/new?component=742043
  */
-@Suppress("GetterSetterNames", "OPT_IN_MARKER_ON_WRONG_TARGET")
+@Suppress("GetterSetterNames")
 @get:Suppress("GetterSetterNames")
 var ScaffoldSubcomposeInMeasureFix by mutableStateOf(true)
 
