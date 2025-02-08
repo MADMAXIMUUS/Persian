@@ -57,7 +57,7 @@ object Skeleton : Screen {
                     modifier = Modifier
                         .size(200.dp)
                         .clip(PersianTheme.shapes.full)
-                        .shimmer(true)
+                        .shimmer()
                 )
                 repeat(4) {
                     Box(
@@ -65,7 +65,7 @@ object Skeleton : Screen {
                             .fillMaxWidth()
                             .height(80.dp)
                             .padding(horizontal = PersianTheme.spacing.size12)
-                            .shimmer(true)
+                            .shimmer()
                     )
                 }
             }

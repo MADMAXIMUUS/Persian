@@ -30,9 +30,7 @@ import io.github.madmaximuus.persianSymbols.bell.Bell
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.magnifyingGlass.MagnifyingGlass
 import io.github.madmaximuus.persianSymbols.nfc.Nfc
-import io.github.madmaximuus.persianSymbols.pallete.Palette
 import io.github.madmaximuus.persianSymbols.xmark.XMark
-import ru.rabbit.persian.appShowcase.componets.SettingsModalPage
 
 object TopAppBar : Screen {
     override val name: String = "Top app bar"
@@ -109,7 +107,7 @@ object TopAppBar : Screen {
 
                                 rightStates[1].value -> {
                                     IconButton(
-                                        icon = rememberVectorPainter(PersianSymbols.Default.Palette),
+                                        icon = rememberVectorPainter(PersianSymbols.Default.Bell),
                                         onClick = {
                                             showSettings = true
                                         }
@@ -278,10 +276,6 @@ object TopAppBar : Screen {
                     }
                 )
             }
-            if (showSettings)
-                SettingsModalPage {
-                    showSettings = false
-                }
         }
     }
 }

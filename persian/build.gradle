@@ -5,7 +5,7 @@ plugins {
 
 ext {
     PUBLISH_GROUP_ID = 'io.github.madmaximuus.persian'
-    PUBLISH_VERSION = '7.0.0'
+    PUBLISH_VERSION = '7.1.0'
     PUBLISH_ARTIFACT_ID = 'persian'
 }
 
@@ -33,7 +33,7 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion '1.5.11'
+        kotlinCompilerExtensionVersion '1.5.15'
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -56,5 +56,5 @@ dependencies {
 
     implementation libs.glide
 
-    implementation(project(":persianSymbols"))
+    implementation(libs.persian.symbols)
 }
