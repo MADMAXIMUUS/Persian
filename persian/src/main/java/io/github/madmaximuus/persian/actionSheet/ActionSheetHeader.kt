@@ -71,7 +71,7 @@ fun ActionSheetHeaderScope.Header(
             Text(
                 modifier = Modifier.fillMaxWidth(),
                 text = it,
-                textAlign = TextAlign.Justify,
+                textAlign = TextAlign.Center,
                 style = this@Header.sizes.messageTextStyle,
                 color = this@Header.colors.subtitleColor
             )

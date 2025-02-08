@@ -72,8 +72,8 @@ object ActionSheetDefaults {
      */
     @Composable
     fun sizes(
-        titleTextStyle: TextStyle = PersianTheme.typography.titleLarge,
-        messageTextStyle: TextStyle = PersianTheme.typography.bodyMedium,
+        titleTextStyle: TextStyle = PersianTheme.typography.titleMedium,
+        messageTextStyle: TextStyle = PersianTheme.typography.bodySmall,
         containerShape: Shape = PersianTheme.shapes.shape22,
         itemSizes: ActionSheetItemSizes = itemSizes()
     ): ActionSheetSizes =
