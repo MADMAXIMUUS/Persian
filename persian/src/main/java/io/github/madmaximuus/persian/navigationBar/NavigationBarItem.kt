@@ -244,7 +244,7 @@ fun NavigationBarRowScope.NavigationBarItem(
                 Box(
                     Modifier
                         .layoutId(IndicatorRippleLayoutIdTag)
-                        .clip(PersianTheme.shapes.full)
+                        .clip(PersianTheme.shapes.shape12)
                         .indication(offsetInteractionSource, ripple())
                 )
             }
@@ -256,7 +256,7 @@ fun NavigationBarRowScope.NavigationBarItem(
                         .graphicsLayer { alpha = animationProgress.value }
                         .background(
                             color = this@NavigationBarItem.colors.indicatorColor,
-                            shape = PersianTheme.shapes.full,
+                            shape = PersianTheme.shapes.shape12,
                         )
                 )
             }

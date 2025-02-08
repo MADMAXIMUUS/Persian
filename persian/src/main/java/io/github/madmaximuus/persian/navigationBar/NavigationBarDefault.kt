@@ -63,9 +63,7 @@ object NavigationBarDefaults {
             horizontal = 0.dp,
             vertical = PersianTheme.spacing.size12,
         ),
-        badgeSizes: CounterSizes = CounterDefaults.sizes(
-
-        )
+        badgeSizes: CounterSizes = CounterDefaults.sizes()
     ): NavigationBarSizes =
         NavigationBarSizes(
             iconSize = iconSize,
