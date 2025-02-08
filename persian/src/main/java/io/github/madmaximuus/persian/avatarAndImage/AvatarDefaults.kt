@@ -37,7 +37,7 @@ object AvatarDefaults {
         badgeSize: Dp = 28.dp,
         horizontalBadgeOffset: Dp = 0.dp,
         verticalBadgeOffset: Dp = 0.dp,
-        initialsTextStyle: TextStyle = PersianTheme.typography.titleLarge.copy(
+        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
             fontSize = 30.sp,
             lineHeight = 36.sp
         )
@@ -71,7 +71,7 @@ object AvatarDefaults {
         badgeSize: Dp = 28.dp,
         horizontalBadgeOffset: Dp = 1.dp,
         verticalBadgeOffset: Dp = 1.dp,
-        initialsTextStyle: TextStyle = PersianTheme.typography.titleLarge.copy(
+        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
             fontSize = 30.sp,
             lineHeight = 36.sp
         )
@@ -105,7 +105,7 @@ object AvatarDefaults {
         badgeSize: Dp = 28.dp,
         horizontalBadgeOffset: Dp = 0.dp,
         verticalBadgeOffset: Dp = 4.dp,
-        initialsTextStyle: TextStyle = PersianTheme.typography.titleLarge.copy(
+        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
             fontSize = 26.sp,
             lineHeight = 32.sp
         )
@@ -139,7 +139,7 @@ object AvatarDefaults {
         badgeSize: Dp = 28.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
-        initialsTextStyle: TextStyle = PersianTheme.typography.titleLarge.copy(
+        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
             fontSize = 26.sp,
             lineHeight = 32.sp
         )
@@ -173,7 +173,7 @@ object AvatarDefaults {
         badgeSize: Dp = 24.dp,
         horizontalBadgeOffset: Dp = 2.dp,
         verticalBadgeOffset: Dp = 2.dp,
-        initialsTextStyle: TextStyle = PersianTheme.typography.titleLarge.copy(
+        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
             fontSize = 21.sp,
             lineHeight = 27.sp
         )
@@ -207,7 +207,7 @@ object AvatarDefaults {
         badgeSize: Dp = 24.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
-        initialsTextStyle: TextStyle = PersianTheme.typography.titleLarge.copy(
+        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
             fontSize = 18.sp,
             lineHeight = 24.sp
         )
@@ -241,7 +241,7 @@ object AvatarDefaults {
         badgeSize: Dp = 20.dp,
         horizontalBadgeOffset: Dp = 2.dp,
         verticalBadgeOffset: Dp = 2.dp,
-        initialsTextStyle: TextStyle = PersianTheme.typography.titleLarge.copy(
+        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
             fontSize = 17.sp,
             lineHeight = 23.sp
         )
@@ -275,7 +275,7 @@ object AvatarDefaults {
         badgeSize: Dp = 20.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
-        initialsTextStyle: TextStyle = PersianTheme.typography.titleLarge.copy(
+        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
             fontSize = 14.sp,
             lineHeight = 20.sp
         )
@@ -309,7 +309,7 @@ object AvatarDefaults {
         badgeSize: Dp = 20.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
-        initialsTextStyle: TextStyle = PersianTheme.typography.titleLarge.copy(
+        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
             fontSize = 14.sp,
             lineHeight = 20.sp
         )
@@ -343,7 +343,7 @@ object AvatarDefaults {
         badgeSize: Dp = 16.dp,
         horizontalBadgeOffset: Dp = 2.dp,
         verticalBadgeOffset: Dp = 2.dp,
-        initialsTextStyle: TextStyle = PersianTheme.typography.titleLarge.copy(
+        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
             fontSize = 13.sp,
             lineHeight = 19.sp
         )
@@ -377,7 +377,7 @@ object AvatarDefaults {
         badgeSize: Dp = 16.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
-        initialsTextStyle: TextStyle = PersianTheme.typography.titleLarge.copy(
+        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
             fontSize = 10.sp,
             lineHeight = 16.sp
         )
@@ -411,7 +411,7 @@ object AvatarDefaults {
         badgeSize: Dp = 16.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
-        initialsTextStyle: TextStyle = PersianTheme.typography.titleLarge.copy(
+        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
             fontSize = 10.sp,
             lineHeight = 16.sp
         )
@@ -445,7 +445,7 @@ object AvatarDefaults {
         badgeSize: Dp = 16.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
-        initialsTextStyle: TextStyle = PersianTheme.typography.titleLarge.copy(
+        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
             fontSize = 8.sp,
             lineHeight = 14.sp
         )
@@ -471,7 +471,7 @@ object AvatarDefaults {
     fun size20(
         boxSizes: Dp = 20.dp,
         placeholderIconSizes: IconSizes = IconDefaults.size16(),
-        initialsTextStyle: TextStyle = PersianTheme.typography.labelLarge.copy(
+        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
             fontSize = 8.sp,
             lineHeight = 14.sp
         )
@@ -497,7 +497,7 @@ object AvatarDefaults {
     fun size16(
         boxSizes: Dp = 16.dp,
         placeholderIconSizes: IconSizes = IconDefaults.size12(),
-        initialsTextStyle: TextStyle = PersianTheme.typography.titleLarge.copy(
+        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
             fontSize = 5.sp,
             lineHeight = 11.sp
         )

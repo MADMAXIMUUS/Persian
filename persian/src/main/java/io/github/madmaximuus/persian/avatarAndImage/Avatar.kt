@@ -128,7 +128,7 @@ fun Avatar(
                                         Box(
                                             modifier = Modifier
                                                 .fillMaxSize()
-                                                .shimmer(true)
+                                                .shimmer()
                                         )
                                     }
 
