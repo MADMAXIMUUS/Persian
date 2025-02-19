@@ -55,6 +55,15 @@ dependencies {
     debugImplementation libs.ui.tooling
 
     implementation libs.glide
+}
 
-    implementation(libs.persian.symbols)
+gradle.projectsEvaluated {
+    def iconsProject = project.findProject(':persianSymbols')
+    if (iconsProject != null) {
+        dependencies {
+            implementation project(':persianSymbols')
+        }
+    } else {
+        implementation(libs.persian.symbols)
+    }
 }

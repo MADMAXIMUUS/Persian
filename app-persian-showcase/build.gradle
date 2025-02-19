@@ -13,7 +13,7 @@ android {
         applicationId "ru.rabbit.persian.appShowcase"
         minSdk 26
         targetSdk 35
-        versionCode 10
+        versionCode 11
         versionName "7.1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -55,10 +55,9 @@ dependencies {
     implementation libs.bundles.compose
     implementation libs.adaptive.android
     implementation libs.splash
-    implementation libs.datastore.preferences
 
 
     implementation libs.compose.navigation
-    api project(':persian')
-    api project(':persianSymbols')
+    implementation project(':persian')
+    implementation project(':persianSymbols')
 }
