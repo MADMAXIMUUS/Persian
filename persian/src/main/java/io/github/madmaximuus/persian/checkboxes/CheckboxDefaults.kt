@@ -84,7 +84,7 @@ object CheckboxDefaults {
     fun sizes(
         toggleSize: Dp = 26.dp,
         textStyle: TextStyle = PersianTheme.typography.labelLarge,
-        shape: Shape = PersianTheme.shapes.shape16,
+        shape: Shape = PersianTheme.shapes.shape14,
         contentPadding: PaddingValues = PaddingValues(
             horizontal = PersianTheme.spacing.size16
         )

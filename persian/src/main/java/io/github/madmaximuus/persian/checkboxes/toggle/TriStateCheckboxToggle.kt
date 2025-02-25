@@ -284,7 +284,7 @@ internal const val CHECK_ANIMATION_DURATION = 300
 internal val checkboxSize = 24.dp
 internal val strokeWidth = 3.dp
 internal val boxStroke = 2.dp
-internal val radiusSize = 8.dp
+internal val radiusSize = 6.dp
 
 /**
  * Performs a linear interpolation between two values.
