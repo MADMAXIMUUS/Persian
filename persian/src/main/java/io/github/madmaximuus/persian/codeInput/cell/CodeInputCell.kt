@@ -107,11 +107,11 @@ internal fun CodeInputCell(
                 .border(
                     borderThickness,
                     borderColor,
-                    PersianTheme.shapes.shape16
+                    PersianTheme.shapes.shape14
                 )
                 .background(
                     containerColor,
-                    PersianTheme.shapes.shape16
+                    PersianTheme.shapes.shape14
                 ),
             contentAlignment = Alignment.Center
         ) {
@@ -147,11 +147,11 @@ internal fun CodeInputCell(
                                     .border(
                                         borderThickness,
                                         borderColor,
-                                        PersianTheme.shapes.shape16
+                                        PersianTheme.shapes.shape14
                                     )
                                     .background(
                                         containerColor,
-                                        PersianTheme.shapes.shape16
+                                        PersianTheme.shapes.shape14
                                     ),
                                 contentAlignment = Alignment.Center
                             ) {
@@ -192,11 +192,11 @@ internal fun CodeInputCell(
                                     .border(
                                         borderThickness,
                                         borderColor,
-                                        PersianTheme.shapes.shape16
+                                        PersianTheme.shapes.shape14
                                     )
                                     .background(
                                         containerColor,
-                                        PersianTheme.shapes.shape16
+                                        PersianTheme.shapes.shape14
                                     ),
                                 contentAlignment = Alignment.Center
                             ) {
