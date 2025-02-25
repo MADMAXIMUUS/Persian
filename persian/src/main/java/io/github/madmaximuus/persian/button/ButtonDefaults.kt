@@ -102,11 +102,13 @@ object ButtonDefaults {
     @Composable
     fun largeSizes(
         textStyle: TextStyle = PersianTheme.typography.buttonLarge,
-        additionInfoTextStyle: TextStyle = PersianTheme.typography.buttonMedium,
+        additionInfoTextStyle: TextStyle = PersianTheme.typography.labelMedium,
         height: Dp = 52.dp,
-        loaderSize: CircularProgressBarSizes = ProgressIndicatorDefaults.circularLarge(),
+        loaderSize: CircularProgressBarSizes = ProgressIndicatorDefaults.circularLarge(
+            diameter = 32.dp
+        ),
         iconSizes: IconSizes = IconDefaults.size28(),
-        shape: Shape = PersianTheme.shapes.shape16,
+        shape: Shape = PersianTheme.shapes.shape14,
         contentPadding: PaddingValues = PaddingValues(
             horizontal = PersianTheme.spacing.size24,
             vertical = 0.dp
@@ -137,11 +139,13 @@ object ButtonDefaults {
     @Composable
     fun mediumSizes(
         textStyle: TextStyle = PersianTheme.typography.buttonMedium,
-        additionInfoTextStyle: TextStyle = PersianTheme.typography.buttonSmall,
+        additionInfoTextStyle: TextStyle = PersianTheme.typography.labelSmall,
         height: Dp = 44.dp,
-        loaderSize: CircularProgressBarSizes = ProgressIndicatorDefaults.circularMedium(),
+        loaderSize: CircularProgressBarSizes = ProgressIndicatorDefaults.circularMedium(
+            diameter = 26.dp
+        ),
         iconSizes: IconSizes = IconDefaults.size20(),
-        shape: Shape = PersianTheme.shapes.shape14,
+        shape: Shape = PersianTheme.shapes.shape12,
         contentPadding: PaddingValues = PaddingValues(
             horizontal = PersianTheme.spacing.size20,
             vertical = 0.dp
@@ -172,9 +176,11 @@ object ButtonDefaults {
     fun smallSizes(
         textStyle: TextStyle = PersianTheme.typography.buttonSmall,
         height: Dp = 36.dp,
-        loaderSize: CircularProgressBarSizes = ProgressIndicatorDefaults.circularSmall(),
+        loaderSize: CircularProgressBarSizes = ProgressIndicatorDefaults.circularSmall(
+            diameter = 20.dp
+        ),
         iconSizes: IconSizes = IconDefaults.size18(),
-        shape: Shape = PersianTheme.shapes.shape12,
+        shape: Shape = PersianTheme.shapes.shape10,
         contentPadding: PaddingValues = PaddingValues(
             horizontal = PersianTheme.spacing.size16,
             vertical = 0.dp
