@@ -56,7 +56,7 @@ fun ActionSheetHeaderScope.Header(
                 top = PersianTheme.spacing.size24,
                 bottom = PersianTheme.spacing.size12
             ),
-        verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8)
+        verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size4)
     ) {
         title?.let {
             Text(
