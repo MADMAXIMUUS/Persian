@@ -52,8 +52,8 @@ object AlertsDefaults {
      */
     @Composable
     fun alertSizes(
-        containerShape: Shape = PersianTheme.shapes.shape24,
-        titleTextStyle: TextStyle = PersianTheme.typography.titleLarge,
+        containerShape: Shape = PersianTheme.shapes.shape20,
+        titleTextStyle: TextStyle = PersianTheme.typography.titleMedium,
         messageTextStyle: TextStyle = PersianTheme.typography.bodyMedium,
         dividerSizes: DividerSizes = DividerDefaults.sizes(),
         actionSize: ButtonSizes = ButtonDefaults.smallSizes()

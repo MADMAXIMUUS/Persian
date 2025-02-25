@@ -14,6 +14,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
@@ -34,7 +35,6 @@ import io.github.madmaximuus.persian.text.Text
  * @param message the text to be displayed as message in this alert.
  * @param confirmAction The confirm action in [ActionScope] of this alert.
  * @param dismissAction The optional dismiss action in [ActionScope] of this alert.
- * @param cancelAction The optional cancel action in [ActionScope] of this alert.
  * @param colors The [AlertColors] colors of container, title, message and actions of this alert.
  * @param sizes The [AlertSizes] sizes of container, title and subtitle and actions of this alert.
  * @param onDismiss Executes when the user tries to dismiss the action sheet.
@@ -49,12 +49,14 @@ fun Alert(
     message: String? = null,
     confirmAction: @Composable ActionScope.() -> Unit,
     dismissAction: (@Composable ActionScope.() -> Unit)? = null,
-    cancelAction: (@Composable ActionScope.() -> Unit)? = null,
     onDismiss: () -> Unit,
     content: (@Composable () -> Unit)? = null
 ) {
     val heightSizeClass = currentWindowAdaptiveInfo().windowSizeClass.windowHeightSizeClass
     val widthSizeClass = currentWindowAdaptiveInfo().windowSizeClass.windowWidthSizeClass
+
+    val maxWidth = if (widthSizeClass == WindowWidthSizeClass.COMPACT) Dp.Unspecified else 400.dp
+
     Dialog(
         onDismissRequest = onDismiss,
         properties = DialogProperties(
@@ -64,7 +66,7 @@ fun Alert(
         content = {
             Surface(
                 modifier = modifier
-                    .widthIn(max = 500.dp)
+                    .widthIn(max = maxWidth)
                     .fillMaxWidth()
                     .wrapContentHeight()
                     .padding(horizontal = PersianTheme.spacing.size20),
@@ -131,12 +133,18 @@ fun Alert(
                                     widthSizeClass != WindowWidthSizeClass.COMPACT
                                     && heightSizeClass != WindowHeightSizeClass.COMPACT
                                 )
-                                    PaddingValues(PersianTheme.spacing.size16)
+                                    PaddingValues(
+                                        horizontal = PersianTheme.spacing.size16,
+                                        vertical = PersianTheme.spacing.size12
+                                    )
                                 else if (heightSizeClass == WindowHeightSizeClass.COMPACT)
-                                    PaddingValues(PersianTheme.spacing.size8)
+                                    PaddingValues(
+                                        horizontal = PersianTheme.spacing.size12,
+                                        vertical = PersianTheme.spacing.size6
+                                    )
                                 else PaddingValues(
                                     horizontal = PersianTheme.spacing.size16,
-                                    vertical = PersianTheme.spacing.size8
+                                    vertical = PersianTheme.spacing.size12
                                 )
                             Row(
                                 modifier = Modifier
@@ -154,7 +162,6 @@ fun Alert(
                                             sizes = sizes.actionSize
                                         )
                                     }
-                                    cancelAction?.let { scope.it() }
                                     dismissAction?.let { scope.it() }
                                     scope.confirmAction()
                                 }
