@@ -400,7 +400,7 @@ object InputsDefaults {
         unfocusedBorderThickness: Dp = 1.dp,
         focusedBorderThickness: Dp = 2.dp,
 
-        shape: Shape = PersianTheme.shapes.shape16,
+        shape: Shape = PersianTheme.shapes.shape14,
         contentPaddingValues: PaddingValues = PaddingValues(
             horizontal = PersianTheme.spacing.size12
         ),
