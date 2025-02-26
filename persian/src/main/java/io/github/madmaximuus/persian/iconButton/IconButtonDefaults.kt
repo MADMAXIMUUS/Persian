@@ -30,7 +30,7 @@ object IconButtonDefaults {
     fun smallSizes(
         size: Dp = 36.dp,
         iconSizes: IconSizes = IconDefaults.size20(),
-        shape: Shape = PersianTheme.shapes.shape12,
+        shape: Shape = PersianTheme.shapes.shape10,
     ): IconButtonSizes =
         IconButtonSizes(
             size = size,
@@ -52,7 +52,7 @@ object IconButtonDefaults {
     fun mediumSizes(
         size: Dp = 44.dp,
         iconSizes: IconSizes = IconDefaults.size24(),
-        shape: Shape = PersianTheme.shapes.shape14,
+        shape: Shape = PersianTheme.shapes.shape12,
     ): IconButtonSizes =
         IconButtonSizes(
             size = size,
@@ -74,7 +74,7 @@ object IconButtonDefaults {
     fun largeSizes(
         size: Dp = 52.dp,
         iconSizes: IconSizes = IconDefaults.size28(),
-        shape: Shape = PersianTheme.shapes.shape16
+        shape: Shape = PersianTheme.shapes.shape14
     ): IconButtonSizes =
         IconButtonSizes(
             size = size,
