@@ -11,7 +11,6 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.DrawStyle
 import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.graphics.drawscope.translate
-import kotlin.math.sqrt
 
 fun squircleShapePath(
     size: Size,
@@ -19,37 +18,36 @@ fun squircleShapePath(
     topRightCorner: Float,
     bottomLeftCorner: Float,
     bottomRightCorner: Float,
-    cornerSmoothing: Float = SquircleSmoothing.HIGH
+    cornerSmoothing: Float = SquircleSmoothing.MEDIUM
 ): Path {
     return Path().apply {
         val width = size.width
         val height = size.height
-        val offsetFactor = sqrt(1 - cornerSmoothing)
-
-        moveTo(x = topLeftCorner, y = 0f)
-        lineTo(x = width - topRightCorner, y = 0f)
+        val smoothing = cornerSmoothing * 0.5f
+        moveTo(x = topLeftCorner + topLeftCorner * smoothing, y = 0f)
+        lineTo(x = width - topRightCorner - topRightCorner * smoothing, y = 0f)
         cubicTo(
-            x1 = width - topRightCorner * offsetFactor, y1 = 0f,
-            x2 = width, y2 = topRightCorner * offsetFactor,
-            x3 = width, y3 = topRightCorner
+            x1 = width - topRightCorner * smoothing, y1 = 0f,
+            x2 = width, y2 = topRightCorner * smoothing,
+            x3 = width, y3 = topRightCorner + topRightCorner * smoothing
         )
-        lineTo(x = width, y = height - bottomRightCorner)
+        lineTo(x = width, y = height - bottomRightCorner - bottomRightCorner * smoothing)
         cubicTo(
-            x1 = width, y1 = height - bottomRightCorner * offsetFactor,
-            x2 = width - bottomRightCorner * offsetFactor, y2 = height,
-            x3 = width - bottomRightCorner, y3 = height
+            x1 = width, y1 = height - bottomRightCorner * smoothing,
+            x2 = width - bottomRightCorner * smoothing, y2 = height,
+            x3 = width - bottomRightCorner - bottomRightCorner * smoothing, y3 = height
         )
-        lineTo(x = bottomLeftCorner, y = height)
+        lineTo(x = bottomLeftCorner + bottomLeftCorner * smoothing, y = height)
         cubicTo(
-            x1 = bottomLeftCorner * offsetFactor, y1 = height,
-            x2 = 0f, y2 = height - bottomLeftCorner * offsetFactor,
-            x3 = 0f, y3 = height - bottomLeftCorner
+            x1 = bottomLeftCorner * smoothing, y1 = height,
+            x2 = 0f, y2 = height - bottomLeftCorner * smoothing,
+            x3 = 0f, y3 = height - bottomLeftCorner - bottomLeftCorner * smoothing
         )
-        lineTo(x = 0f, y = topLeftCorner)
+        lineTo(x = 0f, y = topLeftCorner + topLeftCorner * smoothing)
         cubicTo(
-            x1 = 0f, y1 = topLeftCorner * offsetFactor,
-            x2 = topLeftCorner * offsetFactor, y2 = 0f,
-            x3 = topLeftCorner, y3 = 0f
+            x1 = 0f, y1 = topLeftCorner * smoothing,
+            x2 = topLeftCorner * smoothing, y2 = 0f,
+            x3 = topLeftCorner + topLeftCorner * smoothing, y3 = 0f
         )
         close()
     }

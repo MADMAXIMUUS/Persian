@@ -12,7 +12,7 @@ class SquircleShape(
     topEnd: CornerSize,
     bottomEnd: CornerSize,
     bottomStart: CornerSize,
-    private val cornerSmoothing: Float = SquircleSmoothing.NONE
+    val cornerSmoothing: Float = SquircleSmoothing.MEDIUM
 ) : CornerBasedShape(topStart, topEnd, bottomEnd, bottomStart) {
 
     override fun createOutline(
@@ -70,48 +70,56 @@ class SquircleShape(
     }
 }
 
-fun SquircleShape(corner: CornerSize, smoothing: Float = SquircleSmoothing.NONE) =
-    SquircleShape(
-        topStart = corner,
-        topEnd = corner,
-        bottomEnd = corner,
-        bottomStart = corner,
-        cornerSmoothing = smoothing
-    )
+fun SquircleShape(
+    corner: CornerSize,
+    smoothing: Float = SquircleSmoothing.MEDIUM
+) = SquircleShape(
+    topStart = corner,
+    topEnd = corner,
+    bottomEnd = corner,
+    bottomStart = corner,
+    cornerSmoothing = smoothing
+)
 
-fun SquircleShape(corner: Dp, smoothing: Float = SquircleSmoothing.NONE) =
-    SquircleShape(
-        topStart = CornerSize(corner),
-        topEnd = CornerSize(corner),
-        bottomEnd = CornerSize(corner),
-        bottomStart = CornerSize(corner),
-        cornerSmoothing = smoothing
-    )
+fun SquircleShape(
+    corner: Dp,
+    smoothing: Float = SquircleSmoothing.MEDIUM
+) = SquircleShape(
+    topStart = CornerSize(corner),
+    topEnd = CornerSize(corner),
+    bottomEnd = CornerSize(corner),
+    bottomStart = CornerSize(corner),
+    cornerSmoothing = smoothing
+)
 
-fun SquircleShape(corner: Float, smoothing: Float = SquircleSmoothing.NONE) =
-    SquircleShape(
-        topStart = CornerSize(corner),
-        topEnd = CornerSize(corner),
-        bottomEnd = CornerSize(corner),
-        bottomStart = CornerSize(corner),
-        cornerSmoothing = smoothing
-    )
+fun SquircleShape(
+    corner: Float,
+    smoothing: Float = SquircleSmoothing.MEDIUM
+) = SquircleShape(
+    topStart = CornerSize(corner),
+    topEnd = CornerSize(corner),
+    bottomEnd = CornerSize(corner),
+    bottomStart = CornerSize(corner),
+    cornerSmoothing = smoothing
+)
 
-fun SquircleShape(percent: Int, smoothing: Float = SquircleSmoothing.NONE) =
-    SquircleShape(
-        topStart = CornerSize(percent),
-        topEnd = CornerSize(percent),
-        bottomEnd = CornerSize(percent),
-        bottomStart = CornerSize(percent),
-        cornerSmoothing = smoothing
-    )
+fun SquircleShape(
+    percent: Int,
+    smoothing: Float = SquircleSmoothing.MEDIUM
+) = SquircleShape(
+    topStart = CornerSize(percent),
+    topEnd = CornerSize(percent),
+    bottomEnd = CornerSize(percent),
+    bottomStart = CornerSize(percent),
+    cornerSmoothing = smoothing
+)
 
 fun SquircleShape(
     topStart: Dp = 0.dp,
     topEnd: Dp = 0.dp,
     bottomEnd: Dp = 0.dp,
     bottomStart: Dp = 0.dp,
-    smoothing: Float = SquircleSmoothing.NONE
+    smoothing: Float = SquircleSmoothing.MEDIUM
 ) = SquircleShape(
     topStart = CornerSize(topStart),
     topEnd = CornerSize(topEnd),
@@ -125,7 +133,7 @@ fun SquircleShape(
     topEnd: Float = 0f,
     bottomEnd: Float = 0f,
     bottomStart: Float = 0f,
-    smoothing: Float = SquircleSmoothing.NONE
+    smoothing: Float = SquircleSmoothing.MEDIUM
 ) = SquircleShape(
     topStart = CornerSize(topStart),
     topEnd = CornerSize(topEnd),
@@ -139,7 +147,7 @@ fun SquircleShape(
     topEndPercent: Int = 0,
     bottomEndPercent: Int = 0,
     bottomStartPercent: Int = 0,
-    smoothing: Float = SquircleSmoothing.NONE
+    smoothing: Float = SquircleSmoothing.MEDIUM
 ) = SquircleShape(
     topStart = CornerSize(topStartPercent),
     topEnd = CornerSize(topEndPercent),
