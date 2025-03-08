@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -28,8 +29,10 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat
+import androidx.window.core.layout.WindowWidthSizeClass
 import io.github.madmaximuus.persian.actionSheet.utils.ActionSheetPopup
 import io.github.madmaximuus.persian.actionSheet.utils.ActionSheetProperties
 import io.github.madmaximuus.persian.actionSheet.utils.AnimatedSlideInTransition
@@ -71,6 +74,11 @@ fun ActionSheet(
     val screenHeight = with(LocalDensity.current) {
         configuration.screenHeightDp.dp.roundToPx()
     }
+
+    val windowWidthSizeClass = currentWindowAdaptiveInfo().windowSizeClass.windowWidthSizeClass
+
+    val maxWidth = if (windowWidthSizeClass == WindowWidthSizeClass.COMPACT) Dp.Unspecified
+    else 500.dp
 
     LaunchedEffect(key1 = Unit) {
         launch {
@@ -122,7 +130,7 @@ fun ActionSheet(
                 ) {
                     Surface(
                         modifier = Modifier
-                            .widthIn(max = 460.dp)
+                            .widthIn(max = maxWidth)
                             .systemBarsPadding()
                             .padding(
                                 horizontal = PersianTheme.spacing.size8,
