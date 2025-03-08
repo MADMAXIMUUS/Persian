@@ -5,6 +5,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.unit.dp
+import io.github.madmaximuus.persian.foundation.shape.SquircleShape
+import io.github.madmaximuus.persian.foundation.shape.SquircleSmoothing
 
 /**
  * An immutable data class that holds various predefined [RoundedCornerShape] instances.
@@ -12,32 +14,32 @@ import androidx.compose.ui.unit.dp
  * This class provides a set of commonly used rounded corner shapes with different radii,
  * as well as a full circle shape.
  *
- * @property shape4 A [RoundedCornerShape] with a radius of 4 density-independent pixels (dp).
- * @property shape6 A [RoundedCornerShape] with a radius of 6 density-independent pixels (dp).
- * @property shape8 A [RoundedCornerShape] with a radius of 8 density-independent pixels (dp).
- * @property shape10 A [RoundedCornerShape] with a radius of 10 density-independent pixels (dp).
- * @property shape12 A [RoundedCornerShape] with a radius of 12 density-independent pixels (dp).
- * @property shape14 A [RoundedCornerShape] with a radius of 14 density-independent pixels (dp).
- * @property shape16 A [RoundedCornerShape] with a radius of 16 density-independent pixels (dp).
- * @property shape18 A [RoundedCornerShape] with a radius of 18 density-independent pixels (dp).
- * @property shape20 A [RoundedCornerShape] with a radius of 20 density-independent pixels (dp).
- * @property shape22 A [RoundedCornerShape] with a radius of 20 density-independent pixels (dp).
- * @property shape24 A [RoundedCornerShape] with a radius of 20 density-independent pixels (dp).
+ * @property shape4 A [SquircleShape] with a radius of 4 density-independent pixels (dp).
+ * @property shape6 A [SquircleShape] with a radius of 6 density-independent pixels (dp).
+ * @property shape8 A [SquircleShape] with a radius of 8 density-independent pixels (dp).
+ * @property shape10 A [SquircleShape] with a radius of 10 density-independent pixels (dp).
+ * @property shape12 A [SquircleShape] with a radius of 12 density-independent pixels (dp).
+ * @property shape14 A [SquircleShape] with a radius of 14 density-independent pixels (dp).
+ * @property shape16 A [SquircleShape] with a radius of 16 density-independent pixels (dp).
+ * @property shape18 A [SquircleShape] with a radius of 18 density-independent pixels (dp).
+ * @property shape20 A [SquircleShape] with a radius of 20 density-independent pixels (dp).
+ * @property shape22 A [SquircleShape] with a radius of 20 density-independent pixels (dp).
+ * @property shape24 A [SquircleShape] with a radius of 20 density-independent pixels (dp).
  * @property full A [RoundedCornerShape] representing a full circle.
  */
 @Immutable
 class Shapes(
-    val shape4: RoundedCornerShape = RoundedCornerShape(4.dp),
-    val shape6: RoundedCornerShape = RoundedCornerShape(6.dp),
-    val shape8: RoundedCornerShape = RoundedCornerShape(8.dp),
-    val shape10: RoundedCornerShape = RoundedCornerShape(10.dp),
-    val shape12: RoundedCornerShape = RoundedCornerShape(12.dp),
-    val shape14: RoundedCornerShape = RoundedCornerShape(14.dp),
-    val shape16: RoundedCornerShape = RoundedCornerShape(16.dp),
-    val shape18: RoundedCornerShape = RoundedCornerShape(18.dp),
-    val shape20: RoundedCornerShape = RoundedCornerShape(20.dp),
-    val shape22: RoundedCornerShape = RoundedCornerShape(22.dp),
-    val shape24: RoundedCornerShape = RoundedCornerShape(24.dp),
+    val shape4: SquircleShape = SquircleShape(4.dp, SquircleSmoothing.HIGH),
+    val shape6: SquircleShape = SquircleShape(6.dp, SquircleSmoothing.HIGH),
+    val shape8: SquircleShape = SquircleShape(8.dp, SquircleSmoothing.HIGH),
+    val shape10: SquircleShape = SquircleShape(10.dp, SquircleSmoothing.HIGH),
+    val shape12: SquircleShape = SquircleShape(12.dp, SquircleSmoothing.HIGH),
+    val shape14: SquircleShape = SquircleShape(14.dp, SquircleSmoothing.HIGH),
+    val shape16: SquircleShape = SquircleShape(16.dp, SquircleSmoothing.HIGH),
+    val shape18: SquircleShape = SquircleShape(18.dp, SquircleSmoothing.HIGH),
+    val shape20: SquircleShape = SquircleShape(20.dp, SquircleSmoothing.HIGH),
+    val shape22: SquircleShape = SquircleShape(22.dp, SquircleSmoothing.HIGH),
+    val shape24: SquircleShape = SquircleShape(24.dp, SquircleSmoothing.HIGH),
     val full: RoundedCornerShape = CircleShape,
 )
 

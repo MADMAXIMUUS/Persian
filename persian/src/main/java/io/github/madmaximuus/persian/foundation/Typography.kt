@@ -11,8 +11,6 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.TextUnit
-import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import io.github.madmaximuus.persian.R
 
@@ -42,7 +40,7 @@ import io.github.madmaximuus.persian.R
  * @property labelSmall The small label text style.
  * @property labelExtraSmall The smallest label text style.
  *
- * @constructor Creates a new Typography instance with the specified text styles.
+ * @constructor Creates a new [Typography] instance with the specified text styles.
  */
 @Immutable
 class Typography(
@@ -52,7 +50,7 @@ class Typography(
         fontStyle = FontStyle.Normal,
         fontSize = 57.sp,
         lineHeight = 64.sp,
-        letterSpacing = percentToEm(57, -0.25),
+        letterSpacing = (-0.25).sp,
     ),
     val displayMedium: TextStyle = TextStyle(
         fontFamily = interFontFamily,
@@ -60,7 +58,7 @@ class Typography(
         fontStyle = FontStyle.Normal,
         fontSize = 45.sp,
         lineHeight = 52.sp,
-        letterSpacing = percentToEm(45, -0.25),
+        letterSpacing = (-0.25).sp,
     ),
     val displaySmall: TextStyle = TextStyle(
         fontFamily = interFontFamily,
@@ -68,7 +66,7 @@ class Typography(
         fontStyle = FontStyle.Normal,
         fontSize = 36.sp,
         lineHeight = 44.sp,
-        letterSpacing = percentToEm(36, -0.25),
+        letterSpacing = (-0.25).sp,
     ),
     val headlineLarge: TextStyle = TextStyle(
         fontFamily = interFontFamily,
@@ -76,7 +74,7 @@ class Typography(
         fontStyle = FontStyle.Normal,
         fontSize = 32.sp,
         lineHeight = 40.sp,
-        letterSpacing = 0.em
+        letterSpacing = 0.sp
     ),
     val headlineMedium: TextStyle = TextStyle(
         fontFamily = interFontFamily,
@@ -84,7 +82,7 @@ class Typography(
         fontStyle = FontStyle.Normal,
         fontSize = 28.sp,
         lineHeight = 36.sp,
-        letterSpacing = 0.em
+        letterSpacing = 0.sp
     ),
     val headlineSmall: TextStyle = TextStyle(
         fontFamily = interFontFamily,
@@ -92,7 +90,7 @@ class Typography(
         fontStyle = FontStyle.Normal,
         fontSize = 24.sp,
         lineHeight = 32.sp,
-        letterSpacing = 0.em
+        letterSpacing = 0.sp
     ),
     val titleLarge: TextStyle = TextStyle(
         fontFamily = interFontFamily,
@@ -100,7 +98,7 @@ class Typography(
         fontStyle = FontStyle.Normal,
         fontSize = 22.sp,
         lineHeight = 28.sp,
-        letterSpacing = percentToEm(22, 0.05),
+        letterSpacing = 0.05.sp,
     ),
     val titleMedium: TextStyle = TextStyle(
         fontFamily = interFontFamily,
@@ -108,7 +106,7 @@ class Typography(
         fontStyle = FontStyle.Normal,
         fontSize = 16.sp,
         lineHeight = 24.sp,
-        letterSpacing = percentToEm(16, 0.05)
+        letterSpacing = 0.05.sp
     ),
     val titleSmall: TextStyle = TextStyle(
         fontFamily = interFontFamily,
@@ -116,7 +114,7 @@ class Typography(
         fontStyle = FontStyle.Normal,
         fontSize = 14.sp,
         lineHeight = 20.sp,
-        letterSpacing = percentToEm(14, 0.05),
+        letterSpacing = 0.05.sp,
     ),
     val bodyLarge: TextStyle = TextStyle(
         fontFamily = interFontFamily,
@@ -124,7 +122,7 @@ class Typography(
         fontStyle = FontStyle.Normal,
         fontSize = 16.sp,
         lineHeight = 24.sp,
-        letterSpacing = percentToEm(16, 0.35),
+        letterSpacing = 0.5.sp,
     ),
     val bodyMedium: TextStyle = TextStyle(
         fontFamily = interFontFamily,
@@ -132,7 +130,7 @@ class Typography(
         fontStyle = FontStyle.Normal,
         fontSize = 14.sp,
         lineHeight = 20.sp,
-        letterSpacing = percentToEm(14, 0.25),
+        letterSpacing = 0.25.sp,
     ),
     val bodySmall: TextStyle = TextStyle(
         fontFamily = interFontFamily,
@@ -140,31 +138,31 @@ class Typography(
         fontStyle = FontStyle.Normal,
         fontSize = 12.sp,
         lineHeight = 16.sp,
-        letterSpacing = percentToEm(12, 0.15),
+        letterSpacing = 0.4.sp,
     ),
     val buttonLarge: TextStyle = TextStyle(
         fontFamily = interFontFamily,
-        fontWeight = FontWeight.Black,
+        fontWeight = FontWeight.ExtraBold,
         fontStyle = FontStyle.Normal,
         fontSize = 16.sp,
         lineHeight = 24.sp,
-        letterSpacing = percentToEm(16, 0.3),
+        letterSpacing = 0.5.sp,
     ),
     val buttonMedium: TextStyle = TextStyle(
         fontFamily = interFontFamily,
-        fontWeight = FontWeight.Black,
+        fontWeight = FontWeight.ExtraBold,
         fontStyle = FontStyle.Normal,
         fontSize = 14.sp,
         lineHeight = 20.sp,
-        letterSpacing = percentToEm(14, 0.3),
+        letterSpacing = 0.5.sp,
     ),
     val buttonSmall: TextStyle = TextStyle(
         fontFamily = interFontFamily,
-        fontWeight = FontWeight.Black,
+        fontWeight = FontWeight.ExtraBold,
         fontStyle = FontStyle.Normal,
         fontSize = 12.sp,
         lineHeight = 16.sp,
-        letterSpacing = percentToEm(12, 0.3),
+        letterSpacing = 0.5.sp,
     ),
     val labelLarge: TextStyle = TextStyle(
         fontFamily = interFontFamily,
@@ -172,23 +170,23 @@ class Typography(
         fontStyle = FontStyle.Normal,
         fontSize = 16.sp,
         lineHeight = 24.sp,
-        letterSpacing = percentToEm(16, 0.2),
+        letterSpacing = 0.2.sp,
     ),
     val labelMedium: TextStyle = TextStyle(
         fontFamily = interFontFamily,
-        fontWeight = FontWeight.Medium,
+        fontWeight = FontWeight.Bold,
         fontStyle = FontStyle.Normal,
         fontSize = 14.sp,
         lineHeight = 20.sp,
-        letterSpacing = percentToEm(14, 0.2),
+        letterSpacing = 0.5.sp,
     ),
     val labelSmall: TextStyle = TextStyle(
         fontFamily = interFontFamily,
-        fontWeight = FontWeight.SemiBold,
+        fontWeight = FontWeight.Bold,
         fontStyle = FontStyle.Normal,
         fontSize = 12.sp,
         lineHeight = 16.sp,
-        letterSpacing = percentToEm(12, 0.2),
+        letterSpacing = 0.2.sp,
     ),
     val labelExtraSmall: TextStyle = TextStyle(
         fontFamily = interFontFamily,
@@ -196,7 +194,7 @@ class Typography(
         fontStyle = FontStyle.Normal,
         fontSize = 11.sp,
         lineHeight = 14.sp,
-        letterSpacing = percentToEm(11, 0.2),
+        letterSpacing = 0.2.sp,
     )
 ) {
 
@@ -214,6 +212,9 @@ class Typography(
         bodyLarge: TextStyle = this.bodyLarge,
         bodyMedium: TextStyle = this.bodyMedium,
         bodySmall: TextStyle = this.bodySmall,
+        buttonLarge: TextStyle = this.buttonLarge,
+        buttonMedium: TextStyle = this.buttonMedium,
+        buttonSmall: TextStyle = this.buttonSmall,
         labelLarge: TextStyle = this.labelLarge,
         labelMedium: TextStyle = this.labelMedium,
         labelSmall: TextStyle = this.labelSmall,
@@ -232,6 +233,9 @@ class Typography(
             bodyLarge = bodyLarge,
             bodyMedium = bodyMedium,
             bodySmall = bodySmall,
+            buttonLarge = buttonLarge,
+            buttonMedium = buttonMedium,
+            buttonSmall = buttonSmall,
             labelLarge = labelLarge,
             labelMedium = labelMedium,
             labelSmall = labelSmall,
@@ -254,6 +258,9 @@ class Typography(
         if (bodyLarge != other.bodyLarge) return false
         if (bodyMedium != other.bodyMedium) return false
         if (bodySmall != other.bodySmall) return false
+        if (buttonLarge != other.buttonLarge) return false
+        if (buttonMedium != other.buttonMedium) return false
+        if (buttonSmall != other.buttonSmall) return false
         if (labelLarge != other.labelLarge) return false
         if (labelMedium != other.labelMedium) return false
         if (labelSmall != other.labelSmall) return false
@@ -274,6 +281,9 @@ class Typography(
         result = 31 * result + bodyLarge.hashCode()
         result = 31 * result + bodyMedium.hashCode()
         result = 31 * result + bodySmall.hashCode()
+        result = 31 * result + buttonLarge.hashCode()
+        result = 31 * result + buttonMedium.hashCode()
+        result = 31 * result + buttonSmall.hashCode()
         result = 31 * result + labelLarge.hashCode()
         result = 31 * result + labelMedium.hashCode()
         result = 31 * result + labelSmall.hashCode()
@@ -295,6 +305,9 @@ class Typography(
                 "bodyLarge=$bodyLarge, " +
                 "bodyMedium=$bodyMedium, " +
                 "bodySmall=$bodySmall, " +
+                "buttonLarge=$buttonLarge, " +
+                "buttonMedium=$buttonMedium, " +
+                "buttonSmall=$buttonSmall, " +
                 "labelLarge=$labelLarge, " +
                 "labelMedium=$labelMedium, " +
                 "labelSmall=$labelSmall, " +
@@ -328,10 +341,6 @@ val LocalTextStyle = compositionLocalOf(structuralEqualityPolicy()) { TextStyle.
 fun ProvideTextStyle(value: TextStyle, content: @Composable () -> Unit) {
     val mergedStyle = LocalTextStyle.current.merge(value)
     CompositionLocalProvider(LocalTextStyle provides mergedStyle, content = content)
-}
-
-private fun percentToEm(fontSize: Int, spacingPercent: Double): TextUnit {
-    return (spacingPercent / 100 * fontSize).em
 }
 
 val interFontFamily = FontFamily(
