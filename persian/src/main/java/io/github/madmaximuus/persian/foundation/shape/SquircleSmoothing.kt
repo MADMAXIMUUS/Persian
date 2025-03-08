@@ -1,10 +1,9 @@
 package io.github.madmaximuus.persian.foundation.shape
 
-enum class SquircleSmoothing(val factor: Float) {
-    NONE(0f),
-    LOW(0.25f),
-    MEDIUM(0.5f),
-    IOS(0.6f),
-    HIGH(0.75f),
-    FULL(1f)
+object SquircleSmoothing {
+    val NONE get() = 0.55f
+    val SMALL get() = 0.60f
+    val MEDIUM get() = 0.75f
+    val HIGH get() = 0.8f
+    val FULL get() = 1f
 }

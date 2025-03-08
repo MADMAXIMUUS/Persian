@@ -1,12 +1,8 @@
 package io.github.madmaximuus.persian.foundation.shape
 
-import android.util.Log
 import androidx.compose.foundation.shape.CornerBasedShape
 import androidx.compose.foundation.shape.CornerSize
-import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.Size
-import androidx.compose.ui.graphics.Outline
-import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
@@ -16,7 +12,7 @@ class SquircleShape(
     topEnd: CornerSize,
     bottomEnd: CornerSize,
     bottomStart: CornerSize,
-    private val smoothing: SquircleSmoothing = SquircleSmoothing.NONE
+    private val cornerSmoothing: Float = SquircleSmoothing.NONE
 ) : CornerBasedShape(topStart, topEnd, bottomEnd, bottomStart) {
 
     override fun createOutline(
@@ -26,121 +22,88 @@ class SquircleShape(
         bottomEnd: Float,
         bottomStart: Float,
         layoutDirection: LayoutDirection
-    ): Outline {
-        Log.d("SquircleShape", "Resolved corners: TS=$topStart, TE=$topEnd, BE=$bottomEnd, BS=$bottomStart, Size=$size")
-
-        if (topStart + topEnd + bottomEnd + bottomStart == 0.0f) {
-            return Outline.Rectangle(Rect(0f, 0f, size.width, size.height))
-        }
-
-        val path = Path()
-
-        val resolvedTopStart = if (layoutDirection == LayoutDirection.Ltr) topStart else topEnd
-        val resolvedTopEnd = if (layoutDirection == LayoutDirection.Ltr) topEnd else topStart
-        val resolvedBottomEnd = if (layoutDirection == LayoutDirection.Ltr) bottomEnd else bottomStart
-        val resolvedBottomStart = if (layoutDirection == LayoutDirection.Ltr) bottomStart else bottomEnd
-
-        path.moveTo(resolvedTopStart, 0f)
-
-        // Верхний правый угол
-        path.lineTo(size.width - resolvedTopEnd, 0f)
-        if (resolvedTopEnd > 0f) {
-            path.arcTo(
-                Rect(
-                    size.width - 2 * resolvedTopEnd, 0f,
-                    size.width, 2 * resolvedTopEnd
-                ),
-                -90f, 90f, false
-            )
-        }
-
-        // Нижний правый угол
-        path.lineTo(size.width, size.height - resolvedBottomEnd)
-        if (resolvedBottomEnd > 0f) {
-            path.arcTo(
-                Rect(
-                    size.width - 2 * resolvedBottomEnd, size.height - 2 * resolvedBottomEnd,
-                    size.width, size.height
-                ),
-                0f, 90f, false
-            )
-        }
-
-        // Нижний левый угол
-        path.lineTo(resolvedBottomStart, size.height)
-        if (resolvedBottomStart > 0f) {
-            path.arcTo(
-                Rect(
-                    0f, size.height - 2 * resolvedBottomStart,
-                    2 * resolvedBottomStart, size.height
-                ),
-                90f, 90f, false
-            )
-        }
-
-        // Верхний левый угол
-        path.lineTo(0f, resolvedTopStart)
-        if (resolvedTopStart > 0f) {
-            path.arcTo(
-                Rect(
-                    0f, 0f,
-                    2 * resolvedTopStart, 2 * resolvedTopStart
-                ),
-                180f, 90f, false
-            )
-        }
-
-        path.close()
-        return Outline.Generic(path)
-    }
-
+    ) = createSquircleShapeOutline(
+        size = size,
+        topStart = topStart,
+        topEnd = topEnd,
+        bottomEnd = bottomEnd,
+        bottomStart = bottomStart,
+        cornerSmoothing = cornerSmoothing,
+        layoutDirection = layoutDirection
+    )
 
     override fun copy(
         topStart: CornerSize,
         topEnd: CornerSize,
         bottomEnd: CornerSize,
         bottomStart: CornerSize
-    ): CornerBasedShape = SquircleShape(topStart, topEnd, bottomEnd, bottomStart, smoothing)
+    ): CornerBasedShape = SquircleShape(
+        topStart = topStart,
+        topEnd = topEnd,
+        bottomEnd = bottomEnd,
+        bottomStart = bottomStart,
+        cornerSmoothing = cornerSmoothing
+    )
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is SquircleShape) return false
+        if (topStart != other.topStart) return false
+        if (topEnd != other.topEnd) return false
+        if (bottomStart != other.bottomStart) return false
+        if (bottomEnd != other.bottomEnd) return false
+        if (cornerSmoothing != other.cornerSmoothing) return false
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = topStart.hashCode()
+        result = 31 * result + topEnd.hashCode()
+        result = 31 * result + bottomStart.hashCode()
+        result = 31 * result + bottomEnd.hashCode()
+        result = 31 * result + cornerSmoothing.hashCode()
+        return result
+    }
 
     override fun toString(): String {
-        return "SquircleShape(topStart = $topStart, topEnd = $topEnd, bottomEnd = $bottomEnd, bottomStart = $bottomStart, smoothing = $smoothing)"
+        return "SquircleShape(topStart = $topStart, topEnd = $topEnd, bottomEnd = $bottomEnd, bottomStart = $bottomStart, smoothing = $cornerSmoothing)"
     }
 }
 
-fun SquircleShape(corner: CornerSize, smoothing: SquircleSmoothing = SquircleSmoothing.NONE) =
+fun SquircleShape(corner: CornerSize, smoothing: Float = SquircleSmoothing.NONE) =
     SquircleShape(
         topStart = corner,
         topEnd = corner,
         bottomEnd = corner,
         bottomStart = corner,
-        smoothing = smoothing
+        cornerSmoothing = smoothing
     )
 
-fun SquircleShape(corner: Dp, smoothing: SquircleSmoothing = SquircleSmoothing.NONE) =
+fun SquircleShape(corner: Dp, smoothing: Float = SquircleSmoothing.NONE) =
     SquircleShape(
         topStart = CornerSize(corner),
         topEnd = CornerSize(corner),
         bottomEnd = CornerSize(corner),
         bottomStart = CornerSize(corner),
-        smoothing = smoothing
+        cornerSmoothing = smoothing
     )
 
-fun SquircleShape(corner: Float, smoothing: SquircleSmoothing = SquircleSmoothing.NONE) =
+fun SquircleShape(corner: Float, smoothing: Float = SquircleSmoothing.NONE) =
     SquircleShape(
         topStart = CornerSize(corner),
         topEnd = CornerSize(corner),
         bottomEnd = CornerSize(corner),
         bottomStart = CornerSize(corner),
-        smoothing = smoothing
+        cornerSmoothing = smoothing
     )
 
-fun SquircleShape(percent: Int, smoothing: SquircleSmoothing = SquircleSmoothing.NONE) =
+fun SquircleShape(percent: Int, smoothing: Float = SquircleSmoothing.NONE) =
     SquircleShape(
         topStart = CornerSize(percent),
         topEnd = CornerSize(percent),
         bottomEnd = CornerSize(percent),
         bottomStart = CornerSize(percent),
-        smoothing = smoothing
+        cornerSmoothing = smoothing
     )
 
 fun SquircleShape(
@@ -148,13 +111,13 @@ fun SquircleShape(
     topEnd: Dp = 0.dp,
     bottomEnd: Dp = 0.dp,
     bottomStart: Dp = 0.dp,
-    smoothing: SquircleSmoothing = SquircleSmoothing.NONE
+    smoothing: Float = SquircleSmoothing.NONE
 ) = SquircleShape(
     topStart = CornerSize(topStart),
     topEnd = CornerSize(topEnd),
     bottomEnd = CornerSize(bottomEnd),
     bottomStart = CornerSize(bottomStart),
-    smoothing = smoothing
+    cornerSmoothing = smoothing
 )
 
 fun SquircleShape(
@@ -162,13 +125,13 @@ fun SquircleShape(
     topEnd: Float = 0f,
     bottomEnd: Float = 0f,
     bottomStart: Float = 0f,
-    smoothing: SquircleSmoothing = SquircleSmoothing.NONE
+    smoothing: Float = SquircleSmoothing.NONE
 ) = SquircleShape(
     topStart = CornerSize(topStart),
     topEnd = CornerSize(topEnd),
     bottomEnd = CornerSize(bottomEnd),
     bottomStart = CornerSize(bottomStart),
-    smoothing = smoothing
+    cornerSmoothing = smoothing
 )
 
 fun SquircleShape(
@@ -176,11 +139,11 @@ fun SquircleShape(
     topEndPercent: Int = 0,
     bottomEndPercent: Int = 0,
     bottomStartPercent: Int = 0,
-    smoothing: SquircleSmoothing = SquircleSmoothing.NONE
+    smoothing: Float = SquircleSmoothing.NONE
 ) = SquircleShape(
     topStart = CornerSize(topStartPercent),
     topEnd = CornerSize(topEndPercent),
     bottomEnd = CornerSize(bottomEndPercent),
     bottomStart = CornerSize(bottomStartPercent),
-    smoothing = smoothing
+    cornerSmoothing = smoothing
 )

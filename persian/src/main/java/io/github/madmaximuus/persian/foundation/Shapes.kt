@@ -29,17 +29,17 @@ import io.github.madmaximuus.persian.foundation.shape.SquircleSmoothing
  */
 @Immutable
 class Shapes(
-    val shape4: SquircleShape = SquircleShape(4.dp, SquircleSmoothing.HIGH),
-    val shape6: SquircleShape = SquircleShape(6.dp, SquircleSmoothing.HIGH),
-    val shape8: SquircleShape = SquircleShape(8.dp, SquircleSmoothing.HIGH),
-    val shape10: SquircleShape = SquircleShape(10.dp, SquircleSmoothing.HIGH),
-    val shape12: SquircleShape = SquircleShape(12.dp, SquircleSmoothing.HIGH),
-    val shape14: SquircleShape = SquircleShape(14.dp, SquircleSmoothing.HIGH),
-    val shape16: SquircleShape = SquircleShape(16.dp, SquircleSmoothing.HIGH),
-    val shape18: SquircleShape = SquircleShape(18.dp, SquircleSmoothing.HIGH),
-    val shape20: SquircleShape = SquircleShape(20.dp, SquircleSmoothing.HIGH),
-    val shape22: SquircleShape = SquircleShape(22.dp, SquircleSmoothing.HIGH),
-    val shape24: SquircleShape = SquircleShape(24.dp, SquircleSmoothing.HIGH),
+    val shape4: SquircleShape = SquircleShape(4.dp, SquircleSmoothing.MEDIUM),
+    val shape6: SquircleShape = SquircleShape(6.dp, SquircleSmoothing.MEDIUM),
+    val shape8: SquircleShape = SquircleShape(8.dp, SquircleSmoothing.MEDIUM),
+    val shape10: SquircleShape = SquircleShape(10.dp, SquircleSmoothing.MEDIUM),
+    val shape12: SquircleShape = SquircleShape(12.dp, SquircleSmoothing.MEDIUM),
+    val shape14: SquircleShape = SquircleShape(14.dp, SquircleSmoothing.MEDIUM),
+    val shape16: SquircleShape = SquircleShape(16.dp, SquircleSmoothing.MEDIUM),
+    val shape18: SquircleShape = SquircleShape(18.dp, SquircleSmoothing.MEDIUM),
+    val shape20: SquircleShape = SquircleShape(20.dp, SquircleSmoothing.MEDIUM),
+    val shape22: SquircleShape = SquircleShape(22.dp, SquircleSmoothing.MEDIUM),
+    val shape24: SquircleShape = SquircleShape(24.dp, SquircleSmoothing.MEDIUM),
     val full: RoundedCornerShape = CircleShape,
 )
 
