@@ -74,7 +74,7 @@ object ActionSheetDefaults {
     fun sizes(
         titleTextStyle: TextStyle = PersianTheme.typography.titleMedium,
         messageTextStyle: TextStyle = PersianTheme.typography.bodyMedium,
-        containerShape: Shape = PersianTheme.shapes.shape14,
+        containerShape: Shape = PersianTheme.shapes.shape20,
         itemSizes: ActionSheetItemSizes = itemSizes()
     ): ActionSheetSizes =
         ActionSheetSizes(
