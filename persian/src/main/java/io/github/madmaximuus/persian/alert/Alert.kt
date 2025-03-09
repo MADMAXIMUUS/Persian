@@ -4,24 +4,16 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
-import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import androidx.window.core.layout.WindowHeightSizeClass
-import androidx.window.core.layout.WindowWidthSizeClass
-import io.github.madmaximuus.persian.divider.Divider
-import io.github.madmaximuus.persian.divider.InsetSide
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.surface.Surface
 import io.github.madmaximuus.persian.text.Text
@@ -37,7 +29,7 @@ import io.github.madmaximuus.persian.text.Text
  * @param dismissAction The optional dismiss action in [ActionScope] of this alert.
  * @param colors The [AlertColors] colors of container, title, message and actions of this alert.
  * @param sizes The [AlertSizes] sizes of container, title and subtitle and actions of this alert.
- * @param onDismiss Executes when the user tries to dismiss the action sheet.
+ * @param onDismissRequest Executes when the user tries to dismiss the action sheet.
  * @param content The optional content in this alert
  */
 @Composable
@@ -49,106 +41,66 @@ fun Alert(
     message: String? = null,
     confirmAction: @Composable ActionScope.() -> Unit,
     dismissAction: (@Composable ActionScope.() -> Unit)? = null,
-    onDismiss: () -> Unit,
+    onDismissRequest: () -> Unit,
     content: (@Composable () -> Unit)? = null
 ) {
-    val heightSizeClass = currentWindowAdaptiveInfo().windowSizeClass.windowHeightSizeClass
-    val widthSizeClass = currentWindowAdaptiveInfo().windowSizeClass.windowWidthSizeClass
+    val padding = PaddingValues(
+        start = PersianTheme.spacing.size20,
+        end = PersianTheme.spacing.size20,
+        top = PersianTheme.spacing.size20,
+        bottom = PersianTheme.spacing.size12
+    )
 
-    val maxWidth = if (widthSizeClass == WindowWidthSizeClass.COMPACT) Dp.Unspecified else 400.dp
+    val actionPadding = PaddingValues(
+        horizontal = PersianTheme.spacing.size16,
+        vertical = PersianTheme.spacing.size12
+    )
 
     Dialog(
-        onDismissRequest = onDismiss,
+        onDismissRequest = onDismissRequest,
         properties = DialogProperties(
             usePlatformDefaultWidth = false,
             decorFitsSystemWindows = false
         ),
         content = {
             Surface(
-                modifier = modifier
-                    .widthIn(max = maxWidth)
-                    .fillMaxWidth()
-                    .wrapContentHeight()
-                    .padding(horizontal = PersianTheme.spacing.size20),
                 shape = sizes.containerShape,
+                modifier = modifier
+                    .widthIn(min = 300.dp, max = 560.dp)
+                    .padding(horizontal = PersianTheme.spacing.size24),
                 color = colors.containerColor,
-                tonalElevation = PersianTheme.elevation.elevation2,
+                tonalElevation = 0.dp,
                 shadowElevation = 0.dp,
                 content = {
                     Column(
-                        modifier = modifier
-                            .wrapContentHeight()
-                            .fillMaxWidth(),
                         horizontalAlignment = Alignment.CenterHorizontally,
                         content = {
-                            val padding =
-                                if (heightSizeClass == WindowHeightSizeClass.COMPACT) PaddingValues(
-                                    start = PersianTheme.spacing.size24,
-                                    end = PersianTheme.spacing.size24,
-                                    top = PersianTheme.spacing.size12,
-                                    bottom = PersianTheme.spacing.size6
-                                ) else PaddingValues(
-                                    start = PersianTheme.spacing.size24,
-                                    end = PersianTheme.spacing.size24,
-                                    top = PersianTheme.spacing.size24,
-                                    bottom = PersianTheme.spacing.size12
-                                )
                             Column(
                                 modifier = Modifier
-                                    .wrapContentHeight()
-                                    .fillMaxWidth()
                                     .padding(padding),
                                 horizontalAlignment = Alignment.CenterHorizontally,
                                 verticalArrangement = Arrangement
-                                    .spacedBy(PersianTheme.spacing.size16),
+                                    .spacedBy(PersianTheme.spacing.size4),
                             ) {
                                 Text(
-                                    modifier = Modifier.fillMaxWidth(),
                                     text = title,
                                     textAlign = TextAlign.Center,
                                     style = sizes.titleTextStyle,
                                     color = colors.titleColor
                                 )
-                            }
-                            message?.let {
-                                Text(
-                                    modifier = Modifier
-                                        .padding(horizontal = PersianTheme.spacing.size20),
-                                    text = it,
-                                    style = sizes.messageTextStyle,
-                                    color = colors.messageColor,
-                                    textAlign = TextAlign.Justify
-                                )
+                                message?.let {
+                                    Text(
+                                        text = it,
+                                        style = sizes.messageTextStyle,
+                                        color = colors.messageColor,
+                                        textAlign = TextAlign.Justify
+                                    )
+                                }
                             }
                             content?.invoke()
-                            if (content != null) {
-                                Divider(
-                                    insetSide = InsetSide.BOTH,
-                                    strokeColor = colors.dividerColor,
-                                    sizes = sizes.dividerSizes
-                                )
-                            }
-                            val actionPadding =
-                                if (
-                                    widthSizeClass != WindowWidthSizeClass.COMPACT
-                                    && heightSizeClass != WindowHeightSizeClass.COMPACT
-                                )
-                                    PaddingValues(
-                                        horizontal = PersianTheme.spacing.size16,
-                                        vertical = PersianTheme.spacing.size12
-                                    )
-                                else if (heightSizeClass == WindowHeightSizeClass.COMPACT)
-                                    PaddingValues(
-                                        horizontal = PersianTheme.spacing.size12,
-                                        vertical = PersianTheme.spacing.size6
-                                    )
-                                else PaddingValues(
-                                    horizontal = PersianTheme.spacing.size16,
-                                    vertical = PersianTheme.spacing.size12
-                                )
                             Row(
                                 modifier = Modifier
-                                    .fillMaxWidth()
+                                    .align(Alignment.End)
                                     .padding(actionPadding),
                                 horizontalArrangement = Arrangement.spacedBy(
                                     PersianTheme.spacing.size2,
