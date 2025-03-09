@@ -68,7 +68,7 @@ fun Checkbox(
                     PersianState38
             },
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8)
+        horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size12)
     ) {
         CheckboxToggle(
             modifier = Modifier
