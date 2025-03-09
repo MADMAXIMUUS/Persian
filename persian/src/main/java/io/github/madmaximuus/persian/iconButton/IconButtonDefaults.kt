@@ -29,14 +29,15 @@ object IconButtonDefaults {
     @Composable
     fun smallSizes(
         size: Dp = 36.dp,
+        borderStrokeThickness: Dp = 1.dp,
         iconSizes: IconSizes = IconDefaults.size20(),
-        shape: Shape = PersianTheme.shapes.shape10,
-    ): IconButtonSizes =
-        IconButtonSizes(
-            size = size,
-            iconSizes = iconSizes,
-            shape = shape,
-        )
+        shape: Shape = PersianTheme.shapes.shape12,
+    ) = IconButtonSizes(
+        size = size,
+        borderStrokeThickness = borderStrokeThickness,
+        iconSizes = iconSizes,
+        shape = shape,
+    )
 
     /**
      * A composable function that creates a medium-sized configuration for icon buttons.
@@ -51,14 +52,15 @@ object IconButtonDefaults {
     @Composable
     fun mediumSizes(
         size: Dp = 44.dp,
+        borderStrokeThickness: Dp = 1.dp,
         iconSizes: IconSizes = IconDefaults.size24(),
-        shape: Shape = PersianTheme.shapes.shape12,
-    ): IconButtonSizes =
-        IconButtonSizes(
-            size = size,
-            iconSizes = iconSizes,
-            shape = shape,
-        )
+        shape: Shape = PersianTheme.shapes.shape14,
+    ) = IconButtonSizes(
+        size = size,
+        iconSizes = iconSizes,
+        borderStrokeThickness = borderStrokeThickness,
+        shape = shape,
+    )
 
     /**
      * A composable function that creates a large-sized configuration for icon buttons.
@@ -73,14 +75,15 @@ object IconButtonDefaults {
     @Composable
     fun largeSizes(
         size: Dp = 52.dp,
+        borderStrokeThickness: Dp = 1.dp,
         iconSizes: IconSizes = IconDefaults.size28(),
-        shape: Shape = PersianTheme.shapes.shape14
-    ): IconButtonSizes =
-        IconButtonSizes(
-            size = size,
-            iconSizes = iconSizes,
-            shape = shape,
-        )
+        shape: Shape = PersianTheme.shapes.shape16
+    ) = IconButtonSizes(
+        size = size,
+        iconSizes = iconSizes,
+        borderStrokeThickness = borderStrokeThickness,
+        shape = shape,
+    )
 
     /**
      * A composable function that creates a color configuration for primary icon buttons.
@@ -95,9 +98,11 @@ object IconButtonDefaults {
     fun primaryIconButtonColors(
         containerColor: Color = PersianTheme.colorScheme.primary,
         contentColor: Color = PersianTheme.colorScheme.onPrimary,
-    ): IconButtonColors = IconButtonColors(
+        borderColor: Color = Color.Transparent
+    ) = IconButtonColors(
         containerColor = containerColor,
         contentColor = contentColor,
+        borderColor = borderColor
     )
 
     /**
@@ -113,9 +118,11 @@ object IconButtonDefaults {
     fun secondaryIconButtonColors(
         containerColor: Color = PersianTheme.colorScheme.primaryContainer,
         contentColor: Color = PersianTheme.colorScheme.onPrimaryContainer,
-    ): IconButtonColors = IconButtonColors(
+        borderColor: Color = Color.Transparent
+    ) = IconButtonColors(
         containerColor = containerColor,
         contentColor = contentColor,
+        borderColor = borderColor
     )
 
     /**
@@ -131,9 +138,11 @@ object IconButtonDefaults {
     fun tertiaryIconButtonColors(
         containerColor: Color = Color.Transparent,
         contentColor: Color = PersianTheme.colorScheme.primary,
-    ): IconButtonColors = IconButtonColors(
+        borderColor: Color = Color.Transparent
+    ) = IconButtonColors(
         containerColor = containerColor,
         contentColor = contentColor,
+        borderColor = borderColor
     )
 
     /**
@@ -149,9 +158,11 @@ object IconButtonDefaults {
     fun outlinedIconButtonColors(
         containerColor: Color = Color.Transparent,
         contentColor: Color = PersianTheme.colorScheme.primary,
-    ): IconButtonColors = IconButtonColors(
+        borderColor: Color = PersianTheme.colorScheme.primary
+    ) = IconButtonColors(
         containerColor = containerColor,
         contentColor = contentColor,
+        borderColor = borderColor
     )
 
     /**
@@ -162,20 +173,26 @@ object IconButtonDefaults {
      *
      * @param containerColor The background color of the button when it is enabled and unchecked.
      * @param contentColor The color of the icon within the button when it is enabled and unchecked.
+     * @param borderColor The color of the border within the button when it is enabled and unchecked.
      * @param checkedContainerColor The background color of the button when it is enabled and checked.
      * @param checkedContentColor The color of the icon within the button when it is enabled and checked.
+     * @param checkedBorderColor The color of the border within the button when it is enabled and checked.
      */
     @Composable
     fun primaryToggleIconButtonColors(
         containerColor: Color = PersianTheme.colorScheme.surfaceContainerHighest,
         contentColor: Color = PersianTheme.colorScheme.primary,
+        borderColor: Color = Color.Transparent,
         checkedContainerColor: Color = PersianTheme.colorScheme.primary,
         checkedContentColor: Color = PersianTheme.colorScheme.onPrimary,
-    ): ToggleIconButtonColors = ToggleIconButtonColors(
+        checkedBorderColor: Color = Color.Transparent
+    ) = ToggleIconButtonColors(
         containerColor = containerColor,
         contentColor = contentColor,
+        borderColor = borderColor,
         checkedContentColor = checkedContentColor,
-        checkedContainerColor = checkedContainerColor
+        checkedContainerColor = checkedContainerColor,
+        checkedBorderColor = checkedBorderColor
     )
 
     /**
@@ -186,20 +203,26 @@ object IconButtonDefaults {
      *
      * @param containerColor The background color of the button when it is enabled and unchecked.
      * @param contentColor The color of the icon within the button when it is enabled and unchecked.
+     * @param borderColor The color of the border within the button when it is enabled and unchecked.
      * @param checkedContainerColor The background color of the button when it is enabled and checked.
      * @param checkedContentColor The color of the icon within the button when it is enabled and checked.
+     * @param checkedBorderColor The color of the border within the button when it is enabled and checked.
      */
     @Composable
     fun secondaryToggleIconButtonColors(
         containerColor: Color = PersianTheme.colorScheme.surfaceContainerHighest,
         contentColor: Color = PersianTheme.colorScheme.onSurface,
+        borderColor: Color = Color.Transparent,
         checkedContainerColor: Color = PersianTheme.colorScheme.primaryContainer,
         checkedContentColor: Color = PersianTheme.colorScheme.onPrimaryContainer,
-    ): ToggleIconButtonColors = ToggleIconButtonColors(
+        checkedBorderColor: Color = Color.Transparent
+    ) = ToggleIconButtonColors(
         containerColor = containerColor,
         contentColor = contentColor,
+        borderColor = borderColor,
         checkedContentColor = checkedContentColor,
-        checkedContainerColor = checkedContainerColor
+        checkedContainerColor = checkedContainerColor,
+        checkedBorderColor = checkedBorderColor
     )
 
     /**
@@ -211,20 +234,26 @@ object IconButtonDefaults {
      *
      * @param containerColor The background color of the button when it is enabled and unchecked.
      * @param contentColor The color of the icon within the button when it is enabled and unchecked.
+     * @param borderColor The color of the border within the button when it is enabled and unchecked.
      * @param checkedContainerColor The background color of the button when it is enabled and checked.
      * @param checkedContentColor The color of the icon within the button when it is enabled and checked.
+     * @param checkedBorderColor The color of the border within the button when it is enabled and checked.
      */
     @Composable
     fun tertiaryToggleIconButtonColors(
         containerColor: Color = Color.Transparent,
+        borderColor: Color = Color.Transparent,
         contentColor: Color = PersianTheme.colorScheme.primary,
         checkedContainerColor: Color = Color.Transparent,
         checkedContentColor: Color = PersianTheme.colorScheme.primary,
-    ): ToggleIconButtonColors = ToggleIconButtonColors(
+        checkedBorderColor: Color = Color.Transparent,
+    ) = ToggleIconButtonColors(
         containerColor = containerColor,
         contentColor = contentColor,
+        borderColor = borderColor,
         checkedContentColor = checkedContentColor,
-        checkedContainerColor = checkedContainerColor
+        checkedContainerColor = checkedContainerColor,
+        checkedBorderColor = checkedBorderColor
     )
 
     /**
@@ -236,20 +265,26 @@ object IconButtonDefaults {
      *
      * @param containerColor The background color of the button when it is enabled and unchecked.
      * @param contentColor The color of the icon within the button when it is enabled and unchecked.
+     * @param borderColor The color of the border within the button when it is enabled and unchecked.
      * @param checkedContainerColor The background color of the button when it is enabled and checked.
      * @param checkedContentColor The color of the icon within the button when it is enabled and checked.
+     * @param checkedBorderColor The color of the border within the button when it is enabled and checked.
      */
     @Composable
     fun outlinedToggleIconButtonColors(
         containerColor: Color = Color.Transparent,
         contentColor: Color = PersianTheme.colorScheme.primary,
+        borderColor: Color = PersianTheme.colorScheme.primary,
         checkedContainerColor: Color = PersianTheme.colorScheme.primary,
         checkedContentColor: Color = PersianTheme.colorScheme.onPrimary,
-    ): ToggleIconButtonColors = ToggleIconButtonColors(
+        checkedBorderColor: Color = PersianTheme.colorScheme.primary
+    ) = ToggleIconButtonColors(
         containerColor = containerColor,
         contentColor = contentColor,
+        borderColor = borderColor,
         checkedContentColor = checkedContentColor,
-        checkedContainerColor = checkedContainerColor
+        checkedContainerColor = checkedContainerColor,
+        checkedBorderColor = checkedBorderColor
     )
 }
 
@@ -266,6 +301,7 @@ object IconButtonDefaults {
 @Immutable
 class IconButtonSizes internal constructor(
     internal val size: Dp,
+    internal val borderStrokeThickness: Dp,
     internal val iconSizes: IconSizes,
     internal val shape: Shape,
 )
@@ -281,6 +317,7 @@ class IconButtonSizes internal constructor(
  */
 @Immutable
 class IconButtonColors internal constructor(
+    internal val borderColor: Color,
     internal val containerColor: Color,
     internal val contentColor: Color,
 ) {
@@ -290,12 +327,14 @@ class IconButtonColors internal constructor(
         if (other == null || other !is IconButtonColors) return false
 
         if (containerColor != other.containerColor) return false
+        if (borderColor != other.borderColor) return false
         return contentColor == other.contentColor
     }
 
     override fun hashCode(): Int {
         var result = containerColor.hashCode()
         result = 31 * result + contentColor.hashCode()
+        result = 31 * result + borderColor.hashCode()
 
         return result
     }
@@ -317,12 +356,14 @@ class IconButtonColors internal constructor(
 class ToggleIconButtonColors internal constructor(
     private val containerColor: Color,
     private val contentColor: Color,
+    private val borderColor: Color,
     private val checkedContainerColor: Color,
     private val checkedContentColor: Color,
+    private val checkedBorderColor: Color
 ) {
 
     /**
-     * Returns the container color based on the enabled and checked states of the button.
+     * Returns the container color based on the checked state of the button.
      *
      * @param checked Whether the button is checked.
      */
@@ -336,7 +377,7 @@ class ToggleIconButtonColors internal constructor(
     }
 
     /**
-     * Returns the content color based on the enabled and checked states of the button.
+     * Returns the content color based on the checked state of the button.
      *
      * @param checked Whether the button is checked.
      */
@@ -348,13 +389,28 @@ class ToggleIconButtonColors internal constructor(
         }
     }
 
+    /**
+     * Returns the border color based on the checked state of the button.
+     *
+     * @param checked Whether the button is checked.
+     */
+    @Stable
+    internal fun borderColor(checked: Boolean): Color {
+        return when {
+            !checked -> borderColor
+            else -> checkedBorderColor
+        }
+    }
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other == null || other !is ToggleIconButtonColors) return false
 
         if (containerColor != other.containerColor) return false
         if (contentColor != other.contentColor) return false
+        if (borderColor != other.borderColor) return false
         if (checkedContainerColor != other.checkedContainerColor) return false
+        if (checkedBorderColor != other.checkedBorderColor) return false
         return checkedContentColor == other.checkedContentColor
     }
 
@@ -363,6 +419,8 @@ class ToggleIconButtonColors internal constructor(
         result = 31 * result + contentColor.hashCode()
         result = 31 * result + checkedContainerColor.hashCode()
         result = 31 * result + checkedContentColor.hashCode()
+        result = 31 * result + borderColor.hashCode()
+        result = 31 * result + checkedBorderColor.hashCode()
 
         return result
     }
