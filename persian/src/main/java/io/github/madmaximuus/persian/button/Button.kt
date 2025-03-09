@@ -168,7 +168,8 @@ private fun ButtonImpl(
                             leadingIcon?.let {
                                 Icon(
                                     painter = it,
-                                    sizes = sizes.iconSizes
+                                    sizes = sizes.iconSizes,
+                                    tint = colors.contentColor
                                 )
                             }
                             Column(
@@ -198,7 +199,8 @@ private fun ButtonImpl(
                             trailingIcon?.let {
                                 Icon(
                                     painter = it,
-                                    sizes = sizes.iconSizes
+                                    sizes = sizes.iconSizes,
+                                    tint = colors.contentColor
                                 )
                             }
                         }
