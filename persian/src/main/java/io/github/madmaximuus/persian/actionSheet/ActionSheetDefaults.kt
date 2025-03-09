@@ -29,13 +29,12 @@ object ActionSheetDefaults {
         subtitleColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         containerColor: Color = PersianTheme.colorScheme.surfaceContainer,
         itemColors: ActionSheetItemColors = itemColors()
-    ): ActionSheetColors =
-        ActionSheetColors(
-            titleColor = titleColor,
-            subtitleColor = subtitleColor,
-            containerColor = containerColor,
-            itemColors = itemColors
-        )
+    ) = ActionSheetColors(
+        titleColor = titleColor,
+        subtitleColor = subtitleColor,
+        containerColor = containerColor,
+        itemColors = itemColors
+    )
 
     /**
      * Creates an [ActionSheetItemColors] that represents the default colors used in an [Action].
@@ -53,14 +52,13 @@ object ActionSheetDefaults {
 
         defaultIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         destructiveIconColor: Color = PersianTheme.colorScheme.error,
-    ): ActionSheetItemColors =
-        ActionSheetItemColors(
-            defaultTextColor = defaultTextColor,
-            destructiveTextColor = destructiveTextColor,
+    ) = ActionSheetItemColors(
+        defaultTextColor = defaultTextColor,
+        destructiveTextColor = destructiveTextColor,
 
-            defaultIconColor = defaultIconColor,
-            destructiveIconColor = destructiveIconColor,
-        )
+        defaultIconColor = defaultIconColor,
+        destructiveIconColor = destructiveIconColor,
+    )
 
     /**
      * Creates an [ActionSheetSizes] that represents the default sizes used in an [ActionSheet].
@@ -76,13 +74,12 @@ object ActionSheetDefaults {
         messageTextStyle: TextStyle = PersianTheme.typography.bodyMedium,
         containerShape: Shape = PersianTheme.shapes.shape20,
         itemSizes: ActionSheetItemSizes = itemSizes()
-    ): ActionSheetSizes =
-        ActionSheetSizes(
-            titleTextStyle = titleTextStyle,
-            messageTextStyle = messageTextStyle,
-            containerShape = containerShape,
-            itemSizes = itemSizes
-        )
+    ) = ActionSheetSizes(
+        titleTextStyle = titleTextStyle,
+        messageTextStyle = messageTextStyle,
+        containerShape = containerShape,
+        itemSizes = itemSizes
+    )
 
     /**
      * Creates an [ActionSheetItemSizes] that represents the default sizes used in an [Action].
@@ -94,11 +91,10 @@ object ActionSheetDefaults {
     fun itemSizes(
         textStyle: TextStyle = PersianTheme.typography.labelLarge,
         iconSize: IconSizes = IconDefaults.size28()
-    ): ActionSheetItemSizes =
-        ActionSheetItemSizes(
-            textStyle = textStyle,
-            iconSize = iconSize
-        )
+    ) = ActionSheetItemSizes(
+        textStyle = textStyle,
+        iconSize = iconSize
+    )
 }
 
 /**
@@ -248,8 +244,7 @@ class ActionSheetItemSizes internal constructor(
         textStyle: TextStyle = this.textStyle,
         iconSize: IconSizes = this.iconSize,
     ) = ActionSheetItemSizes(
-        textStyle = textStyle,
-        iconSize = iconSize
+        textStyle = textStyle, iconSize = iconSize
     )
 
     override fun equals(other: Any?): Boolean {
