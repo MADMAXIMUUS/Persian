@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.checkboxes.toggle
+package io.github.madmaximuus.persian.checkbox.toggle
 
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.snap
@@ -17,7 +17,6 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
@@ -32,11 +31,12 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.state.ToggleableState
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.checkboxes.CheckboxDefaults
-import io.github.madmaximuus.persian.checkboxes.CheckboxToggleColors
+import io.github.madmaximuus.persian.checkbox.CheckboxDefaults
+import io.github.madmaximuus.persian.checkbox.CheckboxToggleColors
 import io.github.madmaximuus.persian.foundation.PersianState38
 import io.github.madmaximuus.persian.foundation.minimumInteractiveComponentSize
 import io.github.madmaximuus.persian.foundation.ripple.ripple
+import io.github.madmaximuus.persian.foundation.shape.drawSquircle
 import kotlin.math.floor
 import kotlin.math.max
 
@@ -194,25 +194,34 @@ private fun DrawScope.drawBox(
     val stroke = Stroke(strokeWidth)
     val checkboxSize = size.width
     if (boxColor == borderColor) {
-        drawRoundRect(
-            boxColor,
+        drawSquircle(
+            color = boxColor,
             size = Size(checkboxSize, checkboxSize),
-            cornerRadius = CornerRadius(radius),
+            topLeftCorner = radius,
+            topRightCorner = radius,
+            bottomLeftCorner = radius,
+            bottomRightCorner = radius,
             style = Fill
         )
     } else {
-        drawRoundRect(
-            boxColor,
-            topLeft = Offset(strokeWidth, strokeWidth),
+        drawSquircle(
+            color = boxColor,
             size = Size(checkboxSize - strokeWidth * 2, checkboxSize - strokeWidth * 2),
-            cornerRadius = CornerRadius(max(0f, radius - strokeWidth)),
+            topLeft = Offset(strokeWidth, strokeWidth),
+            topLeftCorner = max(0f, radius - strokeWidth),
+            topRightCorner = max(0f, radius - strokeWidth),
+            bottomLeftCorner = max(0f, radius - strokeWidth),
+            bottomRightCorner = max(0f, radius - strokeWidth),
             style = Fill
         )
-        drawRoundRect(
-            borderColor,
-            topLeft = Offset(halfStrokeWidth, halfStrokeWidth),
+        drawSquircle(
+            color = borderColor,
             size = Size(checkboxSize - strokeWidth, checkboxSize - strokeWidth),
-            cornerRadius = CornerRadius(radius - halfStrokeWidth),
+            topLeft = Offset(halfStrokeWidth, halfStrokeWidth),
+            topLeftCorner = radius - halfStrokeWidth,
+            topRightCorner = radius - halfStrokeWidth,
+            bottomLeftCorner = radius - halfStrokeWidth,
+            bottomRightCorner = radius - halfStrokeWidth,
             style = stroke
         )
     }
@@ -237,9 +246,9 @@ private fun DrawScope.drawCheck(
     val stroke = Stroke(width = strokeWidthPx, cap = StrokeCap.Round, join = StrokeJoin.Round)
     val width = size.width
     val checkCrossX = 0.46f
-    val checkCrossY = 0.68f
+    val checkCrossY = 0.67f
     val leftX = 0.27f
-    val leftY = 0.56f
+    val leftY = 0.55f
     val rightX = 0.73f
     val rightY = 0.33f
 
@@ -281,10 +290,10 @@ internal const val BOX_IN_DURATION = 200
 internal const val BOX_OUT_DURATION = 150
 internal const val CHECK_ANIMATION_DURATION = 300
 
-internal val checkboxSize = 24.dp
-internal val strokeWidth = 3.dp
+internal val checkboxSize = 22.dp
+internal val strokeWidth = 2.5.dp
 internal val boxStroke = 2.dp
-internal val radiusSize = 6.dp
+internal val radiusSize = 8.dp
 
 /**
  * Performs a linear interpolation between two values.

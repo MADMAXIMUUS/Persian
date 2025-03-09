@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.checkboxes
+package io.github.madmaximuus.persian.checkbox
 
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -17,8 +17,8 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.state.ToggleableState
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.checkboxes.toggle.CheckboxToggle
-import io.github.madmaximuus.persian.checkboxes.toggle.TriStateCheckboxToggle
+import io.github.madmaximuus.persian.checkbox.toggle.CheckboxToggle
+import io.github.madmaximuus.persian.checkbox.toggle.TriStateCheckboxToggle
 import io.github.madmaximuus.persian.foundation.PersianState38
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.ripple.ripple
@@ -68,7 +68,7 @@ fun Checkbox(
                     PersianState38
             },
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size12)
+        horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8)
     ) {
         CheckboxToggle(
             modifier = Modifier

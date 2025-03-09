@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.checkboxes
+package io.github.madmaximuus.persian.checkbox
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.tween
@@ -13,10 +13,10 @@ import androidx.compose.ui.state.ToggleableState
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.checkboxes.toggle.BOX_IN_DURATION
-import io.github.madmaximuus.persian.checkboxes.toggle.BOX_OUT_DURATION
-import io.github.madmaximuus.persian.checkboxes.toggle.CheckboxToggle
-import io.github.madmaximuus.persian.checkboxes.toggle.TriStateCheckboxToggle
+import io.github.madmaximuus.persian.checkbox.toggle.BOX_IN_DURATION
+import io.github.madmaximuus.persian.checkbox.toggle.BOX_OUT_DURATION
+import io.github.madmaximuus.persian.checkbox.toggle.CheckboxToggle
+import io.github.madmaximuus.persian.checkbox.toggle.TriStateCheckboxToggle
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
 /**
@@ -44,17 +44,16 @@ object CheckboxDefaults {
 
         checkedCheckmarkColor: Color = PersianTheme.colorScheme.surface,
         uncheckedCheckmarkColor: Color = Color.Transparent,
-    ): CheckboxToggleColors =
-        CheckboxToggleColors(
-            checkedBorderColor = checkedBorderColor,
-            uncheckedBorderColor = uncheckedBorderColor,
+    ) = CheckboxToggleColors(
+        checkedBorderColor = checkedBorderColor,
+        uncheckedBorderColor = uncheckedBorderColor,
 
-            checkedBoxColor = checkedBoxColor,
-            checkedCheckmarkColor = checkedCheckmarkColor,
+        checkedBoxColor = checkedBoxColor,
+        checkedCheckmarkColor = checkedCheckmarkColor,
 
-            uncheckedCheckmarkColor = uncheckedCheckmarkColor,
-            uncheckedBoxColor = uncheckedBoxColor,
-        )
+        uncheckedCheckmarkColor = uncheckedCheckmarkColor,
+        uncheckedBoxColor = uncheckedBoxColor,
+    )
 
     /**
      * Creates a [CheckboxColors] that represents the default container and content colors used in a [Checkbox] and a [TriStateCheckbox].
@@ -66,11 +65,10 @@ object CheckboxDefaults {
     fun colors(
         toggleColors: CheckboxToggleColors = toggleColors(),
         textColor: Color = PersianTheme.colorScheme.onSurface,
-    ): CheckboxColors =
-        CheckboxColors(
-            toggleColors = toggleColors,
-            textColor = textColor
-        )
+    ) = CheckboxColors(
+        toggleColors = toggleColors,
+        textColor = textColor
+    )
 
     /**
      * Creates a [CheckboxSizes] that represents the default container and content sized used in a [Checkbox] and a [TriStateCheckbox].
@@ -82,19 +80,18 @@ object CheckboxDefaults {
      */
     @Composable
     fun sizes(
-        toggleSize: Dp = 26.dp,
+        toggleSize: Dp = 24.dp,
         textStyle: TextStyle = PersianTheme.typography.labelLarge,
-        shape: Shape = PersianTheme.shapes.shape14,
+        shape: Shape = PersianTheme.shapes.shape16,
         contentPadding: PaddingValues = PaddingValues(
             horizontal = PersianTheme.spacing.size16
         )
-    ): CheckboxSizes =
-        CheckboxSizes(
-            toggleSize = toggleSize,
-            textStyle = textStyle,
-            shape = shape,
-            contentPadding = contentPadding
-        )
+    ) = CheckboxSizes(
+        toggleSize = toggleSize,
+        textStyle = textStyle,
+        shape = shape,
+        contentPadding = contentPadding
+    )
 }
 
 /**

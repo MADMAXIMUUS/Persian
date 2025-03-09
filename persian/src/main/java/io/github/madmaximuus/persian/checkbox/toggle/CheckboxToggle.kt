@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.checkboxes.toggle
+package io.github.madmaximuus.persian.checkbox.toggle
 
 import androidx.compose.foundation.interaction.Interaction
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -6,8 +6,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.state.ToggleableState
-import io.github.madmaximuus.persian.checkboxes.CheckboxDefaults
-import io.github.madmaximuus.persian.checkboxes.CheckboxToggleColors
+import io.github.madmaximuus.persian.checkbox.CheckboxDefaults
+import io.github.madmaximuus.persian.checkbox.CheckboxToggleColors
 
 /**
  * Checkboxes allow users to select one or more items from a set. Checkboxes can turn an option on
