@@ -36,7 +36,7 @@ fun Icon(
     modifier: Modifier = Modifier,
     contentDescription: String? = null,
     sizes: IconSizes = IconDefaults.size24(),
-    tint: Color = Color.Black
+    tint: Color = Color.Unspecified
 ) {
     Icon(
         modifier = modifier,
@@ -62,7 +62,7 @@ fun Icon(
     modifier: Modifier = Modifier,
     contentDescription: String? = null,
     sizes: IconSizes = IconDefaults.size24(),
-    tint: Color = Color.Black
+    tint: Color = Color.Unspecified
 ) {
     val painter = remember(bitmap) { BitmapPainter(bitmap) }
     Icon(
@@ -89,7 +89,7 @@ fun Icon(
     modifier: Modifier = Modifier,
     contentDescription: String? = null,
     sizes: IconSizes = IconDefaults.size24(),
-    tint: Color = Color.Black
+    tint: Color = Color.Unspecified
 ) {
     val colorFilter = remember(tint) {
         if (tint == Color.Unspecified) null else ColorFilter.tint(tint)
