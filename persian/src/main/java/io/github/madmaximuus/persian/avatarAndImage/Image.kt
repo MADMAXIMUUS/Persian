@@ -45,7 +45,6 @@ import io.github.madmaximuus.persianSymbols.plus.Plus
  * @param overlayIcon the icon that will be displayed on top of the image, if [overlay] is `true`.
  * @param sizes The [AvatarSizes] sizes of the container, icons and text of this image.
  * @param colors The [AvatarColors] colors of the container, icons and text of this image.
- * @param shape The [ImageShape] shape used in image.
  * @param onClick called when this image is clicked.
  * @param badge element to be displayed in the corner of this image.
  */
@@ -59,7 +58,6 @@ fun Image(
     overlayIcon: Painter = rememberVectorPainter(image = PersianSymbols.Default.Plus),
     sizes: ImageSizes = ImageDefaults.size64(),
     colors: ImageColors = ImageDefaults.colors(),
-    shape: ImageShape = ImageShape.MEDIUM,
     onClick: (() -> Unit)? = null,
     badge: (@Composable () -> Unit)? = null
 ) {
@@ -74,12 +72,12 @@ fun Image(
                     Box(
                         modifier = modifier
                             .size(sizes.boxSizes)
-                            .clip(sizes.shape(shape))
+                            .clip(sizes.shape)
                             .background(
                                 colors.placeholderContainerColor,
-                                sizes.shape(shape)
+                                sizes.shape
                             )
-                            .border(1.dp, colors.borderColor, sizes.shape(shape))
+                            .border(1.dp, colors.borderColor, sizes.shape)
                             .clickable(
                                 enabled = onClick != null,
                                 onClick = { onClick?.invoke() },

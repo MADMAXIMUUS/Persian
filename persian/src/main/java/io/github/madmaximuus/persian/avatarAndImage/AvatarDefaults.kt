@@ -6,6 +6,7 @@ import androidx.compose.runtime.Stable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import io.github.madmaximuus.persian.foundation.PersianTheme
@@ -33,24 +34,23 @@ object AvatarDefaults {
     fun size96(
         boxSizes: Dp = 96.dp,
         placeholderIconSizes: IconSizes = IconDefaults.size48(),
-        overlayIconSizes: IconSizes = IconDefaults.size32(),
+        overlayIconSizes: IconSizes = IconDefaults.size48(),
         badgeSize: Dp = 28.dp,
         horizontalBadgeOffset: Dp = 0.dp,
         verticalBadgeOffset: Dp = 0.dp,
         initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
-            fontSize = 30.sp,
-            lineHeight = 36.sp
+            fontSize = 36.sp,
+            lineHeight = TextUnit.Unspecified
         )
-    ): AvatarSizes =
-        AvatarSizes(
-            boxSizes = boxSizes,
-            placeholderIconSizes = placeholderIconSizes,
-            overlayIconSizes = overlayIconSizes,
-            badgeSize = badgeSize,
-            horizontalBadgeOffset = horizontalBadgeOffset,
-            verticalBadgeOffset = verticalBadgeOffset,
-            initialsTextStyle = initialsTextStyle
-        )
+    ) = AvatarSizes(
+        boxSizes = boxSizes,
+        placeholderIconSizes = placeholderIconSizes,
+        overlayIconSizes = overlayIconSizes,
+        badgeSize = badgeSize,
+        horizontalBadgeOffset = horizontalBadgeOffset,
+        verticalBadgeOffset = verticalBadgeOffset,
+        initialsTextStyle = initialsTextStyle
+    )
 
     /**
      * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
@@ -67,24 +67,23 @@ object AvatarDefaults {
     fun size88(
         boxSizes: Dp = 88.dp,
         placeholderIconSizes: IconSizes = IconDefaults.size48(),
-        overlayIconSizes: IconSizes = IconDefaults.size32(),
+        overlayIconSizes: IconSizes = IconDefaults.size44(),
         badgeSize: Dp = 28.dp,
         horizontalBadgeOffset: Dp = 1.dp,
         verticalBadgeOffset: Dp = 1.dp,
         initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
-            fontSize = 30.sp,
-            lineHeight = 36.sp
+            fontSize = 32.sp,
+            lineHeight = TextUnit.Unspecified
         )
-    ): AvatarSizes =
-        AvatarSizes(
-            boxSizes = boxSizes,
-            placeholderIconSizes = placeholderIconSizes,
-            overlayIconSizes = overlayIconSizes,
-            badgeSize = badgeSize,
-            horizontalBadgeOffset = horizontalBadgeOffset,
-            verticalBadgeOffset = verticalBadgeOffset,
-            initialsTextStyle = initialsTextStyle
-        )
+    ) = AvatarSizes(
+        boxSizes = boxSizes,
+        placeholderIconSizes = placeholderIconSizes,
+        overlayIconSizes = overlayIconSizes,
+        badgeSize = badgeSize,
+        horizontalBadgeOffset = horizontalBadgeOffset,
+        verticalBadgeOffset = verticalBadgeOffset,
+        initialsTextStyle = initialsTextStyle
+    )
 
     /**
      * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
@@ -101,13 +100,13 @@ object AvatarDefaults {
     fun size80(
         boxSizes: Dp = 80.dp,
         placeholderIconSizes: IconSizes = IconDefaults.size48(),
-        overlayIconSizes: IconSizes = IconDefaults.size32(),
+        overlayIconSizes: IconSizes = IconDefaults.size44(),
         badgeSize: Dp = 28.dp,
         horizontalBadgeOffset: Dp = 0.dp,
         verticalBadgeOffset: Dp = 4.dp,
         initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
-            fontSize = 26.sp,
-            lineHeight = 32.sp
+            fontSize = 28.sp,
+            lineHeight = TextUnit.Unspecified
         )
     ): AvatarSizes =
         AvatarSizes(
@@ -135,24 +134,23 @@ object AvatarDefaults {
     fun size72(
         boxSizes: Dp = 72.dp,
         placeholderIconSizes: IconSizes = IconDefaults.size40(),
-        overlayIconSizes: IconSizes = IconDefaults.size28(),
+        overlayIconSizes: IconSizes = IconDefaults.size36(),
         badgeSize: Dp = 28.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
         initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
-            fontSize = 26.sp,
-            lineHeight = 32.sp
+            fontSize = 24.sp,
+            lineHeight = TextUnit.Unspecified
         )
-    ): AvatarSizes =
-        AvatarSizes(
-            boxSizes = boxSizes,
-            placeholderIconSizes = placeholderIconSizes,
-            overlayIconSizes = overlayIconSizes,
-            badgeSize = badgeSize,
-            horizontalBadgeOffset = horizontalBadgeOffset,
-            verticalBadgeOffset = verticalBadgeOffset,
-            initialsTextStyle = initialsTextStyle
-        )
+    ) = AvatarSizes(
+        boxSizes = boxSizes,
+        placeholderIconSizes = placeholderIconSizes,
+        overlayIconSizes = overlayIconSizes,
+        badgeSize = badgeSize,
+        horizontalBadgeOffset = horizontalBadgeOffset,
+        verticalBadgeOffset = verticalBadgeOffset,
+        initialsTextStyle = initialsTextStyle
+    )
 
     /**
      * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
@@ -169,24 +167,23 @@ object AvatarDefaults {
     fun size64(
         boxSizes: Dp = 64.dp,
         placeholderIconSizes: IconSizes = IconDefaults.size40(),
-        overlayIconSizes: IconSizes = IconDefaults.size28(),
+        overlayIconSizes: IconSizes = IconDefaults.size32(),
         badgeSize: Dp = 24.dp,
         horizontalBadgeOffset: Dp = 2.dp,
         verticalBadgeOffset: Dp = 2.dp,
         initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
-            fontSize = 21.sp,
-            lineHeight = 27.sp
+            fontSize = 22.sp,
+            lineHeight = TextUnit.Unspecified
         )
-    ): AvatarSizes =
-        AvatarSizes(
-            boxSizes = boxSizes,
-            placeholderIconSizes = placeholderIconSizes,
-            overlayIconSizes = overlayIconSizes,
-            badgeSize = badgeSize,
-            horizontalBadgeOffset = horizontalBadgeOffset,
-            verticalBadgeOffset = verticalBadgeOffset,
-            initialsTextStyle = initialsTextStyle
-        )
+    ) = AvatarSizes(
+        boxSizes = boxSizes,
+        placeholderIconSizes = placeholderIconSizes,
+        overlayIconSizes = overlayIconSizes,
+        badgeSize = badgeSize,
+        horizontalBadgeOffset = horizontalBadgeOffset,
+        verticalBadgeOffset = verticalBadgeOffset,
+        initialsTextStyle = initialsTextStyle
+    )
 
     /**
      * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
@@ -203,24 +200,23 @@ object AvatarDefaults {
     fun size56(
         boxSizes: Dp = 56.dp,
         placeholderIconSizes: IconSizes = IconDefaults.size32(),
-        overlayIconSizes: IconSizes = IconDefaults.size28(),
+        overlayIconSizes: IconSizes = IconDefaults.size32(),
         badgeSize: Dp = 24.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
         initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
-            fontSize = 18.sp,
-            lineHeight = 24.sp
+            fontSize = 20.sp,
+            lineHeight = TextUnit.Unspecified
         )
-    ): AvatarSizes =
-        AvatarSizes(
-            boxSizes = boxSizes,
-            placeholderIconSizes = placeholderIconSizes,
-            overlayIconSizes = overlayIconSizes,
-            badgeSize = badgeSize,
-            horizontalBadgeOffset = horizontalBadgeOffset,
-            verticalBadgeOffset = verticalBadgeOffset,
-            initialsTextStyle = initialsTextStyle
-        )
+    ) = AvatarSizes(
+        boxSizes = boxSizes,
+        placeholderIconSizes = placeholderIconSizes,
+        overlayIconSizes = overlayIconSizes,
+        badgeSize = badgeSize,
+        horizontalBadgeOffset = horizontalBadgeOffset,
+        verticalBadgeOffset = verticalBadgeOffset,
+        initialsTextStyle = initialsTextStyle
+    )
 
     /**
      * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
@@ -237,24 +233,23 @@ object AvatarDefaults {
     fun size48(
         boxSizes: Dp = 48.dp,
         placeholderIconSizes: IconSizes = IconDefaults.size32(),
-        overlayIconSizes: IconSizes = IconDefaults.size24(),
+        overlayIconSizes: IconSizes = IconDefaults.size28(),
         badgeSize: Dp = 20.dp,
         horizontalBadgeOffset: Dp = 2.dp,
         verticalBadgeOffset: Dp = 2.dp,
         initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
-            fontSize = 17.sp,
-            lineHeight = 23.sp
+            fontSize = 18.sp,
+            lineHeight = TextUnit.Unspecified
         )
-    ): AvatarSizes =
-        AvatarSizes(
-            boxSizes = boxSizes,
-            placeholderIconSizes = placeholderIconSizes,
-            overlayIconSizes = overlayIconSizes,
-            badgeSize = badgeSize,
-            horizontalBadgeOffset = horizontalBadgeOffset,
-            verticalBadgeOffset = verticalBadgeOffset,
-            initialsTextStyle = initialsTextStyle
-        )
+    ) = AvatarSizes(
+        boxSizes = boxSizes,
+        placeholderIconSizes = placeholderIconSizes,
+        overlayIconSizes = overlayIconSizes,
+        badgeSize = badgeSize,
+        horizontalBadgeOffset = horizontalBadgeOffset,
+        verticalBadgeOffset = verticalBadgeOffset,
+        initialsTextStyle = initialsTextStyle
+    )
 
     /**
      * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
@@ -271,24 +266,23 @@ object AvatarDefaults {
     fun size44(
         boxSizes: Dp = 44.dp,
         placeholderIconSizes: IconSizes = IconDefaults.size28(),
-        overlayIconSizes: IconSizes = IconDefaults.size24(),
+        overlayIconSizes: IconSizes = IconDefaults.size28(),
         badgeSize: Dp = 20.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
         initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
-            fontSize = 14.sp,
-            lineHeight = 20.sp
+            fontSize = 16.sp,
+            lineHeight = TextUnit.Unspecified
         )
-    ): AvatarSizes =
-        AvatarSizes(
-            boxSizes = boxSizes,
-            placeholderIconSizes = placeholderIconSizes,
-            overlayIconSizes = overlayIconSizes,
-            badgeSize = badgeSize,
-            horizontalBadgeOffset = horizontalBadgeOffset,
-            verticalBadgeOffset = verticalBadgeOffset,
-            initialsTextStyle = initialsTextStyle
-        )
+    ) = AvatarSizes(
+        boxSizes = boxSizes,
+        placeholderIconSizes = placeholderIconSizes,
+        overlayIconSizes = overlayIconSizes,
+        badgeSize = badgeSize,
+        horizontalBadgeOffset = horizontalBadgeOffset,
+        verticalBadgeOffset = verticalBadgeOffset,
+        initialsTextStyle = initialsTextStyle
+    )
 
     /**
      * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
@@ -305,24 +299,23 @@ object AvatarDefaults {
     fun size40(
         boxSizes: Dp = 40.dp,
         placeholderIconSizes: IconSizes = IconDefaults.size24(),
-        overlayIconSizes: IconSizes = IconDefaults.size20(),
+        overlayIconSizes: IconSizes = IconDefaults.size24(),
         badgeSize: Dp = 20.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
         initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
             fontSize = 14.sp,
-            lineHeight = 20.sp
+            lineHeight = TextUnit.Unspecified
         )
-    ): AvatarSizes =
-        AvatarSizes(
-            boxSizes = boxSizes,
-            placeholderIconSizes = placeholderIconSizes,
-            overlayIconSizes = overlayIconSizes,
-            badgeSize = badgeSize,
-            horizontalBadgeOffset = horizontalBadgeOffset,
-            verticalBadgeOffset = verticalBadgeOffset,
-            initialsTextStyle = initialsTextStyle
-        )
+    ) = AvatarSizes(
+        boxSizes = boxSizes,
+        placeholderIconSizes = placeholderIconSizes,
+        overlayIconSizes = overlayIconSizes,
+        badgeSize = badgeSize,
+        horizontalBadgeOffset = horizontalBadgeOffset,
+        verticalBadgeOffset = verticalBadgeOffset,
+        initialsTextStyle = initialsTextStyle
+    )
 
     /**
      * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
@@ -344,19 +337,18 @@ object AvatarDefaults {
         horizontalBadgeOffset: Dp = 2.dp,
         verticalBadgeOffset: Dp = 2.dp,
         initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
-            fontSize = 13.sp,
-            lineHeight = 19.sp
+            fontSize = 12.sp,
+            lineHeight = TextUnit.Unspecified
         )
-    ): AvatarSizes =
-        AvatarSizes(
-            boxSizes = boxSizes,
-            placeholderIconSizes = placeholderIconSizes,
-            overlayIconSizes = overlayIconSizes,
-            badgeSize = badgeSize,
-            horizontalBadgeOffset = horizontalBadgeOffset,
-            verticalBadgeOffset = verticalBadgeOffset,
-            initialsTextStyle = initialsTextStyle
-        )
+    ) = AvatarSizes(
+        boxSizes = boxSizes,
+        placeholderIconSizes = placeholderIconSizes,
+        overlayIconSizes = overlayIconSizes,
+        badgeSize = badgeSize,
+        horizontalBadgeOffset = horizontalBadgeOffset,
+        verticalBadgeOffset = verticalBadgeOffset,
+        initialsTextStyle = initialsTextStyle
+    )
 
     /**
      * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
@@ -378,19 +370,18 @@ object AvatarDefaults {
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
         initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
-            fontSize = 10.sp,
-            lineHeight = 16.sp
+            fontSize = 11.sp,
+            lineHeight = TextUnit.Unspecified
         )
-    ): AvatarSizes =
-        AvatarSizes(
-            boxSizes = boxSizes,
-            placeholderIconSizes = placeholderIconSizes,
-            overlayIconSizes = overlayIconSizes,
-            badgeSize = badgeSize,
-            horizontalBadgeOffset = horizontalBadgeOffset,
-            verticalBadgeOffset = verticalBadgeOffset,
-            initialsTextStyle = initialsTextStyle
-        )
+    ) = AvatarSizes(
+        boxSizes = boxSizes,
+        placeholderIconSizes = placeholderIconSizes,
+        overlayIconSizes = overlayIconSizes,
+        badgeSize = badgeSize,
+        horizontalBadgeOffset = horizontalBadgeOffset,
+        verticalBadgeOffset = verticalBadgeOffset,
+        initialsTextStyle = initialsTextStyle
+    )
 
     /**
      * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
@@ -407,24 +398,23 @@ object AvatarDefaults {
     fun size28(
         boxSizes: Dp = 28.dp,
         placeholderIconSizes: IconSizes = IconDefaults.size20(),
-        overlayIconSizes: IconSizes = IconDefaults.size18(),
+        overlayIconSizes: IconSizes = IconDefaults.size20(),
         badgeSize: Dp = 16.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
         initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
-            fontSize = 10.sp,
-            lineHeight = 16.sp
+            fontSize = 9.sp,
+            lineHeight = TextUnit.Unspecified
         )
-    ): AvatarSizes =
-        AvatarSizes(
-            boxSizes = boxSizes,
-            placeholderIconSizes = placeholderIconSizes,
-            overlayIconSizes = overlayIconSizes,
-            badgeSize = badgeSize,
-            horizontalBadgeOffset = horizontalBadgeOffset,
-            verticalBadgeOffset = verticalBadgeOffset,
-            initialsTextStyle = initialsTextStyle
-        )
+    ) = AvatarSizes(
+        boxSizes = boxSizes,
+        placeholderIconSizes = placeholderIconSizes,
+        overlayIconSizes = overlayIconSizes,
+        badgeSize = badgeSize,
+        horizontalBadgeOffset = horizontalBadgeOffset,
+        verticalBadgeOffset = verticalBadgeOffset,
+        initialsTextStyle = initialsTextStyle
+    )
 
     /**
      * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
@@ -441,24 +431,23 @@ object AvatarDefaults {
     fun size24(
         boxSizes: Dp = 24.dp,
         placeholderIconSizes: IconSizes = IconDefaults.size16(),
-        overlayIconSizes: IconSizes = IconDefaults.size18(),
+        overlayIconSizes: IconSizes = IconDefaults.size16(),
         badgeSize: Dp = 16.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
         initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
-            fontSize = 8.sp,
-            lineHeight = 14.sp
+            fontSize = 9.sp,
+            lineHeight = TextUnit.Unspecified
         )
-    ): AvatarSizes =
-        AvatarSizes(
-            boxSizes = boxSizes,
-            placeholderIconSizes = placeholderIconSizes,
-            overlayIconSizes = overlayIconSizes,
-            badgeSize = badgeSize,
-            horizontalBadgeOffset = horizontalBadgeOffset,
-            verticalBadgeOffset = verticalBadgeOffset,
-            initialsTextStyle = initialsTextStyle
-        )
+    ) = AvatarSizes(
+        boxSizes = boxSizes,
+        placeholderIconSizes = placeholderIconSizes,
+        overlayIconSizes = overlayIconSizes,
+        badgeSize = badgeSize,
+        horizontalBadgeOffset = horizontalBadgeOffset,
+        verticalBadgeOffset = verticalBadgeOffset,
+        initialsTextStyle = initialsTextStyle
+    )
 
     /**
      * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
@@ -473,18 +462,42 @@ object AvatarDefaults {
         placeholderIconSizes: IconSizes = IconDefaults.size16(),
         initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
             fontSize = 8.sp,
-            lineHeight = 14.sp
+            lineHeight = TextUnit.Unspecified
         )
-    ): AvatarSizes =
-        AvatarSizes(
-            boxSizes = boxSizes,
-            placeholderIconSizes = placeholderIconSizes,
-            overlayIconSizes = null,
-            badgeSize = null,
-            horizontalBadgeOffset = 0.dp,
-            verticalBadgeOffset = 0.dp,
-            initialsTextStyle = initialsTextStyle
+    ) = AvatarSizes(
+        boxSizes = boxSizes,
+        placeholderIconSizes = placeholderIconSizes,
+        overlayIconSizes = null,
+        badgeSize = null,
+        horizontalBadgeOffset = 0.dp,
+        verticalBadgeOffset = 0.dp,
+        initialsTextStyle = initialsTextStyle
+    )
+
+    /**
+     * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
+     *
+     * @param boxSizes the container size of this avatar.
+     * @param placeholderIconSizes the placeholder icon size of this avatar.
+     * @param initialsTextStyle the initials text style of this avatar.
+     */
+    @Composable
+    fun size18(
+        boxSizes: Dp = 18.dp,
+        placeholderIconSizes: IconSizes = IconDefaults.size12(),
+        initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
+            fontSize = 7.sp,
+            lineHeight = TextUnit.Unspecified
         )
+    ) = AvatarSizes(
+        boxSizes = boxSizes,
+        placeholderIconSizes = placeholderIconSizes,
+        overlayIconSizes = null,
+        badgeSize = null,
+        horizontalBadgeOffset = 0.dp,
+        verticalBadgeOffset = 0.dp,
+        initialsTextStyle = initialsTextStyle
+    )
 
     /**
      * Creates an [AvatarSizes] that represents the default sizes used in an avatar.
@@ -498,8 +511,8 @@ object AvatarDefaults {
         boxSizes: Dp = 16.dp,
         placeholderIconSizes: IconSizes = IconDefaults.size12(),
         initialsTextStyle: TextStyle = PersianTheme.typography.bodyLarge.copy(
-            fontSize = 5.sp,
-            lineHeight = 11.sp
+            fontSize = 6.sp,
+            lineHeight = TextUnit.Unspecified
         )
     ): AvatarSizes =
         AvatarSizes(
@@ -531,15 +544,14 @@ object AvatarDefaults {
         overlayIconColor: Color = PersianTheme.colorScheme.primary,
         initialsTextColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         initialsContainerColor: Color = PersianTheme.colorScheme.surfaceContainerHighest,
-    ): AvatarColors =
-        AvatarColors(
-            placeholderContainerColor = placeholderContainerColor,
-            borderColor = borderColor,
-            placeholderIconColor = placeholderIconColor,
-            overlayIconColor = overlayIconColor,
-            initialsTextColor = initialsTextColor,
-            initialsContainerColor = initialsContainerColor,
-        )
+    ) = AvatarColors(
+        placeholderContainerColor = placeholderContainerColor,
+        borderColor = borderColor,
+        placeholderIconColor = placeholderIconColor,
+        overlayIconColor = overlayIconColor,
+        initialsTextColor = initialsTextColor,
+        initialsContainerColor = initialsContainerColor,
+    )
 }
 
 /**

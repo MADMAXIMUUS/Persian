@@ -1,14 +1,14 @@
 package io.github.madmaximuus.persian.avatarAndImage
 
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
-import androidx.compose.runtime.Stable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.foundation.shape.SquircleShape
+import io.github.madmaximuus.persian.foundation.shape.SquircleSmoothing
 import io.github.madmaximuus.persian.foundation.state38
 import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persian.icon.IconSizes
@@ -24,9 +24,7 @@ object ImageDefaults {
      * @param boxSizes the container size of this image.
      * @param placeholderIconSizes the placeholder icon size of this image.
      * @param overlayIconSizes the overlay icon size of this image.
-     * @param smallShape the shape that used when [ImageShape.SMALL] of this image.
-     * @param mediumShape the shape that used when [ImageShape.MEDIUM] of this image.
-     * @param largeShape the shape that used when [ImageShape.LARGE] of this image.
+     * @param shape the shape of this image.
      * @param badgeSize the badge size of this image.
      * @param horizontalBadgeOffset the badge left offset of this image.
      * @param verticalBadgeOffset the badge bottom offset of this image.
@@ -35,25 +33,20 @@ object ImageDefaults {
     fun size96(
         boxSizes: Dp = 96.dp,
         placeholderIconSizes: IconSizes = IconDefaults.size48(),
-        overlayIconSizes: IconSizes = IconDefaults.size32(),
-        smallShape: Shape = RoundedCornerShape(8.dp),
-        mediumShape: Shape = RoundedCornerShape(12.dp),
-        largeShape: Shape = RoundedCornerShape(16.dp),
+        overlayIconSizes: IconSizes = IconDefaults.size48(),
+        shape: Shape = SquircleShape(20.dp, SquircleSmoothing.MEDIUM),
         badgeSize: Dp = 28.dp,
         horizontalBadgeOffset: Dp = 5.dp,
         verticalBadgeOffset: Dp = 5.dp,
-    ): ImageSizes =
-        ImageSizes(
-            boxSizes = boxSizes,
-            placeholderIconSizes = placeholderIconSizes,
-            overlayIconSizes = overlayIconSizes,
-            smallShape = smallShape,
-            mediumShape = mediumShape,
-            largeShape = largeShape,
-            badgeSize = badgeSize,
-            horizontalBadgeOffset = horizontalBadgeOffset,
-            verticalBadgeOffset = verticalBadgeOffset
-        )
+    ) = ImageSizes(
+        boxSizes = boxSizes,
+        placeholderIconSizes = placeholderIconSizes,
+        overlayIconSizes = overlayIconSizes,
+        shape = shape,
+        badgeSize = badgeSize,
+        horizontalBadgeOffset = horizontalBadgeOffset,
+        verticalBadgeOffset = verticalBadgeOffset
+    )
 
     /**
      * Creates an [ImageSizes] that represents the default sizes used in an image.
@@ -61,9 +54,7 @@ object ImageDefaults {
      * @param boxSizes the container size of this image.
      * @param placeholderIconSizes the placeholder icon size of this image.
      * @param overlayIconSizes the overlay icon size of this image.
-     * @param smallShape the shape that used when [ImageShape.SMALL] of this image.
-     * @param mediumShape the shape that used when [ImageShape.MEDIUM] of this image.
-     * @param largeShape the shape that used when [ImageShape.LARGE] of this image.
+     * @param shape the shape of this image.
      * @param badgeSize the badge size of this image.
      * @param horizontalBadgeOffset the badge left offset of this image.
      * @param verticalBadgeOffset the badge bottom offset of this image.
@@ -72,25 +63,20 @@ object ImageDefaults {
     fun size88(
         boxSizes: Dp = 88.dp,
         placeholderIconSizes: IconSizes = IconDefaults.size48(),
-        overlayIconSizes: IconSizes = IconDefaults.size32(),
-        smallShape: Shape = RoundedCornerShape(8.dp),
-        mediumShape: Shape = RoundedCornerShape(12.dp),
-        largeShape: Shape = RoundedCornerShape(16.dp),
+        overlayIconSizes: IconSizes = IconDefaults.size44(),
+        shape: Shape = SquircleShape(20.dp, SquircleSmoothing.MEDIUM),
         badgeSize: Dp = 28.dp,
         horizontalBadgeOffset: Dp = 5.dp,
         verticalBadgeOffset: Dp = 5.dp,
-    ): ImageSizes =
-        ImageSizes(
-            boxSizes = boxSizes,
-            placeholderIconSizes = placeholderIconSizes,
-            overlayIconSizes = overlayIconSizes,
-            smallShape = smallShape,
-            mediumShape = mediumShape,
-            largeShape = largeShape,
-            badgeSize = badgeSize,
-            horizontalBadgeOffset = horizontalBadgeOffset,
-            verticalBadgeOffset = verticalBadgeOffset
-        )
+    ) = ImageSizes(
+        boxSizes = boxSizes,
+        placeholderIconSizes = placeholderIconSizes,
+        overlayIconSizes = overlayIconSizes,
+        shape = shape,
+        badgeSize = badgeSize,
+        horizontalBadgeOffset = horizontalBadgeOffset,
+        verticalBadgeOffset = verticalBadgeOffset
+    )
 
     /**
      * Creates an [ImageSizes] that represents the default sizes used in an image.
@@ -98,9 +84,7 @@ object ImageDefaults {
      * @param boxSizes the container size of this image.
      * @param placeholderIconSizes the placeholder icon size of this image.
      * @param overlayIconSizes the overlay icon size of this image.
-     * @param smallShape the shape that used when [ImageShape.SMALL] of this image.
-     * @param mediumShape the shape that used when [ImageShape.MEDIUM] of this image.
-     * @param largeShape the shape that used when [ImageShape.LARGE] of this image.
+     * @param shape the shape of this image.
      * @param badgeSize the badge size of this image.
      * @param horizontalBadgeOffset the badge left offset of this image.
      * @param verticalBadgeOffset the badge bottom offset of this image.
@@ -109,25 +93,20 @@ object ImageDefaults {
     fun size80(
         boxSizes: Dp = 80.dp,
         placeholderIconSizes: IconSizes = IconDefaults.size48(),
-        overlayIconSizes: IconSizes = IconDefaults.size32(),
-        smallShape: Shape = RoundedCornerShape(8.dp),
-        mediumShape: Shape = RoundedCornerShape(12.dp),
-        largeShape: Shape = RoundedCornerShape(16.dp),
+        overlayIconSizes: IconSizes = IconDefaults.size44(),
+        shape: Shape = SquircleShape(18.dp, SquircleSmoothing.MEDIUM),
         badgeSize: Dp = 28.dp,
         horizontalBadgeOffset: Dp = 5.dp,
         verticalBadgeOffset: Dp = 5.dp,
-    ): ImageSizes =
-        ImageSizes(
-            boxSizes = boxSizes,
-            placeholderIconSizes = placeholderIconSizes,
-            overlayIconSizes = overlayIconSizes,
-            smallShape = smallShape,
-            mediumShape = mediumShape,
-            largeShape = largeShape,
-            badgeSize = badgeSize,
-            horizontalBadgeOffset = horizontalBadgeOffset,
-            verticalBadgeOffset = verticalBadgeOffset
-        )
+    ) = ImageSizes(
+        boxSizes = boxSizes,
+        placeholderIconSizes = placeholderIconSizes,
+        overlayIconSizes = overlayIconSizes,
+        shape = shape,
+        badgeSize = badgeSize,
+        horizontalBadgeOffset = horizontalBadgeOffset,
+        verticalBadgeOffset = verticalBadgeOffset
+    )
 
     /**
      * Creates an [ImageSizes] that represents the default sizes used in an image.
@@ -135,9 +114,7 @@ object ImageDefaults {
      * @param boxSizes the container size of this image.
      * @param placeholderIconSizes the placeholder icon size of this image.
      * @param overlayIconSizes the overlay icon size of this image.
-     * @param smallShape the shape that used when [ImageShape.SMALL] of this image.
-     * @param mediumShape the shape that used when [ImageShape.MEDIUM] of this image.
-     * @param largeShape the shape that used when [ImageShape.LARGE] of this image.
+     * @param shape the shape of this image.
      * @param badgeSize the badge size of this image.
      * @param horizontalBadgeOffset the badge left offset of this image.
      * @param verticalBadgeOffset the badge bottom offset of this image.
@@ -146,25 +123,20 @@ object ImageDefaults {
     fun size72(
         boxSizes: Dp = 72.dp,
         placeholderIconSizes: IconSizes = IconDefaults.size40(),
-        overlayIconSizes: IconSizes = IconDefaults.size28(),
-        smallShape: Shape = RoundedCornerShape(6.dp),
-        mediumShape: Shape = RoundedCornerShape(10.dp),
-        largeShape: Shape = RoundedCornerShape(14.dp),
+        overlayIconSizes: IconSizes = IconDefaults.size36(),
+        shape: Shape = SquircleShape(18.dp, SquircleSmoothing.MEDIUM),
         badgeSize: Dp = 28.dp,
         horizontalBadgeOffset: Dp = 5.dp,
         verticalBadgeOffset: Dp = 5.dp,
-    ): ImageSizes =
-        ImageSizes(
-            boxSizes = boxSizes,
-            placeholderIconSizes = placeholderIconSizes,
-            overlayIconSizes = overlayIconSizes,
-            smallShape = smallShape,
-            mediumShape = mediumShape,
-            largeShape = largeShape,
-            badgeSize = badgeSize,
-            horizontalBadgeOffset = horizontalBadgeOffset,
-            verticalBadgeOffset = verticalBadgeOffset
-        )
+    ) = ImageSizes(
+        boxSizes = boxSizes,
+        placeholderIconSizes = placeholderIconSizes,
+        overlayIconSizes = overlayIconSizes,
+        shape = shape,
+        badgeSize = badgeSize,
+        horizontalBadgeOffset = horizontalBadgeOffset,
+        verticalBadgeOffset = verticalBadgeOffset
+    )
 
     /**
      * Creates an [ImageSizes] that represents the default sizes used in an image.
@@ -172,9 +144,7 @@ object ImageDefaults {
      * @param boxSizes the container size of this image.
      * @param placeholderIconSizes the placeholder icon size of this image.
      * @param overlayIconSizes the overlay icon size of this image.
-     * @param smallShape the shape that used when [ImageShape.SMALL] of this image.
-     * @param mediumShape the shape that used when [ImageShape.MEDIUM] of this image.
-     * @param largeShape the shape that used when [ImageShape.LARGE] of this image.
+     * @param shape the shape of this image.
      * @param badgeSize the badge size of this image.
      * @param horizontalBadgeOffset the badge left offset of this image.
      * @param verticalBadgeOffset the badge bottom offset of this image.
@@ -183,25 +153,20 @@ object ImageDefaults {
     fun size64(
         boxSizes: Dp = 64.dp,
         placeholderIconSizes: IconSizes = IconDefaults.size40(),
-        overlayIconSizes: IconSizes = IconDefaults.size28(),
-        smallShape: Shape = RoundedCornerShape(6.dp),
-        mediumShape: Shape = RoundedCornerShape(10.dp),
-        largeShape: Shape = RoundedCornerShape(14.dp),
+        overlayIconSizes: IconSizes = IconDefaults.size32(),
+        shape: Shape = SquircleShape(16.dp, SquircleSmoothing.MEDIUM),
         badgeSize: Dp = 24.dp,
         horizontalBadgeOffset: Dp = 4.dp,
         verticalBadgeOffset: Dp = 4.dp,
-    ): ImageSizes =
-        ImageSizes(
-            boxSizes = boxSizes,
-            placeholderIconSizes = placeholderIconSizes,
-            overlayIconSizes = overlayIconSizes,
-            smallShape = smallShape,
-            mediumShape = mediumShape,
-            largeShape = largeShape,
-            badgeSize = badgeSize,
-            horizontalBadgeOffset = horizontalBadgeOffset,
-            verticalBadgeOffset = verticalBadgeOffset
-        )
+    ) = ImageSizes(
+        boxSizes = boxSizes,
+        placeholderIconSizes = placeholderIconSizes,
+        overlayIconSizes = overlayIconSizes,
+        shape = shape,
+        badgeSize = badgeSize,
+        horizontalBadgeOffset = horizontalBadgeOffset,
+        verticalBadgeOffset = verticalBadgeOffset
+    )
 
     /**
      * Creates an [ImageSizes] that represents the default sizes used in an image.
@@ -209,9 +174,7 @@ object ImageDefaults {
      * @param boxSizes the container size of this image.
      * @param placeholderIconSizes the placeholder icon size of this image.
      * @param overlayIconSizes the overlay icon size of this image.
-     * @param smallShape the shape that used when [ImageShape.SMALL] of this image.
-     * @param mediumShape the shape that used when [ImageShape.MEDIUM] of this image.
-     * @param largeShape the shape that used when [ImageShape.LARGE] of this image.
+     * @param shape the shape of this image.
      * @param badgeSize the badge size of this image.
      * @param horizontalBadgeOffset the badge left offset of this image.
      * @param verticalBadgeOffset the badge bottom offset of this image.
@@ -220,25 +183,20 @@ object ImageDefaults {
     fun size56(
         boxSizes: Dp = 56.dp,
         placeholderIconSizes: IconSizes = IconDefaults.size32(),
-        overlayIconSizes: IconSizes = IconDefaults.size28(),
-        smallShape: Shape = RoundedCornerShape(6.dp),
-        mediumShape: Shape = RoundedCornerShape(10.dp),
-        largeShape: Shape = RoundedCornerShape(14.dp),
+        overlayIconSizes: IconSizes = IconDefaults.size32(),
+        shape: Shape = SquircleShape(16.dp, SquircleSmoothing.MEDIUM),
         badgeSize: Dp = 24.dp,
         horizontalBadgeOffset: Dp = 4.dp,
         verticalBadgeOffset: Dp = 4.dp,
-    ): ImageSizes =
-        ImageSizes(
-            boxSizes = boxSizes,
-            placeholderIconSizes = placeholderIconSizes,
-            overlayIconSizes = overlayIconSizes,
-            smallShape = smallShape,
-            mediumShape = mediumShape,
-            largeShape = largeShape,
-            badgeSize = badgeSize,
-            horizontalBadgeOffset = horizontalBadgeOffset,
-            verticalBadgeOffset = verticalBadgeOffset
-        )
+    ) = ImageSizes(
+        boxSizes = boxSizes,
+        placeholderIconSizes = placeholderIconSizes,
+        overlayIconSizes = overlayIconSizes,
+        badgeSize = badgeSize,
+        shape = shape,
+        horizontalBadgeOffset = horizontalBadgeOffset,
+        verticalBadgeOffset = verticalBadgeOffset
+    )
 
     /**
      * Creates an [ImageSizes] that represents the default sizes used in an image.
@@ -246,9 +204,7 @@ object ImageDefaults {
      * @param boxSizes the container size of this image.
      * @param placeholderIconSizes the placeholder icon size of this image.
      * @param overlayIconSizes the overlay icon size of this image.
-     * @param smallShape the shape that used when [ImageShape.SMALL] of this image.
-     * @param mediumShape the shape that used when [ImageShape.MEDIUM] of this image.
-     * @param largeShape the shape that used when [ImageShape.LARGE] of this image.
+     * @param shape the shape of this image.
      * @param badgeSize the badge size of this image.
      * @param horizontalBadgeOffset the badge left offset of this image.
      * @param verticalBadgeOffset the badge bottom offset of this image.
@@ -257,25 +213,20 @@ object ImageDefaults {
     fun size48(
         boxSizes: Dp = 48.dp,
         placeholderIconSizes: IconSizes = IconDefaults.size32(),
-        overlayIconSizes: IconSizes = IconDefaults.size24(),
-        smallShape: Shape = RoundedCornerShape(4.dp),
-        mediumShape: Shape = RoundedCornerShape(8.dp),
-        largeShape: Shape = RoundedCornerShape(12.dp),
+        overlayIconSizes: IconSizes = IconDefaults.size28(),
+        shape: Shape = SquircleShape(14.dp, SquircleSmoothing.MEDIUM),
         badgeSize: Dp = 20.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
-    ): ImageSizes =
-        ImageSizes(
-            boxSizes = boxSizes,
-            placeholderIconSizes = placeholderIconSizes,
-            overlayIconSizes = overlayIconSizes,
-            smallShape = smallShape,
-            mediumShape = mediumShape,
-            largeShape = largeShape,
-            badgeSize = badgeSize,
-            horizontalBadgeOffset = horizontalBadgeOffset,
-            verticalBadgeOffset = verticalBadgeOffset
-        )
+    ) = ImageSizes(
+        boxSizes = boxSizes,
+        placeholderIconSizes = placeholderIconSizes,
+        overlayIconSizes = overlayIconSizes,
+        shape = shape,
+        badgeSize = badgeSize,
+        horizontalBadgeOffset = horizontalBadgeOffset,
+        verticalBadgeOffset = verticalBadgeOffset
+    )
 
     /**
      * Creates an [ImageSizes] that represents the default sizes used in an image.
@@ -283,9 +234,7 @@ object ImageDefaults {
      * @param boxSizes the container size of this image.
      * @param placeholderIconSizes the placeholder icon size of this image.
      * @param overlayIconSizes the overlay icon size of this image.
-     * @param smallShape the shape that used when [ImageShape.SMALL] of this image.
-     * @param mediumShape the shape that used when [ImageShape.MEDIUM] of this image.
-     * @param largeShape the shape that used when [ImageShape.LARGE] of this image.
+     * @param shape the shape of this image.
      * @param badgeSize the badge size of this image.
      * @param horizontalBadgeOffset the badge left offset of this image.
      * @param verticalBadgeOffset the badge bottom offset of this image.
@@ -294,25 +243,20 @@ object ImageDefaults {
     fun size44(
         boxSizes: Dp = 44.dp,
         placeholderIconSizes: IconSizes = IconDefaults.size28(),
-        overlayIconSizes: IconSizes = IconDefaults.size24(),
-        smallShape: Shape = RoundedCornerShape(4.dp),
-        mediumShape: Shape = RoundedCornerShape(8.dp),
-        largeShape: Shape = RoundedCornerShape(12.dp),
+        overlayIconSizes: IconSizes = IconDefaults.size28(),
+        shape: Shape = SquircleShape(14.dp, SquircleSmoothing.MEDIUM),
         badgeSize: Dp = 20.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
-    ): ImageSizes =
-        ImageSizes(
-            boxSizes = boxSizes,
-            placeholderIconSizes = placeholderIconSizes,
-            overlayIconSizes = overlayIconSizes,
-            smallShape = smallShape,
-            mediumShape = mediumShape,
-            largeShape = largeShape,
-            badgeSize = badgeSize,
-            horizontalBadgeOffset = horizontalBadgeOffset,
-            verticalBadgeOffset = verticalBadgeOffset
-        )
+    ) = ImageSizes(
+        boxSizes = boxSizes,
+        placeholderIconSizes = placeholderIconSizes,
+        overlayIconSizes = overlayIconSizes,
+        shape = shape,
+        badgeSize = badgeSize,
+        horizontalBadgeOffset = horizontalBadgeOffset,
+        verticalBadgeOffset = verticalBadgeOffset
+    )
 
     /**
      * Creates an [ImageSizes] that represents the default sizes used in an image.
@@ -320,9 +264,7 @@ object ImageDefaults {
      * @param boxSizes the container size of this image.
      * @param placeholderIconSizes the placeholder icon size of this image.
      * @param overlayIconSizes the overlay icon size of this image.
-     * @param smallShape the shape that used when [ImageShape.SMALL] of this image.
-     * @param mediumShape the shape that used when [ImageShape.MEDIUM] of this image.
-     * @param largeShape the shape that used when [ImageShape.LARGE] of this image.
+     * @param shape the shape of this image.
      * @param badgeSize the badge size of this image.
      * @param horizontalBadgeOffset the badge left offset of this image.
      * @param verticalBadgeOffset the badge bottom offset of this image.
@@ -331,25 +273,20 @@ object ImageDefaults {
     fun size40(
         boxSizes: Dp = 40.dp,
         placeholderIconSizes: IconSizes = IconDefaults.size24(),
-        overlayIconSizes: IconSizes = IconDefaults.size20(),
-        smallShape: Shape = RoundedCornerShape(4.dp),
-        mediumShape: Shape = RoundedCornerShape(8.dp),
-        largeShape: Shape = RoundedCornerShape(12.dp),
+        overlayIconSizes: IconSizes = IconDefaults.size24(),
+        shape: Shape = SquircleShape(12.dp, SquircleSmoothing.MEDIUM),
         badgeSize: Dp = 20.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
-    ): ImageSizes =
-        ImageSizes(
-            boxSizes = boxSizes,
-            placeholderIconSizes = placeholderIconSizes,
-            overlayIconSizes = overlayIconSizes,
-            smallShape = smallShape,
-            mediumShape = mediumShape,
-            largeShape = largeShape,
-            badgeSize = badgeSize,
-            horizontalBadgeOffset = horizontalBadgeOffset,
-            verticalBadgeOffset = verticalBadgeOffset
-        )
+    ) = ImageSizes(
+        boxSizes = boxSizes,
+        placeholderIconSizes = placeholderIconSizes,
+        overlayIconSizes = overlayIconSizes,
+        shape = shape,
+        badgeSize = badgeSize,
+        horizontalBadgeOffset = horizontalBadgeOffset,
+        verticalBadgeOffset = verticalBadgeOffset
+    )
 
     /**
      * Creates an [ImageSizes] that represents the default sizes used in an image.
@@ -357,9 +294,7 @@ object ImageDefaults {
      * @param boxSizes the container size of this image.
      * @param placeholderIconSizes the placeholder icon size of this image.
      * @param overlayIconSizes the overlay icon size of this image.
-     * @param smallShape the shape that used when [ImageShape.SMALL] of this image.
-     * @param mediumShape the shape that used when [ImageShape.MEDIUM] of this image.
-     * @param largeShape the shape that used when [ImageShape.LARGE] of this image.
+     * @param shape the shape of this image.
      * @param badgeSize the badge size of this image.
      * @param horizontalBadgeOffset the badge left offset of this image.
      * @param verticalBadgeOffset the badge bottom offset of this image.
@@ -369,24 +304,19 @@ object ImageDefaults {
         boxSizes: Dp = 40.dp,
         placeholderIconSizes: IconSizes = IconDefaults.size24(),
         overlayIconSizes: IconSizes = IconDefaults.size20(),
-        smallShape: Shape = RoundedCornerShape(4.dp),
-        mediumShape: Shape = RoundedCornerShape(8.dp),
-        largeShape: Shape = RoundedCornerShape(12.dp),
+        shape: Shape = SquircleShape(12.dp, SquircleSmoothing.MEDIUM),
         badgeSize: Dp = 16.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
-    ): ImageSizes =
-        ImageSizes(
-            boxSizes = boxSizes,
-            placeholderIconSizes = placeholderIconSizes,
-            overlayIconSizes = overlayIconSizes,
-            smallShape = smallShape,
-            mediumShape = mediumShape,
-            largeShape = largeShape,
-            badgeSize = badgeSize,
-            horizontalBadgeOffset = horizontalBadgeOffset,
-            verticalBadgeOffset = verticalBadgeOffset
-        )
+    ) = ImageSizes(
+        boxSizes = boxSizes,
+        placeholderIconSizes = placeholderIconSizes,
+        overlayIconSizes = overlayIconSizes,
+        shape = shape,
+        badgeSize = badgeSize,
+        horizontalBadgeOffset = horizontalBadgeOffset,
+        verticalBadgeOffset = verticalBadgeOffset
+    )
 
     /**
      * Creates an [ImageSizes] that represents the default sizes used in an image.
@@ -394,9 +324,7 @@ object ImageDefaults {
      * @param boxSizes the container size of this image.
      * @param placeholderIconSizes the placeholder icon size of this image.
      * @param overlayIconSizes the overlay icon size of this image.
-     * @param smallShape the shape that used when [ImageShape.SMALL] of this image.
-     * @param mediumShape the shape that used when [ImageShape.MEDIUM] of this image.
-     * @param largeShape the shape that used when [ImageShape.LARGE] of this image.
+     * @param shape the shape of this image.
      * @param badgeSize the badge size of this image.
      * @param horizontalBadgeOffset the badge left offset of this image.
      * @param verticalBadgeOffset the badge bottom offset of this image.
@@ -406,24 +334,19 @@ object ImageDefaults {
         boxSizes: Dp = 32.dp,
         placeholderIconSizes: IconSizes = IconDefaults.size20(),
         overlayIconSizes: IconSizes = IconDefaults.size20(),
-        smallShape: Shape = RoundedCornerShape(3.dp),
-        mediumShape: Shape = RoundedCornerShape(7.dp),
-        largeShape: Shape = RoundedCornerShape(11.dp),
+        shape: Shape = SquircleShape(10.dp, SquircleSmoothing.MEDIUM),
         badgeSize: Dp = 16.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
-    ): ImageSizes =
-        ImageSizes(
-            boxSizes = boxSizes,
-            placeholderIconSizes = placeholderIconSizes,
-            overlayIconSizes = overlayIconSizes,
-            smallShape = smallShape,
-            mediumShape = mediumShape,
-            largeShape = largeShape,
-            badgeSize = badgeSize,
-            horizontalBadgeOffset = horizontalBadgeOffset,
-            verticalBadgeOffset = verticalBadgeOffset
-        )
+    ) = ImageSizes(
+        boxSizes = boxSizes,
+        placeholderIconSizes = placeholderIconSizes,
+        overlayIconSizes = overlayIconSizes,
+        shape = shape,
+        badgeSize = badgeSize,
+        horizontalBadgeOffset = horizontalBadgeOffset,
+        verticalBadgeOffset = verticalBadgeOffset
+    )
 
     /**
      * Creates an [ImageSizes] that represents the default sizes used in an image.
@@ -431,9 +354,7 @@ object ImageDefaults {
      * @param boxSizes the container size of this image.
      * @param placeholderIconSizes the placeholder icon size of this image.
      * @param overlayIconSizes the overlay icon size of this image.
-     * @param smallShape the shape that used when [ImageShape.SMALL] of this image.
-     * @param mediumShape the shape that used when [ImageShape.MEDIUM] of this image.
-     * @param largeShape the shape that used when [ImageShape.LARGE] of this image.
+     * @param shape the shape of this image.
      * @param badgeSize the badge size of this image.
      * @param horizontalBadgeOffset the badge left offset of this image.
      * @param verticalBadgeOffset the badge bottom offset of this image.
@@ -443,24 +364,19 @@ object ImageDefaults {
         boxSizes: Dp = 28.dp,
         placeholderIconSizes: IconSizes = IconDefaults.size18(),
         overlayIconSizes: IconSizes = IconDefaults.size20(),
-        smallShape: Shape = RoundedCornerShape(3.dp),
-        mediumShape: Shape = RoundedCornerShape(7.dp),
-        largeShape: Shape = RoundedCornerShape(11.dp),
+        shape: Shape = SquircleShape(10.dp, SquircleSmoothing.MEDIUM),
         badgeSize: Dp = 16.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
-    ): ImageSizes =
-        ImageSizes(
-            boxSizes = boxSizes,
-            placeholderIconSizes = placeholderIconSizes,
-            overlayIconSizes = overlayIconSizes,
-            smallShape = smallShape,
-            mediumShape = mediumShape,
-            largeShape = largeShape,
-            badgeSize = badgeSize,
-            horizontalBadgeOffset = horizontalBadgeOffset,
-            verticalBadgeOffset = verticalBadgeOffset
-        )
+    ) = ImageSizes(
+        boxSizes = boxSizes,
+        placeholderIconSizes = placeholderIconSizes,
+        overlayIconSizes = overlayIconSizes,
+        shape = shape,
+        badgeSize = badgeSize,
+        horizontalBadgeOffset = horizontalBadgeOffset,
+        verticalBadgeOffset = verticalBadgeOffset
+    )
 
     /**
      * Creates an [ImageSizes] that represents the default sizes used in an image.
@@ -468,9 +384,7 @@ object ImageDefaults {
      * @param boxSizes the container size of this image.
      * @param placeholderIconSizes the placeholder icon size of this image.
      * @param overlayIconSizes the overlay icon size of this image.
-     * @param smallShape the shape that used when [ImageShape.SMALL] of this image.
-     * @param mediumShape the shape that used when [ImageShape.MEDIUM] of this image.
-     * @param largeShape the shape that used when [ImageShape.LARGE] of this image.
+     * @param shape the shape of this image.
      * @param badgeSize the badge size of this image.
      * @param horizontalBadgeOffset the badge left offset of this image.
      * @param verticalBadgeOffset the badge bottom offset of this image.
@@ -479,83 +393,86 @@ object ImageDefaults {
     fun size24(
         boxSizes: Dp = 24.dp,
         placeholderIconSizes: IconSizes = IconDefaults.size16(),
-        overlayIconSizes: IconSizes = IconDefaults.size18(),
-        smallShape: Shape = RoundedCornerShape(3.dp),
-        mediumShape: Shape = RoundedCornerShape(7.dp),
-        largeShape: Shape = RoundedCornerShape(9.dp),
+        overlayIconSizes: IconSizes = IconDefaults.size16(),
+        shape: Shape = SquircleShape(8.dp, SquircleSmoothing.MEDIUM),
         badgeSize: Dp = 16.dp,
         horizontalBadgeOffset: Dp = 3.dp,
         verticalBadgeOffset: Dp = 3.dp,
-    ): ImageSizes =
-        ImageSizes(
-            boxSizes = boxSizes,
-            placeholderIconSizes = placeholderIconSizes,
-            overlayIconSizes = overlayIconSizes,
-            smallShape = smallShape,
-            mediumShape = mediumShape,
-            largeShape = largeShape,
-            badgeSize = badgeSize,
-            horizontalBadgeOffset = horizontalBadgeOffset,
-            verticalBadgeOffset = verticalBadgeOffset
-        )
+    ) = ImageSizes(
+        boxSizes = boxSizes,
+        placeholderIconSizes = placeholderIconSizes,
+        overlayIconSizes = overlayIconSizes,
+        shape = shape,
+        badgeSize = badgeSize,
+        horizontalBadgeOffset = horizontalBadgeOffset,
+        verticalBadgeOffset = verticalBadgeOffset
+    )
 
     /**
      * Creates an [ImageSizes] that represents the default sizes used in an image.
      *
      * @param boxSizes the container size of this image.
      * @param placeholderIconSizes the placeholder icon size of this image.
-     * @param smallShape the shape that used when [ImageShape.SMALL] of this image.
-     * @param mediumShape the shape that used when [ImageShape.MEDIUM] of this image.
-     * @param largeShape the shape that used when [ImageShape.LARGE] of this image.
+     * @param shape the shape of this image.
      */
     @Composable
     fun size20(
         boxSizes: Dp = 20.dp,
         placeholderIconSizes: IconSizes = IconDefaults.size16(),
-        smallShape: Shape = RoundedCornerShape(2.dp),
-        mediumShape: Shape = RoundedCornerShape(6.dp),
-        largeShape: Shape = RoundedCornerShape(8.dp)
-    ): ImageSizes =
-        ImageSizes(
-            boxSizes = boxSizes,
-            placeholderIconSizes = placeholderIconSizes,
-            overlayIconSizes = null,
-            smallShape = smallShape,
-            mediumShape = mediumShape,
-            largeShape = largeShape,
-            badgeSize = null,
-            horizontalBadgeOffset = 0.dp,
-            verticalBadgeOffset = 0.dp
-        )
+        shape: Shape = SquircleShape(7.dp, SquircleSmoothing.MEDIUM),
+    ) = ImageSizes(
+        boxSizes = boxSizes,
+        placeholderIconSizes = placeholderIconSizes,
+        overlayIconSizes = null,
+        shape = shape,
+        badgeSize = null,
+        horizontalBadgeOffset = 0.dp,
+        verticalBadgeOffset = 0.dp
+    )
 
     /**
      * Creates an [ImageSizes] that represents the default sizes used in an image.
      *
      * @param boxSizes the container size of this image.
      * @param placeholderIconSizes the placeholder icon size of this image.
-     * @param smallShape the shape that used when [ImageShape.SMALL] of this image.
-     * @param mediumShape the shape that used when [ImageShape.MEDIUM] of this image.
-     * @param largeShape the shape that used when [ImageShape.LARGE] of this image.
+     * @param shape the shape of this image.
+     */
+    @Composable
+    fun size18(
+        boxSizes: Dp = 18.dp,
+        placeholderIconSizes: IconSizes = IconDefaults.size12(),
+        shape: Shape = SquircleShape(6.dp, SquircleSmoothing.MEDIUM),
+    ) = ImageSizes(
+        boxSizes = boxSizes,
+        placeholderIconSizes = placeholderIconSizes,
+        overlayIconSizes = null,
+        shape = shape,
+        badgeSize = null,
+        horizontalBadgeOffset = 0.dp,
+        verticalBadgeOffset = 0.dp
+    )
+
+    /**
+     * Creates an [ImageSizes] that represents the default sizes used in an image.
+     *
+     * @param boxSizes the container size of this image.
+     * @param placeholderIconSizes the placeholder icon size of this image.
+     * @param shape the shape of this image.
      */
     @Composable
     fun size16(
         boxSizes: Dp = 16.dp,
         placeholderIconSizes: IconSizes = IconDefaults.size12(),
-        smallShape: Shape = RoundedCornerShape(2.dp),
-        mediumShape: Shape = RoundedCornerShape(4.dp),
-        largeShape: Shape = RoundedCornerShape(6.dp)
-    ): ImageSizes =
-        ImageSizes(
-            boxSizes = boxSizes,
-            placeholderIconSizes = placeholderIconSizes,
-            overlayIconSizes = null,
-            smallShape = smallShape,
-            mediumShape = mediumShape,
-            largeShape = largeShape,
-            badgeSize = null,
-            horizontalBadgeOffset = 0.dp,
-            verticalBadgeOffset = 0.dp
-        )
+        shape: Shape = SquircleShape(6.dp, SquircleSmoothing.MEDIUM),
+    ) = ImageSizes(
+        boxSizes = boxSizes,
+        placeholderIconSizes = placeholderIconSizes,
+        overlayIconSizes = null,
+        shape = shape,
+        badgeSize = null,
+        horizontalBadgeOffset = 0.dp,
+        verticalBadgeOffset = 0.dp
+    )
 
     /**
      * Creates an [ImageColors] that represents the default sizes used in an avatar.
@@ -580,19 +497,13 @@ object ImageDefaults {
         )
 }
 
-enum class ImageShape {
-    SMALL, MEDIUM, LARGE
-}
-
 /**
  * Represents the container and contents sizes in different state.
  *
  * @param boxSizes the container size of this image.
  * @param placeholderIconSizes the placeholder icon size of this image.
  * @param overlayIconSizes the overlay icon size of this image.
- * @param smallShape the shape that used when [ImageShape.SMALL] of this image.
- * @param mediumShape the shape that used when [ImageShape.MEDIUM] of this image.
- * @param largeShape the shape that used when [ImageShape.LARGE] of this image.
+ * @param shape the shape of this image.
  * @param badgeSize the badge size of this image.
  * @param horizontalBadgeOffset the badge left offset of this image.
  * @param verticalBadgeOffset the badge bottom offset of this image.
@@ -606,26 +517,11 @@ class ImageSizes internal constructor(
     internal val boxSizes: Dp,
     internal val placeholderIconSizes: IconSizes,
     internal val overlayIconSizes: IconSizes?,
-    private val smallShape: Shape,
-    private val mediumShape: Shape,
-    private val largeShape: Shape,
+    internal val shape: Shape,
     internal val badgeSize: Dp?,
     internal val horizontalBadgeOffset: Dp,
     internal val verticalBadgeOffset: Dp,
 ) {
-
-    /**
-     * Represents the container shape for this image, depending on [ImageShape].
-     *
-     * @param shape the [ImageShape] size of this image.
-     */
-    @Stable
-    internal fun shape(shape: ImageShape): Shape =
-        when (shape) {
-            ImageShape.SMALL -> smallShape
-            ImageShape.MEDIUM -> mediumShape
-            ImageShape.LARGE -> largeShape
-        }
 
     /**
      * Returns a copy of this [ImageSizes], optionally overriding some of the values
@@ -634,24 +530,19 @@ class ImageSizes internal constructor(
         boxSizes: Dp = this.boxSizes,
         placeholderSize: IconSizes = this.placeholderIconSizes,
         overlayIconSizes: IconSizes? = this.overlayIconSizes,
-        smallShape: Shape = this.smallShape,
-        mediumShape: Shape = this.mediumShape,
-        largeShape: Shape = this.largeShape,
+        shape: Shape = this.shape,
         badgeSize: Dp? = this.badgeSize,
         horizontalBadgeOffset: Dp = this.horizontalBadgeOffset,
         verticalBadgeOffset: Dp = this.verticalBadgeOffset
-    ): ImageSizes =
-        ImageSizes(
-            boxSizes = boxSizes,
-            placeholderIconSizes = placeholderSize,
-            overlayIconSizes = overlayIconSizes,
-            smallShape = smallShape,
-            mediumShape = mediumShape,
-            largeShape = largeShape,
-            badgeSize = badgeSize,
-            horizontalBadgeOffset = horizontalBadgeOffset,
-            verticalBadgeOffset = verticalBadgeOffset
-        )
+    ) = ImageSizes(
+        boxSizes = boxSizes,
+        placeholderIconSizes = placeholderSize,
+        overlayIconSizes = overlayIconSizes,
+        shape = shape,
+        badgeSize = badgeSize,
+        horizontalBadgeOffset = horizontalBadgeOffset,
+        verticalBadgeOffset = verticalBadgeOffset
+    )
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -660,21 +551,17 @@ class ImageSizes internal constructor(
         if (boxSizes != other.boxSizes) return false
         if (placeholderIconSizes != other.placeholderIconSizes) return false
         if (overlayIconSizes != other.overlayIconSizes) return false
-        if (smallShape != other.smallShape) return false
-        if (mediumShape != other.mediumShape) return false
+        if (shape != other.shape) return false
         if (badgeSize != other.badgeSize) return false
         if (horizontalBadgeOffset != other.horizontalBadgeOffset) return false
-        if (verticalBadgeOffset != other.verticalBadgeOffset) return false
-        return largeShape == other.largeShape
+        return verticalBadgeOffset == other.verticalBadgeOffset
     }
 
     override fun hashCode(): Int {
         var result = boxSizes.hashCode()
         result = 31 * result + placeholderIconSizes.hashCode()
         result = 31 * result + overlayIconSizes.hashCode()
-        result = 31 * result + smallShape.hashCode()
-        result = 31 * result + mediumShape.hashCode()
-        result = 31 * result + largeShape.hashCode()
+        result = 31 * result + shape.hashCode()
         result = 31 * result + badgeSize.hashCode()
         result = 31 * result + horizontalBadgeOffset.hashCode()
         result = 31 * result + verticalBadgeOffset.hashCode()
@@ -709,7 +596,7 @@ class ImageColors internal constructor(
         borderColor: Color = this.borderColor,
         placeholderIconColor: Color = this.placeholderIconColor,
         overlayIconColor: Color = this.overlayIconColor,
-    ): ImageColors = ImageColors(
+    ) = ImageColors(
         placeholderContainerColor = placeholderContainerColor,
         borderColor = borderColor,
         placeholderIconColor = placeholderIconColor,
