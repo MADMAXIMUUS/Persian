@@ -62,10 +62,8 @@ fun Checkbox(
             )
             .padding(sizes.contentPadding)
             .graphicsLayer {
-                alpha = if (enabled)
-                    1f
-                else
-                    PersianState38
+                alpha = if (enabled) 1f
+                else PersianState38
             },
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size12)
