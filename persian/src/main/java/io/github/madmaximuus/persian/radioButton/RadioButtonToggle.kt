@@ -69,14 +69,14 @@ fun RadioButtonToggle(
                 interactionSource = interactionSource,
                 indication = ripple(
                     bounded = false,
-                    radius = 40.0.dp / 2
+                    radius = 24.dp
                 )
             )
         } else {
             Modifier
         }
     Canvas(
-        modifier
+        modifier = modifier
             .then(
                 if (onClick != null) {
                     Modifier.minimumInteractiveComponentSize()
@@ -86,26 +86,29 @@ fun RadioButtonToggle(
             )
             .then(selectableModifier)
             .wrapContentSize(Alignment.Center)
-            .size(26.dp)
+            .size(24.dp)
             .graphicsLayer {
                 alpha = if (enabled) 1f
                 else PersianState38
             }
     ) {
-        // Draw the radio button
         val strokeWidth = RadioStrokeWidth.toPx()
         drawCircle(
-            radioColor.value,
-            radius = 12.dp.toPx() - strokeWidth / 2,
+            color = radioColor.value,
+            radius = 11.dp.toPx() - strokeWidth / 2,
             style = Stroke(strokeWidth)
         )
         if (dotRadius.value > 0.dp) {
-            drawCircle(radioColor.value, dotRadius.value.toPx() - strokeWidth / 2, style = Fill)
+            drawCircle(
+                color = radioColor.value,
+                radius = dotRadius.value.toPx(),
+                style = Fill
+            )
         }
     }
 }
 
-private val RadioButtonDotSize = 14.dp
+private val RadioButtonDotSize = 12.dp
 private val RadioStrokeWidth = 2.dp
 
 private const val RadioAnimationDuration = 100

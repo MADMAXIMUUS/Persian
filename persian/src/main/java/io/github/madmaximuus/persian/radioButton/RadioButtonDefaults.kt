@@ -28,11 +28,10 @@ object RadioButtonDefaults {
     fun toggleColors(
         selectedColor: Color = PersianTheme.colorScheme.primary,
         unselectedColor: Color = PersianTheme.colorScheme.outline,
-    ): RadioButtonToggleColors =
-        RadioButtonToggleColors(
-            selectedColor = selectedColor,
-            unselectedColor = unselectedColor,
-        )
+    ) = RadioButtonToggleColors(
+        selectedColor = selectedColor,
+        unselectedColor = unselectedColor,
+    )
 
     /**
      * Creates a [RadioButtonColors] object with the specified colors.
@@ -44,11 +43,10 @@ object RadioButtonDefaults {
     fun colors(
         toggleColor: RadioButtonToggleColors = toggleColors(),
         textColor: Color = PersianTheme.colorScheme.onSurface,
-    ): RadioButtonColors =
-        RadioButtonColors(
-            toggleColor = toggleColor,
-            textColor = textColor,
-        )
+    ) = RadioButtonColors(
+        toggleColor = toggleColor,
+        textColor = textColor,
+    )
 
     /**
      * Creates a [RadioButtonSizes] object with the specified sizes and styles.
@@ -65,13 +63,12 @@ object RadioButtonDefaults {
         contentPadding: PaddingValues = PaddingValues(
             horizontal = PersianTheme.spacing.size16
         )
-    ): RadioButtonSizes =
-        RadioButtonSizes(
-            toggleSize = toggleSize,
-            textStyle = textStyle,
-            shape = shape,
-            contentPadding = contentPadding
-        )
+    ) = RadioButtonSizes(
+        toggleSize = toggleSize,
+        textStyle = textStyle,
+        shape = shape,
+        contentPadding = contentPadding
+    )
 }
 
 /**
@@ -94,11 +91,10 @@ class RadioButtonToggleColors(
     fun copy(
         selectedColor: Color = this.selectedColor,
         unselectedColor: Color = this.unselectedColor,
-    ): RadioButtonToggleColors =
-        RadioButtonToggleColors(
-            selectedColor = selectedColor,
-            unselectedColor = unselectedColor
-        )
+    ) = RadioButtonToggleColors(
+        selectedColor = selectedColor,
+        unselectedColor = unselectedColor
+    )
 
     /**
      * Represents the main color used to draw the outer and inner circles, depending on whether the
@@ -113,8 +109,8 @@ class RadioButtonToggleColors(
         // If not enabled 'snap' to the disabled state, as there should be no animations between
         // enabled / disabled.
         return animateColorAsState(
-            target,
-            tween(durationMillis = RadioAnimationDuration),
+            targetValue = target,
+            animationSpec = tween(durationMillis = RadioAnimationDuration),
             label = "Radio toggle animation"
         )
     }
