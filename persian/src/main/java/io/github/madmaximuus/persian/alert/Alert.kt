@@ -107,10 +107,10 @@ fun Alert(
                                     Alignment.End
                                 ),
                                 content = {
-                                    val scope = remember(colors) {
+                                    val scope = remember(colors, sizes) {
                                         ActionScopeWrapper(
                                             scope = this,
-                                            color = colors.actionColor,
+                                            colors = colors.actionColor,
                                             sizes = sizes.actionSize
                                         )
                                     }

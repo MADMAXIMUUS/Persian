@@ -5,6 +5,7 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
+import io.github.madmaximuus.persian.button.ButtonColors
 import io.github.madmaximuus.persian.button.ButtonDefaults
 import io.github.madmaximuus.persian.button.ButtonSizes
 import io.github.madmaximuus.persian.foundation.PersianTheme
@@ -27,7 +28,7 @@ object AlertsDefaults {
         containerColor: Color = PersianTheme.colorScheme.surfaceContainer,
         titleColor: Color = PersianTheme.colorScheme.onSurface,
         messageColor: Color = PersianTheme.colorScheme.onSurface,
-        actionColor: Color = PersianTheme.colorScheme.primary
+        actionColor: ButtonColors = ButtonDefaults.tertiaryColors()
     ) = AlertColors(
         containerColor = containerColor,
         titleColor = titleColor,
@@ -74,7 +75,7 @@ class AlertColors internal constructor(
     internal val containerColor: Color,
     internal val titleColor: Color,
     internal val messageColor: Color,
-    internal val actionColor: Color
+    internal val actionColor: ButtonColors
 ) {
     /**
      * Returns a copy of this [AlertColors], optionally overriding some of the values
@@ -83,7 +84,7 @@ class AlertColors internal constructor(
         containerColor: Color = this.containerColor,
         titleColor: Color = this.titleColor,
         descriptionColor: Color = this.messageColor,
-        actionColor: Color = this.actionColor
+        actionColor: ButtonColors = this.actionColor
     ) = AlertColors(
         containerColor = containerColor,
         titleColor = titleColor,
