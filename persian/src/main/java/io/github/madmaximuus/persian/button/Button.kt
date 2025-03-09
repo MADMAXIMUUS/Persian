@@ -40,15 +40,15 @@ import io.github.madmaximuus.persian.text.Text
  * Buttons help people initiate actions, from sending an email, to sharing a document, to liking a
  * post.
  *
- * Primary buttons are high-emphasis buttons. Primary buttons have the most visual impact after the
+ * Primary [Button]s are high-emphasis buttons. Primary buttons have the most visual impact after the
  * [Fab], and should be used for important, final actions that complete a flow,
  * like "Save", "Join now", or "Confirm".
  *
  * Choose the best button for an action based on the amount of emphasis it needs. The more important
  * an action is, the higher emphasis its button should be.
- * - See [SecondaryButton] for a medium-emphasis button.
- * - See [TertiaryButton] for a low-emphasis button.
- * - See [OutlinedButton] for a middle ground between [SecondaryButton] and [TertiaryButton].
+ * - See secondary [Button] for a medium-emphasis button.
+ * - See tertiary [Button] for a low-emphasis button.
+ * - See outlined [Button] for a middle ground between secondary [Button] and tertiary [Button].
  *
  * @param text The text inside the button.
  * @param additionInfoText The second row text inside the button. Not applicable with the small button.
@@ -69,7 +69,7 @@ import io.github.madmaximuus.persian.text.Text
  *   still happen internally.
  */
 @Composable
-fun PrimaryButton(
+fun Button(
     text: String,
     modifier: Modifier = Modifier,
     additionInfoText: String? = null,
@@ -91,190 +91,6 @@ fun PrimaryButton(
     sizes = sizes,
     leadingIcon = leadingIcon,
     trailingIcon = trailingIcon,
-    border = null,
-    interactionSource = interactionSource,
-    onClick = onClick
-)
-
-/**
- * Buttons help people initiate actions, from sending an email, to sharing a document or liking a
- * post.
- *
- * Secondary buttons are medium-emphasis buttons that is an alternative middle ground between
- * default [PrimaryButton]s and [TertiaryButton]s. They can be used in contexts where
- * lower-priority button requires slightly more emphasis than [TertiaryButton], such as "Next"
- * in an onboarding flow. Secondary buttons use the primary container color mapping.
- *
- * Choose the best button for an action based on the amount of emphasis it needs. The more important
- * an action is, the higher emphasis its button should be.
- * - See [PrimaryButton] for a high-emphasis button.
- * - See [TertiaryButton] for a low-emphasis button.
- * - See [OutlinedButton] for a middle ground between [SecondaryButton] and [TertiaryButton].
- *
- * @param text The text inside the button.
- * @param additionInfoText The second row text inside the button. Not applicable with the small button.
- * @param modifier The [Modifier] to be applied to this button.
- * @param leadingIcon The optional icon to be displayed at the start of the button container.
- * @param trailingIcon The optional icon to be displayed at the end of the button container.
- * @param enabled controls the enabled state of this button. When `false`, this component will not
- *   respond to user input, and it will appear visually disabled and disabled to accessibility
- *   services.
- * @param loading Controls the loading state of this button. When `true`, this component will
- *   show to user [CircularProgressIndicator] loader.
- * @param colors The colors of the background and the content in enabled and disabled.
- * @param sizes The sizes for the content, paddings, shape and height.
- * @param onClick Called when this button is clicked.
- * @param interactionSource an optional hoisted [MutableInteractionSource] for observing and
- *   emitting [Interaction]s for this button. You can use this to change the button's appearance or
- *   preview the button in different states. Note that if `null` is provided, interactions will
- *   still happen internally.
- */
-@Composable
-fun SecondaryButton(
-    text: String,
-    modifier: Modifier = Modifier,
-    additionInfoText: String? = null,
-    leadingIcon: Painter? = null,
-    trailingIcon: Painter? = null,
-    enabled: Boolean = true,
-    loading: Boolean = false,
-    colors: ButtonColors = ButtonDefaults.secondaryColors(),
-    sizes: ButtonSizes = ButtonDefaults.mediumSizes(),
-    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    onClick: () -> Unit
-) = ButtonImpl(
-    modifier = modifier,
-    text = text,
-    additionInfoText = additionInfoText,
-    enabled = enabled,
-    colors = colors,
-    loading = loading,
-    sizes = sizes,
-    leadingIcon = leadingIcon,
-    trailingIcon = trailingIcon,
-    border = null,
-    interactionSource = interactionSource,
-    onClick = onClick
-)
-
-/**
- * Buttons help people initiate actions, from sending an email, to sharing a document, to liking a
- * post.
- *
- * Tertiary buttons are typically used for less-pronounced actions, including those located in dialogs
- * and cards. In cards, tertiary buttons help maintain an emphasis on card content. Tertiary buttons are
- * used for the lowest priority actions, especially when presenting multiple options.
- *
- * Choose the best button for an action based on the amount of emphasis it needs. The more important
- * an action is, the higher emphasis its button should be.
- * - See [PrimaryButton] for a high-emphasis button.
- * - See [SecondaryButton] for a medium-emphasis button.
- * - See [OutlinedButton] for a middle ground between [SecondaryButton] and [TertiaryButton].
- *
- * @param text The text inside the button.
- * @param additionInfoText The second row text inside the button. Not applicable with the small button.
- * @param modifier The [Modifier] to be applied to this button.
- * @param leadingIcon The optional icon to be displayed at the start of the button container.
- * @param trailingIcon The optional icon to be displayed at the end of the button container.
- * @param enabled controls the enabled state of this button. When `false`, this component will not
- *   respond to user input, and it will appear visually disabled and disabled to accessibility
- *   services.
- * @param loading Controls the loading state of this button. When `true`, this component will
- *   show to user [CircularProgressIndicator] loader.
- * @param colors The colors of the background and the content in enabled and disabled.
- * @param sizes The sizes for the content, paddings, shape and height.
- * @param onClick Called when this button is clicked.
- * @param interactionSource an optional hoisted [MutableInteractionSource] for observing and
- *   emitting [Interaction]s for this button. You can use this to change the button's appearance or
- *   preview the button in different states. Note that if `null` is provided, interactions will
- *   still happen internally.
- */
-@Composable
-fun TertiaryButton(
-    text: String,
-    modifier: Modifier = Modifier,
-    additionInfoText: String? = null,
-    leadingIcon: Painter? = null,
-    trailingIcon: Painter? = null,
-    enabled: Boolean = true,
-    loading: Boolean = false,
-    colors: ButtonColors = ButtonDefaults.tertiaryColors(),
-    sizes: ButtonSizes = ButtonDefaults.mediumSizes(),
-    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    onClick: () -> Unit
-) = ButtonImpl(
-    modifier = modifier,
-    text = text,
-    additionInfoText = additionInfoText,
-    enabled = enabled,
-    colors = colors,
-    loading = loading,
-    sizes = sizes,
-    leadingIcon = leadingIcon,
-    trailingIcon = trailingIcon,
-    border = null,
-    interactionSource = interactionSource,
-    onClick = onClick
-)
-
-/**
- * Buttons help people initiate actions, from sending an email, to sharing a document, to liking a
- * post.
- *
- * Outlined buttons are low-emphasis buttons. They contain actions that are important, but are
- * not the primary action in an app.
- *
- * Choose the best button for an action based on the amount of emphasis it needs. The more important
- * an action is, the higher emphasis its button should be.
- * - See [PrimaryButton] for a high-emphasis button.
- * - See [SecondaryButton] for a medium-emphasis button.
- * - See [TertiaryButton] for a low-emphasis button.
- *
- * @param text The text inside the button.
- * @param additionInfoText The second row text inside the button. Not applicable with the small button.
- * @param modifier The [Modifier] to be applied to this button.
- * @param leadingIcon The optional icon to be displayed at the start of the button container.
- * @param trailingIcon The optional icon to be displayed at the end of the button container.
- * @param enabled controls the enabled state of this button. When `false`, this component will not
- *   respond to user input, and it will appear visually disabled and disabled to accessibility
- *   services.
- * @param loading Controls the loading state of this button. When `true`, this component will
- *   show to user [CircularProgressIndicator] loader.
- * @param colors The colors of the background and the content in enabled and disabled.
- * @param sizes The sizes for the content, paddings, shape and height.
- * @param onClick Called when this button is clicked.
- * @param interactionSource an optional hoisted [MutableInteractionSource] for observing and
- *   emitting [Interaction]s for this button. You can use this to change the button's appearance or
- *   preview the button in different states. Note that if `null` is provided, interactions will
- *   still happen internally.
- */
-@Composable
-fun OutlinedButton(
-    text: String,
-    modifier: Modifier = Modifier,
-    additionInfoText: String? = null,
-    leadingIcon: Painter? = null,
-    trailingIcon: Painter? = null,
-    enabled: Boolean = true,
-    loading: Boolean = false,
-    colors: ButtonColors = ButtonDefaults.outlinedColors(),
-    sizes: ButtonSizes = ButtonDefaults.mediumSizes(),
-    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    onClick: () -> Unit
-) = ButtonImpl(
-    modifier = modifier,
-    text = text,
-    additionInfoText = additionInfoText,
-    enabled = enabled,
-    colors = colors,
-    loading = loading,
-    sizes = sizes,
-    leadingIcon = leadingIcon,
-    trailingIcon = trailingIcon,
-    border = BorderStroke(
-        1.dp,
-        color = colors.contentColor,
-    ),
     interactionSource = interactionSource,
     onClick = onClick
 )
@@ -311,7 +127,6 @@ private fun ButtonImpl(
     colors: ButtonColors,
     loading: Boolean,
     sizes: ButtonSizes,
-    border: BorderStroke?,
     interactionSource: MutableInteractionSource,
     onClick: () -> Unit
 ) {
@@ -330,7 +145,10 @@ private fun ButtonImpl(
             shape = sizes.shape,
             color = containerColor,
             contentColor = contentColor,
-            border = border,
+            border = if (colors.borderColor == Color.Unspecified) null else BorderStroke(
+                width = sizes.borderThickness,
+                color = colors.borderColor,
+            ),
             interactionSource = interactionSource
         ) {
             ProvideTextStyle(value = sizes.textStyle) {
