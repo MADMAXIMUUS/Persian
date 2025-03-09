@@ -166,8 +166,8 @@ internal fun FabImpl(
             if (title != null) {
                 AnimatedVisibility(
                     visible = expanded,
-                    enter = ExtendedFabExpandAnimation,
-                    exit = ExtendedFabCollapseAnimation,
+                    enter = FabExpandAnimation,
+                    exit = FabCollapseAnimation,
                 ) {
                     Row {
                         Spacer(Modifier.width(8.dp))
@@ -182,32 +182,29 @@ internal fun FabImpl(
     }
 }
 
-private val ExtendedFabCollapseAnimation =
-    fadeOut(
-        animationSpec = tween(
-            durationMillis = 100,
-            delayMillis = 100,
-            easing = CubicBezierEasing(0.0f, 0.0f, 1.0f, 1.0f),
-        )
-    ) + shrinkHorizontally(
-        animationSpec = tween(
-            durationMillis = 500,
-            easing = CubicBezierEasing(0.0f, 0.0f, 1.0f, 1.0f),
-        ),
-        shrinkTowards = Alignment.Start,
+private val FabCollapseAnimation = fadeOut(
+    animationSpec = tween(
+        durationMillis = 100,
+        easing = CubicBezierEasing(0.0f, 0.0f, 1.0f, 1.0f)
     )
+) + shrinkHorizontally(
+    animationSpec = tween(
+        durationMillis = 500,
+        easing = CubicBezierEasing(0.2f, 0.0f, 0.0f, 1.0f)
+    ),
+    shrinkTowards = Alignment.Start,
+)
 
-private val ExtendedFabExpandAnimation =
-    fadeIn(
-        animationSpec = tween(
-            durationMillis = 100,
-            delayMillis = 100,
-            easing = CubicBezierEasing(0.0f, 0.0f, 1.0f, 1.0f),
-        )
-    ) + expandHorizontally(
-        animationSpec = tween(
-            durationMillis = 500,
-            easing = CubicBezierEasing(0.0f, 0.0f, 1.0f, 1.0f),
-        ),
-        expandFrom = Alignment.Start,
+private val FabExpandAnimation = fadeIn(
+    animationSpec = tween(
+        durationMillis = 200,
+        delayMillis = 100,
+        easing = CubicBezierEasing(0.0f, 0.0f, 1.0f, 1.0f),
     )
+) + expandHorizontally(
+    animationSpec = tween(
+        durationMillis = 500,
+        easing = CubicBezierEasing(0.2f, 0.0f, 0.0f, 1.0f)
+    ),
+    expandFrom = Alignment.Start,
+)

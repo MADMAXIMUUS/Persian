@@ -39,11 +39,10 @@ object FabDefaults {
     fun primaryColors(
         backgroundColor: Color = PersianTheme.colorScheme.primaryContainer,
         content: Color = PersianTheme.colorScheme.onPrimaryContainer,
-    ): FabColors =
-        FabColors(
-            backgroundColor = backgroundColor,
-            contentColor = content,
-        )
+    ) = FabColors(
+        backgroundColor = backgroundColor,
+        contentColor = content,
+    )
 
     /**
      * Creates a [FabColors] instance with secondary theme colors.
@@ -55,11 +54,10 @@ object FabDefaults {
     fun secondaryColors(
         backgroundColor: Color = PersianTheme.colorScheme.secondaryContainer,
         content: Color = PersianTheme.colorScheme.onSecondaryContainer,
-    ): FabColors =
-        FabColors(
-            backgroundColor = backgroundColor,
-            contentColor = content
-        )
+    ) = FabColors(
+        backgroundColor = backgroundColor,
+        contentColor = content
+    )
 
     /**
      * Creates a [FabColors] instance with tertiary theme colors.
@@ -71,11 +69,10 @@ object FabDefaults {
     fun tertiaryColors(
         backgroundColor: Color = PersianTheme.colorScheme.tertiaryContainer,
         content: Color = PersianTheme.colorScheme.onTertiaryContainer
-    ): FabColors =
-        FabColors(
-            backgroundColor = backgroundColor,
-            contentColor = content
-        )
+    ) = FabColors(
+        backgroundColor = backgroundColor,
+        contentColor = content
+    )
 
     /**
      * Creates a [FabColors] instance with neutral theme colors.
@@ -87,11 +84,10 @@ object FabDefaults {
     fun neutralColors(
         backgroundColor: Color = PersianTheme.colorScheme.surfaceContainerHighest,
         content: Color = PersianTheme.colorScheme.primary
-    ): FabColors =
-        FabColors(
-            backgroundColor = backgroundColor,
-            contentColor = content
-        )
+    ) = FabColors(
+        backgroundColor = backgroundColor,
+        contentColor = content
+    )
 
     /**
      * Creates a [FabSizes] instance with small size configurations.
@@ -105,13 +101,12 @@ object FabDefaults {
         boxSize: Dp = 40.dp,
         iconSizes: IconSizes = IconDefaults.size24(),
         cornerShape: Shape = PersianTheme.shapes.shape12
-    ): FabSizes =
-        FabSizes(
-            boxSize = boxSize,
-            iconSizes = iconSizes,
-            textStyle = PersianTheme.typography.labelLarge,
-            cornerShape = cornerShape
-        )
+    ) = FabSizes(
+        boxSize = boxSize,
+        iconSizes = iconSizes,
+        textStyle = PersianTheme.typography.labelLarge,
+        cornerShape = cornerShape
+    )
 
     /**
      * Creates a [FabSizes] instance with medium size configurations.
@@ -127,13 +122,12 @@ object FabDefaults {
         iconSizes: IconSizes = IconDefaults.size28(),
         textStyle: TextStyle = PersianTheme.typography.buttonLarge,
         cornerShape: Shape = PersianTheme.shapes.shape16
-    ): FabSizes =
-        FabSizes(
-            boxSize = boxSize,
-            iconSizes = iconSizes,
-            textStyle = textStyle,
-            cornerShape = cornerShape
-        )
+    ) = FabSizes(
+        boxSize = boxSize,
+        iconSizes = iconSizes,
+        textStyle = textStyle,
+        cornerShape = cornerShape
+    )
 
     /**
      * Creates a [FabElevation] that represents the elevation of a
@@ -151,13 +145,12 @@ object FabDefaults {
         pressedElevation: Dp = PersianTheme.elevation.elevation3,
         focusedElevation: Dp = PersianTheme.elevation.elevation3,
         hoveredElevation: Dp = PersianTheme.elevation.elevation4,
-    ): FabElevation =
-        FabElevation(
-            defaultElevation = defaultElevation,
-            pressedElevation = pressedElevation,
-            focusedElevation = focusedElevation,
-            hoveredElevation = hoveredElevation,
-        )
+    ) = FabElevation(
+        defaultElevation = defaultElevation,
+        pressedElevation = pressedElevation,
+        focusedElevation = focusedElevation,
+        hoveredElevation = hoveredElevation,
+    )
 }
 
 /**
