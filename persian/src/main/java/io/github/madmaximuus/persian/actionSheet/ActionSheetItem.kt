@@ -75,7 +75,7 @@ fun ActionSheetItemScope.Action(
                 alpha = if (enabled) 1f else PersianState38
             }
             .fillMaxWidth()
-            .height(56.dp)
+            .height(52.dp)
             .clickable(
                 enabled = enabled,
                 onClick = {
