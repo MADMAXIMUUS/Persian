@@ -29,7 +29,6 @@ import io.github.madmaximuus.persian.fab.Fab
 import io.github.madmaximuus.persian.foundation.LocalContentColor
 import io.github.madmaximuus.persian.foundation.PersianState38
 import io.github.madmaximuus.persian.foundation.PersianSubcomposeLayout
-import io.github.madmaximuus.persian.foundation.ProvideTextStyle
 import io.github.madmaximuus.persian.icon.Icon
 import io.github.madmaximuus.persian.progressIndicator.CircularProgressIndicator
 import io.github.madmaximuus.persian.progressIndicator.ProgressIndicatorDefaults
@@ -152,92 +151,90 @@ private fun ButtonImpl(
             ),
             interactionSource = interactionSource
         ) {
-            ProvideTextStyle(value = sizes.textStyle) {
-                Row(
-                    horizontalArrangement = Arrangement.Center,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    val textWithIcons = @Composable {
-                        Row(
+            Row(
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                val textWithIcons = @Composable {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxHeight()
+                            .padding(sizes.contentPadding),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        leadingIcon?.let {
+                            Icon(
+                                painter = it,
+                                sizes = sizes.iconSizes,
+                                tint = colors.contentColor
+                            )
+                        }
+                        Column(
                             modifier = Modifier
-                                .fillMaxHeight()
-                                .padding(sizes.contentPadding),
-                            verticalAlignment = Alignment.CenterVertically
+                                .padding(horizontal = 8.dp),
                         ) {
-                            leadingIcon?.let {
-                                Icon(
-                                    painter = it,
-                                    sizes = sizes.iconSizes,
-                                    tint = colors.contentColor
-                                )
-                            }
-                            Column(
-                                modifier = Modifier
-                                    .padding(horizontal = 8.dp),
-                            ) {
+                            Text(
+                                modifier = Modifier.align(Alignment.CenterHorizontally),
+                                text = text,
+                                style = sizes.textStyle,
+                                overflow = TextOverflow.Ellipsis,
+                                textAlign = TextAlign.Center,
+                                color = colors.contentColor,
+                                maxLines = 1
+                            )
+                            if (sizes.additionInfoTextStyle != null && additionInfoText != null)
                                 Text(
                                     modifier = Modifier.align(Alignment.CenterHorizontally),
-                                    text = text,
-                                    style = sizes.textStyle,
+                                    text = additionInfoText,
+                                    style = sizes.additionInfoTextStyle,
                                     overflow = TextOverflow.Ellipsis,
                                     textAlign = TextAlign.Center,
                                     color = colors.contentColor,
                                     maxLines = 1
                                 )
-                                if (sizes.additionInfoTextStyle != null && additionInfoText != null)
-                                    Text(
-                                        modifier = Modifier.align(Alignment.CenterHorizontally),
-                                        text = additionInfoText,
-                                        style = sizes.additionInfoTextStyle,
-                                        overflow = TextOverflow.Ellipsis,
-                                        textAlign = TextAlign.Center,
-                                        color = colors.contentColor,
-                                        maxLines = 1
-                                    )
-                            }
-                            trailingIcon?.let {
-                                Icon(
-                                    painter = it,
-                                    sizes = sizes.iconSizes,
-                                    tint = colors.contentColor
-                                )
-                            }
                         }
-                    }
-
-                    val loader = @Composable {
-                        Box(
-                            modifier = Modifier
-                                .fillMaxHeight(),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            CircularProgressIndicator(
-                                sizes = sizes.loaderSize,
-                                colors = ProgressIndicatorDefaults.colors(
-                                    trackColor = Color.Transparent,
-                                    progressColor = colors.contentColor
-                                )
+                        trailingIcon?.let {
+                            Icon(
+                                painter = it,
+                                sizes = sizes.iconSizes,
+                                tint = colors.contentColor
                             )
                         }
                     }
-                    PersianSubcomposeLayout(
-                        mainContent = {
-                            textWithIcons()
-                        },
-                        dependentContent = {
-                            Box(
-                                modifier = Modifier
-                                    .size(it),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                if (loading && enabled)
-                                    loader()
-                                else
-                                    textWithIcons()
-                            }
-                        }
-                    )
                 }
+
+                val loader = @Composable {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxHeight(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        CircularProgressIndicator(
+                            sizes = sizes.loaderSize,
+                            colors = ProgressIndicatorDefaults.colors(
+                                trackColor = Color.Transparent,
+                                progressColor = colors.contentColor
+                            )
+                        )
+                    }
+                }
+                PersianSubcomposeLayout(
+                    mainContent = {
+                        textWithIcons()
+                    },
+                    dependentContent = {
+                        Box(
+                            modifier = Modifier
+                                .size(it),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            if (loading && enabled)
+                                loader()
+                            else
+                                textWithIcons()
+                        }
+                    }
+                )
             }
         }
     }
