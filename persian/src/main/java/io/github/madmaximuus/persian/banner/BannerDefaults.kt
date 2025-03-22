@@ -5,12 +5,14 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
+import io.github.madmaximuus.persian.button.ButtonColors
 import io.github.madmaximuus.persian.button.ButtonDefaults
 import io.github.madmaximuus.persian.button.ButtonSizes
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.state16
 import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persian.icon.IconSizes
+import io.github.madmaximuus.persian.iconButton.IconButtonColors
 import io.github.madmaximuus.persian.iconButton.IconButtonDefaults
 import io.github.madmaximuus.persian.iconButton.IconButtonSizes
 
@@ -27,10 +29,9 @@ object BannerDefaults {
      * @param messageColor the message text color of this [Banner].
      * @param leadingIconColor the leading icon color of this [Banner].
      * @param trailingIconColor the trailing icon color of this [Banner].
-     * @param trailingIconButtonColor the trailing icon button color of this [Banner].
-     * @param trailingButtonContainerColor the trailing button container color of this [Banner].
-     * @param trailingButtonContentColor the trailing button content color of this [Banner].
-     * @param actionColor the action color of this [Banner].
+     * @param trailingIconButtonColors the trailing icon button colors of this [Banner].
+     * @param trailingButtonColors the trailing button colors of this [Banner].
+     * @param actionColors the action colors of this [Banner].
      */
     @Composable
     fun infoColors(
@@ -39,22 +40,26 @@ object BannerDefaults {
         messageColor: Color = PersianTheme.colorScheme.secondary,
         leadingIconColor: Color = PersianTheme.colorScheme.onSecondaryContainer,
         trailingIconColor: Color = PersianTheme.colorScheme.onSecondaryContainer,
-        trailingIconButtonColor: Color = PersianTheme.colorScheme.onSecondaryContainer,
-        trailingButtonContainerColor: Color = PersianTheme.colorScheme.secondary.state16,
-        trailingButtonContentColor: Color = PersianTheme.colorScheme.onSecondaryContainer,
-        actionColor: Color = PersianTheme.colorScheme.onSecondaryContainer
-    ): BannerColors =
-        BannerColors(
-            containerColor = containerColor,
-            titleColor = titleColor,
-            messageColor = messageColor,
-            leadingIconColor = leadingIconColor,
-            trailingIconColor = trailingIconColor,
-            trailingIconButtonColor = trailingIconButtonColor,
-            trailingButtonContainerColor = trailingButtonContainerColor,
-            trailingButtonContentColor = trailingButtonContentColor,
-            actionColor = actionColor
+        trailingIconButtonColors: IconButtonColors = IconButtonDefaults.tertiaryIconButtonColors(
+            contentColor = PersianTheme.colorScheme.onSecondaryContainer
+        ),
+        trailingButtonColors: ButtonColors = ButtonDefaults.primaryColors(
+            containerColor = PersianTheme.colorScheme.secondary.state16,
+            contentColor = PersianTheme.colorScheme.onSecondaryContainer
+        ),
+        actionColors: ButtonColors = ButtonDefaults.tertiaryColors(
+            contentColor = PersianTheme.colorScheme.onSecondaryContainer
         )
+    ) = BannerColors(
+        containerColor = containerColor,
+        titleColor = titleColor,
+        messageColor = messageColor,
+        leadingIconColor = leadingIconColor,
+        trailingIconColor = trailingIconColor,
+        trailingIconButtonColors = trailingIconButtonColors,
+        trailingButtonColors = trailingButtonColors,
+        actionColors = actionColors
+    )
 
     /**
      * Creates an [BannerColors] that represents the default colors used in an [Banner].
@@ -64,10 +69,9 @@ object BannerDefaults {
      * @param messageColor the message text color of this [Banner].
      * @param leadingIconColor the leading icon color of this [Banner].
      * @param trailingIconColor the trailing icon color of this [Banner].
-     * @param trailingIconButtonColor the trailing icon button color of this [Banner].
-     * @param trailingButtonContainerColor the trailing button container color of this [Banner].
-     * @param trailingButtonContentColor the trailing button content color of this [Banner].
-     * @param actionColor the action color of this [Banner].
+     * @param trailingIconButtonColors the trailing icon button colors of this [Banner].
+     * @param trailingButtonColors the trailing button colors of this [Banner].
+     * @param actionColors the action colors of this [Banner].
      */
     @Composable
     fun validColors(
@@ -76,22 +80,26 @@ object BannerDefaults {
         messageColor: Color = PersianTheme.colorScheme.valid,
         leadingIconColor: Color = PersianTheme.colorScheme.onValidContainer,
         trailingIconColor: Color = PersianTheme.colorScheme.onValidContainer,
-        trailingIconButtonColor: Color = PersianTheme.colorScheme.onValidContainer,
-        trailingButtonContainerColor: Color = PersianTheme.colorScheme.valid.state16,
-        trailingButtonContentColor: Color = PersianTheme.colorScheme.onValidContainer,
-        actionColor: Color = PersianTheme.colorScheme.onValidContainer
-    ): BannerColors =
-        BannerColors(
-            containerColor = containerColor,
-            titleColor = titleColor,
-            messageColor = messageColor,
-            leadingIconColor = leadingIconColor,
-            trailingIconColor = trailingIconColor,
-            trailingIconButtonColor = trailingIconButtonColor,
-            trailingButtonContainerColor = trailingButtonContainerColor,
-            trailingButtonContentColor = trailingButtonContentColor,
-            actionColor = actionColor
+        trailingIconButtonColors: IconButtonColors = IconButtonDefaults.tertiaryIconButtonColors(
+            contentColor = PersianTheme.colorScheme.onValidContainer
+        ),
+        trailingButtonColors: ButtonColors = ButtonDefaults.primaryColors(
+            containerColor = PersianTheme.colorScheme.valid.state16,
+            contentColor = PersianTheme.colorScheme.onValidContainer
+        ),
+        actionColors: ButtonColors = ButtonDefaults.tertiaryColors(
+            contentColor = PersianTheme.colorScheme.onValidContainer
         )
+    ) = BannerColors(
+        containerColor = containerColor,
+        titleColor = titleColor,
+        messageColor = messageColor,
+        leadingIconColor = leadingIconColor,
+        trailingIconColor = trailingIconColor,
+        trailingIconButtonColors = trailingIconButtonColors,
+        trailingButtonColors = trailingButtonColors,
+        actionColors = actionColors
+    )
 
     /**
      * Creates an [BannerColors] that represents the default colors used in an [Banner].
@@ -101,10 +109,9 @@ object BannerDefaults {
      * @param messageColor the message text color of this [Banner].
      * @param leadingIconColor the leading icon color of this [Banner].
      * @param trailingIconColor the trailing icon color of this [Banner].
-     * @param trailingIconButtonColor the trailing icon button color of this [Banner].
-     * @param trailingButtonContainerColor the trailing button container color of this [Banner].
-     * @param trailingButtonContentColor the trailing button content color of this [Banner].
-     * @param actionColor the action color of this [Banner].
+     * @param trailingIconButtonColors the trailing icon button colors of this [Banner].
+     * @param trailingButtonColors the trailing button colors of this [Banner].
+     * @param actionColors the action colors of this [Banner].
      */
     @Composable
     fun warningColors(
@@ -113,22 +120,26 @@ object BannerDefaults {
         messageColor: Color = PersianTheme.colorScheme.warning,
         leadingIconColor: Color = PersianTheme.colorScheme.onWarningContainer,
         trailingIconColor: Color = PersianTheme.colorScheme.onWarningContainer,
-        trailingIconButtonColor: Color = PersianTheme.colorScheme.onWarningContainer,
-        trailingButtonContainerColor: Color = PersianTheme.colorScheme.warning.state16,
-        trailingButtonContentColor: Color = PersianTheme.colorScheme.onWarningContainer,
-        actionColor: Color = PersianTheme.colorScheme.onWarningContainer
-    ): BannerColors =
-        BannerColors(
-            containerColor = containerColor,
-            titleColor = titleColor,
-            messageColor = messageColor,
-            leadingIconColor = leadingIconColor,
-            trailingIconColor = trailingIconColor,
-            trailingIconButtonColor = trailingIconButtonColor,
-            trailingButtonContainerColor = trailingButtonContainerColor,
-            trailingButtonContentColor = trailingButtonContentColor,
-            actionColor = actionColor
+        trailingIconButtonColors: IconButtonColors = IconButtonDefaults.tertiaryIconButtonColors(
+            contentColor = PersianTheme.colorScheme.onWarningContainer
+        ),
+        trailingButtonColors: ButtonColors = ButtonDefaults.primaryColors(
+            containerColor = PersianTheme.colorScheme.warning.state16,
+            contentColor = PersianTheme.colorScheme.onWarningContainer
+        ),
+        actionColors: ButtonColors = ButtonDefaults.tertiaryColors(
+            contentColor = PersianTheme.colorScheme.onWarningContainer
         )
+    ) = BannerColors(
+        containerColor = containerColor,
+        titleColor = titleColor,
+        messageColor = messageColor,
+        leadingIconColor = leadingIconColor,
+        trailingIconColor = trailingIconColor,
+        trailingIconButtonColors = trailingIconButtonColors,
+        trailingButtonColors = trailingButtonColors,
+        actionColors = actionColors
+    )
 
     /**
      * Creates an [BannerColors] that represents the default colors used in an [Banner].
@@ -138,10 +149,9 @@ object BannerDefaults {
      * @param messageColor the message text color of this [Banner].
      * @param leadingIconColor the leading icon color of this [Banner].
      * @param trailingIconColor the trailing icon color of this [Banner].
-     * @param trailingIconButtonColor the trailing icon button color of this [Banner].
-     * @param trailingButtonContainerColor the trailing button container color of this [Banner].
-     * @param trailingButtonContentColor the trailing button content color of this [Banner].
-     * @param actionColor the action color of this [Banner].
+     * @param trailingIconButtonColors the trailing icon button colors of this [Banner].
+     * @param trailingButtonColors the trailing button colors of this [Banner].
+     * @param actionColors the action colors of this [Banner].
      */
     @Composable
     fun errorColors(
@@ -150,22 +160,26 @@ object BannerDefaults {
         messageColor: Color = PersianTheme.colorScheme.error,
         leadingIconColor: Color = PersianTheme.colorScheme.onErrorContainer,
         trailingIconColor: Color = PersianTheme.colorScheme.onErrorContainer,
-        trailingIconButtonColor: Color = PersianTheme.colorScheme.onErrorContainer,
-        trailingButtonContainerColor: Color = PersianTheme.colorScheme.error.state16,
-        trailingButtonContentColor: Color = PersianTheme.colorScheme.onErrorContainer,
-        actionColor: Color = PersianTheme.colorScheme.onErrorContainer
-    ): BannerColors =
-        BannerColors(
-            containerColor = containerColor,
-            titleColor = titleColor,
-            messageColor = messageColor,
-            leadingIconColor = leadingIconColor,
-            trailingIconColor = trailingIconColor,
-            trailingIconButtonColor = trailingIconButtonColor,
-            trailingButtonContainerColor = trailingButtonContainerColor,
-            trailingButtonContentColor = trailingButtonContentColor,
-            actionColor = actionColor
+        trailingIconButtonColors: IconButtonColors = IconButtonDefaults.tertiaryIconButtonColors(
+            contentColor = PersianTheme.colorScheme.onErrorContainer
+        ),
+        trailingButtonColors: ButtonColors = ButtonDefaults.primaryColors(
+            containerColor = PersianTheme.colorScheme.error.state16,
+            contentColor = PersianTheme.colorScheme.onErrorContainer
+        ),
+        actionColors: ButtonColors = ButtonDefaults.tertiaryColors(
+            contentColor = PersianTheme.colorScheme.onErrorContainer
         )
+    ) = BannerColors(
+        containerColor = containerColor,
+        titleColor = titleColor,
+        messageColor = messageColor,
+        leadingIconColor = leadingIconColor,
+        trailingIconColor = trailingIconColor,
+        trailingIconButtonColors = trailingIconButtonColors,
+        trailingButtonColors = trailingButtonColors,
+        actionColors = actionColors
+    )
 
     /**
      * Creates an [BannerSizes] that represents the default sizes used in an [Banner].
@@ -189,17 +203,16 @@ object BannerDefaults {
         trailingIconButtonSizes: IconButtonSizes = IconButtonDefaults.smallSizes(),
         trailingButtonSizes: ButtonSizes = ButtonDefaults.smallSizes(),
         actionSizes: ButtonSizes = ButtonDefaults.smallSizes()
-    ): BannerSizes =
-        BannerSizes(
-            containerShape = containerShape,
-            titleTextStyle = titleTextStyle,
-            messageTextStyle = messageTextStyle,
-            leadingIconSize = leadingIconSize,
-            trailingIconSize = trailingIconSize,
-            trailingIconButtonSizes = trailingIconButtonSizes,
-            trailingButtonSizes = trailingButtonSizes,
-            actionSizes = actionSizes
-        )
+    ) = BannerSizes(
+        containerShape = containerShape,
+        titleTextStyle = titleTextStyle,
+        messageTextStyle = messageTextStyle,
+        leadingIconSize = leadingIconSize,
+        trailingIconSize = trailingIconSize,
+        trailingIconButtonSizes = trailingIconButtonSizes,
+        trailingButtonSizes = trailingButtonSizes,
+        actionSizes = actionSizes
+    )
 }
 
 /**
@@ -242,17 +255,16 @@ class BannerSizes internal constructor(
         trailingIconButtonSizes: IconButtonSizes = this.trailingIconButtonSizes,
         trailingButtonSizes: ButtonSizes = this.trailingButtonSizes,
         actionSizes: ButtonSizes = this.actionSizes
-    ): BannerSizes =
-        BannerSizes(
-            containerShape = containerShape,
-            titleTextStyle = titleTextStyle,
-            messageTextStyle = messageTextStyle,
-            leadingIconSize = leadingIconSize,
-            trailingIconSize = trailingIconSize,
-            trailingIconButtonSizes = trailingIconButtonSizes,
-            trailingButtonSizes = trailingButtonSizes,
-            actionSizes = actionSizes
-        )
+    ) = BannerSizes(
+        containerShape = containerShape,
+        titleTextStyle = titleTextStyle,
+        messageTextStyle = messageTextStyle,
+        leadingIconSize = leadingIconSize,
+        trailingIconSize = trailingIconSize,
+        trailingIconButtonSizes = trailingIconButtonSizes,
+        trailingButtonSizes = trailingButtonSizes,
+        actionSizes = actionSizes
+    )
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -281,17 +293,15 @@ class BannerSizes internal constructor(
  * @param messageColor the message text color of this [Banner].
  * @param leadingIconColor the leading icon color of this [Banner].
  * @param trailingIconColor the trailing icon color of this [Banner].
- * @param trailingIconButtonColor the trailing icon button color of this [Banner].
- * @param trailingButtonContainerColor the trailing button container color of this [Banner].
- * @param trailingButtonContentColor the trailing button content color of this [Banner].
- * @param trailingButtonContentColor the trailing button content color of this [Banner].
- * @param actionColor the action color of this [Banner].
+ * @param trailingIconButtonColors the trailing icon button colors of this [Banner].
+ * @param trailingButtonColors the trailing button colors of this [Banner].
+ * @param actionColors the actions colors of this [Banner].
  *
  * @constructor create an instance with arbitrary sizes.
  *
  * - See [BannerDefaults.infoColors] for the info colors used in an [Banner].
  * - See [BannerDefaults.validColors] for the valid colors used in an [Banner].
- * - See [BannerDefaults.warningColors] for the valid colors used in an [Banner].
+ * - See [BannerDefaults.warningColors] for the waring colors used in an [Banner].
  * - See [BannerDefaults.errorColors] for the error colors used in an [Banner].
  */
 @Immutable
@@ -301,8 +311,53 @@ class BannerColors internal constructor(
     internal val messageColor: Color,
     internal val leadingIconColor: Color,
     internal val trailingIconColor: Color,
-    internal val trailingIconButtonColor: Color,
-    internal val trailingButtonContainerColor: Color,
-    internal val trailingButtonContentColor: Color,
-    internal val actionColor: Color
-)
+    internal val trailingIconButtonColors: IconButtonColors,
+    internal val trailingButtonColors: ButtonColors,
+    internal val actionColors: ButtonColors
+) {
+    fun copy(
+        containerColor: Color = this.containerColor,
+        titleColor: Color = this.titleColor,
+        messageColor: Color = this.messageColor,
+        leadingIconColor: Color = this.leadingIconColor,
+        trailingIconColor: Color = this.trailingIconColor,
+        trailingIconButtonColors: IconButtonColors = this.trailingIconButtonColors,
+        trailingButtonColors: ButtonColors = this.trailingButtonColors,
+        actionColors: ButtonColors = this.actionColors
+    ) = BannerColors(
+        containerColor = containerColor,
+        titleColor = titleColor,
+        messageColor = messageColor,
+        leadingIconColor = leadingIconColor,
+        trailingIconColor = trailingIconColor,
+        trailingIconButtonColors = trailingIconButtonColors,
+        trailingButtonColors = trailingButtonColors,
+        actionColors = actionColors
+    )
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || other !is BannerColors) return false
+
+        if (containerColor != other.containerColor) return false
+        if (titleColor != other.titleColor) return false
+        if (messageColor != other.messageColor) return false
+        if (leadingIconColor != other.leadingIconColor) return false
+        if (trailingIconColor != other.trailingIconColor) return false
+        if (trailingIconButtonColors != other.trailingIconButtonColors) return false
+        if (trailingButtonColors != other.trailingButtonColors) return false
+        return actionColors == other.actionColors
+    }
+
+    override fun hashCode(): Int {
+        var result = containerColor.hashCode()
+        result = 31 * result + titleColor.hashCode()
+        result = 31 * result + messageColor.hashCode()
+        result = 31 * result + leadingIconColor.hashCode()
+        result = 31 * result + trailingIconColor.hashCode()
+        result = 31 * result + trailingIconButtonColors.hashCode()
+        result = 31 * result + trailingButtonColors.hashCode()
+        result = 31 * result + actionColors.hashCode()
+        return result
+    }
+}

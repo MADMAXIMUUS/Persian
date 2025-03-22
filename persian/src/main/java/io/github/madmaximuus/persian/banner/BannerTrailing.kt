@@ -5,11 +5,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
-import io.github.madmaximuus.persian.button.ButtonDefaults
-import io.github.madmaximuus.persian.button.PrimaryButton
+import io.github.madmaximuus.persian.button.Button
 import io.github.madmaximuus.persian.icon.Icon
-import io.github.madmaximuus.persian.iconButton.IconButtonDefaults
-import io.github.madmaximuus.persian.iconButton.TertiaryIconButton
+import io.github.madmaximuus.persian.iconButton.IconButton
 import io.github.madmaximuus.persianSymbols.chevronRight.ChevronRight
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.xmark.XMark
@@ -53,7 +51,7 @@ fun BannerTrailingScope.Icon(
         modifier = modifier,
         painter = icon,
         sizes = sizes.trailingIconSize,
-        tint = this@Icon.colors.trailingIconButtonColor
+        tint = colors.trailingIconColor
     )
 }
 
@@ -70,13 +68,11 @@ fun BannerTrailingScope.IconButton(
     icon: Painter = rememberVectorPainter(image = PersianSymbols.Default.XMark),
     onClick: () -> Unit
 ) {
-    TertiaryIconButton(
+    IconButton(
         modifier = modifier,
         icon = icon,
         sizes = sizes.trailingIconButtonSizes,
-        colors = IconButtonDefaults.tertiaryIconButtonColors(
-            contentColor = this@IconButton.colors.trailingIconButtonColor
-        ),
+        colors = colors.trailingIconButtonColors,
         onClick = onClick
     )
 }
@@ -94,13 +90,10 @@ fun BannerTrailingScope.Button(
     action: String,
     onClick: () -> Unit
 ) {
-    PrimaryButton(
+    Button(
         modifier = modifier,
         sizes = sizes.trailingButtonSizes,
-        colors = ButtonDefaults.primaryColors(
-            contentColor = colors.trailingButtonContentColor,
-            containerColor = colors.trailingButtonContainerColor
-        ),
+        colors = colors.trailingButtonColors,
         text = action,
         onClick = onClick
     )

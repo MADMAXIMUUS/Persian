@@ -3,8 +3,7 @@ package io.github.madmaximuus.persian.banner
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import io.github.madmaximuus.persian.button.ButtonDefaults
-import io.github.madmaximuus.persian.button.TertiaryButton
+import io.github.madmaximuus.persian.button.Button
 
 /**
  * The banner button scope for bottom button in [Banner].
@@ -43,13 +42,11 @@ fun BannerActionScope.Action(
     text: String,
     onClick: () -> Unit
 ) {
-    TertiaryButton(
+    Button(
         modifier = modifier.weight(1f),
         text = text,
         onClick = onClick,
-        colors = ButtonDefaults.tertiaryColors(
-            contentColor = colors.actionColor
-        ),
+        colors = colors.actionColors,
         sizes = sizes.actionSizes
     )
 }

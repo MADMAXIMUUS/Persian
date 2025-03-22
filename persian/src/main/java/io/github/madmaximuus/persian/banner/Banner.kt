@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextAlign
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.icon.Icon
@@ -60,7 +61,8 @@ fun Banner(
                 .clip(sizes.containerShape)
                 .background(colors.containerColor, sizes.containerShape)
                 .clickable(
-                    enabled = onClick != null
+                    enabled = onClick != null,
+                    role = Role.Button
                 ) { onClick?.invoke() }
                 .padding(PersianTheme.spacing.size12),
             contentAlignment = Alignment.Center
@@ -71,7 +73,7 @@ fun Banner(
             ) {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.Top,
+                    verticalAlignment = if (message == null) Alignment.CenterVertically else Alignment.Top,
                     horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size12)
                 ) {
                     leadingIcon?.let {
@@ -103,7 +105,6 @@ fun Banner(
                                 textAlign = TextAlign.Justify
                             )
                         }
-
                     }
                     val trailingScope = remember(colors, sizes) {
                         BannerTrailingScopeWrapper(
@@ -113,19 +114,22 @@ fun Banner(
                         )
                     }
                     trailing?.let { trailingScope.it() }
+
                 }
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8)
-                ) {
-                    val actionsScope = remember(colors, sizes) {
-                        BannerActionScopeWrapper(
-                            scope = this,
-                            sizes = sizes,
-                            colors = colors
-                        )
+                actions?.let {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8)
+                    ) {
+                        val actionsScope = remember(colors, sizes) {
+                            BannerActionScopeWrapper(
+                                scope = this,
+                                sizes = sizes,
+                                colors = colors
+                            )
+                        }
+                        actionsScope.it()
                     }
-                    actions?.let { actionsScope.it() }
                 }
             }
         }
