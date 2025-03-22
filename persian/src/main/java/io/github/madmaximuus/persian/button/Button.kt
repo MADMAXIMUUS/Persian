@@ -136,6 +136,7 @@ private fun ButtonImpl(
         Surface(
             onClick = onClick,
             modifier = modifier
+                .height(sizes.height)
                 .semantics { role = Role.Button }
                 .graphicsLayer {
                     alpha = if (enabled) 1f
@@ -153,8 +154,6 @@ private fun ButtonImpl(
         ) {
             ProvideTextStyle(value = sizes.textStyle) {
                 Row(
-                    Modifier
-                        .height(sizes.height),
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
