@@ -13,7 +13,7 @@ import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.runtime.structuralEqualityPolicy
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.takeOrElse
-import io.github.madmaximuus.persian.button.PrimaryButton
+import io.github.madmaximuus.persian.button.Button
 
 /**
  * Class representing a color scheme for a UI theme.
@@ -492,7 +492,7 @@ internal fun rememberTextSelectionColors(colorScheme: ColorScheme): TextSelectio
 
 /**
  * The Persian color system contains pairs of colors that are typically used for the background and
- * content color inside a component. For example, a [PrimaryButton] typically uses `primary` for its
+ * content color inside a component. For example, a primary [Button] typically uses `primary` for its
  * background, and `onPrimary` for the color of its content (usually text or iconography).
  *
  * This function tries to match the provided [backgroundColor] to a 'background' color in this
@@ -535,7 +535,7 @@ fun ColorScheme.contentColorFor(backgroundColor: Color): Color =
 
 /**
  * The Persian color system contains pairs of colors that are typically used for the background and
- * content color inside a component. For example, a [PrimaryButton] typically uses `primary` for its
+ * content color inside a component. For example, a primary [Button] typically uses `primary` for its
  * background, and `onPrimary` for the color of its content (usually text or iconography).
  *
  * This function tries to match the provided [backgroundColor] to a 'background' color in this

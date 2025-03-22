@@ -65,14 +65,15 @@ fun Modifier.dashedBorder(strokeWidth: Dp, color: Color, cornerRadiusDp: Dp) = c
  * Creates a [Modifier] that applies a shimmer effect to its content. The shimmer effect is a gradient
  * animation that moves across the content.
  */
-fun Modifier.shimmer() = composed(
+@Composable
+fun Modifier.shimmer(color: Color = PersianTheme.colorScheme.surfaceContainerHighest) = composed(
     factory = {
 
         var size by remember {
             mutableStateOf(IntSize.Zero)
         }
 
-        val brush = shimmerBrush(size)
+        val brush = shimmerBrush(size, color)
 
         this.then(
             Modifier
@@ -95,13 +96,13 @@ fun Modifier.shimmer() = composed(
  *
  */
 @Composable
-internal fun shimmerBrush(size: IntSize): Brush {
+internal fun shimmerBrush(size: IntSize, color: Color): Brush {
     val shimmerColors = listOf(
-        PersianTheme.colorScheme.surfaceContainerLow.copy(alpha = 0.6f),
-        PersianTheme.colorScheme.surfaceContainer.copy(alpha = 0.6f),
-        PersianTheme.colorScheme.surfaceContainerLow.copy(alpha = 0.6f),
+        color.copy(alpha = 0.2f),
+        color.copy(alpha = 0.6f),
+        color.copy(alpha = 0.2f),
     )
-    val shimmerWidthPercentage = 5.0
+    val shimmerWidthPercentage = 4.0
 
     val spaceMaxWidth = size.width.toFloat()
     val spaceMaxHeight = size.height.toFloat()
