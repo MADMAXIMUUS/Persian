@@ -31,7 +31,7 @@ import io.github.madmaximuus.persianSymbols.exclamation.circle.ExclamationCircle
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
 /**
- * Contains all default values used by [OutlineInput] or [PlainInput].
+ * Contains all default values used by [Input].
  */
 object InputsDefaults {
 
@@ -148,71 +148,70 @@ object InputsDefaults {
         focusedSuffixColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         validSuffixColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         errorSuffixColor: Color = PersianTheme.colorScheme.error,
-    ): InputColors =
-        InputColors(
-            //State Icon
-            errorStateIcon = errorStateIcon,
-            successStateIcon = validStateIcon,
+    ) = InputColors(
+        //State Icon
+        errorStateIcon = errorStateIcon,
+        successStateIcon = validStateIcon,
 
-            //State Icon Colors
-            errorStateIconColor = errorStateIconColor,
-            successStateIconColor = validStateIconColor,
+        //State Icon Colors
+        errorStateIconColor = errorStateIconColor,
+        successStateIconColor = validStateIconColor,
 
-            //Text Colors
-            defaultTextColor = defaultTextColor,
-            hoveredTextColor = hoveredTextColor,
-            focusedTextColor = focusedTextColor,
-            validTextColor = validTextColor,
-            errorTextColor = errorTextColor,
+        //Text Colors
+        defaultTextColor = defaultTextColor,
+        hoveredTextColor = hoveredTextColor,
+        focusedTextColor = focusedTextColor,
+        validTextColor = validTextColor,
+        errorTextColor = errorTextColor,
 
-            //Container Colors
-            defaultContainerColor = defaultContainerColor,
-            hoveredContainerColor = hoveredContainerColor,
-            focusedContainerColor = focusedContainerColor,
-            validContainerColor = validContainerColor,
-            errorContainerColor = errorContainerColor,
+        //Container Colors
+        defaultContainerColor = defaultContainerColor,
+        hoveredContainerColor = hoveredContainerColor,
+        focusedContainerColor = focusedContainerColor,
+        validContainerColor = validContainerColor,
+        errorContainerColor = errorContainerColor,
 
-            //Cursor Colors
-            defaultCursorColor = defaultCursorColor,
-            validCursorColor = validCursorColor,
-            errorCursorColor = errorCursorColor,
-            textSelectionColors = textSelectionColors,
+        //Cursor Colors
+        defaultCursorColor = defaultCursorColor,
+        validCursorColor = validCursorColor,
+        errorCursorColor = errorCursorColor,
+        textSelectionColors = textSelectionColors,
 
-            //Indicator Colors
-            defaultIndicatorColor = defaultIndicatorColor,
-            hoveredIndicatorColor = hoveredIndicatorColor,
-            focusedIndicatorColor = focusedIndicatorColor,
-            validIndicatorColor = validIndicatorColor,
-            errorIndicatorColor = errorIndicatorColor,
+        //Indicator Colors
+        defaultIndicatorColor = defaultIndicatorColor,
+        hoveredIndicatorColor = hoveredIndicatorColor,
+        focusedIndicatorColor = focusedIndicatorColor,
+        validIndicatorColor = validIndicatorColor,
+        errorIndicatorColor = errorIndicatorColor,
 
-            //Leading Icon Colors
-            defaultLeadingIconColor = defaultLeadingIconColor,
-            hoveredLeadingIconColor = hoveredLeadingIconColor,
-            focusedLeadingIconColor = focusedLeadingIconColor,
-            validLeadingIconColor = validLeadingIconColor,
-            errorLeadingIconColor = errorLeadingIconColor,
+        //Leading Icon Colors
+        defaultLeadingIconColor = defaultLeadingIconColor,
+        hoveredLeadingIconColor = hoveredLeadingIconColor,
+        focusedLeadingIconColor = focusedLeadingIconColor,
+        validLeadingIconColor = validLeadingIconColor,
+        errorLeadingIconColor = errorLeadingIconColor,
 
-            //Trailing Icon Colors
-            defaultTrailingIconColor = defaultTrailingIconColor,
-            hoveredTrailingIconColor = hoveredTrailingIconColor,
-            focusedTrailingIconColor = focusedTrailingIconColor,
-            validTrailingIconColor = validTrailingIconColor,
-            errorTrailingIconColor = errorTrailingIconColor,
+        //Trailing Icon Colors
+        defaultTrailingIconColor = defaultTrailingIconColor,
+        hoveredTrailingIconColor = hoveredTrailingIconColor,
+        focusedTrailingIconColor = focusedTrailingIconColor,
+        validTrailingIconColor = validTrailingIconColor,
+        errorTrailingIconColor = errorTrailingIconColor,
 
-            //Placeholder Colors
-            defaultPlaceholderColor = defaultPlaceholderColor,
-            hoveredPlaceholderColor = hoveredPlaceholderColor,
-            focusedPlaceholderColor = focusedPlaceholderColor,
-            errorPlaceholderColor = errorPlaceholderColor,
-            validPlaceholderColor = validPlaceholderColor,
+        //Placeholder Colors
+        defaultPlaceholderColor = defaultPlaceholderColor,
+        hoveredPlaceholderColor = hoveredPlaceholderColor,
+        focusedPlaceholderColor = focusedPlaceholderColor,
+        errorPlaceholderColor = errorPlaceholderColor,
+        validPlaceholderColor = validPlaceholderColor,
 
-            //Suffix Colors
-            defaultSuffixColor = defaultSuffixColor,
-            hoveredSuffixColor = hoveredSuffixColor,
-            focusedSuffixColor = focusedSuffixColor,
-            validSuffixColor = validSuffixColor,
-            errorSuffixColor = errorSuffixColor,
-        )
+        //Suffix Colors
+        defaultSuffixColor = defaultSuffixColor,
+        hoveredSuffixColor = hoveredSuffixColor,
+        focusedSuffixColor = focusedSuffixColor,
+        validSuffixColor = validSuffixColor,
+        errorSuffixColor = errorSuffixColor,
+    )
 
     /**
      * Creates an [InputColors] instance with default colors.
@@ -279,6 +278,13 @@ object InputsDefaults {
         validContainerColor: Color = PersianTheme.colorScheme.validContainer.state12,
         errorContainerColor: Color = PersianTheme.colorScheme.errorContainer.state12,
 
+        //Indicator Colors
+        defaultIndicatorColor: Color = Color.Transparent,
+        hoveredIndicatorColor: Color = Color.Transparent,
+        focusedIndicatorColor: Color = Color.Transparent,
+        validIndicatorColor: Color = Color.Transparent,
+        errorIndicatorColor: Color = Color.Transparent,
+
         //Cursor Colors
         defaultCursorColor: Color = PersianTheme.colorScheme.primary,
         validCursorColor: Color = PersianTheme.colorScheme.valid,
@@ -315,71 +321,70 @@ object InputsDefaults {
         focusedSuffixColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         validSuffixColor: Color = PersianTheme.colorScheme.valid,
         errorSuffixColor: Color = PersianTheme.colorScheme.error,
-    ): InputColors =
-        InputColors(
-            //State Icon
-            errorStateIcon = errorStateIcon,
-            successStateIcon = validStateIcon,
+    ) = InputColors(
+        //State Icon
+        errorStateIcon = errorStateIcon,
+        successStateIcon = validStateIcon,
 
-            //State Icon Colors
-            errorStateIconColor = errorStateIconColor,
-            successStateIconColor = validStateIconColor,
+        //State Icon Colors
+        errorStateIconColor = errorStateIconColor,
+        successStateIconColor = validStateIconColor,
 
-            //Text Colors
-            defaultTextColor = defaultTextColor,
-            hoveredTextColor = hoveredTextColor,
-            focusedTextColor = focusedTextColor,
-            validTextColor = validTextColor,
-            errorTextColor = errorTextColor,
+        //Text Colors
+        defaultTextColor = defaultTextColor,
+        hoveredTextColor = hoveredTextColor,
+        focusedTextColor = focusedTextColor,
+        validTextColor = validTextColor,
+        errorTextColor = errorTextColor,
 
-            //Container Colors
-            defaultContainerColor = defaultContainerColor,
-            hoveredContainerColor = hoveredContainerColor,
-            focusedContainerColor = focusedContainerColor,
-            validContainerColor = validContainerColor,
-            errorContainerColor = errorContainerColor,
+        //Container Colors
+        defaultContainerColor = defaultContainerColor,
+        hoveredContainerColor = hoveredContainerColor,
+        focusedContainerColor = focusedContainerColor,
+        validContainerColor = validContainerColor,
+        errorContainerColor = errorContainerColor,
 
-            //Cursor Colors
-            defaultCursorColor = defaultCursorColor,
-            validCursorColor = validCursorColor,
-            errorCursorColor = errorCursorColor,
-            textSelectionColors = textSelectionColors,
+        //Cursor Colors
+        defaultCursorColor = defaultCursorColor,
+        validCursorColor = validCursorColor,
+        errorCursorColor = errorCursorColor,
+        textSelectionColors = textSelectionColors,
 
-            //Indicator Colors
-            defaultIndicatorColor = Color.Transparent,
-            hoveredIndicatorColor = Color.Transparent,
-            focusedIndicatorColor = Color.Transparent,
-            validIndicatorColor = Color.Transparent,
-            errorIndicatorColor = Color.Transparent,
+        //Indicator Colors
+        defaultIndicatorColor = defaultIndicatorColor,
+        hoveredIndicatorColor = hoveredIndicatorColor,
+        focusedIndicatorColor = focusedIndicatorColor,
+        validIndicatorColor = validIndicatorColor,
+        errorIndicatorColor = errorIndicatorColor,
 
-            //Leading Icon Colors
-            defaultLeadingIconColor = defaultLeadingIconColor,
-            hoveredLeadingIconColor = hoveredLeadingIconColor,
-            focusedLeadingIconColor = focusedLeadingIconColor,
-            validLeadingIconColor = validLeadingIconColor,
-            errorLeadingIconColor = errorLeadingIconColor,
+        //Leading Icon Colors
+        defaultLeadingIconColor = defaultLeadingIconColor,
+        hoveredLeadingIconColor = hoveredLeadingIconColor,
+        focusedLeadingIconColor = focusedLeadingIconColor,
+        validLeadingIconColor = validLeadingIconColor,
+        errorLeadingIconColor = errorLeadingIconColor,
 
-            //Trailing Icon Colors
-            defaultTrailingIconColor = defaultTrailingIconColor,
-            hoveredTrailingIconColor = hoveredTrailingIconColor,
-            focusedTrailingIconColor = focusedTrailingIconColor,
-            validTrailingIconColor = validTrailingIconColor,
-            errorTrailingIconColor = errorTrailingIconColor,
+        //Trailing Icon Colors
+        defaultTrailingIconColor = defaultTrailingIconColor,
+        hoveredTrailingIconColor = hoveredTrailingIconColor,
+        focusedTrailingIconColor = focusedTrailingIconColor,
+        validTrailingIconColor = validTrailingIconColor,
+        errorTrailingIconColor = errorTrailingIconColor,
 
-            //Placeholder Colors
-            defaultPlaceholderColor = defaultPlaceholderColor,
-            hoveredPlaceholderColor = hoveredPlaceholderColor,
-            focusedPlaceholderColor = focusedPlaceholderColor,
-            errorPlaceholderColor = errorPlaceholderColor,
-            validPlaceholderColor = validPlaceholderColor,
+        //Placeholder Colors
+        defaultPlaceholderColor = defaultPlaceholderColor,
+        hoveredPlaceholderColor = hoveredPlaceholderColor,
+        focusedPlaceholderColor = focusedPlaceholderColor,
+        errorPlaceholderColor = errorPlaceholderColor,
+        validPlaceholderColor = validPlaceholderColor,
 
-            //Suffix Colors
-            defaultSuffixColor = defaultSuffixColor,
-            hoveredSuffixColor = hoveredSuffixColor,
-            focusedSuffixColor = focusedSuffixColor,
-            validSuffixColor = validSuffixColor,
-            errorSuffixColor = errorSuffixColor,
-        )
+        //Suffix Colors
+        defaultSuffixColor = defaultSuffixColor,
+        hoveredSuffixColor = hoveredSuffixColor,
+        focusedSuffixColor = focusedSuffixColor,
+        validSuffixColor = validSuffixColor,
+        errorSuffixColor = errorSuffixColor,
+    )
 
     /**
      * Create an [InputSizes] object with customizable properties for an input field.
@@ -400,7 +405,7 @@ object InputsDefaults {
         unfocusedBorderThickness: Dp = 1.dp,
         focusedBorderThickness: Dp = 2.dp,
 
-        shape: Shape = PersianTheme.shapes.shape14,
+        shape: Shape = PersianTheme.shapes.shape16,
         contentPaddingValues: PaddingValues = PaddingValues(
             horizontal = PersianTheme.spacing.size12
         ),
@@ -412,20 +417,19 @@ object InputsDefaults {
         placeholderTextStyle: TextStyle = PersianTheme.typography.bodyLarge,
         inputTextStyle: TextStyle = PersianTheme.typography.bodyLarge,
         suffixTextStyle: TextStyle = PersianTheme.typography.labelMedium
-    ): InputSizes =
-        InputSizes(
-            unfocusedBorderThickness = unfocusedBorderThickness,
-            focusedBorderThickness = focusedBorderThickness,
-            shape = shape,
-            contentPaddingValues = contentPaddingValues,
-            leadingIconSizes = leadingIconSizes,
-            trailingIconSizes = trailingIconSizes,
-            stateIconSizes = stateIconSizes,
+    ) = InputSizes(
+        unfocusedBorderThickness = unfocusedBorderThickness,
+        focusedBorderThickness = focusedBorderThickness,
+        shape = shape,
+        contentPaddingValues = contentPaddingValues,
+        leadingIconSizes = leadingIconSizes,
+        trailingIconSizes = trailingIconSizes,
+        stateIconSizes = stateIconSizes,
 
-            placeholderTextStyle = placeholderTextStyle,
-            inputTextStyle = inputTextStyle,
-            suffixTextStyle = suffixTextStyle
-        )
+        placeholderTextStyle = placeholderTextStyle,
+        inputTextStyle = inputTextStyle,
+        suffixTextStyle = suffixTextStyle
+    )
 }
 
 /**
@@ -578,7 +582,6 @@ class InputColors internal constructor(
         isValid: Boolean,
         isError: Boolean
     ): Color {
-
         val targetValue = when {
             !enabled -> Color.Transparent
             isError -> errorStateIconColor

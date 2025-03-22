@@ -45,13 +45,13 @@ import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.PersianState38
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.icon.Icon
+import io.github.madmaximuus.persian.iconButton.IconButton
 import io.github.madmaximuus.persian.iconButton.IconButtonDefaults
-import io.github.madmaximuus.persian.iconButton.TertiaryIconButton
 import io.github.madmaximuus.persian.internal.SecureInputSettings
 import io.github.madmaximuus.persian.text.Text
 
 /**
- * Display an input field in outline style.
+ * Display an input field.
  *
  * @param state The state of the text field.
  * @param modifier The modifier to be applied to the input field.
@@ -73,7 +73,7 @@ import io.github.madmaximuus.persian.text.Text
  * @param interactionSource The interaction source for the input field.
  */
 @Composable
-fun OutlineInput(
+fun Input(
     state: TextFieldState,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
@@ -91,7 +91,7 @@ fun OutlineInput(
     suffix: String? = null,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActionHandler: KeyboardActionHandler? = null,
-    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
 ) = InputImpl(
     state = state,
     modifier = modifier,
@@ -116,70 +116,6 @@ fun OutlineInput(
         unfocusedBorderThickness = sizes.unfocusedBorderThickness,
         focusedBorderThickness = sizes.focusedBorderThickness
     ).value,
-    keyboardOptions = keyboardOptions,
-    keyboardActions = keyboardActionHandler,
-    interactionSource = interactionSource,
-    secret = secure
-)
-
-/**
- * Display an input field in plain style.
- *
- * @param state The state of the text field.
- * @param modifier The modifier to be applied to the input field.
- * @param enabled Whether the input field is enabled.
- * @param isError Whether the input field is in an error state.
- * @param isValid Whether the input field is in a valid state.
- * @param readOnly Whether the input field is read-only.
- * @param placeholder The placeholder text to be displayed when the input field is empty.
- * @param transformation The transformation to be applied to the input text.
- * @param secure The security settings for the input field.
- * @param colors The color settings for the input field.
- * @param sizes The size settings for the input field.
- * @param leadingIcon The leading icon to be displayed in the input field.
- * @param trailingIcon The trailing icon to be displayed in the input field.
- * @param onTrailingIconClick The callback to be invoked when the trailing icon is clicked.
- * @param suffix The suffix text to be displayed in the input field.
- * @param keyboardOptions The keyboard options for the input field.
- * @param keyboardActionHandler The handler for keyboard actions.
- * @param interactionSource The interaction source for the input field.
- */
-@Composable
-fun PlainInput(
-    state: TextFieldState,
-    modifier: Modifier = Modifier,
-    enabled: Boolean = true,
-    isError: Boolean = false,
-    isValid: Boolean = false,
-    readOnly: Boolean = false,
-    placeholder: String? = null,
-    transformation: InputTransformation? = null,
-    secure: SecureInputSettings = SecureInputSettings.NotSecure,
-    colors: InputColors = InputsDefaults.plainColors(),
-    sizes: InputSizes = InputsDefaults.sizes(),
-    leadingIcon: Painter? = null,
-    trailingIcon: Painter? = null,
-    onTrailingIconClick: (() -> Unit)? = null,
-    suffix: String? = null,
-    keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
-    keyboardActionHandler: KeyboardActionHandler? = null,
-    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
-) = InputImpl(
-    state = state,
-    modifier = modifier,
-    enabled = enabled,
-    isError = isError,
-    isValid = isValid,
-    readOnly = readOnly,
-    placeholder = placeholder,
-    transformation = transformation,
-    colors = colors,
-    sizes = sizes,
-    leadingIcon = leadingIcon,
-    trailingIcon = trailingIcon,
-    onTrailingIconClick = onTrailingIconClick,
-    suffix = suffix,
-    border = null,
     keyboardOptions = keyboardOptions,
     keyboardActions = keyboardActionHandler,
     interactionSource = interactionSource,
@@ -483,7 +419,7 @@ internal fun DecorationBox(
             }
         }
         trailingIcon?.let { icon ->
-            TertiaryIconButton(
+            IconButton(
                 icon = icon,
                 onClick = { onTrailingIconClick?.invoke() },
                 enabled = enabled,
