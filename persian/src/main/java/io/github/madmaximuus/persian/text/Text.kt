@@ -75,7 +75,7 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
 fun Text(
     text: String,
     modifier: Modifier = Modifier,
-    color: Color = PersianTheme.colorScheme.onSurface,
+    color: Color = Color.Unspecified,
     fontSize: TextUnit = TextUnit.Unspecified,
     fontStyle: FontStyle? = null,
     fontWeight: FontWeight? = null,
