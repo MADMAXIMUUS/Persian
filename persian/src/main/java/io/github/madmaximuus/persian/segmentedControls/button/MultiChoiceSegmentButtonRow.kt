@@ -1,6 +1,6 @@
-package io.github.madmaximuus.persian.segmentedButton
+package io.github.madmaximuus.persian.segmentedControls.button
 
-import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.height
@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.PersianState38
@@ -24,8 +25,8 @@ import io.github.madmaximuus.persian.foundation.PersianState38
  * @property enabled A boolean indicating whether the segmented buttons are enabled.
  */
 interface MultiChoiceSegmentedButtonRowScope : RowScope {
-    val sizes: SegmentedButtonSizes
-    val colors: SegmentedButtonColors
+    val sizes: SegmentedButtonRowSizes
+    val colors: SegmentedButtonRowColors
     val enabled: Boolean
 }
 
@@ -42,8 +43,8 @@ interface MultiChoiceSegmentedButtonRowScope : RowScope {
  */
 private class MultiChoiceSegmentedButtonScopeWrapper(
     scope: RowScope,
-    override val sizes: SegmentedButtonSizes,
-    override val colors: SegmentedButtonColors,
+    override val sizes: SegmentedButtonRowSizes,
+    override val colors: SegmentedButtonRowColors,
     override val enabled: Boolean
 ) : MultiChoiceSegmentedButtonRowScope, RowScope by scope
 
@@ -63,27 +64,28 @@ private class MultiChoiceSegmentedButtonScopeWrapper(
 fun MultiChoiceSegmentedButtonRow(
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    sizes: SegmentedButtonSizes = SegmentedButtonDefaults.smallSizes(),
-    colors: SegmentedButtonColors = SegmentedButtonDefaults.colors(),
+    sizes: SegmentedButtonRowSizes = SegmentedButtonDefaults.smallSizes(),
+    colors: SegmentedButtonRowColors = SegmentedButtonDefaults.colors(),
     content: @Composable MultiChoiceSegmentedButtonRowScope.() -> Unit
 ) {
     Row(
         modifier = modifier
+            .clip(sizes.shape)
+            .background(colors.containerColor, sizes.shape)
             .height(sizes.height)
             .widthIn(min = 90.dp)
             .graphicsLayer {
                 alpha = if (enabled) 1f
                 else PersianState38
             },
-        horizontalArrangement = Arrangement.spacedBy(-sizes.border),
         verticalAlignment = Alignment.CenterVertically
     ) {
         val scope = remember(sizes, colors, enabled) {
             MultiChoiceSegmentedButtonScopeWrapper(
-                this,
-                sizes,
-                colors,
-                enabled
+                scope = this,
+                sizes = sizes,
+                colors = colors,
+                enabled = enabled
             )
         }
         scope.content()
