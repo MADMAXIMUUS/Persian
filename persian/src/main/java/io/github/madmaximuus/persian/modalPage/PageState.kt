@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.internal.AnchoredDraggableState
 import io.github.madmaximuus.persian.internal.animateTo
 import io.github.madmaximuus.persian.internal.snapTo
+import io.github.madmaximuus.persian.modalPage.PageState.Companion.Saver
 import io.github.madmaximuus.persian.modalPage.util.DragAnchor
 import kotlinx.coroutines.CancellationException
 
@@ -146,18 +147,17 @@ class PageState(
             confirmValueChange: (DragAnchor) -> Boolean,
             density: Density,
             dragAnchors: Set<DragAnchor>,
-        ) =
-            Saver<PageState, DragAnchor>(
-                save = { it.currentValue },
-                restore = { savedValue ->
-                    PageState(
-                        density,
-                        savedValue,
-                        dragAnchors,
-                        confirmValueChange
-                    )
-                }
-            )
+        ) = Saver<PageState, DragAnchor>(
+            save = { it.currentValue },
+            restore = { savedValue ->
+                PageState(
+                    density,
+                    savedValue,
+                    dragAnchors,
+                    confirmValueChange
+                )
+            }
+        )
     }
 }
 
@@ -204,9 +204,8 @@ internal fun rememberPageState(
 fun rememberPageState(
     dragAnchors: Set<DragAnchor> = ModalPageDefaults.defaultDraggableAnchors,
     confirmValueChange: (DragAnchor) -> Boolean = { true },
-) =
-    rememberPageState(
-        dragAnchors = dragAnchors,
-        confirmValueChange = confirmValueChange,
-        initialValue = DragAnchor.Hidden,
-    )
+) = rememberPageState(
+    dragAnchors = dragAnchors,
+    confirmValueChange = confirmValueChange,
+    initialValue = DragAnchor.Hidden,
+)

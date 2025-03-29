@@ -53,7 +53,6 @@ import java.util.UUID
 
 
 // Fork of androidx.compose.ui.window.AndroidDialog_androidKt.Dialog
-// Added predictiveBackProgress param to pass into BottomSheetDialogWrapper.
 @Composable
 internal fun ModalPageDialog(
     onDismissRequest: () -> Unit,

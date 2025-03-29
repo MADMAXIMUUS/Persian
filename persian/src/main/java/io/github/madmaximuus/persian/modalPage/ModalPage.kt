@@ -13,8 +13,10 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.window.core.layout.WindowHeightSizeClass
 import androidx.window.core.layout.WindowWidthSizeClass
+import io.github.madmaximuus.persian.foundation.LocalTheme
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.modalPage.util.DragAnchor
+import io.github.madmaximuus.persian.modalPage.util.HandleVisibility
 import kotlinx.coroutines.launch
 
 /**
@@ -38,13 +40,13 @@ fun ModalPage(
     onDismissRequest: () -> Unit,
     modifier: Modifier = Modifier,
     pageState: PageState = rememberPageState(),
+    handleVisibility: HandleVisibility = HandleVisibility.AUTO,
     top: @Composable (ModalPageTopScope.() -> Unit)? = null,
-    bottom: @Composable (ModalPageBottomScope.() -> Unit)? = null,
     contentWindowInsets: WindowInsets = WindowInsets.navigationBars,
     properties: ModalPageProperties = ModalPageProperties(),
     colors: ModalPageColors = ModalPageDefaults.colors(),
     sizes: ModalPageSizes = ModalPageDefaults.sizes(),
-    content: @Composable (PaddingValues) -> Unit,
+    content: @Composable () -> Unit,
 ) {
     val heightSizeClass = currentWindowAdaptiveInfo().windowSizeClass.windowHeightSizeClass
     val widthSizeClass = currentWindowAdaptiveInfo().windowSizeClass.windowWidthSizeClass
@@ -54,9 +56,9 @@ fun ModalPage(
             colors = colors,
             sizes = sizes,
             top = top,
-            bottom = bottom,
             contentWindowInsets = contentWindowInsets,
             pageState = pageState,
+            handleVisibility = handleVisibility,
             modifier = modifier,
             properties = properties,
             content = content
@@ -67,7 +69,6 @@ fun ModalPage(
             colors = colors,
             sizes = sizes,
             top = top,
-            bottom = bottom,
             contentWindowInsets = contentWindowInsets,
             content = content
         )
@@ -84,7 +85,6 @@ fun ModalPage(
  * @param modifier The modifier to be applied to the modal page.
  * @param pageState The state of the modal page, including drag anchors and visibility.
  * @param top An optional composable function that defines the content for the top section of the modal page.
- * @param bottom An optional composable function that defines the content for the bottom section of the modal page.
  * @param contentWindowInsets The window insets to be applied to the content of the modal page.
  * @param properties The properties to be used for the modal page.
  * @param colors The colors to be used for the modal page.
@@ -96,13 +96,13 @@ private fun CompactModalPage(
     onDismissRequest: () -> Unit,
     modifier: Modifier,
     pageState: PageState,
+    handleVisibility: HandleVisibility,
     top: @Composable (ModalPageTopScope.() -> Unit)?,
-    bottom: @Composable (ModalPageBottomScope.() -> Unit)?,
     contentWindowInsets: WindowInsets,
     properties: ModalPageProperties,
     colors: ModalPageColors,
     sizes: ModalPageSizes,
-    content: @Composable (PaddingValues) -> Unit,
+    content: @Composable () -> Unit,
 ) {
     val scope = rememberCoroutineScope()
     val animateToDismiss: () -> Unit = {
@@ -125,7 +125,7 @@ private fun CompactModalPage(
     if (pageState.dragAnchors.isNotEmpty()) {
         ModalPageDialog(
             properties = properties,
-            lightStatusBar = false,
+            lightStatusBar = !LocalTheme.current,
             onDismissRequest = {
                 scope.launch { pageState.hide() }.invokeOnCompletion { onDismissRequest() }
             },
@@ -144,12 +144,12 @@ private fun CompactModalPage(
                 ModalBottomSheetContent(
                     settleToDismiss = settleToDismiss,
                     onDismissRequest = onDismissRequest,
+                    handleVisibility = handleVisibility,
                     modifier = modifier,
                     pageState = pageState,
                     colors = colors,
                     sizes = sizes,
                     top = top,
-                    bottom = bottom,
                     contentWindowInsets = contentWindowInsets,
                     content = content
                 )

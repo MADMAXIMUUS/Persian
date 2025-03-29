@@ -1,6 +1,6 @@
 package io.github.madmaximuus.persian.modalPage
 
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.shape.CornerBasedShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
@@ -10,7 +10,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.takeOrElse
 import io.github.madmaximuus.persian.button.ButtonColors
 import io.github.madmaximuus.persian.button.ButtonDefaults
-import io.github.madmaximuus.persian.button.ButtonSizes
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.modalPage.util.DragAnchor
 import io.github.madmaximuus.persian.topAppBar.TopAppBarColors
@@ -40,7 +39,7 @@ object ModalPageDefaults {
         topAppBarColors: TopAppBarColors = TopAppBarDefaults.colors(),
         dragHandleColor: Color = PersianTheme.colorScheme.outlineVariant,
         actionColors: ButtonColors = ButtonDefaults.primaryColors()
-    ): ModalPageColors = ModalPageColors(
+    ) = ModalPageColors(
         containerColor = containerColor,
         topAppBarColors = topAppBarColors,
         dragHandleColor = dragHandleColor,
@@ -57,19 +56,16 @@ object ModalPageDefaults {
      * @param containerShape The shape of the modal page container.
      * @param topAppBarSizes The sizes of the top app bar.
      * @param dragHandleSizes The size of the drag handle.
-     * @param actionSizes The sizes of the action buttons.
      */
     @Composable
     fun sizes(
-        containerShape: RoundedCornerShape = PersianTheme.shapes.shape12,
+        containerShape: CornerBasedShape = PersianTheme.shapes.shape20,
         topAppBarSizes: TopAppBarSizes = TopAppBarDefaults.sizes(),
-        dragHandleSizes: DpSize = DpSize(40.dp, 6.dp),
-        actionSizes: ButtonSizes = ButtonDefaults.largeSizes()
-    ): ModalPageSizes = ModalPageSizes(
+        dragHandleSizes: DpSize = DpSize(40.dp, 6.dp)
+    ) = ModalPageSizes(
         containerShape = containerShape,
         topAppBarSizes = topAppBarSizes,
-        dragHandleSizes = dragHandleSizes,
-        actionSizes = actionSizes
+        dragHandleSizes = dragHandleSizes
     )
 
     val defaultDraggableAnchors = setOf<DragAnchor>(DragAnchor.Full)
@@ -88,7 +84,7 @@ class ModalPageColors(
         topAppBarColors: TopAppBarColors = this.topAppBarColors,
         dragHandleColor: Color = this.dragHandleColor,
         actionColors: ButtonColors = this.actionColors
-    ): ModalPageColors = ModalPageColors(
+    ) = ModalPageColors(
         containerColor = containerColor.takeOrElse { this.containerColor },
         topAppBarColors = topAppBarColors,
         dragHandleColor = dragHandleColor.takeOrElse { this.dragHandleColor },
@@ -124,29 +120,25 @@ class ModalPageColors(
  * @property containerShape The shape of the modal page container.
  * @property topAppBarSizes The size of the top app bar.
  * @property dragHandleSizes The size of the drag handle.
- * @property actionSizes The sizes of the action buttons.
  */
 @Immutable
 class ModalPageSizes(
-    internal val containerShape: RoundedCornerShape,
+    internal val containerShape: CornerBasedShape,
     internal val topAppBarSizes: TopAppBarSizes,
-    internal val dragHandleSizes: DpSize,
-    internal val actionSizes: ButtonSizes
+    internal val dragHandleSizes: DpSize
 ) {
 
     /**
      * Creates a copy of this [ModalPageSizes] instance with the specified properties.
      */
     fun copy(
-        containerShape: RoundedCornerShape = this.containerShape,
+        containerShape: CornerBasedShape = this.containerShape,
         topAppBarSizes: TopAppBarSizes = this.topAppBarSizes,
-        dragHandleSizes: DpSize = this.dragHandleSizes,
-        actionSizes: ButtonSizes = this.actionSizes
-    ): ModalPageSizes = ModalPageSizes(
+        dragHandleSizes: DpSize = this.dragHandleSizes
+    ) = ModalPageSizes(
         containerShape = containerShape,
         topAppBarSizes = topAppBarSizes,
-        dragHandleSizes = dragHandleSizes.takeOrElse { this.dragHandleSizes },
-        actionSizes = actionSizes
+        dragHandleSizes = dragHandleSizes.takeOrElse { this.dragHandleSizes }
     )
 
     override fun equals(other: Any?): Boolean {
@@ -155,7 +147,6 @@ class ModalPageSizes(
 
         if (containerShape != other.containerShape) return false
         if (topAppBarSizes != other.topAppBarSizes) return false
-        if (actionSizes != other.actionSizes) return false
         return dragHandleSizes == other.dragHandleSizes
     }
 
@@ -163,7 +154,6 @@ class ModalPageSizes(
         var result = containerShape.hashCode()
         result = 31 * result + topAppBarSizes.hashCode()
         result = 31 * result + dragHandleSizes.hashCode()
-        result = 31 * result + actionSizes.hashCode()
         return result
     }
 }

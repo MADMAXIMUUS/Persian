@@ -1,18 +1,21 @@
 package io.github.madmaximuus.persian.modalPage
 
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
@@ -21,7 +24,6 @@ import androidx.compose.ui.window.DialogWindowProvider
 import androidx.window.core.layout.WindowHeightSizeClass
 import androidx.window.core.layout.WindowWidthSizeClass
 import io.github.madmaximuus.persian.foundation.LocalTheme
-import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.scafold.Scaffold
 import io.github.madmaximuus.persian.surface.Surface
 
@@ -35,7 +37,6 @@ import io.github.madmaximuus.persian.surface.Surface
  * @param colors The colors to be used for the modal page.
  * @param sizes The sizes to be used for the modal page.
  * @param top A composable function that defines the content for the top section of the modal page.
- * @param bottom An optional composable function that defines the content for the bottom section of the modal page.
  * @param contentWindowInsets The window insets to be applied to the content of the modal page.
  * @param content A composable function that defines the main content of the modal page, receiving padding values.
  */
@@ -44,10 +45,9 @@ fun FullScreenModalPage(
     onDismissRequest: () -> Unit,
     colors: ModalPageColors = ModalPageDefaults.colors(),
     sizes: ModalPageSizes = ModalPageDefaults.sizes(),
-    top: @Composable ModalPageTopScope.() -> Unit,
-    bottom: @Composable (ModalPageBottomScope.() -> Unit)? = null,
+    top: @Composable (ModalPageTopScope.() -> Unit)? = null,
     contentWindowInsets: WindowInsets = WindowInsets(0, 0, 0, 0),
-    content: @Composable (PaddingValues) -> Unit
+    content: @Composable () -> Unit
 ) {
     val heightSizeClass = currentWindowAdaptiveInfo().windowSizeClass.windowHeightSizeClass
     val widthSizeClass = currentWindowAdaptiveInfo().windowSizeClass.windowWidthSizeClass
@@ -58,7 +58,6 @@ fun FullScreenModalPage(
             sizes = sizes,
             top = top,
             contentWindowInsets = contentWindowInsets,
-            bottom = bottom,
             content = content
         )
     } else if (widthSizeClass != WindowWidthSizeClass.COMPACT) {
@@ -67,7 +66,6 @@ fun FullScreenModalPage(
             colors = colors,
             sizes = sizes,
             top = top,
-            bottom = bottom,
             contentWindowInsets = contentWindowInsets,
             content = content,
         )
@@ -84,7 +82,6 @@ fun FullScreenModalPage(
  * @param colors The colors to be used for the modal page.
  * @param sizes The sizes to be used for the modal page.
  * @param top An optional composable function that defines the content for the top section of the modal page.
- * @param bottom An optional composable function that defines the content for the bottom section of the modal page.
  * @param contentWindowInsets The window insets to be applied to the content of the modal page.
  * @param content A composable function that defines the main content of the modal page, receiving padding values.
  */
@@ -94,39 +91,34 @@ private fun CompactFullScreenModalPage(
     colors: ModalPageColors,
     sizes: ModalPageSizes,
     top: (@Composable ModalPageTopScope.() -> Unit)?,
-    bottom: @Composable (ModalPageBottomScope.() -> Unit)?,
     contentWindowInsets: WindowInsets,
-    content: @Composable (PaddingValues) -> Unit
+    content: @Composable () -> Unit
 ) {
+    val paddingModifier = if (top == null) Modifier.fillMaxSize()
+    else Modifier
+        .fillMaxSize()
+        .statusBarsPadding()
     ModalPageDialog(
         onDismissRequest = onDismissRequest,
         properties = ModalPageProperties(),
         lightStatusBar = !LocalTheme.current,
         content = {
             Scaffold(
-                modifier = Modifier.fillMaxSize(),
+                modifier = paddingModifier,
                 containerColor = colors.containerColor,
                 topBar = {
                     val scope = remember(colors, sizes) {
-                        ModalPageTopScopeWrapper(sizes, colors, onDismissRequest)
+                        ModalPageTopScopeWrapper(sizes, colors)
                     }
                     top?.let { scope.it() }
                 },
-                bottomBar = {
-                    ActionRow(
-                        modifier = Modifier.fillMaxWidth(),
-                        paddingValues = PaddingValues(
-                            PersianTheme.spacing.size12,
-                            PersianTheme.spacing.size12,
-                        ),
-                        colors = colors,
-                        sizes = sizes,
-                        bottom = bottom
-                    )
-                },
                 contentWindowInsets = contentWindowInsets
             ) { paddingValues ->
-                content(paddingValues)
+                Box(
+                    modifier = Modifier.padding(paddingValues)
+                ) {
+                    content()
+                }
             }
         }
     )
@@ -142,7 +134,6 @@ private fun CompactFullScreenModalPage(
  * @param colors The colors to be used for the modal page.
  * @param sizes The sizes to be used for the modal page.
  * @param top An optional composable function that defines the content for the top section of the modal page.
- * @param bottom An optional composable function that defines the content for the bottom section of the modal page.
  * @param contentWindowInsets The window insets to be applied to the content of the modal page.
  * @param content A composable function that defines the main content of the modal page, receiving padding values.
  */
@@ -152,17 +143,12 @@ internal fun MediumModalPage(
     colors: ModalPageColors,
     sizes: ModalPageSizes,
     top: (@Composable ModalPageTopScope.() -> Unit)?,
-    bottom: @Composable (ModalPageBottomScope.() -> Unit)?,
     contentWindowInsets: WindowInsets,
-    content: @Composable (PaddingValues) -> Unit
+    content: @Composable () -> Unit
 ) {
-    val widthSizeClass = currentWindowAdaptiveInfo().windowSizeClass.windowWidthSizeClass
-    val screenWidth = LocalConfiguration.current.screenWidthDp
     val screenHeight = LocalConfiguration.current.screenHeightDp
-    val widthCoeff = if (widthSizeClass == WindowWidthSizeClass.EXPANDED) 0.708f else 0.929f
-    val heightCoeff = if (widthSizeClass == WindowWidthSizeClass.EXPANDED) 0.929f else 0.708f
-    val dialogWidth = (screenWidth.toFloat() * widthCoeff).dp
-    val dialogHeight = (screenHeight.toFloat() * heightCoeff).dp
+    val statusBarSize = WindowInsets.statusBars.getTop(LocalDensity.current)
+    val navigationBarSize = WindowInsets.navigationBars.getBottom(LocalDensity.current)
     Dialog(
         onDismissRequest = onDismissRequest,
         properties = DialogProperties(
@@ -174,38 +160,20 @@ internal fun MediumModalPage(
             dialogWindowProvider?.window?.setDimAmount(0.5f)
             Surface(
                 modifier = Modifier
-                    .size(dialogWidth, dialogHeight),
+                    .widthIn(min = 500.dp, max = 1000.dp)
+                    .heightIn(
+                        min = 300.dp,
+                        max = (screenHeight - statusBarSize - navigationBarSize).dp
+                    ),
                 shape = sizes.containerShape,
                 color = colors.containerColor,
             ) {
-                Scaffold(
-                    modifier = Modifier.fillMaxSize(),
-                    topBar = {
-                        val scope = remember(colors, sizes) {
-                            ModalPageTopScopeWrapper(sizes, colors, onDismissRequest)
-                        }
-                        top?.let { scope.it() }
-                    },
-                    bottomBar = {
-                        ActionRow(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalAlignment = Alignment.End,
-                            paddingValues = PaddingValues(
-                                horizontal = PersianTheme.spacing.size16,
-                                vertical = PersianTheme.spacing.size12,
-                            ),
-                            colors = colors,
-                            sizes = sizes,
-                            bottom = bottom
-                        )
-                    },
-                    contentWindowInsets = contentWindowInsets
-                ) { paddingValues ->
-                    Box(
-                        modifier = Modifier.padding(paddingValues)
-                    ) {
-                        content(paddingValues)
+                Column {
+                    val scope = remember(colors, sizes) {
+                        ModalPageTopScopeWrapper(sizes, colors)
                     }
+                    top?.let { scope.it() }
+                    content()
                 }
             }
         }

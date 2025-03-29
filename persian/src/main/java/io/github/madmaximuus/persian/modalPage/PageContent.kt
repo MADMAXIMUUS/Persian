@@ -1,6 +1,5 @@
 package io.github.madmaximuus.persian.modalPage
 
-import android.util.Log
 import androidx.compose.animation.core.TweenSpec
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Canvas
@@ -9,13 +8,13 @@ import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.draggable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.shape.CornerSize
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
@@ -38,10 +37,10 @@ import androidx.compose.ui.semantics.onClick
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.Velocity
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.internal.DraggableAnchors
 import io.github.madmaximuus.persian.internal.draggableAnchors
 import io.github.madmaximuus.persian.modalPage.util.DragAnchor
+import io.github.madmaximuus.persian.modalPage.util.HandleVisibility
 import io.github.madmaximuus.persian.scafold.Scaffold
 import io.github.madmaximuus.persian.surface.Surface
 import kotlin.math.max
@@ -120,7 +119,6 @@ internal fun Scrim(
  * @param colors The colors to be used for the modal page.
  * @param sizes The sizes to be used for the modal page.
  * @param top An optional composable function that defines the content for the top section of the modal page.
- * @param bottom An optional composable function that defines the content for the bottom section of the modal page.
  * @param contentWindowInsets The window insets to be applied to the content of the modal page.
  * @param content A composable function that defines the main content of the modal page, receiving padding values.
  */
@@ -130,21 +128,19 @@ internal fun BoxScope.ModalBottomSheetContent(
     onDismissRequest: () -> Unit,
     modifier: Modifier = Modifier,
     pageState: PageState,
+    handleVisibility: HandleVisibility,
     colors: ModalPageColors,
     sizes: ModalPageSizes,
     top: @Composable (ModalPageTopScope.() -> Unit)?,
-    bottom: @Composable (ModalPageBottomScope.() -> Unit)?,
     contentWindowInsets: WindowInsets,
-    content: @Composable (PaddingValues) -> Unit
+    content: @Composable () -> Unit
 ) {
     val dragAnchor = pageState.dragAnchors
     var modalHeight by remember { mutableFloatStateOf(0f) }
-    var footerHeight by remember { mutableIntStateOf(0) }
     var headerHeight by remember { mutableIntStateOf(0) }
+    var fullHeight by remember { mutableFloatStateOf(0f) }
     Surface(
         modifier = modifier
-            .statusBarsPadding()
-            .padding(top = PersianTheme.spacing.size8)
             .fillMaxWidth()
             .nestedScroll(
                 remember(pageState) {
@@ -159,7 +155,7 @@ internal fun BoxScope.ModalBottomSheetContent(
                 pageState.anchoredDraggableState,
                 Orientation.Vertical
             ) { sheetSize, constraints ->
-                val fullHeight = constraints.maxHeight.toFloat()
+                fullHeight = constraints.maxHeight.toFloat()
                 modalHeight = fullHeight
                 val newAnchors = DraggableAnchors {
                     DragAnchor.Hidden at fullHeight
@@ -207,62 +203,55 @@ internal fun BoxScope.ModalBottomSheetContent(
                 startDragImmediately = pageState.anchoredDraggableState.isAnimationRunning,
                 onDragStopped = { settleToDismiss(it) }
             ),
-        shape = sizes.containerShape.copy(
+        shape = if (pageState.offset != 0f) sizes.containerShape.copy(
             bottomStart = CornerSize(0.dp),
             bottomEnd = CornerSize(0.dp)
-        ),
+        ) else RoundedCornerShape(0.dp),
         color = colors.containerColor,
     ) {
         Scaffold(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(
+                    top = with(LocalDensity.current) {
+                        val statusBarHeight = WindowInsets.statusBars.getTop(this).toFloat()
+                        (statusBarHeight - pageState.offset)
+                            .coerceIn(0f, statusBarHeight)
+                            .toDp()
+                    },
                     bottom = with(LocalDensity.current) {
-                        Log.e(
-                            "ANCHOR padding",
-                            (modalHeight - (modalHeight - pageState.offset)).toString()
-                        )
-                        Log.e(
-                            "ANCHOR height",
-                            modalHeight.toString()
-                        )
                         (modalHeight - (modalHeight - pageState.offset))
-                            .coerceIn(0f, modalHeight - footerHeight - headerHeight)
+                            .coerceIn(0f, modalHeight - headerHeight)
                             .toDp()
                     }
                 ),
             topBar = {
                 Box(
                     modifier = Modifier
-                        .fillMaxWidth()
                         .onGloballyPositioned {
                             headerHeight = it.size.height
                         }
                 ) {
                     val scope = remember(colors, sizes) {
-                        ModalPageTopScopeWrapper(sizes, colors, onDismissRequest)
+                        ModalPageTopScopeWrapper(sizes, colors)
+                    }
+                    when (handleVisibility) {
+                        HandleVisibility.VISIBLE -> scope.Handle()
+                        HandleVisibility.HIDDEN -> {}
+                        HandleVisibility.AUTO -> {
+                            if (pageState.dragAnchors.size >= 2) scope.Handle()
+                        }
                     }
                     top?.let { scope.it() }
                 }
             },
-            bottomBar = {
-                ActionRow(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .onGloballyPositioned {
-                            footerHeight = it.size.height
-                        },
-                    paddingValues = PaddingValues(
-                        PersianTheme.spacing.size12
-                    ),
-                    colors = colors,
-                    sizes = sizes,
-                    bottom = bottom
-                )
-            },
             contentWindowInsets = contentWindowInsets
         ) { paddingValues ->
-            content(paddingValues)
+            Box(
+                modifier = Modifier.padding(paddingValues)
+            ) {
+                content()
+            }
         }
     }
 }
