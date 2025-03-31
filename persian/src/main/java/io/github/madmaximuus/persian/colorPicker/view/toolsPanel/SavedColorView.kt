@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.LazyRow
@@ -19,7 +18,6 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -71,8 +69,8 @@ fun RowScope.SavedColorView(
     val scope = rememberCoroutineScope()
     var size by remember { mutableStateOf(IntSize.Zero) }
     val widthDp = with(LocalDensity.current) { size.width.toDp() }
-    val itemPerPageRow = (widthDp / (28.dp + 12.dp)).toInt()
-    val itemWidth = 28.dp * itemPerPageRow + 16.dp * 2
+    val itemPerPageRow = (widthDp / (34.dp + 16.dp)).toInt()
+    val itemWidth = 34.dp * itemPerPageRow
     val itemWidthHalf = with(LocalDensity.current) { itemWidth.toPx() / 2 }
 
     LaunchedEffect(lazyRowState.isScrollInProgress) {
@@ -99,7 +97,7 @@ fun RowScope.SavedColorView(
 
     LazyRow(
         modifier = modifier
-            .height(84.dp)
+            .height(88.dp)
             .weight(1f)
             .onSizeChanged { size = it },
         state = lazyRowState
@@ -107,30 +105,26 @@ fun RowScope.SavedColorView(
         items(pages.size, key = { it }) { page ->
             LazyVerticalGrid(
                 modifier = Modifier
-                    .fillParentMaxSize()
-                    .padding(
-                        horizontal = PersianTheme.spacing.size16,
-                        vertical = PersianTheme.spacing.size8
-                    ),
-                columns = GridCells.FixedSize(28.dp),
-                horizontalArrangement = Arrangement.spacedBy(12.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp)
+                    .fillParentMaxSize(),
+                columns = GridCells.FixedSize(34.dp),
+                horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size16),
+                verticalArrangement = Arrangement.SpaceBetween
             ) {
                 items(pages[page]) { item ->
                     if (item == Color.Unspecified) {
                         Box(
                             modifier = Modifier
-                                .size(28.dp)
+                                .size(34.dp)
                                 .background(
-                                    PersianTheme.colorScheme.surfaceContainer,
-                                    RoundedCornerShape(100)
+                                    color = PersianTheme.colorScheme.surfaceContainer,
+                                    shape = PersianTheme.shapes.full
                                 )
                                 .border(
-                                    1.dp,
-                                    PersianTheme.colorScheme.outlineVariant,
-                                    RoundedCornerShape(100)
+                                    width = 0.5.dp,
+                                    color = PersianTheme.colorScheme.outlineVariant,
+                                    shape = PersianTheme.shapes.full
                                 )
-                                .clip(RoundedCornerShape(100))
+                                .clip(PersianTheme.shapes.full)
                                 .clickable {
                                     state.saveColor()
                                 },
@@ -138,19 +132,19 @@ fun RowScope.SavedColorView(
                         ) {
                             Icon(
                                 painter = rememberVectorPainter(PersianSymbols.Default.Plus),
-                                sizes = IconDefaults.size20(),
+                                sizes = IconDefaults.size24(),
                                 tint = PersianTheme.colorScheme.onSecondaryContainer
                             )
                         }
                     } else {
                         val dotRadius by animateDpAsState(
-                            targetValue = if (item == state.selectedColor) 20.dp else 28.dp,
+                            targetValue = if (item == state.selectedColor) 22.dp else 34.dp,
                             animationSpec = tween(durationMillis = 350),
                             label = ""
                         )
                         val baseModifier = Modifier
-                            .size(28.dp)
-                            .clip(RoundedCornerShape(100))
+                            .size(34.dp)
+                            .clip(PersianTheme.shapes.full)
                             .combinedClickable(
                                 onClick = {
                                     val newColor = resolveColor(item)
@@ -165,9 +159,9 @@ fun RowScope.SavedColorView(
                                 role = Role.RadioButton
                             )
                         val borderModifier = if (item == state.selectedColor) baseModifier.border(
-                            2.dp,
-                            item,
-                            RoundedCornerShape(100)
+                            width = 3.dp,
+                            color = item,
+                            shape = PersianTheme.shapes.full
                         )
                         else baseModifier
                         Box(
@@ -177,8 +171,8 @@ fun RowScope.SavedColorView(
                             Box(
                                 modifier = Modifier
                                     .size(dotRadius)
-                                    .background(item, RoundedCornerShape(100))
-                                    .clip(RoundedCornerShape(100))
+                                    .background(item, PersianTheme.shapes.full)
+                                    .clip(PersianTheme.shapes.full)
                             )
                         }
                     }

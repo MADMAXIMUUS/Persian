@@ -21,7 +21,7 @@ fun VerticalColorView(
 ) {
     Column(
         Modifier.fillMaxWidth(),
-        verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size12)
+        verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size16)
     ) {
         topRow()
         bottomRow()

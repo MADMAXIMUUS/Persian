@@ -1,13 +1,29 @@
 package io.github.madmaximuus.persian.colorPicker
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.only
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeContent
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import androidx.window.core.layout.WindowHeightSizeClass
+import androidx.window.core.layout.WindowWidthSizeClass
 import io.github.madmaximuus.persian.R
-import io.github.madmaximuus.persian.alert.Action
-import io.github.madmaximuus.persian.alert.Alert
 import io.github.madmaximuus.persian.colorPicker.view.ColorPickerView
 import io.github.madmaximuus.persian.colorPicker.view.util.ColorPickerState
+import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.modalPage.ModalPage
+import io.github.madmaximuus.persian.modalPage.rememberPageState
+import io.github.madmaximuus.persian.modalPage.util.DragAnchor
+import io.github.madmaximuus.persian.text.Text
 
 /**
  * A color picker dialog is useful for selecting and customizing colors, providing users with
@@ -18,8 +34,6 @@ import io.github.madmaximuus.persian.colorPicker.view.util.ColorPickerState
  * @param state The state of the color picker, which contains information about the selected color
  * and other configurations.
  * @param colors The colors used for the color picker and the alert dialog.
- * @param onConfirm A callback function that is invoked when the user confirms the color selection.
- * It receives the selected color as a parameter.
  * @param onDismissRequest A callback function that is invoked when the user requests to dismiss
  * the dialog.
  */
@@ -27,33 +41,40 @@ import io.github.madmaximuus.persian.colorPicker.view.util.ColorPickerState
 fun ColorPicker(
     state: ColorPickerState,
     colors: ColorPickerColors = ColorPickerDefaults.colors(),
-    onConfirm: (color: Color) -> Unit,
     onDismissRequest: () -> Unit
 ) {
-    Alert(
-        title = stringResource(id = R.string.select_color),
-        onDismiss = onDismissRequest,
-        colors = colors.alertColors,
-        confirmAction = {
-            Action(
-                title = stringResource(id = R.string.ok),
-                onClick = {
-                    onConfirm(state.selectedColor)
-                }
+    val widthSizeClass = currentWindowAdaptiveInfo().windowSizeClass.windowWidthSizeClass
+    val heightSizeClass = currentWindowAdaptiveInfo().windowSizeClass.windowHeightSizeClass
+    val maxModifier =
+        if (widthSizeClass != WindowWidthSizeClass.COMPACT && heightSizeClass != WindowHeightSizeClass.COMPACT)
+            Modifier.widthIn(max = 400.dp) else Modifier
+
+    val insets =
+        if (heightSizeClass == WindowHeightSizeClass.COMPACT)
+            WindowInsets.safeContent.only(WindowInsetsSides.Horizontal)
+        else WindowInsets(0, 0, 0, 0)
+
+    ModalPage(
+        pageState = rememberPageState(dragAnchors = setOf(DragAnchor.Fraction(0.7f))),
+        contentWindowInsets = insets,
+        onDismissRequest = onDismissRequest,
+    ) {
+        Column {
+            Text(
+                modifier = maxModifier
+                    .fillMaxWidth()
+                    .padding(top = PersianTheme.spacing.size20)
+                    .padding(bottom = PersianTheme.spacing.size12),
+                text = stringResource(id = R.string.select_color),
+                textAlign = TextAlign.Center,
+                style = PersianTheme.typography.titleMedium,
+                color = PersianTheme.colorScheme.onSurface
             )
-        },
-        dismissAction = {
-            Action(
-                title = stringResource(id = R.string.cancel),
-                onClick = {
-                    onDismissRequest()
-                }
+            ColorPickerView(
+                modifier = maxModifier.padding(bottom = PersianTheme.spacing.size16),
+                state = state,
+                colors = colors.colorPickerViewColors
             )
         }
-    ) {
-        ColorPickerView(
-            state = state,
-            colors = colors.colorPickerViewColors
-        )
     }
 }

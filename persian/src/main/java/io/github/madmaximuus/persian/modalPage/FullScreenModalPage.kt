@@ -86,7 +86,7 @@ fun FullScreenModalPage(
  * @param content A composable function that defines the main content of the modal page, receiving padding values.
  */
 @Composable
-private fun CompactFullScreenModalPage(
+internal fun CompactFullScreenModalPage(
     onDismissRequest: () -> Unit,
     colors: ModalPageColors,
     sizes: ModalPageSizes,
@@ -160,7 +160,7 @@ internal fun MediumModalPage(
             dialogWindowProvider?.window?.setDimAmount(0.5f)
             Surface(
                 modifier = Modifier
-                    .widthIn(min = 500.dp, max = 1000.dp)
+                    .widthIn(min = 400.dp, max = 1000.dp)
                     .heightIn(
                         min = 300.dp,
                         max = (screenHeight - statusBarSize - navigationBarSize).dp

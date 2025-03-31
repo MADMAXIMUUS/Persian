@@ -6,7 +6,6 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -14,19 +13,15 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ImageBitmap
-import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
-import io.github.madmaximuus.persian.R
 import io.github.madmaximuus.persian.colorPicker.view.ColorPickerViewColors
 import io.github.madmaximuus.persian.colorPicker.view.util.ColorPickerState
 import io.github.madmaximuus.persian.colorPicker.view.util.collectForPress
-import io.github.madmaximuus.persian.colorPicker.view.util.drawBitmap
 import io.github.madmaximuus.persian.colorPicker.view.util.emitDragGesture
 import io.github.madmaximuus.persian.colorPicker.view.util.pointToAlphaCompact
 import io.github.madmaximuus.persian.foundation.PersianTheme
@@ -58,61 +53,83 @@ internal fun AlphaSliderView(
 
     val resolvedColor = state.selectedColor
 
-    val padding = PersianTheme.spacing.size12.value
+    val whiteColor = PersianTheme.colorScheme.surface
+    val blackColor = PersianTheme.colorScheme.outlineVariant
 
-    val background = ImageBitmap.imageResource(id = R.drawable.vector).asAndroidBitmap()
     Canvas(
         modifier = modifier
             .fillMaxWidth()
-            .height(30.dp)
-            .clip(RoundedCornerShape(100))
-            .border(1.dp, colors.selectorBorderColor, RoundedCornerShape(100))
+            .height(40.dp)
+            .clip(PersianTheme.shapes.full)
+            .border(1.dp, colors.selectorBorderColor, PersianTheme.shapes.full)
             .emitDragGesture(interactionSource)
     ) {
-        val drawScopeSize = size
+        val padding = 4.dp.toPx()
+        val size = size
+        val radius = size.height / 2 - padding
+        val left = size.height / 2
+        val right = size.width - size.height / 2
 
-        val huePanel = RectF(0f, 0f, size.width, size.height)
-
-        val brush = Brush.horizontalGradient(
-            listOf(
-                resolvedColor.copy(alpha = 0f),
-                resolvedColor.copy(alpha = 1f)
-            )
+        val huePanel = RectF(
+            left,
+            0f,
+            right,
+            size.height
         )
 
-        pressOffset.value = Offset(state.alpha * huePanel.width(), 0f)
+        val brush = Brush.horizontalGradient(
+            colors = listOf(
+                resolvedColor.copy(alpha = 0f),
+                resolvedColor.copy(alpha = 1f)
+            ),
+            startX = left,
+            endX = right,
+        )
+
+        pressOffset.value = Offset(state.alpha * huePanel.width() + left, 0f)
 
         scope.collectForPress(interactionSource) { pressPosition ->
-            val pressPos = pressPosition.x.coerceIn(0f..drawScopeSize.width)
+            val pressPos = pressPosition.x.coerceIn(left..size.width)
             val selectedAlpha = pointToAlphaCompact(pressPos, huePanel)
             state.alpha = selectedAlpha
         }
 
-        drawBitmap(
-            bitmap = background,
-            panel = huePanel
+        val squareSize = 9.dp.toPx()
+        val cols = (size.width / squareSize).toInt()
+        val rows = (size.height / squareSize).toInt()
+
+        for (row in 0..rows) {
+            for (col in 0..cols) {
+                drawRect(
+                    color = if ((row + col) % 2 == 0) whiteColor else blackColor,
+                    topLeft = Offset(col * squareSize, row * squareSize),
+                    size = Size(squareSize, squareSize)
+                )
+            }
+        }
+
+        drawRect(
+            brush = brush,
+            size = size
         )
-
-        drawRect(brush = brush)
-
         drawCircle(
-            Color.White,
-            radius = size.height / 2 - padding / 2,
+            color = Color.White,
+            radius = radius,
             center = Offset(pressOffset.value.x, size.height / 2),
             style = Fill
         )
         drawCircle(
-            state.selectedColor,
-            radius = size.height / 2 - padding / 2,
+            color = state.selectedColor,
+            radius = radius,
             center = Offset(pressOffset.value.x, size.height / 2),
             style = Fill
         )
         drawCircle(
-            colors.selectorThumbBorderColor,
-            radius = size.height / 2 - padding / 2,
+            color = colors.selectorThumbBorderColor,
+            radius = radius,
             center = Offset(pressOffset.value.x, size.height / 2),
             style = Stroke(
-                width = 1.dp.toPx()
+                width = 2.dp.toPx()
             )
         )
     }

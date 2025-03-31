@@ -1,33 +1,35 @@
 package io.github.madmaximuus.persian.colorPicker.view.spectrum
 
-import android.graphics.Bitmap
-import android.graphics.ComposeShader
-import android.graphics.LinearGradient
-import android.graphics.Paint
-import android.graphics.PorterDuff
 import android.graphics.RectF
-import android.graphics.Shader
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.BlendMode
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.colorPicker.view.ColorPickerViewColors
 import io.github.madmaximuus.persian.colorPicker.view.util.ColorPickerState
 import io.github.madmaximuus.persian.colorPicker.view.util.collectForPress
-import io.github.madmaximuus.persian.colorPicker.view.util.drawBitmap
 import io.github.madmaximuus.persian.colorPicker.view.util.emitDragGesture
 import io.github.madmaximuus.persian.colorPicker.view.util.pointToSatVal
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import android.graphics.Color as AndroidColor
 
 /**
  * A composable function that represents a view for selecting saturation and value (brightness) of a color.
@@ -52,77 +54,88 @@ internal fun ColumnScope.SaturationValueView(
     val pressOffset = remember {
         mutableStateOf(Offset.Zero)
     }
+    var canvasSize by remember { mutableStateOf(Size.Zero) }
 
-    Canvas(
+    Box(
         modifier = Modifier
             .fillMaxWidth()
             .weight(1f)
             .emitDragGesture(interactionSource)
-            .clip(PersianTheme.shapes.shape12)
     ) {
-        val cornerRadius = 16.dp.toPx()
-        val satValSize = size
+        Canvas(
+            modifier = Modifier
+                .fillMaxSize()
+                .clip(PersianTheme.shapes.shape12)
+        ) {
+            canvasSize = size
 
-        val bitmap =
-            Bitmap.createBitmap(size.width.toInt(), size.height.toInt(), Bitmap.Config.ARGB_8888)
-        val canvas = android.graphics.Canvas(bitmap)
-        val satValPanel = RectF(0f, 0f, bitmap.width.toFloat(), bitmap.height.toFloat())
-
-        val rgb = AndroidColor.HSVToColor(floatArrayOf(state.colorHueState, 1f, 1f))
-
-        val satShader = LinearGradient(
-            satValPanel.left, satValPanel.top, satValPanel.right, satValPanel.top,
-            -0x1, rgb, Shader.TileMode.CLAMP
-        )
-        val valShader = LinearGradient(
-            satValPanel.left, satValPanel.top, satValPanel.left, satValPanel.bottom,
-            -0x1, -0x1000000, Shader.TileMode.CLAMP
-        )
-
-        pressOffset.value = Offset(
-            state.colorSaturationState * satValSize.width,
-            (state.colorValueState - 1f) * (-1) * satValSize.height
-        )
-
-        canvas.drawRoundRect(
-            satValPanel,
-            cornerRadius,
-            cornerRadius,
-            Paint().apply {
-                shader = ComposeShader(
-                    valShader,
-                    satShader,
-                    PorterDuff.Mode.MULTIPLY
+            val satGradient = Brush.horizontalGradient(
+                colors = listOf(
+                    Color.White,
+                    Color(android.graphics.Color.HSVToColor(floatArrayOf(state.colorHueState, 1f, 1f)))
                 )
-            }
-        )
+            )
+            val valGradient = Brush.verticalGradient(
+                colors = listOf(
+                    Color.Transparent,
+                    Color.Black
+                )
+            )
 
-        drawBitmap(
-            bitmap = bitmap,
-            panel = satValPanel
-        )
+            drawRect(
+                brush = satGradient,
+                size = size
+            )
+            drawRect(
+                brush = valGradient,
+                size = size,
+                blendMode = BlendMode.Multiply
+            )
+        }
+
+        Canvas(
+            modifier = Modifier.fillMaxSize()
+        ) {
+            drawCircle(
+                color = Color.White,
+                radius = 14.dp.toPx(),
+                center = pressOffset.value,
+                style = Fill
+            )
+            drawCircle(
+                color = state.selectedColor.copy(alpha = 1f),
+                radius = 14.dp.toPx(),
+                center = pressOffset.value,
+                style = Fill
+            )
+            drawCircle(
+                color = colors.saturationValueThumbColor,
+                radius = 14.dp.toPx(),
+                center = pressOffset.value,
+                style = Stroke(width = 2.dp.toPx())
+            )
+        }
+
+        LaunchedEffect(canvasSize) {
+            pressOffset.value = Offset(
+                state.colorSaturationState * canvasSize.width,
+                (1f - state.colorValueState) * canvasSize.height
+            )
+        }
 
         scope.collectForPress(interactionSource) { pressPosition ->
             val pressPositionOffset = Offset(
-                pressPosition.x.coerceIn(0f..satValSize.width),
-                pressPosition.y.coerceIn(0f..satValSize.height)
+                pressPosition.x.coerceIn(0f..canvasSize.width),
+                pressPosition.y.coerceIn(0f..canvasSize.height)
             )
             val (satPoint, valuePoint) = pointToSatVal(
                 pressPositionOffset.x,
                 pressPositionOffset.y,
-                satValPanel
+                RectF(0f, 0f, canvasSize.width, canvasSize.height)
             )
             state.colorSaturationState = satPoint
             state.colorValueState = valuePoint
+            pressOffset.value = pressPositionOffset
         }
-
-        drawCircle(
-            color = colors.saturationValueThumbColor,
-            radius = 12.dp.toPx(),
-            center = pressOffset.value,
-            style = Stroke(
-                width = 2.dp.toPx()
-            )
-        )
     }
 }

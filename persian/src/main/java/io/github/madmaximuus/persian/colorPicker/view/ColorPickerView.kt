@@ -23,10 +23,9 @@ import io.github.madmaximuus.persian.colorPicker.view.util.ColorPickerDisplayMod
 import io.github.madmaximuus.persian.colorPicker.view.util.ColorPickerState
 import io.github.madmaximuus.persian.colorPicker.view.util.ColorPreferences
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.segmentedButton.EndSegment
-import io.github.madmaximuus.persian.segmentedButton.MiddleSegment
-import io.github.madmaximuus.persian.segmentedButton.SingleChoiceSegmentedButtonRow
-import io.github.madmaximuus.persian.segmentedButton.StartSegment
+import io.github.madmaximuus.persian.segmentedControls.tabs.Segment
+import io.github.madmaximuus.persian.segmentedControls.tabs.SegmentedTabsDefaults
+import io.github.madmaximuus.persian.segmentedControls.tabs.SegmentedTabsRow
 import kotlinx.coroutines.launch
 
 /**
@@ -41,6 +40,7 @@ import kotlinx.coroutines.launch
  */
 @Composable
 internal fun ColorPickerView(
+    modifier: Modifier = Modifier,
     state: ColorPickerState,
     colors: ColorPickerViewColors
 ) {
@@ -66,32 +66,38 @@ internal fun ColorPickerView(
         }
     }
     Column(
-        modifier = Modifier
-            .padding(PersianTheme.spacing.size12)
+        modifier = modifier
+            .padding(horizontal = PersianTheme.spacing.size12)
             .fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        SingleChoiceSegmentedButtonRow(
+        SegmentedTabsRow(
             modifier = Modifier.fillMaxWidth(),
-            colors = colors.segmentedButton
+            colors = colors.segmentedTabsColors,
+            sizes = SegmentedTabsDefaults.smallSizes(),
+            selectedIndex = when (state.mode) {
+                ColorPickerDisplayMode.GRID -> 0
+                ColorPickerDisplayMode.SPECTRUM -> 1
+                ColorPickerDisplayMode.SLIDERS -> 2
+            }
         ) {
-            StartSegment(
+            Segment(
                 selected = state.mode == ColorPickerDisplayMode.GRID,
                 label = "Grid",
                 onClick = state::moveToGrid
             )
-            MiddleSegment(
+            Segment(
                 selected = state.mode == ColorPickerDisplayMode.SPECTRUM,
                 label = "Spectrum",
                 onClick = state::moveToSpectrum
             )
-            EndSegment(
+            Segment(
                 selected = state.mode == ColorPickerDisplayMode.SLIDERS,
                 label = "Sliders",
                 onClick = state::moveToSliders
             )
         }
-        Spacer(modifier = Modifier.height(PersianTheme.spacing.size8))
+        Spacer(modifier = Modifier.height(PersianTheme.spacing.size14))
         if (windowHeightSizeClass == WindowHeightSizeClass.COMPACT) {
             HorizontalColorView(
                 leftColumn = {

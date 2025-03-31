@@ -9,6 +9,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.core.graphics.toColor
+import io.github.madmaximuus.persian.colorPicker.view.util.ColorPickerState.Companion.Saver
 import java.io.Serializable
 import android.graphics.Color as AndroidColor
 
@@ -52,7 +53,7 @@ class ColorPickerState internal constructor(
         colorValueState = resolvedColor.third
     }
 
-    internal val selectedColor: Color
+    val selectedColor: Color
         get() = Color.hsv(colorHueState, colorSaturationState, colorValueState, alpha)
 
     /**

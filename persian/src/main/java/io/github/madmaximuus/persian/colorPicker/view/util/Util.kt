@@ -3,7 +3,6 @@ package io.github.madmaximuus.persian.colorPicker.view.util
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.RectF
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.interaction.InteractionSource
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -91,9 +90,6 @@ internal fun Modifier.emitDragGesture(
                             interactionSource.emit(PressInteraction.Press(input.position))
                         }
                     }
-                }
-                .clickable(interactionSource, null) {
-
                 }
         )
     }

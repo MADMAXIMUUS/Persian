@@ -5,12 +5,16 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.BaselineShift
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.colorPicker.view.ColorPickerViewColors
@@ -39,40 +43,52 @@ fun ToolsPanelView(
 ) {
     Column(
         modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8)
+        verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size16)
     ) {
         if (state.isSupportOpacity) {
             Row(
                 modifier = Modifier
+                    .height(40.dp)
                     .fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size4)
+                horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size6)
             ) {
                 AlphaSliderView(
                     modifier = Modifier.weight(1f),
                     state = state,
                     colors = colors
                 )
-                Text(
-                    modifier = Modifier.width(40.dp),
-                    text = "${(state.alpha * 100).toInt()}%",
-                    textAlign = TextAlign.Center,
-                    style = PersianTheme.typography.bodyMedium,
-                    color = PersianTheme.colorScheme.onSurface
-                )
+                Box(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .background(
+                            PersianTheme.colorScheme.surfaceContainerHighest,
+                            PersianTheme.shapes.shape14
+                        )
+                        .padding(horizontal = PersianTheme.spacing.size14),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        modifier = Modifier.width(43.dp),
+                        text = "${(state.alpha * 100).toInt()}%",
+                        textAlign = TextAlign.Center,
+                        style = PersianTheme.typography.titleMedium.copy(baselineShift = BaselineShift.None),
+                        color = PersianTheme.colorScheme.onSurface
+                    )
+                }
             }
         }
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8)
+            horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size12)
         ) {
             Box(
                 modifier = Modifier
-                    .size(70.dp)
+                    .size(88.dp)
                     .background(
-                        state.selectedColor,
-                        PersianTheme.shapes.shape10
+                        color = state.selectedColor,
+                        shape = PersianTheme.shapes.shape14
                     )
             )
             SavedColorView(

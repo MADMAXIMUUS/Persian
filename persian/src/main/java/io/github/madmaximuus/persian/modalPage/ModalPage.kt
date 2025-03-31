@@ -50,7 +50,7 @@ fun ModalPage(
 ) {
     val heightSizeClass = currentWindowAdaptiveInfo().windowSizeClass.windowHeightSizeClass
     val widthSizeClass = currentWindowAdaptiveInfo().windowSizeClass.windowWidthSizeClass
-    if (widthSizeClass == WindowWidthSizeClass.COMPACT || heightSizeClass == WindowHeightSizeClass.COMPACT) {
+    if (widthSizeClass == WindowWidthSizeClass.COMPACT) {
         CompactModalPage(
             onDismissRequest = onDismissRequest,
             colors = colors,
@@ -63,7 +63,16 @@ fun ModalPage(
             properties = properties,
             content = content
         )
-    } else if (widthSizeClass != WindowWidthSizeClass.COMPACT) {
+    } else if (heightSizeClass == WindowHeightSizeClass.COMPACT) {
+        CompactFullScreenModalPage(
+            onDismissRequest = onDismissRequest,
+            colors = colors,
+            sizes = sizes,
+            top = top,
+            contentWindowInsets = contentWindowInsets,
+            content = content
+        )
+    } else {
         MediumModalPage(
             onDismissRequest = onDismissRequest,
             colors = colors,

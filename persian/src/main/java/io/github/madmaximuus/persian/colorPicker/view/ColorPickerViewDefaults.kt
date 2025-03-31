@@ -4,8 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.segmentedButton.SegmentedButtonColors
-import io.github.madmaximuus.persian.segmentedButton.SegmentedButtonDefaults
+import io.github.madmaximuus.persian.segmentedControls.tabs.SegmentedTabsColors
+import io.github.madmaximuus.persian.segmentedControls.tabs.SegmentedTabsDefaults
 import io.github.madmaximuus.persian.slider.SliderColors
 import io.github.madmaximuus.persian.slider.SliderDefaults
 
@@ -21,23 +21,22 @@ object ColorPickerViewDefaults {
      * @param selectorThumbBorderColor The color of the border for the selector thumb.
      * @param saturationValueThumbColor The color of the thumb for the saturation and value sliders.
      * @param slidersColors The colors used for the sliders.
-     * @param segmentedButton The colors used for the segmented buttons.
+     * @param segmentedTabsColors The colors used for the segmented tabs.
      */
     @Composable
     fun colors(
-        selectorBorderColor: Color = PersianTheme.colorScheme.outline,
-        selectorThumbBorderColor: Color = PersianTheme.colorScheme.primaryContainer,
-        saturationValueThumbColor: Color = PersianTheme.colorScheme.primaryContainer,
+        selectorBorderColor: Color = PersianTheme.colorScheme.outlineVariant,
+        selectorThumbBorderColor: Color = PersianTheme.colorScheme.surface,
+        saturationValueThumbColor: Color = PersianTheme.colorScheme.surface,
         slidersColors: SliderColors = SliderDefaults.colors(),
-        segmentedButton: SegmentedButtonColors = SegmentedButtonDefaults.colors(),
-    ): ColorPickerViewColors =
-        ColorPickerViewColors(
-            selectorBorderColor = selectorBorderColor,
-            selectorThumbBorderColor = selectorThumbBorderColor,
-            saturationValueThumbColor = saturationValueThumbColor,
-            slidersColors = slidersColors,
-            segmentedButton = segmentedButton
-        )
+        segmentedTabsColors: SegmentedTabsColors = SegmentedTabsDefaults.colors(),
+    ) = ColorPickerViewColors(
+        selectorBorderColor = selectorBorderColor,
+        selectorThumbBorderColor = selectorThumbBorderColor,
+        saturationValueThumbColor = saturationValueThumbColor,
+        slidersColors = slidersColors,
+        segmentedTabsColors = segmentedTabsColors
+    )
 }
 
 /**
@@ -47,7 +46,7 @@ object ColorPickerViewDefaults {
  * @property selectorThumbBorderColor The color of the border for the selector thumb.
  * @property saturationValueThumbColor The color of the thumb for the saturation and value sliders.
  * @property slidersColors The colors used for the sliders.
- * @property segmentedButton The colors used for the segmented buttons.
+ * @property segmentedTabsColors The colors used for the segmented tabs.
  */
 @Immutable
 class ColorPickerViewColors internal constructor(
@@ -55,5 +54,5 @@ class ColorPickerViewColors internal constructor(
     internal val selectorThumbBorderColor: Color,
     internal val saturationValueThumbColor: Color,
     internal val slidersColors: SliderColors,
-    internal val segmentedButton: SegmentedButtonColors
+    internal val segmentedTabsColors: SegmentedTabsColors
 )

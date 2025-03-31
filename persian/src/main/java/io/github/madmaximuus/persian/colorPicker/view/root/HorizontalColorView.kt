@@ -21,7 +21,7 @@ fun HorizontalColorView(
 ) {
     Row(
         Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8)
+        horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size16)
     ) {
         leftColumn()
         rightColumn()
