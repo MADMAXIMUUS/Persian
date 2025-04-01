@@ -2,15 +2,10 @@ package io.github.madmaximuus.persian.codeInput
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.interaction.InteractionSource
-import androidx.compose.foundation.interaction.collectIsFocusedAsState
-import androidx.compose.foundation.interaction.collectIsHoveredAsState
 import androidx.compose.foundation.text.selection.TextSelectionColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
-import androidx.compose.runtime.Stable
 import androidx.compose.runtime.State
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.graphics.Color
 import io.github.madmaximuus.persian.codeInput.cell.CodeInputCell
@@ -79,35 +74,28 @@ object CodeInputDefaults {
         focusedIndicatorColor: Color = PersianTheme.colorScheme.primary,
         validIndicatorColor: Color = PersianTheme.colorScheme.valid,
         errorIndicatorColor: Color = PersianTheme.colorScheme.error,
-    ): CellColors =
-        CellColors(
-            //Text Colors
-            defaultTextColor = defaultTextColor,
-            hoveredTextColor = hoveredTextColor,
-            focusedTextColor = focusedTextColor,
-            validTextColor = validTextColor,
-            errorTextColor = errorTextColor,
+    ) = CellColors(
+        //Text Colors
+        defaultTextColor = defaultTextColor,
+        hoveredTextColor = hoveredTextColor,
+        focusedTextColor = focusedTextColor,
+        validTextColor = validTextColor,
+        errorTextColor = errorTextColor,
 
-            //Container Colors
-            defaultContainerColor = defaultContainerColor,
-            hoveredContainerColor = hoveredContainerColor,
-            focusedContainerColor = focusedContainerColor,
-            validContainerColor = validContainerColor,
-            errorContainerColor = errorContainerColor,
+        //Container Colors
+        defaultContainerColor = defaultContainerColor,
+        hoveredContainerColor = hoveredContainerColor,
+        focusedContainerColor = focusedContainerColor,
+        validContainerColor = validContainerColor,
+        errorContainerColor = errorContainerColor,
 
-            //Cursor Colors
-            defaultCursorColor = defaultCursorColor,
-            validCursorColor = validCursorColor,
-            errorCursorColor = errorCursorColor,
-            textSelectionColors = textSelectionColors,
-
-            //Indicator Colors
-            defaultIndicatorColor = defaultIndicatorColor,
-            hoveredIndicatorColor = hoveredIndicatorColor,
-            focusedIndicatorColor = focusedIndicatorColor,
-            validIndicatorColor = validIndicatorColor,
-            errorIndicatorColor = errorIndicatorColor,
-        )
+        //Indicator Colors
+        defaultIndicatorColor = defaultIndicatorColor,
+        hoveredIndicatorColor = hoveredIndicatorColor,
+        focusedIndicatorColor = focusedIndicatorColor,
+        validIndicatorColor = validIndicatorColor,
+        errorIndicatorColor = errorIndicatorColor,
+    )
 
 }
 
@@ -125,11 +113,6 @@ object CodeInputDefaults {
  * @param focusedContainerColor The container color when the cell is focused.
  * @param validContainerColor The container color when the cell's value is valid.
  * @param errorContainerColor The container color when the cell's value is in error state.
- *
- * @param defaultCursorColor The default cursor color.
- * @param validCursorColor The cursor color when the cell's value is valid.
- * @param errorCursorColor The cursor color when the cell's value is in error state.
- * @param textSelectionColors The colors for text selection.
  *
  * @param defaultIndicatorColor The default indicator color.
  * @param hoveredIndicatorColor The indicator color when the cell is hovered.
@@ -154,12 +137,6 @@ class CellColors(
     private val validContainerColor: Color,
     private val errorContainerColor: Color,
 
-    //Cursor Colors
-    private val defaultCursorColor: Color,
-    private val validCursorColor: Color,
-    private val errorCursorColor: Color,
-    private val textSelectionColors: TextSelectionColors,
-
     //Indicator Colors
     private val defaultIndicatorColor: Color,
     private val hoveredIndicatorColor: Color,
@@ -173,24 +150,19 @@ class CellColors(
      *
      * @param isValid Whether the cell's value is valid.
      * @param isError Whether the cell's value is in error state.
-     * @param interactionSource The interaction source to determine the cell's interaction state.
      */
     @Composable
     internal fun textColor(
         enabled: Boolean,
         isValid: Boolean,
         isError: Boolean,
-        interactionSource: InteractionSource
+        isFocused: Boolean
     ): State<Color> {
-        val focused by interactionSource.collectIsFocusedAsState()
-        val hovered by interactionSource.collectIsHoveredAsState()
-
         val targetValue = when {
             !enabled -> defaultTextColor
             isError -> errorTextColor
             isValid -> validTextColor
-            hovered -> hoveredTextColor
-            focused -> focusedTextColor
+            isFocused -> focusedTextColor
 
             else -> defaultTextColor
         }
@@ -202,75 +174,44 @@ class CellColors(
      *
      * @param isValid Whether the cell's value is valid.
      * @param isError Whether the cell's value is in error state.
-     * @param interactionSource The interaction source to determine the cell's interaction state.
      */
     @Composable
     internal fun containerColor(
         enabled: Boolean,
         isValid: Boolean,
         isError: Boolean,
-        interactionSource: InteractionSource
+        isFocused: Boolean
     ): State<Color> {
-        val focused by interactionSource.collectIsFocusedAsState()
-        val hovered by interactionSource.collectIsHoveredAsState()
 
         val targetValue = when {
             !enabled -> defaultContainerColor
             isError -> errorContainerColor
             isValid -> validContainerColor
-            hovered -> hoveredContainerColor
-            focused -> focusedContainerColor
+            isFocused -> focusedContainerColor
             else -> defaultContainerColor
         }
         return rememberUpdatedState(targetValue)
     }
 
     /**
-     * Returns the appropriate cursor color based on the cell's state.
-     *
-     * @param isError Whether the cell's value is in error state.
-     * @param isValid Whether the cell's value is valid.
-     */
-    @Stable
-    internal fun cursorColor(enabled: Boolean, isError: Boolean, isValid: Boolean): Color {
-        val targetValue = when {
-            !enabled -> defaultCursorColor
-            isError -> errorCursorColor
-            isValid -> validCursorColor
-            else -> defaultCursorColor
-        }
-        return targetValue
-    }
-
-    /**
-     * Returns the text selection colors.
-     */
-    internal val selectionColors: TextSelectionColors
-        @Stable get() = textSelectionColors
-
-    /**
      * Returns the appropriate indicator color based on the cell's state.
      *
      * @param isValid Whether the cell's value is valid.
      * @param isError Whether the cell's value is in error state.
-     * @param interactionSource The interaction source to determine the cell's interaction state.
      */
     @Composable
     internal fun indicatorColor(
         enabled: Boolean,
         isValid: Boolean,
         isError: Boolean,
-        interactionSource: InteractionSource
+        isFocused: Boolean
     ): State<Color> {
-        val focused by interactionSource.collectIsFocusedAsState()
-        val hovered by interactionSource.collectIsHoveredAsState()
 
         val targetValue = when {
-            !enabled -> defaultCursorColor
+            !enabled -> defaultIndicatorColor
             isError -> errorIndicatorColor
             isValid -> validIndicatorColor
-            hovered -> hoveredIndicatorColor
-            focused -> focusedIndicatorColor
+            isFocused -> focusedIndicatorColor
             else -> defaultIndicatorColor
         }
         return if (enabled) {
@@ -301,12 +242,6 @@ class CellColors(
         if (errorContainerColor != other.errorContainerColor) return false
         if (validContainerColor != other.validContainerColor) return false
 
-        //Cursor Colors
-        if (defaultCursorColor != other.defaultCursorColor) return false
-        if (errorCursorColor != other.errorCursorColor) return false
-        if (validCursorColor != other.validCursorColor) return false
-        if (textSelectionColors != other.textSelectionColors) return false
-
         //Indicator Colors
         if (defaultIndicatorColor != other.defaultIndicatorColor) return false
         if (focusedIndicatorColor != other.focusedIndicatorColor) return false
@@ -329,12 +264,6 @@ class CellColors(
         result = 31 * result + focusedContainerColor.hashCode()
         result = 31 * result + errorContainerColor.hashCode()
         result = 31 * result + validContainerColor.hashCode()
-
-        //Cursor Colors
-        result = 31 * result + defaultCursorColor.hashCode()
-        result = 31 * result + validCursorColor.hashCode()
-        result = 31 * result + errorCursorColor.hashCode()
-        result = 31 * result + textSelectionColors.hashCode()
 
         //Indicator Colors
         result = 31 * result + defaultIndicatorColor.hashCode()
