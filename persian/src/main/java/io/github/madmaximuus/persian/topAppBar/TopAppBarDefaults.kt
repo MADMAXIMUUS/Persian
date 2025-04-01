@@ -38,11 +38,11 @@ object TopAppBarDefaults {
      *
      * @param containerColor The background color of the top app bar container.
      * @param scrolledContainerColor The background color of the top app bar container when scrolled.
-     * @param leftIconButtonColors The colors for the icon buttons on the left side of the top app bar.
-     * @param leftAvatarColors The colors for the avatar on the left side of the top app bar.
+     * @param leadingIconButtonColors The colors for the icon buttons on the left side of the top app bar.
+     * @param leadingAvatarColors The colors for the avatar on the left side of the top app bar.
      * @param titleTextColor The color of the title text in the top app bar. Default is the on-surface color from the theme.
-     * @param rightActionButtonColor The colors for the action buttons on the right side of the top app bar.
-     * @param rightIconButtonColors The colors for the icon buttons on the right side of the top app bar.
+     * @param trailingActionButtonColor The colors for the action buttons on the right side of the top app bar.
+     * @param trailingIconButtonColors The colors for the icon buttons on the right side of the top app bar.
      * @param menuColors The colors for the dropdown menu in the top app bar.
      * @param badgeColors The colors for the badges in the top app bar.
      */
@@ -50,29 +50,30 @@ object TopAppBarDefaults {
     fun colors(
         containerColor: Color = PersianTheme.colorScheme.surface,
         scrolledContainerColor: Color = PersianTheme.colorScheme.surfaceContainer,
-        leftIconButtonColors: IconButtonColors = IconButtonDefaults.tertiaryIconButtonColors(
+        leadingIconButtonColors: IconButtonColors = IconButtonDefaults.tertiaryIconButtonColors(
             contentColor = PersianTheme.colorScheme.onSurfaceVariant
         ),
-        leftAvatarColors: AvatarColors = AvatarDefaults.colors(),
+        leadingAvatarColors: AvatarColors = AvatarDefaults.colors(),
         titleTextColor: Color = PersianTheme.colorScheme.onSurface,
-        rightActionButtonColor: Color = PersianTheme.colorScheme.primary,
-        rightIconButtonColors: IconButtonColors = IconButtonDefaults.tertiaryIconButtonColors(
+        counterColors: CounterColors = CounterDefaults.primaryColors(),
+        trailingActionButtonColor: Color = PersianTheme.colorScheme.primary,
+        trailingIconButtonColors: IconButtonColors = IconButtonDefaults.tertiaryIconButtonColors(
             contentColor = PersianTheme.colorScheme.onSurfaceVariant
         ),
         menuColors: MenuColors = MenuDefaults.colors(),
         badgeColors: CounterColors = CounterDefaults.errorColors(),
-    ): TopAppBarColors =
-        TopAppBarColors(
-            containerColor = containerColor,
-            scrolledContainerColor = scrolledContainerColor,
-            leftIconButtonColors = leftIconButtonColors,
-            leftAvatarColors = leftAvatarColors,
-            titleTextColor = titleTextColor,
-            rightActionButtonColor = rightActionButtonColor,
-            rightIconButtonColors = rightIconButtonColors,
-            menuColors = menuColors,
-            badgeColors = badgeColors,
-        )
+    ) = TopAppBarColors(
+        containerColor = containerColor,
+        scrolledContainerColor = scrolledContainerColor,
+        leadingIconButtonColors = leadingIconButtonColors,
+        leadingAvatarColors = leadingAvatarColors,
+        titleTextColor = titleTextColor,
+        counterColors = counterColors,
+        trailingActionButtonColor = trailingActionButtonColor,
+        trailingIconButtonColors = trailingIconButtonColors,
+        menuColors = menuColors,
+        badgeColors = badgeColors,
+    )
 
     /**
      * Creates a [TopAppBarSizes] instance with customizable size properties.
@@ -90,20 +91,21 @@ object TopAppBarDefaults {
         leftIconButtonSizes: IconButtonSizes = IconButtonDefaults.mediumSizes(),
         leftAvatarSizes: AvatarSizes = AvatarDefaults.size36(),
         titleTextStyle: TextStyle = PersianTheme.typography.titleLarge,
+        counterSizes: CounterSizes = CounterDefaults.sizes(),
         rightActionButtonSizes: ButtonSizes = ButtonDefaults.mediumSizes(),
         rightIconButtonSizes: IconButtonSizes = IconButtonDefaults.mediumSizes(),
         menuSizes: MenuSizes = MenuDefaults.sizes(),
         badgeSizes: CounterSizes = CounterDefaults.sizes(),
-    ): TopAppBarSizes =
-        TopAppBarSizes(
-            leftIconButtonSizes = leftIconButtonSizes,
-            leftAvatarSizes = leftAvatarSizes,
-            titleTextStyle = titleTextStyle,
-            rightActionButtonSizes = rightActionButtonSizes,
-            rightIconButtonSizes = rightIconButtonSizes,
-            menuSizes = menuSizes,
-            badgeSizes = badgeSizes,
-        )
+    ) = TopAppBarSizes(
+        leftIconButtonSizes = leftIconButtonSizes,
+        leftAvatarSizes = leftAvatarSizes,
+        titleTextStyle = titleTextStyle,
+        counterSizes = counterSizes,
+        rightActionButtonSizes = rightActionButtonSizes,
+        rightIconButtonSizes = rightIconButtonSizes,
+        menuSizes = menuSizes,
+        badgeSizes = badgeSizes,
+    )
 
     /** Default insets to be used and consumed by the top app bars */
     val windowInsets: WindowInsets
@@ -195,11 +197,11 @@ object TopAppBarDefaults {
  *
  * @property containerColor The background color of the top app bar container.
  * @property scrolledContainerColor The background color of the top app bar container when scrolled.
- * @property leftIconButtonColors The colors for the icon buttons on the left side of the top app bar.
- * @property leftAvatarColors The colors for the avatar on the left side of the top app bar.
+ * @property leadingIconButtonColors The colors for the icon buttons on the left side of the top app bar.
+ * @property leadingAvatarColors The colors for the avatar on the left side of the top app bar.
  * @property titleTextColor The color of the title text in the top app bar.
- * @property rightActionButtonColor The colors for the action buttons on the right side of the top app bar.
- * @property rightIconButtonColors The colors for the icon buttons on the right side of the top app bar.
+ * @property trailingActionButtonColor The colors for the action buttons on the right side of the top app bar.
+ * @property trailingIconButtonColors The colors for the icon buttons on the right side of the top app bar.
  * @property menuColors The colors for the dropdown menu in the top app bar.
  * @property badgeColors The colors for the badges in the top app bar.
  * @constructor create an instance with arbitrary colors, see [TopAppBarColors] for a factory method
@@ -209,11 +211,12 @@ object TopAppBarDefaults {
 class TopAppBarColors internal constructor(
     internal val containerColor: Color,
     internal val scrolledContainerColor: Color,
-    internal val leftIconButtonColors: IconButtonColors,
-    internal val leftAvatarColors: AvatarColors,
+    internal val leadingIconButtonColors: IconButtonColors,
+    internal val leadingAvatarColors: AvatarColors,
     internal val titleTextColor: Color,
-    internal val rightActionButtonColor: Color,
-    internal val rightIconButtonColors: IconButtonColors,
+    internal val counterColors: CounterColors,
+    internal val trailingActionButtonColor: Color,
+    internal val trailingIconButtonColors: IconButtonColors,
     internal val menuColors: MenuColors,
     internal val badgeColors: CounterColors
 ) {
@@ -224,25 +227,26 @@ class TopAppBarColors internal constructor(
     fun copy(
         containerColor: Color = this.containerColor,
         scrolledContainerColor: Color = this.scrolledContainerColor,
-        leftIconButtonColors: IconButtonColors = this.leftIconButtonColors,
-        leftAvatarColors: AvatarColors = this.leftAvatarColors,
+        leadingIconButtonColors: IconButtonColors = this.leadingIconButtonColors,
+        leadingAvatarColors: AvatarColors = this.leadingAvatarColors,
         titleTextColor: Color = this.titleTextColor,
-        rightActionButtonColor: Color = this.rightActionButtonColor,
-        rightIconButtonColors: IconButtonColors = this.rightIconButtonColors,
+        counterColors: CounterColors = this.counterColors,
+        trailingActionButtonColor: Color = this.trailingActionButtonColor,
+        trailingIconButtonColors: IconButtonColors = this.trailingIconButtonColors,
         menuColors: MenuColors = this.menuColors,
         badgeColors: CounterColors = this.badgeColors,
-    ): TopAppBarColors =
-        TopAppBarColors(
-            containerColor = containerColor,
-            scrolledContainerColor = scrolledContainerColor,
-            leftIconButtonColors = leftIconButtonColors,
-            leftAvatarColors = leftAvatarColors,
-            titleTextColor = titleTextColor,
-            rightActionButtonColor = rightActionButtonColor,
-            rightIconButtonColors = rightIconButtonColors,
-            menuColors = menuColors,
-            badgeColors = badgeColors
-        )
+    ) = TopAppBarColors(
+        containerColor = containerColor,
+        scrolledContainerColor = scrolledContainerColor,
+        leadingIconButtonColors = leadingIconButtonColors,
+        leadingAvatarColors = leadingAvatarColors,
+        titleTextColor = titleTextColor,
+        counterColors = counterColors,
+        trailingActionButtonColor = trailingActionButtonColor,
+        trailingIconButtonColors = trailingIconButtonColors,
+        menuColors = menuColors,
+        badgeColors = badgeColors
+    )
 
     /**
      * Represents the container color used for the top app bar.
@@ -269,11 +273,12 @@ class TopAppBarColors internal constructor(
 
         if (containerColor != other.containerColor) return false
         if (scrolledContainerColor != other.scrolledContainerColor) return false
-        if (leftIconButtonColors != other.leftIconButtonColors) return false
-        if (leftAvatarColors != other.leftAvatarColors) return false
+        if (leadingIconButtonColors != other.leadingIconButtonColors) return false
+        if (leadingAvatarColors != other.leadingAvatarColors) return false
         if (titleTextColor != other.titleTextColor) return false
-        if (rightActionButtonColor != other.rightActionButtonColor) return false
-        if (rightIconButtonColors != other.rightIconButtonColors) return false
+        if (counterColors != other.counterColors) return false
+        if (trailingActionButtonColor != other.trailingActionButtonColor) return false
+        if (trailingIconButtonColors != other.trailingIconButtonColors) return false
         if (menuColors != other.menuColors) return false
         if (badgeColors != other.badgeColors) return false
 
@@ -283,11 +288,12 @@ class TopAppBarColors internal constructor(
     override fun hashCode(): Int {
         var result = containerColor.hashCode()
         result = 31 * result + scrolledContainerColor.hashCode()
-        result = 31 * result + leftIconButtonColors.hashCode()
-        result = 31 * result + leftAvatarColors.hashCode()
+        result = 31 * result + leadingIconButtonColors.hashCode()
+        result = 31 * result + leadingAvatarColors.hashCode()
         result = 31 * result + titleTextColor.hashCode()
-        result = 31 * result + rightActionButtonColor.hashCode()
-        result = 31 * result + rightIconButtonColors.hashCode()
+        result = 31 * result + counterColors.hashCode()
+        result = 31 * result + trailingActionButtonColor.hashCode()
+        result = 31 * result + trailingIconButtonColors.hashCode()
         result = 31 * result + menuColors.hashCode()
         result = 31 * result + badgeColors.hashCode()
 
@@ -315,6 +321,7 @@ class TopAppBarSizes internal constructor(
     internal val leftIconButtonSizes: IconButtonSizes,
     internal val leftAvatarSizes: AvatarSizes,
     internal val titleTextStyle: TextStyle,
+    internal val counterSizes: CounterSizes,
     internal val rightActionButtonSizes: ButtonSizes,
     internal val rightIconButtonSizes: IconButtonSizes,
     internal val menuSizes: MenuSizes,
@@ -327,20 +334,21 @@ class TopAppBarSizes internal constructor(
         leftIconButtonSizes: IconButtonSizes = this.leftIconButtonSizes,
         leftAvatarSizes: AvatarSizes = this.leftAvatarSizes,
         titleTextStyle: TextStyle = this.titleTextStyle,
+        counterSizes: CounterSizes = this.counterSizes,
         rightActionButtonSizes: ButtonSizes = this.rightActionButtonSizes,
         rightIconButtonSizes: IconButtonSizes = this.rightIconButtonSizes,
         menuSizes: MenuSizes = this.menuSizes,
         badgeSizes: CounterSizes = this.badgeSizes,
-    ): TopAppBarSizes =
-        TopAppBarSizes(
-            leftIconButtonSizes = leftIconButtonSizes,
-            leftAvatarSizes = leftAvatarSizes,
-            titleTextStyle = titleTextStyle,
-            rightActionButtonSizes = rightActionButtonSizes,
-            rightIconButtonSizes = rightIconButtonSizes,
-            menuSizes = menuSizes,
-            badgeSizes = badgeSizes
-        )
+    ) = TopAppBarSizes(
+        leftIconButtonSizes = leftIconButtonSizes,
+        leftAvatarSizes = leftAvatarSizes,
+        titleTextStyle = titleTextStyle,
+        counterSizes = counterSizes,
+        rightActionButtonSizes = rightActionButtonSizes,
+        rightIconButtonSizes = rightIconButtonSizes,
+        menuSizes = menuSizes,
+        badgeSizes = badgeSizes
+    )
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -349,6 +357,7 @@ class TopAppBarSizes internal constructor(
         if (leftIconButtonSizes != other.leftIconButtonSizes) return false
         if (leftAvatarSizes != other.leftAvatarSizes) return false
         if (titleTextStyle != other.titleTextStyle) return false
+        if (counterSizes != other.counterSizes) return false
         if (rightActionButtonSizes != other.rightActionButtonSizes) return false
         if (rightIconButtonSizes != other.rightIconButtonSizes) return false
         if (menuSizes != other.menuSizes) return false
@@ -361,6 +370,7 @@ class TopAppBarSizes internal constructor(
         var result = leftIconButtonSizes.hashCode()
         result = 31 * result + leftAvatarSizes.hashCode()
         result = 31 * result + titleTextStyle.hashCode()
+        result = 31 * result + counterSizes.hashCode()
         result = 31 * result + rightActionButtonSizes.hashCode()
         result = 31 * result + rightIconButtonSizes.hashCode()
         result = 31 * result + menuSizes.hashCode()

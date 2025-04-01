@@ -3,7 +3,8 @@ package io.github.madmaximuus.persian.topAppBar
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
@@ -13,6 +14,7 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.layout.Layout
@@ -23,6 +25,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.isFinite
 import androidx.compose.ui.unit.isSpecified
+import io.github.madmaximuus.persian.counter.Counter
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.surface.Surface
 import io.github.madmaximuus.persian.text.Text
@@ -38,8 +41,9 @@ import kotlin.math.roundToInt
 internal fun TopAppBarImpl(
     modifier: Modifier = Modifier,
     title: String,
-    left: (@Composable TopAppBarLeftScope.() -> Unit)?,
-    right: (@Composable TopAppBarRightScope.() -> Unit)?,
+    counterValue: Int,
+    leading: (@Composable TopAppBarLeadingScope.() -> Unit)?,
+    trailing: (@Composable TopAppBarTrailingScope.() -> Unit)?,
     expandedHeight: Dp,
     windowInsets: WindowInsets,
     colors: TopAppBarColors,
@@ -69,13 +73,13 @@ internal fun TopAppBarImpl(
             if (overlappingFraction > 0.01f) 1f else 0f
         }
     }
-    val appBarContainerColor by animateColorAsState(
+    val topAppBarContainerColor by animateColorAsState(
         targetValue = colors.containerColor(colorTransitionFraction),
         animationSpec = spring(stiffness = Spring.StiffnessMediumLow),
-        label = "Top App Bar Container Animation"
+        label = "Top app bar container animation"
     )
 
-    Surface(modifier = modifier, color = appBarContainerColor) {
+    Surface(modifier = modifier, color = topAppBarContainerColor) {
         TopAppBarLayout(
             modifier = Modifier
                 .windowInsetsPadding(windowInsets)
@@ -87,10 +91,11 @@ internal fun TopAppBarImpl(
                 .heightIn(max = expandedHeight),
             scrolledOffset = { scrollBehavior?.state?.heightOffset ?: 0f },
             title = title,
+            counterValue = counterValue,
             colors = colors,
             sizes = sizes,
-            left = left,
-            right = right
+            leading = leading,
+            trailing = trailing
         )
     }
 }
@@ -107,39 +112,51 @@ internal fun TopAppBarImpl(
  * @param title the top app bar title (header)
  * @param colors the [TopAppBarColors] that used by [TopAppBar] or [TopAppBar]
  * @param sizes the [TopAppBarSizes] that used by [TopAppBar] or [TopAppBar]
- * @param left the optional content that will be displayed in left side of [TopAppBar] or [TopAppBar]
- * @param right the optional content that will be displayed in right side of [TopAppBar] or [TopAppBar]
+ * @param leading the optional content that will be displayed in left side of [TopAppBar] or [TopAppBar]
+ * @param trailing the optional content that will be displayed in right side of [TopAppBar] or [TopAppBar]
  */
 @Composable
 private fun TopAppBarLayout(
     modifier: Modifier,
     title: String,
+    counterValue: Int,
     scrolledOffset: ScrolledOffset,
     colors: TopAppBarColors,
     sizes: TopAppBarSizes,
-    left: (@Composable TopAppBarLeftScope.() -> Unit)?,
-    right: (@Composable TopAppBarRightScope.() -> Unit)?,
+    leading: (@Composable TopAppBarLeadingScope.() -> Unit)?,
+    trailing: (@Composable TopAppBarTrailingScope.() -> Unit)?,
 ) {
     val leftScope = remember(colors, sizes) {
-        TopAppBarLeftScopeWrapper(colors, sizes)
+        TopAppBarLeadingScopeWrapper(colors, sizes)
     }
     val rightScope = remember(colors, sizes) {
-        TopAppBarRightScopeWrapper(colors, sizes)
+        TopAppBarTrailingScopeWrapper(colors, sizes)
     }
     val padding = with(LocalDensity.current) { 8.dp.roundToPx() }
     Layout(
         content = {
-            left?.let { leftScope.it() }
-            Box(
-                modifier = Modifier.layoutId(LayoutId.TITLE)
+            leading?.let { leftScope.it() }
+            Row(
+                modifier = Modifier.layoutId(LayoutId.TITLE),
+                horizontalArrangement = Arrangement.spacedBy(
+                    PersianTheme.spacing.size4,
+                    Alignment.CenterHorizontally
+                )
             ) {
                 Text(
                     text = title,
                     style = sizes.titleTextStyle,
                     color = colors.titleTextColor
                 )
+                if (counterValue > 0) {
+                    Counter(
+                        count = counterValue,
+                        sizes = sizes.counterSizes,
+                        colors = colors.counterColors
+                    )
+                }
             }
-            right?.let { rightScope.it() }
+            trailing?.let { rightScope.it() }
         },
         modifier = modifier
     ) { measurables, constraints ->
@@ -231,7 +248,7 @@ private fun TopAppBarLayout(
             val isCentered = rightActionWidth != 0
                     || rightIconsWidth != rightIconWidth * 3
                     && rightIconsWidth + rightOverflowWidth != rightIconWidth * 3
-                    || right == null
+                    || trailing == null
 
             // Title
             titlePlaceable.placeRelative(
