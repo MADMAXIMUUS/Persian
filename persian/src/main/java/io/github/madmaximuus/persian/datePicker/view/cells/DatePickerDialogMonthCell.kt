@@ -54,7 +54,7 @@ internal fun DatePickerDialogMonthCell(
     Column(
         modifier = modifier
             .background(
-                color = colors.containerColor(selected = selected).value,
+                color = colors.containerColor(selected = selected),
                 shape = PersianTheme.shapes.shape12
             )
             .clip(PersianTheme.shapes.shape12)
@@ -72,7 +72,7 @@ internal fun DatePickerDialogMonthCell(
         Text(
             text = month,
             style = PersianTheme.typography.labelMedium,
-            color = colors.contentColor(selected = selected, enabled = enabled).value
+            color = colors.contentColor(selected = selected, enabled = enabled)
         )
         Box(
             modifier = Modifier
@@ -80,7 +80,7 @@ internal fun DatePickerDialogMonthCell(
                 .width(sizeDp * 0.6f)
                 .height(2.dp)
                 .background(
-                    color = colors.indicatorColor(selected = selected, currentMonth).value,
+                    color = colors.indicatorColor(selected = selected, currentMonth),
                     shape = PersianTheme.shapes.shape4
                 )
         )

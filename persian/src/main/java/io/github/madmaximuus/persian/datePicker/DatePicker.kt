@@ -24,6 +24,7 @@ import io.github.madmaximuus.persian.datePicker.view.util.DatePickerSelection
 @Composable
 fun DatePicker(
     selection: DatePickerSelection,
+    title: String = stringResource(R.string.select_date),
     config: DatePickerConfig = DatePickerConfig(),
     colors: DatePickerColors = PersianDatePickerDefaults.colors(),
     onDismissRequest: () -> Unit,
@@ -34,8 +35,8 @@ fun DatePicker(
     )
 
     Alert(
-        title = stringResource(id = R.string.select_date),
-        onDismiss = onDismissRequest,
+        title = title,
+        onDismissRequest = onDismissRequest,
         colors = colors.alertColors,
         confirmAction = {
             Action(

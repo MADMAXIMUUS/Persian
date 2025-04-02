@@ -52,7 +52,7 @@ internal fun DatePickerDialogYearCell(
     Column(
         modifier = modifier
             .background(
-                color = colors.containerColor(selected = selected).value,
+                color = colors.containerColor(selected = selected),
                 shape = PersianTheme.shapes.shape12
             )
             .clip(PersianTheme.shapes.shape12)
@@ -70,7 +70,7 @@ internal fun DatePickerDialogYearCell(
         Text(
             text = year,
             style = PersianTheme.typography.labelLarge,
-            color = colors.contentColor(selected = selected).value
+            color = colors.contentColor(selected = selected)
         )
         Box(
             modifier = Modifier
@@ -78,7 +78,7 @@ internal fun DatePickerDialogYearCell(
                 .width(sizeDp * 0.6f)
                 .height(2.dp)
                 .background(
-                    color = colors.indicatorColor(selected = selected, currentYear).value,
+                    color = colors.indicatorColor(selected = selected, currentYear),
                     shape = PersianTheme.shapes.shape4
                 )
         )

@@ -23,7 +23,7 @@ object PersianDatePickerDefaults {
     fun colors(
         datePickerViewColors: DatePickerViewColors = PersianDatePickerViewDefaults.colors(),
         alertColors: AlertColors = AlertsDefaults.colors()
-    ): DatePickerColors = DatePickerColors(
+    ) = DatePickerColors(
         datePickerViewColors = datePickerViewColors,
         alertColors = alertColors
     )

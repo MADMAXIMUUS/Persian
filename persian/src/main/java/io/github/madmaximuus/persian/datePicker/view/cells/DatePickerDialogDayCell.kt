@@ -89,12 +89,12 @@ internal fun DatePickerDialogDayCell(
     val sizeDp = with(LocalDensity.current) { todayIndicatorSize.width.toDp() }
 
     val baseModifier = sizeModifier
-        .aspectRatio(1.1f, true)
+        .aspectRatio(0.9f, true)
         .background(
             color = colors.containerColor(
                 selected = dateData.selected || dateData.selectedStart || dateData.selectedEnd,
                 between = dateData.selectedBetween
-            ).value, shape = shape
+            ), shape = shape
         )
         .clip(shape)
         .clickable(enabled = !dateData.otherMonth && !dateData.disabledPassively) {
@@ -118,7 +118,7 @@ internal fun DatePickerDialogDayCell(
                 selected = dateData.selected || dateData.selectedStart || dateData.selectedEnd,
                 between = dateData.selectedBetween,
                 enabled = !dateData.disabledPassively
-            ).value
+            )
         )
         Box(
             modifier = Modifier
@@ -131,7 +131,7 @@ internal fun DatePickerDialogDayCell(
                         selected = dateData.selected || dateData.selectedStart || dateData.selectedEnd,
                         between = dateData.selectedBetween,
                         today = today
-                    ).value,
+                    ),
                     shape = PersianTheme.shapes.shape4
                 )
         )

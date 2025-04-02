@@ -69,8 +69,8 @@ internal fun DatePickerView(
 
     val cameraDate = state.pages[state.currentPosition].calendar
     val baseModifier = modifier
-        .widthIn(max = 480.dp)
-        .heightIn(max = 400.dp)
+        .widthIn(max = 340.dp)
+        .heightIn(max = 440.dp)
         .fillMaxWidth()
         .wrapContentHeight()
         .animateContentSize()

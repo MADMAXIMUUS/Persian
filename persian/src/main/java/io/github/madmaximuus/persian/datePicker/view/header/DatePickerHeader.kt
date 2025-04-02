@@ -23,12 +23,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.window.core.layout.WindowHeightSizeClass
+import io.github.madmaximuus.persian.button.Button
 import io.github.madmaximuus.persian.button.ButtonDefaults
-import io.github.madmaximuus.persian.button.TertiaryButton
 import io.github.madmaximuus.persian.datePicker.view.DatePickerHeaderColors
 import io.github.madmaximuus.persian.datePicker.view.util.DatePickerDisplayMode
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.iconButton.PrimaryIconButton
+import io.github.madmaximuus.persian.iconButton.IconButton
 import io.github.madmaximuus.persian.text.Text
 import io.github.madmaximuus.persianSymbols.chevronDown.ChevronDown
 import io.github.madmaximuus.persianSymbols.chevronLeft.ChevronLeft
@@ -185,7 +185,7 @@ internal fun DatePickerViewPortraitHeader(
             enter = enterTransition,
             exit = exitTransition
         ) {
-            PrimaryIconButton(
+            IconButton(
                 icon = rememberVectorPainter(image = PersianSymbols.Default.ChevronLeft),
                 colors = colors.prevButtonColor,
                 enabled = !navigationDisabled && !isPrevDisabled,
@@ -194,7 +194,7 @@ internal fun DatePickerViewPortraitHeader(
         }
         if (selectable) {
             Row {
-                TertiaryButton(
+                Button(
                     text = month,
                     trailingIcon = if (monthIconDown) rememberVectorPainter(image = PersianSymbols.Default.ChevronDown)
                     else rememberVectorPainter(image = PersianSymbols.Default.ChevronUp),
@@ -202,7 +202,7 @@ internal fun DatePickerViewPortraitHeader(
                     sizes = ButtonDefaults.mediumSizes(),
                     onClick = onMonthClick
                 )
-                TertiaryButton(
+                Button(
                     text = year,
                     trailingIcon = if (yearIconDown) rememberVectorPainter(image = PersianSymbols.Default.ChevronDown)
                     else rememberVectorPainter(image = PersianSymbols.Default.ChevronUp),
@@ -234,7 +234,7 @@ internal fun DatePickerViewPortraitHeader(
             enter = enterTransition,
             exit = exitTransition
         ) {
-            PrimaryIconButton(
+            IconButton(
                 icon = rememberVectorPainter(image = PersianSymbols.Default.ChevronRight),
                 colors = colors.nextButtonColor,
                 enabled = !navigationDisabled && !isNextDisabled,
@@ -322,7 +322,7 @@ internal fun DatePickerViewLandscapeHeader(
                 verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size4),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                TertiaryButton(
+                Button(
                     text = month,
                     trailingIcon = if (monthIconDown) rememberVectorPainter(image = PersianSymbols.Default.ChevronDown)
                     else rememberVectorPainter(image = PersianSymbols.Default.ChevronUp),
@@ -330,7 +330,7 @@ internal fun DatePickerViewLandscapeHeader(
                     sizes = ButtonDefaults.mediumSizes(),
                     onClick = onMonthClick
                 )
-                TertiaryButton(
+                Button(
                     text = year,
                     trailingIcon = if (yearIconDown) rememberVectorPainter(image = PersianSymbols.Default.ChevronDown)
                     else rememberVectorPainter(image = PersianSymbols.Default.ChevronUp),
@@ -364,7 +364,7 @@ internal fun DatePickerViewLandscapeHeader(
                 enter = enterTransition,
                 exit = exitTransition
             ) {
-                PrimaryIconButton(
+                IconButton(
                     icon = rememberVectorPainter(image = PersianSymbols.Default.ChevronLeft),
                     colors = colors.prevButtonColor,
                     enabled = !navigationDisabled && !isPrevDisabled,
@@ -376,7 +376,7 @@ internal fun DatePickerViewLandscapeHeader(
                 enter = enterTransition,
                 exit = exitTransition
             ) {
-                PrimaryIconButton(
+                IconButton(
                     icon = rememberVectorPainter(image = PersianSymbols.Default.ChevronRight),
                     colors = colors.nextButtonColor,
                     enabled = !navigationDisabled && !isNextDisabled,

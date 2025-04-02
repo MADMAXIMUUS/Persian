@@ -205,17 +205,17 @@ internal fun calcCalendarDateData(
     var selectedEnd = false
     var selectedBetween = false
     val selected = when (selection) {
-        is DatePickerSelection.Date -> selectedDate?.equal(date) ?: false
+        is DatePickerSelection.Date -> selectedDate?.equal(date) == true
         is DatePickerSelection.Dates -> {
-            selectedDates?.contain(date) ?: false
+            selectedDates?.contain(date) == true
         }
 
         is DatePickerSelection.Period -> {
             val selectedStart = selectedRange.first.equal(date)
             selectedStartInit = selectedStart && selectedRange.second != null
             selectedEnd = selectedRange.second.equal(date)
-            selectedBetween = (selectedRange.first?.let { date.isAfter(it) } ?: false)
-                    && selectedRange.second?.let { date.isBefore(it) } ?: false
+            selectedBetween = (selectedRange.first?.let { date.isAfter(it) } == true)
+                    && selectedRange.second?.let { date.isBefore(it) } == true
             selectedBetween || selectedStart || selectedEnd
         }
     }

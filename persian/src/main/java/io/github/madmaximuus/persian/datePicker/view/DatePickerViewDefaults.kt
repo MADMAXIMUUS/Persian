@@ -2,8 +2,6 @@ package io.github.madmaximuus.persian.datePicker.view
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
-import androidx.compose.runtime.State
-import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.graphics.Color
 import io.github.madmaximuus.persian.button.ButtonColors
 import io.github.madmaximuus.persian.button.ButtonDefaults
@@ -33,11 +31,10 @@ object PersianDatePickerViewDefaults {
     fun colors(
         headerColors: DatePickerHeaderColors = headerColors(),
         datePickerGridColors: DatePickerGridColors = gridColors(),
-    ): DatePickerViewColors =
-        DatePickerViewColors(
-            headerColors = headerColors,
-            datePickerGridColors = datePickerGridColors,
-        )
+    ) = DatePickerViewColors(
+        headerColors = headerColors,
+        datePickerGridColors = datePickerGridColors,
+    )
 
     /**
      * Create a [DatePickerHeaderColors] that represents the default content used in a [DatePickerDialogHeader].
@@ -57,15 +54,14 @@ object PersianDatePickerViewDefaults {
         yearLabelColor: Color = PersianTheme.colorScheme.primary,
         selectedMonthColor: ButtonColors = ButtonDefaults.tertiaryColors(),
         selectedYearColor: ButtonColors = ButtonDefaults.tertiaryColors(),
-    ): DatePickerHeaderColors =
-        DatePickerHeaderColors(
-            prevButtonColor = prevButtonColor,
-            nextButtonColor = nextButtonColor,
-            monthLabelColor = monthLabelColor,
-            yearLabelColor = yearLabelColor,
-            selectedMonthColor = selectedMonthColor,
-            selectedYearColor = selectedYearColor,
-        )
+    ) = DatePickerHeaderColors(
+        prevButtonColor = prevButtonColor,
+        nextButtonColor = nextButtonColor,
+        monthLabelColor = monthLabelColor,
+        yearLabelColor = yearLabelColor,
+        selectedMonthColor = selectedMonthColor,
+        selectedYearColor = selectedYearColor,
+    )
 
     /**
      * Create a [DatePickerGridColors] that represents the default content used in all calendar cells.
@@ -97,10 +93,9 @@ object PersianDatePickerViewDefaults {
     @Composable
     fun dayOfWeekLabelColors(
         dayOfWeekLabelColor: Color = PersianTheme.colorScheme.onSurfaceVariant
-    ): DatePickerDayOfWeekCellColors =
-        DatePickerDayOfWeekCellColors(
-            dayOfWeekLabelColor = dayOfWeekLabelColor
-        )
+    ) = DatePickerDayOfWeekCellColors(
+        dayOfWeekLabelColor = dayOfWeekLabelColor
+    )
 
     /**
      * Create a [DatePickerDayCellColors] that represents the default content used in [DatePickerDialogDayCell].
@@ -130,21 +125,20 @@ object PersianDatePickerViewDefaults {
         containerColor: Color = Color.Transparent,
         betweenSelectionContainerColor: Color = PersianTheme.colorScheme.primaryContainer,
         selectedContainerColor: Color = PersianTheme.colorScheme.primary,
-    ): DatePickerDayCellColors =
-        DatePickerDayCellColors(
-            cellTextColor = cellTextColor,
-            cellTextDisabledColor = cellTextDisabledColor,
-            cellTextBetweenSelectionColor = cellTextBetweenSelectionColor,
-            cellTextSelectedColor = cellTextSelectedColor,
+    ) = DatePickerDayCellColors(
+        cellTextColor = cellTextColor,
+        cellTextDisabledColor = cellTextDisabledColor,
+        cellTextBetweenSelectionColor = cellTextBetweenSelectionColor,
+        cellTextSelectedColor = cellTextSelectedColor,
 
-            currentDateIndicator = currentDateIndicator,
-            currentDateBetweenSelectionIndicatorColor = currentDateBetweenSelectionIndicatorColor,
-            currentDateIndicatorSelectedColor = currentDateIndicatorSelectedColor,
+        currentDateIndicator = currentDateIndicator,
+        currentDateBetweenSelectionIndicatorColor = currentDateBetweenSelectionIndicatorColor,
+        currentDateIndicatorSelectedColor = currentDateIndicatorSelectedColor,
 
-            containerColor = containerColor,
-            betweenSelectionContainerColor = betweenSelectionContainerColor,
-            selectedContainerColor = selectedContainerColor,
-        )
+        containerColor = containerColor,
+        betweenSelectionContainerColor = betweenSelectionContainerColor,
+        selectedContainerColor = selectedContainerColor,
+    )
 
     /**
      * Create a [DatePickerMonthCellColors] that represents the default content used in [DatePickerDialogMonthCell].
@@ -168,18 +162,17 @@ object PersianDatePickerViewDefaults {
 
         backgroundColor: Color = Color.Transparent,
         selectedBackgroundColor: Color = PersianTheme.colorScheme.primary,
-    ): DatePickerMonthCellColors =
-        DatePickerMonthCellColors(
-            cellTextColor = cellTextColor,
-            cellTextDisabledColor = cellTextDisabledColor,
-            cellTextSelectedColor = cellTextSelectedColor,
+    ) = DatePickerMonthCellColors(
+        cellTextColor = cellTextColor,
+        cellTextDisabledColor = cellTextDisabledColor,
+        cellTextSelectedColor = cellTextSelectedColor,
 
-            currentDateIndicator = currentDateIndicator,
-            currentDateIndicatorSelectedColor = currentDateIndicatorSelectedColor,
+        currentDateIndicator = currentDateIndicator,
+        currentDateIndicatorSelectedColor = currentDateIndicatorSelectedColor,
 
-            containerColor = backgroundColor,
-            selectedContainerColor = selectedBackgroundColor,
-        )
+        containerColor = backgroundColor,
+        selectedContainerColor = selectedBackgroundColor,
+    )
 
     /**
      * Create a [DatePickerYearCellColors] that represents the default content used in [DatePickerDialogYearCell].
@@ -201,17 +194,16 @@ object PersianDatePickerViewDefaults {
 
         containerColor: Color = Color.Transparent,
         selectedContainerColor: Color = PersianTheme.colorScheme.primary,
-    ): DatePickerYearCellColors =
-        DatePickerYearCellColors(
-            cellTextColor = cellTextColor,
-            cellTextSelectedColor = cellTextSelectedColor,
+    ) = DatePickerYearCellColors(
+        cellTextColor = cellTextColor,
+        cellTextSelectedColor = cellTextSelectedColor,
 
-            currentDateIndicator = currentDateIndicator,
-            currentDateIndicatorSelectedColor = currentDateIndicatorSelectedColor,
+        currentDateIndicator = currentDateIndicator,
+        currentDateIndicatorSelectedColor = currentDateIndicatorSelectedColor,
 
-            containerColor = containerColor,
-            selectedContainerColor = selectedContainerColor,
-        )
+        containerColor = containerColor,
+        selectedContainerColor = selectedContainerColor,
+    )
 }
 
 /**
@@ -315,16 +307,12 @@ class DatePickerDayCellColors internal constructor(
         selected: Boolean,
         between: Boolean,
         enabled: Boolean
-    ): State<Color> {
-        val targetValue = when {
-            selected && !between -> cellTextSelectedColor
-            between -> cellTextBetweenSelectionColor
-            !enabled -> cellTextDisabledColor
+    ) = when {
+        selected && !between -> cellTextSelectedColor
+        between -> cellTextBetweenSelectionColor
+        !enabled -> cellTextDisabledColor
 
-            else -> cellTextColor
-        }
-
-        return rememberUpdatedState(targetValue)
+        else -> cellTextColor
     }
 
     /**
@@ -337,14 +325,10 @@ class DatePickerDayCellColors internal constructor(
     internal fun containerColor(
         selected: Boolean,
         between: Boolean,
-    ): State<Color> {
-        val targetValue = when {
-            selected && !between -> selectedContainerColor
-            between -> betweenSelectionContainerColor
-            else -> containerColor
-        }
-
-        return rememberUpdatedState(targetValue)
+    ) = when {
+        selected && !between -> selectedContainerColor
+        between -> betweenSelectionContainerColor
+        else -> containerColor
     }
 
     /**
@@ -359,15 +343,11 @@ class DatePickerDayCellColors internal constructor(
         selected: Boolean,
         between: Boolean,
         today: Boolean
-    ): State<Color> {
-        val targetValue = when {
-            between && today -> currentDateBetweenSelectionIndicatorColor
-            selected && today -> currentDateIndicatorSelectedColor
-            today -> currentDateIndicator
-            else -> Color.Transparent
-        }
-
-        return rememberUpdatedState(targetValue)
+    ) = when {
+        between && today -> currentDateBetweenSelectionIndicatorColor
+        selected && today -> currentDateIndicatorSelectedColor
+        today -> currentDateIndicator
+        else -> Color.Transparent
     }
 
     override fun equals(other: Any?): Boolean {
@@ -433,15 +413,11 @@ class DatePickerMonthCellColors internal constructor(
     internal fun contentColor(
         selected: Boolean,
         enabled: Boolean
-    ): State<Color> {
-        val targetValue = when {
-            selected -> cellTextSelectedColor
-            !enabled -> cellTextDisabledColor
+    ) = when {
+        selected -> cellTextSelectedColor
+        !enabled -> cellTextDisabledColor
 
-            else -> cellTextColor
-        }
-
-        return rememberUpdatedState(targetValue)
+        else -> cellTextColor
     }
 
     /**
@@ -452,13 +428,9 @@ class DatePickerMonthCellColors internal constructor(
     @Composable
     internal fun containerColor(
         selected: Boolean,
-    ): State<Color> {
-        val targetValue = when {
-            selected -> selectedContainerColor
-            else -> containerColor
-        }
-
-        return rememberUpdatedState(targetValue)
+    ) = when {
+        selected -> selectedContainerColor
+        else -> containerColor
     }
 
     /**
@@ -471,15 +443,11 @@ class DatePickerMonthCellColors internal constructor(
     internal fun indicatorColor(
         selected: Boolean,
         currentMonth: Boolean
-    ): State<Color> {
-        val targetValue = when {
-            selected && !currentMonth -> Color.Transparent
-            selected -> currentDateIndicatorSelectedColor
-            currentMonth -> currentDateIndicator
-            else -> Color.Transparent
-        }
-
-        return rememberUpdatedState(targetValue)
+    ) = when {
+        selected && !currentMonth -> Color.Transparent
+        selected -> currentDateIndicatorSelectedColor
+        currentMonth -> currentDateIndicator
+        else -> Color.Transparent
     }
 
     override fun equals(other: Any?): Boolean {
@@ -535,14 +503,10 @@ class DatePickerYearCellColors internal constructor(
     @Composable
     internal fun contentColor(
         selected: Boolean,
-    ): State<Color> {
-        val targetValue = when {
-            selected -> cellTextSelectedColor
+    ) = when {
+        selected -> cellTextSelectedColor
 
-            else -> cellTextColor
-        }
-
-        return rememberUpdatedState(targetValue)
+        else -> cellTextColor
     }
 
     /**
@@ -553,13 +517,9 @@ class DatePickerYearCellColors internal constructor(
     @Composable
     internal fun containerColor(
         selected: Boolean,
-    ): State<Color> {
-        val targetValue = when {
-            selected -> selectedContainerColor
-            else -> containerColor
-        }
-
-        return rememberUpdatedState(targetValue)
+    ) = when {
+        selected -> selectedContainerColor
+        else -> containerColor
     }
 
     /**
@@ -572,15 +532,11 @@ class DatePickerYearCellColors internal constructor(
     internal fun indicatorColor(
         selected: Boolean,
         currentYear: Boolean
-    ): State<Color> {
-        val targetValue = when {
-            selected && !currentYear -> Color.Transparent
-            selected -> currentDateIndicatorSelectedColor
-            currentYear -> currentDateIndicator
-            else -> Color.Transparent
-        }
-
-        return rememberUpdatedState(targetValue)
+    ) = when {
+        selected && !currentYear -> Color.Transparent
+        selected -> currentDateIndicatorSelectedColor
+        currentYear -> currentDateIndicator
+        else -> Color.Transparent
     }
 
     override fun equals(other: Any?): Boolean {

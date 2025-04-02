@@ -86,7 +86,7 @@ internal class DatePickerState(
     /**
      * Indicates if the range selection is starting.
      */
-    var isRangeSelectionStart by mutableStateOf(stateData?.rangeSelectionStart ?: true)
+    var isRangeSelectionStart by mutableStateOf(stateData?.rangeSelectionStart == true)
 
     /**
      * The range of years.
@@ -273,11 +273,11 @@ internal class DatePickerState(
 
             is DatePickerSelection.Period -> {
                 val beforeStart =
-                    range.startValue?.let { newDate.before(it) } ?: false
+                    range.startValue?.let { newDate.before(it) } == true
                 val containsDisabledDate = range.endValue?.let { startDate ->
                     config.boundary.start.isAfter(startDate)
                             && config.boundary.endInclusive.isAfter(newDate)
-                } ?: false
+                } == true
                 if (isRangeSelectionStart || beforeStart || containsDisabledDate) {
                     range[0] = newDate
                     range[1] = null
@@ -396,7 +396,7 @@ internal class DatePickerState(
 @Composable
 internal fun rememberDatePickerState(
     selection: DatePickerSelection,
-    config: DatePickerConfig,
+    config: DatePickerConfig = DatePickerConfig(),
 ): DatePickerState = rememberSaveable(
     inputs = arrayOf(selection, config),
     saver = DatePickerState.Saver(selection, config),
