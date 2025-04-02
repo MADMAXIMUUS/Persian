@@ -40,6 +40,7 @@ import io.github.madmaximuus.persian.text.Text
 @Composable
 fun ColorPicker(
     state: ColorPickerState,
+    title: String = stringResource(R.string.select_color),
     colors: ColorPickerColors = ColorPickerDefaults.colors(),
     onDismissRequest: () -> Unit
 ) {
@@ -65,7 +66,7 @@ fun ColorPicker(
                     .fillMaxWidth()
                     .padding(top = PersianTheme.spacing.size20)
                     .padding(bottom = PersianTheme.spacing.size12),
-                text = stringResource(id = R.string.select_color),
+                text = title,
                 textAlign = TextAlign.Center,
                 style = PersianTheme.typography.titleMedium,
                 color = PersianTheme.colorScheme.onSurface
