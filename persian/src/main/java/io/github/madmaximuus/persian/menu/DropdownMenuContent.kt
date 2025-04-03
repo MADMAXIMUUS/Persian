@@ -99,9 +99,9 @@ internal fun DropdownMenuContent(
             content = {
                 val scope = remember(colors, sizes) {
                     DropdownMenuItemScopeWrapper(
-                        this,
+                        scope = this,
                         colors = colors.itemColors,
-                        sizes = sizes.itemSizes
+                        sizes = sizes.itemSizes,
                     )
                 }
                 if (header != null) {

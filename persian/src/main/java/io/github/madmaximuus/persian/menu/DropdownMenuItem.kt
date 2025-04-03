@@ -88,23 +88,21 @@ fun DropdownMenuItemScope.DropdownMenuItem(
     showNewLabel: Boolean = false,
     showExpandIcon: Boolean = false,
     interactionSource: MutableInteractionSource? = null,
-) {
-    DropdownMenuItemContent(
-        modifier = modifier,
-        text = text,
-        onClick = onClick,
-        leadingIcon = leadingIcon,
-        expandIcon = expandIcon,
-        selected = selected,
-        enabled = enabled,
-        negative = negative,
-        showNewLabel = showNewLabel,
-        showExpandIcon = showExpandIcon,
-        colors = this@DropdownMenuItem.colors,
-        sizes = this@DropdownMenuItem.sizes,
-        interactionSource = interactionSource,
-    )
-}
+) = DropdownMenuItemContent(
+    modifier = modifier,
+    text = text,
+    onClick = onClick,
+    leadingIcon = leadingIcon,
+    expandIcon = expandIcon,
+    selected = selected,
+    enabled = enabled,
+    negative = negative,
+    showNewLabel = showNewLabel,
+    showExpandIcon = showExpandIcon,
+    colors = this@DropdownMenuItem.colors,
+    sizes = this@DropdownMenuItem.sizes,
+    interactionSource = interactionSource,
+)
 
 /**
  * Internal composable function to create the content of a dropdown menu item.
