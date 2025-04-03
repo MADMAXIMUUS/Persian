@@ -58,7 +58,7 @@ import androidx.compose.ui.window.Popup
 import androidx.compose.ui.window.PopupPositionProvider
 import androidx.compose.ui.window.PopupProperties
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.input.OutlineInput
+import io.github.madmaximuus.persian.input.Input
 import io.github.madmaximuus.persian.internal.BackHandler
 import io.github.madmaximuus.persian.menu.DropdownMenuContent
 import io.github.madmaximuus.persian.menu.DropdownMenuItemScope
@@ -80,7 +80,7 @@ import kotlin.math.roundToInt
  * display user input (whether or not it’s listed as a menu choice), in which case it may be used to
  * implement autocomplete.
  *
- * The [ExposedDropdownMenuBox] is expected to contain a [OutlineInput] and
+ * The [ExposedDropdownMenuBox] is expected to contain an [Input] and
  * [ExposedDropdownMenu][ExposedDropdownMenuBoxScope.ExposedDropdownMenu] as content. The
  * [menuAnchor][ExposedDropdownMenuBoxScope.menuAnchor] modifier should be passed to the text field.
  *
@@ -88,7 +88,7 @@ import kotlin.math.roundToInt
  * @param onExpandedChange called when the exposed dropdown menu is clicked and the expansion state
  *   changes.
  * @param modifier the [Modifier] to be applied to this ExposedDropdownMenuBox
- * @param content the content of this ExposedDropdownMenuBox, typically a [OutlineInput] and an
+ * @param content the content of this ExposedDropdownMenuBox, typically an [Input] and an
  *   [ExposedDropdownMenu][ExposedDropdownMenuBoxScope.ExposedDropdownMenu].
  */
 @Composable
@@ -241,7 +241,7 @@ sealed class ExposedDropdownMenuBoxScope {
      * @param enabled controls the enabled state. When `false`, the component will not expand or
      *   collapse the menu in response to user input, and menu semantics will be invisible to
      *   accessibility services. Note that this value only controls interactions with the menu. It
-     *   does not affect the enabled state of other kinds of interactions, such as [OutlineInput]'s
+     *   does not affect the enabled state of other kinds of interactions, such as [Input]'s
      *   `enabled` parameter.
      */
     abstract fun Modifier.menuAnchor(type: MenuAnchorType, enabled: Boolean = true): Modifier
@@ -506,36 +506,34 @@ private fun Modifier.expandable(
     onExpandedChange: () -> Unit,
     anchorType: MenuAnchorType,
     keyboardController: SoftwareKeyboardController?,
-) =
-    pointerInput(onExpandedChange) {
-        awaitEachGesture {
-            // Modifier.clickable doesn't work for text fields, so we use Modifier.pointerInput
-            // in the Initial pass to observe events before the text field consumes them
-            // in the Main pass.
-            val downEvent = awaitFirstDown(pass = PointerEventPass.Initial)
-            if (anchorType == MenuAnchorType.SecondaryEditable) {
-                downEvent.consume()
-            }
-            val upEvent = waitForUpOrCancellation(pass = PointerEventPass.Initial)
-            if (upEvent != null) {
-                onExpandedChange()
-            }
+) = pointerInput(onExpandedChange) {
+    awaitEachGesture {
+        // Modifier.clickable doesn't work for text fields, so we use Modifier.pointerInput
+        // in the Initial pass to observe events before the text field consumes them
+        // in the Main pass.
+        val downEvent = awaitFirstDown(pass = PointerEventPass.Initial)
+        if (anchorType == MenuAnchorType.SecondaryEditable) {
+            downEvent.consume()
+        }
+        val upEvent = waitForUpOrCancellation(pass = PointerEventPass.Initial)
+        if (upEvent != null) {
+            onExpandedChange()
         }
     }
-        .semantics {
-            role = if (anchorType == MenuAnchorType.SecondaryEditable) {
-                Role.Button
-            } else {
-                Role.DropdownList
-            }
-            onClick {
-                onExpandedChange()
-                if (anchorType == MenuAnchorType.PrimaryEditable) {
-                    keyboardController?.show()
-                }
-                true
-            }
+}.semantics {
+    role = if (anchorType == MenuAnchorType.SecondaryEditable) {
+        Role.Button
+    } else {
+        Role.DropdownList
+    }
+    onClick {
+        onExpandedChange()
+        if (anchorType == MenuAnchorType.PrimaryEditable) {
+            keyboardController?.show()
         }
+        true
+    }
+}
 
 private fun calculateMaxHeight(
     windowBounds: Rect,

@@ -6,10 +6,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import io.github.madmaximuus.persian.input.Input
 import io.github.madmaximuus.persian.input.InputColors
 import io.github.madmaximuus.persian.input.InputSizes
 import io.github.madmaximuus.persian.input.InputsDefaults
-import io.github.madmaximuus.persian.input.OutlineInput
 import io.github.madmaximuus.persian.menu.DropdownMenuItemScope
 import io.github.madmaximuus.persian.menu.MenuColors
 import io.github.madmaximuus.persian.menu.MenuDefaults
@@ -59,7 +59,7 @@ fun Select(
         expanded = expanded,
         onExpandedChange = onExpandedChange
     ) {
-        OutlineInput(
+        Input(
             modifier = Modifier
                 .fillMaxWidth()
                 .menuAnchor(MenuAnchorType.PrimaryNotEditable, enabled),
