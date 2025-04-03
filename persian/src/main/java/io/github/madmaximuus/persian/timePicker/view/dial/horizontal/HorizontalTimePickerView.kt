@@ -19,11 +19,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastFilter
 import androidx.compose.ui.util.fastFirst
 import androidx.compose.ui.util.fastMap
-import io.github.madmaximuus.persian.segmentedButton.util.end
-import io.github.madmaximuus.persian.segmentedButton.util.start
 import io.github.madmaximuus.persian.timePicker.state.AnalogTimePickerState
 import io.github.madmaximuus.persian.timePicker.state.TimePickerState
 import io.github.madmaximuus.persian.timePicker.util.PeriodToggleMargin
+import io.github.madmaximuus.persian.timePicker.util.end
+import io.github.madmaximuus.persian.timePicker.util.start
 import io.github.madmaximuus.persian.timePicker.view.dial.ClockDisplayNumbers
 import io.github.madmaximuus.persian.timePicker.view.dial.ClockFace
 import io.github.madmaximuus.persian.timePicker.view.dial.DialTimePickerViewColors

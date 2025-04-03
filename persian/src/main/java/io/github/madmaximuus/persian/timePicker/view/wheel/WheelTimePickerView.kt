@@ -3,7 +3,6 @@ package io.github.madmaximuus.persian.timePicker.view.wheel
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -27,12 +26,12 @@ import java.util.Locale
 @Composable
 internal fun WheelTimePickerView(
     state: TimePickerState,
+    modifier: Modifier = Modifier,
     colors: WheelTimePickerViewColors,
     sizes: WheelTimePickerViewSizes
 ) {
     Row(
-        modifier = Modifier
-            .fillMaxWidth()
+        modifier = modifier
             .padding(vertical = PersianTheme.spacing.size8),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(

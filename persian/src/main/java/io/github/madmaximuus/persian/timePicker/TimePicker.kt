@@ -1,11 +1,18 @@
 package io.github.madmaximuus.persian.timePicker
 
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
+import androidx.window.core.layout.WindowHeightSizeClass
 import io.github.madmaximuus.persian.R
 import io.github.madmaximuus.persian.alert.Action
 import io.github.madmaximuus.persian.alert.Alert
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.timePicker.state.AnalogTimePickerState
 import io.github.madmaximuus.persian.timePicker.state.TimePickerState
 import io.github.madmaximuus.persian.timePicker.util.PickerType
@@ -33,16 +40,17 @@ import io.github.madmaximuus.persian.timePicker.view.wheel.WheelTimePickerView
 @Composable
 fun TimePicker(
     state: TimePickerState,
+    title: String = stringResource(R.string.select_time),
     pickerType: PickerType = PickerType.DIAL,
     colors: TimePickerColors = TimePickerDefaults.colors(),
     sizes: TimePickerSizes = TimePickerDefaults.sizes(),
     onDismissRequest: () -> Unit,
 ) {
     Alert(
-        title = stringResource(id = R.string.select_time),
+        title = title,
         colors = colors.alertColors,
         sizes = sizes.alertSizes,
-        onDismiss = {
+        onDismissRequest = {
             onDismissRequest()
         },
         confirmAction = {
@@ -64,7 +72,15 @@ fun TimePicker(
     ) {
         if (pickerType == PickerType.DIAL) {
             val analogState = remember(state) { AnalogTimePickerState(state) }
+            val windowHeightSizeClass =
+                currentWindowAdaptiveInfo().windowSizeClass.windowHeightSizeClass
+            val maxWidth = if (windowHeightSizeClass == WindowHeightSizeClass.COMPACT)
+                440.dp
+            else 320.dp
             DialTimePickerView(
+                modifier = Modifier
+                    .padding(horizontal = PersianTheme.spacing.size12)
+                    .widthIn(min = 300.dp, max = maxWidth),
                 analogState = analogState,
                 sizes = sizes.dialTimePickerViewSizes,
                 colors = colors.dialTimePickerViewColors
