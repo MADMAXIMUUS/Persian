@@ -58,18 +58,17 @@ object MenuDefaults {
         newLabelColor: Color = PersianTheme.colorScheme.onValid,
         newLabelContainerColor: Color = PersianTheme.colorScheme.valid,
         dividerColor: Color = PersianTheme.colorScheme.outlineVariant
-    ): MenuItemColors =
-        MenuItemColors(
-            titleColor = titleColor,
-            negativeTitleColor = negativeTitleColor,
-            leadingIconColor = leadingIconColor,
-            selectedLeadingIconColor = selectedLeadingIconColor,
-            negativeLeadingIconColor = negativeLeadingIconColor,
-            expendIconColor = expendIconColor,
-            newLabelColor = newLabelColor,
-            newLabelContainerColor = newLabelContainerColor,
-            dividerColor = dividerColor
-        )
+    ) = MenuItemColors(
+        titleColor = titleColor,
+        negativeTitleColor = negativeTitleColor,
+        leadingIconColor = leadingIconColor,
+        selectedLeadingIconColor = selectedLeadingIconColor,
+        negativeLeadingIconColor = negativeLeadingIconColor,
+        expendIconColor = expendIconColor,
+        newLabelColor = newLabelColor,
+        newLabelContainerColor = newLabelContainerColor,
+        dividerColor = dividerColor
+    )
 
     /**
      * Create a [MenuSizes] instance.
@@ -81,11 +80,10 @@ object MenuDefaults {
     fun sizes(
         containerShape: Shape = PersianTheme.shapes.shape16,
         itemSizes: MenuItemSizes = itemSizes()
-    ): MenuSizes =
-        MenuSizes(
-            containerShape = containerShape,
-            itemSizes = itemSizes
-        )
+    ) = MenuSizes(
+        containerShape = containerShape,
+        itemSizes = itemSizes
+    )
 
     /**
      * Create a [MenuItemSizes] instance.
@@ -104,22 +102,21 @@ object MenuDefaults {
         leadingIconSizes: IconSizes = IconDefaults.size24(),
         expendIconSizes: IconSizes = IconDefaults.size24(),
         newLabelTextStyle: TextStyle = PersianTheme.typography.labelSmall,
-        newLabelContainerShape: Shape = PersianTheme.shapes.shape4,
+        newLabelContainerShape: Shape = PersianTheme.shapes.shape6,
         dividerSizes: DividerSizes = DividerDefaults.sizes(),
         groupDividerSizes: DividerSizes = DividerDefaults.sizes(
             inset = 0.dp,
             strokeThickness = 4.dp
         )
-    ): MenuItemSizes =
-        MenuItemSizes(
-            titleTextStyle = titleTextStyle,
-            leadingIconSizes = leadingIconSizes,
-            expendIconSizes = expendIconSizes,
-            newLabelTextStyle = newLabelTextStyle,
-            newLabelContainerShape = newLabelContainerShape,
-            dividerSizes = dividerSizes,
-            groupDividerSizes = groupDividerSizes
-        )
+    ) = MenuItemSizes(
+        titleTextStyle = titleTextStyle,
+        leadingIconSizes = leadingIconSizes,
+        expendIconSizes = expendIconSizes,
+        newLabelTextStyle = newLabelTextStyle,
+        newLabelContainerShape = newLabelContainerShape,
+        dividerSizes = dividerSizes,
+        groupDividerSizes = groupDividerSizes
+    )
 }
 
 /**
@@ -182,16 +179,15 @@ class MenuItemSizes internal constructor(
         newLabelContainerShape: Shape = this.newLabelContainerShape,
         dividerSizes: DividerSizes = this.dividerSizes,
         groupDividerSizes: DividerSizes = this.groupDividerSizes
-    ): MenuItemSizes =
-        MenuItemSizes(
-            titleTextStyle = titleTextStyle,
-            leadingIconSizes = leadingIconSizes,
-            expendIconSizes = expendIconSizes,
-            newLabelTextStyle = newLabelTextStyle,
-            newLabelContainerShape = newLabelContainerShape,
-            dividerSizes = dividerSizes,
-            groupDividerSizes = groupDividerSizes
-        )
+    ) = MenuItemSizes(
+        titleTextStyle = titleTextStyle,
+        leadingIconSizes = leadingIconSizes,
+        expendIconSizes = expendIconSizes,
+        newLabelTextStyle = newLabelTextStyle,
+        newLabelContainerShape = newLabelContainerShape,
+        dividerSizes = dividerSizes,
+        groupDividerSizes = groupDividerSizes
+    )
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -299,18 +295,17 @@ class MenuItemColors internal constructor(
         newLabelColor: Color = this.newLabelColor,
         newLabelContainerColor: Color = this.newLabelContainerColor,
         dividerColor: Color = this.dividerColor
-    ): MenuItemColors =
-        MenuItemColors(
-            titleColor = titleColor,
-            negativeTitleColor = negativeTitleColor,
-            selectedLeadingIconColor = selectedLeadingIconColor,
-            leadingIconColor = leadingIconColor,
-            negativeLeadingIconColor = negativeLeadingIconColor,
-            expendIconColor = expendIconColor,
-            newLabelColor = newLabelColor,
-            newLabelContainerColor = newLabelContainerColor,
-            dividerColor = dividerColor
-        )
+    ) = MenuItemColors(
+        titleColor = titleColor,
+        negativeTitleColor = negativeTitleColor,
+        selectedLeadingIconColor = selectedLeadingIconColor,
+        leadingIconColor = leadingIconColor,
+        negativeLeadingIconColor = negativeLeadingIconColor,
+        expendIconColor = expendIconColor,
+        newLabelColor = newLabelColor,
+        newLabelContainerColor = newLabelContainerColor,
+        dividerColor = dividerColor
+    )
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

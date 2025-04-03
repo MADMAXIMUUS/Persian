@@ -9,8 +9,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
+import io.github.madmaximuus.persian.iconButton.IconButton
 import io.github.madmaximuus.persian.iconButton.IconButtonDefaults
-import io.github.madmaximuus.persian.iconButton.TertiaryIconButton
 
 /**
  * Interface representing the scope for a dropdown menu header item.
@@ -69,10 +69,11 @@ fun DropdownMenuHeaderItemScope.Button(
     icon: Painter,
     onClick: () -> Unit
 ) {
-    TertiaryIconButton(
+    IconButton(
         modifier = modifier,
         onClick = onClick,
         sizes = IconButtonDefaults.mediumSizes(),
+        colors = IconButtonDefaults.tertiaryIconButtonColors(),
         icon = icon
     )
 }
