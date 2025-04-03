@@ -1,6 +1,5 @@
 package io.github.madmaximuus.persian.topAppBar
 
-import androidx.compose.animation.core.MutableTransitionState
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
@@ -139,21 +138,18 @@ fun TopAppBarTrailingScope.IconButton(
  *
  * @param modifier The modifier to be applied to the overflow menu.
  * @param icon The painter to be used as the icon for the overflow button.
- * @param expanded The initial expanded state of the dropdown menu.
  * @param interactionSource The interaction source for the dropdown menu.
- * @param onDismissRequest The lambda to be executed when the dropdown menu is dismissed.
  * @param menuItems The composable lambda that defines the content of the dropdown menu.
  */
 @Composable
 fun TopAppBarTrailingScope.More(
     modifier: Modifier = Modifier,
+    expanded: Boolean,
+    onExpandedChange: (Boolean) -> Unit,
     icon: Painter = rememberVectorPainter(PersianSymbols.Default.EllipsisVert),
-    expanded: Boolean = false,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    onDismissRequest: (() -> Unit)? = null,
     menuItems: @Composable DropdownMenuItemScope.() -> Unit
 ) {
-    val expandedState = remember { MutableTransitionState(expanded) }
     Box(
         modifier = modifier
             .size(48.dp)
@@ -161,21 +157,18 @@ fun TopAppBarTrailingScope.More(
         contentAlignment = Alignment.Center
     ) {
         DropdownMenu(
-            expanded = expandedState.targetState,
-            modifier = modifier,
+            expanded = expanded,
             interactionSource = interactionSource,
             colors = this@More.colors.menuColors,
             sizes = this@More.sizes.menuSizes,
-            onDismissRequest = {
-                onDismissRequest?.let { it() }
-            },
+            onDismissRequest = { onExpandedChange(false) },
             anchor = {
                 IconButton(
                     icon = icon,
                     colors = this@More.colors.trailingIconButtonColors,
                     sizes = this@More.sizes.rightIconButtonSizes,
                     onClick = {
-                        expandedState.targetState = true
+                        onExpandedChange(!expanded)
                     }
                 )
             },
