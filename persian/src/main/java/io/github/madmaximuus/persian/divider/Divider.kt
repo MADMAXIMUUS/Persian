@@ -30,8 +30,8 @@ fun Divider(
     strokeColor: Color = PersianTheme.colorScheme.outlineVariant
 ) {
     val padding = when (insetSide) {
-        InsetSide.LEFT -> PaddingValues(start = sizes.inset)
-        InsetSide.RIGHT -> PaddingValues(end = sizes.inset)
+        InsetSide.LEADING -> PaddingValues(start = sizes.inset)
+        InsetSide.TRAILING -> PaddingValues(end = sizes.inset)
         InsetSide.NONE -> PaddingValues(0.dp)
         InsetSide.BOTH -> PaddingValues(horizontal = sizes.inset)
     }
@@ -47,4 +47,4 @@ fun Divider(
 /**
  * An enumeration that specifies the side of the horizontal inset.
  */
-enum class InsetSide { NONE, LEFT, RIGHT, BOTH }
+enum class InsetSide { NONE, LEADING, TRAILING, BOTH }
