@@ -287,14 +287,12 @@ private fun ScaffoldLayoutWithMeasureFix(
         val bodyContentPlaceables = subcompose(ScaffoldLayoutContent.MainContent) {
             val insets = contentWindowInsets.asPaddingValues(this@SubcomposeLayout)
             val innerPadding = PaddingValues(
-                top =
-                if (topBarPlaceables.isEmpty()) {
+                top = if (topBarPlaceables.isEmpty()) {
                     insets.calculateTopPadding()
                 } else {
                     topBarHeight.toDp()
                 },
-                bottom =
-                if (bottomBarPlaceables.isEmpty() || bottomBarHeight == null) {
+                bottom = if (bottomBarPlaceables.isEmpty() || bottomBarHeight == null) {
                     insets.calculateBottomPadding()
                 } else {
                     bottomBarHeight.toDp()
@@ -464,17 +462,17 @@ private fun LegacyScaffoldLayout(
                 val insets = contentWindowInsets.asPaddingValues(this@SubcomposeLayout)
                 val innerPadding = PaddingValues(
                     top =
-                    if (topBarPlaceables.isEmpty()) {
-                        insets.calculateTopPadding()
-                    } else {
-                        topBarHeight.toDp()
-                    },
+                        if (topBarPlaceables.isEmpty()) {
+                            insets.calculateTopPadding()
+                        } else {
+                            topBarHeight.toDp()
+                        },
                     bottom =
-                    if (bottomBarPlaceables.isEmpty() || bottomBarHeight == null) {
-                        insets.calculateBottomPadding()
-                    } else {
-                        bottomBarHeight.toDp()
-                    },
+                        if (bottomBarPlaceables.isEmpty() || bottomBarHeight == null) {
+                            insets.calculateBottomPadding()
+                        } else {
+                            bottomBarHeight.toDp()
+                        },
                     start = insets.calculateStartPadding((this@SubcomposeLayout).layoutDirection),
                     end = insets.calculateEndPadding((this@SubcomposeLayout).layoutDirection)
                 )
