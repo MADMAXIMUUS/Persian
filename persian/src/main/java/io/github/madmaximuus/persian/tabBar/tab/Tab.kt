@@ -27,18 +27,18 @@ import io.github.madmaximuus.persian.icon.Icon
 import io.github.madmaximuus.persian.tabBar.TabBar
 import io.github.madmaximuus.persian.tabBar.TabColors
 import io.github.madmaximuus.persian.tabBar.TabSizes
-import io.github.madmaximuus.persian.tabBar.tab.IconSide.LEFT
-import io.github.madmaximuus.persian.tabBar.tab.IconSide.TOP
+import io.github.madmaximuus.persian.tabBar.tab.Orientation.HORIZONTAL
+import io.github.madmaximuus.persian.tabBar.tab.Orientation.VERTICAL
 import io.github.madmaximuus.persian.text.Text
 
 /**
  * Enum class representing the side on which the icon should be placed in a tab.
  *
- * @property LEFT The icon is placed on the left side of the tab.
- * @property TOP The icon is placed on the top side of the tab.
+ * @property HORIZONTAL The icon is placed on the left side of the tab.
+ * @property VERTICAL The icon is placed on the top side of the tab.
  */
-enum class IconSide {
-    LEFT, TOP
+enum class Orientation {
+    HORIZONTAL, VERTICAL
 }
 
 /**
@@ -47,7 +47,7 @@ enum class IconSide {
  * This interface provides access to the icon side, colors, and sizes for a tab bar item.
  */
 interface TabBarItemScope {
-    val iconSide: IconSide
+    val orientation: Orientation
     val badgeStyle: BadgeStyle
     val colors: TabColors
     val sizes: TabSizes
@@ -59,12 +59,12 @@ interface TabBarItemScope {
  * This class provides a concrete implementation of the [TabBarItemScope] interface,
  * encapsulating the icon side, colors, and sizes for a tab bar item.
  *
- * @param iconSide The side on which the icon should be placed.
+ * @param orientation The side on which the icon should be placed.
  * @param colors The colors to be used for the tab.
  * @param sizes The sizes to be used for the tab.
  */
 class TabBarItemScopeWrapper(
-    override val iconSide: IconSide,
+    override val orientation: Orientation,
     override val badgeStyle: BadgeStyle,
     override val colors: TabColors,
     override val sizes: TabSizes
@@ -107,8 +107,8 @@ fun TabBarItemScope.Tab(
     }
     when {
         icon != null && text != null -> {
-            when (iconSide) {
-                LEFT -> {
+            when (orientation) {
+                HORIZONTAL -> {
                     LeadingIconTab(
                         onClick = onClick,
                         selected = selected,
@@ -120,7 +120,7 @@ fun TabBarItemScope.Tab(
                     )
                 }
 
-                TOP -> {
+                VERTICAL -> {
                     TopIconTab(
                         onClick = onClick,
                         selected = selected,
@@ -235,8 +235,8 @@ private fun TabBarItemScope.LeadingIconTab(
             if (count != 0) {
                 Counter(
                     count = count,
-                    sizes = sizes.counterSizes(side = LEFT),
-                    colors = colors.counterColors(side = LEFT)
+                    sizes = sizes.counterSizes(side = HORIZONTAL),
+                    colors = colors.counterColors(side = HORIZONTAL)
                 )
             }
         }
@@ -307,8 +307,8 @@ private fun TabBarItemScope.TopIconTab(
                         Badge(
                             count = count,
                             style = badgeStyle,
-                            sizes = sizes.counterSizes(TOP),
-                            colors = colors.counterColors(TOP)
+                            sizes = sizes.counterSizes(VERTICAL),
+                            colors = colors.counterColors(VERTICAL)
                         ) {
                             Icon(
                                 painter = icon,
@@ -396,8 +396,8 @@ private fun TabBarItemScope.OnlyIconTab(
                 Badge(
                     count = count,
                     style = badgeStyle,
-                    sizes = sizes.counterSizes(TOP),
-                    colors = colors.counterColors(TOP)
+                    sizes = sizes.counterSizes(VERTICAL),
+                    colors = colors.counterColors(VERTICAL)
                 ) {
                     Icon(
                         painter = icon,
@@ -475,8 +475,8 @@ private fun TabBarItemScope.OnlyTextTab(
             if (count != 0) {
                 Counter(
                     count = count,
-                    sizes = sizes.counterSizes(side = LEFT),
-                    colors = colors.counterColors(side = LEFT)
+                    sizes = sizes.counterSizes(side = HORIZONTAL),
+                    colors = colors.counterColors(side = HORIZONTAL)
                 )
             }
         }

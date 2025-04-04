@@ -21,7 +21,7 @@ import io.github.madmaximuus.persian.counter.utils.BadgeStyle
 import io.github.madmaximuus.persian.surface.Surface
 import io.github.madmaximuus.persian.tabBar.indicator.TabIndicatorModifier
 import io.github.madmaximuus.persian.tabBar.indicator.TabIndicatorScope
-import io.github.madmaximuus.persian.tabBar.tab.IconSide
+import io.github.madmaximuus.persian.tabBar.tab.Orientation
 import io.github.madmaximuus.persian.tabBar.tab.TabBarItemScope
 import io.github.madmaximuus.persian.tabBar.tab.TabBarItemScopeWrapper
 import io.github.madmaximuus.persian.tabBar.util.TabPosition
@@ -37,7 +37,7 @@ import io.github.madmaximuus.persian.tabBar.util.TabPositionsHolder
  * @param modifier The modifier to be applied to the tab row.
  * @param colors The colors to be used for the tabs.
  * @param sizes The sizes to be used for the tabs.
- * @param iconSide The side on which the icon should be placed.
+ * @param orientation The side on which the icon should be placed.
  * @param indicator A composable function that defines the tab indicator.
  * @param divider A composable function that defines the divider between tabs.
  * @param tabs A composable function that defines the content of the tabs.
@@ -47,7 +47,7 @@ internal fun TabRowImpl(
     modifier: Modifier,
     colors: TabColors,
     sizes: TabSizes,
-    iconSide: IconSide,
+    orientation: Orientation,
     badgeStyle: BadgeStyle,
     indicator: @Composable TabIndicatorScope.() -> Unit,
     divider: @Composable () -> Unit,
@@ -57,8 +57,8 @@ internal fun TabRowImpl(
         modifier = modifier.selectableGroup(),
         needClip = false
     ) {
-        val tabsScope = remember(colors, sizes, iconSide, badgeStyle) {
-            TabBarItemScopeWrapper(iconSide, badgeStyle, colors, sizes)
+        val tabsScope = remember(colors, sizes, orientation, badgeStyle) {
+            TabBarItemScopeWrapper(orientation, badgeStyle, colors, sizes)
         }
         val indicatorScope = remember {
             object : TabIndicatorScope, TabPositionsHolder {

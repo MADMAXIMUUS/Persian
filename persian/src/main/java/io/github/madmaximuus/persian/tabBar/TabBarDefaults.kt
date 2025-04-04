@@ -11,11 +11,9 @@ import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.graphics.takeOrElse
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.takeOrElse
 import io.github.madmaximuus.persian.counter.CounterColors
 import io.github.madmaximuus.persian.counter.CounterDefaults
 import io.github.madmaximuus.persian.counter.CounterSizes
@@ -23,7 +21,7 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persian.icon.IconSizes
 import io.github.madmaximuus.persian.tabBar.scrollable.ScrollableTabBar
-import io.github.madmaximuus.persian.tabBar.tab.IconSide
+import io.github.madmaximuus.persian.tabBar.tab.Orientation
 
 /**
  * Contains all default values used by [TabBar] and [ScrollableTabBar]
@@ -55,19 +53,18 @@ object TabBarDefaults {
 
         counterColors: CounterColors = CounterDefaults.primaryColors(),
         badgeColors: CounterColors = CounterDefaults.errorColors()
-    ): TabColors =
-        TabColors(
-            containerColor = containerColor,
-            activeContainerColor = activeContainerColor,
+    ) = TabColors(
+        containerColor = containerColor,
+        activeContainerColor = activeContainerColor,
 
-            indicatorColor = indicatorColor,
+        indicatorColor = indicatorColor,
 
-            contentColor = contentColor,
-            activeContentColor = activeContentColor,
+        contentColor = contentColor,
+        activeContentColor = activeContentColor,
 
-            counterColors = counterColors,
-            badgeColors = badgeColors
-        )
+        counterColors = counterColors,
+        badgeColors = badgeColors
+    )
 
     /**
      * Create a [TabSizes] instance with default values.
@@ -96,17 +93,16 @@ object TabBarDefaults {
         counterSizes: CounterSizes = CounterDefaults.sizes(),
         badgeSizes: CounterSizes = CounterDefaults.sizes(),
 
-        edgePadding: Dp = 52.dp
-    ): TabSizes =
-        TabSizes(
-            indicatorThickness = indicatorThickness,
-            indicatorShape = indicatorShape,
-            iconSizes = iconSizes,
-            textStyle = textStyle,
-            counterSizes = counterSizes,
-            badgeSizes = badgeSizes,
-            edgePadding = edgePadding
-        )
+        edgePadding: Dp = 12.dp
+    ) = TabSizes(
+        indicatorThickness = indicatorThickness,
+        indicatorShape = indicatorShape,
+        iconSizes = iconSizes,
+        textStyle = textStyle,
+        counterSizes = counterSizes,
+        badgeSizes = badgeSizes,
+        edgePadding = edgePadding
+    )
 
 }
 
@@ -189,10 +185,10 @@ class TabColors internal constructor(
      * @param side The side on which the icon is placed.
      */
     @Composable
-    fun counterColors(side: IconSide): CounterColors =
+    fun counterColors(side: Orientation): CounterColors =
         when (side) {
-            IconSide.LEFT -> counterColors
-            IconSide.TOP -> badgeColors
+            Orientation.HORIZONTAL -> counterColors
+            Orientation.VERTICAL -> badgeColors
         }
 
     /**
@@ -217,12 +213,12 @@ class TabColors internal constructor(
 
         counterColors: CounterColors = this.counterColors,
         badgeColors: CounterColors = this.badgeColors
-    ): TabColors = TabColors(
-        containerColor = containerColor.takeOrElse { this.containerColor },
-        activeContainerColor = activeContainerColor.takeOrElse { this.activeContainerColor },
-        indicatorColor = indicatorColor.takeOrElse { this.indicatorColor },
-        contentColor = contentColor.takeOrElse { this.contentColor },
-        activeContentColor = activeContentColor.takeOrElse { this.activeContentColor },
+    ) = TabColors(
+        containerColor = containerColor,
+        activeContainerColor = activeContainerColor,
+        indicatorColor = indicatorColor,
+        contentColor = contentColor,
+        activeContentColor = activeContentColor,
         counterColors = counterColors,
         badgeColors = badgeColors
     )
@@ -293,10 +289,10 @@ class TabSizes internal constructor(
      * @return The counter sizes corresponding to the icon side.
      */
     @Composable
-    fun counterSizes(side: IconSide): CounterSizes =
+    fun counterSizes(side: Orientation): CounterSizes =
         when (side) {
-            IconSide.LEFT -> counterSizes
-            IconSide.TOP -> badgeSizes
+            Orientation.HORIZONTAL -> counterSizes
+            Orientation.VERTICAL -> badgeSizes
         }
 
     /**
@@ -321,16 +317,15 @@ class TabSizes internal constructor(
         badgeSizes: CounterSizes = this.badgeSizes,
 
         edgePadding: Dp = this.edgePadding
-    ): TabSizes =
-        TabSizes(
-            indicatorThickness = indicatorThickness.takeOrElse { this.indicatorThickness },
-            indicatorShape = indicatorShape,
-            iconSizes = iconSizes,
-            textStyle = textStyle,
-            counterSizes = counterSizes,
-            badgeSizes = badgeSizes,
-            edgePadding = edgePadding.takeOrElse { this.edgePadding }
-        )
+    ) = TabSizes(
+        indicatorThickness = indicatorThickness,
+        indicatorShape = indicatorShape,
+        iconSizes = iconSizes,
+        textStyle = textStyle,
+        counterSizes = counterSizes,
+        badgeSizes = badgeSizes,
+        edgePadding = edgePadding
+    )
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

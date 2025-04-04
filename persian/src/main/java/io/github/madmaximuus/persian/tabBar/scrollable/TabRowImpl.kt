@@ -28,7 +28,7 @@ import io.github.madmaximuus.persian.tabBar.TabColors
 import io.github.madmaximuus.persian.tabBar.TabSizes
 import io.github.madmaximuus.persian.tabBar.indicator.TabIndicatorModifier
 import io.github.madmaximuus.persian.tabBar.indicator.TabIndicatorScope
-import io.github.madmaximuus.persian.tabBar.tab.IconSide
+import io.github.madmaximuus.persian.tabBar.tab.Orientation
 import io.github.madmaximuus.persian.tabBar.tab.TabBarItemScope
 import io.github.madmaximuus.persian.tabBar.tab.TabBarItemScopeWrapper
 import io.github.madmaximuus.persian.tabBar.util.ScrollableTabData
@@ -48,7 +48,7 @@ import kotlin.math.max
  * @param modifier The modifier to be applied to the tab row.
  * @param colors The colors to be used for the tabs.
  * @param sizes The sizes to be used for the tabs.
- * @param iconSide The side on which the icon should be placed.
+ * @param orientation The side on which the icon should be placed.
  * @param scrollState The scroll state for horizontal scrolling.
  * @param indicator A composable function that defines the tab indicator.
  * @param divider A composable function that defines the divider between tabs.
@@ -60,7 +60,7 @@ internal fun ScrollableTabRowImpl(
     modifier: Modifier,
     colors: TabColors,
     sizes: TabSizes,
-    iconSide: IconSide,
+    orientation: Orientation,
     badgeStyle: BadgeStyle,
     scrollState: ScrollState,
     indicator: @Composable TabIndicatorScope.() -> Unit,
@@ -84,8 +84,8 @@ internal fun ScrollableTabRowImpl(
                 )
             }
 
-        val tabScope = remember(colors, sizes, iconSide, badgeStyle) {
-            TabBarItemScopeWrapper(iconSide, badgeStyle, colors, sizes)
+        val tabScope = remember(colors, sizes, orientation, badgeStyle) {
+            TabBarItemScopeWrapper(orientation, badgeStyle, colors, sizes)
         }
 
         val indicatorScope = remember {

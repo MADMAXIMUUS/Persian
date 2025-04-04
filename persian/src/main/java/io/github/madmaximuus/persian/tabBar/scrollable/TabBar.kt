@@ -12,7 +12,7 @@ import io.github.madmaximuus.persian.tabBar.TabColors
 import io.github.madmaximuus.persian.tabBar.TabSizes
 import io.github.madmaximuus.persian.tabBar.indicator.Indicator
 import io.github.madmaximuus.persian.tabBar.indicator.TabIndicatorScope
-import io.github.madmaximuus.persian.tabBar.tab.IconSide
+import io.github.madmaximuus.persian.tabBar.tab.Orientation
 import io.github.madmaximuus.persian.tabBar.tab.Tab
 import io.github.madmaximuus.persian.tabBar.tab.TabBarItemScope
 
@@ -27,12 +27,12 @@ import io.github.madmaximuus.persian.tabBar.tab.TabBarItemScope
  * scrolling to tabs that are placed off screen. For a fixed tab row that does not allow scrolling,
  * and evenly places its tabs, see [TabBar].
  *
- * @param iconSide The optional [IconSide] that determines whether the icons are displayed above or below the text in the tabs.
+ * @param orientation The optional [Orientation] that determines whether the icons are displayed above or below the text in the tabs.
  * @param badgeStyle The optional [BadgeStyle] that determines the style of the badges that are displayed in the tabs.
  * @param selectedTabIndex the index of the currently selected tab
  * @param modifier the [Modifier] to be applied to this tab row
  * @param scrollState the [ScrollState] of this tab row
- * @param iconSide The optional [IconSide] that determines whether the icons are displayed above or below the text in the tabs.
+ * @param orientation The optional [Orientation] that determines whether the icons are displayed above or below the text in the tabs.
  * @param badgeStyle The optional [BadgeStyle] that determines the style of the badges that are displayed in the tabs.
  * @param colors the [TabColors] colors that used by tabs
  * @param sizes the [TabSizes] sizes that used by tabs
@@ -50,7 +50,7 @@ fun ScrollableTabBar(
     selectedTabIndex: Int,
     modifier: Modifier = Modifier,
     scrollState: ScrollState = rememberScrollState(),
-    iconSide: IconSide = IconSide.TOP,
+    orientation: Orientation = Orientation.VERTICAL,
     badgeStyle: BadgeStyle = BadgeStyle.NUMBER,
     colors: TabColors = TabBarDefaults.tabColors(),
     sizes: TabSizes = TabBarDefaults.tabSizes(),
@@ -62,17 +62,15 @@ fun ScrollableTabBar(
         },
     divider: @Composable () -> Unit = @Composable { Divider() },
     tabs: @Composable TabBarItemScope.() -> Unit
-) {
-    ScrollableTabRowImpl(
-        selectedTabIndex = selectedTabIndex,
-        indicator = indicator,
-        modifier = modifier,
-        iconSide = iconSide,
-        badgeStyle = badgeStyle,
-        colors = colors,
-        sizes = sizes,
-        divider = divider,
-        tabs = tabs,
-        scrollState = scrollState,
-    )
-}
+) = ScrollableTabRowImpl(
+    selectedTabIndex = selectedTabIndex,
+    indicator = indicator,
+    modifier = modifier,
+    orientation = orientation,
+    badgeStyle = badgeStyle,
+    colors = colors,
+    sizes = sizes,
+    divider = divider,
+    tabs = tabs,
+    scrollState = scrollState,
+)
