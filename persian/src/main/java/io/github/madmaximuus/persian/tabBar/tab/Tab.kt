@@ -24,9 +24,9 @@ import io.github.madmaximuus.persian.foundation.LocalContentColor
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.ripple.ripple
 import io.github.madmaximuus.persian.icon.Icon
+import io.github.madmaximuus.persian.tabBar.TabBar
 import io.github.madmaximuus.persian.tabBar.TabColors
 import io.github.madmaximuus.persian.tabBar.TabSizes
-import io.github.madmaximuus.persian.tabBar.default.TabBar
 import io.github.madmaximuus.persian.tabBar.tab.IconSide.LEFT
 import io.github.madmaximuus.persian.tabBar.tab.IconSide.TOP
 import io.github.madmaximuus.persian.text.Text

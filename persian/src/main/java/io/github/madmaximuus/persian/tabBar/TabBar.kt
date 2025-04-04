@@ -1,12 +1,9 @@
-package io.github.madmaximuus.persian.tabBar.default
+package io.github.madmaximuus.persian.tabBar
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import io.github.madmaximuus.persian.counter.utils.BadgeStyle
 import io.github.madmaximuus.persian.divider.Divider
-import io.github.madmaximuus.persian.tabBar.TabBarDefaults
-import io.github.madmaximuus.persian.tabBar.TabColors
-import io.github.madmaximuus.persian.tabBar.TabSizes
 import io.github.madmaximuus.persian.tabBar.indicator.Indicator
 import io.github.madmaximuus.persian.tabBar.indicator.TabIndicatorScope
 import io.github.madmaximuus.persian.tabBar.scrollable.ScrollableTabBar

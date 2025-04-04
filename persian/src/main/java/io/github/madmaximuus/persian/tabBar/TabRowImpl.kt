@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.tabBar.default
+package io.github.madmaximuus.persian.tabBar
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.selection.selectableGroup
@@ -19,8 +19,6 @@ import androidx.compose.ui.util.fastForEachIndexed
 import androidx.compose.ui.util.fastMap
 import io.github.madmaximuus.persian.counter.utils.BadgeStyle
 import io.github.madmaximuus.persian.surface.Surface
-import io.github.madmaximuus.persian.tabBar.TabColors
-import io.github.madmaximuus.persian.tabBar.TabSizes
 import io.github.madmaximuus.persian.tabBar.indicator.TabIndicatorModifier
 import io.github.madmaximuus.persian.tabBar.indicator.TabIndicatorScope
 import io.github.madmaximuus.persian.tabBar.tab.IconSide

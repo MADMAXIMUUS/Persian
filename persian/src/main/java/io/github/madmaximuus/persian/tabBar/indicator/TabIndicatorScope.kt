@@ -18,9 +18,9 @@ import androidx.compose.ui.node.ModifierNodeElement
 import androidx.compose.ui.platform.InspectorInfo
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
+import io.github.madmaximuus.persian.tabBar.TabBar
 import io.github.madmaximuus.persian.tabBar.TabColors
 import io.github.madmaximuus.persian.tabBar.TabSizes
-import io.github.madmaximuus.persian.tabBar.default.TabBar
 import io.github.madmaximuus.persian.tabBar.util.TabPosition
 import io.github.madmaximuus.persian.tabBar.util.TabRowIndicatorSpec
 import kotlinx.coroutines.launch

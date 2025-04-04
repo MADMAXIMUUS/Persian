@@ -2,7 +2,7 @@ package io.github.madmaximuus.persian.tabBar.util
 
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.unit.Dp
-import io.github.madmaximuus.persian.tabBar.default.TabBar
+import io.github.madmaximuus.persian.tabBar.TabBar
 
 /**
  * Data class that contains information about a tab's position on screen, used for calculating where

@@ -22,7 +22,6 @@ import io.github.madmaximuus.persian.counter.CounterSizes
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.icon.IconDefaults
 import io.github.madmaximuus.persian.icon.IconSizes
-import io.github.madmaximuus.persian.tabBar.default.TabBar
 import io.github.madmaximuus.persian.tabBar.scrollable.ScrollableTabBar
 import io.github.madmaximuus.persian.tabBar.tab.IconSide
 

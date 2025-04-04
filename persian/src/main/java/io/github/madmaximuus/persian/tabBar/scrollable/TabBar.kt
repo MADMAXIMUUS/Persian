@@ -6,10 +6,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import io.github.madmaximuus.persian.counter.utils.BadgeStyle
 import io.github.madmaximuus.persian.divider.Divider
+import io.github.madmaximuus.persian.tabBar.TabBar
 import io.github.madmaximuus.persian.tabBar.TabBarDefaults
 import io.github.madmaximuus.persian.tabBar.TabColors
 import io.github.madmaximuus.persian.tabBar.TabSizes
-import io.github.madmaximuus.persian.tabBar.default.TabBar
 import io.github.madmaximuus.persian.tabBar.indicator.Indicator
 import io.github.madmaximuus.persian.tabBar.indicator.TabIndicatorScope
 import io.github.madmaximuus.persian.tabBar.tab.IconSide
@@ -57,7 +57,7 @@ fun ScrollableTabBar(
     indicator: @Composable TabIndicatorScope.() -> Unit =
         @Composable {
             Indicator(
-                Modifier.tabIndicatorOffset(selectedTabIndex, matchContentSize = true),
+                Modifier.tabIndicatorOffset(selectedTabIndex, true),
             )
         },
     divider: @Composable () -> Unit = @Composable { Divider() },
