@@ -2,8 +2,6 @@ package io.github.madmaximuus.persian.internal
 
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
-import io.github.madmaximuus.persian.internal.SecureInputSettings.NotSecure
-import io.github.madmaximuus.persian.internal.SecureInputSettings.Secure
 
 /**
  * A sealed interface representing the security settings for input fields.
@@ -33,7 +31,7 @@ sealed interface SecureInputSettings {
     @Immutable
     class Secure(
         val visible: Boolean = false,
-        val textObfuscationChar: Char = '\u2022'
+        val textObfuscationChar: Char = '\u25CF'
     ) : SecureInputSettings {
 
         override fun toString(): String =
