@@ -17,7 +17,6 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.avatarAndImage.Avatar
 import io.github.madmaximuus.persian.avatarAndImage.Image
-import io.github.madmaximuus.persian.avatarAndImage.ImageShape
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.icon.Icon
 import io.github.madmaximuus.persian.progressIndicator.CircularProgressIndicator
@@ -33,14 +32,14 @@ import io.github.madmaximuus.persian.progressIndicator.CircularProgressIndicator
  * @property colors The colors used in the Snackbar, such as the background color and text color.
  * @property sizes The sizes used in the Snackbar, such as the padding and corner radius.
  */
-interface SnackbarLeftScope : RowScope {
+interface SnackbarLeadingScope : RowScope {
     val snackbarData: SnackbarData
     val colors: SnackbarColors
     val sizes: SnackbarSizes
 }
 
 /**
- * A wrapper class that implements the [SnackbarLeftScope] interface and delegates the [RowScope]
+ * A wrapper class that implements the [SnackbarLeadingScope] interface and delegates the [RowScope]
  * implementation to the provided [scope] parameter.
  *
  * This class is used to provide access to the [snackbarData], [colors], and [sizes] of a Snackbar
@@ -52,17 +51,17 @@ interface SnackbarLeftScope : RowScope {
  * @property colors The colors used in the Snackbar, such as the background color and text color.
  * @property sizes The sizes used in the Snackbar, such as the padding and corner radius.
  */
-class SnackbarLeftScopeWrapper(
+class SnackbarLeadingScopeWrapper(
     scope: RowScope,
     override val snackbarData: SnackbarData,
     override val colors: SnackbarColors,
     override val sizes: SnackbarSizes,
-) : SnackbarLeftScope, RowScope by scope
+) : SnackbarLeadingScope, RowScope by scope
 
 /**
  * Displays an icon in a Snackbar that is aligned to the left.
  *
- * This function is an extension function of the [SnackbarLeftScope] interface, which means that it
+ * This function is an extension function of the [SnackbarLeadingScope] interface, which means that it
  * can be called on any instance of that interface. It takes an [icon] parameter, which is a [Painter]
  * that represents the icon to be displayed, as well as an optional [modifier] parameter and a
  * [contentDescription] parameter.
@@ -72,7 +71,7 @@ class SnackbarLeftScopeWrapper(
  * @param contentDescription The optional [String] that describes the icon for accessibility purposes.
  */
 @Composable
-fun SnackbarLeftScope.Icon(
+fun SnackbarLeadingScope.Icon(
     icon: Painter,
     modifier: Modifier = Modifier,
     contentDescription: String = ""
@@ -88,8 +87,8 @@ fun SnackbarLeftScope.Icon(
     ) {
         Icon(
             painter = icon,
-            sizes = this@Icon.sizes.leftIconSizes,
-            tint = this@Icon.colors.leftIconColor,
+            sizes = this@Icon.sizes.leadingIconSizes,
+            tint = this@Icon.colors.leadingIconColor,
             contentDescription = contentDescription
         )
     }
@@ -98,7 +97,7 @@ fun SnackbarLeftScope.Icon(
 /**
  * Displays an image in a Snackbar that is aligned to the left.
  *
- * This function is an extension function of the [SnackbarLeftScope] interface, which means that it
+ * This function is an extension function of the [SnackbarLeadingScope] interface, which means that it
  * can be called on any instance of that interface. It takes an [imageUrl] parameter, which is a [Uri]
  * that represents the URL of the image to be displayed, as well as an optional [modifier] parameter.
  *
@@ -106,7 +105,7 @@ fun SnackbarLeftScope.Icon(
  * @param modifier The optional [Modifier] to be applied to the image.
  */
 @Composable
-fun SnackbarLeftScope.Image(
+fun SnackbarLeadingScope.Image(
     imageUrl: Uri,
     modifier: Modifier = Modifier,
 ) {
@@ -121,9 +120,8 @@ fun SnackbarLeftScope.Image(
     ) {
         Image(
             imageUrl = imageUrl,
-            sizes = this@Image.sizes.leftImageSizes,
-            colors = this@Image.colors.leftImageColors,
-            shape = ImageShape.LARGE
+            sizes = this@Image.sizes.leadingImageSizes,
+            colors = this@Image.colors.leadingImageColors,
         )
     }
 }
@@ -131,7 +129,7 @@ fun SnackbarLeftScope.Image(
 /**
  * Displays an avatar image in a Snackbar that is aligned to the left.
  *
- * This function is an extension function of the [SnackbarLeftScope] interface, which means that it
+ * This function is an extension function of the [SnackbarLeadingScope] interface, which means that it
  * can be called on any instance of that interface. It takes an optional [modifier] parameter and an
  * [avatarUrl] parameter, which is a [Uri] that represents the URL of the avatar image to be displayed.
  *
@@ -139,7 +137,7 @@ fun SnackbarLeftScope.Image(
  * @param avatarUrl The [Uri] that represents the URL of the avatar image to be displayed.
  */
 @Composable
-fun SnackbarLeftScope.Avatar(
+fun SnackbarLeadingScope.Avatar(
     modifier: Modifier = Modifier,
     avatarUrl: Uri
 ) {
@@ -154,8 +152,8 @@ fun SnackbarLeftScope.Avatar(
     ) {
         Avatar(
             imageUrl = avatarUrl,
-            colors = this@Avatar.colors.leftAvatarColors,
-            sizes = this@Avatar.sizes.leftAvatarSizes
+            colors = this@Avatar.colors.leadingAvatarColors,
+            sizes = this@Avatar.sizes.leadingAvatarSizes
         )
     }
 }
@@ -163,7 +161,7 @@ fun SnackbarLeftScope.Avatar(
 /**
  * Displays a timer in a Snackbar that is aligned to the left.
  *
- * This function is an extension function of the [SnackbarLeftScope] interface, which means that it
+ * This function is an extension function of the [SnackbarLeadingScope] interface, which means that it
  * can be called on any instance of that interface. It takes an optional [modifier] parameter, a
  * [progress] parameter, which is a [Float] that represents the progress of the timer, and an
  * optional [onTimerFinish] parameter, which is a lambda function that is called when the timer
@@ -174,7 +172,7 @@ fun SnackbarLeftScope.Avatar(
  * @param onTimerFinish The optional lambda function that is called when the timer finishes.
  */
 @Composable
-fun SnackbarLeftScope.Timer(
+fun SnackbarLeadingScope.Timer(
     modifier: Modifier = Modifier,
     progress: Float,
     onTimerFinish: (SnackbarData) -> Unit = { it.dismiss() }
@@ -204,8 +202,8 @@ fun SnackbarLeftScope.Timer(
         CircularProgressIndicator(
             progress = { animateSweep },
             maxValue = { progress },
-            sizes = this@Timer.sizes.leftTimerSizes,
-            colors = this@Timer.colors.leftTimerColors,
+            sizes = this@Timer.sizes.leadingTimerSizes,
+            colors = this@Timer.colors.leadingTimerColors,
             content = true
         )
     }

@@ -48,7 +48,7 @@ fun Snackbar(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 val leftScope = remember(colors, sizes) {
-                    SnackbarLeftScopeWrapper(
+                    SnackbarLeadingScopeWrapper(
                         scope = this,
                         snackbarData = snackbarData,
                         sizes = sizes,
@@ -65,17 +65,14 @@ fun Snackbar(
                     Text(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(
-                                horizontal = PersianTheme.spacing.size12,
-                                vertical = PersianTheme.spacing.size12
-                            ),
+                            .padding(horizontal = PersianTheme.spacing.size12),
                         text = snackbarData.visuals.message,
                         style = sizes.messageTextStyle,
                         color = colors.messageColor
                     )
                 }
                 val rightScope = remember(colors, sizes) {
-                    SnackbarRightScopeWrapper(
+                    SnackbarTrailingScopeWrapper(
                         scope = this,
                         snackbarData = snackbarData,
                         sizes = sizes,

@@ -75,8 +75,8 @@ class SnackbarHostState {
     suspend fun showSnackbar(
         message: String,
         snackbarPosition: SnackbarPosition = SnackbarPosition.Bottom,
-        left: (@Composable SnackbarLeftScope.() -> Unit)? = null,
-        right: (@Composable SnackbarRightScope.() -> Unit)? = null,
+        left: (@Composable SnackbarLeadingScope.() -> Unit)? = null,
+        right: (@Composable SnackbarTrailingScope.() -> Unit)? = null,
         hasProgress: Boolean = false,
         duration: SnackbarDuration = if (right == null) SnackbarDuration.Short
         else SnackbarDuration.Indefinite
@@ -125,8 +125,8 @@ class SnackbarHostState {
         override val duration: SnackbarDuration,
         override val snackbarPosition: SnackbarPosition,
         override val hasProgress: Boolean,
-        override val left: @Composable (SnackbarLeftScope.() -> Unit)?,
-        override val right: @Composable (SnackbarRightScope.() -> Unit)?
+        override val left: @Composable (SnackbarLeadingScope.() -> Unit)?,
+        override val right: @Composable (SnackbarTrailingScope.() -> Unit)?
     ) : SnackbarVisuals {
         override fun equals(other: Any?): Boolean {
             if (this === other) return true
@@ -279,8 +279,8 @@ interface SnackbarVisuals {
     val duration: SnackbarDuration
     val snackbarPosition: SnackbarPosition
     val hasProgress: Boolean
-    val left: (@Composable SnackbarLeftScope.() -> Unit)?
-    val right: (@Composable SnackbarRightScope.() -> Unit)?
+    val left: (@Composable SnackbarLeadingScope.() -> Unit)?
+    val right: (@Composable SnackbarTrailingScope.() -> Unit)?
 }
 
 /**

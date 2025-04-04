@@ -32,75 +32,73 @@ object SnackbarDefaults {
      *
      * @param containerColor The background color of the Snackbar container. Defaults to
      * @param messageColor The color of the message text displayed in the Snackbar. Defaults to
-     * @param leftIconColor The color of the icon displayed on the left side of the Snackbar. Defaults to
-     * @param leftAvatarColors The color scheme for the avatar displayed on the left side of the Snackbar.
-     * @param leftTimerColors The color scheme for the timer progress bar displayed on the left side of the
-     * @param leftImageColors The color scheme for the image displayed on the left side of the Snackbar.
-     * @param rightCloseColor The color of the close button displayed on the right side of the Snackbar.
-     * @param rightActionColor The color of the action button displayed on the right side of the Snackbar.
+     * @param leadingIconColor The color of the icon displayed on the left side of the Snackbar. Defaults to
+     * @param leadingAvatarColors The color scheme for the avatar displayed on the left side of the Snackbar.
+     * @param leadingTimerColors The color scheme for the timer progress bar displayed on the left side of the
+     * @param leadingImageColors The color scheme for the image displayed on the left side of the Snackbar.
+     * @param trailingCloseColor The color of the close button displayed on the right side of the Snackbar.
+     * @param trailingActionColor The color of the action button displayed on the right side of the Snackbar.
      */
     @Composable
     fun colors(
         containerColor: Color = PersianTheme.colorScheme.surfaceContainerHighest,
         messageColor: Color = PersianTheme.colorScheme.onSurface,
 
-        leftIconColor: Color = PersianTheme.colorScheme.primary,
-        leftAvatarColors: AvatarColors = AvatarDefaults.colors(),
-        leftTimerColors: ProgressBarColors = ProgressIndicatorDefaults.colors(),
-        leftImageColors: ImageColors = ImageDefaults.colors(),
+        leadingIconColor: Color = PersianTheme.colorScheme.primary,
+        leadingAvatarColors: AvatarColors = AvatarDefaults.colors(),
+        leadingTimerColors: ProgressBarColors = ProgressIndicatorDefaults.colors(),
+        leadingImageColors: ImageColors = ImageDefaults.colors(),
 
-        rightCloseColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
-        rightActionColor: Color = PersianTheme.colorScheme.primary
-    ): SnackbarColors =
-        SnackbarColors(
-            containerColor = containerColor,
-            messageColor = messageColor,
+        trailingCloseColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
+        trailingActionColor: Color = PersianTheme.colorScheme.primary
+    ) = SnackbarColors(
+        containerColor = containerColor,
+        messageColor = messageColor,
 
-            leftIconColor = leftIconColor,
-            leftAvatarColors = leftAvatarColors,
-            leftTimerColors = leftTimerColors,
-            leftImageColors = leftImageColors,
-            rightCloseColor = rightCloseColor,
-            rightActionColor = rightActionColor
-        )
+        leadingIconColor = leadingIconColor,
+        leadingAvatarColors = leadingAvatarColors,
+        leadingTimerColors = leadingTimerColors,
+        leadingImageColors = leadingImageColors,
+        trailingCloseColor = trailingCloseColor,
+        trailingActionColor = trailingActionColor
+    )
 
     /**
      * Create a [SnackbarSizes] instance with customizable size and style properties.
      *
      * @param containerShape The shape of the Snackbar container.
      * @param messageTextStyle The text style for the message displayed in the Snackbar.
-     * @param leftIconSizes The size scheme for the icon displayed on the left side of the Snackbar.
-     * @param leftAvatarSizes The size scheme for the avatar displayed on the left side of the Snackbar.
-     * @param leftTimerSizes The size scheme for the timer progress bar displayed on the left side of the Snackbar.
-     * @param leftImageSizes The size scheme for the image displayed on the left side of the Snackbar.
-     * @param rightCloseSizes The size scheme for the close button displayed on the right side of the Snackbar.
-     * @param rightActionSizes The size scheme for the action button displayed on the right side of the Snackbar.
+     * @param leadingIconSizes The size scheme for the icon displayed on the left side of the Snackbar.
+     * @param leadingAvatarSizes The size scheme for the avatar displayed on the left side of the Snackbar.
+     * @param leadingTimerSizes The size scheme for the timer progress bar displayed on the left side of the Snackbar.
+     * @param leadingImageSizes The size scheme for the image displayed on the left side of the Snackbar.
+     * @param trailingCloseSizes The size scheme for the close button displayed on the right side of the Snackbar.
+     * @param trailingActionSizes The size scheme for the action button displayed on the right side of the Snackbar.
      */
     @Composable
     fun sizes(
         containerShape: Shape = PersianTheme.shapes.shape16,
         messageTextStyle: TextStyle = PersianTheme.typography.bodyMedium,
 
-        leftIconSizes: IconSizes = IconDefaults.size28(),
-        leftAvatarSizes: AvatarSizes = AvatarDefaults.size32(),
-        leftTimerSizes: CircularProgressBarSizes = ProgressIndicatorDefaults.circularMedium(),
-        leftImageSizes: ImageSizes = ImageDefaults.size32(),
+        leadingIconSizes: IconSizes = IconDefaults.size28(),
+        leadingAvatarSizes: AvatarSizes = AvatarDefaults.size36(),
+        leadingTimerSizes: CircularProgressBarSizes = ProgressIndicatorDefaults.circularMedium(),
+        leadingImageSizes: ImageSizes = ImageDefaults.size36(),
 
-        rightCloseSizes: IconButtonSizes = IconButtonDefaults.smallSizes(),
-        rightActionSizes: ButtonSizes = ButtonDefaults.smallSizes()
-    ): SnackbarSizes =
-        SnackbarSizes(
-            containerShape = containerShape,
-            messageTextStyle = messageTextStyle,
+        trailingCloseSizes: IconButtonSizes = IconButtonDefaults.mediumSizes(),
+        trailingActionSizes: ButtonSizes = ButtonDefaults.smallSizes()
+    ) = SnackbarSizes(
+        containerShape = containerShape,
+        messageTextStyle = messageTextStyle,
 
-            leftIconSizes = leftIconSizes,
-            leftAvatarSizes = leftAvatarSizes,
-            leftTimerSizes = leftTimerSizes,
-            leftImageSizes = leftImageSizes,
+        leadingIconSizes = leadingIconSizes,
+        leadingAvatarSizes = leadingAvatarSizes,
+        leadingTimerSizes = leadingTimerSizes,
+        leadingImageSizes = leadingImageSizes,
 
-            rightCloseSizes = rightCloseSizes,
-            rightActionSizes = rightActionSizes
-        )
+        trailingCloseSizes = trailingCloseSizes,
+        trailingActionSizes = trailingActionSizes
+    )
 }
 
 /**
@@ -108,25 +106,25 @@ object SnackbarDefaults {
  *
  * @property containerColor The background color of the Snackbar container.
  * @property messageColor The color of the message text displayed in the Snackbar.
- * @property leftIconColor The color of the icon displayed on the left side of the Snackbar.
- * @property leftAvatarColors The color scheme for the avatar displayed on the left side of the Snackbar.
- * @property leftTimerColors The color scheme for the timer progress bar displayed on the left side of the Snackbar.
- * @property leftImageColors The color scheme for the image displayed on the left side of the Snackbar.
- * @property rightCloseColor The color of the close button displayed on the right side of the Snackbar.
- * @property rightActionColor The color of the action button displayed on the right side of the Snackbar.
+ * @property leadingIconColor The color of the icon displayed on the left side of the Snackbar.
+ * @property leadingAvatarColors The color scheme for the avatar displayed on the left side of the Snackbar.
+ * @property leadingTimerColors The color scheme for the timer progress bar displayed on the left side of the Snackbar.
+ * @property leadingImageColors The color scheme for the image displayed on the left side of the Snackbar.
+ * @property trailingCloseColor The color of the close button displayed on the right side of the Snackbar.
+ * @property trailingActionColor The color of the action button displayed on the right side of the Snackbar.
  */
 @Immutable
 class SnackbarColors internal constructor(
     internal val containerColor: Color,
     internal val messageColor: Color,
 
-    internal val leftIconColor: Color,
-    internal val leftAvatarColors: AvatarColors,
-    internal val leftTimerColors: ProgressBarColors,
-    internal val leftImageColors: ImageColors,
+    internal val leadingIconColor: Color,
+    internal val leadingAvatarColors: AvatarColors,
+    internal val leadingTimerColors: ProgressBarColors,
+    internal val leadingImageColors: ImageColors,
 
-    internal val rightCloseColor: Color,
-    internal val rightActionColor: Color
+    internal val trailingCloseColor: Color,
+    internal val trailingActionColor: Color
 ) {
 
     /**
@@ -136,26 +134,25 @@ class SnackbarColors internal constructor(
         containerColor: Color = this.containerColor,
         messageColor: Color = this.messageColor,
 
-        leftIconColor: Color = this.leftIconColor,
-        leftAvatarColors: AvatarColors = this.leftAvatarColors,
-        leftTimerColors: ProgressBarColors = this.leftTimerColors,
-        leftImageColors: ImageColors = this.leftImageColors,
+        leadingIconColor: Color = this.leadingIconColor,
+        leadingAvatarColors: AvatarColors = this.leadingAvatarColors,
+        leadingTimerColors: ProgressBarColors = this.leadingTimerColors,
+        leadingImageColors: ImageColors = this.leadingImageColors,
 
-        rightCloseColor: Color = this.rightCloseColor,
-        rightActionColor: Color = this.rightActionColor
-    ): SnackbarColors =
-        SnackbarColors(
-            containerColor = containerColor,
-            messageColor = messageColor,
+        trailingCloseColor: Color = this.trailingCloseColor,
+        trailingActionColor: Color = this.trailingActionColor
+    ) = SnackbarColors(
+        containerColor = containerColor,
+        messageColor = messageColor,
 
-            leftIconColor = leftIconColor,
-            leftAvatarColors = leftAvatarColors,
-            leftTimerColors = leftTimerColors,
-            leftImageColors = leftImageColors,
+        leadingIconColor = leadingIconColor,
+        leadingAvatarColors = leadingAvatarColors,
+        leadingTimerColors = leadingTimerColors,
+        leadingImageColors = leadingImageColors,
 
-            rightCloseColor = rightCloseColor,
-            rightActionColor = rightActionColor
-        )
+        trailingCloseColor = trailingCloseColor,
+        trailingActionColor = trailingActionColor
+    )
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -164,24 +161,24 @@ class SnackbarColors internal constructor(
         if (containerColor != other.containerColor) return false
         if (messageColor != other.messageColor) return false
 
-        if (leftIconColor != other.leftIconColor) return false
-        if (leftAvatarColors != other.leftAvatarColors) return false
-        if (leftTimerColors != other.leftTimerColors) return false
-        if (leftImageColors != other.leftImageColors) return false
+        if (leadingIconColor != other.leadingIconColor) return false
+        if (leadingAvatarColors != other.leadingAvatarColors) return false
+        if (leadingTimerColors != other.leadingTimerColors) return false
+        if (leadingImageColors != other.leadingImageColors) return false
 
-        if (rightCloseColor != other.rightCloseColor) return false
-        return rightActionColor == other.rightActionColor
+        if (trailingCloseColor != other.trailingCloseColor) return false
+        return trailingActionColor == other.trailingActionColor
     }
 
     override fun hashCode(): Int {
         var result = containerColor.hashCode()
         result = 31 * result + messageColor.hashCode()
-        result = 31 * result + leftIconColor.hashCode()
-        result = 31 * result + leftAvatarColors.hashCode()
-        result = 31 * result + leftTimerColors.hashCode()
-        result = 31 * result + leftImageColors.hashCode()
-        result = 31 * result + rightCloseColor.hashCode()
-        result = 31 * result + rightActionColor.hashCode()
+        result = 31 * result + leadingIconColor.hashCode()
+        result = 31 * result + leadingAvatarColors.hashCode()
+        result = 31 * result + leadingTimerColors.hashCode()
+        result = 31 * result + leadingImageColors.hashCode()
+        result = 31 * result + trailingCloseColor.hashCode()
+        result = 31 * result + trailingActionColor.hashCode()
         return result
     }
 }
@@ -195,25 +192,25 @@ class SnackbarColors internal constructor(
  *
  * @property containerShape The shape of the Snackbar container.
  * @property messageTextStyle The text style for the message displayed in the Snackbar.
- * @property leftIconSizes The size scheme for the icon displayed on the left side of the Snackbar.
- * @property leftAvatarSizes The size scheme for the avatar displayed on the left side of the Snackbar.
- * @property leftTimerSizes The size scheme for the timer progress bar displayed on the left side of the Snackbar.
- * @property leftImageSizes The size scheme for the image displayed on the left side of the Snackbar.
- * @property rightCloseSizes The size scheme for the close button displayed on the right side of the Snackbar.
- * @property rightActionSizes The size scheme for the action button displayed on the right side of the Snackbar.
+ * @property leadingIconSizes The size scheme for the icon displayed on the left side of the Snackbar.
+ * @property leadingAvatarSizes The size scheme for the avatar displayed on the left side of the Snackbar.
+ * @property leadingTimerSizes The size scheme for the timer progress bar displayed on the left side of the Snackbar.
+ * @property leadingImageSizes The size scheme for the image displayed on the left side of the Snackbar.
+ * @property trailingCloseSizes The size scheme for the close button displayed on the right side of the Snackbar.
+ * @property trailingActionSizes The size scheme for the action button displayed on the right side of the Snackbar.
  */
 @Immutable
 class SnackbarSizes internal constructor(
     internal val containerShape: Shape,
     internal val messageTextStyle: TextStyle,
 
-    internal val leftIconSizes: IconSizes,
-    internal val leftAvatarSizes: AvatarSizes,
-    internal val leftTimerSizes: CircularProgressBarSizes,
-    internal val leftImageSizes: ImageSizes,
+    internal val leadingIconSizes: IconSizes,
+    internal val leadingAvatarSizes: AvatarSizes,
+    internal val leadingTimerSizes: CircularProgressBarSizes,
+    internal val leadingImageSizes: ImageSizes,
 
-    internal val rightCloseSizes: IconButtonSizes,
-    internal val rightActionSizes: ButtonSizes
+    internal val trailingCloseSizes: IconButtonSizes,
+    internal val trailingActionSizes: ButtonSizes
 ) {
     /**
      * Returns a copy of this [SnackbarSizes], optionally overriding some of the values.
@@ -222,26 +219,25 @@ class SnackbarSizes internal constructor(
         containerShape: Shape = this.containerShape,
         messageTextStyle: TextStyle = this.messageTextStyle,
 
-        leftIconSizes: IconSizes = this.leftIconSizes,
-        leftAvatarSizes: AvatarSizes = this.leftAvatarSizes,
-        leftTimerSizes: CircularProgressBarSizes = this.leftTimerSizes,
-        leftIMageSizes: ImageSizes = this.leftImageSizes,
+        leftIconSizes: IconSizes = this.leadingIconSizes,
+        leftAvatarSizes: AvatarSizes = this.leadingAvatarSizes,
+        leftTimerSizes: CircularProgressBarSizes = this.leadingTimerSizes,
+        leftIMageSizes: ImageSizes = this.leadingImageSizes,
 
-        rightCloseSizes: IconButtonSizes = this.rightCloseSizes,
-        rightActionSizes: ButtonSizes = this.rightActionSizes
-    ): SnackbarSizes =
-        SnackbarSizes(
-            containerShape = containerShape,
-            messageTextStyle = messageTextStyle,
+        rightCloseSizes: IconButtonSizes = this.trailingCloseSizes,
+        rightActionSizes: ButtonSizes = this.trailingActionSizes
+    ) = SnackbarSizes(
+        containerShape = containerShape,
+        messageTextStyle = messageTextStyle,
 
-            leftIconSizes = leftIconSizes,
-            leftAvatarSizes = leftAvatarSizes,
-            leftTimerSizes = leftTimerSizes,
-            leftImageSizes = leftIMageSizes,
+        leadingIconSizes = leftIconSizes,
+        leadingAvatarSizes = leftAvatarSizes,
+        leadingTimerSizes = leftTimerSizes,
+        leadingImageSizes = leftIMageSizes,
 
-            rightCloseSizes = rightCloseSizes,
-            rightActionSizes = rightActionSizes
-        )
+        trailingCloseSizes = rightCloseSizes,
+        trailingActionSizes = rightActionSizes
+    )
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -250,24 +246,24 @@ class SnackbarSizes internal constructor(
         if (containerShape != other.containerShape) return false
         if (messageTextStyle != other.messageTextStyle) return false
 
-        if (leftIconSizes != other.leftIconSizes) return false
-        if (leftAvatarSizes != other.leftAvatarSizes) return false
-        if (leftTimerSizes != other.leftTimerSizes) return false
-        if (leftImageSizes != other.leftImageSizes) return false
+        if (leadingIconSizes != other.leadingIconSizes) return false
+        if (leadingAvatarSizes != other.leadingAvatarSizes) return false
+        if (leadingTimerSizes != other.leadingTimerSizes) return false
+        if (leadingImageSizes != other.leadingImageSizes) return false
 
-        if (rightCloseSizes != other.rightCloseSizes) return false
-        return rightActionSizes == other.rightActionSizes
+        if (trailingCloseSizes != other.trailingCloseSizes) return false
+        return trailingActionSizes == other.trailingActionSizes
     }
 
     override fun hashCode(): Int {
         var result = containerShape.hashCode()
         result = 31 * result + messageTextStyle.hashCode()
-        result = 31 * result + leftIconSizes.hashCode()
-        result = 31 * result + leftAvatarSizes.hashCode()
-        result = 31 * result + leftTimerSizes.hashCode()
-        result = 31 * result + leftImageSizes.hashCode()
-        result = 31 * result + rightCloseSizes.hashCode()
-        result = 31 * result + rightActionSizes.hashCode()
+        result = 31 * result + leadingIconSizes.hashCode()
+        result = 31 * result + leadingAvatarSizes.hashCode()
+        result = 31 * result + leadingTimerSizes.hashCode()
+        result = 31 * result + leadingImageSizes.hashCode()
+        result = 31 * result + trailingCloseSizes.hashCode()
+        result = 31 * result + trailingActionSizes.hashCode()
         return result
     }
 }
