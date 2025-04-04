@@ -1,4 +1,4 @@
-package io.github.madmaximuus.persian.chips.input
+package io.github.madmaximuus.persian.chip.toggleable
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -7,14 +7,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.semantics.Role
-import io.github.madmaximuus.persian.chips.founfation.SelectableChipColors
-import io.github.madmaximuus.persian.chips.founfation.SelectableChipSizes
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.icon.Icon
-import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
-import io.github.madmaximuus.persianSymbols.xmark.XMark
 
 /**
  * An interface that defines the scope for the trailing content of an InputChip.
@@ -27,18 +22,18 @@ import io.github.madmaximuus.persianSymbols.xmark.XMark
  * @property enabled Whether the chip is enabled or disabled.
  * @property selected Whether the chip is selected or not.
  */
-interface InputChipTrailingScope {
-    val colors: SelectableChipColors
-    val sizes: SelectableChipSizes
+interface ToggleableChipTrailingScope {
+    val colors: ToggleableChipColors
+    val sizes: ToggleableChipSizes
     val enabled: Boolean
     val selected: Boolean
 }
 
 /**
- * An internal implementation of the [InputChipTrailingScope] interface that wraps the colors, sizes,
+ * An internal implementation of the [ToggleableChipTrailingScope] interface that wraps the colors, sizes,
  * enabled state, and selected state of an InputChip.
  *
- * This class is used to provide a concrete implementation of the [InputChipTrailingScope] interface,
+ * This class is used to provide a concrete implementation of the [ToggleableChipTrailingScope] interface,
  * allowing the trailing content of an InputChip to access the chip's properties.
  *
  * @param colors The colors to be used for the chip.
@@ -46,12 +41,12 @@ interface InputChipTrailingScope {
  * @param enabled Whether the chip is enabled or disabled.
  * @param selected Whether the chip is selected or not.
  */
-internal class InputChipTrailingScopeWrapper(
-    override val colors: SelectableChipColors,
-    override val sizes: SelectableChipSizes,
+internal class ToggleableChipTrailingScopeWrapper(
+    override val colors: ToggleableChipColors,
+    override val sizes: ToggleableChipSizes,
     override val enabled: Boolean,
     override val selected: Boolean
-) : InputChipTrailingScope
+) : ToggleableChipTrailingScope
 
 /**
  * Provides an icon within the trailing scope of an [InputShip].
@@ -61,17 +56,17 @@ internal class InputChipTrailingScopeWrapper(
  * @param onClick Called when this chip is clicked.
  */
 @Composable
-fun InputChipTrailingScope.Icon(
+fun ToggleableChipTrailingScope.Icon(
     modifier: Modifier = Modifier,
-    icon: Painter = rememberVectorPainter(image = PersianSymbols.Default.XMark),
+    icon: Painter,
     onClick: () -> Unit
 ) {
     Box(
         modifier = modifier
-            .padding(horizontal = PersianTheme.spacing.size8)
+            .padding(end = PersianTheme.spacing.size4)
     ) {
         Icon(
-            Modifier
+            modifier = Modifier
                 .clip(PersianTheme.shapes.shape4)
                 .clickable(
                     enabled = enabled,
