@@ -1,19 +1,22 @@
 package io.github.madmaximuus.persian.listItem
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.style.BaselineShift
-import io.github.madmaximuus.persian.button.PrimaryButton
-import io.github.madmaximuus.persian.checkboxes.toggle.CheckboxToggle
+import io.github.madmaximuus.persian.checkbox.toggle.CheckboxToggle
 import io.github.madmaximuus.persian.counter.Counter
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.icon.Icon
-import io.github.madmaximuus.persian.iconButton.PrimaryIconButton
+import io.github.madmaximuus.persian.iconButton.IconButton
 import io.github.madmaximuus.persian.radioButton.RadioButtonToggle
 import io.github.madmaximuus.persian.switch.Switch
 import io.github.madmaximuus.persian.text.Text
@@ -29,7 +32,7 @@ import io.github.madmaximuus.persian.text.Text
  * @property enabled A boolean indicating whether the list item is enabled.
  * @property checked A boolean indicating whether the list item is checked.
  */
-interface ListItemRightScope : RowScope {
+interface ListItemTrailingScope : RowScope {
     val sizes: ListItemSizes
     val colors: ListItemColors
     val enabled: Boolean
@@ -37,7 +40,7 @@ interface ListItemRightScope : RowScope {
 }
 
 /**
- * Internal class that wraps a [RowScope] and implements [ListItemRightScope].
+ * Internal class that wraps a [RowScope] and implements [ListItemTrailingScope].
  *
  * This class provides a way to encapsulate a [RowScope] and add additional properties related to
  * the right section of a list item, such as sizes, colors, enabled state, and checked state.
@@ -48,13 +51,13 @@ interface ListItemRightScope : RowScope {
  * @param checked A boolean indicating whether the list item is checked.
  * @param enabled A boolean indicating whether the list item is enabled.
  */
-internal class ListItemRightScopeWrapper(
+internal class ListItemTrailingScopeWrapper(
     val scope: RowScope,
     override val sizes: ListItemSizes,
     override val colors: ListItemColors,
     override val checked: Boolean,
     override val enabled: Boolean
-) : ListItemRightScope, RowScope by scope
+) : ListItemTrailingScope, RowScope by scope
 
 /**
  * Composable function to display an icon within the right scope of a list item.
@@ -67,7 +70,7 @@ internal class ListItemRightScopeWrapper(
  * @param icon The painter for the icon.
  */
 @Composable
-fun ListItemRightScope.Icon(
+fun ListItemTrailingScope.Icon(
     modifier: Modifier = Modifier,
     icon: Painter
 ) {
@@ -77,8 +80,8 @@ fun ListItemRightScope.Icon(
     ) {
         Icon(
             painter = icon,
-            tint = this@Icon.colors.rightIconColor,
-            sizes = this@Icon.sizes.rightIconSizes
+            tint = this@Icon.colors.trailingIconColor,
+            sizes = this@Icon.sizes.trailingIconSizes
         )
     }
 }
@@ -93,7 +96,7 @@ fun ListItemRightScope.Icon(
  * @param modifier The modifier to be applied to the [Box].
  */
 @Composable
-fun ListItemRightScope.Switch(
+fun ListItemTrailingScope.Switch(
     modifier: Modifier = Modifier,
 ) {
     Box(
@@ -102,8 +105,8 @@ fun ListItemRightScope.Switch(
     ) {
         Switch(
             checked = this@Switch.checked,
-            colors = this@Switch.colors.rightSwitchColors,
-            sizes = this@Switch.sizes.rightSwitchSizes,
+            colors = this@Switch.colors.trailingSwitchColors,
+            sizes = this@Switch.sizes.trailingSwitchSizes,
             enabled = this@Switch.enabled,
             onCheckedChange = null
         )
@@ -120,7 +123,7 @@ fun ListItemRightScope.Switch(
  * @param count The integer value to be displayed by the counter.
  */
 @Composable
-fun ListItemRightScope.Counter(
+fun ListItemTrailingScope.Counter(
     modifier: Modifier = Modifier,
     count: Int,
 ) {
@@ -130,8 +133,8 @@ fun ListItemRightScope.Counter(
     ) {
         Counter(
             count = count,
-            colors = this@Counter.colors.rightCounterColors,
-            sizes = this@Counter.sizes.rightCounterSizes,
+            colors = this@Counter.colors.trailingCounterColors,
+            sizes = this@Counter.sizes.trailingCounterSizes,
         )
     }
 }
@@ -143,29 +146,59 @@ fun ListItemRightScope.Counter(
  * The text's appearance is customized based on the enabled state and the provided sizes and colors.
  *
  * @param modifier The modifier to be applied to the [Box].
- * @param value The string value to be displayed as the suffix text.
+ * @param title The string value to be displayed as the suffix text.
  */
 @Composable
-fun ListItemRightScope.Suffix(
+fun ListItemTrailingScope.Suffix(
     modifier: Modifier = Modifier,
-    value: String,
+    title: String,
+    body: String? = null,
+    icon: Painter? = null
 ) {
+    require(body==null || icon == null){
+        throw IllegalArgumentException("Must have only body or icon")
+    }
     Box(
         modifier = modifier
             .padding(start = PersianTheme.spacing.size12)
     ) {
-        Text(
-            text = value,
-            style = this@Suffix.sizes.rightSuffixTextStyle.copy(baselineShift = BaselineShift.None),
-            color = this@Suffix.colors.rightSuffixColor
-        )
+        Column(
+            horizontalAlignment = Alignment.End
+        ) {
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size4),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = title,
+                    style = this@Suffix.sizes.trailingSuffixTextStyle.copy(baselineShift = BaselineShift.None),
+                    color = this@Suffix.colors.trailingSuffixColor,
+                    maxLines = 1
+                )
+                icon?.let {
+                    Icon(
+                        painter = it,
+                        sizes = this@Suffix.sizes.trailingIconSizes,
+                        tint = this@Suffix.colors.trailingIconColor
+                    )
+                }
+            }
+            body?.let {
+                Text(
+                    text = it,
+                    style = this@Suffix.sizes.trailingSuffixBodyTextStyle.copy(baselineShift = BaselineShift.None),
+                    color = this@Suffix.colors.trailingSuffixBodyColor,
+                    maxLines = 1
+                )
+            }
+        }
     }
 }
 
 /**
  * Composable function to display a button within the right scope of a list item.
  *
- * This function creates a [Box] with padding and contains a [PrimaryButton] that displays the given
+ * This function creates a [Box] with padding and contains a primary [Button] that displays the given
  * value and handles click events. The button's appearance and behavior are customized based on the
  * enabled state and the provided sizes and colors.
  *
@@ -174,7 +207,7 @@ fun ListItemRightScope.Suffix(
  * @param onClick The callback to be invoked when the button is clicked.
  */
 @Composable
-fun ListItemRightScope.Button(
+fun ListItemTrailingScope.Button(
     modifier: Modifier = Modifier,
     value: String,
     onClick: () -> Unit
@@ -183,11 +216,11 @@ fun ListItemRightScope.Button(
         modifier = modifier
             .padding(start = PersianTheme.spacing.size12)
     ) {
-        PrimaryButton(
+        io.github.madmaximuus.persian.button.Button(
             text = value,
             onClick = onClick,
-            sizes = this@Button.sizes.rightButtonSizes,
-            colors = this@Button.colors.rightButtonColors,
+            sizes = this@Button.sizes.trailingButtonSizes,
+            colors = this@Button.colors.trailingButtonColors,
             enabled = this@Button.enabled
         )
     }
@@ -196,7 +229,7 @@ fun ListItemRightScope.Button(
 /**
  * Composable function to display an icon button within the right scope of a list item.
  *
- * This function creates a [Box] with padding and contains a [PrimaryIconButton] that displays the
+ * This function creates a [Box] with padding and contains a [IconButton] that displays the
  * given icon and handles click events. The button's appearance and behavior are customized based on
  * the enabled state and the provided sizes and colors.
  *
@@ -205,7 +238,7 @@ fun ListItemRightScope.Button(
  * @param onClick The callback to be invoked when the button is clicked.
  */
 @Composable
-fun ListItemRightScope.IconButton(
+fun ListItemTrailingScope.IconButton(
     modifier: Modifier = Modifier,
     icon: Painter,
     onClick: () -> Unit
@@ -214,11 +247,11 @@ fun ListItemRightScope.IconButton(
         modifier = modifier
             .padding(start = PersianTheme.spacing.size12)
     ) {
-        PrimaryIconButton(
+        IconButton(
             icon = icon,
             onClick = onClick,
-            colors = this@IconButton.colors.rightIconButtonColors,
-            sizes = this@IconButton.sizes.rightIconButtonSizes,
+            colors = this@IconButton.colors.trailingIconButtonColors,
+            sizes = this@IconButton.sizes.trailingIconButtonSizes,
             enabled = this@IconButton.enabled
         )
     }
@@ -234,7 +267,7 @@ fun ListItemRightScope.IconButton(
  * @param modifier The modifier to be applied to the [Box].
  */
 @Composable
-fun ListItemRightScope.Checkbox(
+fun ListItemTrailingScope.Checkbox(
     modifier: Modifier = Modifier,
 ) {
     Box(
@@ -243,10 +276,10 @@ fun ListItemRightScope.Checkbox(
     ) {
         CheckboxToggle(
             modifier = modifier
-                .size(this@Checkbox.sizes.rightCheckboxSizes.toggleSize),
+                .size(this@Checkbox.sizes.trailingCheckboxSizes.toggleSize),
             checked = this@Checkbox.checked,
             onCheckedChange = null,
-            colors = this@Checkbox.colors.rightCheckboxToggleColors,
+            colors = this@Checkbox.colors.trailingCheckboxToggleColors,
         )
     }
 }
@@ -261,7 +294,7 @@ fun ListItemRightScope.Checkbox(
  * @param modifier The modifier to be applied to the [Box].
  */
 @Composable
-fun ListItemRightScope.Radio(
+fun ListItemTrailingScope.Radio(
     modifier: Modifier = Modifier,
 ) {
     Box(
@@ -270,9 +303,9 @@ fun ListItemRightScope.Radio(
     ) {
         RadioButtonToggle(
             modifier = Modifier
-                .size(this@Radio.sizes.rightRadioButtonSizes.toggleSize),
+                .size(this@Radio.sizes.trailingRadioButtonSizes.toggleSize),
             selected = this@Radio.checked,
-            colors = this@Radio.colors.rightRadioButtonColors,
+            colors = this@Radio.colors.trailingRadioButtonColors,
             onClick = null
         )
     }

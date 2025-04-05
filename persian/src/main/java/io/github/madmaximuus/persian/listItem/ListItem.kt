@@ -1,9 +1,9 @@
 package io.github.madmaximuus.persian.listItem
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
@@ -14,11 +14,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.divider.Divider
 import io.github.madmaximuus.persian.divider.InsetSide
 import io.github.madmaximuus.persian.foundation.PersianState38
 import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.text.Text
 
 /**
  * A list item is useful for organizing and displaying individual elements within a list, providing
@@ -27,10 +29,8 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
  * user experience and data organization.
  *
  * @param modifier The modifier to be applied to the [Column].
- * @param edit A composable function that defines the content for the edit section.
- * @param left A composable function that defines the content for the left section.
- * @param middle A composable function that defines the content for the middle section.
- * @param right A composable function that defines the content for the right section.
+ * @param leading A composable function that defines the content for the leading section.
+ * @param trailing A composable function that defines the content for the trailing section.
  * @param divider A boolean indicating whether to display a divider below the list item.
  * @param enabled A boolean indicating whether the list item is enabled.
  * @param checked A boolean indicating whether the list item is checked.
@@ -41,14 +41,15 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
 @Composable
 fun ListItem(
     modifier: Modifier = Modifier,
-    edit: (@Composable ListItemEditScope.() -> Unit)? = null,
-    left: (@Composable ListItemLeftScope.() -> Unit)? = null,
-    middle: @Composable ListItemMiddleScope.() -> Unit,
-    right: (@Composable ListItemRightScope.() -> Unit)? = null,
+    title: String,
+    subhead: String? = null,
+    body: String? = null,
+    isNew: Boolean = false,
+    leading: (@Composable ListItemLeadingScope.() -> Unit)? = null,
+    trailing: (@Composable ListItemTrailingScope.() -> Unit)? = null,
     divider: Boolean = false,
     enabled: Boolean = true,
     checked: Boolean = false,
-    selected: Boolean = false,
     sizes: ListItemSizes = ListItemDefaults.sizes(),
     colors: ListItemColors = ListItemDefaults.colors(),
     onClick: (() -> Unit)? = null
@@ -65,56 +66,25 @@ fun ListItem(
             ),
         verticalArrangement = Arrangement.Center
     ) {
-        val padding = if (edit != null) PaddingValues(end = PersianTheme.spacing.size16)
-        else PaddingValues(horizontal = PersianTheme.spacing.size16)
+        val alignment = if (body != null && subhead == null) Alignment.Top
+        else Alignment.CenterVertically
         Row(
             Modifier
                 .fillMaxWidth()
-                .padding(padding)
+                .padding(
+                    horizontal = PersianTheme.spacing.size16,
+                    vertical = PersianTheme.spacing.size8
+                )
                 .graphicsLayer {
                     alpha = if (enabled) 1f
                     else PersianState38
                 },
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = alignment
         ) {
-            if (edit != null) {
-                val scope =
-                    remember(sizes, colors, enabled, selected) {
-                        ListItemEditScopeWrapper(
-                            scope = this,
-                            sizes = sizes,
-                            colors = colors,
-                            enabled = enabled,
-                            checked = selected
-                        )
-                    }
-                scope.edit()
-            }
-            if (left != null) {
+            if (leading != null) {
                 val scope =
                     remember(sizes, colors, enabled) {
-                        ListItemLeftScopeWrapper(
-                            scope = this,
-                            sizes = sizes,
-                            colors = colors,
-                            enabled = enabled,
-                        )
-                    }
-                scope.left()
-            }
-            val middleScope =
-                remember(sizes, colors, enabled) {
-                    ListItemMiddleScopeWrapper(
-                        scope = this,
-                        sizes = sizes,
-                        colors = colors
-                    )
-                }
-            middleScope.middle()
-            if (right != null) {
-                val scope =
-                    remember(sizes, colors, enabled, checked) {
-                        ListItemRightScopeWrapper(
+                        ListItemLeadingScopeWrapper(
                             scope = this,
                             sizes = sizes,
                             colors = colors,
@@ -122,7 +92,75 @@ fun ListItem(
                             checked = checked
                         )
                     }
-                scope.right()
+                scope.leading()
+            }
+            Column(
+                modifier = modifier.weight(1f),
+                verticalArrangement = Arrangement.spacedBy(
+                    space = PersianTheme.spacing.size2,
+                    alignment = Alignment.CenterVertically
+                )
+            ) {
+                subhead?.let {
+                    Text(
+                        modifier = Modifier.fillMaxWidth(),
+                        text = it,
+                        style = sizes.subheadTextStyle,
+                        color = colors.subheadColor,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                }
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size4)
+                ) {
+                    Text(
+                        text = title,
+                        style = sizes.titleTextStyle,
+                        color = colors.titleColor,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                    if (isNew) {
+                        Text(
+                            modifier = Modifier
+                                .background(
+                                    color = colors.newLabelContainerColor,
+                                    shape = sizes.newLabelShape
+                                )
+                                .padding(
+                                    horizontal = PersianTheme.spacing.size4,
+                                    vertical = PersianTheme.spacing.size2
+                                ),
+                            text = "New",
+                            style = sizes.newLabelTextStyle,
+                            color = colors.newLabelColor
+                        )
+                    }
+                }
+                body?.let {
+                    Text(
+                        modifier = Modifier.fillMaxWidth(),
+                        text = it,
+                        style = sizes.bodyTextStyle,
+                        color = colors.bodyColor,
+                        maxLines = if (subhead != null) 1 else 2,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                }
+            }
+            if (trailing != null) {
+                val scope =
+                    remember(sizes, colors, enabled, checked) {
+                        ListItemTrailingScopeWrapper(
+                            scope = this,
+                            sizes = sizes,
+                            colors = colors,
+                            enabled = enabled,
+                            checked = checked
+                        )
+                    }
+                scope.trailing()
             }
         }
         if (divider)

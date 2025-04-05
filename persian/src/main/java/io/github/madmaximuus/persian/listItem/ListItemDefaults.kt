@@ -16,9 +16,9 @@ import io.github.madmaximuus.persian.avatarAndImage.ImageSizes
 import io.github.madmaximuus.persian.button.ButtonColors
 import io.github.madmaximuus.persian.button.ButtonDefaults
 import io.github.madmaximuus.persian.button.ButtonSizes
-import io.github.madmaximuus.persian.checkboxes.CheckboxDefaults
-import io.github.madmaximuus.persian.checkboxes.CheckboxSizes
-import io.github.madmaximuus.persian.checkboxes.CheckboxToggleColors
+import io.github.madmaximuus.persian.checkbox.CheckboxDefaults
+import io.github.madmaximuus.persian.checkbox.CheckboxSizes
+import io.github.madmaximuus.persian.checkbox.CheckboxToggleColors
 import io.github.madmaximuus.persian.counter.CounterColors
 import io.github.madmaximuus.persian.counter.CounterDefaults
 import io.github.madmaximuus.persian.counter.CounterSizes
@@ -51,162 +51,145 @@ object ListItemDefaults {
      * @param subheadColor The color of the subhead text when enabled.
      * @param newLabelColor The color of the new label text when enabled.
      * @param newLabelContainerColor The background color of the new label container when enabled.
-     * @param editRadioButtonColors The colors for the radio button in the edit section.
-     * @param editCheckboxToggleColors The colors for the checkbox in the edit section.
-     * @param editAddColor The colors for the add icon button in the edit section.
-     * @param editRemoveColor The colors for the remove icon button in the edit section.
-     * @param editDragColor The color of the drag icon in the edit section when enabled.
-     * @param leftIconColor The color of the icon in the left section when enabled.
-     * @param leftAvatarColors The colors for the avatar in the left section.
-     * @param leftImageColors The colors for the image in the left section.
-     * @param rightSwitchColors The colors for the switch in the right section.
-     * @param rightButtonColors The colors for the button in the right section.
-     * @param rightIconButtonColors The colors for the icon button in the right section.
-     * @param rightCounterColors The colors for the counter in the right section.
-     * @param rightRadioButtonColors The colors for the radio button in the right section.
-     * @param rightCheckboxToggleColors The colors for the checkbox in the right section.
-     * @param rightSuffixColor The color of the suffix text in the right section when enabled.
-     * @param rightIconColor The color of the icon in the right section when enabled.
+     * @param leadingIconColor The color of the icon in the left section when enabled.
+     * @param leadingAvatarColors The colors for the avatar in the left section.
+     * @param leadingImageColors The colors for the image in the left section.
+     * @param trailingSwitchColors The colors for the switch in the right section.
+     * @param trailingButtonColors The colors for the button in the right section.
+     * @param trailingIconButtonColors The colors for the icon button in the right section.
+     * @param trailingCounterColors The colors for the counter in the right section.
+     * @param trailingRadioButtonColors The colors for the radio button in the right section.
+     * @param trailingCheckboxToggleColors The colors for the checkbox in the right section.
+     * @param trailingSuffixColor The color of the suffix text in the right section when enabled.
+     * @param trailingIconColor The color of the icon in the right section when enabled.
      * @param dividerColor The color of the divider.
      */
     @Composable
     fun colors(
+        leadingIconColor: Color = PersianTheme.colorScheme.primary,
+        leadingAvatarColors: AvatarColors = AvatarDefaults.colors(),
+        leadingImageColors: ImageColors = ImageDefaults.colors(),
+        leadingSwitchColors: SwitchColors = SwitchDefaults.colors(),
+        leadingCheckboxColors: CheckboxToggleColors = CheckboxDefaults.toggleColors(),
+        leadingRadioButtonColors: RadioButtonToggleColors = RadioButtonDefaults.toggleColors(),
+        leadingIconButtonColors: IconButtonColors = IconButtonDefaults.tertiaryIconButtonColors(),
         titleColor: Color = PersianTheme.colorScheme.onSurface,
         bodyColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         subheadColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         newLabelColor: Color = PersianTheme.colorScheme.onValid,
         newLabelContainerColor: Color = PersianTheme.colorScheme.valid,
-        editRadioButtonColors: RadioButtonToggleColors = RadioButtonDefaults.toggleColors(),
-        editCheckboxToggleColors: CheckboxToggleColors = CheckboxDefaults.toggleColors(),
-        editAddColor: Color = PersianTheme.colorScheme.primary,
-        editRemoveColor: Color = PersianTheme.colorScheme.primary,
-        editDragColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
-        leftIconColor: Color = PersianTheme.colorScheme.primary,
-        leftAvatarColors: AvatarColors = AvatarDefaults.colors(),
-        leftImageColors: ImageColors = ImageDefaults.colors(),
-        rightSwitchColors: SwitchColors = SwitchDefaults.colors(),
-        rightButtonColors: ButtonColors = ButtonDefaults.primaryColors(),
-        rightIconButtonColors: IconButtonColors = IconButtonDefaults.tertiaryIconButtonColors(),
-        rightCounterColors: CounterColors = CounterDefaults.primaryColors(),
-        rightRadioButtonColors: RadioButtonToggleColors = RadioButtonDefaults.toggleColors(),
-        rightCheckboxToggleColors: CheckboxToggleColors = CheckboxDefaults.toggleColors(),
-        rightSuffixColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
-        rightIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
+        trailingSwitchColors: SwitchColors = SwitchDefaults.colors(),
+        trailingButtonColors: ButtonColors = ButtonDefaults.primaryColors(),
+        trailingIconButtonColors: IconButtonColors = IconButtonDefaults.tertiaryIconButtonColors(),
+        trailingCounterColors: CounterColors = CounterDefaults.primaryColors(),
+        trailingRadioButtonColors: RadioButtonToggleColors = RadioButtonDefaults.toggleColors(),
+        trailingCheckboxToggleColors: CheckboxToggleColors = CheckboxDefaults.toggleColors(),
+        trailingSuffixColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
+        trailingSuffixBodyColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
+        trailingIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         dividerColor: Color = PersianTheme.colorScheme.outlineVariant
-    ): ListItemColors =
-        ListItemColors(
-            titleColor = titleColor,
-            bodyColor = bodyColor,
-            subheadColor = subheadColor,
-            newLabelColor = newLabelColor,
-            newLabelContainerColor = newLabelContainerColor,
-            editRadioButtonColors = editRadioButtonColors,
-            editCheckboxToggleColors = editCheckboxToggleColors,
-            editAddColors = editAddColor,
-            editRemoveColors = editRemoveColor,
-            editDragColor = editDragColor,
-            leftIconColor = leftIconColor,
-            leftAvatarColors = leftAvatarColors,
-            leftImageColors = leftImageColors,
-            rightSwitchColors = rightSwitchColors,
-            rightButtonColors = rightButtonColors,
-            rightIconButtonColors = rightIconButtonColors,
-            rightCounterColors = rightCounterColors,
-            rightRadioButtonColors = rightRadioButtonColors,
-            rightCheckboxToggleColors = rightCheckboxToggleColors,
-            rightSuffixColor = rightSuffixColor,
-            rightIconColor = rightIconColor,
-            dividerColor = dividerColor
-        )
+    ) = ListItemColors(
+        leadingIconColor = leadingIconColor,
+        leadingAvatarColors = leadingAvatarColors,
+        leadingImageColors = leadingImageColors,
+        leadingSwitchColors = leadingSwitchColors,
+        leadingCheckboxColors = leadingCheckboxColors,
+        leadingRadioButtonColors = leadingRadioButtonColors,
+        leadingIconButtonColors = leadingIconButtonColors,
+        titleColor = titleColor,
+        bodyColor = bodyColor,
+        subheadColor = subheadColor,
+        newLabelColor = newLabelColor,
+        newLabelContainerColor = newLabelContainerColor,
+        trailingSwitchColors = trailingSwitchColors,
+        trailingButtonColors = trailingButtonColors,
+        trailingIconButtonColors = trailingIconButtonColors,
+        trailingCounterColors = trailingCounterColors,
+        trailingRadioButtonColors = trailingRadioButtonColors,
+        trailingCheckboxToggleColors = trailingCheckboxToggleColors,
+        trailingSuffixColor = trailingSuffixColor,
+        trailingSuffixBodyColor = trailingSuffixBodyColor,
+        trailingIconColor = trailingIconColor,
+        dividerColor = dividerColor
+    )
 
     /**
      * Create a [ListItemSizes] instance with the specified sizes.
      *
      * @param shape The shape of the list item.
-     * @param editDragIconSizes The sizes for the drag icon in the edit section.
-     * @param editCheckboxSizes The sizes for the checkbox in the edit section.
-     * @param editRadioButtonSizes The sizes for the radio button in the edit section.
-     * @param editAddIconButtonSizes The sizes for the add icon button in the edit section.
-     * @param editRemoveIconButtonSizes The sizes for the remove icon button in the edit section.
-     * @param leftIconSizes The sizes for the icon in the left section.
-     * @param leftImageSizes The sizes for the image in the left section.
-     * @param leftAvatarSizes The sizes for the avatar in the left section.
      * @param titleTextStyle The text style for the title in the middle section.
      * @param bodyTextStyle The text style for the body text in the middle section.
      * @param subheadTextStyle The text style for the subhead text in the middle section.
      * @param newLabelTextStyle The text style for the new label in the middle section.
      * @param newLabelShape The shape for the new label in the middle section.
-     * @param rightIconSizes The sizes for the icon in the right section.
-     * @param rightSwitchSizes The sizes for the switch in the right section.
-     * @param rightCounterSizes The sizes for the counter in the right section.
-     * @param rightSuffixTextStyle The text style for the suffix text in the right section.
-     * @param rightButtonSizes The sizes for the button in the right section.
-     * @param rightIconButtonSizes The sizes for the icon button in the right section.
-     * @param rightCheckboxSizes The sizes for the checkbox in the right section.
-     * @param rightRadioButtonSizes The sizes for the radio button in the right section.
+     * @param trailingIconSizes The sizes for the icon in the right section.
+     * @param trailingSwitchSizes The sizes for the switch in the right section.
+     * @param trailingCounterSizes The sizes for the counter in the right section.
+     * @param trailingSuffixTextStyle The text style for the suffix text in the right section.
+     * @param trailingButtonSizes The sizes for the button in the right section.
+     * @param trailingIconButtonSizes The sizes for the icon button in the right section.
+     * @param trailingCheckboxSizes The sizes for the checkbox in the right section.
+     * @param trailingRadioButtonSizes The sizes for the radio button in the right section.
      * @param dividerSizes The sizes for the divider.
      */
     @Composable
     fun sizes(
         shape: Shape = RoundedCornerShape(0.dp),
 
-        editDragIconSizes: IconSizes = IconDefaults.size24(),
-        editCheckboxSizes: CheckboxSizes = CheckboxDefaults.sizes(),
-        editRadioButtonSizes: RadioButtonSizes = RadioButtonDefaults.sizes(),
-        editAddIconButtonSizes: IconButtonSizes = IconButtonDefaults.smallSizes(),
-        editRemoveIconButtonSizes: IconButtonSizes = IconButtonDefaults.smallSizes(),
-
-        leftIconSizes: IconSizes = IconDefaults.size28(),
-        leftImageSizes: ImageSizes = ImageDefaults.size44(),
-        leftAvatarSizes: AvatarSizes = AvatarDefaults.size40(),
+        leadingIconSizes: IconSizes = IconDefaults.size28(),
+        leadingImageSizes: ImageSizes = ImageDefaults.size40(),
+        leadingAvatarSizes: AvatarSizes = AvatarDefaults.size40(),
+        leadingSwitchSizes: SwitchSizes = SwitchDefaults.sizes(),
+        leadingCheckboxSizes: CheckboxSizes = CheckboxDefaults.sizes(),
+        leadingRadioButtonSizes: RadioButtonSizes = RadioButtonDefaults.sizes(),
+        leadingIconButtonSizes: IconButtonSizes = IconButtonDefaults.smallSizes(),
 
         titleTextStyle: TextStyle = PersianTheme.typography.titleMedium,
         bodyTextStyle: TextStyle = PersianTheme.typography.bodyMedium,
         subheadTextStyle: TextStyle = PersianTheme.typography.labelExtraSmall,
         newLabelTextStyle: TextStyle = PersianTheme.typography.labelSmall,
-        newLabelShape: Shape = PersianTheme.shapes.shape4,
+        newLabelShape: Shape = PersianTheme.shapes.shape6,
 
-        rightIconSizes: IconSizes = IconDefaults.size24(),
-        rightSwitchSizes: SwitchSizes = SwitchDefaults.sizes(),
-        rightCounterSizes: CounterSizes = CounterDefaults.sizes(),
-        rightSuffixTextStyle: TextStyle = PersianTheme.typography.bodyMedium,
-        rightButtonSizes: ButtonSizes = ButtonDefaults.smallSizes(),
-        rightIconButtonSizes: IconButtonSizes = IconButtonDefaults.smallSizes(),
-        rightCheckboxSizes: CheckboxSizes = CheckboxDefaults.sizes(),
-        rightRadioButtonSizes: RadioButtonSizes = RadioButtonDefaults.sizes(),
+        trailingIconSizes: IconSizes = IconDefaults.size24(),
+        trailingSwitchSizes: SwitchSizes = SwitchDefaults.sizes(),
+        trailingCounterSizes: CounterSizes = CounterDefaults.sizes(),
+        trailingSuffixTextStyle: TextStyle = PersianTheme.typography.labelMedium,
+        trailingSuffixBodyTextStyle: TextStyle = PersianTheme.typography.bodySmall,
+        trailingButtonSizes: ButtonSizes = ButtonDefaults.smallSizes(),
+        trailingIconButtonSizes: IconButtonSizes = IconButtonDefaults.smallSizes(),
+        trailingCheckboxSizes: CheckboxSizes = CheckboxDefaults.sizes(),
+        trailingRadioButtonSizes: RadioButtonSizes = RadioButtonDefaults.sizes(),
 
         dividerSizes: DividerSizes = DividerDefaults.sizes(),
-    ): ListItemSizes =
-        ListItemSizes(
-            shape = shape,
+    ) = ListItemSizes(
+        shape = shape,
 
-            editDragIconSizes = editDragIconSizes,
-            editCheckboxSizes = editCheckboxSizes,
-            editRadioButtonSizes = editRadioButtonSizes,
-            editAddIconButtonSizes = editAddIconButtonSizes,
-            editRemoveIconButtonSizes = editRemoveIconButtonSizes,
+        leadingIconSizes = leadingIconSizes,
+        leadingImageSizes = leadingImageSizes,
+        leadingAvatarSizes = leadingAvatarSizes,
+        leadingSwitchSizes = leadingSwitchSizes,
+        leadingCheckboxSizes = leadingCheckboxSizes,
+        leadingRadioButtonSizes = leadingRadioButtonSizes,
+        leadingIconButtonSizes = leadingIconButtonSizes,
 
-            leftIconSizes = leftIconSizes,
-            leftImageSizes = leftImageSizes,
-            leftAvatarSizes = leftAvatarSizes,
+        titleTextStyle = titleTextStyle,
+        bodyTextStyle = bodyTextStyle,
+        subheadTextStyle = subheadTextStyle,
+        newLabelTextStyle = newLabelTextStyle,
+        newLabelShape = newLabelShape,
 
-            titleTextStyle = titleTextStyle,
-            bodyTextStyle = bodyTextStyle,
-            subheadTextStyle = subheadTextStyle,
-            newLabelTextStyle = newLabelTextStyle,
-            newLabelShape = newLabelShape,
+        trailingIconSizes = trailingIconSizes,
+        trailingSwitchSizes = trailingSwitchSizes,
+        trailingCounterSizes = trailingCounterSizes,
+        trailingSuffixTextStyle = trailingSuffixTextStyle,
+        trailingSuffixBodyTextStyle = trailingSuffixBodyTextStyle,
+        trailingButtonSizes = trailingButtonSizes,
+        trailingIconButtonSizes = trailingIconButtonSizes,
+        trailingCheckboxSizes = trailingCheckboxSizes,
+        trailingRadioButtonSizes = trailingRadioButtonSizes,
 
-            rightIconSizes = rightIconSizes,
-            rightSwitchSizes = rightSwitchSizes,
-            rightCounterSizes = rightCounterSizes,
-            rightSuffixTextStyle = rightSuffixTextStyle,
-            rightButtonSizes = rightButtonSizes,
-            rightIconButtonSizes = rightIconButtonSizes,
-            rightCheckboxSizes = rightCheckboxSizes,
-            rightRadioButtonSizes = rightRadioButtonSizes,
-
-            dividerSizes = dividerSizes
-        )
+        dividerSizes = dividerSizes
+    )
 }
 
 /**
@@ -221,47 +204,44 @@ object ListItemDefaults {
  * @property subheadColor The color of the subhead text when enabled.
  * @property newLabelColor The color of the new label text when enabled.
  * @property newLabelContainerColor The background color of the new label container when enabled.
- * @property editDragColor The color of the drag icon in the edit section when enabled.
- * @property editRadioButtonColors The colors for the radio button in the edit section.
- * @property editCheckboxToggleColors The colors for the checkbox in the edit section.
- * @property editAddColors The colors for the add icon button in the edit section.
- * @property editRemoveColors The colors for the remove icon button in the edit section.
- * @property leftIconColor The color of the icon in the left section when enabled.
- * @property leftAvatarColors The colors for the avatar in the left section.
- * @property leftImageColors The colors for the image in the left section.
- * @property rightSwitchColors The colors for the switch in the right section.
- * @property rightButtonColors The colors for the button in the right section.
- * @property rightIconButtonColors The colors for the icon button in the right section.
- * @property rightCounterColors The colors for the counter in the right section.
- * @property rightRadioButtonColors The colors for the radio button in the right section.
- * @property rightCheckboxToggleColors The colors for the checkbox in the right section.
- * @property rightSuffixColor The color of the suffix text in the right section when enabled.
- * @property rightIconColor The color of the icon in the right section when enabled.
+ * @property leadingIconColor The color of the icon in the left section when enabled.
+ * @property leadingAvatarColors The colors for the avatar in the left section.
+ * @property leadingImageColors The colors for the image in the left section.
+ * @property trailingSwitchColors The colors for the switch in the right section.
+ * @property trailingButtonColors The colors for the button in the right section.
+ * @property trailingIconButtonColors The colors for the icon button in the right section.
+ * @property trailingCounterColors The colors for the counter in the right section.
+ * @property trailingRadioButtonColors The colors for the radio button in the right section.
+ * @property trailingCheckboxToggleColors The colors for the checkbox in the right section.
+ * @property trailingSuffixColor The color of the suffix text in the right section when enabled.
+ * @property trailingIconColor The color of the icon in the right section when enabled.
  * @property dividerColor The color of the divider.
  */
 @Immutable
 class ListItemColors(
+    internal val leadingIconColor: Color,
+    internal val leadingAvatarColors: AvatarColors,
+    internal val leadingImageColors: ImageColors,
+    internal val leadingSwitchColors: SwitchColors,
+    internal val leadingCheckboxColors: CheckboxToggleColors,
+    internal val leadingRadioButtonColors: RadioButtonToggleColors,
+    internal val leadingIconButtonColors: IconButtonColors,
+
     internal val titleColor: Color,
     internal val bodyColor: Color,
     internal val subheadColor: Color,
     internal val newLabelColor: Color,
     internal val newLabelContainerColor: Color,
-    internal val editDragColor: Color,
-    internal val editRadioButtonColors: RadioButtonToggleColors,
-    internal val editCheckboxToggleColors: CheckboxToggleColors,
-    internal val editAddColors: Color,
-    internal val editRemoveColors: Color,
-    internal val leftIconColor: Color,
-    internal val leftAvatarColors: AvatarColors,
-    internal val leftImageColors: ImageColors,
-    internal val rightSwitchColors: SwitchColors,
-    internal val rightButtonColors: ButtonColors,
-    internal val rightIconButtonColors: IconButtonColors,
-    internal val rightCounterColors: CounterColors,
-    internal val rightRadioButtonColors: RadioButtonToggleColors,
-    internal val rightCheckboxToggleColors: CheckboxToggleColors,
-    internal val rightSuffixColor: Color,
-    internal val rightIconColor: Color,
+
+    internal val trailingSwitchColors: SwitchColors,
+    internal val trailingButtonColors: ButtonColors,
+    internal val trailingIconButtonColors: IconButtonColors,
+    internal val trailingCounterColors: CounterColors,
+    internal val trailingRadioButtonColors: RadioButtonToggleColors,
+    internal val trailingCheckboxToggleColors: CheckboxToggleColors,
+    internal val trailingSuffixColor: Color,
+    internal val trailingSuffixBodyColor: Color,
+    internal val trailingIconColor: Color,
     internal val dividerColor: Color
 ) {
 
@@ -269,104 +249,99 @@ class ListItemColors(
      * Creates a copy of this [ListItemColors] instance with the specified properties.
      */
     fun copy(
+        leadingIconColor: Color = this.leadingIconColor,
+        leadingAvatarColors: AvatarColors = this.leadingAvatarColors,
+        leadingImageColors: ImageColors = this.leadingImageColors,
+        leadingSwitchColors: SwitchColors = this.leadingSwitchColors,
+        leadingCheckboxColors: CheckboxToggleColors = this.leadingCheckboxColors,
+        leadingRadioButtonColors: RadioButtonToggleColors = this.leadingRadioButtonColors,
+        leadingIconButtonColors: IconButtonColors = this.leadingIconButtonColors,
         titleColor: Color = this.titleColor,
         bodyColor: Color = this.bodyColor,
         subheadColor: Color = this.subheadColor,
         newLabelColor: Color = this.newLabelColor,
         newLabelContainerColor: Color = this.newLabelContainerColor,
-        editDragColor: Color = this.editDragColor,
-        editRadioButtonColors: RadioButtonToggleColors = this.editRadioButtonColors,
-        editCheckboxToggleColors: CheckboxToggleColors = this.editCheckboxToggleColors,
-        editAddColors: Color = this.editAddColors,
-        editRemoveColors: Color = this.editRemoveColors,
-        leftIconColor: Color = this.leftIconColor,
-        leftAvatarColors: AvatarColors = this.leftAvatarColors,
-        leftImageColors: ImageColors = this.leftImageColors,
-        rightSwitchColors: SwitchColors = this.rightSwitchColors,
-        rightButtonColors: ButtonColors = this.rightButtonColors,
-        rightIconButtonColors: IconButtonColors = this.rightIconButtonColors,
-        rightCounterColors: CounterColors = this.rightCounterColors,
-        rightRadioButtonColors: RadioButtonToggleColors = this.rightRadioButtonColors,
-        rightCheckboxToggleColors: CheckboxToggleColors = this.rightCheckboxToggleColors,
-        rightSuffixColor: Color = this.rightSuffixColor,
-        rightIconColor: Color = this.rightIconColor,
+        trailingSwitchColors: SwitchColors = this.trailingSwitchColors,
+        trailingButtonColors: ButtonColors = this.trailingButtonColors,
+        trailingIconButtonColors: IconButtonColors = this.trailingIconButtonColors,
+        trailingCounterColors: CounterColors = this.trailingCounterColors,
+        trailingRadioButtonColors: RadioButtonToggleColors = this.trailingRadioButtonColors,
+        trailingCheckboxToggleColors: CheckboxToggleColors = this.trailingCheckboxToggleColors,
+        trailingSuffixColor: Color = this.trailingSuffixColor,
+        trailingSuffixBodyColor: Color = this.trailingSuffixBodyColor,
+        trailingIconColor: Color = this.trailingIconColor,
         dividerColor: Color = this.dividerColor
-    ): ListItemColors =
-        ListItemColors(
-            titleColor = titleColor,
-            bodyColor = bodyColor,
-            subheadColor = subheadColor,
-            newLabelColor = newLabelColor,
-            newLabelContainerColor = newLabelContainerColor,
-            editDragColor = editDragColor,
-            editRadioButtonColors = editRadioButtonColors,
-            editCheckboxToggleColors = editCheckboxToggleColors,
-            editAddColors = editAddColors,
-            editRemoveColors = editRemoveColors,
-            leftIconColor = leftIconColor,
-            leftAvatarColors = leftAvatarColors,
-            leftImageColors = leftImageColors,
-            rightSwitchColors = rightSwitchColors,
-            rightButtonColors = rightButtonColors,
-            rightIconButtonColors = rightIconButtonColors,
-            rightCounterColors = rightCounterColors,
-            rightRadioButtonColors = rightRadioButtonColors,
-            rightCheckboxToggleColors = rightCheckboxToggleColors,
-            rightSuffixColor = rightSuffixColor,
-            rightIconColor = rightIconColor,
-            dividerColor = dividerColor
-        )
+    ) = ListItemColors(
+        leadingIconColor = leadingIconColor,
+        leadingAvatarColors = leadingAvatarColors,
+        leadingImageColors = leadingImageColors,
+        leadingSwitchColors = leadingSwitchColors,
+        leadingCheckboxColors = leadingCheckboxColors,
+        leadingRadioButtonColors = leadingRadioButtonColors,
+        leadingIconButtonColors = leadingIconButtonColors,
+        titleColor = titleColor,
+        bodyColor = bodyColor,
+        subheadColor = subheadColor,
+        newLabelColor = newLabelColor,
+        newLabelContainerColor = newLabelContainerColor,
+        trailingSwitchColors = trailingSwitchColors,
+        trailingButtonColors = trailingButtonColors,
+        trailingIconButtonColors = trailingIconButtonColors,
+        trailingCounterColors = trailingCounterColors,
+        trailingRadioButtonColors = trailingRadioButtonColors,
+        trailingCheckboxToggleColors = trailingCheckboxToggleColors,
+        trailingSuffixColor = trailingSuffixColor,
+        trailingSuffixBodyColor = trailingSuffixBodyColor,
+        trailingIconColor = trailingIconColor,
+        dividerColor = dividerColor
+    )
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other == null || other !is ListItemColors) return false
 
+        if (leadingIconColor != other.leadingIconColor) return false
+        if (leadingAvatarColors != other.leadingAvatarColors) return false
+        if (leadingImageColors != other.leadingImageColors) return false
+        if (leadingSwitchColors != other.leadingSwitchColors) return false
+        if (leadingCheckboxColors != other.leadingCheckboxColors) return false
+        if (leadingRadioButtonColors != other.leadingRadioButtonColors) return false
+        if (leadingIconButtonColors != other.leadingIconButtonColors) return false
         if (titleColor != other.titleColor) return false
         if (bodyColor != other.bodyColor) return false
         if (subheadColor != other.subheadColor) return false
         if (newLabelColor != other.newLabelColor) return false
         if (newLabelContainerColor != other.newLabelContainerColor) return false
-        if (editDragColor != other.editDragColor) return false
-        if (editRadioButtonColors != other.editRadioButtonColors) return false
-        if (editCheckboxToggleColors != other.editCheckboxToggleColors) return false
-        if (editAddColors != other.editAddColors) return false
-        if (editRemoveColors != other.editRemoveColors) return false
-        if (leftIconColor != other.leftIconColor) return false
-        if (leftAvatarColors != other.leftAvatarColors) return false
-        if (leftImageColors != other.leftImageColors) return false
-        if (rightSwitchColors != other.rightSwitchColors) return false
-        if (rightButtonColors != other.rightButtonColors) return false
-        if (rightIconButtonColors != other.rightIconButtonColors) return false
-        if (rightCounterColors != other.rightCounterColors) return false
-        if (rightRadioButtonColors != other.rightRadioButtonColors) return false
-        if (rightCheckboxToggleColors != other.rightCheckboxToggleColors) return false
-        if (rightSuffixColor != other.rightSuffixColor) return false
-        if (rightIconColor != other.rightIconColor) return false
+        if (trailingSwitchColors != other.trailingSwitchColors) return false
+        if (trailingButtonColors != other.trailingButtonColors) return false
+        if (trailingIconButtonColors != other.trailingIconButtonColors) return false
+        if (trailingCounterColors != other.trailingCounterColors) return false
+        if (trailingRadioButtonColors != other.trailingRadioButtonColors) return false
+        if (trailingCheckboxToggleColors != other.trailingCheckboxToggleColors) return false
+        if (trailingSuffixColor != other.trailingSuffixColor) return false
+        if (trailingSuffixBodyColor != other.trailingSuffixBodyColor) return false
+        if (trailingIconColor != other.trailingIconColor) return false
         return dividerColor == other.dividerColor
     }
 
     override fun hashCode(): Int {
-        var result = titleColor.hashCode()
+        var result = leadingIconColor.hashCode()
+        result = 31 * result + leadingAvatarColors.hashCode()
+        result = 31 * result + leadingImageColors.hashCode()
+        result = 31 * result + titleColor.hashCode()
         result = 31 * result + bodyColor.hashCode()
         result = 31 * result + subheadColor.hashCode()
         result = 31 * result + newLabelColor.hashCode()
         result = 31 * result + newLabelContainerColor.hashCode()
-        result = 31 * result + editDragColor.hashCode()
-        result = 31 * result + editRadioButtonColors.hashCode()
-        result = 31 * result + editCheckboxToggleColors.hashCode()
-        result = 31 * result + editAddColors.hashCode()
-        result = 31 * result + editRemoveColors.hashCode()
-        result = 31 * result + leftIconColor.hashCode()
-        result = 31 * result + leftAvatarColors.hashCode()
-        result = 31 * result + leftImageColors.hashCode()
-        result = 31 * result + rightSwitchColors.hashCode()
-        result = 31 * result + rightButtonColors.hashCode()
-        result = 31 * result + rightIconButtonColors.hashCode()
-        result = 31 * result + rightCounterColors.hashCode()
-        result = 31 * result + rightRadioButtonColors.hashCode()
-        result = 31 * result + rightCheckboxToggleColors.hashCode()
-        result = 31 * result + rightSuffixColor.hashCode()
-        result = 31 * result + rightIconColor.hashCode()
+        result = 31 * result + trailingSwitchColors.hashCode()
+        result = 31 * result + trailingButtonColors.hashCode()
+        result = 31 * result + trailingIconButtonColors.hashCode()
+        result = 31 * result + trailingCounterColors.hashCode()
+        result = 31 * result + trailingRadioButtonColors.hashCode()
+        result = 31 * result + trailingCheckboxToggleColors.hashCode()
+        result = 31 * result + trailingSuffixColor.hashCode()
+        result = 31 * result + trailingSuffixBodyColor.hashCode()
+        result = 31 * result + trailingIconColor.hashCode()
         result = 31 * result + dividerColor.hashCode()
         return result
     }
@@ -380,42 +355,35 @@ class ListItemColors(
  * the sizes for each component.
  *
  * @property shape The shape of the list item.
- * @property editDragIconSizes The sizes for the drag icon in the edit section.
- * @property editCheckboxSizes The sizes for the checkbox in the edit section.
- * @property editRadioButtonSizes The sizes for the radio button in the edit section.
- * @property editAddIconButtonSizes The sizes for the add icon button in the edit section.
- * @property editRemoveIconButtonSizes The sizes for the remove icon button in the edit section.
- * @property leftIconSizes The sizes for the icon in the left section.
- * @property leftImageSizes The sizes for the image in the left section.
- * @property leftAvatarSizes The sizes for the avatar in the left section.
+ * @property leadingIconSizes The sizes for the icon in the left section.
+ * @property leadingImageSizes The sizes for the image in the left section.
+ * @property leadingAvatarSizes The sizes for the avatar in the left section.
  * @property titleTextStyle The text style for the title in the middle section.
  * @property bodyTextStyle The text style for the body text in the middle section.
  * @property subheadTextStyle The text style for the subhead text in the middle section.
  * @property newLabelTextStyle The text style for the new label in the middle section.
  * @property newLabelShape The shape for the new label in the middle section.
- * @property rightIconSizes The sizes for the icon in the right section.
- * @property rightSwitchSizes The sizes for the switch in the right section.
- * @property rightCounterSizes The sizes for the counter in the right section.
- * @property rightSuffixTextStyle The text style for the suffix text in the right section.
- * @property rightButtonSizes The sizes for the button in the right section.
- * @property rightIconButtonSizes The sizes for the icon button in the right section.
- * @property rightCheckboxSizes The sizes for the checkbox in the right section.
- * @property rightRadioButtonSizes The sizes for the radio button in the right section.
+ * @property trailingIconSizes The sizes for the icon in the right section.
+ * @property trailingSwitchSizes The sizes for the switch in the right section.
+ * @property trailingCounterSizes The sizes for the counter in the right section.
+ * @property trailingSuffixTextStyle The text style for the suffix text in the right section.
+ * @property trailingButtonSizes The sizes for the button in the right section.
+ * @property trailingIconButtonSizes The sizes for the icon button in the right section.
+ * @property trailingCheckboxSizes The sizes for the checkbox in the right section.
+ * @property trailingRadioButtonSizes The sizes for the radio button in the right section.
  * @property dividerSizes The sizes for the divider.
  */
 @Immutable
 class ListItemSizes(
     internal val shape: Shape,
 
-    internal val editDragIconSizes: IconSizes,
-    internal val editCheckboxSizes: CheckboxSizes,
-    internal val editRadioButtonSizes: RadioButtonSizes,
-    internal val editAddIconButtonSizes: IconButtonSizes,
-    internal val editRemoveIconButtonSizes: IconButtonSizes,
-
-    internal val leftIconSizes: IconSizes,
-    internal val leftImageSizes: ImageSizes,
-    internal val leftAvatarSizes: AvatarSizes,
+    internal val leadingImageSizes: ImageSizes,
+    internal val leadingAvatarSizes: AvatarSizes,
+    internal val leadingIconSizes: IconSizes,
+    internal val leadingSwitchSizes: SwitchSizes,
+    internal val leadingCheckboxSizes: CheckboxSizes,
+    internal val leadingRadioButtonSizes: RadioButtonSizes,
+    internal val leadingIconButtonSizes: IconButtonSizes,
 
     internal val titleTextStyle: TextStyle,
     internal val bodyTextStyle: TextStyle,
@@ -423,14 +391,15 @@ class ListItemSizes(
     internal val newLabelTextStyle: TextStyle,
     internal val newLabelShape: Shape,
 
-    internal val rightIconSizes: IconSizes,
-    internal val rightSwitchSizes: SwitchSizes,
-    internal val rightCounterSizes: CounterSizes,
-    internal val rightSuffixTextStyle: TextStyle,
-    internal val rightButtonSizes: ButtonSizes,
-    internal val rightIconButtonSizes: IconButtonSizes,
-    internal val rightCheckboxSizes: CheckboxSizes,
-    internal val rightRadioButtonSizes: RadioButtonSizes,
+    internal val trailingIconSizes: IconSizes,
+    internal val trailingSwitchSizes: SwitchSizes,
+    internal val trailingCounterSizes: CounterSizes,
+    internal val trailingSuffixTextStyle: TextStyle,
+    internal val trailingSuffixBodyTextStyle: TextStyle,
+    internal val trailingButtonSizes: ButtonSizes,
+    internal val trailingIconButtonSizes: IconButtonSizes,
+    internal val trailingCheckboxSizes: CheckboxSizes,
+    internal val trailingRadioButtonSizes: RadioButtonSizes,
 
     internal val dividerSizes: DividerSizes
 ) {
@@ -440,15 +409,13 @@ class ListItemSizes(
     fun copy(
         shape: Shape = this.shape,
 
-        editDragIconSizes: IconSizes = this.editDragIconSizes,
-        editCheckboxSizes: CheckboxSizes = this.editCheckboxSizes,
-        editRadioButtonSizes: RadioButtonSizes = this.editRadioButtonSizes,
-        editAddIconButtonSizes: IconButtonSizes = this.editAddIconButtonSizes,
-        editRemoveIconButtonSizes: IconButtonSizes = this.editRemoveIconButtonSizes,
-
-        leftIconSizes: IconSizes = this.leftIconSizes,
-        leftImageSizes: ImageSizes = this.leftImageSizes,
-        leftAvatarSizes: AvatarSizes = this.leftAvatarSizes,
+        leadingIconSizes: IconSizes = this.leadingIconSizes,
+        leadingImageSizes: ImageSizes = this.leadingImageSizes,
+        leadingAvatarSizes: AvatarSizes = this.leadingAvatarSizes,
+        leadingSwitchSizes: SwitchSizes = this.leadingSwitchSizes,
+        leadingCheckboxSizes: CheckboxSizes = this.leadingCheckboxSizes,
+        leadingRadioButtonSizes: RadioButtonSizes = this.leadingRadioButtonSizes,
+        leadingIconButtonSizes: IconButtonSizes = this.leadingIconButtonSizes,
 
         titleTextStyle: TextStyle = this.titleTextStyle,
         bodyTextStyle: TextStyle = this.bodyTextStyle,
@@ -456,47 +423,46 @@ class ListItemSizes(
         newLabelTextStyle: TextStyle = this.newLabelTextStyle,
         newLabelShape: Shape = this.newLabelShape,
 
-        rightIconSizes: IconSizes = this.rightIconSizes,
-        rightSwitchSizes: SwitchSizes = this.rightSwitchSizes,
-        rightCounterSizes: CounterSizes = this.rightCounterSizes,
-        rightSuffixTextStyle: TextStyle = this.rightSuffixTextStyle,
-        rightButtonSizes: ButtonSizes = this.rightButtonSizes,
-        rightIconButtonSizes: IconButtonSizes = this.rightIconButtonSizes,
-        rightCheckboxSizes: CheckboxSizes = this.rightCheckboxSizes,
-        rightRadioButtonSizes: RadioButtonSizes = this.rightRadioButtonSizes,
+        trailingIconSizes: IconSizes = this.trailingIconSizes,
+        trailingSwitchSizes: SwitchSizes = this.trailingSwitchSizes,
+        trailingCounterSizes: CounterSizes = this.trailingCounterSizes,
+        trailingSuffixTextStyle: TextStyle = this.trailingSuffixTextStyle,
+        trailingSuffixBodyTextStyle: TextStyle = this.trailingSuffixBodyTextStyle,
+        trailingButtonSizes: ButtonSizes = this.trailingButtonSizes,
+        trailingIconButtonSizes: IconButtonSizes = this.trailingIconButtonSizes,
+        trailingCheckboxSizes: CheckboxSizes = this.trailingCheckboxSizes,
+        trailingRadioButtonSizes: RadioButtonSizes = this.trailingRadioButtonSizes,
 
         dividerSizes: DividerSizes = this.dividerSizes,
-    ): ListItemSizes =
-        ListItemSizes(
-            shape = shape,
+    ) = ListItemSizes(
+        shape = shape,
 
-            editDragIconSizes = editDragIconSizes,
-            editCheckboxSizes = editCheckboxSizes,
-            editRadioButtonSizes = editRadioButtonSizes,
-            editAddIconButtonSizes = editAddIconButtonSizes,
-            editRemoveIconButtonSizes = editRemoveIconButtonSizes,
+        leadingIconSizes = leadingIconSizes,
+        leadingImageSizes = leadingImageSizes,
+        leadingAvatarSizes = leadingAvatarSizes,
+        leadingSwitchSizes = leadingSwitchSizes,
+        leadingCheckboxSizes = leadingCheckboxSizes,
+        leadingRadioButtonSizes = leadingRadioButtonSizes,
+        leadingIconButtonSizes = leadingIconButtonSizes,
 
-            leftIconSizes = leftIconSizes,
-            leftImageSizes = leftImageSizes,
-            leftAvatarSizes = leftAvatarSizes,
+        titleTextStyle = titleTextStyle,
+        bodyTextStyle = bodyTextStyle,
+        subheadTextStyle = subheadTextStyle,
+        newLabelTextStyle = newLabelTextStyle,
+        newLabelShape = newLabelShape,
 
-            titleTextStyle = titleTextStyle,
-            bodyTextStyle = bodyTextStyle,
-            subheadTextStyle = subheadTextStyle,
-            newLabelTextStyle = newLabelTextStyle,
-            newLabelShape = newLabelShape,
+        trailingIconSizes = trailingIconSizes,
+        trailingSwitchSizes = trailingSwitchSizes,
+        trailingCounterSizes = trailingCounterSizes,
+        trailingSuffixTextStyle = trailingSuffixTextStyle,
+        trailingSuffixBodyTextStyle = trailingSuffixBodyTextStyle,
+        trailingButtonSizes = trailingButtonSizes,
+        trailingIconButtonSizes = trailingIconButtonSizes,
+        trailingCheckboxSizes = trailingCheckboxSizes,
+        trailingRadioButtonSizes = trailingRadioButtonSizes,
 
-            rightIconSizes = rightIconSizes,
-            rightSwitchSizes = rightSwitchSizes,
-            rightCounterSizes = rightCounterSizes,
-            rightSuffixTextStyle = rightSuffixTextStyle,
-            rightButtonSizes = rightButtonSizes,
-            rightIconButtonSizes = rightIconButtonSizes,
-            rightCheckboxSizes = rightCheckboxSizes,
-            rightRadioButtonSizes = rightRadioButtonSizes,
-
-            dividerSizes = dividerSizes
-        )
+        dividerSizes = dividerSizes
+    )
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -504,15 +470,13 @@ class ListItemSizes(
 
         if (shape != other.shape) return false
 
-        if (editDragIconSizes != other.editDragIconSizes) return false
-        if (editCheckboxSizes != other.editCheckboxSizes) return false
-        if (editRadioButtonSizes != other.editRadioButtonSizes) return false
-        if (editAddIconButtonSizes != other.editAddIconButtonSizes) return false
-        if (editRemoveIconButtonSizes != other.editRemoveIconButtonSizes) return false
-
-        if (leftIconSizes != other.leftIconSizes) return false
-        if (leftImageSizes != other.leftImageSizes) return false
-        if (leftAvatarSizes != other.leftAvatarSizes) return false
+        if (leadingIconSizes != other.leadingIconSizes) return false
+        if (leadingImageSizes != other.leadingImageSizes) return false
+        if (leadingAvatarSizes != other.leadingAvatarSizes) return false
+        if (leadingSwitchSizes != other.leadingSwitchSizes) return false
+        if (leadingCheckboxSizes != other.leadingCheckboxSizes) return false
+        if (leadingRadioButtonSizes != other.leadingRadioButtonSizes) return false
+        if (leadingIconButtonSizes != other.leadingIconButtonSizes) return false
 
         if (titleTextStyle != other.titleTextStyle) return false
         if (bodyTextStyle != other.bodyTextStyle) return false
@@ -520,30 +484,29 @@ class ListItemSizes(
         if (newLabelTextStyle != other.newLabelTextStyle) return false
         if (newLabelShape != other.newLabelShape) return false
 
-        if (rightIconSizes != other.rightIconSizes) return false
-        if (rightSwitchSizes != other.rightSwitchSizes) return false
-        if (rightCounterSizes != other.rightCounterSizes) return false
-        if (rightSuffixTextStyle != other.rightSuffixTextStyle) return false
-        if (rightButtonSizes != other.rightButtonSizes) return false
-        if (rightIconButtonSizes != other.rightIconButtonSizes) return false
-        if (rightCheckboxSizes != other.rightCheckboxSizes) return false
-        if (rightRadioButtonSizes != other.rightRadioButtonSizes) return false
+        if (trailingIconSizes != other.trailingIconSizes) return false
+        if (trailingSwitchSizes != other.trailingSwitchSizes) return false
+        if (trailingCounterSizes != other.trailingCounterSizes) return false
+        if (trailingSuffixTextStyle != other.trailingSuffixTextStyle) return false
+        if (trailingSuffixBodyTextStyle != other.trailingSuffixBodyTextStyle) return false
+        if (trailingButtonSizes != other.trailingButtonSizes) return false
+        if (trailingIconButtonSizes != other.trailingIconButtonSizes) return false
+        if (trailingCheckboxSizes != other.trailingCheckboxSizes) return false
+        if (trailingRadioButtonSizes != other.trailingRadioButtonSizes) return false
 
         return dividerSizes == other.dividerSizes
     }
 
     override fun hashCode(): Int {
         var result = shape.hashCode()
-        result = 31 * result + editDragIconSizes.hashCode()
 
-        result = 31 * result + editCheckboxSizes.hashCode()
-        result = 31 * result + editRadioButtonSizes.hashCode()
-        result = 31 * result + editAddIconButtonSizes.hashCode()
-        result = 31 * result + editRemoveIconButtonSizes.hashCode()
-
-        result = 31 * result + leftIconSizes.hashCode()
-        result = 31 * result + leftImageSizes.hashCode()
-        result = 31 * result + leftAvatarSizes.hashCode()
+        result = 31 * result + leadingIconSizes.hashCode()
+        result = 31 * result + leadingImageSizes.hashCode()
+        result = 31 * result + leadingAvatarSizes.hashCode()
+        result = 31 * result + leadingSwitchSizes.hashCode()
+        result = 31 * result + leadingCheckboxSizes.hashCode()
+        result = 31 * result + leadingRadioButtonSizes.hashCode()
+        result = 31 * result + leadingIconButtonSizes.hashCode()
 
         result = 31 * result + titleTextStyle.hashCode()
         result = 31 * result + bodyTextStyle.hashCode()
@@ -551,14 +514,15 @@ class ListItemSizes(
         result = 31 * result + newLabelTextStyle.hashCode()
         result = 31 * result + newLabelShape.hashCode()
 
-        result = 31 * result + rightIconSizes.hashCode()
-        result = 31 * result + rightSwitchSizes.hashCode()
-        result = 31 * result + rightCounterSizes.hashCode()
-        result = 31 * result + rightSuffixTextStyle.hashCode()
-        result = 31 * result + rightButtonSizes.hashCode()
-        result = 31 * result + rightIconButtonSizes.hashCode()
-        result = 31 * result + rightCheckboxSizes.hashCode()
-        result = 31 * result + rightRadioButtonSizes.hashCode()
+        result = 31 * result + trailingIconSizes.hashCode()
+        result = 31 * result + trailingSwitchSizes.hashCode()
+        result = 31 * result + trailingCounterSizes.hashCode()
+        result = 31 * result + trailingSuffixTextStyle.hashCode()
+        result = 31 * result + trailingSuffixBodyTextStyle.hashCode()
+        result = 31 * result + trailingButtonSizes.hashCode()
+        result = 31 * result + trailingIconButtonSizes.hashCode()
+        result = 31 * result + trailingCheckboxSizes.hashCode()
+        result = 31 * result + trailingRadioButtonSizes.hashCode()
 
         result = 31 * result + dividerSizes.hashCode()
         return result
