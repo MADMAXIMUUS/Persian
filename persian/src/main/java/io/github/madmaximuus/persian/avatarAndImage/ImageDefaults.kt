@@ -301,7 +301,7 @@ object ImageDefaults {
      */
     @Composable
     fun size36(
-        boxSizes: Dp = 40.dp,
+        boxSizes: Dp = 36.dp,
         placeholderIconSizes: IconSizes = IconDefaults.size24(),
         overlayIconSizes: IconSizes = IconDefaults.size20(),
         shape: Shape = SquircleShape(12.dp, SquircleSmoothing.MEDIUM),
