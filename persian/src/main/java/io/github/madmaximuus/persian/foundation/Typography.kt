@@ -174,7 +174,7 @@ class Typography(
     ),
     val labelMedium: TextStyle = TextStyle(
         fontFamily = interFontFamily,
-        fontWeight = FontWeight.Bold,
+        fontWeight = FontWeight.Medium,
         fontStyle = FontStyle.Normal,
         fontSize = 14.sp,
         lineHeight = 20.sp,
@@ -182,7 +182,7 @@ class Typography(
     ),
     val labelSmall: TextStyle = TextStyle(
         fontFamily = interFontFamily,
-        fontWeight = FontWeight.Bold,
+        fontWeight = FontWeight.Medium,
         fontStyle = FontStyle.Normal,
         fontSize = 12.sp,
         lineHeight = 16.sp,
