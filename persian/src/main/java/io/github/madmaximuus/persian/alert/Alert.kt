@@ -1,8 +1,8 @@
 package io.github.madmaximuus.persian.alert
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
@@ -10,10 +10,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.Layout
+import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import io.github.madmaximuus.persian.alert.util.LayoutId
+import io.github.madmaximuus.persian.alert.util.alertMeasurePolicy
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.surface.Surface
 import io.github.madmaximuus.persian.text.Text
@@ -44,18 +48,6 @@ fun Alert(
     onDismissRequest: () -> Unit,
     content: (@Composable () -> Unit)? = null
 ) {
-    val padding = PaddingValues(
-        start = PersianTheme.spacing.size20,
-        end = PersianTheme.spacing.size20,
-        top = PersianTheme.spacing.size20,
-        bottom = PersianTheme.spacing.size12
-    )
-
-    val actionPadding = PaddingValues(
-        horizontal = PersianTheme.spacing.size16,
-        vertical = PersianTheme.spacing.size12
-    )
-
     Dialog(
         onDismissRequest = onDismissRequest,
         properties = DialogProperties(
@@ -67,20 +59,24 @@ fun Alert(
                 shape = sizes.containerShape,
                 modifier = modifier
                     .padding(horizontal = PersianTheme.spacing.size24)
-                    .widthIn(min = 240.dp, max = 560.dp),
+                    .widthIn(min = 260.dp, max = 560.dp),
                 color = colors.containerColor,
                 tonalElevation = 0.dp,
                 shadowElevation = 0.dp,
                 content = {
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally,
+                    Layout(
+                        measurePolicy = { measurables, constraints ->
+                            alertMeasurePolicy(this, measurables, constraints)
+                        },
                         content = {
                             Column(
                                 modifier = Modifier
-                                    .padding(padding),
+                                    .padding(top = PersianTheme.spacing.size20)
+                                    .padding(horizontal = PersianTheme.spacing.size20)
+                                    .padding(bottom = PersianTheme.spacing.size12)
+                                    .layoutId(LayoutId.ALERT),
                                 horizontalAlignment = Alignment.CenterHorizontally,
-                                verticalArrangement = Arrangement
-                                    .spacedBy(PersianTheme.spacing.size4),
+                                verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size4),
                             ) {
                                 Text(
                                     text = title,
@@ -97,27 +93,39 @@ fun Alert(
                                     )
                                 }
                             }
-                            content?.invoke()
+                            content?.let {
+                                Box(
+                                    modifier = Modifier.layoutId(LayoutId.CONTENT),
+                                    content = {
+                                        it()
+                                    }
+                                )
+                            }
                             Row(
                                 modifier = Modifier
-                                    .align(Alignment.End)
-                                    .padding(actionPadding),
-                                horizontalArrangement = Arrangement.spacedBy(
-                                    PersianTheme.spacing.size2,
-                                    Alignment.End
-                                ),
-                                content = {
-                                    val scope = remember(colors, sizes) {
-                                        ActionScopeWrapper(
-                                            scope = this,
-                                            colors = colors.actionColor,
-                                            sizes = sizes.actionSize
-                                        )
-                                    }
-                                    dismissAction?.let { scope.it() }
-                                    scope.confirmAction()
+                                    .layoutId(LayoutId.ACTIONS)
+                                    .padding(horizontal = PersianTheme.spacing.size12)
+                                    .padding(top = PersianTheme.spacing.size8)
+                                    .padding(bottom = PersianTheme.spacing.size12),
+                                horizontalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size8)
+                            ) {
+                                val dismissActionScope = remember(colors, sizes) {
+                                    ActionScopeWrapper(
+                                        scope = this,
+                                        colors = colors.dismissActionColors,
+                                        sizes = sizes.actionSize
+                                    )
                                 }
-                            )
+                                val scope = remember(colors, sizes) {
+                                    ActionScopeWrapper(
+                                        scope = this,
+                                        colors = colors.confirmActionColors,
+                                        sizes = sizes.actionSize
+                                    )
+                                }
+                                dismissAction?.let { dismissActionScope.it() }
+                                scope.confirmAction()
+                            }
                         }
                     )
                 }

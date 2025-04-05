@@ -2,6 +2,7 @@ package io.github.madmaximuus.persian.alert
 
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import io.github.madmaximuus.persian.button.Button
 import io.github.madmaximuus.persian.button.ButtonColors
 import io.github.madmaximuus.persian.button.ButtonSizes
@@ -42,6 +43,7 @@ fun ActionScope.Action(
     onClick: () -> Unit
 ) {
     Button(
+        modifier = Modifier.weight(1f),
         text = title,
         colors = colors,
         onClick = onClick,

@@ -28,12 +28,14 @@ object AlertsDefaults {
         containerColor: Color = PersianTheme.colorScheme.surfaceContainer,
         titleColor: Color = PersianTheme.colorScheme.onSurface,
         messageColor: Color = PersianTheme.colorScheme.onSurface,
-        actionColor: ButtonColors = ButtonDefaults.tertiaryColors()
+        confirmActionColors: ButtonColors = ButtonDefaults.primaryColors(),
+        dismissActionColors: ButtonColors = ButtonDefaults.secondaryColors(),
     ) = AlertColors(
         containerColor = containerColor,
         titleColor = titleColor,
         messageColor = messageColor,
-        actionColor = actionColor
+        confirmActionColors = confirmActionColors,
+        dismissActionColors = dismissActionColors,
     )
 
     /**
@@ -47,9 +49,9 @@ object AlertsDefaults {
     @Composable
     fun alertSizes(
         containerShape: Shape = PersianTheme.shapes.shape20,
-        titleTextStyle: TextStyle = PersianTheme.typography.titleMedium,
+        titleTextStyle: TextStyle = PersianTheme.typography.titleLarge,
         messageTextStyle: TextStyle = PersianTheme.typography.bodyMedium,
-        actionSize: ButtonSizes = ButtonDefaults.smallSizes()
+        actionSize: ButtonSizes = ButtonDefaults.mediumSizes()
     ) = AlertSizes(
         containerShape = containerShape,
         titleTextStyle = titleTextStyle,
@@ -75,7 +77,8 @@ class AlertColors internal constructor(
     internal val containerColor: Color,
     internal val titleColor: Color,
     internal val messageColor: Color,
-    internal val actionColor: ButtonColors
+    internal val confirmActionColors: ButtonColors,
+    internal val dismissActionColors: ButtonColors
 ) {
     /**
      * Returns a copy of this [AlertColors], optionally overriding some of the values
@@ -84,12 +87,14 @@ class AlertColors internal constructor(
         containerColor: Color = this.containerColor,
         titleColor: Color = this.titleColor,
         descriptionColor: Color = this.messageColor,
-        actionColor: ButtonColors = this.actionColor
+        confirmActionColors: ButtonColors = this.confirmActionColors,
+        dismissActionColors: ButtonColors = this.dismissActionColors,
     ) = AlertColors(
         containerColor = containerColor,
         titleColor = titleColor,
         messageColor = descriptionColor,
-        actionColor = actionColor
+        confirmActionColors = confirmActionColors,
+        dismissActionColors = dismissActionColors
     )
 
     override fun equals(other: Any?): Boolean {
@@ -99,14 +104,16 @@ class AlertColors internal constructor(
         if (containerColor != other.containerColor) return false
         if (titleColor != other.titleColor) return false
         if (messageColor != other.messageColor) return false
-        return actionColor == other.actionColor
+        if (confirmActionColors != other.confirmActionColors) return false
+        return dismissActionColors == other.dismissActionColors
     }
 
     override fun hashCode(): Int {
         var result = containerColor.hashCode()
         result = 31 * result + titleColor.hashCode()
         result = 31 * result + messageColor.hashCode()
-        result = 31 * result + actionColor.hashCode()
+        result = 31 * result + confirmActionColors.hashCode()
+        result = 31 * result + dismissActionColors.hashCode()
         return result
     }
 }
