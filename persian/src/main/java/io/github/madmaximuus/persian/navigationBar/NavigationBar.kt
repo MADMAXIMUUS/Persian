@@ -45,8 +45,7 @@ fun NavigationBar(
         needClip = false
     ) {
         Row(
-            modifier =
-            Modifier
+            modifier = Modifier
                 .fillMaxWidth()
                 .windowInsetsPadding(windowInsets)
                 .defaultMinSize(minHeight = NavigationBarHeight)
@@ -57,9 +56,9 @@ fun NavigationBar(
                 val scope =
                     remember(sizes, colors) {
                         NavigationBarScopeWrapper(
-                            this,
-                            sizes,
-                            colors.itemColors
+                            scope = this,
+                            sizes = sizes,
+                            colors = colors.itemColors
                         )
                     }
                 scope.content()
@@ -68,7 +67,7 @@ fun NavigationBar(
     }
 }
 
-internal val NavigationBarHeight = 76.dp
+internal val NavigationBarHeight = 80.dp
 
 internal val NavigationBarItemHorizontalPadding: Dp = 8.dp
 
