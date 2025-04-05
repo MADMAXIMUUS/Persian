@@ -66,8 +66,8 @@ fun Alert(
             Surface(
                 shape = sizes.containerShape,
                 modifier = modifier
-                    .widthIn(min = 300.dp, max = 560.dp)
-                    .padding(horizontal = PersianTheme.spacing.size24),
+                    .padding(horizontal = PersianTheme.spacing.size24)
+                    .widthIn(min = 240.dp, max = 560.dp),
                 color = colors.containerColor,
                 tonalElevation = 0.dp,
                 shadowElevation = 0.dp,
