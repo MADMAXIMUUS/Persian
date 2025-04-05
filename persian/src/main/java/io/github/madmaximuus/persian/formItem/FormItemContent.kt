@@ -14,15 +14,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.TextStyle
-import io.github.madmaximuus.persian.checkboxes.Checkbox
-import io.github.madmaximuus.persian.checkboxes.CheckboxColors
-import io.github.madmaximuus.persian.checkboxes.CheckboxDefaults
-import io.github.madmaximuus.persian.checkboxes.CheckboxSizes
+import io.github.madmaximuus.persian.checkbox.Checkbox
+import io.github.madmaximuus.persian.checkbox.CheckboxColors
+import io.github.madmaximuus.persian.checkbox.CheckboxDefaults
+import io.github.madmaximuus.persian.checkbox.CheckboxSizes
 import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.input.Input
 import io.github.madmaximuus.persian.input.InputColors
 import io.github.madmaximuus.persian.input.InputSizes
 import io.github.madmaximuus.persian.input.InputsDefaults
-import io.github.madmaximuus.persian.input.OutlineInput
 import io.github.madmaximuus.persian.internal.SecureInputSettings
 import io.github.madmaximuus.persian.menu.DropdownMenuItemScope
 import io.github.madmaximuus.persian.menu.MenuColors
@@ -69,7 +69,7 @@ internal class FormItemContentScopeWrapper(
 ) : FormItemContentScope
 
 /**
- * Display an [OutlineInput] within a form.
+ * Display an [Input] within a form.
  *
  * @param state The state of the text field.
  * @param modifier The modifier to be applied to the input field.
@@ -99,26 +99,24 @@ fun FormItemContentScope.Input(
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActionHandler: KeyboardActionHandler? = null,
     onTrailingIconClick: (() -> Unit)? = null
-) {
-    OutlineInput(
-        state = state,
-        modifier = modifier.padding(horizontal = PersianTheme.spacing.size16),
-        enabled = this@Input.enabled,
-        isError = this@Input.isError,
-        isValid = this@Input.isValid,
-        readOnly = readOnly,
-        placeholder = placeholder,
-        transformation = transformation,
-        secure = secure,
-        colors = colors,
-        sizes = sizes,
-        leadingIcon = leadingIcon,
-        trailingIcon = trailingIcon,
-        keyboardOptions = keyboardOptions,
-        keyboardActionHandler = keyboardActionHandler,
-        onTrailingIconClick = onTrailingIconClick
-    )
-}
+) = Input(
+    state = state,
+    modifier = modifier.padding(horizontal = PersianTheme.spacing.size16),
+    enabled = this@Input.enabled,
+    isError = this@Input.isError,
+    isValid = this@Input.isValid,
+    readOnly = readOnly,
+    placeholder = placeholder,
+    transformation = transformation,
+    secure = secure,
+    colors = colors,
+    sizes = sizes,
+    leadingIcon = leadingIcon,
+    trailingIcon = trailingIcon,
+    keyboardOptions = keyboardOptions,
+    keyboardActionHandler = keyboardActionHandler,
+    onTrailingIconClick = onTrailingIconClick
+)
 
 /**
  * Display a [TextArea] within a form.
@@ -140,20 +138,18 @@ fun FormItemContentScope.TextArea(
     colors: TextAreaColors = TextAreaDefaults.outlineColors(),
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActionHandler: KeyboardActionHandler? = null
-) {
-    OutlineTextArea(
-        state = state,
-        modifier = modifier.padding(horizontal = PersianTheme.spacing.size16),
-        enabled = this@TextArea.enabled,
-        isError = this@TextArea.isError,
-        isValid = this@TextArea.isValid,
-        textStyle = textStyle,
-        placeholder = placeholder,
-        colors = colors,
-        keyboardOptions = keyboardOptions,
-        keyboardActionHandler = keyboardActionHandler
-    )
-}
+) = OutlineTextArea(
+    state = state,
+    modifier = modifier.padding(horizontal = PersianTheme.spacing.size16),
+    enabled = this@TextArea.enabled,
+    isError = this@TextArea.isError,
+    isValid = this@TextArea.isValid,
+    textStyle = textStyle,
+    placeholder = placeholder,
+    colors = colors,
+    keyboardOptions = keyboardOptions,
+    keyboardActionHandler = keyboardActionHandler
+)
 
 /**
  * Display a [Select] within a form.
@@ -179,22 +175,20 @@ fun FormItemContentScope.Select(
     inputColors: InputColors = InputsDefaults.outlineColors(),
     menuColors: MenuColors = MenuDefaults.colors(),
     menuItems: @Composable (DropdownMenuItemScope.() -> Unit)
-) {
-    Select(
-        state = state,
-        modifier = modifier.padding(horizontal = PersianTheme.spacing.size16),
-        expanded = expanded,
-        onExpandedChange = onExpandedChange,
-        isValid = this@Select.isValid,
-        isError = this@Select.isError,
-        enabled = this@Select.enabled,
-        leadingIcon = leadingIcon,
-        placeholder = placeholder,
-        inputColors = inputColors,
-        menuColors = menuColors,
-        menuItems = menuItems
-    )
-}
+) = Select(
+    state = state,
+    modifier = modifier.padding(horizontal = PersianTheme.spacing.size16),
+    expanded = expanded,
+    onExpandedChange = onExpandedChange,
+    isValid = this@Select.isValid,
+    isError = this@Select.isError,
+    enabled = this@Select.enabled,
+    leadingIcon = leadingIcon,
+    placeholder = placeholder,
+    inputColors = inputColors,
+    menuColors = menuColors,
+    menuItems = menuItems
+)
 
 /**
  * Display a [RadioButton] list within a form.
@@ -210,24 +204,22 @@ fun FormItemContentScope.RadioButtons(
     colors: RadioButtonColors = RadioButtonDefaults.colors(),
     sizes: RadioButtonSizes = RadioButtonDefaults.sizes(),
     content: @Composable FormRadioButtonScope.() -> Unit
-) {
-    Column(
-        modifier = modifier
-            .fillMaxWidth()
-            .selectableGroup(),
-        content = {
-            val scope = remember(colors, sizes) {
-                FormRadioButtonScopeWrapper(
-                    scope = this,
-                    colors = colors,
-                    sizes = sizes,
-                    enabled = this@RadioButtons.enabled
-                )
-            }
-            scope.content()
+) = Column(
+    modifier = modifier
+        .fillMaxWidth()
+        .selectableGroup(),
+    content = {
+        val scope = remember(colors, sizes) {
+            FormRadioButtonScopeWrapper(
+                scope = this,
+                colors = colors,
+                sizes = sizes,
+                enabled = this@RadioButtons.enabled
+            )
         }
-    )
-}
+        scope.content()
+    }
+)
 
 interface FormRadioButtonScope : ColumnScope {
     val enabled: Boolean
@@ -256,17 +248,15 @@ fun FormRadioButtonScope.RadioButton(
     text: String,
     selected: Boolean,
     onSelectedChange: (Boolean) -> Unit
-) {
-    RadioButton(
-        modifier = modifier.fillMaxWidth(),
-        text = text,
-        selected = selected,
-        enabled = this@RadioButton.enabled,
-        colors = this@RadioButton.colors,
-        sizes = this@RadioButton.sizes,
-        onSelectedChange = onSelectedChange
-    )
-}
+) = RadioButton(
+    modifier = modifier.fillMaxWidth(),
+    text = text,
+    selected = selected,
+    enabled = this@RadioButton.enabled,
+    colors = this@RadioButton.colors,
+    sizes = this@RadioButton.sizes,
+    onSelectedChange = onSelectedChange
+)
 
 /**
  * Display a [Checkbox] list within a form.
@@ -282,23 +272,21 @@ fun FormItemContentScope.Checkboxes(
     colors: CheckboxColors = CheckboxDefaults.colors(),
     sizes: CheckboxSizes = CheckboxDefaults.sizes(),
     content: @Composable FormCheckboxScope.() -> Unit
-) {
-    Column(
-        modifier = modifier
-            .fillMaxWidth(),
-        content = {
-            val scope = remember(colors, sizes) {
-                FormCheckboxScopeWrapper(
-                    scope = this,
-                    colors = colors,
-                    sizes = sizes,
-                    enabled = this@Checkboxes.enabled
-                )
-            }
-            scope.content()
+) = Column(
+    modifier = modifier
+        .fillMaxWidth(),
+    content = {
+        val scope = remember(colors, sizes) {
+            FormCheckboxScopeWrapper(
+                scope = this,
+                colors = colors,
+                sizes = sizes,
+                enabled = this@Checkboxes.enabled
+            )
         }
-    )
-}
+        scope.content()
+    }
+)
 
 interface FormCheckboxScope : ColumnScope {
     val enabled: Boolean
@@ -327,14 +315,12 @@ fun FormCheckboxScope.Checkbox(
     text: String,
     checked: Boolean,
     onCheckedChange: (Boolean) -> Unit
-) {
-    Checkbox(
-        modifier = modifier.fillMaxWidth(),
-        text = text,
-        checked = checked,
-        enabled = this@Checkbox.enabled,
-        colors = this@Checkbox.colors,
-        sizes = this@Checkbox.sizes,
-        onCheckedChange = onCheckedChange
-    )
-}
+) = Checkbox(
+    modifier = modifier.fillMaxWidth(),
+    text = text,
+    checked = checked,
+    enabled = this@Checkbox.enabled,
+    colors = this@Checkbox.colors,
+    sizes = this@Checkbox.sizes,
+    onCheckedChange = onCheckedChange
+)

@@ -38,7 +38,7 @@ object FormItemDefaults {
      */
     @Composable
     fun formSizes(
-        subheadTextStyle: TextStyle = PersianTheme.typography.labelSmall,
+        subheadTextStyle: TextStyle = PersianTheme.typography.labelMedium,
         captionSizes: CaptionSizes = captionSizes()
     ): FormSizes =
         FormSizes(
