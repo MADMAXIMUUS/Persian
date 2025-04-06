@@ -24,11 +24,10 @@ object WheelTimePickerViewDefaults {
     fun colors(
         textColor: Color = PersianTheme.colorScheme.onSurface.state38,
         selectedTextColor: Color = PersianTheme.colorScheme.onSurface
-    ): WheelTimePickerViewColors =
-        WheelTimePickerViewColors(
-            textColor = textColor,
-            selectedTextColor = selectedTextColor
-        )
+    ) = WheelTimePickerViewColors(
+        textColor = textColor,
+        selectedTextColor = selectedTextColor
+    )
 
     /**
      * Create and return a [WheelTimePickerViewSizes] instance with the specified text style.
@@ -38,10 +37,9 @@ object WheelTimePickerViewDefaults {
     @Composable
     fun sizes(
         textStyle: TextStyle = PersianTheme.typography.labelLarge,
-    ): WheelTimePickerViewSizes =
-        WheelTimePickerViewSizes(
-            textStyle = textStyle
-        )
+    ) = WheelTimePickerViewSizes(
+        textStyle = textStyle
+    )
 }
 
 /**

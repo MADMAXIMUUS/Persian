@@ -44,6 +44,7 @@ fun TimePicker(
     pickerType: PickerType = PickerType.DIAL,
     colors: TimePickerColors = TimePickerDefaults.colors(),
     sizes: TimePickerSizes = TimePickerDefaults.sizes(),
+    onConfirm: () -> Unit,
     onDismissRequest: () -> Unit,
 ) {
     Alert(
@@ -57,7 +58,7 @@ fun TimePicker(
             Action(
                 title = stringResource(id = R.string.ok),
                 onClick = {
-                    onDismissRequest()
+                    onConfirm()
                 }
             )
         },

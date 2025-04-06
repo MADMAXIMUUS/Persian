@@ -140,11 +140,14 @@ object TimePicker : Screen {
                     states[1].value -> PickerType.DIAL
                     else -> PickerType.WHEEL
                 },
-                onDismissRequest = {
+                onConfirm = {
                     showDialog = false
                     timeState.set(Calendar.HOUR_OF_DAY, state.hour)
                     timeState.set(Calendar.MINUTE, state.minute)
                     time = String.format(Locale.getDefault(), "%02d:%02d", state.hour, state.minute)
+                },
+                onDismissRequest = {
+                    showDialog = false
                 },
             )
         }
