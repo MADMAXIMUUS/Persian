@@ -17,7 +17,6 @@ import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -36,9 +35,11 @@ import ru.rabbit.persian.appShowcase.screens.Checkbox
 import ru.rabbit.persian.appShowcase.screens.Chips
 import ru.rabbit.persian.appShowcase.screens.CodeInput
 import ru.rabbit.persian.appShowcase.screens.ColorPicker
+import ru.rabbit.persian.appShowcase.screens.ColorScheme
 import ru.rabbit.persian.appShowcase.screens.Counter
 import ru.rabbit.persian.appShowcase.screens.DatePicker
 import ru.rabbit.persian.appShowcase.screens.Divider
+import ru.rabbit.persian.appShowcase.screens.Elevation
 import ru.rabbit.persian.appShowcase.screens.Fab
 import ru.rabbit.persian.appShowcase.screens.FormItem
 import ru.rabbit.persian.appShowcase.screens.IconButton
@@ -50,17 +51,20 @@ import ru.rabbit.persian.appShowcase.screens.PageIndicator
 import ru.rabbit.persian.appShowcase.screens.ProgressIndicator
 import ru.rabbit.persian.appShowcase.screens.RadioButton
 import ru.rabbit.persian.appShowcase.screens.Section
-import ru.rabbit.persian.appShowcase.screens.SegmentedButton
+import ru.rabbit.persian.appShowcase.screens.SegmentedControls
 import ru.rabbit.persian.appShowcase.screens.Select
+import ru.rabbit.persian.appShowcase.screens.Shapes
 import ru.rabbit.persian.appShowcase.screens.Skeleton
 import ru.rabbit.persian.appShowcase.screens.Slider
 import ru.rabbit.persian.appShowcase.screens.Snackbar
+import ru.rabbit.persian.appShowcase.screens.Spacing
 import ru.rabbit.persian.appShowcase.screens.Switch
 import ru.rabbit.persian.appShowcase.screens.Symbols
 import ru.rabbit.persian.appShowcase.screens.Tabs
 import ru.rabbit.persian.appShowcase.screens.TextArea
 import ru.rabbit.persian.appShowcase.screens.TimePicker
 import ru.rabbit.persian.appShowcase.screens.TopAppBar
+import ru.rabbit.persian.appShowcase.screens.Typography
 
 class MainActivity : ComponentActivity() {
 
@@ -83,7 +87,16 @@ class MainActivity : ComponentActivity() {
         setContent {
             PersianTheme {
                 val navController = rememberNavController()
-                val screens = remember {
+                val foundationScreens = listOf(
+                    Skeleton,
+                    Symbols,
+                    ColorScheme,
+                    Typography,
+                    Shapes,
+                    Spacing,
+                    Elevation
+                )
+                val componentScreens =
                     arrayListOf(
                         ActionSheet,
                         Alert,
@@ -107,7 +120,6 @@ class MainActivity : ComponentActivity() {
                         TopAppBar,
                         CodeInput,
                         DatePicker,
-                        Skeleton,
                         Switch,
                         Charts,
                         PageIndicator,
@@ -115,13 +127,11 @@ class MainActivity : ComponentActivity() {
                         Chips,
                         Select,
                         ColorPicker,
-                        Symbols,
                         ListItem,
                         Slider,
-                        SegmentedButton,
+                        SegmentedControls,
                         Section
                     )
-                }
                 NavHost(
                     modifier = Modifier
                         .fillMaxSize()
@@ -160,10 +170,36 @@ class MainActivity : ComponentActivity() {
                     ) { _ ->
                         DashboardScreen(
                             navController,
-                            screens.sortedBy { it.name }
+                            foundationScreens.sortedBy { it.name },
+                            componentScreens.sortedBy { it.name }
                         )
                     }
-                    screens.forEach { screen ->
+                    foundationScreens.forEach { screen ->
+                        composable(
+                            screen.navigation,
+                            enterTransition = {
+                                slideIntoContainer(
+                                    towards = Left,
+                                )
+                            },
+                            exitTransition = {
+                                slideOutOfContainer(
+                                    towards = Left,
+                                )
+                            },
+                            popEnterTransition = {
+                                slideIntoContainer(
+                                    towards = Right,
+                                )
+                            },
+                            popExitTransition = {
+                                slideOutOfContainer(
+                                    towards = Right,
+                                )
+                            }
+                        ) { screen.Content(navController) }
+                    }
+                    componentScreens.forEach { screen ->
                         composable(
                             screen.navigation,
                             enterTransition = {

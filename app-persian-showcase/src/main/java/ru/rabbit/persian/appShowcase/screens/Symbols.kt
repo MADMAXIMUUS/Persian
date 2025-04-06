@@ -20,10 +20,13 @@ import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.foundation.getAllIcons
+import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object Symbols : Screen {
     override val name: String = "Symbols"
+
+    override val image: Int = R.drawable.symbols
 
     override val navigation: String = "symbols"
 

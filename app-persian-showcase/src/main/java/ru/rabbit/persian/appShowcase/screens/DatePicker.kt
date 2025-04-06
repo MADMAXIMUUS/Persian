@@ -15,8 +15,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import io.github.madmaximuus.persian.button.Button
 import io.github.madmaximuus.persian.button.ButtonDefaults
-import io.github.madmaximuus.persian.button.PrimaryButton
 import io.github.madmaximuus.persian.datePicker.DatePicker
 import io.github.madmaximuus.persian.datePicker.view.util.DatePickerConfig
 import io.github.madmaximuus.persian.datePicker.view.util.DatePickerSelection
@@ -28,6 +28,7 @@ import io.github.madmaximuus.persian.formItem.RadioButtons
 import io.github.madmaximuus.persian.formItem.Subhead
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.text.Text
+import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -35,6 +36,8 @@ import java.util.Locale
 object DatePicker : Screen {
 
     override val name: String = "Date picker"
+
+    override val image: Int = R.drawable.date_picker
 
     override val navigation: String = "darePicker"
 
@@ -164,7 +167,7 @@ object DatePicker : Screen {
                         }
                     }
                 )
-                PrimaryButton(
+                Button(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = PersianTheme.spacing.size16)

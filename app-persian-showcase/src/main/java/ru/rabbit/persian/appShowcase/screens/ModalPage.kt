@@ -16,9 +16,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.navigation.NavController
+import io.github.madmaximuus.persian.button.Button
 import io.github.madmaximuus.persian.button.ButtonDefaults
-import io.github.madmaximuus.persian.button.PrimaryButton
 import io.github.madmaximuus.persian.formItem.Checkbox
 import io.github.madmaximuus.persian.formItem.Checkboxes
 import io.github.madmaximuus.persian.formItem.FormItem
@@ -26,19 +27,25 @@ import io.github.madmaximuus.persian.formItem.RadioButton
 import io.github.madmaximuus.persian.formItem.RadioButtons
 import io.github.madmaximuus.persian.formItem.Subhead
 import io.github.madmaximuus.persian.foundation.PersianTheme
-import io.github.madmaximuus.persian.modalPage.Action
 import io.github.madmaximuus.persian.modalPage.FullScreenModalPage
-import io.github.madmaximuus.persian.modalPage.Handle
 import io.github.madmaximuus.persian.modalPage.ModalPage
 import io.github.madmaximuus.persian.modalPage.TopBar
 import io.github.madmaximuus.persian.modalPage.rememberPageState
 import io.github.madmaximuus.persian.modalPage.util.DragAnchor
+import io.github.madmaximuus.persian.modalPage.util.HandleVisibility
 import io.github.madmaximuus.persian.text.Text
+import io.github.madmaximuus.persian.topAppBar.Action
+import io.github.madmaximuus.persian.topAppBar.IconButton
+import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
+import io.github.madmaximuus.persianSymbols.xmark.XMark
+import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object ModalPage : Screen {
 
     override val name: String = "Modal pages"
+
+    override val image: Int = R.drawable.modal
 
     override val navigation: String = "modalPage"
 
@@ -47,12 +54,12 @@ object ModalPage : Screen {
         var showModal by remember { mutableStateOf(false) }
 
         val (top, onTopChange) = remember { mutableStateOf(false) }
-        val (action, onActionChange) = remember { mutableStateOf(false) }
 
         val topStates = remember {
             listOf(
                 mutableStateOf(true),
-                mutableStateOf(false)
+                mutableStateOf(false),
+                mutableStateOf(false),
             )
         }
 
@@ -62,6 +69,8 @@ object ModalPage : Screen {
                 mutableStateOf(false)
             )
         }
+
+        var visibilityState by remember { mutableStateOf(HandleVisibility.AUTO) }
 
         val (tenPercent, onTenPercentChange) = remember { mutableStateOf(false) }
         val (twelvePercent, onTwelvePercentChange) = remember { mutableStateOf(false) }
@@ -130,45 +139,50 @@ object ModalPage : Screen {
                     content = {
                         Checkboxes {
                             Checkbox(
-                                text = "Top",
+                                text = "Top app bar",
                                 checked = top,
                                 onCheckedChange = onTopChange
-                            )
-                            Checkbox(
-                                text = "Action",
-                                checked = action,
-                                onCheckedChange = onActionChange
                             )
                         }
                     }
                 )
-                if (top) {
-                    FormItem(
-                        subhead = { Subhead(text = "Top") },
-                        content = {
-                            RadioButtons {
-                                RadioButton(
-                                    text = "Top app bar",
-                                    selected = topStates[0].value,
-                                    onSelectedChange = {
-                                        topStates.forEachIndexed { index, mutableState ->
-                                            mutableState.value = index == 0
-                                        }
+                FormItem(
+                    subhead = { Subhead(text = "Handle visibility") },
+                    content = {
+                        RadioButtons {
+                            RadioButton(
+                                text = "Auto",
+                                selected = topStates[0].value,
+                                onSelectedChange = {
+                                    topStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 0
                                     }
-                                )
-                                RadioButton(
-                                    text = "Handle",
-                                    selected = topStates[1].value,
-                                    onSelectedChange = {
-                                        topStates.forEachIndexed { index, mutableState ->
-                                            mutableState.value = index == 1
-                                        }
+                                    visibilityState = HandleVisibility.AUTO
+                                }
+                            )
+                            RadioButton(
+                                text = "Visible",
+                                selected = topStates[1].value,
+                                onSelectedChange = {
+                                    topStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 1
                                     }
-                                )
-                            }
+                                    visibilityState = HandleVisibility.VISIBLE
+                                }
+                            )
+                            RadioButton(
+                                text = "Hidden",
+                                selected = topStates[2].value,
+                                onSelectedChange = {
+                                    topStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 2
+                                    }
+                                    visibilityState = HandleVisibility.HIDDEN
+                                }
+                            )
                         }
-                    )
-                }
+                    }
+                )
                 if (modeStates[0].value) {
                     FormItem(
                         subhead = { Subhead(text = "States") },
@@ -228,7 +242,7 @@ object ModalPage : Screen {
                         }
                     )
                 }
-                PrimaryButton(
+                Button(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = PersianTheme.spacing.size16)
@@ -248,38 +262,27 @@ object ModalPage : Screen {
                         pageState = rememberPageState(
                             dragAnchors = dragAnchors
                         ),
+                        handleVisibility = visibilityState,
                         contentWindowInsets = WindowInsets(0, 0, 0, 0),
                         top = {
                             if (top) {
-                                when {
-                                    topStates[0].value -> {
-                                        TopBar(
-                                            title = "Dynamic height",
-                                            actionTitle = "Action",
-                                            onActionClick = {
-                                                showModal = false
-                                            }
-                                        )
+                                TopBar(
+                                    title = "Dynamic height",
+                                    leading = {
+                                        IconButton(
+                                            icon = rememberVectorPainter(PersianSymbols.Default.XMark)
+                                        ) { showModal = false }
+                                    },
+                                    trailing = {
+                                        Action(
+                                            text = "Action"
+                                        ) { showModal = false }
                                     }
-
-                                    topStates[1].value -> {
-                                        Handle()
-                                    }
-                                }
+                                )
                             }
                         },
-                        bottom = if (action) {
-                            {
-                                Action(text = "Amazing action") {
-                                    showModal = false
-                                }
-                            }
-                        } else null,
-                        content = { contentPadding ->
+                        content = {
                             Box(
-                                modifier = Modifier
-                                    .fillMaxSize()
-                                    .padding(contentPadding),
                                 contentAlignment = Alignment.Center
                             ) {
                                 Text(text = "123")
@@ -291,37 +294,31 @@ object ModalPage : Screen {
                 modeStates[1].value -> {
                     FullScreenModalPage(
                         onDismissRequest = { showModal = false },
-                        top = {
-                            if (top) {
+                        top = if (top) {
+                            {
                                 TopBar(
                                     title = "Full screen",
-                                    actionTitle = "Action",
-                                    onActionClick = {
-                                        showModal = false
+                                    leading = {
+                                        IconButton(
+                                            icon = rememberVectorPainter(PersianSymbols.Default.XMark)
+                                        ) { showModal = false }
+                                    },
+                                    trailing = {
+                                        Action(
+                                            text = "Action"
+                                        ) { showModal = false }
                                     }
                                 )
                             }
-                        },
-                        bottom = if (action) {
-                            {
-                                Action(text = "Amazing action") {
-                                    showModal = false
-                                }
-                                Action(text = "Amazing action") {
-                                    showModal = false
-                                }
-                            }
                         } else null,
-                        content = { contentPadding ->
+                        content = {
                             Box(
-                                modifier = Modifier
-                                    .fillMaxSize()
-                                    .padding(contentPadding),
                                 contentAlignment = Alignment.Center
                             ) {
                                 Text(text = "123")
                             }
                         }
+
                     )
                 }
             }

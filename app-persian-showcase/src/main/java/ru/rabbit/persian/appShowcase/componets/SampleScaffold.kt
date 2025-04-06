@@ -30,7 +30,7 @@ fun SampleScaffold(
     Scaffold(
         topBar = {
             TopAppBar(
-                left = onBackClick?.let {
+                leading = onBackClick?.let {
                     {
                         IconButton(
                             icon = rememberVectorPainter(PersianSymbols.Default.ArrowLeft),

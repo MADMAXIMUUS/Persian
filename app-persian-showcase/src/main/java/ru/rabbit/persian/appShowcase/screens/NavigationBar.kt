@@ -28,11 +28,14 @@ import io.github.madmaximuus.persianSymbols.house.House
 import io.github.madmaximuus.persianSymbols.magnifyingGlass.MagnifyingGlass
 import io.github.madmaximuus.persianSymbols.message.Message
 import io.github.madmaximuus.persianSymbols.user.User
+import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object NavigationBar : Screen {
 
     override val name: String = "Navigation bar"
+
+    override val image: Int = R.drawable.navigation_bar
 
     override val navigation: String = "navBar"
 

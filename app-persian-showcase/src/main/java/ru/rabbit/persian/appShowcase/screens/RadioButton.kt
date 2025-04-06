@@ -13,11 +13,14 @@ import io.github.madmaximuus.persian.formItem.RadioButton
 import io.github.madmaximuus.persian.formItem.RadioButtons
 import io.github.madmaximuus.persian.formItem.Subhead
 import io.github.madmaximuus.persian.radioButton.RadioButton
+import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object RadioButton : Screen {
 
     override val name: String = "Radio button"
+
+    override val image: Int = R.drawable.radio_button
 
     override val navigation: String = "radio"
 

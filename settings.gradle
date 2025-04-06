@@ -18,3 +18,4 @@ rootProject.name = "Persian"
 include ':app-persian-showcase'
 include ':persian'
 include ':persianSymbols'
+include ':persianCharts'

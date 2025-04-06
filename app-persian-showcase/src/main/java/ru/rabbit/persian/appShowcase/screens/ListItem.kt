@@ -1,9 +1,10 @@
 package ru.rabbit.persian.appShowcase.screens
 
-import android.net.Uri
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -17,6 +18,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.core.net.toUri
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.formItem.Checkbox
 import io.github.madmaximuus.persian.formItem.Checkboxes
@@ -26,33 +28,33 @@ import io.github.madmaximuus.persian.formItem.RadioButton
 import io.github.madmaximuus.persian.formItem.RadioButtons
 import io.github.madmaximuus.persian.formItem.Subhead
 import io.github.madmaximuus.persian.formItem.TextArea
-import io.github.madmaximuus.persian.listItem.Add
+import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.listItem.Avatar
 import io.github.madmaximuus.persian.listItem.Button
-import io.github.madmaximuus.persian.listItem.Check
 import io.github.madmaximuus.persian.listItem.Checkbox
 import io.github.madmaximuus.persian.listItem.Counter
-import io.github.madmaximuus.persian.listItem.Drag
 import io.github.madmaximuus.persian.listItem.Icon
 import io.github.madmaximuus.persian.listItem.IconButton
 import io.github.madmaximuus.persian.listItem.Image
 import io.github.madmaximuus.persian.listItem.ListItem
-import io.github.madmaximuus.persian.listItem.Middle
 import io.github.madmaximuus.persian.listItem.Radio
-import io.github.madmaximuus.persian.listItem.Remove
 import io.github.madmaximuus.persian.listItem.Suffix
 import io.github.madmaximuus.persian.listItem.Switch
+import io.github.madmaximuus.persian.text.Text
 import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
 import io.github.madmaximuus.persianSymbols.chevronRight.ChevronRight
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.image.Image
+import io.github.madmaximuus.persianSymbols.plus.Plus
 import io.github.madmaximuus.persianSymbols.user.User
-import ru.rabbit.persian.appShowcase.componets.SampleRow
+import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object ListItem : Screen {
     override val name: String = "List item"
+
+    override val image: Int = R.drawable.list_item
 
     override val navigation: String = "listItem"
 
@@ -75,21 +77,14 @@ object ListItem : Screen {
             val (enabled, onEnabledChange) = remember { mutableStateOf(true) }
             var checked by remember { mutableStateOf(false) }
 
-            val (edit, onEditChange) = remember { mutableStateOf(false) }
-            val editStates = remember {
-                listOf(
-                    mutableStateOf(true),
-                    mutableStateOf(false),
-                    mutableStateOf(false),
-                    mutableStateOf(false),
-                    mutableStateOf(false)
-                )
-            }
-
             val (left, onLeftChange) = remember { mutableStateOf(false) }
             val leftStates = remember {
                 listOf(
                     mutableStateOf(true),
+                    mutableStateOf(false),
+                    mutableStateOf(false),
+                    mutableStateOf(false),
+                    mutableStateOf(false),
                     mutableStateOf(false),
                     mutableStateOf(false)
                 )
@@ -106,6 +101,8 @@ object ListItem : Screen {
                     mutableStateOf(false),
                     mutableStateOf(false),
                     mutableStateOf(false),
+                    mutableStateOf(false),
+                    mutableStateOf(false),
                 )
             }
 
@@ -114,44 +111,30 @@ object ListItem : Screen {
                     .fillMaxSize()
                     .padding(it)
             ) {
-                SampleRow(
-                    text = "Sample",
-                    firstItem = true
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(
+                            top = PersianTheme.spacing.size12,
+                            bottom = PersianTheme.spacing.size8,
+                        )
                 ) {
+                    Text(
+                        modifier = Modifier
+                            .padding(start = PersianTheme.spacing.size12)
+                            .fillMaxWidth(),
+                        text = "Sample",
+                        style = PersianTheme.typography.labelMedium,
+                        color = PersianTheme.colorScheme.onSurfaceVariant
+                    )
+                    Spacer(modifier = Modifier.height(PersianTheme.spacing.size4))
                     ListItem(
                         checked = checked,
                         enabled = enabled,
                         onClick = {
                             checked = !checked
                         },
-                        edit = if (edit) {
-                            {
-                                when {
-                                    editStates[0].value -> {
-                                        Radio()
-                                    }
-
-                                    editStates[1].value -> {
-                                        Check()
-                                    }
-
-                                    editStates[2].value -> {
-                                        Drag()
-                                    }
-
-                                    editStates[3].value -> {
-                                        Add {}
-                                    }
-
-                                    editStates[4].value -> {
-                                        Remove {}
-                                    }
-
-                                    else -> {}
-                                }
-                            }
-                        } else null,
-                        left = if (left) {
+                        leading = if (left) {
                             {
                                 when {
                                     leftStates[0].value -> {
@@ -159,25 +142,36 @@ object ListItem : Screen {
                                     }
 
                                     leftStates[1].value -> {
-                                        Avatar(avatarUrl = Uri.parse("https://loremflickr.com/320/240"))
+                                        Avatar(avatarUrl = "https://loremflickr.com/320/240".toUri())
                                     }
 
                                     leftStates[2].value -> {
-                                        Image(imageUrl = Uri.parse("https://loremflickr.com/320/240"))
+                                        Image(imageUrl = "https://loremflickr.com/320/240".toUri())
+                                    }
+
+                                    leftStates[3].value -> {
+                                        Switch()
+                                    }
+
+                                    leftStates[4].value -> {
+                                        Checkbox()
+                                    }
+
+                                    leftStates[5].value -> {
+                                        Radio()
+                                    }
+
+                                    leftStates[6].value -> {
+                                        IconButton(icon = rememberVectorPainter(PersianSymbols.Default.Plus)) { }
                                     }
                                 }
                             }
                         } else null,
-                        middle = {
-                            Middle(
-                                title = titleState.text.toString(),
-                                subhead = if (subhead) subheadState.text.toString() else null,
-                                body = if (body) bodyState.text.toString() else null,
-                                multiline = false,
-                                newLabel = newLabel
-                            )
-                        },
-                        right = if (right) {
+                        title = titleState.text.toString(),
+                        subhead = if (subhead) subheadState.text.toString() else null,
+                        body = if (body) bodyState.text.toString() else null,
+                        isNew = newLabel,
+                        trailing = if (right) {
                             {
                                 when {
                                     rightStates[0].value -> {
@@ -193,15 +187,29 @@ object ListItem : Screen {
                                     }
 
                                     rightStates[3].value -> {
-                                        Suffix(value = "Suffix")
+                                        Suffix(title = "Suffix")
                                     }
 
                                     rightStates[4].value -> {
+                                        Suffix(
+                                            title = "Suffix",
+                                            body = "body"
+                                        )
+                                    }
+
+                                    rightStates[5].value -> {
+                                        Suffix(
+                                            title = "Suffix",
+                                            icon = rememberVectorPainter(PersianSymbols.Default.ChevronRight)
+                                        )
+                                    }
+
+                                    rightStates[6].value -> {
                                         Button(value = "Button") {
                                         }
                                     }
 
-                                    rightStates[5].value -> {
+                                    rightStates[7].value -> {
                                         IconButton(
                                             icon = rememberVectorPainter(
                                                 image = PersianSymbols.Default.Image
@@ -209,11 +217,11 @@ object ListItem : Screen {
                                         ) {}
                                     }
 
-                                    rightStates[6].value -> {
+                                    rightStates[8].value -> {
                                         Checkbox()
                                     }
 
-                                    rightStates[7].value -> {
+                                    rightStates[9].value -> {
                                         Radio()
                                     }
                                 }
@@ -245,63 +253,9 @@ object ListItem : Screen {
                             content = { TextArea(state = bodyState) }
                         )
                     }
-                    if (edit) {
-                        FormItem(
-                            subhead = { Subhead(text = "Edit") },
-                            content = {
-                                RadioButtons {
-                                    RadioButton(
-                                        text = "Radio toggle",
-                                        selected = editStates[0].value,
-                                        onSelectedChange = {
-                                            editStates.forEachIndexed { index, mutableState ->
-                                                mutableState.value = index == 0
-                                            }
-                                        }
-                                    )
-                                    RadioButton(
-                                        text = "Checkbox toggle",
-                                        selected = editStates[1].value,
-                                        onSelectedChange = {
-                                            editStates.forEachIndexed { index, mutableState ->
-                                                mutableState.value = index == 1
-                                            }
-                                        }
-                                    )
-                                    RadioButton(
-                                        text = "Drag indicator",
-                                        selected = editStates[2].value,
-                                        onSelectedChange = {
-                                            editStates.forEachIndexed { index, mutableState ->
-                                                mutableState.value = index == 2
-                                            }
-                                        }
-                                    )
-                                    RadioButton(
-                                        text = "Add",
-                                        selected = editStates[3].value,
-                                        onSelectedChange = {
-                                            editStates.forEachIndexed { index, mutableState ->
-                                                mutableState.value = index == 3
-                                            }
-                                        }
-                                    )
-                                    RadioButton(
-                                        text = "Remove",
-                                        selected = editStates[4].value,
-                                        onSelectedChange = {
-                                            editStates.forEachIndexed { index, mutableState ->
-                                                mutableState.value = index == 4
-                                            }
-                                        }
-                                    )
-                                }
-                            }
-                        )
-                    }
                     if (left) {
                         FormItem(
-                            subhead = { Subhead(text = "Left") },
+                            subhead = { Subhead(text = "Leading") },
                             content = {
                                 RadioButtons {
                                     RadioButton(
@@ -331,13 +285,49 @@ object ListItem : Screen {
                                             }
                                         }
                                     )
+                                    RadioButton(
+                                        text = "Switch",
+                                        selected = leftStates[3].value,
+                                        onSelectedChange = {
+                                            leftStates.forEachIndexed { index, mutableState ->
+                                                mutableState.value = index == 3
+                                            }
+                                        }
+                                    )
+                                    RadioButton(
+                                        text = "Checkbox",
+                                        selected = leftStates[4].value,
+                                        onSelectedChange = {
+                                            leftStates.forEachIndexed { index, mutableState ->
+                                                mutableState.value = index == 4
+                                            }
+                                        }
+                                    )
+                                    RadioButton(
+                                        text = "Radio",
+                                        selected = leftStates[5].value,
+                                        onSelectedChange = {
+                                            leftStates.forEachIndexed { index, mutableState ->
+                                                mutableState.value = index == 5
+                                            }
+                                        }
+                                    )
+                                    RadioButton(
+                                        text = "Icon button",
+                                        selected = leftStates[6].value,
+                                        onSelectedChange = {
+                                            leftStates.forEachIndexed { index, mutableState ->
+                                                mutableState.value = index == 6
+                                            }
+                                        }
+                                    )
                                 }
                             }
                         )
                     }
                     if (right) {
                         FormItem(
-                            subhead = { Subhead(text = "Right") },
+                            subhead = { Subhead(text = "Trailing") },
                             content = {
                                 RadioButtons {
                                     RadioButton(
@@ -377,7 +367,7 @@ object ListItem : Screen {
                                         }
                                     )
                                     RadioButton(
-                                        text = "Button",
+                                        text = "Suffix + Body",
                                         selected = rightStates[4].value,
                                         onSelectedChange = {
                                             rightStates.forEachIndexed { index, mutableState ->
@@ -386,7 +376,7 @@ object ListItem : Screen {
                                         }
                                     )
                                     RadioButton(
-                                        text = "Icon button",
+                                        text = "Suffix + Icon",
                                         selected = rightStates[5].value,
                                         onSelectedChange = {
                                             rightStates.forEachIndexed { index, mutableState ->
@@ -395,7 +385,7 @@ object ListItem : Screen {
                                         }
                                     )
                                     RadioButton(
-                                        text = "Checkbox toggle",
+                                        text = "Button",
                                         selected = rightStates[6].value,
                                         onSelectedChange = {
                                             rightStates.forEachIndexed { index, mutableState ->
@@ -404,11 +394,29 @@ object ListItem : Screen {
                                         }
                                     )
                                     RadioButton(
-                                        text = "Radio toggle",
+                                        text = "Icon button",
                                         selected = rightStates[7].value,
                                         onSelectedChange = {
                                             rightStates.forEachIndexed { index, mutableState ->
                                                 mutableState.value = index == 7
+                                            }
+                                        }
+                                    )
+                                    RadioButton(
+                                        text = "Checkbox",
+                                        selected = rightStates[8].value,
+                                        onSelectedChange = {
+                                            rightStates.forEachIndexed { index, mutableState ->
+                                                mutableState.value = index == 8
+                                            }
+                                        }
+                                    )
+                                    RadioButton(
+                                        text = "Radio",
+                                        selected = rightStates[9].value,
+                                        onSelectedChange = {
+                                            rightStates.forEachIndexed { index, mutableState ->
+                                                mutableState.value = index == 9
                                             }
                                         }
                                     )
@@ -421,12 +429,7 @@ object ListItem : Screen {
                         content = {
                             Checkboxes {
                                 Checkbox(
-                                    text = "Edit",
-                                    checked = edit,
-                                    onCheckedChange = onEditChange
-                                )
-                                Checkbox(
-                                    text = "Left",
+                                    text = "Leading",
                                     checked = left,
                                     onCheckedChange = onLeftChange
                                 )
@@ -446,7 +449,7 @@ object ListItem : Screen {
                                     onCheckedChange = onBodyChange
                                 )
                                 Checkbox(
-                                    text = "Right",
+                                    text = "Trailing",
                                     checked = right,
                                     onCheckedChange = onRightChange
                                 )

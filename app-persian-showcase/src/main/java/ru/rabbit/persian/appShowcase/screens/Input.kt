@@ -20,8 +20,8 @@ import io.github.madmaximuus.persian.formItem.Input
 import io.github.madmaximuus.persian.formItem.RadioButton
 import io.github.madmaximuus.persian.formItem.RadioButtons
 import io.github.madmaximuus.persian.formItem.Subhead
-import io.github.madmaximuus.persian.input.OutlineInput
-import io.github.madmaximuus.persian.input.PlainInput
+import io.github.madmaximuus.persian.input.Input
+import io.github.madmaximuus.persian.input.InputsDefaults
 import io.github.madmaximuus.persian.internal.SecureInputSettings
 import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
@@ -29,11 +29,14 @@ import io.github.madmaximuus.persianSymbols.eye.Eye
 import io.github.madmaximuus.persianSymbols.eye.slash.EyeSlash
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.user.User
+import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object Input : Screen {
     override val name: String = "Input"
+
+    override val image: Int = R.drawable.input
 
     override val navigation: String = "input"
 
@@ -53,6 +56,9 @@ object Input : Screen {
         val (trailing, onTrailingChange) = remember { mutableStateOf(false) }
         val (suffix, onSuffixChange) = remember { mutableStateOf(false) }
 
+        val colors = InputsDefaults.outlineColors()
+        var colorsState by remember { mutableStateOf(colors) }
+
         val styleStates = remember {
             listOf(
                 mutableStateOf(true),
@@ -60,6 +66,9 @@ object Input : Screen {
             )
         }
 
+
+        val plain = InputsDefaults.plainColors()
+        val outline = InputsDefaults.outlineColors()
         SampleScaffold(
             title = name,
             onBackClick = { navController?.navigateUp() },
@@ -72,37 +81,19 @@ object Input : Screen {
                     .padding(it),
             ) {
                 SampleRow(text = "Sample", firstItem = true) {
-                    when {
-                        styleStates[0].value -> {
-                            OutlineInput(
-                                state = input,
-                                enabled = enabled,
-                                isError = isError,
-                                isValid = isSuccess,
-                                placeholder = if (placeholder) placeholderValue.text.toString() else null,
-                                secure = if (password) SecureInputSettings.Secure(visible = visible) else SecureInputSettings.NotSecure,
-                                leadingIcon = if (leading) rememberVectorPainter(image = PersianSymbols.Default.User) else null,
-                                trailingIcon = if (trailing) rememberVectorPainter(image = if (visible) PersianSymbols.Default.EyeSlash else PersianSymbols.Default.Eye) else null,
-                                suffix = if (suffix) "12" else null,
-                                onTrailingIconClick = { visible = !visible }
-                            )
-                        }
-
-                        styleStates[1].value -> {
-                            PlainInput(
-                                state = input,
-                                enabled = enabled,
-                                isError = isError,
-                                isValid = isSuccess,
-                                placeholder = if (placeholder) placeholderValue.text.toString() else null,
-                                secure = if (password) SecureInputSettings.Secure(visible = visible) else SecureInputSettings.NotSecure,
-                                leadingIcon = if (leading) rememberVectorPainter(image = PersianSymbols.Default.User) else null,
-                                trailingIcon = if (trailing) rememberVectorPainter(image = if (visible) PersianSymbols.Default.EyeSlash else PersianSymbols.Default.Eye) else null,
-                                suffix = if (suffix) "12" else null,
-                                onTrailingIconClick = { visible = !visible }
-                            )
-                        }
-                    }
+                    Input(
+                        state = input,
+                        enabled = enabled,
+                        colors = colorsState,
+                        isError = isError,
+                        isValid = isSuccess,
+                        placeholder = if (placeholder) placeholderValue.text.toString() else null,
+                        secure = if (password) SecureInputSettings.Secure(visible = visible) else SecureInputSettings.NotSecure,
+                        leadingIcon = if (leading) rememberVectorPainter(image = PersianSymbols.Default.User) else null,
+                        trailingIcon = if (trailing) rememberVectorPainter(image = if (visible) PersianSymbols.Default.EyeSlash else PersianSymbols.Default.Eye) else null,
+                        suffix = if (suffix) "12" else null,
+                        onTrailingIconClick = { visible = !visible }
+                    )
                 }
                 FormItem(
                     subhead = { Subhead(text = "Style") },
@@ -115,6 +106,7 @@ object Input : Screen {
                                     styleStates.forEachIndexed { index, mutableState ->
                                         mutableState.value = index == 0
                                     }
+                                    colorsState = outline
                                 }
                             )
                             RadioButton(
@@ -124,6 +116,7 @@ object Input : Screen {
                                     styleStates.forEachIndexed { index, mutableState ->
                                         mutableState.value = index == 1
                                     }
+                                    colorsState = plain
                                 }
                             )
                         }

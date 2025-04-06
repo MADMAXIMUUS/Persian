@@ -1,6 +1,5 @@
 package ru.rabbit.persian.appShowcase.screens
 
-import android.net.Uri
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,9 +11,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.core.net.toUri
 import androidx.navigation.NavController
+import io.github.madmaximuus.persian.button.Button
 import io.github.madmaximuus.persian.button.ButtonDefaults
-import io.github.madmaximuus.persian.button.PrimaryButton
 import io.github.madmaximuus.persian.formItem.Checkbox
 import io.github.madmaximuus.persian.formItem.Checkboxes
 import io.github.madmaximuus.persian.formItem.FormItem
@@ -35,11 +35,14 @@ import io.github.madmaximuus.persian.snackbar.Timer
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.wifi.slash.WifiSlash
 import kotlinx.coroutines.launch
+import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object Snackbar : Screen {
 
     override val name: String = "Snackbar"
+
+    override val image: Int = R.drawable.snackbar
 
     override val navigation: String = "snackbar"
 
@@ -87,7 +90,7 @@ object Snackbar : Screen {
                 )
                 if (left) {
                     FormItem(
-                        subhead = { Subhead(text = "Left") },
+                        subhead = { Subhead(text = "Leading") },
                         content = {
                             RadioButtons {
                                 RadioButton(
@@ -132,7 +135,7 @@ object Snackbar : Screen {
                 }
                 if (right) {
                     FormItem(
-                        subhead = { Subhead(text = "Right") },
+                        subhead = { Subhead(text = "Trailing") },
                         content = {
                             RadioButtons {
                                 RadioButton(
@@ -162,12 +165,12 @@ object Snackbar : Screen {
                     content = {
                         Checkboxes {
                             Checkbox(
-                                text = "Left",
+                                text = "Leading",
                                 checked = left,
                                 onCheckedChange = onLeftChange
                             )
                             Checkbox(
-                                text = "Right",
+                                text = "Trailing",
                                 checked = right,
                                 onCheckedChange = onRightChange
                             )
@@ -179,7 +182,7 @@ object Snackbar : Screen {
                         }
                     }
                 )
-                PrimaryButton(
+                Button(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = PersianTheme.spacing.size16)
@@ -206,13 +209,13 @@ object Snackbar : Screen {
 
                                         leftStates[1].value -> {
                                             Avatar(
-                                                avatarUrl = Uri.parse("https://loremflickr.com/320/240")
+                                                avatarUrl = "https://loremflickr.com/320/240".toUri()
                                             )
                                         }
 
                                         leftStates[2].value -> {
                                             Image(
-                                                imageUrl = Uri.parse("https://loremflickr.com/320/240")
+                                                imageUrl = "https://loremflickr.com/320/240".toUri()
                                             )
                                         }
 

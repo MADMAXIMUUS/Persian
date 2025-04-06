@@ -31,12 +31,15 @@ import io.github.madmaximuus.persian.slider.continuous.Slider
 import io.github.madmaximuus.persian.text.Text
 import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
+import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object Divider : Screen {
 
     override val name: String = "Divider"
+
+    override val image: Int = R.drawable.divider
 
     override val navigation: String = "divider"
 
@@ -81,8 +84,8 @@ object Divider : Screen {
                         Divider(
                             insetSide = when {
                                 insetSideState[0].value -> InsetSide.NONE
-                                insetSideState[1].value -> InsetSide.LEFT
-                                insetSideState[2].value -> InsetSide.RIGHT
+                                insetSideState[1].value -> InsetSide.LEADING
+                                insetSideState[2].value -> InsetSide.TRAILING
                                 insetSideState[3].value -> InsetSide.BOTH
                                 else -> InsetSide.NONE
                             },
@@ -149,7 +152,7 @@ object Divider : Screen {
                                 }
                             )
                             RadioButton(
-                                text = "Left",
+                                text = "Leading",
                                 selected = insetSideState[1].value,
                                 onSelectedChange = {
                                     insetSideState.forEachIndexed { index, mutableState ->
@@ -158,7 +161,7 @@ object Divider : Screen {
                                 }
                             )
                             RadioButton(
-                                text = "Right",
+                                text = "Trailing",
                                 selected = insetSideState[2].value,
                                 onSelectedChange = {
                                     insetSideState.forEachIndexed { index, mutableState ->

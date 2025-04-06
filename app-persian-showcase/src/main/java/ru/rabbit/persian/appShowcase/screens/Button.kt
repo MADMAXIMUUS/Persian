@@ -16,11 +16,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.navigation.NavController
+import io.github.madmaximuus.persian.button.Button
 import io.github.madmaximuus.persian.button.ButtonDefaults
-import io.github.madmaximuus.persian.button.OutlinedButton
-import io.github.madmaximuus.persian.button.PrimaryButton
-import io.github.madmaximuus.persian.button.SecondaryButton
-import io.github.madmaximuus.persian.button.TertiaryButton
 import io.github.madmaximuus.persian.formItem.Checkbox
 import io.github.madmaximuus.persian.formItem.Checkboxes
 import io.github.madmaximuus.persian.formItem.FormItem
@@ -33,11 +30,14 @@ import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
 import io.github.madmaximuus.persianSymbols.chevronRight.ChevronRight
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.plus.Plus
+import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object Button : Screen {
     override val name: String = "Button"
+
+    override val image: Int = R.drawable.button
 
     override val navigation: String = "button"
 
@@ -59,7 +59,10 @@ object Button : Screen {
             var sizeState by remember { mutableStateOf(size) }
             val (enabled, onEnabledChange) = remember { mutableStateOf(true) }
             val (loading, onLoadingChange) = remember { mutableStateOf(false) }
-            var selectedButtonStyle by remember { mutableStateOf("Primary") }
+
+            val colors = ButtonDefaults.primaryColors()
+            var colorsState by remember { mutableStateOf(colors) }
+
             val buttonStyleStates = remember {
                 listOf(
                     mutableStateOf(true),
@@ -79,6 +82,11 @@ object Button : Screen {
             val large = ButtonDefaults.largeSizes()
             val medium = ButtonDefaults.mediumSizes()
             val small = ButtonDefaults.smallSizes()
+
+            val primary = ButtonDefaults.primaryColors()
+            val secondary = ButtonDefaults.secondaryColors()
+            val tertiary = ButtonDefaults.tertiaryColors()
+            val outlined = ButtonDefaults.outlinedColors()
             Column(
                 Modifier
                     .fillMaxSize()
@@ -91,75 +99,21 @@ object Button : Screen {
                     text = "Sample",
                     firstItem = true
                 ) {
-                    when (selectedButtonStyle) {
-                        "Primary" -> {
-                            PrimaryButton(
-                                text = labelState.text.toString(),
-                                sizes = sizeState,
-                                enabled = enabled,
-                                loading = loading,
-                                additionInfoText = if (additionInfo) additionalInfoState.text.toString() else null,
-                                leadingIcon = if (leading)
-                                    rememberVectorPainter(image = PersianSymbols.Default.Plus)
-                                else null,
-                                trailingIcon = if (trailing)
-                                    rememberVectorPainter(image = PersianSymbols.Default.ChevronRight)
-                                else null,
-                                onClick = {}
-                            )
-                        }
-
-                        "Secondary" -> {
-                            SecondaryButton(
-                                text = labelState.text.toString(),
-                                sizes = sizeState,
-                                enabled = enabled,
-                                loading = loading,
-                                additionInfoText = if (additionInfo) additionalInfoState.text.toString() else null,
-                                leadingIcon = if (leading)
-                                    rememberVectorPainter(image = PersianSymbols.Default.Plus)
-                                else null,
-                                trailingIcon = if (trailing)
-                                    rememberVectorPainter(image = PersianSymbols.Default.ChevronRight)
-                                else null,
-                                onClick = {}
-                            )
-                        }
-
-                        "Tertiary" -> {
-                            TertiaryButton(
-                                text = labelState.text.toString(),
-                                sizes = sizeState,
-                                enabled = enabled,
-                                loading = loading,
-                                additionInfoText = if (additionInfo) additionalInfoState.text.toString() else null,
-                                leadingIcon = if (leading)
-                                    rememberVectorPainter(image = PersianSymbols.Default.Plus)
-                                else null,
-                                trailingIcon = if (trailing)
-                                    rememberVectorPainter(image = PersianSymbols.Default.ChevronRight)
-                                else null,
-                                onClick = {}
-                            )
-                        }
-
-                        "Outlined" -> {
-                            OutlinedButton(
-                                text = labelState.text.toString(),
-                                sizes = sizeState,
-                                enabled = enabled,
-                                loading = loading,
-                                additionInfoText = if (additionInfo) additionalInfoState.text.toString() else null,
-                                leadingIcon = if (leading)
-                                    rememberVectorPainter(image = PersianSymbols.Default.Plus)
-                                else null,
-                                trailingIcon = if (trailing)
-                                    rememberVectorPainter(image = PersianSymbols.Default.ChevronRight)
-                                else null,
-                                onClick = {}
-                            )
-                        }
-                    }
+                    Button(
+                        text = labelState.text.toString(),
+                        sizes = sizeState,
+                        colors = colorsState,
+                        enabled = enabled,
+                        loading = loading,
+                        additionInfoText = if (additionInfo) additionalInfoState.text.toString() else null,
+                        leadingIcon = if (leading)
+                            rememberVectorPainter(image = PersianSymbols.Default.Plus)
+                        else null,
+                        trailingIcon = if (trailing)
+                            rememberVectorPainter(image = PersianSymbols.Default.ChevronRight)
+                        else null,
+                        onClick = {}
+                    )
                 }
                 FormItem(
                     subhead = { Subhead(text = "Label") },
@@ -182,7 +136,7 @@ object Button : Screen {
                                     buttonStyleStates.forEachIndexed { index, mutableState ->
                                         mutableState.value = index == 0
                                     }
-                                    selectedButtonStyle = "Primary"
+                                    colorsState = primary
                                 }
                             )
                             RadioButton(
@@ -192,7 +146,7 @@ object Button : Screen {
                                     buttonStyleStates.forEachIndexed { index, mutableState ->
                                         mutableState.value = index == 1
                                     }
-                                    selectedButtonStyle = "Secondary"
+                                    colorsState = secondary
                                 }
                             )
                             RadioButton(
@@ -202,7 +156,7 @@ object Button : Screen {
                                     buttonStyleStates.forEachIndexed { index, mutableState ->
                                         mutableState.value = index == 2
                                     }
-                                    selectedButtonStyle = "Tertiary"
+                                    colorsState = tertiary
                                 }
                             )
                             RadioButton(
@@ -212,7 +166,7 @@ object Button : Screen {
                                     buttonStyleStates.forEachIndexed { index, mutableState ->
                                         mutableState.value = index == 3
                                     }
-                                    selectedButtonStyle = "Outlined"
+                                    colorsState = outlined
                                 }
                             )
                         }

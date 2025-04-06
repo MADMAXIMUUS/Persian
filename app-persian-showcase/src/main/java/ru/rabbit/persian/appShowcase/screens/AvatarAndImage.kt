@@ -15,29 +15,30 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.core.net.toUri
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.avatarAndImage.Avatar
 import io.github.madmaximuus.persian.avatarAndImage.AvatarDefaults
 import io.github.madmaximuus.persian.avatarAndImage.Image
 import io.github.madmaximuus.persian.avatarAndImage.ImageDefaults
-import io.github.madmaximuus.persian.avatarAndImage.ImageShape
 import io.github.madmaximuus.persian.formItem.Checkbox
 import io.github.madmaximuus.persian.formItem.Checkboxes
 import io.github.madmaximuus.persian.formItem.FormItem
-import io.github.madmaximuus.persian.formItem.RadioButton
-import io.github.madmaximuus.persian.formItem.RadioButtons
 import io.github.madmaximuus.persian.formItem.Select
 import io.github.madmaximuus.persian.formItem.Subhead
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.menu.DropdownMenuItem
 import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
+import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object AvatarAndImage : Screen {
 
     override val name: String = "Avatar and Image"
+
+    override val image: Int = R.drawable.avatar_and_image
 
     override val navigation: String = "avatar"
 
@@ -72,6 +73,7 @@ object AvatarAndImage : Screen {
                 ImageDefaults.size28(),
                 ImageDefaults.size24(),
                 ImageDefaults.size20(),
+                ImageDefaults.size18(),
                 ImageDefaults.size16(),
             )
             val avatarSizes = listOf(
@@ -90,16 +92,8 @@ object AvatarAndImage : Screen {
                 AvatarDefaults.size24(),
                 AvatarDefaults.size20(),
                 AvatarDefaults.size16(),
+                AvatarDefaults.size16(),
             )
-
-            var shape by remember { mutableStateOf(ImageShape.LARGE) }
-            val shapeStates = remember {
-                listOf(
-                    mutableStateOf(true),
-                    mutableStateOf(false),
-                    mutableStateOf(false)
-                )
-            }
 
             //Other settings
             val (overlay, onOverlayChange) = remember { mutableStateOf(false) }
@@ -118,7 +112,7 @@ object AvatarAndImage : Screen {
                     firstItem = true
                 ) {
                     Avatar(
-                        imageUrl = if (content) Uri.parse("https://loremflickr.com/320/240") else Uri.EMPTY,
+                        imageUrl = if (content) "https://loremflickr.com/320/240".toUri() else Uri.EMPTY,
                         overlay = overlay,
                         sizes = avatarSizeState,
                         initials = if (initials) "AB" else null,
@@ -137,9 +131,8 @@ object AvatarAndImage : Screen {
                         onClick = if (clickable) clickablePlaceholder else null
                     )
                     Image(
-                        imageUrl = if (content) Uri.parse("https://loremflickr.com/320/240") else Uri.EMPTY,
+                        imageUrl = if (content) "https://loremflickr.com/320/240".toUri() else Uri.EMPTY,
                         sizes = imageSizeState,
-                        shape = shape,
                         overlay = overlay,
                         badge = if (badge) {
                             {
@@ -295,54 +288,26 @@ object AvatarAndImage : Screen {
                                         }
                                     )
                                     DropdownMenuItem(
+                                        text = "18",
+                                        onClick = {
+                                            onExpandedChange(false)
+                                            selectedSizeState.setTextAndPlaceCursorAtEnd("18")
+                                            avatarSizeState = avatarSizes[14]
+                                            imageSizeState = imageSizes[14]
+                                        }
+                                    )
+                                    DropdownMenuItem(
                                         text = "16",
                                         onClick = {
                                             onExpandedChange(false)
                                             selectedSizeState.setTextAndPlaceCursorAtEnd("16")
-                                            avatarSizeState = avatarSizes[14]
-                                            imageSizeState = imageSizes[14]
+                                            avatarSizeState = avatarSizes[15]
+                                            imageSizeState = imageSizes[15]
                                         }
                                     )
                                 }
                             )
                         },
-                    )
-                    FormItem(
-                        subhead = { Subhead(text = "Shape") },
-                        content = {
-                            RadioButtons {
-                                RadioButton(
-                                    text = "Large",
-                                    selected = shapeStates[0].value,
-                                    onSelectedChange = {
-                                        shapeStates.forEachIndexed { index, mutableState ->
-                                            mutableState.value = index == 0
-                                        }
-                                        shape = ImageShape.LARGE
-                                    }
-                                )
-                                RadioButton(
-                                    text = "Medium",
-                                    selected = shapeStates[1].value,
-                                    onSelectedChange = {
-                                        shapeStates.forEachIndexed { index, mutableState ->
-                                            mutableState.value = index == 1
-                                        }
-                                        shape = ImageShape.MEDIUM
-                                    }
-                                )
-                                RadioButton(
-                                    text = "Small",
-                                    selected = shapeStates[2].value,
-                                    onSelectedChange = {
-                                        shapeStates.forEachIndexed { index, mutableState ->
-                                            mutableState.value = index == 2
-                                        }
-                                        shape = ImageShape.SMALL
-                                    }
-                                )
-                            }
-                        }
                     )
                     FormItem(
                         subhead = { Subhead(text = "Settings") },

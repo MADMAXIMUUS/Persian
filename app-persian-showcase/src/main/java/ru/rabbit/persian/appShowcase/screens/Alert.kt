@@ -3,9 +3,12 @@ package ru.rabbit.persian.appShowcase.screens
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.text.input.rememberTextFieldState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -16,8 +19,8 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.alert.Action
 import io.github.madmaximuus.persian.alert.Alert
+import io.github.madmaximuus.persian.button.Button
 import io.github.madmaximuus.persian.button.ButtonDefaults
-import io.github.madmaximuus.persian.button.PrimaryButton
 import io.github.madmaximuus.persian.formItem.Checkbox
 import io.github.madmaximuus.persian.formItem.Checkboxes
 import io.github.madmaximuus.persian.formItem.FormItem
@@ -26,11 +29,14 @@ import io.github.madmaximuus.persian.formItem.Subhead
 import io.github.madmaximuus.persian.formItem.TextArea
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.radioButton.RadioButton
+import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object Alert : Screen {
 
-    override val name: String = "Alerts"
+    override val name: String = "Alert"
+
+    override val image: Int = R.drawable.alert
 
     override val navigation: String = "alert"
 
@@ -48,7 +54,9 @@ object Alert : Screen {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(it),
+                    .padding(it)
+                    .verticalScroll(rememberScrollState())
+                    .navigationBarsPadding(),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 FormItem(
@@ -80,7 +88,7 @@ object Alert : Screen {
                         }
                     }
                 )
-                PrimaryButton(
+                Button(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = PersianTheme.spacing.size16)
@@ -114,7 +122,7 @@ object Alert : Screen {
                     Action(title = "Cancel", onClick = { showAlert = false })
                 },
                 message = if (description) messageState.text.toString() else null,
-                onDismiss = { showAlert = false },
+                onDismissRequest = { showAlert = false },
                 content = if (content) {
                     {
                         Column(

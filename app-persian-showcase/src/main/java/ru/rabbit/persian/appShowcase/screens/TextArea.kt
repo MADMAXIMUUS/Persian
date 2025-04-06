@@ -21,12 +21,15 @@ import io.github.madmaximuus.persian.textAreas.OutlineTextArea
 import io.github.madmaximuus.persian.textAreas.PlainTextArea
 import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
+import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object TextArea : Screen {
 
     override val name: String = "Text area"
+
+    override val image: Int = R.drawable.text_area
 
     override val navigation: String = "textArea"
 

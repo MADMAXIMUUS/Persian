@@ -1,6 +1,5 @@
 package ru.rabbit.persian.appShowcase.screens
 
-import android.net.Uri
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,18 +17,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.core.net.toUri
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.chips.assist.AssistChip
-import io.github.madmaximuus.persian.chips.assist.Icon
-import io.github.madmaximuus.persian.chips.assist.Image
-import io.github.madmaximuus.persian.chips.filter.FilterChip
-import io.github.madmaximuus.persian.chips.filter.Icon
-import io.github.madmaximuus.persian.chips.input.Avatar
-import io.github.madmaximuus.persian.chips.input.Icon
-import io.github.madmaximuus.persian.chips.input.Image
-import io.github.madmaximuus.persian.chips.input.InputShip
-import io.github.madmaximuus.persian.chips.suggestion.Icon
-import io.github.madmaximuus.persian.chips.suggestion.SuggestionChip
+import io.github.madmaximuus.persian.chip.Chip
+import io.github.madmaximuus.persian.chip.ChipDefaults
+import io.github.madmaximuus.persian.chip.Icon
+import io.github.madmaximuus.persian.chip.Image
+import io.github.madmaximuus.persian.chip.toggleable.Avatar
+import io.github.madmaximuus.persian.chip.toggleable.Icon
+import io.github.madmaximuus.persian.chip.toggleable.Image
+import io.github.madmaximuus.persian.chip.toggleable.ToggleableChip
+import io.github.madmaximuus.persian.chip.toggleable.ToggleableChipDefaults
 import io.github.madmaximuus.persian.formItem.Checkbox
 import io.github.madmaximuus.persian.formItem.Checkboxes
 import io.github.madmaximuus.persian.formItem.FormItem
@@ -43,11 +41,14 @@ import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.globe.Globe
 import io.github.madmaximuus.persianSymbols.xmark.XMark
+import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object Chips : Screen {
     override val name: String = "Chips"
+
+    override val image: Int = R.drawable.chips
 
     override val navigation: String = "chips"
 
@@ -65,12 +66,24 @@ object Chips : Screen {
             val (trailing, onTrailingChange) = remember { mutableStateOf(true) }
             val (enabled, onEnabledChane) = remember { mutableStateOf(true) }
 
+            val chipSize = ChipDefaults.mediumSizes()
+            var chipSizeState by remember { mutableStateOf(chipSize) }
+
+            val toggleableChipSize = ToggleableChipDefaults.mediumSizes()
+            var toggleableChipSizeState by remember { mutableStateOf(toggleableChipSize) }
+
+            val sizeStates = remember {
+                listOf(
+                    mutableStateOf(false),
+                    mutableStateOf(true),
+                    mutableStateOf(false),
+                )
+            }
+
             val styleStates = remember {
                 listOf(
                     mutableStateOf(true),
                     mutableStateOf(false),
-                    mutableStateOf(false),
-                    mutableStateOf(false)
                 )
             }
 
@@ -102,52 +115,10 @@ object Chips : Screen {
                     ) {
                         when {
                             styleStates[0].value -> {
-                                FilterChip(
-                                    label = labelState.text.toString(),
-                                    selected = selected,
-                                    enabled = enabled,
-                                    leading = if (leading) {
-                                        {
-                                            Icon(
-                                                icon = rememberVectorPainter(
-                                                    PersianSymbols.Default.Globe
-                                                )
-                                            )
-                                        }
-                                    } else null,
-                                    trailing = if (trailing) {
-                                        {
-                                            Icon(
-                                                icon = rememberVectorPainter(image = PersianSymbols.Default.XMark),
-                                                onClick = {}
-                                            )
-                                        }
-                                    } else null,
-                                    onClick = { selected = !selected }
-                                )
-                            }
-
-                            styleStates[1].value -> {
-                                SuggestionChip(
+                                Chip(
                                     label = labelState.text.toString(),
                                     enabled = enabled,
-                                    leading = if (leading) {
-                                        {
-                                            Icon(
-                                                painter = rememberVectorPainter(
-                                                    PersianSymbols.Default.Globe
-                                                )
-                                            )
-                                        }
-                                    } else null,
-                                    onClick = { }
-                                )
-                            }
-
-                            styleStates[2].value -> {
-                                AssistChip(
-                                    label = labelState.text.toString(),
-                                    enabled = enabled,
+                                    sizes = chipSizeState,
                                     leading = if (leading) {
                                         {
                                             when {
@@ -160,7 +131,7 @@ object Chips : Screen {
                                                 }
 
                                                 leadingStates[2].value -> {
-                                                    Image(imageUrl = Uri.parse("https://loremflickr.com/320/240"))
+                                                    Image(imageUrl = "https://loremflickr.com/320/240".toUri())
                                                 }
                                             }
                                         }
@@ -169,28 +140,25 @@ object Chips : Screen {
                                 )
                             }
 
-                            styleStates[3].value -> {
-                                InputShip(
+                            styleStates[1].value -> {
+                                ToggleableChip(
                                     label = labelState.text.toString(),
                                     selected = selected,
                                     enabled = enabled,
+                                    sizes = toggleableChipSizeState,
                                     leading = if (leading) {
                                         {
                                             when {
                                                 leadingStates[0].value -> {
-                                                    Icon(
-                                                        icon = rememberVectorPainter(
-                                                            PersianSymbols.Default.Globe
-                                                        )
-                                                    )
+                                                    Icon(icon = rememberVectorPainter(PersianSymbols.Default.Globe))
                                                 }
 
                                                 leadingStates[1].value -> {
-                                                    Avatar(avatarUrl = Uri.parse("https://loremflickr.com/320/240"))
+                                                    Avatar(avatarUrl = "https://loremflickr.com/320/240".toUri())
                                                 }
 
                                                 leadingStates[2].value -> {
-                                                    Image(imageUrl = Uri.parse("https://loremflickr.com/320/240"))
+                                                    Image(imageUrl = "https://loremflickr.com/320/240".toUri())
                                                 }
                                             }
                                         }
@@ -198,8 +166,8 @@ object Chips : Screen {
                                     trailing = if (trailing) {
                                         {
                                             Icon(
-                                                onClick = {}
-                                            )
+                                                icon = rememberVectorPainter(PersianSymbols.Default.XMark),
+                                                onClick = {})
                                         }
                                     } else null,
                                     onClick = { selected = !selected }
@@ -212,12 +180,59 @@ object Chips : Screen {
                     subhead = { Subhead(text = "Label") },
                     content = { Input(state = labelState) }
                 )
+                val chipSmall = ChipDefaults.smallSizes()
+                val chipMedium = ChipDefaults.mediumSizes()
+                val chipLarge = ChipDefaults.largeSizes()
+
+                val toggleableChipSmall = ToggleableChipDefaults.smallSizes()
+                val toggleableChipMedium = ToggleableChipDefaults.mediumSizes()
+                val toggleableChipLarge = ToggleableChipDefaults.largeSizes()
+                FormItem(
+                    subhead = { Subhead(text = "Size") },
+                    content = {
+                        RadioButtons {
+                            RadioButton(
+                                text = "Small",
+                                selected = sizeStates[0].value,
+                                onSelectedChange = {
+                                    sizeStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 0
+                                    }
+                                    chipSizeState = chipSmall
+                                    toggleableChipSizeState = toggleableChipSmall
+                                }
+                            )
+                            RadioButton(
+                                text = "Medium",
+                                selected = sizeStates[1].value,
+                                onSelectedChange = {
+                                    sizeStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 1
+                                    }
+                                    chipSizeState = chipMedium
+                                    toggleableChipSizeState = toggleableChipMedium
+                                }
+                            )
+                            RadioButton(
+                                text = "Large",
+                                selected = sizeStates[2].value,
+                                onSelectedChange = {
+                                    sizeStates.forEachIndexed { index, mutableState ->
+                                        mutableState.value = index == 2
+                                    }
+                                    chipSizeState = chipLarge
+                                    toggleableChipSizeState = toggleableChipLarge
+                                }
+                            )
+                        }
+                    }
+                )
                 FormItem(
                     subhead = { Subhead(text = "Style") },
                     content = {
                         RadioButtons {
                             RadioButton(
-                                text = "Filter",
+                                text = "Default",
                                 selected = styleStates[0].value,
                                 onSelectedChange = {
                                     styleStates.forEachIndexed { index, mutableState ->
@@ -226,34 +241,11 @@ object Chips : Screen {
                                 }
                             )
                             RadioButton(
-                                text = "Suggestion",
+                                text = "Toggleable",
                                 selected = styleStates[1].value,
                                 onSelectedChange = {
                                     styleStates.forEachIndexed { index, mutableState ->
                                         mutableState.value = index == 1
-                                    }
-                                }
-                            )
-                            RadioButton(
-                                text = "Assist",
-                                selected = styleStates[2].value,
-                                onSelectedChange = {
-                                    styleStates.forEachIndexed { index, mutableState ->
-                                        mutableState.value = index == 2
-                                    }
-                                    if (leadingStates[1].value) {
-                                        leadingStates.forEachIndexed { index, mutableState ->
-                                            mutableState.value = index == 0
-                                        }
-                                    }
-                                }
-                            )
-                            RadioButton(
-                                text = "Input",
-                                selected = styleStates[3].value,
-                                onSelectedChange = {
-                                    styleStates.forEachIndexed { index, mutableState ->
-                                        mutableState.value = index == 3
                                     }
                                 }
                             )
@@ -269,7 +261,7 @@ object Chips : Screen {
                                 checked = leading,
                                 onCheckedChange = onLeadingChange
                             )
-                            if (styleStates[0].value || styleStates[3].value) {
+                            if (styleStates[1].value) {
                                 Checkbox(
                                     text = "Trailing",
                                     checked = trailing,
@@ -284,7 +276,7 @@ object Chips : Screen {
                         }
                     }
                 )
-                if (leading && !styleStates[0].value && !styleStates[1].value) {
+                if (leading) {
                     FormItem(
                         subhead = {
                             Subhead(text = "Leading")
@@ -300,7 +292,7 @@ object Chips : Screen {
                                         }
                                     }
                                 )
-                                if (styleStates[3].value) {
+                                if (styleStates[1].value) {
                                     RadioButton(
                                         text = "Avatar",
                                         selected = leadingStates[1].value,
@@ -311,17 +303,15 @@ object Chips : Screen {
                                         }
                                     )
                                 }
-                                if (styleStates[3].value || styleStates[2].value) {
-                                    RadioButton(
-                                        text = "Image",
-                                        selected = leadingStates[2].value,
-                                        onSelectedChange = {
-                                            leadingStates.forEachIndexed { index, mutableState ->
-                                                mutableState.value = index == 2
-                                            }
+                                RadioButton(
+                                    text = "Image",
+                                    selected = leadingStates[2].value,
+                                    onSelectedChange = {
+                                        leadingStates.forEachIndexed { index, mutableState ->
+                                            mutableState.value = index == 2
                                         }
-                                    )
-                                }
+                                    }
+                                )
                             }
                         }
                     )

@@ -1,6 +1,7 @@
 plugins {
     alias libs.plugins.android.library
     alias libs.plugins.jetbrains.kotlin.android
+    alias libs.plugins.compose.compiler
 }
 
 ext {
@@ -32,38 +33,26 @@ android {
     buildFeatures {
         compose true
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion '1.5.15'
-    }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
     }
 }
 
 dependencies {
     implementation libs.core.ktx
     implementation libs.bundles.compose
-    implementation libs.adaptive.android
+    implementation libs.adaptive
     implementation libs.compose.animation
     implementation libs.datastore.preferences
     implementation libs.serialization
 
+    implementation(project(":persianSymbols"))
+
     debugImplementation libs.ui.tooling
 
     implementation libs.glide
-}
-
-gradle.projectsEvaluated {
-    def iconsProject = project.findProject(':persianSymbols')
-    if (iconsProject != null) {
-        dependencies {
-            implementation project(':persianSymbols')
-        }
-    } else {
-        implementation(libs.persian.symbols)
-    }
 }

@@ -12,10 +12,10 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app-persian-showcase" />
             <option value="$PROJECT_DIR$/persian" />
+            <option value="$PROJECT_DIR$/persianCharts" />
             <option value="$PROJECT_DIR$/persianSymbols" />
           </set>
         </option>
-        <option name="resolveExternalAnnotations" value="false" />
       </GradleProjectSettings>
     </option>
   </component>

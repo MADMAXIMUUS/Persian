@@ -17,11 +17,14 @@ import io.github.madmaximuus.persian.switch.Switch
 import io.github.madmaximuus.persianSymbols.check.Check
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.xmark.XMark
+import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object Switch : Screen {
     override val name: String = "Switch"
+
+    override val image: Int = R.drawable._switch
 
     override val navigation: String = "switch"
 

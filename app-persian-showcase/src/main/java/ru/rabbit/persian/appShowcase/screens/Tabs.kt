@@ -19,18 +19,21 @@ import io.github.madmaximuus.persian.formItem.FormItem
 import io.github.madmaximuus.persian.formItem.RadioButton
 import io.github.madmaximuus.persian.formItem.RadioButtons
 import io.github.madmaximuus.persian.formItem.Subhead
-import io.github.madmaximuus.persian.tabBar.default.TabBar
+import io.github.madmaximuus.persian.tabBar.TabBar
 import io.github.madmaximuus.persian.tabBar.scrollable.ScrollableTabBar
-import io.github.madmaximuus.persian.tabBar.tab.IconSide
+import io.github.madmaximuus.persian.tabBar.tab.Orientation
 import io.github.madmaximuus.persian.tabBar.tab.Tab
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.user.User
+import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object Tabs : Screen {
 
     override val name: String = "Tabs"
+
+    override val image: Int = R.drawable.tab_bar
 
     override val navigation: String = "tab"
 
@@ -50,7 +53,7 @@ object Tabs : Screen {
             )
         }
 
-        val iconSideStates = remember {
+        val orientationStates = remember {
             listOf(
                 mutableStateOf(true),
                 mutableStateOf(false)
@@ -84,10 +87,10 @@ object Tabs : Screen {
                         typeStates[0].value -> {
                             TabBar(
                                 selectedTabIndex = state,
-                                iconSide = when {
-                                    iconSideStates[0].value -> IconSide.LEFT
-                                    iconSideStates[1].value -> IconSide.TOP
-                                    else -> IconSide.TOP
+                                orientation = when {
+                                    orientationStates[0].value -> Orientation.HORIZONTAL
+                                    orientationStates[1].value -> Orientation.VERTICAL
+                                    else -> Orientation.VERTICAL
                                 },
                                 badgeStyle = when {
                                     badgeStyleStates[0].value -> BadgeStyle.DOT
@@ -113,10 +116,10 @@ object Tabs : Screen {
                         typeStates[1].value -> {
                             ScrollableTabBar(
                                 selectedTabIndex = scrollableState,
-                                iconSide = when {
-                                    iconSideStates[0].value -> IconSide.LEFT
-                                    iconSideStates[1].value -> IconSide.TOP
-                                    else -> IconSide.TOP
+                                orientation = when {
+                                    orientationStates[0].value -> Orientation.HORIZONTAL
+                                    orientationStates[1].value -> Orientation.VERTICAL
+                                    else -> Orientation.VERTICAL
                                 },
                                 badgeStyle = when {
                                     badgeStyleStates[0].value -> BadgeStyle.DOT
@@ -142,23 +145,23 @@ object Tabs : Screen {
                 }
                 if (icon) {
                     FormItem(
-                        subhead = { Subhead(text = "Icon side") },
+                        subhead = { Subhead(text = "Orientation") },
                         content = {
                             RadioButtons {
                                 RadioButton(
-                                    text = "Left",
-                                    selected = iconSideStates[0].value,
+                                    text = "Horizontal",
+                                    selected = orientationStates[0].value,
                                     onSelectedChange = {
-                                        iconSideStates.forEachIndexed { index, mutableState ->
+                                        orientationStates.forEachIndexed { index, mutableState ->
                                             mutableState.value = index == 0
                                         }
                                     }
                                 )
                                 RadioButton(
-                                    text = "Top",
-                                    selected = iconSideStates[1].value,
+                                    text = "Vertical",
+                                    selected = orientationStates[1].value,
                                     onSelectedChange = {
-                                        iconSideStates.forEachIndexed { index, mutableState ->
+                                        orientationStates.forEachIndexed { index, mutableState ->
                                             mutableState.value = index == 1
                                         }
                                     }
@@ -167,7 +170,7 @@ object Tabs : Screen {
                         }
                     )
                 }
-                if (badge) {
+                if (badge && orientationStates[1].value) {
                     FormItem(
                         subhead = { Subhead(text = "Badge style") },
                         content = {

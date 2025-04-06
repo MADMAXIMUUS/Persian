@@ -37,11 +37,14 @@ import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.globe.Globe
+import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object Banner : Screen {
 
     override val name: String = "Banner"
+
+    override val image: Int = R.drawable.banner
 
     override val navigation: String = "banner"
 
@@ -111,13 +114,13 @@ object Banner : Screen {
                         trailing = if (right) when {
                             rightStates[0].value -> {
                                 {
-                                    Icon()
+                                    IconButton {}
                                 }
                             }
 
                             rightStates[1].value -> {
                                 {
-                                    IconButton {}
+                                    Icon()
                                 }
                             }
 
@@ -137,7 +140,7 @@ object Banner : Screen {
                                     text = "Action 1"
                                 ) { }
                                 Action(
-                                    text = "Action 1"
+                                    text = "Action 2"
                                 ) { }
                             }
                         } else null,
@@ -215,16 +218,11 @@ object Banner : Screen {
                     if (right) {
                         FormItem(
                             modifier = Modifier.fillMaxWidth(),
-                            subhead = {
-                                Subhead(
-                                    modifier = Modifier.fillMaxWidth(),
-                                    text = "Right content"
-                                )
-                            },
+                            subhead = { Subhead(text = "Trailing content") },
                             content = {
                                 RadioButtons {
                                     RadioButton(
-                                        text = "Close",
+                                        text = "Icon button",
                                         selected = rightStates[0].value,
                                         onSelectedChange = {
                                             rightStates.forEachIndexed { index, mutableState ->
@@ -233,7 +231,7 @@ object Banner : Screen {
                                         }
                                     )
                                     RadioButton(
-                                        text = "Open",
+                                        text = "Icon",
                                         selected = rightStates[1].value,
                                         onSelectedChange = {
                                             rightStates.forEachIndexed { index, mutableState ->
@@ -255,8 +253,7 @@ object Banner : Screen {
                         )
                     }
                     FormItem(
-                        modifier = Modifier
-                            .fillMaxWidth(),
+                        modifier = Modifier.fillMaxWidth(),
                         subhead = { Subhead(text = "Settings") },
                         content = {
                             Checkboxes {
@@ -277,12 +274,12 @@ object Banner : Screen {
                                     }
                                 )
                                 Checkbox(
-                                    text = "Left",
+                                    text = "Leading",
                                     checked = left,
                                     onCheckedChange = onLeftChange
                                 )
                                 Checkbox(
-                                    text = "Right",
+                                    text = "Trailing",
                                     checked = right,
                                     onCheckedChange = onRightChange
                                 )

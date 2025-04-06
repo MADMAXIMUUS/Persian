@@ -24,15 +24,19 @@ import io.github.madmaximuus.persian.formItem.Input
 import io.github.madmaximuus.persian.formItem.RadioButton
 import io.github.madmaximuus.persian.formItem.RadioButtons
 import io.github.madmaximuus.persian.formItem.Subhead
-import io.github.madmaximuus.persian.iconButton.TertiaryIconButton
+import io.github.madmaximuus.persian.iconButton.IconButton
+import io.github.madmaximuus.persian.iconButton.IconButtonDefaults
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.user.User
+import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object Counter : Screen {
 
     override val name: String = "Counter"
+
+    override val image: Int = R.drawable.counter
 
     override val navigation: String = "counter"
 
@@ -117,8 +121,9 @@ object Counter : Screen {
                                         )
                                     },
                                 ) {
-                                    TertiaryIconButton(
+                                    IconButton(
                                         icon = rememberVectorPainter(image = PersianSymbols.Default.User),
+                                        colors = IconButtonDefaults.tertiaryIconButtonColors(),
                                         onClick = {}
                                     )
                                 }

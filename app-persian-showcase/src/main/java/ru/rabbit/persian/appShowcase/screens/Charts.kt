@@ -1,6 +1,8 @@
 package ru.rabbit.persian.appShowcase.screens
 
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
@@ -13,16 +15,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.charts.donut.DonutChart
-import io.github.madmaximuus.persian.charts.donut.DonutChartDefaults
-import io.github.madmaximuus.persian.charts.pie.PieChart
-import io.github.madmaximuus.persian.charts.pie.PieChartDefaults
-import io.github.madmaximuus.persian.charts.util.ChartConfig
-import io.github.madmaximuus.persian.charts.util.ChartData
-import io.github.madmaximuus.persian.checkboxes.Checkbox
+import io.github.madmaximuus.persian.checkbox.Checkbox
 import io.github.madmaximuus.persian.formItem.Checkboxes
 import io.github.madmaximuus.persian.formItem.FormItem
 import io.github.madmaximuus.persian.formItem.RadioButton
@@ -30,11 +27,13 @@ import io.github.madmaximuus.persian.formItem.RadioButtons
 import io.github.madmaximuus.persian.formItem.Subhead
 import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
-import ru.rabbit.persian.appShowcase.componets.SampleRow
+import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object Charts : Screen {
     override val name: String = "Charts"
+
+    override val image: Int = R.drawable.charts
 
     override val navigation: String = "chart"
 
@@ -69,7 +68,17 @@ object Charts : Screen {
                     .verticalScroll(rememberScrollState())
                     .navigationBarsPadding()
             ) {
-                SampleRow(text = "Sample", firstItem = true) {
+                CustomRoundedDonutChart(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .aspectRatio(1f),
+                    data = listOf(40f, 30f, 20f, 10f),
+                    colors = listOf(Color.Red, Color.Blue, Color.Green, Color.Yellow),
+                    gapSize = 12f, // Настоящие разделители
+                    innerRadiusFraction = 0.5f, // Donut (0f - Pie)
+                    cornerRadius = 15f // Закругленные углы, как в Swift Charts
+                )
+                /*SampleRow(text = "Sample", firstItem = true) {
                     when (selectedStyle) {
                         "Pie" -> {
                             PieChart(
@@ -141,7 +150,7 @@ object Charts : Screen {
                             )
                         }
                     }
-                }
+                }*/
                 Column(modifier = Modifier.fillMaxWidth()) {
                     FormItem(
                         subhead = { Subhead(text = "Style") },
@@ -213,4 +222,42 @@ object Charts : Screen {
             }
         }
     }
+
+    @Composable
+    fun CustomRoundedDonutChart(
+        data: List<Float>,
+        colors: List<Color>,
+        modifier: Modifier = Modifier,
+        gapSize: Float = 0f, // Размер разделителей
+        innerRadiusFraction: Float = 0.6f, // 0f - Pie, > 0 - Donut
+        cornerRadius: Float = 15f // Закругленные углы
+    ) {
+        val sum = data.sum()
+        val angles = data.map { it / sum * 360f }
+
+        Canvas(modifier = modifier) {
+            val radius = size.minDimension / 2
+            val center = Offset(size.width / 2, size.height / 2)
+            val innerRadius = radius * innerRadiusFraction
+            val gapAngle = gapSize / radius * (180f / Math.PI.toFloat()) // Переводим gap в градусы
+
+            var startAngle = 0f
+
+            angles.forEachIndexed { index, sweepAngleRaw ->
+                val sweepAngle = sweepAngleRaw - gapAngle // Коррекция с учётом gap
+                if (sweepAngle <= 0) return@forEachIndexed
+
+                /*drawRoundedArc(
+                    color = Color.Blue,
+                    startAngle = startAngle,
+                    sweepAngle = sweepAngle,
+                    width = 1000f,
+                    cornerRadius = 0f
+                )*/
+                startAngle += sweepAngleRaw
+            }
+        }
+    }
+
+
 }

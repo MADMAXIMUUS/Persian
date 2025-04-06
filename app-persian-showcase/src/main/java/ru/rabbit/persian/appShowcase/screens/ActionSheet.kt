@@ -5,7 +5,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.input.rememberTextFieldState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -18,8 +20,8 @@ import androidx.navigation.NavController
 import io.github.madmaximuus.persian.actionSheet.Action
 import io.github.madmaximuus.persian.actionSheet.ActionSheet
 import io.github.madmaximuus.persian.actionSheet.Header
+import io.github.madmaximuus.persian.button.Button
 import io.github.madmaximuus.persian.button.ButtonDefaults
-import io.github.madmaximuus.persian.button.PrimaryButton
 import io.github.madmaximuus.persian.formItem.Checkbox
 import io.github.madmaximuus.persian.formItem.Checkboxes
 import io.github.madmaximuus.persian.formItem.FormItem
@@ -31,11 +33,12 @@ import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.image.Image
+import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object ActionSheet : Screen {
     override val name: String = "Action sheet"
-
+    override val image: Int = R.drawable.action_sheet
     override val navigation: String = "actionSheet"
 
     @Composable
@@ -64,7 +67,8 @@ object ActionSheet : Screen {
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(it)
-                    .navigationBarsPadding(),
+                    .navigationBarsPadding()
+                    .verticalScroll(rememberScrollState()),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 if (title) {
@@ -113,7 +117,7 @@ object ActionSheet : Screen {
                         }
                     }
                 )
-                PrimaryButton(
+                Button(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(top = PersianTheme.spacing.size8)

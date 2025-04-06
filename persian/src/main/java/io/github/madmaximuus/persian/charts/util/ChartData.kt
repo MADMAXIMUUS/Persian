@@ -44,13 +44,11 @@ class ChartData internal constructor(
         angle: Float = this.angle,
         color: Color = this.color,
         isSelected: Boolean = this.isSelected
-    ): ChartData {
-        return ChartData(
-            percentage = percentage,
-            value = value,
-            angle = angle,
-            color = color,
-            isSelected = isSelected
-        )
-    }
+    ) = ChartData(
+        percentage = percentage,
+        value = value,
+        angle = angle,
+        color = color,
+        isSelected = isSelected
+    )
 }

@@ -31,12 +31,15 @@ import io.github.madmaximuus.persian.slider.continuous.Slider
 import io.github.madmaximuus.persian.text.Text
 import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
+import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object ProgressIndicator : Screen {
 
     override val name: String = "Progress indicator"
+
+    override val image: Int = R.drawable.progress_indicator
 
     override val navigation: String = "progress"
 

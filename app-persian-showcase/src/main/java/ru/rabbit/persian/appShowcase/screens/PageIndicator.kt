@@ -19,11 +19,14 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.pageIndicator.IndicatorStyle
 import io.github.madmaximuus.persian.pageIndicator.PageIndicator
 import io.github.madmaximuus.persian.text.Text
+import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object PageIndicator : Screen {
 
     override val name: String = "Page indicator"
+
+    override val image: Int = R.drawable.page_indicator
 
     override val navigation: String = "page_indicator"
 

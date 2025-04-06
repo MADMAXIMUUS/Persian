@@ -1,6 +1,5 @@
 package ru.rabbit.persian.appShowcase.screens
 
-import android.net.Uri
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -11,6 +10,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.core.net.toUri
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.formItem.Checkbox
 import io.github.madmaximuus.persian.formItem.Checkboxes
@@ -29,26 +29,29 @@ import io.github.madmaximuus.persianSymbols.arrow.left.ArrowLeft
 import io.github.madmaximuus.persianSymbols.bell.Bell
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.magnifyingGlass.MagnifyingGlass
-import io.github.madmaximuus.persianSymbols.nfc.Nfc
-import io.github.madmaximuus.persianSymbols.xmark.XMark
+import ru.rabbit.persian.appShowcase.R
 
 object TopAppBar : Screen {
     override val name: String = "Top app bar"
+
+    override val image: Int = R.drawable.top_app_bar
 
     override val navigation: String = "topAppBar"
 
     @Composable
     override fun Content(navController: NavController?) {
+        val (counter, onCounterChange) = remember { mutableStateOf(false) }
+
         val (left, onLeftChange) = remember { mutableStateOf(true) }
         val leftStates = remember {
             listOf(
                 mutableStateOf(true),
                 mutableStateOf(false),
-                mutableStateOf(false),
             )
         }
 
         val (right, onRightChange) = remember { mutableStateOf(true) }
+
         val rightStates = remember {
             listOf(
                 mutableStateOf(false),
@@ -57,37 +60,26 @@ object TopAppBar : Screen {
                 mutableStateOf(false),
             )
         }
-        var expanded by remember { mutableStateOf(false) }
+        val (expanded, onExpandedChange) = remember { mutableStateOf(false) }
 
         var showSettings by remember { mutableStateOf(false) }
 
         Scaffold(
             topBar = {
                 TopAppBar(
-                    left = if (left) {
+                    leading = if (left) {
                         {
                             when {
                                 leftStates[0].value -> {
                                     IconButton(
                                         icon = rememberVectorPainter(PersianSymbols.Default.ArrowLeft),
-                                        onClick = {
-                                            navController?.navigateUp()
-                                        }
+                                        onClick = { navController?.navigateUp() }
                                     )
                                 }
 
                                 leftStates[1].value -> {
-                                    IconButton(
-                                        icon = rememberVectorPainter(PersianSymbols.Default.XMark),
-                                        onClick = {
-                                            navController?.navigateUp()
-                                        }
-                                    )
-                                }
-
-                                leftStates[2].value -> {
                                     Avatar(
-                                        avatarUrl = Uri.parse("https://loremflickr.com/320/240"),
+                                        avatarUrl = "https://loremflickr.com/320/240".toUri(),
                                         onClick = { navController?.navigateUp() }
                                     )
                                 }
@@ -95,7 +87,8 @@ object TopAppBar : Screen {
                         }
                     } else null,
                     title = name,
-                    right = if (right) {
+                    counterValue = if (counter) 10 else 0,
+                    trailing = if (right) {
                         {
                             when {
                                 rightStates[0].value -> {
@@ -123,10 +116,6 @@ object TopAppBar : Screen {
                                         icon = rememberVectorPainter(PersianSymbols.Default.MagnifyingGlass),
                                         onClick = {}
                                     )
-                                    IconButton(
-                                        icon = rememberVectorPainter(PersianSymbols.Default.Nfc),
-                                        onClick = {}
-                                    )
                                 }
 
                                 rightStates[3].value -> {
@@ -140,27 +129,27 @@ object TopAppBar : Screen {
                                     )
                                     More(
                                         expanded = expanded,
-                                        onDismissRequest = { expanded = false },
+                                        onExpandedChange = onExpandedChange,
                                         menuItems = {
                                             DropdownMenuItem(
                                                 text = "Menu Action 1",
-                                                onClick = { expanded = false }
+                                                onClick = { onExpandedChange(false) }
                                             )
                                             DropdownMenuItem(
                                                 text = "Menu Action 1",
-                                                onClick = { expanded = false }
+                                                onClick = { onExpandedChange(false) }
                                             )
                                             DropdownMenuItem(
                                                 text = "Menu Action 1",
-                                                onClick = { expanded = false }
+                                                onClick = { onExpandedChange(false) }
                                             )
                                             DropdownMenuItem(
                                                 text = "Menu Action 1",
-                                                onClick = { expanded = false }
+                                                onClick = { onExpandedChange(false) }
                                             )
                                             DropdownMenuItem(
                                                 text = "Menu Action 1",
-                                                onClick = { expanded = false }
+                                                onClick = { onExpandedChange(false) }
                                             )
                                         }
                                     )
@@ -179,11 +168,11 @@ object TopAppBar : Screen {
             ) {
                 if (left) {
                     FormItem(
-                        subhead = { Subhead(text = "Left") },
+                        subhead = { Subhead(text = "Leading") },
                         content = {
                             RadioButtons {
                                 RadioButton(
-                                    text = "Navigation",
+                                    text = "Icon button",
                                     selected = leftStates[0].value,
                                     onSelectedChange = {
                                         leftStates.forEachIndexed { index, mutableState ->
@@ -192,20 +181,11 @@ object TopAppBar : Screen {
                                     }
                                 )
                                 RadioButton(
-                                    text = "Close",
+                                    text = "Avatar",
                                     selected = leftStates[1].value,
                                     onSelectedChange = {
                                         leftStates.forEachIndexed { index, mutableState ->
                                             mutableState.value = index == 1
-                                        }
-                                    }
-                                )
-                                RadioButton(
-                                    text = "Avatar",
-                                    selected = leftStates[2].value,
-                                    onSelectedChange = {
-                                        leftStates.forEachIndexed { index, mutableState ->
-                                            mutableState.value = index == 2
                                         }
                                     }
                                 )
@@ -215,7 +195,7 @@ object TopAppBar : Screen {
                 }
                 if (right) {
                     FormItem(
-                        subhead = { Subhead(text = "Right") },
+                        subhead = { Subhead(text = "Trailing") },
                         content = {
                             RadioButtons {
                                 RadioButton(
@@ -263,14 +243,19 @@ object TopAppBar : Screen {
                     content = {
                         Checkboxes {
                             Checkbox(
-                                text = "Left",
+                                text = "Leading",
                                 checked = left,
                                 onCheckedChange = onLeftChange
                             )
                             Checkbox(
-                                text = "Right",
+                                text = "Trailing",
                                 checked = right,
                                 onCheckedChange = onRightChange
+                            )
+                            Checkbox(
+                                text = "Counter",
+                                checked = counter,
+                                onCheckedChange = onCounterChange
                             )
                         }
                     }

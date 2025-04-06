@@ -20,11 +20,14 @@ import io.github.madmaximuus.persian.menu.DropdownMenuItem
 import io.github.madmaximuus.persian.select.Select
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.image.Image
+import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object Select : Screen {
     override val name: String = "Select"
+
+    override val image: Int = R.drawable.select
 
     override val navigation: String = "select"
 

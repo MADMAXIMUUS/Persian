@@ -20,25 +20,22 @@ import io.github.madmaximuus.persian.formItem.FormItem
 import io.github.madmaximuus.persian.formItem.RadioButton
 import io.github.madmaximuus.persian.formItem.RadioButtons
 import io.github.madmaximuus.persian.formItem.Subhead
+import io.github.madmaximuus.persian.iconButton.IconButton
 import io.github.madmaximuus.persian.iconButton.IconButtonDefaults
-import io.github.madmaximuus.persian.iconButton.OutlinedIconButton
-import io.github.madmaximuus.persian.iconButton.OutlinedToggleIconButton
-import io.github.madmaximuus.persian.iconButton.PrimaryIconButton
-import io.github.madmaximuus.persian.iconButton.PrimaryToggleIconButton
-import io.github.madmaximuus.persian.iconButton.SecondaryIconButton
-import io.github.madmaximuus.persian.iconButton.SecondaryToggleIconButton
-import io.github.madmaximuus.persian.iconButton.TertiaryIconButton
-import io.github.madmaximuus.persian.iconButton.TertiaryToggleIconButton
+import io.github.madmaximuus.persian.iconButton.ToggleIconButton
 import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
-import io.github.madmaximuus.persianSymbols.user.User
+import io.github.madmaximuus.persianSymbols.heart.Heart
+import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object IconButton : Screen {
 
     override val name: String = "Icon button"
+
+    override val image: Int = R.drawable.icon_button
 
     override val navigation: String = "iconButton"
 
@@ -54,6 +51,13 @@ object IconButton : Screen {
         ) {
             val size = IconButtonDefaults.largeSizes()
             var sizeState by remember { mutableStateOf(size) }
+
+            val colors = IconButtonDefaults.primaryIconButtonColors()
+            var colorsState by remember { mutableStateOf(colors) }
+
+            val toggleColors = IconButtonDefaults.primaryToggleIconButtonColors()
+            var toggleColorsState by remember { mutableStateOf(toggleColors) }
+
             val (enabled, onEnabledChange) = remember { mutableStateOf(true) }
             val (checked, onCheckedChange) = remember { mutableStateOf(false) }
 
@@ -84,6 +88,15 @@ object IconButton : Screen {
             val medium = IconButtonDefaults.mediumSizes()
             val small = IconButtonDefaults.smallSizes()
 
+            val primaryColors = IconButtonDefaults.primaryIconButtonColors()
+            val secondaryColors = IconButtonDefaults.secondaryIconButtonColors()
+            val tertiaryColors = IconButtonDefaults.tertiaryIconButtonColors()
+            val outlinedColors = IconButtonDefaults.outlinedIconButtonColors()
+            val primaryToggleColors = IconButtonDefaults.primaryToggleIconButtonColors()
+            val secondaryToggleColors = IconButtonDefaults.secondaryToggleIconButtonColors()
+            val tertiaryToggleColors = IconButtonDefaults.tertiaryToggleIconButtonColors()
+            val outlinedToggleColors = IconButtonDefaults.outlinedToggleIconButtonColors()
+
             Column(
                 Modifier
                     .fillMaxSize()
@@ -97,91 +110,25 @@ object IconButton : Screen {
                 ) {
                     when {
                         typeStates[0].value -> {
-                            when {
-                                styleStates[0].value -> {
-                                    PrimaryIconButton(
-                                        sizes = sizeState,
-                                        enabled = enabled,
-                                        icon = rememberVectorPainter(image = PersianSymbols.Default.User),
-                                        onClick = {}
-                                    )
-                                }
-
-                                styleStates[1].value -> {
-                                    SecondaryIconButton(
-                                        sizes = sizeState,
-                                        enabled = enabled,
-                                        icon = rememberVectorPainter(image = PersianSymbols.Default.User),
-                                        onClick = {}
-                                    )
-                                }
-
-                                styleStates[2].value -> {
-                                    TertiaryIconButton(
-                                        sizes = sizeState,
-                                        enabled = enabled,
-                                        icon = rememberVectorPainter(image = PersianSymbols.Default.User),
-                                        onClick = {}
-                                    )
-                                }
-
-                                styleStates[3].value -> {
-                                    OutlinedIconButton(
-                                        sizes = sizeState,
-                                        enabled = enabled,
-                                        icon = rememberVectorPainter(image = PersianSymbols.Default.User),
-                                        onClick = {}
-                                    )
-                                }
-                            }
+                            IconButton(
+                                sizes = sizeState,
+                                enabled = enabled,
+                                icon = rememberVectorPainter(image = PersianSymbols.Default.Heart),
+                                colors = colorsState,
+                                onClick = {}
+                            )
                         }
 
                         typeStates[1].value -> {
-                            when {
-                                styleStates[0].value -> {
-                                    PrimaryToggleIconButton(
-                                        icon = rememberVectorPainter(image = PersianSymbols.Default.User),
-                                        checkedIcon = rememberVectorPainter(image = PersianSymbols.Default.User),
-                                        checked = checked,
-                                        sizes = sizeState,
-                                        enabled = enabled,
-                                        onCheckedChange = onCheckedChange
-                                    )
-                                }
-
-                                styleStates[1].value -> {
-                                    SecondaryToggleIconButton(
-                                        icon = rememberVectorPainter(image = PersianSymbols.Default.User),
-                                        checkedIcon = rememberVectorPainter(image = PersianSymbols.Default.User),
-                                        checked = checked,
-                                        sizes = sizeState,
-                                        enabled = enabled,
-                                        onCheckedChange = onCheckedChange
-                                    )
-                                }
-
-                                styleStates[2].value -> {
-                                    TertiaryToggleIconButton(
-                                        icon = rememberVectorPainter(image = PersianSymbols.Default.User),
-                                        checkedIcon = rememberVectorPainter(image = PersianSymbols.Default.User),
-                                        checked = checked,
-                                        sizes = sizeState,
-                                        enabled = enabled,
-                                        onCheckedChange = onCheckedChange
-                                    )
-                                }
-
-                                styleStates[3].value -> {
-                                    OutlinedToggleIconButton(
-                                        icon = rememberVectorPainter(image = PersianSymbols.Default.User),
-                                        checkedIcon = rememberVectorPainter(image = PersianSymbols.Default.User),
-                                        checked = checked,
-                                        sizes = sizeState,
-                                        enabled = enabled,
-                                        onCheckedChange = onCheckedChange
-                                    )
-                                }
-                            }
+                            ToggleIconButton(
+                                icon = rememberVectorPainter(image = PersianSymbols.Default.Heart),
+                                checkedIcon = rememberVectorPainter(image = PersianSymbols.Filled.Heart),
+                                checked = checked,
+                                sizes = sizeState,
+                                colors = toggleColorsState,
+                                enabled = enabled,
+                                onCheckedChange = onCheckedChange
+                            )
                         }
                     }
                 }
@@ -199,7 +146,7 @@ object IconButton : Screen {
                                 }
                             )
                             RadioButton(
-                                text = "Toggle",
+                                text = "Toggleable",
                                 selected = typeStates[1].value,
                                 onSelectedChange = {
                                     typeStates.forEachIndexed { index, mutableState ->
@@ -220,6 +167,8 @@ object IconButton : Screen {
                                 onSelectedChange = {
                                     styleStates.forEachIndexed { index, mutableState ->
                                         mutableState.value = index == 0
+                                        colorsState = primaryColors
+                                        toggleColorsState = primaryToggleColors
                                     }
                                 }
                             )
@@ -229,6 +178,8 @@ object IconButton : Screen {
                                 onSelectedChange = {
                                     styleStates.forEachIndexed { index, mutableState ->
                                         mutableState.value = index == 1
+                                        colorsState = secondaryColors
+                                        toggleColorsState = secondaryToggleColors
                                     }
                                 }
                             )
@@ -238,6 +189,8 @@ object IconButton : Screen {
                                 onSelectedChange = {
                                     styleStates.forEachIndexed { index, mutableState ->
                                         mutableState.value = index == 2
+                                        colorsState = tertiaryColors
+                                        toggleColorsState = tertiaryToggleColors
                                     }
                                 }
                             )
@@ -247,6 +200,8 @@ object IconButton : Screen {
                                 onSelectedChange = {
                                     styleStates.forEachIndexed { index, mutableState ->
                                         mutableState.value = index == 3
+                                        colorsState = outlinedColors
+                                        toggleColorsState = outlinedToggleColors
                                     }
                                 }
                             )

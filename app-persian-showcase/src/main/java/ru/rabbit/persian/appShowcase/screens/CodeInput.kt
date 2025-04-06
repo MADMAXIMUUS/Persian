@@ -23,11 +23,14 @@ import io.github.madmaximuus.persian.formItem.Subhead
 import io.github.madmaximuus.persian.internal.SecureInputSettings
 import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
+import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object CodeInput : Screen {
     override val name: String = "Code input"
+
+    override val image: Int = R.drawable.code_input
 
     override val navigation: String = "codeInput"
 
@@ -50,21 +53,8 @@ object CodeInput : Screen {
                 var isError by remember { mutableStateOf(false) }
                 var enabled by remember { mutableStateOf(true) }
                 var secret by remember { mutableStateOf(false) }
-                val fourInputs = listOf(
-                    rememberTextFieldState(""),
-                    rememberTextFieldState(""),
-                    rememberTextFieldState(""),
-                    rememberTextFieldState("")
-                )
-
-                val sixInputs = listOf(
-                    rememberTextFieldState(""),
-                    rememberTextFieldState(""),
-                    rememberTextFieldState(""),
-                    rememberTextFieldState(""),
-                    rememberTextFieldState(""),
-                    rememberTextFieldState("")
-                )
+                val fourInput = rememberTextFieldState("")
+                val sixInput = rememberTextFieldState("")
 
                 var selectedStyle by remember { mutableStateOf("Four") }
                 val styleState = remember {
@@ -79,7 +69,7 @@ object CodeInput : Screen {
                         "Four" -> {
                             FourDigitCodeInput(
                                 modifier = Modifier.fillMaxWidth(),
-                                values = fourInputs,
+                                state = fourInput,
                                 enabled = enabled,
                                 isValid = isSuccess,
                                 isError = isError,
@@ -90,7 +80,7 @@ object CodeInput : Screen {
                         "Six" -> {
                             SixDigitCodeInput(
                                 modifier = Modifier.fillMaxWidth(),
-                                values = sixInputs,
+                                state = sixInput,
                                 enabled = enabled,
                                 isValid = isSuccess,
                                 isError = isError,

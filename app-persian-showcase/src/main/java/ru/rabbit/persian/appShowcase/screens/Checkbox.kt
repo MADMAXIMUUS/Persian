@@ -13,14 +13,17 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.state.ToggleableState
 import androidx.navigation.NavController
-import io.github.madmaximuus.persian.checkboxes.Checkbox
-import io.github.madmaximuus.persian.checkboxes.TriStateCheckbox
+import io.github.madmaximuus.persian.checkbox.Checkbox
+import io.github.madmaximuus.persian.checkbox.TriStateCheckbox
 import io.github.madmaximuus.persian.foundation.PersianTheme
+import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object Checkbox : Screen {
 
     override val name: String = "Checkbox"
+
+    override val image: Int = R.drawable.checkbox
 
     override val navigation: String = "checkbox"
 

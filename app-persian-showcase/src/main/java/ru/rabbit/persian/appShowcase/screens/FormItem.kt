@@ -39,11 +39,14 @@ import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.user.User
 import io.github.madmaximuus.persianSymbols.xmark.XMark
+import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object FormItem : Screen {
 
     override val name: String = "Form item"
+
+    override val image: Int = R.drawable.form_item
 
     override val navigation: String = "form"
 

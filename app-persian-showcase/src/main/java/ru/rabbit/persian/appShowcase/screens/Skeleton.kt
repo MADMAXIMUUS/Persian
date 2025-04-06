@@ -18,11 +18,14 @@ import androidx.navigation.NavController
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.shimmer
 import io.github.madmaximuus.persian.text.Text
+import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 
 object Skeleton : Screen {
 
     override val name: String = "Skeleton"
+
+    override val image: Int = R.drawable.skeleton
 
     override val navigation: String = "skeleton"
 

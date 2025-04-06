@@ -4,7 +4,10 @@ import android.icu.util.Calendar
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -13,8 +16,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.navigation.NavController
+import io.github.madmaximuus.persian.button.Button
 import io.github.madmaximuus.persian.button.ButtonDefaults
-import io.github.madmaximuus.persian.button.PrimaryButton
 import io.github.madmaximuus.persian.formItem.Checkbox
 import io.github.madmaximuus.persian.formItem.Checkboxes
 import io.github.madmaximuus.persian.formItem.FormItem
@@ -26,12 +29,15 @@ import io.github.madmaximuus.persian.text.Text
 import io.github.madmaximuus.persian.timePicker.TimePicker
 import io.github.madmaximuus.persian.timePicker.state.rememberTimePickerState
 import io.github.madmaximuus.persian.timePicker.util.PickerType
+import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 import java.util.Locale
 
 object TimePicker : Screen {
 
     override val name: String = "Time picker"
+
+    override val image: Int = R.drawable.time_picker
 
     override val navigation: String = "timePicker"
 
@@ -62,7 +68,10 @@ object TimePicker : Screen {
             Column(
                 modifier = Modifier
                     .padding(it)
-                    .fillMaxSize(),
+                    .fillMaxSize()
+                    .verticalScroll(rememberScrollState())
+                    .padding(bottom = PersianTheme.spacing.size12)
+                    .navigationBarsPadding(),
             ) {
                 Text(
                     modifier = Modifier
@@ -110,7 +119,7 @@ object TimePicker : Screen {
                         }
                     }
                 )
-                PrimaryButton(
+                Button(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = PersianTheme.spacing.size16)

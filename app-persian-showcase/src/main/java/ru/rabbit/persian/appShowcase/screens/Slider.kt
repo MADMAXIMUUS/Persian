@@ -36,6 +36,7 @@ import io.github.madmaximuus.persian.text.Text
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.volume.high.VolumeHigh
 import io.github.madmaximuus.persianSymbols.volume.off.VolumeOff
+import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
 import java.util.Locale.getDefault
@@ -43,6 +44,8 @@ import java.util.Locale.getDefault
 object Slider : Screen {
 
     override val name: String = "Sliders"
+
+    override val image: Int = R.drawable.slider
 
     override val navigation: String = "slider"
 

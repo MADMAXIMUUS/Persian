@@ -7,6 +7,8 @@ interface Screen {
 
     val name: String
 
+    val image: Int
+
     val navigation: String
 
     @Composable
