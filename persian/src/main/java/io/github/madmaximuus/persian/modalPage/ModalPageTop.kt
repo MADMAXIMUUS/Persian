@@ -10,9 +10,11 @@ import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.layoutId
 import androidx.window.core.layout.WindowHeightSizeClass
 import androidx.window.core.layout.WindowWidthSizeClass
 import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.modalPage.util.LayoutId
 import io.github.madmaximuus.persian.topAppBar.TopAppBar
 import io.github.madmaximuus.persian.topAppBar.TopAppBarLeadingScope
 import io.github.madmaximuus.persian.topAppBar.TopAppBarScrollBehavior
@@ -61,7 +63,9 @@ fun ModalPageTopScope.TopBar(
     scrollBehavior: TopAppBarScrollBehavior? = null
 ) {
     TopAppBar(
-        modifier = modifier,
+        modifier = Modifier
+            .layoutId(LayoutId.TOP_BAR)
+            .then(modifier),
         colors = colors.topAppBarColors,
         sizes = sizes.topAppBarSizes,
         windowInsets = WindowInsets(0, 0, 0, 0),

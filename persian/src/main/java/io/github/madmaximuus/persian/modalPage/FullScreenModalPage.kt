@@ -1,7 +1,6 @@
 package io.github.madmaximuus.persian.modalPage
 
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.heightIn
@@ -14,6 +13,8 @@ import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.Layout
+import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalView
@@ -24,6 +25,8 @@ import androidx.compose.ui.window.DialogWindowProvider
 import androidx.window.core.layout.WindowHeightSizeClass
 import androidx.window.core.layout.WindowWidthSizeClass
 import io.github.madmaximuus.persian.foundation.LocalTheme
+import io.github.madmaximuus.persian.modalPage.util.LayoutId
+import io.github.madmaximuus.persian.modalPage.util.modalMeasurePolicy
 import io.github.madmaximuus.persian.scafold.Scaffold
 import io.github.madmaximuus.persian.surface.Surface
 
@@ -168,13 +171,22 @@ internal fun MediumModalPage(
                 shape = sizes.containerShape,
                 color = colors.containerColor,
             ) {
-                Column {
-                    val scope = remember(colors, sizes) {
-                        ModalPageTopScopeWrapper(sizes, colors)
+                Layout(
+                    measurePolicy = { measurables, constraints ->
+                        modalMeasurePolicy(this, measurables, constraints)
+                    },
+                    content = {
+                        val scope = remember(colors, sizes) {
+                            ModalPageTopScopeWrapper(sizes, colors)
+                        }
+                        top?.let { scope.it() }
+                        Box(
+                            modifier = Modifier.layoutId(LayoutId.CONTENT)
+                        ) {
+                            content()
+                        }
                     }
-                    top?.let { scope.it() }
-                    content()
-                }
+                )
             }
         }
     )
