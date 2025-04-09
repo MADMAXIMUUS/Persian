@@ -5,6 +5,7 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
@@ -29,6 +30,7 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat
@@ -38,8 +40,10 @@ import io.github.madmaximuus.persian.actionSheet.utils.ActionSheetProperties
 import io.github.madmaximuus.persian.actionSheet.utils.AnimatedSlideInTransition
 import io.github.madmaximuus.persian.actionSheet.utils.AnimatedTransitionDialogHelper
 import io.github.madmaximuus.persian.actionSheet.utils.startDismissWithExitAnimation
+import io.github.madmaximuus.persian.foundation.PersianState38
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.surface.Surface
+import io.github.madmaximuus.persian.text.Text
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -49,23 +53,25 @@ import kotlinx.coroutines.launch
 /**
  * Action sheet is an element that presents a contextual menu displayed at the bottom of the screen.
  * This element provides the user with several options related to the current context.
- * Action sheet is used in cases where an action selection is required, but there is no need to display these [actions] permanently on the screen.
+ * Action sheet is used in cases where an action selection is required, but there is no need
+ * to display these [actions] permanently on the screen.
  *
- * @param actions The actions in [ActionSheetItemScope] of this action sheet.
- * @param header The title and subtitle in [ActionSheetHeaderScope] of this action sheet.
- * @param colors The [ActionSheetColors] colors of container, title and subtitle and [ActionSheetItemColors] of this action sheet.
- * @param sizes The [ActionSheetSizes] sizes of container, title and subtitle and [ActionSheetItemSizes] of this action sheet.
  * @param onDismissRequest Executes when the user tries to dismiss the action sheet.
+ * @param colors The colors of container and content.
+ * @param sizes The sizes of container and content.
+ * @param title The title of this action sheet.
+ * @param message The message of this action sheet
+ * @param actions The actions in [ActionSheetItemScope] of this action sheet.
  */
 @Composable
 fun ActionSheet(
     onDismissRequest: () -> Unit,
     colors: ActionSheetColors = ActionSheetDefaults.colors(),
     sizes: ActionSheetSizes = ActionSheetDefaults.sizes(),
-    header: (@Composable ActionSheetHeaderScope.() -> Unit)? = null,
+    title: String? = null,
+    message: String? = null,
     actions: @Composable ActionSheetItemScope.() -> Unit
 ) {
-
     val onDismissSharedFlow: MutableSharedFlow<Any> = remember { MutableSharedFlow() }
     val coroutineScope: CoroutineScope = rememberCoroutineScope()
     val animateTrigger = remember { mutableStateOf(false) }
@@ -79,6 +85,11 @@ fun ActionSheet(
 
     val maxWidth = if (windowWidthSizeClass == WindowWidthSizeClass.COMPACT) Dp.Unspecified
     else 500.dp
+
+    val helper = AnimatedTransitionDialogHelper(
+        coroutineScope,
+        onDismissSharedFlow
+    )
 
     LaunchedEffect(key1 = Unit) {
         launch {
@@ -113,7 +124,7 @@ fun ActionSheet(
                     .fillMaxSize(),
                 contentAlignment = Alignment.BottomCenter,
             ) {
-                ScrimBackground(
+                Scrim(
                     showScrim = animateTrigger.value,
                     onClick = {
                         coroutineScope.launch {
@@ -143,23 +154,42 @@ fun ActionSheet(
                             Modifier
                                 .fillMaxWidth()
                         ) {
-                            val headerScope = remember(colors, sizes) {
-                                ActionSheetHeaderScopeWrapper(
-                                    this,
-                                    colors = colors,
-                                    sizes = sizes
-                                )
+                            if (title != null || message != null) {
+                                Column(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(horizontal = PersianTheme.spacing.size24)
+                                        .padding(
+                                            top = PersianTheme.spacing.size24,
+                                            bottom = PersianTheme.spacing.size12
+                                        ),
+                                    verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size4)
+                                ) {
+                                    title?.let {
+                                        Text(
+                                            modifier = Modifier.fillMaxWidth(),
+                                            text = it,
+                                            textAlign = TextAlign.Center,
+                                            style = sizes.titleTextStyle,
+                                            color = colors.titleColor
+                                        )
+                                    }
+                                    message?.let {
+                                        Text(
+                                            modifier = Modifier.fillMaxWidth(),
+                                            text = it,
+                                            textAlign = TextAlign.Center,
+                                            style = sizes.messageTextStyle,
+                                            color = colors.subtitleColor
+                                        )
+                                    }
+                                }
                             }
-                            header?.let { headerScope.it() }
                             Column(
                                 Modifier
                                     .fillMaxWidth()
                                     .verticalScroll(rememberScrollState())
                             ) {
-                                val helper = AnimatedTransitionDialogHelper(
-                                    coroutineScope,
-                                    onDismissSharedFlow
-                                )
                                 val scope = remember(helper, colors, sizes) {
                                     ActionSheetItemScopeWrapper(
                                         scope = this,
@@ -185,7 +215,7 @@ fun ActionSheet(
  * @param onClick A callback function to be invoked when the scrim is clicked.
  */
 @Composable
-private fun ScrimBackground(
+private fun Scrim(
     showScrim: Boolean,
     onClick: () -> Unit,
 ) {
@@ -195,7 +225,7 @@ private fun ScrimBackground(
 
     val scrimAlpha by animateFloatAsState(
         label = "Scrim animation",
-        targetValue = if (showScrim) 0.38f else 0f
+        targetValue = if (showScrim) PersianState38 else 0f
     )
 
     if (!isDarkTheme) {

@@ -19,7 +19,6 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.navigation.NavController
 import io.github.madmaximuus.persian.actionSheet.Action
 import io.github.madmaximuus.persian.actionSheet.ActionSheet
-import io.github.madmaximuus.persian.actionSheet.Header
 import io.github.madmaximuus.persian.button.Button
 import io.github.madmaximuus.persian.button.ButtonDefaults
 import io.github.madmaximuus.persian.formItem.Checkbox
@@ -144,14 +143,8 @@ object ActionSheet : Screen {
         }
         if (needShow) {
             ActionSheet(
-                header = if (title || message) {
-                    {
-                        Header(
-                            title = if (title) titleState.text.toString() else null,
-                            message = if (message) subtitleState.text.toString() else null,
-                        )
-                    }
-                } else null,
+                title = if (title) titleState.text.toString() else null,
+                message = if (message) subtitleState.text.toString() else null,
                 actions = {
                     Action(
                         text = "Action 1",
