@@ -23,6 +23,7 @@ object IconButtonDefaults {
      * The default values are set to create a small button suitable for compact layouts.
      *
      * @param size The overall size of the button.
+     * @param borderStrokeThickness The thickness of button border.
      * @param iconSizes The sizes of the icon within the button.
      * @param shape The shape of the button.
      */
@@ -46,6 +47,7 @@ object IconButtonDefaults {
      * The default values are set to create a medium button suitable for standard layouts.
      *
      * @param size The overall size of the button.
+     * @param borderStrokeThickness The thickness of button border.
      * @param iconSizes The sizes of the icon within the button.
      * @param shape The shape of the button.
      */
@@ -69,6 +71,7 @@ object IconButtonDefaults {
      * The default values are set to create a large button suitable for spacious layouts.
      *
      * @param size The overall size of the button.
+     * @param borderStrokeThickness The thickness of button border.
      * @param iconSizes The sizes of the icon within the button.
      * @param shape The shape of the button.
      */
@@ -93,6 +96,7 @@ object IconButtonDefaults {
      *
      * @param containerColor The background color of the button when it is enabled.
      * @param contentColor The color of the icon within the button when it is enabled.
+     * @param borderColor The color of the icon button border.
      */
     @Composable
     fun primaryIconButtonColors(
@@ -113,6 +117,7 @@ object IconButtonDefaults {
      *
      * @param containerColor The background color of the button when it is enabled.
      * @param contentColor The color of the icon within the button when it is enabled.
+     * @param borderColor The color of the icon button border.
      */
     @Composable
     fun secondaryIconButtonColors(
@@ -133,6 +138,7 @@ object IconButtonDefaults {
      *
      * @param containerColor The background color of the button when it is enabled.
      * @param contentColor The color of the icon within the button when it is enabled.
+     * @param borderColor The color of the icon button border.
      */
     @Composable
     fun tertiaryIconButtonColors(
@@ -153,6 +159,7 @@ object IconButtonDefaults {
      *
      * @param containerColor The background color of the button when it is enabled.
      * @param contentColor The color of the icon within the button when it is enabled.
+     * @param borderColor The color of the icon button border.
      */
     @Composable
     fun outlinedIconButtonColors(
