@@ -38,7 +38,11 @@ import kotlin.math.min
  *
  * @param progress the progress of this progress indicator, where 0.0 represents no progress and 1.0
  *   represents full progress. Values outside of this range are coerced into the range.
- * @param modifier the [Modifier] to be applied to this progress indicator
+ * @param modifier the [Modifier] to be applied to this progress indicator.
+ * @param maxValue the max value that progress indicator can be.
+ * @param colors the container and content colors of this indicator.
+ * @param sizes the container and content sizes of this indicator.
+ * @param content the whether the content will be shown.
  */
 @Composable
 fun CircularProgressIndicator(
@@ -111,6 +115,8 @@ fun CircularProgressIndicator(
  * Progress indicators express an unspecified wait time or display the duration of a process.
  *
  * @param modifier the [Modifier] to be applied to this progress indicator
+ * @param colors the container and content colors of this indicator.
+ * @param sizes the container and content sizes of this indicator.
  *
  */
 @Composable
@@ -135,10 +141,10 @@ fun CircularProgressIndicator(
             Int.VectorConverter,
             infiniteRepeatable(
                 animation =
-                tween(
-                    durationMillis = RotationDuration * RotationsPerCycle,
-                    easing = LinearEasing
-                )
+                    tween(
+                        durationMillis = RotationDuration * RotationsPerCycle,
+                        easing = LinearEasing
+                    )
             ), label = ""
         )
     // How far forward (degrees) the base point should be from the start point
@@ -157,11 +163,11 @@ fun CircularProgressIndicator(
             JumpRotationAngle,
             infiniteRepeatable(
                 animation =
-                keyframes {
-                    durationMillis = HeadAndTailAnimationDuration + HeadAndTailDelayDuration
-                    0f at 0 using CircularEasing
-                    JumpRotationAngle at HeadAndTailAnimationDuration
-                }
+                    keyframes {
+                        durationMillis = HeadAndTailAnimationDuration + HeadAndTailDelayDuration
+                        0f at 0 using CircularEasing
+                        JumpRotationAngle at HeadAndTailAnimationDuration
+                    }
             ), label = ""
         )
     val startAngle =
@@ -170,11 +176,11 @@ fun CircularProgressIndicator(
             JumpRotationAngle,
             infiniteRepeatable(
                 animation =
-                keyframes {
-                    durationMillis = HeadAndTailAnimationDuration + HeadAndTailDelayDuration
-                    0f at HeadAndTailDelayDuration using CircularEasing
-                    JumpRotationAngle at durationMillis
-                }
+                    keyframes {
+                        durationMillis = HeadAndTailAnimationDuration + HeadAndTailDelayDuration
+                        0f at HeadAndTailDelayDuration using CircularEasing
+                        JumpRotationAngle at durationMillis
+                    }
             ), label = ""
         )
     Canvas(

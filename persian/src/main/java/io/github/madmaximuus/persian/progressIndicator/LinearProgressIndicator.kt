@@ -37,6 +37,10 @@ import kotlin.math.min
  * @param progress the progress of this progress indicator, where 0.0 represents no progress and 1.0
  *   represents full progress. Values outside of this range are coerced into the range.
  * @param modifier the [Modifier] to be applied to this progress indicator
+ * @param maxValue the max value that progress indicator can be.
+ * @param colors the container and content colors of this indicator.
+ * @param sizes the container and content sizes of this indicator.
+ * @param content the whether the content will be shown.
  */
 @Composable
 fun LinearProgressIndicator(
@@ -159,11 +163,11 @@ fun LinearProgressIndicator(
             1f,
             infiniteRepeatable(
                 animation =
-                keyframes {
-                    durationMillis = LinearAnimationDuration
-                    0f at FirstLineTailDelay using FirstLineTailEasing
-                    1f at FirstLineTailDuration + FirstLineTailDelay
-                }
+                    keyframes {
+                        durationMillis = LinearAnimationDuration
+                        0f at FirstLineTailDelay using FirstLineTailEasing
+                        1f at FirstLineTailDuration + FirstLineTailDelay
+                    }
             ), label = ""
         )
     val secondLineHead =
@@ -185,11 +189,11 @@ fun LinearProgressIndicator(
             1f,
             infiniteRepeatable(
                 animation =
-                keyframes {
-                    durationMillis = LinearAnimationDuration
-                    0f at SecondLineTailDelay using SecondLineTailEasing
-                    1f at SecondLineTailDuration + SecondLineTailDelay
-                }
+                    keyframes {
+                        durationMillis = LinearAnimationDuration
+                        0f at SecondLineTailDelay using SecondLineTailEasing
+                        1f at SecondLineTailDuration + SecondLineTailDelay
+                    }
             ), label = ""
         )
     Canvas(
@@ -327,19 +331,19 @@ fun drawStopIndicator(
                 color = color,
                 radius = adjustedStopSize / 2f,
                 center =
-                Offset(
-                    x = size.width - (adjustedStopSize / 2f) - stopOffset,
-                    y = size.height - strokeSize / 2f
-                )
+                    Offset(
+                        x = size.width - (adjustedStopSize / 2f) - stopOffset,
+                        y = size.height - strokeSize / 2f
+                    )
             )
         } else {
             drawRect(
                 color = color,
                 topLeft =
-                Offset(
-                    x = size.width - adjustedStopSize - stopOffset,
-                    y = (size.height - adjustedStopSize) - strokeSize / 2f
-                ),
+                    Offset(
+                        x = size.width - adjustedStopSize - stopOffset,
+                        y = (size.height - adjustedStopSize) - strokeSize / 2f
+                    ),
                 size = Size(width = adjustedStopSize, height = adjustedStopSize)
             )
         }

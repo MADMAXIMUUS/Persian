@@ -31,12 +31,11 @@ object ProgressIndicatorDefaults {
         trackColor: Color = PersianTheme.colorScheme.secondaryContainer,
         progressColor: Color = PersianTheme.colorScheme.primary,
         contentColor: Color = PersianTheme.colorScheme.onSurface
-    ): ProgressBarColors =
-        ProgressBarColors(
-            trackColor = trackColor,
-            progressColor = progressColor,
-            contentColor = contentColor
-        )
+    ) = ProgressBarColors(
+        trackColor = trackColor,
+        progressColor = progressColor,
+        contentColor = contentColor
+    )
 
     /**
      * Creates a [LinearProgressBarSizes] object with the specified sizes and styles.
@@ -58,14 +57,13 @@ object ProgressIndicatorDefaults {
         stopSize: Dp = 4.dp,
         strokeCap: StrokeCap = StrokeCap.Round,
         contentTextStyle: TextStyle = PersianTheme.typography.labelLarge
-    ): LinearProgressBarSizes =
-        LinearProgressBarSizes(
-            strokeSize = strokeSize,
-            gapSize = gapSize,
-            stopSize = stopSize,
-            strokeCap = strokeCap,
-            contentTextStyle = contentTextStyle
-        )
+    ) = LinearProgressBarSizes(
+        strokeSize = strokeSize,
+        gapSize = gapSize,
+        stopSize = stopSize,
+        strokeCap = strokeCap,
+        contentTextStyle = contentTextStyle
+    )
 
     /**
      * Creates a [LinearProgressBarSizes] object with medium-sized values and styles.
@@ -87,14 +85,13 @@ object ProgressIndicatorDefaults {
         stopSize: Dp = 3.dp,
         strokeCap: StrokeCap = StrokeCap.Round,
         contentTextStyle: TextStyle = PersianTheme.typography.labelMedium
-    ): LinearProgressBarSizes =
-        LinearProgressBarSizes(
-            strokeSize = strokeSize,
-            gapSize = gapSize,
-            stopSize = stopSize,
-            strokeCap = strokeCap,
-            contentTextStyle = contentTextStyle
-        )
+    ) = LinearProgressBarSizes(
+        strokeSize = strokeSize,
+        gapSize = gapSize,
+        stopSize = stopSize,
+        strokeCap = strokeCap,
+        contentTextStyle = contentTextStyle
+    )
 
     /**
      * Creates a [LinearProgressBarSizes] object with small-sized values and styles.
@@ -116,14 +113,13 @@ object ProgressIndicatorDefaults {
         stopSize: Dp = 2.dp,
         strokeCap: StrokeCap = StrokeCap.Round,
         contentTextStyle: TextStyle = PersianTheme.typography.labelSmall.copy(fontWeight = FontWeight.Medium)
-    ): LinearProgressBarSizes =
-        LinearProgressBarSizes(
-            strokeSize = strokeSize,
-            gapSize = gapSize,
-            stopSize = stopSize,
-            strokeCap = strokeCap,
-            contentTextStyle = contentTextStyle
-        )
+    ) = LinearProgressBarSizes(
+        strokeSize = strokeSize,
+        gapSize = gapSize,
+        stopSize = stopSize,
+        strokeCap = strokeCap,
+        contentTextStyle = contentTextStyle
+    )
 
     /**
      * Creates a [CircularProgressBarSizes] object with large-sized values and styles.
@@ -145,14 +141,13 @@ object ProgressIndicatorDefaults {
         gapSize: Dp = 4.dp,
         strokeCap: StrokeCap = StrokeCap.Round,
         contentTextStyle: TextStyle = PersianTheme.typography.labelLarge
-    ): CircularProgressBarSizes =
-        CircularProgressBarSizes(
-            diameter = diameter,
-            strokeWidth = strokeSize,
-            gapSize = gapSize,
-            strokeCap = strokeCap,
-            contentTextStyle = contentTextStyle
-        )
+    ) = CircularProgressBarSizes(
+        diameter = diameter,
+        strokeWidth = strokeSize,
+        gapSize = gapSize,
+        strokeCap = strokeCap,
+        contentTextStyle = contentTextStyle
+    )
 
     /**
      * Creates a [CircularProgressBarSizes] object with medium-sized values and styles.
@@ -174,14 +169,13 @@ object ProgressIndicatorDefaults {
         gapSize: Dp = 4.dp,
         strokeCap: StrokeCap = StrokeCap.Round,
         contentTextStyle: TextStyle = PersianTheme.typography.labelMedium
-    ): CircularProgressBarSizes =
-        CircularProgressBarSizes(
-            diameter = diameter,
-            strokeWidth = strokeSize,
-            gapSize = gapSize,
-            strokeCap = strokeCap,
-            contentTextStyle = contentTextStyle
-        )
+    ) = CircularProgressBarSizes(
+        diameter = diameter,
+        strokeWidth = strokeSize,
+        gapSize = gapSize,
+        strokeCap = strokeCap,
+        contentTextStyle = contentTextStyle
+    )
 
     /**
      * Creates a [CircularProgressBarSizes] object with small-sized values and styles.
@@ -203,14 +197,13 @@ object ProgressIndicatorDefaults {
         gapSize: Dp = 4.dp,
         strokeCap: StrokeCap = StrokeCap.Round,
         contentTextStyle: TextStyle = PersianTheme.typography.labelSmall.copy(fontWeight = FontWeight.Medium)
-    ): CircularProgressBarSizes =
-        CircularProgressBarSizes(
-            diameter = diameter,
-            strokeWidth = strokeSize,
-            gapSize = gapSize,
-            strokeCap = strokeCap,
-            contentTextStyle = contentTextStyle
-        )
+    ) = CircularProgressBarSizes(
+        diameter = diameter,
+        strokeWidth = strokeSize,
+        gapSize = gapSize,
+        strokeCap = strokeCap,
+        contentTextStyle = contentTextStyle
+    )
 }
 
 /**
