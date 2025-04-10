@@ -50,4 +50,4 @@ You can download catalog app to your android phone or tablet via google play.
 
 ## Documentation
 
-Visit the [documentation](/docs/overview.md) to get more information about the project, some documentation, its API reference and the catalog app. 
+Visit the [documentation](/docs/index) to get more information about the project, some documentation, its API reference and the catalog app. 
