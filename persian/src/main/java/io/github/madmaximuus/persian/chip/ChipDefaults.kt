@@ -70,6 +70,8 @@ object ChipDefaults {
      * @param borderWidth The width of the chip's border.
      * @param shape The shape to be used for the chip.
      * @param leadingImageSizes The sizes to be used for the leading image.
+     * @param contentPadding The chip content padding.
+     * @param contentSpacing The spacing between label, leading and trailing.
      */
     @Composable
     fun smallSizes(
@@ -83,7 +85,7 @@ object ChipDefaults {
         contentPadding: PaddingValues = PaddingValues(
             horizontal = PersianTheme.spacing.size12
         )
-    )  = ChipSizes(
+    ) = ChipSizes(
         height = height,
         borderWidth = borderWidth,
         shape = shape,
@@ -102,6 +104,8 @@ object ChipDefaults {
      * @param borderWidth The width of the chip's border.
      * @param shape The shape to be used for the chip.
      * @param leadingImageSizes The sizes to be used for the leading image.
+     * @param contentPadding The chip content padding.
+     * @param contentSpacing The spacing between label, leading and trailing.
      */
     @Composable
     fun mediumSizes(
@@ -134,6 +138,8 @@ object ChipDefaults {
      * @param borderWidth The width of the chip's border.
      * @param shape The shape to be used for the chip.
      * @param leadingImageSizes The sizes to be used for the leading image.
+     * @param contentPadding The chip content padding.
+     * @param contentSpacing The spacing between label, leading and trailing.
      */
     @Composable
     fun largeSizes(
@@ -257,8 +263,8 @@ class ChipColors internal constructor(
  * @param leadingIconSizes The color of the leading icon content.
  * @param borderWidth The width of the chip's border.
  * @param leadingImageSizes The sized to be used for images within the chip.
- * @param contentPadding The horizontal padding to be used in the chip.
- * @param contentSpacing The spacing between leading content and label within the chip.
+ * @param contentPadding The chip content padding.
+ * @param contentSpacing The spacing between label, leading and trailing.
  */
 @Immutable
 class ChipSizes internal constructor(

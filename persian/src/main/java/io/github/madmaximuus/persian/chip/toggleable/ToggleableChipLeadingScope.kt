@@ -47,7 +47,7 @@ internal class ToggleableChipLeadingScopeWrapper(
 ) : ToggleableChipLeadingScope
 
 /**
- * Provides an icon within the leading scope of an [InputShip].
+ * Provides an icon within the leading scope of an [ToggleableChip].
  *
  * @param modifier The modifier to be applied to the icon. Default is [Modifier].
  * @param icon The painter to be used for the icon when the chip is not selected.
@@ -72,7 +72,7 @@ fun ToggleableChipLeadingScope.Icon(
 }
 
 /**
- * Provides an image within the leading scope of an [InputShip].
+ * Provides an image within the leading scope of an [ToggleableChip].
  *
  * @param modifier The modifier to be applied to the image.
  * @param imageUrl The URI of the image to be displayed.
@@ -99,7 +99,7 @@ fun ToggleableChipLeadingScope.Image(
 }
 
 /**
- * Provides an avatar within the leading scope of an [InputShip].
+ * Provides an avatar within the leading scope of an [ToggleableChip].
  *
  * @param modifier The modifier to be applied to the avatar.
  * @param avatarUrl The URI of the avatar image to be displayed.

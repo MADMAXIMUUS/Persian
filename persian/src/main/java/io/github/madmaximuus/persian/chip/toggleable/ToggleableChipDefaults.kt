@@ -45,16 +45,18 @@ object ToggleableChipDefaults {
      * Creates a [ToggleableChipColors] that represents the default container and content colors used in an
      * [ToggleableChip].
      *
-     * @param containerColor The color of the chip's container.
-     * @param labelColor The color of the chip's label text.
-     * @param leadingIconColor The color of the leading icon.
-     * @param trailingIconColor The color of the trailing icon.
+     * @param containerColor The color of the chip's container when it is enabled and not selected.
+     * @param labelColor The color of the chip's label text when it is enabled and not selected.
+     * @param leadingIconColor The color of the leading icon when it is enabled and not selected.
+     * @param trailingIconColor The color of the trailing icon when it is enabled and not selected.
      * @param selectedContainerColor The color of the chip's container when it is selected.
      * @param selectedLabelColor The color of the chip's label text when it is selected.
-     * @param selectedLeadingIconColor The color of the leading icon when the chip is selected.
-     * @param selectedTrailingIconColor The color of the trailing icon when the chip is selected.
-     * @param borderColor The color of the chip's border.
+     * @param selectedLeadingIconColor The color of the leading icon when it is selected.
+     * @param selectedTrailingIconColor The color of the trailing icon when it is selected.
+     * @param borderColor The color of the chip's border when it is enabled and not selected.
      * @param selectedBorderColor The color of the chip's border when it is selected.
+     * @param avatarColors The colors to be used for avatars within the chip.
+     * @param imageColors The colors to be used for images within the chip.
      */
     @Composable
     fun chipColors(
@@ -87,14 +89,18 @@ object ToggleableChipDefaults {
 
     /**
      * Creates a [ToggleableChipSizes] that represents the default container and content sizes used in an
-     * [InputShip].
+     * [ToggleableChip].
      *
      * @param trailingIconSizes The sizes to be used for the trailing icon.
      * @param leadingIconSizes The sizes to be used for the leading icon.
      * @param labelStyle The text style to be used for the chip's label.
-     * @param borderWidth The width of the chip's border.
+     * @param borderWidth The width of the chip's border when it is enabled and not selected.
      * @param selectedBorderWith The width of the chip's border when it is selected.
      * @param shape The shape to be used for the chip.
+     * @param avatarSizes The sizes to be used for avatars within the chip.
+     * @param imageSizes The sizes to be used for images within the chip.
+     * @param contentPadding The chip content padding.
+     * @param contentSpacing The spacing between label, leading and trailing.
      */
     @Composable
     fun smallSizes(
@@ -132,14 +138,18 @@ object ToggleableChipDefaults {
 
     /**
      * Creates a [ToggleableChipSizes] that represents the default container and content sizes used in an
-     * [InputShip].
+     * [ToggleableChip].
      *
      * @param trailingIconSizes The sizes to be used for the trailing icon.
      * @param leadingIconSizes The sizes to be used for the leading icon.
      * @param labelStyle The text style to be used for the chip's label.
-     * @param borderWidth The width of the chip's border.
+     * @param borderWidth The width of the chip's border when it is enabled and not selected.
      * @param selectedBorderWith The width of the chip's border when it is selected.
      * @param shape The shape to be used for the chip.
+     * @param avatarSizes The sizes to be used for avatars within the chip.
+     * @param imageSizes The sizes to be used for images within the chip.
+     * @param contentPadding The chip content padding.
+     * @param contentSpacing The spacing between label, leading and trailing.
      */
     @Composable
     fun mediumSizes(
@@ -177,14 +187,18 @@ object ToggleableChipDefaults {
 
     /**
      * Creates a [ToggleableChipSizes] that represents the default container and content sizes used in an
-     * [InputShip].
+     * [ToggleableChip].
      *
      * @param trailingIconSizes The sizes to be used for the trailing icon.
      * @param leadingIconSizes The sizes to be used for the leading icon.
      * @param labelStyle The text style to be used for the chip's label.
-     * @param borderWidth The width of the chip's border.
+     * @param borderWidth The width of the chip's border when it is enabled and not selected.
      * @param selectedBorderWith The width of the chip's border when it is selected.
      * @param shape The shape to be used for the chip.
+     * @param avatarSizes The sizes to be used for avatars within the chip.
+     * @param imageSizes The sizes to be used for images within the chip.
+     * @param contentPadding The chip content padding.
+     * @param contentSpacing The spacing between label, leading and trailing.
      */
     @Composable
     fun largeSizes(
@@ -223,7 +237,7 @@ object ToggleableChipDefaults {
 
     /**
      * Creates a [ToggleableChipElevation] that represents the default chip elevation used in an
-     * [InputShip].
+     * [ToggleableChip].
      *
      * @param elevation The default elevation of the chip.
      * @param pressedElevation The elevation of the chip when it is pressed.
@@ -450,6 +464,8 @@ class ToggleableChipColors internal constructor(
  * @param shape The shape to be used for the chip.
  * @param avatarSizes The sizes to be used for avatars within the chip.
  * @param imageSizes The sizes to be used for images within the chip.
+ * @param contentPadding The chip content padding.
+ * @param contentSpacing The spacing between label, leading and trailing.
  */
 @Immutable
 class ToggleableChipSizes internal constructor(

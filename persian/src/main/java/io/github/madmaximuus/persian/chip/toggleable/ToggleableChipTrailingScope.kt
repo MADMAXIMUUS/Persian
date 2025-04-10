@@ -49,7 +49,7 @@ internal class ToggleableChipTrailingScopeWrapper(
 ) : ToggleableChipTrailingScope
 
 /**
- * Provides an icon within the trailing scope of an [InputShip].
+ * Provides an icon within the trailing scope of an [ToggleableChip].
  *
  * @param modifier The modifier to be applied to the icon.
  * @param icon The painter to be used for the icon.
