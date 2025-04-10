@@ -8,6 +8,9 @@ Persian is a design system built on the principles of Material 3 and Jetpack Com
 
 All Persian content, guidelines, imagery, and resources are available under the [Apache 2.0](LICENSE) license.
 
+| ![](/img/PhoneScreen.png) | ![](img/TabletScreen.png) |
+|:-------------------------:|:-------------------------:|
+
 ## Import library
 To start using Persian in your Compose app, add the dependency according to your dependencies declaration method:
 ### Version catalog
