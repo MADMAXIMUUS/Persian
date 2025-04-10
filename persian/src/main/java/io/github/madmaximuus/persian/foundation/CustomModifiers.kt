@@ -64,6 +64,8 @@ fun Modifier.dashedBorder(strokeWidth: Dp, color: Color, cornerRadiusDp: Dp) = c
 /**
  * Creates a [Modifier] that applies a shimmer effect to its content. The shimmer effect is a gradient
  * animation that moves across the content.
+ *
+ * @param color The base color of shimmer.
  */
 @Composable
 fun Modifier.shimmer(color: Color = PersianTheme.colorScheme.surfaceContainerHighest) = composed(
