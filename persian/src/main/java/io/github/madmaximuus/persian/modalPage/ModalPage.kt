@@ -27,13 +27,13 @@ import kotlinx.coroutines.launch
  *
  * @param onDismissRequest Executes when the user clicks outside of the bottom sheet, after sheet
  *   animates to [DragAnchor.Hidden].
- * @param modifier Optional [Modifier] for the bottom sheet.
- * @param pageState The state of the bottom sheet.
+ * @param modifier Optional [Modifier] for the modal page.
+ * @param handleVisibility The visibility of handle.
+ * @param pageState The state of the modal page.
  * @param contentWindowInsets window insets to be passed to the bottom sheet content via
  *   [PaddingValues] params.
- * @param properties [ModalPageProperties] for further customization of this modal bottom
- *   sheet's window behavior.
- * @param content The content to be displayed inside the bottom sheet.
+ * @param properties [ModalPageProperties] for further customization of this modal page's window behavior.
+ * @param content The content to be displayed inside the modal page.
  */
 @Composable
 fun ModalPage(
@@ -93,6 +93,7 @@ fun ModalPage(
  * @param onDismissRequest A callback to be invoked when the modal page is dismissed.
  * @param modifier The modifier to be applied to the modal page.
  * @param pageState The state of the modal page, including drag anchors and visibility.
+ * @param handleVisibility The visibility of handle.
  * @param top An optional composable function that defines the content for the top section of the modal page.
  * @param contentWindowInsets The window insets to be applied to the content of the modal page.
  * @param properties The properties to be used for the modal page.

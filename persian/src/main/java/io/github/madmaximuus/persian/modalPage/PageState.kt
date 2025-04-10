@@ -25,6 +25,7 @@ import kotlinx.coroutines.CancellationException
  *
  * @param initialValue The initial value of the state.
  * @param density The density that this state can use to convert values to and from dp.
+ * @param dragAnchors The set of drag anchors for the modal page.
  * @param confirmValueChange Optional callback invoked to confirm or veto a pending state change.
  */
 @Stable
