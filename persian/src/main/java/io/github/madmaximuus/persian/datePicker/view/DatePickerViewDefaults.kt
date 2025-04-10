@@ -77,13 +77,12 @@ object PersianDatePickerViewDefaults {
         dayPickerDayCellColors: DatePickerDayCellColors = dayCellColors(),
         dayPickerMonthCellColors: DatePickerMonthCellColors = monthCellColors(),
         dayPickerYearCellColors: DatePickerYearCellColors = yearCellColors()
-    ): DatePickerGridColors =
-        DatePickerGridColors(
-            dayOfWeekLabelColors = dayOfWeekLabelColors,
-            dayPickerDayCellColors = dayPickerDayCellColors,
-            dayPickerMonthCellColors = dayPickerMonthCellColors,
-            dayPickerYearCellColors = dayPickerYearCellColors
-        )
+    ) = DatePickerGridColors(
+        dayOfWeekLabelColors = dayOfWeekLabelColors,
+        dayPickerDayCellColors = dayPickerDayCellColors,
+        dayPickerMonthCellColors = dayPickerMonthCellColors,
+        dayPickerYearCellColors = dayPickerYearCellColors
+    )
 
     /**
      * Create a [DatePickerDayOfWeekCellColors] that represents the default content used in [DatePickerDialogWeekLabelCell].

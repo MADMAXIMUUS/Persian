@@ -17,6 +17,7 @@ import io.github.madmaximuus.persian.datePicker.view.util.DatePickerSelection
  * accurate data entry.
  *
  * @param selection The selection type for the date picker.
+ * @param title Title that will be display at top of the picker
  * @param config The configuration for the date picker.
  * @param colors The colors used for the date picker.
  * @param onDismissRequest The callback to be invoked when the date picker dialog is dismissed.

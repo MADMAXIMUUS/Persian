@@ -34,7 +34,7 @@ import io.github.madmaximuus.persian.text.Text
  * @param state The state of the color picker, which contains information about the selected color
  * and other configurations.
  * @param title Title that will be display at top of the picker
- * @param colors The colors used for the color picker and the alert dialog.
+ * @param colors The colors used for the color picker and the modal page.
  * @param onDismissRequest A callback function that is invoked when the user requests to dismiss
  * the dialog.
  */
