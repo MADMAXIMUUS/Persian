@@ -9,8 +9,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.focus.FocusRequester
-import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.BaselineShift
@@ -28,14 +26,13 @@ import io.github.madmaximuus.persian.text.Text
  * Create a cell that used by [SixDigitCodeInput] and [FourDigitCodeInput]
  *
  * @param modifier The [Modifier] to be applied to this composable.
- * @param value Whether the cell's value.
+ * @param value The cell value.
  * @param enabled Whether the cell is enabled or disabled.
  * @param isValid Whether the cell's value is valid.
  * @param isError Whether the cell's value is in error state.
  * @param isFocused Whether the cell's value is focused.
  * @param secure Whether the cell should mask its input as a password.
  * @param colors The colors to be used for the cell.
- * @param focusRequester The [FocusRequester] to control the focus of the cell.
  * @param textStyle The [TextStyle] to be applied to the text in the cell.
  */
 @Composable
