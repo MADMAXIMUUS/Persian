@@ -7,6 +7,14 @@ import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.unit.Constraints
 import kotlin.math.max
 
+
+/**
+ * Measure policy to display alert content
+ *
+ * @param scope measure scope to display layout in
+ * @param measurables scope in which the layout will be displayed
+ * @param constraints restrictions for measurable
+*/
 internal fun alertMeasurePolicy(
     scope: MeasureScope,
     measurables: List<Measurable>,

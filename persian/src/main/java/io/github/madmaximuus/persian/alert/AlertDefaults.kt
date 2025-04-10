@@ -21,7 +21,8 @@ object AlertsDefaults {
      * @param containerColor the container color of this [Alert].
      * @param titleColor the title color of this [Alert].
      * @param messageColor the message color of this [Alert].
-     * @param actionColor the actions color of this [Alert].
+     * @param confirmActionColors the colors of confirm action of this [Alert].
+     * @param dismissActionColors the colors of dismiss action of this [Alert].
      */
     @Composable
     fun colors(
@@ -66,7 +67,8 @@ object AlertsDefaults {
  * @param containerColor the container color of this alert.
  * @param titleColor the title color of this alert.
  * @param messageColor the message color of this alert.
- * @param actionColor the actions color of this alert.
+ * @param confirmActionColors the colors of confirm action of this [Alert].
+ * @param dismissActionColors the colors of dismiss action of this [Alert].
  *
  * @constructor create an instance with arbitrary colors.
  *
