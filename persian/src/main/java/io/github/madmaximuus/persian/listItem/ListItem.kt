@@ -29,6 +29,10 @@ import io.github.madmaximuus.persian.text.Text
  * user experience and data organization.
  *
  * @param modifier The modifier to be applied to the [Column].
+ * @param title The title of this list item.
+ * @param subhead The subhead of this list item.
+ * @param body The body of this list item.
+ * @param isNew A boolean indicating whether to display a "new" label next to [title].
  * @param leading A composable function that defines the content for the leading section.
  * @param trailing A composable function that defines the content for the trailing section.
  * @param divider A boolean indicating whether to display a divider below the list item.

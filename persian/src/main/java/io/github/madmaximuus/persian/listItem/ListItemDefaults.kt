@@ -45,23 +45,26 @@ object ListItemDefaults {
     /**
      * Create a [ListItemColors] instance with the specified colors.
      *
-     *
-     * @param titleColor The color of the title text when enabled.
-     * @param bodyColor The color of the body text when enabled.
-     * @param subheadColor The color of the subhead text when enabled.
-     * @param newLabelColor The color of the new label text when enabled.
-     * @param newLabelContainerColor The background color of the new label container when enabled.
-     * @param leadingIconColor The color of the icon in the left section when enabled.
-     * @param leadingAvatarColors The colors for the avatar in the left section.
-     * @param leadingImageColors The colors for the image in the left section.
-     * @param trailingSwitchColors The colors for the switch in the right section.
-     * @param trailingButtonColors The colors for the button in the right section.
-     * @param trailingIconButtonColors The colors for the icon button in the right section.
-     * @param trailingCounterColors The colors for the counter in the right section.
-     * @param trailingRadioButtonColors The colors for the radio button in the right section.
-     * @param trailingCheckboxToggleColors The colors for the checkbox in the right section.
-     * @param trailingSuffixColor The color of the suffix text in the right section when enabled.
-     * @param trailingIconColor The color of the icon in the right section when enabled.
+     * @param titleColor The color of the title text.
+     * @param bodyColor The color of the body text.
+     * @param subheadColor The color of the subhead text.
+     * @param newLabelColor The color of the new label text.
+     * @param newLabelContainerColor The background color of the new label container.
+     * @param leadingIconColor The color of the icon in the leading section.
+     * @param leadingAvatarColors The colors for the avatar in the leading section.
+     * @param leadingImageColors The colors for the image in the leading section.
+     * @param leadingSwitchColors The colors for the switch in the leading section.
+     * @param leadingCheckboxColors The colors for the checkbox in the leading section.
+     * @param leadingRadioButtonColors The colors for the radio button in the leading section.
+     * @param leadingIconButtonColors The colors for the icon button in the leading section.
+     * @param trailingSwitchColors The colors for the switch in the trailing section.
+     * @param trailingButtonColors The colors for the button in the trailing section.
+     * @param trailingIconButtonColors The colors for the icon button in the trailing section.
+     * @param trailingCounterColors The colors for the counter in the trailing section.
+     * @param trailingRadioButtonColors The colors for the radio button in the trailing section.
+     * @param trailingCheckboxToggleColors The colors for the checkbox in the trailing section.
+     * @param trailingSuffixColor The color of the suffix text in the trailing section.
+     * @param trailingIconColor The color of the icon in the trailing section.
      * @param dividerColor The color of the divider.
      */
     @Composable
@@ -117,19 +120,26 @@ object ListItemDefaults {
      * Create a [ListItemSizes] instance with the specified sizes.
      *
      * @param shape The shape of the list item.
+     * @param leadingIconSizes The sizes for the icon in the leading section.
+     * @param leadingImageSizes The sizes for the image in the leading section.
+     * @param leadingAvatarSizes The sizes for the avatar in the leading section.
+     * @param leadingSwitchSizes The sizes for the switch in the leading section.
+     * @param leadingCheckboxSizes The sizes for the checkbox in the leading section.
+     * @param leadingRadioButtonSizes The sizes for the radio button in the leading section.
+     * @param leadingIconButtonSizes The sizes for the icon button in the leading section.
      * @param titleTextStyle The text style for the title in the middle section.
      * @param bodyTextStyle The text style for the body text in the middle section.
      * @param subheadTextStyle The text style for the subhead text in the middle section.
      * @param newLabelTextStyle The text style for the new label in the middle section.
      * @param newLabelShape The shape for the new label in the middle section.
-     * @param trailingIconSizes The sizes for the icon in the right section.
-     * @param trailingSwitchSizes The sizes for the switch in the right section.
-     * @param trailingCounterSizes The sizes for the counter in the right section.
-     * @param trailingSuffixTextStyle The text style for the suffix text in the right section.
-     * @param trailingButtonSizes The sizes for the button in the right section.
-     * @param trailingIconButtonSizes The sizes for the icon button in the right section.
-     * @param trailingCheckboxSizes The sizes for the checkbox in the right section.
-     * @param trailingRadioButtonSizes The sizes for the radio button in the right section.
+     * @param trailingIconSizes The sizes for the icon in the trailing section.
+     * @param trailingSwitchSizes The sizes for the switch in the trailing section.
+     * @param trailingCounterSizes The sizes for the counter in the trailing section.
+     * @param trailingSuffixTextStyle The text style for the suffix text in the trailing section.
+     * @param trailingButtonSizes The sizes for the button in the trailing section.
+     * @param trailingIconButtonSizes The sizes for the icon button in the trailing section.
+     * @param trailingCheckboxSizes The sizes for the checkbox in the trailing section.
+     * @param trailingRadioButtonSizes The sizes for the radio button in the trailing section.
      * @param dividerSizes The sizes for the divider.
      */
     @Composable
@@ -199,23 +209,27 @@ object ListItemDefaults {
  * and dividers. It provides a way to customize the appearance of a list item by specifying the colors
  * for each component.
  *
- * @property titleColor The color of the title text when enabled.
- * @property bodyColor The color of the body text when enabled.
- * @property subheadColor The color of the subhead text when enabled.
- * @property newLabelColor The color of the new label text when enabled.
- * @property newLabelContainerColor The background color of the new label container when enabled.
- * @property leadingIconColor The color of the icon in the left section when enabled.
- * @property leadingAvatarColors The colors for the avatar in the left section.
- * @property leadingImageColors The colors for the image in the left section.
- * @property trailingSwitchColors The colors for the switch in the right section.
- * @property trailingButtonColors The colors for the button in the right section.
- * @property trailingIconButtonColors The colors for the icon button in the right section.
- * @property trailingCounterColors The colors for the counter in the right section.
- * @property trailingRadioButtonColors The colors for the radio button in the right section.
- * @property trailingCheckboxToggleColors The colors for the checkbox in the right section.
- * @property trailingSuffixColor The color of the suffix text in the right section when enabled.
- * @property trailingIconColor The color of the icon in the right section when enabled.
- * @property dividerColor The color of the divider.
+ * @param titleColor The color of the title text.
+ * @param bodyColor The color of the body text.
+ * @param subheadColor The color of the subhead text.
+ * @param newLabelColor The color of the new label text.
+ * @param newLabelContainerColor The background color of the new label container.
+ * @param leadingIconColor The color of the icon in the leading section.
+ * @param leadingAvatarColors The colors for the avatar in the leading section.
+ * @param leadingImageColors The colors for the image in the leading section.
+ * @param leadingSwitchColors The colors for the switch in the leading section.
+ * @param leadingCheckboxColors The colors for the checkbox in the leading section.
+ * @param leadingRadioButtonColors The colors for the radio button in the leading section.
+ * @param leadingIconButtonColors The colors for the icon button in the leading section.
+ * @param trailingSwitchColors The colors for the switch in the trailing section.
+ * @param trailingButtonColors The colors for the button in the trailing section.
+ * @param trailingIconButtonColors The colors for the icon button in the trailing section.
+ * @param trailingCounterColors The colors for the counter in the trailing section.
+ * @param trailingRadioButtonColors The colors for the radio button in the trailing section.
+ * @param trailingCheckboxToggleColors The colors for the checkbox in the trailing section.
+ * @param trailingSuffixColor The color of the suffix text in the trailing section.
+ * @param trailingIconColor The color of the icon in the trailing section.
+ * @param dividerColor The color of the divider.
  */
 @Immutable
 class ListItemColors(
@@ -354,24 +368,28 @@ class ListItemColors(
  * buttons, and dividers. It provides a way to customize the appearance of a list item by specifying
  * the sizes for each component.
  *
- * @property shape The shape of the list item.
- * @property leadingIconSizes The sizes for the icon in the left section.
- * @property leadingImageSizes The sizes for the image in the left section.
- * @property leadingAvatarSizes The sizes for the avatar in the left section.
- * @property titleTextStyle The text style for the title in the middle section.
- * @property bodyTextStyle The text style for the body text in the middle section.
- * @property subheadTextStyle The text style for the subhead text in the middle section.
- * @property newLabelTextStyle The text style for the new label in the middle section.
- * @property newLabelShape The shape for the new label in the middle section.
- * @property trailingIconSizes The sizes for the icon in the right section.
- * @property trailingSwitchSizes The sizes for the switch in the right section.
- * @property trailingCounterSizes The sizes for the counter in the right section.
- * @property trailingSuffixTextStyle The text style for the suffix text in the right section.
- * @property trailingButtonSizes The sizes for the button in the right section.
- * @property trailingIconButtonSizes The sizes for the icon button in the right section.
- * @property trailingCheckboxSizes The sizes for the checkbox in the right section.
- * @property trailingRadioButtonSizes The sizes for the radio button in the right section.
- * @property dividerSizes The sizes for the divider.
+ * @param shape The shape of the list item.
+ * @param leadingIconSizes The sizes for the icon in the leading section.
+ * @param leadingImageSizes The sizes for the image in the leading section.
+ * @param leadingAvatarSizes The sizes for the avatar in the leading section.
+ * @param leadingSwitchSizes The sizes for the switch in the leading section.
+ * @param leadingCheckboxSizes The sizes for the checkbox in the leading section.
+ * @param leadingRadioButtonSizes The sizes for the radio button in the leading section.
+ * @param leadingIconButtonSizes The sizes for the icon button in the leading section.
+ * @param titleTextStyle The text style for the title in the middle section.
+ * @param bodyTextStyle The text style for the body text in the middle section.
+ * @param subheadTextStyle The text style for the subhead text in the middle section.
+ * @param newLabelTextStyle The text style for the new label in the middle section.
+ * @param newLabelShape The shape for the new label in the middle section.
+ * @param trailingIconSizes The sizes for the icon in the trailing section.
+ * @param trailingSwitchSizes The sizes for the switch in the trailing section.
+ * @param trailingCounterSizes The sizes for the counter in the trailing section.
+ * @param trailingSuffixTextStyle The text style for the suffix text in the trailing section.
+ * @param trailingButtonSizes The sizes for the button in the trailing section.
+ * @param trailingIconButtonSizes The sizes for the icon button in the trailing section.
+ * @param trailingCheckboxSizes The sizes for the checkbox in the trailing section.
+ * @param trailingRadioButtonSizes The sizes for the radio button in the trailing section.
+ * @param dividerSizes The sizes for the divider.
  */
 @Immutable
 class ListItemSizes(

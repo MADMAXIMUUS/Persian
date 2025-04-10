@@ -26,6 +26,7 @@ import io.github.madmaximuus.persian.switch.Switch
  * @property sizes The sizes of the list item, encapsulated in a [ListItemSizes] object.
  * @property colors The colors of the list item, encapsulated in a [ListItemColors] object.
  * @property enabled A boolean indicating whether the list item is enabled.
+ * @property checked A boolean indicating whether the list item is checked.
  */
 interface ListItemLeadingScope : RowScope {
     val sizes: ListItemSizes
@@ -44,6 +45,7 @@ interface ListItemLeadingScope : RowScope {
  * @param sizes The sizes of the list item, encapsulated in a [ListItemSizes] object.
  * @param colors The colors of the list item, encapsulated in a [ListItemColors] object.
  * @param enabled A boolean indicating whether the list item is enabled.
+ * @param checked A boolean indicating whether the list item is checked.
  */
 internal class ListItemLeadingScopeWrapper(
     val scope: RowScope,
