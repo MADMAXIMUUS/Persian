@@ -77,7 +77,17 @@ internal class PinnedScrollBehavior(
                 consumed: Offset,
                 available: Offset,
                 source: NestedScrollSource
-            ): Offset = Offset.Zero
+            ): Offset {
+                if (!canScroll()) return Offset.Zero
+                if (consumed.y == 0f && available.y > 0f) {
+                    // Reset the total content offset to zero when scrolling all the way down.
+                    // This will eliminate some float precision inaccuracies.
+                    state.contentOffset = 0f
+                } else {
+                    state.contentOffset += consumed.y
+                }
+                return Offset.Zero
+            }
         }
 }
 
@@ -123,7 +133,19 @@ internal class EnterAlwaysScrollBehavior(
                 consumed: Offset,
                 available: Offset,
                 source: NestedScrollSource
-            ): Offset = Offset.Zero
+            ): Offset {
+                if (!canScroll()) return Offset.Zero
+                state.contentOffset += consumed.y
+                if (state.heightOffset == 0f || state.heightOffset == state.heightOffsetLimit) {
+                    if (consumed.y == 0f && available.y > 0f) {
+                        // Reset the total content offset to zero when scrolling all the way down.
+                        // This will eliminate some float precision inaccuracies.
+                        state.contentOffset = 0f
+                    }
+                }
+                state.heightOffset += consumed.y
+                return Offset.Zero
+            }
 
             override suspend fun onPostFling(consumed: Velocity, available: Velocity): Velocity {
                 val superConsumed = super.onPostFling(consumed, available)
