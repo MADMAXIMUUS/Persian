@@ -18,7 +18,7 @@ import io.github.madmaximuus.persian.foundation.state12
 import io.github.madmaximuus.persian.foundation.state16
 
 /**
- * Contains all default values used by [OutlineTextArea] and [PlainTextArea]
+ * Contains all default values used by [TextArea].
  */
 object TextAreaDefaults {
 
@@ -234,11 +234,11 @@ object TextAreaDefaults {
             textSelectionColors = textSelectionColors,
 
             //Indicator Colors
-            defaultIndicatorColor = Color.Transparent,
-            hoveredIndicatorColor = Color.Transparent,
-            focusedIndicatorColor = Color.Transparent,
-            validIndicatorColor = Color.Transparent,
-            errorIndicatorColor = Color.Transparent,
+            defaultIndicatorColor = Color.Unspecified,
+            hoveredIndicatorColor = Color.Unspecified,
+            focusedIndicatorColor = Color.Unspecified,
+            validIndicatorColor = Color.Unspecified,
+            errorIndicatorColor = Color.Unspecified,
 
             //Leading Icon Colors
             defaultLeadingIconColor = defaultLeadingIconColor,

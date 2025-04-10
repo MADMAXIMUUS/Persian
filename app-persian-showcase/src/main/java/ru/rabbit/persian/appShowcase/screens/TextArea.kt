@@ -5,8 +5,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.navigation.NavController
@@ -17,8 +19,8 @@ import io.github.madmaximuus.persian.formItem.Input
 import io.github.madmaximuus.persian.formItem.RadioButton
 import io.github.madmaximuus.persian.formItem.RadioButtons
 import io.github.madmaximuus.persian.formItem.Subhead
-import io.github.madmaximuus.persian.textAreas.OutlineTextArea
-import io.github.madmaximuus.persian.textAreas.PlainTextArea
+import io.github.madmaximuus.persian.textAreas.TextArea
+import io.github.madmaximuus.persian.textAreas.TextAreaDefaults
 import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
 import ru.rabbit.persian.appShowcase.R
@@ -49,6 +51,9 @@ object TextArea : Screen {
             val (isValid, onIsValidChange) = remember { mutableStateOf(false) }
             val (placeholder, onPlaceholderChange) = remember { mutableStateOf(false) }
 
+            val style = TextAreaDefaults.outlineColors()
+            var styleState by remember { mutableStateOf(style) }
+
             val styleStates = remember {
                 listOf(
                     mutableStateOf(true),
@@ -67,27 +72,14 @@ object TextArea : Screen {
                         .padding(it),
                 ) {
                     SampleRow(text = "Sample", firstItem = true) {
-                        when {
-                            styleStates[0].value -> {
-                                OutlineTextArea(
-                                    state = input,
-                                    enabled = enabled,
-                                    isError = isError,
-                                    isValid = isValid,
-                                    placeholder = if (placeholder) placeholderState.text.toString() else null,
-                                )
-                            }
-
-                            styleStates[1].value -> {
-                                PlainTextArea(
-                                    state = input,
-                                    enabled = enabled,
-                                    isError = isError,
-                                    isValid = isValid,
-                                    placeholder = if (placeholder) placeholderState.text.toString() else null,
-                                )
-                            }
-                        }
+                        TextArea(
+                            state = input,
+                            enabled = enabled,
+                            isError = isError,
+                            colors = styleState,
+                            isValid = isValid,
+                            placeholder = if (placeholder) placeholderState.text.toString() else null,
+                        )
                     }
                     if (placeholder) {
                         FormItem(
@@ -95,6 +87,8 @@ object TextArea : Screen {
                             content = { Input(state = placeholderState) }
                         )
                     }
+                    val outlineStyle = TextAreaDefaults.outlineColors()
+                    val plainStyle = TextAreaDefaults.plainColors()
                     FormItem(
                         subhead = { Subhead(text = "Style") },
                         content = {
@@ -106,6 +100,7 @@ object TextArea : Screen {
                                         styleStates.forEachIndexed { index, mutableState ->
                                             mutableState.value = index == 0
                                         }
+                                        styleState = outlineStyle
                                     }
                                 )
                                 RadioButton(
@@ -115,6 +110,7 @@ object TextArea : Screen {
                                         styleStates.forEachIndexed { index, mutableState ->
                                             mutableState.value = index == 1
                                         }
+                                        styleState = plainStyle
                                     }
                                 )
                             }

@@ -27,6 +27,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.TextStyle
@@ -58,7 +59,7 @@ import io.github.madmaximuus.persian.text.Text
  * @param interactionSource The interaction source for the text area.
  */
 @Composable
-fun OutlineTextArea(
+fun TextArea(
     state: TextFieldState,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
@@ -81,7 +82,13 @@ fun OutlineTextArea(
     textStyle = textStyle,
     colors = colors,
     placeholder = placeholder,
-    border = animateBorderStrokeAsState(
+    border = if (colors.indicatorColor(
+            enabled,
+            isValid,
+            isError,
+            interactionSource
+        ).value == Color.Unspecified
+    ) animateBorderStrokeAsState(
         enabled = enabled,
         isError = isError,
         isSuccess = isValid,
@@ -89,56 +96,7 @@ fun OutlineTextArea(
         colors = colors,
         focusedBorderThickness = 2.dp,
         unfocusedBorderThickness = 1.dp
-    ).value,
-    keyboardOptions = keyboardOptions,
-    keyboardActionHandler = keyboardActionHandler,
-    interactionSource = interactionSource
-)
-
-/**
- * A text area is useful for allowing users to enter and edit large amounts of text, providing
- * a flexible and interactive interface for input. It offers a straightforward and effective method
- * for collecting detailed information, making it an essential tool for enhancing user experience
- * and data collection.
- *
- * @param state The state of the text field.
- * @param modifier The modifier to be applied to the text area.
- * @param enabled Whether the text area is enabled or disabled.
- * @param isError Whether the text area is in an error state.
- * @param isValid Whether the text area is in a valid state.
- * @param readOnly Whether the text area is read-only.
- * @param textStyle The text style to be applied to the text area.
- * @param placeholder The placeholder text to be displayed when the text area is empty.
- * @param colors The colors to be applied to the text area.
- * @param keyboardOptions The keyboard options for the text area.
- * @param keyboardActionHandler The keyboard actions for the text area.
- * @param interactionSource The interaction source for the text area.
- */
-@Composable
-fun PlainTextArea(
-    state: TextFieldState,
-    modifier: Modifier = Modifier,
-    enabled: Boolean = true,
-    isError: Boolean = false,
-    isValid: Boolean = false,
-    readOnly: Boolean = false,
-    textStyle: TextStyle = PersianTheme.typography.bodyLarge,
-    placeholder: String? = null,
-    colors: TextAreaColors = TextAreaDefaults.plainColors(),
-    keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
-    keyboardActionHandler: KeyboardActionHandler? = null,
-    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
-) = TextAreaImpl(
-    state = state,
-    modifier = modifier,
-    enabled = enabled,
-    isError = isError,
-    isValid = isValid,
-    readOnly = readOnly,
-    textStyle = textStyle,
-    colors = colors,
-    placeholder = placeholder,
-    border = null,
+    ).value else null,
     keyboardOptions = keyboardOptions,
     keyboardActionHandler = keyboardActionHandler,
     interactionSource = interactionSource
