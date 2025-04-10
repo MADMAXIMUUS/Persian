@@ -12,6 +12,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.foundation.PersianTheme
+import io.github.madmaximuus.persian.radioButton.RadioButtonDefaults.toggleColors
 
 /**
  * Contains all default values used by [RadioButton]
@@ -53,6 +54,7 @@ object RadioButtonDefaults {
      *
      * @param toggleSize The size of the radio button toggle. Default is 24.dp.
      * @param textStyle The text style to be applied to the radio button's text label.
+     * @param shape The shape of radio button row.
      * @param contentPadding The padding values to be applied around the content of the radio button.
      */
     @Composable
