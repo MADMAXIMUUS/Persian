@@ -25,11 +25,10 @@ object PageIndicatorDefaults {
     fun indicatorColor(
         defaultIndicatorColor: Color = PersianTheme.colorScheme.onSurface.state38,
         selectedIndicatorColor: Color = PersianTheme.colorScheme.onSurface,
-    ): PageIndicatorColors =
-        PageIndicatorColors(
-            defaultIndicatorColor = defaultIndicatorColor,
-            selectedIndicatorColor = selectedIndicatorColor
-        )
+    ) = PageIndicatorColors(
+        defaultIndicatorColor = defaultIndicatorColor,
+        selectedIndicatorColor = selectedIndicatorColor
+    )
 }
 
 /**
