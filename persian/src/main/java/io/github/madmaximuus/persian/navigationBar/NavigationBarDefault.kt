@@ -36,11 +36,10 @@ object NavigationBarDefaults {
     fun colors(
         backgroundColor: Color = PersianTheme.colorScheme.surfaceContainer,
         itemColors: NavigationBarItemColors = itemColors()
-    ): NavigationBarColors =
-        NavigationBarColors(
-            itemColors = itemColors,
-            backgroundColor = backgroundColor
-        )
+    ) = NavigationBarColors(
+        itemColors = itemColors,
+        backgroundColor = backgroundColor
+    )
 
     /**
      * A composable function that creates a [NavigationBarSizes] instance with the specified sizes and styles.
@@ -64,14 +63,13 @@ object NavigationBarDefaults {
             vertical = PersianTheme.spacing.size12,
         ),
         badgeSizes: CounterSizes = CounterDefaults.sizes()
-    ): NavigationBarSizes =
-        NavigationBarSizes(
-            iconSize = iconSize,
-            selectedIconSize = selectedIconSize,
-            paddingValues = paddingValues,
-            textStyle = textStyle,
-            badgeSizes = badgeSizes
-        )
+    ) = NavigationBarSizes(
+        iconSize = iconSize,
+        selectedIconSize = selectedIconSize,
+        paddingValues = paddingValues,
+        textStyle = textStyle,
+        badgeSizes = badgeSizes
+    )
 
     /**
      * Creates a [NavigationBarItemColors] with the provided colors according to the Material
@@ -91,14 +89,13 @@ object NavigationBarDefaults {
         indicatorColor: Color = PersianTheme.colorScheme.secondaryContainer,
         unselectedIconColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         unselectedTextColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
-    ): NavigationBarItemColors =
-        NavigationBarItemColors(
-            selectedIconColor = selectedIconColor,
-            selectedTextColor = selectedTextColor,
-            selectedIndicatorColor = indicatorColor,
-            unselectedIconColor = unselectedIconColor,
-            unselectedTextColor = unselectedTextColor,
-        )
+    ) = NavigationBarItemColors(
+        selectedIconColor = selectedIconColor,
+        selectedTextColor = selectedTextColor,
+        selectedIndicatorColor = indicatorColor,
+        unselectedIconColor = unselectedIconColor,
+        unselectedTextColor = unselectedTextColor,
+    )
 
     val windowInsets: WindowInsets
         @Composable
@@ -166,14 +163,13 @@ class NavigationBarItemColors internal constructor(
         selectedIndicatorColor: Color = this.selectedIndicatorColor,
         unselectedIconColor: Color = this.unselectedIconColor,
         unselectedTextColor: Color = this.unselectedTextColor,
-    ): NavigationBarItemColors =
-        NavigationBarItemColors(
-            selectedIconColor = selectedIconColor,
-            selectedTextColor = selectedTextColor,
-            selectedIndicatorColor = selectedIndicatorColor,
-            unselectedIconColor = unselectedIconColor,
-            unselectedTextColor = unselectedTextColor,
-        )
+    ) = NavigationBarItemColors(
+        selectedIconColor = selectedIconColor,
+        selectedTextColor = selectedTextColor,
+        selectedIndicatorColor = selectedIndicatorColor,
+        unselectedIconColor = unselectedIconColor,
+        unselectedTextColor = unselectedTextColor,
+    )
 
     /**
      * Represents the icon color for this item, depending on whether it is [selected].
