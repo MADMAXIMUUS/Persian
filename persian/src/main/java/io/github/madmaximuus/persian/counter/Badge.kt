@@ -23,14 +23,15 @@ import io.github.madmaximuus.persian.counter.utils.badgeMeasurePolicy
  *
  * @param count The count to be displayed in the badge.
  * @param modifier The [Modifier] to be applied to this badge.
+ * @param style The badge style.
  * @param colors The color configurations for the badge.
  * @param sizes The size configurations for the badge.
  * @param content The content on which the badge will be displayed.
  */
 @Composable
 fun Badge(
-    count: Int = 0,
     modifier: Modifier = Modifier,
+    count: Int = 0,
     style: BadgeStyle = BadgeStyle.DOT,
     colors: CounterColors = CounterDefaults.errorColors(),
     sizes: CounterSizes = CounterDefaults.sizes(),

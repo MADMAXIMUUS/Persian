@@ -8,6 +8,7 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import io.github.madmaximuus.persian.counter.CounterDefaults.sizes
 import io.github.madmaximuus.persian.foundation.PersianTheme
 
 /**
@@ -25,11 +26,10 @@ object CounterDefaults {
     fun errorColors(
         containerColor: Color = PersianTheme.colorScheme.error,
         contentColor: Color = PersianTheme.colorScheme.onError
-    ): CounterColors =
-        CounterColors(
-            containerColor = containerColor,
-            contentColor = contentColor
-        )
+    ) = CounterColors(
+        containerColor = containerColor,
+        contentColor = contentColor
+    )
 
     /**
      * Create a [CounterColors] that represents the default container and content colors in error style.
@@ -41,11 +41,10 @@ object CounterDefaults {
     fun primaryColors(
         containerColor: Color = PersianTheme.colorScheme.primary,
         contentColor: Color = PersianTheme.colorScheme.onPrimary
-    ): CounterColors =
-        CounterColors(
-            containerColor = containerColor,
-            contentColor = contentColor
-        )
+    ) = CounterColors(
+        containerColor = containerColor,
+        contentColor = contentColor
+    )
 
     /**
      * Create a [CounterColors] that represents the default container and content colors in error style.
@@ -57,11 +56,10 @@ object CounterDefaults {
     fun secondaryColors(
         containerColor: Color = PersianTheme.colorScheme.primaryContainer,
         contentColor: Color = PersianTheme.colorScheme.onPrimaryContainer
-    ): CounterColors =
-        CounterColors(
-            containerColor = containerColor,
-            contentColor = contentColor
-        )
+    ) = CounterColors(
+        containerColor = containerColor,
+        contentColor = contentColor
+    )
 
     /**
      * Create a [CounterColors] that represents the default container and content colors in error style.
@@ -73,11 +71,10 @@ object CounterDefaults {
     fun tertiaryColors(
         containerColor: Color = Color.Transparent,
         contentColor: Color = PersianTheme.colorScheme.onSurface
-    ): CounterColors =
-        CounterColors(
-            containerColor = containerColor,
-            contentColor = contentColor
-        )
+    ) = CounterColors(
+        containerColor = containerColor,
+        contentColor = contentColor
+    )
 
     /**
      * Composable function to create a [sizes] object with customizable horizontal and vertical offsets for a badge.
@@ -97,15 +94,14 @@ object CounterDefaults {
         badgeRightOffset: Dp = 10.dp,
         badgeTopOffset: Dp = 10.dp,
         textStyle: TextStyle = PersianTheme.typography.labelMedium
-    ): CounterSizes =
-        CounterSizes(
-            size = size,
-            contentPadding = contentPadding,
-            shape = shape,
-            badgeRightOffset = badgeRightOffset,
-            badgeTopOffset = badgeTopOffset,
-            textStyle = textStyle
-        )
+    ) = CounterSizes(
+        size = size,
+        contentPadding = contentPadding,
+        shape = shape,
+        badgeRightOffset = badgeRightOffset,
+        badgeTopOffset = badgeTopOffset,
+        textStyle = textStyle
+    )
 }
 
 /**
@@ -152,17 +148,16 @@ class CounterSizes internal constructor(
         badgeVerticalOffset: Dp = this.badgeTopOffset,
 
         textStyle: TextStyle = this.textStyle
-    ): CounterSizes =
-        CounterSizes(
-            size = size,
-            contentPadding = contentPadding,
-            shape = shape,
+    ) = CounterSizes(
+        size = size,
+        contentPadding = contentPadding,
+        shape = shape,
 
-            badgeRightOffset = badgeHorizontalOffset,
-            badgeTopOffset = badgeVerticalOffset,
+        badgeRightOffset = badgeHorizontalOffset,
+        badgeTopOffset = badgeVerticalOffset,
 
-            textStyle = textStyle
-        )
+        textStyle = textStyle
+    )
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
