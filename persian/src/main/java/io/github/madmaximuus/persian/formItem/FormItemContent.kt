@@ -32,7 +32,7 @@ import io.github.madmaximuus.persian.radioButton.RadioButtonColors
 import io.github.madmaximuus.persian.radioButton.RadioButtonDefaults
 import io.github.madmaximuus.persian.radioButton.RadioButtonSizes
 import io.github.madmaximuus.persian.select.Select
-import io.github.madmaximuus.persian.textAreas.OutlineTextArea
+import io.github.madmaximuus.persian.textAreas.TextArea
 import io.github.madmaximuus.persian.textAreas.TextAreaColors
 import io.github.madmaximuus.persian.textAreas.TextAreaDefaults
 
@@ -138,7 +138,7 @@ fun FormItemContentScope.TextArea(
     colors: TextAreaColors = TextAreaDefaults.outlineColors(),
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActionHandler: KeyboardActionHandler? = null
-) = OutlineTextArea(
+) = TextArea(
     state = state,
     modifier = modifier.padding(horizontal = PersianTheme.spacing.size16),
     enabled = this@TextArea.enabled,

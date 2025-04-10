@@ -14,6 +14,7 @@ import io.github.madmaximuus.persian.text.Text
  * Interface representing the scope for a form caption.
  *
  * @property colors The colors associated with the form caption.
+ * @property colors The sizes associated with the form caption.
  * @property enabled Indicates whether the form caption is enabled.
  * @property isError Indicates whether the form caption is in an error state.
  */
@@ -28,6 +29,7 @@ interface FormItemCaptionScope {
  * Internal wrapper class for [FormItemCaptionScope].
  *
  * @param colors The colors associated with the form caption.
+ * @param sizes The colors associated with the form caption.
  * @param enabled Indicates whether the form caption is enabled.
  * @param isError Indicates whether the form caption is in an error state.
  */

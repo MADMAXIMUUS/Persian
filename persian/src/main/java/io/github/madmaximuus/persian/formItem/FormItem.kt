@@ -20,6 +20,8 @@ import io.github.madmaximuus.persian.foundation.PersianTheme
  * @param enabled Indicates whether the form is enabled.
  * @param isError Indicates whether the form is in an error state.
  * @param isValid Indicates whether the form is valid.
+ * @param colors The colors of form item.
+ * @param sizes The sizes of form item.
  * @param subhead The composable content to be displayed as the subhead of the form.
  * @param content The composable content to be displayed as the main content of the form.
  * @param caption The composable content to be displayed as the caption of the form.

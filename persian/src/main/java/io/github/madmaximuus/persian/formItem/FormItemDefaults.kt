@@ -22,11 +22,10 @@ object FormItemDefaults {
     fun formColors(
         subheadColors: SubheadColors = subheadColors(),
         captionColors: CaptionColors = captionColors()
-    ): FormColors =
-        FormColors(
-            subheadColors = subheadColors,
-            captionColors = captionColors
-        )
+    ) = FormColors(
+        subheadColors = subheadColors,
+        captionColors = captionColors
+    )
 
     /**
      * Composable function that creates and returns a [FormSizes] instance.
@@ -40,11 +39,10 @@ object FormItemDefaults {
     fun formSizes(
         subheadTextStyle: TextStyle = PersianTheme.typography.labelMedium,
         captionSizes: CaptionSizes = captionSizes()
-    ): FormSizes =
-        FormSizes(
-            subheadTextStyle = subheadTextStyle,
-            captionSizes = captionSizes
-        )
+    ) = FormSizes(
+        subheadTextStyle = subheadTextStyle,
+        captionSizes = captionSizes
+    )
 
     /**
      * Composable function to create an instance of [CaptionColors] with customizable colors.
@@ -64,23 +62,21 @@ object FormItemDefaults {
         errorColor: Color = PersianTheme.colorScheme.error,
         counterColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
         errorCounterColor: Color = PersianTheme.colorScheme.error,
-    ): CaptionColors =
-        CaptionColors(
-            textColor = textColor,
-            errorColor = errorColor,
-            counterColor = counterColor,
-            errorCounterColor = errorCounterColor,
-        )
+    ) = CaptionColors(
+        textColor = textColor,
+        errorColor = errorColor,
+        counterColor = counterColor,
+        errorCounterColor = errorCounterColor,
+    )
 
     @Composable
     fun captionSizes(
         captionTextStyle: TextStyle = PersianTheme.typography.bodySmall,
         counterTextStyle: TextStyle = PersianTheme.typography.bodySmall
-    ): CaptionSizes =
-        CaptionSizes(
-            captionTextStyle = captionTextStyle,
-            counterTextStyle = counterTextStyle
-        )
+    ) = CaptionSizes(
+        captionTextStyle = captionTextStyle,
+        counterTextStyle = counterTextStyle
+    )
 
     /**
      * Composable function to create an instance of [SubheadColors] with customizable colors.
@@ -97,11 +93,10 @@ object FormItemDefaults {
         textColor: Color = PersianTheme.colorScheme.onSurfaceVariant,
 
         requiredColor: Color = PersianTheme.colorScheme.error,
-    ): SubheadColors =
-        SubheadColors(
-            textColor = textColor,
-            requiredColor = requiredColor,
-        )
+    ) = SubheadColors(
+        textColor = textColor,
+        requiredColor = requiredColor,
+    )
 }
 
 /**
