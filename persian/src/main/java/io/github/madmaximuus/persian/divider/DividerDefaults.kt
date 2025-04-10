@@ -21,11 +21,10 @@ object DividerDefaults {
     fun sizes(
         inset: Dp = PersianTheme.spacing.size16,
         strokeThickness: Dp = 1.dp
-    ): DividerSizes =
-        DividerSizes(
-            inset = inset,
-            strokeThickness = strokeThickness
-        )
+    ) = DividerSizes(
+        inset = inset,
+        strokeThickness = strokeThickness
+    )
 }
 
 /**
