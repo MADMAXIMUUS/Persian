@@ -35,6 +35,7 @@ import kotlinx.coroutines.launch
  * and either a horizontal or vertical layout for the color picker and tools panel, depending on the window height size class.
  * The color picker state and colors are managed by the provided [state] and [colors] parameters.
  *
+ * @param modifier The [Modifier] of this composable.
  * @param state The state of the color picker, which contains information about the selected color, display mode, and other configurations.
  * @param colors The colors used for the view, which includes various UI elements such as the background, text, and borders.
  */

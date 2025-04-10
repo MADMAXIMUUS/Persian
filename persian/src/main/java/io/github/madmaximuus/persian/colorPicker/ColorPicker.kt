@@ -33,6 +33,7 @@ import io.github.madmaximuus.persian.text.Text
  *
  * @param state The state of the color picker, which contains information about the selected color
  * and other configurations.
+ * @param title Title that will be display at top of the picker
  * @param colors The colors used for the color picker and the alert dialog.
  * @param onDismissRequest A callback function that is invoked when the user requests to dismiss
  * the dialog.
@@ -69,7 +70,7 @@ fun ColorPicker(
                 text = title,
                 textAlign = TextAlign.Center,
                 style = PersianTheme.typography.titleMedium,
-                color = PersianTheme.colorScheme.onSurface
+                color = colors.titleColors
             )
             ColorPickerView(
                 modifier = maxModifier.padding(bottom = PersianTheme.spacing.size16),

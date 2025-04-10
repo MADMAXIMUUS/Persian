@@ -1,6 +1,5 @@
 package io.github.madmaximuus.persian.colorPicker.view.util
 
-import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.RectF
 import androidx.compose.foundation.gestures.detectDragGestures
@@ -11,12 +10,8 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.drawscope.DrawScope
-import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
-import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.input.pointer.pointerInput
-import androidx.core.graphics.toRect
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import androidx.compose.ui.graphics.Color as ComposeColor
@@ -40,29 +35,6 @@ internal fun CoroutineScope.collectForPress(
                 ?.pressPosition
                 ?.let(setOffset)
         }
-    }
-}
-
-/**
- * An extension function for [DrawScope] that draws a bitmap within a specified panel.
- *
- * This function uses the [DrawScope.drawIntoCanvas] method to draw the provided [bitmap] onto the canvas within the specified [panel].
- * The bitmap is drawn using the native canvas's `drawBitmap` method, which allows for precise control over the drawing area.
- *
- * @param bitmap The bitmap to be drawn.
- * @param panel The rectangle defining the area where the bitmap will be drawn.
- */
-internal fun DrawScope.drawBitmap(
-    bitmap: Bitmap,
-    panel: RectF
-) {
-    drawIntoCanvas {
-        it.nativeCanvas.drawBitmap(
-            bitmap,
-            null,
-            panel.toRect(),
-            null
-        )
     }
 }
 
