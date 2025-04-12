@@ -36,9 +36,9 @@ val PersianSymbols.Filled.Category: ImageVector
                 horizontalLineTo(8.7f)
                 curveTo(10.246f, 12f, 11.5f, 13.254f, 11.5f, 14.8f)
                 verticalLineTo(17.2f)
-                curveTo(11.5f, 18.746f, 10.246f, 20f, 8.7f, 20f)
+                curveTo(11.5f, 18.747f, 10.246f, 20f, 8.7f, 20f)
                 horizontalLineTo(6.3f)
-                curveTo(4.754f, 20f, 3.5f, 18.746f, 3.5f, 17.2f)
+                curveTo(4.754f, 20f, 3.5f, 18.747f, 3.5f, 17.2f)
                 verticalLineTo(14.8f)
                 close()
             }

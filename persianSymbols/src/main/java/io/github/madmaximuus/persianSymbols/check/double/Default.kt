@@ -30,7 +30,7 @@ val PersianSymbols.Default.CheckDouble: ImageVector
                 curveTo(7.722f, 16.514f, 7.661f, 16.45f, 7.612f, 16.381f)
                 lineTo(3.477f, 12.246f)
                 curveTo(3.086f, 11.856f, 3.119f, 11.259f, 3.55f, 10.914f)
-                curveTo(3.981f, 10.569f, 4.647f, 10.606f, 5.038f, 10.996f)
+                curveTo(3.981f, 10.569f, 4.648f, 10.606f, 5.038f, 10.996f)
                 lineTo(8.5f, 14.458f)
                 lineTo(16.205f, 6.754f)
                 curveTo(16.595f, 6.363f, 17.261f, 6.326f, 17.692f, 6.672f)
@@ -38,7 +38,7 @@ val PersianSymbols.Default.CheckDouble: ImageVector
             }
             path(fill = SolidColor(Color(0xFF000000))) {
                 moveTo(20.45f, 7.429f)
-                curveTo(20.881f, 7.774f, 20.914f, 8.37f, 20.523f, 8.761f)
+                curveTo(20.881f, 7.774f, 20.914f, 8.37f, 20.524f, 8.761f)
                 lineTo(12.038f, 17.246f)
                 curveTo(11.648f, 17.637f, 10.981f, 17.674f, 10.55f, 17.328f)
                 curveTo(10.119f, 16.983f, 10.086f, 16.387f, 10.477f, 15.996f)

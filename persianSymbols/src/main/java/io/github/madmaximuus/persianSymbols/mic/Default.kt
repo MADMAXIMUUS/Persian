@@ -54,7 +54,7 @@ val PersianSymbols.Default.Mic: ImageVector
                 curveTo(15.657f, 15f, 17f, 13.657f, 17f, 12f)
                 curveTo(17f, 11.448f, 17.448f, 11f, 18f, 11f)
                 curveTo(18.552f, 11f, 19f, 11.448f, 19f, 12f)
-                curveTo(19f, 14.761f, 16.761f, 17f, 14f, 17f)
+                curveTo(19f, 14.762f, 16.761f, 17f, 14f, 17f)
                 horizontalLineTo(13f)
                 verticalLineTo(20f)
                 horizontalLineTo(16f)
@@ -66,7 +66,7 @@ val PersianSymbols.Default.Mic: ImageVector
                 horizontalLineTo(11f)
                 verticalLineTo(17f)
                 horizontalLineTo(10f)
-                curveTo(7.238f, 17f, 5f, 14.761f, 5f, 12f)
+                curveTo(7.239f, 17f, 5f, 14.762f, 5f, 12f)
                 curveTo(5f, 11.448f, 5.448f, 11f, 6f, 11f)
                 close()
             }

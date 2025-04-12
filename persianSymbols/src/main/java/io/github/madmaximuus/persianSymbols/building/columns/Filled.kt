@@ -24,7 +24,7 @@ val PersianSymbols.Filled.BuildingColumns: ImageVector
                 horizontalLineTo(4.538f)
                 curveTo(3.756f, 9f, 3.438f, 7.993f, 4.079f, 7.545f)
                 lineTo(11.541f, 2.321f)
-                curveTo(11.817f, 2.128f, 12.183f, 2.128f, 12.459f, 2.321f)
+                curveTo(11.817f, 2.129f, 12.183f, 2.129f, 12.459f, 2.321f)
                 lineTo(19.921f, 7.545f)
                 curveTo(20.562f, 7.993f, 20.244f, 9f, 19.462f, 9f)
                 close()

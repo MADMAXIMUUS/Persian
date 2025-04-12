@@ -39,13 +39,13 @@ val PersianSymbols.Default.ArrowRightFromBracket: ImageVector
             }
             path(fill = SolidColor(Color(0xFF000000))) {
                 moveTo(14.293f, 15.293f)
-                curveTo(13.902f, 15.683f, 13.902f, 16.317f, 14.293f, 16.707f)
+                curveTo(13.902f, 15.684f, 13.902f, 16.317f, 14.293f, 16.707f)
                 curveTo(14.683f, 17.098f, 15.316f, 17.098f, 15.707f, 16.707f)
                 lineTo(19.707f, 12.707f)
-                curveTo(20.097f, 12.317f, 20.097f, 11.683f, 19.707f, 11.293f)
+                curveTo(20.097f, 12.317f, 20.097f, 11.684f, 19.707f, 11.293f)
                 lineTo(15.707f, 7.293f)
                 curveTo(15.316f, 6.902f, 14.683f, 6.902f, 14.293f, 7.293f)
-                curveTo(13.902f, 7.683f, 13.902f, 8.317f, 14.293f, 8.707f)
+                curveTo(13.902f, 7.684f, 13.902f, 8.317f, 14.293f, 8.707f)
                 lineTo(16.586f, 11f)
                 horizontalLineTo(9f)
                 curveTo(8.448f, 11f, 8f, 11.448f, 8f, 12f)

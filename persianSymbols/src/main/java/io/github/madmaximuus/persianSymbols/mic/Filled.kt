@@ -14,7 +14,7 @@ val PersianSymbols.Filled.Mic: ImageVector
             return mic!!
         }
         mic = Builder(
-            name = "MicFilled",
+            name = "mic-filled",
             defaultWidth = 24.0.dp,
             defaultHeight = 24.0.dp,
             viewportWidth = 24.0f,
@@ -24,9 +24,9 @@ val PersianSymbols.Filled.Mic: ImageVector
                 moveTo(8f, 4.8f)
                 curveTo(8f, 3.254f, 9.254f, 2f, 10.8f, 2f)
                 horizontalLineTo(13.2f)
-                curveTo(14.746f, 2f, 16f, 3.254f, 16f, 4.8f)
+                curveTo(14.747f, 2f, 16f, 3.254f, 16f, 4.8f)
                 verticalLineTo(11.2f)
-                curveTo(16f, 12.746f, 14.746f, 14f, 13.2f, 14f)
+                curveTo(16f, 12.746f, 14.747f, 14f, 13.2f, 14f)
                 horizontalLineTo(10.8f)
                 curveTo(9.254f, 14f, 8f, 12.746f, 8f, 11.2f)
                 verticalLineTo(4.8f)
@@ -52,7 +52,7 @@ val PersianSymbols.Filled.Mic: ImageVector
                 horizontalLineTo(11f)
                 verticalLineTo(17f)
                 horizontalLineTo(10f)
-                curveTo(7.238f, 17f, 5f, 14.761f, 5f, 12f)
+                curveTo(7.239f, 17f, 5f, 14.761f, 5f, 12f)
                 curveTo(5f, 11.448f, 5.448f, 11f, 6f, 11f)
                 close()
             }

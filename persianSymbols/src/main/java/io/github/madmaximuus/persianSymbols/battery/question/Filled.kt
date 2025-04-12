@@ -21,25 +21,29 @@ val PersianSymbols.Filled.BatteryQuestion: ImageVector
             viewportWidth = 24.0f,
             viewportHeight = 24.0f
         ).apply {
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                pathFillType = PathFillType.EvenOdd
-            ) {
+            path(fill = SolidColor(Color(0xFF000000))) {
                 moveTo(10f, 3f)
                 curveTo(10f, 2.448f, 10.448f, 2f, 11f, 2f)
                 horizontalLineTo(13f)
                 curveTo(13.552f, 2f, 14f, 2.448f, 14f, 3f)
-                verticalLineTo(4f)
-                horizontalLineTo(15f)
-                curveTo(16.657f, 4f, 18f, 5.343f, 18f, 7f)
-                verticalLineTo(19f)
-                curveTo(18f, 20.657f, 16.657f, 22f, 15f, 22f)
-                horizontalLineTo(9f)
-                curveTo(7.343f, 22f, 6f, 20.657f, 6f, 19f)
-                verticalLineTo(7f)
-                curveTo(6f, 5.343f, 7.343f, 4f, 9f, 4f)
+                verticalLineTo(3.5f)
                 horizontalLineTo(10f)
                 verticalLineTo(3f)
+                close()
+            }
+            path(
+                fill = SolidColor(Color(0xFF000000)),
+                pathFillType = PathFillType.EvenOdd
+            ) {
+                moveTo(6f, 8f)
+                curveTo(6f, 5.791f, 7.791f, 4f, 10f, 4f)
+                horizontalLineTo(14f)
+                curveTo(16.209f, 4f, 18f, 5.791f, 18f, 8f)
+                verticalLineTo(18f)
+                curveTo(18f, 20.209f, 16.209f, 22f, 14f, 22f)
+                horizontalLineTo(10f)
+                curveTo(7.791f, 22f, 6f, 20.209f, 6f, 18f)
+                verticalLineTo(8f)
                 close()
                 moveTo(12f, 9.491f)
                 curveTo(11.135f, 9.491f, 10.434f, 10.192f, 10.434f, 11.057f)

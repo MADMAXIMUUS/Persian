@@ -32,8 +32,8 @@ val PersianSymbols.Filled.TagSlash: ImageVector
             }
             path(fill = SolidColor(Color(0xFF000000))) {
                 moveTo(2f, 8.4f)
-                curveTo(2f, 7.312f, 2.395f, 6.317f, 3.049f, 5.549f)
-                lineTo(16.331f, 18.831f)
+                curveTo(2f, 7.306f, 2.399f, 6.305f, 3.06f, 5.535f)
+                lineTo(16.343f, 18.818f)
                 lineTo(15.934f, 19.297f)
                 curveTo(15.554f, 19.743f, 14.998f, 20f, 14.412f, 20f)
                 lineTo(6.4f, 20f)
@@ -42,13 +42,13 @@ val PersianSymbols.Filled.TagSlash: ImageVector
                 close()
             }
             path(fill = SolidColor(Color(0xFF000000))) {
-                moveTo(6.5f, 4f)
-                lineTo(18.632f, 16.132f)
-                lineTo(21.189f, 13.132f)
-                curveTo(21.659f, 12.581f, 21.668f, 11.773f, 21.21f, 11.212f)
-                lineTo(15.935f, 4.737f)
-                curveTo(15.556f, 4.271f, 14.986f, 4f, 14.385f, 4f)
-                horizontalLineTo(6.5f)
+                moveTo(21.189f, 13.132f)
+                lineTo(18.621f, 16.146f)
+                lineTo(6.475f, 4f)
+                horizontalLineTo(14.385f)
+                curveTo(14.986f, 4f, 15.556f, 4.271f, 15.935f, 4.737f)
+                lineTo(21.21f, 11.212f)
+                curveTo(21.668f, 11.773f, 21.659f, 12.581f, 21.189f, 13.132f)
                 close()
             }
         }.build()

@@ -21,13 +21,13 @@ val PersianSymbols.Filled.Diamond: ImageVector
         ).apply {
             path(fill = SolidColor(Color(0xFF000000))) {
                 moveTo(11.293f, 2.707f)
-                curveTo(11.683f, 2.317f, 12.317f, 2.317f, 12.707f, 2.707f)
+                curveTo(11.683f, 2.316f, 12.317f, 2.316f, 12.707f, 2.707f)
                 lineTo(21.293f, 11.293f)
-                curveTo(21.683f, 11.683f, 21.683f, 12.317f, 21.293f, 12.707f)
+                curveTo(21.683f, 11.683f, 21.683f, 12.316f, 21.293f, 12.707f)
                 lineTo(12.707f, 21.293f)
                 curveTo(12.317f, 21.683f, 11.683f, 21.683f, 11.293f, 21.293f)
                 lineTo(2.707f, 12.707f)
-                curveTo(2.317f, 12.317f, 2.317f, 11.683f, 2.707f, 11.293f)
+                curveTo(2.317f, 12.316f, 2.317f, 11.683f, 2.707f, 11.293f)
                 lineTo(11.293f, 2.707f)
                 close()
             }

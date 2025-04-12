@@ -1,7 +1,6 @@
 package io.github.madmaximuus.persianSymbols.file
 
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.ImageVector.Builder
@@ -21,29 +20,28 @@ val PersianSymbols.Filled.File: ImageVector
             viewportWidth = 24.0f,
             viewportHeight = 24.0f
         ).apply {
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                pathFillType = PathFillType.EvenOdd
-            ) {
-                moveTo(16.5f, 22f)
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(12f, 2f)
                 horizontalLineTo(7.5f)
-                curveTo(5.567f, 22f, 4f, 20.433f, 4f, 18.5f)
-                verticalLineTo(5.5f)
-                curveTo(4f, 3.567f, 5.567f, 2f, 7.5f, 2f)
-                horizontalLineTo(14.286f)
-                lineTo(20f, 7.556f)
+                curveTo(5.567f, 2f, 4f, 3.567f, 4f, 5.5f)
                 verticalLineTo(18.5f)
-                curveTo(20f, 20.433f, 18.433f, 22f, 16.5f, 22f)
+                curveTo(4f, 20.433f, 5.567f, 22f, 7.5f, 22f)
+                horizontalLineTo(16.5f)
+                curveTo(18.433f, 22f, 20f, 20.433f, 20f, 18.5f)
+                verticalLineTo(9.75f)
+                horizontalLineTo(14.75f)
+                curveTo(13.231f, 9.75f, 12f, 8.519f, 12f, 7f)
+                verticalLineTo(2f)
                 close()
-                moveTo(12f, 4.5f)
-                verticalLineTo(8f)
-                curveTo(12f, 9.105f, 12.895f, 10f, 14f, 10f)
-                horizontalLineTo(17.5f)
-                curveTo(17.776f, 10f, 18f, 9.776f, 18f, 9.5f)
-                verticalLineTo(9.143f)
-                lineTo(12.857f, 4f)
-                horizontalLineTo(12.5f)
-                curveTo(12.224f, 4f, 12f, 4.224f, 12f, 4.5f)
+            }
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(19.994f, 8.25f)
+                curveTo(19.958f, 7.765f, 19.745f, 7.308f, 19.394f, 6.967f)
+                lineTo(14.868f, 2.566f)
+                curveTo(14.501f, 2.209f, 14.011f, 2.007f, 13.5f, 2f)
+                verticalLineTo(7f)
+                curveTo(13.5f, 7.69f, 14.06f, 8.25f, 14.75f, 8.25f)
+                horizontalLineTo(19.994f)
                 close()
             }
         }.build()

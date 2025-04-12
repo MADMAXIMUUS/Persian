@@ -22,7 +22,7 @@ val PersianSymbols.Default.CheckCircle: ImageVector
         ).apply {
             path(fill = SolidColor(Color(0xFF000000))) {
                 moveTo(17.027f, 9.093f)
-                curveTo(17.322f, 9.384f, 17.322f, 9.857f, 17.027f, 10.148f)
+                curveTo(17.322f, 9.384f, 17.322f, 9.857f, 17.027f, 10.149f)
                 lineTo(11.111f, 16.011f)
                 curveTo(10.95f, 16.171f, 10.733f, 16.243f, 10.521f, 16.228f)
                 curveTo(10.31f, 16.244f, 10.092f, 16.172f, 9.93f, 16.011f)

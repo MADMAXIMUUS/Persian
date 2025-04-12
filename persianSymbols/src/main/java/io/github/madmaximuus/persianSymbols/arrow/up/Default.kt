@@ -3,8 +3,6 @@ package io.github.madmaximuus.persianSymbols.arrow.up
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathFillType.Companion.EvenOdd
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap.Companion.Butt
-import androidx.compose.ui.graphics.StrokeJoin.Companion.Miter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.unit.dp
@@ -24,28 +22,23 @@ val PersianSymbols.Default.ArrowUp: ImageVector
         ).apply {
             path(
                 fill = SolidColor(Color(0xFF000000)),
-                stroke = null,
-                strokeLineWidth = 0.0f,
-                strokeLineCap = Butt,
-                strokeLineJoin = Miter,
-                strokeLineMiter = 4.0f,
                 pathFillType = EvenOdd
             ) {
-                moveTo(12.0f, 4.0f)
-                curveTo(12.2652f, 4.0f, 12.5196f, 4.1054f, 12.7071f, 4.2929f)
-                lineTo(18.7071f, 10.2929f)
-                curveTo(19.0976f, 10.6834f, 19.0976f, 11.3166f, 18.7071f, 11.7071f)
-                curveTo(18.3166f, 12.0976f, 17.6834f, 12.0976f, 17.2929f, 11.7071f)
-                lineTo(13.0f, 7.4142f)
-                lineTo(13.0f, 19.0f)
-                curveTo(13.0f, 19.5523f, 12.5523f, 20.0f, 12.0f, 20.0f)
-                curveTo(11.4477f, 20.0f, 11.0f, 19.5523f, 11.0f, 19.0f)
-                lineTo(11.0f, 7.4142f)
-                lineTo(6.7071f, 11.7071f)
-                curveTo(6.3166f, 12.0976f, 5.6834f, 12.0976f, 5.2929f, 11.7071f)
-                curveTo(4.9024f, 11.3166f, 4.9024f, 10.6834f, 5.2929f, 10.2929f)
-                lineTo(11.2929f, 4.2929f)
-                curveTo(11.4804f, 4.1054f, 11.7348f, 4.0f, 12.0f, 4.0f)
+                moveTo(12f, 4f)
+                curveTo(12.265f, 4f, 12.52f, 4.105f, 12.707f, 4.293f)
+                lineTo(18.707f, 10.293f)
+                curveTo(19.098f, 10.683f, 19.098f, 11.317f, 18.707f, 11.707f)
+                curveTo(18.317f, 12.098f, 17.683f, 12.098f, 17.293f, 11.707f)
+                lineTo(13f, 7.414f)
+                lineTo(13f, 19f)
+                curveTo(13f, 19.552f, 12.552f, 20f, 12f, 20f)
+                curveTo(11.448f, 20f, 11f, 19.552f, 11f, 19f)
+                lineTo(11f, 7.414f)
+                lineTo(6.707f, 11.707f)
+                curveTo(6.317f, 12.098f, 5.683f, 12.098f, 5.293f, 11.707f)
+                curveTo(4.902f, 11.317f, 4.902f, 10.683f, 5.293f, 10.293f)
+                lineTo(11.293f, 4.293f)
+                curveTo(11.48f, 4.105f, 11.735f, 4f, 12f, 4f)
                 close()
             }
         }.build()

@@ -45,10 +45,10 @@ val PersianSymbols.Default.Warning: ImageVector
             ) {
                 moveTo(13.789f, 3.724f)
                 curveTo(13.052f, 2.25f, 10.948f, 2.25f, 10.211f, 3.724f)
-                lineTo(2.829f, 18.487f)
+                lineTo(2.829f, 18.488f)
                 curveTo(2.164f, 19.817f, 3.131f, 21.382f, 4.618f, 21.382f)
                 horizontalLineTo(19.382f)
-                curveTo(20.869f, 21.382f, 21.836f, 19.817f, 21.171f, 18.487f)
+                curveTo(20.869f, 21.382f, 21.836f, 19.817f, 21.171f, 18.488f)
                 lineTo(13.789f, 3.724f)
                 close()
                 moveTo(12f, 4.618f)

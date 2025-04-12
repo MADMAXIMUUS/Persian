@@ -30,7 +30,7 @@ val PersianSymbols.Filled.User: ImageVector
             }
             path(fill = SolidColor(Color(0xFF000000))) {
                 moveTo(5.178f, 16.818f)
-                curveTo(6.585f, 14.528f, 9.114f, 13f, 11.999f, 13f)
+                curveTo(6.585f, 14.528f, 9.113f, 13f, 11.999f, 13f)
                 curveTo(14.884f, 13f, 17.413f, 14.528f, 18.82f, 16.818f)
                 curveTo(20.092f, 18.889f, 18.029f, 21f, 15.599f, 21f)
                 horizontalLineTo(8.399f)

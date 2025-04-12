@@ -1,0 +1,114 @@
+package io.github.madmaximuus.persianSymbols.cart.badge.question
+
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.PathFillType
+import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.graphics.vector.path
+import androidx.compose.ui.unit.dp
+import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
+
+val PersianSymbols.Filled.CartBadgeQuestion: ImageVector
+    get() {
+        if (cartBadgeQuestion != null) {
+            return cartBadgeQuestion!!
+        }
+        cartBadgeQuestion = ImageVector.Builder(
+            name = "cart-badge-question-filled",
+            defaultWidth = 24.dp,
+            defaultHeight = 24.dp,
+            viewportWidth = 24f,
+            viewportHeight = 24f
+        ).apply {
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(18.012f, 8.5f)
+                curveTo(18.288f, 8.5f, 18.512f, 8.276f, 18.512f, 8f)
+                curveTo(18.512f, 7.724f, 18.288f, 7.5f, 18.012f, 7.5f)
+                curveTo(17.736f, 7.5f, 17.512f, 7.724f, 17.512f, 8f)
+                curveTo(17.512f, 8.276f, 17.736f, 8.5f, 18.012f, 8.5f)
+                close()
+            }
+            path(
+                fill = SolidColor(Color(0xFF000000)),
+                pathFillType = PathFillType.EvenOdd
+            ) {
+                moveTo(13.25f, 6f)
+                curveTo(13.25f, 3.377f, 15.377f, 1.25f, 18f, 1.25f)
+                curveTo(20.623f, 1.25f, 22.75f, 3.377f, 22.75f, 6f)
+                curveTo(22.75f, 8.623f, 20.623f, 10.75f, 18f, 10.75f)
+                curveTo(15.377f, 10.75f, 13.25f, 8.623f, 13.25f, 6f)
+                close()
+                moveTo(18f, 2.75f)
+                curveTo(16.205f, 2.75f, 14.75f, 4.205f, 14.75f, 6f)
+                curveTo(14.75f, 7.795f, 16.205f, 9.25f, 18f, 9.25f)
+                curveTo(19.795f, 9.25f, 21.25f, 7.795f, 21.25f, 6f)
+                curveTo(21.25f, 4.205f, 19.795f, 2.75f, 18f, 2.75f)
+                close()
+            }
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(6.203f, 5.023f)
+                horizontalLineTo(12.587f)
+                curveTo(12.53f, 5.34f, 12.5f, 5.666f, 12.5f, 6f)
+                curveTo(12.5f, 9.038f, 14.962f, 11.5f, 18f, 11.5f)
+                curveTo(19.049f, 11.5f, 20.028f, 11.207f, 20.862f, 10.698f)
+                lineTo(20.624f, 11.909f)
+                curveTo(20.44f, 12.846f, 19.617f, 13.523f, 18.662f, 13.523f)
+                horizontalLineTo(8.522f)
+                lineTo(7.647f, 15.382f)
+                horizontalLineTo(18.351f)
+                curveTo(18.903f, 15.382f, 19.351f, 15.83f, 19.351f, 16.382f)
+                curveTo(19.351f, 16.934f, 18.903f, 17.382f, 18.351f, 17.382f)
+                horizontalLineTo(6.859f)
+                curveTo(5.759f, 17.382f, 5.033f, 16.238f, 5.502f, 15.243f)
+                lineTo(6.821f, 12.441f)
+                lineTo(3.958f, 4.722f)
+                horizontalLineTo(3.237f)
+                curveTo(2.685f, 4.722f, 2.237f, 4.274f, 2.237f, 3.722f)
+                curveTo(2.237f, 3.17f, 2.685f, 2.722f, 3.237f, 2.722f)
+                horizontalLineTo(3.958f)
+                curveTo(4.795f, 2.722f, 5.543f, 3.243f, 5.833f, 4.027f)
+                lineTo(6.203f, 5.023f)
+                close()
+            }
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(9.27f, 19.44f)
+                curveTo(9.27f, 20.13f, 8.71f, 20.69f, 8.02f, 20.69f)
+                curveTo(7.33f, 20.69f, 6.77f, 20.13f, 6.77f, 19.44f)
+                curveTo(6.77f, 18.75f, 7.33f, 18.19f, 8.02f, 18.19f)
+                curveTo(8.71f, 18.19f, 9.27f, 18.75f, 9.27f, 19.44f)
+                close()
+            }
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(17.25f, 20.69f)
+                curveTo(17.94f, 20.69f, 18.5f, 20.13f, 18.5f, 19.44f)
+                curveTo(18.5f, 18.75f, 17.94f, 18.19f, 17.25f, 18.19f)
+                curveTo(16.56f, 18.19f, 16f, 18.75f, 16f, 19.44f)
+                curveTo(16f, 20.13f, 16.56f, 20.69f, 17.25f, 20.69f)
+                close()
+            }
+            path(fill = SolidColor(Color(0xFF000000))) {
+                moveTo(18f, 4.25f)
+                curveTo(17.574f, 4.25f, 17.25f, 4.584f, 17.25f, 4.97f)
+                curveTo(17.25f, 5.246f, 17.026f, 5.47f, 16.75f, 5.47f)
+                curveTo(16.474f, 5.47f, 16.25f, 5.246f, 16.25f, 4.97f)
+                curveTo(16.25f, 4.009f, 17.045f, 3.25f, 18f, 3.25f)
+                curveTo(18.955f, 3.25f, 19.75f, 4.009f, 19.75f, 4.97f)
+                curveTo(19.75f, 5.663f, 19.22f, 6.072f, 18.872f, 6.269f)
+                curveTo(18.741f, 6.344f, 18.612f, 6.402f, 18.5f, 6.447f)
+                verticalLineTo(6.75f)
+                curveTo(18.5f, 7.026f, 18.276f, 7.25f, 18f, 7.25f)
+                curveTo(17.724f, 7.25f, 17.5f, 7.026f, 17.5f, 6.75f)
+                verticalLineTo(6.088f)
+                curveTo(17.5f, 5.857f, 17.657f, 5.657f, 17.881f, 5.602f)
+                lineTo(18.03f, 5.556f)
+                curveTo(18.129f, 5.521f, 18.256f, 5.469f, 18.378f, 5.4f)
+                curveTo(18.655f, 5.242f, 18.75f, 5.092f, 18.75f, 4.97f)
+                curveTo(18.75f, 4.584f, 18.426f, 4.25f, 18f, 4.25f)
+                close()
+            }
+        }.build()
+
+        return cartBadgeQuestion!!
+    }
+
+private var cartBadgeQuestion: ImageVector? = null

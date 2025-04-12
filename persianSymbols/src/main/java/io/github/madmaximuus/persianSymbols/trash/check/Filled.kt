@@ -8,7 +8,7 @@ import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
-val PersianSymbols.Filled.TrashCheckFilled: ImageVector
+val PersianSymbols.Filled.TrashCheck: ImageVector
     get() {
         if (trashCheck != null) {
             return trashCheck!!

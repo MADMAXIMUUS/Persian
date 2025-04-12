@@ -21,8 +21,8 @@ val PersianSymbols.Default.EllipsisVert: ImageVector
         ).apply {
             path(fill = SolidColor(Color(0xFF000000))) {
                 moveTo(14f, 6f)
-                curveTo(14f, 7.104f, 13.104f, 8f, 12f, 8f)
-                curveTo(10.895f, 8f, 10f, 7.104f, 10f, 6f)
+                curveTo(14f, 7.105f, 13.104f, 8f, 12f, 8f)
+                curveTo(10.895f, 8f, 10f, 7.105f, 10f, 6f)
                 curveTo(10f, 4.895f, 10.895f, 4f, 12f, 4f)
                 curveTo(13.104f, 4f, 14f, 4.895f, 14f, 6f)
                 close()

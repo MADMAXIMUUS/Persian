@@ -47,7 +47,7 @@ val PersianSymbols.Default.Star: ImageVector
                 curveTo(11.174f, 2.286f, 11.561f, 2f, 12f, 2f)
                 close()
                 moveTo(12f, 6.387f)
-                lineTo(10.831f, 10.17f)
+                lineTo(10.831f, 10.171f)
                 curveTo(10.701f, 10.59f, 10.314f, 10.875f, 9.875f, 10.875f)
                 lineTo(5.956f, 10.875f)
                 lineTo(9.169f, 13.33f)
@@ -60,7 +60,7 @@ val PersianSymbols.Default.Star: ImageVector
                 curveTo(14.358f, 14.019f, 14.498f, 13.584f, 14.831f, 13.33f)
                 lineTo(18.044f, 10.875f)
                 lineTo(14.125f, 10.875f)
-                curveTo(13.686f, 10.875f, 13.299f, 10.59f, 13.169f, 10.17f)
+                curveTo(13.686f, 10.875f, 13.299f, 10.59f, 13.169f, 10.171f)
                 lineTo(12f, 6.387f)
                 close()
             }

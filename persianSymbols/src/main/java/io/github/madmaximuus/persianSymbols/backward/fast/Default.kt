@@ -25,11 +25,11 @@ val PersianSymbols.Default.BackwardFast: ImageVector
                 pathFillType = PathFillType.EvenOdd
             ) {
                 moveTo(4.501f, 7f)
-                curveTo(4.501f, 6.448f, 4.054f, 6f, 3.501f, 6f)
+                curveTo(4.501f, 6.448f, 4.053f, 6f, 3.501f, 6f)
                 curveTo(2.949f, 6f, 2.501f, 6.448f, 2.501f, 7f)
                 verticalLineTo(17f)
                 curveTo(2.501f, 17.552f, 2.949f, 18f, 3.501f, 18f)
-                curveTo(4.054f, 18f, 4.501f, 17.552f, 4.501f, 17f)
+                curveTo(4.053f, 18f, 4.501f, 17.552f, 4.501f, 17f)
                 verticalLineTo(13.448f)
                 lineTo(10.995f, 17.291f)
                 curveTo(11.995f, 17.883f, 13.259f, 17.162f, 13.259f, 16f)
@@ -60,11 +60,11 @@ val PersianSymbols.Default.BackwardFast: ImageVector
                 pathFillType = PathFillType.EvenOdd
             ) {
                 moveTo(4.501f, 7f)
-                curveTo(4.501f, 6.448f, 4.054f, 6f, 3.501f, 6f)
+                curveTo(4.501f, 6.448f, 4.053f, 6f, 3.501f, 6f)
                 curveTo(2.949f, 6f, 2.501f, 6.448f, 2.501f, 7f)
                 verticalLineTo(17f)
                 curveTo(2.501f, 17.552f, 2.949f, 18f, 3.501f, 18f)
-                curveTo(4.054f, 18f, 4.501f, 17.552f, 4.501f, 17f)
+                curveTo(4.053f, 18f, 4.501f, 17.552f, 4.501f, 17f)
                 verticalLineTo(13.448f)
                 lineTo(10.995f, 17.291f)
                 curveTo(11.995f, 17.883f, 13.259f, 17.162f, 13.259f, 16f)

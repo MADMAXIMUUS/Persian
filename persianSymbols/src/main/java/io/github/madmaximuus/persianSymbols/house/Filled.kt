@@ -20,8 +20,8 @@ val PersianSymbols.Filled.House: ImageVector
             viewportHeight = 24f
         ).apply {
             path(fill = SolidColor(Color(0xFF000000))) {
-                moveTo(12.629f, 2.008f)
-                lineTo(21.551f, 9.222f)
+                moveTo(12.629f, 2.009f)
+                lineTo(21.551f, 9.223f)
                 curveTo(22.284f, 9.815f, 21.865f, 11f, 20.923f, 11f)
                 horizontalLineTo(20f)
                 verticalLineTo(17.6f)
@@ -36,9 +36,9 @@ val PersianSymbols.Filled.House: ImageVector
                 curveTo(5.97f, 22f, 4f, 20.03f, 4f, 17.6f)
                 verticalLineTo(11f)
                 horizontalLineTo(3.077f)
-                curveTo(2.135f, 11f, 1.716f, 9.815f, 2.449f, 9.222f)
-                lineTo(11.371f, 2.008f)
-                curveTo(11.738f, 1.712f, 12.262f, 1.712f, 12.629f, 2.008f)
+                curveTo(2.135f, 11f, 1.716f, 9.815f, 2.449f, 9.223f)
+                lineTo(11.371f, 2.009f)
+                curveTo(11.738f, 1.712f, 12.262f, 1.712f, 12.629f, 2.009f)
                 close()
             }
         }.build()

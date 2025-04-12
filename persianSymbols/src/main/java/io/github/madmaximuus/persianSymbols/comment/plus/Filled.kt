@@ -15,7 +15,7 @@ val PersianSymbols.Filled.CommentPlus: ImageVector
             return commentPlus!!
         }
         commentPlus = Builder(
-            name = "CommentPlusFilled",
+            name = "comment-plus-field",
             defaultWidth = 24.0.dp,
             defaultHeight = 24.0.dp,
             viewportWidth = 24.0f,

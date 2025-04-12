@@ -36,7 +36,7 @@ val PersianSymbols.Default.ArrowRightRotate: ImageVector
                 curveTo(17.727f, 3.12f, 15.227f, 2f, 12.464f, 2f)
                 curveTo(6.941f, 2f, 2.464f, 6.477f, 2.464f, 12f)
                 curveTo(2.464f, 17.523f, 6.941f, 22f, 12.464f, 22f)
-                curveTo(16.398f, 22f, 19.8f, 19.728f, 21.432f, 16.428f)
+                curveTo(16.398f, 22f, 19.8f, 19.728f, 21.432f, 16.429f)
                 curveTo(21.677f, 15.934f, 21.474f, 15.334f, 20.979f, 15.089f)
                 curveTo(20.484f, 14.844f, 19.884f, 15.047f, 19.639f, 15.542f)
                 curveTo(18.332f, 18.185f, 15.609f, 20f, 12.464f, 20f)

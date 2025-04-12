@@ -14,7 +14,7 @@ val PersianSymbols.Default.Signal1: ImageVector
             return signal1!!
         }
         signal1 = Builder(
-            name = "signal-1-Default",
+            name = "signal-1-default",
             defaultWidth = 24.0.dp,
             defaultHeight = 24.0.dp,
             viewportWidth = 24.0f,

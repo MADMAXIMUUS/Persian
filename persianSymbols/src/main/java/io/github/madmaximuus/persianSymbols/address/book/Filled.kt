@@ -22,8 +22,8 @@ val PersianSymbols.Filled.AddressBook: ImageVector
         ).apply {
             path(fill = SolidColor(Color(0xFF000000))) {
                 moveTo(9.25f, 9f)
-                curveTo(9.25f, 8.033f, 10.034f, 7.25f, 11f, 7.25f)
-                curveTo(11.967f, 7.25f, 12.75f, 8.033f, 12.75f, 9f)
+                curveTo(9.25f, 8.034f, 10.034f, 7.25f, 11f, 7.25f)
+                curveTo(11.967f, 7.25f, 12.75f, 8.034f, 12.75f, 9f)
                 curveTo(12.75f, 9.967f, 11.967f, 10.75f, 11f, 10.75f)
                 curveTo(10.034f, 10.75f, 9.25f, 9.967f, 9.25f, 9f)
                 close()
@@ -60,11 +60,11 @@ val PersianSymbols.Filled.AddressBook: ImageVector
                 curveTo(14.25f, 7.205f, 12.795f, 5.75f, 11f, 5.75f)
                 close()
                 moveTo(11f, 12.75f)
-                curveTo(8.781f, 12.75f, 6.92f, 14.27f, 6.397f, 16.325f)
+                curveTo(8.781f, 12.75f, 6.92f, 14.271f, 6.397f, 16.325f)
                 curveTo(6.106f, 17.466f, 7.103f, 18.25f, 8f, 18.25f)
                 horizontalLineTo(14f)
                 curveTo(14.897f, 18.25f, 15.894f, 17.466f, 15.603f, 16.325f)
-                curveTo(15.08f, 14.27f, 13.219f, 12.75f, 11f, 12.75f)
+                curveTo(15.08f, 14.271f, 13.219f, 12.75f, 11f, 12.75f)
                 close()
             }
             path(fill = SolidColor(Color(0xFF000000))) {

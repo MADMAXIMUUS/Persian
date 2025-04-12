@@ -25,7 +25,7 @@ val PersianSymbols.Default.ReplyAll: ImageVector
                 curveTo(8.291f, 6.971f, 8.382f, 6.344f, 8.051f, 5.902f)
                 curveTo(7.721f, 5.459f, 7.094f, 5.368f, 6.652f, 5.699f)
                 lineTo(2.652f, 8.685f)
-                curveTo(2.399f, 8.873f, 2.251f, 9.169f, 2.25f, 9.484f)
+                curveTo(2.4f, 8.873f, 2.251f, 9.169f, 2.25f, 9.484f)
                 curveTo(2.249f, 9.799f, 2.397f, 10.095f, 2.648f, 10.285f)
                 lineTo(6.648f, 13.299f)
                 curveTo(7.089f, 13.631f, 7.716f, 13.543f, 8.049f, 13.102f)

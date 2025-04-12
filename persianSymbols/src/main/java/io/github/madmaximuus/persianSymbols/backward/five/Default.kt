@@ -1,7 +1,6 @@
 package io.github.madmaximuus.persianSymbols.backward.five
 
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.ImageVector.Builder
@@ -21,10 +20,7 @@ val PersianSymbols.Default.Backward5: ImageVector
             viewportWidth = 24.0f,
             viewportHeight = 24.0f
         ).apply {
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                pathFillType = PathFillType.EvenOdd
-            ) {
+            path(fill = SolidColor(Color(0xFF000000))) {
                 moveTo(12.433f, 1.321f)
                 curveTo(12.808f, 1.726f, 12.784f, 2.358f, 12.379f, 2.734f)
                 lineTo(11.551f, 3.5f)
@@ -47,6 +43,8 @@ val PersianSymbols.Default.Backward5: ImageVector
                 lineTo(11.02f, 1.266f)
                 curveTo(11.425f, 0.891f, 12.058f, 0.915f, 12.433f, 1.321f)
                 close()
+            }
+            path(fill = SolidColor(Color(0xFF000000))) {
                 moveTo(10.515f, 8.998f)
                 curveTo(10.135f, 8.998f, 9.815f, 9.283f, 9.77f, 9.661f)
                 lineTo(9.402f, 12.791f)
