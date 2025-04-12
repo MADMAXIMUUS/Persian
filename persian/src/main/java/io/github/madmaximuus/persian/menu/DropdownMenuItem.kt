@@ -27,7 +27,7 @@ import io.github.madmaximuus.persian.foundation.ripple.ripple
 import io.github.madmaximuus.persian.icon.Icon
 import io.github.madmaximuus.persian.text.Text
 import io.github.madmaximuus.persianSymbols.check.Check
-import io.github.madmaximuus.persianSymbols.chevronRight.ChevronRight
+import io.github.madmaximuus.persianSymbols.chevron.right.ChevronRight
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 
 /**

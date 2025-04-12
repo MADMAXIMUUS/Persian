@@ -54,7 +54,7 @@ object Shapes : Screen {
             ) {
                 Box(
                     modifier = Modifier
-                        .size(200.dp)
+                        .size(180.dp)
                         .background(PersianTheme.colorScheme.surfaceContainerHighest)
                         .padding(PersianTheme.spacing.size12),
                 ){
@@ -85,7 +85,7 @@ object Shapes : Screen {
                 }
                 Box(
                     modifier = Modifier
-                        .size(200.dp)
+                        .size(180.dp)
                         .background(
                             PersianTheme.colorScheme.surfaceContainerHighest,
                             PersianTheme.shapes.shape4
@@ -119,7 +119,7 @@ object Shapes : Screen {
                 }
                 Box(
                     modifier = Modifier
-                        .size(200.dp)
+                        .size(180.dp)
                         .background(
                             PersianTheme.colorScheme.surfaceContainerHighest,
                             PersianTheme.shapes.shape6
@@ -153,7 +153,7 @@ object Shapes : Screen {
                 }
                 Box(
                     modifier = Modifier
-                        .size(200.dp)
+                        .size(180.dp)
                         .background(
                             PersianTheme.colorScheme.surfaceContainerHighest,
                             PersianTheme.shapes.shape8
@@ -187,7 +187,7 @@ object Shapes : Screen {
                 }
                 Box(
                     modifier = Modifier
-                        .size(200.dp)
+                        .size(180.dp)
                         .background(
                             PersianTheme.colorScheme.surfaceContainerHighest,
                             PersianTheme.shapes.shape10
@@ -221,7 +221,7 @@ object Shapes : Screen {
                 }
                 Box(
                     modifier = Modifier
-                        .size(200.dp)
+                        .size(180.dp)
                         .background(
                             PersianTheme.colorScheme.surfaceContainerHighest,
                             PersianTheme.shapes.shape10
@@ -255,7 +255,7 @@ object Shapes : Screen {
                 }
                 Box(
                     modifier = Modifier
-                        .size(200.dp)
+                        .size(180.dp)
                         .background(
                             PersianTheme.colorScheme.surfaceContainerHighest,
                             PersianTheme.shapes.shape12
@@ -289,7 +289,7 @@ object Shapes : Screen {
                 }
                 Box(
                     modifier = Modifier
-                        .size(200.dp)
+                        .size(180.dp)
                         .background(
                             PersianTheme.colorScheme.surfaceContainerHighest,
                             PersianTheme.shapes.shape14
@@ -323,7 +323,7 @@ object Shapes : Screen {
                 }
                 Box(
                     modifier = Modifier
-                        .size(200.dp)
+                        .size(180.dp)
                         .background(
                             PersianTheme.colorScheme.surfaceContainerHighest,
                             PersianTheme.shapes.shape16
@@ -357,7 +357,7 @@ object Shapes : Screen {
                 }
                 Box(
                     modifier = Modifier
-                        .size(200.dp)
+                        .size(180.dp)
                         .background(
                             PersianTheme.colorScheme.surfaceContainerHighest,
                             PersianTheme.shapes.shape18
@@ -391,7 +391,7 @@ object Shapes : Screen {
                 }
                 Box(
                     modifier = Modifier
-                        .size(200.dp)
+                        .size(180.dp)
                         .background(
                             PersianTheme.colorScheme.surfaceContainerHighest,
                             PersianTheme.shapes.shape20
@@ -425,7 +425,7 @@ object Shapes : Screen {
                 }
                 Box(
                     modifier = Modifier
-                        .size(200.dp)
+                        .size(180.dp)
                         .background(
                             PersianTheme.colorScheme.surfaceContainerHighest,
                             PersianTheme.shapes.shape22
@@ -459,7 +459,7 @@ object Shapes : Screen {
                 }
                 Box(
                     modifier = Modifier
-                        .size(200.dp)
+                        .size(180.dp)
                         .background(
                             PersianTheme.colorScheme.surfaceContainerHighest,
                             PersianTheme.shapes.shape24
@@ -493,7 +493,7 @@ object Shapes : Screen {
                 }
                 Box(
                     modifier = Modifier
-                        .size(200.dp)
+                        .size(180.dp)
                         .background(
                             PersianTheme.colorScheme.surfaceContainerHighest,
                             PersianTheme.shapes.full

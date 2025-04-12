@@ -222,6 +222,7 @@ private fun TabBarItemScope.LeadingIconTab(
                 Icon(
                     painter = icon,
                     sizes = sizes.iconSizes,
+                    tint = LocalContentColor.current
                 )
             }
             if (text != null) {
@@ -302,6 +303,7 @@ private fun TabBarItemScope.TopIconTab(
                         Icon(
                             painter = icon,
                             sizes = sizes.iconSizes,
+                            tint = LocalContentColor.current
                         )
                     } else {
                         Badge(
@@ -313,6 +315,7 @@ private fun TabBarItemScope.TopIconTab(
                             Icon(
                                 painter = icon,
                                 sizes = sizes.iconSizes,
+                                tint = LocalContentColor.current
                             )
                         }
                     }
@@ -391,6 +394,7 @@ private fun TabBarItemScope.OnlyIconTab(
                 Icon(
                     painter = icon,
                     sizes = sizes.iconSizes,
+                    tint = LocalContentColor.current
                 )
             } else {
                 Badge(
@@ -402,6 +406,7 @@ private fun TabBarItemScope.OnlyIconTab(
                     Icon(
                         painter = icon,
                         sizes = sizes.iconSizes,
+                        tint = LocalContentColor.current
                     )
                 }
             }

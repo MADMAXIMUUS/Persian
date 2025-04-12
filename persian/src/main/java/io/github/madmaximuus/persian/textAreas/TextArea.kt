@@ -87,7 +87,7 @@ fun TextArea(
             isValid,
             isError,
             interactionSource
-        ).value == Color.Unspecified
+        ).value != Color.Unspecified
     ) animateBorderStrokeAsState(
         enabled = enabled,
         isError = isError,

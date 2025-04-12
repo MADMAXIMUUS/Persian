@@ -2,10 +2,15 @@ package ru.rabbit.persian.appShowcase.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.windowInsetsBottomHeight
 import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -45,7 +50,7 @@ object Symbols : Screen {
             LazyVerticalGrid(
                 modifier = Modifier
                     .padding(it)
-                    .navigationBarsPadding()
+                    .padding(horizontal = PersianTheme.spacing.size12)
                     .nestedScroll(topAppBarScrollBehavior.nestedScrollConnection),
                 columns = GridCells.FixedSize(48.dp),
                 verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size24),
@@ -55,15 +60,25 @@ object Symbols : Screen {
                 )
             ) {
                 items(
-                    allIcons.size,
-                    { index -> allIcons[index].name }
-                ) { index ->
+                    items = allIcons,
+                    key = { it.name },
+                    contentType = { it }
+                ) { item ->
                     Box(contentAlignment = Alignment.Center) {
                         Icon(
-                            painter = rememberVectorPainter(allIcons[index]),
-                            sizes = IconDefaults.size48()
+                            painter = rememberVectorPainter(item),
+                            sizes = IconDefaults.size48(),
+                            tint = PersianTheme.colorScheme.onSurface
                         )
                     }
+                }
+                item(
+                    span = { GridItemSpan(maxLineSpan) }
+                ) {
+                    Spacer(
+                        modifier = Modifier
+                            .windowInsetsBottomHeight(WindowInsets.navigationBars)
+                    )
                 }
             }
         }

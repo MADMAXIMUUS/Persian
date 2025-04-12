@@ -27,7 +27,7 @@ import io.github.madmaximuus.persian.formItem.RadioButtons
 import io.github.madmaximuus.persian.formItem.Subhead
 import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
-import io.github.madmaximuus.persianSymbols.chevronRight.ChevronRight
+import io.github.madmaximuus.persianSymbols.chevron.right.ChevronRight
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.plus.Plus
 import ru.rabbit.persian.appShowcase.R

@@ -56,7 +56,7 @@ fun DashboardScreen(
                 .padding(horizontal = PersianTheme.spacing.size16)
                 .nestedScroll(topAppBarScrollBehavior.nestedScrollConnection),
             contentPadding = padding,
-            columns = GridCells.Adaptive(200.dp),
+            columns = GridCells.Adaptive(180.dp),
             verticalArrangement = Arrangement.spacedBy(PersianTheme.spacing.size16),
             horizontalArrangement = Arrangement.spacedBy(
                 PersianTheme.spacing.size16,

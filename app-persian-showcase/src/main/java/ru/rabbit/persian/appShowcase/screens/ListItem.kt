@@ -43,7 +43,7 @@ import io.github.madmaximuus.persian.listItem.Switch
 import io.github.madmaximuus.persian.text.Text
 import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
-import io.github.madmaximuus.persianSymbols.chevronRight.ChevronRight
+import io.github.madmaximuus.persianSymbols.chevron.right.ChevronRight
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.image.Image
 import io.github.madmaximuus.persianSymbols.plus.Plus

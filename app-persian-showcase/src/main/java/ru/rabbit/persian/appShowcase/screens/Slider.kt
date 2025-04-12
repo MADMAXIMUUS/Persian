@@ -34,8 +34,9 @@ import io.github.madmaximuus.persian.slider.range.DiscreteRangeSlider
 import io.github.madmaximuus.persian.slider.range.RangeSlider
 import io.github.madmaximuus.persian.text.Text
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
-import io.github.madmaximuus.persianSymbols.volume.high.VolumeHigh
-import io.github.madmaximuus.persianSymbols.volume.off.VolumeOff
+import io.github.madmaximuus.persianSymbols.speaker.Speaker
+import io.github.madmaximuus.persianSymbols.speaker.minus.SpeakerMinus
+import io.github.madmaximuus.persianSymbols.speaker.wave.two.SpeakerWave2
 import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleRow
 import ru.rabbit.persian.appShowcase.componets.SampleScaffold
@@ -127,7 +128,7 @@ object Slider : Screen {
                                                         }
 
                                                         contentStates[1].value -> {
-                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.VolumeOff))
+                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.Speaker))
                                                         }
                                                     }
                                                 }
@@ -140,7 +141,7 @@ object Slider : Screen {
                                                         }
 
                                                         contentStates[1].value -> {
-                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.VolumeHigh))
+                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.SpeakerWave2))
                                                         }
                                                     }
                                                 }
@@ -181,7 +182,7 @@ object Slider : Screen {
                                                         }
 
                                                         contentStates[1].value -> {
-                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.VolumeOff))
+                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.Speaker))
                                                         }
                                                     }
                                                 }
@@ -194,7 +195,7 @@ object Slider : Screen {
                                                         }
 
                                                         contentStates[1].value -> {
-                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.VolumeHigh))
+                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.SpeakerWave2))
                                                         }
                                                     }
                                                 }
@@ -238,7 +239,7 @@ object Slider : Screen {
                                                         }
 
                                                         contentStates[1].value -> {
-                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.VolumeOff))
+                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.Speaker))
                                                         }
                                                     }
                                                 }
@@ -251,7 +252,7 @@ object Slider : Screen {
                                                         }
 
                                                         contentStates[1].value -> {
-                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.VolumeHigh))
+                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.SpeakerWave2))
                                                         }
                                                     }
                                                 }
@@ -292,7 +293,7 @@ object Slider : Screen {
                                                         }
 
                                                         contentStates[1].value -> {
-                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.VolumeOff))
+                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.Speaker))
                                                         }
                                                     }
                                                 }
@@ -305,7 +306,7 @@ object Slider : Screen {
                                                         }
 
                                                         contentStates[1].value -> {
-                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.VolumeHigh))
+                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.SpeakerWave2))
                                                         }
                                                     }
                                                 }
@@ -367,7 +368,7 @@ object Slider : Screen {
                                                         }
 
                                                         contentStates[1].value -> {
-                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.VolumeOff))
+                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.Speaker))
                                                         }
                                                     }
                                                 }
@@ -380,7 +381,7 @@ object Slider : Screen {
                                                         }
 
                                                         contentStates[1].value -> {
-                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.VolumeHigh))
+                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.SpeakerMinus))
                                                         }
                                                     }
                                                 }
@@ -439,7 +440,7 @@ object Slider : Screen {
                                                         }
 
                                                         contentStates[1].value -> {
-                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.VolumeOff))
+                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.Speaker))
                                                         }
                                                     }
                                                 }
@@ -452,7 +453,7 @@ object Slider : Screen {
                                                         }
 
                                                         contentStates[1].value -> {
-                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.VolumeHigh))
+                                                            Icon(icon = rememberVectorPainter(image = PersianSymbols.Filled.SpeakerWave2))
                                                         }
                                                     }
                                                 }

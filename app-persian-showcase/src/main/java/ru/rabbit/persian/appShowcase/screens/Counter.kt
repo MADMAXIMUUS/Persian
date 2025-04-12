@@ -7,6 +7,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.input.InputTransformation
 import androidx.compose.foundation.text.input.maxLength
 import androidx.compose.foundation.text.input.rememberTextFieldState
+import androidx.compose.foundation.text.input.setTextAndPlaceCursorAtEnd
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -47,6 +48,8 @@ object Counter : Screen {
             onBackClick = { navController?.navigateUp() }
         ) {
             val count = rememberTextFieldState("1")
+            val newValue = count.text.toString().filter { it.isDigit() }
+            count.setTextAndPlaceCursorAtEnd(newValue)
             val typeStates = remember {
                 listOf(
                     mutableStateOf(true),

@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.widthIn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import io.github.madmaximuus.persian.text.Text
@@ -60,7 +59,6 @@ internal fun CounterImpl(
                 color = colors.containerColor,
                 shape = sizes.shape
             )
-            .clip(sizes.shape)
             .padding(sizes.contentPadding),
         contentAlignment = Alignment.Center
     ) {

@@ -29,7 +29,6 @@ import ru.rabbit.persian.appShowcase.screens.Alert
 import ru.rabbit.persian.appShowcase.screens.AvatarAndImage
 import ru.rabbit.persian.appShowcase.screens.Banner
 import ru.rabbit.persian.appShowcase.screens.Button
-import ru.rabbit.persian.appShowcase.screens.Charts
 import ru.rabbit.persian.appShowcase.screens.Checkbox
 import ru.rabbit.persian.appShowcase.screens.Chips
 import ru.rabbit.persian.appShowcase.screens.CodeInput
@@ -118,7 +117,7 @@ class MainActivity : ComponentActivity() {
                         CodeInput,
                         DatePicker,
                         Switch,
-                        Charts,
+                        /*Charts,*/
                         PageIndicator,
                         TimePicker,
                         Chips,

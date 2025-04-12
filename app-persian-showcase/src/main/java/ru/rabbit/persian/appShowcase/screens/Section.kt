@@ -30,7 +30,7 @@ import io.github.madmaximuus.persian.section.Section
 import io.github.madmaximuus.persian.text.Text
 import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
-import io.github.madmaximuus.persianSymbols.chevronRight.ChevronRight
+import io.github.madmaximuus.persianSymbols.chevron.right.ChevronRight
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.pentagon.Pentagon
 import ru.rabbit.persian.appShowcase.R

@@ -38,7 +38,7 @@ dependencies {
     implementation "io.github.madmaximuus.persian:persian:<version>"
 }
 ```
-## 🤖 Catalog app
+## Catalog app
 
 For testing purposes, this project provides a catalog app.
 

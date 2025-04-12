@@ -89,8 +89,8 @@ object CounterDefaults {
     @Composable
     fun sizes(
         size: Dp = 8.dp,
-        contentPadding: PaddingValues = PaddingValues(horizontal = 6.dp, vertical = 2.dp),
-        shape: Shape = PersianTheme.shapes.shape12,
+        contentPadding: PaddingValues = PaddingValues(horizontal = 6.dp),
+        shape: Shape = PersianTheme.shapes.full,
         badgeRightOffset: Dp = 10.dp,
         badgeTopOffset: Dp = 10.dp,
         textStyle: TextStyle = PersianTheme.typography.labelMedium

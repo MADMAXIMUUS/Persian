@@ -8,7 +8,7 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import io.github.madmaximuus.persian.button.Button
 import io.github.madmaximuus.persian.icon.Icon
 import io.github.madmaximuus.persian.iconButton.IconButton
-import io.github.madmaximuus.persianSymbols.chevronRight.ChevronRight
+import io.github.madmaximuus.persianSymbols.chevron.right.ChevronRight
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import io.github.madmaximuus.persianSymbols.xmark.XMark
 

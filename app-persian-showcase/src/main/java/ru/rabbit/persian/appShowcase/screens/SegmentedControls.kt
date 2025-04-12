@@ -31,9 +31,9 @@ import io.github.madmaximuus.persian.segmentedControls.tabs.SegmentedTabsDefault
 import io.github.madmaximuus.persian.segmentedControls.tabs.SegmentedTabsRow
 import io.github.madmaximuus.persian.topAppBar.TopAppBarDefaults
 import io.github.madmaximuus.persian.topAppBar.rememberTopAppBarState
-import io.github.madmaximuus.persianSymbols.device.laptop.macbook.DeviceLaptopMacbook
-import io.github.madmaximuus.persianSymbols.device.mobile.iPhone.one.DeviceMobileIPhone1
-import io.github.madmaximuus.persianSymbols.device.tablet.iPad.DeviceTabletIPad
+import io.github.madmaximuus.persianSymbols.device.mobile.apple.button.DeviceMobileAppleButton
+import io.github.madmaximuus.persianSymbols.device.mobile.apple.island.DeviceMobileAppleIsland
+import io.github.madmaximuus.persianSymbols.device.mobile.apple.notch.DeviceMobileAppleNotch
 import io.github.madmaximuus.persianSymbols.foundation.PersianSymbols
 import ru.rabbit.persian.appShowcase.R
 import ru.rabbit.persian.appShowcase.componets.SampleRow
@@ -126,7 +126,7 @@ object SegmentedControls : Screen {
                                 Segment(
                                     selected = singleChoiceSelectedState[0].value,
                                     label = if (label) "Label 1" else null,
-                                    icon = if (icon) rememberVectorPainter(image = PersianSymbols.Filled.DeviceMobileIPhone1) else null,
+                                    icon = if (icon) rememberVectorPainter(image = PersianSymbols.Default.DeviceMobileAppleIsland) else null,
                                     onClick = {
                                         singleChoiceSelectedState.forEachIndexed { index, mutableState ->
                                             mutableState.value = index == 0
@@ -137,7 +137,7 @@ object SegmentedControls : Screen {
                                 Segment(
                                     selected = singleChoiceSelectedState[1].value,
                                     label = if (label) "Label 2" else null,
-                                    icon = if (icon) rememberVectorPainter(image = PersianSymbols.Filled.DeviceTabletIPad) else null,
+                                    icon = if (icon) rememberVectorPainter(image = PersianSymbols.Default.DeviceMobileAppleNotch) else null,
                                     onClick = {
                                         singleChoiceSelectedState.forEachIndexed { index, mutableState ->
                                             mutableState.value = index == 1
@@ -148,7 +148,7 @@ object SegmentedControls : Screen {
                                 Segment(
                                     selected = singleChoiceSelectedState[2].value,
                                     label = if (label) "Label 3" else null,
-                                    icon = if (icon) rememberVectorPainter(image = PersianSymbols.Filled.DeviceLaptopMacbook) else null,
+                                    icon = if (icon) rememberVectorPainter(image = PersianSymbols.Default.DeviceMobileAppleButton) else null,
                                     onClick = {
                                         singleChoiceSelectedState.forEachIndexed { index, mutableState ->
                                             mutableState.value = index == 2
@@ -170,7 +170,7 @@ object SegmentedControls : Screen {
                                         Segment(
                                             selected = singleChoiceSelectedState[0].value,
                                             label = if (label) "Label 1" else null,
-                                            icon = if (icon) rememberVectorPainter(image = PersianSymbols.Filled.DeviceMobileIPhone1) else null,
+                                            icon = if (icon) rememberVectorPainter(image = PersianSymbols.Default.DeviceMobileAppleIsland) else null,
                                             onClick = {
                                                 singleChoiceSelectedState.forEachIndexed { index, mutableState ->
                                                     mutableState.value = index == 0
@@ -180,7 +180,7 @@ object SegmentedControls : Screen {
                                         Segment(
                                             selected = singleChoiceSelectedState[1].value,
                                             label = if (label) "Label 2" else null,
-                                            icon = if (icon) rememberVectorPainter(image = PersianSymbols.Filled.DeviceTabletIPad) else null,
+                                            icon = if (icon) rememberVectorPainter(image = PersianSymbols.Default.DeviceMobileAppleIsland) else null,
                                             onClick = {
                                                 singleChoiceSelectedState.forEachIndexed { index, mutableState ->
                                                     mutableState.value = index == 1
@@ -190,7 +190,7 @@ object SegmentedControls : Screen {
                                         Segment(
                                             selected = singleChoiceSelectedState[2].value,
                                             label = if (label) "Label 3" else null,
-                                            icon = if (icon) rememberVectorPainter(image = PersianSymbols.Filled.DeviceLaptopMacbook) else null,
+                                            icon = if (icon) rememberVectorPainter(image = PersianSymbols.Default.DeviceMobileAppleButton) else null,
                                             onClick = {
                                                 singleChoiceSelectedState.forEachIndexed { index, mutableState ->
                                                     mutableState.value = index == 2
@@ -209,7 +209,7 @@ object SegmentedControls : Screen {
                                         Segment(
                                             checked = multipleChoiceSelectedState[0].value,
                                             label = if (label) "Label 1" else null,
-                                            icon = if (icon) rememberVectorPainter(image = PersianSymbols.Filled.DeviceMobileIPhone1) else null,
+                                            icon = if (icon) rememberVectorPainter(image = PersianSymbols.Default.DeviceMobileAppleIsland) else null,
                                             onCheckedChange = { isChecked ->
                                                 multipleChoiceSelectedState[0].value = isChecked
                                             }
@@ -217,7 +217,7 @@ object SegmentedControls : Screen {
                                         Segment(
                                             checked = multipleChoiceSelectedState[1].value,
                                             label = if (label) "Label 2" else null,
-                                            icon = if (icon) rememberVectorPainter(image = PersianSymbols.Filled.DeviceTabletIPad) else null,
+                                            icon = if (icon) rememberVectorPainter(image = PersianSymbols.Default.DeviceMobileAppleNotch) else null,
                                             onCheckedChange = { isChecked ->
                                                 multipleChoiceSelectedState[1].value = isChecked
                                             }
@@ -225,7 +225,7 @@ object SegmentedControls : Screen {
                                         Segment(
                                             checked = multipleChoiceSelectedState[2].value,
                                             label = if (label) "Label 3" else null,
-                                            icon = if (icon) rememberVectorPainter(image = PersianSymbols.Filled.DeviceLaptopMacbook) else null,
+                                            icon = if (icon) rememberVectorPainter(image = PersianSymbols.Default.DeviceMobileAppleButton) else null,
                                             onCheckedChange = { isChecked ->
                                                 multipleChoiceSelectedState[2].value = isChecked
                                             }
