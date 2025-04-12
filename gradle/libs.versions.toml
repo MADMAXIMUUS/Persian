@@ -12,7 +12,6 @@ dokka = "1.9.0"
 adaptive = "1.1.0"
 datastore-preferences = "1.1.4"
 serialization = "1.8.0"
-persian-symbols = "1.0.0"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -32,7 +31,6 @@ splash = { group = "androidx.core", name = "core-splashscreen", version.ref = "s
 adaptive = { group = "androidx.compose.material3.adaptive", name = "adaptive-android", version.ref = "adaptive" }
 datastore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore-preferences" }
 serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json-jvm", version.ref = "serialization" }
-persian-symbols = { group = "io.github.madmaximuus.persian", name = "persian-symbols", version.ref = "persian-symbols" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
