@@ -14,6 +14,6 @@
 .cxx
 local.properties
 varible.properties
+keystore.properties
 /.idea/
-/app-persian-showcase/signing.gradle
 /app-persian-showcase/key/persian

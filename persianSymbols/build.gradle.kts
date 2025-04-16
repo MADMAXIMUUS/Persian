@@ -1,0 +1,65 @@
+plugins {
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.compose.compiler)
+}
+
+extra.set("PUBLISH_GROUP_ID", "io.github.madmaximuus.persian")
+extra.set("PUBLISH_VERSION", "2.0.0")
+extra.set("PUBLISH_ARTIFACT_ID", "persian-symbols")
+
+//apply(from = "${rootProject.projectDir}/scripts/publish-module.gradle")
+
+android {
+    namespace = "io.github.madmaximuus.persianSymbols"
+    compileSdk = 35
+
+    defaultConfig {
+        minSdk = 26
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
+    }
+
+    buildTypes {
+        getByName("release") {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+    }
+
+    buildFeatures {
+        compose = true
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+}
+
+afterEvaluate {
+    tasks.withType<Jar>().configureEach {
+        from(rootProject.file("LICENSE")) {
+            into("META-INF")
+        }
+        from(rootProject.file("NOTICE")) {
+            into("META-INF")
+        }
+    }
+}
+
+dependencies {
+    implementation(libs.core.ktx)
+    implementation(libs.bundles.compose)
+    implementation(libs.kotlin.reflect)
+
+    debugImplementation(libs.ui.tooling)
+}

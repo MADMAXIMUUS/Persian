@@ -15,7 +15,9 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Persian"
-include ':app-persian-showcase'
-include ':persian'
-include ':persianSymbols'
-include ':persianCharts'
+include(
+    ":app-persian-showcase",
+    ":persian",
+    ":persianSymbols",
+    "persianCharts"
+)
